@@ -40,3 +40,82 @@
 [data-md-color-scheme="slate"] .md-header__button {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
 }
+
+/* ──────────────────────────────────────────────────────────────────────
+ * Aufklappbare Sektionen — per JS aus jedem H2-Abschnitt erzeugt.
+ *
+ * Akkordeon-Stil: subtile horizontale Linie zwischen Sektionen, klickbarer
+ * Titel mit chevron rechts. Default zu, Klick öffnet, sanfter Übergang.
+ * ────────────────────────────────────────────────────────────────────── */
+
+details.glossar-section {
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  margin: 0;
+}
+
+details.glossar-section:first-of-type {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+details.glossar-section > summary.glossar-section-summary {
+  cursor: pointer;
+  padding: 0.9rem 0.5rem 0.9rem 1rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-family: var(--md-text-font-family, inherit);
+  line-height: 1.35;
+  color: var(--md-default-fg-color);
+  user-select: none;
+  transition: color 0.15s ease-out;
+}
+
+/* Standard-Disclosure-Marker in allen Browsern unterdrücken.
+ * Material's eigenes details-Styling rendert zusätzlich ein Dreieck-
+ * Icon via ::before, das wir explizit überschreiben. */
+details.glossar-section > summary.glossar-section-summary::-webkit-details-marker,
+details.glossar-section > summary.glossar-section-summary::marker {
+  display: none;
+  content: "";
+}
+
+details.glossar-section > summary.glossar-section-summary::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* CSS-Chevron rechts vom Titel, dreht beim Öffnen. */
+details.glossar-section > summary.glossar-section-summary::after {
+  content: "";
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease-out;
+  opacity: 0.5;
+}
+
+details.glossar-section[open] > summary.glossar-section-summary::after {
+  transform: rotate(45deg);
+  opacity: 0.8;
+}
+
+details.glossar-section > summary.glossar-section-summary:hover {
+  color: var(--md-accent-fg-color);
+}
+
+/* Innenabstand für den ausgeklappten Inhalt, damit er nicht direkt am
+ * Summary klebt. */
+details.glossar-section[open] > *:not(summary) {
+  margin-top: 0.25rem;
+}
+
+details.glossar-section[open] {
+  padding-bottom: 0.75rem;
+}
