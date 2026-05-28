@@ -48,8 +48,9 @@ nav:
   - Startseite: index.md
   - Methode: methode.md
   - Zitieren: zitieren.md
-  - Pilot:
-    - Kerve: pilot/kerve.md
+# Pilot-Einträge (nur lokal über src/pilot/, gitignored) bleiben aus
+# der Nav weg — Direkt-URLs wie /pilot/kerve/ funktionieren trotzdem
+# bei lokalem mkdocs serve.
 
 plugins:
   - search:
