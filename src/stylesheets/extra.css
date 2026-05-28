@@ -1,0 +1,42 @@
+/* Header-Hintergrund — zwei Holz-Fotos, eines pro Color-Scheme.
+ *
+ * Tagmodus (default): "light oak wood plank texture background",
+ *   simon (@simon_berger) via Unsplash, photo-1611072337226-1140ab367200.
+ * Nachtmodus (slate): "brown wooden board",
+ *   Joshua Bartell (@jjbart7) via Unsplash, photo-1546484396-fb3fc6f95f98.
+ * Beide Standard Unsplash License — frei nutzbar ohne Attributionspflicht,
+ * hier trotzdem dokumentiert. Beide auf 1920 px Breite skaliert. */
+
+[data-md-color-scheme="default"] .md-header {
+  background-image: url('../images/header-wood-light.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+[data-md-color-scheme="slate"] .md-header {
+  background-image: url('../images/header-wood-dark.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Tagmodus: dunkle Schrift und Icons auf hellem Holz.
+ * Material-Theme nutzt --md-primary-bg-color für die Schrift- und
+ * Icon-Farbe im Header — wir überschreiben sie mit einem warmen
+ * Dunkelbraun (passend zum hellen Eichen-Holz).
+ * Subtiler heller Halo statt dunkler Shadow für Lesbarkeit. */
+[data-md-color-scheme="default"] {
+  --md-primary-bg-color: #2a1a0a;
+  --md-primary-bg-color--light: rgba(42, 26, 10, 0.7);
+}
+
+[data-md-color-scheme="default"] .md-header__title,
+[data-md-color-scheme="default"] .md-header__button {
+  text-shadow: 0 1px 2px rgba(255, 248, 235, 0.6);
+}
+
+/* Nachtmodus: helle Schrift bleibt Material-Default, dunkler Shadow
+ * für Lesbarkeit auf dunkler Holz-Textur. */
+[data-md-color-scheme="slate"] .md-header__title,
+[data-md-color-scheme="slate"] .md-header__button {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
