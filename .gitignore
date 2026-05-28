@@ -7,3 +7,9 @@ __pycache__/
 # Pilot-Sichtcheck-Inhalt (manuell aus zimmermann_app kopiert, gehört
 # nicht ins Repo — wird in W3 durch Sync-Pipeline ersetzt).
 src/pilot/
+
+# Vom sync.sh-Script befüllter Glossar-Snapshot. Wird erst in einer
+# späteren Welle (W7-Live-Gang) bewusst committet, sobald Theming,
+# Cross-Link-Auflösung und Custom-Domain bereit sind. Bis dahin nur
+# lokal vorhanden für Tests.
+content/

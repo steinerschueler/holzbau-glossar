@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Synchronisiert Hauptglossar- und Subglossar-Quellen aus dem lokalen
+# zimmermann_app-Projekt in content/ — manuell vor jedem Site-Push.
+# Single-Source-of-Truth bleibt zimmermann_app; content/ ist Snapshot.
+
+set -euo pipefail
+
+SOURCE="${1:-${ZIMMERMANN_APP:-../zimmermann_app}}"
+TARGET="content"
+
+if [[ ! -d "$SOURCE/hauptglossar" || ! -d "$SOURCE/theorie/subglossar" ]]; then
+    echo "Fehler: $SOURCE enthält weder hauptglossar/ noch theorie/subglossar/." >&2
+    echo "Aufruf:  ./sync.sh [pfad-zu-zimmermann_app]" >&2
+    echo "Default: ../zimmermann_app (oder Umgebungsvariable ZIMMERMANN_APP)" >&2
+    exit 1
+fi
+
+mkdir -p "$TARGET/hauptglossar" "$TARGET/subglossar"
+
+# Hauptglossar: Cluster-Struktur erhalten, nur hg_*.md.
+# Filter schließt STAND_*.md, HG_KONVENTIONEN.md, ABWEICHUNGEN.md, README.md
+# automatisch aus (case-sensitive Glob, kein Match auf Großschreibung).
+rsync -a --delete \
+    --include='*/' \
+    --include='hg_*.md' \
+    --exclude='*' \
+    "$SOURCE/hauptglossar/" "$TARGET/hauptglossar/"
+
+# Subglossar: flach, nur sg_*.md.
+rsync -a --delete \
+    --include='sg_*.md' \
+    --exclude='*' \
+    "$SOURCE/theorie/subglossar/" "$TARGET/subglossar/"
+
+HG_COUNT=$(find "$TARGET/hauptglossar" -name 'hg_*.md' | wc -l)
+SG_COUNT=$(find "$TARGET/subglossar" -name 'sg_*.md' | wc -l)
+echo "Sync abgeschlossen: $HG_COUNT Hauptglossar-Einträge, $SG_COUNT Subglossar-Einträge."
+echo "Bereit für: git add content/ && git commit -m 'sync: ...' && git push"
