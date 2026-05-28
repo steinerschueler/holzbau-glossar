@@ -57,7 +57,7 @@ def on_files(files, config):
             hg_id = hg_file.stem.removeprefix("hg_")
             hg_text = hg_file.read_text(encoding="utf-8")
             benennung = _extract_benennung(hg_text) or hg_id
-            merged = _merge_entry(hg_text, sg_by_id.get(hg_id))
+            merged = _merge_entry(hg_text, sg_by_id.get(hg_id), hg_id)
             virtual_uri = f"{CLUSTER_URL[cluster_dir]}/{hg_id}.md"
             files.append(File.generated(config, virtual_uri, content=merged))
             entries.append((benennung, virtual_uri))
@@ -69,12 +69,13 @@ def on_files(files, config):
 
 
 def on_post_build(config):
-    """Write a ``.md`` and a ``.txt`` variant of each entry next to its
-    rendered HTML page. The ``.md`` is the merged Markdown source (HG +
-    optional SG appendix, with original cross-links untouched); the
-    ``.txt`` is a conservatively stripped plain-text version of the same
-    content. Both are intended for direct citation / archival download."""
+    """Write ``.md``, ``.txt`` and ``.bib`` variants of each entry next
+    to its rendered HTML page. The ``.md`` is the merged Markdown source
+    (HG + optional SG appendix); the ``.txt`` is a conservatively
+    stripped plain-text version; the ``.bib`` is a BibTeX entry for
+    direct citation."""
 
+    from datetime import date
     from pathlib import Path
 
     site_dir = Path(config["site_dir"])
@@ -83,22 +84,60 @@ def on_post_build(config):
         return
 
     sg_by_id = _load_subglossar_index(content / "subglossar")
+    today = date.today().isoformat()
+    site_url = (config.get("site_url") or "https://holzbau-glossar.ch").rstrip("/")
+    site_author = config.get("site_author", "Eric Naville")
 
     for cluster_dir, _label in CLUSTERS.items():
         cluster_path = content / "hauptglossar" / cluster_dir
         if not cluster_path.is_dir():
             continue
-        out_dir = site_dir / CLUSTER_URL[cluster_dir]
+        cluster_url = CLUSTER_URL[cluster_dir]
+        out_dir = site_dir / cluster_url
         out_dir.mkdir(parents=True, exist_ok=True)
 
         for hg_file in sorted(cluster_path.glob("hg_*.md")):
             hg_id = hg_file.stem.removeprefix("hg_")
             hg_text = hg_file.read_text(encoding="utf-8")
+            benennung = _extract_benennung(hg_text) or hg_id
             merged_md = _merge_for_download(hg_text, sg_by_id.get(hg_id))
+
             (out_dir / f"{hg_id}.md").write_text(merged_md, encoding="utf-8")
             (out_dir / f"{hg_id}.txt").write_text(
                 _markdown_to_plain(merged_md), encoding="utf-8"
             )
+            (out_dir / f"{hg_id}.bib").write_text(
+                _build_bibtex(
+                    hg_id=hg_id,
+                    title=benennung,
+                    author=site_author,
+                    url=f"{site_url}/{cluster_url}/{hg_id}/",
+                    date_iso=today,
+                ),
+                encoding="utf-8",
+            )
+
+
+def _build_bibtex(hg_id: str, title: str, author: str, url: str, date_iso: str) -> str:
+    """Render a minimal but well-formed BibTeX @misc entry."""
+    year = date_iso[:4]
+    # Author "Lastname, Firstname" — BibTeX convention.
+    if "," not in author and " " in author:
+        first, last = author.rsplit(" ", 1)
+        author_bib = f"{last}, {first}"
+    else:
+        author_bib = author
+    return (
+        f"@misc{{holzbau-glossar:{hg_id},\n"
+        f"  title     = {{{title}}},\n"
+        f"  author    = {{{author_bib}}},\n"
+        f"  year      = {{{year}}},\n"
+        f"  publisher = {{holzbau-glossar.ch}},\n"
+        f"  url       = {{{url}}},\n"
+        f"  urldate   = {{{date_iso}}},\n"
+        f"  note      = {{Hauptglossar-Eintrag, CC BY 4.0}}\n"
+        f"}}\n"
+    )
 
 
 def on_nav(nav, config, files):
@@ -178,21 +217,36 @@ def _extract_glossar_ref(text: str) -> str | None:
 # ---------------------------------------------------------------------------
 
 
-def _merge_entry(hg_text: str, sg_text: str | None) -> str:
+def _merge_entry(hg_text: str, sg_text: str | None, hg_id: str) -> str:
     """Concatenate Hauptglossar content with (optional) Subglossar body,
     rewriting cross-links so MkDocs resolves them against the rendered
-    site structure."""
+    site structure. Appends download buttons for the .md / .txt / .bib
+    variants generated in ``on_post_build``."""
     merged_hg = _rewrite_cross_links(hg_text)
-    if not sg_text:
-        return merged_hg
+    if sg_text:
+        sg_body = _rewrite_cross_links(_strip_frontmatter(sg_text).lstrip())
+        merged = (
+            merged_hg.rstrip()
+            + "\n\n"
+            + "## Didaktische Hülle (Subglossar)\n\n"
+            + sg_body
+        )
+    else:
+        merged = merged_hg
 
-    sg_body = _rewrite_cross_links(_strip_frontmatter(sg_text).lstrip())
-    return (
-        merged_hg.rstrip()
-        + "\n\n"
-        + "## Didaktische Hülle (Subglossar)\n\n"
-        + sg_body
+    # Inline-HTML (statt Markdown-Link-Syntax), damit MkDocs keine
+    # toten Cross-Link-Warnings für die per ``on_post_build`` erzeugten
+    # .md/.txt/.bib-Assets wirft.
+    downloads = (
+        "\n\n---\n\n"
+        "## Quelle herunterladen\n\n"
+        '<p class="download-row">'
+        f'<a class="download-btn" href="{hg_id}.md" download>Markdown</a>'
+        f'<a class="download-btn" href="{hg_id}.txt" download>Plain Text</a>'
+        f'<a class="download-btn" href="{hg_id}.bib" download>BibTeX</a>'
+        "</p>\n"
     )
+    return merged.rstrip() + downloads
 
 
 # ---------------------------------------------------------------------------
