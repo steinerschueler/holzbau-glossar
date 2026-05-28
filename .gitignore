@@ -8,8 +8,6 @@ __pycache__/
 # nicht ins Repo — wird in W3 durch Sync-Pipeline ersetzt).
 src/pilot/
 
-# Vom sync.sh-Script befüllter Glossar-Snapshot. Wird erst in einer
-# späteren Welle (W7-Live-Gang) bewusst committet, sobald Theming,
-# Cross-Link-Auflösung und Custom-Domain bereit sind. Bis dahin nur
-# lokal vorhanden für Tests.
-content/
+# content/ wird via ./sync.sh aus dem privaten zimmermann_app befüllt
+# und bewusst mit jeder inhaltlichen Welle gepusht. Nicht löschen,
+# nicht im Site-Repo manuell editieren — der Sync ist unidirektional.

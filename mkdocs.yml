@@ -56,6 +56,9 @@ plugins:
   - search:
       lang: de
 
+hooks:
+  - hooks/build_pages.py
+
 extra_css:
   - stylesheets/extra.css
 
