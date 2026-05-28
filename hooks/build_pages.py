@@ -35,6 +35,17 @@ CLUSTER_URL: dict[str, str] = {
 }
 
 
+def on_config(config):
+    """Inject build_date into config.extra so the head template can use
+    it as citation_publication_date / DC.date."""
+    from datetime import date
+
+    if "extra" not in config or config["extra"] is None:
+        config["extra"] = {}
+    config["extra"]["build_date"] = date.today().isoformat()
+    return config
+
+
 def on_files(files, config):
     """Append virtual files for every Hauptglossar entry, with optional
     Subglossar appendix. Records the per-cluster id list on ``config``

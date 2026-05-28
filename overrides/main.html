@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{#
+  Erweitert den <head> der Glossar-Einträge um Citation-Meta-Tags,
+  damit Zotero / Mendeley / EndNote / Google Scholar die Quelle
+  automatisch erkennen, plus Open-Graph und Dublin-Core für allgemeine
+  Indexierung. Greift nur auf Glossar-Einträge (URLs unter den vier
+  Cluster-Pfaden) — die statischen Seiten (Startseite/Methode/Zitieren)
+  bleiben unverändert.
+#}
+
+{% block extrahead %}
+  {{ super() }}
+  {% set is_glossar = page and page.url and (
+       page.url.startswith('ressourcen/') or
+       page.url.startswith('kern/') or
+       page.url.startswith('tragwerk/') or
+       page.url.startswith('holzbau/')
+  ) %}
+  {% if is_glossar %}
+    {% set title = page.meta.benennung if page.meta and page.meta.benennung else page.title %}
+    {% set entry_url = config.site_url ~ page.url %}
+    {% set build_date = config.extra.build_date if config.extra and config.extra.build_date else '' %}
+    <meta name="citation_title" content="{{ title }}">
+    <meta name="citation_author" content="Naville, Eric">
+    <meta name="citation_publication_date" content="{{ build_date }}">
+    <meta name="citation_publisher" content="holzbau-glossar.ch">
+    <meta name="citation_language" content="de">
+    <meta name="citation_public_url" content="{{ entry_url }}">
+    {# Dublin Core #}
+    <meta name="DC.title" content="{{ title }}">
+    <meta name="DC.creator" content="Naville, Eric">
+    <meta name="DC.publisher" content="holzbau-glossar.ch">
+    <meta name="DC.date" content="{{ build_date }}">
+    <meta name="DC.language" content="de">
+    <meta name="DC.type" content="Text">
+    <meta name="DC.rights" content="CC BY 4.0">
+    <meta name="DC.identifier" content="{{ entry_url }}">
+    {# Open Graph für Link-Vorschauen (Twitter/Mastodon/Slack) #}
+    <meta property="og:title" content="{{ title }} — Holzbau-Glossar">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ entry_url }}">
+    <meta property="og:site_name" content="Holzbau-Glossar">
+    {% if page.meta and page.meta.benennung %}
+      <meta property="og:description" content="Hauptglossar-Eintrag „{{ title }}" — präzise, normativ belegte Definition zum Holzbau, frei nutzbar unter CC BY 4.0.">
+    {% endif %}
+  {% endif %}
+{% endblock %}
