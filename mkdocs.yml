@@ -1,0 +1,85 @@
+site_name: Holzbau-Glossar
+site_description: >-
+  Präzises, normativ belegtes Glossar zum Holzbau — Hauptbegriffe und
+  didaktische Subglossar-Hülle, gepflegt im Schweizer Raum, frei zugänglich
+  unter CC BY 4.0.
+site_url: https://holzbau-glossar.ch/
+site_author: Eric Naville
+copyright: >-
+  &copy; Eric Naville — Inhalte unter
+  <a href="https://creativecommons.org/licenses/by/4.0/deed.de">CC BY 4.0</a>.
+
+docs_dir: src
+site_dir: site
+
+theme:
+  name: material
+  language: de
+  custom_dir: overrides
+  font:
+    text: Inter
+    code: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: brown
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Auf Darkmode wechseln
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: brown
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Auf Hellmodus wechseln
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Startseite: index.md
+  - Methode: methode.md
+  - Zitieren: zitieren.md
+  - Pilot:
+    - Kerve: pilot/kerve.md
+
+plugins:
+  - search:
+      lang: de
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Permalink zu dieser Stelle
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/
+      name: GitHub-Quellrepo

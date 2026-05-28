@@ -1,0 +1,9 @@
+.venv/
+site/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Pilot-Sichtcheck-Inhalt (manuell aus zimmermann_app kopiert, gehört
+# nicht ins Repo — wird in W3 durch Sync-Pipeline ersetzt).
+src/pilot/
