@@ -157,8 +157,11 @@ html .md-typeset details.glossar-section h4 { font-size: 1.2rem !important; }
 html .md-typeset details.glossar-section h5 { font-size: 1.15rem !important; }
 html .md-typeset details.glossar-section h6 { font-size: 1.0rem !important; }
 
-/* Inhaltsverzeichnis rechts (Material's Secondary Sidebar): auf
- * Body-Größe hochziehen, Material-Default ist deutlich kleiner. */
+/* Navigationsmenü links (Primary) und Inhaltsverzeichnis rechts
+ * (Secondary): beide auf Body-Größe hochziehen, Material-Default
+ * ist deutlich kleiner. */
+.md-sidebar--primary .md-nav__link,
+.md-sidebar--primary .md-nav__title,
 .md-sidebar--secondary .md-nav__link,
 .md-sidebar--secondary .md-nav__title {
   font-size: 1.0rem !important;

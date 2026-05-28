@@ -130,7 +130,10 @@ def on_post_build(config):
 
 
 def _build_bibtex(hg_id: str, title: str, author: str, url: str, date_iso: str) -> str:
-    """Render a minimal but well-formed BibTeX @misc entry."""
+    """Render a minimal but well-formed BibTeX @misc entry. The concept
+    DOI (10.5281/zenodo.20435319) points to the latest version; the
+    note carries the project context. Per-version DOIs aren't tracked
+    per entry — the whole Glossar is the citable unit on Zenodo."""
     year = date_iso[:4]
     # Author "Lastname, Firstname" — BibTeX convention.
     if "," not in author and " " in author:
@@ -144,6 +147,7 @@ def _build_bibtex(hg_id: str, title: str, author: str, url: str, date_iso: str) 
         f"  author    = {{{author_bib}}},\n"
         f"  year      = {{{year}}},\n"
         f"  publisher = {{holzbau-glossar.ch}},\n"
+        f"  doi       = {{10.5281/zenodo.20435319}},\n"
         f"  url       = {{{url}}},\n"
         f"  urldate   = {{{date_iso}}},\n"
         f"  note      = {{Hauptglossar-Eintrag, CC BY 4.0}}\n"

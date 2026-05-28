@@ -33,10 +33,20 @@ ohne Umwege funktioniert:
 
 Direkt unter jedem Eintrag stehen „Quelle herunterladen"-Buttons.
 
-!!! note "BibTeX und DOI"
+## DOI
 
-    BibTeX-Snippet pro Eintrag und Zenodo-DOI für versionierte Snapshots
-    folgen in den Wellen 5 und 7.
+Das Glossar ist auf [Zenodo](https://zenodo.org/) archiviert und unter
+einer persistenten DOI zitierbar:
+
+- **Concept-DOI** (immer neueste Version):
+  [10.5281/zenodo.20435319](https://doi.org/10.5281/zenodo.20435319)
+- **Version-DOIs** für einzelne Releases sind über die
+  [Zenodo-Eintragsseite](https://doi.org/10.5281/zenodo.20435319)
+  erreichbar.
+
+Für allgemeine Verweise bitte die Concept-DOI verwenden; für
+reproduzierbare wissenschaftliche Arbeiten die Version-DOI des
+zitierten Standes.
 
 ## Empfohlene Zitierform
 
