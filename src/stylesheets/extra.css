@@ -87,6 +87,16 @@ details.glossar-section > summary.glossar-section-summary {
   transition: color 0.15s ease-out;
 }
 
+/* Auf dem Smartphone wirkt das 1.4em zu gross relativ zum schmalen
+ * Viewport. Nur dort auf 1.0em senken (Desktop unverändert); Padding/
+ * Klickfläche bleibt, damit der Tap-Bereich komfortabel bleibt.
+ * 44.9375em = Material-Telefon-Breakpoint. */
+@media screen and (max-width: 44.9375em) {
+  details.glossar-section > summary.glossar-section-summary {
+    font-size: 1.0em;
+  }
+}
+
 /* Standard-Disclosure-Marker in allen Browsern unterdrücken.
  * Material's eigenes details-Styling rendert zusätzlich ein Dreieck-
  * Icon via ::before, das wir explizit überschreiben. */
