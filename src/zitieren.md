@@ -99,10 +99,7 @@ sauberen `@misc`-Eintrag.
   [10.5281/zenodo.20444981](https://doi.org/10.5281/zenodo.20444981)
 - Weitere Version-DOIs für künftige Releases sind über die
   [Zenodo-Eintragsseite](https://doi.org/10.5281/zenodo.20435319)
-  erreichbar. Die Vorgänger-DOIs v0.1.0 (`20435320`), v0.2.0
-  (`20441549`) und v0.3.0 (`20444878`) wurden vom Owner kurz nach
-  Veröffentlichung zurückgezogen und sind als Tombstones sichtbar
-  geblieben — sie tragen keine inhaltlich aktuellen Daten.
+  erreichbar.
 
 ## Empfohlene Zitierform
 
