@@ -110,6 +110,29 @@ def on_files(files, config):
         files.append(File.generated(config, "index-az.md", content=az_md))
         config["_holzbau_az_uri"] = "index-az.md"
 
+    # HG_KONVENTIONEN.md als publizierte Volltextseite unter
+    # /methode/hg-konventionen/ — synchronisiert via ``sync.sh``.
+    hg_kon = content / "hauptglossar" / "HG_KONVENTIONEN.md"
+    if hg_kon.is_file():
+        text = hg_kon.read_text(encoding="utf-8")
+        # Frontmatter mit Titel voranstellen, damit Material die Seite
+        # korrekt einordnet.
+        if not text.startswith("---"):
+            text = (
+                "---\n"
+                "title: HG-Konventionen (Volltext)\n"
+                "description: Die Hauptglossar-Konventionsdatei im "
+                "Originaltext — verbindlich gegenüber der "
+                "Methode-Zusammenfassung.\n"
+                "---\n\n"
+                + text
+            )
+        files.append(
+            File.generated(
+                config, "methode/hg-konventionen.md", content=text
+            )
+        )
+
     # Stash for on_nav.
     config["_holzbau_cluster_entries"] = cluster_entries
     return files

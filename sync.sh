@@ -17,12 +17,14 @@ fi
 
 mkdir -p "$TARGET/hauptglossar" "$TARGET/subglossar"
 
-# Hauptglossar: Cluster-Struktur erhalten, nur hg_*.md.
-# Filter schließt STAND_*.md, HG_KONVENTIONEN.md, ABWEICHUNGEN.md, README.md
-# automatisch aus (case-sensitive Glob, kein Match auf Großschreibung).
+# Hauptglossar: Cluster-Struktur erhalten, hg_*.md plus die öffentlich
+# publizierte HG_KONVENTIONEN.md (für die Methode-Seite).
+# Andere Top-Level-Dateien (STAND_*.md, ABWEICHUNGEN.md, README.md) bleiben
+# durch den case-sensitiven Glob aussen vor.
 rsync -a --delete \
     --include='*/' \
     --include='hg_*.md' \
+    --include='HG_KONVENTIONEN.md' \
     --exclude='*' \
     "$SOURCE/hauptglossar/" "$TARGET/hauptglossar/"
 
