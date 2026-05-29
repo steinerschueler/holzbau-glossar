@@ -23,7 +23,7 @@ abgrenzung_zu:
    waermedaemmung, eindeckung, konstruktionsdetail, bausystem,
    raumwand, brandwand, trennwand]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema' (IFC 4.3.2), Entität `IfcWall` mit `IfcWallStandardCase` und `PredefinedType` (MOVABLE, PARAPET, PARTITIONING, PLUMBINGWALL, SHEAR, SOLIDWALL, STANDARD, POLYGONAL, ELEMENTEDWALL): Wand als eigenständiges Element-Konzept; `IfcWallStandardCase.SHEAR` belegt die tragwerksrelevante Wandscheibe; die im Holzbau übliche `IfcElementAssembly`-Form (PredefinedType BRACED_FRAME oder RIGID_FRAME) bildet die Bauteilgruppen-Sicht für aus Holzbauteilen zusammengesetzte Wände."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 'Bauliche Einzelheiten' und insbesondere Abschnitt 9.2 'Aussteifende Wandscheiben': Wandscheibe als tragwerks-konstruktive Einheit aus Rippen (Ständer), Schwelle, Rähm und Beplankung oder diagonalen Aussteifungs-Bauteilen; Lasteinleitung über Schubverbund."

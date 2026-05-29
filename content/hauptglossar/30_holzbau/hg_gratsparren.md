@@ -16,7 +16,7 @@ abgrenzung_zu:
    firstpfette, fusspfette, kerve, abgratung, verschneidungssparren,
    schiftsparren]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen): Grat als geneigte konvexe Schnittkante zweier Dachflächen am Walmdach; Gratsparren als Tragglied entlang der Gratlinie wird vorausgesetzend verwendet."
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung) und Abschnitt 5 (Konstruktive Durchbildung): geneigte stabförmige Tragglieder von Dachtragwerken; Gratsparren als Sonderform mit eigener Lastabtragung aus zwei Dachflächen-Anteilen."

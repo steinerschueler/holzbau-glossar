@@ -869,7 +869,7 @@ def _write_api_index(api_dir: "Path", entries: list[dict], meta: dict) -> None:
                 "api_url": f"/api/v1/eintraege/{e['id']}.json",
                 "synonyme": e["frontmatter"].get("synonyme", []) or [],
                 "status": e["frontmatter"].get("status"),
-                "theorie_pflichtig": e["frontmatter"].get("theorie_pflichtig"),
+                "subglossar_pendant": e["frontmatter"].get("subglossar_pendant"),
                 "oberbegriff": e["frontmatter"].get("oberbegriff"),
                 "begriffstyp": e["frontmatter"].get("begriffstyp"),
             }
@@ -968,7 +968,7 @@ def _write_api_schema(api_dir: "Path", meta: dict) -> None:
             "voraussetzungen": {"type": "array<string (id)>", "required": False, "description": "Liste von HG-IDs, die zum Verständnis dieses Eintrags vorausgesetzt sind."},
             "abgrenzung_zu": {"type": "array<string (id)>", "required": False, "description": "Liste von HG-IDs, von denen dieser Eintrag aktiv abgegrenzt ist."},
             "status": {"type": "string", "required": False, "description": "Pflegezustand: entwurf | … (Default: entwurf)."},
-            "theorie_pflichtig": {"type": "string", "required": False, "description": "required | optional | none — bestimmt SG-Pendant-Pflicht."},
+            "subglossar_pendant": {"type": "string", "required": False, "description": "notwendig | optional | nein — bestimmt SG-Pendant-Pflicht."},
             "quellen_primär": {"type": "array<string>", "required": False, "description": "Primärquellen (Normen, Lehrbücher, Standard-Referenzen)."},
             "quellen_sekundär": {"type": "array<string>", "required": False, "description": "Sekundärquellen (Wikipedia, Fachforen, Branchen-Publikationen)."},
             "quellenkonflikt": {"type": "string", "required": False, "description": "Prosa-Diskussion bei widersprüchlicher Quellenlage."},

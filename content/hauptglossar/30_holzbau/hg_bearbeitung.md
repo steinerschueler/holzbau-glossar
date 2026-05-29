@@ -8,7 +8,7 @@ begriffstyp: partitiv
 voraussetzungen: [bauteil, uuid, lokales_koordinatensystem, polyeder, toleranzen]
 abgrenzung_zu: [verbindungsmittel, verbinder, verstaerkungselement, element, verbindung, bauteil, querschnitt, polyeder, lokales_koordinatensystem]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'List of Processings' (S. 8 ff., S. 9): Prozessierungen als parametrische, am Bauteil definierte materialabtragende Operationen (JackRafterCut, LongitudinalCut, DoubleCut, RidgeValleyCut, SawCut, Slot, BirdsMouth, HipValleyRafterNotch, Lap, LogHouseHalfLap, FrenchRidgeLap, Chamfer, LogHouseJoint, LogHouseFront, Pocket, Drilling, Tenon, Mortise, House, HouseMortise, DovetailTenon, DovetailMortise, JapaneseMortise, JapaneseTenon, SimpleScarf, ScarfJoint, StepJoint, StepJointNotch, Planing, ProfileFront, ProfileCambered, RoundArch, ProfileHead, Sphere, TriangleCut, TyroleanDovetail, Dovetail, SimpleContour, NURBS Curve, NURBS Patch, Composite). Annotationen (Marking, Text) sind in BTLx als Processings geführt, aber materialerhaltend."
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema' (IFC 4.3.2), Entitäten 'IfcOpeningElement', 'IfcFeatureElementSubtraction' und Beziehung 'IfcRelVoidsElement': subtraktive Geometriemerkmale werden als eigene Entitätsklasse außerhalb der IfcElement-Hierarchie geführt; ihre Wirkung auf das Master-Element ist eine implizite Boole'sche Differenz auf der Body-Repräsentation. [direkt]"

@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [stuetze, saeule, haengesaeule, staender, pfette, stuhlpfette, stuhlschwelle, dachstuhl, stehender_stuhl, liegender_stuhl, stuhl, stuhlwand, kopfband, fussband, sparren, spannriegel, kehlbalken, strebe, strebesaeule, bauteil]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1 Fachausdrücke [via: Lignum-Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor']: Stuhl-Konstruktion und Stuhlsäule als Standard-Dachtragwerks-Bauteilrolle in der CH-Holzbau-Norm. Volltext nicht direkt eingesehen."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Bauliche Einzelheiten): Stuhl-Konstruktionen als Sonderform des Pfettendachs vorausgesetzt; Stuhlsäule nicht eigenständig lemmatisiert."

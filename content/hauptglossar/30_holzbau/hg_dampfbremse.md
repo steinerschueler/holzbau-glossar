@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [schicht, dachaufbau, waermedaemmung, toleranzen]
 abgrenzung_zu: [schicht, dachaufbau, waermedaemmung, unterdach, eindeckung, dachabdichtung, dampfsperre, luftdichtheitsebene]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN 4108-3:2018-10 'Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 3: Klimabedingter Feuchteschutz – Anforderungen, Berechnungs- und Bemessungsverfahren', Abschnitt 'Klassifizierung von Schichten nach dem Wasserdampfdiffusionswiderstand' (sd-Wert-Klassen diffusionsoffen / diffusionshemmend / diffusionsdicht)."
   - "DIN EN ISO 12572:2025-03 'Wärme- und feuchtetechnisches Verhalten von Baustoffen und Bauprodukten — Bestimmung der Wasserdampfdurchlässigkeit — Cup-Verfahren', Abschnitt 3 (Begriffe sd-Wert, µ-Wert)."

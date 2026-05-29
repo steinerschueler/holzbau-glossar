@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [bauteilflaeche, polygon, ebene, bauteil, bauteilachse, faserrichtung, toleranzen]
 abgrenzung_zu: [querschnitt, laengsseite, polygon, ebene, anschnitt, bauteilachse, faserrichtung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN 4074-1:2012-06, 'Sortierung von Holz nach der Tragfähigkeit – Teil 1: Nadelschnittholz', Abschnitt 5 (Sortiermerkmale): Markröhre und Jahresringe sind an der Stirnseite (Hirnseite) zu beurteilen."
   - "DIN 68800-2:2022-02, 'Holzschutz – Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau', Abschnitt 5: Hirnholz / Stirnholz als Schwachstelle für Bewitterung; Hirnholzschutz an exponierten Stirnseiten."

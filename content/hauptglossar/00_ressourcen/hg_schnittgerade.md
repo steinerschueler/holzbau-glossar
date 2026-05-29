@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [gerade, ebene, vektor, einheitsvektor, punkt, toleranzen]
 abgrenzung_zu: [gerade, strecke, schnittpunkt, verschneidung, halbgerade]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren), Symbole und Bezeichnungen für die Schnittmenge geometrischer Objekte."
 quellen_sekundär:

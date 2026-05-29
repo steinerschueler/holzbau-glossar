@@ -35,7 +35,7 @@ abgrenzung_zu:
   - bauteil
   - bauwerk
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) – Part 1: Data schema' (IFC 4.3.2.0): `IfcGroup` (Subtyp von `IfcObjectDefinition`) mit `IfcRelAggregates`/`IfcRelAssignsToGroup` als nicht-exklusiver Aggregations-Beziehung; `IfcElementAssembly` (Subtyp von `IfcElement`) als Element-Komposit-Pendant. Pendant für die App-Lesart II (Sach-Aggregat über Bauteilen, Verbindungen, Auflagern und Bearbeitungen mit eigener Identität)."
   - "DIN 1356-1:2024-04, 'Bauzeichnungen — Teil 1: Grundregeln der Darstellung' [einsicht: snippet, baunormenlexikon.de / DIN Media]. Trägt 'Detailzeichnung' als Zeichnungstyp/Maßstabsklasse (1:20, 1:10, 1:5, 1:1), nicht 'Konstruktionsdetail' als Sach-Begriff. Begrifflich nur Plan-Artefakt-Lesart (Lesart I)."

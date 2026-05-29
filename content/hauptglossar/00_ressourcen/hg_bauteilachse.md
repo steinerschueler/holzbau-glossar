@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [achse, gerade, strecke, streckenzug, bauteil, querschnitt, toleranzen]
 abgrenzung_zu: [achse, gerade, faserrichtung, bauteil, falllinie, schwerlinie_querschnitt]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung), Bezugsachsen für Querschnittswerte und Bauteillängen."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 6 (Grenzzustände der Tragfähigkeit), Stab- und Bauteilachsen als Bezug für Schnittgrößen."

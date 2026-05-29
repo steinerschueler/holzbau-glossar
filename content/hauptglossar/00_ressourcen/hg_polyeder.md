@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [punkt, vektor, ebene, polygon, halbraum, toleranzen]
 abgrenzung_zu: [polygon, halbraum, ebene, bauteil]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie), Bezeichnungen für Vielflache (Polyeder)."
   - "ISO 19107:2019 'Geographic information – Spatial schema', Abschnitt 6.4 'GM_Solid' (volumetrisches Geometrieobjekt mit polygonal berandeter Hülle, B-Rep-Modell)."

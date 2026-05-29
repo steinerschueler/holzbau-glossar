@@ -3,7 +3,7 @@ id: sg_polygon
 benennung: Polygon
 glossar_ref: polygon
 cluster: ressourcen
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 status: entwurf
 ---
 
@@ -513,15 +513,15 @@ finden:
 
 Verwandte Subglossar-Einträge:
 
-- `theorie/subglossar/sg_punkt.md` — Polygon-Eckpunkte als
+- `lerninhalt/subglossar/sg_punkt.md` — Polygon-Eckpunkte als
   benannte Punkte mit Rollen; Achspunkte des Schnurgerüsts als
   Polygonpunkte.
-- `theorie/subglossar/sg_strecke.md` — Polygon-Kanten als
+- `lerninhalt/subglossar/sg_strecke.md` — Polygon-Kanten als
   Strecken; Bauteilkanten als Polygon-Berandungs-Strecken.
-- `theorie/subglossar/sg_ebene.md` — die Trägerebene, in der das
+- `lerninhalt/subglossar/sg_ebene.md` — die Trägerebene, in der das
   Polygon liegt; Grundrissebene und Querschnittsebene als
   Polygon-Träger.
-- `theorie/subglossar/sg_kerve.md` — der **Kerveckpunkt** als
+- `lerninhalt/subglossar/sg_kerve.md` — der **Kerveckpunkt** als
   einspringende Polygon-Ecke am Sparrenquerschnitt, in
   geometrischer Parallele zur einspringenden Ecke E4 des
   L-Dach-Grundrisses dieser Skizze.

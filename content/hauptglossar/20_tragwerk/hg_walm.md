@@ -19,7 +19,7 @@ abgrenzung_zu:
    traufe, ortgang, fusspfette, firstpfette, verbindung,
    auswechslung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen): Walm und Walmdach als vorausgesetzte geometrische Begriffe; keine geschlossene Aggregat-Definition."
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 5 (Konstruktive Durchbildung): Walmdach-Konstruktionen als vorausgesetzte Tragwerks-Familie; keine geschlossene Begriffsdefinition des Walms als Aggregat."

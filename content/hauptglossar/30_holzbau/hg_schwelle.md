@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, querschnitt, bezugsebene, weltkoordinatensystem, einheitsvektor, punkt, toleranzen]
 abgrenzung_zu: [raehm, fusspfette, pfette, pfosten, staender, riegel, strebe, kopfband, fussband, knagge, fundament, bauteil, stockschwelle, tuerschwelle, bahnschwelle, sohlbank_fenster]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN 68800-2:2022-02 'Holzschutz – Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau', Abschnitt 5 (Anforderungen an den Wandfuß), insb. Mindestabstand Unterkante Schwelle ↔ OK Gelände (Regelmaß 30 cm; Abminderungen auf 15 cm bzw. 5 cm bei Kiesbett bzw. Abdichtung nach DIN 18533)."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 und 9 (Tragwerksberechnung, Holztafelbau): Schwelle als unterer Anschluss einer Wandtafel."

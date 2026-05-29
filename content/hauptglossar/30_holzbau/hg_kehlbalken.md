@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, ebene, sparren, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [sparren, pfette, bundbalken, hahnenbalken, binder, sparrenbinder, kehlbalkenbinder, kehlbalkendach, zange, kehlzange, dachflaeche, kehle, knagge, bauteil, tragwerk]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung) und Abschnitt 5 (Konstruktive Durchbildung) — Kehlbalken als vorausgesetzter Berufsbegriff im Kontext mehrteiliger Stäbe und Aussteifungsbauteile; keine geschlossene Begriffsdefinition."
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen) — Kehlbalken als vorausgesetzter Berufsbegriff im Kontext geneigter Dächer; keine geschlossene Begriffsdefinition."

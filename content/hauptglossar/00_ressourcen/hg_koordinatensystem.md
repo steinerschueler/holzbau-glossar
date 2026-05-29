@@ -15,7 +15,7 @@ oberbegriff: null
 begriffstyp: hilfsbegriff
 voraussetzungen: [punkt, vektor]
 status: entwurf
-theorie_pflichtig: optional
+subglossar_pendant: optional
 quellen_primär:
   - "ISO 19111:2019, 'Geographic information — Referencing by coordinates', Abschnitt 3.1.13 (Definition 'coordinate system': 'set of mathematical rules for specifying how coordinates are to be assigned to points') und Abschnitt 7 (Coordinate systems). Schärfste verfügbare Definitions-Quelle für den Oberbegriff. [einsicht: snippet, via OGC 18-005r4]"
   - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren); ISO 80000-2:2019, Symbole für kartesische, polare, zylindrische und sphärische Koordinatensysteme (autoritativ für Symbolwahl, kein geschlossener Oberbegriff). [einsicht: vorschau-pdf]"

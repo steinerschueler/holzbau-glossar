@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [ebene, polygon, vektor, einheitsvektor, dachflaeche, dachaufbau, toleranzen]
 abgrenzung_zu: [dachflaeche, dachneigung, dachseite, dachhaut, dachaufbau, decke]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 2 (Aufbau geneigter Dächer): innere Bekleidung als raumseitige Begrenzung."
   - "DIN 4108-3:2018-10 'Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 3: Klimabedingter Feuchteschutz', Abschnitt 5: raumseitige Bauteilebene als feuchteschutztechnische Bezugsfläche."

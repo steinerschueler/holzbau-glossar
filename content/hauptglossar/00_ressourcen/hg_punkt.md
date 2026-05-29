@@ -8,7 +8,7 @@ begriffstyp: primitiv
 voraussetzungen: [toleranzen]
 abgrenzung_zu: [vektor, koordinatensystem]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren)."
   - "ISO 80000-2:2019, Symbole und Bezeichnungen für Punkte und Vektoren im affinen Raum."

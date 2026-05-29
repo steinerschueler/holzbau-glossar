@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, ebene, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [stuetze, saeule, haengesaeule, stuhlsaeule, schwelle, raehm, riegel, strebe, kopfband, fussband, knagge, wand, mann, andreaskreuz, fundament, sparren, pfette, stockschwelle, bauteil]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1 Fachausdrücke [via: Lignum-Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor']: Definitionsliste der Fachbegriffe enthalten, Volltext nicht direkt eingesehen."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 9 (Bauliche Einzelheiten, Wandscheiben): Ständer als vertikales Stab-Bauteil des Wandtragwerks vorausgesetzt, nicht als Lemma definiert."

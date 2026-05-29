@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [punkt, vektor]
 abgrenzung_zu: [polygon, dachflaeche, gerade, halbraum]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, Abschnitt 2 (Geometrie), Symbole und Bezeichnungen für die Ebene und die Hesse-Normalform."
 quellen_sekundär:

@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [bauteil, polygon, ebene, polyeder, toleranzen]
 abgrenzung_zu: [laengsseite, stirnseite, dachseite, polygon, ebene, polyeder, querschnitt, bauteil]
 status: entwurf
-theorie_pflichtig: optional
+subglossar_pendant: optional
 quellen_primär:
   - "ISO 16739-1:2024 (IFC 4.3.2), buildingSMART, Entitäten `IfcFace` (8.20.3.7), `IfcFaceBound` (8.20.3.8), `IfcFaceSurface` (8.20.3.10), `IfcConnectionSurfaceGeometry` (8.7.3.9) — topologisches Pendant zur einzelnen Bauteilfläche; semantische Klassifikation (Längsseite/Stirnseite) trägt das Schema nicht. [einsicht: snippet]"
   - "design2machine, BTLx Schema 2.3.1 (2025-07-08) bzw. BTL V10 — Reference Sides RS1–RS6 als indizierte Adressierung der sechs ausgezeichneten Aussenflächen eines prismatischen Stab-Bauteils; RS1–RS4 für Längsflächen, RS5/RS6 für Stirnflächen, `ReferencePlaneID`-Attribut an jedem Bearbeitungs-Element. [einsicht: snippet]"
@@ -252,10 +252,10 @@ mit |𝓑𝓕(B)| = |I_B|. Die Abbildung ι ↦ BF(B, ι) ist injektiv.
 
 ### Hinweis zur Theorie-Pflicht
 
-`theorie_pflichtig: optional` weicht vom `generisch`-Default `required`
-(`HG_KONVENTIONEN.md` §7) **bewusst** ab: die didaktische Substanz
-liegt bei den Spezialisierungen (`laengsseite`, `stirnseite`,
-`dachseite` — alle `required`), die ihre eigenen Subglossar-Pendants
+`subglossar_pendant: optional` (Abweichung vom Normalfall `notwendig`,
+`HG_KONVENTIONEN.md` §7) ist hier **bewusst** gewählt: die didaktische
+Substanz liegt bei den Spezialisierungen (`laengsseite`, `stirnseite`,
+`dachseite` — alle `notwendig`), die ihre eigenen Subglossar-Pendants
 tragen. Der abstrakte Sammelbegriff selbst trägt keinen eigenständigen
 Stufen-Inhalt, der nicht schon durch die Spezialisierungen abgedeckt
 ist.

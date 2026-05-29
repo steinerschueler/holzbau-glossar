@@ -23,13 +23,13 @@ bündelt fachlich verwandte Begriffe und durchläuft denselben Pfad:
    Abgrenzung, Cluster-Heimat, Voraussetzungs-Zykel, Benennungs-
    Drift. Erkannte Drifts werden in derselben Welle behoben, nicht
    aufgeschoben.
-5. **Subglossar-Pendant** — wenn `theorie_pflichtig: required`, wird
-   die didaktische Hülle in `theorie/subglossar/sg_<id>.md` parallel
+5. **Subglossar-Pendant** — wenn `subglossar_pendant: notwendig`, wird
+   die didaktische Hülle in `lerninhalt/subglossar/sg_<id>.md` parallel
    geschrieben.
 
 Welle-Logs und Kohärenz-Befunde werden im Quellrepo unter
 `hauptglossar/STAND_HAUPTGLOSSAR.md` und
-`theorie/subglossar/SUBGLOSSAR_STAND.md` archiviert.
+`lerninhalt/subglossar/SUBGLOSSAR_STAND.md` archiviert.
 
 ## Welle als Einheit
 

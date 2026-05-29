@@ -8,7 +8,7 @@ begriffstyp: aggregat
 voraussetzungen: [bauteil, polyeder, polygon, punkt, vektor, einheitsvektor, uuid, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [bauteil, kerve, bearbeitung, verbindung, verbindungsmittel, tragwerk, auflageflaeche, lastfall, statisches_system, konstruktionsdetail]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) – Part 1: Data schema', IFC 4.3, Structural Analysis Domain: `IfcStructuralConnection` (abstrakt) mit den konkreten Subtypen `IfcStructuralPointConnection`, `IfcStructuralCurveConnection`, `IfcStructuralSurfaceConnection`; Attribut `AppliedCondition` vom Typ `IfcBoundaryCondition` mit den Subtypen `IfcBoundaryNodeCondition`, `IfcBoundaryEdgeCondition`, `IfcBoundaryFaceCondition` (pro Freiheitsgrad fest/frei/federnd); zugehörige Reaktion `IfcStructuralReaction` mit `IfcStructuralLoadSingleForce` als Last-Tupel (ForceX/Y/Z, MomentX/Y/Z)."
   - "DIN EN 1990:2010-12 'Eurocode: Grundlagen der Tragwerksplanung', Abschnitt 1.5 (Begriffe): „Auflager“ als Stelle der Lagerreaktion vorausgesetzt; keine geschlossene Begriffs-Definition."

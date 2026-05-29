@@ -8,7 +8,7 @@ begriffstyp: aggregat
 voraussetzungen: [tragwerk, dachflaeche, dachaufbau, dachhaut, toleranzen]
 abgrenzung_zu: [dachflaeche, dachaufbau, dachhaut, dachstuhl, tragwerk, dachform, dachkonstruktion, gebaeudehuelle, bauwerk]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen)."
   - "DIN 18531-1:2017-07, 'Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen – Teil 1', Abschnitt 3 (Begriffe)."

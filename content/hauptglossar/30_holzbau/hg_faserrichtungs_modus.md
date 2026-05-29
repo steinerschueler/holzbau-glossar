@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [werkstoff, toleranzen]
 abgrenzung_zu: [werkstoff, faserrichtung, festigkeitsklasse, plattendicken_achse, haupttragrichtung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Abschnitt 3 (Werkstoffeigenschaften), Abschnitt 6.1.5–6.1.7 (Beanspruchungen unter Winkel zur Faser, Hankinson-Formel) und Abschnitt 9 (Plattenwerkstoffe)."
   - "DIN EN 13986:2015-06, 'Holzwerkstoffe zur Verwendung im Bauwesen', Tabelle 1 (Werkstoff-Klassifikation: Vollholz / BSH / LVL / CLT / Sperrholz / OSB / Spanplatte / Faserplatte)."

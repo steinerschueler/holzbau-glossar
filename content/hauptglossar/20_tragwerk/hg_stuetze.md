@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [staender, saeule, haengesaeule, stuhlsaeule, pfosten, pfeiler, wand, dachstuhl, binder, tragwerk, skelettbau, hochstud, fundament, bauteil]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1 Fachausdrücke [via: Lignum-Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor']: Stütze als werkstoffneutrales tragendes Vertikalbauteil im Holzbau-Tragwerk; Definitionsliste der Fachbegriffe enthalten, Volltext nicht direkt eingesehen."
   - "DIN 1045-1 'Tragwerke aus Beton, Stahlbeton und Spannbeton — Teil 1: Bemessung und Konstruktion', Beuth, Berlin [via: Wikipedia/Stütze (Bauteil)]: 'Stütze = stabförmiges Druckglied, dessen größte Abmessung im Querschnitt — im Unterschied zu einer Wand — das Vierfache der kleinsten Abmessung nicht übersteigt.' Werkstoffneutrale Geometrie-Definition (Wand-Abgrenzung 1:4-Querschnitts-Verhältnis); Volltext nicht direkt eingesehen."

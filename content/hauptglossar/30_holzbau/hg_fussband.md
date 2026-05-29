@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, ebene, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [kopfband, strebe, knagge, schwelle, raehm, riegel, staender, pfosten, mann, halber_mann, wilder_mann, hessenmann, schwaebisches_maennle, andreaskreuz, kniestrebe, zugband, bauteil]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1 Fachausdrücke [via: Lignum-Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor']: Definitionsliste der Fachbegriffe enthalten, Volltext nicht direkt eingesehen."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 9 (Bauliche Einzelheiten, Wandscheiben): Fussband als diagonales Aussteifungs-Stab-Bauteil im Wandverband konstruktiv vorausgesetzt, nicht als Lemma definiert."

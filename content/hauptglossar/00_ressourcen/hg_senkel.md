@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [ebene, weltkoordinatensystem, einheitsvektor, toleranzen]
 abgrenzung_zu: [ebene, bleischnitt, bezugsebene, dachflaeche, weltkoordinatensystem]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "Holzbau Schweiz (Hrsg.): Magazin-Sammelserie 'Austragen', Teil 4 'Senkel- und Bleischnitt am geneigten Dach', Berufsverband Holzbau Schweiz, Zürich (zimmermannssprachliche Primärquelle der Schweizer Berufspraxis): Senkel als zur Lotrichtung parallel verlaufende Schnittfläche; Bleischnitt als zur Lotrichtung rechtwinklig verlaufende Schnittfläche. Stellenangabe nicht abschließend verifiziert (siehe quellenkonflikt-Block)."
 quellen_sekundär:

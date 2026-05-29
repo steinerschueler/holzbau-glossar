@@ -149,7 +149,7 @@ Eintrag.
       "api_url": "/api/v1/eintraege/kerve.json",
       "synonyme": ["Sparrenkerve", "Sparrenkerbe", "Klauenkerve", "..."],
       "status": "entwurf",
-      "theorie_pflichtig": "required",
+      "subglossar_pendant": "notwendig",
       "oberbegriff": "bearbeitung",
       "begriffstyp": "partitiv"
     }

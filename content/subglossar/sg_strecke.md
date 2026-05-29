@@ -3,7 +3,7 @@ id: sg_strecke
 benennung: Strecke
 glossar_ref: strecke
 cluster: ressourcen
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 status: entwurf
 ---
 

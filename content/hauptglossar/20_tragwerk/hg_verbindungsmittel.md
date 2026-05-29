@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [element, uuid, gerade, strecke, bauteil, werkstoff, werkstoff_stahl, axiales_holz, toleranzen]
 abgrenzung_zu: [bauteil, verbinder, verstaerkungselement, verbindung, element]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Kapitel 8 'Anschlüsse mit metallischen Verbindungsmitteln' (insb. 8.1 Allgemeines, 8.2 stiftförmige Verbindungsmittel auf Abscheren — Johansen-Theorie, 8.3 Nägel, 8.5 Bolzen, 8.6 Stabdübel, 8.7 Schrauben, 8.10 Nagelplatten); Gl. 8.17 für n_ef bei Schraubenreihen."
   - "DIN EN 14592:2022-09 'Holzbauwerke – Stiftförmige Verbindungsmittel – Anforderungen'."

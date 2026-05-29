@@ -8,7 +8,7 @@ begriffstyp: primitiv
 voraussetzungen: [punkt, vektor]
 abgrenzung_zu: [gerade, halbgerade, kante, polygon]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, Abschnitt 2 (Geometrie), Bezeichnungen für Strecken."
   - "DIN EN ISO 129-1:2022-02, 'Technische Produktdokumentation (TPD) — Angabe von Maßen und Toleranzen — Teil 1: Grundlagen', §3.2.4 (Begriff 'Längenmaß' / linear dimension; Bemaßungs-Sicht als ISO-129-1-Pendant zur didaktischen 'Maßstrecke'). [einsicht: vorschau-pdf, Inhaltsverz.]"

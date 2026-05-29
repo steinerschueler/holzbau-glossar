@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [dach, dachflaeche, dachneigung, first, traufe, grat, kehle, toleranzen]
 abgrenzung_zu: [dach, dachstuhl, dachflaeche, dachneigung, dachtragwerk, dachseite, dachaufbau, gaube, dachoeffnung, bauwerk]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen): die einzelnen Dachformen (Sattel-, Pult-, Walm-, Krüppelwalm-, Mansard-, Zelt-) werden im Korpus als bekannt vorausgesetzt; ein geschlossener Begriffseintrag „Dachform“ ist nicht geführt."
   - "DIN EN 1991-1-3:2010-12 'Eurocode 1 – Einwirkungen auf Tragwerke – Teil 1-3: Schneelasten', Tab. 5.2 und Bilder 5.1/5.2 (Pult- und Satteldach), Abschnitt 5.3.4 (Mehrfeld-Dächer), Abschnitt 5.3.5 (Tonnendach), Anhang B (Schneeverwehungen, u. a. Sheddach): Dachform-Namen werden operativ als Eingang in Formbeiwerte μ_i verwendet, ohne sie definitorisch festzulegen."

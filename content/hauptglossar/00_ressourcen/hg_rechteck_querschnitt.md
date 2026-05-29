@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [querschnitt, punkt, vektor, ebene, toleranzen]
 abgrenzung_zu: [querschnitt, polygon, ebene, bauteilachse, bauteil]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 14081-1:2019-10, 'Holzbauwerke – Nach Festigkeit sortiertes Bauholz mit rechteckigem Querschnitt – Teil 1: Allgemeine Anforderungen': normative Festlegung des rechteckigen Querschnitts als Klassifikationsmerkmal von Bauholz."
   - "DIN EN 14080:2013-09, 'Holzbauwerke – Brettschichtholz und Balkenschichtholz – Anforderungen', Abschnitt 5 (Anforderungen): rechteckiger Querschnitt als Standardform."

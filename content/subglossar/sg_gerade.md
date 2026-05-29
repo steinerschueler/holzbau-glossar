@@ -3,7 +3,7 @@ id: sg_gerade
 benennung: Gerade
 glossar_ref: gerade
 cluster: ressourcen
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 status: entwurf
 ---
 

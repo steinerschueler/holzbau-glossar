@@ -9,8 +9,8 @@ Cluster-Unterordnern: `hauptglossar/<cluster>/hg_<id>.md`. Die
 verbindliche Cluster-Liste, Mapping-Regeln und das NPK-Anker-Mapping
 stehen in §9.
 
-**Pendant-Datei:** `theorie/subglossar/SG_KONVENTIONEN.md` —
-Konvention für das **Subglossar** (`theorie/subglossar/sg_<id>.md`).
+**Pendant-Datei:** `lerninhalt/subglossar/SG_KONVENTIONEN.md` —
+Konvention für das **Subglossar** (`lerninhalt/subglossar/sg_<id>.md`).
 Die beiden Dateien sind eng aufeinander bezogen; eine Übersichtstabelle
 der Korrespondenz steht am Anfang von `SG_KONVENTIONEN.md`. Bei
 Konflikt: für **HG-Belange** gilt dieses Dokument, für **SG-Belange**
@@ -18,9 +18,9 @@ das SG-Dokument.
 
 **Stand-Pflege:** Hauptglossar-Welle-Logs, Kohärenz-Reviews und
 Konsolidierungs-Etappen werden in **`STAND_HAUPTGLOSSAR.md`**
-(gleichem Verzeichnis) geführt. `STAND.md` im Projekt-Root behält
-nur einen kurzen Verweis-Block mit dem aktuellen HG-Stichwort.
-Pendant für das Subglossar: `theorie/subglossar/SUBGLOSSAR_STAND.md`.
+(gleichem Verzeichnis) geführt. `STAND_AKTUELL.md` im Projekt-Root
+behält nur einen kurzen Verweis-Block mit dem aktuellen HG-Stichwort.
+Pendant für das Subglossar: `lerninhalt/subglossar/SUBGLOSSAR_STAND.md`.
 
 ## 1. Sprachregel: senkrecht / rechtwinklig / orthogonal
 
@@ -502,93 +502,90 @@ oder `oberbegriff:` migriert und der Tabelleneintrag gestrichen.
 Neu auftauchende Forward-Verweise werden bei der nächsten Sichtung
 in die Tabelle aufgenommen.
 
-## 7. Theorie-Pendant-Pflichtigkeit (`theorie_pflichtig:`)
+## 7. Subglossar-Pendant-Pflichtigkeit (`subglossar_pendant:`)
 
 **Orthogonale Achse zur Code-Pendant-Pflichtigkeit** (Sektion 3). Jeder
-Hauptglossar-Eintrag trägt das Frontmatter-Feld `theorie_pflichtig:`
+Hauptglossar-Eintrag trägt das Frontmatter-Feld `subglossar_pendant:`
 mit einem von drei Werten:
 
-- **`required`** — ein Subglossar-Pendant (`theorie/subglossar/
-  sg_<id>.md`) muss existieren. Der Theorie-Coverage-Linter (TG-4)
-  bricht den Build, wenn die Datei fehlt.
-- **`optional`** — ein Subglossar-Pendant darf existieren, der
-  Linter erzwingt es nicht.
-- **`none`** — kein Subglossar-Pendant zulässig. Linter bricht den
-  Build, wenn die Datei existiert.
+- **`notwendig`** — ein Subglossar-Pendant (`lerninhalt/subglossar/
+  sg_<id>.md`) muss existieren. Der Coverage-Linter (TG-4) bricht den
+  Build, wenn die Datei fehlt.
+- **`optional`** — ein Subglossar-Pendant darf existieren, der Linter
+  erzwingt es nicht. **Begründungspflichtig** (siehe unten).
+- **`nein`** — kein Subglossar-Pendant zulässig. Der Linter bricht den
+  Build, wenn die Datei existiert. **Begründungspflichtig**.
 
-### Default-Ableitung pro `begriffstyp:`
+Das Feld misst, ob die Theorie eines Begriffs für die unteren vier
+Stufen **didaktisch aufbereitet** (in ein Subglossar-Pendant gespiegelt)
+werden muss — nicht, „ob ein Begriff Theorie hat" (Theorie steigt durch
+beide Säulen, siehe `docs/_DOKU_STRUKTUR.md`, Säulen-Modell).
 
-Wird das Feld im Frontmatter nicht gesetzt, gilt folgender Default:
+### Normalfall und begründungspflichtige Abweichung
 
-| `begriffstyp:` | `theorie_pflichtig:` Default |
-|---|---|
-| `bauteilrolle` | `required` |
-| `aggregat` | `required` |
-| `partitiv` | `required` |
-| `generisch` | `required` |
-| `primitiv` | `required` |
-| `merkmal` | `required` |
-| `hilfsbegriff` | `optional` |
-| `relation` | `none` |
+`notwendig` ist der **unmarkierte Normalfall**: im Regelfall verlangt
+jeder Begriff eine didaktische Subglossar-Hülle für Schnuppi–Meister;
+die Ingenieur-Stufe liest ohnehin direkt aus dem Hauptglossar.
+`optional` und `nein` sind **begründungspflichtige Abweichungen**.
 
-### Überschreibungs-Beispiele
+Das Feld wird in **jedem** Hauptglossar-Eintrag explizit gesetzt — es
+gibt keine stille `begriffstyp`-Default-Ableitung; der TG-4-Linter
+behandelt ein fehlendes Feld als Fehler.
 
-Einzelne Begriffe weichen vom Default ab und tragen die explizite
-Überschreibung:
+### Begründungspflicht für `optional` und `nein`
 
-- `toleranzen` (hilfsbegriff, Default `optional`) → `required`, weil
-  Faustregel-Tabellen für Schnuppi bis Meister didaktisch zentral sind.
-- `gerichteter_plattenwerkstoff` (generisch, Default `required`) → ggf.
-  `optional`, weil die Schnuppi/Lehrling-Stufe das Konzept noch nicht
-  greifbar braucht (zu klären bei TG-2-Bestand-Audit).
-- `laengenmass`, `lineares_groessenmass` (merkmal, Default `required`)
-  → `optional`, weil Bemaßungs-/Tolerierungs-Begriffe in der unteren
-  Stufen-Didaktik nicht zentral sind; die App führt sie erst beim
-  künftigen Werkplan-/CNC-Modul.
+Jeder Eintrag mit `optional` oder `nein` muss die Wahl begründen —
+entweder direkt am Frontmatter-Feld als Kommentar (`# Begründung: …`),
+im `quellenkonflikt:`-Block oder im `Implementierungshinweis`-Block
+(mit der Begründung prominent erkennbar). Eine stille Abweichung ohne
+Begründung ist nicht zulässig. (Der TG-4-Linter erzwingt die Begründung
+nicht mechanisch — sie ist Konventionspflicht.)
 
-**Inline-Begründungspflicht:** Jede Überschreibung muss im
-betroffenen Eintrag begründet sein — entweder direkt am Frontmatter-
-Feld als Kommentar (`# Überschreibung: …`), im `quellenkonflikt:`-
-Block, oder im `Implementierungshinweis`-Block (mit der Begründung
-prominent erkennbar). Eine stille Überschreibung ohne Begründung ist
-nicht zulässig — sie wäre vom TG-4-Linter zwar formal akzeptiert,
-brächte aber keinen Anhalt für die Lesart-Entscheidung.
+Typische Begründungsmuster:
+
+- `nein` für `relation`-Begriffe (z. B. `bausystem`): eine Relation
+  beschreibt eine Beziehung, keinen greifbaren Gegenstand mit eigener
+  didaktischer Hülle.
+- `optional`, wenn die didaktische Substanz bei verwandten, selbst
+  `notwendig`-Begriffen liegt (z. B. `einheitsvektor` → bei `vektor`;
+  `halbraum` → bei `ebene`/`polyeder`).
+- `optional` für Bemaßungs-/Tolerierungs-Begriffe (`laengenmass`,
+  `lineares_groessenmass`), die in der unteren Stufen-Didaktik nicht
+  zentral sind und erst beim künftigen Werkplan-/CNC-Tool greifen.
 
 ### Asymmetrie zur Code-Pendant-Pflicht
 
 Die zwei Achsen sind **unabhängig**:
 
-- Ein Begriff kann code-pendant-pflichtig **und** theorie-pendant-frei
-  sein (z. B. `gerichteter_plattenwerkstoff` falls Default
-  überschrieben).
-- Ein Begriff kann code-pendant-frei **und** theorie-pendant-pflichtig
-  sein (z. B. `toleranzen` mit `theorie_pflichtig: required`).
+- Ein Begriff kann code-pendant-pflichtig **und** subglossar-pendant-frei
+  sein (z. B. `gerichteter_plattenwerkstoff` mit `optional`).
+- Ein Begriff kann code-pendant-frei **und** subglossar-pendant-pflichtig
+  sein (z. B. `toleranzen` mit `subglossar_pendant: notwendig`).
 
 ### Pflege
 
 Beim Anlegen oder Ändern eines Hauptglossar-Eintrags wird
-`theorie_pflichtig:` im Frontmatter gesetzt — entweder als
-expliziter Wert oder durch bewusste Überlassung an den Default. Der
-Theorie-Linter (TG-4) prüft Konsistenz mit der `theorie/
-subglossar/`-Ablage.
+`subglossar_pendant:` im Frontmatter explizit gesetzt — `notwendig` im
+Normalfall, sonst `optional`/`nein` mit Begründung. Der Coverage-Linter
+(TG-4) prüft Konsistenz mit der `lerninhalt/subglossar/`-Ablage.
 
 ## 8. Subglossar-Konvention — Verweis
 
 Die vollständige Subglossar-Konvention (Datei- und Frontmatter-Form,
 Body-Gliederung, Inhalts-Verbote, empfohlene Sektionen, SVG-Skizzen,
 Stufen-Pattern, Asymmetrie Subglossar ↔ Hauptglossar) steht in
-**`theorie/subglossar/SG_KONVENTIONEN.md`**.
+**`lerninhalt/subglossar/SG_KONVENTIONEN.md`**.
 
 ### Was HG-seitig gilt
 
-- Das Frontmatter-Feld `theorie_pflichtig:` an jedem Hauptglossar-
+- Das Frontmatter-Feld `subglossar_pendant:` an jedem Hauptglossar-
   Eintrag steuert, ob ein Subglossar-Pendant existieren muss; die
-  Defaults pro `begriffstyp:` stehen in §7.
+  Werte-Semantik (`notwendig`/`optional`/`nein`) steht in §7.
 - Das Subglossar-Pendant trägt den Datei-Namen
-  `theorie/subglossar/sg_<id>.md`, wobei `<id>` die `id:` des
+  `lerninhalt/subglossar/sg_<id>.md`, wobei `<id>` die `id:` des
   Hauptglossar-Eintrags ist; das Subglossar-Frontmatter referenziert
   den Hauptglossar-Eintrag über `glossar_ref: <id>` und spiegelt den
-  `theorie_pflichtig:`-Wert.
+  `subglossar_pendant:`-Wert.
 - Drift zwischen Hauptglossar und Subglossar wird vom TG-4-Linter
   mechanisch sichtbar gemacht.
 

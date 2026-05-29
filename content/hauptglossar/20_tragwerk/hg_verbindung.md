@@ -8,7 +8,7 @@ begriffstyp: aggregat
 voraussetzungen: [bauteil, verbindungsmittel, verbinder, verstaerkungselement, uuid, toleranzen]
 abgrenzung_zu: [bauteil, verbindungsmittel, verbinder, verstaerkungselement, element, tragwerk, konstruktionsdetail]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Kapitel 8 'Anschlüsse mit metallischen Verbindungsmitteln', insbesondere 8.1 (Allgemeines), 8.2 (Tragfähigkeit von stiftförmigen Verbindungsmitteln auf Abscheren) — Konzept der Verbindung als Aggregat."
   - "DIN EN 1995-1-1:2010-12, Kapitel 10 'Klebungen' — Klebung als Sonderform der Verbindung."

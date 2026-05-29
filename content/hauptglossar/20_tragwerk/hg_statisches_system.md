@@ -37,7 +37,7 @@ abgrenzung_zu:
   - knoten
   - stab
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) – Part 1: Data schema' (IFC 4.3), Structural-Analysis-Domain: `IfcStructuralAnalysisModel` (Wurzel-Entität der analytischen Schicht), `IfcStructuralItem` (abstrakt) mit `IfcStructuralMember` (Subtypen `IfcStructuralCurveMember`, `IfcStructuralSurfaceMember`) und `IfcStructuralConnection` (Subtypen Point/Curve/Surface); `IfcStructuralActivity` (Subtypen `IfcStructuralAction`, `IfcStructuralReaction`); `IfcStructuralLoadGroup` und `IfcStructuralResultGroup`; `IfcRelAssignsToProduct` als physisch-analytische Brücke zwischen `IfcStructuralMember` und `IfcBeam`/`IfcColumn`/`IfcWall`."
   - "DIN EN 1990:2010-12 'Eurocode: Grundlagen der Tragwerksplanung', Abschnitt 1.5.1.7 'Tragwerksanalyse' (Modellierungs-Schritt vom Tragwerk zur idealisierten Berechnungsschicht); Sekundärrezeption über `hg_tragwerk.md`, Volltext nicht frei zugänglich."

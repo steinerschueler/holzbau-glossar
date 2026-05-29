@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [vektor, einheitsvektor, plattendicken_achse, toleranzen]
 abgrenzung_zu: [einheitsvektor, faserrichtung, haupttragrichtung, nebentragrichtung, plattendicken_achse, bauteilachse]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 300:2006-09, 'Platten aus langen, schlanken, gerichteten Spänen (OSB) – Definitionen, Klassifizierung und Anforderungen', Abschnitt 3 (Begriffe): Plattenlängsrichtung als Strand-Längsrichtung der Decklagen, parallel zur längeren Plattenformat-Kante."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Plattenwerkstoffe und Bauteile aus Plattenwerkstoffen), Festigkeiten f_m,0 und f_m,90 für OSB als Funktion der Plattenlängsrichtung."

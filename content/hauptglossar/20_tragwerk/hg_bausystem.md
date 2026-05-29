@@ -8,7 +8,7 @@ begriffstyp: relation
 voraussetzungen: [bauteil, uuid, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [bauteilgruppe, bauteil, tragwerk, verbindung, dachflaeche, dachaufbau, element, bauwerk]
 status: entwurf
-theorie_pflichtig: none
+subglossar_pendant: nein
 quellen_primär:
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema' (IFC 4.3.2), Entität `IfcBuildingSystem` (Spezialisierung von `IfcSystem`, ihrerseits Spezialisierung von `IfcGroup`) und Beziehung `IfcRelAssignsToGroup`: ein Bausystem ist eine funktionale Gruppierung von verbauten Elementen mit eigener GlobalId, die nicht-exklusive Mitgliedschaft erlaubt; ein Element kann gleichzeitig in mehreren `IfcBuildingSystem`-Instanzen enthalten sein. `IfcBuildingSystem.PredefinedType` führt unter anderem FENESTRATION, FOUNDATION, LOADBEARING, OUTERSHELL, SHADING, TRANSPORT, REINFORCING."
   - "buildingSMART International: 'IFC4.3 Documentation' (Version 4.3.2.0, 2024), Vererbungshierarchie `IfcGroup` → `IfcSystem` → `IfcBuildingSystem` und Abgrenzung zur partitiven Aggregation via `IfcRelAggregates` (`IfcElementAssembly`)."

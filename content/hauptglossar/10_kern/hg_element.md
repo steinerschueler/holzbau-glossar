@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [uuid, weltkoordinatensystem, werkstoff, toleranzen]
 abgrenzung_zu: [bauteil, verbindungsmittel, verbinder, verstaerkungselement, verbindung, tragwerk, dach, dachaufbau, bauteil_aggregat, werkstoff, geometrie, lokales_koordinatensystem]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "ISO 16739-1:2024, 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema', insbesondere die Vererbungshierarchie IfcRoot → IfcObjectDefinition → IfcObject → IfcProduct → IfcElement (Abschnitt 5 ff.)."
   - "buildingSMART International: 'IFC4.3 Documentation' (Version 4.3.2.0, 2024), Definitionen IfcRoot (mit GlobalId, Name, Description, OwnerHistory) und IfcElement (Vorfahre aller verbauten Bauteile, Verbindungsmittel, Zubehörteile)."

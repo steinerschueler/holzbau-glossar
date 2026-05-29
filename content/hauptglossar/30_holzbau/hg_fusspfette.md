@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [pfette, bauteilachse, traufe, dachkante, firstpfette, kerve, bezugsebene, toleranzen]
 abgrenzung_zu: [firstpfette, mittelpfette, sparren, schwelle, raehm, traufe, bezugsebene, knagge]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Abschnitt 5 (Konstruktive Durchbildung), Pfetten am Sparrenfuß / an der Traufe."
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen), Traufseitige Pfette."

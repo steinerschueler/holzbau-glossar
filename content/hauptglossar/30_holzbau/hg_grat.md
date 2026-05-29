@@ -8,7 +8,7 @@ begriffstyp: partitiv
 voraussetzungen: [strecke, dachflaeche, polygon, ebene, vektor, toleranzen, dachkante]
 abgrenzung_zu: [traufe, first, ortgang, kehle, pultkante, gratsparren, walm, walmflaeche]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe): Grat als geneigte, ausspringende Schnittkante zweier Dachflächen am Walmdach."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1', Abschnitt 5 (Darstellung von Dächern): Grat als geneigte Dachkante an der Außenecke zweier zusammentreffender Dachflächen."

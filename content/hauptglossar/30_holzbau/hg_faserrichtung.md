@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [vektor, einheitsvektor, faserrichtungs_modus, toleranzen]
 abgrenzung_zu: [einheitsvektor, vektor, bauteilachse, faserneigung, faserrichtungs_modus, haupttragrichtung, plattenlaengsrichtung, plattendicken_achse, lagenstruktur, axiales_holz, mehrlagenholz, gerichteter_plattenwerkstoff, isotroper_plattenwerkstoff, hankinson_winkel]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 3 (Werkstoffe) und Abschnitt 4 (Bemessung), Festigkeiten parallel und senkrecht zur Faser."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1: Allgemeines', Abschnitt 2.3 (Grundvariablen) und Abschnitt 3 (Werkstoffeigenschaften), Festigkeitsangaben f_{c,0,k}, f_{c,90,k}, f_{t,0,k}, f_{t,90,k}, σ_{m,α,d} mit Faserwinkel α."

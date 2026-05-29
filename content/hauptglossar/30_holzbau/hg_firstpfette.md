@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [pfette, bauteilachse, first, dachkante, toleranzen]
 abgrenzung_zu: [first, mittelpfette, fusspfette, sparren, kehlbalken, knagge]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Abschnitt 5 (Konstruktive Durchbildung), Pfetten am First."
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen)."

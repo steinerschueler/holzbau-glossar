@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [schicht, dachflaeche, dachaufbau, dachhaut, dachneigung, polygon, ebene, toleranzen]
 abgrenzung_zu: [schicht, eindeckung, unterdach, dachhaut, dachaufbau, dachflaeche, bauwerksabdichtung, dampfsperre, dachbegruenung, flachdach, bekiesung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN 18336:2023-09 'VOB Teil C: Allgemeine Technische Vertragsbedingungen für Bauleistungen – Abdichtungsarbeiten' (Nachfolger DIN 18336:2019-09 nach VOB-Gesamtausgabe 2023; Abdichtungs-Inhalte 2019 aus DIN 18338 herausgelöst)."
   - "DIN 18531-1:2025-08 'Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen – Teil 1: Nicht genutzte und genutzte Dächer – Anforderungen, Planungs- und Ausführungsgrundsätze'. Neufassung; ersetzt DIN 18531-1:2017-07. Die Anwendungsklassen K1/K2 und Einwirkungsklassen I/II/A/B der 2017er-Ausgabe sind ersatzlos entfallen; die Bauart-Auswahl steuert seither nur noch die Achse Nutzung × Neigung."

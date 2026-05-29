@@ -8,7 +8,7 @@ begriffstyp: primitiv
 voraussetzungen: [punkt, vektor, toleranzen]
 abgrenzung_zu: [strecke, halbgerade, ebene, vektor]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren), Symbole für Geraden im Raum."
   - "ISO 80000-2:2019, Abschnitt 2 'Mathematics – Geometry'."

@@ -3,7 +3,7 @@ id: sg_toleranzen
 benennung: Toleranzen (numerische Klassifikationsschwellen)
 glossar_ref: toleranzen
 cluster: ressourcen
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 status: entwurf
 ---
 
@@ -349,12 +349,12 @@ finden:
 
 Verwandte Subglossar-Einträge:
 
-- `theorie/subglossar/sg_punkt.md`,
-  `theorie/subglossar/sg_strecke.md`,
-  `theorie/subglossar/sg_ebene.md` — die Primitive, die im
+- `lerninhalt/subglossar/sg_punkt.md`,
+  `lerninhalt/subglossar/sg_strecke.md`,
+  `lerninhalt/subglossar/sg_ebene.md` — die Primitive, die im
   Werkplan bemaßt werden und damit die handwerkliche Toleranz
   am Werkstück tragen.
-- `theorie/subglossar/sg_kerve.md` — die Kervtiefe-Faustregel-
+- `lerninhalt/subglossar/sg_kerve.md` — die Kervtiefe-Faustregel-
   Bandbreite (ein Sechstel bis ein Drittel der Sparrenhöhe) als
   praktisches Beispiel einer Faustregel-Toleranz und die
   Werkzeug-Trias am Anriss (Schmiege, Streichmaß,

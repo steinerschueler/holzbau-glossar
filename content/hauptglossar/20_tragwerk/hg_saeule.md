@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [stuetze, bauteil, bauteilachse, einheitsvektor, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [stuetze, staender, haengesaeule, stuhlsaeule, pfeiler, pilaster, kapitell, basis, schaft, bauteil]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN 1045-1 'Tragwerke aus Beton, Stahlbeton und Spannbeton — Teil 1: Bemessung und Konstruktion', Beuth, Berlin [via: Wikipedia/Stütze (Bauteil)]: Querschnitts-Bedingung (q_max ≤ 4·q_min) für Stützen, geerbt für die Säule als Spezialisierung. Volltext nicht direkt eingesehen."
 quellen_sekundär:

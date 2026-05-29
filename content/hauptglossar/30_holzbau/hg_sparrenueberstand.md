@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [strecke, sparren, fusspfette, kerve, bauteilachse, bezugsebene, bleischnitt, toleranzen]
 abgrenzung_zu: [sparren, fusspfette, kerve, traufe, dachflaeche, ortgang, dachueberstand, traufueberstand, pfettenueberstand, bezugsebene, bleischnitt]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen) und Abschnitt 2 (Konstruktive Anforderungen): Dachüberstand traufseitig zum Schutz von Wand und Sockelbereich."
   - "DIN 68800-2:2022-02, 'Holzschutz – Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau', Abschnitt 5 (Konstruktive Maßnahmen): Dachüberstand als bauliche Holzschutz-Maßnahme; ein ausreichender Dachüberstand wird als Schlüsselmaßnahme zum konstruktiven Holzschutz geführt."

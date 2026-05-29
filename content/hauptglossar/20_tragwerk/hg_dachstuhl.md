@@ -41,7 +41,7 @@ abgrenzung_zu:
   - bausystem
   - dachkonstruktion
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Zürich, Abschnitt 1 und Abschnitt 5 (Konstruktive Durchbildung) — Begriff 'Dachtragwerk' normfest, 'Dachstuhl' nicht als eigener Eintrag geführt; vorausgesetzter Berufsbegriff."
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Zürich, Abschnitt 1 (Begriffe und geometrische Grundlagen) — 'Dachtragwerk' und 'Dachstuhl' werden im Schweizer Normsprachgebrauch zugunsten von 'Dachtragwerk' aufgelöst; 'Dachstuhl' ohne geschlossene Definition."

@@ -8,7 +8,7 @@ begriffstyp: partitiv
 voraussetzungen: [bearbeitung, bauteil, uuid, lokales_koordinatensystem, punkt, vektor, polyeder, querschnitt, toleranzen]
 abgrenzung_zu: [bearbeitung, verbindungsmittel, kerve, anschnitt, versatz, zapfen, zapfenloch, aussparung, ausklinkung, schlitz, senkbohrung, vorbohrung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5.2 (Berücksichtigung der Querschnittsschwächungen): Bohrungen reduzieren den anrechenbaren Nettoquerschnitt; die geschwächte Stelle ist Bemessungsobjekt. Eine geometrische Definition des Begriffs 'Bohrung' enthält der Eurocode nicht; er wird als Tatbestand vorausgesetzt."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 8.3.1.2 (Nägel): Vorbohrpflicht für ρ_k > 500 kg/m³ und Nageldurchmesser d > 6 mm (in einigen Editionen d > 8 mm); Holzteildicke t < max{ 7d ; (13d − 30) · ρ_k / 400 }. Die Vorbohrung ist als Bohrloch geringeren Durchmessers vor dem Eintreiben des Nagels auszuführen."

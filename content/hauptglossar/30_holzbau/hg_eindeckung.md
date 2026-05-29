@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [schicht, dachflaeche, dachaufbau, dachhaut, dachneigung, polygon, ebene, toleranzen]
 abgrenzung_zu: [dachhaut, dachaufbau, dachflaeche, dachabdichtung, unterdach, latte, konterlatte, traglattung, konterlattung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2011 (mit Korrigendum 232/1-C1:2013) 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe) und Abschnitt 2 (Aufbau und Eindeckung geneigter Dächer)."
   - "DIN 18338:2019-09 'VOB Teil C: Allgemeine Technische Vertragsbedingungen für Bauleistungen — Dachdeckungsarbeiten', Abschnitt 0 (Hinweise zum Leistungsbereich). Titel seit 2019 ohne Bestandteil 'Dachabdichtungsarbeiten'; die Abdichtungs-Inhalte sind in DIN 18336 ausgelagert."

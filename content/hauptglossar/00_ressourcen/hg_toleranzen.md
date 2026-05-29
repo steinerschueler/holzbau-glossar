@@ -8,7 +8,7 @@ begriffstyp: hilfsbegriff
 voraussetzungen: [punkt, vektor, strecke, ebene, polygon]
 abgrenzung_zu: [messunsicherheit, fertigungstoleranz, masstoleranz_din18202, masstoleranz_sia414]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig  # Überschreibung hilfsbegriff-Default optional → required: Faustregel-/Schwellwert-Tabellen sind von Schnuppi bis Meister praxisrelevant (HG_KONVENTIONEN §7).
 quellen_primär:
   - "IEEE Std 754-2019, 'IEEE Standard for Floating-Point Arithmetic', insbesondere § 3 (Formats) und § 4 (Attributes and Rounding)."
   - "ISO/IEC/IEEE 60559:2020, 'Information technology — Microprocessor Systems — Floating-point arithmetic', technisch identisch mit IEEE 754-2019."

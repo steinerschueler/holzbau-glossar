@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [vektor, einheitsvektor, faserrichtung, lage, lagenstruktur, toleranzen]
 abgrenzung_zu: [faserrichtung, faserneigung, plattenlaengsrichtung, haupttragrichtung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "Hankinson, R. L.: 'Investigation of Crushing Strength of Spruce at Varying Angles of Grain'. Air Service Information Circular Vol. III, No. 259, U.S. Air Service, 1921."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Gleichung (6.16) (Druck unter Winkel zur Faser σ_c,α,d) und Gleichungen (8.31), (8.32) (Lochleibungsfestigkeit f_h,α,k unter Winkel α zur Faser bei stiftförmigen Verbindungsmitteln)."

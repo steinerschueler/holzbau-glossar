@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [dachaufbau, schicht, toleranzen]
 abgrenzung_zu: [schicht, sparren, unterdach, dampfbremse, dachaufbau, dachhaut, schalldaemmung, brandschutzschicht]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN ISO 9229:2020-06 'Wärmeschutz – Begriffe' (deutsche Fassung), gemeinsame internationale Vokabular-Norm für Wärmedämmstoffe, -produkte, -komponenten und -systeme. Einzige Norm im Korpus, die einen Vokabular-Anspruch für den Begriff erhebt; Volltext kostenpflichtig (DIN Media), siehe `quellenkonflikt:` Abschnitt 1."
   - "DIN 4108-2:2013-02 'Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 2: Mindestanforderungen an den Wärmeschutz', Abschnitt 5 (Mindestwärmeschutz) und Abschnitt 8 (Sommerlicher Wärmeschutz). Setzt den Begriff voraus und operiert mit R-Werten und Sonneneintragskennwerten."

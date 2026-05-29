@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [pfette, fusspfette, schwelle, sparren, pfosten, staender, riegel, strebe, kopfband, fussband, knagge, wand, mauerlatte, traufe]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 5 (Konstruktive Durchbildung), Wandscheiben und Holzrahmenbauweisen. Begriff vorausgesetzt, nicht als Lemma definiert."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Bauliche Einzelheiten und Konstruktion), Wandscheiben (Diaphragmen) im Holzrahmen- und Holztafelbau. Begriff vorausgesetzt, nicht als Lemma definiert."

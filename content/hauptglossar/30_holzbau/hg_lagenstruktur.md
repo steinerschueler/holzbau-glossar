@@ -8,7 +8,7 @@ begriffstyp: partitiv
 voraussetzungen: [lage, einheitsvektor, toleranzen]
 abgrenzung_zu: [lage, mehrlagenholz, haupttragrichtung, plattendicken_achse]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 16351:2021-08, 'Holzbauwerke – Brettsperrholz – Anforderungen', Abschnitt 5 (Lagenaufbau): Mindestanzahl 3 Lagen, kreuzweise (typ. 0°/90°) verleimt, in der Regel ungerade Anzahl mit symmetrischem Aufbau (Decklage 0 = Decklage n−1)."
   - "DIN EN 636:2015-06, 'Sperrholz – Anforderungen': mindestens 3 Furnierlagen, in der Regel ungerade Anzahl, symmetrischer Aufbau (zur Vermeidung von Schüsselung)."

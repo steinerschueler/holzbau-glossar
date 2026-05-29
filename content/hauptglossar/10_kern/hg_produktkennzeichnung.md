@@ -8,7 +8,7 @@ begriffstyp: aggregat
 voraussetzungen: []
 abgrenzung_zu: [uuid, positionsnummer, bezeichnung, werkstoff, festigkeitsklasse, abbundzeichen]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN 4074-1:2012-06, 'Sortierung von Holz nach der Tragfähigkeit — Teil 1: Nadelschnittholz'. Anforderungen an Sortier- und Werks-Kennzeichnung (Sortierklasse S 7 / S 10 / S 13, Holzart-Kurzzeichen, Hersteller-Code)."
   - "DIN EN 14080:2013-09, 'Holzbauwerke — Brettschichtholz und Balkenschichtholz — Anforderungen', insbesondere Anhang ZA (CE-Kennzeichnung): Hersteller-Identifikation, Festigkeitsklasse, Klebstofftyp, Produktionswoche, Notifikations-Stelle, WPK-Zertifikatnummer."

@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [vektor, einheitsvektor, produktkennzeichnung, faserrichtungs_modus, toleranzen]
 abgrenzung_zu: [bauteil, element, produktkennzeichnung, festigkeitsklasse, faserrichtung, faserrichtungs_modus, werkstoff_stahl]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Abschnitt 1.5 (Begriffe), Abschnitt 3 (Werkstoffeigenschaften)."
   - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 3 (Werkstoffe), Abschnitt 4 (Bemessung): Werkstoffeigenschaften als bemessungsrelevante Eingabegrößen."

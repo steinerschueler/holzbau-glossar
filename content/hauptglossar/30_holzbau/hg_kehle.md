@@ -8,7 +8,7 @@ begriffstyp: partitiv
 voraussetzungen: [strecke, dachflaeche, polygon, ebene, vektor, toleranzen, dachkante]
 abgrenzung_zu: [traufe, first, ortgang, grat, pultkante, kehlblech, kehlbohle, kehlsparren]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe): Kehle als geneigte, einspringende Schnittkante zweier Dachflächen mit besonderer Bedeutung für die Wasserführung."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1', Abschnitt 5 (Darstellung von Dächern): Kehle als geneigte Dachkante an einer einspringenden Ecke zweier zusammentreffender Dachflächen."

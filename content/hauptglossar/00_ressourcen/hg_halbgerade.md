@@ -8,7 +8,7 @@ begriffstyp: primitiv
 voraussetzungen: [punkt, vektor, gerade, toleranzen]
 abgrenzung_zu: [gerade, strecke, vektor]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie)."
 quellen_sekundär:

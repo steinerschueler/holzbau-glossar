@@ -15,7 +15,7 @@ abgrenzung_zu:
    kehlbalken, dachflaeche, dachseite, firstpfette, fusspfette,
    kerve, abkehlung, abgratung, verschneidungssparren, schiftsparren]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen): Kehle als geneigte konkave Schnittkante zweier Dachflächen mit besonderer Bedeutung für die Wasserführung; Kehlsparren als Tragglied entlang der Kehllinie wird vorausgesetzend verwendet."
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung) und Abschnitt 5 (Konstruktive Durchbildung): geneigte stabförmige Tragglieder von Dachtragwerken; Kehlsparren als Sonderform mit konzentrierter Lastabtragung aus zwei Dachflächen-Anteilen und zusätzlicher Wasserführungs- und Schneeansammlungs-Last."

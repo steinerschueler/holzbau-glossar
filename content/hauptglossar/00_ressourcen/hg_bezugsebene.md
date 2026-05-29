@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [ebene, weltkoordinatensystem, einheitsvektor, bleischnitt, kerve, toleranzen]
 abgrenzung_zu: [ebene, bleischnitt, dachflaeche, weltkoordinatensystem, lokales_koordinatensystem, traufe, fusspfette, kerve]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN 18202:2019-07, 'Toleranzen im Hochbau – Bauwerke', Abschnitt 4 (Begriffe) und Abschnitt 6 (Verfahren zur Prüfung): vor der Bauausführung sind geeignete Bezugspunkte festzulegen, gegen die der Ist-Zustand des Bauwerks geprüft wird; eine Bezugsfläche dient als Vergleichsfläche für Ebenheits- und Höhenmessungen."
   - "SIA 414/1:2010, 'Massgenauigkeit im Bauwesen – Grenzwerte', Abschnitt 'Bezugssystem' und Abschnitt 'Höhenmasse': Höhenmasse werden gegen vereinbarte Bezugsebenen (Höhenbezug) gemessen."

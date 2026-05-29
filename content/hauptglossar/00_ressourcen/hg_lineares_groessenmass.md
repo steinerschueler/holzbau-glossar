@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [laengenmass, strecke, ebene, gerade]
 abgrenzung_zu: [laengenmass, gps, toleranzfeld, masstoleranz_din18202]
 status: entwurf
-theorie_pflichtig: optional  # Überschreibung merkmal-Default required → optional: GPS-Tolerierungs-Begriff, in unterer Stufen-Didaktik nicht zentral; Code-Pendant Folgearbeit (HG_KONVENTIONEN §7).
+subglossar_pendant: optional  # Überschreibung merkmal-Default required → optional: GPS-Tolerierungs-Begriff, in unterer Stufen-Didaktik nicht zentral; Code-Pendant Folgearbeit (HG_KONVENTIONEN §7).
 quellen_primär:
   - "DIN EN ISO 14405-1:2017-07, 'Geometrische Produktspezifikation (GPS) — Dimensionelle Tolerierung — Teil 1: Lineare Größenmaße', Abschnitt 3 (Begriffe) und Abschnitt 4 (lineare Größenmaße)."
 quellen_sekundär:

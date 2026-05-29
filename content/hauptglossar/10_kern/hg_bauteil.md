@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [element, uuid, positionsnummer, produktkennzeichnung, querschnitt, werkstoff, faserrichtungs_modus, faserrichtung, haupttragrichtung, plattenlaengsrichtung, plattendicken_achse, lagenstruktur, polyeder, punkt, vektor, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [element, verbindungsmittel, verbinder, verstaerkungselement, verbindung, bauteilgruppe, bausystem, bauwerk, konstruktionsdetail, werkstoff, bauteilachse]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Geltungsbereich) und Abschnitt 4 (Bemessung): „Bauteil“ als Bemessungsgegenstand vorausgesetzt."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 1.5 (Begriffe) und Abschnitt 5 (Tragwerksberechnung): „member“/„Bauteil“ als statisches Element."

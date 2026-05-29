@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [dachflaeche, polygon, ebene, toleranzen]
 abgrenzung_zu: [dachflaeche, dach, dachaufbau, eindeckung, dachabdichtung, unterdach]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "Musterbauordnung (MBO) 2002, zuletzt geändert 2016, § 32 'Dächer' (Bezugnahme auf Dachhaut als wettertrennende äußere Schicht)."
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe) und Abschnitt 2 (Anforderungen an die Dachhaut als wetterabführende Außenschicht)."

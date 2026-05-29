@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [bauteilflaeche, polygon, ebene, bauteil, bauteilachse, faserrichtung, querschnitt, toleranzen]
 abgrenzung_zu: [polygon, ebene, stirnseite, bauteilachse, faserrichtung, querschnitt]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN 4074-1:2012-06, 'Sortierung von Holz nach der Tragfähigkeit – Teil 1: Nadelschnittholz', Abschnitt 5 (Sortiermerkmale): Sortierung an den Längsseiten (Brettseiten) durch visuelle Inspektion der Längsmaserung; an den Schmal- und Breitseiten."
   - "DIN EN 14081-1:2019-10, 'Holzbauwerke – Nach Festigkeit sortiertes Bauholz mit rechteckigem Querschnitt – Teil 1', Bezugnahme auf Schmal- und Breitseite eines rechteckigen Querschnitts."

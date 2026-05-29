@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, ebene, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [pfette, latte, schwelle, raehm, pfosten, staender, strebe, kopfband, fussband, knagge, wand, mann, andreaskreuz, sturz, kehlbalken, bauteil]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung) und Abschnitt 5 (Konstruktive Durchbildung): Riegel als horizontales Bauteil des Wandtragwerks vorausgesetzt."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung): Riegel als biegebeanspruchtes Stab-Bauteil im Wandverband vorausgesetzt."

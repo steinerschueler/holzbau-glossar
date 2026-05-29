@@ -8,7 +8,7 @@ begriffstyp: partitiv
 voraussetzungen: [bearbeitung, bauteil, polyeder, lokales_koordinatensystem, bauteilachse, punkt, vektor, einheitsvektor, toleranzen, uuid]
 abgrenzung_zu: [zapfen, kerve, bohrung, versatz, schlitz, blatt, kamm, anschnitt, aussparung, bearbeitung, bauteil, verbindung, verbindungsmittel]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 'Druck rechtwinklig zur Faser' (Querdruck): die Lochwand des Zapfenlochs steht im Wirkungspfad des Zapfen-Druckschafts und wird gegen die charakteristische Druckfestigkeit f_{c,90,k} senkrecht zur Faser bemessen. Abschnitt 8 'Anschlüsse mit metallischen Verbindungsmitteln' regelt die zimmermannsmässige Zapfenverbindung **nicht direkt**; sie ist Gegenstand des Nationalen Anhangs (DIN EN 1995-1-1/NA) und der nationalen Holzbau-Norm DIN 1052."
   - "DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland zu Eurocode 5: regelt zimmermannsmässige Verbindungen (Versatz, Zapfen, Holznagel) als Ergänzung zum Hauptteil."

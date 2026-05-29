@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, ebene, dachflaeche, falllinie, dachneigung, sparren, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [latte, sparren, pfette, bauteil, dachaufbau, dachflaeche, dachhaut, unterdach, eindeckung, traglattung, konterlattung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen) und Abschnitt zur Hinterlüftung; Konterlatte als parallel zum Sparren verlegtes Bauteil zur Schaffung des Lüftungsspalts (empfohlen ≥ 60 mm)."
   - "DIN 4108-3:2018-10 (aktualisiert 2024-03) 'Klimabedingter Feuchteschutz – Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung', Beuth Verlag: Mindesthöhe des belüfteten Luftraums über die ganze Dachfläche ≥ 20 mm bei Dachneigung ≥ 5°, ≥ 50 mm bei Dachneigung < 5°; freier Lüftungsquerschnitt an Traufe und First ≥ 2 ‰ der zugehörigen Dachfläche bzw. ≥ 200 cm²/m."

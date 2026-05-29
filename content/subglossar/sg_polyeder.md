@@ -3,7 +3,7 @@ id: sg_polyeder
 benennung: Polyeder
 glossar_ref: polyeder
 cluster: ressourcen
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 status: entwurf
 ---
 
@@ -485,15 +485,15 @@ finden:
 
 Verwandte Subglossar-Einträge:
 
-- `theorie/subglossar/sg_ebene.md` — Walmdach in der **Flächen-
+- `lerninhalt/subglossar/sg_ebene.md` — Walmdach in der **Flächen-
   Lesart** (drei Dachebenen, Schnittgeraden als Walmgrat und First);
   Komplementär-Skizze G.1 zu der hier dargestellten Volumen-Lesart.
-- `theorie/subglossar/sg_polygon.md` — die 2D-Berandungs-Geschwister-
+- `lerninhalt/subglossar/sg_polygon.md` — die 2D-Berandungs-Geschwister-
   Figur; gemeinsame Negativ-Abgrenzung Polyeder ↔ Polygon.
-- `theorie/subglossar/sg_kerve.md` — die zimmermannsmäßige
+- `lerninhalt/subglossar/sg_kerve.md` — die zimmermannsmäßige
   Bearbeitung, die einen konvexen Sparrenquader in einen
   nicht-konvexen Bauteilkörper überführt.
 
 Verwandte Subglossar-Folgearbeit: `sg_quader`, `sg_prisma`,
-`sg_bauteilkoerper`, ggf. `sg_pyramide` (falls `theorie_pflichtig`
+`sg_bauteilkoerper`, ggf. `sg_pyramide` (falls `subglossar_pendant`
 heraufgesetzt).

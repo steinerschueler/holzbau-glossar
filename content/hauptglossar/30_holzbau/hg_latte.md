@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, ebene, dachflaeche, sparren, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [sparren, pfette, konterlatte, schalung, brett, dachaufbau, dachflaeche, dachhaut, eindeckung, ziegel, hoehenlinie, falllinie, bauteil]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe) und Abschnitt 2 (Aufbau geneigter Dächer): Lattung als Bestandteil des Dachaufbaus, Auflage der Eindeckung."
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung): Latten als biegebeanspruchte Sekundär-Stab-Bauteile."

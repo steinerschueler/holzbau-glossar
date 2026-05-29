@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [werkstoff, produktkennzeichnung]
 abgrenzung_zu: [werkstoff, produktkennzeichnung, faserrichtungs_modus, faserrichtung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 338:2016-07, 'Bauholz für tragende Zwecke – Festigkeitsklassen': C14, C16, C18, C20, C22, C24, C27, C30, C35, C40, C45, C50 (Nadelholz und Pappel); D18, D24, D27, D30, D35, D40, D50, D60, D70 (Laubholz)."
   - "DIN EN 14080:2013-09, 'Holzbauwerke – Brettschichtholz und Balkenschichtholz – Anforderungen': GL-Klassen GL20h–GL32h (homogen) und GL20c–GL32c (kombiniert) für BSH; GL20–GL30 für Balkenschichtholz."

@@ -8,7 +8,7 @@ begriffstyp: aggregat
 voraussetzungen: [bausystem, bauteil, element, verbindung, auflager, lastfall, uuid, punkt, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [bauteil, element, verbindung, bauteilgruppe, bausystem, bauwerk, dach, dachstuhl, konstruktionsdetail, statisches_system, verbindungsmittel, verbinder, verstaerkungselement, dachtragwerk]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 260:2013 'Grundlagen der Projektierung von Tragwerken', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Geltungsbereich) und Abschnitt 2.1 (Begriffe)."
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 und Abschnitt 4 (Grundlagen der Bemessung von Tragwerken aus Holz)."

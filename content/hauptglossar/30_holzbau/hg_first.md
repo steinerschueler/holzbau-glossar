@@ -8,7 +8,7 @@ begriffstyp: partitiv
 voraussetzungen: [strecke, dachflaeche, polygon, ebene, vektor, toleranzen, dachkante]
 abgrenzung_zu: [traufe, ortgang, grat, kehle, pultkante, firstpfette, firstziegel, firstabdeckung, dachhoehe]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe): First als oberste, horizontale Schnittkante zweier nach oben zusammenlaufender Dachflächen."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1', Abschnitt 5 (Darstellung von Dächern): First als horizontale obere Dachkante."

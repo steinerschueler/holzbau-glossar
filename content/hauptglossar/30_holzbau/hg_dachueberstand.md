@@ -24,7 +24,7 @@ abgrenzung_zu:
   - dachflaeche
   - dachneigung
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen) und Abschnitt 2 (Konstruktive Anforderungen): Dachüberstand als Auskragung der Dachfläche über die Aussenwand-Fluchtlinie; bauliche Holzschutz-Funktion."
   - "DIN 68800-2:2022-02, 'Holzschutz – Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau', Abschnitt 5 (Konstruktive Maßnahmen): ausreichender Dachüberstand als Schlüsselmassnahme des konstruktiven Holzschutzes (qualitativ; ohne numerische Mindesttiefe)."

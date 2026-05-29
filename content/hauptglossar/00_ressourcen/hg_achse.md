@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [gerade, vektor, einheitsvektor, toleranzen]
 abgrenzung_zu: [gerade, strecke, halbgerade, vektor, faserrichtung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren), Bezeichnungen für Achsen, Symmetrieachsen und Koordinatenachsen."
   - "ISO 80000-2:2019, Abschnitt 2 'Mathematics – Geometry', Eintrag 'axis'."

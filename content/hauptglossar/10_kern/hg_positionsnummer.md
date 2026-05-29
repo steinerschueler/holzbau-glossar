@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: []
 abgrenzung_zu: [uuid, produktkennzeichnung, bezeichnung, abbundzeichen, ifc_tag, btlx_singlemembernumber]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN ISO 7519:2025-01 (zuvor DIN 1356-1), 'Technische Produktdokumentation — Bauzeichnungen — Allgemeine Grundsätze der Darstellung — Hochbauzeichnungen', Stücklisten- und Beschriftungsanforderungen."
   - "DIN 18334:2019-09, VOB Vergabe- und Vertragsordnung für Bauleistungen — Teil C: Allgemeine Technische Vertragsbedingungen für Bauleistungen (ATV) — Zimmer- und Holzbauarbeiten. Anforderung an eindeutige Beschreibung von Holzbauteilen ohne Vorgabe einer Form."

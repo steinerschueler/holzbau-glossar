@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, dachflaeche, dachkante, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [sparren, kehlbalken, riegel, latte, konterlatte, binder, dachflaeche, schwelle, raehm, knagge]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung) und Abschnitt 5 (Konstruktive Durchbildung), Pfette als horizontaler Längsträger des Dachtragwerks."
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen)."

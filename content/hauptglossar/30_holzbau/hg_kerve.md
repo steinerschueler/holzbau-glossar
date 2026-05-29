@@ -8,7 +8,7 @@ begriffstyp: partitiv
 voraussetzungen: [bearbeitung, bauteil, sparren, pfette, polyeder, lokales_koordinatensystem, bauteilachse, lotebene, senkel, bleischnitt, falllinie, toleranzen]
 abgrenzung_zu: [versatz, zapfen, zapfenloch, schlitz, bohrung, blatt, kamm, anschnitt, bearbeitung, sparren, pfette, querschnitt, senkel, bleischnitt]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "Wikipedia, Lemma 'Sparren', Abschnitt 'Begriffe rund um den Sparren / Kerve' (abgerufen 2026-05-13): 'Die Kerve … ist ein zweiflächiger Einschnitt (mit Dreiecksquerschnitt) an der Unterseite hölzerner Sparren, meist um eine waagerechte Fläche zum Auflagern auf eine Pfette zu schaffen.' Sowie: 'Im Pfettendach wird die Dachlast mit einem v-förmigen Ausschnitt wie Kerve, Kerbe oder Sattel auf die Pfetten übertragen.' Dies ist die einzige in der Recherche aufgefundene Quelle mit einer präzisen geometrischen Beschreibung (zwei Flächen, Dreiecksquerschnitt, an der Unterseite)."
   - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'BirdsMouth' (S. 24–28): parametrische Spezifikation der Sparrenkerve mit den Parametern Orientation, StartX, StartY, StartDepth, Angle, Inclination1, Inclination2, Depth, Width, WidthCounterPart(Limited), HeightCounterPart(Limited), FaceLimitedFront, FaceLimitedBack, LeadAngle(Parallel), LeadInclination(Parallel), RafterNailHole. Default-Tiefe = 20 mm; Default-Breite = 0 mm (durchgehend); Default-Winkel = 90°. Diese Spec ist die geschlossene parametrische Industriestandard-Schnittstelle für CNC-Abbund, abstrahiert aber die welt-bezügliche Ausrichtung der Schnittflächen in ihre Inclination-Parameter."

@@ -3,7 +3,7 @@ id: sg_kerve
 benennung: Kerve
 glossar_ref: kerve
 cluster: holzbau
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 status: entwurf
 ---
 
@@ -652,8 +652,8 @@ finden:
 
 Verwandte Subglossar-Einträge (Folgearbeit oder Pilot-Querverweis):
 
-- `theorie/subglossar/sg_punkt.md` — der Kerveckpunkt als
+- `lerninhalt/subglossar/sg_punkt.md` — der Kerveckpunkt als
   einspringende Polygon-Ecke, in Parallele zum Sparrenfusspunkt
   als ausspringender Polygon-Ecke.
-- `theorie/subglossar/sg_strecke.md` — die Sohlenlänge und die
+- `lerninhalt/subglossar/sg_strecke.md` — die Sohlenlänge und die
   Kerventiefe als bemaßbare Strecken am Werkplan.

@@ -44,7 +44,7 @@ die ein Eintrag erfüllen muss, bevor er publiziert wird:
 | `voraussetzungen` | ✓ | IDs anderer Einträge, die zum Verständnis nötig sind. Müssen existieren (kein Forward-Verweis). |
 | `abgrenzung_zu` | ✓ | IDs von Geschwister-/Nachbarbegriffen, gegen die abgegrenzt wird. Forward-Verweise zulässig. |
 | `status` | ✓ | `entwurf` / `in_revision` / `final`. |
-| `theorie_pflichtig` | ✓ | `required` / `optional` / `none` — steuert die Pflicht zum Subglossar-Pendant. |
+| `subglossar_pendant` | ✓ | `notwendig` / `optional` / `nein` — steuert die Pflicht zum Subglossar-Pendant. |
 | `quellen_primär` | empfohlen | Normen, Lehrbücher, anerkannte Standards (Tier *Hoch* / *Mittel-Hoch*). |
 | `quellen_sekundär` | empfohlen | Wikipedia, Hersteller-Doku, Fach-Foren (Tier *Mittel* und niedriger). |
 | `quellenkonflikt` | optional | Prosa-Block, wenn primär- oder sekundärseitige Quellen sich widersprechen. Konflikt wird explizit gemacht und entschieden. |

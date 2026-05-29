@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [ebene, vektor, einheitsvektor, toleranzen]
 abgrenzung_zu: [hoehenlinie, dachneigung, faserrichtung, gerade]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren), Eintrag zum Gradienten einer skalaren Funktion."
   - "DIN EN ISO 19107:2019 'Geographic information – Spatial schema', Abschnitt 6 (Begriff der Steilrichtung / aspect bei TIN-Oberflächen)."

@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [vektor, einheitsvektor, dachflaeche, toleranzen]
 abgrenzung_zu: [dachflaeche, dachschraege, dachseite, faserrichtung, neigungswinkel]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen): Neigung als Winkel der Dachfläche zur Horizontalen."
   - "DIN EN 1991-1-3:2010-12 'Eurocode 1 – Einwirkungen auf Tragwerke – Teil 1-3: Schneelasten', Abschnitt 5.3 und Anhang A: Formbeiwerte μ_i als Funktion der Dachneigung α."

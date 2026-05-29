@@ -8,7 +8,7 @@ begriffstyp: partitiv
 voraussetzungen: [bearbeitung, bauteil, uuid, lokales_koordinatensystem, polyeder, bauteilachse, lotebene, toleranzen]
 abgrenzung_zu: [kerve, bearbeitung, zapfen, zapfenloch, blatt, kamm, verbindung, anschnitt, schlitz, bohrung, sparren, fusspfette, querschnitt]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland zum Eurocode 5, NCI NA.12 'Zimmermannsmäßige Verbindungen': Regelinhalte zum Versatz (Versatztiefe in Abhängigkeit vom Strebenanschlusswinkel, Mindest-Vorholzlänge, Anschnittwinkel, Lagesicherung gegen Abheben). Bibliographisch und über mehrere unabhängige Sekundärbeschreibungen bestätigt; Volltext-Verifikation der Regelwerte aus dieser Recherche nicht möglich (DIN-Media-Paywall), siehe quellenkonflikt-Block."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5.2 (Berücksichtigung von Querschnittsschwächungen) und Abschnitt 6.5 (Querzug- und Schubnachweise an ausgeklinkten Bauteilen): analoge Anwendung auf den Versatz; Vorholzlänge als Schub-Trag-Länge, Versatztiefe als Höhe der Ausklinkung."

@@ -8,8 +8,8 @@ set -euo pipefail
 SOURCE="${1:-${ZIMMERMANN_APP:-../zimmermann_app}}"
 TARGET="content"
 
-if [[ ! -d "$SOURCE/hauptglossar" || ! -d "$SOURCE/theorie/subglossar" ]]; then
-    echo "Fehler: $SOURCE enthält weder hauptglossar/ noch theorie/subglossar/." >&2
+if [[ ! -d "$SOURCE/hauptglossar" || ! -d "$SOURCE/lerninhalt/subglossar" ]]; then
+    echo "Fehler: $SOURCE enthält weder hauptglossar/ noch lerninhalt/subglossar/." >&2
     echo "Aufruf:  ./sync.sh [pfad-zu-zimmermann_app]" >&2
     echo "Default: ../zimmermann_app (oder Umgebungsvariable ZIMMERMANN_APP)" >&2
     exit 1
@@ -32,7 +32,7 @@ rsync -a --delete \
 rsync -a --delete \
     --include='sg_*.md' \
     --exclude='*' \
-    "$SOURCE/theorie/subglossar/" "$TARGET/subglossar/"
+    "$SOURCE/lerninhalt/subglossar/" "$TARGET/subglossar/"
 
 HG_COUNT=$(find "$TARGET/hauptglossar" -name 'hg_*.md' | wc -l)
 SG_COUNT=$(find "$TARGET/subglossar" -name 'sg_*.md' | wc -l)

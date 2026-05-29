@@ -8,7 +8,7 @@ begriffstyp: aggregat
 voraussetzungen: [bauteilgruppe, bauteil, verbindung, uuid, lokales_koordinatensystem, weltkoordinatensystem, ebene, polyeder, toleranzen]
 abgrenzung_zu: [bauteilgruppe, tragwerk, bauteil, sparren, pfette, verbindung, dach, dachflaeche, bauteilachse, nagelplattenbinder, sparrenbinder, pfettenbinder, bsh_binder, fachwerkbinder, vollwandbinder, hauptbinder, kehlbalkenbinder, polygonalbinder, hetzer_binder, binderdach]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 14250:2010-05 'Holzbauwerke – Produktanforderungen an vorgefertigte tragende Bauteile mit Nagelplattenverbindungen' [einsicht: snippet, ANSI-Webstore / dinmedia.de]: Anwendungsbereich umfasst vorgefertigte tragende Bauteile (Fachwerkträger für Dächer, Wände und Decken, sowie Rahmen, zusammengesetzte Träger) aus festigkeitssortiertem Bauholz nach DIN EN 14081-1 mit oder ohne Keilzinkenverbindungen unter Verwendung von Nagelplatten; Fachwerkträger bis 35 m Länge, sonstige vorgefertigte tragende Bauteile mit Spannweiten bis 12 m. Die Norm definiert Produktanforderungen am Sub-Typ Nagelplattenbinder, nicht den Oberbegriff Binder."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Aussteifende Scheiben, zusammengesetzte Bauteile) und Abschnitt 10 (Konstruktive Durchbildung) — Binder als vorausgesetzter Berufsbegriff für mehrteilig zusammengesetzte Tragglieder; keine geschlossene Begriffsdefinition."

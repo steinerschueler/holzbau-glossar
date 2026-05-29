@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [vektor, einheitsvektor, toleranzen]
 abgrenzung_zu: [einheitsvektor, faserrichtung, plattenlaengsrichtung, haupttragrichtung, nebentragrichtung, bauteilachse]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 13986:2015-06, 'Holzwerkstoffe zur Verwendung im Bauwesen – Eigenschaften, Bewertung der Konformität und Kennzeichnung', Abschnitt 5 (Plattenmaße: Länge × Breite × Dicke)."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Plattenwerkstoffe und Bauteile aus Plattenwerkstoffen): Plattenebene und Plattendickenrichtung als Bezugsachsen für Festigkeits- und Steifigkeitswerte."

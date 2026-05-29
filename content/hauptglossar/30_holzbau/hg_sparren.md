@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, ebene, dachflaeche, falllinie, dachneigung, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [pfette, kehlbalken, gratsparren, kehlsparren, binder, latte, konterlatte, dachflaeche, sparrenueberstand, kerve, sparrenlaenge]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung) und Abschnitt 5 (Konstruktive Durchbildung), Sparren als geneigte stabförmige Tragglieder von Dachtragwerken."
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen), Sparren als geneigtes Dach-Tragglied entlang der Falllinie."

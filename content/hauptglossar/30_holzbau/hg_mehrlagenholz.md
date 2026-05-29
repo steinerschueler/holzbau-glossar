@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [werkstoff, einheitsvektor, vektor, faserrichtungs_modus, plattendicken_achse, lage, lagenstruktur, haupttragrichtung, nebentragrichtung, festigkeitsklasse, toleranzen]
 abgrenzung_zu: [axiales_holz, gerichteter_plattenwerkstoff, isotroper_plattenwerkstoff, werkstoff_stahl, faserrichtung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 16351:2021-08, 'Holzbauwerke – Brettsperrholz – Anforderungen' (CLT/BSP/X-LAM)."
   - "DIN EN 636:2015-06, 'Sperrholz – Anforderungen' (Furniersperrholz, Multiplex)."

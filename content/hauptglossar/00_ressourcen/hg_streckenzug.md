@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [punkt, strecke, vektor, toleranzen]
 abgrenzung_zu: [strecke, polygon, gerade, kurve]
 status: entwurf
-theorie_pflichtig: optional
+subglossar_pendant: optional  # Überschreibung generisch-Default required → optional: geometrische Zwischenstufe zwischen strecke und polygon, als Begriff nicht praxisgebräuchlich; didaktische Substanz liegt bei strecke und polygon (beide required) (HG_KONVENTIONEN §7).
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie), Eintrag 'Streckenzug / gebrochene Linie'."
   - "DIN EN ISO 19107:2019 'Geographic information – Spatial schema', Abschnitt 6.4.7 'GM_LineString' (geordnete Folge von Strecken zwischen aufeinanderfolgenden Stützpunkten)."

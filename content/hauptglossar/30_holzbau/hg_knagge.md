@@ -8,7 +8,7 @@ begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, ebene, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [kopfband, fussband, strebe, bug, konsole, auflager, pfette, firstpfette, mittelpfette, fusspfette, unterzug, deckenbalken, staender, pfosten, raehm, schwelle, aufschiebling, verbindungsmittel, andreaskreuz, mann, bauteil]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1 Fachausdrücke und Abschnitt 8 (Anschlüsse) [via: Lignum-Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor']: Knagge in Anschluss-Bemessungs-Kapiteln vermutet, Lemma-Status unklar. Volltext nicht direkt eingesehen."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 und 8 (Tragwerksberechnung, Verbindungen): Knagge als nagelbar/verzapfter Holzklotz in Sparren-Pfetten-Anschlüssen konstruktiv vorausgesetzt, nicht als Lemma definiert."

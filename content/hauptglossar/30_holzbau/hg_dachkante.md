@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [strecke, dachflaeche, polygon, vektor, toleranzen]
 abgrenzung_zu: [traufe, first, ortgang, grat, kehle, pultkante, dachflaeche, polygon]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen): die Begriffe Traufe, First, Ortgang, Grat, Kehle werden als geometrische Begrenzungslinien einer Dachfläche eingeführt."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1: Arten, Inhalte und Grundregeln der Darstellung', Abschnitt 5 (Darstellung von Dächern)."

@@ -3,7 +3,7 @@ id: sg_ebene
 benennung: Ebene
 glossar_ref: ebene
 cluster: ressourcen
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 status: entwurf
 ---
 
@@ -464,4 +464,4 @@ finden:
 
 Verwandte Subglossar-Einträge (Folgearbeit): `sg_dachflaeche`,
 `sg_bezugsebene`, `sg_polygon`, `sg_halbraum`, `sg_lotebene`
-(falls `theorie_pflichtig` heraufgesetzt).
+(falls `subglossar_pendant` heraufgesetzt).

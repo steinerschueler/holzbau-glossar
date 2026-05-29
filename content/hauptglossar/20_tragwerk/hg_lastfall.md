@@ -8,7 +8,7 @@ begriffstyp: aggregat
 voraussetzungen: [bauteil, uuid, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [einwirkung, bemessungssituation, lastkombination, einwirkungskombination, gefaehrdungsbild, lastannahme, tragwerk, auflager, bauteil, statisches_system]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 260:2013 'Grundlagen der Projektierung von Tragwerken', Schweizerischer Ingenieur- und Architektenverein, Zürich, Abschnitt 4.4 (Bemessungssituationen und Lastfälle): „Die physikalisch verträgliche Anordnung von simultan auftretenden Einwirkungen formen den Lastfall für einen bestimmten rechnerischen Nachweis. Jeder Lastfall ist Teil einer Bemessungssituation.“ (Sekundärquellen-Konsens, Originaltext nicht im Volltext eingesehen — siehe Recherche §A/§L)."
   - "DIN EN 1990:2010-12 'Eurocode: Grundlagen der Tragwerksplanung', Abschnitt 1.5 (Begriffe) und Abschnitt 3.2 (Bemessungssituationen, design situations: persistent / transient / accidental / seismic); Abschnitt 6 (Bemessungswerte): Lastfall als operationale Größe in den Kombinations-Regeln, keine geschlossene Begriffs-Definition."

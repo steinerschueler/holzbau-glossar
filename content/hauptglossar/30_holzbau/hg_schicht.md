@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [werkstoff, toleranzen]
 abgrenzung_zu: [bauteil, dachaufbau, dachhaut, lage, lagenstruktur, ebene, eindeckung, unterdach, dachabdichtung, dampfbremse, waermedaemmung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN 4108-3:2018-10 'Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 3: Klimabedingter Feuchteschutz', Abschnitt 3 (Begriffe): „Bauteilschicht“ als Schicht eines Bauteils; diffusionsdichte Bauteilschicht über Sd ≥ 1500 m."
   - "DIN 4108-7:2011-01 'Wärmeschutz und Energie-Einsparung in Gebäuden – Teil 7: Luftdichtheit', Abschnitt 3 (Begriffe): „Luftdichtheitsschicht“ als Schicht, die die Luftströmung durch Bauteile hindurch verhindert."

@@ -3,7 +3,7 @@ id: sg_vektor
 benennung: Vektor
 glossar_ref: vektor
 cluster: ressourcen
-theorie_pflichtig: optional
+subglossar_pendant: notwendig
 status: entwurf
 ---
 

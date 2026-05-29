@@ -8,7 +8,7 @@ begriffstyp: primitiv
 voraussetzungen: []
 abgrenzung_zu: [punkt, einheitsvektor, faserrichtung]
 status: entwurf
-theorie_pflichtig: optional
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, Abschnitt 2 (Geometrie und Vektoren), Symbole 2-7 ff."
   - "ISO 80000-2:2019, Abschnitt 2 'Vektoren und Tensoren'."

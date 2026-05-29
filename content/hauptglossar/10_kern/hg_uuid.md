@@ -8,7 +8,7 @@ begriffstyp: hilfsbegriff
 voraussetzungen: []
 abgrenzung_zu: [positionsnummer, produktkennzeichnung, bezeichnung, ifc_global_id, btlx_guid, primary_key]
 status: entwurf
-theorie_pflichtig: optional
+subglossar_pendant: optional
 quellen_primär:
   - "RFC 9562:2024, 'Universally Unique IDentifiers (UUIDs)', IETF, Mai 2024 (obsoletet RFC 4122). Definitionen Versionen 1, 3, 4, 5, 6, 7, 8 und Variante DCE 1.1; insbesondere § 5.7 (UUID Version 7, time-ordered Unix epoch milliseconds + random)."
   - "ISO/IEC 9834-8:2014 / ITU-T X.667, 'Information technology — Procedures for the operation of object identifier registration authorities — Part 8: Generation of universally unique identifiers (UUIDs) and their use in object identifiers'."

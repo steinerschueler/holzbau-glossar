@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [element, uuid, verbindungsmittel, bauteil, faserrichtung, werkstoff, werkstoff_stahl, toleranzen]
 abgrenzung_zu: [verbindungsmittel, bauteil, verbinder, verbindung, element]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Anhang A bzw. nationale Anhänge — Verstärkung quer zur Faser durch Vollgewindeschrauben (in der derzeitigen Ausgabe lediglich punktuell, ausführlich erst im Entwurf der Neuausgabe)."
   - "Entwurf prEN 1995-1-1:2024 (Eurocode 5, Neuausgabe ~2027, Vernehmlassungsfassung), neuer Verstärkungsabschnitt: axiale Bemessung der Verstärkungsschraube auf Herausziehen, Hineindrücken, Stabknicken; Mindestabstände."

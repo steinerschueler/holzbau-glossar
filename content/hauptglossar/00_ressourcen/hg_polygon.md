@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [punkt, strecke, ebene]
 abgrenzung_zu: [streckenzug, dachflaeche, polyeder, stirnseite, laengsseite]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, Abschnitt 2 (Geometrie), Bezeichnungen für Vielecke."
   - "ISO 19107:2019 'Geographic information – Spatial schema', Abschnitt 6.4 'GM_Polygon' (geometrische Definition eines einfachen ebenen Polygons mit Innenbereich)."

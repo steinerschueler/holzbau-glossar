@@ -19,7 +19,7 @@ abgrenzung_zu:
    staender, pfosten, wand, fachwerk, riegelbau, verbindung,
    gefach, walm, binder]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Bauliche Einzelheiten, Wandscheiben): Bündel-Aussteifungs-Konfigurationen am Pfosten konstruktiv vorausgesetzt; nicht als Lemma geführt."
   - "DIN 1052:2008-12, Abschnitt 8 und 12: Pfosten-Aussteifung im Wandverband vorausgesetzt; Mann-Familie nicht als Lemma."

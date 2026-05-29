@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [dachflaeche, vektor, einheitsvektor, toleranzen]
 abgrenzung_zu: [dachflaeche, dachschraege, dachneigung, traufseite, giebelseite]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe): die Begriffe Wetterseite, Sonnenseite, Wind- und Sonnenexposition werden als Dachseiten-Eigenschaften eingeführt."
   - "DIN EN 1991-1-4:2010-12 'Eurocode 1 – Windlasten', Abschnitt 7.2 (Dächer): die windangeströmte Dachseite (luvseitig) und die abgewandte (leeseitig) treten als bemessungsrelevante Unterscheidung auf."

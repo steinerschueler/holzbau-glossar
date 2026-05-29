@@ -8,7 +8,7 @@ begriffstyp: aggregat
 voraussetzungen: [bauteil, uuid, lokales_koordinatensystem, weltkoordinatensystem, polyeder, toleranzen]
 abgrenzung_zu: [bauteil, bausystem, verbindung, tragwerk, bearbeitung, element, dach, dachaufbau, konstruktionsdetail]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema' (IFC 4.3.2), Entität `IfcElementAssembly` (Spezialisierung von `IfcElement`) und Beziehung `IfcRelAggregates`: ein zusammengesetztes Element ist eine eigene, identifizierte Entität mit GlobalId, deren Bestandteile über die exklusive `IfcRelAggregates`-Beziehung partitiv zugeordnet sind; Bestandteile gehören in dieser Beziehung zu genau einem übergeordneten Aggregat. IFC erlaubt die rekursive Verschachtelung von ElementAssemblies."
   - "buildingSMART International: 'IFC4.3 Documentation' (Version 4.3.2.0, 2024), `IfcElementAssembly` mit `PredefinedType` (z. B. ARCH_SEGMENT, BEAM_GRID, BRACED_FRAME, GIRDER, REINFORCEMENT_UNIT, RIGID_FRAME, SLAB_FIELD, TRUSS) und Aggregations-Semantik via `IfcRelAggregates` (Whole/Part-Beziehung mit kaskadischem Lebenszyklus)."

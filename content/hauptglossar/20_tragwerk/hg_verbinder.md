@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [element, uuid, verbindungsmittel, werkstoff, werkstoff_stahl, axiales_holz, toleranzen]
 abgrenzung_zu: [bauteil, verbindungsmittel, verstaerkungselement, verbindung, element]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 8.2.3 'Indirekte Verbindungen' (Verbindungselement zwischen zwei oder mehr Stäben, jeder Stab durch eigene Verbindungsmittel an das Verbindungselement angeschlossen)."
   - "DIN EN 1995-1-1:2010-12, Anhang A bzw. nationale Anhänge zu Verbindern (Balkenschuhe, Winkelverbinder)."

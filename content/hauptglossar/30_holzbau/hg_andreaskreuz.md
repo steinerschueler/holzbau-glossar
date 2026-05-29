@@ -18,7 +18,7 @@ abgrenzung_zu:
    verbindung, gefach, fachwerk, riegelbau, brueckmauer,
    brueckschnurmauer, walm, binder]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Bauliche Einzelheiten, Wandscheiben): X-förmige Diagonalverbände als aussteifende Konfiguration konstruktiv vorausgesetzt; alle horizontalen Kräfte in der Ebene des Elements werden aufgenommen."
   - "DIN 1052:2008-12, Abschnitt 8 und 12 (Konstruktive Anforderungen): Diagonalverbände aus Holz für aussteifende Wandverbände vorausgesetzt."

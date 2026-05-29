@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [ebene, polygon, strecke, toleranzen]
 abgrenzung_zu: [dach, dachhaut, dachschraege, dachschraege_winkel, dachseite, traufe, first, ortgang]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN 18531-1:2017-07, Abschnitt 3 (Begriffe): Dachfläche als geometrische Bezugsfläche der Abdichtung."
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen)."

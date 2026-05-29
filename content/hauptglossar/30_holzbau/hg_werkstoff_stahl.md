@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [werkstoff, produktkennzeichnung, faserrichtungs_modus, toleranzen]
 abgrenzung_zu: [axiales_holz, mehrlagenholz, gerichteter_plattenwerkstoff, isotroper_plattenwerkstoff, festigkeitsklasse, faserrichtung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1993-1-1:2010-12 (Eurocode 3), 'Bemessung und Konstruktion von Stahlbauten – Teil 1-1: Allgemeine Bemessungsregeln und Regeln für den Hochbau', Abschnitt 3 (Werkstoffe)."
   - "DIN EN ISO 898-1:2013-05, 'Mechanische Eigenschaften von Verbindungselementen aus Kohlenstoffstahl und legiertem Stahl – Teil 1: Schrauben mit festgelegten Eigenschaften – Regelgewinde und Feingewinde' (Festigkeitsklassen 4.6, 4.8, 5.6, 5.8, 6.8, 8.8, 9.8, 10.9, 12.9)."

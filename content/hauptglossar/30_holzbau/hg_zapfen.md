@@ -8,7 +8,7 @@ begriffstyp: partitiv
 voraussetzungen: [bearbeitung, bauteil, lokales_koordinatensystem, bauteilachse, stirnseite, rechteck_querschnitt, polyeder, toleranzen]
 abgrenzung_zu: [zapfenloch, kerve, versatz, blatt, kamm, bohrung, schlitz, anschnitt, bearbeitung, verbindung, verbindungsmittel]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 (Druck rechtwinklig zur Faser): allgemeines Verfahren für den Querdrucknachweis. Der Wirkungsmechanismus der Zapfenverbindung beruht auf Querdruck an der Lochwandung des Gegenholzes und an der Zapfenwange; die einschlägige Nachweisstelle ist EC5 §6.1.5, nicht §8 (Letzteres betrifft ausschliesslich Anschlüsse mit metallischen Verbindungsmitteln)."
   - "DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland: regelt die in EC5 nicht direkt geführten zimmermannsmässigen Verbindungen (Versatz, Zapfen, Holznagel) durch Rückverweis auf DIN 1052."

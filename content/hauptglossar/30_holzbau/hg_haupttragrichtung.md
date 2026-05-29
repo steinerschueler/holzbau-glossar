@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [einheitsvektor, plattendicken_achse, lagenstruktur, toleranzen]
 abgrenzung_zu: [einheitsvektor, plattendicken_achse, plattenlaengsrichtung, nebentragrichtung, faserrichtung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 16351:2021-08, 'Holzbauwerke – Brettsperrholz – Anforderungen', Abschnitt 3 (Begriffe) und Abschnitt 5 (Lagenaufbau): Decklage = äußere Lage; Decklamellen-Richtung als bemessungsrelevante Hauptachse."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Plattenwerkstoffe und Bauteile aus Plattenwerkstoffen) und Anhang B (γ-Verfahren): Bemessungsachsen 0° / 90° der Platte, mit 0° als Decklamellen-Richtung."

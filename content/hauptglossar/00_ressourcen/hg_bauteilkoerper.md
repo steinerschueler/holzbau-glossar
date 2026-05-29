@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [polyeder, bauteil, uuid, weltkoordinatensystem, lage, toleranzen]
 abgrenzung_zu: [bauteil, polyeder, bauteilachse, querschnitt, lage, bauteilgeometrie, volumenkoerper, ifc_shape_representation]
 status: entwurf
-theorie_pflichtig: optional
+subglossar_pendant: optional
 quellen_primär:
   - "ISO 16739-1:2024, 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema' (IFC 4.3.2), Entität `IfcSolidModel` (abstrakter Supertyp aller 3D-Volumen-Repräsentationen, Subtyp von `IfcGeometricRepresentationItem`) mit Subtypen `IfcManifoldSolidBrep`, `IfcCsgSolid`, `IfcSweptAreaSolid` (`IfcExtrudedAreaSolid`, `IfcRevolvedAreaSolid`, `IfcFixedReferenceSweptAreaSolid`), `IfcSweptDiskSolid`, `IfcSectionedSolid`; Entität `IfcShapeRepresentation` mit Attribut `RepresentationIdentifier = 'Body'` als normative Klassifikation der 3D-Körper-Sicht eines Produkts; Trennung von `IfcElement` (ontologisch, mit `GlobalId`) und der über `IfcProductDefinitionShape` getragenen Body-Repräsentation. [einsicht: snippet]"
   - "ISO 19107:2019 'Geographic information – Spatial schema', Abschnitt 6.4 'GM_Solid' (volumetrisches Geometrieobjekt mit polygonal berandeter Hülle, B-Rep-Modell) als allgemeine Spezifikation eines orientierten, mannigfaltigen 3D-Körpers."
@@ -212,9 +212,9 @@ Vereinigung ebener Polygone berandet.
 
 ### Hinweis zur Theorie-Pflicht
 
-`theorie_pflichtig: optional` weicht vom `merkmal`-Default `required`
-(`HG_KONVENTIONEN.md` §7) **bewusst** ab: der Bauteilkörper ist eine
-abgeleitete Sicht eines Bauteils ohne eigenständige didaktische
+`subglossar_pendant: optional` (Abweichung vom Normalfall `notwendig`,
+`HG_KONVENTIONEN.md` §7) ist hier **bewusst** gewählt: der Bauteilkörper
+ist eine abgeleitete Sicht eines Bauteils ohne eigenständige didaktische
 Substanz — der zugehörige Stufen-Inhalt wird über `bauteil` und
 `polyeder` bereits abgedeckt; eine eigene Subglossar-Reihe fügt
 keinen Lehrwert hinzu.

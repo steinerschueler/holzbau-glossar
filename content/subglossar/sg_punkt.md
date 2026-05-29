@@ -3,7 +3,7 @@ id: sg_punkt
 benennung: Punkt
 glossar_ref: punkt
 cluster: ressourcen
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 status: entwurf
 ---
 

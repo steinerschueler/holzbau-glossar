@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [werkstoff, einheitsvektor, faserrichtung, faserrichtungs_modus, festigkeitsklasse, produktkennzeichnung, toleranzen]
 abgrenzung_zu: [mehrlagenholz, gerichteter_plattenwerkstoff, isotroper_plattenwerkstoff, werkstoff_stahl, faserrichtung, bauteilachse]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Abschnitt 3 (Werkstoffeigenschaften), Festigkeitswerte parallel und senkrecht zur Faser, Hankinson-Formel für f_α."
   - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 3 (Werkstoffe)."

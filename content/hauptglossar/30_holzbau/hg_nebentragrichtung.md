@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [einheitsvektor, haupttragrichtung, plattendicken_achse, toleranzen]
 abgrenzung_zu: [einheitsvektor, haupttragrichtung, plattendicken_achse, plattenlaengsrichtung, faserrichtung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 16351:2021-08, 'Holzbauwerke – Brettsperrholz – Anforderungen', Abschnitt 5: 90°-Richtung als zur 0°-Richtung (Decklage) rechtwinklige Plattenebenen-Achse."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 und Anhang B: Plattenfestigkeiten f_m,90,k, E_90,mean als Werte in der zur Haupttragrichtung rechtwinkligen Plattenebenen-Richtung."

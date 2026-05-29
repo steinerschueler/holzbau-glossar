@@ -8,7 +8,7 @@ begriffstyp: aggregat
 voraussetzungen: [dachflaeche, dachhaut, toleranzen]
 abgrenzung_zu: [dachflaeche, dachhaut, dach, tragwerk, eindeckung, unterdach, waermedaemmung, dampfbremse, konterlattung, traglattung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 2 (Aufbau geneigter Dächer)."
   - "SIA 271:2007 'Abdichtungen von Hochbauten', Abschnitt 2 (Schichtenfolge bei Flachdächern)."

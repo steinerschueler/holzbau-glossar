@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [schicht, dachaufbau, dachflaeche, dachhaut, polygon, toleranzen]
 abgrenzung_zu: [dachaufbau, dachhaut, dachflaeche, eindeckung, dachabdichtung, unterspannung, unterdeckung, unterdachbahn, dachschalung, konterlattung, traglattung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2011 'Geneigte Dächer' mit Korrigenda C1:2013, Schweizerischer Ingenieur- und Architektenverein, Abschnitt 'Unterdach' (Beanspruchungs-Klassen normal / erhöht / ausserordentlich)."
   - "DIN EN 13859-1:2014-07 'Abdichtungsbahnen – Definitionen und Eigenschaften von Unterdeck- und Unterspannbahnen – Teil 1', Begriffsabschnitt (definiert die Bahn-Produkte, nicht das Bauteil)."

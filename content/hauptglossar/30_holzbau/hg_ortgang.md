@@ -8,7 +8,7 @@ begriffstyp: partitiv
 voraussetzungen: [strecke, dachflaeche, polygon, vektor, toleranzen, dachkante]
 abgrenzung_zu: [traufe, first, grat, kehle, pultkante, ortbrett, windbrett, giebel, giebelseite, falllinie]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe): Ortgang als seitliche Begrenzungskante einer Dachfläche an einer Giebelwand."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1', Abschnitt 5 (Darstellung von Dächern): Ortgang als geneigte seitliche Dachkante."

@@ -8,7 +8,7 @@ begriffstyp: partitiv
 voraussetzungen: [bearbeitung, bauteil, bauteilachse, ebene, stirnseite, polyeder, lokales_koordinatensystem, toleranzen]
 abgrenzung_zu: [kerve, stirnseite, bearbeitung, senkel, bleischnitt, schmiege, hexenschnitt, versatz, bohrung, zapfen, zapfenloch, fase, querschnitt, bauteilachse]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitte 5.2 (Berücksichtigung von Querschnittsschwächungen) und 6.5 (Querzug- und Schubnachweise an ausgeklinkten Bauteilen): geneigte Endschnitte am Stab-Bauteil werden bemessungstechnisch als Querschnittsänderung erfasst; eine geschlossene geometrische Definition des Begriffs „Anschnitt“ wird nicht gegeben."
   - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'List of Processings', Einträge 'JackRafterCut' (Endanschnitt am Sparren mit Parametern Orientation, StartX, StartY, Angle, Inclination, ReferencePlane), 'LongitudinalCut' (längsläufiger Anschnitt mitten am Bauteil), 'DoubleCut' (Doppelanschnitt am selben Endpunkt) und 'TriangleCut' (dreieckiger Endabschnitt): die parametrische Industriestandard-Spezifikation des geneigten Stab-Endschnitts; abstrahiert die Welt-Ausrichtung der Anschnittebene in Inclination-Parameter."

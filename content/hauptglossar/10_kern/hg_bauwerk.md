@@ -8,7 +8,7 @@ begriffstyp: aggregat
 voraussetzungen: [uuid, weltkoordinatensystem, bauteil, tragwerk, bausystem, element, toleranzen]
 abgrenzung_zu: [tragwerk, bausystem, bauteil, element, verbindung, bauteilgruppe, dach, gebaeude, ingenieurbauwerk, bauliche_anlage, standort, grundstueck, liegenschaft, hochbau, tiefbau, dachstuhl, konstruktion]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 260:2013 'Grundlagen der Projektierung von Tragwerken', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 2.1 (Begriffe), Definition 'Bauwerk': „Von Bauarbeiten herrührendes Werk, im Allgemeinen bestehend aus Tragwerk und nicht tragenden Bauteilen.“ [einsicht: snippet]"
   - "ISO 6707-1:2020 'Buildings and civil engineering works — Vocabulary — Part 1: General terms', Abschnitt 3.1 'construction works': „everything that is constructed or results from construction operations“; ferner 'building' und 'civil engineering works' als disjunkte Spezialisierungen."

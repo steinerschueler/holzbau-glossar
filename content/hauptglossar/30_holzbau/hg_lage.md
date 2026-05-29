@@ -8,7 +8,7 @@ begriffstyp: partitiv
 voraussetzungen: [einheitsvektor, festigkeitsklasse, toleranzen]
 abgrenzung_zu: [lagenstruktur, mehrlagenholz, faserrichtung, festigkeitsklasse]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 16351:2021-08, 'Holzbauwerke – Brettsperrholz – Anforderungen', Abschnitt 3 (Begriffe: Decklage, Mittellage, Querlage, Längslage) und Abschnitt 5 (Lagenaufbau): jede Lage hat Dicke (typ. 19–40 mm), Festigkeitsklasse (typ. C24) und Faserrichtung (typ. 0° oder 90° zur Haupttragrichtung)."
   - "DIN EN 636:2015-06, 'Sperrholz – Anforderungen': Furnierlage als Einzellage; Dicke 1–4 mm; Faserrichtung lagenweise um 90° gekreuzt."

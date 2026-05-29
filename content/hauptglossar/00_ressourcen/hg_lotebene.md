@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [senkel, ebene, bauteilachse, weltkoordinatensystem, einheitsvektor, toleranzen]
 abgrenzung_zu: [senkel, bleischnitt, ebene, bauteilachse, bezugsebene, dachflaeche, weltkoordinatensystem]
 status: entwurf
-theorie_pflichtig: optional
+subglossar_pendant: optional
 quellen_primär:
   - "Wikipedia, Lemma 'Lot (Mathematik)' (de.wikipedia.org/wiki/Lot_(Mathematik), abgerufen 2026-05-14): 'Eine Ebene, die senkrecht zu einer Geraden steht, heißt Lotebene.' — mathematische Lesart, hier abgelehnt, siehe quellenkonflikt-Block. [einsicht: snippet]"
   - "Wikipedia, Lemma 'Lotrichtung' (de.wikipedia.org/wiki/Lotrichtung, abgerufen 2026-05-14): 'Die örtliche Richtung der Schwerebeschleunigung.' — geodätische Verankerung des Lot-Begriffs. [einsicht: snippet]"
@@ -253,11 +253,11 @@ wohldefiniert ist.
 
 ### Hinweis zur Theorie-Pflicht
 
-`theorie_pflichtig: optional` weicht vom `merkmal`-Default `required`
-(`HG_KONVENTIONEN.md` §7) **bewusst** ab: die Lotebene ist eine
-konstruierte Hilfsebene ohne eigenständigen Stufen-Inhalt für die
+`subglossar_pendant: optional` (Abweichung vom Normalfall `notwendig`,
+`HG_KONVENTIONEN.md` §7) ist hier **bewusst** gewählt: die Lotebene ist
+eine konstruierte Hilfsebene ohne eigenständigen Stufen-Inhalt für die
 Lehrlings-Stufen; der bedeutungstragende didaktische Stoff liegt bei
-den Geschwistern `senkel` und `bleischnitt` (beide `required`), von
+den Geschwistern `senkel` und `bleischnitt` (beide `notwendig`), von
 denen die Lotebene strukturell als Ebenen-Klassifikation abgeleitet
 ist.
 

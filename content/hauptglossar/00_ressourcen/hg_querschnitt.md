@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [punkt, vektor, ebene, polygon, bauteilachse, toleranzen]
 abgrenzung_zu: [polygon, ebene, bauteilachse, bauteil, dachflaeche, polyeder]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Abschnitt 1.5 (Begriffe), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 6 (Grenzzustände der Tragfähigkeit): Querschnitt als Bemessungs-Bezugsfläche für Schnittgrössen, Spannungs- und Stabilitätsnachweise."
   - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung): Querschnittswerte (A, I, W) als Bemessungseingang."

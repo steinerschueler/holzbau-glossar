@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [werkstoff, einheitsvektor, faserrichtungs_modus, plattendicken_achse, festigkeitsklasse, produktkennzeichnung, toleranzen]
 abgrenzung_zu: [axiales_holz, mehrlagenholz, gerichteter_plattenwerkstoff, werkstoff_stahl, faserrichtung]
 status: entwurf
-theorie_pflichtig: required
+subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 312:2010-12, 'Spanplatten – Anforderungen' (P1, P2, P3, P4, P5, P6, P7)."
   - "DIN EN 622-2:2004-08, 'Faserplatten – Anforderungen – Teil 2: Anforderungen an harte Platten' (HB)."
