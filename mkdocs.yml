@@ -112,10 +112,10 @@ extra:
   # Versions-Anker für den Footer — bei jeder neuen Glossar-Welle hier
   # hochzählen (entspricht GitHub-Release-Tag im Site-Repo) und im selben
   # Commit pushen, damit der Footer zur live ausgelieferten Version passt.
-  version_label: v0.5.0
+  version_label: v0.6.0
   welle: W8
   concept_doi: "10.5281/zenodo.20435319"
-  version_doi: "10.5281/zenodo.20445345"
+  version_doi: "10.5281/zenodo.20450215"
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/
