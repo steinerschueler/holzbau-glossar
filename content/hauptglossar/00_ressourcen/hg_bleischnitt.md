@@ -77,10 +77,10 @@ zur Lotrichtung steht und damit waagerecht liegt.
 Sei
 
 - W das Welt-Koordinatensystem (siehe `weltkoordinatensystem`)
-  mit Einheitsvektoren ê_x, ê_y, ê_z, wobei ê_z vertikal nach
+  mit Einheitsvektoren e_hat_x, e_hat_y, e_hat_z, wobei e_hat_z vertikal nach
   oben zeigt und damit die **Lotachsen-Richtung** trägt,
 - E ⊂ ℝ³ eine Ebene im Sinne von `ebene`, repräsentiert in
-  Hesse-Normalform durch das Paar (n̂, d) ∈ S² × ℝ,
+  Hesse-Normalform durch das Paar (n_hat, d) ∈ S² × ℝ,
 - ε_K := `Toleranzen.KOLLINEAR_EPS` die einschlägige
   dimensionslose Toleranzkonstante für Skalarprodukt-basierte
   Lage-Tests (siehe `toleranzen`).
@@ -88,15 +88,15 @@ Sei
 Dann gilt **`E ist Bleischnitt`** genau dann, wenn
 
 ```
-| ⟨ n̂, ê_z ⟩ | ≥ 1 − ε_K.                                        (1)
+| ⟨ n_hat, e_hat_z ⟩ | ≥ 1 − ε_K.                                        (1)
 ```
 
 Äquivalente Formulierungen:
 
-- **Geometrisch**: die Ebenen-Normale n̂ ist parallel oder
-  antiparallel zur Welt-Lotachse ê_z; folglich steht die Ebene
+- **Geometrisch**: die Ebenen-Normale n_hat ist parallel oder
+  antiparallel zur Welt-Lotachse e_hat_z; folglich steht die Ebene
   E rechtwinklig zur Lotrichtung und ist waagerecht.
-- **Über Höhenkonstanz**: für jeden Punkt p ∈ E hat ⟨ê_z, p⟩
+- **Über Höhenkonstanz**: für jeden Punkt p ∈ E hat ⟨e_hat_z, p⟩
   denselben Wert; E ist eine Höhenlinie der z-Koordinaten-
   funktion.
 
@@ -104,7 +104,7 @@ Die zugehörige **Bleischnitt-Menge** ist die Klasse aller
 Ebenen, die (1) erfüllen:
 
 ```
-ℬ := { E ⊂ ℝ³ | E Ebene, |⟨n̂_E, ê_z⟩| ≥ 1 − ε_K }.              (2)
+ℬ := { E ⊂ ℝ³ | E Ebene, |⟨n_hat_E, e_hat_z⟩| ≥ 1 − ε_K }.              (2)
 ```
 
 Bleischnitt ist damit ein **Prädikat** (`istBleischnitt: Ebene
@@ -113,23 +113,23 @@ Bleischnitt ist damit ein **Prädikat** (`istBleischnitt: Ebene
 ## Wohldefiniertheit
 
 - **Vorzeichen-Invarianz**: Die Hesse-Normalform repräsentiert
-  E nur bis auf die Vorzeichenmehrdeutigkeit (n̂, d) ↔ (−n̂,
+  E nur bis auf die Vorzeichenmehrdeutigkeit (n_hat, d) ↔ (−n_hat,
   −d) (siehe `ebene` Wohldefiniertheit). Bedingung (1) ist
-  davon unabhängig, weil sie den Betrag |⟨n̂, ê_z⟩| verwendet:
-  |⟨−n̂, ê_z⟩| = |−⟨n̂, ê_z⟩| = |⟨n̂, ê_z⟩|. Das Prädikat ist
+  davon unabhängig, weil sie den Betrag |⟨n_hat, e_hat_z⟩| verwendet:
+  |⟨−n_hat, e_hat_z⟩| = |−⟨n_hat, e_hat_z⟩| = |⟨n_hat, e_hat_z⟩|. Das Prädikat ist
   damit auf der Ebene wohldefiniert, nicht nur auf einer
   bestimmten Hesse-Repräsentation.
-- **Existenz**: Für jede Ebene E ist ⟨n̂_E, ê_z⟩ wohldefiniert
+- **Existenz**: Für jede Ebene E ist ⟨n_hat_E, e_hat_z⟩ wohldefiniert
   (Skalarprodukt zweier Einheitsvektoren in ℝ³); der Betrag
   und der Vergleich mit 1 − ε_K liefern einen Wahrheitswert.
 - **Eindeutigkeit der Klassifikation**: Bei gegebener Toleranz
   ε_K liefert (1) eine eindeutige Ja-Nein-Antwort. Innerhalb
-  des Toleranzbandes |⟨n̂, ê_z⟩| ∈ (ε_K, 1 − ε_K) ist E weder
+  des Toleranzbandes |⟨n_hat, e_hat_z⟩| ∈ (ε_K, 1 − ε_K) ist E weder
   Senkel noch Bleischnitt; die beiden Klassen sind disjunkt,
   decken aber nicht alle Ebenen ab (geneigte Ebenen fallen in
   keine).
 - **Konsistenz mit Senkel**: Aus (1) und der
-  Senkel-Bedingung |⟨n̂, ê_z⟩| ≤ ε_K folgt, dass eine Ebene
+  Senkel-Bedingung |⟨n_hat, e_hat_z⟩| ≤ ε_K folgt, dass eine Ebene
   mit ε_K < 1 − ε_K (also für jede praktische Wahl von ε_K)
   **nicht gleichzeitig** Bleischnitt und Senkel sein kann. Die
   beiden Prädikate sind zueinander disjunkt (Beweis: Annahme
@@ -211,7 +211,7 @@ jeder Bleischnitt ist eine Bezugsebene.
 
 In Werkplan- und Tool-Sprache wird gelegentlich von der „Höhe
 des Bleischnitts" (z. B. der Fußpfettenkerve) gesprochen. Diese
-Lesart bezeichnet die **abgeleitete Skalar-Größe** z = ⟨ê_z, p⟩
+Lesart bezeichnet die **abgeleitete Skalar-Größe** z = ⟨e_hat_z, p⟩
 für einen ausgezeichneten Punkt p der Bleischnittebene (etwa den
 Bleischnitt-Punkt p_K der Fußpfettenkerve nach `hg_kerve.md` Gl.
 (7a)/(7b)); sie ist nicht eine alternative Definition des
@@ -280,7 +280,7 @@ nur numerische Restfehler.
     sie ein Bleischnitt, im Grenzfall Dachneigung = 90° ein
     Senkel.
   - **Welt-Koordinatensystem** (`weltkoordinatensystem`):
-    legt die Lotachsen-Richtung ê_z fest, gegen die
+    legt die Lotachsen-Richtung e_hat_z fest, gegen die
     Bleischnitt und Senkel gemessen werden. Ohne
     Welt-Koordinatensystem sind Bleischnitt und Senkel nicht
     definiert.
@@ -302,10 +302,10 @@ import kotlin.math.abs
  * Prädikat: ist diese Ebene ein Bleischnitt?
  *
  * Eine Ebene ist genau dann Bleischnitt, wenn ihre Normale
- * parallel oder antiparallel zur Welt-Lotachse ê_z = (0, 0, 1)
+ * parallel oder antiparallel zur Welt-Lotachse e_hat_z = (0, 0, 1)
  * steht, d. h.
  *
- *   |⟨n̂, ê_z⟩| ≥ 1 − Toleranzen.KOLLINEAR_EPS.
+ *   |⟨n_hat, e_hat_z⟩| ≥ 1 − Toleranzen.KOLLINEAR_EPS.
  *
  * Glossar: hg_bleischnitt.md (Prädikat über `hg_ebene.md`).
  *
@@ -314,7 +314,7 @@ import kotlin.math.abs
  * siehe Glossar Wohldefiniertheit.
  */
 fun Ebene.istBleischnitt(eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean {
-    val nz = this.normaleEinheit().z       // ⟨n̂, ê_z⟩
+    val nz = this.normaleEinheit().z       // ⟨n_hat, e_hat_z⟩
     return abs(nz) >= 1.0 - eps
 }
 ```
@@ -333,7 +333,7 @@ fun Ebene.istBleischnitt(eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean {
   - **Bezugsebene als Bleischnitt**: Standardfall; das
     Prädikat liefert `true` für jede horizontale Bezugsebene
     (siehe `bezugsebene`). Kein Sonderverhalten.
-  - **Welt-Koordinatensystem mit anderer ê_z-Wahl**: das
+  - **Welt-Koordinatensystem mit anderer e_hat_z-Wahl**: das
     Prädikat ist gegen die im `weltkoordinatensystem`
     festgelegte Lotachsen-Richtung formuliert; eine
     Abweichung wäre eine Verletzung der Welt-Konvention und

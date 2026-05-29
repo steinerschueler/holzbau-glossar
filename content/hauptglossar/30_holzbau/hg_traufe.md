@@ -58,11 +58,11 @@ Sei
 - ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz,
 - für eine Strecke s = [a, b] der **Höhenmittelwert**
   ```
-  z̄(s) := ½ · (a_z + b_z)
+  z_bar(s) := ½ · (a_z + b_z)
   ```
   und der **Horizontalitätsmaß**
   ```
-  h(s) := |⟨ê(s), e_z⟩|       mit  ê(s) := (b − a) / ‖b − a‖.
+  h(s) := |⟨e_hat(s), e_z⟩|       mit  e_hat(s) := (b − a) / ‖b − a‖.
   ```
 
 Eine Polygonrandkante e_i heißt **näherungsweise horizontal**, wenn
@@ -85,7 +85,7 @@ wenn
 2. t hat unter allen Elementen von H(D) die niedrigste mittlere Höhe,
    d. h.
    ```
-   z̄(t) = min { z̄(e) | e ∈ H(D) },
+   z_bar(t) = min { z_bar(e) | e ∈ H(D) },
    ```
    ausgewertet mit Toleranz Toleranzen.LAENGE_EPS auf der Vertikalen
    (mehrere Kanten gleicher Mindesthöhe sind zulässig und werden
@@ -210,7 +210,7 @@ fun istTraufe(
     // 2. e ist näherungsweise horizontal
     val eHat = e.einheitsRichtung().werteOder { return false }
     if (abs(eHat dot Vektor.E_Z) > eps_W) return false
-    // 3. z̄(e) ist Minimum unter allen näherungsweise horizontalen Polygonrandkanten
+    // 3. z_bar(e) ist Minimum unter allen näherungsweise horizontalen Polygonrandkanten
     val horizontale = d.umriss.kanten().filter { it.istHorizontal(eps_W) }
     val minZ = horizontale.minOf { it.hoehenMittelwert() }
     return abs(e.hoehenMittelwert() - minZ) <= eps_L
@@ -223,7 +223,7 @@ fun istTraufe(
   2. Jede Teilstrecke der Polylinie ist Polygonrandkante der
      übergebenen Dachfläche.
   3. Jede Teilstrecke ist näherungsweise horizontal:
-     |ê · e_z| ≤ Toleranzen.WINKEL_EPS.
+     |e_hat · e_z| ≤ Toleranzen.WINKEL_EPS.
   4. Mittlere z-Höhe jeder Teilstrecke ist gleich dem Minimum der
      mittleren z-Höhen aller näherungsweise horizontalen
      Polygonrandkanten der Dachfläche, mit Toleranz

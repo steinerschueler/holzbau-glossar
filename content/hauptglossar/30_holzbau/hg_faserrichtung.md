@@ -53,12 +53,12 @@ Sei
 - B ein Bauteil aus Vollholz, Brettschichtholz oder einem Holzwerkstoff
   mit ausgewiesener Hauptfaserrichtung (Bauteil-Begriff in Folgearbeit;
   hier nur als annotierter Träger vorausgesetzt),
-- f̂ ∈ S² ⊂ ℝ³ ein Einheitsvektor (siehe `einheitsvektor`).
+- f_hat ∈ S² ⊂ ℝ³ ein Einheitsvektor (siehe `einheitsvektor`).
 
 Dann ist die **Faserrichtung** des Bauteils B eine Annotation
 
 ```
-faserrichtung(B) := f̂ ∈ S²,
+faserrichtung(B) := f_hat ∈ S²,
 ```
 
 die die idealisierte lokale Längsachse des Holzfaserverlaufs in B
@@ -67,16 +67,16 @@ Werkstoffs werden bezüglich dieser Achse als Bezugsrichtung
 spezifiziert (parallel zur Faser: Index 0; senkrecht zur Faser:
 Index 90; siehe SIA 265 und EN 1995-1-1).
 
-**Faserwinkel** zu einer beliebigen Richtung r̂ ∈ S² (z. B. Richtung
+**Faserwinkel** zu einer beliebigen Richtung r_hat ∈ S² (z. B. Richtung
 der angreifenden Kraft, Richtung einer Bauteilachse): der Winkel
-α(f̂, r̂) ∈ [0, π/2] zwischen Faserrichtung und r̂ ist
+α(f_hat, r_hat) ∈ [0, π/2] zwischen Faserrichtung und r_hat ist
 
 ```
-α(f̂, r̂) := arccos( | ⟨f̂, r̂⟩ | ),
+α(f_hat, r_hat) := arccos( | ⟨f_hat, r_hat⟩ | ),
 ```
 
 wobei der Betrag des Skalarproduktes die antipodale Mehrdeutigkeit
-{f̂, −f̂} berücksichtigt: die Faserrichtung ist physikalisch eine
+{f_hat, −f_hat} berücksichtigt: die Faserrichtung ist physikalisch eine
 ungerichtete Achse, die mathematische Repräsentation als
 Einheitsvektor wählt willkürlich eines der beiden Vorzeichen.
 
@@ -85,7 +85,7 @@ Bauteils B (siehe `bauteilachse`, in Folgearbeit), so ist die
 Faserneigung
 
 ```
-tan(α(f̂, â)) = sin(α(f̂, â)) / cos(α(f̂, â))
+tan(α(f_hat, a_hat)) = sin(α(f_hat, a_hat)) / cos(α(f_hat, a_hat))
 ```
 
 der Tangens des Winkels zwischen Faserrichtung und Bauteillängsachse.
@@ -97,20 +97,20 @@ der Tangens des Winkels zwischen Faserrichtung und Bauteillängsachse.
   Faserrichtung als Einheitsvektor festgelegt; der Idealisierungs-
   schritt (Mittelung über lokale Faserabweichungen) wird in der
   Erläuterung ausgewiesen.
-- **Eindeutigkeit bis auf Vorzeichen**: f̂ ist als Annotation eines
+- **Eindeutigkeit bis auf Vorzeichen**: f_hat ist als Annotation eines
   Bauteils eindeutig, sobald eine Vorzeichenkonvention festgelegt ist
-  (z. B. „f̂ zeigt in die positive Richtung der Bauteillängsachse").
+  (z. B. „f_hat zeigt in die positive Richtung der Bauteillängsachse").
   Ohne Konvention ist die Faserrichtung ein Element von S²/{±1}
   (projektive Linie), repräsentiert durch das antipodale Paar
-  {f̂, −f̂}.
-- **Wohldefiniertheit des Faserwinkels**: α(f̂, r̂) ∈ [0, π/2] ist
+  {f_hat, −f_hat}.
+- **Wohldefiniertheit des Faserwinkels**: α(f_hat, r_hat) ∈ [0, π/2] ist
   durch den Betrag des Skalarproduktes invariant unter
-  Vorzeichenwechsel von f̂ und r̂; damit ist α unabhängig von der
+  Vorzeichenwechsel von f_hat und r_hat; damit ist α unabhängig von der
   Vorzeichenkonvention.
-- **Numerische Wohldefiniertheit**: f̂ erbt die Norm-Invariante
-  | ‖f̂‖² − 1 | ≤ NORM_EPS aus `einheitsvektor`. Der Faserwinkel ist
+- **Numerische Wohldefiniertheit**: f_hat erbt die Norm-Invariante
+  | ‖f_hat‖² − 1 | ≤ NORM_EPS aus `einheitsvektor`. Der Faserwinkel ist
   numerisch stabil, da arccos auf [0, 1] gut konditioniert ist und
-  | ⟨f̂, r̂⟩ | ∈ [0, 1] für Einheitsvektoren f̂, r̂ gilt.
+  | ⟨f_hat, r_hat⟩ | ∈ [0, 1] für Einheitsvektoren f_hat, r_hat gilt.
 - **Nicht-Zirkularität**: Die Definition verwendet ausschließlich
   `einheitsvektor` und `toleranzen` sowie den noch nicht definierten
   Begriff `bauteil` als bloßen Träger der Annotation. Sie kommt nicht
@@ -120,7 +120,7 @@ der Tangens des Winkels zwischen Faserrichtung und Bauteillängsachse.
 
 ### Geltungsbereich (werkstoffklassen-spezifisch)
 
-Faserrichtung im engen Sinn — als ein einzelner Vektor f̂ ∈ S² am
+Faserrichtung im engen Sinn — als ein einzelner Vektor f_hat ∈ S² am
 Bauteil — ist nur bei der Werkstoff-Subklasse `axiales_holz`
 sinnvoll definiert (Faserrichtungs-Modus HART, siehe
 `faserrichtungs_modus` und Memory `project_faserrichtung_modi`).
@@ -147,12 +147,12 @@ physikalisch und normativ undefiniert.
 
 ### Hankinson-Winkel
 
-Der **Hankinson-Winkel** α(F̂, f̂) zwischen einer Kraftrichtung F̂
-und der Faserrichtung f̂ (siehe `hankinson_winkel`) ist die
+Der **Hankinson-Winkel** α(F_hat, f_hat) zwischen einer Kraftrichtung F_hat
+und der Faserrichtung f_hat (siehe `hankinson_winkel`) ist die
 zentrale Eingangsgröße der Hankinson-Formel für die
 richtungsabhängige Lochleibungs- und Druckfestigkeit nach
 DIN EN 1995-1-1. Er ist gleich dem oben definierten Faserwinkel
-α(f̂, F̂) ∈ [0, π/2] und unterliegt derselben antipodalen
+α(f_hat, F_hat) ∈ [0, π/2] und unterliegt derselben antipodalen
 Vorzeicheninvarianz.
 
 ### Anisotropie und Idealisierung
@@ -289,7 +289,7 @@ import domain.geometrie.Einheitsvektor
 value class Faserrichtung(val richtung: Einheitsvektor) {
 
     /**
-     * Faserwinkel zu einer beliebigen Richtung r̂. Ergebnis in [0, π/2].
+     * Faserwinkel zu einer beliebigen Richtung r_hat. Ergebnis in [0, π/2].
      * Berücksichtigt die antipodale Mehrdeutigkeit der Faserachse durch
      * Betrag des Skalarproduktes.
      * Glossar: faserrichtung#faserwinkel.
@@ -305,9 +305,9 @@ value class Faserrichtung(val richtung: Einheitsvektor) {
 
 - **Einheit**: dimensionslos (geerbt von `einheitsvektor`).
 - **Invariante**: alle Invarianten von `Einheitsvektor`, insbesondere
-  | ‖f̂‖² − 1 | ≤ Toleranzen.NORM_EPS.
+  | ‖f_hat‖² − 1 | ≤ Toleranzen.NORM_EPS.
 - **Vorzeichenkonvention**: Wird mit der Konstruktion eines Bauteils
-  festgelegt, in der Regel „f̂ zeigt in dieselbe Halbachse wie die
+  festgelegt, in der Regel „f_hat zeigt in dieselbe Halbachse wie die
   Bauteillängsachse von Anfangs- zu Endpunkt". Diese Konvention ist
   beim jeweiligen Bauteil zu dokumentieren; der Faserwinkel ist
   vorzeicheninvariant.
@@ -326,7 +326,7 @@ value class Faserrichtung(val richtung: Einheitsvektor) {
     Idealisierung als einzelner Einheitsvektor nicht erfasst. Die
     Sortierklasse (DIN 4074-1) begrenzt die zulässige Abweichung;
     eine ortsabhängige Faserrichtung wäre eine künftige
-    Verfeinerung (Vektorfeld f̂(x) auf dem Bauteilkörper).
+    Verfeinerung (Vektorfeld f_hat(x) auf dem Bauteilkörper).
   - **Faserrichtung antiparallel zur Bauteillängsachse**: zulässig.
     Der Faserwinkel zu antipodalen Richtungen ist 0 (nicht π); die
     Implementierung verwendet `abs(skalarprodukt)`.

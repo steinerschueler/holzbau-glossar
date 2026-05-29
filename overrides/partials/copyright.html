@@ -1,0 +1,37 @@
+{#-
+  Erweiterter Footer mit Versions-Anker.
+  Werte aus mkdocs.yml extra:
+    - version_label / welle  → menschlich lesbarer Stand
+    - concept_doi            → Verweis auf alle Versionen
+    - version_doi            → Verweis auf diese eingefrorene Version
+-#}
+<div class="md-copyright">
+  {% if config.copyright %}
+    <div class="md-copyright__highlight">
+      {{ config.copyright }}
+    </div>
+  {% endif %}
+  {% if config.extra.version_label %}
+    <div class="md-copyright__version">
+      Stand
+      {% if config.extra.version_doi %}
+        <a href="https://doi.org/{{ config.extra.version_doi }}"
+           title="Version-DOI auf Zenodo">{{ config.extra.version_label }}</a>
+      {% else %}
+        {{ config.extra.version_label }}
+      {% endif %}
+      {% if config.extra.welle %} · Welle {{ config.extra.welle }}{% endif %}
+      {% if config.extra.concept_doi %}
+        · DOI
+        <a href="https://doi.org/{{ config.extra.concept_doi }}"
+           title="Concept-DOI auf Zenodo">{{ config.extra.concept_doi }}</a>
+      {% endif %}
+    </div>
+  {% endif %}
+  {% if not config.extra.generator == false %}
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  {% endif %}
+</div>

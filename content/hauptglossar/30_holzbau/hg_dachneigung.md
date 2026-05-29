@@ -67,32 +67,32 @@ Dann ist die **Dachneigung** der Dachfläche D der Winkel
 ```
 
 Äquivalente Charakterisierung über die Falllinie: Sei
-ê_fall ∈ E ∩ S² die Einheitsrichtung der Falllinie von D im
+e_hat_fall ∈ E ∩ S² die Einheitsrichtung der Falllinie von D im
 Sinne von `hg_falllinie.md`, also der in E liegende Einheitsvektor
 mit minimaler z-Komponente. Nach der dort fixierten
-**Vorzeichenkonvention** zeigt ê_fall **nach unten**:
-⟨ê_fall, e_z⟩ ≤ 0, also (ê_fall)_z ≤ 0. Diese Vorzeichenwahl
+**Vorzeichenkonvention** zeigt e_hat_fall **nach unten**:
+⟨e_hat_fall, e_z⟩ ≤ 0, also (e_hat_fall)_z ≤ 0. Diese Vorzeichenwahl
 ist für die folgenden Identitäten bindend; Leser, die ältere
 Fassungen dieses Eintrags mit einem bergauf-orientierten
-Symbol `m̂` in Erinnerung haben, beachten, dass die hier
-verwendete Größe ê_fall genau die antipodale (bergab-)
+Symbol `m_hat` in Erinnerung haben, beachten, dass die hier
+verwendete Größe e_hat_fall genau die antipodale (bergab-)
 Lesart trägt. Eine bergauf-Richtung in der Trägerebene ist
-−ê_fall; sie kommt in dieser App nur über die Bauteilachse
+−e_hat_fall; sie kommt in dieser App nur über die Bauteilachse
 eines Sparrens vor (`hg_bauteilachse.md`, `hg_falllinie.md` Symbol-
 Konvention) und nicht in der Dachneigungs-Definition selbst.
 
 Mit dieser Konvention gilt
 
 ```
-α(D) = arccos(⟨−ê_fall, e_xy⟩) = arcsin(|(ê_fall)_z|),
+α(D) = arccos(⟨−e_hat_fall, e_xy⟩) = arcsin(|(e_hat_fall)_z|),
 ```
 
-wobei e_xy = ê_fall − ⟨ê_fall, e_z⟩ · e_z, normiert, die
+wobei e_xy = e_hat_fall − ⟨e_hat_fall, e_z⟩ · e_z, normiert, die
 horizontale Projektion der Falllinie ist (definiert für
 α < π/2). Der Steigungs-Tangens
 
 ```
-tan(α(D)) = |(ê_fall)_z| / ‖ê_fall − ⟨ê_fall, e_z⟩ · e_z‖
+tan(α(D)) = |(e_hat_fall)_z| / ‖e_hat_fall − ⟨e_hat_fall, e_z⟩ · e_z‖
 ```
 
 ist der „Höhenunterschied pro horizontalem Abstand" entlang der
@@ -117,19 +117,19 @@ konvertiert):
   ⟨n_a, e_z⟩ ≥ 0). Damit ist arccos(⟨n_a, e_z⟩) ∈ [0, π/2]
   eindeutig bestimmt. arccos ist auf [−1, 1] eindeutig und stetig;
   ⟨n_a, e_z⟩ ∈ [0, 1] für jede zulässige Dachflächen-Normale.
-- **Äquivalenz Falllinie ↔ Normale**: Die Falllinie ê_fall liegt
-  in E und hat ⟨ê_fall, e_z⟩ = (ê_fall)_z minimal unter allen
+- **Äquivalenz Falllinie ↔ Normale**: Die Falllinie e_hat_fall liegt
+  in E und hat ⟨e_hat_fall, e_z⟩ = (e_hat_fall)_z minimal unter allen
   Einheitsvektoren in E. Aus ⟨n_a, e_z⟩ = cos(α) und
-  ⟨ê_fall, e_z⟩ = −sin(α) (mit Vorzeichenkonvention
-  (ê_fall)_z ≤ 0 nach `hg_falllinie.md`) folgt
-  arccos(⟨n_a, e_z⟩) = arcsin(|(ê_fall)_z|). Beide
+  ⟨e_hat_fall, e_z⟩ = −sin(α) (mit Vorzeichenkonvention
+  (e_hat_fall)_z ≤ 0 nach `hg_falllinie.md`) folgt
+  arccos(⟨n_a, e_z⟩) = arcsin(|(e_hat_fall)_z|). Beide
   Charakterisierungen liefern denselben Winkel. Im Grenzfall
-  α = 0 ist ê_fall nicht eindeutig (jede Richtung in der
+  α = 0 ist e_hat_fall nicht eindeutig (jede Richtung in der
   horizontalen Trägerebene ist „flachste" Falllinie); die
   Definition über die Normale bleibt jedoch wohldefiniert mit
   α = 0.
-- **Vorzeichenkonvention der Falllinie**: (ê_fall)_z ≤ 0 fixiert
-  das Vorzeichen, sodass ê_fall stets „nach unten" zeigt;
+- **Vorzeichenkonvention der Falllinie**: (e_hat_fall)_z ≤ 0 fixiert
+  das Vorzeichen, sodass e_hat_fall stets „nach unten" zeigt;
   antipodale Mehrdeutigkeit wird damit aufgelöst. Diese
   Konvention ist normativ in `hg_falllinie.md` festgehalten und im
   gesamten Glossar verbindlich.
@@ -310,8 +310,8 @@ fun Dachflaeche.dachneigungsKlasse(): DachneigungsKlasse {
   - `dachneigungGrad(): Double` für Anzeige.
   - `dachneigungProzent(): Double` für Holzbau-Praxis.
   - `falllinie(): Strecke?` (siehe `hg_falllinie.md`) entlang der
-    Richtung ê_fall = −(e_z − (e_z · n̂) · n̂), normiert und mit
-    der Vorzeichenkonvention ⟨ê_fall, e_z⟩ ≤ 0 (nach unten)
+    Richtung e_hat_fall = −(e_z − (e_z · n_hat) · n_hat), normiert und mit
+    der Vorzeichenkonvention ⟨e_hat_fall, e_z⟩ ≤ 0 (nach unten)
     gewählt.
 - **Verwendungsregel**: Funktionen der Bemessungs- und
   Lastrechnung (Schneelast, Windlast) erhalten den Winkel **immer

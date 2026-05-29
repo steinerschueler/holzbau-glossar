@@ -89,7 +89,7 @@ Sei
   a(P) = (p_a, p_e) und mittlerer Höhe
   z_P := (p_a.z + p_e.z) / 2,
 - T eine Traufe im Sinne von `traufe` mit Streckenzug-
-  Repräsentation und Richtungs-Einheitsvektor d̂_T sowie mittlerer
+  Repräsentation und Richtungs-Einheitsvektor d_hat_T sowie mittlerer
   Höhe z_T := mittlere Höhe der Traufenstützpunkte,
 - ε_K := Toleranzen.KOLLINEAR_EPS, ε_L := Toleranzen.LAENGE_EPS,
 - δ_z eine konstruktive Höhentoleranz für die Trauflagen-Nähe,
@@ -98,9 +98,9 @@ Sei
 Dann heißt P eine **Fußpfette** genau dann, wenn die folgenden
 Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
 
-1. **Parallelität zur Traufe**: d̂_P ist kollinear mit d̂_T,
+1. **Parallelität zur Traufe**: d_hat_P ist kollinear mit d_hat_T,
    ```
-   ‖d̂_P × d̂_T‖ ≤ ε_K.
+   ‖d_hat_P × d_hat_T‖ ≤ ε_K.
    ```
    Sinus-Test gegen Kollinearität; nach `_KONVENTIONEN.md`
    Sektion 4 ist `KOLLINEAR_EPS` die einschlägige Toleranz für
@@ -348,7 +348,7 @@ data class Fusspfette(
     init {
         // 1. Pfetten-Bedingungen aus Pfette geerbt.
         // 2. Parallelität zur Traufe (Bedingung 1 aus hg_fusspfette.md):
-        //    ‖d̂_P × d̂_T‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
+        //    ‖d_hat_P × d_hat_T‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
         //    Resultat.Fehler(FusspfetteEntartet.NichtParallelZurTraufe).
         //    Sinus-Test, bevorzugt für Parallelitäts-Prädikate;
         //    siehe hauptglossar/_KONVENTIONEN.md Sektion 4.

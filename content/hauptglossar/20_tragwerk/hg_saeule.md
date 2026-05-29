@@ -117,7 +117,7 @@ Sei
 - S eine Stütze im Sinne von `stuetze` mit zugrunde liegendem Bauteil
   B (alle Stützen-Bedingungen 1–6 von `hg_stuetze.md` erfüllt),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖,
 - e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
 - ε_K := Toleranzen.KOLLINEAR_EPS.
 
@@ -130,7 +130,7 @@ Bedingungen alle erfüllt sind:
 2. **Strikte Lotrechtheit**: Die Bauteilachse ist exakt lotrecht (im
    Toleranz-Rahmen):
    ```
-   ‖d̂ × e_z‖ ≤ ε_K,
+   ‖d_hat × e_z‖ ≤ ε_K,
    ```
    geerbt von `stuetze` Bedingung 2; bei der Säule ohne mögliche
    Neigung (anders als bei der schräggestellten Stuhlsäule im
@@ -164,7 +164,7 @@ tragen.
   alle Bedingungen erfüllbar.
 
 - **Eindeutigkeit der Säulenrichtung**: Bedingung 2 fixiert die
-  Stützenrichtung auf d̂ ≈ +e_z bis auf ε_K, geerbt von `stuetze`.
+  Stützenrichtung auf d_hat ≈ +e_z bis auf ε_K, geerbt von `stuetze`.
 
 - **Konsistenz mit `stuetze`**: Per Bedingung 1 ist jede Säule eine
   Stütze. Die Stützen-Substanz (Werkstoff-Neutralität, Querschnitts-

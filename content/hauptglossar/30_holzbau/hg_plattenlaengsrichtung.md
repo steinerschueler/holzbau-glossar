@@ -69,8 +69,8 @@ f_m,0 (parallel) und f_m,90 (rechtwinklig) nach DIN EN 1995-1-1 / DIN EN
 
 Sei
 
-- ê_d ∈ S² die Plattendicken-Achse (siehe `plattendicken_achse`),
-- ê_l ∈ S² ein Einheitsvektor (siehe `einheitsvektor`),
+- e_hat_d ∈ S² die Plattendicken-Achse (siehe `plattendicken_achse`),
+- e_hat_l ∈ S² ein Einheitsvektor (siehe `einheitsvektor`),
 - B ein gerichtetes Plattenbauteil (siehe
   `gerichteter_plattenwerkstoff`; hier nur als Träger der Annotation
   vorausgesetzt).
@@ -79,19 +79,19 @@ Dann ist die **Plattenlängsrichtung** des Plattenbauteils B eine
 Annotation
 
 ```
-plattenlaengsrichtung(B) := ê_l ∈ S²,
+plattenlaengsrichtung(B) := e_hat_l ∈ S²,
 ```
 
 mit der Orthogonalitäts-Invariante zur Plattendicken-Achse
 
 ```
-⟨ê_l, ê_d⟩ = 0     (mathematische Idealform)
+⟨e_hat_l, e_hat_d⟩ = 0     (mathematische Idealform)
 ```
 
 bzw. in der Domänen-Schicht prüfbar
 
 ```
-| ⟨ê_l, ê_d⟩ | ≤ Toleranzen.WINKEL_EPS     (numerische Form).
+| ⟨e_hat_l, e_hat_d⟩ | ≤ Toleranzen.WINKEL_EPS     (numerische Form).
 ```
 
 **Default-Konvention** (prüfbare Konstruktionsregel):
@@ -109,17 +109,17 @@ längeren Plattenformat-Kante (z. B. 2500-mm-Richtung bei Format
 **Plattenquerrichtung** (abgeleitet, redundant):
 
 ```
-ê_q := ê_d × ê_l ∈ S²,
+e_hat_q := e_hat_d × e_hat_l ∈ S²,
 ```
 
-mit ‖ê_q‖ = 1 wegen ⟨ê_l, ê_d⟩ = 0 und ‖ê_l‖ = ‖ê_d‖ = 1. Die
+mit ‖e_hat_q‖ = 1 wegen ⟨e_hat_l, e_hat_d⟩ = 0 und ‖e_hat_l‖ = ‖e_hat_d‖ = 1. Die
 Plattenquerrichtung ist die zur Plattenlängsrichtung in der
 Plattenebene rechtwinklige Richtung.
 
 **Faserwinkel zur Kraft** (für Hankinson-Auswertung bei OSB):
 
 ```
-α(F̂, ê_l) := arccos( | ⟨F̂, ê_l⟩ | ) ∈ [0, π/2]
+α(F_hat, e_hat_l) := arccos( | ⟨F_hat, e_hat_l⟩ | ) ∈ [0, π/2]
 ```
 
 (siehe `hankinson_winkel`); EC5-Tabellen führen für OSB die
@@ -133,18 +133,18 @@ Interpolation ist abgeschwächt zulässig.
   definiert; sie ist parallel zur längeren Plattenformat-Kante. Die
   Plattenformate sind in DIN EN 13986 standardisiert (typ. 2500 ×
   1250 mm, 2440 × 1220 mm).
-- **Eindeutigkeit bis auf Vorzeichen**: ê_l ist als Annotation eines
+- **Eindeutigkeit bis auf Vorzeichen**: e_hat_l ist als Annotation eines
   Plattenbauteils eindeutig, sobald eine Vorzeichenkonvention
-  festgelegt ist. Im Regelfall wird ê_l in dieselbe Halbachse wie die
+  festgelegt ist. Im Regelfall wird e_hat_l in dieselbe Halbachse wie die
   längere Plattenformat-Kante (von Anfangs- zu Endpunkt) gesetzt;
   alle EC5-Festigkeiten f_m,0 / f_m,90 sind vorzeicheninvariant.
 - **Pflichtcharakter**: Bei Werkstoff-Modus SCHWACH ist
   `plattenlaengsrichtung` Pflichtfeld am Werkstoff (siehe
   `gerichteter_plattenwerkstoff`). Bei den anderen Modi nicht
   definiert.
-- **Orthogonalitäts-Invariante**: ⟨ê_l, ê_d⟩ ≈ 0 ist Konstruktions-
+- **Orthogonalitäts-Invariante**: ⟨e_hat_l, e_hat_d⟩ ≈ 0 ist Konstruktions-
   Invariante; eine Verletzung ist Validierungsfehler.
-- **Norm-Invariante**: ê_l erbt | ‖ê_l‖² − 1 | ≤
+- **Norm-Invariante**: e_hat_l erbt | ‖e_hat_l‖² − 1 | ≤
   Toleranzen.NORM_EPS aus `einheitsvektor`.
 - **Default-Auflösung**: Die Konvention `plattenlaengsrichtung :=
   bauteil.lokale_x_achse` ist Konstruktionsregel, nicht

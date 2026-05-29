@@ -37,7 +37,7 @@ quellenkonflikt: |
     bilden eine nach innen weisende Kante (Innenecke).
   Die mathematische Schärfung der qualitativen Begriffe „ausspringend"
   / „einspringend" durch das Vorzeichen des Spatprodukts
-  ⟨n̂_a × n̂_b, t̂⟩ ist eigene Festlegung; sie ist konsistent mit allen
+  ⟨n_hat_a × n_hat_b, t_hat⟩ ist eigene Festlegung; sie ist konsistent mit allen
   konsultierten Quellen, die nur die qualitativen Begriffe verwenden.
 
   Klassifikation: Eine Kante einer Dachflächenfamilie soll genau einer
@@ -76,37 +76,37 @@ Sei
 Sei ℓ(s_{ij}) > ε_L. Dann existiert ein Einheits-Tangentenvektor
 
 ```
-t̂ := (b − a) / ‖b − a‖    mit  s_{ij} = [a, b].
+t_hat := (b − a) / ‖b − a‖    mit  s_{ij} = [a, b].
 ```
 
 Eine Schnittstrecke s_{ij} heißt **geneigt**, wenn
 
 ```
-|⟨t̂, e_z⟩| > ε_W                                            (1)
+|⟨t_hat, e_z⟩| > ε_W                                            (1)
 ```
 
-(d. h. t̂ ist nicht näherungsweise horizontal — diese Bedingung grenzt
+(d. h. t_hat ist nicht näherungsweise horizontal — diese Bedingung grenzt
 Grat und Kehle gemeinsam vom First ab).
 
 Eine geneigte Schnittstrecke s_{ij} heißt **konvex** (ausspringend),
 wenn das gemischte Spatprodukt der äußeren Normalen mit der
 **aufwärts gerichteten** Tangente das positive Zeichen liefert.
 
-**Globale Vorzeichenkonvention für t̂** (gilt für diesen Eintrag und
+**Globale Vorzeichenkonvention für t_hat** (gilt für diesen Eintrag und
 alle Einträge, die `hg_grat.md` voraussetzen — insbesondere
-`hg_gratsparren.md`): Die Tangente t̂ ist **immer bergauf** gewählt,
-formal ⟨t̂, e_z⟩ > 0 (nach (1) wohldefiniert; bei ⟨t̂, e_z⟩ < 0
-ersetze t̂ durch −t̂). Dann verlangen wir
+`hg_gratsparren.md`): Die Tangente t_hat ist **immer bergauf** gewählt,
+formal ⟨t_hat, e_z⟩ > 0 (nach (1) wohldefiniert; bei ⟨t_hat, e_z⟩ < 0
+ersetze t_hat durch −t_hat). Dann verlangen wir
 
 ```
-⟨ n̂_{a,i} × n̂_{a,j}, t̂ ⟩  ·  σ(i, j)  >  ε_W,            (2)
+⟨ n_hat_{a,i} × n_hat_{a,j}, t_hat ⟩  ·  σ(i, j)  >  ε_W,            (2)
 ```
 
 wobei σ(i, j) ∈ {+1, −1} das Vorzeichen ist, das die zyklische
 Reihenfolge (i, j) so wählt, dass die beiden Dachflächen am Grat
-**im Uhrzeigersinn um t̂ herum** angeordnet sind, wenn man von oben
-auf t̂ schaut. Konkret: Setze σ(i, j) := +1, wenn (i, j) so gewählt
-ist, dass die Drehung von n̂_{a,i} nach n̂_{a,j} um die Achse t̂ im
+**im Uhrzeigersinn um t_hat herum** angeordnet sind, wenn man von oben
+auf t_hat schaut. Konkret: Setze σ(i, j) := +1, wenn (i, j) so gewählt
+ist, dass die Drehung von n_hat_{a,i} nach n_hat_{a,j} um die Achse t_hat im
 mathematisch positiven Sinn erfolgt; sonst σ(i, j) := −1. Da das
 Spatprodukt antisymmetrisch in (i, j) ist, ist die Bedingung (2)
 unabhängig von der Reihenfolge der beiden Dachflächen.
@@ -114,13 +114,13 @@ unabhängig von der Reihenfolge der beiden Dachflächen.
 Äquivalente, vorzeichen-symmetrische Schreibweise:
 
 ```
-sign( ⟨ n̂_{a,i} × n̂_{a,j}, t̂ ⟩ )  =  sign( ⟨ n̂_{a,i} − n̂_{a,j}, ê_⊥ ⟩ )    (2')
+sign( ⟨ n_hat_{a,i} × n_hat_{a,j}, t_hat ⟩ )  =  sign( ⟨ n_hat_{a,i} − n_hat_{a,j}, e_hat_⊥ ⟩ )    (2')
 ```
 
-mit ê_⊥ := (e_z − ⟨e_z, t̂⟩ · t̂) / ‖…‖ als der zur Tangente
+mit e_hat_⊥ := (e_z − ⟨e_z, t_hat⟩ · t_hat) / ‖…‖ als der zur Tangente
 orthogonalen, nach oben weisenden Komponente. Die Bedingung (2'/(2))
 ist genau dann erfüllt, wenn die Winkelhalbierende beider äußerer
-Normalen oberhalb der durch g_{ij} und t̂ aufgespannten Ebene liegt,
+Normalen oberhalb der durch g_{ij} und t_hat aufgespannten Ebene liegt,
 also konvex/ausspringend ist.
 
 Eine Schnittstrecke s_{ij} heißt **Grat** der Dachflächenfamilie 𝒟
@@ -130,7 +130,7 @@ genau dann, wenn
 2. s_{ij} ist **geneigt** im Sinne von (1),
 3. s_{ij} ist **konvex** im Sinne von (2),
 4. beide äußeren Normalen weisen in die obere Halbkugel:
-   ⟨n̂_{a,i}, e_z⟩ > 0 und ⟨n̂_{a,j}, e_z⟩ > 0 (Ausschluss
+   ⟨n_hat_{a,i}, e_z⟩ > 0 und ⟨n_hat_{a,j}, e_z⟩ > 0 (Ausschluss
    senkrechter Wände).
 
 Die Vereinigung aller so identifizierten Schnittstrecken bildet,
@@ -140,19 +140,19 @@ aus genau einer Strecke pro Walmecke.
 
 ## Wohldefiniertheit
 
-- **Existenz der Tangente**: Wegen ℓ(s_{ij}) > ε_L ist t̂
-  wohldefiniert. Die Konvention ⟨t̂, e_z⟩ > 0 ist wegen (1) erfüllbar
+- **Existenz der Tangente**: Wegen ℓ(s_{ij}) > ε_L ist t_hat
+  wohldefiniert. Die Konvention ⟨t_hat, e_z⟩ > 0 ist wegen (1) erfüllbar
   und legt die Orientierung eindeutig fest.
 - **Unabhängigkeit von der Indexreihenfolge**: Beim Vertauschen
-  i ↔ j wechseln sowohl n̂_{a,i} × n̂_{a,j} als auch σ(i, j) ihr
+  i ↔ j wechseln sowohl n_hat_{a,i} × n_hat_{a,j} als auch σ(i, j) ihr
   Vorzeichen; das Produkt in (2) bleibt invariant. Die Definition
   hängt also nicht von der Reihenfolge der beiden anliegenden
   Dachflächen ab.
-- **Unabhängigkeit von der Punktwahl auf s_{ij}**: t̂ ist auf der
+- **Unabhängigkeit von der Punktwahl auf s_{ij}**: t_hat ist auf der
   ganzen Strecke konstant; die Bedingungen (1) und (2) sind
   punktunabhängig.
-- **Disjunktheit zu First**: First verlangt |⟨t̂, e_z⟩| ≤ ε_W; Grat
-  verlangt |⟨t̂, e_z⟩| > ε_W. Beide Klassen sind disjunkt.
+- **Disjunktheit zu First**: First verlangt |⟨t_hat, e_z⟩| ≤ ε_W; Grat
+  verlangt |⟨t_hat, e_z⟩| > ε_W. Beide Klassen sind disjunkt.
 - **Disjunktheit zu Kehle**: Kehle verlangt das umgekehrte Vorzeichen
   in (2). Bei strikter Ungleichung > ε_W bzw. < −ε_W in beiden
   Klassen sind sie disjunkt; der Grenzbereich |⟨…⟩| ≤ ε_W bedeutet,
@@ -182,7 +182,7 @@ anliegender Dachflächen trägt. Auf dem Grat sitzt die Eindeckung
 mit eigenen Gratziegeln oder Gratabdeckungen.
 
 Anschauliche Konvexitätsprüfung: Die beiden äußeren Normalen
-n̂_{a,i} und n̂_{a,j} weisen am Grat **voneinander weg** (Außenecke);
+n_hat_{a,i} und n_hat_{a,j} weisen am Grat **voneinander weg** (Außenecke);
 ihre Winkelhalbierende zeigt nach **außen-oben**. An einer Kehle
 hingegen weisen die Normalen gewissermaßen **gegeneinander**, und
 die Winkelhalbierende zeigt nach **innen-unten** (Wassersammelpunkt).
@@ -275,7 +275,7 @@ fun istGrat(
   1. ℓ(polylinie) > Toleranzen.LAENGE_EPS — sonst `Entartet.Nullkante`.
   2. Jede Teilstrecke der Polylinie liegt im Schnittbereich
      F(P_A) ∩ F(P_B) der beiden anliegenden Dachflächen.
-  3. Jede Teilstrecke ist geneigt: |t̂ · e_z| > Toleranzen.WINKEL_EPS.
+  3. Jede Teilstrecke ist geneigt: |t_hat · e_z| > Toleranzen.WINKEL_EPS.
   4. Beide äußeren Normalen weisen mit positiver z-Komponente nach
      oben.
   5. Konvexitätsbedingung (2) erfüllt.
@@ -294,7 +294,7 @@ fun istGrat(
 - **Abgeleitete Operationen**:
   - `fun gratlaenge(): Double` (mm) = ℓ(polylinie).
   - `fun gratlinie(): Streckenzug` = polylinie.
-  - `fun gratneigung(): Double` = arcsin(|t̂ · e_z|) (Winkel der
+  - `fun gratneigung(): Double` = arcsin(|t_hat · e_z|) (Winkel der
     Gratlinie gegen die Horizontale; Bezugsmaß für Gratsparren-
     Bemessung).
 

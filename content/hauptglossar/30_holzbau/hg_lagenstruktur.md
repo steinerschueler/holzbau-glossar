@@ -52,7 +52,7 @@ quellenkonflikt: |
        (bis auf Vorzeichen)`.
   - **Lagenausrichtungs-Regel** als formale Invariante:
     `abweichenderLagenaufbau == false ⇒
-       ∀ i : ∠(lagen[i].faserrichtung, ĥ) ∈ {0, π/2}` (innerhalb
+       ∀ i : ∠(lagen[i].faserrichtung, h_hat) ∈ {0, π/2}` (innerhalb
     Toleranzen.WINKEL_EPS).
   - **Position-Bijektivität**: die `position`-Felder der Lagen sind
     eine Bijektion auf {0, …, n−1} und stimmen mit der Listenreihung
@@ -78,7 +78,7 @@ zur Haupttragrichtung) erfüllt.
 Sei
 
 - 𝓛 die Menge der Lagen (siehe `lage`),
-- ĥ ∈ S² die Haupttragrichtung des umgebenden Mehrlagenholzes
+- h_hat ∈ S² die Haupttragrichtung des umgebenden Mehrlagenholzes
   (siehe `haupttragrichtung`),
 - ε_W := Toleranzen.WINKEL_EPS.
 
@@ -112,13 +112,13 @@ mit
 
 (I4) Lagenausrichtungs-Regel (im Standardlayout):
        abweichenderLagenaufbau = false  ⇒
-         ∀ i : ∠(lagen[i].faserrichtung, ĥ) ∈ {0, π/2}
+         ∀ i : ∠(lagen[i].faserrichtung, h_hat) ∈ {0, π/2}
               (innerhalb ε_W),
        d. h. jede Lagen-Faserrichtung ist parallel oder rechtwinklig
        zur Haupttragrichtung.
 
 (I5) Decklage steuert Haupttragrichtung:
-       lagen[0].faserrichtung ≡ ĥ
+       lagen[0].faserrichtung ≡ h_hat
        (bis auf Vorzeichen; immer, unabhängig von
         abweichenderLagenaufbau).
 ```
@@ -196,7 +196,7 @@ Klassische CLT-Standardlayouts:
 Alle erfüllen Symmetrie (I3) und Lagenausrichtung (I4):
 
 - ungerade Lagenanzahl;
-- Decklage 0 und Decklage n−1 in 0°-Richtung (= ĥ);
+- Decklage 0 und Decklage n−1 in 0°-Richtung (= h_hat);
 - alle Lagen-Faserrichtungen ∈ {0°, 90°}.
 
 Die Symmetrie verhindert Schüsselung beim Trocknen und macht das
@@ -208,7 +208,7 @@ Beispiele für `abweichenderLagenaufbau = true`:
 
 - **45°-Lagen** für Erdbeben-Aussteifung: ein 5-lagiges Layout
   0°/45°/90°/−45°/0° verteilt die Schubaufnahme über alle
-  Plattenrichtungen; nicht in I4 (parallel/rechtwinklig zu ĥ).
+  Plattenrichtungen; nicht in I4 (parallel/rechtwinklig zu h_hat).
 - **Asymmetrisch**: 0°/90°/0°/90° (4 Lagen, gerade Anzahl) verletzt
   Symmetrie (I3); zulässig nur durch ETA-Zulassung.
 - **Mischfestigkeiten**: jede Lage trägt eine eigene

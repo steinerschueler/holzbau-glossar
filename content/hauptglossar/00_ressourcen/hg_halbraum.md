@@ -45,11 +45,11 @@ Sei
 - n ∈ ℝ³ \ {0} der in den Halbraum hinein gerichtete
   **Halbraum-Normalenvektor**.
 
-Dann sind der durch (p₀, n) definierte **geschlossene Halbraum** H̄
+Dann sind der durch (p₀, n) definierte **geschlossene Halbraum** H_bar
 und der **offene Halbraum** H° ⊂ ℝ³ die Mengen
 
 ```
-H̄(p₀, n) := { x ∈ ℝ³ | ⟨n, x − p₀⟩ ≥ 0 },
+H_bar(p₀, n) := { x ∈ ℝ³ | ⟨n, x − p₀⟩ ≥ 0 },
 H°(p₀, n) := { x ∈ ℝ³ | ⟨n, x − p₀⟩ > 0 }.
 ```
 
@@ -59,40 +59,40 @@ Der **Rand** beider Mengen ist die Ebene
 ∂H = E(p₀, n) = { x ∈ ℝ³ | ⟨n, x − p₀⟩ = 0 },
 ```
 
-und es gilt H̄ = H° ∪ ∂H sowie H° = H̄ \ ∂H.
+und es gilt H_bar = H° ∪ ∂H sowie H° = H_bar \ ∂H.
 
-In **Hesse-Normalform** mit n̂ := n / ‖n‖ und d := ⟨n̂, p₀⟩ wird
+In **Hesse-Normalform** mit n_hat := n / ‖n‖ und d := ⟨n_hat, p₀⟩ wird
 
 ```
-H̄(p₀, n) = { x ∈ ℝ³ | ⟨n̂, x⟩ ≥ d },
-H°(p₀, n) = { x ∈ ℝ³ | ⟨n̂, x⟩ > d }.
+H_bar(p₀, n) = { x ∈ ℝ³ | ⟨n_hat, x⟩ ≥ d },
+H°(p₀, n) = { x ∈ ℝ³ | ⟨n_hat, x⟩ > d }.
 ```
 
 Wesentliche abgeleitete Größen für x ∈ ℝ³:
 
 - **Vorzeichenbehafteter Abstand zur Randebene**:
-  d_H(x) := ⟨n̂, x − p₀⟩, in mm. d_H(x) > 0 ⇔ x ∈ H°,
-  d_H(x) = 0 ⇔ x ∈ ∂H, d_H(x) < 0 ⇔ x ∉ H̄.
-- **Komplementärer Halbraum**: H̄(p₀, −n) bzw. H°(p₀, −n); es gilt
-  H̄(p₀, n) ∪ H̄(p₀, −n) = ℝ³ und
-  H̄(p₀, n) ∩ H̄(p₀, −n) = ∂H.
+  d_H(x) := ⟨n_hat, x − p₀⟩, in mm. d_H(x) > 0 ⇔ x ∈ H°,
+  d_H(x) = 0 ⇔ x ∈ ∂H, d_H(x) < 0 ⇔ x ∉ H_bar.
+- **Komplementärer Halbraum**: H_bar(p₀, −n) bzw. H°(p₀, −n); es gilt
+  H_bar(p₀, n) ∪ H_bar(p₀, −n) = ℝ³ und
+  H_bar(p₀, n) ∩ H_bar(p₀, −n) = ∂H.
 
 ## Wohldefiniertheit
 
 - **Unabhängigkeit vom Stützpunkt innerhalb der Randebene**: Für
-  jedes p₀' ∈ ∂H gilt H̄(p₀', n) = H̄(p₀, n) und analog für H°.
+  jedes p₀' ∈ ∂H gilt H_bar(p₀', n) = H_bar(p₀, n) und analog für H°.
   Beweis wie bei `ebene`: aus ⟨n, p₀' − p₀⟩ = 0 folgt
   ⟨n, x − p₀'⟩ = ⟨n, x − p₀⟩.
 - **Skaleninvarianz mit positivem Faktor**: Für jedes λ > 0 gilt
-  H̄(p₀, λ·n) = H̄(p₀, n) (analog für H°), denn
+  H_bar(p₀, λ·n) = H_bar(p₀, n) (analog für H°), denn
   ⟨λn, ·⟩ ≥ 0 ⇔ ⟨n, ·⟩ ≥ 0.
-- **Vorzeichenwechsel kehrt den Halbraum um**: H̄(p₀, −n) ist der
+- **Vorzeichenwechsel kehrt den Halbraum um**: H_bar(p₀, −n) ist der
   komplementäre Halbraum, **nicht** derselbe. Die Wahl von
   sign(n) ist also wesentlich; ein Halbraum ist orientiert.
-- **Geschlossen vs. offen**: H̄ und H° sind verschiedene Mengen
+- **Geschlossen vs. offen**: H_bar und H° sind verschiedene Mengen
   (sie unterscheiden sich um die Randebene ∂H). Beide werden
   benötigt; geschlossene Variante ist Default (siehe Implementierung).
-- **Existenz**: Für jedes (p₀, n) mit n ≠ 0 sind H̄ und H° nicht-leer.
+- **Existenz**: Für jedes (p₀, n) mit n ≠ 0 sind H_bar und H° nicht-leer.
 - **Nicht-Zirkularität**: Die Definition verwendet Punkt, Vektor,
   Skalarprodukt und Ordnungsrelation reeller Zahlen; sie greift auf
   `ebene` nur insofern zurück, als der Rand des Halbraums eine Ebene
@@ -121,8 +121,8 @@ damit der atomare Bestandteil aller volumetrischen Bauteilformen.
 
 Die Konvention „Normale zeigt **in den Halbraum hinein**" wird
 gewählt, weil sie den Inzidenztest in der natürlichen Form
-⟨n, x − p₀⟩ ≥ 0 ⇔ x ∈ H̄ schreibt und damit für aufgebaute
-Polyeder unmittelbar das Innere als Schnitt aller H̄ liefert. Diese
+⟨n, x − p₀⟩ ≥ 0 ⇔ x ∈ H_bar schreibt und damit für aufgebaute
+Polyeder unmittelbar das Innere als Schnitt aller H_bar liefert. Diese
 Konvention ist konsistent mit Ziegler („Lectures on Polytopes").
 **Achtung**: für Dachflächen wird üblicherweise die nach außen
 weisende Normale verwendet (siehe `dachflaeche`); beim Aufbau eines
@@ -139,7 +139,7 @@ Vorzeichen umzukehren.
   sind keine Subtypen, sondern Anwendungen.
 - **Bestandteile (partitiv)**:
   - **Rand**: die Ebene ∂H = E(p₀, n).
-  - **Inneres**: H° = H̄ \ ∂H.
+  - **Inneres**: H° = H_bar \ ∂H.
 - **Abgrenzung**:
   - **Ebene** (`ebene`): zweidimensionaler Rand des Halbraums;
     Dimension 2 statt 3. Eine Ebene zerlegt ℝ³ in zwei
@@ -164,7 +164,7 @@ data class Halbraum internal constructor(
     val art: HalbraumArt = HalbraumArt.GESCHLOSSEN,
 ) {
     val stuetzpunkt: Punkt get() = ebene.stuetzpunkt       // Convenience: p₀
-    val normale: Einheitsvektor get() = ebene.normale      // Convenience: n̂, in den Halbraum hinein
+    val normale: Einheitsvektor get() = ebene.normale      // Convenience: n_hat, in den Halbraum hinein
 }
 ```
 
@@ -172,17 +172,17 @@ data class Halbraum internal constructor(
   Randdaten an die bereits in der Domänen-Schicht etablierte
   [`Ebene`](hg_ebene.md), statt `stuetzpunkt` und `normale` direkt zu
   speichern. Das hat zwei Konsequenzen: (a) die Einheitsvektor-
-  Invariante `‖n̂‖ ≈ 1` ist **typsystem-getragen** (durch den Typ
+  Invariante `‖n_hat‖ ≈ 1` ist **typsystem-getragen** (durch den Typ
   `Einheitsvektor`) und braucht keine `init`-Validierung; (b) die
   Identitätsprüfungen, Operationen und Toleranzen der Ebene werden
   konsistent wiederverwendet (`umkehrenNormale`, `abstand`, etc.).
   Convenience-Properties `stuetzpunkt` und `normale` halten die
   Glossar-nahe API-Optik erhalten.
 - **Einheit**: Stützpunkt-Koordinaten in mm (Double). Die Normale ist
-  per Typ `Einheitsvektor` normiert (`‖n̂‖ ≈ 1`); eine Normierung in
+  per Typ `Einheitsvektor` normiert (`‖n_hat‖ ≈ 1`); eine Normierung in
   abgeleiteten Operationen entfällt.
-- **Konvention der Normalenrichtung**: die Normale `n̂` zeigt **in
-  den Halbraum hinein**. Für x mit ⟨n̂, x − p₀⟩ > 0 gilt x ∈ H°.
+- **Konvention der Normalenrichtung**: die Normale `n_hat` zeigt **in
+  den Halbraum hinein**. Für x mit ⟨n_hat, x − p₀⟩ > 0 gilt x ∈ H°.
   Diese Konvention ist verbindlich und im KDoc jeder Konstruktor-
   und Operationsmethode zu nennen.
 - **Default `art = GESCHLOSSEN`**: für Inzidenz-Tests und
@@ -193,8 +193,8 @@ data class Halbraum internal constructor(
   vorgesehen.
 - **Invarianten** (durch Konstruktion getragen, keine `init`-Prüfung
   nötig):
-  1. `n̂` ist Einheitsvektor — typsystem-getragen über `Einheitsvektor`.
-  2. Alle Komponenten von `stuetzpunkt` und `n̂` finit — durch die
+  1. `n_hat` ist Einheitsvektor — typsystem-getragen über `Einheitsvektor`.
+  2. Alle Komponenten von `stuetzpunkt` und `n_hat` finit — durch die
      Factory `Ebene.ausStuetzpunktUndNormale` bzw. die Invarianten
      von `Einheitsvektor` und `Punkt` getragen.
 - **Konstruktoren** (Companion-Factories, alle ohne Wurf):
@@ -203,7 +203,7 @@ data class Halbraum internal constructor(
     Invarianten typsystem-getragen sind. Aufrufer ist verantwortlich,
     dass `e.normale` in den gewünschten Halbraum zeigt (vgl. Konvention
     bei `dachflaeche`, deren Außennormale in den Außen-Halbraum zeigt).
-  - `Halbraum.ausStuetzpunktUndNormale(p, n̂, art = GESCHLOSSEN): Resultat<Halbraum, EntartetGeometrie>`
+  - `Halbraum.ausStuetzpunktUndNormale(p, n_hat, art = GESCHLOSSEN): Resultat<Halbraum, EntartetGeometrie>`
     — delegiert an `Ebene.ausStuetzpunktUndNormale`; kann
     `Fehler(NichtFinit)` liefern, wenn `p` nicht-finit ist.
   - **Kein dedizierter `ausEbeneAndereSeite`** — die Operation ist
@@ -222,7 +222,7 @@ data class Halbraum internal constructor(
     Entartung der aktuellen API.
   - **Numerische Lage am Rand**: für x mit |d_H(x)| ≤
     Toleranzen.LAENGE_EPS klassifiziert `enthaelt(x)` x als auf der
-    Randebene liegend. Bei `art = GESCHLOSSEN` gilt x ∈ H̄, bei
+    Randebene liegend. Bei `art = GESCHLOSSEN` gilt x ∈ H_bar, bei
     `art = OFFEN` gilt x ∉ H°.
   - **NullNormale** ist in der aktuellen API **nicht erreichbar**, weil
     die Konstruktoren nur `Einheitsvektor` akzeptieren (Norm-Invariante

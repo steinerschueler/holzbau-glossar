@@ -29,9 +29,9 @@ quellenkonflikt: |
   `gerade`. Diese Festlegung ist konsistent mit Bronstein, Bär,
   Fischer und de Berg/Cheong.
 
-  Vorzeichen-/Orientierungsfrage: Das Kreuzprodukt v = n̂₁ × n̂₂ ist
+  Vorzeichen-/Orientierungsfrage: Das Kreuzprodukt v = n_hat₁ × n_hat₂ ist
   antisymmetrisch in der Reihenfolge der beiden Ebenen
-  (n̂₁ × n̂₂ = −(n̂₂ × n̂₁)). Als **Gerade im Sinne von `gerade`** ist
+  (n_hat₁ × n_hat₂ = −(n_hat₂ × n_hat₁)). Als **Gerade im Sinne von `gerade`** ist
   die Schnittgerade ungerichtet — beide Reihenfolgen liefern
   dieselbe Punktmenge. Wo eine Tangentenrichtung ausgezeichnet werden
   muss (z. B. zur Klassifikation von Grat vs. Kehle, vgl. `hg_grat.md`,
@@ -53,17 +53,17 @@ parallel disjunkt sind.
 
 Sei
 
-- E₁ = (p₁, n̂₁) und E₂ = (p₂, n̂₂) zwei Ebenen im Sinne von `ebene`
-  in Hesse-Normalform, also mit normierten Normalen ‖n̂₁‖ = ‖n̂₂‖ = 1
+- E₁ = (p₁, n_hat₁) und E₂ = (p₂, n_hat₂) zwei Ebenen im Sinne von `ebene`
+  in Hesse-Normalform, also mit normierten Normalen ‖n_hat₁‖ = ‖n_hat₂‖ = 1
   und vorzeichenbehafteten Ursprungs­abständen
-  d₁ := ⟨n̂₁, p₁⟩ und d₂ := ⟨n̂₂, p₂⟩ (in mm),
+  d₁ := ⟨n_hat₁, p₁⟩ und d₂ := ⟨n_hat₂, p₂⟩ (in mm),
 - ε_K := Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz,
 - ε_L := Toleranzen.LAENGE_EPS die Längentoleranz.
 
 **Existenzbedingung.** Die Schnittgerade existiert genau dann, wenn
 
 ```
-‖ n̂₁ × n̂₂ ‖ > ε_K                                             (E)
+‖ n_hat₁ × n_hat₂ ‖ > ε_K                                             (E)
 ```
 
 (Normalen nicht kollinear).
@@ -71,27 +71,27 @@ Sei
 **Richtungsvektor.** Unter Bedingung (E) ist
 
 ```
-v := n̂₁ × n̂₂ ∈ ℝ³ \ {0},
-t̂ := v / ‖v‖    ∈ S².
+v := n_hat₁ × n_hat₂ ∈ ℝ³ \ {0},
+t_hat := v / ‖v‖    ∈ S².
 ```
 
 **Stützpunkt.** Unter Bedingung (E) ist
 
 ```
-x₀ := ( d₁ · (n̂₂ × t̂)  +  d₂ · (t̂ × n̂₁) ) / ‖v‖             (S)
+x₀ := ( d₁ · (n_hat₂ × t_hat)  +  d₂ · (t_hat × n_hat₁) ) / ‖v‖             (S)
 ```
 
-ein Punkt mit ⟨n̂₁, x₀⟩ = d₁ und ⟨n̂₂, x₀⟩ = d₂, also x₀ ∈ E₁ ∩ E₂.
+ein Punkt mit ⟨n_hat₁, x₀⟩ = d₁ und ⟨n_hat₂, x₀⟩ = d₂, also x₀ ∈ E₁ ∩ E₂.
 
 **Schnittgerade.** Die durch (E₁, E₂) erzeugte **Schnittgerade**
 g(E₁, E₂) ⊂ ℝ³ ist die Punktmenge
 
 ```
-g(E₁, E₂) := E₁ ∩ E₂ = { x₀ + t · t̂ ∈ ℝ³ | t ∈ ℝ },
+g(E₁, E₂) := E₁ ∩ E₂ = { x₀ + t · t_hat ∈ ℝ³ | t ∈ ℝ },
 ```
 
 also die Gerade im Sinne von `gerade` mit Stützpunkt x₀ und
-Richtungsvektor t̂.
+Richtungsvektor t_hat.
 
 **Anwendung als Funktion.** Damit ist die Operation
 
@@ -104,39 +104,39 @@ mit
 
 ```
 schnittGerade(E₁, E₂) :=
-  Entartet.IdentischeEbenen,    falls ‖n̂₁ × n̂₂‖ ≤ ε_K  und
-                                       |⟨n̂₁, p₂ − p₁⟩| ≤ ε_L
-  Entartet.ParalleleEbenen,     falls ‖n̂₁ × n̂₂‖ ≤ ε_K  und
-                                       |⟨n̂₁, p₂ − p₁⟩| > ε_L
+  Entartet.IdentischeEbenen,    falls ‖n_hat₁ × n_hat₂‖ ≤ ε_K  und
+                                       |⟨n_hat₁, p₂ − p₁⟩| ≤ ε_L
+  Entartet.ParalleleEbenen,     falls ‖n_hat₁ × n_hat₂‖ ≤ ε_K  und
+                                       |⟨n_hat₁, p₂ − p₁⟩| > ε_L
   g(E₁, E₂),                    sonst.
 ```
 
 ## Wohldefiniertheit
 
-- **Existenz unter (E)**: Aus ‖n̂₁ × n̂₂‖ > ε_K folgt v ≠ 0 und damit
-  t̂ ∈ S². Der durch (S) konstruierte Punkt x₀ erfüllt
-  ⟨n̂₁, x₀⟩ = d₁ und ⟨n̂₂, x₀⟩ = d₂; das ist eine direkte Konsequenz
+- **Existenz unter (E)**: Aus ‖n_hat₁ × n_hat₂‖ > ε_K folgt v ≠ 0 und damit
+  t_hat ∈ S². Der durch (S) konstruierte Punkt x₀ erfüllt
+  ⟨n_hat₁, x₀⟩ = d₁ und ⟨n_hat₂, x₀⟩ = d₂; das ist eine direkte Konsequenz
   der Identitäten
 
   ```
-  ⟨n̂₁, n̂₂ × t̂⟩ = ⟨t̂, n̂₁ × n̂₂⟩ = ‖v‖,
-  ⟨n̂₁, t̂ × n̂₁⟩ = 0,
-  ⟨n̂₂, n̂₂ × t̂⟩ = 0,
-  ⟨n̂₂, t̂ × n̂₁⟩ = ⟨t̂, n̂₁ × n̂₂⟩ · (−1)·(−1) = ‖v‖,
+  ⟨n_hat₁, n_hat₂ × t_hat⟩ = ⟨t_hat, n_hat₁ × n_hat₂⟩ = ‖v‖,
+  ⟨n_hat₁, t_hat × n_hat₁⟩ = 0,
+  ⟨n_hat₂, n_hat₂ × t_hat⟩ = 0,
+  ⟨n_hat₂, t_hat × n_hat₁⟩ = ⟨t_hat, n_hat₁ × n_hat₂⟩ · (−1)·(−1) = ‖v‖,
   ```
-  d. h. ⟨n̂₁, x₀⟩ = (d₁ · ‖v‖ + d₂ · 0) / ‖v‖ = d₁ und analog für n̂₂.
+  d. h. ⟨n_hat₁, x₀⟩ = (d₁ · ‖v‖ + d₂ · 0) / ‖v‖ = d₁ und analog für n_hat₂.
   Also liegt x₀ in beiden Ebenen, und g(E₁, E₂) ist nicht-leer.
-- **Eindeutigkeit als Punktmenge**: Da n̂₁ und n̂₂ linear unabhängig
+- **Eindeutigkeit als Punktmenge**: Da n_hat₁ und n_hat₂ linear unabhängig
   sind, ist E₁ ∩ E₂ ein eindimensionaler affiner Unterraum von ℝ³.
   Aus zwei verschiedenen, durch (E₁, E₂) konstruierten
-  Repräsentanten (x₀, t̂) und (x₀′, t̂′) folgt deshalb
-  g(x₀, t̂) = g(x₀′, t̂′) als Punktmenge — siehe Identitätsrelation
+  Repräsentanten (x₀, t_hat) und (x₀′, t_hat′) folgt deshalb
+  g(x₀, t_hat) = g(x₀′, t_hat′) als Punktmenge — siehe Identitätsrelation
   in `hg_gerade.md`.
 - **Vorzeichen der Richtung / Reihenfolge der Ebenen**: Beim
-  Vertauschen von E₁ und E₂ wechselt v = n̂₁ × n̂₂ ↦ −v sein
-  Vorzeichen, t̂ ↦ −t̂. Die durch (S) konstruierte Position x₀ ist
-  jedoch invariant: das Produkt d₁ · (n̂₂ × t̂) wird zu
-  d₂ · (n̂₁ × (−t̂)) = d₂ · (t̂ × n̂₁) und entsprechend; insgesamt bleibt
+  Vertauschen von E₁ und E₂ wechselt v = n_hat₁ × n_hat₂ ↦ −v sein
+  Vorzeichen, t_hat ↦ −t_hat. Die durch (S) konstruierte Position x₀ ist
+  jedoch invariant: das Produkt d₁ · (n_hat₂ × t_hat) wird zu
+  d₂ · (n_hat₁ × (−t_hat)) = d₂ · (t_hat × n_hat₁) und entsprechend; insgesamt bleibt
   x₀ unverändert. Als Gerade im Sinne von `gerade` gilt zudem
   g(p₀, v) = g(p₀, −v), so dass
 
@@ -149,14 +149,14 @@ schnittGerade(E₁, E₂) :=
   Tangenten­orientierung benötigt wird, muss der Aufrufer eine
   Reihenfolge fixieren (siehe `hg_grat.md`, `hg_kehle.md`).
 - **Disjunktheit der Entartungen**: Die Bedingung
-  ‖n̂₁ × n̂₂‖ ≤ ε_K ist äquivalent zu „n̂₁ und n̂₂ kollinear (parallel
+  ‖n_hat₁ × n_hat₂‖ ≤ ε_K ist äquivalent zu „n_hat₁ und n_hat₂ kollinear (parallel
   oder antiparallel)". In diesem Fall sind die Trägerebenen entweder
   identisch (gleiche Hesse-Distanz, geprüft durch
-  |⟨n̂₁, p₂ − p₁⟩| ≤ ε_L) oder echt parallel und disjunkt. Beide
+  |⟨n_hat₁, p₂ − p₁⟩| ≤ ε_L) oder echt parallel und disjunkt. Beide
   Fälle sind disjunkt; die Fallunterscheidung in `schnittGerade`
   ist erschöpfend.
-- **Konsistenz mit `gerade`**: Unter (E) erfüllt (x₀, t̂) die
-  Invarianten von `gerade` (t̂ ist Einheitsvektor, alle Komponenten
+- **Konsistenz mit `gerade`**: Unter (E) erfüllt (x₀, t_hat) die
+  Invarianten von `gerade` (t_hat ist Einheitsvektor, alle Komponenten
   finit). Die Schnittgerade ist damit eine Gerade im Sinne des
   Glossareintrags `gerade`.
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
@@ -187,12 +187,12 @@ Das tatsächliche Bauteil-Resultat ist in jedem Fall ein endliches
 Streckenstück auf dieser Schnittgerade, beschnitten auf den
 gemeinsamen Polygonbereich der beiden anliegenden Flächen.
 
-Anschauliche Konstruktion (S): Der Term n̂₂ × t̂ steht in E₁ orthogonal
-zur Schnittgerade (da er auf t̂ und auf n̂₂ orthogonal steht und t̂
-in E₁ liegt); analog steht t̂ × n̂₁ in E₂ orthogonal zur
+Anschauliche Konstruktion (S): Der Term n_hat₂ × t_hat steht in E₁ orthogonal
+zur Schnittgerade (da er auf t_hat und auf n_hat₂ orthogonal steht und t_hat
+in E₁ liegt); analog steht t_hat × n_hat₁ in E₂ orthogonal zur
 Schnittgerade. Die Linearkombination mit den Koeffizienten d₁ und d₂
 (skaliert mit 1/‖v‖) liefert genau jenen Punkt auf der Schnittgerade,
-dessen Stützung in der durch n̂₁ und n̂₂ aufgespannten Ebene liegt —
+dessen Stützung in der durch n_hat₁ und n_hat₂ aufgespannten Ebene liegt —
 geometrisch der Lotfußpunkt vom Ursprung auf die Schnittgerade.
 
 ## Beziehungen
@@ -243,7 +243,7 @@ data class Schnittgerade internal constructor(
     val ebeneB: Ebene              // Referenz auf E₂
 ) {
     val stuetzpunkt: Punkt get() = gerade.stuetzpunkt   // x₀ nach (S), in mm
-    val richtung: Einheitsvektor get() = gerade.richtung // t̂, ‖t̂‖² ≈ 1
+    val richtung: Einheitsvektor get() = gerade.richtung // t_hat, ‖t_hat‖² ≈ 1
 }
 ```
 
@@ -282,11 +282,11 @@ unverändert.
   `EntartetGeometrie` (Code-Pattern, kein Glossarbegriff; siehe
   `domain/geometrie/EntartetGeometrie.kt`). Die für Ebene-Ebene-Schnitt
   relevanten Varianten sind:
-  - `EntartetGeometrie.IdentischeEbenen` — ‖n̂₁ × n̂₂‖ ≤ KOLLINEAR_EPS und
-    |⟨n̂₁, p₂ − p₁⟩| ≤ LAENGE_EPS: Trägerebenen identisch, Schnittmenge
+  - `EntartetGeometrie.IdentischeEbenen` — ‖n_hat₁ × n_hat₂‖ ≤ KOLLINEAR_EPS und
+    |⟨n_hat₁, p₂ − p₁⟩| ≤ LAENGE_EPS: Trägerebenen identisch, Schnittmenge
     ist eine Ebene, keine Gerade.
-  - `EntartetGeometrie.ParalleleEbenen` — ‖n̂₁ × n̂₂‖ ≤ KOLLINEAR_EPS und
-    |⟨n̂₁, p₂ − p₁⟩| > LAENGE_EPS: Trägerebenen echt parallel und
+  - `EntartetGeometrie.ParalleleEbenen` — ‖n_hat₁ × n_hat₂‖ ≤ KOLLINEAR_EPS und
+    |⟨n_hat₁, p₂ − p₁⟩| > LAENGE_EPS: Trägerebenen echt parallel und
     disjunkt, Schnittmenge ist leer.
   Eine eigene `SchnittgeradeEntartet`-Sealed-Class entfällt zugunsten
   der gemeinsamen Hierarchie (Konvention für alle D2/D3-Klassen).
@@ -301,17 +301,17 @@ unverändert.
      |signierterAbstand_E₁(stuetzpunkt)| ≤ Toleranzen.LAENGE_EPS und
      |signierterAbstand_E₂(stuetzpunkt)| ≤ Toleranzen.LAENGE_EPS.
   3. `richtung` steht orthogonal zu beiden Normalen:
-     |⟨richtung, n̂₁⟩| ≤ Toleranzen.KOLLINEAR_EPS und
-     |⟨richtung, n̂₂⟩| ≤ Toleranzen.KOLLINEAR_EPS.
+     |⟨richtung, n_hat₁⟩| ≤ Toleranzen.KOLLINEAR_EPS und
+     |⟨richtung, n_hat₂⟩| ≤ Toleranzen.KOLLINEAR_EPS.
   4. Alle Komponenten finit (kein NaN, kein ±∞).
 - **Edge Cases / Entartet-Varianten**:
-  - **ParalleleEbenen**: ‖n̂₁ × n̂₂‖ ≤ KOLLINEAR_EPS und
+  - **ParalleleEbenen**: ‖n_hat₁ × n_hat₂‖ ≤ KOLLINEAR_EPS und
     Hesse-Abstand der zweiten Ebene zur ersten > LAENGE_EPS;
     keine Schnittgerade existiert.
-  - **IdentischeEbenen**: ‖n̂₁ × n̂₂‖ ≤ KOLLINEAR_EPS und
+  - **IdentischeEbenen**: ‖n_hat₁ × n_hat₂‖ ≤ KOLLINEAR_EPS und
     Hesse-Abstand ≤ LAENGE_EPS; die Schnittmenge ist eine ganze
     Ebene und damit keine Gerade.
-  - **Nahezu parallel** (‖n̂₁ × n̂₂‖ knapp über KOLLINEAR_EPS):
+  - **Nahezu parallel** (‖n_hat₁ × n_hat₂‖ knapp über KOLLINEAR_EPS):
     zulässig, aber numerisch sensibel (Stützpunkt-Berechnung skaliert
     mit 1/‖v‖). Bei Bedarf kann der Aufrufer eine schärfere
     Toleranz übergeben.
@@ -338,7 +338,7 @@ unverändert.
   Identität ist er ungeeignet.
 - **Orientierung**: Die Schnittgerade ist als Punktmenge
   ungerichtet. Die in der Datenklasse gespeicherte Tangente
-  t̂ = n̂₁ × n̂₂ ist abhängig von der Reihenfolge (E₁, E₂); für
+  t_hat = n_hat₁ × n_hat₂ ist abhängig von der Reihenfolge (E₁, E₂); für
   kanonische Tangenten­orientierungen (z. B. „nach oben" bei
   Grat/Kehle) ist eine zusätzliche Konvention im Aufrufer
   festzulegen, siehe `hg_grat.md` und `hg_kehle.md`.

@@ -147,24 +147,24 @@ Sei
 
 - B ein Stab-Bauteil im Sinne von `bauteil` (das **Trägerbauteil**)
   mit Stabgeometrie (`geometrie ∈ 𝒢_stab`),
-- L_B = (O_B, ê_x^B, ê_y^B, ê_z^B) das Bauteil-Lokal-
+- L_B = (O_B, e_hat_x^B, e_hat_y^B, e_hat_z^B) das Bauteil-Lokal-
   Koordinatensystem (`lokales_koordinatensystem`) mit Konvention
   ```
-  ê_x^B  =  Bauteilachse (Längsrichtung),
-  ê_y^B  =  Bauteil-Querrichtung,
-  ê_z^B  =  Bauteilhöhe (auf der Druckstab-Seite nach oben),
+  e_hat_x^B  =  Bauteilachse (Längsrichtung),
+  e_hat_y^B  =  Bauteil-Querrichtung,
+  e_hat_z^B  =  Bauteilhöhe (auf der Druckstab-Seite nach oben),
   ```
 - h_B > 0 die Bauteilhöhe in lokaler z-Richtung (mm),
 - b_B > 0 die Bauteilbreite in lokaler y-Richtung (mm),
 - ℓ_B > 0 die Bauteillänge in lokaler x-Richtung (mm),
-- d̂_S ∈ ℝ³ der Einheits-Richtungsvektor der **Druckstab-Achse**
+- d_hat_S ∈ ℝ³ der Einheits-Richtungsvektor der **Druckstab-Achse**
   (`bauteilachse` des druckbeanspruchten Anschlussbauteils),
   bezogen auf das Bauteil-Lokal-System L_B,
 - β ∈ (0, π) der **Strebenanschlusswinkel** zwischen der
-  Druckstab-Achse d̂_S und der Trägerbauteil-Achse ê_x^B,
+  Druckstab-Achse d_hat_S und der Trägerbauteil-Achse e_hat_x^B,
   gemessen als stumpfer Außenwinkel:
   ```
-  β  :=  π − arccos( |⟨d̂_S, ê_x^B⟩| ),
+  β  :=  π − arccos( |⟨d_hat_S, e_hat_x^B⟩| ),
   ```
   d. h. β ∈ (π/2, π) bezeichnet die Öffnung zwischen Druckstab
   und Trägerbauteil auf der Druckstab-Seite,
@@ -173,7 +173,7 @@ Sei
 
 Der **Anschnitt der Anschnittfläche** wird in der Lotebene
 Π_⊥(B) des Trägerbauteils (`lotebene`: welt-vertikale Ebene
-durch die Bauteilachse, die im allgemeinen Fall auch ê_y^B
+durch die Bauteilachse, die im allgemeinen Fall auch e_hat_y^B
 enthält, sofern das Trägerbauteil horizontal eingebaut ist)
 geführt. Im Folgenden wird das Trägerbauteil als horizontal
 liegend angenommen (Standardfall: Schwelle, Rähm, Bundbalken,
@@ -224,12 +224,12 @@ mit
   art ∈ {STIRN, DOPPELT}, ⊥ für art = FERSE.
 - **δ_S** ∈ (0, π/2) ∪ {⊥}: **Anschnittwinkel Stirn** (rad),
   gemessen zwischen Stirn-Anschnittfläche und der
-  Trägerbauteil-Faserrichtung ê_x^B. Pflicht für art ∈ {STIRN,
+  Trägerbauteil-Faserrichtung e_hat_x^B. Pflicht für art ∈ {STIRN,
   DOPPELT}, ⊥ für art = FERSE.
 - **t_F** ∈ ℝ⁺ ∪ {⊥}: **Versatztiefe Ferse** (mm); Pflicht für
   art ∈ {FERSE, DOPPELT}, ⊥ für art = STIRN.
 - **δ_F** ∈ (0, π/2) ∪ {⊥}: **Anschnittwinkel Ferse** (rad),
-  gemessen zwischen Fersen-Anschnittfläche und ê_x^B. Pflicht
+  gemessen zwischen Fersen-Anschnittfläche und e_hat_x^B. Pflicht
   für art ∈ {FERSE, DOPPELT}, ⊥ für art = STIRN.
 - **l_v** ∈ ℝ⁺: **Vorholzlänge** (mm), Abstand von der vordersten
   Versatz-Stirnkante (am Stirn-Aufsetzpunkt Q für art ∈ {STIRN,
@@ -249,23 +249,23 @@ Q  :=  (x_0, 0, h_B)         in Bauteil-Lokal-Koordinaten.       (3)
 
 **Stirn-Anschnittfläche** (für art ∈ {STIRN, DOPPELT}):
 Die Anschnittebene Σ_S ist die Ebene durch Q, deren Normale
-ν̂_S ∈ Π_⊥(B) den Winkel δ_S mit der Trägerbauteil-Längsachse
-ê_x^B einschließt und nach unten in das Trägerbauteil zeigt.
-Konstruktiv mit Drehung um ê_y^B:
+ν_hat_S ∈ Π_⊥(B) den Winkel δ_S mit der Trägerbauteil-Längsachse
+e_hat_x^B einschließt und nach unten in das Trägerbauteil zeigt.
+Konstruktiv mit Drehung um e_hat_y^B:
 
 ```
-ν̂_S  :=  cos(δ_S) · (−ê_z^B)  +  sin(δ_S) · (−ê_x^B),            (4)
-Σ_S  :=  { P ∈ ℝ³ | ⟨P − Q, ν̂_S⟩ = 0 }.                          (5)
+ν_hat_S  :=  cos(δ_S) · (−e_hat_z^B)  +  sin(δ_S) · (−e_hat_x^B),            (4)
+Σ_S  :=  { P ∈ ℝ³ | ⟨P − Q, ν_hat_S⟩ = 0 }.                          (5)
 ```
 
 Die Stirn-Anschnittfläche endet auf der Tiefe t_S am
 **Stirn-Tiefenpunkt**
 
 ```
-P_S  :=  Q  −  t_S · ν̂_S^⊥                                       (6)
+P_S  :=  Q  −  t_S · ν_hat_S^⊥                                       (6)
 ```
 
-mit ν̂_S^⊥ als Einheitsvektor in Π_⊥(B), rechtwinklig zu ν̂_S
+mit ν_hat_S^⊥ als Einheitsvektor in Π_⊥(B), rechtwinklig zu ν_hat_S
 und in das Trägerbauteil-Innere zeigend.
 
 **Fersen-Anschnittfläche** (für art ∈ {FERSE, DOPPELT}):
@@ -275,7 +275,7 @@ Q_F liegt um die Versatzkamm-Breite gegen Q in Druckstab-
 Innenseite versetzt) und einer Anschnittebene Σ_F mit Normale
 
 ```
-ν̂_F  :=  cos(δ_F) · (−ê_z^B)  +  sin(δ_F) · (+ê_x^B).            (7)
+ν_hat_F  :=  cos(δ_F) · (−e_hat_z^B)  +  sin(δ_F) · (+e_hat_x^B).            (7)
 ```
 
 ### Werkzeugkörper
@@ -283,7 +283,7 @@ Innenseite versetzt) und einer Anschnittebene Σ_F mit Normale
 Der **Werkzeugkörper** des Versatzes ist das prismatische
 Volumen, das den Anschnittquerschnitt in der Lotebene Π_⊥(B)
 über die Bauteilbreite b_B (oder einen Teil davon, je nach
-`lokalePlatzierung`) entlang ê_y^B extrudiert:
+`lokalePlatzierung`) entlang e_hat_y^B extrudiert:
 
 ```
 K_Versatz(p_Versatz)  :=  Δ_Versatz(art)  ×  [y_min, y_max]      (8)

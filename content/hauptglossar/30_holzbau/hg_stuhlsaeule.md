@@ -149,7 +149,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - P eine Stuhlpfette (Pfetten-Spezialisierung im Dachstuhl, im
   aktuellen Glossarstand Forward-Verweis `stuhlpfette`) mit
   Bauteilachse a(P) = (p_a^P, p_e^P),
@@ -173,7 +173,7 @@ erfüllt sind:
    ```
    p_a.z + ε_L < p_e.z.
    ```
-   Die Lotrechtheit selbst (‖d̂ × e_z‖ ≤ ε_K) ist im **stehenden
+   Die Lotrechtheit selbst (‖d_hat × e_z‖ ≤ ε_K) ist im **stehenden
    Stuhl** erfüllt, im **liegenden Stuhl** jedoch nicht (die Stuhl-
    säule ist schräg geneigt). Die Bedingung 2 lockert die
    Lotrechtheit und fordert nur die aufstrebende Orientierung.
@@ -191,7 +191,7 @@ erfüllt sind:
    wobei dist(p, a) der Punkt-Geraden-Abstand zur Pfetten-Achse
    ist. Die Stuhlpfette ist horizontal,
    ```
-   |⟨d̂_P, e_z⟩| ≤ ε_K,
+   |⟨d_hat_P, e_z⟩| ≤ ε_K,
    ```
    d. h. ihre Achse steht rechtwinklig zur Lotachse.
 
@@ -214,7 +214,7 @@ erfüllt sind:
 Wesentliche abgeleitete Größen:
 
 - **Stuhlsäulenlänge**: L_SS := ‖p_e − p_a‖ (in mm).
-- **Stuhlsäulen-Neigung**: α := acos(⟨d̂, e_z⟩) (in rad). Im
+- **Stuhlsäulen-Neigung**: α := acos(⟨d_hat, e_z⟩) (in rad). Im
   stehenden Stuhl gilt α ≤ ε_W (Lotrechtheit); im liegenden Stuhl
   ist α > ε_W (typisch 15°–35° gegen die Lotachse).
 - **Stuhlsäulen-Variante**: V := stehend, wenn α ≤ ε_W; sonst
@@ -404,7 +404,7 @@ truss**".
   - **Querschnitt** (rechteckig, typisch 140–240 mm Kantenmass);
   - **Werkstoff** (Vollholz oder BSH, Festigkeitsklasse C24 oder
     GL24h);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_Stuhlsäule).
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_Stuhlsäule).
 - **Topologische Inzidenz**:
   - **Stuhlpfette** (`stuhlpfette`, Forward-Verweis): trägt am
     Stuhlsäulen-Kopf (Bedingung 4).
@@ -572,7 +572,7 @@ sealed class StuhlsaeuleEntartet {
      `NichtAufstrebend`.
   4. Stuhlpfetten-Anschluss am Kopf: Punkt-Geraden-Abstand
      ≤ Toleranzen.LAENGE_EPS — sonst `KeinStuhlpfettenAnschluss`.
-  5. Stuhlpfette horizontal: |⟨d̂_P, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
+  5. Stuhlpfette horizontal: |⟨d_hat_P, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
      — sonst `PfetteNichtHorizontal`.
   6. Auflagerbalken-Anschluss am Fuß: Punkt-Geraden-Abstand
      ≤ Toleranzen.LAENGE_EPS — sonst `KeinAuflagerbalken`.

@@ -169,13 +169,13 @@ Schichtfolge des Träger-Aggregats — siehe Wohldefiniertheit.
 
 Die **abgeleitete Geometrie** einer Schicht ist
 ```
-G(S, F, i, A) := { p + t · n̂(p) : p ∈ F, t ∈ [t_i, t_i + d] }
+G(S, F, i, A) := { p + t · n_hat(p) : p ∈ F, t ∈ [t_i, t_i + d] }
 ```
 mit
 
 - F dem von einem Träger-Aggregat A geerbten Trägerbereich
   (z. B. F = ⋃ F(P_i) bei `dachaufbau`),
-- n̂(p) der nach außen gerichteten Trägerflächen-Normalen an p,
+- n_hat(p) der nach außen gerichteten Trägerflächen-Normalen an p,
 - i ∈ {1, …, k} dem Index der Schicht in der Folge 𝒮 = (S₁, …, S_k)
   des Trägers,
 - t_i := Σ_{j=1..i-1} d_j dem Basis-Offset der Schicht.

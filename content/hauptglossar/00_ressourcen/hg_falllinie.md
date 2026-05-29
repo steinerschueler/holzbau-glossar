@@ -54,18 +54,18 @@ maximal abnimmt.
 Sei
 
 - E ⊂ ℝ³ eine Ebene im Sinne von `ebene` mit nach oben gerichteter
-  Einheits-Normalen n̂ ∈ S², ⟨n̂, e_z⟩ > 0,
+  Einheits-Normalen n_hat ∈ S², ⟨n_hat, e_z⟩ > 0,
 - e_z := (0, 0, 1)ᵀ die vertikale Achse,
 - ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz.
 
-**Geneigtheits-Voraussetzung**: ⟨n̂, e_z⟩ < 1 (die Ebene ist nicht
+**Geneigtheits-Voraussetzung**: ⟨n_hat, e_z⟩ < 1 (die Ebene ist nicht
 horizontal). Diese Bedingung ist äquivalent zu α > 0 in der
-Charakterisierung über die Dachneigung α := arccos(⟨n̂, e_z⟩).
+Charakterisierung über die Dachneigung α := arccos(⟨n_hat, e_z⟩).
 
 Setze den **horizontalen Anteil von e_z relativ zu E**
 
 ```
-v := e_z − ⟨e_z, n̂⟩ · n̂   ∈ E_0,
+v := e_z − ⟨e_z, n_hat⟩ · n_hat   ∈ E_0,
 ```
 
 wobei E_0 ⊂ ℝ³ der Richtungsraum von E (die durch Translation in den
@@ -74,7 +74,7 @@ von e_z auf E_0; v zeigt nach **oben** entlang der steilsten Richtung
 in E_0. Es gilt
 
 ```
-‖v‖² = 1 − ⟨e_z, n̂⟩² > 0   (für α > 0),
+‖v‖² = 1 − ⟨e_z, n_hat⟩² > 0   (für α > 0),
 ```
 
 also v ≠ 0.
@@ -82,25 +82,25 @@ also v ≠ 0.
 Die **Falllinie** der Ebene E ist der Einheitsvektor
 
 ```
-ê_fall(E) := −v / ‖v‖
-           = −(e_z − ⟨e_z, n̂⟩ · n̂) / ‖e_z − ⟨e_z, n̂⟩ · n̂‖   ∈ S² ∩ E_0.
+e_hat_fall(E) := −v / ‖v‖
+           = −(e_z − ⟨e_z, n_hat⟩ · n_hat) / ‖e_z − ⟨e_z, n_hat⟩ · n_hat‖   ∈ S² ∩ E_0.
 ```
 
-Das Vorzeichen ist so gewählt, dass ⟨ê_fall, e_z⟩ ≤ 0 (die Falllinie
+Das Vorzeichen ist so gewählt, dass ⟨e_hat_fall, e_z⟩ ≤ 0 (die Falllinie
 zeigt **nach unten**); das fixiert die antipodale Mehrdeutigkeit.
 
 **Äquivalente Charakterisierung über das doppelte Kreuzprodukt**: Mit
 der Lagrange-Identität (a × b) × c = (a · c) b − (b · c) a folgt für
-einen Einheitsnormalenvektor n̂
+einen Einheitsnormalenvektor n_hat
 
 ```
-(n̂ × e_z) × n̂ = (n̂ · n̂) · e_z − (e_z · n̂) · n̂ = e_z − ⟨e_z, n̂⟩ · n̂ = v,
+(n_hat × e_z) × n_hat = (n_hat · n_hat) · e_z − (e_z · n_hat) · n_hat = e_z − ⟨e_z, n_hat⟩ · n_hat = v,
 ```
 
 und damit
 
 ```
-ê_fall(E) = −((n̂ × e_z) × n̂) / ‖(n̂ × e_z) × n̂‖.
+e_hat_fall(E) = −((n_hat × e_z) × n_hat) / ‖(n_hat × e_z) × n_hat‖.
 ```
 
 Beide Formen liefern denselben Vektor; die Projektionsform ist
@@ -112,7 +112,7 @@ Einschränkung der Koordinatenfunktion (x, y, z) ↦ z auf E. z ist
 linear auf E mit Gradient ∇_E z = v / ‖v‖ ∈ E_0. Damit ist
 
 ```
-ê_fall(E) = −∇_E z / ‖∇_E z‖,
+e_hat_fall(E) = −∇_E z / ‖∇_E z‖,
 ```
 
 die Falllinie ist die normierte Richtung des steilsten Abfalls von z
@@ -120,58 +120,58 @@ auf E.
 
 Wesentliche abgeleitete Größen:
 
-- **Dachneigung entlang der Falllinie**: tan(α) = |⟨ê_fall, e_z⟩| /
-  ‖ê_fall − ⟨ê_fall, e_z⟩ · e_z‖ — die Höhenänderung pro
+- **Dachneigung entlang der Falllinie**: tan(α) = |⟨e_hat_fall, e_z⟩| /
+  ‖e_hat_fall − ⟨e_hat_fall, e_z⟩ · e_z‖ — die Höhenänderung pro
   horizontalem Weg entlang der Falllinie ist exakt der
   Steigungs-Tangens (siehe `dachneigung`).
 - **Höhenlinienrichtung**: jeder Einheitsvektor in E_0, der
-  orthogonal zu ê_fall steht, hat z-Komponente 0 und liegt
+  orthogonal zu e_hat_fall steht, hat z-Komponente 0 und liegt
   horizontal; das ist die Richtung der Höhenlinien (Niveaulinien
   von z auf E).
 
 ### Symbol-Konvention
 
-Das Symbol für die Falllinie ist im gesamten Glossar **`ê_fall`**
-(Einheitsvektor in S² ∩ E_0 mit ⟨ê_fall, e_z⟩ ≤ 0).
+Das Symbol für die Falllinie ist im gesamten Glossar **`e_hat_fall`**
+(Einheitsvektor in S² ∩ E_0 mit ⟨e_hat_fall, e_z⟩ ≤ 0).
 
 **Vorzeichenkonvention**: Aus der Definition folgt
-`⟨ê_fall, e_z⟩ ≤ 0`, d. h. die Falllinie zeigt **nach unten**
+`⟨e_hat_fall, e_z⟩ ≤ 0`, d. h. die Falllinie zeigt **nach unten**
 (geometrische Bergab-Richtung). Diese Konvention ist bindend für
 alle abgeleiteten Vorzeichen-Aussagen — insbesondere für die
 Vorzeichen-Empfehlung der Bauteilachse eines Sparrens, die
-**entgegen** `ê_fall` (bergauf, von Traufe zu Sparrenfirstpunkt)
+**entgegen** `e_hat_fall` (bergauf, von Traufe zu Sparrenfirstpunkt)
 zu wählen ist (siehe `bauteilachse`).
 
 ## Wohldefiniertheit
 
-- **Existenz**: Für ⟨e_z, n̂⟩ < 1 ist v = e_z − ⟨e_z, n̂⟩ · n̂ ≠ 0,
-  da e_z ≠ ⟨e_z, n̂⟩ · n̂ (sonst wäre e_z parallel zu n̂, also
-  ⟨e_z, n̂⟩ = 1). Damit ist die Division durch ‖v‖ wohldefiniert
-  und ê_fall ∈ S².
-- **Eindeutigkeit**: ê_fall ist als Lösung des Optimierungsproblems
-  „minimiere ⟨ê, e_z⟩ unter ê ∈ E_0 ∩ S²" eindeutig bestimmt, da
+- **Existenz**: Für ⟨e_z, n_hat⟩ < 1 ist v = e_z − ⟨e_z, n_hat⟩ · n_hat ≠ 0,
+  da e_z ≠ ⟨e_z, n_hat⟩ · n_hat (sonst wäre e_z parallel zu n_hat, also
+  ⟨e_z, n_hat⟩ = 1). Damit ist die Division durch ‖v‖ wohldefiniert
+  und e_hat_fall ∈ S².
+- **Eindeutigkeit**: e_hat_fall ist als Lösung des Optimierungsproblems
+  „minimiere ⟨e_hat, e_z⟩ unter e_hat ∈ E_0 ∩ S²" eindeutig bestimmt, da
   E_0 ∩ S² ein Großkreis auf S² ist und die Linearform ⟨·, e_z⟩
   auf einem Großkreis genau ein Minimum und ein Maximum hat
   (außer im entarteten Fall E_0 = e_z^⊥, der durch die
   Geneigtheits-Voraussetzung ausgeschlossen ist).
-- **Lage in E**: ê_fall liegt in E_0, denn
-  ⟨ê_fall, n̂⟩ = −⟨v, n̂⟩ / ‖v‖ und
-  ⟨v, n̂⟩ = ⟨e_z, n̂⟩ − ⟨e_z, n̂⟩ · ⟨n̂, n̂⟩ = 0 (für ‖n̂‖ = 1).
+- **Lage in E**: e_hat_fall liegt in E_0, denn
+  ⟨e_hat_fall, n_hat⟩ = −⟨v, n_hat⟩ / ‖v‖ und
+  ⟨v, n_hat⟩ = ⟨e_z, n_hat⟩ − ⟨e_z, n_hat⟩ · ⟨n_hat, n_hat⟩ = 0 (für ‖n_hat‖ = 1).
 - **Vorzeichenkonvention**: Die Wahl des negativen Vorzeichens
-  liefert ⟨ê_fall, e_z⟩ = −⟨v, e_z⟩/‖v‖ = −‖v‖²/‖v‖ = −‖v‖ ≤ 0.
-  Im Spezialfall α = π/2 (vertikale Ebene) wäre ⟨n̂, e_z⟩ = 0 und
-  ‖v‖ = 1, also ê_fall = −e_z; dieser Fall liegt jedoch außerhalb
+  liefert ⟨e_hat_fall, e_z⟩ = −⟨v, e_z⟩/‖v‖ = −‖v‖²/‖v‖ = −‖v‖ ≤ 0.
+  Im Spezialfall α = π/2 (vertikale Ebene) wäre ⟨n_hat, e_z⟩ = 0 und
+  ‖v‖ = 1, also e_hat_fall = −e_z; dieser Fall liegt jedoch außerhalb
   des Anwendungsbereichs für Dachflächen (`dachflaeche`-Bedingung 3:
   α < π/2).
 - **Unabhängigkeit von der Normalenwahl**: Die Definition verwendet
-  n̂ mit ⟨n̂, e_z⟩ > 0; die Wahl ist eindeutig (siehe
-  `dachflaeche`, äußere Normale). Die Vorzeichenwahl von n̂
-  ändert v nicht, da v in n̂ quadratisch eingeht.
-- **Numerische Wohldefiniertheit**: Für ⟨e_z, n̂⟩ ≤ 1 − ε_W mit
+  n_hat mit ⟨n_hat, e_z⟩ > 0; die Wahl ist eindeutig (siehe
+  `dachflaeche`, äußere Normale). Die Vorzeichenwahl von n_hat
+  ändert v nicht, da v in n_hat quadratisch eingeht.
+- **Numerische Wohldefiniertheit**: Für ⟨e_z, n_hat⟩ ≤ 1 − ε_W mit
   ε_W ≪ 1 ist ‖v‖² ≥ 2 ε_W − ε_W² ≈ 2 ε_W, also weit oberhalb
   der Norm-Toleranz. Die Division durch ‖v‖ ist numerisch sicher.
-- **Entartung bei α = 0**: Bei einer horizontalen Ebene (n̂ = ±e_z)
-  ist v = 0 und ê_fall ist nicht definiert; jeder horizontale
+- **Entartung bei α = 0**: Bei einer horizontalen Ebene (n_hat = ±e_z)
+  ist v = 0 und e_hat_fall ist nicht definiert; jeder horizontale
   Einheitsvektor in E_0 ist gleich „flach". Die Domänen-Schicht
   liefert in diesem Fall `Entartet.HorizontaleEbene`.
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
@@ -217,7 +217,7 @@ aber bisher nicht als eigenständige Glossareinträge geführt.
   z-Komponente.
 - **Dual / komplementär**: **Höhenlinienrichtung** — der
   Einheitsvektor in derselben Ebene mit verschwindender
-  z-Komponente; orthogonal zu ê_fall in E_0. Eigenständiger
+  z-Komponente; orthogonal zu e_hat_fall in E_0. Eigenständiger
   Glossareintrag folgt bei Bedarf.
 - **Verwendungskontext**:
   - `dachneigung`: tan(α) ist der Quotient aus vertikaler und
@@ -277,7 +277,7 @@ data class Falllinie internal constructor(
     val ebene: Ebene,
     val richtung: Einheitsvektor,
 ) {
-    val neigungswinkel: Double  // ∈ (0, π/2], = arccos(|⟨n̂, e_z⟩|)
+    val neigungswinkel: Double  // ∈ (0, π/2], = arccos(|⟨n_hat, e_z⟩|)
 
     fun istGleicheFalllinie(other: Falllinie, eps: Double = ...): Boolean
 
@@ -288,9 +288,9 @@ data class Falllinie internal constructor(
         ): Resultat<Falllinie, EntartetGeometrie> {
             val nHat = ebene.normale
             val nz = nHat.dz
-            // Punktmengen-Sicht: Test über |n_z|, damit n̂ → −n̂
-            // dasselbe Resultat liefert (v := e_z − ⟨e_z, n̂⟩·n̂ ist
-            // quadratisch in n̂).
+            // Punktmengen-Sicht: Test über |n_z|, damit n_hat → −n_hat
+            // dasselbe Resultat liefert (v := e_z − ⟨e_z, n_hat⟩·n_hat ist
+            // quadratisch in n_hat).
             if (1.0 - abs(nz) <= eps) {
                 return Resultat.Fehler(EntartetGeometrie.HorizontaleEbene)
             }
@@ -311,25 +311,25 @@ data class Falllinie internal constructor(
 - **Invariante** (Klasse `Falllinie`):
   1. ‖richtung‖ ∈ 1 ± Toleranzen.NORM_EPS (Einheitsvektor-
      Invariante, typsystem-getragen).
-  2. ⟨richtung, n̂⟩ ∈ 0 ± Toleranzen.WINKEL_EPS (liegt in der
+  2. ⟨richtung, n_hat⟩ ∈ 0 ± Toleranzen.WINKEL_EPS (liegt in der
      Ebene; orthogonal zur Normalen).
   3. ⟨richtung, e_z⟩ ≤ 0 (zeigt nach unten oder horizontal;
      letzteres nur im Grenzfall α → π/2 — vertikale Ebene mit
-     ê_fall = −e_z).
+     e_hat_fall = −e_z).
 - **Punktmengen-Sicht (Option A)**: Die Falllinie ist eine
-  Eigenschaft der Ebene als Punktmenge; die Wahl `n̂` vs. `−n̂`
+  Eigenschaft der Ebene als Punktmenge; die Wahl `n_hat` vs. `−n_hat`
   ändert das Resultat nicht. Der Geneigtheits-Test verwendet daher
-  `1 − |⟨n̂, e_z⟩|` (Betrag), und `bilde(e)` liefert dasselbe
+  `1 − |⟨n_hat, e_z⟩|` (Betrag), und `bilde(e)` liefert dasselbe
   wie `bilde(e.umkehrenNormale())`.
 - **Edge Cases / Entartet-Varianten**:
-  - **`EntartetGeometrie.HorizontaleEbene`**: 1 − |⟨n̂, e_z⟩| ≤
+  - **`EntartetGeometrie.HorizontaleEbene`**: 1 − |⟨n_hat, e_z⟩| ≤
     WINKEL_EPS, d. h. die Ebene ist horizontal (oder numerisch
     fast horizontal). Keine Falllinie definierbar; jeder
     horizontale Vektor in der Ebene wäre gleich „flach".
     Aufrufer entscheiden über die Reaktion (Default: keine
     Anzeige der Falllinie auf einem Flachdach).
-  - **Vertikale Ebene** (α = π/2, ⟨n̂, e_z⟩ = 0): geometrisch
-    zulässig; `bilde` liefert ê_fall = −e_z. Ist im
+  - **Vertikale Ebene** (α = π/2, ⟨n_hat, e_z⟩ = 0): geometrisch
+    zulässig; `bilde` liefert e_hat_fall = −e_z. Ist im
     Anwendungsbereich `dachflaeche` ausgeschlossen, in
     allgemeinen `ebene`-Kontexten aber gültig.
 - **Identität**: `istGleicheFalllinie` verlangt sowohl
@@ -342,10 +342,10 @@ data class Falllinie internal constructor(
 - **Folgearbeit / abgeleitete Operationen** (nicht Bestandteil
   dieser Phase, dokumentiert für später):
   - `Ebene.hoehenlinienRichtung(): Resultat<Einheitsvektor, EntartetGeometrie>`
-    = `n̂ × ê_fall`, horizontale Richtung in E orthogonal zur
+    = `n_hat × e_hat_fall`, horizontale Richtung in E orthogonal zur
     Falllinie.
   - `Ebene.steigungProzent(): Resultat<Double, EntartetGeometrie>`
-    = 100 · |⟨ê_fall, e_z⟩| / ‖ê_fall − ⟨ê_fall, e_z⟩ · e_z‖.
+    = 100 · |⟨e_hat_fall, e_z⟩| / ‖e_hat_fall − ⟨e_hat_fall, e_z⟩ · e_z‖.
 - **Verwendungsregel**: Die Factory `Falllinie.bilde(ebene)` ist
   auf `Ebene` definiert und damit auch auf der Trägerebene einer
   `Dachflaeche` verfügbar. Bauteilbezogene Aufrufer

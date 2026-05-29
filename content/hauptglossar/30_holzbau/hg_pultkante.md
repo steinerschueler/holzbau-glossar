@@ -81,8 +81,8 @@ Sei
 - ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz,
 - ε_L := Toleranzen.LAENGE_EPS die Längentoleranz,
 - für eine Strecke s = [a, b] der **Höhenmittelwert**
-  z̄(s) := ½ · (a_z + b_z) und das **Horizontalitätsmaß**
-  h(s) := |⟨ê(s), e_z⟩| (vgl. `traufe`).
+  z_bar(s) := ½ · (a_z + b_z) und das **Horizontalitätsmaß**
+  h(s) := |⟨e_hat(s), e_z⟩| (vgl. `traufe`).
 
 Die Menge der näherungsweise horizontalen Polygonrandkanten von D ist
 
@@ -108,10 +108,10 @@ Familie 𝒟 genau dann, wenn
 
 1. **Randkante**: p ⊂ ∂F(P) — p ist Polygonrandkante von D,
 2. **Horizontal**: h(p) ≤ ε_W — p verläuft näherungsweise horizontal,
-3. **Höchste Höhe**: z̄(p) ist Maximum unter allen Elementen
+3. **Höchste Höhe**: z_bar(p) ist Maximum unter allen Elementen
    von H(D), formal
    ```
-   z̄(p) = max { z̄(e) | e ∈ H(D) },
+   z_bar(p) = max { z_bar(e) | e ∈ H(D) },
    ```
    ausgewertet mit Toleranz ε_L auf der Vertikalen (mehrere Kanten
    gleicher Maximalhöhe sind zulässig und werden gemeinsam als
@@ -251,7 +251,7 @@ fun istPultkante(
     // 2. e ist näherungsweise horizontal
     val eHat = e.einheitsRichtung().werteOder { return false }
     if (abs(eHat dot Vektor.E_Z) > eps_W) return false
-    // 3. z̄(e) ist Maximum unter allen näherungsweise horizontalen
+    // 3. z_bar(e) ist Maximum unter allen näherungsweise horizontalen
     //    Polygonrandkanten von d
     val horizontale = d.umriss.kanten().filter { it.istHorizontal(eps_W) }
     val maxZ = horizontale.maxOf { it.hoehenMittelwert() }
@@ -271,7 +271,7 @@ fun istPultkante(
   2. Jede Teilstrecke der Polylinie ist Polygonrandkante der
      übergebenen Dachfläche.
   3. Jede Teilstrecke ist näherungsweise horizontal:
-     |ê · e_z| ≤ Toleranzen.WINKEL_EPS.
+     |e_hat · e_z| ≤ Toleranzen.WINKEL_EPS.
   4. Mittlere z-Höhe jeder Teilstrecke ist gleich dem Maximum der
      mittleren z-Höhen aller näherungsweise horizontalen
      Polygonrandkanten der Dachfläche, mit Toleranz

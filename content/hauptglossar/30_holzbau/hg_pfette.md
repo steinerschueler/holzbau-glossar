@@ -69,7 +69,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - e_z := (0, 0, 1)ᵀ die vertikale Achse,
 - ε_K := Toleranzen.KOLLINEAR_EPS,
   ε_W := Toleranzen.WINKEL_EPS,
@@ -84,7 +84,7 @@ Bedingungen erfüllt sind:
 2. **Horizontalitätsbedingung**: Die Bauteilachsenrichtung ist
    horizontal,
    ```
-   |⟨d̂, e_z⟩| ≤ ε_K,
+   |⟨d_hat, e_z⟩| ≤ ε_K,
    ```
    d. h. die Bauteilachse steht rechtwinklig zur Welt-Lotachse.
    Die Form des Tests ist ein **Sinus-Test gegen `e_z`-
@@ -97,9 +97,9 @@ Bedingungen erfüllt sind:
 3. **Parallelitätsbedingung zu einer Dachkante**: Es existiert
    mindestens eine Dachkante k (im Sinne von `dachkante`) der
    zugeordneten Dachfläche bzw. des Dachtragwerks, deren
-   Richtungs-Einheitsvektor d̂_k mit d̂ kollinear ist:
+   Richtungs-Einheitsvektor d_hat_k mit d_hat kollinear ist:
    ```
-   |⟨d̂, d̂_k⟩| ≥ 1 − ε_W.
+   |⟨d_hat, d_hat_k⟩| ≥ 1 − ε_W.
    ```
    In der Regel ist k eine Traufe, ein First oder eine
    Höhenlinie der zugeordneten Dachfläche.
@@ -108,7 +108,7 @@ Wesentliche abgeleitete Größen:
 
 - **Pfettenlänge**: L_P := ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen den Pfettenenden.
-- **Pfettenrichtung**: d̂ ∈ S² mit |⟨d̂, e_z⟩| ≤ ε_K.
+- **Pfettenrichtung**: d_hat ∈ S² mit |⟨d_hat, e_z⟩| ≤ ε_K.
 - **Pfetten-Höhenlage**: z_P := (p_a.z + p_e.z) / 2; bei einer
   exakt horizontalen Pfette gilt p_a.z = p_e.z = z_P.
 - **Pfettenanfang** und **Pfettenende** als Punkte: p_a, p_e (die
@@ -248,7 +248,7 @@ definiert. Hier nur als Verortung:
   - **Bauteilachse** (`bauteilachse.Gerade`, vom Bauteil geerbt);
   - **Querschnitt** (rechteckig, hochkant im Regelfall);
   - **Werkstoff** (Vollholz oder BSH);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_Pfette).
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_Pfette).
 - **Spezialisierungen** (eigene Glossareinträge):
   - **Firstpfette** (`firstpfette`): Pfette am First.
   - **Mittelpfette** (`mittelpfette`): Pfette zwischen Fuß- und
@@ -341,7 +341,7 @@ sealed class Pfette {
         get() = (achse.anfang.z + achse.ende.z) / 2.0
 
     /**
-     * Horizontalitätsprädikat: |⟨d̂, e_z⟩| ≤ KOLLINEAR_EPS.
+     * Horizontalitätsprädikat: |⟨d_hat, e_z⟩| ≤ KOLLINEAR_EPS.
      *
      * Sinus-Test gegen e_z-Parallelität; KOLLINEAR_EPS ist
      * bevorzugt für Lot- und Parallelitäts-Prädikate
@@ -370,11 +370,11 @@ sealed class PfetteEntartet {
   niemals Exception):
   1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
   2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. |⟨d̂, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst `NichtHorizontal`
+  3. |⟨d_hat, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst `NichtHorizontal`
      (Sinus-Test, bevorzugt für Lot-Prädikate; siehe
      `_KONVENTIONEN.md` Sektion 4).
   4. Existenz einer Dachkante k im Tragwerks-Kontext mit
-     |⟨d̂, d̂_k⟩| ≥ 1 − ε_W — sonst `KeineParallelKante`. Die
+     |⟨d_hat, d_hat_k⟩| ≥ 1 − ε_W — sonst `KeineParallelKante`. Die
      Bedingung wird in der Konstruktion mit Bezug auf die
      zugeordnete Dachfläche geprüft.
 - **Edge Cases**:

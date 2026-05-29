@@ -188,7 +188,7 @@ Sei
 - B ein Bauteil im Sinne von `bauteil` mit Stabgeometrie
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - BK ein Bundbalken (horizontales Zug-Element des Hängewerks) mit
   Bauteilachse a(BK) und Mittelpunkt m_BK = (p_a^BK + p_e^BK) / 2,
 - S₁, S₂ zwei Streben (schräge Druck-Elemente des Hängewerks) mit
@@ -211,7 +211,7 @@ erfüllt sind:
    p_a.z + ε_L < p_e.z.
    ```
    Im einfachen Hängewerk ist die Hängesäule typisch lotrecht
-   (‖d̂ × e_z‖ ≤ ε_K), im doppelten Hängewerk können beide
+   (‖d_hat × e_z‖ ≤ ε_K), im doppelten Hängewerk können beide
    Hängesäulen leicht aus dem Lot geneigt sein.
 
 3. **Bundbalken-Anker am unteren Endpunkt**: Der untere Endpunkt
@@ -253,7 +253,7 @@ erfüllt sind:
 Wesentliche abgeleitete Größen:
 
 - **Hängesäulen-Länge**: L_HS := ‖p_e − p_a‖ (in mm).
-- **Hängesäulen-Neigung**: α := acos(⟨d̂, e_z⟩) (in rad). Im
+- **Hängesäulen-Neigung**: α := acos(⟨d_hat, e_z⟩) (in rad). Im
   einfachen Hängewerk gilt typisch α ≤ ε_W (Lotrechtheit); im
   doppelten Hängewerk α leicht > ε_W.
 

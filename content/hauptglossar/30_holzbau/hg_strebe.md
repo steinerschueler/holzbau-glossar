@@ -156,18 +156,18 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - E_W eine Wandebene (Ebene im Sinne von `ebene`) mit Stützpunkt
-  p_W und Normalenvektor n̂_W ∈ S², wobei n̂_W horizontal liegt
-  (|⟨n̂_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
+  p_W und Normalenvektor n_hat_W ∈ S², wobei n_hat_W horizontal liegt
+  (|⟨n_hat_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
   HG_KONVENTIONEN.md §1, d. h. lotrecht),
 - A₁, A₂ zwei verschiedene Anker-Bauteile der Wand mit
   Bauteilachsen a(A₁) = (p_a^{A₁}, p_e^{A₁}) und a(A₂),
   wobei jedes A_i entweder ein **horizontales** Anker-Bauteil
   (Schwelle, Riegel, Rähm — Bauteilachse mit
-  ‖d̂_{A_i} − ⟨d̂_{A_i}, e_z⟩ e_z‖ > 1 − ε_K, gleichbedeutend
-  mit |⟨d̂_{A_i}, e_z⟩| ≤ ε_K) oder ein **lotrechtes** Anker-Bauteil
-  (Ständer, Pfosten — ‖d̂_{A_i} × e_z‖ ≤ ε_K) ist,
+  ‖d_hat_{A_i} − ⟨d_hat_{A_i}, e_z⟩ e_z‖ > 1 − ε_K, gleichbedeutend
+  mit |⟨d_hat_{A_i}, e_z⟩| ≤ ε_K) oder ein **lotrechtes** Anker-Bauteil
+  (Ständer, Pfosten — ‖d_hat_{A_i} × e_z‖ ≤ ε_K) ist,
 - e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
 - ε_K := Toleranzen.KOLLINEAR_EPS,
   ε_L := Toleranzen.LAENGE_EPS,
@@ -182,16 +182,16 @@ alle erfüllt sind:
 
 2. **Lage in der Wandebene**: Beide Endpunkte liegen in E_W,
    ```
-   |⟨p_a − p_W, n̂_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n̂_W⟩| ≤ ε_L.
+   |⟨p_a − p_W, n_hat_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n_hat_W⟩| ≤ ε_L.
    ```
 
 3. **Echte Diagonale (weder lotrecht noch horizontal)**: Der
-   Winkel α(B) := arccos(|⟨d̂, e_z⟩|) zwischen Bauteilachse und
+   Winkel α(B) := arccos(|⟨d_hat, e_z⟩|) zwischen Bauteilachse und
    Lotachse erfüllt
    ```
    ε_W < α(B) < π/2 − ε_W,
    ```
-   d. h. d̂ ist weder kollinear zu e_z (kein Ständer) noch
+   d. h. d_hat ist weder kollinear zu e_z (kein Ständer) noch
    rechtwinklig zu e_z (kein Riegel/Pfette).
 
 4. **Zwei-Anker-Bedingung mit mindestens einem horizontalen
@@ -234,7 +234,7 @@ Wesentliche abgeleitete Größen:
   60°–80° bei steilen Fachwerk-Streben — Wikipedia/Strebe
   „mindestens zwei gegenläufige Streben", baubeaver 70–75°-
   Praxis-Empfehlung).
-- **Wandebenen-Achsenrichtung**: t̂_W := projektiere d̂ in die
+- **Wandebenen-Achsenrichtung**: t_hat_W := projektiere d_hat in die
   Wandebene, dient als Default-Faserrichtung am Bauteil
   (Faserrichtung axial entlang der Bauteilachse).
 
@@ -477,7 +477,7 @@ Teil dieses Eintrags; die Versatz-Bearbeitung ist eigene
     „ständerstark" — TTH-Wortlaut — also gleicher Querschnitt
     wie die angrenzenden Ständer; im modernen Holzbau selten);
   - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_Strebe, also
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_Strebe, also
     axial entlang der diagonalen Bauteilachse).
 - **Positions-Annotation** (Merkmal an der Strebe, kein Subtyp):
   - **Strebenposition** (`StrebePosition`-Enum): Wert aus
@@ -572,11 +572,11 @@ data class Strebe(
     /**
      * Diagonal-Prädikat: weder lotrecht noch horizontal.
      *
-     * α(B) = arccos(|⟨d̂, e_z⟩|);  ε_W < α < π/2 − ε_W.
+     * α(B) = arccos(|⟨d_hat, e_z⟩|);  ε_W < α < π/2 − ε_W.
      */
     fun istDiagonal(eps: Double = Toleranzen.WINKEL_EPS): Boolean {
         val d = richtung
-        val cosAlpha = abs(d.z)              // |⟨d̂, e_z⟩| mit e_z = (0,0,1)
+        val cosAlpha = abs(d.z)              // |⟨d_hat, e_z⟩| mit e_z = (0,0,1)
         if (cosAlpha < eps) return false      // horizontal
         if (cosAlpha > 1.0 - eps) return false // lotrecht
         val alpha = acos(cosAlpha)
@@ -627,7 +627,7 @@ sealed class StrebeEntartet {
   `StrebeEntartet`-Variante; niemals Exception):
   1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
   2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. Wandebene lotrecht: |⟨n̂_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
+  3. Wandebene lotrecht: |⟨n_hat_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
      — sonst `WandebeneNichtLotrecht`.
   4. Beide Endpunkte in Wandebene (Punkt-Ebene-Abstand ≤
      Toleranzen.LAENGE_EPS) — sonst `NichtInWandebene`.
@@ -637,7 +637,7 @@ sealed class StrebeEntartet {
      (Punkt-Gerade-Abstand ≤ Toleranzen.LAENGE_EPS) — sonst
      `KeinAnkerAufBauteilachse`.
   8. Mindestens einer der Anker ist horizontal (Bauteilachse
-     mit |⟨d̂_A, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS) — sonst
+     mit |⟨d_hat_A, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS) — sonst
      `KeinHorizontalerAnker` (zwei Pfosten-Anker = Pfosten-zu-
      Pfosten-Strebe, ein zulässiger Sonderfall im historischen
      Fachwerkbau; in Welle 10 unter `KeinHorizontalerAnker`

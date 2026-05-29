@@ -72,29 +72,29 @@ und deren Höhenmasse dient.
 Sei
 
 - W das Welt-Koordinatensystem (siehe `weltkoordinatensystem`) mit
-  Ursprung O_W und Einheitsvektoren ê_x, ê_y, ê_z, wobei ê_z
+  Ursprung O_W und Einheitsvektoren e_hat_x, e_hat_y, e_hat_z, wobei e_hat_z
   vertikal nach oben zeigt,
 - T ein konkretes Modellierungs- oder Visualisierungs-Tool der App
   (Sparren-Tool, Wandschichtaufbau, Walmdach-Tool, …),
 - z₀(T) ∈ ℝ ein vom Tool T festgelegter **Bezugshöhenwert** (in mm),
-  gemessen entlang ê_z.
+  gemessen entlang e_hat_z.
 
 Dann ist die **Bezugsebene** des Tools T die Ebene
 
 ```
-E_bez(T) := { x ∈ ℝ³ | ⟨ê_z, x⟩ = z₀(T) },                       (1)
+E_bez(T) := { x ∈ ℝ³ | ⟨e_hat_z, x⟩ = z₀(T) },                       (1)
 ```
 
 in Hesse-Normalform (siehe `ebene`) repräsentiert durch das Paar
-(n̂, d) = (ê_z, z₀(T)). Die Bezugsebene ist horizontal in W
-(Normalenvektor ê_z) und liegt auf der Höhe z₀(T).
+(n_hat, d) = (e_hat_z, z₀(T)). Die Bezugsebene ist horizontal in W
+(Normalenvektor e_hat_z) und liegt auf der Höhe z₀(T).
 
 Wesentliche abgeleitete Grössen für ein Bauteil B mit
 Welt-Geometrie G_W(B) ⊂ ℝ³:
 
 - **Höhe gegen Bezugsebene** eines Punktes p ∈ G_W(B):
   ```
-  h_E(p; T) := ⟨ê_z, p⟩ − z₀(T) = signierterAbstand(p, E_bez(T)).  (2)
+  h_E(p; T) := ⟨e_hat_z, p⟩ − z₀(T) = signierterAbstand(p, E_bez(T)).  (2)
   ```
   Positive Werte liegen oberhalb, negative unterhalb der
   Bezugsebene.
@@ -124,7 +124,7 @@ an der Bauteilachse", Gleichungen (7a)/(7b)). Im Standardfall
 (x₀, 0, h_B / 2); in W ist p_K = T_{L_B → W}(p_K^lokal). Damit ist
 
 ```
-z₀(T_Sparren)  :=  ⟨ê_z, p_K⟩,                                    (3)
+z₀(T_Sparren)  :=  ⟨e_hat_z, p_K⟩,                                    (3)
 ```
 
 und die Bezugsebene des Sparren-Tools ist die horizontale Ebene
@@ -136,9 +136,9 @@ Komponente z(p_K); die Bezugsebene selbst bleibt eine Ebene.
 
 - **Existenz**: Für jedes Tool T mit festgelegtem z₀(T) ∈ ℝ ist
   E_bez(T) nach (1) eine wohldefinierte Ebene im Sinne von `ebene`
-  (Stützpunkt p₀ = (0, 0, z₀(T)), Normale n = ê_z; ‖n‖ = 1 > 0).
+  (Stützpunkt p₀ = (0, 0, z₀(T)), Normale n = e_hat_z; ‖n‖ = 1 > 0).
 - **Eindeutigkeit der Hesse-Repräsentation**: Mit der festgelegten
-  Normalen-Orientierung „nach oben" (n̂ = ê_z, nicht −ê_z) ist die
+  Normalen-Orientierung „nach oben" (n_hat = e_hat_z, nicht −e_hat_z) ist die
   Bezugsebene durch z₀(T) eindeutig (und nicht modulo Vorzeichen,
   vgl. `ebene` Wohldefiniertheit). Die Halbraum-Aussagen
   „oberhalb/unterhalb" sind damit ohne weitere Konvention
@@ -149,13 +149,13 @@ Komponente z(p_K); die Bezugsebene selbst bleibt eine Ebene.
   vorgesehen. Diese Lokalität ist analog zur IFC-Strukturierung
   über `IfcGeometricRepresentationContext`, der pro
   Repräsentations-Kontext ein eigenes Bezugssystem hält.
-- **Horizontalität (Default)**: Die Festlegung n̂ = ê_z ist
+- **Horizontalität (Default)**: Die Festlegung n_hat = e_hat_z ist
   Standard und garantiert, dass „Höhe gegen Bezugsebene" mit der
   Welt-z-Höhe (bis auf Konstante z₀(T)) übereinstimmt; das ist die
   einschlägige Lesart von „Höhenbezug" in DIN 18202 / SIA 414/1
   und in der Werkplan-Praxis.
 - **Wohldefiniertheit von h_E(p; T)**: Für jeden Punkt p ∈ ℝ³ ist
-  ⟨ê_z, p⟩ wohldefiniert (drittes Koordinaten-Skalarprodukt); die
+  ⟨e_hat_z, p⟩ wohldefiniert (drittes Koordinaten-Skalarprodukt); die
   Subtraktion z₀(T) ist eine Translation. Folglich ist h_E(p; T)
   eine wohldefinierte stetige Funktion auf ℝ³.
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
@@ -200,7 +200,7 @@ Glossareintrag „Bezugsebene" liefert nur den Rahmen.
 
 Im Standardfall (horizontaler Höhenbezug) ist die Bezugsebene
 geometrisch ein **Bleischnitt** (siehe `bleischnitt`): ihre
-Normale n̂ = ê_z liegt parallel zur Welt-Lotachse, die
+Normale n_hat = e_hat_z liegt parallel zur Welt-Lotachse, die
 Trägerebene steht rechtwinklig zur Lotrichtung und ist damit
 waagerecht. Eine Bezugsebene ist also typisch ein Bleischnitt
 mit zusätzlicher Bezugsrolle (Höhenreferenz für ein Tool); die
@@ -307,13 +307,13 @@ import domain.geometrie.Ebene
  * Glossar: hg_bezugsebene.md
  *
  * Pflichtfeld: bezugshoehe (z₀ in mm). Die Trägerebene ergibt sich
- * konstruktiv aus (n̂ = ê_z, d = bezugshoehe).
+ * konstruktiv aus (n_hat = e_hat_z, d = bezugshoehe).
  */
 @ConsistentCopyVisibility
 data class Bezugsebene internal constructor(
     val bezugshoehe: Double,        // z₀(T), mm in W
 ) {
-    /** Trägerebene als Ebene-Wert (Hesse-Normalform mit n̂ = ê_z). */
+    /** Trägerebene als Ebene-Wert (Hesse-Normalform mit n_hat = e_hat_z). */
     fun ebene(): Ebene = /* Ebene mit Normale (0, 0, 1), d = bezugshoehe */ TODO()
 
     companion object {
@@ -331,13 +331,13 @@ sealed class BezugsebeneUngueltig {
 ```
 
 - **Einheit**: Bezugshöhe in mm (Double). Welt-Achsenkonvention
-  ê_z vertikal nach oben.
+  e_hat_z vertikal nach oben.
 - **Identität**: keine UUID. Die Bezugsebene ist eine Werteklasse
   (data class), kein identifiziertes Objekt; sie gehört zur Tool-
   Konfiguration und teilt deren Lebenszyklus.
 - **Pflicht- und Optionalfelder**:
   - `bezugshoehe` — Pflicht, mm.
-  - Die Normale ist konstant ê_z (Standardfall horizontale
+  - Die Normale ist konstant e_hat_z (Standardfall horizontale
     Bezugsebene); für geneigte Bezugsebenen wird ein eigener Subtyp
     `GeneigteBezugsebene` als Folgearbeit vorgesehen (Trigger:
     erstes Tool mit nicht-horizontalem Höhenbezug).

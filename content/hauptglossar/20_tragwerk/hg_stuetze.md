@@ -177,7 +177,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - q_B = (q_max, q_min) die Querschnitts-Hauptabmessungen von B
   (größte und kleinste Abmessung im rechtwinklig zur Bauteilachse
   liegenden Querschnitt), q_min > 0,
@@ -194,9 +194,9 @@ alle erfüllt sind:
 2. **Lotrechtheit der Stützenachse**: Die Bauteilachsenrichtung ist
    kollinear zur Welt-Lotachse,
    ```
-   ‖d̂ × e_z‖ ≤ ε_K,
+   ‖d_hat × e_z‖ ≤ ε_K,
    ```
-   d. h. d̂ steht parallel zu e_z (Sinus-Test gegen e_z-Parallelität;
+   d. h. d_hat steht parallel zu e_z (Sinus-Test gegen e_z-Parallelität;
    nach HG_KONVENTIONEN.md §4 ist `KOLLINEAR_EPS` die einschlägige
    Toleranzkonstante für Lot- und Parallelitäts-Prädikate).
 
@@ -240,8 +240,8 @@ Wesentliche abgeleitete Größen:
 - **Stützenlänge**: L_St := ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen Fuß und Kopf. Bei exakt lotrechter Stütze gilt
   L_St = p_e.z − p_a.z.
-- **Stützenrichtung**: d̂ ∈ S² mit ‖d̂ × e_z‖ ≤ ε_K und d̂ · e_z > 0
-  (durch Bedingung 3 festgelegt). Damit ist d̂ ≈ +e_z.
+- **Stützenrichtung**: d_hat ∈ S² mit ‖d_hat × e_z‖ ≤ ε_K und d_hat · e_z > 0
+  (durch Bedingung 3 festgelegt). Damit ist d_hat ≈ +e_z.
 - **Querschnitts-Schlankheit**: q_max / q_min ∈ [1, 4].
 
 ## Wohldefiniertheit
@@ -252,7 +252,7 @@ Wesentliche abgeleitete Größen:
   im Skelettbau, jede Pfosten-Riegel-Fassaden-Stütze, jede
   BSH-Hallenbinder-Stütze ist Standardbeispiel.
 - **Eindeutigkeit der Stützenrichtung**: Bedingungen 2 und 3 fixieren
-  d̂ vollständig auf d̂ ≈ +e_z bis auf ε_K.
+  d_hat vollständig auf d_hat ≈ +e_z bis auf ε_K.
 - **Disjunktheit zu `staender`**: Bedingung 6 grenzt die Stütze gegen
   den Ständer ab. Ein Bauteil, das sowohl Bedingungen 1–5 dieses
   Eintrags als auch Bedingungen 1–6 von `hg_staender.md` erfüllt
@@ -423,7 +423,7 @@ Quellenkonflikt-Punkt 4) — die Lemma-Wahl im Glossar bleibt aber bei
   - **Werkstoff** (Vollholz, BSH, BSP, LVL, Stahl, Stahlbeton,
     Mauerwerk);
   - **Faserrichtung** (Annotation bei Holz-Stützen, Default
-    ‖ d̂_Stütze).
+    ‖ d_hat_Stütze).
 - **Spezialisierungen** (eigene Einträge folgen trigger-basiert):
   - `saeule` (Welle 13, Cluster `20_tragwerk/`): architektonisch-
     klassischer Subtyp mit Säulenordnung (Basis-Schaft-Kapitell).
@@ -530,7 +530,7 @@ data class Stuetze(
     val fuss: Punkt get() = achse.anfang
     val kopf: Punkt get() = achse.ende
 
-    /** Lotrechtheitsprädikat: ‖d̂ × e_z‖ ≤ KOLLINEAR_EPS. */
+    /** Lotrechtheitsprädikat: ‖d_hat × e_z‖ ≤ KOLLINEAR_EPS. */
     fun istLotrecht(eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean {
         val d = richtung
         val sinusQuadrat = d.x * d.x + d.y * d.y
@@ -564,7 +564,7 @@ sealed class StuetzeEntartet {
   niemals Exception):
   1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
   2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. ‖d̂ × e_z‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst `NichtLotrecht`.
+  3. ‖d_hat × e_z‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst `NichtLotrecht`.
   4. p_a.z + Toleranzen.LAENGE_EPS < p_e.z — sonst
      `FalscheOrientierung`.
   5. q_max ≤ 4·q_min — sonst `QuerschnittWandartig`.

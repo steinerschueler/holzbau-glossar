@@ -74,7 +74,7 @@ mit drei Dachebenen gezeigt, hier liegt der Grundriss in der
 Draufsicht — beide Skizzen zusammen ergeben ein vollständiges Bild
 der Walm-Kehl-Dach-Geometrie.
 
-Die Welt-Pfeile **ê_h** und **ê_v** unten rechts orientieren die
+Die Welt-Pfeile **e_hat_h** und **e_hat_v** unten rechts orientieren die
 Draufsicht; in der Draufsicht zeigen beide Pfeile in der Welt
 horizontal — sie spannen die welt-horizontale Grundrissebene auf,
 auf der das Polygon liegt.
@@ -130,8 +130,8 @@ auf der das Polygon liegt.
       bei E4 betraegt 270 Grad, d.h. > 180 Grad: einspringend.
       Bei E1..E3, E5, E6 ist der Innenwinkel jeweils 90 Grad < 180
       Grad: ausspringend.
-    Welt-Achsen (Draufsicht): ê_h nach rechts (Welt-horizontal Ost),
-    ê_v nach oben (Welt-horizontal Nord). In der Draufsicht zeigt
+    Welt-Achsen (Draufsicht): e_hat_h nach rechts (Welt-horizontal Ost),
+    e_hat_v nach oben (Welt-horizontal Nord). In der Draufsicht zeigt
     KEIN Pfeil das Lot — das Lot weist aus dem Bild heraus auf den
     Betrachter zu. Beide Bild-Pfeile spannen die Grundrissebene auf.
   DACHAUSMITTLUNG (gepunktet, andeutend)
@@ -169,7 +169,7 @@ auf der das Polygon liegt.
         der SG-Pilots — die Eckform wird durch das Text-Etikett
         und das Wort "G" / "K" daneben markiert.)
     (3) Draufsicht: SVG-y wachst nach unten; in der Welt ist das
-        "Sued" (negative Nordrichtung). Welt-Pfeil ê_v zeigt aber
+        "Sued" (negative Nordrichtung). Welt-Pfeil e_hat_v zeigt aber
         Welt-NORD = SVG-y-negativ = nach OBEN im Bild — das ist
         in den anderen SG-Pilots gleich gehandhabt.
   ====================================================================
@@ -230,10 +230,10 @@ auf der das Polygon liegt.
     <text x="-12" y="5" text-anchor="end" font-size="11" fill="#666">Welt:</text>
     <line x1="0" y1="0" x2="38" y2="0" stroke="#2c3e50" stroke-width="1.5"/>
     <polygon points="38,0 33,-3 33,3" fill="#2c3e50"/>
-    <text x="42" y="5" font-style="italic">ê_h</text>
+    <text x="42" y="5" font-style="italic">e_hat_h</text>
     <line x1="0" y1="0" x2="0" y2="-38" stroke="#2c3e50" stroke-width="1.5"/>
     <polygon points="0,-38 -3,-33 3,-33" fill="#2c3e50"/>
-    <text x="4" y="-42" font-style="italic">ê_v</text>
+    <text x="4" y="-42" font-style="italic">e_hat_v</text>
     <circle cx="0" cy="0" r="2" fill="#2c3e50"/>
   </g>
 </svg>

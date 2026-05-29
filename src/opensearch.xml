@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Holzbau-Glossar</ShortName>
+  <Description>Präzises, normativ belegtes Glossar zum Holzbau — Hauptbegriffe und didaktische Subglossar-Hülle, frei zugänglich unter CC BY 4.0.</Description>
+  <Language>de</Language>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image height="16" width="16" type="image/png">https://holzbau-glossar.ch/assets/images/favicon.png</Image>
+  <Url type="text/html"
+       template="https://holzbau-glossar.ch/?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml"
+       rel="self"
+       template="https://holzbau-glossar.ch/opensearch.xml"/>
+  <moz:SearchForm xmlns:moz="http://www.mozilla.org/2006/browser/search/">https://holzbau-glossar.ch/</moz:SearchForm>
+</OpenSearchDescription>

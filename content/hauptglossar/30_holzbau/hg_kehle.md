@@ -43,7 +43,7 @@ quellenkonflikt: |
   - **Kehle**: konkav/einspringend (Innenecke).
   Die mathematische Schärfung der qualitativen Begriffe „ausspringend"
   / „einspringend" durch das Vorzeichen des Spatprodukts
-  ⟨n̂_a × n̂_b, t̂⟩ ist eigene Festlegung; sie ist konsistent mit allen
+  ⟨n_hat_a × n_hat_b, t_hat⟩ ist eigene Festlegung; sie ist konsistent mit allen
   konsultierten Quellen, die nur die qualitativen Begriffe verwenden.
 
   Klassifikation: Eine Kante einer Dachflächenfamilie soll genau einer
@@ -80,17 +80,17 @@ Sei
 - ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz,
 - ε_L := Toleranzen.LAENGE_EPS die Längentoleranz.
 
-Sei ℓ(s_{ij}) > ε_L und t̂ der Einheits-Tangentenvektor von s_{ij},
-mit der Konvention ⟨t̂, e_z⟩ > 0 (Tangente nach oben orientiert; vgl.
+Sei ℓ(s_{ij}) > ε_L und t_hat der Einheits-Tangentenvektor von s_{ij},
+mit der Konvention ⟨t_hat, e_z⟩ > 0 (Tangente nach oben orientiert; vgl.
 `grat`).
 
 Eine Schnittstrecke s_{ij} heißt **geneigt**, wenn
 
 ```
-|⟨t̂, e_z⟩| > ε_W                                            (1)
+|⟨t_hat, e_z⟩| > ε_W                                            (1)
 ```
 
-(d. h. t̂ ist nicht näherungsweise horizontal — diese Bedingung grenzt
+(d. h. t_hat ist nicht näherungsweise horizontal — diese Bedingung grenzt
 Kehle und Grat gemeinsam vom First ab).
 
 Eine geneigte Schnittstrecke s_{ij} heißt **konkav** (einspringend),
@@ -100,17 +100,17 @@ Mit derselben kanonischen Vorzeichenwahl σ(i, j) wie in `hg_grat.md`
 (Konvention: positives Spatprodukt = konvex/Grat) verlangen wir
 
 ```
-⟨ n̂_{a,i} × n̂_{a,j}, t̂ ⟩  ·  σ(i, j)  <  −ε_W.            (2)
+⟨ n_hat_{a,i} × n_hat_{a,j}, t_hat ⟩  ·  σ(i, j)  <  −ε_W.            (2)
 ```
 
 Äquivalente, vorzeichen-symmetrische Schreibweise:
 
 ```
-sign( ⟨ n̂_{a,i} × n̂_{a,j}, t̂ ⟩ )_kanonisch  =  −                (2')
+sign( ⟨ n_hat_{a,i} × n_hat_{a,j}, t_hat ⟩ )_kanonisch  =  −                (2')
 ```
 
 Anschaulich gleichwertig ist die Bedingung, dass die Winkelhalbierende
-beider äußerer Normalen unterhalb der durch g_{ij} und t̂ aufgespannten
+beider äußerer Normalen unterhalb der durch g_{ij} und t_hat aufgespannten
 Ebene liegt, also nach innen-unten zeigt.
 
 Eine Schnittstrecke s_{ij} heißt **Kehle** der Dachflächenfamilie 𝒟
@@ -120,7 +120,7 @@ genau dann, wenn
 2. s_{ij} ist **geneigt** im Sinne von (1),
 3. s_{ij} ist **konkav** im Sinne von (2),
 4. beide äußeren Normalen weisen in die obere Halbkugel:
-   ⟨n̂_{a,i}, e_z⟩ > 0 und ⟨n̂_{a,j}, e_z⟩ > 0 (Ausschluss
+   ⟨n_hat_{a,i}, e_z⟩ > 0 und ⟨n_hat_{a,j}, e_z⟩ > 0 (Ausschluss
    senkrechter Wände).
 
 Die Vereinigung aller so identifizierten Schnittstrecken bildet,
@@ -131,16 +131,16 @@ einer oder zwei Strecken pro einspringender Ecke.
 
 ## Wohldefiniertheit
 
-- **Existenz der Tangente**: Wegen ℓ(s_{ij}) > ε_L ist t̂
-  wohldefiniert. Die Konvention ⟨t̂, e_z⟩ > 0 ist wegen (1) erfüllbar
+- **Existenz der Tangente**: Wegen ℓ(s_{ij}) > ε_L ist t_hat
+  wohldefiniert. Die Konvention ⟨t_hat, e_z⟩ > 0 ist wegen (1) erfüllbar
   und legt die Orientierung eindeutig fest.
 - **Unabhängigkeit von der Indexreihenfolge**: Beim Vertauschen
-  i ↔ j wechseln sowohl n̂_{a,i} × n̂_{a,j} als auch σ(i, j) ihr
+  i ↔ j wechseln sowohl n_hat_{a,i} × n_hat_{a,j} als auch σ(i, j) ihr
   Vorzeichen; das Produkt in (2) bleibt invariant.
-- **Unabhängigkeit von der Punktwahl**: t̂ ist auf der ganzen
+- **Unabhängigkeit von der Punktwahl**: t_hat ist auf der ganzen
   Strecke konstant; die Bedingungen (1) und (2) sind punktunabhängig.
-- **Disjunktheit zu First**: First verlangt |⟨t̂, e_z⟩| ≤ ε_W;
-  Kehle verlangt |⟨t̂, e_z⟩| > ε_W.
+- **Disjunktheit zu First**: First verlangt |⟨t_hat, e_z⟩| ≤ ε_W;
+  Kehle verlangt |⟨t_hat, e_z⟩| > ε_W.
 - **Disjunktheit zu Grat**: Grat verlangt das Spatprodukt
   > +ε_W (konvex), Kehle verlangt < −ε_W (konkav). Dazwischen
   liegt das Toleranzband [−ε_W, +ε_W], das als Entartung
@@ -169,7 +169,7 @@ verläuft im Tragwerk häufig ein **Kehlsparren**. Diese Bauteile sind
 nicht Bestandteil der geometrischen Kehlkante.
 
 Anschauliche Konkavitätsprüfung: Die beiden äußeren Normalen
-n̂_{a,i} und n̂_{a,j} weisen an einer Kehle gewissermaßen
+n_hat_{a,i} und n_hat_{a,j} weisen an einer Kehle gewissermaßen
 **gegeneinander** (beide in Richtung der jeweils anderen Dachfläche
 „über" der Kehlinie); ihre Winkelhalbierende zeigt nach
 **oben-zentral** und die Geometrie öffnet sich nach oben wie eine
@@ -268,7 +268,7 @@ fun istKehle(
   1. ℓ(polylinie) > Toleranzen.LAENGE_EPS — sonst `Entartet.Nullkante`.
   2. Jede Teilstrecke der Polylinie liegt im Schnittbereich
      F(P_A) ∩ F(P_B) der beiden anliegenden Dachflächen.
-  3. Jede Teilstrecke ist geneigt: |t̂ · e_z| > Toleranzen.WINKEL_EPS.
+  3. Jede Teilstrecke ist geneigt: |t_hat · e_z| > Toleranzen.WINKEL_EPS.
   4. Beide äußeren Normalen weisen mit positiver z-Komponente nach
      oben.
   5. Konkavitätsbedingung (2) erfüllt.
@@ -288,7 +288,7 @@ fun istKehle(
 - **Abgeleitete Operationen**:
   - `fun kehllaenge(): Double` (mm) = ℓ(polylinie).
   - `fun kehllinie(): Streckenzug` = polylinie.
-  - `fun kehlneigung(): Double` = arcsin(|t̂ · e_z|) (Winkel der
+  - `fun kehlneigung(): Double` = arcsin(|t_hat · e_z|) (Winkel der
     Kehllinie gegen die Horizontale; Bezugsmaß für die Bemessung
     von Kehlsparren und Kehlblech-Längen).
 

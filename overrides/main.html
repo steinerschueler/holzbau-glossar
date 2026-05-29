@@ -11,6 +11,13 @@
 
 {% block extrahead %}
   {{ super() }}
+  {# OpenSearch-Description — Browser bieten die Site als Suchquelle
+     in der Adressleiste an. Gilt für jede Seite, nicht nur Glossar. #}
+  <link rel="search"
+        type="application/opensearchdescription+xml"
+        title="Holzbau-Glossar"
+        href="{{ config.site_url }}opensearch.xml">
+
   {% set is_glossar = page and page.url and (
        page.url.startswith('ressourcen/') or
        page.url.startswith('kern/') or
@@ -22,7 +29,7 @@
     {% set entry_url = config.site_url ~ page.url %}
     {% set build_date = config.extra.build_date if config.extra and config.extra.build_date else '' %}
     <meta name="citation_title" content="{{ title }}">
-    <meta name="citation_author" content="Naville, Eric">
+    <meta name="citation_author" content="{{ config.site_author }}">
     <meta name="citation_publication_date" content="{{ build_date }}">
     <meta name="citation_publisher" content="holzbau-glossar.ch">
     <meta name="citation_language" content="de">
@@ -30,7 +37,7 @@
     <meta name="citation_doi" content="10.5281/zenodo.20435319">
     {# Dublin Core #}
     <meta name="DC.title" content="{{ title }}">
-    <meta name="DC.creator" content="Naville, Eric">
+    <meta name="DC.creator" content="{{ config.site_author }}">
     <meta name="DC.publisher" content="holzbau-glossar.ch">
     <meta name="DC.date" content="{{ build_date }}">
     <meta name="DC.language" content="de">
@@ -46,5 +53,34 @@
     {% if page.meta and page.meta.benennung %}
       <meta property="og:description" content="Hauptglossar-Eintrag „{{ title }}" — präzise, normativ belegte Definition zum Holzbau, frei nutzbar unter CC BY 4.0.">
     {% endif %}
+
+    {# JSON-LD nach schema.org/DefinedTerm — macht jeden Eintrag für
+       Suchmaschinen als Glossar-Definition strukturell erkennbar.
+       inDefinedTermSet verweist auf das Glossar als Sammlung, identifiziert
+       über die Concept-DOI. Synonyme und Prosa-Auszug kommen aus dem
+       Frontmatter (vom Build-Hook ergänzt). #}
+    {% set ld_name = page.meta.benennung if page.meta and page.meta.benennung else title %}
+    {% set ld_description = page.meta.prosa_excerpt if page.meta and page.meta.prosa_excerpt else None %}
+    {% set ld_synonyme = page.meta.synonyme if page.meta and page.meta.synonyme else [] %}
+    {% set ld_id = page.meta.id if page.meta and page.meta.id else None %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DefinedTerm",
+      "name": {{ ld_name | tojson }},
+      {% if ld_synonyme %}"alternateName": {{ ld_synonyme | tojson }},{% endif %}
+      {% if ld_id %}"identifier": {{ ld_id | tojson }},{% endif %}
+      {% if ld_description %}"description": {{ ld_description | tojson }},{% endif %}
+      "url": {{ entry_url | tojson }},
+      "inLanguage": "de",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isPartOf": {
+        "@type": "DefinedTermSet",
+        "name": "Holzbau-Glossar",
+        "url": "https://holzbau-glossar.ch/",
+        "identifier": "doi:10.5281/zenodo.20435319"
+      }
+    }
+    </script>
   {% endif %}
 {% endblock %}

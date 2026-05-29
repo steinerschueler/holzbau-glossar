@@ -110,9 +110,9 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - A(B) = Bauteilachse(B) die Bauteilachse mit Anfangspunkt p_a und
   Endpunkt p_e (siehe `bauteilachse`), Tangentenrichtung
-  d̂(s) ∈ S² an der Stelle s ∈ [0, L],
+  d_hat(s) ∈ S² an der Stelle s ∈ [0, L],
 - E_S eine **Trägerebene** im Sinne von `ebene` durch den
-  jeweiligen Bauteilendpunkt mit Einheitsnormaler n̂_S ∈ S²,
+  jeweiligen Bauteilendpunkt mit Einheitsnormaler n_hat_S ∈ S²,
 - ∂F_S ⊂ E_S ein **Polygon in Berandungs-Lesart** (siehe
   `hg_polygon.md`, Abschnitt „Zwei zulässige Lesarten"), das die
   Bauteilberandung an dem jeweiligen Bauteilende bildet,
@@ -121,7 +121,7 @@ Sei
 **Stirnseite am Bauteilanfang** (s = 0):
 
 ```
-S_a(B) := (∂F_S^{(a)}, E_S^{(a)}, n̂_S^{(a)}, p_a)                   (1)
+S_a(B) := (∂F_S^{(a)}, E_S^{(a)}, n_hat_S^{(a)}, p_a)                   (1)
           mit ∂F_S^{(a)} = Bauteilberandung von B in E_S^{(a)}
           am Bauteilanfang p_a.
 ```
@@ -129,17 +129,17 @@ S_a(B) := (∂F_S^{(a)}, E_S^{(a)}, n̂_S^{(a)}, p_a)                   (1)
 **Stirnseite am Bauteilende** (s = L):
 
 ```
-S_e(B) := (∂F_S^{(e)}, E_S^{(e)}, n̂_S^{(e)}, p_e)                   (2)
+S_e(B) := (∂F_S^{(e)}, E_S^{(e)}, n_hat_S^{(e)}, p_e)                   (2)
           mit ∂F_S^{(e)} = Bauteilberandung von B in E_S^{(e)}
           am Bauteilende p_e.
 ```
 
 Im **prismatischen Standardfall** (rechtwinkliger Endschnitt) gilt
-für die Trägerebenen-Normale n̂_S der Stirnseiten-Ebene
+für die Trägerebenen-Normale n_hat_S der Stirnseiten-Ebene
 
 ```
-|⟨n̂_S^{(a)}, d̂(0)⟩| ≥ 1 − ε_W,                                      (3)
-|⟨n̂_S^{(e)}, d̂(L)⟩| ≥ 1 − ε_W.                                      (3')
+|⟨n_hat_S^{(a)}, d_hat(0)⟩| ≥ 1 − ε_W,                                      (3)
+|⟨n_hat_S^{(e)}, d_hat(L)⟩| ≥ 1 − ε_W.                                      (3')
 ```
 
 In diesem Fall liegt die Stirnseiten-Ebene rechtwinklig zur
@@ -154,11 +154,11 @@ der App-Querschnitts-Hierarchie verbunden wird.
 Im Fall eines **Anschnitts** (Bearbeitungs-Subtyp `anschnitt`,
 Folgearbeit) am Bauteilende ist die Stirnseite eine ebene
 polygonal berandete Punktmenge in einer Anschnittebene E_AS, deren
-Normale n̂_AS einen Winkel α_AS ∈ (ε_W, π/2 − ε_W) mit d̂(L)
+Normale n_hat_AS einen Winkel α_AS ∈ (ε_W, π/2 − ε_W) mit d_hat(L)
 einschließt:
 
 ```
-|⟨n̂_AS, d̂(L)⟩| = cos(α_AS) < 1 − ε_W.                              (4)
+|⟨n_hat_AS, d_hat(L)⟩| = cos(α_AS) < 1 − ε_W.                              (4)
 ```
 
 Die Stirnseite bleibt eine ebene polygonal berandete Punktmenge
@@ -173,12 +173,12 @@ Konvention) erfüllt sind. Der zugehörige Begriff `anschnitt`
 dessen Resultat eine modifizierte Stirnseite ist.
 
 **Faserrichtungs-Bedingung** (zur Abgrenzung von der Längsseite,
-siehe `laengsseite`): Sei f̂ ∈ S² die Faserrichtung des Bauteils
+siehe `laengsseite`): Sei f_hat ∈ S² die Faserrichtung des Bauteils
 (siehe `faserrichtung`, Modus HART). Dann gilt für eine Stirnseite
-mit Trägerebenen-Normaler n̂_S
+mit Trägerebenen-Normaler n_hat_S
 
 ```
-|⟨n̂_S, f̂⟩| > sin(α_grenz),                                         (5)
+|⟨n_hat_S, f_hat⟩| > sin(α_grenz),                                         (5)
 ```
 
 mit einem Anschnittwinkel-Grenzwert α_grenz typisch zwischen 0 und
@@ -215,14 +215,14 @@ keine Validierungsregel.
   rechtwinklig zur Bauteilachse), in diesem Fall festgelegt durch
   den Bauteilendpunkt und die Tangentenrichtung der Bauteilachse.
   Im Anschnittfall ist E_S durch den Bauteilendpunkt und die
-  Anschnitt-Normale n̂_AS festgelegt; sie wird bei der Anschnitt-
+  Anschnitt-Normale n_hat_AS festgelegt; sie wird bei der Anschnitt-
   Bearbeitung konstruktiv erzeugt (siehe `bearbeitung`-Subtyp
   `anschnitt`, Folgearbeit). In beiden Fällen ist die Trägerebene
   eindeutig (modulo Vorzeichen, vgl. `ebene` Wohldefiniertheits-
   Abschnitt). Die kanonische Vorzeichenwahl ist „äußere Normale",
-  also n̂_S^{(a)} := −d̂(0) (Anfangs-Stirnseite, prismatisch) bzw.
-  n̂_S^{(e)} := +d̂(L) (End-Stirnseite, prismatisch); im
-  Anschnittfall zeigt n̂_AS analog aus dem Bauteil heraus.
+  also n_hat_S^{(a)} := −d_hat(0) (Anfangs-Stirnseite, prismatisch) bzw.
+  n_hat_S^{(e)} := +d_hat(L) (End-Stirnseite, prismatisch); im
+  Anschnittfall zeigt n_hat_AS analog aus dem Bauteil heraus.
 - **Anschnitt als Sonderfall**: Bei einem Anschnitt (Bearbeitung
   am Bauteilende) bleibt das Bauteilende eine ebene Schnittfläche;
   der Anschnitt ändert nur den Schnittwinkel α_AS und damit die
@@ -347,7 +347,7 @@ geführt.
   - **Trägerebene** E (geerbt von `querschnitt`).
   - **Polygonberandung** ∂QS am Bauteilende (geerbt von
     `querschnitt`, konkret `polygon`).
-  - **Aussennormalen-Vektor** n̂_S (per Konvention aus dem Bauteil
+  - **Aussennormalen-Vektor** n_hat_S (per Konvention aus dem Bauteil
     heraus zeigend).
   - **Bauteil-Endpunkt-Position**: p_a (Anfangsstirnseite) bzw. p_e
     (Endstirnseite).
@@ -432,19 +432,19 @@ import domain.geometrie.Vektor
  * Querschnitt.
  *
  * Trägerpolygon ∂F_S in Berandungs-Lesart (siehe hg_polygon.md);
- * Aussennormale n̂_S zeigt per Konvention aus dem Bauteil heraus.
+ * Aussennormale n_hat_S zeigt per Konvention aus dem Bauteil heraus.
  */
 data class Stirnseite(
     val berandung: KonvexesPolygon,   // ∂F_S in Berandungs-Lesart
     val position: Endposition,        // ANFANG | ENDE
-    val aussennormale: Vektor,        // n̂_S, ‖aussennormale‖ ≈ 1
+    val aussennormale: Vektor,        // n_hat_S, ‖aussennormale‖ ≈ 1
     val bezugspunkt: Punkt,           // p_a bzw. p_e
 )
 
 /** An welchem Ende des Bauteils die Stirnseite liegt. */
 enum class Endposition {
-    ANFANG,   // s = 0, n̂_S := −d̂(0)
-    ENDE,     // s = L, n̂_S := +d̂(L)
+    ANFANG,   // s = 0, n_hat_S := −d_hat(0)
+    ENDE,     // s = L, n_hat_S := +d_hat(L)
 }
 ```
 

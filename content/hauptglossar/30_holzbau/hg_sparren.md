@@ -43,9 +43,9 @@ quellenkonflikt: |
     Dachfläche und entlang ihrer Falllinie liegt.
   - Die Vorzeichenkonvention für die Bauteilachse ist normativ
     festgelegt: p_a am Sparrenfuß (Traufe), p_e am Sparrenfirstpunkt
-    (First); damit zeigt der Richtungs-Einheitsvektor d̂ entlang
+    (First); damit zeigt der Richtungs-Einheitsvektor d_hat entlang
     der Falllinie der Dachfläche **nach oben**, also entgegen der
-    Falllinie ê_fall (siehe `hg_falllinie.md`). Das ist konsistent mit
+    Falllinie e_hat_fall (siehe `hg_falllinie.md`). Das ist konsistent mit
     der Empfehlung in `hg_bauteilachse.md`, Abschnitt
     Vorzeichenkonvention.
   - Die Sparrenneigung ist gleich der Dachneigung der zugeordneten
@@ -98,11 +98,11 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - D = (E, P, n_a) eine Dachfläche im Sinne von `dachflaeche` mit
   Trägerebene E, Polygon P und äußerer Normaler n_a,
-- ê_fall(E) ∈ S² die Falllinie der Trägerebene E (siehe
-  `falllinie`); d. h. ⟨ê_fall, e_z⟩ ≤ 0,
+- e_hat_fall(E) ∈ S² die Falllinie der Trägerebene E (siehe
+  `falllinie`); d. h. ⟨e_hat_fall, e_z⟩ ≤ 0,
 - ε_W := Toleranzen.WINKEL_EPS, ε_L := Toleranzen.LAENGE_EPS.
 
 Dann heißt B ein **Sparren** der Dachfläche D genau dann, wenn die
@@ -122,18 +122,18 @@ folgenden Bedingungen erfüllt sind:
 3. **Falllinien-Kollinearität**: Die Bauteilachsenrichtung ist
    kollinear zur Falllinie der Trägerebene,
    ```
-   |⟨d̂, ê_fall(E)⟩| ≥ 1 − ε_W,
+   |⟨d_hat, e_hat_fall(E)⟩| ≥ 1 − ε_W,
    ```
-   d. h. der Winkel zwischen d̂ und ê_fall ist 0 oder π (modulo
+   d. h. der Winkel zwischen d_hat und e_hat_fall ist 0 oder π (modulo
    ε_W).
 
 4. **Vorzeichenkonvention (Sparrenrichtung von Traufe zu First)**:
-   Die Bauteilachse ist so gerichtet, dass d̂ **entgegen** ê_fall
+   Die Bauteilachse ist so gerichtet, dass d_hat **entgegen** e_hat_fall
    verläuft, also nach oben:
    ```
-   ⟨d̂, ê_fall(E)⟩ ≤ −1 + ε_W,
+   ⟨d_hat, e_hat_fall(E)⟩ ≤ −1 + ε_W,
    ```
-   äquivalent ⟨d̂, e_z⟩ ≥ 0. p_a ist damit der Sparrenfuß
+   äquivalent ⟨d_hat, e_z⟩ ≥ 0. p_a ist damit der Sparrenfuß
    (an oder nahe der Traufe), p_e der Sparrenfirstpunkt (an oder nahe
    am First bzw. der Pultkante).
 
@@ -143,10 +143,10 @@ Wesentliche abgeleitete Größen:
   Bauteilachse zwischen Sparrenfuß und Sparrenfirstpunkt.
 - **Sparrenneigung** (= Dachneigung der zugeordneten Dachfläche):
   ```
-  α_S := arccos(⟨n_a, e_z⟩) = arccos(⟨d̂, ê_horiz⟩),
+  α_S := arccos(⟨n_a, e_z⟩) = arccos(⟨d_hat, e_hat_horiz⟩),
   ```
-  wobei ê_horiz := −(ê_fall − ⟨ê_fall, e_z⟩ · e_z) /
-  ‖ê_fall − ⟨ê_fall, e_z⟩ · e_z‖ die in die Horizontalebene
+  wobei e_hat_horiz := −(e_hat_fall − ⟨e_hat_fall, e_z⟩ · e_z) /
+  ‖e_hat_fall − ⟨e_hat_fall, e_z⟩ · e_z‖ die in die Horizontalebene
   projizierte und nach oben in die Sparrenrichtung umgekehrte
   Falllinie ist.
 - **Sparrenfuß** und **Sparrenfirstpunkt** (als Punkte): F_fuß := p_a,
@@ -154,7 +154,7 @@ Wesentliche abgeleitete Größen:
 - **Sparrenabstand**: bei einer parallelen Sparrenschar
   S_1, …, S_k auf derselben Dachfläche der rechtwinklige Abstand
   benachbarter Bauteilachsen, gemessen in der Trägerebene
-  orthogonal zu d̂; der Sparrenabstand ist Bemessungs-Eingangsgröße
+  orthogonal zu d_hat; der Sparrenabstand ist Bemessungs-Eingangsgröße
   und nicht Bestandteil der Sparren-Definition.
 
 ## Wohldefiniertheit
@@ -165,24 +165,24 @@ Wesentliche abgeleitete Größen:
   konstruktiv erfüllbar; ein typischer Sparren auf einer
   Satteldachhälfte ist das Standardbeispiel.
 - **Eindeutigkeit der Vorzeichenkonvention**: Die Bedingung 4
-  fixiert eine der beiden Achsenorientierungen (d̂ oder −d̂)
+  fixiert eine der beiden Achsenorientierungen (d_hat oder −d_hat)
   eindeutig: für eine geneigte Dachfläche (Geneigtheits-
   Voraussetzung der Falllinie, α_S > 0) ist
-  ⟨d̂, ê_fall⟩ ≠ 0, und genau einer der beiden Werte ±1 (modulo
+  ⟨d_hat, e_hat_fall⟩ ≠ 0, und genau einer der beiden Werte ±1 (modulo
   ε_W) liegt im Bereich „nach oben".
 - **Konsistenz mit `hg_bauteilachse.md`**: Die in
   `hg_bauteilachse.md` empfohlene Vorzeichenkonvention für Sparren
-  („p_a an der Traufe, p_e am First, d̂ in Falllinien-Richtung,
+  („p_a an der Traufe, p_e am First, d_hat in Falllinien-Richtung,
   von Traufe zu First") wird hier formal übernommen. Achtung:
-  „in Falllinien-Richtung von Traufe zu First" ist gegen ê_fall
-  gerichtet, da ê_fall per Definition (siehe `hg_falllinie.md`,
-  Vorzeichenkonvention ⟨ê_fall, e_z⟩ ≤ 0) **nach unten** zeigt.
+  „in Falllinien-Richtung von Traufe zu First" ist gegen e_hat_fall
+  gerichtet, da e_hat_fall per Definition (siehe `hg_falllinie.md`,
+  Vorzeichenkonvention ⟨e_hat_fall, e_z⟩ ≤ 0) **nach unten** zeigt.
   Bedingung 4 löst diese Vorzeichen-Subtilität explizit auf.
 - **Sparrenneigung = Dachneigung**: Aus der Falllinien-
-  Kollinearität (Bed. 3) folgt, dass d̂ in der von e_z und n_a
+  Kollinearität (Bed. 3) folgt, dass d_hat in der von e_z und n_a
   aufgespannten Vertikalebene liegt; damit ist der Winkel α_S
-  zwischen d̂ und der Horizontalebene gleich dem Winkel zwischen
-  ê_fall und der Horizontalebene und nach `hg_dachneigung.md`
+  zwischen d_hat und der Horizontalebene gleich dem Winkel zwischen
+  e_hat_fall und der Horizontalebene und nach `hg_dachneigung.md`
   gleich der Dachneigung der zugeordneten Dachfläche.
 - **Mehrfachzuordnung**: Ein Sparren ist Bauteil **genau einer**
   Dachfläche; bei Verschneidungs-Sparren (Gratsparren, Kehlsparren),
@@ -251,11 +251,11 @@ er teilt die Bauteilachse in den traufseitigen Sparrenüberstand
 
 Aus der Definition der drei Punkte p_a, p_K, p_e auf der
 Bauteilachse A(B) und der Vorzeichenkonvention (Bedingung 4
-der mathematischen Definition: d̂ entgegen ê_fall, p_a unten,
+der mathematischen Definition: d_hat entgegen e_hat_fall, p_a unten,
 p_e oben) folgt die Anordnung
 
 ```
-p_a   −−−−   p_K   −−−−   p_e          (auf A(B), d̂ bergauf)
+p_a   −−−−   p_K   −−−−   p_e          (auf A(B), d_hat bergauf)
    ◄── ℓ_üb ──►  ◄────── ℓ_K-S ──────►
    ◄──────────── L_S ────────────────►
 ```
@@ -327,7 +327,7 @@ dass die Längsfaser entlang der Bauteillänge verläuft. Die
 Faserneigung (siehe `faserrichtung`) ist im prismatischen Idealfall
 0; Abweichungen werden über die Sortierklasse begrenzt (DIN 4074-1).
 In der Domänen-Schicht ist `faserrichtung` Annotation des Bauteils
-und für Sparren als **Default ‖ d̂_Sparren** zu setzen.
+und für Sparren als **Default ‖ d_hat_Sparren** zu setzen.
 
 ### Sparren in den vier Hauptsystemen
 
@@ -388,7 +388,7 @@ Verortung:
     mit Sparrenfuß als Anfangs- und Sparrenfirstpunkt als Endpunkt;
   - **Querschnitt** (vom Bauteil geerbt; rechteckig im Regelfall);
   - **Werkstoff** (vom Bauteil geerbt; Vollholz oder BSH);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_Sparren);
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_Sparren);
   - **Sparrenfuß-Punkt** und **Sparrenfirstpunkt** als
     abgeleitete Endpunkte der Bauteilachse.
 - **Spezialisierungen (eigene Folge-Einträge)**:
@@ -459,7 +459,7 @@ import domain.holzbau.Faserrichtung
  * Vorzeichenkonvention (normativ):
  *   p_a = Sparrenfuß  (an/nahe der Traufe)
  *   p_e = Sparrenfirstpunkt (an/nahe dem First / der Pultkante)
- *   d̂  zeigt nach oben (⟨d̂, e_z⟩ ≥ 0), entgegen der Falllinie ê_fall.
+ *   d_hat  zeigt nach oben (⟨d_hat, e_z⟩ ≥ 0), entgegen der Falllinie e_hat_fall.
  *
  * Querschnitts- und Werkstoff-Annotationen werden vom umschlossenen
  * Bauteil übernommen. Faserrichtung ist im Regelfall parallel zur
@@ -491,7 +491,7 @@ data class Sparren(
 sealed class SparrenEntartet {
     object NichtInTraegerebene : SparrenEntartet()
     object NichtAufFalllinie  : SparrenEntartet()
-    object FalscheRichtung    : SparrenEntartet()   // d̂ zeigt nach unten
+    object FalscheRichtung    : SparrenEntartet()   // d_hat zeigt nach unten
     object Nullachse          : SparrenEntartet()
     object FlacheDachflaeche  : SparrenEntartet()   // α = 0, Falllinie undef.
 }
@@ -507,8 +507,8 @@ sealed class SparrenEntartet {
   3. p_a, p_e ∈ Trägerebene der Dachfläche bis ε_L — sonst
      `NichtInTraegerebene`.
   4. Dachfläche geneigt (α > 0) — sonst `FlacheDachflaeche`.
-  5. |⟨d̂, ê_fall⟩| ≥ 1 − ε_W — sonst `NichtAufFalllinie`.
-  6. ⟨d̂, ê_fall⟩ ≤ −1 + ε_W (d̂ zeigt nach oben) — sonst
+  5. |⟨d_hat, e_hat_fall⟩| ≥ 1 − ε_W — sonst `NichtAufFalllinie`.
+  6. ⟨d_hat, e_hat_fall⟩ ≤ −1 + ε_W (d_hat zeigt nach oben) — sonst
      `FalscheRichtung` (Konsumenten können hier durch Achsen-
      Umkehr automatisch korrigieren).
 - **Edge Cases**:

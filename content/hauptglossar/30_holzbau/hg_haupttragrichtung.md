@@ -62,15 +62,15 @@ ausgerichtet ist.
 
 Sei
 
-- ê_d ∈ S² die Plattendicken-Achse (siehe `plattendicken_achse`),
+- e_hat_d ∈ S² die Plattendicken-Achse (siehe `plattendicken_achse`),
 - L = (ℓ₀, …, ℓ_{n−1}) die Lagenstruktur des Mehrlagenholzes
   (siehe `lagenstruktur`), n ≥ 3,
-- ĥ ∈ S² ein Einheitsvektor (siehe `einheitsvektor`).
+- h_hat ∈ S² ein Einheitsvektor (siehe `einheitsvektor`).
 
 Dann ist die **Haupttragrichtung** des Mehrlagenholzes definiert als
 
 ```
-haupttragrichtung := ĥ
+haupttragrichtung := h_hat
                    := ℓ₀.faserrichtung
                        (bis auf Vorzeichen),
 ```
@@ -79,31 +79,31 @@ mit den Konstruktions-Invarianten
 
 ```
 (H1) Orthogonalität zur Plattendicken-Achse:
-       ⟨ĥ, ê_d⟩ = 0     (mathematisch),
-       | ⟨ĥ, ê_d⟩ | ≤ Toleranzen.WINKEL_EPS     (numerisch).
+       ⟨h_hat, e_hat_d⟩ = 0     (mathematisch),
+       | ⟨h_hat, e_hat_d⟩ | ≤ Toleranzen.WINKEL_EPS     (numerisch).
 
 (H2) Decklage-Konsistenz:
-       ĥ ≡ ℓ₀.faserrichtung     (bis auf Vorzeichen),
-       d. h. | ⟨ĥ, ℓ₀.faserrichtung⟩ | ≥ 1 − Toleranzen.WINKEL_EPS.
+       h_hat ≡ ℓ₀.faserrichtung     (bis auf Vorzeichen),
+       d. h. | ⟨h_hat, ℓ₀.faserrichtung⟩ | ≥ 1 − Toleranzen.WINKEL_EPS.
 
 (H3) Norm-Invariante:
-       | ‖ĥ‖² − 1 | ≤ Toleranzen.NORM_EPS     (geerbt von einheitsvektor).
+       | ‖h_hat‖² − 1 | ≤ Toleranzen.NORM_EPS     (geerbt von einheitsvektor).
 ```
 
 **Nebentragrichtung** (siehe eigener Eintrag `nebentragrichtung`):
 
 ```
-n̂ := ê_d × ĥ ∈ S²,
+n_hat := e_hat_d × h_hat ∈ S²,
 ```
 
-mit ‖n̂‖ = 1 wegen ⟨ĥ, ê_d⟩ = 0 und ‖ĥ‖ = ‖ê_d‖ = 1.
+mit ‖n_hat‖ = 1 wegen ⟨h_hat, e_hat_d⟩ = 0 und ‖h_hat‖ = ‖e_hat_d‖ = 1.
 
 **Faserwinkel zur Kraft** (für Hankinson-Auswertung *gemittelt* über
 das Bauteil; in der Praxis erfolgt die Bemessung pro Lage, siehe
 `hankinson_winkel` und `mehrlagenholz`):
 
 ```
-α(F̂, ĥ) := arccos( | ⟨F̂, ĥ⟩ | ) ∈ [0, π/2]
+α(F_hat, h_hat) := arccos( | ⟨F_hat, h_hat⟩ | ) ∈ [0, π/2]
 ```
 
 Die Hankinson-Formel ist auf der Bauteil-Ebene **nicht** direkt
@@ -115,7 +115,7 @@ anwendbar; sie muss pro Lage ausgewertet werden (vgl. Blaß/Flaig
 - **Existenz**: Jede CLT-/Sperrholz-Platte hat per
   Lagenstruktur-Pflicht (n ≥ 3) eine Decklage 0 mit definierter
   Faserrichtung; daraus folgt die Haupttragrichtung eindeutig.
-- **Eindeutigkeit bis auf Vorzeichen**: ĥ ist durch
+- **Eindeutigkeit bis auf Vorzeichen**: h_hat ist durch
   ℓ₀.faserrichtung bis auf Vorzeichen festgelegt.
   Vorzeichenkonvention ist beim Mehrlagenholz/Bauteil zu
   dokumentieren (typisch in Halbachse der längeren Plattenformat-
@@ -123,16 +123,16 @@ anwendbar; sie muss pro Lage ausgewertet werden (vgl. Blaß/Flaig
 - **Pflichtcharakter**: Bei Werkstoff-Modus STRUKTURIERT ist
   `haupttragrichtung` Pflichtfeld am Werkstoff. Bei den anderen
   Modi nicht definiert.
-- **Orthogonalitäts-Invariante (H1)**: ĥ ⊥ ê_d ist
+- **Orthogonalitäts-Invariante (H1)**: h_hat ⊥ e_hat_d ist
   Konstruktions-Invariante; Verletzung ist Validierungsfehler.
-- **Decklage-Konsistenz (H2)**: ĥ entspricht ℓ₀.faserrichtung bis
+- **Decklage-Konsistenz (H2)**: h_hat entspricht ℓ₀.faserrichtung bis
   auf Vorzeichen; diese Invariante ist Pflicht (auch bei
   abweichendem Lagenaufbau, vgl. `lagenstruktur` Invariante I5).
-- **Eindeutigkeit der Nebentragrichtung**: n̂ = ê_d × ĥ ist
+- **Eindeutigkeit der Nebentragrichtung**: n_hat = e_hat_d × h_hat ist
   algebraisch bestimmt (Rechte-Hand-Regel mit Welt-
   Rechtssystem konsistent).
 - **Konsistenz mit Lagenstruktur**: alle Lagen-Faserrichtungen
-  sind im Standardlayout parallel oder rechtwinklig zu ĥ
+  sind im Standardlayout parallel oder rechtwinklig zu h_hat
   (Lagenstruktur-Invariante I4); bei abweichendem Lagenaufbau
   ausgesetzt.
 - **Nicht-Zirkularität**: Die Definition stützt sich auf
@@ -188,7 +188,7 @@ Bei Schubbeanspruchung sind zusätzlich die Lagen-Schubfestigkeiten
 Die App muss bei einem Schnitt durch ein Mehrlagenholz die
 Faserwinkel α_i = ∠(Schnittebene, ℓ_i.faserrichtung) **pro Lage**
 berechnen, nicht einen einzelnen Bauteil-Winkel
-α(Schnitt, ĥ). Die Haupttragrichtung dient dabei als Bezugsachse
+α(Schnitt, h_hat). Die Haupttragrichtung dient dabei als Bezugsachse
 für die UI-Darstellung („Schnitt schräg zur Haupttragrichtung")
 und für die Plattenfestigkeits-Annotation, nicht für die
 lagenweise Hankinson-Auswertung.
@@ -203,9 +203,9 @@ lagenweise Hankinson-Auswertung.
   - **Mehrlagenholz** (`mehrlagenholz`): Pflichtfeld; primäres
     Plattenebene-Richtungsfeld.
   - **Nebentragrichtung** (`nebentragrichtung`): abgeleitet als
-    ê_d × ĥ.
+    e_hat_d × h_hat.
   - **Lagenstruktur** (`lagenstruktur`): Invariante I5 verknüpft
-    ĥ mit ℓ₀.faserrichtung.
+    h_hat mit ℓ₀.faserrichtung.
   - **Hankinson-Winkel** (`hankinson_winkel`): bei Mehrlagenholz
     pro Lage; Haupttragrichtung dient als Bezugsachse für die
     Plattenfestigkeit, nicht für lagenweise Bemessung.

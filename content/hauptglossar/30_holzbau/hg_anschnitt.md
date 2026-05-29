@@ -188,7 +188,7 @@ Sei
 - F eine **Bearbeitung** nach `bearbeitung` mit Typ
   τ = Anschnitt ∈ 𝓣,
 - B ∈ 𝓑 das zugehörige Stab-Bauteil mit Bauteilachse A(B), die
-  Tangentenrichtung d̂(s) ∈ S² an der Stelle s ∈ [0, L], Anfangs-
+  Tangentenrichtung d_hat(s) ∈ S² an der Stelle s ∈ [0, L], Anfangs-
   punkt p_a := A(B)(0) und Endpunkt p_e := A(B)(L) (siehe
   `bauteilachse`),
 - σ ∈ {ANFANG, ENDE} die **Anschnittseite** (analog zu
@@ -197,16 +197,16 @@ Sei
   ```
   p_σ := { p_a , falls σ = ANFANG;
            p_e , falls σ = ENDE }                                  (1a)
-  d̂_σ := { −d̂(0) , falls σ = ANFANG;
-            +d̂(L) , falls σ = ENDE }                              (1b)
+  d_hat_σ := { −d_hat(0) , falls σ = ANFANG;
+            +d_hat(L) , falls σ = ENDE }                              (1b)
   ```
 
-  (d̂_σ ist die nach außen gerichtete Tangentenrichtung am
+  (d_hat_σ ist die nach außen gerichtete Tangentenrichtung am
   Anschnittendpunkt),
 
 - E_AS ⊂ ℝ³ die **Anschnittebene**, Ebene nach `ebene` durch p_σ
-  mit Einheitsnormaler n̂_AS ∈ S²,
-- α_AS := arccos|⟨n̂_AS, d̂_σ⟩| ∈ (ε_W, π/2 − ε_W) der **Anschnitt-
+  mit Einheitsnormaler n_hat_AS ∈ S²,
+- α_AS := arccos|⟨n_hat_AS, d_hat_σ⟩| ∈ (ε_W, π/2 − ε_W) der **Anschnitt-
   winkel** mit ε_W := `Toleranzen.WINKEL_EPS`,
 - 𝓡 ⊂ ℝ³ ein abgeschlossener, beschränkter „Schnitt-Bereichs-
   Polyeder" am Bauteil-Endpunkt, gross genug, dass er das gesamte
@@ -216,14 +216,14 @@ Sei
 Die **Anschnittebene** zerlegt ℝ³ in zwei abgeschlossene Halbräume
 
 ```
-H_+(E_AS) := { x ∈ ℝ³ | ⟨n̂_AS, x − p_σ⟩ ≥ 0 },                    (2a)
-H_−(E_AS) := { x ∈ ℝ³ | ⟨n̂_AS, x − p_σ⟩ ≤ 0 }.                    (2b)
+H_+(E_AS) := { x ∈ ℝ³ | ⟨n_hat_AS, x − p_σ⟩ ≥ 0 },                    (2a)
+H_−(E_AS) := { x ∈ ℝ³ | ⟨n_hat_AS, x − p_σ⟩ ≤ 0 }.                    (2b)
 ```
 
-Per Konvention zeigt n̂_AS **aus dem Bauteil heraus**:
+Per Konvention zeigt n_hat_AS **aus dem Bauteil heraus**:
 
 ```
-⟨n̂_AS, d̂_σ⟩ > 0.                                                  (3)
+⟨n_hat_AS, d_hat_σ⟩ > 0.                                                  (3)
 ```
 
 Damit ist H_+(E_AS) der Halbraum auf der Außenseite des
@@ -251,7 +251,7 @@ F_AS := (uuid, Anschnitt, p_τ = (σ, E_AS), T_F, bezeichnung?),    (5)
 mit
 
 - **σ** ∈ {ANFANG, ENDE}: Anschnittseite,
-- **E_AS**: Anschnittebene durch p_σ mit Einheitsnormaler n̂_AS
+- **E_AS**: Anschnittebene durch p_σ mit Einheitsnormaler n_hat_AS
   unter Bedingungen (3) und α_AS ∈ (ε_W, π/2 − ε_W),
 - **T_F** ∈ SE(3): lokale Platzierung des typeigenen Bezugs-
   Koordinatensystems im Bauteil-Lokal-System (per Konvention
@@ -272,13 +272,13 @@ Das **Resultat** des Anschnitts ist eine geneigte **Stirnseite**
 nach `hg_stirnseite.md` an der Anschnittseite σ:
 
 ```
-S_σ(B; F_AS) := (∂F_S, E_AS, n̂_AS, p_σ)                          (7)
+S_σ(B; F_AS) := (∂F_S, E_AS, n_hat_AS, p_σ)                          (7)
 ```
 
 mit
 
 - **Trägerebene** der Stirnseite ist die Anschnittebene E_AS,
-- **Aussennormale** der Stirnseite ist n̂_AS (kanonisch aus
+- **Aussennormale** der Stirnseite ist n_hat_AS (kanonisch aus
   Bauteil heraus, siehe (3)),
 - **Bezugspunkt** der Stirnseite ist p_σ,
 - **Berandung** ∂F_S ist das durch E_AS am bearbeiteten
@@ -287,7 +287,7 @@ mit
 Es gilt nach Konstruktion
 
 ```
-|⟨n̂_AS, d̂_σ⟩| = cos(α_AS) < 1 − ε_W,                             (8)
+|⟨n_hat_AS, d_hat_σ⟩| = cos(α_AS) < 1 − ε_W,                             (8)
 ```
 
 also α_AS ≠ π/2; die Stirnseite ist damit **nicht** rechtwinklig
@@ -298,10 +298,10 @@ geneigte (Anschnitt-)Stirnseite.
 
 - **Existenz**: Für jeden Anschnittwinkel α_AS ∈ (ε_W, π/2 − ε_W)
   und jede Anschnittseite σ existiert eine Anschnittebene E_AS
-  durch p_σ mit n̂_AS unter (3) und mit dem entsprechenden α_AS.
-  Mindestkonfiguration: σ = ENDE, n̂_AS in der durch d̂(L) und
+  durch p_σ mit n_hat_AS unter (3) und mit dem entsprechenden α_AS.
+  Mindestkonfiguration: σ = ENDE, n_hat_AS in der durch d_hat(L) und
   einer beliebigen zweiten Welt-Richtung aufgespannten Ebene mit
-  Winkel α_AS zu d̂(L). Damit existiert F_AS.
+  Winkel α_AS zu d_hat(L). Damit existiert F_AS.
 - **Eindeutigkeit der Identität**: Wie in `hg_bearbeitung.md`
   über UUID v7 nach RFC 9562.
 - **Wohldefiniertheit des Werkzeugkörpers**: Aus E_AS und der
@@ -328,8 +328,8 @@ geneigte (Anschnitt-)Stirnseite.
   `hg_polygon.md`. Die Existenz und Eindeutigkeit der
   resultierenden Stirnseite folgt aus `hg_stirnseite.md`
   Wohldefiniertheits-Block, angewandt auf die Trägerebene E_AS.
-- **Eindeutigkeit der Anschnittebene gegeben (σ, n̂_AS)**: Aus
-  der Wahl der Anschnittseite σ folgt p_σ; aus n̂_AS und (3)
+- **Eindeutigkeit der Anschnittebene gegeben (σ, n_hat_AS)**: Aus
+  der Wahl der Anschnittseite σ folgt p_σ; aus n_hat_AS und (3)
   folgt die Orientierung von E_AS; aus dem Inzidenzpunkt p_σ ∈
   E_AS folgt die Lage der Ebene. Damit ist E_AS eindeutig.
 - **Vorzeichen-Invarianz**: Die Hesse-Normalform von E_AS ist
@@ -440,7 +440,7 @@ Geometriebeschreibungen:
 In der Berufspraxis tauchen mehrere Bezüge für den
 „Anschnittwinkel" auf — Bauteilachse, Welt-Lotachse,
 Dachneigung, Falllinie der Dachfläche. Diese App wählt die
-**Bauteilachse** als Definitions-Bezug (α_AS = ∢(n̂_AS, d̂_σ)),
+**Bauteilachse** als Definitions-Bezug (α_AS = ∢(n_hat_AS, d_hat_σ)),
 konsistent mit der BTLx-`Inclination`-Konvention und mit
 `hg_stirnseite.md`. Welt-bezogene Sichten (Senkel-/Bleischnitt-
 Eigenschaft, Winkel gegen Dachfläche) sind **abgeleitete
@@ -497,13 +497,13 @@ dieses Eintrags.
     Identität, Pflicht.
   - **Anschnittseite** σ ∈ {ANFANG, ENDE}: Pflicht.
   - **Anschnittebene** E_AS (`ebene`): Pflicht; bestimmt durch
-    Inzidenz mit p_σ und Einheitsnormaler n̂_AS unter (3).
+    Inzidenz mit p_σ und Einheitsnormaler n_hat_AS unter (3).
   - **Lokale Platzierung** T_F ∈ SE(3) (geerbt von
     `bearbeitung`): Pflicht; in der Standard-Konvention
     Identität in SE(3).
   - **Bezeichnung**: optional.
   - **Abgeleitete Eigenschaften** (Funktionen, keine Felder):
-    Anschnittwinkel α_AS = arccos|⟨n̂_AS, d̂_σ⟩|; Lot-Lage der
+    Anschnittwinkel α_AS = arccos|⟨n_hat_AS, d_hat_σ⟩|; Lot-Lage der
     Anschnittebene (Senkel/Bleischnitt/geneigt); resultierende
     Stirnseite nach (7).
 - **Verwendung**:
@@ -605,14 +605,14 @@ import java.util.UUID
  * Bearbeitungs-Subtypen.
  *
  * Vorzeichenkonvention der Anschnittebenen-Normalen: zeigt aus
- * dem Bauteil heraus, d. h. ⟨n̂_AS, d̂_σ⟩ > 0 mit d̂_σ als
+ * dem Bauteil heraus, d. h. ⟨n_hat_AS, d_hat_σ⟩ > 0 mit d_hat_σ als
  * nach aussen gerichteter Bauteilachsen-Tangente an der
  * Anschnittseite.
  */
 data class Anschnitt(
     override val uuid: UUID,
     val anschnittseite: Endposition,         // ANFANG | ENDE
-    val anschnittebene: Ebene,               // E_AS, n̂_AS unter (3)
+    val anschnittebene: Ebene,               // E_AS, n_hat_AS unter (3)
     override val lokalePlatzierung: LokalePlatzierung,
     override val bezeichnung: String? = null,
 ) : Bearbeitung
@@ -640,13 +640,13 @@ data class Anschnitt(
   `Anschnitt.aus(bauteil, anschnittseite, anschnittebene)`,
   `Resultat.Fehler` bei Verletzung; niemals Exception):
   1. `anschnittebene.normaleEinheit()` ist normiert
-     (`‖n̂_AS‖² ≈ 1` innerhalb `Toleranzen.NORM_EPS`).
+     (`‖n_hat_AS‖² ≈ 1` innerhalb `Toleranzen.NORM_EPS`).
   2. **Inzidenz**: der zugehörige Bauteil-Endpunkt p_σ
      (`p_a` bei ANFANG, `p_e` bei ENDE) liegt auf der
-     Anschnittebene (`|⟨n̂_AS, p_σ − stützpunkt⟩| ≤
+     Anschnittebene (`|⟨n_hat_AS, p_σ − stützpunkt⟩| ≤
      Toleranzen.LAENGE_EPS`).
   3. **Aussennormale-Konvention** (3):
-     `⟨n̂_AS, d̂_σ⟩ > 0` mit `d̂_σ` als nach aussen
+     `⟨n_hat_AS, d_hat_σ⟩ > 0` mit `d_hat_σ` als nach aussen
      gerichteter Tangente an der Anschnittseite.
   4. **Anschnittwinkel-Wertebereich**: `α_AS ∈ (ε_W, π/2 −
      ε_W)`. α_AS = π/2 (rechtwinkliger Endschnitt) oder

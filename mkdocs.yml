@@ -4,9 +4,9 @@ site_description: >-
   didaktische Subglossar-Hülle, gepflegt im Schweizer Raum, frei zugänglich
   unter CC BY 4.0.
 site_url: https://holzbau-glossar.ch/
-site_author: Eric Naville
+site_author: holzbau-glossar.ch
 copyright: >-
-  &copy; Eric Naville — Inhalte unter
+  &copy; 2026 holzbau-glossar.ch —
   <a href="https://creativecommons.org/licenses/by/4.0/deed.de">CC BY 4.0</a>.
 
 docs_dir: src
@@ -47,7 +47,12 @@ theme:
 nav:
   - Startseite: index.md
   - Methode: methode.md
-  - Zitieren: zitieren.md
+  # A-Z-Index und die vier Cluster-Sektionen werden vom Build-Hook
+  # (hooks/build_pages.py) hier eingefügt — vor „DOI (Zitieren)".
+  - "DOI (Zitieren)": zitieren.md
+  - "API (Einbinden)": api.md
+  - Impressum: impressum.md
+  - Datenschutz: datenschutz.md
 # Pilot-Einträge (nur lokal über src/pilot/, gitignored) bleiben aus
 # der Nav weg — Direkt-URLs wie /pilot/kerve/ funktionieren trotzdem
 # bei lokalem mkdocs serve.
@@ -55,6 +60,11 @@ nav:
 plugins:
   - search:
       lang: de
+  - git-revision-date-localized:
+      type: iso_date
+      locale: de
+      enable_creation_date: false
+      fallback_to_build_date: true
 
 hooks:
   - hooks/build_pages.py
@@ -76,11 +86,9 @@ markdown_extensions:
   - toc:
       permalink: true
       permalink_title: Permalink zu dieser Stelle
-  - pymdownx.arithmatex:
-      generic: true
   - pymdownx.details
   - pymdownx.highlight:
-      anchor_linenums: true
+      anchor_linenums: false
   - pymdownx.inlinehilite
   - pymdownx.superfences
   - pymdownx.snippets
@@ -89,6 +97,13 @@ markdown_extensions:
 
 extra:
   generator: false
+  # Versions-Anker für den Footer — bei jeder neuen Glossar-Welle hier
+  # hochzählen (entspricht GitHub-Release-Tag im Site-Repo) und im selben
+  # Commit pushen, damit der Footer zur live ausgelieferten Version passt.
+  version_label: v0.1.0
+  welle: W7
+  concept_doi: "10.5281/zenodo.20435319"
+  version_doi: "10.5281/zenodo.20435320"
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/

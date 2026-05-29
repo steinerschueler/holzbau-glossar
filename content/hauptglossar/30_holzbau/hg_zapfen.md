@@ -251,20 +251,20 @@ Sei
   (`geometrie ∈ 𝒢_stab`), typischerweise eine Stuhlsäule, ein
   Stiel, eine Strebe oder ein Riegel mit hervorstehendem
   Bauteilende,
-- L_B = (O_B, ê_x^B, ê_y^B, ê_z^B) das Bauteil-Lokal-
+- L_B = (O_B, e_hat_x^B, e_hat_y^B, e_hat_z^B) das Bauteil-Lokal-
   Koordinatensystem (`lokales_koordinatensystem`) mit Konvention
   ```
-  ê_x^B  =  Bauteilachse (Längsrichtung, vom Bauteilanfang zum
+  e_hat_x^B  =  Bauteilachse (Längsrichtung, vom Bauteilanfang zum
             Bauteilende zeigend),
-  ê_y^B  =  Bauteil-Querrichtung (Bauteilbreite),
-  ê_z^B  =  Bauteilhöhe (Bauteildicke).
+  e_hat_y^B  =  Bauteil-Querrichtung (Bauteilbreite),
+  e_hat_z^B  =  Bauteilhöhe (Bauteildicke).
   ```
 - b_B > 0 die Bauteilbreite in lokaler y-Richtung (mm),
 - h_B > 0 die Bauteildicke in lokaler z-Richtung (mm),
 - ℓ_B > 0 die Bauteillänge in lokaler x-Richtung (mm),
 - die **Stirnseite** S_B des Bauteils (`stirnseite`) jene
   Bauteilfläche mit x = ℓ_B im Lokalsystem; ihr Flächennormalen-
-  Vektor ist ê_x^B,
+  Vektor ist e_hat_x^B,
 - ε_L := Toleranzen.LAENGE_EPS.
 
 Die **Parameter** eines Zapfens sind das Tupel
@@ -277,7 +277,7 @@ mit
 
 - **ℓ_Z** ∈ ℝ⁺: **Zapfenlänge** (in mm), 0 < ℓ_Z ≤ ℓ_B − ε_L;
   gemessen als perpendikuläre Tiefe vom Niveau der Stirnseite
-  (lokales x = ℓ_B) in Richtung −ê_x^B in das Bauteilinnere.
+  (lokales x = ℓ_B) in Richtung −e_hat_x^B in das Bauteilinnere.
 - **w_Z** ∈ ℝ⁺: **Zapfenbreite** (in mm), 0 < w_Z ≤ b_B − 2ε_L;
   die Ausdehnung des Zapfen-Querschnitts in lokaler y-Richtung.
 - **h_Z** ∈ ℝ⁺: **Zapfenhöhe** (in mm), 0 < h_Z ≤ h_B − 2ε_L;
@@ -340,7 +340,7 @@ Wangen** in lokaler z-Richtung. Für κ = 0 sind alle vier
 Wangen achsparallele Quader und damit konvexe Polyeder im
 Sinne von `hg_polyeder.md` (`KonvexerPolyeder`); für κ > 0
 sind W_y^- und W_y^+ konvexe Prismen mit trapezförmigem
-xy-Querschnitt (eine begrenzende Fläche ist um κ gegen ê_y^B
+xy-Querschnitt (eine begrenzende Fläche ist um κ gegen e_hat_y^B
 geneigt), W_z^- und W_z^+ bleiben achsparallele Quader.
 
 K_Zapfen ist damit eine **Vereinigung höchstens vier konvexer
@@ -884,7 +884,7 @@ data class Zapfen(
     Standardform dieses Eintrags definiert den Zapfen am
     Ende (x = ℓ_B). Eine alternative Konvention „Zapfen am
     Anfang" ist über `LokalePlatzierung` mit Rotation um
-    π um ê_y^B oder ê_z^B parametrisierbar.
+    π um e_hat_y^B oder e_hat_z^B parametrisierbar.
   - **Mehrere Zapfen am selben Bauteilende** (Doppelzapfen):
     zulässig; jeder Zapfen ist eine eigene Bearbeitungs-
     Instanz mit eigener UUID in der Bauteil-

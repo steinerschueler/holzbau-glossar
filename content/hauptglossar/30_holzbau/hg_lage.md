@@ -100,17 +100,17 @@ mit
 
 ```
 0 ≤ position ≤ |L| − 1
-∠(faserrichtung, ĥ) ∈ {0, π/2}     (im Standardlayout)
+∠(faserrichtung, h_hat) ∈ {0, π/2}     (im Standardlayout)
 oder Lagenstruktur ist als „abweichender Lagenaufbau" markiert,
 ```
 
-mit ĥ = Haupttragrichtung des umgebenden Mehrlagenholzes
+mit h_hat = Haupttragrichtung des umgebenden Mehrlagenholzes
 (siehe `haupttragrichtung`).
 
 **Lagen-Mittenebene** (abgeleitet, für Visualisierung):
 
 Wenn die Lagen ℓ₀, …, ℓ_{n−1} der Lagenstruktur in dieser
-Reihenfolge entlang der Plattendicken-Achse ê_d gestapelt sind und
+Reihenfolge entlang der Plattendicken-Achse e_hat_d gestapelt sind und
 das Bauteil seinen Bezugspunkt p₀ in der Bauteilmitte hat, ist die
 Mittenebene der Lage ℓ_i auf Höhe
 
@@ -131,12 +131,12 @@ und nicht Bestandteil der Lage selbst.
 - **Eindeutigkeit der Pflichtfelder**: dicke, faserrichtung,
   festigkeitsklasse, position sind alle eindeutig durch das
   Produkt-Datenblatt festgelegt.
-- **Eindeutigkeit der Faserrichtung bis auf Vorzeichen**: f̂_i ist
+- **Eindeutigkeit der Faserrichtung bis auf Vorzeichen**: f_hat_i ist
   als Annotation einer Lage eindeutig, sobald eine
   Vorzeichenkonvention im umgebenden Mehrlagenholz festgelegt ist
   (typisch: in dieselbe Halbachse wie die Haupttragrichtung).
 - **Norm-Invariante**: faserrichtung erbt
-  | ‖f̂‖² − 1 | ≤ Toleranzen.NORM_EPS aus `einheitsvektor`.
+  | ‖f_hat‖² − 1 | ≤ Toleranzen.NORM_EPS aus `einheitsvektor`.
 - **Positiv-Invariante**: dicke > 0; Lagen mit Dicke 0 oder
   negativ sind unzulässig (`Entartet.LageDickeNichtPositiv`).
 - **Position-Eindeutigkeit**: innerhalb einer Lagenstruktur
@@ -162,11 +162,11 @@ hat den Lagenaufbau:
 
 | position | dicke | faserrichtung | festigkeitsklasse |
 |----------|-------|---------------|-------------------|
-| 0        | 30 mm | 0° (= ĥ)      | C24               |
+| 0        | 30 mm | 0° (= h_hat)      | C24               |
 | 1        | 30 mm | 90°           | C24               |
-| 2        | 30 mm | 0° (= ĥ)      | C24               |
+| 2        | 30 mm | 0° (= h_hat)      | C24               |
 | 3        | 30 mm | 90°           | C24               |
-| 4        | 30 mm | 0° (= ĥ)      | C24               |
+| 4        | 30 mm | 0° (= h_hat)      | C24               |
 
 Die Decklagen (position 0 und 4) haben dieselbe Faserrichtung;
 die Symmetrie ist in `lagenstruktur` als Klassen-Invariante

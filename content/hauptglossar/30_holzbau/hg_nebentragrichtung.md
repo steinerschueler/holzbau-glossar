@@ -42,7 +42,7 @@ quellenkonflikt: |
     STRUKTURIERT (`mehrlagenholz`).
   - **Orthogonalität zur Plattendicken-Achse** und **zur
     Haupttragrichtung** sind Konstruktions-Invarianten:
-    `⟨n̂, ê_d⟩ ≤ WINKEL_EPS` und `⟨n̂, ĥ⟩ ≤ WINKEL_EPS`.
+    `⟨n_hat, e_hat_d⟩ ≤ WINKEL_EPS` und `⟨n_hat, h_hat⟩ ≤ WINKEL_EPS`.
 ---
 
 ## Prosa-Definition
@@ -60,42 +60,42 @@ Plattenfestigkeitswerte ausgerichtet ist.
 
 Sei
 
-- ê_d ∈ S² die Plattendicken-Achse (siehe `plattendicken_achse`),
-- ĥ ∈ S² die Haupttragrichtung (siehe `haupttragrichtung`),
-  mit ⟨ĥ, ê_d⟩ = 0.
+- e_hat_d ∈ S² die Plattendicken-Achse (siehe `plattendicken_achse`),
+- h_hat ∈ S² die Haupttragrichtung (siehe `haupttragrichtung`),
+  mit ⟨h_hat, e_hat_d⟩ = 0.
 
 Dann ist die **Nebentragrichtung** definiert als
 
 ```
-nebentragrichtung := n̂ := ê_d × ĥ ∈ S².
+nebentragrichtung := n_hat := e_hat_d × h_hat ∈ S².
 ```
 
-Die Orthogonalitäts-Bedingung ⟨ĥ, ê_d⟩ = 0 sichert ‖n̂‖ = 1 (siehe
-Wohldefiniertheit), so dass n̂ ∈ S² gilt.
+Die Orthogonalitäts-Bedingung ⟨h_hat, e_hat_d⟩ = 0 sichert ‖n_hat‖ = 1 (siehe
+Wohldefiniertheit), so dass n_hat ∈ S² gilt.
 
 **Konstruktions-Invarianten**:
 
 ```
 (N1) Orthogonalität zur Plattendicken-Achse:
-       ⟨n̂, ê_d⟩ = 0     (mathematisch),
-       | ⟨n̂, ê_d⟩ | ≤ Toleranzen.WINKEL_EPS     (numerisch).
+       ⟨n_hat, e_hat_d⟩ = 0     (mathematisch),
+       | ⟨n_hat, e_hat_d⟩ | ≤ Toleranzen.WINKEL_EPS     (numerisch).
 
 (N2) Orthogonalität zur Haupttragrichtung:
-       ⟨n̂, ĥ⟩ = 0     (mathematisch),
-       | ⟨n̂, ĥ⟩ | ≤ Toleranzen.WINKEL_EPS     (numerisch).
+       ⟨n_hat, h_hat⟩ = 0     (mathematisch),
+       | ⟨n_hat, h_hat⟩ | ≤ Toleranzen.WINKEL_EPS     (numerisch).
 
 (N3) Algebraische Konsistenz:
-       n̂ = ê_d × ĥ     (innerhalb NORM_EPS).
+       n_hat = e_hat_d × h_hat     (innerhalb NORM_EPS).
 
 (N4) Norm-Invariante:
-       | ‖n̂‖² − 1 | ≤ Toleranzen.NORM_EPS     (geerbt).
+       | ‖n_hat‖² − 1 | ≤ Toleranzen.NORM_EPS     (geerbt).
 ```
 
-**Plattenkoordinatensystem**: (ĥ, n̂, ê_d) ist ein
+**Plattenkoordinatensystem**: (h_hat, n_hat, e_hat_d) ist ein
 Rechtssystem-Tripel in W:
 
 ```
-ê_d × ĥ = n̂,        ĥ × n̂ = ê_d,        n̂ × ê_d = ĥ,
+e_hat_d × h_hat = n_hat,        h_hat × n_hat = e_hat_d,        n_hat × e_hat_d = h_hat,
 ```
 
 konsistent mit der Welt-Rechtssystem-Konvention (CLAUDE.md:
@@ -103,27 +103,27 @@ z-Achse vertikal nach oben, Rechtssystem).
 
 ## Wohldefiniertheit
 
-- **Existenz**: Für jede Haupttragrichtung ĥ und Plattendicken-
-  Achse ê_d mit ⟨ĥ, ê_d⟩ = 0 ist n̂ = ê_d × ĥ wohldefiniert; das
+- **Existenz**: Für jede Haupttragrichtung h_hat und Plattendicken-
+  Achse e_hat_d mit ⟨h_hat, e_hat_d⟩ = 0 ist n_hat = e_hat_d × h_hat wohldefiniert; das
   Kreuzprodukt zweier orthogonaler Einheitsvektoren ist wieder ein
   Einheitsvektor.
-- **Eindeutigkeit**: n̂ ist algebraisch durch das Kreuzprodukt
+- **Eindeutigkeit**: n_hat ist algebraisch durch das Kreuzprodukt
   bestimmt; das Vorzeichen folgt der Rechte-Hand-Regel und ist
   damit konsistent zum Welt-Rechtssystem.
-- **‖n̂‖ = 1 aus ⟨ĥ, ê_d⟩ = 0**: Es gilt
-  ‖ê_d × ĥ‖² = ‖ê_d‖² · ‖ĥ‖² − ⟨ê_d, ĥ⟩² = 1 · 1 − 0 = 1
-  (Lagrange-Identität), also ‖n̂‖ = 1.
+- **‖n_hat‖ = 1 aus ⟨h_hat, e_hat_d⟩ = 0**: Es gilt
+  ‖e_hat_d × h_hat‖² = ‖e_hat_d‖² · ‖h_hat‖² − ⟨e_hat_d, h_hat⟩² = 1 · 1 − 0 = 1
+  (Lagrange-Identität), also ‖n_hat‖ = 1.
 - **Pflichtcharakter**: Bei Werkstoff-Modus STRUKTURIERT ist
   `nebentragrichtung` Pflichtfeld am Werkstoff. Bei den anderen
   Modi nicht definiert.
-- **Orthogonalitäts-Invarianten (N1, N2)**: n̂ ⊥ ê_d und n̂ ⊥ ĥ
-  folgen direkt aus der Definition n̂ = ê_d × ĥ.
-- **Algebraische Konsistenz (N3)**: Wenn n̂ explizit am Werkstoff
-  gespeichert wird, ist die Konsistenz mit ê_d × ĥ zu prüfen
+- **Orthogonalitäts-Invarianten (N1, N2)**: n_hat ⊥ e_hat_d und n_hat ⊥ h_hat
+  folgen direkt aus der Definition n_hat = e_hat_d × h_hat.
+- **Algebraische Konsistenz (N3)**: Wenn n_hat explizit am Werkstoff
+  gespeichert wird, ist die Konsistenz mit e_hat_d × h_hat zu prüfen
   (innerhalb NORM_EPS); andernfalls Validierungsfehler.
-- **Plattenkoordinatensystem (Rechtssystem)**: (ĥ, n̂, ê_d) bildet
+- **Plattenkoordinatensystem (Rechtssystem)**: (h_hat, n_hat, e_hat_d) bildet
   ein orthonormales Rechtssystem; Spatprodukt
-  ⟨ĥ × n̂, ê_d⟩ = 1.
+  ⟨h_hat × n_hat, e_hat_d⟩ = 1.
 - **Nicht-Zirkularität**: Die Definition stützt sich auf
   `einheitsvektor`, `plattendicken_achse`, `haupttragrichtung`,
   `toleranzen`. Sie kommt nicht in ihrer eigenen Definition vor.
@@ -138,7 +138,7 @@ ProHolz Austria definiert in „Brettsperrholz Bemessung Band I":
 > Haupttragrichtung in der Plattenebene.
 
 Diese Definition wird im Glossar wörtlich übernommen und durch
-die mathematische Form n̂ = ê_d × ĥ präzisiert.
+die mathematische Form n_hat = e_hat_d × h_hat präzisiert.
 
 ### Bemessungs-Konsequenz
 
@@ -147,8 +147,8 @@ EN 16351 für die beiden Hauptachsen tabelliert:
 
 | Achse                    | Festigkeit         | Richtung                |
 |--------------------------|--------------------|-------------------------|
-| Haupttragrichtung (0°)   | f_m,0,k, E_0,mean  | parallel zu ĥ           |
-| Nebentragrichtung (90°)  | f_m,90,k, E_90,mean| parallel zu n̂          |
+| Haupttragrichtung (0°)   | f_m,0,k, E_0,mean  | parallel zu h_hat           |
+| Nebentragrichtung (90°)  | f_m,90,k, E_90,mean| parallel zu n_hat          |
 
 Bei symmetrischem CLT-Standardlayout (3, 5, 7 Lagen) ist die
 Steifigkeit in 90°-Richtung geringer als in 0°-Richtung, weil
@@ -169,15 +169,15 @@ wird im Datenmodell trotzdem explizit gespeichert:
    Plausibilitätsprüfung gegen Plattendicken-Achse und
    Haupttragrichtung zur Konstruktionszeit.
 3. **UI-Visualisierung**: 3D-Renderer kann die drei Plattenachsen
-   (ĥ, n̂, ê_d) direkt aus Werkstoff-Feldern darstellen.
+   (h_hat, n_hat, e_hat_d) direkt aus Werkstoff-Feldern darstellen.
 
 ### Plattenkoordinatensystem
 
-Die drei Achsen (ĥ, n̂, ê_d) bilden ein lokales
+Die drei Achsen (h_hat, n_hat, e_hat_d) bilden ein lokales
 Plattenkoordinatensystem mit Rechtssystem-Orientierung. Dies ist
 konsistent mit:
 
-- **IFC** `IfcMaterialLayerSet.LayerSetDirection = AXIS3` für ê_d
+- **IFC** `IfcMaterialLayerSet.LayerSetDirection = AXIS3` für e_hat_d
   und der durch das Layer-Set induzierten 0°/90°-Konvention.
 - **BTLx** `Reference Side`-System mit den drei lokalen Achsen.
 - **cadwork** Plattenkoordinatensystem.
@@ -267,11 +267,11 @@ value class Nebentragrichtung(val richtung: Einheitsvektor) {
 - **Vorzeichenkonvention**: durch Kreuzprodukt-Definition fest;
   konsistent mit Welt-Rechtssystem.
 - **Edge Cases**:
-  - **Inkonsistenz mit ê_d × ĥ** (N3 verletzt):
+  - **Inkonsistenz mit e_hat_d × h_hat** (N3 verletzt):
     `Entartet.NebentragrichtungInkonsistent`.
   - **Verletzte Orthogonalität (N1 oder N2)**:
     `Entartet.NebentragrichtungNichtOrthogonal`.
-  - **Mehrlagenholz mit nicht-orthogonalen ĥ und ê_d**: das ist
+  - **Mehrlagenholz mit nicht-orthogonalen h_hat und e_hat_d**: das ist
     bereits in `mehrlagenholz` Konstruktions-Invariante; bei
     Verletzung scheitert die Werkstoff-Konstruktion vor der
     Nebentragrichtungs-Berechnung.

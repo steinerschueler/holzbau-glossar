@@ -97,28 +97,28 @@ Diskretisierung als `Streckenzug` repräsentiert (siehe
 
 **Vorzeichenkonvention** (wesentlich, da eine Strecke zwei mögliche
 Orientierungen hat): Die Bauteilachse trägt eine kanonische
-Richtung d̂ = (p_e − p_a) / ‖p_e − p_a‖ ∈ S². Die Wahl von p_a
+Richtung d_hat = (p_e − p_a) / ‖p_e − p_a‖ ∈ S². Die Wahl von p_a
 (Anfangspunkt) und p_e (Endpunkt) ist **nicht** auf der Ebene des
 generischen Bauteilachsen-Begriffs festgelegt, sondern durch das
 **konkrete Bauteil** (Sparren, Pfette, Stütze etc.) zu konkretisieren.
 Empfohlene Konventionen für Spezialisierungen:
 
-- **Stütze**: p_a unten, p_e oben (d̂ lotrecht nach oben,
-  d̂ = +e_z im lotrechten Standardfall).
+- **Stütze**: p_a unten, p_e oben (d_hat lotrecht nach oben,
+  d_hat = +e_z im lotrechten Standardfall).
 - **Sparren** (und andere Bauteilrollen mit Falllinien-Bezug —
   Gratsparren, Kehlsparren): p_a an der Traufe, p_e am
-  Sparrenfirstpunkt; d̂ zeigt **entgegen** der Falllinie der
+  Sparrenfirstpunkt; d_hat zeigt **entgegen** der Falllinie der
   getragenen Dachfläche, also **bergauf von der Traufe zum
   Sparrenfirstpunkt**. Formal:
   ```
-  ⟨d̂, ê_fall⟩ < 0    (d̂ und ê_fall sind antiparallel im prismatischen
+  ⟨d_hat, e_hat_fall⟩ < 0    (d_hat und e_hat_fall sind antiparallel im prismatischen
                        Idealfall).
   ```
-  Hintergrund: `ê_fall` zeigt per Konvention nach unten
-  (⟨ê_fall, e_z⟩ ≤ 0; siehe `falllinie`, Abschnitt
-  „Symbol-Konvention"). Die anschauliche Lesart „d̂ in Falllinien-
+  Hintergrund: `e_hat_fall` zeigt per Konvention nach unten
+  (⟨e_hat_fall, e_z⟩ ≤ 0; siehe `falllinie`, Abschnitt
+  „Symbol-Konvention"). Die anschauliche Lesart „d_hat in Falllinien-
   Richtung" ist damit zweideutig und wird hier zugunsten der
-  präzisen Vorzeichen-Aussage „d̂ entgegen ê_fall" abgelöst.
+  präzisen Vorzeichen-Aussage „d_hat entgegen e_hat_fall" abgelöst.
 - **Pfette** (horizontale Bauteilrolle ohne Falllinien-Bezug —
   Fußpfette, Mittelpfette, Firstpfette): Die Vorzeichen-Empfehlung
   ist hier nicht von einer Falllinie abgeleitet, sondern von der
@@ -140,10 +140,10 @@ anwendbar.
 Wesentliche abgeleitete Größen (gerader Fall):
 
 - **Trägergerade**: g = g(p_a, p_e − p_a).
-- **Richtungs-Einheitsvektor**: d̂ = (p_e − p_a) / ‖p_e − p_a‖.
+- **Richtungs-Einheitsvektor**: d_hat = (p_e − p_a) / ‖p_e − p_a‖.
 - **Bauteillänge**: L = ‖p_e − p_a‖ (in mm).
 - **Anfangs- und Endquerschnitt**: K(0) bzw. K(L) als ebene
-  Punktmengen rechtwinklig zu d̂ in p_a bzw. p_e.
+  Punktmengen rechtwinklig zu d_hat in p_a bzw. p_e.
 
 ## Wohldefiniertheit
 
@@ -169,7 +169,7 @@ Wesentliche abgeleitete Größen (gerader Fall):
   Eindeutigkeit folgen dann iterativ über das Frenet-Serret-System
   (siehe Sekundärliteratur, Differentialgeometrie der
   Schwerlinien).
-- **Vorzeichenkonvention**: Die Wahl von d̂ ∈ {±(p_e − p_a)/L} ist
+- **Vorzeichenkonvention**: Die Wahl von d_hat ∈ {±(p_e − p_a)/L} ist
   durch die Bauteilrolle festzulegen; ohne diese Festlegung ist
   die Bauteilachse als ungerichtete Achse wohldefiniert (Element
   von `achse` ohne Richtungsannotation), als gerichtete Achse jedoch
@@ -205,10 +205,10 @@ Holzbau. An ihr werden gemessen:
 **Anwendungsbeispiele für die Vorzeichenkonvention**:
 
 - **Sparren**: typischerweise hat p_a an der Traufe (unten am
-  Dach) und p_e am Sparrenfirstpunkt (oben am Dach); d̂ zeigt
+  Dach) und p_e am Sparrenfirstpunkt (oben am Dach); d_hat zeigt
   **entgegen** der Falllinie der getragenen Dachfläche, also
   bergauf von der Traufe zum Sparrenfirstpunkt
-  (⟨d̂, ê_fall⟩ < 0; siehe `falllinie`). Das ist konsistent mit
+  (⟨d_hat, e_hat_fall⟩ < 0; siehe `falllinie`). Das ist konsistent mit
   der Konvention im Werkplan, dass Sparrenlängen „vom Sparrenfuß
   bis zum Firstanschnitt" gemessen werden.
 - **Pfette** (Fußpfette, Mittelpfette, Firstpfette): typischerweise
@@ -217,13 +217,13 @@ Holzbau. An ihr werden gemessen:
   steigender Achsbezeichnung A → B → C).
 - **Stütze**: typischerweise lotrecht mit p_a unten (am Schwellen-
   oder Fundamentanschluss) und p_e oben (am Pfetten- oder
-  Rähmanschluss); d̂ ist die Welt-z-Achse.
+  Rähmanschluss); d_hat ist die Welt-z-Achse.
 
 **Bauteilachse vs. Faserrichtung** (zur Auflösung der
 Querbeziehung in `hg_faserrichtung.md`): Im Idealfall — geradfaseriges,
 prismatisches Vollholzbauteil ohne Drehwuchs, Verzug oder
 Faserabweichung — sind Bauteilachse und Faserrichtung kollinear:
-d̂ ∈ {f̂, −f̂}. Die Faserneigung ist dann 0. In allen abweichenden
+d_hat ∈ {f_hat, −f_hat}. Die Faserneigung ist dann 0. In allen abweichenden
 Fällen (schräg gesägtes Holz, verzogene Hölzer, Drehwuchs, Bauteile
 aus mehreren keilgezinkten Stäben mit unterschiedlichen Faserrichtungen)
 sind die beiden Achsen verschieden:
@@ -256,7 +256,7 @@ sortierung verwendet.
   - Anfangspunkt p_a (Schwerpunkt des Anfangsquerschnitts);
   - Endpunkt p_e (Schwerpunkt des Endquerschnitts);
   - Trägergerade g (unbegrenzte Verlängerung der Achsstrecke);
-  - Richtungs-Einheitsvektor d̂.
+  - Richtungs-Einheitsvektor d_hat.
 - **Bestandteile (partitiv) — gekrümmter Fall**:
   - geordnete Folge von Stützpunkten z(s_i) als
     Streckenzug-Repräsentation;

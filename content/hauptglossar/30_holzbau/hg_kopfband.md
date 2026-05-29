@@ -151,10 +151,10 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - E_W eine Wandebene (Ebene im Sinne von `ebene`) mit Stützpunkt
-  p_W und Normalenvektor n̂_W ∈ S², wobei n̂_W horizontal liegt
-  (|⟨n̂_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
+  p_W und Normalenvektor n_hat_W ∈ S², wobei n_hat_W horizontal liegt
+  (|⟨n_hat_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
   HG_KONVENTIONEN.md §1, d. h. lotrecht),
 - P ein lotrechtes Anker-Bauteil (Ständer im Sinne von
   `hg_staender.md` oder Pfosten als Synonym; siehe
@@ -165,8 +165,8 @@ Sei
 - H ein horizontales Anker-Bauteil (Rähm im Sinne von `hg_raehm.md`,
   Pfette im Sinne von `hg_pfette.md`, oder Unterzug als
   Forward-Verweis) mit Bauteilachse a(H) = (p_a^H, p_e^H) und
-  ‖d̂_H − ⟨d̂_H, e_z⟩ e_z‖ > 1 − ε_K (horizontal:
-  |⟨d̂_H, e_z⟩| ≤ ε_K), wobei H **über** P liegt im Sinne
+  ‖d_hat_H − ⟨d_hat_H, e_z⟩ e_z‖ > 1 − ε_K (horizontal:
+  |⟨d_hat_H, e_z⟩| ≤ ε_K), wobei H **über** P liegt im Sinne
   ‖p_K^P.z − z_min^H‖ ≤ ε_L (mit z_min^H = min(p_a^H.z, p_e^H.z)),
 - e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
 - ε_K := Toleranzen.KOLLINEAR_EPS,
@@ -182,16 +182,16 @@ alle erfüllt sind:
 
 2. **Lage in der Wandebene**: Beide Endpunkte liegen in E_W,
    ```
-   |⟨p_a − p_W, n̂_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n̂_W⟩| ≤ ε_L.
+   |⟨p_a − p_W, n_hat_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n_hat_W⟩| ≤ ε_L.
    ```
 
 3. **Echte Diagonale (weder lotrecht noch horizontal)**: Der
-   Winkel α(B) := arccos(|⟨d̂, e_z⟩|) zwischen Bauteilachse und
+   Winkel α(B) := arccos(|⟨d_hat, e_z⟩|) zwischen Bauteilachse und
    Lotachse erfüllt
    ```
    ε_W < α(B) < π/2 − ε_W,
    ```
-   d. h. d̂ ist weder kollinear zu e_z (kein Pfosten/Ständer)
+   d. h. d_hat ist weder kollinear zu e_z (kein Pfosten/Ständer)
    noch rechtwinklig zu e_z (kein Riegel/Rähm).
 
 4. **Zwei-Anker-Bedingung Pfosten + Längsholz**: Genau eines
@@ -236,7 +236,7 @@ Wesentliche abgeleitete Größen:
   Default-Wert im Korpus ~45°, Praxis-Range 35–55°.
   Die Definition fixiert β_K **nicht** auf 45° (Korpus-Konsens
   ist „typisch", keine Norm-Festlegung).
-- **Wandebenen-Achsenrichtung**: t̂_W := projektiere d̂ in die
+- **Wandebenen-Achsenrichtung**: t_hat_W := projektiere d_hat in die
   Wandebene, dient als Default-Faserrichtung am Bauteil.
 
 ## Wohldefiniertheit
@@ -476,7 +476,7 @@ Begriffsbasis zu präzisieren.
     schwächer als der Ständer, typisch 80/120 mm; im modernen
     Holzbau seltener verwendet);
   - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_Kopfband, also
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_Kopfband, also
     axial entlang der diagonalen Bauteilachse).
 - **Positions-Annotation** (Merkmal am Kopfband, kein Subtyp;
   optional, in Welle 10 als Vorbereitung der Wand-Aggregat-
@@ -575,11 +575,11 @@ data class Kopfband(
     /**
      * Diagonal-Prädikat: weder lotrecht noch horizontal.
      *
-     * α(B) = arccos(|⟨d̂, e_z⟩|);  ε_W < α < π/2 − ε_W.
+     * α(B) = arccos(|⟨d_hat, e_z⟩|);  ε_W < α < π/2 − ε_W.
      */
     fun istDiagonal(eps: Double = Toleranzen.WINKEL_EPS): Boolean {
         val d = richtung
-        val cosAlpha = abs(d.z)              // |⟨d̂, e_z⟩| mit e_z = (0,0,1)
+        val cosAlpha = abs(d.z)              // |⟨d_hat, e_z⟩| mit e_z = (0,0,1)
         if (cosAlpha < eps) return false      // horizontal
         if (cosAlpha > 1.0 - eps) return false // lotrecht
         val alpha = acos(cosAlpha)
@@ -629,7 +629,7 @@ sealed class KopfbandEntartet {
   `KopfbandEntartet`-Variante; niemals Exception):
   1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
   2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. Wandebene lotrecht: |⟨n̂_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
+  3. Wandebene lotrecht: |⟨n_hat_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
      — sonst `WandebeneNichtLotrecht`.
   4. Beide Endpunkte in Wandebene (Punkt-Ebene-Abstand ≤
      Toleranzen.LAENGE_EPS) — sonst `NichtInWandebene`.

@@ -63,7 +63,7 @@ Sei
   z_P := (p_a.z + p_e.z) / 2,
 - D eine zugeordnete Dachfläche im Sinne von `dachflaeche` mit
   Trägerebene E und äußerer Normaler n_a,
-- d̂_F ∈ S² die Richtung des Firsts F (oder, falls kein First
+- d_hat_F ∈ S² die Richtung des Firsts F (oder, falls kein First
   existiert wie beim Pultdach, die Richtung der Traufe der
   zugeordneten Dachfläche),
 - z_Fuß die mittlere Höhe der zur Dachseite gehörigen Fußpfette
@@ -77,9 +77,9 @@ Sei
 Dann heißt P eine **Mittelpfette** genau dann, wenn die folgenden
 Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
 
-1. **Parallelität zur Firstrichtung**: d̂_P ist kollinear mit d̂_F,
+1. **Parallelität zur Firstrichtung**: d_hat_P ist kollinear mit d_hat_F,
    ```
-   ‖d̂_P × d̂_F‖ ≤ ε_K.
+   ‖d_hat_P × d_hat_F‖ ≤ ε_K.
    ```
    Sinus-Test gegen Kollinearität; nach `_KONVENTIONEN.md`
    Sektion 4 ist `KOLLINEAR_EPS` die einschlägige Toleranz für
@@ -283,7 +283,7 @@ sealed class MittelpfetteEntartet {
 - **Edge Cases**:
   - **Mehrere Mittelpfetten je Dachseite**: zulässig; alle
     erfüllen Bedingung 1–3 individuell.
-  - **Pultdach**: kein First vorhanden; d̂_F wird durch die
+  - **Pultdach**: kein First vorhanden; d_hat_F wird durch die
     Traufenrichtung ersetzt. Mittelpfette zwischen Fußpfette
     (an der Traufe) und Pultpfette (an der Pultkante).
   - **Sparrendach**: keine Mittelpfette zu modellieren.

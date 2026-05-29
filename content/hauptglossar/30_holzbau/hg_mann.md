@@ -242,7 +242,7 @@ mit
   Strebe in der Pfostenachse (typisch im Wilden Mann);
   ⊥ im Default-Mann.
 - **wandebene** ∈ 𝒫: die gemeinsame Wandebene; Normalenvektor
-  n̂_W horizontal (|⟨n̂_W, e_z⟩| ≤ ε_K).
+  n_hat_W horizontal (|⟨n_hat_W, e_z⟩| ≤ ε_K).
 - **variante** ∈ 𝓥: die Klassifikation der Mann-Variante
   (Welle-12-grobe-Klassifikation; siehe Quellenkonflikt-
   Block (5)).
@@ -274,10 +274,10 @@ und den Konsistenzbedingungen
 
 2. **Pfosten lotrecht in der Wandebene**: a(pfosten) liegt
    in der Wandebene (Endpunkt-Punkt-Ebene-Abstand ≤ ε_L),
-   und der Richtungsvektor d̂_pfosten ist kollinear zu e_z
-   (||d̂_pfosten × e_z|| ≤ ε_K).
+   und der Richtungsvektor d_hat_pfosten ist kollinear zu e_z
+   (||d_hat_pfosten × e_z|| ≤ ε_K).
 
-3. **Wandebene lotrecht**: |⟨n̂_W, e_z⟩| ≤ ε_K.
+3. **Wandebene lotrecht**: |⟨n_hat_W, e_z⟩| ≤ ε_K.
 
 4. **Kopfbänder am Pfosten-Kopf verankert**: Für jedes
    k ∈ kopfbaender ist der Pfosten-Anker-Endpunkt von a(k)

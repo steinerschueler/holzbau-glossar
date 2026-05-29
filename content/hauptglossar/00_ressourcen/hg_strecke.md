@@ -70,7 +70,7 @@ Wesentliche abgeleitete Größen:
 - **Richtungsvektor**: r := b − a ∈ ℝ³ \ {0}.
 - **Länge**: ℓ([a, b]) := ‖b − a‖ ∈ ℝ_{>0} (in mm).
 - **Mittelpunkt**: m := ½·(a + b).
-- **Einheits-Richtung**: ê := r / ‖r‖ ∈ S².
+- **Einheits-Richtung**: e_hat := r / ‖r‖ ∈ S².
 
 Die Strecke ist **ungeordnet**, wenn nur ihre Punktmenge zählt
 (dann gilt [a, b] = [b, a]); sie ist **geordnet** (orientiert),
@@ -176,7 +176,7 @@ data class Strecke(
   - `anfang ≈ ende` (innerhalb Toleranz): `Entartet.NullStrecke`.
   - Nicht-finite Koordinaten: `Entartet.NichtFinit`.
   - Sehr kurze Strecken (knapp über Toleranz): zulässig, aber
-    Richtungsableitungen wie ê = (b − a)/‖b − a‖ sind numerisch
+    Richtungsableitungen wie e_hat = (b − a)/‖b − a‖ sind numerisch
     sensibel; die Domänen-Schicht warnt im Test, nicht zur Laufzeit.
 - **Abgeleitete Operationen** (in `StreckeOps.kt`):
   - `fun laenge(): Double` = ‖ende − anfang‖

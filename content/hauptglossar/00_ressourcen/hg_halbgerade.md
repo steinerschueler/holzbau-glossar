@@ -55,7 +55,7 @@ Ursprungspunkt p₀ (h(p₀, v) ∩ h(p₀, −v) = {p₀}).
 Wesentliche abgeleitete Größen:
 
 - **Trägergerade**: g(p₀, v) ⊃ h(p₀, v).
-- **Einheits-Richtung**: v̂ := v / ‖v‖.
+- **Einheits-Richtung**: v_hat := v / ‖v‖.
 - **Komplementäre Halbgerade**: h(p₀, −v).
 
 ## Wohldefiniertheit
@@ -66,7 +66,7 @@ Wesentliche abgeleitete Größen:
 - **Skalierung mit negativem Faktor kehrt die Halbgerade um**:
   h(p₀, −v) ist die komplementäre Halbgerade, **nicht** dieselbe.
   Die Halbgerade ist also durch die Richtungs-**Halbgerade** in S²
-  (also v̂ bis auf positive Skalierung), nicht nur durch die
+  (also v_hat bis auf positive Skalierung), nicht nur durch die
   Richtungslinie bestimmt.
 - **Ursprungspunkt ist eindeutig**: p₀ ist der einzige Punkt von
   h(p₀, v), der nicht im offenen Inneren liegt; er ist durch die

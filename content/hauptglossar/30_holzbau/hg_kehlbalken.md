@@ -178,7 +178,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - (S₁, S₂) ein Sparrenpaar im Sinne von `sparren`, mit
   Sparrenfuß-Punkten p^{(i)}_fuß und Sparrenfirstpunkten
   p^{(i)}_first für i ∈ {1, 2},
@@ -202,7 +202,7 @@ dann, wenn die folgenden Bedingungen erfüllt sind:
 2. **Horizontalitätsbedingung**: Die Bauteilachsenrichtung ist
    horizontal,
    ```
-   |⟨d̂, e_z⟩| ≤ ε_K,
+   |⟨d_hat, e_z⟩| ≤ ε_K,
    ```
    d. h. die Bauteilachse steht rechtwinklig zur Welt-Lotachse.
    Die Form des Tests ist ein **Sinus-Test gegen `e_z`-
@@ -263,7 +263,7 @@ Wesentliche abgeleitete Größen:
 - **Sparrenpaar-Ebene** E_paar: die Tragebene des Kehlbalkens; sie
   ist rechtwinklig zur Trauflinie und enthält die beiden Sparren-
   Bauteilachsen.
-- **Höhenparameter** t̄ := (t_a + t_e) / 2 ∈ (0, 1): mittlerer
+- **Höhenparameter** t_bar := (t_a + t_e) / 2 ∈ (0, 1): mittlerer
   Sparren-Längenparameter der beiden Anschlusspunkte; charakterisiert
   die Höhenlage des Kehlbalkens relativ zur Sparrenlänge. Dient als
   abgeleitete Klassifikations-Größe (Faustregel-Bandbreite), nicht
@@ -285,9 +285,9 @@ Wesentliche abgeleitete Größen:
   anders als bei vorzeichen-konventionierten Pfetten gibt es beim
   Kehlbalken **keine kanonische** Welt-bezogene Orientierungs-
   Vorgabe: das Sparrenpaar ist gegenüber seiner Mittelsenkrechten
-  spiegelsymmetrisch, und Welt-Lot e_z liegt rechtwinklig zu d̂
+  spiegelsymmetrisch, und Welt-Lot e_z liegt rechtwinklig zu d_hat
   (Bedingung 2), sodass weder Falllinie noch Lot eine Richtung
-  innerhalb d̂ auszeichnen. Die Bijektion σ : {a, e} → {1, 2}
+  innerhalb d_hat auszeichnen. Die Bijektion σ : {a, e} → {1, 2}
   in Bedingung 4 ist daher **konventional** und keine Eigenschaft
   des Kehlbalkens selbst; sie ist Bestandteil der Bauteilachse-
   Konstruktion und kann etwa lexikographisch über die Bauteil-
@@ -416,7 +416,7 @@ Die **Faserrichtung** eines Kehlbalkens ist im Regelfall
 **parallel zur Bauteilachse**: das Bauteil wird so aus dem Stamm
 geschnitten, dass die Längsfaser entlang der Bauteillänge
 verläuft. In der Domänen-Schicht ist `faserrichtung` Annotation
-des Bauteils und für Kehlbalken als **Default ‖ d̂_Kehlbalken** zu
+des Bauteils und für Kehlbalken als **Default ‖ d_hat_Kehlbalken** zu
 setzen.
 
 ### Anschluss-Bauarten am Sparren
@@ -467,7 +467,7 @@ gehört höchstens zu einem Kehlbalkenbinder.
     an den Bauteilachsen der beiden Sparren des Paars;
   - **Querschnitt** (rechteckig im Regelfall);
   - **Werkstoff** (Vollholz oder BSH);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_Kehlbalken).
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_Kehlbalken).
 - **Verwendung / Beziehung zu anderen Bauteilen**:
   - **Sparren** (`sparren`): jeweils ein Paar bildet die
     Grundlage der Kehlbalken-Definition; der Kehlbalken sitzt
@@ -602,7 +602,7 @@ sealed class KehlbalkenEntartet {
   2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
   3. Sparrenpaar-Ebene konstruierbar (vier Sparren-Endpunkte koplanar
      bis ε_L) — sonst `SparrenpaarEntartet`.
-  4. |⟨d̂, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst `NichtHorizontal`.
+  4. |⟨d_hat, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst `NichtHorizontal`.
   5. p_a, p_e in der Sparrenpaar-Ebene bis ε_L — sonst
      `NichtInSparrenpaarEbene`.
   6. p_a auf Sparren-Achse von S₁ und p_e auf Sparren-Achse von S₂
@@ -630,7 +630,7 @@ sealed class KehlbalkenEntartet {
     Aggregat geprüft, nicht am einzelnen Kehlbalken.
   - **Pultdach**: kein Sparrenpaar → Kehlbalken nicht definierbar.
     Aussteifende Querhölzer sind dort andere Bauteilrollen.
-  - **Sehr kurzer Kehlbalken nahe am First** (t̄ → 1): konstruktiv
+  - **Sehr kurzer Kehlbalken nahe am First** (t_bar → 1): konstruktiv
     in Richtung Hahnenbalken; die Trennung ist konventional und
     nicht über eine numerische Schwelle in der Definition geregelt.
     Im Code wird die Bauteilrolle Kehlbalken vs. Hahnenbalken am

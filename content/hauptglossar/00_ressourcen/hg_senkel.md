@@ -68,10 +68,10 @@ verläuft, sodass die Ebene selbst parallel zur Lotrichtung steht.
 Sei
 
 - W das Welt-Koordinatensystem (siehe `weltkoordinatensystem`)
-  mit Einheitsvektoren ê_x, ê_y, ê_z, wobei ê_z vertikal nach
+  mit Einheitsvektoren e_hat_x, e_hat_y, e_hat_z, wobei e_hat_z vertikal nach
   oben zeigt und damit die **Lotachsen-Richtung** trägt,
 - E ⊂ ℝ³ eine Ebene im Sinne von `ebene`, repräsentiert in
-  Hesse-Normalform durch das Paar (n̂, d) ∈ S² × ℝ,
+  Hesse-Normalform durch das Paar (n_hat, d) ∈ S² × ℝ,
 - ε_K := `Toleranzen.KOLLINEAR_EPS` die einschlägige
   dimensionslose Toleranzkonstante für Skalarprodukt-basierte
   Lage-Tests (siehe `toleranzen`).
@@ -79,23 +79,23 @@ Sei
 Dann gilt **`E ist Senkel`** genau dann, wenn
 
 ```
-| ⟨ n̂, ê_z ⟩ | ≤ ε_K.                                            (1)
+| ⟨ n_hat, e_hat_z ⟩ | ≤ ε_K.                                            (1)
 ```
 
 Äquivalente Formulierungen:
 
-- **Geometrisch**: die Ebenen-Normale n̂ steht rechtwinklig zur
-  Welt-Lotachse ê_z; folglich enthält die Ebene E die Richtung
-  ê_z (sie verläuft parallel zur Lotrichtung).
+- **Geometrisch**: die Ebenen-Normale n_hat steht rechtwinklig zur
+  Welt-Lotachse e_hat_z; folglich enthält die Ebene E die Richtung
+  e_hat_z (sie verläuft parallel zur Lotrichtung).
 - **Über Lot-Vektor**: für jeden Punkt p ∈ E und jedes λ ∈ ℝ
-  gilt p + λ · ê_z ∈ E; jede zur Lotrichtung verschobene Kopie
+  gilt p + λ · e_hat_z ∈ E; jede zur Lotrichtung verschobene Kopie
   eines Punktes der Ebene liegt wieder in der Ebene.
 
 Die zugehörige **Senkelmenge** ist die Klasse aller Ebenen, die
 (1) erfüllen:
 
 ```
-𝒮 := { E ⊂ ℝ³ | E Ebene, |⟨n̂_E, ê_z⟩| ≤ ε_K }.                  (2)
+𝒮 := { E ⊂ ℝ³ | E Ebene, |⟨n_hat_E, e_hat_z⟩| ≤ ε_K }.                  (2)
 ```
 
 Senkel ist damit ein **Prädikat** (`istSenkel: Ebene → Bool`),
@@ -104,23 +104,23 @@ nicht ein eigener geometrischer Konstruktor.
 ## Wohldefiniertheit
 
 - **Vorzeichen-Invarianz**: Die Hesse-Normalform repräsentiert E
-  nur bis auf die Vorzeichenmehrdeutigkeit (n̂, d) ↔ (−n̂, −d)
+  nur bis auf die Vorzeichenmehrdeutigkeit (n_hat, d) ↔ (−n_hat, −d)
   (siehe `ebene` Wohldefiniertheit). Bedingung (1) ist davon
-  unabhängig, weil sie den Betrag |⟨n̂, ê_z⟩| verwendet:
-  |⟨−n̂, ê_z⟩| = |−⟨n̂, ê_z⟩| = |⟨n̂, ê_z⟩|. Das Prädikat ist
+  unabhängig, weil sie den Betrag |⟨n_hat, e_hat_z⟩| verwendet:
+  |⟨−n_hat, e_hat_z⟩| = |−⟨n_hat, e_hat_z⟩| = |⟨n_hat, e_hat_z⟩|. Das Prädikat ist
   damit auf der Ebene wohldefiniert, nicht nur auf einer
   bestimmten Hesse-Repräsentation.
-- **Existenz**: Für jede Ebene E ist ⟨n̂_E, ê_z⟩ wohldefiniert
+- **Existenz**: Für jede Ebene E ist ⟨n_hat_E, e_hat_z⟩ wohldefiniert
   (Skalarprodukt zweier Einheitsvektoren in ℝ³); der Betrag und
   der Vergleich mit ε_K liefern einen Wahrheitswert.
 - **Eindeutigkeit der Klassifikation**: Bei gegebener
   Toleranz ε_K liefert (1) eine eindeutige Ja-Nein-Antwort.
-  Innerhalb des Toleranzbandes |⟨n̂, ê_z⟩| ∈ (ε_K, 1 − ε_K)
+  Innerhalb des Toleranzbandes |⟨n_hat, e_hat_z⟩| ∈ (ε_K, 1 − ε_K)
   ist E weder Senkel noch Bleischnitt; die beiden Klassen sind
   disjunkt, decken aber nicht alle Ebenen ab (geneigte Ebenen
   fallen in keine).
 - **Konsistenz mit Bleischnitt**: Aus (1) und der
-  Bleischnitt-Bedingung |⟨n̂, ê_z⟩| ≥ 1 − ε_K folgt, dass eine
+  Bleischnitt-Bedingung |⟨n_hat, e_hat_z⟩| ≥ 1 − ε_K folgt, dass eine
   Ebene mit ε_K < 1 − ε_K (also für jede praktische Wahl von
   ε_K) **nicht gleichzeitig** Senkel und Bleischnitt sein
   kann. Die beiden Prädikate sind zueinander disjunkt
@@ -242,7 +242,7 @@ Zimmermannstoleranz; sie filtert nur numerische Restfehler.
     Senkel, im Grenzfall Dachneigung = 0° ein Bleischnitt
     (Flachdach).
   - **Welt-Koordinatensystem** (`weltkoordinatensystem`): legt
-    die Lotachsen-Richtung ê_z fest, gegen die Senkel und
+    die Lotachsen-Richtung e_hat_z fest, gegen die Senkel und
     Bleischnitt gemessen werden. Ohne Welt-Koordinatensystem
     sind Senkel und Bleischnitt nicht definiert.
 
@@ -263,9 +263,9 @@ import kotlin.math.abs
  * Prädikat: ist diese Ebene ein Senkel?
  *
  * Eine Ebene ist genau dann Senkel, wenn ihre Normale
- * rechtwinklig zur Welt-Lotachse ê_z = (0, 0, 1) steht, d. h.
+ * rechtwinklig zur Welt-Lotachse e_hat_z = (0, 0, 1) steht, d. h.
  *
- *   |⟨n̂, ê_z⟩| ≤ Toleranzen.KOLLINEAR_EPS.
+ *   |⟨n_hat, e_hat_z⟩| ≤ Toleranzen.KOLLINEAR_EPS.
  *
  * Glossar: hg_senkel.md (Prädikat über `hg_ebene.md`).
  *
@@ -274,7 +274,7 @@ import kotlin.math.abs
  * siehe Glossar Wohldefiniertheit.
  */
 fun Ebene.istSenkel(eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean {
-    val nz = this.normaleEinheit().z       // ⟨n̂, ê_z⟩
+    val nz = this.normaleEinheit().z       // ⟨n_hat, e_hat_z⟩
     return abs(nz) <= eps
 }
 ```
@@ -292,7 +292,7 @@ fun Ebene.istSenkel(eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean {
   - **Bezugsebene als Senkel**: theoretisch möglich, in der
     App nicht im Standard-Modellierungspfad vorgesehen
     (siehe `bezugsebene`); kein Sonderverhalten.
-  - **Welt-Koordinatensystem mit anderer ê_z-Wahl**: das
+  - **Welt-Koordinatensystem mit anderer e_hat_z-Wahl**: das
     Prädikat ist gegen die im `weltkoordinatensystem`
     festgelegte Lotachsen-Richtung formuliert; eine
     Abweichung wäre eine Verletzung der Welt-Konvention und

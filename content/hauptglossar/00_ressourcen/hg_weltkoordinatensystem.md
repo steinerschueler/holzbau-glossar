@@ -103,9 +103,9 @@ wobei
 
 - ω : ℝ³ × ℝ³ → ℝ die Winkelmessung um e_z im mathematischen Sinn,
   ```
-  ω(u, v) := atan2( ⟨e_z, û × v̂⟩ , ⟨û, v̂⟩ )  ∈ (−π, π],
+  ω(u, v) := atan2( ⟨e_z, u_hat × v_hat⟩ , ⟨u_hat, v_hat⟩ )  ∈ (−π, π],
   ```
-  mit û = u/‖u‖, v̂ = v/‖v‖, definiert für u, v ∉ Null der
+  mit u_hat = u/‖u‖, v_hat = v/‖v‖, definiert für u, v ∉ Null der
   Toleranz `Toleranzen.NORM_EPS`. ω misst den orientierten Winkel
   von u nach v gegen den Uhrzeigersinn um e_z, in **Radiant**.
 

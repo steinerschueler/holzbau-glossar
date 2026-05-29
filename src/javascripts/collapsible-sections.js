@@ -2,11 +2,21 @@
  * lange Glossar-Einträge sich auf ihre Sektionsköpfe reduzieren und der
  * Leser gezielt aufklappt, was ihn interessiert.
  *
- * Default: alle Sektionen zu. Klick auf einen Sektions-Titel öffnet ihn.
+ * Default:
+ *   - Desktop (>= 76.1875em): alle Sektionen offen. Material zeigt
+ *     auf dieser Breite die rechte TOC fix an — der Leser navigiert
+ *     ohne Klick-Aufwand zur gewünschten Sektion.
+ *   - Mobile/Tablet (<  76.1875em): alle Sektionen zu, Klick öffnet.
+ *     Die rechte TOC ist hier nicht sichtbar, der Akkordeon-Stil
+ *     verhindert seitenlanges Scrollen.
  * Anchor-Direktlinks (z.B. /ressourcen/punkt/#beziehungen) öffnen die
- * adressierte Sektion automatisch.
+ * adressierte Sektion in beiden Modi automatisch.
  */
 (function () {
+  // Material's Breakpoint zur permanenten linken+rechten Sidebar.
+  // Identisch mit der SCSS-Variable $break-devices--screen (76.1875em).
+  const DESKTOP_MQ = "(min-width: 76.1875em)";
+
   function wrapSections() {
     const article = document.querySelector("article.md-content__inner")
       || document.querySelector("article");
@@ -19,9 +29,12 @@
     );
     if (headings.length === 0) return;
 
+    const openByDefault = window.matchMedia(DESKTOP_MQ).matches;
+
     headings.forEach(h2 => {
       const details = document.createElement("details");
       details.className = "glossar-section";
+      if (openByDefault) details.open = true;
 
       // Anker-ID des H2 auf das <details>-Element übernehmen, damit
       // direkte Anchor-Links (.../#prosa-definition) weiterhin auf die

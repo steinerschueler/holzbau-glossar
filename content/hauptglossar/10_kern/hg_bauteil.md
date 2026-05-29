@@ -548,7 +548,7 @@ data class Bauteil(
   1. Norm-Invariante aller in `annotationen` enthaltenen
      Einheitsvektoren (`faserrichtung`, `haupttragrichtung`,
      `plattenlaengsrichtung`, `plattendicken_achse`):
-     | ‖v̂‖² − 1 | ≤ Toleranzen.NORM_EPS (geerbt von
+     | ‖v_hat‖² − 1 | ≤ Toleranzen.NORM_EPS (geerbt von
      `einheitsvektor`).
   2. Geometrie-spezifische Nicht-Degeneriertheit:
      - Stab: Achsenlänge > Toleranzen.LAENGE_EPS,

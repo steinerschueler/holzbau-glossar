@@ -58,10 +58,10 @@ ihrem Sparrenfirstpunkt trägt.
 Sei
 
 - P eine Pfette im Sinne von `pfette` mit Bauteilachse
-  a(P) = (p_a, p_e), Richtungs-Einheitsvektor d̂_P und mittlerer
+  a(P) = (p_a, p_e), Richtungs-Einheitsvektor d_hat_P und mittlerer
   Höhe z_P := (p_a.z + p_e.z) / 2,
 - F ein First im Sinne von `first` mit Streckenzug-Repräsentation
-  und Richtungs-Einheitsvektor d̂_F sowie Firstniveau
+  und Richtungs-Einheitsvektor d_hat_F sowie Firstniveau
   z_F := mittlere Höhe der Firststützpunkte,
 - ε_K := Toleranzen.KOLLINEAR_EPS,
 - δ_z eine konstruktive Höhentoleranz, die die zulässige Differenz
@@ -72,9 +72,9 @@ Sei
 Dann heißt P eine **Firstpfette** genau dann, wenn die folgenden
 Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
 
-1. **Parallelität zum First**: d̂_P ist kollinear mit d̂_F,
+1. **Parallelität zum First**: d_hat_P ist kollinear mit d_hat_F,
    ```
-   ‖d̂_P × d̂_F‖ ≤ ε_K.
+   ‖d_hat_P × d_hat_F‖ ≤ ε_K.
    ```
    Sinus-Test gegen Kollinearität; nach `_KONVENTIONEN.md`
    Sektion 4 ist `KOLLINEAR_EPS` die einschlägige Toleranz für
@@ -194,12 +194,12 @@ p_K^First ∈ A(B) der Bleischnitt-Punkt der Firstpfettenkerve, je
 gemäß `hg_kerve.md` Gleichungen (7a)/(7b) (Schnittpunkt der vorderen
 Kervflanke g₁ mit der Bauteilachse). Da p_K^Fuß und p_K^First
 beide auf der Bauteilachse A(B) liegen, ist ihre Verbindung
-kollinear mit dem Bauteilachsen-Richtungsvektor d̂; mit der
-Vorzeichenkonvention aus `hg_sparren.md` (d̂ zeigt bergauf, also
-entgegen ê_fall) gilt
+kollinear mit dem Bauteilachsen-Richtungsvektor d_hat; mit der
+Vorzeichenkonvention aus `hg_sparren.md` (d_hat zeigt bergauf, also
+entgegen e_hat_fall) gilt
 
 ```
-s  :=  ⟨ p_K^First − p_K^Fuß ,  d̂ ⟩                            (s.1)
+s  :=  ⟨ p_K^First − p_K^Fuß ,  d_hat ⟩                            (s.1)
     =  ‖ p_K^First − p_K^Fuß ‖,                                 (s.2)
 ```
 
@@ -220,7 +220,7 @@ Lesart der „Kervenposition" am Sparren.
 Im idealisierten Fall — Pfetten waagerecht, Standardklauenkerven
 mit α₁ = π/2 (vordere Kervflanke senkel, p_K auf gleicher Höhe
 wie die Pfettenoberkante in z), Sparrenachse exakt in der
-Trägerebene der Dachfläche und entgegen ê_fall gerichtet — sind
+Trägerebene der Dachfläche und entgegen e_hat_fall gerichtet — sind
 die z-Koordinaten von p_K^Fuß und p_K^First genau die jeweiligen
 Pfettenhöhen, und die Bauteilachse ist um die Dachneigung α
 gegen die Horizontale geneigt. Dann folgt aus (s.2) die
@@ -316,7 +316,7 @@ data class Firstpfette(
         // 1. Pfetten-Bedingungen aus Pfette geerbt (Stabgeometrie,
         //    Horizontalität, Parallelität zu einer Dachkante).
         // 2. Parallelität zum First (Bedingung 1 aus hg_firstpfette.md):
-        //    ‖d̂_P × d̂_F‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
+        //    ‖d_hat_P × d_hat_F‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
         //    Resultat.Fehler(FirstpfetteEntartet.NichtParallel).
         //    Sinus-Test, bevorzugt für Parallelitäts-Prädikate;
         //    siehe hauptglossar/_KONVENTIONEN.md Sektion 4.

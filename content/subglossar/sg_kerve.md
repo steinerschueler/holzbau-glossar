@@ -84,8 +84,8 @@ sondern eine geometrisch verwandte Form, die im flachen Sonderfall
 zufällig zusammenfällt.
 
 Die zimmermannsmäßige Konstruktion lebt damit in der **Lotebene des
-Sparrens** mit welt-horizontaler ê_h- und welt-vertikaler
-ê_v-Richtung; auf welcher Seite des Sohlen-Ausschnitts der Senkel
+Sparrens** mit welt-horizontaler e_hat_h- und welt-vertikaler
+e_hat_v-Richtung; auf welcher Seite des Sohlen-Ausschnitts der Senkel
 sitzt — fuss- oder firstwärts — hängt von der Sparrenlage ab, nicht
 von einer freien Wahl (siehe Abschnitt „Senkelseite" weiter unten).
 
@@ -94,9 +94,9 @@ von einer freien Wahl (siehe Abschnitt „Senkelseite" weiter unten).
 Die folgende Skizze zeigt einen Sparren im Profil-Schnitt (Lotebene),
 der über eine Klauenkerve auf einer Fusspfette aufliegt. Die zwei
 Schnittflächen sind beschriftet, die drei Eckpunkte der
-Kerve-Geometrie sind als rote Punkte markiert. Welt-Pfeile **ê_h**
-und **ê_v** unten rechts orientieren den Schnitt; sie zeigen, dass
-die Sohle parallel zu **ê_h** und der Senkel parallel zu **ê_v**
+Kerve-Geometrie sind als rote Punkte markiert. Welt-Pfeile **e_hat_h**
+und **e_hat_v** unten rechts orientieren den Schnitt; sie zeigen, dass
+die Sohle parallel zu **e_hat_h** und der Senkel parallel zu **e_hat_v**
 liegt — unabhängig von der Dachneigung des Sparrens.
 
 <svg viewBox="0 0 480 370" xmlns="http://www.w3.org/2000/svg" role="img" font-family="sans-serif" font-size="13">
@@ -229,7 +229,7 @@ liegt — unabhängig von der Dachneigung des Sparrens.
       Z. 3             (240, 58) italic 11 #666
                        "Kerveckpunkt P im Sparreninneren"
     Welt-Pfeile-Inset (Pattern 2):
-      g translate(400, 340) — ê_h-Text endet global bei x ≈ 460,
+      g translate(400, 340) — e_hat_h-Text endet global bei x ≈ 460,
       20 px Reserve zum viewBox-Rand 480.
   KRITISCHE FALLEN
     (1) Keine Leerzeilen innerhalb des <svg>...</svg>-Blocks —
@@ -300,10 +300,10 @@ liegt — unabhängig von der Dachneigung des Sparrens.
     <text x="-12" y="5" text-anchor="end" font-size="11" fill="#666">Welt:</text>
     <line x1="0" y1="0" x2="32" y2="0" stroke="#2c3e50" stroke-width="1.5"/>
     <polygon points="32,0 27,-3 27,3" fill="#2c3e50"/>
-    <text x="36" y="5" font-style="italic">ê_h</text>
+    <text x="36" y="5" font-style="italic">e_hat_h</text>
     <line x1="0" y1="0" x2="0" y2="-32" stroke="#2c3e50" stroke-width="1.5"/>
     <polygon points="0,-32 -3,-27 3,-27" fill="#2c3e50"/>
-    <text x="4" y="-36" font-style="italic">ê_v</text>
+    <text x="4" y="-36" font-style="italic">e_hat_v</text>
     <circle cx="0" cy="0" r="2" fill="#2c3e50"/>
   </g>
 </svg>

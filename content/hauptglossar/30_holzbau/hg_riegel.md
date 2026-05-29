@@ -116,15 +116,15 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - E_W eine Wandebene (Ebene im Sinne von `ebene`) mit Stützpunkt
-  p_W und Normalenvektor n̂_W ∈ S², wobei n̂_W horizontal liegt
-  (|⟨n̂_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
+  p_W und Normalenvektor n_hat_W ∈ S², wobei n_hat_W horizontal liegt
+  (|⟨n_hat_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
   HG_KONVENTIONEN.md §1, d. h. lotrecht),
 - P₁, P₂ zwei vertikal stehende Stab-Bauteile in E_W (vgl.
   Forward-Verweis `pfosten`) mit Bauteilachsen entlang
-  Einheitsvektoren v̂₁, v̂₂ ∈ S², wobei
-  |⟨v̂ᵢ, e_z⟩| ≥ 1 − ε_K  (Lotrechtheit, Sinus-Test gegen e_z),
+  Einheitsvektoren v_hat₁, v_hat₂ ∈ S², wobei
+  |⟨v_hatᵢ, e_z⟩| ≥ 1 − ε_K  (Lotrechtheit, Sinus-Test gegen e_z),
 - e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
 - ε_K := Toleranzen.KOLLINEAR_EPS,
   ε_W := Toleranzen.WINKEL_EPS,
@@ -139,7 +139,7 @@ E_W genau dann, wenn die folgenden Bedingungen erfüllt sind:
 2. **Horizontalität der Riegelachse**: Die Bauteilachsenrichtung
    steht rechtwinklig zur Welt-Lotachse,
    ```
-   |⟨d̂, e_z⟩| ≤ ε_K.
+   |⟨d_hat, e_z⟩| ≤ ε_K.
    ```
    Der Test ist ein **Sinus-Test gegen e_z-Parallelität**
    (Lot-Prädikat); nach HG_KONVENTIONEN.md §4 ist `KOLLINEAR_EPS`
@@ -147,16 +147,16 @@ E_W genau dann, wenn die folgenden Bedingungen erfüllt sind:
 
 3. **Lage in der Wandebene**: Beide Endpunkte liegen in E_W,
    ```
-   |⟨p_a − p_W, n̂_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n̂_W⟩| ≤ ε_L.
+   |⟨p_a − p_W, n_hat_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n_hat_W⟩| ≤ ε_L.
    ```
 
 4. **Rechtwinkligkeit zu den begrenzenden Pfosten**: Die Riegel-
    achse steht rechtwinklig zu beiden Pfostenachsen,
    ```
-   |⟨d̂, v̂ᵢ⟩| ≤ ε_K  für i = 1, 2.
+   |⟨d_hat, v_hatᵢ⟩| ≤ ε_K  für i = 1, 2.
    ```
-   Aus Bedingung 2 (Horizontalität d̂) und der Lotrechtheit der
-   Pfosten (v̂ᵢ ≈ ±e_z) folgt Bedingung 4 bereits geometrisch; sie
+   Aus Bedingung 2 (Horizontalität d_hat) und der Lotrechtheit der
+   Pfosten (v_hatᵢ ≈ ±e_z) folgt Bedingung 4 bereits geometrisch; sie
    bleibt als Konsistenz-Bedingung stehen, um schiefstehende
    Pfosten (z. B. Schwellenverdrehung beim Aufrichten) numerisch
    abzufangen.
@@ -175,7 +175,7 @@ Wesentliche abgeleitete Größen:
 
 - **Riegellänge**: L_R := ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen den Anschlüssen an P₁ und P₂.
-- **Riegelrichtung**: d̂ ∈ S² mit |⟨d̂, e_z⟩| ≤ ε_K.
+- **Riegelrichtung**: d_hat ∈ S² mit |⟨d_hat, e_z⟩| ≤ ε_K.
 - **Riegel-Höhenlage**: z_R := (p_a.z + p_e.z) / 2; bei einer
   exakt horizontalen Riegelachse gilt p_a.z = p_e.z = z_R.
 
@@ -187,10 +187,10 @@ Wesentliche abgeleitete Größen:
   fünf Bedingungen konstruktiv erfüllbar; jeder Riegel eines
   klassischen Fachwerk-Gefachs ist Standardbeispiel.
 - **Eindeutigkeit der Riegelrichtung**: Bedingungen 2 und 3
-  zusammen fixieren d̂ bis auf Vorzeichen: d̂ liegt in E_W
-  (rechtwinklig zu n̂_W) und ist horizontal (rechtwinklig zu
-  e_z). Da n̂_W selbst horizontal ist (Wand lotrecht), ist d̂
-  damit kollinear zu n̂_W × e_z bzw. dem in E_W liegenden
+  zusammen fixieren d_hat bis auf Vorzeichen: d_hat liegt in E_W
+  (rechtwinklig zu n_hat_W) und ist horizontal (rechtwinklig zu
+  e_z). Da n_hat_W selbst horizontal ist (Wand lotrecht), ist d_hat
+  damit kollinear zu n_hat_W × e_z bzw. dem in E_W liegenden
   Horizontalvektor; das Vorzeichen wird durch die Reihung der
   Endpunkte p_a → p_e festgelegt.
 - **Vorzeichenkonvention**: Welcher Endpunkt p_a bzw. p_e ist,
@@ -201,7 +201,7 @@ Wesentliche abgeleitete Größen:
   Konsumenten dürfen sich nicht auf eine geometrisch zwingende
   Orientierung verlassen.
 - **Konsistenz Bedingung 2 ↔ Bedingung 4**: Bei exakt lotrechten
-  Pfosten (v̂ᵢ = ±e_z) und horizontaler Riegelachse (Bedingung 2)
+  Pfosten (v_hatᵢ = ±e_z) und horizontaler Riegelachse (Bedingung 2)
   ist Bedingung 4 redundant; bei numerisch leicht schiefstehenden
   Pfosten ist Bedingung 4 die stärkere Aussage und entscheidet
   über die Annahme/Ablehnung. Beide Bedingungen werden in der
@@ -400,7 +400,7 @@ hier nur als Lesehilfe genannt.
   - **Querschnitt** (rechteckig, oft gleich Pfostenquerschnitt
     im modernen Holzrahmenbau);
   - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_Riegel).
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_Riegel).
 - **Positions-Annotation** (Merkmal am Riegel, kein Subtyp):
   - **Riegelposition** (`riegelposition`, Folgearbeit): Wert
     aus { Brust, Sturz, Stockwerk, Zwischen, Sonstige }.
@@ -504,7 +504,7 @@ data class Riegel(
         get() = (achse.anfang.z + achse.ende.z) / 2.0
 
     /**
-     * Horizontalitätsprädikat: |⟨d̂, e_z⟩| ≤ KOLLINEAR_EPS.
+     * Horizontalitätsprädikat: |⟨d_hat, e_z⟩| ≤ KOLLINEAR_EPS.
      *
      * Sinus-Test gegen e_z-Parallelität; KOLLINEAR_EPS ist
      * bevorzugt für Lot- und Parallelitäts-Prädikate
@@ -556,15 +556,15 @@ sealed class RiegelEntartet {
   niemals Exception):
   1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
   2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. |⟨d̂, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst
+  3. |⟨d_hat, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst
      `NichtHorizontal` (Sinus-Test gegen e_z-Parallelität;
      KOLLINEAR_EPS, vgl. HG_KONVENTIONEN.md §4).
-  4. Wandebene lotrecht: |⟨n̂_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
+  4. Wandebene lotrecht: |⟨n_hat_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
      — sonst `WandebeneNichtLotrecht`.
   5. Beide Endpunkte in Wandebene (Punkt-Ebene-Abstand ≤
      Toleranzen.LAENGE_EPS) — sonst `NichtInWandebene`.
   6. Rechtwinkligkeit zu beiden begrenzenden Pfostenachsen:
-     |⟨d̂, v̂ᵢ⟩| ≤ Toleranzen.KOLLINEAR_EPS für i = 1, 2 — sonst
+     |⟨d_hat, v_hatᵢ⟩| ≤ Toleranzen.KOLLINEAR_EPS für i = 1, 2 — sonst
      `NichtRechtwinkligZuPfosten` (Sinus-Test).
   7. Endpunkte fallen mit Pfostenachsen zusammen
      (Punkt-Gerade-Abstand ≤ Toleranzen.LAENGE_EPS) — sonst
@@ -575,7 +575,7 @@ sealed class RiegelEntartet {
     Funktion ist Eigenschaft der Tragwerks-Analyse und wird in
     einer eigenen Sturz-Modellierung getragen (Folgearbeit).
   - **Schiefstehende Pfosten** (Schwellenverdrehung beim
-    Aufrichten): die Lot-Bedingung an v̂ᵢ schlägt fehl; der
+    Aufrichten): die Lot-Bedingung an v_hatᵢ schlägt fehl; der
     Riegel würde dann nicht mehr horizontal an die Pfosten
     anschließen. In der Praxis wird die Wand vor dem Einsetzen
     der Riegel ausgerichtet; ein kleiner Toleranzbereich ist

@@ -64,7 +64,7 @@ Festigkeitswerte und Anschluss-Geometrie definiert.
 
 Sei
 
-- ê ∈ S² ⊂ ℝ³ ein Einheitsvektor (siehe `einheitsvektor`),
+- e_hat ∈ S² ⊂ ℝ³ ein Einheitsvektor (siehe `einheitsvektor`),
 - B ein Plattenbauteil oder Plattenwerkstoff (siehe `bauteil`,
   `werkstoff`; hier nur als Träger der Annotation vorausgesetzt).
 
@@ -72,14 +72,14 @@ Dann ist die **Plattendicken-Achse** des Plattenbauteils B eine
 Annotation
 
 ```
-plattendicken_achse(B) := ê ∈ S²,
+plattendicken_achse(B) := e_hat ∈ S²,
 ```
 
 mit der Eigenschaft, dass die **Plattenebene** als affine Ebene
 durch den Bauteilbezugspunkt definiert ist als
 
 ```
-Π(B) := { p ∈ ℝ³ | ⟨p − p_0, ê⟩ = 0 }
+Π(B) := { p ∈ ℝ³ | ⟨p − p_0, e_hat⟩ = 0 }
 ```
 
 (p_0 ein Bezugspunkt auf der Mittelebene des Bauteils;
@@ -119,11 +119,11 @@ Eintrag siehe `plattenlaengsrichtung`, `haupttragrichtung`,
   Plattenmaß-Wert produktnormativ definiert (z. B. CLT
   3000 × 1250 × 100 mm, OSB 2500 × 1250 × 22 mm). Die rechtwinklige
   Achse zur Plattenebene ist daher eindeutig festgelegt.
-- **Eindeutigkeit bis auf Vorzeichen**: ê ist als Annotation eines
+- **Eindeutigkeit bis auf Vorzeichen**: e_hat ist als Annotation eines
   Plattenbauteils eindeutig, sobald eine Vorzeichenkonvention
   festgelegt ist. Bei Plattenwerkstoffen mit ausgezeichneter Ober-/
   Unterseite (z. B. beschichtete Platten, Akustikplatten mit
-  Strukturschicht) ist die Vorzeichenkonvention „ê zeigt von der
+  Strukturschicht) ist die Vorzeichenkonvention „e_hat zeigt von der
   Unterseite zur Oberseite". Bei seitenisotropen Platten (Memory
   `project_plattenwerkstoffe`) ist die Vorzeichenwahl konventionell
   und beim Bauteil zu dokumentieren; alle Bemessungs-Eigenschaften
@@ -134,7 +134,7 @@ Eintrag siehe `plattenlaengsrichtung`, `haupttragrichtung`,
   `gerichteter_plattenwerkstoff`, `isotroper_plattenwerkstoff`).
   Bei Modus HART (`axiales_holz`) ist sie undefiniert
   (`plattendicken_achse = ⊥`).
-- **Norm-Invariante**: ê erbt | ‖ê‖² − 1 | ≤ Toleranzen.NORM_EPS
+- **Norm-Invariante**: e_hat erbt | ‖e_hat‖² − 1 | ≤ Toleranzen.NORM_EPS
   aus `einheitsvektor`.
 - **Konsistenz mit den Plattenrichtungen**: Die Orthogonalität zu
   `plattenlaengsrichtung`, `haupttragrichtung`, `nebentragrichtung`
@@ -270,7 +270,7 @@ value class PlattendickenAchse(val richtung: Einheitsvektor) {
 
 - **Einheit**: dimensionslos (geerbt von `einheitsvektor`).
 - **Invariante**: alle Invarianten von `Einheitsvektor`,
-  insbesondere | ‖ê‖² − 1 | ≤ Toleranzen.NORM_EPS.
+  insbesondere | ‖e_hat‖² − 1 | ≤ Toleranzen.NORM_EPS.
 - **Vorzeichenkonvention**: Bei seitenisotropen Plattenwerkstoffen
   (Memory `project_plattenwerkstoffe`) konventionell; bei Platten
   mit ausgezeichneter Sichtseite physikalisch festgelegt

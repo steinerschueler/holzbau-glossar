@@ -260,8 +260,8 @@ mit
 - **knaggen** ⊂ 𝓢_Kna, |knaggen| ≥ 0: optionale Knaggen am
   Wandgefüge.
 - **wandebene** ∈ 𝒫: die geometrische Bezugsebene der Wand
-  (lotrechte Ebene), in der alle Bauteilachsen liegen. n̂_W ∈ S²
-  mit |⟨n̂_W, e_z⟩| ≤ ε_K (lotrecht).
+  (lotrechte Ebene), in der alle Bauteilachsen liegen. n_hat_W ∈ S²
+  mit |⟨n_hat_W, e_z⟩| ≤ ε_K (lotrecht).
 - **lage** ∈ SE(3): die Starrkörpertransformation, die das
   lokale Wand-Koordinatensystem nach W überführt (siehe
   `lokales_koordinatensystem`).
@@ -288,16 +288,16 @@ und den Konsistenzbedingungen
    Hüllen-Inklusion, azyklische Verschachtelung). Insbesondere
    |bestandteile| ≥ 4 (mindestens 1 Schwelle + 1 Rähm + 2 Ständer).
 
-2. **Wandebene lotrecht**: Der Normalenvektor n̂_W der Wandebene
+2. **Wandebene lotrecht**: Der Normalenvektor n_hat_W der Wandebene
    ist horizontal,
    ```
-   |⟨n̂_W, e_z⟩| ≤ ε_K.
+   |⟨n_hat_W, e_z⟩| ≤ ε_K.
    ```
 
 3. **Schwellen horizontal in der Wandebene**: Für jede Schwelle
    s ∈ schwellen liegt a(s) in der Wandebene
    (Punkt-Ebene-Abstand der Endpunkte ≤ ε_L), und der
-   Richtungsvektor d̂_s erfüllt |⟨d̂_s, e_z⟩| ≤ ε_K (horizontal).
+   Richtungsvektor d_hat_s erfüllt |⟨d_hat_s, e_z⟩| ≤ ε_K (horizontal).
    Die z-Koordinate aller Schwellen-Endpunkte liegt nahe dem
    unteren Wand-Rand z_min^W.
 
@@ -307,8 +307,8 @@ und den Konsistenzbedingungen
 
 5. **Ständer lotrecht in der Wandebene**: Für jeden Ständer
    p ∈ staender liegt a(p) in der Wandebene, und der
-   Richtungsvektor d̂_p ist kollinear zu e_z
-   (||d̂_p × e_z|| ≤ ε_K).
+   Richtungsvektor d_hat_p ist kollinear zu e_z
+   (||d_hat_p × e_z|| ≤ ε_K).
 
 6. **Ständer zwischen Schwelle und Rähm**: Für jeden Ständer
    p ∈ staender existieren s ∈ schwellen und r ∈ raehm, sodass
@@ -732,7 +732,7 @@ enum class WandFunktion {
   1. `schwellen.size >= 1` ⇒ sonst `Entartet.KeineSchwelle`.
   2. `raehm.size >= 1` ⇒ sonst `Entartet.KeinRaehm`.
   3. `staender.size >= 2` ⇒ sonst `Entartet.ZuWenigStaender`.
-  4. Wandebene lotrecht: `|n̂_W · e_z| ≤ Toleranzen.KOLLINEAR_EPS`
+  4. Wandebene lotrecht: `|n_hat_W · e_z| ≤ Toleranzen.KOLLINEAR_EPS`
      ⇒ sonst `Entartet.WandebeneNichtLotrecht`.
   5. Für jedes Bauteil b ∈ bestandteile: beide Endpunkte der
      Bauteilachse liegen in der Wandebene

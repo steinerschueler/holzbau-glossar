@@ -122,10 +122,10 @@ Sei
 
 - B ein Bauteil im Sinne von `bauteil` mit Bauteilachse
   a(B) = (p_a, p_e) ∈ ℝ³ × ℝ³ und Richtungs-Einheitsvektor
-  d̂_B := (p_e − p_a) / ‖p_e − p_a‖,
-- ê_z := (0, 0, 1) die Welt-z-Achse nach `weltkoordinatensystem`,
+  d_hat_B := (p_e − p_a) / ‖p_e − p_a‖,
+- e_hat_z := (0, 0, 1) die Welt-z-Achse nach `weltkoordinatensystem`,
 - E_⊥ eine horizontale Bezugsebene im Sinne von `bezugsebene` mit
-  Normalen-Einheitsvektor ê_z (die Oberkante des Auflagers, im
+  Normalen-Einheitsvektor e_hat_z (die Oberkante des Auflagers, im
   Folgenden „Auflagerebene" genannt) und Höhe z_E := z-Koordinate
   jedes Punktes in E_⊥,
 - z_B := (p_a.z + p_e.z) / 2 die mittlere Höhe der Bauteilachse,
@@ -139,7 +139,7 @@ folgenden Bedingungen alle erfüllt sind:
 
 1. **Horizontalität der Bauteilachse**:
    ```
-   |d̂_B · ê_z| ≤ ε_K.
+   |d_hat_B · e_hat_z| ≤ ε_K.
    ```
    Sinus-Test gegen e_z-Parallelität (Skalarprodukt-Form, drei
    von vier Welle-8-Einträgen einheitlich): die Bauteilachse liegt
@@ -159,13 +159,13 @@ folgenden Bedingungen alle erfüllt sind:
 3. **Unterste Wand-Längslage**: Es existiert in derselben
    Wand-Längsachse a_W (Geradenfortsetzung von a(B) in der
    Wand-Ebene) kein weiteres horizontales Bauteil B′ ≠ B mit
-   d̂_{B′} kollinear zu d̂_B und z_{B′} < z_B − ε_L. In Worten:
+   d_hat_{B′} kollinear zu d_hat_B und z_{B′} < z_B − ε_L. In Worten:
    die Schwelle ist das **unterste** horizontale Längsbauteil
    entlang der Wandlinie.
 
 4. **Pfosten-Auflagerbedingung**: Mindestens ein Bauteil
    P im Tragwerks-Kontext (`pfosten` oder `ständer`) mit
-   lotrechter Bauteilachse a(P), d̂_P kollinear zu ê_z bis auf
+   lotrechter Bauteilachse a(P), d_hat_P kollinear zu e_hat_z bis auf
    ε_K, hat seinen unteren Endpunkt p_a(P) innerhalb ε_L oberhalb
    der Schwellen-Bauteilachse, projektive Lage zwischen p_a und
    p_e. Schwellen ohne aufgesetzte Pfosten sind im Tragwerks-
@@ -474,7 +474,7 @@ data class Schwelle(
 
     init {
         // 1. Horizontalität (Bedingung 1 aus hg_schwelle.md):
-        //    |d̂_B · ê_z| ≤ Toleranzen.KOLLINEAR_EPS — sonst
+        //    |d_hat_B · e_hat_z| ≤ Toleranzen.KOLLINEAR_EPS — sonst
         //    Resultat.Fehler(SchwelleEntartet.NichtHorizontal).
         //    Sinus-Test; siehe HG_KONVENTIONEN.md Sektion 4.
         // 2. Auflagernähe (Bedingung 2): Unterkante des

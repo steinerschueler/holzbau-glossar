@@ -68,7 +68,7 @@ quellenkonflikt: |
   zugunsten einer Inzidenz-Bedingung auf eine Kehlstrecke s_{ij} im
   Sinne von `hg_kehle.md`. Die Vorzeichenkonvention (Bed. 4 in
   `hg_sparren.md`, „bergauf, von Traufe zu First") wird mit Bezug
-  auf die aufwärts gerichtete Kehllinien-Tangente t̂ (siehe
+  auf die aufwärts gerichtete Kehllinien-Tangente t_hat (siehe
   `hg_kehle.md`) übernommen. Diese Festlegung ist konsistent mit
   allen konsultierten Quellen.
 
@@ -216,7 +216,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂_K := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat_K := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - 𝒟 = {D_1, …, D_m} eine Dachflächenfamilie im Sinne von
   `dachflaeche`,
 - D_i = (E_i, P_i, n_{a,i}) und D_j = (E_j, P_j, n_{a,j}) zwei
@@ -225,10 +225,10 @@ Sei
   also eine Schnittstrecke s_{ij} = F(P_i) ∩ F(P_j), die die
   Kehlen-Bedingungen (1)–(2) aus `hg_kehle.md` erfüllt
   (geneigt, konkav, beide äußeren Normalen in oberer Halbkugel,
-  Spatprodukt ⟨n̂_{a,i} × n̂_{a,j}, t̂⟩ < −ε_W),
-- t̂ := (b_{ij} − a_{ij}) / ‖b_{ij} − a_{ij}‖ ∈ S² die Tangente
+  Spatprodukt ⟨n_hat_{a,i} × n_hat_{a,j}, t_hat⟩ < −ε_W),
+- t_hat := (b_{ij} − a_{ij}) / ‖b_{ij} − a_{ij}‖ ∈ S² die Tangente
   von s_{ij} mit s_{ij} = [a_{ij}, b_{ij}] und (Vorzeichenkonvention
-  aus `hg_kehle.md`) ⟨t̂, e_z⟩ > 0 (bergauf orientiert),
+  aus `hg_kehle.md`) ⟨t_hat, e_z⟩ > 0 (bergauf orientiert),
 - e_z := (0, 0, 1)ᵀ die vertikale Achse,
 - ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz,
 - ε_K := Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz,
@@ -257,19 +257,19 @@ erfüllt sind:
    Falllinien-Kollinearität aus `hg_sparren.md` Bed. 3): Die
    Bauteilachsenrichtung ist kollinear zur Kehllinien-Tangente,
    ```
-   ‖d̂_K × t̂‖ ≤ ε_K,
+   ‖d_hat_K × t_hat‖ ≤ ε_K,
    ```
-   d. h. der Winkel zwischen d̂_K und t̂ ist 0 oder π (modulo der
+   d. h. der Winkel zwischen d_hat_K und t_hat ist 0 oder π (modulo der
    numerischen Sinus-Toleranz nach §4 HG-Konvention für
    Parallelitäts-Prädikate).
 
 4. **Vorzeichenkonvention** (Kehlsparrenrichtung von Trauf-Innenecke
-   zu Firstend-Punkt): Die Bauteilachse ist so gerichtet, dass d̂_K
-   in dieselbe Halbkugel wie t̂ weist, also bergauf:
+   zu Firstend-Punkt): Die Bauteilachse ist so gerichtet, dass d_hat_K
+   in dieselbe Halbkugel wie t_hat weist, also bergauf:
    ```
-   ⟨d̂_K, t̂⟩ ≥ +1 − ε_W,
+   ⟨d_hat_K, t_hat⟩ ≥ +1 − ε_W,
    ```
-   äquivalent ⟨d̂_K, e_z⟩ > 0. p_a ist damit der **Kehlsparrenfuß**
+   äquivalent ⟨d_hat_K, e_z⟩ > 0. p_a ist damit der **Kehlsparrenfuß**
    (am Trauf-Innen-Eckpunkt zweier zusammentreffender Dachflächen),
    p_e der **Kehlsparrenfirstpunkt** (am Firstend-Punkt der
    Kehllinie bzw. am Verschneidungs-Knoten unter dem First).
@@ -289,7 +289,7 @@ Wesentliche abgeleitete Größen:
   Kehlstrecke, siehe `hg_kehle.md`, abgeleitete Operation
   `kehlneigung()`):
   ```
-  α_K := arcsin(|⟨t̂, e_z⟩|) = arcsin(⟨d̂_K, e_z⟩).
+  α_K := arcsin(|⟨t_hat, e_z⟩|) = arcsin(⟨d_hat_K, e_z⟩).
   ```
   Wertebereich α_K ∈ (0, π/2) bei nicht-entarteten Verschneidungs-
   Kehlen.
@@ -311,29 +311,29 @@ tan(α_K) = tan(α) · cos(β_plan).                                  (★)
 **Herleitung aus den Primitiven:** Die Herleitung ist exakt parallel
 zur Gratsparren-Reduktionsformel aus `hg_gratsparren.md`. Sei
 π_xy: ℝ³ → ℝ² die Projektion in die Horizontalebene. Die Schnittgerade
-s_{ij} ⊂ ℝ³ projiziert auf eine Gerade π_xy(s_{ij}) ⊂ ℝ². Sei ê_t :=
-(t̂_x, t̂_y, 0) / ‖(t̂_x, t̂_y)‖ der normierte Grundrissrichtungs-
-vektor der Kehllinie und ê_fall(E_i) die Falllinie der Dachfläche
+s_{ij} ⊂ ℝ³ projiziert auf eine Gerade π_xy(s_{ij}) ⊂ ℝ². Sei e_hat_t :=
+(t_hat_x, t_hat_y, 0) / ‖(t_hat_x, t_hat_y)‖ der normierte Grundrissrichtungs-
+vektor der Kehllinie und e_hat_fall(E_i) die Falllinie der Dachfläche
 D_i (siehe `hg_falllinie.md`). Dann gilt nach Konstruktion
 
 ```
-cos(β_plan) = |⟨ê_t, π_xy(ê_fall(E_i)) / ‖π_xy(ê_fall(E_i))‖⟩|.
+cos(β_plan) = |⟨e_hat_t, π_xy(e_hat_fall(E_i)) / ‖π_xy(e_hat_fall(E_i))‖⟩|.
 ```
 
 Aus der Geneigtheits-Bedingung (`hg_kehle.md` Bed. 1) und der
-Tatsache, dass t̂ in beiden Trägerebenen E_i und E_j liegt
-(s_{ij} = E_i ∩ E_j), folgt durch Aufspaltung von t̂ in seinen
+Tatsache, dass t_hat in beiden Trägerebenen E_i und E_j liegt
+(s_{ij} = E_i ∩ E_j), folgt durch Aufspaltung von t_hat in seinen
 horizontalen Anteil und e_z-Anteil mit Höhenfunktion z auf E_i
 
 ```
-⟨t̂, e_z⟩ / ‖(t̂_x, t̂_y)‖ = tan(α) · cos(β_plan)
+⟨t_hat, e_z⟩ / ‖(t_hat_x, t_hat_y)‖ = tan(α) · cos(β_plan)
 ```
 
-und damit `tan(α_K) = ⟨t̂, e_z⟩ / ‖(t̂_x, t̂_y)‖ = tan(α) ·
+und damit `tan(α_K) = ⟨t_hat, e_z⟩ / ‖(t_hat_x, t_hat_y)‖ = tan(α) ·
 cos(β_plan)`. ∎
 
 **Vorzeichen-Unabhängigkeit:** Die Reduktionsformel hängt **nicht**
-vom Vorzeichen des Spatprodukts ⟨n̂_{a,i} × n̂_{a,j}, t̂⟩ ab, das die
+vom Vorzeichen des Spatprodukts ⟨n_hat_{a,i} × n_hat_{a,j}, t_hat⟩ ab, das die
 Konvexität (Gratstrecke, positiv) von der Konkavität (Kehlstrecke,
 negativ) trennt. Sie liefert daher dieselbe Reduktion für
 Gratsparren und Kehlsparren — die Schnittgeraden-Neigung ist eine
@@ -368,9 +368,9 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `kehle`, `dachflaeche`.
 
 - **Eindeutigkeit der Vorzeichenkonvention**: Aus der
   Geneigtheits-Bedingung der Kehlstrecke (`hg_kehle.md` Bed. 1)
-  folgt ⟨t̂, e_z⟩ > ε_W, also t̂ ≠ −t̂ als Tangentenwahl. Bed. 3
-  und 4 zusammen fixieren d̂_K = +t̂ (modulo ε_K, ε_W). Die
-  alternative Orientierung d̂_K = −t̂ ist durch Bed. 4
+  folgt ⟨t_hat, e_z⟩ > ε_W, also t_hat ≠ −t_hat als Tangentenwahl. Bed. 3
+  und 4 zusammen fixieren d_hat_K = +t_hat (modulo ε_K, ε_W). Die
+  alternative Orientierung d_hat_K = −t_hat ist durch Bed. 4
   ausgeschlossen.
 
 - **Asymmetrie zum Oberbegriff `sparren` — explizite Auflösung:**
@@ -403,9 +403,9 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `kehle`, `dachflaeche`.
   - Bed. 2 von `hg_sparren.md` durch eine **Endpunkt-Inzidenz auf
     einer Kehlstrecke s_{ij}** (Bed. 2 hier) ersetzt;
   - Bed. 3 von `hg_sparren.md` durch eine **Kehllinien-Kollinearität
-    zur Tangente t̂** (Bed. 3 hier) ersetzt;
+    zur Tangente t_hat** (Bed. 3 hier) ersetzt;
   - Bed. 4 von `hg_sparren.md` als **bergauf-Orientierung relativ
-    zu t̂** statt zu ê_fall übernimmt (Bed. 4 hier).
+    zu t_hat** statt zu e_hat_fall übernimmt (Bed. 4 hier).
 
   Die geerbte konstruktive Rolle des Oberbegriffs `sparren`
   (Stab-Bauteil eines Dachtragwerks, geneigt, lastabtragend,
@@ -414,7 +414,7 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `kehle`, `dachflaeche`.
   Einzelfläche auf die Kehllinie der Verschneidung umgehängt.
 
 - **Konsistenz mit `hg_kehle.md`**: Aus Bed. 3 und Bed. 4 folgt
-  d̂_K = +t̂ (modulo Toleranzen), wobei t̂ die nach `hg_kehle.md`
+  d_hat_K = +t_hat (modulo Toleranzen), wobei t_hat die nach `hg_kehle.md`
   Vorzeichenkonvention bergauf gerichtete Kehllinien-Tangente ist.
   Damit ist der Kehlsparrenfuß stets am unteren Endpunkt a_{ij}
   der Kehlstrecke (Trauf-Innen-Eckpunkt) und der
@@ -695,7 +695,7 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
   - **Querschnitt** (vom Bauteil geerbt; rechteckig, typisch
     mindestens wie Gratsparren des gleichen Daches);
   - **Werkstoff** (vom Bauteil geerbt; Vollholz oder BSH);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_K);
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_K);
   - **Abkehlung** (partitive Bearbeitung, Folgearbeit
     `hg_abkehlung.md`);
   - **Kerven** am Fuß (siehe `hg_kerve.md`).
@@ -829,8 +829,8 @@ import domain.geometrie.Punkt
  * Vorzeichenkonvention (normativ):
  *   p_a = Kehlsparrenfuß       (am Trauf-Innen-Eckpunkt)
  *   p_e = Kehlsparrenfirstpunkt (am Firstend-Punkt der Kehllinie)
- *   d̂_K zeigt bergauf (⟨d̂_K, e_z⟩ > 0), kollinear zur
- *   aufwärts gerichteten Kehllinien-Tangente t̂.
+ *   d_hat_K zeigt bergauf (⟨d_hat_K, e_z⟩ > 0), kollinear zur
+ *   aufwärts gerichteten Kehllinien-Tangente t_hat.
  */
 data class Kehlsparren(
     val bauteil: Bauteil,
@@ -858,7 +858,7 @@ data class Kehlsparren(
 sealed class KehlsparrenEntartet {
     object NichtAufKehllinie         : KehlsparrenEntartet()
     object NichtKollinearZurTangente : KehlsparrenEntartet()
-    object FalscheRichtung           : KehlsparrenEntartet()   // d̂_K zeigt bergab
+    object FalscheRichtung           : KehlsparrenEntartet()   // d_hat_K zeigt bergab
     object Nullachse                 : KehlsparrenEntartet()
     object EntarteteKehlstrecke      : KehlsparrenEntartet()
 }
@@ -875,12 +875,12 @@ sealed class KehlsparrenEntartet {
      wohldefinierten Endpunkten — sonst `EntarteteKehlstrecke`.
   4. p_a und p_e liegen auf der Kehllinien-Geraden bis ε_L —
      sonst `NichtAufKehllinie`.
-  5. ‖d̂_K × t̂‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
+  5. ‖d_hat_K × t_hat‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
      `NichtKollinearZurTangente`.
      (§4 HG-Konvention: Kollinearitäts-Test über das normierte
      Kreuzprodukt mit `KOLLINEAR_EPS`, **nicht** über
      `WINKEL_EPS`.)
-  6. ⟨d̂_K, t̂⟩ ≥ +1 − Toleranzen.WINKEL_EPS — sonst
+  6. ⟨d_hat_K, t_hat⟩ ≥ +1 − Toleranzen.WINKEL_EPS — sonst
      `FalscheRichtung` (Konsumenten können durch Achsen-Umkehr
      automatisch korrigieren).
 - **Edge Cases**:

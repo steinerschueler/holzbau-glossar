@@ -70,7 +70,7 @@ quellenkonflikt: |
   - Eine Konterlatte ist ein **Bauteil mit Bauteilrolle
     „Konterlatte"**, dessen Bauteilachse parallel-versetzt zur
     Trägerebene einer zugeordneten Dachfläche liegt und entlang
-    deren Falllinie verläuft (kollinear zu ê_fall).
+    deren Falllinie verläuft (kollinear zu e_hat_fall).
   - Der **Versatz h_K** in äußerer Normalen-Richtung der
     Dachfläche entspricht im prismatischen Standardfall der
     **Höhe der Konterlatte** und ist gleich dem **lokalen
@@ -122,12 +122,12 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = `Bauteilachse.Gerade`(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - D = (E, P, n_a) eine Dachfläche im Sinne von `dachflaeche` mit
   Trägerebene E (Stützpunkt p₀ ∈ E), Polygon P und äußerer
   Einheits-Normalen n_a ∈ S²,
-- ê_fall(E) ∈ S² die Falllinie der Trägerebene E (siehe
-  `falllinie`); d. h. ⟨ê_fall, e_z⟩ ≤ 0,
+- e_hat_fall(E) ∈ S² die Falllinie der Trägerebene E (siehe
+  `falllinie`); d. h. ⟨e_hat_fall, e_z⟩ ≤ 0,
 - h_K ∈ ℝ mit h_K > 0 der **Versatz** der Konterlatte zur
   Trägerebene E in Richtung n_a (≡ Höhe der Konterlatte im
   prismatischen Standardfall),
@@ -144,7 +144,7 @@ genau dann, wenn die folgenden Bedingungen erfüllt sind:
    ‖p_e − p_a‖ > ε_L.
 
 2. **Geneigtheit der Dachfläche**: D ist eine geneigte Dachfläche,
-   d. h. die Dachneigung α erfüllt α > ε_W (damit ê_fall(E) eindeutig
+   d. h. die Dachneigung α erfüllt α > ε_W (damit e_hat_fall(E) eindeutig
    definiert ist; siehe `hg_dachneigung.md` und `hg_falllinie.md`).
 
 3. **Lage in der parallel-versetzten Ebene**: Beide Endpunkte der
@@ -156,20 +156,20 @@ genau dann, wenn die folgenden Bedingungen erfüllt sind:
 4. **Falllinien-Kollinearität**: Die Bauteilachsenrichtung ist
    kollinear zur Falllinie der Trägerebene,
    ```
-   |⟨d̂, ê_fall(E)⟩| ≥ 1 − ε_W,
+   |⟨d_hat, e_hat_fall(E)⟩| ≥ 1 − ε_W,
    ```
-   d. h. der Winkel zwischen d̂ und ê_fall ist 0 oder π (modulo
+   d. h. der Winkel zwischen d_hat und e_hat_fall ist 0 oder π (modulo
    ε_W). Strukturell identisch zu `hg_sparren.md` Bed. 3;
    spiegelbildlich zur `hg_latte.md`-Bedingung kollinear zu einer
-   Höhenlinie / rechtwinklig zu ê_fall.
+   Höhenlinie / rechtwinklig zu e_hat_fall.
 
 5. **Vorzeichenkonvention (Konterlatte von Traufe zu First)**:
-   Die Bauteilachse ist so gerichtet, dass d̂ **entgegen** ê_fall
+   Die Bauteilachse ist so gerichtet, dass d_hat **entgegen** e_hat_fall
    verläuft, also nach oben:
    ```
-   ⟨d̂, ê_fall(E)⟩ ≤ −1 + ε_W,
+   ⟨d_hat, e_hat_fall(E)⟩ ≤ −1 + ε_W,
    ```
-   äquivalent ⟨d̂, e_z⟩ ≥ 0. p_a ist damit der traufseitige
+   äquivalent ⟨d_hat, e_z⟩ ≥ 0. p_a ist damit der traufseitige
    Achsenendpunkt, p_e der firstseitige. Die Konvention ist
    identisch zur Sparren-Vorzeichenkonvention nach `hg_sparren.md`
    Bed. 4 und damit konsistent mit der Auflage-Beziehung
@@ -193,19 +193,19 @@ Wesentliche abgeleitete Größen:
 - **Existenz**: Für jede geneigte Dachfläche D mit α > ε_W und
   jeden Versatz h_K > 0 existiert mindestens ein Stab-Bauteil B
   mit gerader Bauteilachse, deren Endpunkte in E_K(h_K) liegen und
-  deren Richtung kollinear zu ê_fall(E) ist. Eine Standardkonterlatte
+  deren Richtung kollinear zu e_hat_fall(E) ist. Eine Standardkonterlatte
   über einem Standardsparren ist das Standardbeispiel.
 - **Eindeutigkeit der Vorzeichenkonvention**: Bedingung 5 fixiert
-  eine der beiden Achsenorientierungen (d̂ oder −d̂) eindeutig:
+  eine der beiden Achsenorientierungen (d_hat oder −d_hat) eindeutig:
   für eine geneigte Dachfläche (α > ε_W aus Bed. 2) ist
-  ⟨d̂, ê_fall⟩ ≠ 0, und genau einer der beiden Werte ±1 (modulo
+  ⟨d_hat, e_hat_fall⟩ ≠ 0, und genau einer der beiden Werte ±1 (modulo
   ε_W) liegt im Bereich „nach oben".
 - **Eindeutigkeit des Versatzes h_K**: Aus Bed. 3 folgt
   ⟨n_a, p_a − p₀⟩ = ⟨n_a, p_e − p₀⟩ = h_K bis auf ε_L; der Versatz
   ist daher als skalarer Parameter der Konterlatte gegenüber D
   wohldefiniert.
 - **Geneigtheits-Voraussetzung (Bed. 2)**: Bei einer horizontalen
-  Dachfläche (α = 0) ist ê_fall nicht definiert (`hg_falllinie.md`
+  Dachfläche (α = 0) ist e_hat_fall nicht definiert (`hg_falllinie.md`
   Wohldefiniertheits-Abschnitt). Die Konterlatte ist auf
   geneigte Dachflächen beschränkt; im Flachdach-Fall greift sie
   begrifflich nicht (für Flachdach-Hinterlüftungslatten siehe
@@ -213,7 +213,7 @@ Wesentliche abgeleitete Größen:
 - **Asymmetrie zur Latte**: Die Konterlatten-Definition fordert
   Falllinien-Kollinearität (Bed. 4); die parallel angelegte
   Latten-Definition (`hg_latte.md`) fordert Falllinien-
-  Rechtwinkligkeit (`|⟨d̂_L, ê_fall(E)⟩| ≤ ε_W`). Beide
+  Rechtwinkligkeit (`|⟨d_hat_L, e_hat_fall(E)⟩| ≤ ε_W`). Beide
   Bedingungen schließen einander aus (außer im entarteten Fall
   α = 0, der durch Bed. 2 ohnehin ausgeschlossen ist); damit ist
   die Bauteilrolle-Zuordnung Konterlatte ↔ Latte eindeutig.
@@ -258,14 +258,14 @@ unterschieden — jede Asymmetrie ist in der Definition formal
 verankert:
 
 - **gegen `sparren`**: gleiche Bauteilachsen-Richtung (kollinear zu
-  ê_fall, Bed. 4), aber **Lage außerhalb der Trägerebene**
+  e_hat_fall, Bed. 4), aber **Lage außerhalb der Trägerebene**
   (parallel-versetzt um h_K > 0, Bed. 3) statt **in der
   Trägerebene** (h_K = 0 bei `hg_sparren.md`). Die Konterlatte
   trägt nicht die Dachflächenlasten, sondern liegt **auf** dem
   Sparren und überträgt die Traglatten-Last in den Sparren.
 - **gegen `latte`** (parallel entstehender Eintrag): **kollinear
-  zu ê_fall** (Konterlatte, Bed. 4) gegenüber **rechtwinklig zu
-  ê_fall** (Latte, kollinear zu einer Höhenlinie der Trägerebene).
+  zu e_hat_fall** (Konterlatte, Bed. 4) gegenüber **rechtwinklig zu
+  e_hat_fall** (Latte, kollinear zu einer Höhenlinie der Trägerebene).
   Diese Lage-Asymmetrie ist die definierende Schicht-Asymmetrie
   des hinterlüfteten Dachaufbaus.
 - **gegen `pfette`**: Pfetten sind horizontal entlang einer
@@ -323,7 +323,7 @@ dass die Längsfaser entlang der Konterlatten-Länge verläuft.
 Faserneigungs-Abweichungen werden über die Sortierklasse begrenzt
 (DIN 4074-1 S 10 / S 13). In der Domänen-Schicht ist
 `faserrichtung` Annotation des Bauteils und für Konterlatten als
-**Default ‖ d̂_Konterlatte** zu setzen.
+**Default ‖ d_hat_Konterlatte** zu setzen.
 
 ### Holzschutz-Sondersituation
 
@@ -377,7 +377,7 @@ geführt — strukturparallel zur `latte` / `traglattung`-Asymmetrie.
     40/60 mm});
   - **Werkstoff** (Vollholz Nadelholz, S 10 / S 13 nach
     DIN 4074-1);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_Konterlatte).
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_Konterlatte).
 - **Verwendung / Beziehung zu anderen Bauteilen und Schichten**:
   - **Sparren** (`sparren`): Auflage der Konterlatte; die
     Konterlatte liegt im Standardfall genau über einer
@@ -389,7 +389,7 @@ geführt — strukturparallel zur `latte` / `traglattung`-Asymmetrie.
     Asymmetrie zum Sparren.
   - **Dachfläche** (`dachflaeche`): zugeordnete geometrische
     Fläche; die Konterlatten-Bauteilachse ist parallel zur
-    Trägerebene und kollinear zu ê_fall.
+    Trägerebene und kollinear zu e_hat_fall.
   - **Dachaufbau** (`dachaufbau`): die Konterlatten bilden die
     Schicht `SchichtFunktion.KONTERLATTUNG` im Schicht-Aggregat.
 - **Abgrenzung**:
@@ -468,7 +468,7 @@ import domain.holzbau.Faserrichtung
  * Vorzeichenkonvention (normativ, identisch zu Sparren):
  *   p_a am traufseitigen Achsenendpunkt,
  *   p_e am firstseitigen Achsenendpunkt,
- *   d̂ zeigt nach oben (⟨d̂, e_z⟩ ≥ 0), entgegen der Falllinie ê_fall.
+ *   d_hat zeigt nach oben (⟨d_hat, e_z⟩ ≥ 0), entgegen der Falllinie e_hat_fall.
  *
  * Versatz h_K (in mm) = ⟨n_a, p_a − p₀⟩ ≥ Toleranzen.LAENGE_EPS;
  * im prismatischen Standardfall identisch zur Konterlattenhöhe.
@@ -530,9 +530,9 @@ sealed class KonterlatteEntartet {
   5. `|⟨n_a, p_a − p₀⟩ − h_K| ≤ Toleranzen.LAENGE_EPS` und
      `|⟨n_a, p_e − p₀⟩ − h_K| ≤ Toleranzen.LAENGE_EPS` — sonst
      `NichtParallelVersetzt`.
-  6. `|⟨d̂, ê_fall⟩| ≥ 1 − Toleranzen.WINKEL_EPS` — sonst
+  6. `|⟨d_hat, e_hat_fall⟩| ≥ 1 − Toleranzen.WINKEL_EPS` — sonst
      `NichtAufFalllinie`.
-  7. `⟨d̂, ê_fall⟩ ≤ −1 + Toleranzen.WINKEL_EPS` (d̂ zeigt nach
+  7. `⟨d_hat, e_hat_fall⟩ ≤ −1 + Toleranzen.WINKEL_EPS` (d_hat zeigt nach
      oben) — sonst `FalscheRichtung` (Konsumenten können hier
      durch Achsen-Umkehr automatisch korrigieren).
 - **Toleranz-Konventionen** (siehe `HG_KONVENTIONEN.md` §4):

@@ -196,3 +196,149 @@ html .md-typeset details.glossar-section h6 { font-size: 1.0rem !important; }
   color: var(--md-accent-fg-color);
   background: var(--md-accent-fg-color--transparent);
 }
+
+/* ──────────────────────────────────────────────────────────────────────
+ * Versions-Footer-Zeile (Stand vX.Y.Z · Welle Wn · DOI ...).
+ * ────────────────────────────────────────────────────────────────────── */
+
+.md-copyright__version {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  margin-top: 0.2rem;
+}
+
+.md-copyright__version a {
+  color: inherit;
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+}
+
+.md-copyright__version a:hover {
+  opacity: 1;
+  text-decoration-style: solid;
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+ * Font-Ligaturen in Code-Blöcken abschalten.
+ *
+ * JetBrains Mono rendert Sequenzen wie ``)>``, ``):``, ``,)`` und
+ * ähnliche Kombinationen mit schliessenden Klammern als Programmier-
+ * Ligaturen, die in mathematischen Glossar-Formeln als kleiner ^-Pfeil
+ * fehlinterpretierbar erscheinen. In Prosa wären die Ligaturen sinnvoll;
+ * in mathematischen Quasi-LaTeX-Notationen verwirren sie. Wir deaktivieren
+ * sie nur für Inline-Code und Code-Blöcke.
+ * ────────────────────────────────────────────────────────────────────── */
+
+.md-typeset code,
+.md-typeset pre,
+.md-typeset pre code,
+.md-typeset .highlight pre,
+.md-typeset .highlight code {
+  font-feature-settings: "liga" 0, "calt" 0, "clig" 0;
+  font-variant-ligatures: none;
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+ * Cluster-Hervorhebung im Hamburger-Menu (Primary-Sidebar).
+ *
+ * Die vier Cluster (Ressourcen, Kern, Tragwerk, Holzbau) werden vom
+ * Build-Hook als Top-Level-Sections in die Nav gehängt — Material
+ * markiert sie mit .md-nav__item--nested. Statische Single-Page-Items
+ * (Startseite / Methode / Zitieren) tragen diese Klasse nicht. Damit
+ * trifft der Selektor ausschliesslich die Cluster, ohne :nth-child-
+ * Tricks, und bleibt stabil, wenn neue statische Seiten dazukommen.
+ *
+ * Farbpaar Gold:
+ *   default (hell) → dunkelgolden #8a6d12, ≈5:1 Kontrast auf Weiss
+ *   slate (dunkel) → hellgolden  #e6c068, ≈9:1 Kontrast auf Slate-BG
+ * ────────────────────────────────────────────────────────────────────── */
+
+[data-md-color-scheme="default"]
+  .md-nav--primary > .md-nav__list > .md-nav__item--nested
+  > .md-nav__link {
+  color: #8a6d12;
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"]
+  .md-nav--primary > .md-nav__list > .md-nav__item--nested
+  > .md-nav__link {
+  color: #e6c068;
+  font-weight: 600;
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+ * Print-Stylesheet — beim Druck eines Glossar-Eintrags entfällt die
+ * gesamte Navigations-Chrome (Header, Sidebars, Footer, Download-Knöpfe,
+ * Suchfeld). Akkordeon-Sektionen werden automatisch geöffnet, damit
+ * der Inhalt vollständig auf dem Papier erscheint. Farbe wird auf
+ * Schwarz-auf-Weiss reduziert; Links zeigen die Ziel-URL inline, damit
+ * der Verweis auch ohne Klickbarkeit nachvollziehbar bleibt.
+ * ────────────────────────────────────────────────────────────────────── */
+
+@media print {
+  .md-header,
+  .md-tabs,
+  .md-sidebar,
+  .md-footer,
+  .md-search,
+  .md-top,
+  .md-typeset .download-row,
+  .md-typeset details.glossar-section > summary::after,
+  [data-md-component="announce"],
+  [data-md-component="palette"] {
+    display: none !important;
+  }
+
+  /* Akkordeon-Sektionen offen drucken — der Inhalt soll vollständig
+   * erscheinen, unabhängig vom aktuellen open/close-State im Browser. */
+  details.glossar-section,
+  details.glossar-section[open] {
+    border: none !important;
+    page-break-inside: auto;
+  }
+  details.glossar-section > *:not(summary) {
+    display: block !important;
+  }
+  details.glossar-section > summary.glossar-section-summary {
+    cursor: default;
+    font-size: 1.3em !important;
+    page-break-after: avoid;
+    border-bottom: 1px solid #888;
+    margin-top: 1em;
+    padding: 0.3em 0;
+  }
+
+  .md-main__inner,
+  .md-content,
+  .md-content__inner {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  body,
+  .md-typeset {
+    color: #000 !important;
+    background: #fff !important;
+    font-size: 10.5pt !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Link-URLs hinter dem Anker-Text ausgeben, damit die Referenz auch
+   * im Druck nachvollziehbar bleibt. Interne Sprungmarken (#…) und
+   * mailto:-Links ausgenommen — die wären auf Papier nutzlos. */
+  .md-typeset a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #555;
+    word-break: break-all;
+  }
+
+  h1, h2, h3, h4 { page-break-after: avoid; }
+  pre, blockquote, table { page-break-inside: avoid; }
+
+  @page {
+    margin: 18mm 16mm;
+  }
+}

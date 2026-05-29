@@ -86,7 +86,7 @@ Subklassen (Rechteck-, Rund-, I-Profil-, …) instanziiert wird.
 
 Sei
 
-- E ⊂ ℝ³ eine **Ebene** (siehe `ebene`) mit Normalenvektor n̂ ∈ S²,
+- E ⊂ ℝ³ eine **Ebene** (siehe `ebene`) mit Normalenvektor n_hat ∈ S²,
 - Q ⊂ E eine ebene, **beschränkte**, **zusammenhängende**,
   **abgeschlossene** Punktmenge mit nicht-leerem Inneren
   (Lebesgue-Mass 𝓛²(Q) > 0),
@@ -131,8 +131,8 @@ mit
 **Lokales Querschnittssystem**: Jeder Querschnitt definiert in
 seiner Ebene E ein **lokales 2D-Koordinatensystem** (u, v) mit
 Ursprung im Flächenschwerpunkt z und einer rechtshändigen
-Orthonormalbasis (û, v̂) ⊂ E. Die konkrete Wahl von (û, v̂) ist
-Subklassen-Aufgabe (z. B. û parallel zur Breitenkante, v̂ parallel
+Orthonormalbasis (u_hat, v_hat) ⊂ E. Die konkrete Wahl von (u_hat, v_hat) ist
+Subklassen-Aufgabe (z. B. u_hat parallel zur Breitenkante, v_hat parallel
 zur Höhenkante beim Rechteck-Querschnitt).
 
 **Bezug zur Bauteilachse**: Für ein Stabbauteil B mit Bauteilachse
@@ -141,10 +141,10 @@ gelten die Beziehungen
 
 ```
 flaechenschwerpunkt(QS(s)) = z(s) ∈ A(B),
-normale(ebene(QS(s)))      = ±d̂(s),
+normale(ebene(QS(s)))      = ±d_hat(s),
 ```
 
-wobei z(s) der Punkt der Bauteilachse an der Stelle s und d̂(s) die
+wobei z(s) der Punkt der Bauteilachse an der Stelle s und d_hat(s) die
 lokale Tangentenrichtung der Bauteilachse ist. Die Querschnittsebene
 steht also per Konstruktion rechtwinklig zur Bauteilachse, und der
 Flächenschwerpunkt liegt auf der Bauteilachse.
@@ -428,7 +428,7 @@ sealed interface Querschnitt {
   - `IfcCircleProfileDef` ← `RundQuerschnitt` (Folgearbeit).
   - `IfcIShapeProfileDef` ← `IProfilQuerschnitt` (Folgearbeit).
   - Profile-Position (`IfcAxis2Placement2D`): Ursprung im
-    Flächenschwerpunkt, RefDirection als û-Achse.
+    Flächenschwerpunkt, RefDirection als u_hat-Achse.
 - **BTLx-Mapping**: BTLx Part-Element trägt Breite/Höhe direkt;
   Mapping aus `RechteckQuerschnitt.breite/hoehe` ist 1:1.
 - **Edge Cases**:

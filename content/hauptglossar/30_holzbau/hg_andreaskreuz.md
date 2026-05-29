@@ -176,7 +176,7 @@ mit
 - **streben** ⊂ 𝓢_Str, |streben| = 2: die genau zwei
   Streben des Kreuzes.
 - **wandebene** ∈ 𝒫: die gemeinsame Wandebene mit
-  Normalenvektor n̂_W ∈ S² horizontal (|⟨n̂_W, e_z⟩| ≤ ε_K).
+  Normalenvektor n_hat_W ∈ S² horizontal (|⟨n_hat_W, e_z⟩| ≤ ε_K).
 - **kreuzungspunkt** ∈ ℝ³: der Schnittpunkt der beiden
   Streben-Bauteilachsen in der Wandebene; abgeleitete
   Grösse (siehe Bedingung 4).
@@ -223,15 +223,15 @@ und den Konsistenzbedingungen
    liegen (Bedingung 2) und nicht parallel sind (Bedingung 5).
 
 5. **Streben nicht parallel** (X-Form, nicht II-Form): Die
-   Richtungsvektoren d̂_1, d̂_2 der beiden Bauteilachsen
+   Richtungsvektoren d_hat_1, d_hat_2 der beiden Bauteilachsen
    erfüllen
    ```
-   |⟨d̂_1, d̂_2⟩| ≤ 1 − ε_K,
+   |⟨d_hat_1, d_hat_2⟩| ≤ 1 − ε_K,
    ```
    d. h. die zwei Streben sind echt nicht-parallel; der
    Kreuzungswinkel
    ```
-   γ := arccos(|⟨d̂_1, d̂_2⟩|) ∈ (ε_W, π/2]
+   γ := arccos(|⟨d_hat_1, d_hat_2⟩|) ∈ (ε_W, π/2]
    ```
    ist positiv. Default-Wert im Korpus γ ≈ π/2 (rechtwinkliges
    X), praktische Range 60°–90°.
@@ -562,7 +562,7 @@ enum class AndreaskreuzFunktion {
      (Parameter t_i ∈ (ε_L/L_i, 1 − ε_L/L_i) im Geraden-
      Schnitt) ⇒ sonst `Entartet.SchnittAmEndpunkt` oder
      `Entartet.KeinKreuzungspunkt`.
-  6. Streben nicht parallel (|⟨d̂_1, d̂_2⟩| ≤ 1 − KOLLINEAR_EPS)
+  6. Streben nicht parallel (|⟨d_hat_1, d_hat_2⟩| ≤ 1 − KOLLINEAR_EPS)
      ⇒ sonst `Entartet.StrebenParallel`.
   7. Beide Streben im selben Gefach (gemeinsame begrenzende
      Bauteile) ⇒ sonst `Entartet.NichtImSelbenGefach`.

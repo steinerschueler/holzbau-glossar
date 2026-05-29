@@ -96,12 +96,12 @@ mit
 - **plattendicken_achse** ∈ S²  (Pflicht: Einheitsvektor in W,
   rechtwinklig zur Plattenebene),
 - **lagenstruktur** L = (ℓ₁, …, ℓₙ) ∈ 𝓛𝓢, n ≥ 3,
-- **haupttragrichtung** ĥ ∈ S²  (Decklage-Richtung mit höherer
+- **haupttragrichtung** h_hat ∈ S²  (Decklage-Richtung mit höherer
   Steifigkeit, rechtwinklig zu plattendicken_achse:
-  ⟨ĥ, plattendicken_achse⟩ = 0 bis Toleranzen.WINKEL_EPS),
-- **nebentragrichtung** n̂ ∈ S²  (90° zu ĥ in der Plattenebene;
-  abgeleitet aus ĥ und plattendicken_achse durch
-  n̂ = plattendicken_achse × ĥ; redundant aber explizit als
+  ⟨h_hat, plattendicken_achse⟩ = 0 bis Toleranzen.WINKEL_EPS),
+- **nebentragrichtung** n_hat ∈ S²  (90° zu h_hat in der Plattenebene;
+  abgeleitet aus h_hat und plattendicken_achse durch
+  n_hat = plattendicken_achse × h_hat; redundant aber explizit als
   Convenience).
 
 Es ist 𝓜𝓛 ⊂ 𝓦, d. h. die Menge der Mehrlagenhölzer ist eine
@@ -119,11 +119,11 @@ disjunkte Teilmenge der Werkstoff-Menge mit
    „abweichender Lagenaufbau" markiert werden.
 3. Lagenausrichtung: ∀ i ∈ {1, …, n}: ℓᵢ.faserrichtung ist
    parallel oder rechtwinklig zur Haupttragrichtung
-   (∠(ℓᵢ.faserrichtung, ĥ) ∈ {0, π/2} bis Toleranzen.WINKEL_EPS),
+   (∠(ℓᵢ.faserrichtung, h_hat) ∈ {0, π/2} bis Toleranzen.WINKEL_EPS),
    ODER explizit als „abweichender Lagenaufbau" markiert
    (z. B. 45°-Lagen für Sonderfälle).
 4. Decklage steuert Haupttragrichtung:
-   ℓ₁.faserrichtung = ĥ (bis auf Vorzeichen).
+   ℓ₁.faserrichtung = h_hat (bis auf Vorzeichen).
 
 **Schnittwinkel pro Lage**: Bei einer angreifenden Kraft F im Bauteil
 ist der Faserwinkel α(F, ℓᵢ.faserrichtung) **je Lage** anders. Eine
@@ -141,13 +141,13 @@ einzelne „Faserrichtung des Bauteils" gibt es bei Mehrlagenholz
   und `|lagenstruktur| ≥ 3` extensional festgelegt. BSH (zwei
   parallele Lamellen) und Balkenschichtholz fallen nicht in diese
   Klasse, sondern in `axiales_holz`.
-- **Eindeutigkeit der Haupttragrichtung bis auf Vorzeichen**: ĥ ist
-  durch die Decklage bestimmt; Vorzeichenkonvention typisch „ĥ
+- **Eindeutigkeit der Haupttragrichtung bis auf Vorzeichen**: h_hat ist
+  durch die Decklage bestimmt; Vorzeichenkonvention typisch „h_hat
   zeigt in dieselbe Halbachse wie die längere Plattenformat-Kante"
   oder analog zu IFC `IfcMaterialLayerSet.LayerSetDirection`.
-- **Eindeutigkeit der Nebentragrichtung**: n̂ ist algebraisch
-  bestimmt durch n̂ = plattendicken_achse × ĥ. Mit
-  ⟨ĥ, plattendicken_achse⟩ = 0 ist ‖n̂‖ = 1; n̂ ∈ S² ist eindeutig
+- **Eindeutigkeit der Nebentragrichtung**: n_hat ist algebraisch
+  bestimmt durch n_hat = plattendicken_achse × h_hat. Mit
+  ⟨h_hat, plattendicken_achse⟩ = 0 ist ‖n_hat‖ = 1; n_hat ∈ S² ist eindeutig
   bis auf das durch das Kreuzprodukt vorgegebene Vorzeichen
   (Rechte-Hand-Regel mit dem Welt-Rechtssystem konsistent).
 - **Lagenstruktur-Invarianten**:
@@ -156,7 +156,7 @@ einzelne „Faserrichtung des Bauteils" gibt es bei Mehrlagenholz
   - Klassische CLT-Symmetrie ist optional, aber Standard.
 - **Plattendicken-Achse Pflicht**: STRUKTURIERT ist Plattenwerkstoff;
   `plattendicken_achse ∈ S²` ist Pflicht (Klassen-Invariante).
-- **Norm-Invarianten**: ĥ, n̂, plattendicken_achse, ℓᵢ.faserrichtung
+- **Norm-Invarianten**: h_hat, n_hat, plattendicken_achse, ℓᵢ.faserrichtung
   erben Norm-Invarianten aus `einheitsvektor`.
 - **Nicht-Zirkularität**: Die Definition stützt sich auf
   `werkstoff`, `einheitsvektor`, `vektor`, `toleranzen` und die

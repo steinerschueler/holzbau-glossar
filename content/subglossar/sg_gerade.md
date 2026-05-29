@@ -126,10 +126,10 @@ Anrissmaß hängt.
     <text x="-12" y="5" text-anchor="end" font-size="11" fill="#666">Welt:</text>
     <line x1="0" y1="0" x2="32" y2="0" stroke="#2c3e50" stroke-width="1.5"/>
     <polygon points="32,0 27,-3 27,3" fill="#2c3e50"/>
-    <text x="36" y="5" font-style="italic">ê_h</text>
+    <text x="36" y="5" font-style="italic">e_hat_h</text>
     <line x1="0" y1="0" x2="0" y2="-32" stroke="#2c3e50" stroke-width="1.5"/>
     <polygon points="0,-32 -3,-27 3,-27" fill="#2c3e50"/>
-    <text x="4" y="-36" font-style="italic">ê_v</text>
+    <text x="4" y="-36" font-style="italic">e_hat_v</text>
     <circle cx="0" cy="0" r="2" fill="#2c3e50"/>
   </g>
 </svg>
@@ -276,7 +276,7 @@ hervorgehoben ist, beidseitig gepunktet als unbegrenzter Träger
       Zeile 1           (360, 40) middle, font-size 13
       Zeile 2           (360, 56) middle, font-size 11, #666
     Welt-Pfeile-Inset (Pattern 2):
-      g translate(640, 450) — ê_h-Text endet global bei x ≈ 700,
+      g translate(640, 450) — e_hat_h-Text endet global bei x ≈ 700,
       20 px Reserve zum viewBox-Rand 720.
   KONFLIKT-MATRIX
     Alle Text-Cluster sind vertikal mindestens 24 px voneinander
@@ -361,10 +361,10 @@ hervorgehoben ist, beidseitig gepunktet als unbegrenzter Träger
     <text x="-12" y="5" text-anchor="end" font-size="11" fill="#666">Welt:</text>
     <line x1="0" y1="0" x2="32" y2="0" stroke="#2c3e50" stroke-width="1.5"/>
     <polygon points="32,0 27,-3 27,3" fill="#2c3e50"/>
-    <text x="36" y="5" font-style="italic">ê_h</text>
+    <text x="36" y="5" font-style="italic">e_hat_h</text>
     <line x1="0" y1="0" x2="0" y2="-32" stroke="#2c3e50" stroke-width="1.5"/>
     <polygon points="0,-32 -3,-27 3,-27" fill="#2c3e50"/>
-    <text x="4" y="-36" font-style="italic">ê_v</text>
+    <text x="4" y="-36" font-style="italic">e_hat_v</text>
     <circle cx="0" cy="0" r="2" fill="#2c3e50"/>
   </g>
 </svg>

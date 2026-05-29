@@ -63,23 +63,23 @@ S² := { v ∈ ℝ³ | ‖v‖ = 1 } ⊂ ℝ³.
 ‖v‖² > NORM_EPS ist
 
 ```
-v̂ := v / ‖v‖ ∈ S²
+v_hat := v / ‖v‖ ∈ S²
 ```
 
-der zu v gehörige Einheitsvektor; v̂ ist genau dann definiert, wenn v
+der zu v gehörige Einheitsvektor; v_hat ist genau dann definiert, wenn v
 nicht der Nullvektor ist (siehe Wohldefiniertheit).
 
 ## Wohldefiniertheit
 
-- **Existenz von v̂**: Für jeden Vektor v ∈ ℝ³ \ {0} ist ‖v‖ > 0, also
-  ist v̂ = v / ‖v‖ wohldefiniert. Es gilt ‖v̂‖ = ‖v‖ / ‖v‖ = 1, somit
-  v̂ ∈ S².
-- **Eindeutigkeit von v̂**: v̂ ist eindeutig bestimmt durch v, da die
+- **Existenz von v_hat**: Für jeden Vektor v ∈ ℝ³ \ {0} ist ‖v‖ > 0, also
+  ist v_hat = v / ‖v‖ wohldefiniert. Es gilt ‖v_hat‖ = ‖v‖ / ‖v‖ = 1, somit
+  v_hat ∈ S².
+- **Eindeutigkeit von v_hat**: v_hat ist eindeutig bestimmt durch v, da die
   Division durch eine eindeutige positive reelle Zahl eine Bijektion
   ist.
 - **Vorzeichen-Mehrdeutigkeit der Richtung**: Ein nicht ausgerichteter
   geometrischer Begriff der „Richtung" (z. B. die Richtung einer
-  Geraden) wird durch zwei antipodale Einheitsvektoren {v̂, −v̂}
+  Geraden) wird durch zwei antipodale Einheitsvektoren {v_hat, −v_hat}
   repräsentiert. Der Einheitsvektor selbst ist orientiert; die Wahl
   des Vorzeichens ist Teil seiner Identität.
 - **Numerische Wohldefiniertheit der Konstruktion**: Die Bedingung
@@ -99,7 +99,7 @@ geometrisches Objekt zeigt. In der Holzkonstruktion treten
 Einheitsvektoren typisch in folgenden Rollen auf:
 
 - **Normalenvektor** einer Ebene oder eines Halbraumes
-  (Hesse-Normalform: ‖n̂‖ = 1, siehe `ebene`, `halbraum`).
+  (Hesse-Normalform: ‖n_hat‖ = 1, siehe `ebene`, `halbraum`).
 - **Normalenvektor** einer Dachfläche (siehe `dachflaeche`).
 - **Faserrichtung** eines Bauteils, also die lokale Hauptachse der
   Holzfaser (siehe `faserrichtung`).
@@ -143,7 +143,7 @@ Eingang.
     Repräsentation einer Richtung ein Einheitsvektor; der Begriff
     „Richtung" tritt nur im Erläuterungstext auf. Eine ungerichtete
     Richtung (Linie ohne Orientierung) wird durch das antipodale
-    Paar {v̂, −v̂} ⊂ S² repräsentiert.
+    Paar {v_hat, −v_hat} ⊂ S² repräsentiert.
   - **Nullvektor** (siehe `vektor`): ‖v‖ = 0 ist der einzige Vektor,
     aus dem **kein** Einheitsvektor durch Normierung gewonnen werden
     kann. Versuche der Normierung des Nullvektors liefern die
@@ -230,7 +230,7 @@ public class Einheitsvektor private constructor(public val vektor: Vektor) {
     fragwürdig (z. B. fast-paralleler Sparrenanschnitt). Die
     fachliche Plausibilität ist Aufgabe des Aufrufers, nicht des
     Konstruktors.
-  - **Antipodale Mehrdeutigkeit**: v̂ und −v̂ sind beides gültige
+  - **Antipodale Mehrdeutigkeit**: v_hat und −v_hat sind beides gültige
     Einheitsvektoren. Wo nur die ungerichtete Richtung relevant ist
     (z. B. Geraden-Richtung), ist die Vorzeichenwahl konventionell
     festzulegen (siehe Glossareintrag des verwendenden Begriffs).

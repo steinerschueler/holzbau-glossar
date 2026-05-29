@@ -90,7 +90,7 @@ das Auflager auf der Fußpfette hinaus auskragende Sparrenabschnitt.
 Sei
 
 - B ein Sparren im Sinne von `sparren` mit Bauteilachse A(B) =
-  Strecke(p_a, p_e), Tangentenrichtung d̂ ∈ S² (siehe
+  Strecke(p_a, p_e), Tangentenrichtung d_hat ∈ S² (siehe
   `bauteilachse`, Vorzeichenkonvention; nach `hg_sparren.md`
   Bedingung 4 ist p_a der Sparrenfußpunkt traufseitig, p_e der
   Sparrenfirstpunkt firstseitig).
@@ -133,12 +133,12 @@ mit Länge
 unterhalb des Bleischnitt-Punkts p_K liegt, also
 
 ```
-⟨ê_z, p_a⟩ < ⟨ê_z, p_K⟩ − ε_L,                                     (4)
+⟨e_hat_z, p_a⟩ < ⟨e_hat_z, p_K⟩ − ε_L,                                     (4)
 ```
 
-mit ê_z = vertikale Welt-z-Achse und ε_L = Toleranzen.LAENGE_EPS.
+mit e_hat_z = vertikale Welt-z-Achse und ε_L = Toleranzen.LAENGE_EPS.
 Bei einem Sparren ohne Überstand fällt p_a mit dem Bleischnitt
-zusammen (in W-Höhe), also ⟨ê_z, p_a⟩ ≈ ⟨ê_z, p_K⟩, und ℓ_üb ≈ 0.
+zusammen (in W-Höhe), also ⟨e_hat_z, p_a⟩ ≈ ⟨e_hat_z, p_K⟩, und ℓ_üb ≈ 0.
 
 **Bezugsebenen-Lage**: Im Sparren-Tool ist die Bezugsebene
 E_bez(T) per Konvention die horizontale Ebene durch p_K (siehe
@@ -147,7 +147,7 @@ Punkt p_K der Fußpfettenkerve"); ihre abgeleitete skalare z-Höhe
 ist
 
 ```
-z₀(T_Sparren) := ⟨ê_z, p_K⟩.                                       (5)
+z₀(T_Sparren) := ⟨e_hat_z, p_K⟩.                                       (5)
 ```
 
 Damit liegt der Sparrenüberstand vollständig **im Bereich

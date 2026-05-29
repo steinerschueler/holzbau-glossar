@@ -174,15 +174,15 @@ mit diesem Kreiszylinder als Werkzeugkörper ist.
 Sei
 
 - B ein Bauteil im Sinne von `bauteil`,
-- L_B = (O_B, ê_x^B, ê_y^B, ê_z^B) das Bauteil-Lokal-Koordinaten-
+- L_B = (O_B, e_hat_x^B, e_hat_y^B, e_hat_z^B) das Bauteil-Lokal-Koordinaten-
   system (`lokales_koordinatensystem`),
 - G_B^lokal ⊂ ℝ³ die ungeschwächte Bauteilgeometrie im
   Bauteil-Lokal-System (Polyeder, siehe `polyeder`),
 - p_S ∈ ℝ³ ein **Startpunkt** in Bauteil-Lokal-Koordinaten,
   liegend auf der Berandung von G_B^lokal oder im Inneren des
   Bauteils,
-- â ∈ ℝ³ ein **Achseneinheitsvektor** in Bauteil-Lokal-Koordinaten
-  mit ‖â‖² = 1 (im Sinne von `vektor`),
+- a_hat ∈ ℝ³ ein **Achseneinheitsvektor** in Bauteil-Lokal-Koordinaten
+  mit ‖a_hat‖² = 1 (im Sinne von `vektor`),
 - d ∈ ℝ⁺ ein **Nenndurchmesser** (in mm),
 - α ∈ {DURCHGANG, SACKLOCH} eine **Tiefen-Erstreckungsmarke**,
 - t ∈ ℝ⁺ ∪ {⊥} eine **Tiefe** (in mm), mit t ∈ ℝ⁺ falls α = SACKLOCH
@@ -192,7 +192,7 @@ Sei
 Das **Parametertupel** einer Bohrung ist
 
 ```
-p_Bohrung := (p_S, â, d, α, t)                                    (1)
+p_Bohrung := (p_S, a_hat, d, α, t)                                    (1)
 ```
 
 mit den oben genannten Bedingungen an die Komponenten.
@@ -200,50 +200,50 @@ mit den oben genannten Bedingungen an die Komponenten.
 ### Werkzeugkörper
 
 Sei r := d/2 der Bohrungsradius. Der **infinite Achsenzylinder**
-mit Achse durch p_S in Richtung â und Radius r ist die Punktmenge
+mit Achse durch p_S in Richtung a_hat und Radius r ist die Punktmenge
 
 ```
-Z_∞(p_S, â, r)
-   := { q ∈ ℝ³ |  ‖ (q − p_S) − ⟨q − p_S, â⟩ · â ‖ ≤ r }.        (2)
+Z_∞(p_S, a_hat, r)
+   := { q ∈ ℝ³ |  ‖ (q − p_S) − ⟨q − p_S, a_hat⟩ · a_hat ‖ ≤ r }.        (2)
 ```
 
 Der **Halbraum-Anker** an p_S in Achsrichtung ist
 
 ```
-H_+(p_S, â)  :=  { q ∈ ℝ³ |  ⟨q − p_S, â⟩ ≥ 0 }.                  (3)
+H_+(p_S, a_hat)  :=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≥ 0 }.                  (3)
 ```
 
 Der **Werkzeugkörper** der Bohrung ist dann
 
 ```
 K_Bohrung(p_Bohrung)
-   :=  Z_∞(p_S, â, r)  ∩  H_+(p_S, â)  ∩  Σ(α, t, p_S, â, G_B^lokal)  (4)
+   :=  Z_∞(p_S, a_hat, r)  ∩  H_+(p_S, a_hat)  ∩  Σ(α, t, p_S, a_hat, G_B^lokal)  (4)
 ```
 
 mit dem **Tiefen-Schnittkörper** Σ:
 
 - für α = SACKLOCH:
   ```
-  Σ(SACKLOCH, t, p_S, â, ·)
-     :=  { q ∈ ℝ³ |  ⟨q − p_S, â⟩ ≤ t },                          (5a)
+  Σ(SACKLOCH, t, p_S, a_hat, ·)
+     :=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≤ t },                          (5a)
   ```
   d. h. der Werkzeugkörper ist der endliche Kreiszylinder der
-  Höhe t mit kreisförmigen Endflächen rechtwinklig zu â.
+  Höhe t mit kreisförmigen Endflächen rechtwinklig zu a_hat.
 - für α = DURCHGANG:
   ```
-  Σ(DURCHGANG, ⊥, p_S, â, G_B^lokal)
-     :=  { q ∈ ℝ³ |  ⟨q − p_S, â⟩ ≤ t_max(p_S, â, G_B^lokal) },   (5b)
+  Σ(DURCHGANG, ⊥, p_S, a_hat, G_B^lokal)
+     :=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≤ t_max(p_S, a_hat, G_B^lokal) },   (5b)
   ```
   wobei
   ```
-  t_max(p_S, â, G_B^lokal)
-     :=  sup{ λ ∈ ℝ⁺ |  p_S + λ · â ∈ G_B^lokal }                 (6)
+  t_max(p_S, a_hat, G_B^lokal)
+     :=  sup{ λ ∈ ℝ⁺ |  p_S + λ · a_hat ∈ G_B^lokal }                 (6)
   ```
   die maximale Eindringlänge der Achse in das Bauteil ist (das
   Supremum existiert, da G_B^lokal beschränkt ist).
 
 In beiden Fällen ist K_Bohrung ein abgeschlossener, beschränkter
-Kreiszylinder mit kreisförmigen Endflächen rechtwinklig zu â.
+Kreiszylinder mit kreisförmigen Endflächen rechtwinklig zu a_hat.
 
 ### Wirkung auf das Bauteil
 
@@ -258,7 +258,7 @@ G_B'(F)  :=  G_B^lokal  \  T_F( K_Bohrung(p_Bohrung) ).           (7)
 Im Standardfall (T_F = id_{SE(3)}) ist der Werkzeugkörper bereits
 im Bauteil-Lokal-System; T_F wird nur dann nicht-trivial, wenn
 der Werkzeugkörper-Konstruktor in einem typeigenen Bezugssystem
-(z. B. mit Achse parallel zu ê_z) geführt wird und durch T_F in
+(z. B. mit Achse parallel zu e_hat_z) geführt wird und durch T_F in
 die Bauteil-Lokal-Lage überführt wird.
 
 ### Bohrungs-Tupel
@@ -285,7 +285,7 @@ Eindeutigkeit der Zuordnung).
   Rod-Sackbohrung an einer Stütze, Durchgangsbohrung für eine
   Elektroinstallation an einem CLT-Element — lässt sich das
   Tupel (uuid, typ = Bohrung, p_Bohrung, T_F, ⊥) angeben.
-  Mindestkonfiguration: p_S auf einer Bauteilberandung, â als
+  Mindestkonfiguration: p_S auf einer Bauteilberandung, a_hat als
   einwärts-gerichteter Einheitsvektor, d > ε_L, α = DURCHGANG,
   t = ⊥, T_F = id_{SE(3)}.
 - **Eindeutigkeit der Werkzeugkörper-Konstruktion**: Bei
@@ -293,16 +293,16 @@ Eindeutigkeit der Zuordnung).
   G_B^lokal ist der Werkzeugkörper K_Bohrung nach (4) eindeutig
   bestimmt:
   - Z_∞ nach (2) ist eindeutig als Niveaumenge der Funktion
-    q ↦ ‖ (q − p_S) − ⟨q − p_S, â⟩ · â ‖.
+    q ↦ ‖ (q − p_S) − ⟨q − p_S, a_hat⟩ · a_hat ‖.
   - H_+ nach (3) ist eindeutig als Halbraum durch p_S mit
-    Normale â.
+    Normale a_hat.
   - Σ nach (5a) bzw. (5b) ist eindeutig: bei α = SACKLOCH durch
     den Parameter t allein; bei α = DURCHGANG durch das
     Supremum (6), das für jedes beschränkte G_B^lokal und jeden
     festen Achsenstrahl wohlbestimmt ist.
 - **Unabhängigkeit von der Wahl des typeigenen Bezugssystems**:
   Wird der Werkzeugkörper-Konstruktor in einem typeigenen
-  Bezugssystem geführt (z. B. mit p_S = 0 und â = ê_z), und der
+  Bezugssystem geführt (z. B. mit p_S = 0 und a_hat = e_hat_z), und der
   Übergang in das Bauteil-Lokal-System über T_F ∈ SE(3)
   realisiert, ist das Ergebnis T_F( K_Bohrung^typ ) identisch
   zum direkt im Bauteil-Lokal-System konstruierten
@@ -315,18 +315,18 @@ Eindeutigkeit der Zuordnung).
   beschränkt auf Eindringlängen, für die der Strahl noch innerhalb
   des Bauteilkörpers liegt. Für einen einfach zusammenhängenden,
   konvexen oder polyederförmigen G_B^lokal und einen p_S auf der
-  Berandung mit â einwärts gerichtet ist (6) gleich der ersten
-  positiven Lösung von p_S + λ · â ∈ ∂G_B^lokal. Für nicht-konvexe
+  Berandung mit a_hat einwärts gerichtet ist (6) gleich der ersten
+  positiven Lösung von p_S + λ · a_hat ∈ ∂G_B^lokal. Für nicht-konvexe
   Bauteilkörper (etwa nach vorangegangenen Bearbeitungen) ist (6)
   trotzdem wohldefiniert: t_max ist die letzte Eindringlänge mit
-  p_S + λ · â ∈ G_B^lokal, und die Boole'sche Differenz (7)
+  p_S + λ · a_hat ∈ G_B^lokal, und die Boole'sche Differenz (7)
   arbeitet stabil auch über mehrfach durchstossene Bereiche
   hinweg.
 - **Geometrische Nicht-Degeneriertheit (harte Invarianten,
   Validierungsfehler bei Verletzung)**:
   1. **Durchmesserpositivität**: d > ε_L. Eine Bohrung mit
      Durchmesser 0 ist keine Bohrung, sondern eine Anriss-Linie.
-  2. **Einheitsvektor der Achse**: | ‖â‖² − 1 | ≤ ε_N. Eine Bohrung
+  2. **Einheitsvektor der Achse**: | ‖a_hat‖² − 1 | ≤ ε_N. Eine Bohrung
      mit Null-Achse oder unnormierter Achse hat keinen
      wohldefinierten Werkzeugkörper.
   3. **Tiefenpositivität bei Sackloch**: α = SACKLOCH ⇒ t > ε_L.
@@ -423,7 +423,7 @@ ergeben sich aus dem Bohrungs-Tupel:
 
 - `StartX`, `StartY`: Bauteil-Oberflächen-Koordinaten von p_S
   auf der `Drilling`-Referenz-Seite.
-- `Angle`, `Inclination`: zwei Winkel, die â im
+- `Angle`, `Inclination`: zwei Winkel, die a_hat im
   Referenz-Seitensystem ausdrücken.
 - `DepthLimited`: `true` für α = SACKLOCH, `false` für
   α = DURCHGANG.
@@ -478,7 +478,7 @@ führen, nicht hier.
 - **Bestandteile (partitiv) einer Bohrung** (Parametertupel
   p_Bohrung):
   - **Startpunkt** p_S in Bauteil-Lokal-Koordinaten, Pflicht.
-  - **Achseneinheitsvektor** â in Bauteil-Lokal-Koordinaten,
+  - **Achseneinheitsvektor** a_hat in Bauteil-Lokal-Koordinaten,
     Pflicht.
   - **Nenndurchmesser** d ∈ ℝ⁺, Pflicht (mm).
   - **Tiefenart** α ∈ {DURCHGANG, SACKLOCH}, Pflicht.
@@ -566,7 +566,7 @@ import java.util.UUID
  * @property startpunkt Achsen-Startpunkt in Bauteil-Lokal-Koordinaten;
  *           Pflicht.
  * @property achse Achsen-Einheitsvektor in Bauteil-Lokal-Koordinaten;
- *           Pflicht (Invariante: |‖â‖² − 1| ≤ Toleranzen.NORM_EPS).
+ *           Pflicht (Invariante: |‖a_hat‖² − 1| ≤ Toleranzen.NORM_EPS).
  * @property nenndurchmesser Bohrungsdurchmesser in mm; > Toleranzen.LAENGE_EPS.
  * @property tiefenart DURCHGANG oder SACKLOCH.
  * @property tiefe Tiefe in mm bei SACKLOCH; null bei DURCHGANG.
@@ -635,7 +635,7 @@ data class Bohrung(
     Representation), `PredefinedType` aus
     `IfcOpeningElementTypeEnum` gemäss `tiefenart`.
 - **Edge Cases**:
-  - **Bohrung mit Achse parallel zur Bauteiloberfläche** (â
+  - **Bohrung mit Achse parallel zur Bauteiloberfläche** (a_hat
     tangential zur Berandung in p_S): geometrisch möglich, im
     Modell aber sinnleer, weil die Boole'sche Differenz den
     Werkzeugkörper sofort wieder verlässt; durch die
@@ -654,7 +654,7 @@ data class Bohrung(
     OSB): zulässig; die Faserrichtungs-Plausibilitäts-Warnung
     aus der Bemessungsschicht greift nicht.
   - **Bohrung an einem Plattenwerkstoff mit Plattendicken-
-    Achse** (CLT, BSP): die Achse â kann in Plattendicken-
+    Achse** (CLT, BSP): die Achse a_hat kann in Plattendicken-
     Richtung (rechtwinklig zur Plattenebene) oder in
     Plattenebene liegen; beide Fälle sind geometrisch zulässig
     und für unterschiedliche Anwendungen typisch (Bohrung
@@ -666,7 +666,7 @@ data class Bohrung(
   - `werkzeugkoerper(): Polyeder` — K_Bohrung nach (4) im
     Bauteil-Lokal-System.
   - `effektiveTiefe(b: Bauteil): Double` — t bei SACKLOCH;
-    t_max(p_S, â, G_B^lokal) bei DURCHGANG (Geometrie-Schicht).
+    t_max(p_S, a_hat, G_B^lokal) bei DURCHGANG (Geometrie-Schicht).
   - `querschnittsschwaechung(b: Bauteil, s: Double): Double` —
     Anteil der bei Längsparameter s entfernten Querschnittsfläche
     (Bemessungs-Schicht, EC5 5.2).

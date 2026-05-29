@@ -136,7 +136,7 @@ Sei
   jedes F_l ist ein **Polygon** in Berandungs-Lesart (siehe
   `polygon`, Abschnitt „Zwei zulässige Lesarten") in einer
   zugehörigen Trägerebene E_l (siehe `ebene`),
-- n̂_l ∈ S² die nach `polyeder` (Mannigfaltigkeits-Orientierung)
+- n_hat_l ∈ S² die nach `polyeder` (Mannigfaltigkeits-Orientierung)
   eindeutig bestimmte aus P(B) heraus zeigende Einheitsnormale der
   Facette F_l,
 - I_B eine endliche Indexmenge zur Adressierung der ausgezeichneten
@@ -150,7 +150,7 @@ Sei
 Eine **Bauteilfläche** von B ist ein Tupel
 
 ```
-BF(B, ι) := (F_l, E_l, n̂_l, B, ι)                                    (1)
+BF(B, ι) := (F_l, E_l, n_hat_l, B, ι)                                    (1)
             mit F_l := ρ(ι),   ι ∈ I_B,   l ∈ {1, …, k}.
 ```
 
@@ -159,9 +159,9 @@ Die Tupel-Bestandteile sind:
 1. **Polygon-Berandung** F_l ∈ F_B (Polygon in Berandungs-Lesart in
    E_l; siehe `polygon`).
 2. **Trägerebene** E_l (Ebene im Sinne von `ebene`, durch einen
-   beliebigen Eckpunkt von F_l und n̂_l in Hesse-Normalform
+   beliebigen Eckpunkt von F_l und n_hat_l in Hesse-Normalform
    eindeutig bestimmt).
-3. **Aussennormale** n̂_l (aus P(B) heraus zeigend, Mannigfaltigkeits-
+3. **Aussennormale** n_hat_l (aus P(B) heraus zeigend, Mannigfaltigkeits-
    Orientierung der Hülle ∂P(B); siehe `polyeder`, Bedingung 4).
 4. **Bauteil-Referenz** B (UUID des zugehörigen Bauteils).
 5. **Adressierungs-Index** ι ∈ I_B (Rolle der Bauteilfläche im
@@ -201,7 +201,7 @@ mit |𝓑𝓕(B)| = |I_B|. Die Abbildung ι ↦ BF(B, ι) ist injektiv.
 - **Wohldefiniertheit der Aussennormale.** Da P(B) per `polyeder`-
   Bedingung 4 eine geschlossene, orientierbare 2-Mannigfaltigkeits-
   Hülle besitzt, ist die Aussen-Orientierung jeder Facette eindeutig
-  bestimmt; n̂_l ist damit ohne weitere Wahl festgelegt.
+  bestimmt; n_hat_l ist damit ohne weitere Wahl festgelegt.
 
 - **Repräsentanten-Unabhängigkeit der Trägerebene.** Die Trägerebene
   E_l hängt nicht vom gewählten Stützpunkt der Hesse-Normalform ab
@@ -377,7 +377,7 @@ Definition selbst bleibt einheitlich.
   Gleichung (1)):
   - Polygon-Berandung F_l in Berandungs-Lesart (geerbt von `polygon`).
   - Trägerebene E_l (geerbt von `ebene`).
-  - Aussennormalen-Vektor n̂_l (Mannigfaltigkeits-Orientierung des
+  - Aussennormalen-Vektor n_hat_l (Mannigfaltigkeits-Orientierung des
     Bauteilpolyeders).
   - Bauteil-Referenz B (UUID).
   - Adressierungs-Index ι ∈ I_B (zum Beispiel BTLx RS1–RS6).
@@ -454,14 +454,14 @@ import domain.identifikation.Uuid
  * tragen rollenspezifische Constraints (Lage zur Bauteilachse,
  * Faserrichtungs-Bezug, Plattenwerkstoff-Achse).
  *
- * Aussennormale n̂_l zeigt per Konvention aus dem Bauteilpolyeder
+ * Aussennormale n_hat_l zeigt per Konvention aus dem Bauteilpolyeder
  * heraus; ihre Orientierung folgt aus der Mannigfaltigkeits-
  * Orientierung der Bauteilhülle (siehe hg_polyeder.md).
  */
 sealed class Bauteilflaeche {
     abstract val polygon: Polygon               // F_l in Berandungs-Lesart
-    abstract val traegerebene: Ebene             // E_l, durch p_0 ∈ F_l und n̂_l
-    abstract val aussennormale: Vektor           // n̂_l, ‖aussennormale‖ ≈ 1
+    abstract val traegerebene: Ebene             // E_l, durch p_0 ∈ F_l und n_hat_l
+    abstract val aussennormale: Vektor           // n_hat_l, ‖aussennormale‖ ≈ 1
     abstract val bauteil: Uuid                   // B (UUID-Referenz)
     abstract val adressierung: AdressierungsIndex // ι ∈ I_B (z. B. BTLx RS1–RS6)
 }

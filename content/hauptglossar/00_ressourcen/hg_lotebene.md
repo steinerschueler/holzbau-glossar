@@ -81,7 +81,7 @@ quellenkonflikt: |
   Die Wahl der geodätischen Lesart ist begründet durch:
   - **Konsistenz mit `senkel`/`bleischnitt`**: beide bestehenden
     Lot-Lage-Begriffe sind welt-bezogen (gegen die Welt-Lotachse
-    ê_z^welt formuliert); die Lotebene fügt sich in dieses Schema
+    e_hat_z^welt formuliert); die Lotebene fügt sich in dieses Schema
     als Spezialisierung des Senkels ein.
   - **Anschluss an die Schweizer Berufssprache**: der Wortteil
     „Lot" steht im DACH-Holzbau-Korpus immer für den welt-vertikalen
@@ -114,8 +114,8 @@ Bauteil-Längsachse.
 Sei
 
 - W das Welt-Koordinatensystem (siehe `weltkoordinatensystem`)
-  mit Einheitsvektoren ê_x^welt, ê_y^welt, ê_z^welt, wobei
-  ê_z^welt vertikal nach oben zeigt und die **Welt-Lotachsen-
+  mit Einheitsvektoren e_hat_x^welt, e_hat_y^welt, e_hat_z^welt, wobei
+  e_hat_z^welt vertikal nach oben zeigt und die **Welt-Lotachsen-
   Richtung** trägt,
 - B ein Stabbauteil im Sinne von `bauteil` mit
   `geometrie ∈ 𝒢_stab` und einer geraden, prismatischen
@@ -123,11 +123,11 @@ Sei
 - A_B = [p_a, p_e] ⊂ ℝ³ die **Bauteilachse** von B im Sinne von
   `bauteilachse`, repräsentiert durch Anfangspunkt p_a,
   Endpunkt p_e und Richtungs-Einheitsvektor
-  d̂_B := (p_e − p_a) / ‖p_e − p_a‖ ∈ S²,
+  d_hat_B := (p_e − p_a) / ‖p_e − p_a‖ ∈ S²,
 - O_B ∈ A_B ein beliebiger Punkt der Bauteilachse (z. B.
   p_a oder der Bauteil-Ursprung der lokalen Platzierung),
 - E ⊂ ℝ³ eine Ebene im Sinne von `ebene`, repräsentiert in
-  Hesse-Normalform durch das Paar (n̂, d) ∈ S² × ℝ,
+  Hesse-Normalform durch das Paar (n_hat, d) ∈ S² × ℝ,
 - ε_K := `Toleranzen.KOLLINEAR_EPS` die einschlägige
   dimensionslose Toleranzkonstante für Skalarprodukt-basierte
   Lage-Tests (siehe `toleranzen`),
@@ -137,7 +137,7 @@ Sei
 **Voraussetzung (nicht-vertikale Bauteilachse):**
 
 ```
-| ⟨ d̂_B, ê_z^welt ⟩ |  ≤  1 − ε_K.                                (V)
+| ⟨ d_hat_B, e_hat_z^welt ⟩ |  ≤  1 − ε_K.                                (V)
 ```
 
 Bedingung (V) sichert, dass die Bauteilachse **nicht** parallel
@@ -148,11 +148,11 @@ Dann gilt **`E ist Lotebene von B`** genau dann, wenn beide
 Bedingungen erfüllt sind:
 
 ```
-(L1)  E ist Senkel:        | ⟨ n̂, ê_z^welt ⟩ |  ≤  ε_K.
+(L1)  E ist Senkel:        | ⟨ n_hat, e_hat_z^welt ⟩ |  ≤  ε_K.
 (L2)  A_B ⊂ E:             dist(p_a, E)  ≤  ε_L  ∧  dist(p_e, E)  ≤  ε_L.
 ```
 
-Dabei bezeichnet `dist(q, E) := |⟨n̂, q⟩ − d|` den vorzeichenlosen
+Dabei bezeichnet `dist(q, E) := |⟨n_hat, q⟩ − d|` den vorzeichenlosen
 Punkt-Ebenen-Abstand (siehe `ebene`).
 
 **Konstruktive Form** (Punkt-Normale-Repräsentation): Unter der
@@ -160,58 +160,58 @@ Voraussetzung (V) ist die **Lotebene** Π_⊥(B) eindeutig festgelegt
 durch
 
 ```
-Π_⊥(B)  :=  { O_B  +  s · ê_z^welt  +  t · d̂_B  |  s, t ∈ ℝ }    (1)
+Π_⊥(B)  :=  { O_B  +  s · e_hat_z^welt  +  t · d_hat_B  |  s, t ∈ ℝ }    (1)
 ```
 
-mit Stützpunkt O_B ∈ A_B und aufspannenden Richtungen ê_z^welt
-und d̂_B. Äquivalente Hesse-Repräsentation: Normaleneinheitsvektor
+mit Stützpunkt O_B ∈ A_B und aufspannenden Richtungen e_hat_z^welt
+und d_hat_B. Äquivalente Hesse-Repräsentation: Normaleneinheitsvektor
 
 ```
-n̂_Π  :=  (ê_z^welt × d̂_B) / ‖ê_z^welt × d̂_B‖                    (2)
+n_hat_Π  :=  (e_hat_z^welt × d_hat_B) / ‖e_hat_z^welt × d_hat_B‖                    (2)
 ```
 
-und Stützabstand d_Π := ⟨n̂_Π, O_B⟩, also
+und Stützabstand d_Π := ⟨n_hat_Π, O_B⟩, also
 
 ```
-Π_⊥(B)  =  { q ∈ ℝ³ |  ⟨n̂_Π, q⟩  =  d_Π }.                        (3)
+Π_⊥(B)  =  { q ∈ ℝ³ |  ⟨n_hat_Π, q⟩  =  d_Π }.                        (3)
 ```
 
-Der Nenner ‖ê_z^welt × d̂_B‖ = sin∠(ê_z^welt, d̂_B) ist unter
-(V) bis auf höchstens ε_K von null verschieden, sodass n̂_Π
+Der Nenner ‖e_hat_z^welt × d_hat_B‖ = sin∠(e_hat_z^welt, d_hat_B) ist unter
+(V) bis auf höchstens ε_K von null verschieden, sodass n_hat_Π
 wohldefiniert ist.
 
 ## Wohldefiniertheit
 
-- **Existenz und Eindeutigkeit unter (V)**: Sind d̂_B und
-  ê_z^welt linear unabhängig (Bedingung (V)), so spannen sie
+- **Existenz und Eindeutigkeit unter (V)**: Sind d_hat_B und
+  e_hat_z^welt linear unabhängig (Bedingung (V)), so spannen sie
   einen zweidimensionalen Unterraum von ℝ³ auf. Die affine Ebene
   durch O_B mit diesem Richtungsraum ist eindeutig; sie enthält
-  A_B (weil d̂_B im Richtungsraum liegt) und ist ein Senkel (weil
-  ê_z^welt im Richtungsraum liegt, also rechtwinklig zur Normale
-  n̂_Π = ê_z^welt × d̂_B steht). Umgekehrt: jede Ebene, die A_B
-  enthält und Senkel ist, muss ê_z^welt als Tangentialrichtung
-  enthalten (Senkel-Bedingung) und d̂_B (Achsen-Inzidenz) — damit
+  A_B (weil d_hat_B im Richtungsraum liegt) und ist ein Senkel (weil
+  e_hat_z^welt im Richtungsraum liegt, also rechtwinklig zur Normale
+  n_hat_Π = e_hat_z^welt × d_hat_B steht). Umgekehrt: jede Ebene, die A_B
+  enthält und Senkel ist, muss e_hat_z^welt als Tangentialrichtung
+  enthalten (Senkel-Bedingung) und d_hat_B (Achsen-Inzidenz) — damit
   ist sie gleich (1).
 
 - **Unabhängigkeit vom Stützpunkt O_B**: Die Konstruktion (1)
   hängt scheinbar vom gewählten Punkt O_B ∈ A_B ab. Tatsächlich
-  ist jedes O_B' ∈ A_B von der Form O_B' = O_B + λ · d̂_B für
+  ist jedes O_B' ∈ A_B von der Form O_B' = O_B + λ · d_hat_B für
   ein λ ∈ ℝ; die Ebene durch O_B' mit denselben Richtungen
-  ê_z^welt und d̂_B ist dieselbe Punktmenge (die Translation
+  e_hat_z^welt und d_hat_B ist dieselbe Punktmenge (die Translation
   bleibt im Richtungsraum). Die Definition ist damit von der
   Wahl von O_B unabhängig.
 
-- **Vorzeichen-Invarianz der Normale**: n̂_Π in (2) ist nur bis
+- **Vorzeichen-Invarianz der Normale**: n_hat_Π in (2) ist nur bis
   auf Vorzeichen festgelegt (Wahl der Reihenfolge im Kreuzprodukt
-  oder Wahl der Orientierung von d̂_B). Beide Vorzeichen liefern
+  oder Wahl der Orientierung von d_hat_B). Beide Vorzeichen liefern
   dieselbe Ebene Π_⊥(B); die Senkel-Bedingung (L1) ist eine
   Betragsbedingung und damit vorzeichen-invariant (siehe
   `hg_senkel.md` Wohldefiniertheit).
 
 - **Sonderfall welt-vertikale Bauteilachse (Singularität)**:
-  Ist Bedingung (V) verletzt — also d̂_B parallel oder
-  antiparallel zu ê_z^welt (typisch für eine welt-vertikale
-  Stütze) —, dann ist ê_z^welt × d̂_B = 0 und die Konstruktion
+  Ist Bedingung (V) verletzt — also d_hat_B parallel oder
+  antiparallel zu e_hat_z^welt (typisch für eine welt-vertikale
+  Stütze) —, dann ist e_hat_z^welt × d_hat_B = 0 und die Konstruktion
   (2) bricht zusammen. Geometrisch: in diesem Fall ist **jede**
   Ebene, die A_B enthält, automatisch ein Senkel (weil die Achse
   selbst parallel zur Lotachse verläuft); die Lotebene-Bedingungen
@@ -222,7 +222,7 @@ wohldefiniert ist.
   (siehe Implementierungshinweis).
 
 - **Existenz im Toleranz-Grenzbereich**: Wird (V) gerade noch
-  erfüllt (|⟨d̂_B, ê_z^welt⟩| nahe an 1 − ε_K), so ist n̂_Π
+  erfüllt (|⟨d_hat_B, e_hat_z^welt⟩| nahe an 1 − ε_K), so ist n_hat_Π
   zwar wohldefiniert, aber die numerische Konditionierung des
   Kreuzprodukts wird schlecht. Praktisch betroffen sind nur
   Bauteile mit Einbau-Neigung sehr nahe 90° gegen die
@@ -234,12 +234,12 @@ wohldefiniert ist.
 - **Konsistenz mit (L1) ∧ (L2)**: Die konstruktive Form (1)
   und die Prädikat-Form (L1) ∧ (L2) beschreiben unter
   Voraussetzung (V) dieselbe Ebene. Beweis: (1) erfüllt (L1)
-  (weil n̂_Π rechtwinklig zu ê_z^welt steht, siehe (2)) und
-  (L2) (weil p_a = O_B + λ_a · d̂_B mit λ_a ∈ ℝ in (1) liegt,
+  (weil n_hat_Π rechtwinklig zu e_hat_z^welt steht, siehe (2)) und
+  (L2) (weil p_a = O_B + λ_a · d_hat_B mit λ_a ∈ ℝ in (1) liegt,
   analog p_e). Umgekehrt: jede Ebene, die (L1) und (L2)
-  erfüllt, enthält d̂_B (über (L2)) und ê_z^welt als
+  erfüllt, enthält d_hat_B (über (L2)) und e_hat_z^welt als
   Tangentialrichtung (über (L1)) — damit ist sie durch O_B
-  und das Richtungspaar (d̂_B, ê_z^welt) eindeutig festgelegt
+  und das Richtungspaar (d_hat_B, e_hat_z^welt) eindeutig festgelegt
   und gleich (1).
 
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
@@ -293,8 +293,8 @@ Lotebenen treten als geometrischer Bezug an mehreren Stellen auf:
 - **Kerv-Geometrie eines Sparrens** (siehe `hg_kerve.md`,
   Gleichungen (0)–(4)): die Lotebene Π_⊥(B) ist die Bezugsebene
   für die Definition der Kerv-Eckpunkte C, P, A und der welt-
-  aligned Hilfsrichtungen ê_h (welt-horizontal in der Lotebene)
-  und ê_v = ê_z^welt (welt-vertikal). Die welt-Ausrichtung der
+  aligned Hilfsrichtungen e_hat_h (welt-horizontal in der Lotebene)
+  und e_hat_v = e_hat_z^welt (welt-vertikal). Die welt-Ausrichtung der
   Schnittflächen (Sohlenebene als Bleischnitt, Senkelebene als
   Senkel) wird relativ zur Lotebene formuliert.
 - **Werkplan-Aufriss eines Stabbauteils**: der traditionelle
@@ -313,8 +313,8 @@ folgender struktureller Beziehung:
 
 | Begriff | Bedingung an die Ebene |
 |---|---|
-| `senkel` | Normalenvektor rechtwinklig zur Welt-Lotachse: \|⟨n̂, ê_z^welt⟩\| ≤ ε_K |
-| `bleischnitt` | Normalenvektor parallel zur Welt-Lotachse: \|⟨n̂, ê_z^welt⟩\| ≥ 1 − ε_K |
+| `senkel` | Normalenvektor rechtwinklig zur Welt-Lotachse: \|⟨n_hat, e_hat_z^welt⟩\| ≤ ε_K |
+| `bleischnitt` | Normalenvektor parallel zur Welt-Lotachse: \|⟨n_hat, e_hat_z^welt⟩\| ≥ 1 − ε_K |
 | `lotebene` eines Bauteils B | ist Senkel **und** enthält die Bauteilachse A_B |
 
 Jede Lotebene ist also ein Senkel; nicht jeder Senkel ist eine
@@ -332,7 +332,7 @@ der Geraden). Bei geneigter Bauteilachse fallen die beiden Lesarten
 auseinander:
 
 - **Mathematische Lotebene zur Sparrenachse** (nicht im Glossar
-  geführt): Normale parallel zu d̂_B, also rechtwinklig zur Sparrenachse —
+  geführt): Normale parallel zu d_hat_B, also rechtwinklig zur Sparrenachse —
   eine vom Sparren determinierte schiefe Ebene; weder Senkel
   noch Bleischnitt.
 - **Lotebene im Sinne dieses Eintrags** (geodätisch): Senkel
@@ -340,7 +340,7 @@ auseinander:
   nicht rechtwinklig zur Sparrenachse.
 
 Die beiden fallen genau dann zusammen, wenn die Bauteilachse
-welt-horizontal ist (d̂_B rechtwinklig zu ê_z^welt). Siehe
+welt-horizontal ist (d_hat_B rechtwinklig zu e_hat_z^welt). Siehe
 quellenkonflikt-Block.
 
 ### Toleranz in der Praxis
@@ -371,7 +371,7 @@ Stabbauteile mit deutlich geneigter Achse (Sparren) gedacht.
 - **Verwendung**:
   - **Kerv-Geometrie** in `hg_kerve.md`: Π_⊥(B) als Bezugsebene
     für die Kerv-Eckpunkte und die welt-aligned Hilfsrichtungen
-    ê_h, ê_v.
+    e_hat_h, e_hat_v.
   - **Werkplan-Aufriss** eines Sparrens (Folgearbeit).
   - **Falllinien-Konstruktion** an Dachflächen (Folgearbeit).
 - **Abgrenzung**:
@@ -399,7 +399,7 @@ Stabbauteile mit deutlich geneigter Achse (Sparren) gedacht.
     Senkel (aber im allgemeinen keine Lotebene eines bestimmten
     Sparrens).
   - **Welt-Koordinatensystem** (`weltkoordinatensystem`): legt
-    die Welt-Lotachse ê_z^welt fest, gegen die die Senkel-
+    die Welt-Lotachse e_hat_z^welt fest, gegen die die Senkel-
     Bedingung (L1) formuliert ist. Ohne Welt-Koordinatensystem
     ist die Lotebene nicht definiert.
 
@@ -425,11 +425,11 @@ import kotlin.math.abs
  *
  * Konstruktion (siehe hg_lotebene.md Gl. (1)–(3)):
  *
- *   n̂_Π = (ê_z^welt × d̂_B) / ‖ê_z^welt × d̂_B‖,
- *   d_Π = ⟨n̂_Π, O_B⟩.
+ *   n_hat_Π = (e_hat_z^welt × d_hat_B) / ‖e_hat_z^welt × d_hat_B‖,
+ *   d_Π = ⟨n_hat_Π, O_B⟩.
  *
  * Singularität: Bei welt-vertikaler Bauteilachse
- * (|⟨d̂_B, ê_z^welt⟩| > 1 − KOLLINEAR_EPS) ist die Lotebene
+ * (|⟨d_hat_B, e_hat_z^welt⟩| > 1 − KOLLINEAR_EPS) ist die Lotebene
  * **nicht eindeutig** — der Konstruktor liefert dann
  * `Lotebene.AchseVertikal`.
  *
@@ -444,11 +444,11 @@ sealed class LotebeneResultat {
 fun Bauteil.lotebene(
     eps: Double = Toleranzen.KOLLINEAR_EPS
 ): LotebeneResultat {
-    val d = this.achse.richtungEinheit()        // d̂_B
-    val ez = WeltKoordinatensystem.eZ            // ê_z^welt
-    val cos = abs(d.skalar(ez))                  // |⟨d̂_B, ê_z^welt⟩|
+    val d = this.achse.richtungEinheit()        // d_hat_B
+    val ez = WeltKoordinatensystem.eZ            // e_hat_z^welt
+    val cos = abs(d.skalar(ez))                  // |⟨d_hat_B, e_hat_z^welt⟩|
     if (cos > 1.0 - eps) return LotebeneResultat.AchseVertikal
-    val n = ez.kreuz(d).normiert()               // n̂_Π
+    val n = ez.kreuz(d).normiert()               // n_hat_Π
     val o = this.achse.anfangspunkt()            // O_B
     return LotebeneResultat.Ebene(
         domain.geometrie.Ebene.ausPunktUndNormale(o, n)
@@ -470,7 +470,7 @@ fun Bauteil.lotebene(
   hier nicht primär implementiert).
 - **Edge Cases**:
   - **Welt-vertikale Stütze** (Stützen-artiges Bauteil mit
-    d̂_B = ±ê_z^welt): Konstruktor liefert
+    d_hat_B = ±e_hat_z^welt): Konstruktor liefert
     `LotebeneResultat.AchseVertikal`; aufrufender Code muss den
     Fall behandeln (z. B. Lotebene durch zusätzliche
     Konvention festlegen oder Geometrie-Pfad abbrechen).
@@ -480,8 +480,8 @@ fun Bauteil.lotebene(
     punktweise (pro Achsen-Parameter s) konstruiert werden;
     Folgearbeit-Trigger.
   - **Numerische Konditionierung nahe der Singularität**: bei
-    |⟨d̂_B, ê_z^welt⟩| nahe 1 − ε_K wird das Kreuzprodukt
-    kurz und n̂_Π ungenau; in der Praxis irrelevant, weil
+    |⟨d_hat_B, e_hat_z^welt⟩| nahe 1 − ε_K wird das Kreuzprodukt
+    kurz und n_hat_Π ungenau; in der Praxis irrelevant, weil
     diese Konfiguration weit jenseits realer Sparren-Neigungen
     liegt.
 

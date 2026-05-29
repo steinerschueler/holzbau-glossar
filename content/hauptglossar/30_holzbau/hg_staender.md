@@ -218,10 +218,10 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - E_W eine Wandebene (Ebene im Sinne von `ebene`) mit Stützpunkt
-  p_W und Normalenvektor n̂_W ∈ S², wobei n̂_W horizontal liegt
-  (|⟨n̂_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
+  p_W und Normalenvektor n_hat_W ∈ S², wobei n_hat_W horizontal liegt
+  (|⟨n_hat_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
   HG_KONVENTIONEN.md §1, d. h. lotrecht),
 - S eine Schwelle in derselben Wandebene mit Bauteilachse
   a(S) = (p_a^S, p_e^S) (vgl. `schwelle`),
@@ -241,9 +241,9 @@ alle erfüllt sind:
 2. **Lotrechtheit der Ständerachse**: Die Bauteilachsenrichtung
    ist kollinear zur Welt-Lotachse,
    ```
-   ‖d̂ × e_z‖ ≤ ε_K,
+   ‖d_hat × e_z‖ ≤ ε_K,
    ```
-   d. h. d̂ steht parallel zu e_z. Sinus-Test gegen
+   d. h. d_hat steht parallel zu e_z. Sinus-Test gegen
    e_z-Parallelität; nach HG_KONVENTIONEN.md §4 ist
    `KOLLINEAR_EPS` die einschlägige Toleranzkonstante für Lot-
    und Parallelitäts-Prädikate.
@@ -262,7 +262,7 @@ alle erfüllt sind:
 
 4. **Lage in der Wandebene**: Beide Endpunkte liegen in E_W,
    ```
-   |⟨p_a − p_W, n̂_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n̂_W⟩| ≤ ε_L.
+   |⟨p_a − p_W, n_hat_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n_hat_W⟩| ≤ ε_L.
    ```
 
 5. **Anschluss an die Schwelle (Fuß)**: Der untere Endpunkt
@@ -285,9 +285,9 @@ Wesentliche abgeleitete Größen:
 - **Ständerlänge**: L_S := ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen Schwellen-Anschluss und Rähm-Anschluss.
   Bei exakt lotrechter Ständerachse gilt L_S = p_e.z − p_a.z.
-- **Ständerrichtung**: d̂ ∈ S² mit ‖d̂ × e_z‖ ≤ ε_K und
-  d̂ · e_z > 0 (durch Bedingung 3 festgelegt). Damit ist
-  d̂ ≈ +e_z.
+- **Ständerrichtung**: d_hat ∈ S² mit ‖d_hat × e_z‖ ≤ ε_K und
+  d_hat · e_z > 0 (durch Bedingung 3 festgelegt). Damit ist
+  d_hat ≈ +e_z.
 - **Geschosshöhe**: h_G := p_e.z − p_a.z; bei lotrechtem
   Ständer identisch mit L_S, bei toleranzbehafteter Schiefstellung
   bis auf KOLLINEAR_EPS‧L_S kleiner als L_S.
@@ -301,9 +301,9 @@ Wesentliche abgeleitete Größen:
   klassischen Riegel-/Fachwerk-Wand und jeder Ständer eines
   modernen Holzrahmenbau-Wandelements ist Standardbeispiel.
 - **Eindeutigkeit der Ständerrichtung**: Bedingungen 2 und 3
-  zusammen fixieren d̂ vollständig: d̂ ist kollinear zu e_z
+  zusammen fixieren d_hat vollständig: d_hat ist kollinear zu e_z
   (Bedingung 2) **und** positiv orientiert (Bedingung 3), also
-  d̂ = +e_z bis auf ε_K. Im Gegensatz zu Pfette, Riegel und Rähm
+  d_hat = +e_z bis auf ε_K. Im Gegensatz zu Pfette, Riegel und Rähm
   ist hier auch das Vorzeichen geometrisch festgelegt.
 - **Eindeutigkeit der Wandebene**: Die Wandebene E_W ist aus
   den Achsenlagen der Schwelle S und des Rähms R bestimmbar
@@ -559,7 +559,7 @@ behandelt.
   - **Querschnitt** (rechteckig, oft gleich Riegelquerschnitt
     im modernen Holzrahmenbau);
   - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_Ständer, also
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_Ständer, also
     axial entlang der lotrechten Bauteilachse).
 - **Positions-Annotation** (Merkmal am Ständer, kein Subtyp):
   - **Ständerposition** (`StaenderPosition`-Enum): Wert aus
@@ -685,7 +685,7 @@ data class Staender(
         get() = achse.ende.z - achse.anfang.z
 
     /**
-     * Lotrechtheitsprädikat: ‖d̂ × e_z‖ ≤ KOLLINEAR_EPS.
+     * Lotrechtheitsprädikat: ‖d_hat × e_z‖ ≤ KOLLINEAR_EPS.
      *
      * Sinus-Test gegen e_z-Parallelität; KOLLINEAR_EPS ist
      * bevorzugt für Lot- und Parallelitäts-Prädikate
@@ -745,12 +745,12 @@ sealed class StaenderEntartet {
   `StaenderEntartet`-Variante; niemals Exception):
   1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
   2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. ‖d̂ × e_z‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
+  3. ‖d_hat × e_z‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
      `NichtLotrecht` (Sinus-Test gegen e_z-Parallelität;
      KOLLINEAR_EPS, vgl. HG_KONVENTIONEN.md §4).
   4. p_a.z + Toleranzen.LAENGE_EPS < p_e.z — sonst
      `FalscheOrientierung` (Vorzeichenkonvention Fuß → Kopf).
-  5. Wandebene lotrecht: |⟨n̂_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
+  5. Wandebene lotrecht: |⟨n_hat_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
      — sonst `WandebeneNichtLotrecht`.
   6. Beide Endpunkte in Wandebene (Punkt-Ebene-Abstand ≤
      Toleranzen.LAENGE_EPS) — sonst `NichtInWandebene`.

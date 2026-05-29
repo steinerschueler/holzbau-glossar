@@ -55,21 +55,21 @@ Sei
   nach außen gerichteter Einheits-Normale n_a ∈ S²,
 - e_N = (0, 1, 0)ᵀ die Nordrichtung des Welt-Koordinatensystems
   (Konvention der App: x = Ost, y = Nord, z = oben),
-- n̂_h ∈ S² ∩ {z = 0} die horizontale Projektion der äußeren
+- n_hat_h ∈ S² ∩ {z = 0} die horizontale Projektion der äußeren
   Normalen,
   ```
-  n̂_h := normiere(n_a − ⟨n_a, e_z⟩ · e_z)
+  n_hat_h := normiere(n_a − ⟨n_a, e_z⟩ · e_z)
   ```
   (definiert nur, falls ‖n_a − ⟨n_a, e_z⟩ · e_z‖ > Toleranzen.NORM_EPS,
   also α(D) > 0 und n_a nicht vertikal).
 
 Dann ist die **Orientierung** der Dachseite zu D der Winkel
-ψ(D) ∈ [0, 2π) zwischen n̂_h und e_N, gemessen im Uhrzeigersinn um
+ψ(D) ∈ [0, 2π) zwischen n_hat_h und e_N, gemessen im Uhrzeigersinn um
 e_z (geographische Konvention: 0° = Norden, 90° = Osten,
 180° = Süden, 270° = Westen):
 
 ```
-ψ(D) := atan2( ⟨n̂_h, e_E⟩ , ⟨n̂_h, e_N⟩ )  mod 2π,
+ψ(D) := atan2( ⟨n_hat_h, e_E⟩ , ⟨n_hat_h, e_N⟩ )  mod 2π,
 ```
 
 mit e_E = (1, 0, 0)ᵀ.
@@ -97,10 +97,10 @@ Daten und ist hier nicht festgelegt.
 
 ## Wohldefiniertheit
 
-- **Existenz von n̂_h**: Für jede geneigte Dachfläche
-  (α(D) ∈ (0, π/2)) ist ‖n_a − ⟨n_a, e_z⟩ · e_z‖ > 0; n̂_h ist also
+- **Existenz von n_hat_h**: Für jede geneigte Dachfläche
+  (α(D) ∈ (0, π/2)) ist ‖n_a − ⟨n_a, e_z⟩ · e_z‖ > 0; n_hat_h ist also
   wohldefiniert.
-- **Sonderfall α(D) = 0** (Flachdach): n_a = e_z, n̂_h ist nicht
+- **Sonderfall α(D) = 0** (Flachdach): n_a = e_z, n_hat_h ist nicht
   definiert; eine Flachdachfläche besitzt keine Orientierung im
   Sinne dieser Definition. In diesem Fall ist DS(D) entartet
   (siehe `Entartet.Horizontal`).

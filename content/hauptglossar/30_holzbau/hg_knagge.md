@@ -251,11 +251,11 @@ Sei
 - A_P ⊂ ℝ³ eine **Pfosten-Anker-Fläche** des Bauteil-Körpers
   von B (eine ebene Fläche des Knagge-Polyeders, an der die
   Verzapfung mit dem Pfosten/Ständer S anliegt) mit Stützpunkt
-  q_P und Normaleneinheitsvektor n̂_P ∈ S²,
+  q_P und Normaleneinheitsvektor n_hat_P ∈ S²,
 - A_A ⊂ ℝ³ eine **Auflager-Fläche** des Bauteil-Körpers von B
   (eine ebene Fläche, auf der ein getragener Balken T
   aufliegt) mit Stützpunkt q_A und Normaleneinheitsvektor
-  n̂_A ∈ S²,
+  n_hat_A ∈ S²,
 - S ein stützendes Bauteil (Ständer/Pfosten/geneigte Stütze)
   mit Bauteilachse a(S),
 - T ein getragenes Bauteil (Deckenbalken, Pfette, Sparren,
@@ -273,7 +273,7 @@ erfüllt sind:
    Knagge-Körper trägt zwei nicht-koplanare Anker-Flächen
    A_P und A_A,
    ```
-   ‖n̂_P × n̂_A‖ > ε_K,
+   ‖n_hat_P × n_hat_A‖ > ε_K,
    ```
    d. h. die beiden Normalenvektoren sind nicht kollinear.
    (Eine Knagge mit koplanaren Pfosten- und Auflager-Flächen
@@ -284,17 +284,17 @@ erfüllt sind:
    liegt mit Toleranz ε_L bündig an der Bauteilachse a(S)
    des stützenden Bauteils, in dem Sinne, dass der
    Pfosten-Anker-Stützpunkt q_P bis auf ε_L auf a(S) liegt
-   und die Normale n̂_P rechtwinklig zu a(S) zeigt:
+   und die Normale n_hat_P rechtwinklig zu a(S) zeigt:
    ```
-   dist(q_P, a(S)) ≤ ε_L  ∧  |⟨n̂_P, d̂_S⟩| ≤ ε_K,
+   dist(q_P, a(S)) ≤ ε_L  ∧  |⟨n_hat_P, d_hat_S⟩| ≤ ε_K,
    ```
-   wobei d̂_S der Richtungsvektor von a(S) ist.
+   wobei d_hat_S der Richtungsvektor von a(S) ist.
 
 3. **Auflager-Fläche horizontal oder schwach geneigt**: die
    Auflager-Fläche A_A trägt einen Balken, d. h. ihre Normale
-   n̂_A zeigt überwiegend nach oben:
+   n_hat_A zeigt überwiegend nach oben:
    ```
-   ⟨n̂_A, e_z⟩ ≥ cos(π/4) − ε_K,
+   ⟨n_hat_A, e_z⟩ ≥ cos(π/4) − ε_K,
    ```
    d. h. die Auflager-Fläche neigt sich um höchstens 45°
    gegen die Horizontale. Dieser Schwellwert ist konservativ
@@ -338,7 +338,7 @@ Wesentliche abgeleitete Größen:
   klassische Dreieck-Prismen-Knaggen ist V_K = ½ · a · b · t
   mit Schenkellängen a, b und Tiefe t in Pfosten-Wand-
   Richtung.
-- **Anker-Achsen-Winkel**: ϑ := arccos(|⟨n̂_P, n̂_A⟩|), Winkel
+- **Anker-Achsen-Winkel**: ϑ := arccos(|⟨n_hat_P, n_hat_A⟩|), Winkel
   zwischen Pfosten-Anker-Normale und Auflager-Normale;
   Default-Wert im historischen Fachwerk ~45° (gleichschenklige
   Dreieck-Knagge), Praxis-Range 30°–60°.
@@ -396,9 +396,9 @@ Wesentliche abgeleitete Größen:
 - **Faktor in der Auflager-Neigung (45°-Schwelle)**: die
   Schwelle `cos(π/4) − ε_K` in Bedingung 3 ist konservativ;
   sie deckt sowohl horizontale Auflager (klassische
-  Deckenbalken-Konsole, ⟨n̂_A, e_z⟩ ≈ 1) als auch geneigte
+  Deckenbalken-Konsole, ⟨n_hat_A, e_z⟩ ≈ 1) als auch geneigte
   Auflager (Sparren-Pfetten-Knagge auf einer 30°-Dachpfette,
-  ⟨n̂_A, e_z⟩ ≈ 0.87) ab. Steilere Auflager-Neigungen sind
+  ⟨n_hat_A, e_z⟩ ≈ 0.87) ab. Steilere Auflager-Neigungen sind
   konstruktiv unüblich und werden konservativ ausgeschlossen.
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
   bereits definierte Begriffe (`bauteil`, `ebene`,
@@ -732,7 +732,7 @@ data class Knagge(
         get() = auflagerFlaeche.normale
 
     /**
-     * Anker-Achsen-Winkel ϑ = arccos(|⟨n̂_P, n̂_A⟩|),
+     * Anker-Achsen-Winkel ϑ = arccos(|⟨n_hat_P, n_hat_A⟩|),
      * Default ~45° bei gleichschenkliger Dreieck-Knagge.
      */
     fun ankerAchsenWinkel(): Double {
@@ -815,17 +815,17 @@ sealed class KnaggeEntartet {
   2. Bauteil-Polyeder existiert und ist nicht entartet —
      sonst `KeinVolumenkoerper`.
   3. Anker-Flächen nicht koplanar:
-     ‖n̂_P × n̂_A‖ > Toleranzen.KOLLINEAR_EPS — sonst
+     ‖n_hat_P × n_hat_A‖ > Toleranzen.KOLLINEAR_EPS — sonst
      `AnkerFlaechenKoplanar`.
   4. Pfosten-Anker-Stützpunkt q_P auf der Pfosten-
      Bauteilachse a(S) (Punkt-Gerade-Abstand ≤
      Toleranzen.LAENGE_EPS) — sonst
      `PfostenAnkerNichtBeiPfosten`.
   5. Pfosten-Anker-Normale rechtwinklig zur Pfosten-Achse:
-     |⟨n̂_P, d̂_S⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst
+     |⟨n_hat_P, d_hat_S⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst
      `PfostenAnkerNormaleParallelZuAchse`.
   6. Auflager-Fläche schwach geneigt:
-     ⟨n̂_A, e_z⟩ ≥ cos(π/4) − Toleranzen.KOLLINEAR_EPS —
+     ⟨n_hat_A, e_z⟩ ≥ cos(π/4) − Toleranzen.KOLLINEAR_EPS —
      sonst `AuflagerZuSteilGeneigt`.
   7. Auflager-Inzidenz mit getragenem Bauteil: dist(a(T),
      A_A) ≤ Toleranzen.LAENGE_EPS für ein gewähltes

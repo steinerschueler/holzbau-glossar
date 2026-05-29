@@ -134,12 +134,12 @@ keine Warnung (Memory `project_faserrichtung_modi`).
   ist durch `faserrichtungs_modus = HART` extensional festgelegt;
   ein Werkstoff fällt genau dann in diese Klasse, wenn er einen
   einzigen, makroskopisch dominanten Faserverlauf hat.
-- **Eindeutigkeit der Faserrichtung bis auf Vorzeichen**: f̂ ist als
+- **Eindeutigkeit der Faserrichtung bis auf Vorzeichen**: f_hat ist als
   Annotation eines Bauteils eindeutig, sobald eine
-  Vorzeichenkonvention festgelegt ist (typisch „f̂ zeigt in dieselbe
+  Vorzeichenkonvention festgelegt ist (typisch „f_hat zeigt in dieselbe
   Halbachse wie die Bauteillängsachse von Anfangs- zu Endpunkt";
   siehe `faserrichtung`).
-- **Pflichtcharakter der Faserrichtung**: f̂ ist in dieser Subklasse
+- **Pflichtcharakter der Faserrichtung**: f_hat ist in dieser Subklasse
   Pflichtfeld. Die Default-Regel
   `faserrichtung := bauteil.lokale_x_achse` ist eine
   Konstruktionsregel, kein Erlaubnis-Mechanismus zum Weglassen:
@@ -148,8 +148,8 @@ keine Warnung (Memory `project_faserrichtung_modi`).
   Mindestabstände).
 - **Plattendicken-Achse trivial**: `plattendicken_achse = ⊥` ist
   Klassen-Invariante; axiales Holz ist kein Plattenwerkstoff.
-- **Norm-Invariante**: f̂ erbt die Norm-Invariante
-  | ‖f̂‖² − 1 | ≤ Toleranzen.NORM_EPS aus `einheitsvektor`.
+- **Norm-Invariante**: f_hat erbt die Norm-Invariante
+  | ‖f_hat‖² − 1 | ≤ Toleranzen.NORM_EPS aus `einheitsvektor`.
 - **Nicht-Zirkularität**: Die Definition stützt sich auf
   `werkstoff`, `einheitsvektor`, `faserrichtung`,
   `produktkennzeichnung` und `toleranzen`. Sie verweist nicht auf
@@ -335,7 +335,7 @@ data class AxialesHolz(
   1. `faserrichtungsModus == HART` (Klassen-Invariante).
   2. `plattendickenAchse == null` (Klassen-Invariante).
   3. `faserrichtung` erfüllt Norm-Invariante
-     | ‖f̂‖² − 1 | ≤ Toleranzen.NORM_EPS.
+     | ‖f_hat‖² − 1 | ≤ Toleranzen.NORM_EPS.
   4. `produktkennzeichnung` und `festigkeitsklasse` sind konsistent
      zur konkreten Sub-Subklasse (Vollholz, KVH, BSH, BSc, LVL).
 - **Default-Konvention zur Faserrichtung**: Die Auflösung

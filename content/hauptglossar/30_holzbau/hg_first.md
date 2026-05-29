@@ -79,7 +79,7 @@ ein abgeschlossenes (möglicherweise leeres oder einpunktiges)
 Streckenstück auf g_{ij}. Sein Richtungs-Einheitsvektor sei
 
 ```
-ê_{ij} := (Endpunkt − Anfangspunkt) / ‖Endpunkt − Anfangspunkt‖,
+e_hat_{ij} := (Endpunkt − Anfangspunkt) / ‖Endpunkt − Anfangspunkt‖,
           falls ℓ(s_{ij}) > ε_L; andernfalls undefiniert.
 ```
 
@@ -87,7 +87,7 @@ Eine Schnittstrecke s_{ij} heißt **näherungsweise horizontal**,
 wenn
 
 ```
-|⟨ê_{ij}, e_z⟩| ≤ ε_W.
+|⟨e_hat_{ij}, e_z⟩| ≤ ε_W.
 ```
 
 Sei 𝒮 die Menge aller näherungsweise horizontalen, nicht-entarteten
@@ -95,20 +95,20 @@ Schnittstrecken zwischen Paaren von Dachflächen der betrachteten
 Familie 𝒟,
 
 ```
-𝒮 := { s_{ij} | i < j,  ℓ(s_{ij}) > ε_L,  |⟨ê_{ij}, e_z⟩| ≤ ε_W }.
+𝒮 := { s_{ij} | i < j,  ℓ(s_{ij}) > ε_L,  |⟨e_hat_{ij}, e_z⟩| ≤ ε_W }.
 ```
 
 Eine Schnittstrecke s_{ij} ∈ 𝒮 heißt **First** der Dachflächen-
 familie 𝒟 genau dann, wenn ihr **Höhenmittelwert**
 
 ```
-z̄(s_{ij}) := ½ · (a_z + b_z)   mit  s_{ij} = [a, b]
+z_bar(s_{ij}) := ½ · (a_z + b_z)   mit  s_{ij} = [a, b]
 ```
 
 das Maximum unter allen Elementen von 𝒮 ist:
 
 ```
-z̄(s_{ij}) = max { z̄(s) | s ∈ 𝒮 }.
+z_bar(s_{ij}) = max { z_bar(s) | s ∈ 𝒮 }.
 ```
 
 Zusätzlich muss gelten, dass beide äußeren Normalen n_{a,i}, n_{a,j}
@@ -149,7 +149,7 @@ einer Strecke.
   eine Schnittkante zweier Dachflächen, also eine Dachkante im
   Sinne von `dachkante` (Fall „Schnittkante").
 - **Wohldefiniertheit des Höhenvergleichs**: Die mittlere z-Höhe
-  z̄(s) hängt nur von den Endpunkten der Strecke ab, nicht von
+  z_bar(s) hängt nur von den Endpunkten der Strecke ab, nicht von
   der Wahl der Repräsentation [a, b] vs. [b, a].
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
   `strecke`, `dachflaeche`, `polygon`, `ebene`, `vektor`,
@@ -246,7 +246,7 @@ fun istFirst(
     // 4. Beide äußeren Normalen weisen mit positiver z-Komponente nach oben
     if (dA.aeussereNormale dot Vektor.E_Z <= 0.0) return false
     if (dB.aeussereNormale dot Vektor.E_Z <= 0.0) return false
-    // 5. z̄(s) ist Maximum unter allen näherungsweise horizontalen Schnittstrecken
+    // 5. z_bar(s) ist Maximum unter allen näherungsweise horizontalen Schnittstrecken
     val horizontaleSchnitte = alleSchnittstrecken.filter { it.istHorizontal(eps_W) }
     val maxZ = horizontaleSchnitte.maxOf { it.hoehenMittelwert() }
     return abs(s.hoehenMittelwert() - maxZ) <= eps_L
@@ -259,7 +259,7 @@ fun istFirst(
   2. Jede Teilstrecke der Polylinie liegt im Schnittbereich
      F(P_A) ∩ F(P_B) der beiden anliegenden Dachflächen.
   3. Jede Teilstrecke ist näherungsweise horizontal:
-     |ê · e_z| ≤ Toleranzen.WINKEL_EPS.
+     |e_hat · e_z| ≤ Toleranzen.WINKEL_EPS.
   4. Beide äußeren Normalen weisen mit positiver z-Komponente nach
      oben: n_{a,A} · e_z > 0 und n_{a,B} · e_z > 0.
   5. Mittlere z-Höhe jeder Teilstrecke ist gleich dem Maximum der

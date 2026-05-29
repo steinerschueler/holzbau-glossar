@@ -93,12 +93,12 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - D = (E, P, n_a) eine Dachfläche im Sinne von `dachflaeche` mit
   Trägerebene E (Stützpunkt p₀, Normalenvektor n_a), Polygon P und
   äußerer Normaler n_a,
 - S ein Sparren der Dachfläche D im Sinne von `sparren`, mit
-  Richtungs-Einheitsvektor d̂_S der Sparrenachse,
+  Richtungs-Einheitsvektor d_hat_S der Sparrenachse,
 - e_z := (0, 0, 1)ᵀ die vertikale Achse,
 - ε_K := Toleranzen.KOLLINEAR_EPS,
   ε_W := Toleranzen.WINKEL_EPS,
@@ -110,10 +110,10 @@ folgenden Bedingungen erfüllt sind:
 1. **Stabgeometrie**: B besitzt eine gerade Bauteilachse mit
    ‖p_e − p_a‖ > ε_L.
 
-2. **Parallelität zur Trägerebene**: Die Bauteilachsenrichtung d̂
+2. **Parallelität zur Trägerebene**: Die Bauteilachsenrichtung d_hat
    liegt parallel zur Trägerebene E,
    ```
-   |⟨n_a, d̂⟩| ≤ ε_K.
+   |⟨n_a, d_hat⟩| ≤ ε_K.
    ```
    Die Achse selbst liegt typischerweise nicht in E, sondern in einer
    zu E parallel-versetzten Ebene E' mit Versatz ≈ Sparrenhöhe (bzw.
@@ -124,7 +124,7 @@ folgenden Bedingungen erfüllt sind:
 3. **Horizontalität**: Die Bauteilachsenrichtung steht rechtwinklig
    zur Welt-Lotachse,
    ```
-   |⟨d̂, e_z⟩| ≤ ε_K.
+   |⟨d_hat, e_z⟩| ≤ ε_K.
    ```
    Die Form des Tests ist ein **Sinus-Test gegen e_z-Parallelität**
    (Lot-Prädikat); nach `_KONVENTIONEN.md` Sektion 4 ist
@@ -133,7 +133,7 @@ folgenden Bedingungen erfüllt sind:
 4. **Rechtwinkligkeit zur Sparrenachse**: Es existiert mindestens
    ein Sparren S der zugeordneten Dachfläche D mit
    ```
-   |⟨d̂, d̂_S⟩| ≤ ε_K.
+   |⟨d_hat, d_hat_S⟩| ≤ ε_K.
    ```
    Die Lattenachse steht damit rechtwinklig zur Sparrenachse;
    nach Bedingungen 2–4 zusammen liegt sie parallel zu einer
@@ -145,13 +145,13 @@ Wesentliche abgeleitete Größen:
 
 - **Lattenlänge**: L_L := ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen den Lattenenden.
-- **Lattenrichtung**: d̂ ∈ S² mit |⟨d̂, e_z⟩| ≤ ε_K und
-  |⟨d̂, d̂_S⟩| ≤ ε_K.
+- **Lattenrichtung**: d_hat ∈ S² mit |⟨d_hat, e_z⟩| ≤ ε_K und
+  |⟨d_hat, d_hat_S⟩| ≤ ε_K.
 - **Latten-Höhenlage**: z_L := (p_a.z + p_e.z) / 2; bei einer
   exakt horizontalen Latte gilt p_a.z = p_e.z = z_L.
 - **Lattenachsabstand** (Lattenweite): bei einer parallelen
   Lattenschar L_1, …, L_n auf derselben Dachfläche der
-  Abstand benachbarter Bauteilachsen, gemessen entlang d̂_S
+  Abstand benachbarter Bauteilachsen, gemessen entlang d_hat_S
   in der parallel-versetzten Ebene E'. Der Lattenachsabstand
   ist Eigenschaft des `dachaufbau` (eindeckungsabhängig) und
   nicht Bestandteil der Latten-Definition.
@@ -165,12 +165,12 @@ Wesentliche abgeleitete Größen:
   erfüllbar; jede Standard-Dachlatte auf einer Satteldachhälfte ist
   das Standardbeispiel.
 - **Eindeutigkeit der Lattenrichtung**: Bedingungen 3 und 4
-  zusammen fixieren d̂ bis auf das Vorzeichen: für eine geneigte
-  Dachfläche mit gegebener Sparrenrichtung d̂_S existiert (bis auf
-  Vorzeichen) genau ein Einheitsvektor d̂, der sowohl rechtwinklig
-  zu e_z als auch rechtwinklig zu d̂_S steht — nämlich
-  d̂ = ±(d̂_S × e_z) / ‖d̂_S × e_z‖. Auf einer horizontalen
-  Dachfläche (α = 0) ist d̂_S undefiniert, sodass die Latten-
+  zusammen fixieren d_hat bis auf das Vorzeichen: für eine geneigte
+  Dachfläche mit gegebener Sparrenrichtung d_hat_S existiert (bis auf
+  Vorzeichen) genau ein Einheitsvektor d_hat, der sowohl rechtwinklig
+  zu e_z als auch rechtwinklig zu d_hat_S steht — nämlich
+  d_hat = ±(d_hat_S × e_z) / ‖d_hat_S × e_z‖. Auf einer horizontalen
+  Dachfläche (α = 0) ist d_hat_S undefiniert, sodass die Latten-
   Definition keine Anwendung findet; dies ist der Flachdach-
   Sonderfall (siehe Edge Cases).
 - **Vorzeichenkonvention**: Die Bauteilachse einer Latte ist
@@ -274,7 +274,7 @@ dass die Längsfaser entlang der Lattenlänge verläuft. Die
 Faserneigung ist im prismatischen Idealfall 0; Abweichungen
 werden über die Sortierklasse begrenzt (DIN 4074-1). In der
 Domänen-Schicht ist `faserrichtung` Annotation des Bauteils und
-für Latten als **Default ‖ d̂_Latte** zu setzen.
+für Latten als **Default ‖ d_hat_Latte** zu setzen.
 
 ### Statisches System und Bemessung
 
@@ -327,7 +327,7 @@ außerhalb der Holzbau-Modellierung dieses Glossars.
     Standardquerschnitte 24/48, 30/50, 40/60 mm);
   - **Werkstoff** (Vollholz, Festigkeitsklasse C24 bzw. C30
     entsprechend Sortierklasse S10/S13);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_Latte).
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_Latte).
 - **Verwendung / Beziehung zu anderen Bauteilen**:
   - **Sparren** (`sparren`): Auflager der Latte; die Latte liegt
     **auf** dem Sparren (ggf. über eine zwischengelegte
@@ -444,7 +444,7 @@ data class Latte(
         get() = (achse.anfang.z + achse.ende.z) / 2.0
 
     /**
-     * Horizontalitätsprädikat: |⟨d̂, e_z⟩| ≤ KOLLINEAR_EPS.
+     * Horizontalitätsprädikat: |⟨d_hat, e_z⟩| ≤ KOLLINEAR_EPS.
      *
      * Sinus-Test gegen e_z-Parallelität; KOLLINEAR_EPS ist
      * bevorzugt für Lot- und Parallelitäts-Prädikate
@@ -455,7 +455,7 @@ data class Latte(
 
     /**
      * Rechtwinkligkeitsprädikat zur Sparrenachse:
-     * |⟨d̂, d̂_S⟩| ≤ KOLLINEAR_EPS.
+     * |⟨d_hat, d_hat_S⟩| ≤ KOLLINEAR_EPS.
      */
     fun stehtRechtwinkligZuSparren(
         sparren: Sparren,
@@ -480,12 +480,12 @@ sealed class LatteEntartet {
   niemals Exception):
   1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
   2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. |⟨n_a, d̂⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst
+  3. |⟨n_a, d_hat⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst
      `NichtParallelZurDachflaeche` (Sinus-Test gegen Normalen-
      Parallelität).
-  4. |⟨d̂, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst
+  4. |⟨d_hat, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst
      `NichtHorizontal` (Sinus-Test gegen e_z-Parallelität).
-  5. |⟨d̂, d̂_S⟩| ≤ Toleranzen.KOLLINEAR_EPS für mindestens einen
+  5. |⟨d_hat, d_hat_S⟩| ≤ Toleranzen.KOLLINEAR_EPS für mindestens einen
      Sparren S der Dachfläche — sonst `NichtOrthogonalZumSparren`.
   6. Dachfläche geneigt (α > 0) — sonst `FlacheDachflaeche`
      (Sparrenrichtung undefiniert).
@@ -518,7 +518,7 @@ sealed class LatteEntartet {
     `t`, deren Bauteilachse die Lattenbauteilachse innerhalb
     Toleranzen schneidet (Bemessungs-Hilfsfunktion).
   - `lattenabstandZuNachbar(l: Latte): Double?` — Achsabstand zur
-    Nachbarlatte entlang d̂_S, falls beide auf derselben
+    Nachbarlatte entlang d_hat_S, falls beide auf derselben
     Dachfläche und parallel.
   - `faserneigung(): Double?` — falls Faserrichtung gesetzt:
     Winkel zwischen Faserrichtung und Lattenachse; sonst null.

@@ -160,16 +160,16 @@ Sei
 
 - B ein Bauteil im Sinne von `bauteil` mit ungeschwächtem
   Bauteilkörper G_B^lokal ⊂ ℝ³ im Bauteil-Lokal-System
-  L_B = (O_B, ê_x^B, ê_y^B, ê_z^B),
+  L_B = (O_B, e_hat_x^B, e_hat_y^B, e_hat_z^B),
 - 𝓕(B) die endliche Menge der **Bezugsflächen** von B (die
   rechteckigen Aussenflächen des Bauteilkörpers — beim
   Quaderbauteil sechs Stück: vier Längsseiten und zwei
   Stirnseiten; siehe `laengsseite`, `stirnseite`),
 - für eine gewählte Bezugsfläche F ∈ 𝓕(B) der **Flächen-Ursprung**
   O_F ∈ F (typisch eine ausgezeichnete Ecke), die in F
-  liegenden Tangentialrichtungen ê_u^F, ê_v^F (orthonormal,
+  liegenden Tangentialrichtungen e_hat_u^F, e_hat_v^F (orthonormal,
   rechtshändig) sowie die **nach innen** zeigende
-  Flächen-Normale ê_n^F ∈ S² mit ⟨ê_n^F, ê_z^B-Komponente⟩
+  Flächen-Normale e_hat_n^F ∈ S² mit ⟨e_hat_n^F, e_hat_z^B-Komponente⟩
   oder einer anderen kanonischen Wahl, sodass der
   Werkzeugkörper bei positiver Lochtiefe in den Bauteilkörper
   hinein zeigt,
@@ -198,9 +198,9 @@ mit
 - **h** ∈ ℝ⁺: **Lochhöhe** in v-Richtung (mm), h > ε_L.
   Entspricht der Zapfenhöhe.
 - **t** ∈ ℝ⁺: **Lochtiefe** in Richtung der inneren Flächen-
-  Normalen ê_n^F (mm), t > ε_L.
+  Normalen e_hat_n^F (mm), t > ε_L.
 - **ψ** ∈ [−π/2, π/2]: **Loch-Drehwinkel** in der Bezugsfläche
-  (Rotation des Lochrechtecks gegen ê_u^F); Standard ψ = 0
+  (Rotation des Lochrechtecks gegen e_hat_u^F); Standard ψ = 0
   (Loch achs-aligned).
 - **variante** ∈ {Standard, Schwalbenschwanz, Haus}:
   Geometrievariante. **Standard** ist das gerade Zapfenloch
@@ -214,7 +214,7 @@ mit
   Laubholz.
 
 Sei T_F→B ∈ SE(3) die Starrkörpertransformation, die das
-Flächen-Koordinatensystem (O_F, ê_u^F, ê_v^F, ê_n^F) in das
+Flächen-Koordinatensystem (O_F, e_hat_u^F, e_hat_v^F, e_hat_n^F) in das
 Bauteil-Lokal-System L_B überführt; T_F→B ist durch die Wahl
 von F und O_F eindeutig bestimmt.
 
@@ -242,7 +242,7 @@ K_ZL^Standard  :=  □_F × [0, t]   ⊂   ℝ² × ℝ⁺                     (
 ```
 
 im Flächen-Koordinatensystem, wobei die dritte Komponente die
-Tiefe in Richtung ê_n^F ist. In Bauteil-Lokal-Koordinaten:
+Tiefe in Richtung e_hat_n^F ist. In Bauteil-Lokal-Koordinaten:
 
 ```
 K_ZL^Standard(B, p_ZL)  :=  T_F→B( □_F × [0, t] ).                (4)
@@ -339,7 +339,7 @@ gewählt wird).
      Tiefe 0 ist keine Aussparung, sondern eine Anriss-
      Markierung.
   4. **Lochtiefe-Beschränkung am Bauteil**: t ≤ d_F(B) − ε_L,
-     wobei d_F(B) die Bauteildicke in Richtung ê_n^F ist
+     wobei d_F(B) die Bauteildicke in Richtung e_hat_n^F ist
      (also der lotrechte Abstand von F zur gegenüberliegenden
      Bauteilfläche). Ein Zapfenloch mit Tiefe ≥ d_F(B) ist
      ein **durchgehendes Zapfenloch** (Schlitz / through
@@ -716,7 +716,7 @@ data class Zapfenloch(
   Bauteil: `LAENGSSEITE_OBEN`, `LAENGSSEITE_UNTEN`,
   `LAENGSSEITE_LINKS`, `LAENGSSEITE_RECHTS`,
   `STIRNSEITE_ANFANG`, `STIRNSEITE_ENDE`). Die konkrete
-  Geometrie der Bezugsfläche (Ursprung, ê_u^F, ê_v^F, ê_n^F)
+  Geometrie der Bezugsfläche (Ursprung, e_hat_u^F, e_hat_v^F, e_hat_n^F)
   wird aus dem Bauteil-Lokal-System und dem
   Bauteil-Querschnitt abgeleitet.
 - **Lebenszyklus / Komposition**: identisch zu `kerve` und
@@ -792,7 +792,7 @@ data class Zapfenloch(
     Pyramidenstumpf, Quader + Anlagestufe).
   - `oeffnungsrechteck(): Polygon` — □_F nach (2) in der
     Bezugsfläche; nützlich für die Visualisierung.
-  - `lochwand_normal(): Einheitsvektor` — ê_n^F; Hauptachse
+  - `lochwand_normal(): Einheitsvektor` — e_hat_n^F; Hauptachse
     des Querdruck-Nachweises an der Lochwand.
   - `querdruck_lochflaeche(): Double` — Fläche der
     drucktragenden Lochwand (b · h für Standard); Bemessungs-

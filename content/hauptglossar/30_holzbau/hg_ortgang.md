@@ -62,19 +62,19 @@ Sei
 Die **Falllinie** der Dachfläche D im Sinne von `hg_falllinie.md`
 ist der eindeutige in E liegende Einheitsvektor mit minimaler
 z-Komponente; mit der dort fixierten Vorzeichenkonvention gilt
-⟨ê_fall, e_z⟩ ≤ 0 (Falllinie zeigt **nach unten**, geometrische
+⟨e_hat_fall, e_z⟩ ≤ 0 (Falllinie zeigt **nach unten**, geometrische
 Bergab-Richtung). Operational liefert die Projektionsform aus
 `hg_falllinie.md` Gleichung (vgl. dortige Symbol-Konvention)
 
 ```
-ê_fall := −(e_z − ⟨e_z, n_a⟩ · n_a) / ‖e_z − ⟨e_z, n_a⟩ · n_a‖.
+e_hat_fall := −(e_z − ⟨e_z, n_a⟩ · n_a) / ‖e_z − ⟨e_z, n_a⟩ · n_a‖.
 ```
 
 Lesart des Minus-Zeichens: Der Term v := e_z − ⟨e_z, n_a⟩·n_a
 ist die orthogonale Projektion von e_z in den Richtungsraum von
 E und zeigt entlang der steilsten Richtung in E **nach oben**;
 das vorangestellte Minus dreht die Richtung gemäß der
-Vorzeichenkonvention in die Bergab-Richtung. ê_fall ist
+Vorzeichenkonvention in die Bergab-Richtung. e_hat_fall ist
 wohldefiniert für α > 0 (denn dann ist e_z nicht parallel zu
 n_a und der Nenner positiv); siehe `hg_falllinie.md` für die
 vollständige Wohldefiniertheits-Argumentation.
@@ -83,13 +83,13 @@ Eine Polygonrandkante e_i = [v_i, v_{i+1}] heißt **entlang der
 Falllinie verlaufend**, wenn ihr Einheits-Richtungsvektor
 
 ```
-ê_i := (v_{i+1} − v_i) / ‖v_{i+1} − v_i‖
+e_hat_i := (v_{i+1} − v_i) / ‖v_{i+1} − v_i‖
 ```
 
-mit ê_fall kollinear ist:
+mit e_hat_fall kollinear ist:
 
 ```
-‖ê_i × ê_fall‖ ≤ ε_W,    äquivalent  |⟨ê_i, ê_fall⟩| ≥ 1 − ε_W²/2.
+‖e_hat_i × e_hat_fall‖ ≤ ε_W,    äquivalent  |⟨e_hat_i, e_hat_fall⟩| ≥ 1 − ε_W²/2.
 ```
 
 Eine Strecke o ⊂ ℝ³ heißt **Ortgang** der Dachfläche D genau dann,
@@ -98,8 +98,8 @@ wenn
 1. **Randkante**: o ⊂ ∂F(P) — o liegt vollständig im Polygonrand
    von D.
 2. **Falllinien-Lage**: o verläuft entlang der Falllinie:
-   ‖ê(o) × ê_fall‖ ≤ ε_W.
-3. **Geneigt**: ⟨ê(o), e_z⟩ ≠ 0 (genauer: |⟨ê(o), e_z⟩| > ε_W);
+   ‖e_hat(o) × e_hat_fall‖ ≤ ε_W.
+3. **Geneigt**: ⟨e_hat(o), e_z⟩ ≠ 0 (genauer: |⟨e_hat(o), e_z⟩| > ε_W);
    damit ist o im Gegensatz zur Traufe nicht horizontal. Diese
    Bedingung folgt automatisch aus 2 zusammen mit α > 0.
 
@@ -110,10 +110,10 @@ sie aus genau einer Strecke pro Giebelseite.
 
 ## Wohldefiniertheit
 
-- **Existenz von ê_fall**: Für jede geneigte Dachfläche
+- **Existenz von e_hat_fall**: Für jede geneigte Dachfläche
   (α ∈ (0, π/2)) ist e_z − ⟨e_z, n_a⟩ · n_a ≠ 0, denn sonst wäre
-  e_z parallel zu n_a, also α = 0. Damit ist ê_fall eindeutig
-  bestimmt. Bei einer horizontalen Dachfläche (α = 0) ist ê_fall
+  e_z parallel zu n_a, also α = 0. Damit ist e_hat_fall eindeutig
+  bestimmt. Bei einer horizontalen Dachfläche (α = 0) ist e_hat_fall
   nicht definiert; in diesem Fall existiert auch geometrisch kein
   Ortgang (siehe `Entartet.NichtIdentifizierbar`).
 - **Existenz des Ortgangs**: Bei einer geneigten Dachfläche, deren
@@ -127,7 +127,7 @@ sie aus genau einer Strecke pro Giebelseite.
   dessen Grat-Schnittkanten); die Definition liefert dann die leere
   Menge — ebenfalls baulich korrekt.
 - **Symmetrie**: Die Bedingung 2 ist symmetrisch unter der
-  Vertauschung ê(o) ↔ −ê(o), denn ‖−v × w‖ = ‖v × w‖. Sie ist
+  Vertauschung e_hat(o) ↔ −e_hat(o), denn ‖−v × w‖ = ‖v × w‖. Sie ist
   unabhängig von der Orientierung der Strecke.
 - **Konsistenz mit `dachkante`**: Ein Ortgang ist nach Bedingung 1
   eine Randkante der Dachfläche, also eine Dachkante im Sinne von
@@ -247,7 +247,7 @@ fun istOrtgang(
   3. Die Dachfläche ist geneigt (α > Toleranzen.WINKEL_EPS), sonst
      `Entartet.NichtIdentifizierbar`.
   4. Jede Teilstrecke verläuft entlang der Falllinie der Dachfläche
-     (Kollinearität mit ê_fall, geprüft mit Kreuzprodukt-
+     (Kollinearität mit e_hat_fall, geprüft mit Kreuzprodukt-
      Toleranz Toleranzen.WINKEL_EPS).
 - **Edge Cases**:
   - **Nullkante**: ℓ ≤ Toleranzen.LAENGE_EPS → `Entartet.Nullkante`.
@@ -263,7 +263,7 @@ fun istOrtgang(
 - **Abgeleitete Operationen**:
   - `fun ortganglaenge(): Double` (mm) = ℓ(polylinie).
   - `fun ortganglinie(): Streckenzug` = polylinie.
-  - `fun gefaelle(): Double` = ⟨−ê(polylinie), e_z⟩ (sin der
+  - `fun gefaelle(): Double` = ⟨−e_hat(polylinie), e_z⟩ (sin der
     Dachneigung; korrespondiert zu α der Dachfläche).
 
 ## Quellen

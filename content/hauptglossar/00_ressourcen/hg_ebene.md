@@ -48,21 +48,21 @@ Dann ist die durch (p₀, n) definierte **Ebene** E ⊂ ℝ³ die Menge
 E(p₀, n) := { x ∈ ℝ³ | ⟨n, x − p₀⟩ = 0 }.
 ```
 
-Äquivalent in **Hesse-Normalform**: Sei n̂ := n / ‖n‖ ∈ S² und
-d := ⟨n̂, p₀⟩ ∈ ℝ. Dann gilt
+Äquivalent in **Hesse-Normalform**: Sei n_hat := n / ‖n‖ ∈ S² und
+d := ⟨n_hat, p₀⟩ ∈ ℝ. Dann gilt
 
 ```
-E(p₀, n) = { x ∈ ℝ³ | ⟨n̂, x⟩ = d }.
+E(p₀, n) = { x ∈ ℝ³ | ⟨n_hat, x⟩ = d }.
 ```
 
-Das Paar (n̂, d) ∈ S² × ℝ ist die **Hesse-Normalform** und
-repräsentiert E bis auf das Vorzeichen (n̂, d) ↔ (−n̂, −d) eindeutig.
+Das Paar (n_hat, d) ∈ S² × ℝ ist die **Hesse-Normalform** und
+repräsentiert E bis auf das Vorzeichen (n_hat, d) ↔ (−n_hat, −d) eindeutig.
 
 Wesentliche abgeleitete Größen für x ∈ ℝ³:
 
-- **Vorzeichenbehafteter Abstand**: d_E(x) := ⟨n̂, x⟩ − d (in mm).
+- **Vorzeichenbehafteter Abstand**: d_E(x) := ⟨n_hat, x⟩ − d (in mm).
 - **Unsignierter Abstand**: |d_E(x)| (in mm).
-- **Orthogonale Projektion**: π_E(x) := x − d_E(x) · n̂.
+- **Orthogonale Projektion**: π_E(x) := x − d_E(x) · n_hat.
 - **Halbräume**: H⁺ := { x | d_E(x) > 0 }, H⁻ := { x | d_E(x) < 0 }.
 
 ## Wohldefiniertheit
@@ -73,9 +73,9 @@ Wesentliche abgeleitete Größen für x ∈ ℝ³:
   x mit ⟨n, x − p₀⟩ = 0 auch ⟨n, x − p₀'⟩ = ⟨n, x − p₀⟩ −
   ⟨n, p₀' − p₀⟩ = 0.
 - Skaleninvarianz im Normalenvektor: für jedes λ ∈ ℝ \ {0} gilt
-  E(p₀, λ·n) = E(p₀, n). Die Hesse-Normalform fixiert ‖n̂‖ = 1
+  E(p₀, λ·n) = E(p₀, n). Die Hesse-Normalform fixiert ‖n_hat‖ = 1
   und reduziert die Mehrdeutigkeit auf das Vorzeichen.
-- Vorzeichenmehrdeutigkeit: (n̂, d) und (−n̂, −d) beschreiben dieselbe
+- Vorzeichenmehrdeutigkeit: (n_hat, d) und (−n_hat, −d) beschreiben dieselbe
   Ebene. Die Wahl der Orientierung ist eine zusätzliche Information
   (Außennormale bei Dachflächen, eigener Eintrag).
 - Existenz: Für jedes (p₀, n) mit n ≠ 0 ist E nicht-leer (p₀ ∈ E)
@@ -107,10 +107,10 @@ Anschauliche Lesarten:
 
 - **Stützpunkt + Normale**: ein Punkt der Ebene plus die Richtung
   „aus der Ebene heraus".
-- **Hesse-Normalform** (n̂, d): die Ebene als Höhenlinie der
-  linearen Funktion x ↦ ⟨n̂, x⟩ auf dem Niveau d. Der Wert d ist
+- **Hesse-Normalform** (n_hat, d): die Ebene als Höhenlinie der
+  linearen Funktion x ↦ ⟨n_hat, x⟩ auf dem Niveau d. Der Wert d ist
   geometrisch der vorzeichenbehaftete Abstand vom Ursprung in
-  Richtung n̂.
+  Richtung n_hat.
 - **Drei Punkte**: jede Ebene ist durch drei nicht-kollineare
   Punkte p₁, p₂, p₃ eindeutig festgelegt; n = (p₂ − p₁) × (p₃ − p₁).
 
@@ -157,8 +157,8 @@ data class Ebene(
 
 // Kanonische Repräsentation (Hesse-Normalform):
 data class EbeneHesse(
-    val einheitsNormale: Vektor,  // n̂, ‖n̂‖ ≈ 1
-    val abstandUrsprung: Double    // d = ⟨n̂, p₀⟩, in mm
+    val einheitsNormale: Vektor,  // n_hat, ‖n_hat‖ ≈ 1
+    val abstandUrsprung: Double    // d = ⟨n_hat, p₀⟩, in mm
 )
 ```
 

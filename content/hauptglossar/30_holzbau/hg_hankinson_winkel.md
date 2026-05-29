@@ -32,18 +32,18 @@ quellenkonflikt: |
   Periodizität ist π/2 wegen des Quadrats). FPL Wood Handbook und
   Blass/Sandhaas folgen derselben Konvention. Für die App-
   Implementation ist die Beschränkung auf [0, π/2] über den Betrag
-  des Skalarproduktes |F · n̂| natürlich.
+  des Skalarproduktes |F · n_hat| natürlich.
 
   Eigene Festlegung in diesem Glossar:
 
   - Der **Hankinson-Winkel** α ist eine **Operation** auf einem
-    Kraftvektor F ∈ ℝ³ \\ {0} und einer Faserrichtung f̂ ∈ S²
+    Kraftvektor F ∈ ℝ³ \\ {0} und einer Faserrichtung f_hat ∈ S²
     (oder analog auf einer Plattenlängsrichtung / Haupttragrichtung
     für Werkstoffe ohne strenge L-Faserrichtung):
-       α(F, f̂) := arccos( |F · f̂| / ‖F‖ )  ∈ [0, π/2].
+       α(F, f_hat) := arccos( |F · f_hat| / ‖F‖ )  ∈ [0, π/2].
     Die Reduktion auf [0, π/2] erfolgt durch den Betrag
-    |F · f̂|; physikalisch ist die Faserachse ungerichtet, daher ist
-    der Winkel zu f̂ und −f̂ gleich.
+    |F · f_hat|; physikalisch ist die Faserachse ungerichtet, daher ist
+    der Winkel zu f_hat und −f_hat gleich.
   - Die **Hankinson-Formel** selbst (f_α = f_0 · f_90 /
     (f_0 sin²α + f_90 cos²α)) ist Bemessungsrechnung und gehört in
     die Bemessungs-Schicht; im Glossar wird sie nur als Erläuterung
@@ -58,7 +58,7 @@ quellenkonflikt: |
     Diese Konsequenz ist explizit in der App umzusetzen
     (Visualisierung pro Lage, vgl. Blaß/Flaig 2012, Kap. 4).
   - **Anwendung bei OSB**: Bei Modus SCHWACH ist α auf die
-    Plattenlängsrichtung bezogen (α_pl = ∠(F, ê_l)); die
+    Plattenlängsrichtung bezogen (α_pl = ∠(F, e_hat_l)); die
     Hankinson-Formel ist hier abgeschwächt zulässig, weil EC5 /
     EN 12369-1 nur diskrete f_m,0 / f_m,90 führt.
   - **Anwendung bei Modus KEINE**: nicht anwendbar; α ist in der
@@ -74,7 +74,7 @@ quellenkonflikt: |
 ## Prosa-Definition
 
 Der **Hankinson-Winkel** α ist die Operation, die einem Kraftvektor F
-im Welt-Koordinatensystem (mit ‖F‖ > 0) und einer Faserrichtung f̂ ∈ S²
+im Welt-Koordinatensystem (mit ‖F‖ > 0) und einer Faserrichtung f_hat ∈ S²
 genau einen Winkel α ∈ [0°, 90°] als den Betrags-Winkel zwischen der
 Kraftrichtung und der Faserachse zuordnet, der als geometrische
 Eingangsgröße der Hankinson-Formel zur Bestimmung der charakteristischen
@@ -86,25 +86,25 @@ Festigkeit f_α unter beliebigem Faserwinkel nach DIN EN 1995-1-1
 Sei
 
 - F ∈ ℝ³ \\ {0} ein Kraftvektor (siehe `vektor`),
-- f̂ ∈ S² ⊂ ℝ³ ein Einheitsvektor in der Rolle Faserachse
+- f_hat ∈ S² ⊂ ℝ³ ein Einheitsvektor in der Rolle Faserachse
   (siehe `einheitsvektor`, `faserrichtung`).
 
 Dann ist der **Hankinson-Winkel** α definiert als die Funktion
 
 ```
 α : (ℝ³ \ {0}) × S² → [0, π/2],
-α(F, f̂) := arccos( |⟨F, f̂⟩| / ‖F‖ ).
+α(F, f_hat) := arccos( |⟨F, f_hat⟩| / ‖F‖ ).
 ```
 
-Der Betrag |⟨F, f̂⟩| sichert, dass α ∈ [0, π/2] und dass α
-invariant unter Vorzeichenwechsel von f̂ ist (die Faserachse ist
+Der Betrag |⟨F, f_hat⟩| sichert, dass α ∈ [0, π/2] und dass α
+invariant unter Vorzeichenwechsel von f_hat ist (die Faserachse ist
 physikalisch ungerichtet; siehe `faserrichtung` Wohldefiniertheit).
 
-**Spezialisierung mit normiertem Kraftvektor**: Für F̂ := F / ‖F‖
+**Spezialisierung mit normiertem Kraftvektor**: Für F_hat := F / ‖F‖
 ∈ S² vereinfacht sich die Formel zu
 
 ```
-α(F̂, f̂) = arccos( |⟨F̂, f̂⟩| ).
+α(F_hat, f_hat) = arccos( |⟨F_hat, f_hat⟩| ).
 ```
 
 **Lagenweise Auswertung bei Mehrlagenholz**: Sei B ein Bauteil mit
@@ -123,9 +123,9 @@ Mehrlagenholz **nicht**.
 
 | Modus          | Bezugsachse für α                                             |
 |----------------|----------------------------------------------------------------|
-| HART           | f̂ = Werkstoff-Faserrichtung (siehe `axiales_holz`)            |
-| STRUKTURIERT   | (f̂_0, …, f̂_{n−1}) = lagenweise Faserrichtungen (siehe `lage`) |
-| SCHWACH        | f̂ = Plattenlängsrichtung (siehe `plattenlaengsrichtung`)      |
+| HART           | f_hat = Werkstoff-Faserrichtung (siehe `axiales_holz`)            |
+| STRUKTURIERT   | (f_hat_0, …, f_hat_{n−1}) = lagenweise Faserrichtungen (siehe `lage`) |
+| SCHWACH        | f_hat = Plattenlängsrichtung (siehe `plattenlaengsrichtung`)      |
 | KEINE          | nicht definiert (kein α-Begriff in der Plattenebene)           |
 
 **Hankinson-Formel** (nicht definitorisch, nur Erläuterung; siehe
@@ -142,30 +142,30 @@ nicht in dieses Glossar.
 
 ## Wohldefiniertheit
 
-- **Existenz und Eindeutigkeit**: Für F ∈ ℝ³ \\ {0} und f̂ ∈ S² ist
-  ⟨F, f̂⟩ wohldefiniert; |⟨F, f̂⟩| / ‖F‖ ∈ [0, 1] (Cauchy-Schwarz mit
-  ‖f̂‖ = 1); arccos: [0, 1] → [0, π/2] ist stetig und bijektiv. Damit
-  ist α(F, f̂) eindeutig in [0, π/2].
+- **Existenz und Eindeutigkeit**: Für F ∈ ℝ³ \\ {0} und f_hat ∈ S² ist
+  ⟨F, f_hat⟩ wohldefiniert; |⟨F, f_hat⟩| / ‖F‖ ∈ [0, 1] (Cauchy-Schwarz mit
+  ‖f_hat‖ = 1); arccos: [0, 1] → [0, π/2] ist stetig und bijektiv. Damit
+  ist α(F, f_hat) eindeutig in [0, π/2].
 - **Wertebereich [0, π/2]**: Die Reduktion erfolgt durch den Betrag
-  |⟨F, f̂⟩|, der den Winkel zur **ungerichteten** Faserachse misst.
+  |⟨F, f_hat⟩|, der den Winkel zur **ungerichteten** Faserachse misst.
   EN 1995-1-1 und SIA 265 verwenden α ∈ [0°, 90°].
-- **Vorzeicheninvarianz von α gegen f̂**: α(F, f̂) = α(F, −f̂), weil
-  |⟨F, −f̂⟩| = |⟨F, f̂⟩|. Dies ist Voraussetzung für die
+- **Vorzeicheninvarianz von α gegen f_hat**: α(F, f_hat) = α(F, −f_hat), weil
+  |⟨F, −f_hat⟩| = |⟨F, f_hat⟩|. Dies ist Voraussetzung für die
   Wohldefiniertheit, weil die Faserrichtung physikalisch ungerichtet
   ist (siehe `faserrichtung`).
-- **Vorzeicheninvarianz von α gegen F**: α(F, f̂) = α(−F, f̂), weil
-  |⟨−F, f̂⟩| = |⟨F, f̂⟩|. Damit ist α unabhängig von der
+- **Vorzeicheninvarianz von α gegen F**: α(F, f_hat) = α(−F, f_hat), weil
+  |⟨−F, f_hat⟩| = |⟨F, f_hat⟩|. Damit ist α unabhängig von der
   Kraftrichtungs-Vorzeichenwahl (relevant für reine
   Beanspruchungsklassen Druck/Zug).
 - **Numerische Wohldefiniertheit**: arccos auf [0, 1] ist gut
-  konditioniert. Für F̂ ∈ S² (normiert) wird |⟨F̂, f̂⟩| in [0, 1]
+  konditioniert. Für F_hat ∈ S² (normiert) wird |⟨F_hat, f_hat⟩| in [0, 1]
   durch `coerceIn(0.0, 1.0)` gegen Rundungsüberschreitung gesichert.
 - **Edge Case ‖F‖ ≈ 0**: nicht zulässig (Operation auf
   ℝ³ \\ {0}); Aufrufer muss ‖F‖ > 0 sicherstellen
   (`Entartet.HankinsonWinkelKraftIstNullvektor`).
-- **Norm-Invariante**: f̂ erbt | ‖f̂‖² − 1 | ≤ NORM_EPS aus
+- **Norm-Invariante**: f_hat erbt | ‖f_hat‖² − 1 | ≤ NORM_EPS aus
   `einheitsvektor`; die Wohldefiniertheit von α ist auf die
-  Norm-Invariante angewiesen (sonst |⟨F, f̂⟩| / ‖F‖ ∉ [0, 1]).
+  Norm-Invariante angewiesen (sonst |⟨F, f_hat⟩| / ‖F‖ ∉ [0, 1]).
 - **Lagenweise Wohldefiniertheit**: α_i ist für jede Lage ℓ_i
   separat wohldefiniert, weil ℓ_i.faserrichtung ∈ S² (Lagen-
   Invariante, siehe `lage`).
@@ -248,7 +248,7 @@ ist hier nicht definiert; α-Anfragen liefern „nicht zutreffend".
   (Funktion).
 - **Eingaben**:
   - `Vektor` (Kraftvektor F ∈ ℝ³ \\ {0}).
-  - `Einheitsvektor` (Faserachse f̂ ∈ S²) bzw. `Faserrichtung`.
+  - `Einheitsvektor` (Faserachse f_hat ∈ S²) bzw. `Faserrichtung`.
   - Bei Mehrlagenholz: `Lagenstruktur` zur lagenweisen Auswertung.
 - **Ausgabe**:
   - Bei `axiales_holz` und `gerichteter_plattenwerkstoff`: skalarer
@@ -293,7 +293,7 @@ import kotlin.math.acos
  * Glossar: hg_hankinson_winkel.md
  *
  * Wertebereich: [0, π/2] Radiant. Vorzeicheninvariant gegen
- * F und n̂ (Faserachse ungerichtet, Kraftrichtungs-Vorzeichen
+ * F und n_hat (Faserachse ungerichtet, Kraftrichtungs-Vorzeichen
  * irrelevant für Faserwinkel).
  */
 public object HankinsonWinkel {
@@ -321,7 +321,7 @@ public object HankinsonWinkel {
   (CLAUDE.md-Konvention).
 - **Wertebereich**: [0, π/2] = [0°, 90°].
 - **Methodenname**: `von(...)` (deutsch, „Hankinson-Winkel **von** F
-  und n̂") gemäß `project_kotlin_konventionen.md` (deutsche
+  und n_hat") gemäß `project_kotlin_konventionen.md` (deutsche
   Bezeichner für Glossarbegriffe).
 - **Toleranzen**: arccos-Argument auf [0, 1] geklemmt
   (`coerceIn`); Eingaben müssen `Einheitsvektor`-Norm-Invariante

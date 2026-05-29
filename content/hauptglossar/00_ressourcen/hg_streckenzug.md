@@ -125,7 +125,7 @@ Wesentliche abgeleitete Größen:
 - **Sehnenvektor**: p_n − p_0; bei geschlossenem L gleich
   Nullvektor (innerhalb ε_L).
 - **Anschlussvektor an Eckpunkt p_i** (1 ≤ i ≤ n−1):
-  Knickwinkel θ_i := arccos(⟨ê_i, ê_{i+1}⟩) mit ê_i :=
+  Knickwinkel θ_i := arccos(⟨e_hat_i, e_hat_{i+1}⟩) mit e_hat_i :=
   (p_i − p_{i−1}) / ‖p_i − p_{i−1}‖; θ_i = 0 entspricht
   fortgesetzter Kollinearität, θ_i = π einer Umkehr.
 

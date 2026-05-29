@@ -68,9 +68,9 @@ A bezeichnete Punktmenge in ℝ³ ist die der Trägergeraden:
 ```
 
 Eine Achse kann zusätzlich **gerichtet** sein: dann gehört zur Rolle
-ρ die Wahl eines Einheits-Richtungsvektors d̂ ∈ S² mit d̂ ∈ ℝ·v
+ρ die Wahl eines Einheits-Richtungsvektors d_hat ∈ S² mit d_hat ∈ ℝ·v
 (v ein Richtungsvektor von g). Im ungerichteten Fall ist die Achse
-nur durch g und ρ bestimmt; die zwei möglichen Vorzeichen von d̂
+nur durch g und ρ bestimmt; die zwei möglichen Vorzeichen von d_hat
 sind dann äquivalent.
 
 Wesentliche Spezialisierungen ergeben sich aus der Wahl von ρ:
@@ -80,7 +80,7 @@ Wesentliche Spezialisierungen ergeben sich aus der Wahl von ρ:
   d. h. S_g(X) = X.
 - **Drehachse** (ρ = Drehung): g ist die Fixpunktmenge einer
   Drehung R_{g, φ} ∈ SO(3) um den Winkel φ ≠ 0; gerichtete
-  Variante mit d̂ legt den Drehsinn (rechtshändig zu d̂) fest.
+  Variante mit d_hat legt den Drehsinn (rechtshändig zu d_hat) fest.
 - **Bezugsachse** (ρ = Bezug): g dient als Referenz für Abstände
   und Winkel anderer geometrischer Objekte (z. B. „Höhe über
   Trauflinie", „Abstand zur Firstachse").
@@ -105,7 +105,7 @@ Wesentliche Spezialisierungen ergeben sich aus der Wahl von ρ:
   Tupel (g, ρ) nicht, da g als Punktmenge unverändert bleibt.
 - **Vorzeichenkonvention**: Im ungerichteten Fall sind (g, ρ) und
   (g, ρ) mit „umgekehrter" Richtungsrepräsentation dieselbe Achse.
-  Im gerichteten Fall (mit d̂) sind (g, ρ, d̂) und (g, ρ, −d̂) als
+  Im gerichteten Fall (mit d_hat) sind (g, ρ, d_hat) und (g, ρ, −d_hat) als
   Punktmengen identisch, aber als orientierte Achsen verschieden.
   Die Festlegung, ob eine Achse gerichtet ist, ist Eigenschaft der
   Rolle ρ und beim verwendenden Begriff zu dokumentieren.

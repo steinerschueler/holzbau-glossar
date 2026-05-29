@@ -83,10 +83,10 @@ mit
 - **produktkennzeichnung** ∈ 𝓟_GP,
 - **plattendicken_achse** ∈ S²  (Pflicht: Einheitsvektor in W,
   rechtwinklig zur Plattenebene),
-- **plattenlaengsrichtung** p̂ ∈ S²  (Pflicht: Einheitsvektor in W,
+- **plattenlaengsrichtung** p_hat ∈ S²  (Pflicht: Einheitsvektor in W,
   Strand-Längsrichtung der Decklagen, rechtwinklig zur
   plattendicken_achse:
-  ⟨p̂, plattendicken_achse⟩ = 0 bis Toleranzen.WINKEL_EPS).
+  ⟨p_hat, plattendicken_achse⟩ = 0 bis Toleranzen.WINKEL_EPS).
 
 Es ist 𝓖𝓟 ⊂ 𝓦, d. h. die Menge der gerichteten Plattenwerkstoffe ist
 eine disjunkte Teilmenge der Werkstoff-Menge mit
@@ -119,19 +119,19 @@ werden.
   `faserrichtungs_modus = SCHWACH` extensional festgelegt; zum
   Stand der Technik 2026 ist OSB die einzige Sub-Subklasse.
 - **Eindeutigkeit der Plattenlängsrichtung bis auf Vorzeichen**:
-  p̂ ist als Annotation eines Werkstoffs eindeutig, sobald eine
-  Vorzeichenkonvention festgelegt ist (typisch „p̂ zeigt in dieselbe
+  p_hat ist als Annotation eines Werkstoffs eindeutig, sobald eine
+  Vorzeichenkonvention festgelegt ist (typisch „p_hat zeigt in dieselbe
   Halbachse wie die längere Plattenformat-Kante").
-- **Pflichtcharakter**: p̂ und plattendicken_achse sind Pflicht.
+- **Pflichtcharakter**: p_hat und plattendicken_achse sind Pflicht.
   Eine fehlende Plattenlängsrichtung ist Validierungsfehler, weil
   EC5-Tabellen (f_m,0 ↔ f_m,90) ohne diese Richtung nicht
   auswertbar sind.
 - **Plattendicken-Achse Pflicht**: SCHWACH ist Plattenwerkstoff;
   `plattendicken_achse ∈ S²` ist Pflicht (Klassen-Invariante).
-- **Norm-Invarianten**: p̂ und plattendicken_achse erben
+- **Norm-Invarianten**: p_hat und plattendicken_achse erben
   Norm-Invarianten aus `einheitsvektor`.
-- **Orthogonalität p̂ ⊥ plattendicken_achse**: Konstruktionsregel,
-  da p̂ in der Plattenebene liegt.
+- **Orthogonalität p_hat ⊥ plattendicken_achse**: Konstruktionsregel,
+  da p_hat in der Plattenebene liegt.
 - **Nicht-Zirkularität**: Die Definition stützt sich auf
   `werkstoff`, `einheitsvektor`, `produktkennzeichnung` und
   `toleranzen`. Sie verweist nicht auf die anderen Werkstoff-

@@ -240,10 +240,10 @@ Schnittgeraden (Grat und First).
     <text x="-12" y="5" text-anchor="end" font-size="11" fill="#666">Welt:</text>
     <line x1="0" y1="0" x2="32" y2="0" stroke="#2c3e50" stroke-width="1.5"/>
     <polygon points="32,0 27,-3 27,3" fill="#2c3e50"/>
-    <text x="36" y="5" font-style="italic">ê_h</text>
+    <text x="36" y="5" font-style="italic">e_hat_h</text>
     <line x1="0" y1="0" x2="0" y2="-32" stroke="#2c3e50" stroke-width="1.5"/>
     <polygon points="0,-32 -3,-27 3,-27" fill="#2c3e50"/>
-    <text x="4" y="-36" font-style="italic">ê_v</text>
+    <text x="4" y="-36" font-style="italic">e_hat_v</text>
     <circle cx="0" cy="0" r="2" fill="#2c3e50"/>
   </g>
 </svg>

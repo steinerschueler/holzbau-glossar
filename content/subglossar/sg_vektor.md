@@ -52,11 +52,11 @@ genau die Verschiebungs-Bedeutung. In der Mathematik wurde der
 Begriff im 19. Jahrhundert durch William Rowan Hamilton geprägt; in
 den Holzbau gelangt er erst mit der modernen Statik und CAD.
 
-## Welt-Einheitsvektoren ê_h und ê_v am Welt-Ursprung
+## Welt-Einheitsvektoren e_hat_h und e_hat_v am Welt-Ursprung
 
 In allen bisherigen P1-Skizzen (sg_punkt, sg_strecke, sg_gerade,
 sg_ebene, sg_kerve) sitzt rechts unten als kleines Inset ein Paar
-Pfeile: ein horizontaler ê_h und ein welt-vertikaler ê_v am
+Pfeile: ein horizontaler e_hat_h und ein welt-vertikaler e_hat_v am
 Welt-Ursprung. Diese Pfeile sind **Einheitsvektoren** — Vektoren mit
 Länge 1 — und orientieren das Welt-Koordinatensystem, in dem alle
 Bauteil-Punkte liegen. Sie sind das einfachste Vektor-Bild dieses
@@ -70,7 +70,7 @@ Subglossars und liefern den Anschluss an die übrigen P1-Einträge.
                      am Welt-Ursprung (Pflicht-Skizze)
   ====================================================================
   ZWECK
-    Die zwei Welt-Einheitsvektoren ê_h (horizontal) und ê_v (welt-
+    Die zwei Welt-Einheitsvektoren e_hat_h (horizontal) und e_hat_v (welt-
     vertikal nach oben) als beschriftete Pfeile am Welt-Ursprung,
     zentral und groß dargestellt — die gleiche Darstellung, die in
     allen P1-Skizzen rechts unten als kleines Inset auftaucht, hier
@@ -108,32 +108,32 @@ Subglossars und liefern den Anschluss an die übrigen P1-Einträge.
   <circle cx="130" cy="200" r="3" fill="#2c3e50"/>
   <text x="118" y="218" text-anchor="end" font-size="11" font-style="italic" fill="#666">O</text>
   <text x="118" y="232" text-anchor="end" font-size="11" font-style="italic" fill="#666">(Welt-Ursprung)</text>
-  <!-- ê_h horizontal -->
+  <!-- e_hat_h horizontal -->
   <line x1="130" y1="200" x2="240" y2="200" stroke="#2c3e50" stroke-width="2"/>
   <polygon points="240,200 232,195 232,205" fill="#2c3e50"/>
-  <text x="252" y="205" fill="#2c3e50" font-style="italic" font-weight="bold">ê_h</text>
+  <text x="252" y="205" fill="#2c3e50" font-style="italic" font-weight="bold">e_hat_h</text>
   <text x="252" y="220" font-size="11" font-style="italic" fill="#666">horizontal, Länge 1</text>
-  <!-- ê_v vertikal nach oben -->
+  <!-- e_hat_v vertikal nach oben -->
   <line x1="130" y1="200" x2="130" y2="90" stroke="#2c3e50" stroke-width="2"/>
   <polygon points="130,90 125,98 135,98" fill="#2c3e50"/>
-  <text x="138" y="86" fill="#2c3e50" font-style="italic" font-weight="bold">ê_v</text>
+  <text x="138" y="86" fill="#2c3e50" font-style="italic" font-weight="bold">e_hat_v</text>
   <text x="138" y="100" font-size="11" font-style="italic" fill="#666">welt-vertikal, Länge 1</text>
-  <!-- Geist-Kopie von ê_h: parallel verschoben, GLEICHE Laenge, GLEICHE Richtung
+  <!-- Geist-Kopie von e_hat_h: parallel verschoben, GLEICHE Laenge, GLEICHE Richtung
        — derselbe Vektor an anderer Stelle (Ortsfreiheits-Illustration). -->
   <line x1="210" y1="50" x2="320" y2="50" stroke="#999" stroke-width="1.6" stroke-dasharray="4 3"/>
   <polygon points="320,50 312,45 312,55" fill="#999"/>
-  <text x="265" y="40" text-anchor="middle" font-size="11" font-style="italic" fill="#666">parallel verschobene Geist-Kopie von ê_h</text>
+  <text x="265" y="40" text-anchor="middle" font-size="11" font-style="italic" fill="#666">parallel verschobene Geist-Kopie von e_hat_h</text>
   <text x="265" y="28" text-anchor="middle" font-size="11" font-style="italic" fill="#666">— derselbe Vektor, andere Stelle</text>
   <!-- Titelzeile -->
-  <text x="180" y="262" text-anchor="middle" font-style="italic" font-size="12">Welt-Einheitsvektoren ê_h und ê_v am Welt-Ursprung</text>
+  <text x="180" y="262" text-anchor="middle" font-style="italic" font-size="12">Welt-Einheitsvektoren e_hat_h und e_hat_v am Welt-Ursprung</text>
 </svg>
 
 Beide Pfeile am Welt-Ursprung haben Länge 1 und sind paarweise
-rechtwinklig. Der ê_h liegt in der horizontalen Welt-Ebene, der ê_v
+rechtwinklig. Der e_hat_h liegt in der horizontalen Welt-Ebene, der e_hat_v
 zeigt welt-vertikal nach oben — entgegen der Schwerkraft, in der
 Richtung, in die das Senkel-Schnur**ende** zeigt, wenn das
 Senkel-Gewicht losgelassen ist. Die graue, gestrichelte Kopie rechts
-oben hat dieselbe Richtung und dieselbe Länge wie ê_h, sitzt aber an
+oben hat dieselbe Richtung und dieselbe Länge wie e_hat_h, sitzt aber an
 einer anderen Stelle: sie ist **derselbe Vektor**. Die Ortsfreiheit
 ist die zentrale Eigenschaft, die den Vektor von der Strecke trennt
 — eine Strecke darf man nicht parallel verschieben, ohne dass sie zu
@@ -286,10 +286,10 @@ volle Vektor-Algebra (Komponentenzerlegung).
     <text x="-12" y="5" text-anchor="end" font-size="11" fill="#666">Welt:</text>
     <line x1="0" y1="0" x2="32" y2="0" stroke="#2c3e50" stroke-width="1.5"/>
     <polygon points="32,0 27,-3 27,3" fill="#2c3e50"/>
-    <text x="36" y="5" font-style="italic">ê_h</text>
+    <text x="36" y="5" font-style="italic">e_hat_h</text>
     <line x1="0" y1="0" x2="0" y2="-32" stroke="#2c3e50" stroke-width="1.5"/>
     <polygon points="0,-32 -3,-27 3,-27" fill="#2c3e50"/>
-    <text x="4" y="-36" font-style="italic">ê_v</text>
+    <text x="4" y="-36" font-style="italic">e_hat_v</text>
     <circle cx="0" cy="0" r="2" fill="#2c3e50"/>
   </g>
 </svg>

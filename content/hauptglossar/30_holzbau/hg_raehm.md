@@ -121,14 +121,14 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - e_z := (0, 0, 1)ᵀ die vertikale Achse,
 - ε_K := Toleranzen.KOLLINEAR_EPS,
   ε_L := Toleranzen.LAENGE_EPS.
 
 Sei ferner W eine Holzwand mit
-- Wandflucht-Richtung d̂_W ∈ S² (horizontale Längsrichtung der
-  Wand, |⟨d̂_W, e_z⟩| ≤ ε_K),
+- Wandflucht-Richtung d_hat_W ∈ S² (horizontale Längsrichtung der
+  Wand, |⟨d_hat_W, e_z⟩| ≤ ε_K),
 - einer endlichen, nicht-leeren Menge von Wand-Senkrechtbauteilen
   (Pfosten/Ständer) S(W) = {S_1, …, S_n}, n ≥ 2, mit Pfosten-Kopf-
   Punkten K(S_i) ∈ ℝ³ am oberen Achsenende.
@@ -142,18 +142,18 @@ Bedingungen erfüllt sind:
 2. **Horizontalitätsbedingung**: Die Bauteilachsenrichtung ist
    horizontal,
    ```
-   ‖d̂ × e_z‖ ≤ ε_K,
+   ‖d_hat × e_z‖ ≤ ε_K,
    ```
-   d. h. d̂ steht rechtwinklig zur Welt-Lotachse. Sinus-Test gegen
+   d. h. d_hat steht rechtwinklig zur Welt-Lotachse. Sinus-Test gegen
    e_z-Parallelität; nach `HG_KONVENTIONEN.md` Sektion 4 ist
    `KOLLINEAR_EPS` die einschlägige Toleranz für Lot- und
    Parallelitäts-Prädikate.
 
 3. **Parallelität zur Wandflucht**:
    ```
-   ‖d̂ × d̂_W‖ ≤ ε_K.
+   ‖d_hat × d_hat_W‖ ≤ ε_K.
    ```
-   d̂ ist kollinear zur Längsrichtung der Wand W.
+   d_hat ist kollinear zur Längsrichtung der Wand W.
 
 4. **Pfosten-Köpfe-Inzidenz**: Es gibt mindestens zwei Pfosten
    S_i, S_j ∈ S(W) mit i ≠ j, sodass die Kopf-Punkte K(S_i) und
@@ -177,7 +177,7 @@ Wesentliche abgeleitete Größen:
 
 - **Rähmlänge**: L_R := ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen den Rähm-Enden.
-- **Rähmrichtung**: d̂ ∈ S² mit |⟨d̂, e_z⟩| ≤ ε_K und d̂ ‖ d̂_W.
+- **Rähmrichtung**: d_hat ∈ S² mit |⟨d_hat, e_z⟩| ≤ ε_K und d_hat ‖ d_hat_W.
 - **Rähm-Höhenlage**: z_R := (p_a.z + p_e.z) / 2; bei exakt
   horizontalem Rähm gilt p_a.z = p_e.z = z_R.
 
@@ -357,7 +357,7 @@ allgemeinen Rahmen-Wurzel — daher die zulässigen Synonyme
     Pfosten-/Ständer-Querschnitt oder querschnittsgleich zur
     Schwelle);
   - **Werkstoff** (Vollholz, KVH, gelegentlich BSH);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_Rähm).
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_Rähm).
 - **Verwendung / Beziehung zu anderen Bauteilen**:
   - **Pfosten** / **Ständer** (`pfosten` / `staender`, eigene
     Einträge folgen): Wand-Senkrechtbauteile, auf deren Köpfen das
@@ -456,7 +456,7 @@ sealed class Raehm {
         get() = (achse.anfang.z + achse.ende.z) / 2.0
 
     /**
-     * Horizontalitätsprädikat: ‖d̂ × e_z‖ ≤ KOLLINEAR_EPS.
+     * Horizontalitätsprädikat: ‖d_hat × e_z‖ ≤ KOLLINEAR_EPS.
      *
      * Sinus-Test gegen e_z-Parallelität; KOLLINEAR_EPS ist
      * bevorzugt für Lot- und Parallelitäts-Prädikate
@@ -482,11 +482,11 @@ sealed class RaehmEntartet {
   niemals Exception):
   1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
   2. Achsenlänge > `Toleranzen.LAENGE_EPS` — sonst `Nullachse`.
-  3. `‖d̂ × e_z‖ ≤ Toleranzen.KOLLINEAR_EPS` — sonst
+  3. `‖d_hat × e_z‖ ≤ Toleranzen.KOLLINEAR_EPS` — sonst
      `NichtHorizontal` (Sinus-Test gegen e_z-Parallelität,
      bevorzugt für Lot-Prädikate; siehe `HG_KONVENTIONEN.md`
      Sektion 4).
-  4. Parallelität zur Wandflucht `d̂_W`: `‖d̂ × d̂_W‖ ≤ ε_K` —
+  4. Parallelität zur Wandflucht `d_hat_W`: `‖d_hat × d_hat_W‖ ≤ ε_K` —
      sonst `NichtWandParallel`.
   5. Pfosten-Köpfe-Inzidenz: mindestens zwei Pfosten-Köpfe liegen
      innerhalb `LAENGE_EPS` auf der Rähmachse — sonst

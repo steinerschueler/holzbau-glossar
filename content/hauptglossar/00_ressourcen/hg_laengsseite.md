@@ -82,24 +82,24 @@ Sei
 - B ein **Stabbauteil** im Sinne von `bauteil` mit Stabgeometrie
   (`geometrie ∈ 𝒢_stab`),
 - A(B) = Bauteilachse(B) die Bauteilachse mit Tangentenrichtung
-  d̂(s) ∈ S² an der Stelle s ∈ [0, L] (siehe `bauteilachse`),
+  d_hat(s) ∈ S² an der Stelle s ∈ [0, L] (siehe `bauteilachse`),
 - ∂G_B^lokal die Oberfläche des Bauteilkörpers im Bauteil-Lokal-
   System,
 - F ⊂ ∂G_B^lokal eine ebene polygonal berandete Teilfläche der
   Bauteiloberfläche mit Trägerebene E_F und Trägerebenen-Normaler
-  n̂_F ∈ S²,
+  n_hat_F ∈ S²,
 - ε_W := Toleranzen.WINKEL_EPS.
 
 Die Teilfläche F heißt eine **Längsseite** von B genau dann, wenn
 gilt:
 
 1. **Bauteilachsen-Parallelität der Trägerebene**: Die
-   Bauteilachsen-Tangente d̂(s) liegt in der Trägerebene E_F:
+   Bauteilachsen-Tangente d_hat(s) liegt in der Trägerebene E_F:
    ```
-   |⟨n̂_F, d̂(s)⟩| ≤ ε_W   für alle s ∈ [0, L].                     (1)
+   |⟨n_hat_F, d_hat(s)⟩| ≤ ε_W   für alle s ∈ [0, L].                     (1)
    ```
-   Im prismatischen Fall (konstantes d̂(s) = d̂) reduziert sich (1)
-   auf die einzelne Bedingung |⟨n̂_F, d̂⟩| ≤ ε_W.
+   Im prismatischen Fall (konstantes d_hat(s) = d_hat) reduziert sich (1)
+   auf die einzelne Bedingung |⟨n_hat_F, d_hat⟩| ≤ ε_W.
 
 2. **Aussenflächen-Eigenschaft**: F ist eine zusammenhängende ebene
    Teilfläche der Bauteiloberfläche ∂G_B^lokal mit nicht-leerem
@@ -108,15 +108,15 @@ gilt:
 3. **Polygonale Berandung**: ∂F ist eine Polygonkurve in E_F (siehe
    `polygon`).
 
-4. **Aussennormalen-Konvention**: n̂_F zeigt aus dem Bauteil heraus.
+4. **Aussennormalen-Konvention**: n_hat_F zeigt aus dem Bauteil heraus.
 
 **Faserrichtungs-Bedingung** (zur Abgrenzung von der Stirnseite,
-siehe `stirnseite`): Sei f̂ ∈ S² die Faserrichtung des Bauteils
+siehe `stirnseite`): Sei f_hat ∈ S² die Faserrichtung des Bauteils
 (siehe `faserrichtung`, Modus HART). Im Standardfall axialer
-Faserrichtung (f̂ ∥ d̂) gilt
+Faserrichtung (f_hat ∥ d_hat) gilt
 
 ```
-|⟨n̂_F, f̂⟩| ≤ ε_W,                                                  (2)
+|⟨n_hat_F, f_hat⟩| ≤ ε_W,                                                  (2)
 ```
 
 d. h. die Faserrichtung **liegt in der Trägerebene** der Längsseite —
@@ -147,8 +147,8 @@ wesentlichen Komponente quer zur Trägerebene verläuft.
   - **Beliebig polygonaler Querschnitt mit k Eckpunkten**: k
     Längsseiten, je eine pro Polygonkante.
 - **Disjunktheit von Längsseite und Stirnseite**: Aus (1)
-  folgt |⟨n̂_F, d̂⟩| ≤ ε_W, während für die Stirnseite per
-  `stirnseite` Gleichung (3) bzw. (4) |⟨n̂_S, d̂⟩| ≥ cos(α_AS) >
+  folgt |⟨n_hat_F, d_hat⟩| ≤ ε_W, während für die Stirnseite per
+  `stirnseite` Gleichung (3) bzw. (4) |⟨n_hat_S, d_hat⟩| ≥ cos(α_AS) >
   ε_W gilt (für jeden zulässigen Anschnittwinkel α_AS < π/2 −
   ε_W). Die beiden Bedingungen sind unvereinbar; eine ebene
   Teilfläche der Bauteiloberfläche ist entweder Längsseite oder
@@ -156,7 +156,7 @@ wesentlichen Komponente quer zur Trägerebene verläuft.
 - **Wohldefiniertheit der Trägerebene**: Die Trägerebene jeder
   Längsseite ist eine Ebene im Sinne von `ebene`; sie wird durch
   einen beliebigen Eckpunkt der Längsseiten-Polygonberandung und
-  die Aussennormale n̂_F repräsentiert (Hesse-Normalform).
+  die Aussennormale n_hat_F repräsentiert (Hesse-Normalform).
 - **Wohldefiniertheit der Aussennormale**: Da F Aussenfläche des
   Bauteilkörpers ist, gibt es eine eindeutige aus dem Bauteil heraus
   zeigende Normalenrichtung; die andere Wahl (in das Bauteil hinein)
@@ -263,7 +263,7 @@ die Begriffe Längsseite und Mantelfläche sind disjunkt.
 - **Bestandteile (partitiv)** (geerbt von `polygon`):
   - **Polygonberandung** ∂F (geerbt von `polygon`).
   - **Trägerebene** E_F (geerbt von `polygon`).
-  - **Aussennormalen-Vektor** n̂_F (per Konvention aus dem Bauteil
+  - **Aussennormalen-Vektor** n_hat_F (per Konvention aus dem Bauteil
     heraus zeigend).
   - **Längsausdehnung** entlang der Bauteilachse: ‖p_e − p_a‖
     (= Bauteillänge L im prismatischen Fall).
@@ -331,7 +331,7 @@ import domain.geometrie.Vektor
  *
  * Glossar: hg_laengsseite.md
  *
- * Aussennormale n̂_F zeigt per Konvention aus dem Bauteil heraus.
+ * Aussennormale n_hat_F zeigt per Konvention aus dem Bauteil heraus.
  *
  * Beim Rechteckquerschnitt sind vier Längsseiten konstruierbar;
  * sie werden über den Querschnitts-Kantenindex (Schmal-/Breitseite,
@@ -339,7 +339,7 @@ import domain.geometrie.Vektor
  */
 data class Laengsseite(
     val polygon: KonvexesPolygon,           // ∂F mit Trägerebene
-    val aussennormale: Vektor,               // n̂_F, ‖aussennormale‖ ≈ 1
+    val aussennormale: Vektor,               // n_hat_F, ‖aussennormale‖ ≈ 1
     val querschnittsKante: QuerschnittsKantenIndex,  // Index der Querschnitts-
                                                       // erzeugendenkante; Folgearbeit
 )
@@ -363,7 +363,7 @@ data class Laengsseite(
   1. `aussennormale` ist normiert (‖aussennormale‖ ≈ 1 innerhalb
      `Toleranzen.NORM_EPS`).
   2. Die Trägerebene des Polygons enthält die Bauteilachsen-Tangente:
-     |⟨aussennormale, d̂⟩| ≤ Toleranzen.WINKEL_EPS (Bedingung (1)).
+     |⟨aussennormale, d_hat⟩| ≤ Toleranzen.WINKEL_EPS (Bedingung (1)).
   3. Die `querschnittsKante` ist konsistent mit dem Querschnitt
      des Bauteils (Index liegt in [0, k−1] für einen Querschnitt
      mit k Kanten).

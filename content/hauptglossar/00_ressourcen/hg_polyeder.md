@@ -133,7 +133,7 @@ von Weyl-Minkowski** äquivalent als endlicher Schnitt
 geschlossener Halbräume schreiben:
 
 ```
-|P| = ⋂_{i=1}^{k} H̄_i,    H̄_i = H̄(p_i, n_i),
+|P| = ⋂_{i=1}^{k} H_bar_i,    H_bar_i = H_bar(p_i, n_i),
 ```
 
 mit Stützpunkten p_i ∈ ℝ³ und nach innen gerichteten Normalen

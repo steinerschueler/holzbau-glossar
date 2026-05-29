@@ -289,15 +289,15 @@ Sei
 - B ein Stab-Bauteil im Sinne von `bauteil` mit Stabgeometrie
   (`geometrie ∈ 𝒢_stab`), in der App typischerweise ein
   `sparren` oder ein Bauteil mit ähnlicher Stab-Charakteristik,
-- L_B = (O_B, ê_x^B, ê_y^B, ê_z^B) das Bauteil-Lokal-
+- L_B = (O_B, e_hat_x^B, e_hat_y^B, e_hat_z^B) das Bauteil-Lokal-
   Koordinatensystem (`lokales_koordinatensystem`) mit Konvention
   ```
-  ê_x^B  =  Bauteilachse (Längsrichtung),
-  ê_y^B  =  Bauteil-Querrichtung in der Trägerebene-Normale,
-  ê_z^B  =  Bauteilhöhe nach oben (Sparren-Oberseite),
+  e_hat_x^B  =  Bauteilachse (Längsrichtung),
+  e_hat_y^B  =  Bauteil-Querrichtung in der Trägerebene-Normale,
+  e_hat_z^B  =  Bauteilhöhe nach oben (Sparren-Oberseite),
   ```
-- W = (O_W, ê_x^W, ê_y^W, ê_z^W = ê_z^welt) das Welt-Koordinaten-
-  system, mit ê_z^welt antiparallel zur Erdanziehung (lotrecht
+- W = (O_W, e_hat_x^W, e_hat_y^W, e_hat_z^W = e_hat_z^welt) das Welt-Koordinaten-
+  system, mit e_hat_z^welt antiparallel zur Erdanziehung (lotrecht
   nach oben),
 - h_B > 0 die Bauteilhöhe in lokaler z-Richtung (mm),
 - b_B > 0 die Bauteilbreite in lokaler y-Richtung (mm),
@@ -309,13 +309,13 @@ Sei weiter Π_⊥(B) ⊂ ℝ³ die **Lotebene** des Bauteils
 A_B enthält. In Π_⊥(B) seien
 
 ```
-ê_h  ∈  Π_⊥(B)  mit  ⟨ê_h, ê_z^welt⟩ = 0  und  ⟨ê_h, ê_x^B⟩ > 0,
-ê_v  :=  ê_z^welt,                                                (0)
+e_hat_h  ∈  Π_⊥(B)  mit  ⟨e_hat_h, e_hat_z^welt⟩ = 0  und  ⟨e_hat_h, e_hat_x^B⟩ > 0,
+e_hat_v  :=  e_hat_z^welt,                                                (0)
 ```
 
-also ê_h die welt-horizontale Richtung in der Lotebene, in
-Bauteilachsen-Vorwärtsrichtung weisend, und ê_v die welt-
-vertikale Richtung (nach oben). Das Paar (ê_h, ê_v) bildet
+also e_hat_h die welt-horizontale Richtung in der Lotebene, in
+Bauteilachsen-Vorwärtsrichtung weisend, und e_hat_v die welt-
+vertikale Richtung (nach oben). Das Paar (e_hat_h, e_hat_v) bildet
 einen orthonormalen welt-aligned 2D-Bezug innerhalb der
 Lotebene.
 
@@ -339,15 +339,15 @@ mit
   ist t der Bauteilhöhen-Bruchteil, auf den sich die
   Faustregel-Bandbreite 1/6 … 1/3 der Zimmermannspraxis
   bezieht.
-- **w** ∈ ℝ⁺: **Sohlenlänge** (in mm), gemessen entlang ê_h als
+- **w** ∈ ℝ⁺: **Sohlenlänge** (in mm), gemessen entlang e_hat_h als
   welt-horizontale Projektion der Sohle. Entspricht typisch der
   in welt-horizontaler Sicht sichtbaren Auflagebreite auf der
   Pfette.
 - **s** ∈ {−1, +1}: **Senkelseite**. s = −1 bezeichnet eine
   Kerve mit Senkel auf der fußwärtigen Seite des Sohlen-
-  Ausschnitts (Sohle erstreckt sich von C in Richtung +ê_h);
+  Ausschnitts (Sohle erstreckt sich von C in Richtung +e_hat_h);
   s = +1 bezeichnet eine Kerve mit Senkel auf der firstwärtigen
-  Seite (Sohle in Richtung −ê_h). Im Bauteil-Lokal-System
+  Seite (Sohle in Richtung −e_hat_h). Im Bauteil-Lokal-System
   korrespondiert FUSSSEITIG mit s = −1, FIRSTSEITIG mit s = +1.
 
 Die drei Eckpunkte des Kerv-Dreiecks in der Lotebene Π_⊥(B)
@@ -355,15 +355,15 @@ sind dann
 
 ```
 C  :=  (x_0, 0, 0)         in Bauteil-Lokal-Koordinaten,         (2)
-P  :=  C  +  t · ê_z^B     (Kerveckpunkt im Bauteilinneren),     (3)
-A  :=  P  +  (−s) · w · ê_h  (Sohlenausstieg auf Unterseite).    (4)
+P  :=  C  +  t · e_hat_z^B     (Kerveckpunkt im Bauteilinneren),     (3)
+A  :=  P  +  (−s) · w · e_hat_h  (Sohlenausstieg auf Unterseite).    (4)
 ```
 
-Hierbei werden ê_h und ê_v über die lokale_platzierung des
+Hierbei werden e_hat_h und e_hat_v über die lokale_platzierung des
 Bauteils in das Bauteil-Lokal-System projiziert; insbesondere
 ist die Lage von A als Sparren-Lokal-Koordinate von der
-Dachneigung θ abhängig: ⟨ê_h, ê_x^B⟩ = cos θ und ⟨ê_h, ê_z^B⟩ =
-−sin θ, ⟨ê_v, ê_x^B⟩ = sin θ und ⟨ê_v, ê_z^B⟩ = cos θ.
+Dachneigung θ abhängig: ⟨e_hat_h, e_hat_x^B⟩ = cos θ und ⟨e_hat_h, e_hat_z^B⟩ =
+−sin θ, ⟨e_hat_v, e_hat_x^B⟩ = sin θ und ⟨e_hat_v, e_hat_z^B⟩ = cos θ.
 
 ### Welt-Ausrichtung der Schnittflächen
 
@@ -371,18 +371,18 @@ Die **Sohlenebene** Σ_S ist die welt-horizontale Ebene durch
 P, also die Niveaufläche
 
 ```
-Σ_S  :=  { Q ∈ ℝ³ |  ⟨Q − P, ê_v⟩ = 0 }.                          (5)
+Σ_S  :=  { Q ∈ ℝ³ |  ⟨Q − P, e_hat_v⟩ = 0 }.                          (5)
 ```
 
 Die **Senkelebene** Σ_N ist die welt-vertikale Ebene durch P
-und C, gespannt von ê_v und ê_y^B (Bauteilquerrichtung), also
+und C, gespannt von e_hat_v und e_hat_y^B (Bauteilquerrichtung), also
 
 ```
-Σ_N  :=  { Q ∈ ℝ³ |  ⟨Q − P, ê_h⟩ = 0 }.                          (6)
+Σ_N  :=  { Q ∈ ℝ³ |  ⟨Q − P, e_hat_h⟩ = 0 }.                          (6)
 ```
 
 Beide Ebenen stehen welt-aligned senkrecht aufeinander
-(⟨ê_h, ê_v⟩ = 0); im Bauteil-Lokal-System ist der Winkel
+(⟨e_hat_h, e_hat_v⟩ = 0); im Bauteil-Lokal-System ist der Winkel
 zwischen ihnen weiterhin π/2, ihre Ausrichtung relativ zur
 Bauteilachse hängt jedoch von der Einbau-Neigung θ ab.
 
@@ -390,19 +390,19 @@ Die **Sohle** ist das Segment auf Σ_S vom Kerveckpunkt P bis
 zum Sohlenausstieg A:
 
 ```
-S  :=  { P + λ · (−s · ê_h) | 0 ≤ λ ≤ w }.                        (7)
+S  :=  { P + λ · (−s · e_hat_h) | 0 ≤ λ ≤ w }.                        (7)
 ```
 
 Der **Senkel** ist das Segment auf Σ_N vom Kerveckpunkt P bis
 zum Senkelausstieg C:
 
 ```
-N  :=  { P + λ · (−ê_v) | 0 ≤ λ ≤ |PC| }                          (8)
+N  :=  { P + λ · (−e_hat_v) | 0 ≤ λ ≤ |PC| }                          (8)
 ```
 
 mit Länge |PC| in welt-vertikaler Richtung (im Allgemeinen
-nicht gleich t, da t in lokaler ê_z^B-Richtung gemessen ist,
-|PC| dagegen in ê_v = ê_z^welt-Richtung; sie fallen nur für
+nicht gleich t, da t in lokaler e_hat_z^B-Richtung gemessen ist,
+|PC| dagegen in e_hat_v = e_hat_z^welt-Richtung; sie fallen nur für
 θ = 0 zusammen).
 
 ### Werkzeugkörper
@@ -410,7 +410,7 @@ nicht gleich t, da t in lokaler ê_z^B-Richtung gemessen ist,
 Der **Werkzeugkörper** der Kerve ist das prismatische Volumen,
 das den dreieckigen Kerv-Querschnitt in der Lotebene Π_⊥(B)
 über die volle Bauteilbreite b_B (oder einen Teil davon, je
-nach `lokalePlatzierung`) entlang ê_y^B extrudiert:
+nach `lokalePlatzierung`) entlang e_hat_y^B extrudiert:
 
 ```
 K_Kerve(p_Kerve)  :=  Δ_Kerve  ×  [y_min, y_max]                  (9)
@@ -447,7 +447,7 @@ p_K  :=  P  =  (x_0, 0, t)  in Bauteil-Lokal-Koordinaten.        (12)
 ```
 
 (Die Vereinfachung auf (x_0, 0, t) folgt aus (2) und (3) mit
-ê_z^B-Komponente t.) p_K dient als gemeinsamer Anker für
+e_hat_z^B-Komponente t.) p_K dient als gemeinsamer Anker für
 `bezugsebene` (Ursprung des Sparren-Werkzeug-Bezugssystems),
 `fusspfette` (Übergang Bauteilkörper → Sparrenüberstand) und
 `sparrenueberstand` (Beginn der Überstandslänge ab der
@@ -509,8 +509,8 @@ in y-Richtung beschrieben.
      Senkelausstieg C muss innerhalb des Bauteils liegen.
      Zusätzlich muss der Sohlenausstieg A innerhalb des Bauteils
      liegen; aus (4) und der Welt-Ausrichtung folgt für s = −1
-     (Sohle nach +ê_h, d. h. nach +ê_x^B mit Komponente cos θ
-     und nach −ê_z^B mit Komponente −sin θ) die Bedingung
+     (Sohle nach +e_hat_h, d. h. nach +e_hat_x^B mit Komponente cos θ
+     und nach −e_hat_z^B mit Komponente −sin θ) die Bedingung
      x_0 + w · cos θ ≤ ℓ_B − ε_L, analog für s = +1 die
      Bedingung x_0 − w · cos θ ≥ ε_L. Eine Kerve, die über die
      Bauteilenden hinausragt, ist im Bauteil wirkungslos und
@@ -553,7 +553,7 @@ in y-Richtung beschrieben.
   Kastl), sondern definiert die Klauenkerve als Standardfall.
 - **Verträglichkeit mit der 90°-Bedingung der Kerve (Dietrichs-
   Abgrenzung):** Aus Σ_S welt-horizontal und Σ_N welt-vertikal
-  folgt ⟨ê_h, ê_v⟩ = 0, also Σ_S ⊥ Σ_N. Eine Bearbeitung mit
+  folgt ⟨e_hat_h, e_hat_v⟩ = 0, also Σ_S ⊥ Σ_N. Eine Bearbeitung mit
   zwei Schnittflächen unter einem anderen Winkel ist gemäss
   Dietrichs Support-Blog ein V-Schnitt, keine Kerve; die App
   bildet einen V-Schnitt als eigene Bearbeitung
@@ -942,7 +942,7 @@ an ein konkretes Bauteil koppeln würde.
   - `werkzeugkoerper(b: Bauteil): Polyeder` — K_Kerve(p_Kerve)
     nach (9)–(10), aufgespannt im welt-System und in Bauteil-
     Lokal-Koordinaten zurückprojiziert; Standardfall: prisma-
-    tischer Polyeder entlang ê_y^B mit dreieckigem Querschnitt
+    tischer Polyeder entlang e_hat_y^B mit dreieckigem Querschnitt
     in der Lotebene.
   - `sohlenflaeche(): Double` — Fläche der Sohle (mm²) =
     w · b_B (Auflagefläche auf der Pfette, in welt-horizontaler

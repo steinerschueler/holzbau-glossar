@@ -65,7 +65,7 @@ quellenkonflikt: |
   Inzidenz-Bedingung auf eine Gratstrecke g_{ij} im Sinne von
   `hg_grat.md`. Die Vorzeichenkonvention (Bed. 4 in `hg_sparren.md`,
   „bergauf, von Traufe zu First") wird mit Bezug auf die aufwärts
-  gerichtete Gratlinien-Tangente t̂ (siehe `hg_grat.md`) übernommen.
+  gerichtete Gratlinien-Tangente t_hat (siehe `hg_grat.md`) übernommen.
   Diese Festlegung ist konsistent mit allen konsultierten Quellen.
 
   **Hauptmerkmal — geringere Neigung:** Mehrfach belegt (Wikipedia
@@ -129,7 +129,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂_G := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat_G := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - 𝒟 = {D_1, …, D_m} eine Dachflächenfamilie im Sinne von
   `dachflaeche`,
 - D_i = (E_i, P_i, n_{a,i}) und D_j = (E_j, P_j, n_{a,j}) zwei
@@ -138,9 +138,9 @@ Sei
   also eine Schnittstrecke s_{ij} = F(P_i) ∩ F(P_j), die die
   Grat-Bedingungen (1)–(4) aus `hg_grat.md` erfüllt
   (geneigt, konvex, beide äußeren Normalen in oberer Halbkugel),
-- t̂ := (b_{ij} − a_{ij}) / ‖b_{ij} − a_{ij}‖ ∈ S² die Tangente
+- t_hat := (b_{ij} − a_{ij}) / ‖b_{ij} − a_{ij}‖ ∈ S² die Tangente
   von g_{ij} mit g_{ij} = [a_{ij}, b_{ij}] und (Vorzeichenkonvention
-  aus `hg_grat.md`) ⟨t̂, e_z⟩ > 0 (bergauf orientiert),
+  aus `hg_grat.md`) ⟨t_hat, e_z⟩ > 0 (bergauf orientiert),
 - e_z := (0, 0, 1)ᵀ die vertikale Achse,
 - ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz,
 - ε_K := Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz,
@@ -169,19 +169,19 @@ erfüllt sind:
    Falllinien-Kollinearität aus `hg_sparren.md` Bed. 3): Die
    Bauteilachsenrichtung ist kollinear zur Gratlinien-Tangente,
    ```
-   ‖d̂_G × t̂‖ ≤ ε_K,
+   ‖d_hat_G × t_hat‖ ≤ ε_K,
    ```
-   d. h. der Winkel zwischen d̂_G und t̂ ist 0 oder π (modulo der
+   d. h. der Winkel zwischen d_hat_G und t_hat ist 0 oder π (modulo der
    numerischen Sinus-Toleranz nach §4 HG-Konvention für
    Parallelitäts-Prädikate).
 
 4. **Vorzeichenkonvention** (Gratsparrenrichtung von Walm-Ecke zu
-   Firstend-Punkt): Die Bauteilachse ist so gerichtet, dass d̂_G
-   in dieselbe Halbkugel wie t̂ weist, also bergauf:
+   Firstend-Punkt): Die Bauteilachse ist so gerichtet, dass d_hat_G
+   in dieselbe Halbkugel wie t_hat weist, also bergauf:
    ```
-   ⟨d̂_G, t̂⟩ ≥ +1 − ε_W,
+   ⟨d_hat_G, t_hat⟩ ≥ +1 − ε_W,
    ```
-   äquivalent ⟨d̂_G, e_z⟩ > 0. p_a ist damit der **Gratsparrenfuß**
+   äquivalent ⟨d_hat_G, e_z⟩ > 0. p_a ist damit der **Gratsparrenfuß**
    (am Trauf-Eckpunkt der Walm-Ecke), p_e der
    **Gratsparrenfirstpunkt** (am Firstend-Punkt bzw. an der
    Walm-Spitze).
@@ -201,7 +201,7 @@ Wesentliche abgeleitete Größen:
   Gratstrecke, siehe `hg_grat.md`, abgeleitete Operation
   `gratneigung()`):
   ```
-  α_G := arcsin(|⟨t̂, e_z⟩|) = arcsin(⟨d̂_G, e_z⟩).
+  α_G := arcsin(|⟨t_hat, e_z⟩|) = arcsin(⟨d_hat_G, e_z⟩).
   ```
   Wertebereich α_G ∈ (0, π/2) bei nicht-entarteten Walmdach-Graten.
 
@@ -221,30 +221,30 @@ tan(α_G) = tan(α) · cos(β_plan).                                  (★)
 
 **Herleitung aus den Primitiven:** Sei π_xy: ℝ³ → ℝ² die
 Projektion in die Horizontalebene. Die Schnittgerade g_{ij} ⊂ ℝ³
-projiziert auf eine Gerade π_xy(g_{ij}) ⊂ ℝ². Sei ê_t :=
-(t̂_x, t̂_y, 0) / ‖(t̂_x, t̂_y)‖ der normierte Grundrissrichtungs-
-vektor der Gratlinie und ê_fall(E_i) die Falllinie der Dachfläche
+projiziert auf eine Gerade π_xy(g_{ij}) ⊂ ℝ². Sei e_hat_t :=
+(t_hat_x, t_hat_y, 0) / ‖(t_hat_x, t_hat_y)‖ der normierte Grundrissrichtungs-
+vektor der Gratlinie und e_hat_fall(E_i) die Falllinie der Dachfläche
 D_i (siehe `hg_falllinie.md`). Dann gilt nach Konstruktion
 
 ```
-cos(β_plan) = |⟨ê_t, π_xy(ê_fall(E_i)) / ‖π_xy(ê_fall(E_i))‖⟩|.
+cos(β_plan) = |⟨e_hat_t, π_xy(e_hat_fall(E_i)) / ‖π_xy(e_hat_fall(E_i))‖⟩|.
 ```
 
 Aus der Geneigtheits-Bedingung (`hg_grat.md` Bed. 1) und der
-Tatsache, dass t̂ in beiden Trägerebenen E_i und E_j liegt
-(g_{ij} = E_i ∩ E_j), folgt durch Aufspaltung von t̂ in seinen
+Tatsache, dass t_hat in beiden Trägerebenen E_i und E_j liegt
+(g_{ij} = E_i ∩ E_j), folgt durch Aufspaltung von t_hat in seinen
 horizontalen Anteil und e_z-Anteil mit Höhenfunktion z auf E_i
 
 ```
-⟨t̂, e_z⟩ / ‖(t̂_x, t̂_y)‖
-   = (∂z/∂ê_t entlang der Grundrissprojektion in E_i)
-   = ⟨−ê_fall(E_i), e_z⟩ · cos(β_plan) / √(1 − ⟨ê_fall(E_i), e_z⟩²) · …
+⟨t_hat, e_z⟩ / ‖(t_hat_x, t_hat_y)‖
+   = (∂z/∂e_hat_t entlang der Grundrissprojektion in E_i)
+   = ⟨−e_hat_fall(E_i), e_z⟩ · cos(β_plan) / √(1 − ⟨e_hat_fall(E_i), e_z⟩²) · …
 ```
 
-mit Auflösung über tan(α) = |⟨ê_fall(E_i), e_z⟩| /
-‖π_xy(ê_fall(E_i))‖ (siehe `hg_falllinie.md`, abgeleitete Größe
+mit Auflösung über tan(α) = |⟨e_hat_fall(E_i), e_z⟩| /
+‖π_xy(e_hat_fall(E_i))‖ (siehe `hg_falllinie.md`, abgeleitete Größe
 „Dachneigung entlang der Falllinie"). Zusammenfassend
-ergibt sich tan(α_G) = ⟨t̂, e_z⟩ / ‖(t̂_x, t̂_y)‖ = tan(α) ·
+ergibt sich tan(α_G) = ⟨t_hat, e_z⟩ / ‖(t_hat_x, t_hat_y)‖ = tan(α) ·
 cos(β_plan). ∎
 
 Im symmetrischen Spezialfall (gleichgeneigte Dachflächen mit
@@ -274,9 +274,9 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `grat`, `dachflaeche`.
 
 - **Eindeutigkeit der Vorzeichenkonvention**: Aus der
   Geneigtheits-Bedingung der Gratstrecke (`hg_grat.md` Bed. 1) folgt
-  ⟨t̂, e_z⟩ > ε_W, also t̂ ≠ −t̂ als Tangentenwahl. Bed. 3 und 4
-  zusammen fixieren d̂_G = +t̂ (modulo ε_K, ε_W). Die alternative
-  Orientierung d̂_G = −t̂ ist durch Bed. 4 ausgeschlossen.
+  ⟨t_hat, e_z⟩ > ε_W, also t_hat ≠ −t_hat als Tangentenwahl. Bed. 3 und 4
+  zusammen fixieren d_hat_G = +t_hat (modulo ε_K, ε_W). Die alternative
+  Orientierung d_hat_G = −t_hat ist durch Bed. 4 ausgeschlossen.
 
 - **Asymmetrie zum Oberbegriff `sparren` — explizite Auflösung:**
   In `hg_sparren.md` lauten die zentralen geometrischen Bedingungen:
@@ -291,7 +291,7 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `grat`, `dachflaeche`.
     Schnittgeraden beider, aber sie verläuft **nicht entlang einer
     Falllinie**, denn die Schnittgerade zweier nicht-paralleler,
     geneigter Ebenen ist nicht die Falllinie einer der beiden
-    (außer im entarteten Fall ⟨n̂_{a,i}, e_z⟩ = ⟨n̂_{a,j}, e_z⟩ und
+    (außer im entarteten Fall ⟨n_hat_{a,i}, e_z⟩ = ⟨n_hat_{a,j}, e_z⟩ und
     Spiegel-Symmetrie, in dem die Schnittgerade in einer
     Vertikalebene liegt, aber auch dann ist ihre Richtung nicht die
     Falllinien-Richtung einer der beiden Einzelflächen).
@@ -306,9 +306,9 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `grat`, `dachflaeche`.
   - Bed. 2 von `hg_sparren.md` durch eine **Endpunkt-Inzidenz auf
     einer Gratstrecke g_{ij}** (Bed. 2 hier) ersetzt;
   - Bed. 3 von `hg_sparren.md` durch eine **Gratlinien-Kollinearität
-    zur Tangente t̂** (Bed. 3 hier) ersetzt;
+    zur Tangente t_hat** (Bed. 3 hier) ersetzt;
   - Bed. 4 von `hg_sparren.md` als **bergauf-Orientierung relativ zu
-    t̂** statt zu ê_fall übernimmt (Bed. 4 hier).
+    t_hat** statt zu e_hat_fall übernimmt (Bed. 4 hier).
 
   Die geerbte konstruktive Rolle des Oberbegriffs `sparren` (Stab-
   Bauteil eines Dachtragwerks, geneigt, lastabtragend, Bauteilachse
@@ -317,7 +317,7 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `grat`, `dachflaeche`.
   Gratlinie der Verschneidung umgehängt.
 
 - **Konsistenz mit `hg_grat.md`**: Aus Bed. 3 und Bed. 4 folgt
-  d̂_G = +t̂ (modulo Toleranzen), wobei t̂ die nach `hg_grat.md`
+  d_hat_G = +t_hat (modulo Toleranzen), wobei t_hat die nach `hg_grat.md`
   Vorzeichenkonvention bergauf gerichtete Gratlinien-Tangente ist.
   Damit ist der Gratsparrenfuß stets am unteren Endpunkt a_{ij} der
   Gratstrecke und der Gratsparrenfirstpunkt stets am oberen Endpunkt
@@ -504,7 +504,7 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
   - **Querschnitt** (vom Bauteil geerbt; rechteckig, typisch
     1.5× Sparrenhöhe);
   - **Werkstoff** (vom Bauteil geerbt; Vollholz oder BSH);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_G);
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_G);
   - **Abgratung** (partitive Bearbeitung, Folgearbeit
     `hg_abgratung.md`);
   - **Kerven** am Fuß (siehe `hg_kerve.md`).
@@ -603,8 +603,8 @@ import domain.geometrie.Punkt
  * Vorzeichenkonvention (normativ):
  *   p_a = Gratsparrenfuß       (am Trauf-Eckpunkt der Walm-Ecke)
  *   p_e = Gratsparrenfirstpunkt (am Firstend-Punkt / Walm-Spitze)
- *   d̂_G zeigt bergauf (⟨d̂_G, e_z⟩ > 0), kollinear zur
- *   aufwärts gerichteten Gratlinien-Tangente t̂.
+ *   d_hat_G zeigt bergauf (⟨d_hat_G, e_z⟩ > 0), kollinear zur
+ *   aufwärts gerichteten Gratlinien-Tangente t_hat.
  */
 data class Gratsparren(
     val bauteil: Bauteil,
@@ -632,7 +632,7 @@ data class Gratsparren(
 sealed class GratsparrenEntartet {
     object NichtAufGratlinie       : GratsparrenEntartet()
     object NichtKollinearZurTangente : GratsparrenEntartet()
-    object FalscheRichtung         : GratsparrenEntartet()   // d̂_G zeigt bergab
+    object FalscheRichtung         : GratsparrenEntartet()   // d_hat_G zeigt bergab
     object Nullachse               : GratsparrenEntartet()
     object EntarteteGratstrecke    : GratsparrenEntartet()
 }
@@ -649,12 +649,12 @@ sealed class GratsparrenEntartet {
      wohldefinierten Endpunkten — sonst `EntarteteGratstrecke`.
   4. p_a und p_e liegen auf der Gratlinien-Geraden bis ε_L —
      sonst `NichtAufGratlinie`.
-  5. ‖d̂_G × t̂‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
+  5. ‖d_hat_G × t_hat‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
      `NichtKollinearZurTangente`.
      (§4 HG-Konvention: Kollinearitäts-Test über das normierte
      Kreuzprodukt mit `KOLLINEAR_EPS`, **nicht** über
      `WINKEL_EPS`.)
-  6. ⟨d̂_G, t̂⟩ ≥ +1 − Toleranzen.WINKEL_EPS — sonst
+  6. ⟨d_hat_G, t_hat⟩ ≥ +1 − Toleranzen.WINKEL_EPS — sonst
      `FalscheRichtung` (Konsumenten können durch Achsen-Umkehr
      automatisch korrigieren).
 - **Edge Cases**:

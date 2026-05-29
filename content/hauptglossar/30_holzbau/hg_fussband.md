@@ -201,10 +201,10 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d̂ := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - E_W eine Wandebene (Ebene im Sinne von `ebene`) mit Stützpunkt
-  p_W und Normalenvektor n̂_W ∈ S², wobei n̂_W horizontal liegt
-  (|⟨n̂_W, e_z⟩| ≤ ε_K — die Wand steht lotrecht im Sinne von
+  p_W und Normalenvektor n_hat_W ∈ S², wobei n_hat_W horizontal liegt
+  (|⟨n_hat_W, e_z⟩| ≤ ε_K — die Wand steht lotrecht im Sinne von
   HG_KONVENTIONEN.md §1),
 - P ein lotrechtes Anker-Bauteil (Ständer im Sinne von
   `hg_staender.md` oder Pfosten als Synonym) mit Bauteilachse
@@ -214,7 +214,7 @@ Sei
 - H ein horizontales Anker-Bauteil (Schwelle im Sinne von
   `hg_schwelle.md` oder unterer Riegel im Sinne von
   `hg_riegel.md`) mit Bauteilachse a(H) = (p_a^H, p_e^H) und
-  |⟨d̂_H, e_z⟩| ≤ ε_K (horizontal), wobei H **unter** P liegt
+  |⟨d_hat_H, e_z⟩| ≤ ε_K (horizontal), wobei H **unter** P liegt
   im Sinne ‖z_max^H − p_F^P.z‖ ≤ ε_L (mit z_max^H = max(p_a^H.z,
   p_e^H.z)),
 - e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
@@ -231,16 +231,16 @@ Bedingungen alle erfüllt sind:
 
 2. **Lage in der Wandebene**: Beide Endpunkte liegen in E_W,
    ```
-   |⟨p_a − p_W, n̂_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n̂_W⟩| ≤ ε_L.
+   |⟨p_a − p_W, n_hat_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n_hat_W⟩| ≤ ε_L.
    ```
 
 3. **Echte Diagonale (weder lotrecht noch horizontal)**: Der
-   Winkel α(B) := arccos(|⟨d̂, e_z⟩|) zwischen Bauteilachse und
+   Winkel α(B) := arccos(|⟨d_hat, e_z⟩|) zwischen Bauteilachse und
    Lotachse erfüllt
    ```
    ε_W < α(B) < π/2 − ε_W,
    ```
-   d. h. d̂ ist weder kollinear zu e_z (kein Pfosten/Ständer)
+   d. h. d_hat ist weder kollinear zu e_z (kein Pfosten/Ständer)
    noch rechtwinklig zu e_z (kein Riegel/Schwelle).
 
 4. **Zwei-Anker-Bedingung Pfosten + unteres Längsholz**: Genau
@@ -288,7 +288,7 @@ Wesentliche abgeleitete Größen:
   Default-Wert im Korpus ~45°, Praxis-Range 35–55°.
   Die Definition fixiert β_F **nicht** auf 45° (Korpus-
   Konsens ist „typisch", keine Norm-Festlegung).
-- **Wandebenen-Achsenrichtung**: t̂_W := projektiere d̂ in die
+- **Wandebenen-Achsenrichtung**: t_hat_W := projektiere d_hat in die
   Wandebene, dient als Default-Faserrichtung am Bauteil.
 
 ## Wohldefiniertheit
@@ -564,7 +564,7 @@ Simpson) angeschlossen.
   - **Querschnitt** (rechteckig, im historischen Fachwerk meist
     schwächer als der Ständer, typisch 80/120 mm);
   - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
-  - **Faserrichtung** (Annotation, Default ‖ d̂_Fussband, also
+  - **Faserrichtung** (Annotation, Default ‖ d_hat_Fussband, also
     axial entlang der diagonalen Bauteilachse).
 - **Positions-Annotation** (Merkmal am Fussband, kein Subtyp;
   optional, analog `KopfbandPosition` Welle 10):
@@ -670,7 +670,7 @@ data class Fussband(
     /**
      * Diagonal-Prädikat: weder lotrecht noch horizontal.
      *
-     * α(B) = arccos(|⟨d̂, e_z⟩|);  ε_W < α < π/2 − ε_W.
+     * α(B) = arccos(|⟨d_hat, e_z⟩|);  ε_W < α < π/2 − ε_W.
      */
     fun istDiagonal(eps: Double = Toleranzen.WINKEL_EPS): Boolean {
         val d = richtung
@@ -741,7 +741,7 @@ sealed class FussbandEntartet {
   `FussbandEntartet`-Variante; niemals Exception):
   1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
   2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. Wandebene lotrecht: |⟨n̂_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
+  3. Wandebene lotrecht: |⟨n_hat_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
      — sonst `WandebeneNichtLotrecht`.
   4. Beide Endpunkte in Wandebene (Punkt-Ebene-Abstand ≤
      Toleranzen.LAENGE_EPS) — sonst `NichtInWandebene`.

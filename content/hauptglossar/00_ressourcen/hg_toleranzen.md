@@ -69,7 +69,7 @@ Glossar werden fünf solche Paare normativ benannt:
 | `NORM_EPS`       | d(v, 0) = | ‖v‖² − s |, mit s ∈ {0, 1} (Null- bzw.    |         |                     |
 |                  | Einheitsvektor-Test)                                  | mm² bzw. dimensionslos | 1·10⁻¹² |
 | `FLAECHE_EPS`    | d(F, 0) = |F|, F Flächeninhalt                        | mm²     | 1·10⁻⁶ mm²          |
-| `KOLLINEAR_EPS`  | d(u, v) = ‖û × v̂‖ = |sin∠(u, v)|, û, v̂ normiert     | dimensionslos | 1·10⁻⁹       |
+| `KOLLINEAR_EPS`  | d(u, v) = ‖u_hat × v_hat‖ = |sin∠(u, v)|, u_hat, v_hat normiert     | dimensionslos | 1·10⁻⁹       |
 
 Die konkreten Zahlenwerte sind **empfohlene Default-Werte** dieses
 Eintrags; die kanonische Quelle der im Code verwendeten Werte ist die
@@ -219,8 +219,8 @@ Abweichung.
 
 ### Kollinearitäts-Toleranz `KOLLINEAR_EPS`
 
-- **Bedeutung**: Schwelle für ‖û × v̂‖ = |sin∠(û, v̂)| zwischen zwei
-  normierten Vektoren û, v̂ beim Test auf Kollinearität (parallel oder
+- **Bedeutung**: Schwelle für ‖u_hat × v_hat‖ = |sin∠(u_hat, v_hat)| zwischen zwei
+  normierten Vektoren u_hat, v_hat beim Test auf Kollinearität (parallel oder
   antiparallel).
 - **Empfohlener Default**: `KOLLINEAR_EPS = 1·10⁻⁹` (dimensionslos).
 - **Begründung**: Konsistent zu WINKEL_EPS, da für kleine Winkel α gilt
@@ -372,7 +372,7 @@ object Toleranzen {
     /** Flächen-Toleranz, mm². Glossar: toleranzen#flaeche_eps */
     const val FLAECHE_EPS: Double = 1.0e-6
 
-    /** Kollinearitäts-Toleranz für ‖û × v̂‖, dimensionslos.
+    /** Kollinearitäts-Toleranz für ‖u_hat × v_hat‖, dimensionslos.
      *  Glossar: toleranzen#kollinear_eps */
     const val KOLLINEAR_EPS: Double = 1.0e-9
 

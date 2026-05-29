@@ -88,7 +88,7 @@ quellenkonflikt: |
   + Nahtsystem) und eine sealed-Hierarchie nach Funktionsweise:
   **Konventionell** (konstanter sd-Wert; PE-Folie, Aluminium-frei
   bis 1500 m), **Feuchteadaptiv** (sd-Wert als monotone Funktion
-  der mittleren relativen Feuchte φ̄; INTELLO 0,25–25 m, DB+
+  der mittleren relativen Feuchte φ_bar; INTELLO 0,25–25 m, DB+
   0,4–4 m, Vario KM 0,3–5 m), **Hygrobrid** (sd-Wert zusätzlich
   richtungsabhängig je Seite der Bahn; SIGA Majrex 0,8–35 m). Sie
   ist nicht Lebenszyklus-gekoppelt an den Dachaufbau (eine
@@ -169,7 +169,7 @@ Sei
 - ein Index j* ∈ { 1, …, k } so gewählt, dass die Schicht S_{j*}
   die Funktionsklasse `SchichtFunktion.DAMPFBREMSE` trägt,
 - d_{j*} ∈ ℝ_{>0} (in mm) die Dicke von S_{j*},
-- φ̄ ∈ [0, 1] die mittlere relative Feuchte im Querschnitt der
+- φ_bar ∈ [0, 1] die mittlere relative Feuchte im Querschnitt der
   Bahn (dimensionslos),
 - σ ∈ { **innen**, **aussen** } die Seite der Bahn,
 - s_d : [0, 1] × { innen, aussen } → ℝ_{>0} die sd-Wert-Funktion
@@ -192,8 +192,8 @@ mit den Konsistenzbedingungen
 3. **Positive Dicke:** d_{j*} > Toleranzen.LAENGE_EPS.
 4. **Diffusionshemmende Schranken (DIN 4108-3):**
    0,5 m ≤ s_min ≤ s_max ≤ 1500 m.
-5. **Wertebereichs-Konsistenz:** für alle (φ̄, σ)
-   gilt s_min ≤ s_d(φ̄, σ) ≤ s_max.
+5. **Wertebereichs-Konsistenz:** für alle (φ_bar, σ)
+   gilt s_min ≤ s_d(φ_bar, σ) ≤ s_max.
 6. **Träger-Konsistenz:** S_{j*} ist über F definiert (gleiche
    Träger-Dachflächen wie A).
 
@@ -201,19 +201,19 @@ Die **sd-Wert-Funktion** s_d beschreibt das Diffusionsverhalten
 der Bahn. Die folgenden drei Spezialformen klassifizieren die
 sealed-Hierarchie:
 
-- **Konventionell:** s_d ist konstant in φ̄ und in σ, also
-  s_d(φ̄, σ) ≡ s_konst mit s_min = s_max = s_konst.
+- **Konventionell:** s_d ist konstant in φ_bar und in σ, also
+  s_d(φ_bar, σ) ≡ s_konst mit s_min = s_max = s_konst.
 - **Feuchteadaptiv:** s_d ist unabhängig von σ (richtungs-
-  symmetrisch), aber monoton antiton in φ̄: für φ̄₁ ≤ φ̄₂ gilt
-  s_d(φ̄₁) ≥ s_d(φ̄₂). Die physikalische Lesart: bei niedriger
+  symmetrisch), aber monoton antiton in φ_bar: für φ_bar₁ ≤ φ_bar₂ gilt
+  s_d(φ_bar₁) ≥ s_d(φ_bar₂). Die physikalische Lesart: bei niedriger
   Feuchte (Winter, raumseitig) ist sd hoch (Diffusion gehemmt);
   bei hoher Feuchte (Sommer, Rücktrocknung) ist sd niedrig
   (Diffusion erlaubt).
-- **Hygrobrid:** s_d hängt sowohl von φ̄ als auch von σ ab und
-  ist im Allgemeinen weder symmetrisch in σ noch in φ̄ monoton
+- **Hygrobrid:** s_d hängt sowohl von φ_bar als auch von σ ab und
+  ist im Allgemeinen weder symmetrisch in σ noch in φ_bar monoton
   in derselben Richtung. Charakterisierend ist eine asymmetrische
-  Bedingung der Form s_d(φ̄, innen) ≠ s_d(φ̄, aussen) für mindestens
-  ein φ̄ ∈ [0, 1].
+  Bedingung der Form s_d(φ_bar, innen) ≠ s_d(φ_bar, aussen) für mindestens
+  ein φ_bar ∈ [0, 1].
 
 Die **wasserdampf-diffusionsäquivalente Luftschichtdicke** in der
 zugrunde liegenden Materialdefinition ist
@@ -225,7 +225,7 @@ s_d = µ · d
 mit µ ∈ ℝ_{>0} (Wasserdampf-Diffusions-Widerstandszahl,
 dimensionslos, DIN EN ISO 12572) und d ∈ ℝ_{>0} (Schichtdicke
 in m). Bei feuchteadaptiven und Hygrobrid-Bahnen ist µ selbst
-eine Funktion µ(φ̄, σ); s_d = µ(φ̄, σ) · d folgt punktweise.
+eine Funktion µ(φ_bar, σ); s_d = µ(φ_bar, σ) · d folgt punktweise.
 
 **Bemerkung — Bindung an konkrete Bahn-Produkte.** Die
 definitorische Schicht legt keine konkreten Produktklassen
@@ -241,7 +241,7 @@ einzuordnen, mit produktspezifischen Schranken (s_min, s_max).
   Funktion s_d, die die Schrankenbedingung punktweise erfüllt,
   ist B wohldefiniert.
 - **Eindeutigkeit der Funktion s_d.** s_d ist als Eingabe
-  Teil des Tupels; eine in φ̄ und σ konstante Funktion existiert
+  Teil des Tupels; eine in φ_bar und σ konstante Funktion existiert
   immer (Konventionell). Für feuchteadaptive Bahnen ist die
   Antitonie eine Anforderung an die Eingabefunktion, kein
   Bestandteil der Existenz-Behauptung: ist die Eingabefunktion
@@ -250,7 +250,7 @@ einzuordnen, mit produktspezifischen Schranken (s_min, s_max).
 - **Klassen-Disjunktheit.** Die drei Subtypen sind durch die
   Form der Funktion eindeutig diskriminiert:
   s_d-konstant ⇒ Konventionell;
-  s_d antiton in φ̄, symmetrisch in σ ⇒ Feuchteadaptiv;
+  s_d antiton in φ_bar, symmetrisch in σ ⇒ Feuchteadaptiv;
   s_d asymmetrisch in σ ⇒ Hygrobrid.
   Grenzfälle (annähernd konstante Bahn, die als Konventionell
   oder schwach feuchteadaptiv eingeordnet werden könnte) werden
@@ -316,8 +316,8 @@ Die App führt drei Subtypen als sealed-Klassen:
 
 | Subtyp           | s_d-Funktion             | Beispiel-Produkte                 | typischer Bereich |
 |---|---|---|---|
-| **Konventionell** | konstant in φ̄ und σ      | PE-Folie SD100, Aluminium-frei    | 2 m bis 1500 m    |
-| **Feuchteadaptiv** | antiton in φ̄, symmetrisch in σ | pro clima INTELLO/INTELLO PLUS, pro clima DB+, Isover Vario KM Duplex UV | 0,25 m bis 25 m   |
+| **Konventionell** | konstant in φ_bar und σ      | PE-Folie SD100, Aluminium-frei    | 2 m bis 1500 m    |
+| **Feuchteadaptiv** | antiton in φ_bar, symmetrisch in σ | pro clima INTELLO/INTELLO PLUS, pro clima DB+, Isover Vario KM Duplex UV | 0,25 m bis 25 m   |
 | **Hygrobrid**     | asymmetrisch in σ         | SIGA Majrex 200                   | 0,8 m bis 35 m    |
 
 - **Konventionelle Dampfbremse:** konstanter sd-Wert. Wirkt im
@@ -326,9 +326,9 @@ Die App führt drei Subtypen als sealed-Klassen:
   Rücktrocknung nach innen.
 - **Feuchteadaptive Dampfbremse (Klimamembran):** der sd-Wert
   sinkt mit steigender mittlerer Umgebungsfeuchte im Querschnitt
-  der Bahn. Im Winter (trockene Raumluft, niedriges φ̄ im
+  der Bahn. Im Winter (trockene Raumluft, niedriges φ_bar im
   Querschnitt) ist sd hoch; im Sommer (feuchte Konstruktion bei
-  Rücktrocknung, hohes φ̄) ist sd niedrig. Die Bahn erlaubt die
+  Rücktrocknung, hohes φ_bar) ist sd niedrig. Die Bahn erlaubt die
   Rücktrocknung der Konstruktion nach innen, ohne im Winter die
   Diffusionshemmung aufzugeben. Der Begriff „Klimamembran" ist
   ein Branchen-Begriff für diese Variante; er ist im DACH-Korpus
@@ -410,7 +410,7 @@ Bibliothek.
   der sd-Wert-Funktion):**
   - **Konventionelle Dampfbremse** — konstanter sd-Wert.
   - **Feuchteadaptive Dampfbremse** — antitone Abhängigkeit
-    von der mittleren relativen Feuchte φ̄, symmetrisch in der
+    von der mittleren relativen Feuchte φ_bar, symmetrisch in der
     Seite σ.
   - **Hygrobrid-Dampfbremse** — zusätzlich asymmetrisch in σ.
 - **Verwendung:**
@@ -468,8 +468,8 @@ import domain.Toleranzen
  * des Dachaufbaus. Glossar: hg_dampfbremse.md
  *
  * Sealed-Hierarchie nach Form der sd-Wert-Funktion:
- *   Konventionell  — sd konstant in (φ̄, σ).
- *   Feuchteadaptiv — sd antiton in φ̄, symmetrisch in σ.
+ *   Konventionell  — sd konstant in (φ_bar, σ).
+ *   Feuchteadaptiv — sd antiton in φ_bar, symmetrisch in σ.
  *   Hygrobrid      — sd asymmetrisch in σ.
  */
 sealed class Dampfbremse {
@@ -553,7 +553,7 @@ fun klassifiziereNachSdWert(sd: Double, norm: DampfbremsenNorm): DiffusionsKlass
   Bahn in mm (über `Schicht.dicke` geerbt). Die zwei Einheiten
   sind in der Bauphysik kanonisch (sd in m, Schichtdicke in mm)
   und werden nicht miteinander vermischt.
-- **Mittlere relative Feuchte φ̄** als Eingabe der sd-Wert-
+- **Mittlere relative Feuchte φ_bar** als Eingabe der sd-Wert-
   Funktion ist dimensionslos in [0, 1].
 - **Trennung Definition ↔ Norm-Schwellen.** Die definitorische
   Bedingung an die Bahn ist
@@ -583,11 +583,11 @@ fun klassifiziereNachSdWert(sd: Double, norm: DampfbremsenNorm): DiffusionsKlass
      - `Konventionell`: `sdMin == sdMax == sdKonst` ⇒ sonst
        `Entartet.NichtKonstant`.
      - `Feuchteadaptiv`: `sdKurve` ist antiton im Sinne von
-       φ̄₁ ≤ φ̄₂ ⇒ sdKurve(φ̄₁) ≥ sdKurve(φ̄₂). Wird über eine
+       φ_bar₁ ≤ φ_bar₂ ⇒ sdKurve(φ_bar₁) ≥ sdKurve(φ_bar₂). Wird über eine
        Stichprobe in [0, 1] geprüft (z. B. 11 Stützstellen
        0,0; 0,1; …; 1,0); Verletzung ⇒ `Entartet.NichtAntiton`.
      - `Hygrobrid`: `sdKurveInnen(phi) ≠ sdKurveAussen(phi)` für
-       mindestens ein φ̄ ∈ [0, 1]. Verletzung ⇒
+       mindestens ein φ_bar ∈ [0, 1]. Verletzung ⇒
        `Entartet.NichtAsymmetrisch` (in diesem Fall wäre der
        korrekte Subtyp `Feuchteadaptiv` oder `Konventionell`).
 - **Edge Cases:**

@@ -1,0 +1,7 @@
+# robots.txt für holzbau-glossar.ch
+# Glossar-Inhalte sind unter CC BY 4.0 frei verwendbar — Crawler willkommen.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://holzbau-glossar.ch/sitemap.xml

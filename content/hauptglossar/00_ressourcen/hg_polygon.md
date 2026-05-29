@@ -88,12 +88,12 @@ Wesentliche abgeleitete Größen:
 - **Eckenzahl**: k ∈ ℕ_{≥3}.
 - **Kantenmenge**: { e₁, …, e_k }.
 - **Umfang**: U(P) := Σ_{i=1}^{k} ‖v_{i+1} − v_i‖ (in mm).
-- **Flächeninhalt** (für Polygon mit Einheitsnormale n̂ der
-  Trägerebene): A(P) := ½ · |⟨n̂, Σ_{i=1}^{k} v_i × v_{i+1}⟩|
+- **Flächeninhalt** (für Polygon mit Einheitsnormale n_hat der
+  Trägerebene): A(P) := ½ · |⟨n_hat, Σ_{i=1}^{k} v_i × v_{i+1}⟩|
   (in mm²; verallgemeinert die 2D-Schuhbänder-/Gauß-Trapezformel
   auf eine in ℝ³ liegende Ebene).
-- **Orientierung**: Das Vorzeichen von ⟨n̂, Σ v_i × v_{i+1}⟩
-  unterscheidet positive (gegen den Uhrzeigersinn von n̂ aus
+- **Orientierung**: Das Vorzeichen von ⟨n_hat, Σ v_i × v_{i+1}⟩
+  unterscheidet positive (gegen den Uhrzeigersinn von n_hat aus
   betrachtet) und negative Orientierung der Eckenfolge.
 
 ## Wohldefiniertheit
@@ -116,8 +116,8 @@ Wesentliche abgeleitete Größen:
   t × Σ v_i + Σ v_i × t = t × Σ v_i − t × Σ v_i = 0. Der Wert ist
   also translations-invariant; insbesondere kann ohne Beschränkung
   der Allgemeinheit ein Eckpunkt als Ursprung gewählt werden.
-- **Vorzeichenwahl der Normalen**: Die Formel hängt linear von n̂
-  ab; (n̂, −n̂) ändert das Vorzeichen. Die Betragsbildung |·|
+- **Vorzeichenwahl der Normalen**: Die Formel hängt linear von n_hat
+  ab; (n_hat, −n_hat) ändert das Vorzeichen. Die Betragsbildung |·|
   liefert einen wohldefinierten unsignierten Flächeninhalt.
 - **Nicht-Zirkularität**: Definition stützt sich auf Punkt, Strecke,
   Ebene, reellwertige Operationen und den Jordan-Kurvensatz für

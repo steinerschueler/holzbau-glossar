@@ -60,10 +60,10 @@ v ≠ 0) und surjektiv auf g.
 
 Wesentliche abgeleitete Größen für x ∈ ℝ³:
 
-- **Einheits-Richtung**: v̂ := v / ‖v‖ ∈ S² (bis auf Vorzeichen).
-- **Vorzeichenbehafteter Parameter** von x ∈ g bezüglich (p₀, v̂):
-  t(x) := ⟨x − p₀, v̂⟩, in mm.
-- **Orthogonale Projektion** auf g: π_g(x) := p₀ + ⟨x − p₀, v̂⟩ · v̂.
+- **Einheits-Richtung**: v_hat := v / ‖v‖ ∈ S² (bis auf Vorzeichen).
+- **Vorzeichenbehafteter Parameter** von x ∈ g bezüglich (p₀, v_hat):
+  t(x) := ⟨x − p₀, v_hat⟩, in mm.
+- **Orthogonale Projektion** auf g: π_g(x) := p₀ + ⟨x − p₀, v_hat⟩ · v_hat.
 - **Abstand** Punkt–Gerade: d_g(x) := ‖x − π_g(x)‖, in mm.
 
 ## Wohldefiniertheit
