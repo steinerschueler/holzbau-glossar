@@ -1,0 +1,45 @@
+# Files and directories excluded from `git archive` output.
+#
+# Zenodo zieht bei jedem GitHub-Release den `Source code (tar.gz)`-Tarball,
+# der auf `git archive` basiert und `export-ignore`-Regeln respektiert.
+# Ziel: der Zenodo-Snapshot enthält nur die Inhalte, die jemand
+# wissenschaftlich zitiert — nicht die Build-Maschinerie und nicht
+# das Theme-/Hosting-Setup.
+#
+# Was BLEIBT im Archiv (zitierbar):
+#   - content/hauptglossar/**         alle HG-Einträge + HG_KONVENTIONEN.md
+#   - content/subglossar/**           alle SG-Einträge
+#   - src/index.md                    Manifest-Startseite
+#   - src/methode/**                  publizierte Methode-Doku
+#   - src/api.md, src/zitieren.md     statische Site-Texte
+#   - src/lizenz.md, src/impressum.md, src/datenschutz.md
+#   - README.md, LICENSE
+#
+# Was WEG ist (Build-/Hosting-Maschinerie):
+
+# Repo-Metadaten
+.gitignore       export-ignore
+.gitattributes   export-ignore
+.github/         export-ignore
+.cache/          export-ignore
+
+# Build-Konfiguration und Skripte
+mkdocs.yml       export-ignore
+requirements.txt export-ignore
+sync.sh          export-ignore
+hooks/           export-ignore
+overrides/       export-ignore
+
+# Hosting / DNS
+CNAME            export-ignore
+
+# Site-Assets (Theme, Styles, Scripts, Bilder, Konfig-Files)
+src/stylesheets/ export-ignore
+src/javascripts/ export-ignore
+src/images/      export-ignore
+src/robots.txt   export-ignore
+src/opensearch.xml export-ignore
+src/404.md       export-ignore
+
+# Build-Output (sollte ohnehin via .gitignore raus)
+site/            export-ignore
