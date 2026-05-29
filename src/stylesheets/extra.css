@@ -167,7 +167,7 @@ html .md-typeset details.glossar-section h4 { font-size: 1.2rem !important; }
 html .md-typeset details.glossar-section h5 { font-size: 1.15rem !important; }
 html .md-typeset details.glossar-section h6 { font-size: 1.0rem !important; }
 
-/* Auf dem Smartphone den Lese-Body etwas verkleinern (1.0rem → 0.9rem).
+/* Auf dem Smartphone den Lese-Body etwas verkleinern (1.0rem → 0.8rem).
  * Trifft den globalen Body (.md-typeset) und die separat gepinnten
  * Kapitel-Inhalts-Elemente. Abschnittsüberschriften (h3–h6, in rem) und
  * das Kapitel-Summary bleiben unberührt. Nach den 1.0rem-Pins platziert,
@@ -175,7 +175,7 @@ html .md-typeset details.glossar-section h6 { font-size: 1.0rem !important; }
  * 44.9375em = Material-Telefon-Breakpoint. */
 @media screen and (max-width: 44.9375em) {
   .md-typeset {
-    font-size: 0.9rem !important;
+    font-size: 0.8rem !important;
   }
   html .md-typeset details.glossar-section p,
   html .md-typeset details.glossar-section li,
@@ -184,7 +184,7 @@ html .md-typeset details.glossar-section h6 { font-size: 1.0rem !important; }
   html .md-typeset details.glossar-section blockquote,
   html .md-typeset details.glossar-section dt,
   html .md-typeset details.glossar-section dd {
-    font-size: 0.9rem !important;
+    font-size: 0.8rem !important;
   }
 }
 
