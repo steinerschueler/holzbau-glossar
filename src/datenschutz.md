@@ -38,11 +38,14 @@ nachvollziehen können. Zwei Belege:
 2. **Unabhängige Live-Prüfung** über
    [Webbkoll](https://webbkoll.5july.net/en/check?url=holzbau-glossar.ch),
    die Privacy-Test-Plattform der schwedischen Datenschutz-Stiftung
-   `5 juli stiftelsen`. Der Test ist Open-Source, ohne Login und ohne
-   Anbieter-Interesse an einem bestimmten Ergebnis. Er prüft auf
-   Third-Party-Requests, Cookies, HTTP-Header, HSTS, Referrer-Policy
-   und ähnliches. Der Link öffnet eine vorausgefüllte Maske; ein Klick
-   auf den Test-Button startet die Analyse.
+   `5 juli stiftelsen`. Open-Source, ohne Login, ohne Anbieter-Interesse
+   an einem bestimmten Ergebnis. Der Link öffnet eine vorausgefüllte
+   Maske; ein Klick auf den Test-Button startet die Analyse direkt im
+   Browser.
+
+### Aktueller Webbkoll-Befund (eingebettet)
+
+{{WEBBKOLL_RESULT}}
 
 Build-Stand des angezeigten Privacy-Checks: **{{BUILD_DATE}}**.
 

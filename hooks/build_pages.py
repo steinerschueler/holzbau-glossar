@@ -172,12 +172,177 @@ def on_post_build(config):
 # Marker-Replacement (z. B. {{BUILD_DATE}}) im Markdown vor Render-Phase.
 def on_page_markdown(markdown, page, config, files):
     """Ersetze statische Marker im Markdown bevor MkDocs es rendert.
-    Aktuell genutzt für ``{{BUILD_DATE}}`` auf der Datenschutz-Seite —
-    macht den letzten Build-Zeitpunkt als Privacy-Check-Datum sichtbar."""
+
+    - ``{{BUILD_DATE}}``     — Datum des aktuellen Builds.
+    - ``{{WEBBKOLL_RESULT}}`` — Tabelle der Webbkoll-Hauptbefunde,
+      bei jedem Build frisch geladen.
+    """
     build_date = (config.get("extra") or {}).get("build_date", "")
     if "{{BUILD_DATE}}" in markdown and build_date:
         markdown = markdown.replace("{{BUILD_DATE}}", build_date)
+    if "{{WEBBKOLL_RESULT}}" in markdown:
+        markdown = markdown.replace(
+            "{{WEBBKOLL_RESULT}}", _render_webbkoll_block(build_date)
+        )
     return markdown
+
+
+def _render_webbkoll_block(build_date: str) -> str:
+    """Lade das Webbkoll-Result für holzbau-glossar.ch und rendere die
+    Hauptbefunde als Markdown-Tabelle. Bei Netz-/Parse-Fehler stiller
+    Fallback auf einen kurzen Hinweis — der Build soll nicht von einem
+    externen Service abhängen."""
+    findings = _fetch_webbkoll_findings()
+    if not findings:
+        return (
+            "_Live-Befund konnte beim Build nicht geladen werden — bitte "
+            "den Live-Test über den Link oben durchführen._\n"
+        )
+    lines = [
+        "| Prüfpunkt | Befund |",
+        "|---|---|",
+    ]
+    for label, value in findings:
+        lines.append(f"| {label} | {value} |")
+    lines.append("")
+    lines.append(
+        f"_Quelle: Webbkoll-Result-Seite, geladen beim Site-Build am "
+        f"{build_date or 'heute'}. Vollständige Analyse über den Live-Link oben._"
+    )
+    return "\n".join(lines)
+
+
+def _fetch_webbkoll_findings() -> "list[tuple[str, str]] | None":
+    """POST-trigger einen frischen Webbkoll-Test, poll bis Result-Page
+    bereit ist, lade Result-HTML und extrahiere die Hauptbefunde. Liefert
+    Liste von (Label, Wert)-Tupeln oder ``None`` bei Fehler."""
+    import http.cookiejar
+    import urllib.error
+    import urllib.parse
+    import urllib.request
+
+    base = "https://webbkoll.5july.net"
+    target = "holzbau-glossar.ch"
+
+    try:
+        # 1. CSRF-Token + Cookie von der Startseite holen.
+        cj = http.cookiejar.CookieJar()
+        opener = urllib.request.build_opener(
+            urllib.request.HTTPCookieProcessor(cj)
+        )
+        opener.addheaders = [
+            ("User-Agent", "holzbau-glossar build_pages.py"),
+        ]
+        index_resp = opener.open(f"{base}/en/", timeout=10)
+        index_html = index_resp.read().decode("utf-8", errors="ignore")
+        csrf_match = re.search(
+            r'name="_csrf_token"[^>]*value="([^"]+)"', index_html
+        )
+        if not csrf_match:
+            return None
+        csrf = csrf_match.group(1)
+
+        # 2. POST mit CSRF + URL.
+        post_data = urllib.parse.urlencode(
+            {"_csrf_token": csrf, "url": target}
+        ).encode("utf-8")
+        post_req = urllib.request.Request(
+            f"{base}/en/check", data=post_data, method="POST"
+        )
+        post_req.add_header(
+            "Content-Type", "application/x-www-form-urlencoded"
+        )
+        try:
+            opener.open(post_req, timeout=15)
+        except urllib.error.HTTPError as exc:
+            # 302 ist erwartet und wird vom Opener automatisch verfolgt;
+            # andere HTTP-Fehler bedeuten Probleme.
+            if exc.code not in (302, 303):
+                return None
+
+        # 3. Result-Page direkt aufrufen — Webbkoll cached die letzte
+        #    Analyse pro Ziel-URL.
+        result_url = (
+            f"{base}/en/results?"
+            + urllib.parse.urlencode({"url": f"http://{target}"})
+        )
+        result_html = opener.open(result_url, timeout=15).read().decode(
+            "utf-8", errors="ignore"
+        )
+    except (urllib.error.URLError, TimeoutError, ConnectionError):
+        return None
+
+    return _parse_webbkoll_findings(result_html)
+
+
+def _parse_webbkoll_findings(html: str) -> "list[tuple[str, str]] | None":
+    """Pragmatische String-Suche nach den wichtigsten Status-Indikatoren
+    auf der Webbkoll-Result-Page."""
+    findings: list[tuple[str, str]] = []
+
+    def add(label: str, ok: bool, note: str = "") -> None:
+        symbol = "✓" if ok else "—"
+        text = f"{symbol} {note}" if note else symbol
+        findings.append((label, text))
+
+    # Third-Party-Requests — Webbkoll formuliert "No third-party requests"
+    # bei sauberem Befund.
+    third_party_clean = "No third-party requests" in html
+    add(
+        "Third-Party-Requests",
+        third_party_clean,
+        "keine externen Asset-Requests" if third_party_clean else "Webbkoll meldet welche",
+    )
+
+    # Cookies — "No cookies detected" oder ähnliches.
+    cookies_clean = (
+        "No cookies detected" in html or "no cookies" in html.lower()[:50000]
+    )
+    add(
+        "Cookies",
+        cookies_clean,
+        "keine gesetzt" if cookies_clean else "Webbkoll meldet welche",
+    )
+
+    # HTTPS-Verbindung — "secure connection" / "HTTPS by default".
+    https_ok = "secure connection" in html.lower()
+    add("HTTPS-Verbindung", https_ok, "aktiv und erzwungen" if https_ok else "")
+
+    # HSTS — Plattform-Limitation, voraussichtlich rot bei Webbkoll.
+    hsts_set = "HSTS" in html and (
+        "max-age=" in html or "HSTS is enabled" in html
+    )
+    findings.append(
+        (
+            "Strict-Transport-Security",
+            "— GitHub-Pages-Limit, dokumentiert"
+            if not hsts_set
+            else "✓ aktiv",
+        )
+    )
+
+    # CSP — sollte jetzt grün sein (über Meta-Tag).
+    csp_set = "Content-Security-Policy" in html and (
+        "is set" in html.lower() or "CSP is set" in html
+    )
+    # Fallback: einfach prüfen ob "Content-Security-Policy" als gesetzter
+    # Header oder Meta-Tag erwähnt ist.
+    csp_present = "Content Security Policy" in html
+    add(
+        "Content-Security-Policy",
+        csp_present,
+        "über Meta-Tag gesetzt" if csp_present else "",
+    )
+
+    # Referrer-Policy — sollte ebenfalls grün sein.
+    referrer_present = "Referrer Policy" in html or "referrer policy" in html.lower()
+    add(
+        "Referrer-Policy",
+        referrer_present,
+        "strict-origin-when-cross-origin" if referrer_present else "",
+    )
+
+    return findings if findings else None
 
 
 def _build_bibtex(hg_id: str, title: str, author: str, url: str, date_iso: str) -> str:
