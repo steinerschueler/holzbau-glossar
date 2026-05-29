@@ -241,7 +241,7 @@ def on_nav(nav, config, files):
     # sollen sichtbar UNTER den Clustern hängen. Ohne Treffer (z.B.
     # wenn die Seiten umbenannt wurden) am Ende anhängen — defensives
     # Default-Verhalten.
-    TRAILING_TITLES = {"DOI (Zitieren)", "API (Einbinden)", "Impressum", "Datenschutz"}
+    TRAILING_TITLES = {"DOI (Zitieren)", "API (Einbinden)", "Lizenz", "Impressum", "Datenschutz"}
     insert_at = len(nav.items)
     for idx, item in enumerate(nav.items):
         if getattr(item, "title", None) in TRAILING_TITLES:

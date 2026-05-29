@@ -8,17 +8,6 @@ description: Empfohlene Zitierform, Lizenz, Versions-Anker.
 Dieses Glossar ist als zitierbare Quelle für Forschung, Normungs-Arbeit
 und Werkzeug-Entwicklung gedacht.
 
-## Lizenz
-
-Alle Glossar-Inhalte stehen unter
-[Creative Commons BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.de).
-
-Das heisst konkret:
-
-- **Erlaubt:** Nutzung in jeder Form, einschliesslich kommerzieller
-  Werkzeuge (cadWork, ArchiCAD u.a.), abgeleiteter Werke und Übersetzungen.
-- **Bedingung:** Namensnennung mit Verweis auf diese Quelle.
-
 ## Drei Formate pro Eintrag
 
 Jeder Glossar-Eintrag wird in drei Formaten ausgeliefert, damit zitieren

@@ -236,8 +236,6 @@ Check.
 
 ## Lizenz und Zitation
 
-Inhalte stehen unter
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Bei
-Weiterverwendung **holzbau-glossar.ch** als Quelle angeben; der
-Concept-DOI `10.5281/zenodo.20435319` ist die empfohlene Zitations-
-Referenz. Details zur Zitation: siehe [DOI (Zitieren)](zitieren.md).
+Inhalte stehen unter CC BY 4.0. Details zu Bedingungen, Praxis und
+Begründung der Lizenz-Wahl: siehe [Lizenz](lizenz.md). Empfohlene
+Zitations-Form mit DOI: siehe [DOI (Zitieren)](zitieren.md).

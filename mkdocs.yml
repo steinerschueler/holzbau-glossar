@@ -51,6 +51,7 @@ nav:
   # (hooks/build_pages.py) hier eingefügt — vor „DOI (Zitieren)".
   - "DOI (Zitieren)": zitieren.md
   - "API (Einbinden)": api.md
+  - Lizenz: lizenz.md
   - Impressum: impressum.md
   - Datenschutz: datenschutz.md
 # Pilot-Einträge (nur lokal über src/pilot/, gitignored) bleiben aus

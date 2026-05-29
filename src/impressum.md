@@ -32,11 +32,9 @@ Der gesamte Quellcode dieser Seite sowie alle Glossar-Einträge sind
 
 ## Lizenz
 
-Inhalte stehen unter
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.de) zur
-Verfügung. Bei Weiterverwendung bitte als Quelle
-**holzbau-glossar.ch** angeben; ein Verweis auf die DOI
-`10.5281/zenodo.20435319` (Concept-DOI) ist empfohlen.
+Inhalte stehen unter CC BY 4.0 — Bedingungen, Praxis und Begründung
+auf der dedizierten [Lizenz](lizenz.md)-Seite. Zitations-Hinweise:
+siehe [DOI (Zitieren)](zitieren.md).
 
 ## Haftungsausschluss
 

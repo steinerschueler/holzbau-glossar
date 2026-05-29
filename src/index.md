@@ -20,7 +20,7 @@ zu fassen, dass
 - Geschwister-Begriffe sich klar voneinander abgrenzen,
 - die Diskurs-Konflikte zwischen Quellen explizit gemacht und entschieden
   werden,
-- der gesamte Inhalt unter CC BY 4.0 frei nutzbar ist.
+- der gesamte Inhalt unter [CC BY 4.0](lizenz.md) frei nutzbar ist.
 
 ## Aufbau
 
