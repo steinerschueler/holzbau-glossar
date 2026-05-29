@@ -66,6 +66,11 @@ plugins:
       locale: de
       enable_creation_date: false
       fallback_to_build_date: true
+  # Privacy-Plugin (Material seit 9.4): externe Assets (Google Fonts u.a.)
+  # beim Build lokal cachen, damit keine Third-Party-Requests aus dem
+  # Browser des Nutzers ausgehen.
+  - privacy:
+      enabled: true
 
 hooks:
   - hooks/build_pages.py
