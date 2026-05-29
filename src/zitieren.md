@@ -1,95 +1,70 @@
 ---
-title: Zitieren
-description: Empfohlene Zitierform, Lizenz, Versions-Anker.
+title: DOI (Zitieren)
+description: Persistente Zitations-Adresse via Zenodo-DOI — Bedeutung, Anwendung, empfohlene Zitierform.
 ---
 
-# Zitieren
+# DOI (Zitieren)
 
-Dieses Glossar ist als zitierbare Quelle für Forschung, Normungs-Arbeit
-und Werkzeug-Entwicklung gedacht.
+Das Holzbau-Glossar ist als zitierbare Quelle für Forschung,
+Normungs-Arbeit und Werkzeug-Entwicklung gedacht. Die persistente
+Adresse dazu ist ein **DOI** — vergeben über
+[Zenodo](https://zenodo.org/) (CERN-Infrastruktur, Aufbewahrungs-
+Zusage ≥ 20 Jahre).
 
-## Drei Formate pro Eintrag
-
-Jeder Glossar-Eintrag wird in drei Formaten ausgeliefert, damit zitieren
-ohne Umwege funktioniert:
-
-- **HTML** für entspanntes Lesen im Browser (mit Hell- und Darkmode).
-- **Markdown** (`.md`) als 1:1-Quelle mit Frontmatter — geeignet für
-  Einbettung in eigene Doku-Pipelines, Pandoc-Konversion oder direkte
-  Übernahme.
-- **Plain-Text** (`.txt`) als reiner Text ohne Markdown-Syntax —
-  geeignet für E-Mail, Notiz-Apps oder schnelles Copy-Paste.
-
-Direkt unter jedem Eintrag stehen „Quelle herunterladen"-Buttons.
-
-## DOI
-
-Das Glossar ist auf [Zenodo](https://zenodo.org/) archiviert und unter
-einer persistenten DOI zitierbar:
-
-- **Concept-DOI** (verweist immer auf die jeweils neueste Version):
-  [10.5281/zenodo.20435319](https://doi.org/10.5281/zenodo.20435319)
-- **Version-DOI** v0.2.0 (Stand 2026-05-29 — aktuelles Release):
-  [10.5281/zenodo.20441549](https://doi.org/10.5281/zenodo.20441549)
-- **Version-DOI** v0.1.0 (Stand 2026-05-28):
-  [10.5281/zenodo.20435320](https://doi.org/10.5281/zenodo.20435320)
-- Weitere Version-DOIs für künftige Releases sind über die
-  [Zenodo-Eintragsseite](https://doi.org/10.5281/zenodo.20435319)
-  erreichbar.
-
-### Was ist ein DOI — und wozu?
+## Was ist ein DOI — und wozu?
 
 Ein **DOI** (Digital Object Identifier) ist ein persistenter
-Identifikator, der einer Publikation dauerhaft zugeordnet bleibt — auch
-wenn die ursprüngliche URL verschwindet, umzieht oder die Domain
-ausläuft. Hinter dem DOI dieses Glossars steht **Zenodo**, betrieben
-vom CERN: die Inhalte sind dort archiviert und mit einer Aufbewahrungs-
-Zusage von mindestens 20 Jahren versehen.
+Identifikator, der einer Publikation dauerhaft zugeordnet bleibt —
+auch wenn die ursprüngliche URL verschwindet, umzieht oder die
+Domain ausläuft. Hinter dem DOI dieses Glossars steht **Zenodo**,
+betrieben vom CERN: die Inhalte sind dort archiviert und mit einer
+Aufbewahrungs-Zusage von mindestens 20 Jahren versehen.
 
 Konkret gewinnst du mit einem DOI:
 
-1. **Langzeit-Verlässlichkeit** — die DOI funktioniert auch dann noch,
-   wenn `holzbau-glossar.ch` einmal nicht mehr erreichbar wäre. Sie
-   ist die einzige Adresse, die du in einer wissenschaftlichen Arbeit
-   guten Gewissens jahrzehntelang stehen lassen kannst.
-2. **Maschinenlesbare Zitation** — Literaturverwaltungs-Programme wie
-   Zotero, Mendeley, EndNote oder Citavi importieren über die DOI alle
-   Meta-Daten (Titel, Autor, Datum, Verlag, Lizenz) automatisch.
-   Kein Abtippen.
-3. **Versionierte Eindeutigkeit** — die **Concept-DOI** sagt „dieses
-   Glossar in seiner jeweils aktuellen Form", die **Version-DOI** sagt
-   „dieser Stand, eingefroren". Für reproduzierbare Forschungs- oder
-   Normungsarbeit zählt nur die Version-DOI: ändere ich morgen einen
-   Eintrag, bleibt der gestern referenzierte Stand unverändert
-   abrufbar.
+1. **Langzeit-Verlässlichkeit** — die DOI funktioniert auch dann
+   noch, wenn `holzbau-glossar.ch` einmal nicht mehr erreichbar
+   wäre. Sie ist die einzige Adresse, die du in einer
+   wissenschaftlichen Arbeit guten Gewissens jahrzehntelang stehen
+   lassen kannst.
+2. **Maschinenlesbare Zitation** — Literaturverwaltungs-Programme
+   wie Zotero, Mendeley, EndNote oder Citavi importieren über die
+   DOI alle Meta-Daten (Titel, Autor, Datum, Verlag, Lizenz)
+   automatisch. Kein Abtippen.
+3. **Versionierte Eindeutigkeit** — die **Concept-DOI** sagt
+   „dieses Glossar in seiner jeweils aktuellen Form", die
+   **Version-DOI** sagt „dieser Stand, eingefroren". Für
+   reproduzierbare Forschungs- oder Normungsarbeit zählt nur die
+   Version-DOI: ändere ich morgen einen Eintrag, bleibt der gestern
+   referenzierte Stand unverändert abrufbar.
 4. **Sichtbarkeit und Tracking** — wissenschaftliche Such-Dienste
-   (Google Scholar, OpenAIRE, BASE) indizieren über DOI; jede Zitation
-   im Web wird mit der Quelle verknüpft.
+   (Google Scholar, OpenAIRE, BASE) indizieren über DOI; jede
+   Zitation im Web wird mit der Quelle verknüpft.
 
-### Concept-DOI oder Version-DOI — welche wann?
+## Welche DOI wann?
 
-| Situation                                 | Empfohlen          |
-|-------------------------------------------|--------------------|
-| Lehr-Material, Werkzeug-Doku, Webseiten   | Concept-DOI        |
-| Code-Bibliothek, die das Glossar einbettet| Concept-DOI        |
-| Wissenschaftliche Arbeit, Norm-Verweis    | **Version-DOI**    |
-| Behördliche oder gutachterliche Referenz  | **Version-DOI**    |
-| Schul-Skript, didaktisches Material       | Concept-DOI        |
+| Situation | Empfohlen |
+|---|---|
+| Lehr-Material, Werkzeug-Doku, Webseiten | Concept-DOI |
+| Code-Bibliothek, die das Glossar einbettet | Concept-DOI |
+| Schul-Skript, didaktisches Material | Concept-DOI |
+| Wissenschaftliche Arbeit, Norm-Verweis | **Version-DOI** |
+| Behördliche oder gutachterliche Referenz | **Version-DOI** |
 
 Faustregel: Wenn du willst, dass deine Leser**innen** immer den
-aktuellen Stand sehen → Concept-DOI. Wenn du willst, dass dein Verweis
-in zehn Jahren noch dasselbe zeigt wie heute → Version-DOI.
+aktuellen Stand sehen → Concept-DOI. Wenn du willst, dass dein
+Verweis in zehn Jahren noch dasselbe zeigt wie heute → Version-DOI.
 
-### Eine DOI praktisch nutzen
+## Eine DOI praktisch nutzen
 
-#### Im Browser
+### Im Browser
 
 Hänge die DOI an `https://doi.org/`:
 [https://doi.org/10.5281/zenodo.20435319](https://doi.org/10.5281/zenodo.20435319).
 Der Link löst sich automatisch zur kanonischen Zenodo-Eintragsseite
 auf, von wo du die Inhalte und alle Meta-Daten siehst.
 
-#### In Zotero (Empfehlung für die meisten)
+### In Zotero (Empfehlung für die meisten)
 
 1. Zotero öffnen.
 2. In der Werkzeugleiste auf den **Zauberstab** klicken
@@ -97,14 +72,14 @@ auf, von wo du die Inhalte und alle Meta-Daten siehst.
 3. DOI eintippen: `10.5281/zenodo.20435319`
 4. Eintrag erscheint mit allen Meta-Daten in deiner Bibliothek.
 
-#### In Mendeley / EndNote / Citavi
+### In Mendeley / EndNote / Citavi
 
 Praktisch identisch: alle drei Programme bieten unter
 „Datei → Importieren" oder „Eintrag hinzufügen" ein DOI-Feld an.
 Einfach `10.5281/zenodo.20435319` einfügen → Meta-Daten werden
 automatisch geladen.
 
-#### Direkt als BibTeX
+### Direkt als BibTeX
 
 Jeder einzelne Glossar-Eintrag bietet einen `.bib`-Download (kleiner
 Knopf unter dem Eintrag). Die Datei ist sofort einsetzbar — kopiere
@@ -115,6 +90,18 @@ Für das gesamte Glossar (statt eines einzelnen Eintrags) kannst du
 auf der [Zenodo-Eintragsseite](https://doi.org/10.5281/zenodo.20435319)
 rechts in der Spalte „Export" auf „BibTeX" klicken — das ergibt einen
 sauberen `@misc`-Eintrag.
+
+## DOIs dieses Glossars
+
+- **Concept-DOI** (verweist immer auf die jeweils neueste Version):
+  [10.5281/zenodo.20435319](https://doi.org/10.5281/zenodo.20435319)
+- **Version-DOI v0.2.0** (Stand 2026-05-29 — aktuelles Release):
+  [10.5281/zenodo.20441549](https://doi.org/10.5281/zenodo.20441549)
+- **Version-DOI v0.1.0** (Stand 2026-05-28):
+  [10.5281/zenodo.20435320](https://doi.org/10.5281/zenodo.20435320)
+- Weitere Version-DOIs für künftige Releases sind über die
+  [Zenodo-Eintragsseite](https://doi.org/10.5281/zenodo.20435319)
+  erreichbar.
 
 ## Empfohlene Zitierform
 
@@ -175,3 +162,23 @@ Eintrag):
 Die unter jedem Eintrag bereitgestellte `.bib`-Datei verwendet die
 Concept-DOI; für eine Version-DOI ersetze den `doi`-Eintrag
 entsprechend dem zitierten Release-Stand (siehe DOI-Liste oben).
+
+## Drei Formate pro Eintrag
+
+Jeder Glossar-Eintrag wird in drei Formaten ausgeliefert, damit
+Zitieren ohne Umwege funktioniert:
+
+- **HTML** für entspanntes Lesen im Browser (mit Hell- und Darkmode).
+- **Markdown** (`.md`) als 1:1-Quelle mit Frontmatter — geeignet für
+  Einbettung in eigene Doku-Pipelines, Pandoc-Konversion oder direkte
+  Übernahme.
+- **Plain-Text** (`.txt`) als reiner Text ohne Markdown-Syntax —
+  geeignet für E-Mail, Notiz-Apps oder schnelles Copy-Paste.
+
+Direkt unter jedem Eintrag stehen „Quelle herunterladen"-Buttons.
+
+## Lizenz
+
+Inhalte stehen unter CC BY 4.0. Bedingungen, Praxis und Begründung
+der Lizenz-Wahl: siehe [Lizenz](lizenz.md). Maschinenlesbare
+Glossar-Anbindung: siehe [API (Einbinden)](api.md).
