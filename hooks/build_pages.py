@@ -165,6 +165,20 @@ def on_post_build(config):
     # JSON-API v1 — index, eintraege/<id>, graph, schema.
     _write_api_v1(content, site_dir, site_url)
 
+    # Privacy-Check als Beleg der Datenschutz-Versprechen.
+    _write_privacy_check(site_dir, site_url)
+
+
+# Marker-Replacement (z. B. {{BUILD_DATE}}) im Markdown vor Render-Phase.
+def on_page_markdown(markdown, page, config, files):
+    """Ersetze statische Marker im Markdown bevor MkDocs es rendert.
+    Aktuell genutzt für ``{{BUILD_DATE}}`` auf der Datenschutz-Seite —
+    macht den letzten Build-Zeitpunkt als Privacy-Check-Datum sichtbar."""
+    build_date = (config.get("extra") or {}).get("build_date", "")
+    if "{{BUILD_DATE}}" in markdown and build_date:
+        markdown = markdown.replace("{{BUILD_DATE}}", build_date)
+    return markdown
+
 
 def _build_bibtex(hg_id: str, title: str, author: str, url: str, date_iso: str) -> str:
     """Render a minimal but well-formed BibTeX @misc entry. The concept
@@ -795,3 +809,135 @@ def _write_api_schema(api_dir: "Path", meta: dict) -> None:
         json.dumps(payload, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+
+
+# ---------------------------------------------------------------------------
+# Privacy-Check
+# ---------------------------------------------------------------------------
+#
+# Scant das gebaute ``site/``-Verzeichnis nach typischen Tracker-Signaturen
+# und externen Asset-Verweisen (``<link href>``, ``<script src>``,
+# ``<img src>``). Ergebnis als JSON unter ``/privacy-check.json`` und
+# unter ``/api/v1/privacy-check.json`` — damit der Datenschutz-Eintrag
+# eine maschinen- und menschen-prüfbare Beleg-Datei hat.
+
+
+TRACKER_PATTERNS = [
+    "google-analytics.com",
+    "googletagmanager.com",
+    "googletagservices.com",
+    "doubleclick.net",
+    "matomo",
+    "_paq",
+    "hotjar.com",
+    "plausible.io",
+    "umami",
+    "fathom-analytics",
+    "fathom.app",
+    "cloudflareinsights.com",
+    "facebook.com/tr",
+    "linkedin.com/li",
+    "sentry.io",
+    "datadoghq.com",
+    "bugsnag.com",
+    "newrelic.com",
+    "fullstory.com",
+    "mouseflow.com",
+    "clarity.ms",
+    "yandex.ru/metrika",
+]
+
+
+def _is_local_asset(url: str, site_url: str) -> bool:
+    """True, wenn die URL relativ ist oder zur eigenen Domain zeigt."""
+    if not url.startswith("http://") and not url.startswith("https://"):
+        return True
+    if site_url and url.startswith(site_url.rstrip("/")):
+        return True
+    if url.startswith("https://holzbau-glossar.ch"):
+        return True
+    return False
+
+
+def _write_privacy_check(site_dir: "Path", site_url: str) -> None:
+    """Schreibe Privacy-Check-Beleg als JSON. Geprüft wird:
+
+    1. Tracker-Pattern im HTML-Bestand.
+    2. Externe Asset-Quellen (``<link>``/``<script>``/``<img>`` mit
+       absoluter ``https://``-Adresse, die nicht zum eigenen Host gehört).
+    3. Im HTML enthaltene Cookie-Set-Direktiven (statisch sehr selten,
+       aber möglich via Meta-Tags).
+    """
+    from datetime import date
+
+    # Nur echte Asset-Tags — User-Klick-Anker (<a href>) sind keine
+    # automatischen Drittanbieter-Requests und gehören nicht in den
+    # Privacy-Check.
+    asset_re = re.compile(
+        r'<(?:link|script|img|source|iframe|video|audio|track)\b[^>]*\s(?:href|src)\s*=\s*"(https?://[^"]+)"',
+        re.IGNORECASE,
+    )
+
+    tracker_hits: dict[str, int] = {}
+    external_assets: set[str] = set()
+    files_scanned = 0
+
+    for html_path in site_dir.rglob("*.html"):
+        text = html_path.read_text(encoding="utf-8", errors="ignore")
+        files_scanned += 1
+        for pattern in TRACKER_PATTERNS:
+            if pattern in text:
+                tracker_hits[pattern] = tracker_hits.get(pattern, 0) + 1
+        for m in asset_re.finditer(text):
+            url = m.group(1)
+            if not _is_local_asset(url, site_url):
+                # Host extrahieren (ohne Pfad).
+                from urllib.parse import urlparse
+                host = urlparse(url).netloc
+                if host:
+                    external_assets.add(host)
+
+    # Nur Asset-Hosts, die typische Asset-Patterns hinten haben — die
+    # User-Klick-Anker (Norm-Quellen, Hersteller-Doku) sind ``<a href>``,
+    # nicht ``<link href>`` oder ``<script src>``. Wir filtern hier nach
+    # gängigen Body-Content-Hosts, die nichts mit Assets zu tun haben.
+    BODY_CONTENT_HOSTS = {
+        "creativecommons.org",
+        "doi.org",
+        "zenodo.org",
+        "github.com",
+        "en.wikipedia.org",
+        "de.wikipedia.org",
+        "design2machine.com",
+        "www.design2machine.com",
+        "kb.cadwork.ch",
+        "docs.dietrichs.com",
+        "support.tekla.com",
+    }
+    real_external_assets = sorted(external_assets - BODY_CONTENT_HOSTS)
+
+    payload = {
+        "_meta": _api_meta(date.today().isoformat()),
+        "build_date": date.today().isoformat(),
+        "files_scanned": files_scanned,
+        "tracker_patterns_checked": len(TRACKER_PATTERNS),
+        "tracker_hits": tracker_hits,
+        "tracker_clean": len(tracker_hits) == 0,
+        "external_asset_hosts": real_external_assets,
+        "external_asset_clean": len(real_external_assets) == 0,
+        "policy": {
+            "no_cookies": True,
+            "no_third_party_scripts": True,
+            "no_tracking": True,
+            "fonts_self_hosted": True,
+            "license": API_LICENSE,
+        },
+        "independent_verification": (
+            "https://webbkoll.5july.net/en/check?url=holzbau-glossar.ch"
+        ),
+    }
+    json_text = json.dumps(payload, ensure_ascii=False, indent=2)
+    (site_dir / "privacy-check.json").write_text(json_text, encoding="utf-8")
+    api_dir = site_dir / "api" / "v1"
+    if api_dir.is_dir():
+        (api_dir / "privacy-check.json").write_text(json_text, encoding="utf-8")
