@@ -881,6 +881,21 @@ def _write_privacy_check(site_dir: "Path", site_url: str) -> None:
     tracker_hits: dict[str, int] = {}
     external_assets: set[str] = set()
     files_scanned = 0
+    # Per-Seite gesetzte Security-Header über Meta-Tags. Wir prüfen
+    # eine Stichprobe (eine beliebige HTML-Datei), weil alle Seiten
+    # vom selben Theme-Template generiert werden.
+    csp_set = False
+    referrer_set = False
+    sample_collected = False
+
+    csp_re = re.compile(
+        r'<meta\s+http-equiv\s*=\s*"Content-Security-Policy"[^>]*content\s*=\s*"([^"]+)"',
+        re.IGNORECASE,
+    )
+    referrer_re = re.compile(
+        r'<meta\s+name\s*=\s*"referrer"[^>]*content\s*=\s*"([^"]+)"',
+        re.IGNORECASE,
+    )
 
     for html_path in site_dir.rglob("*.html"):
         text = html_path.read_text(encoding="utf-8", errors="ignore")
@@ -891,11 +906,24 @@ def _write_privacy_check(site_dir: "Path", site_url: str) -> None:
         for m in asset_re.finditer(text):
             url = m.group(1)
             if not _is_local_asset(url, site_url):
-                # Host extrahieren (ohne Pfad).
                 from urllib.parse import urlparse
                 host = urlparse(url).netloc
                 if host:
                     external_assets.add(host)
+        if not sample_collected:
+            csp_match = csp_re.search(text)
+            referrer_match = referrer_re.search(text)
+            if csp_match:
+                csp_set = True
+                csp_value = csp_match.group(1)
+            else:
+                csp_value = None
+            if referrer_match:
+                referrer_set = True
+                referrer_value = referrer_match.group(1)
+            else:
+                referrer_value = None
+            sample_collected = True
 
     # Nur Asset-Hosts, die typische Asset-Patterns hinten haben — die
     # User-Klick-Anker (Norm-Quellen, Hersteller-Doku) sind ``<a href>``,
@@ -925,6 +953,24 @@ def _write_privacy_check(site_dir: "Path", site_url: str) -> None:
         "tracker_clean": len(tracker_hits) == 0,
         "external_asset_hosts": real_external_assets,
         "external_asset_clean": len(real_external_assets) == 0,
+        "security_headers_meta": {
+            "content_security_policy_set": csp_set,
+            "content_security_policy_value": csp_value if sample_collected else None,
+            "referrer_policy_set": referrer_set,
+            "referrer_policy_value": referrer_value if sample_collected else None,
+        },
+        "platform_limits": {
+            "hosted_on": "GitHub Pages",
+            "headers_not_settable": [
+                "Strict-Transport-Security",
+                "X-Content-Type-Options",
+                "Permissions-Policy",
+            ],
+            "headers_set_via_meta_tag": [
+                "Content-Security-Policy",
+                "Referrer-Policy",
+            ],
+        },
         "policy": {
             "no_cookies": True,
             "no_third_party_scripts": True,

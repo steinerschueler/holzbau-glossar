@@ -46,6 +46,43 @@ nachvollziehen können. Zwei Belege:
 
 Build-Stand des angezeigten Privacy-Checks: **{{BUILD_DATE}}**.
 
+## Security-Header — was geht, was nicht
+
+Diese Site wird über **GitHub Pages** ausgeliefert. GitHub Pages
+erlaubt keine Custom-HTTP-Header-Konfiguration (kein `_headers`,
+kein `.htaccess`, kein eigener Web-Server). Manche der von Webbkoll
+oder Mozilla Observatory geprüften Security-Header lassen sich
+deshalb ausschließlich über HTML-`<meta>`-Tags setzen — die wirken
+genauso, solange der Browser sie verarbeitet:
+
+| Header | Auf dieser Site gesetzt | Mechanismus |
+|---|---|---|
+| **Content-Security-Policy** | ✓ | `<meta http-equiv>` im `<head>` |
+| **Referrer-Policy** | ✓ (`strict-origin-when-cross-origin`) | `<meta name="referrer">` im `<head>` |
+| **Strict-Transport-Security** (HSTS) | nicht setzbar auf GitHub Pages | nur als echter HTTP-Header möglich |
+| X-Content-Type-Options | nicht setzbar | nur als HTTP-Header möglich |
+| X-Frame-Options | funktional ersetzt | über CSP `frame-ancestors 'none'` |
+| Permissions-Policy | nicht setzbar | nur als HTTP-Header möglich |
+
+**Warum die fehlenden Header hier in der Praxis kaum schaden:**
+
+- Die Site setzt **keine Cookies** und nutzt **keine Sessions**.
+  Ein HSTS-Mangel macht primär Cookie-Diebstahl bei
+  Downgrade-Angriffen kritisch — beides ist hier nicht relevant.
+- HTTPS-Enforce ist im GitHub-Pages-Setting aktiv: jeder
+  HTTP-Aufruf wird per Server-Redirect auf HTTPS umgelenkt. Eine
+  erste Verbindung über HTTP wird also nicht statisch ausgeliefert.
+- Die Site liefert ausschließlich statisches HTML/CSS/JS. Es gibt
+  keine User-generierten Inhalte, keine Eingabe-Formulare (außer
+  der browser-internen Volltextsuche), keine Datei-Uploads und
+  keine Authentifizierung — die Angriffsfläche, die die fehlenden
+  Header sonst schützen würden, existiert hier nicht.
+
+Wer maximalen Schutz im Hosting-Layer braucht, müsste die Site
+hinter ein CDN setzen, das Custom-Header injiziert (Netlify,
+Cloudflare Pages). Das ist hier bewusst nicht gemacht — der
+Plattform-Tradeoff ist transparent dokumentiert.
+
 ## Server-seitige Zugriffsprotokolle
 
 Die Seite wird über **GitHub Pages** ausgeliefert. GitHub erstellt

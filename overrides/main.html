@@ -11,6 +11,17 @@
 
 {% block extrahead %}
   {{ super() }}
+  {# Content-Security-Policy via Meta-Tag — GitHub Pages erlaubt keine
+     Custom-HTTP-Header, der Meta-Tag-Mechanismus ist die einzige
+     plattform-kompatible Variante. Material verwendet Inline-Scripts
+     und Inline-Styles (Theme-Config, Critical-CSS, Init), deshalb
+     'unsafe-inline' für script-src und style-src — sonst restriktiv.
+     frame-ancestors 'none' ersetzt funktional X-Frame-Options. #}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  {# Referrer-Policy — kein Pfad/Query an Drittseiten beim Klick auf
+     externe Links; nur das Origin wird mitgegeben, und auch nur bei
+     gleichem oder höherem Sicherheits-Level. #}
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   {# OpenSearch-Description — Browser bieten die Site als Suchquelle
      in der Adressleiste an. Gilt für jede Seite, nicht nur Glossar. #}
   <link rel="search"
