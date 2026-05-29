@@ -275,72 +275,68 @@ def _fetch_webbkoll_findings() -> "list[tuple[str, str]] | None":
     return _parse_webbkoll_findings(result_html)
 
 
+_WEBBKOLL_STATUS_SYMBOL = {
+    "success": "✓",
+    "alert": "✗",
+    "warning": "⚠",
+}
+
+
 def _parse_webbkoll_findings(html: str) -> "list[tuple[str, str]] | None":
-    """Pragmatische String-Suche nach den wichtigsten Status-Indikatoren
-    auf der Webbkoll-Result-Page."""
+    """Webbkoll-Result-Page parsen — Status-H3-Sektionen über
+    ``<span class="success|alert|warning">`` und Text-Befunde für
+    Third-Party / Cookies."""
     findings: list[tuple[str, str]] = []
 
-    def add(label: str, ok: bool, note: str = "") -> None:
-        symbol = "✓" if ok else "—"
-        text = f"{symbol} {note}" if note else symbol
-        findings.append((label, text))
-
-    # Third-Party-Requests — Webbkoll formuliert "No third-party requests"
-    # bei sauberem Befund.
-    third_party_clean = "No third-party requests" in html
-    add(
-        "Third-Party-Requests",
-        third_party_clean,
-        "keine externen Asset-Requests" if third_party_clean else "Webbkoll meldet welche",
-    )
-
-    # Cookies — "No cookies detected" oder ähnliches.
-    cookies_clean = (
-        "No cookies detected" in html or "no cookies" in html.lower()[:50000]
-    )
-    add(
-        "Cookies",
-        cookies_clean,
-        "keine gesetzt" if cookies_clean else "Webbkoll meldet welche",
-    )
-
-    # HTTPS-Verbindung — "secure connection" / "HTTPS by default".
-    https_ok = "secure connection" in html.lower()
-    add("HTTPS-Verbindung", https_ok, "aktiv und erzwungen" if https_ok else "")
-
-    # HSTS — Plattform-Limitation, voraussichtlich rot bei Webbkoll.
-    hsts_set = "HSTS" in html and (
-        "max-age=" in html or "HSTS is enabled" in html
-    )
-    findings.append(
-        (
-            "Strict-Transport-Security",
-            "— GitHub-Pages-Limit, dokumentiert"
-            if not hsts_set
-            else "✓ aktiv",
+    # 1. Third-Party-Requests + Cookies aus Text-Indikatoren.
+    if "No third-party requests" in html:
+        findings.append(("Third-Party-Requests", "✓ keine"))
+    else:
+        # Versuche, die Zahl zu extrahieren.
+        m = re.search(
+            r'<span class="label"><a href="#requests">Third-party requests:[^<]*</a></span>\s*<span[^>]*>([^<]+)',
+            html,
         )
+        count = m.group(1).strip() if m else "Webbkoll meldet welche"
+        findings.append(("Third-Party-Requests", f"✗ {count}"))
+
+    if "No cookies detected" in html:
+        findings.append(("Cookies", "✓ keine gesetzt"))
+    else:
+        findings.append(("Cookies", "✗ welche gesetzt"))
+
+    # 2. Header-Sektionen über die Status-H3-Markierung.
+    header_pattern = re.compile(
+        r'<h3[^>]*>\s*<span class="(success|alert|warning)"[^>]*>[^<]*</span>\s*([^<\n]+?)\s*<',
+        re.MULTILINE,
     )
 
-    # CSP — sollte jetzt grün sein (über Meta-Tag).
-    csp_set = "Content-Security-Policy" in html and (
-        "is set" in html.lower() or "CSP is set" in html
-    )
-    # Fallback: einfach prüfen ob "Content-Security-Policy" als gesetzter
-    # Header oder Meta-Tag erwähnt ist.
-    csp_present = "Content Security Policy" in html
-    add(
-        "Content-Security-Policy",
-        csp_present,
-        "über Meta-Tag gesetzt" if csp_present else "",
-    )
+    # Map Webbkoll-Labels auf unsere deutschen Titel.
+    label_map = {
+        "HTTPS by default": "HTTPS",
+        "Strict Transport Security": "Strict-Transport-Security (HSTS)",
+        "Content Security Policy": "Content-Security-Policy",
+        "Referrer Policy": "Referrer-Policy",
+        "Subresource Integrity (SRI)": "Subresource Integrity",
+    }
+    # Hinweistexte für rote/gelbe Befunde, damit die Plattform-Realität
+    # nicht als Versagen erscheint.
+    note_map = {
+        "Strict-Transport-Security (HSTS)": "GitHub-Pages-Limit, dokumentiert",
+        "Content-Security-Policy": "nur über Meta-Tag (kein HTTP-Header)",
+        "Referrer-Policy": "über Meta-Tag — strict-origin-when-cross-origin",
+    }
 
-    # Referrer-Policy — sollte ebenfalls grün sein.
-    referrer_present = "Referrer Policy" in html or "referrer policy" in html.lower()
-    add(
-        "Referrer-Policy",
-        referrer_present,
-        "strict-origin-when-cross-origin" if referrer_present else "",
-    )
+    for m in header_pattern.finditer(html):
+        status, raw_label = m.groups()
+        clean = re.sub(r"&#32;|\s+", " ", raw_label).strip()
+        if not clean:
+            continue
+        title = label_map.get(clean, clean)
+        symbol = _WEBBKOLL_STATUS_SYMBOL.get(status, "?")
+        note = note_map.get(title)
+        value = f"{symbol} {note}" if note else symbol
+        findings.append((title, value))
 
     return findings if findings else None
 
