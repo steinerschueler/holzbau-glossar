@@ -40,6 +40,8 @@ einer persistenten DOI zitierbar:
 
 - **Concept-DOI** (verweist immer auf die jeweils neueste Version):
   [10.5281/zenodo.20435319](https://doi.org/10.5281/zenodo.20435319)
+- **Version-DOI** v0.2.0 (Stand 2026-05-29 — aktuelles Release):
+  [10.5281/zenodo.20441549](https://doi.org/10.5281/zenodo.20441549)
 - **Version-DOI** v0.1.0 (Stand 2026-05-28):
   [10.5281/zenodo.20435320](https://doi.org/10.5281/zenodo.20435320)
 - Weitere Version-DOIs für künftige Releases sind über die
@@ -162,9 +164,9 @@ Für einen einzelnen Glossar-Eintrag mit eingefrorenem Stand:
 
 **APA 7:**
 
-> Holzbau-Glossar. (2026). Kerve. In *Holzbau-Glossar* (v0.1.0).
+> Holzbau-Glossar. (2026). Kerve. In *Holzbau-Glossar* (v0.2.0).
 > holzbau-glossar.ch.
-> https://doi.org/10.5281/zenodo.20435320
+> https://doi.org/10.5281/zenodo.20441549
 
 **BibTeX** (per Eintrag — fertig zum Download unter jedem Glossar-
 Eintrag):
