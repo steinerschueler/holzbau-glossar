@@ -8,7 +8,7 @@ begriffstyp: hilfsbegriff
 voraussetzungen: [koordinatensystem, punkt, vektor, einheitsvektor, weltkoordinatensystem, toleranzen]
 abgrenzung_zu: [weltkoordinatensystem, bauteilachse, achse, bauteil, element]
 status: entwurf
-subglossar_pendant: notwendig  # Überschreibung hilfsbegriff-Default optional → required: das Bauteil-Bezugssystem ist über alle Stufen bis Meister praxisrelevant (wie sitzt das Werkstück im Raum, Welt↔Lokal-Bezug) (HG_KONVENTIONEN §7).
+subglossar_pendant: notwendig  # Normalfall; Hinweis: das Bauteil-Bezugssystem ist über alle Stufen bis Meister praxisrelevant (wie sitzt das Werkstück im Raum, Welt↔Lokal-Bezug) (HG_KONVENTIONEN §7).
 quellen_primär:
   - "ISO 19111:2019, 'Geographic information — Referencing by coordinates', Abschnitt 7 (Coordinate systems): Begriff des kartesischen Koordinatensystems unabhängig vom Bezugsdatum; trägt die Trennung 'Koordinatensystem' vs. 'Bezugsdatum', die hier als Welt/Lokal-Trennung wieder auftaucht."
   - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren): kartesisches Koordinatensystem, Rechtshändigkeit, orthonormale Basis."

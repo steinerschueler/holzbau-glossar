@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [werkstoff, einheitsvektor, faserrichtungs_modus, plattendicken_achse, plattenlaengsrichtung, festigkeitsklasse, produktkennzeichnung, toleranzen]
 abgrenzung_zu: [axiales_holz, mehrlagenholz, isotroper_plattenwerkstoff, werkstoff_stahl, faserrichtung]
 status: entwurf
-subglossar_pendant: optional  # Überschreibung generisch-Default required → optional: abstrakter Klassenname (Praxis sagt "OSB"); der praxisrelevante Lehrstoff liegt bei faserrichtung und faserrichtungs_modus (beide required), nicht am Sammelbegriff (HG_KONVENTIONEN §7).
+subglossar_pendant: optional  # Begründung (Abweichung vom Normalfall notwendig): abstrakter Klassenname (Praxis sagt "OSB"); der praxisrelevante Lehrstoff liegt bei faserrichtung und faserrichtungs_modus (beide notwendig), nicht am Sammelbegriff (HG_KONVENTIONEN §7).
 quellen_primär:
   - "DIN EN 300:2006-09, 'Platten aus langen, schlanken, gerichteten Spänen (OSB) – Definitionen, Klassifizierung und Anforderungen' (OSB/1, OSB/2, OSB/3, OSB/4)."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Plattenwerkstoffe und Bauteile aus Plattenwerkstoffen), insbesondere Tabellen mit f_m,0 und f_m,90 für OSB."

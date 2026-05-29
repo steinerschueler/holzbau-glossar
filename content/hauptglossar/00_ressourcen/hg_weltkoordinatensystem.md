@@ -8,7 +8,7 @@ begriffstyp: hilfsbegriff
 voraussetzungen: [koordinatensystem, punkt, vektor, einheitsvektor, toleranzen]
 abgrenzung_zu: [lokales_koordinatensystem, bauteilachse, lv95, wgs84]
 status: entwurf
-subglossar_pendant: notwendig  # Überschreibung hilfsbegriff-Default optional → required: das globale z-oben-Rechtssystem ist Grundmodell jeder räumlichen Darstellung, bis Meister praxisrelevant (HG_KONVENTIONEN §7).
+subglossar_pendant: notwendig  # Normalfall; Hinweis: das globale z-oben-Rechtssystem ist Grundmodell jeder räumlichen Darstellung, bis Meister praxisrelevant (HG_KONVENTIONEN §7).
 quellen_primär:
   - "ISO 19111:2019, 'Geographic information — Referencing by coordinates', insbesondere Abschnitt 4 (Terms and definitions: coordinate reference system, coordinate system, datum) und Abschnitt 7 (Coordinate systems)."
   - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren), insbesondere zum kartesischen Koordinatensystem und zur Rechtshändigkeit."

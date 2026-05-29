@@ -8,7 +8,7 @@ begriffstyp: primitiv
 voraussetzungen: [vektor, toleranzen]
 abgrenzung_zu: [vektor, faserrichtung, gerade]
 status: entwurf
-subglossar_pendant: optional  # Überschreibung primitiv-Default required → optional: normierte Sonderform des Vektors (Norm = 1), mathematische Feinheit ohne Praxisbegriff; didaktische Substanz liegt bei vektor und faserrichtung (HG_KONVENTIONEN §7).
+subglossar_pendant: optional  # Begründung (Abweichung vom Normalfall notwendig): normierte Sonderform des Vektors (Norm = 1), mathematische Feinheit ohne Praxisbegriff; didaktische Substanz liegt bei vektor und faserrichtung (HG_KONVENTIONEN §7).
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, Abschnitt 2 (Geometrie und Vektoren), Symbol 2-7.6 'Einheitsvektor'."
   - "ISO 80000-2:2019, Abschnitt 2 'Vektoren und Tensoren', Eintrag zum normierten Vektor."

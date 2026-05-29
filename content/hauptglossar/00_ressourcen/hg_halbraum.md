@@ -8,7 +8,7 @@ begriffstyp: generisch
 voraussetzungen: [punkt, vektor, ebene, toleranzen]
 abgrenzung_zu: [ebene, halbgerade, polyeder]
 status: entwurf
-subglossar_pendant: optional  # Überschreibung generisch-Default required → optional: interner geometrischer Baustein (Bauteilkörper = Schnitt von Halbräumen), im Holzbau-Korpus nicht gebräuchlich, kein Praxis-Lehrwert bis Meister; Stoff liegt bei ebene und polyeder (beide required) (HG_KONVENTIONEN §7).
+subglossar_pendant: optional  # Begründung (Abweichung vom Normalfall notwendig): interner geometrischer Baustein (Bauteilkörper = Schnitt von Halbräumen), im Holzbau-Korpus nicht gebräuchlich, kein Praxis-Lehrwert bis Meister; Stoff liegt bei ebene und polyeder (beide notwendig) (HG_KONVENTIONEN §7).
 quellen_primär:
   - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren), Hesse'sche Normalform."
 quellen_sekundär:

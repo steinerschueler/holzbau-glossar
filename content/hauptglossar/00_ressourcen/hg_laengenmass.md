@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [strecke, punkt]
 abgrenzung_zu: [lineares_groessenmass, winkelmass, masstoleranz_din18202, bemassung]
 status: entwurf
-subglossar_pendant: optional  # Überschreibung merkmal-Default required → optional: Bemaßungs-Begriff, in unterer Stufen-Didaktik nicht zentral; Code-Pendant Folgearbeit für Werkplan-/CNC-Modul (HG_KONVENTIONEN §7).
+subglossar_pendant: optional  # Begründung (Abweichung vom Normalfall notwendig): Bemaßungs-Begriff, in unterer Stufen-Didaktik nicht zentral; Code-Pendant Folgearbeit für Werkplan-/CNC-Modul (HG_KONVENTIONEN §7).
 quellen_primär:
   - "DIN EN ISO 129-1:2022-02, 'Technische Produktdokumentation (TPD) — Angabe von Maßen und Toleranzen — Teil 1: Grundlagen', §3.2.4 'linear dimension' (deutsche Benennung: 'Längenmaß'). [einsicht: vorschau-pdf, Inhaltsverz.]"
   - "DIN EN ISO 129-1:2018-05, §3 (Vorgängerausgabe, gleichlautende Definition). [einsicht: vorschau-pdf, §3 Volltext]"
