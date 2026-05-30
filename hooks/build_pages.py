@@ -452,6 +452,35 @@ def on_nav(nav, config, files):
 
 
 # ---------------------------------------------------------------------------
+# Frontmatter-Grenze
+# ---------------------------------------------------------------------------
+
+# Schliessende Frontmatter-Zaeunung: eine Zeile, die NUR aus ``---`` (plus
+# optionalem Trailing-Whitespace) besteht — analog zur Frontmatter-Erkennung
+# von MkDocs selbst.
+_FRONTMATTER_CLOSE_RE = re.compile(r"^---[ \t]*$", re.MULTILINE)
+
+
+def _frontmatter_end(text: str) -> int:
+    """Index der schliessenden ``---``-Frontmatter-Zaeunung, gesucht ab
+    hinter der oeffnenden Zeile. Liefert ``-1``, wenn keine solche Zeile
+    existiert.
+
+    Robust gegen ``---`` als *Substring* innerhalb des Frontmatters: Ein
+    Block-Skalar wie ``quellenkonflikt: |`` darf Markdown-Tabellen mit
+    Trennzeilen (``|---|---|``) enthalten. Das frueher genutzte
+    ``str.find("---", 3)`` matchte solche Zeilen faelschlich als
+    Frontmatter-Ende und zerschnitt den Block — die betroffenen Eintraege
+    (Knagge, Konterlatte) rendierten daraufhin ihr komplettes Frontmatter
+    als sichtbaren Seitentext.
+    """
+    if not text.startswith("---"):
+        return -1
+    match = _FRONTMATTER_CLOSE_RE.search(text, 3)
+    return match.start() if match else -1
+
+
+# ---------------------------------------------------------------------------
 # Subglossar-Index
 # ---------------------------------------------------------------------------
 
@@ -463,7 +492,7 @@ def _extract_benennung(text: str) -> str | None:
     """Pull ``benennung:`` out of the leading YAML frontmatter."""
     if not text.startswith("---"):
         return None
-    end = text.find("---", 3)
+    end = _frontmatter_end(text)
     if end == -1:
         return None
     match = _BENENNUNG_RE.search(text[3:end])
@@ -491,7 +520,7 @@ def _extract_glossar_ref(text: str) -> str | None:
     """Pull ``glossar_ref:`` out of the leading YAML frontmatter."""
     if not text.startswith("---"):
         return None
-    end = text.find("---", 3)
+    end = _frontmatter_end(text)
     if end == -1:
         return None
     match = _GLOSSAR_REF_RE.search(text[3:end])
@@ -553,7 +582,7 @@ def _inject_prosa_excerpt(text: str, excerpt: str) -> str:
     unverändert."""
     if not text.startswith("---"):
         return text
-    end = text.find("---", 3)
+    end = _frontmatter_end(text)
     if end == -1:
         return text
     front = text[3:end]
@@ -751,7 +780,7 @@ def _strip_frontmatter(text: str) -> str:
     """Remove the leading ``--- ... ---`` YAML block, return the body."""
     if not text.startswith("---"):
         return text
-    end = text.find("---", 3)
+    end = _frontmatter_end(text)
     if end == -1:
         return text
     return text[end + 3 :]
@@ -792,7 +821,7 @@ def _parse_frontmatter(text: str) -> dict:
     defekten Einträgen den Build nicht brechen)."""
     if not text.startswith("---"):
         return {}
-    end = text.find("---", 3)
+    end = _frontmatter_end(text)
     if end == -1:
         return {}
     try:
