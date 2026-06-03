@@ -103,16 +103,19 @@ sauberen `@misc`-Eintrag.
 
 ## Empfohlene Zitierform
 
+**Autor:** Eric Naville — [ORCID 0009-0007-4735-8041](https://orcid.org/0009-0007-4735-8041).
+**Verlag:** holzbau-glossar.ch.
+
 ### Gesamtes Glossar (Concept-DOI)
 
 **APA 7:**
 
-> Holzbau-Glossar. (2026). *Holzbau-Glossar*. holzbau-glossar.ch.
+> Naville, E. (2026). *Holzbau-Glossar*. holzbau-glossar.ch.
 > https://doi.org/10.5281/zenodo.20435319
 
 **ISO 690 (DACH-Normungs-Kontext):**
 
-> Holzbau-Glossar. *Holzbau-Glossar* [online]. holzbau-glossar.ch, 2026.
+> NAVILLE, Eric. *Holzbau-Glossar* [online]. holzbau-glossar.ch, 2026.
 > Abrufbar unter: doi:10.5281/zenodo.20435319.
 
 **BibTeX:**
@@ -120,7 +123,7 @@ sauberen `@misc`-Eintrag.
 ```bibtex
 @misc{holzbau-glossar,
   title     = {Holzbau-Glossar},
-  author    = {{holzbau-glossar.ch}},
+  author    = {Naville, Eric},
   year      = {2026},
   publisher = {holzbau-glossar.ch},
   doi       = {10.5281/zenodo.20435319},
@@ -129,8 +132,9 @@ sauberen `@misc`-Eintrag.
 }
 ```
 
-Die doppelten geschweiften Klammern `{{...}}` um den Autor halten
-BibTeX davon ab, den Domain-Namen als Personen-Namen zu zerlegen.
+Der Autor steht im BibTeX-Format `Nachname, Vorname` (einfache
+geschweifte Klammern); `holzbau-glossar.ch` ist der **Verlag**, nicht
+der Autor.
 
 ### Bestimmter Eintrag (mit Version-DOI für reproduzierbare Belege)
 
@@ -138,7 +142,7 @@ Für einen einzelnen Glossar-Eintrag mit eingefrorenem Stand:
 
 **APA 7:**
 
-> Holzbau-Glossar. (2026). Kerve. In *Holzbau-Glossar* (v0.6.0).
+> Naville, E. (2026). Kerve. In *Holzbau-Glossar* (v0.6.0).
 > holzbau-glossar.ch.
 > https://doi.org/10.5281/zenodo.20450215
 
@@ -148,7 +152,7 @@ Eintrag):
 ```bibtex
 @misc{holzbau-glossar:kerve,
   title     = {Kerve},
-  author    = {{holzbau-glossar.ch}},
+  author    = {Naville, Eric},
   year      = {2026},
   publisher = {holzbau-glossar.ch},
   doi       = {10.5281/zenodo.20435319},

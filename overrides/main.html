@@ -74,6 +74,7 @@
     {% set ld_description = page.meta.prosa_excerpt if page.meta and page.meta.prosa_excerpt else None %}
     {% set ld_synonyme = page.meta.synonyme if page.meta and page.meta.synonyme else [] %}
     {% set ld_id = page.meta.id if page.meta and page.meta.id else None %}
+    {% set ld_orcid = config.extra.orcid if config.extra and config.extra.orcid else None %}
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -85,11 +86,21 @@
       "url": {{ entry_url | tojson }},
       "inLanguage": "de",
       "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@type": "Person",
+        "name": {{ config.site_author | tojson }}{% if ld_orcid %},
+        "@id": {{ ("https://orcid.org/" ~ ld_orcid) | tojson }}{% endif %}
+      },
       "isPartOf": {
         "@type": "DefinedTermSet",
         "name": "Holzbau-Glossar",
         "url": "https://holzbau-glossar.ch/",
-        "identifier": "doi:10.5281/zenodo.20435319"
+        "identifier": "doi:10.5281/zenodo.20435319",
+        "creator": {
+          "@type": "Person",
+          "name": {{ config.site_author | tojson }}{% if ld_orcid %},
+          "@id": {{ ("https://orcid.org/" ~ ld_orcid) | tojson }}{% endif %}
+        }
       }
     }
     </script>

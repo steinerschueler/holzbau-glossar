@@ -4,7 +4,7 @@ site_description: >-
   didaktische Subglossar-Hülle, gepflegt im Schweizer Raum, frei zugänglich
   unter CC BY 4.0.
 site_url: https://holzbau-glossar.ch/
-site_author: holzbau-glossar.ch
+site_author: Eric Naville
 copyright: >-
   &copy; 2026 holzbau-glossar.ch —
   <a href="https://creativecommons.org/licenses/by/4.0/deed.de">CC BY 4.0</a>.
@@ -116,6 +116,11 @@ extra:
   welle: W8
   concept_doi: "10.5281/zenodo.20435319"
   version_doi: "10.5281/zenodo.20450215"
+  # ORCID des Autors (Eric Naville) — nach Erstellung hier eintragen, nur
+  # die nackte ID (Form 0000-0000-0000-0000). Das Template ergänzt sie dann
+  # automatisch ins JSON-LD creator (schema.org/Person @id) und blendet sie
+  # auf der Zitieren-Seite ein. Solange leer: Autor ohne ORCID.
+  orcid: "0009-0007-4735-8041"
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/
