@@ -156,9 +156,10 @@ Polygonrandkante der ausgekragten Dachfläche.
   Trauflinien-Strecke bzw. die Stützpunkte des Streckenzugs bei
   geknickter Trauflinie.
 - **Abgrenzung**:
-  - **First** (`first`): obere Schnittkante zweier nach oben
+  - **First** (`first`): Schnittkante zweier nach oben
     zusammenlaufender Dachflächen; ebenfalls näherungsweise
-    horizontal, aber höchste statt niedrigste Kante.
+    horizontal, aber Schnittkante (zwei Flächen, konvex) statt
+    Randkante einer einzelnen Fläche — und liegt oben statt unten.
   - **Ortgang** (`ortgang`): seitliche, geneigte Randkante; nicht
     näherungsweise horizontal, schließt Bedingung 1 aus.
   - **Pultkante** (eigener Eintrag folgt): obere Randkante einer

@@ -113,15 +113,16 @@ Ebene durch diesen Punkt, und z₀(T) ist seine Welt-z-Höhe. Konkrete
 Festlegungen pro Tool stehen in der Tool-Dokumentation; siehe
 Erläuterung für Beispiele.
 
-### Anker im Sparren-Tool: Bleischnitt-Punkt p_K der Fußpfettenkerve
+### Anker im Sparren-Tool: Kerveckpunkt p_K der Fußpfettenkerve
 
 Im **Sparren-Tool** der App ist der Ursprung der Bezugsebene
-normativ festgelegt als der **Bleischnitt-Punkt p_K der
-Fußpfettenkerve an der Bauteilachse des Sparrens** (siehe
-`hg_kerve.md`, Abschnitt „Bleischnitt-Punkt der vorderen Kervflanke
-an der Bauteilachse", Gleichungen (7a)/(7b)). Im Standardfall
-α₁ = π/2 reduziert sich p_K im Bauteil-Lokal-System auf
-(x₀, 0, h_B / 2); in W ist p_K = T_{L_B → W}(p_K^lokal). Damit ist
+normativ festgelegt als der **Kerveckpunkt p_K der
+Fußpfettenkerve** — der Schnittpunkt von Sohle (Bleischnitt) und
+Senkel (Senkelschnitt) nach `hg_kerve.md` Gleichung (12). Im
+Bauteil-Lokal-System gilt p_K^lokal = (x₀ + t · tan θ, 0, t); in W
+ist p_K = T_{L_B → W}(p_K^lokal). Die Bezugsebene nutzt allein die
+**Welt-Höhe** von p_K (die lokale Bezugskote), nicht seine axiale
+Lage; damit ist
 
 ```
 z₀(T_Sparren)  :=  ⟨e_hat_z, p_K⟩,                                    (3)
@@ -186,7 +187,7 @@ Tool-Dokumentation, **nicht** in diesem Glossareintrag fixiert:
 
 | Tool                    | Bezugsebene (Beispiel-Festlegung)                              |
 |-------------------------|----------------------------------------------------------------|
-| Sparren-Tool            | Horizontale Ebene durch den Bleischnitt-Punkt p_K der Fußpfettenkerve an der Sparren-Bauteilachse (siehe `hg_kerve.md` Gl. (7a)/(7b); `hg_fusspfette.md`; `docs/recherche/2026-05-10_sparrenmessung_neubau.md`) |
+| Sparren-Tool            | Horizontale Ebene durch den Kerveckpunkt p_K der Fußpfettenkerve (Höhe der lokalen Bezugskote; siehe `hg_kerve.md` Gl. (12); `hg_fusspfette.md`; `docs/recherche/2026-05-10_sparrenmessung_neubau.md`) |
 | Wandschichtaufbau       | OK Rohboden                                                    |
 | Walmdach-Tool           | OK Wandkrone (= OK Mauerwerk / Wandkrone, traufseitig)         |
 | Stützen-Tool            | OK Fundament / OK Schwelle                                     |

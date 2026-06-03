@@ -104,6 +104,8 @@ als
 - Bauteilachsen (Sparrenachse, Pfettenachse),
 - Bauteilkanten (Sparrenoberkante, Trauflinie),
 - Hilfslinien beim Anriss,
+- das **„Maß über Holz"** (Zimmerer-Berufssprache) — der Abstand
+  zweier Hölzer, jeweils auf derselben Kante gemessen,
 - bemaßte Strecken in der technischen Zeichnung — im didaktischen
   DACH-Lehr-Korpus auch „Maßstrecke" genannt; in der Norm-
   Terminologie heißen die einschlägigen Begriffe „Längenmaß"
@@ -112,9 +114,12 @@ als
 
 Sie ist von der **Geraden** (unbegrenzt) und der **Halbgeraden**
 (einseitig begrenzt) durch ihre beidseitige Begrenzung unterschieden.
-Eine **Kante** eines Bauteils ist eine Strecke in einer
+Eine **gerade Kante** eines Bauteils ist eine Strecke in einer
 spezialisierten Rolle; sie ist als Begriff abgeleitet, nicht
-fundamental.
+fundamental. Die Kante eines gebogenen Bauteils (etwa eines
+geschwungenen Brettschichtholz-Binders) ist gekrümmt und damit
+**keine** Strecke — die Strecke-Eigenschaft setzt die Geradheit der
+Kante voraus.
 
 **Stab- und Bauteilachse als Idealisierung.** In der Tragwerks-
 Theorie wird ein Stabbauteil mit einer wesentlich größeren
@@ -131,8 +136,9 @@ Wirkung entfaltet.
 - **Oberbegriff**: kompakte konvexe Hülle zweier Punkte (formal),
   bzw. eindimensionales Linienstück mit endlichen Endpunkten.
 - **Teilbegriffe (Spezialisierungen)**:
-  - **Kante** (eines Polygons oder Bauteils): rollenbezogene
-    Spezialisierung; eigene Einträge.
+  - **gerade Kante** (eines Polygons oder Bauteils): rollenbezogene
+    Spezialisierung; eigene Einträge. (Eine gekrümmte Bauteilkante
+    ist keine Strecke.)
   - **Achse** (eines Stabbauteils): rollenbezogene Spezialisierung;
     eigener Eintrag.
 - **Bestandteile (partitiv)**:

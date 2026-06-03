@@ -97,9 +97,10 @@ Die so definierte Fläche heißt **Dachschräge** der Dachfläche D
 2. F(P_S) ist nicht-degeneriert, also Flächeninhalt(F(P_S)) > 0
    (folgt aus 1 und der Nichtentartetheit von P, da starre
    Translation den Flächeninhalt erhält),
-3. ⟨n_a, e_z⟩ > Toleranzen.WINKEL_EPS  (D ist nicht horizontal —
-   bei α(D) = 0 spricht man im Innenausbau von einer **Decke**, nicht
-   von einer Dachschräge; siehe Edge Cases).
+3. ‖n_a × e_z‖ > Toleranzen.KOLLINEAR_EPS  (D ist nicht horizontal —
+   bei α(D) = 0 ist n_a parallel zur Lotachse e_z, das Kreuzprodukt
+   verschwindet; im Innenausbau spricht man dann von einer **Decke**,
+   nicht von einer Dachschräge; siehe Edge Cases).
 
 ## Wohldefiniertheit
 
@@ -290,6 +291,10 @@ data class Dachschraege(
   3. ‖raumseitigeNormale‖ ∈ 1 ± Toleranzen.NORM_EPS.
   4. ⟨raumseitigeNormale, e_z⟩ ≤ Toleranzen.WINKEL_EPS  (n_S zeigt
      in die untere Halbkugel oder Horizontale, da n_a in die obere).
+  5. ‖raumseitigeNormale × e_z‖ > Toleranzen.KOLLINEAR_EPS  (Dach-
+     schräge nicht horizontal — Decke-Ausschluss; betragsgleich zu
+     ‖n_a × e_z‖, da n_S = −n_a). Verletzung liefert
+     `Entartet.Horizontal` (siehe Edge Case α(D) = 0).
 - **Edge Cases**:
   - **d_A → 0** (kein Dachaufbau, etwa offene Pergola): Konstruktion
     liefert `Resultat.Fehler` bzw. `EntartetGeometrie.NullVersatz`. Die

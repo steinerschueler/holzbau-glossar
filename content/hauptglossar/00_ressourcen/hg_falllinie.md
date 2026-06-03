@@ -58,9 +58,11 @@ Sei
 - e_z := (0, 0, 1)ᵀ die vertikale Achse,
 - ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz.
 
-**Geneigtheits-Voraussetzung**: ⟨n_hat, e_z⟩ < 1 (die Ebene ist nicht
-horizontal). Diese Bedingung ist äquivalent zu α > 0 in der
-Charakterisierung über die Dachneigung α := arccos(⟨n_hat, e_z⟩).
+**Geneigtheits-Voraussetzung**: ‖n_hat × e_z‖ > 0 (äquivalent
+⟨n_hat, e_z⟩ < 1) — die Ebene ist nicht horizontal, also α > 0 in der
+Charakterisierung über die Dachneigung α := arccos(⟨n_hat, e_z⟩). Der
+operative Geneigtheits-Test nutzt nach §4 die Kreuzprodukt-Norm
+‖n_hat × e_z‖ = sin α (Wohldefiniertheit).
 
 Setze den **horizontalen Anteil von e_z relativ zu E**
 
@@ -167,9 +169,13 @@ zu wählen ist (siehe `bauteilachse`).
   n_hat mit ⟨n_hat, e_z⟩ > 0; die Wahl ist eindeutig (siehe
   `dachflaeche`, äußere Normale). Die Vorzeichenwahl von n_hat
   ändert v nicht, da v in n_hat quadratisch eingeht.
-- **Numerische Wohldefiniertheit**: Für ⟨e_z, n_hat⟩ ≤ 1 − ε_W mit
-  ε_W ≪ 1 ist ‖v‖² ≥ 2 ε_W − ε_W² ≈ 2 ε_W, also weit oberhalb
-  der Norm-Toleranz. Die Division durch ‖v‖ ist numerisch sicher.
+- **Numerische Wohldefiniertheit**: Der Geneigtheits-Test ist ein
+  Parallelitäts-Test n_hat ∥ e_z (horizontale Ebene) und wird nach
+  HG-Konvention §4 über die Kreuzprodukt-Norm geführt: die Ebene ist
+  geneigt genau dann, wenn ‖v‖ = ‖n_hat × e_z‖ = sin α > KOLLINEAR_EPS.
+  Diese Sinus-Form ist nahe α = 0 gut konditioniert (anders als die
+  Cosinus-Form 1 − ⟨e_z, n_hat⟩, die dort Auslöschung erleidet); die
+  Division durch ‖v‖ ist damit numerisch sicher.
 - **Entartung bei α = 0**: Bei einer horizontalen Ebene (n_hat = ±e_z)
   ist v = 0 und e_hat_fall ist nicht definiert; jeder horizontale
   Einheitsvektor in E_0 ist gleich „flach". Die Domänen-Schicht
@@ -284,20 +290,21 @@ data class Falllinie internal constructor(
     companion object {
         fun bilde(
             ebene: Ebene,
-            eps: Double = Toleranzen.WINKEL_EPS,
+            eps: Double = Toleranzen.KOLLINEAR_EPS,
         ): Resultat<Falllinie, EntartetGeometrie> {
             val nHat = ebene.normale
             val nz = nHat.dz
-            // Punktmengen-Sicht: Test über |n_z|, damit n_hat → −n_hat
-            // dasselbe Resultat liefert (v := e_z − ⟨e_z, n_hat⟩·n_hat ist
-            // quadratisch in n_hat).
-            if (1.0 - abs(nz) <= eps) {
-                return Resultat.Fehler(EntartetGeometrie.HorizontaleEbene)
-            }
+            // v := e_z − ⟨e_z, n_hat⟩·n_hat ist quadratisch in n_hat,
+            // also liefert n_hat → −n_hat dasselbe Resultat (Punktmengen-Sicht).
             val vx = -nz * nHat.dx
             val vy = -nz * nHat.dy
             val vz = 1.0 - nz * nHat.dz
-            val n  = sqrt(vx*vx + vy*vy + vz*vz)
+            val n  = sqrt(vx*vx + vy*vy + vz*vz)   // ‖v‖ = ‖n_hat × e_z‖ = sin α
+            // Geneigtheits-Test über die Sinus-/Kreuzprodukt-Norm (§4),
+            // nahe α = 0 gut konditioniert:
+            if (n <= eps) {
+                return Resultat.Fehler(EntartetGeometrie.HorizontaleEbene)
+            }
             val richtung = Einheitsvektor.bildeUngeprueft(
                 Vektor(-vx / n, -vy / n, -vz / n)
             )
@@ -318,13 +325,14 @@ data class Falllinie internal constructor(
      e_hat_fall = −e_z).
 - **Punktmengen-Sicht (Option A)**: Die Falllinie ist eine
   Eigenschaft der Ebene als Punktmenge; die Wahl `n_hat` vs. `−n_hat`
-  ändert das Resultat nicht. Der Geneigtheits-Test verwendet daher
-  `1 − |⟨n_hat, e_z⟩|` (Betrag), und `bilde(e)` liefert dasselbe
-  wie `bilde(e.umkehrenNormale())`.
+  ändert das Resultat nicht (v ist quadratisch in n_hat). Der
+  Geneigtheits-Test über `‖v‖ = ‖n_hat × e_z‖ = sin α` ist daher
+  vorzeichen-invariant, und `bilde(e)` liefert dasselbe wie
+  `bilde(e.umkehrenNormale())`.
 - **Edge Cases / Entartet-Varianten**:
-  - **`EntartetGeometrie.HorizontaleEbene`**: 1 − |⟨n_hat, e_z⟩| ≤
-    WINKEL_EPS, d. h. die Ebene ist horizontal (oder numerisch
-    fast horizontal). Keine Falllinie definierbar; jeder
+  - **`EntartetGeometrie.HorizontaleEbene`**: ‖v‖ = ‖n_hat × e_z‖ =
+    sin α ≤ KOLLINEAR_EPS, d. h. die Ebene ist horizontal (oder
+    numerisch fast horizontal). Keine Falllinie definierbar; jeder
     horizontale Vektor in der Ebene wäre gleich „flach".
     Aufrufer entscheiden über die Reaktion (Default: keine
     Anzeige der Falllinie auf einem Flachdach).

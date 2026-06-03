@@ -77,6 +77,13 @@ fundamental: ein Punkt benennt eine Stelle, ein Vektor eine gerichtete
 Verschiebung. Punkte können nicht addiert werden, wohl aber Punkt +
 Vektor → Punkt und Punkt − Punkt → Vektor.
 
+Zur Benennung: Das Wort **„Stelle"** dient hier nur als anschauliche
+Umschreibung. Als Fachname bzw. Synonym für den Begriff ist es
+abgelehnt (Frontmatter `abgelehnte_benennungen`), weil es
+umgangssprachlich auch ausgedehnte Bereiche meint („eine schadhafte
+Stelle") und so die Ausdehnungslosigkeit des Punkts nicht zuverlässig
+trägt; der präzise Fachname bleibt **Punkt**.
+
 ## Beziehungen
 
 - **Oberbegriff**: keiner; Punkt ist mathematisches Primitiv des

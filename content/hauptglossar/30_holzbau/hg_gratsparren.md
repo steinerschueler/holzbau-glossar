@@ -74,7 +74,7 @@ quellenkonflikt: |
   „Der Gratsparren besitzt eine geringere Neigung als die Sparren und
   Schifter der angrenzenden Dachflächen." Die mathematische
   Charakterisierung erfolgt unten als abgeleiteter Satz (Reduktions-
-  Formel `tan(α_G) = tan(α)·cos(β_plan)`); sie folgt aus den
+  Formel `tan(α_G) = tan(α)·sin(β_plan)`); sie folgt aus den
   Primitiven und ist nicht Teil der Definition.
 
   **Verkantung im Raum:** Mehrfach belegt; bedeutet, dass der
@@ -216,36 +216,33 @@ Grundrissprojektion der Gratlinie und der Trauflinie einer der beiden
 Dachflächen gilt
 
 ```
-tan(α_G) = tan(α) · cos(β_plan).                                  (★)
+tan(α_G) = tan(α) · sin(β_plan).                                  (★)
 ```
 
 **Herleitung aus den Primitiven:** Sei π_xy: ℝ³ → ℝ² die
-Projektion in die Horizontalebene. Die Schnittgerade g_{ij} ⊂ ℝ³
-projiziert auf eine Gerade π_xy(g_{ij}) ⊂ ℝ². Sei e_hat_t :=
-(t_hat_x, t_hat_y, 0) / ‖(t_hat_x, t_hat_y)‖ der normierte Grundrissrichtungs-
-vektor der Gratlinie und e_hat_fall(E_i) die Falllinie der Dachfläche
-D_i (siehe `hg_falllinie.md`). Dann gilt nach Konstruktion
+Projektion in die Horizontalebene und e_hat_t :=
+(t_hat_x, t_hat_y, 0) / ‖(t_hat_x, t_hat_y)‖ der normierte Grundriss-
+richtungsvektor der Gratlinie. β_plan ist der Winkel zwischen e_hat_t
+und der Trauflinie von D_i; da die Falllinie e_hat_fall(E_i) im
+Grundriss **rechtwinklig** zur Traufe steht, ist die Komponente der
+Gratrichtung in Falllinien-Richtung gerade der Sinus dieses Winkels:
 
 ```
-cos(β_plan) = |⟨e_hat_t, π_xy(e_hat_fall(E_i)) / ‖π_xy(e_hat_fall(E_i))‖⟩|.
+sin(β_plan) = |⟨e_hat_t, π_xy(e_hat_fall(E_i)) / ‖π_xy(e_hat_fall(E_i))‖⟩|.
 ```
 
-Aus der Geneigtheits-Bedingung (`hg_grat.md` Bed. 1) und der
-Tatsache, dass t_hat in beiden Trägerebenen E_i und E_j liegt
-(g_{ij} = E_i ∩ E_j), folgt durch Aufspaltung von t_hat in seinen
-horizontalen Anteil und e_z-Anteil mit Höhenfunktion z auf E_i
+Geht man entlang e_hat_t um eine horizontale Einheitslänge, so legt man
+in Falllinien-Richtung die Strecke sin(β_plan) zurück; die Höhe auf D_i
+steigt dabei um sin(β_plan) · tan(α), denn tan(α) ist der Höhenzuwachs
+je horizontale Einheit entlang der Falllinie (siehe `hg_falllinie.md`,
+abgeleitete Größe „Dachneigung entlang der Falllinie",
+tan(α) = |⟨e_hat_fall(E_i), e_z⟩| / ‖π_xy(e_hat_fall(E_i))‖). Die
+Gratsparrenneigung ist der Höhenzuwachs je horizontale Einheit
+**entlang der Gratlinie**, also
 
 ```
-⟨t_hat, e_z⟩ / ‖(t_hat_x, t_hat_y)‖
-   = (∂z/∂e_hat_t entlang der Grundrissprojektion in E_i)
-   = ⟨−e_hat_fall(E_i), e_z⟩ · cos(β_plan) / √(1 − ⟨e_hat_fall(E_i), e_z⟩²) · …
+tan(α_G) = ⟨t_hat, e_z⟩ / ‖(t_hat_x, t_hat_y)‖ = sin(β_plan) · tan(α). ∎
 ```
-
-mit Auflösung über tan(α) = |⟨e_hat_fall(E_i), e_z⟩| /
-‖π_xy(e_hat_fall(E_i))‖ (siehe `hg_falllinie.md`, abgeleitete Größe
-„Dachneigung entlang der Falllinie"). Zusammenfassend
-ergibt sich tan(α_G) = ⟨t_hat, e_z⟩ / ‖(t_hat_x, t_hat_y)‖ = tan(α) ·
-cos(β_plan). ∎
 
 Im symmetrischen Spezialfall (gleichgeneigte Dachflächen mit
 horizontalen, rechtwinklig zueinander stehenden Traufen) ist die
@@ -325,7 +322,7 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `grat`, `dachflaeche`.
   „diagonal von der ausspringenden Ecke einer Traufe zum First".
 
 - **Reduktions-Formel (★) als Konsequenz, nicht als Axiom**: Die
-  Formel `tan(α_G) = tan(α)·cos(β_plan)` wurde oben aus den
+  Formel `tan(α_G) = tan(α)·sin(β_plan)` wurde oben aus den
   Primitiven hergeleitet; sie ist nicht Bestandteil der Definition
   (Bed. 1–5), sondern beweisbar daraus. Damit ist die Definition
   konservativ im Sinne der HG-Konventionen: die mathematische
@@ -390,7 +387,7 @@ tan(α_G) = tan(α) / √2.
 Beispiel: bei einer Dachneigung α = 45° hat der Gratsparren eine
 Neigung von α_G = arctan(1/√2) ≈ 35.26°. Im allgemeinen Fall
 (ungleichgeneigte Dachflächen, schiefwinklige Walm-Ecke) gilt
-`tan(α_G) = tan(α) · cos(β_plan)`, wobei β_plan der
+`tan(α_G) = tan(α) · sin(β_plan)`, wobei β_plan der
 Grundriss-Winkel zwischen der Gratlinien-Projektion und der
 Trauflinie einer der beiden anliegenden Dachflächen ist; dieser
 allgemeine Fall ist in der zimmermannssprachlichen
@@ -680,7 +677,7 @@ sealed class GratsparrenEntartet {
 - **Abgeleitete Eigenschaften** (als Funktionen):
   - `gratsparrenneigung(): Double` — = Gratneigung der
     zugeordneten Gratstrecke, in Radiant. Es gilt
-    `tan(α_G) = tan(α) · cos(β_plan)` mit α =
+    `tan(α_G) = tan(α) · sin(β_plan)` mit α =
     `min(D_i.dachneigung(), D_j.dachneigung())` bzw. allgemein
     der dachflächen-spezifischen Falllinien-Neigung
     (Reduktions-Formel als Konsequenz, nicht als Code-

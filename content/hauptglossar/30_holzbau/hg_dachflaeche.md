@@ -162,8 +162,11 @@ data class Dachflaeche(
      die kanonischen Default-Werte).
   2. Polygon-Flächeninhalt > Toleranzen.FLAECHE_EPS.
   3. ‖n_a‖ ∈ 1 ± Toleranzen.NORM_EPS.
-  4. n_a · e_z ≥ −Toleranzen.WINKEL_EPS  (kleine numerische
-     Unterschreitung wird als 0 toleriert).
+  4. n_a · e_z > Toleranzen.WINKEL_EPS  (n_a weist in die obere
+     Halbkugel **und** die Dachfläche ist nicht vertikal, α < π/2 —
+     Bedingungen 2 und 3 zusammen; cos α weg von 0 ist gut
+     konditioniert, daher Cosinus-Schwelle mit WINKEL_EPS, kein
+     Kreuzprodukt). Verletzung (senkrechte Wand) → `Entartet.Senkrecht`.
 - **Edge Cases**:
   - α = 0: zulässig (Flachdach). Bei α = 0 ist die Wahl der äußeren
     Normalen durch die Bedingung n_a · e_z = 1 (statt ≥ 0) zu

@@ -172,9 +172,9 @@ Senkelschnitte treten an mehreren Stellen am geneigten Dach auf:
 - **Sparrenfirstpunkt-Stirnseite** beim Sparren-an-Sparren-
   Anschluss am First: die beiden Sparrenfirstpunkt-Stirnflächen
   sind Senkel und treffen sich in der Firstlinie.
-- **Kervflanken** der Standardklauenkerve (siehe `kerve`,
-  α₁ = α₂ = π/2): die beiden Flanken sind Senkel; die Sohle
-  ist ein Bleischnitt.
+- **Kervsenkel** der Standardklauenkerve (siehe `kerve`): die
+  welt-vertikale Schnittfläche (der Senkel) der Kerve ist ein
+  Senkel; die Sohle ist dagegen ein Bleischnitt.
 - **Senkelriss** im Werkplan: die zeichnerische Darstellung der
   Senkellage im Auf- und Seitenriss.
 
@@ -204,7 +204,7 @@ Zimmermannstoleranz; sie filtert nur numerische Restfehler.
   zusätzlicher Rolle (Parallelität zur Lotachse).
 - **Spezialisierungen**: keine eigenständigen Glossar-
   Spezialisierungen vorgesehen; konkrete Senkel-Verwendungen
-  (Sparrenfuß-Stirnseite, Kervflanke, Senkelriss) sind keine
+  (Sparrenfuß-Stirnseite, Kervsenkel, Senkelriss) sind keine
   eigenen Begriffe, sondern Anwendungen.
 - **Bestandteile (partitiv)**:
   - **Trägerebene** (geerbt von `ebene`): die Punktmenge im
@@ -215,8 +215,8 @@ Zimmermannstoleranz; sie filtert nur numerische Restfehler.
 - **Verwendung**:
   - Klassifikation von **Sparren-Stirnseiten** am Werkplan
     (Senkel vs. Bleischnitt vs. rechtwinkliger Anschnitt).
-  - Klassifikation von **Kervflanken** in `hg_kerve.md` für den
-    Standardfall α₁ = α₂ = π/2.
+  - Klassifikation des **Kervsenkels** in `hg_kerve.md` (die
+    welt-vertikale Schnittfläche der Standardklauenkerve).
   - **Werkplan-Beschriftung** als Hinweis auf die Schnittart
     (Senkelschnitt-Notation in der traditionellen Schweizer
     Werkplan-Konvention).

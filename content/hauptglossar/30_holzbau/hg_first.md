@@ -36,20 +36,22 @@ quellenkonflikt: |
   Abgrenzung zu **Grat** und **Kehle**: First, Grat und Kehle sind
   alle drei Schnittkanten zweier Dachflächen. Der First unterscheidet
   sich dadurch, dass er näherungsweise horizontal verläuft und dass
-  beide anliegenden Dachflächen mit ihrer äußeren Normalen nach oben
-  zusammenlaufen (d. h. der First ist der höchste Punkt des
-  gemeinsamen Bereichs). Grat und Kehle hingegen verlaufen geneigt;
-  Kehle ist konkav (einspringend), Grat konvex (ausspringend).
+  die beiden anliegenden Dachflächen nach oben zusammenlaufen (Λ,
+  konvex — der First ist die lokal höchste Schneide). Grat und Kehle
+  hingegen verlaufen geneigt; Kehle ist konkav (einspringend), Grat
+  konvex (ausspringend). First und Grat teilen die Konvexität (nach
+  oben zusammenlaufend); sie unterscheiden sich nur durch horizontal
+  (First) vs. geneigt (Grat).
 ---
 
 ## Prosa-Definition
 
 Ein **First** ist eine Dachkante, die als Schnittkante zweier
 benachbarter Dachflächen auf der Schnittgerade ihrer Trägerebenen
-liegt, näherungsweise horizontal verläuft und im gemeinsamen
-abgeschlossenen Polygonbereich der beiden Dachflächen die höchste
-mittlere z-Höhe aller näherungsweise horizontalen Schnittkanten
-besitzt.
+liegt, näherungsweise horizontal verläuft und an der die beiden
+Dachflächen nach oben zusammenlaufen (konvexe Firstschneide) — die
+Flächen bilden ein nach oben gerichtetes Dach, dessen obere Schneide
+der First ist.
 
 ## Mathematische Definition
 
@@ -90,36 +92,48 @@ wenn
 |⟨e_hat_{ij}, e_z⟩| ≤ ε_W.
 ```
 
-Sei 𝒮 die Menge aller näherungsweise horizontalen, nicht-entarteten
-Schnittstrecken zwischen Paaren von Dachflächen der betrachteten
-Familie 𝒟,
+Eine näherungsweise horizontale, nicht-entartete Schnittstrecke s_{ij}
+heißt **First** der Dachflächenfamilie 𝒟 genau dann, wenn die beiden
+Dachflächen an ihr **nach oben zusammenlaufen** (konvexe Firstschneide,
+Λ-Querschnitt) und beide äußeren Normalen nach oben weisen.
+
+Die Bedingung „nach oben zusammenlaufen" ist — wie konvex/konkav bei
+`grat`/`kehle` — über die **Lage der Flächenstücke** zu schärfen, nicht
+über die Normalen allein: Ein First (Λ, Flächen fallen von der Kante
+weg) und eine waagrechte Kehle/Rinne (V, Flächen steigen von der Kante
+weg) besitzen dasselbe Normalenpaar und unterscheiden sich nur in der
+Querlage ihrer Flächenstücke. Sei
 
 ```
-𝒮 := { s_{ij} | i < j,  ℓ(s_{ij}) > ε_L,  |⟨e_hat_{ij}, e_z⟩| ≤ ε_W }.
+w := (e_hat_{ij} × e_z) / ‖e_hat_{ij} × e_z‖   ∈ S²
 ```
 
-Eine Schnittstrecke s_{ij} ∈ 𝒮 heißt **First** der Dachflächen-
-familie 𝒟 genau dann, wenn ihr **Höhenmittelwert**
+die zur Firstkante orthogonale **horizontale** Querachse (wohldefiniert,
+da s_{ij} horizontal ist, also ‖e_hat_{ij} × e_z‖ ≈ 1). Sei c_i ein
+innerer Punkt (Flächenschwerpunkt) von F(P_i) und m ∈ s_{ij} ein
+Kantenpunkt; die **signierte Querlage** ist τ_i := ⟨c_i − m, w⟩ (mit
+τ_i · τ_j < 0). Dann ist s_{ij} ein **First** genau dann, wenn
 
 ```
-z_bar(s_{ij}) := ½ · (a_z + b_z)   mit  s_{ij} = [a, b]
+1.  ℓ(s_{ij}) > ε_L  und  |⟨e_hat_{ij}, e_z⟩| ≤ ε_W   (horizontal)
+2.  ⟨n_hat_{a,i}, w⟩ · sign(τ_i) > ε_W   und
+    ⟨n_hat_{a,j}, w⟩ · sign(τ_j) > ε_W              (zusammenlaufend)
+3.  ⟨n_{a,i}, e_z⟩ > 0   und   ⟨n_{a,j}, e_z⟩ > 0    (Normalen nach oben,
+                                  Ausschluss senkrechter Wände).
 ```
 
-das Maximum unter allen Elementen von 𝒮 ist:
+Anschaulich kippen beide äußeren Normalen horizontal **nach außen**, zur
+Querseite ihres eigenen Flächenstücks — die Flächen bilden ein nach oben
+gerichtetes Dach (Λ), dessen Schneide der First ist. Kehrt sich das
+Vorzeichen in (2) um (⟨n_hat_{a,i}, w⟩ · sign(τ_i) < −ε_W), so laufen die
+Flächen nach oben auseinander: eine **waagrechte Kehle/Rinne**, kein
+First.
 
-```
-z_bar(s_{ij}) = max { z_bar(s) | s ∈ 𝒮 }.
-```
-
-Zusätzlich muss gelten, dass beide äußeren Normalen n_{a,i}, n_{a,j}
-am First „nach oben zusammenlaufen", formal
-
-```
-⟨n_{a,i}, e_z⟩ > 0   und   ⟨n_{a,j}, e_z⟩ > 0
-```
-
-(beide Dachflächen sind nach oben geneigt; ausgeschlossen sind
-Anschlüsse an senkrechte Wände). Die Vereinigung aller so
+Diese Definition ist **lokal** — jede Firstschneide wird für sich
+erkannt; ein Dach mit mehreren Firsten (L-, T-, U-Grundriss, auch auf
+verschiedenen Höhen) liefert alle Firste. Bedingung (2) ist pro
+Flächenstück formuliert und damit unabhängig von der Reihenfolge der
+beiden Dachflächen. Die Vereinigung aller so
 identifizierten Schnittstrecken bildet, falls sie über gemeinsame
 Eckpunkte zusammenhängt, die **Firstlinie** als Streckenzug; im
 Regelfall (Sattel-, Walm-, Krüppelwalmdach) besteht sie aus genau
@@ -127,30 +141,33 @@ einer Strecke.
 
 ## Wohldefiniertheit
 
-- **Existenz**: Bei einer Familie von Dachflächen, die nach oben
-  zusammenlaufen (z. B. Sattel-, Walm-, Krüppelwalmdach), enthält
-  𝒮 mindestens ein Element, da die zentrale obere Schnittkante
-  konstruktiv vorliegt. Bei einem Pultdach (m = 1) oder bei
-  Dachflächenfamilien ohne gemeinsame Schnittstrecke ist 𝒮 = ∅, und
-  ein First existiert nicht — das ist baulich korrekt.
-- **Eindeutigkeit**: Bei einer Dachflächenfamilie mit eindeutiger
-  oberster horizontaler Schnittkante (Regelfall im Holzbau) ist der
-  First als Strecke oder zusammenhängender Streckenzug eindeutig
-  bestimmt. Bei Sonderformen mit mehreren gleichhohen Schnittkanten
-  (z. B. Mansarddach mit oberen und unteren Schnittkanten gleicher
-  Höhe — geometrisch ungewöhnlich, aber konstruierbar) liefert die
-  Definition mehrere gleichberechtigte Strecken; in diesem Fall
-  sollte die Domänen-Schicht `Entartet.NichtIdentifizierbar`
-  zurückgeben.
-- **Unabhängigkeit von der Indexwahl**: Die Schnittstrecke s_{ij}
-  ist symmetrisch in i und j; die Definition hängt nicht vom Vorzeichen
-  oder der Reihenfolge ab.
+- **Existenz**: Bei einer Familie von Dachflächen mit mindestens
+  einer horizontalen, nach oben zusammenlaufenden Schnittkante (z. B.
+  Sattel-, Walm-, Krüppelwalmdach) existiert ein First. Bei einem
+  Pultdach (m = 1) oder bei Dachflächenfamilien ohne gemeinsame
+  horizontale Schnittstrecke existiert kein First — das ist baulich
+  korrekt.
+- **Mehrere Firste**: Da die Definition **lokal** ist (jede
+  Firstschneide für sich), liefert ein Dach mit mehreren nach oben
+  zusammenlaufenden horizontalen Schneiden — L-, T-, U-förmiger
+  Grundriss, auch auf verschiedenen Höhen — korrekt **alle** als
+  Firste; sie sind keine Entartung. Das ist der wesentliche Vorteil
+  gegenüber einer globalen „höchste Kante"-Auswahl, die niedrigere
+  Firste verfehlt hätte. Ein **Mansarddach** (oberer flacher Schenkel
+  zusammenlaufend, unterer Knick auseinanderlaufend) liefert nur die
+  obere, zusammenlaufende Schneide als First — der untere Knick läuft
+  nach oben auseinander (waagrechte Kehle), ist also kein First.
+- **Unabhängigkeit von der Indexwahl**: Bedingung (2) ist pro
+  Flächenstück formuliert (je eine Ungleichung für i und j); ein
+  Vertauschen i ↔ j benennt nur die beiden Ungleichungen um. Die
+  Definition hängt nicht von der Reihenfolge der Dachflächen ab.
 - **Konsistenz mit `dachkante`**: Ein First ist nach Konstruktion
   eine Schnittkante zweier Dachflächen, also eine Dachkante im
   Sinne von `dachkante` (Fall „Schnittkante").
-- **Wohldefiniertheit des Höhenvergleichs**: Die mittlere z-Höhe
-  z_bar(s) hängt nur von den Endpunkten der Strecke ab, nicht von
-  der Wahl der Repräsentation [a, b] vs. [b, a].
+- **Wohldefiniertheit der Querachse**: Da s_{ij} näherungsweise
+  horizontal ist, ist e_hat_{ij} × e_z ≠ 0 und w wohldefiniert; die
+  Querlagen τ_i, τ_j sind als Skalarprodukte von der Wahl der
+  Repräsentation [a, b] vs. [b, a] unabhängig.
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
   `strecke`, `dachflaeche`, `polygon`, `ebene`, `vektor`,
   `toleranzen` und den bereits definierten Oberbegriff `dachkante`.
@@ -176,8 +193,8 @@ klassifiziert wird.
 ## Beziehungen
 
 - **Oberbegriff**: `dachkante`, Spezialfall „Schnittkante" mit
-  zusätzlichen Lagebedingungen (näherungsweise horizontal, höchste
-  mittlere Höhe, beide Normalen mit positiver z-Komponente).
+  zusätzlichen Lagebedingungen (näherungsweise horizontal, nach oben
+  zusammenlaufend/konvex, beide Normalen mit positiver z-Komponente).
 - **Geschwister-Begriffe** (andere Spezialisierungen von
   `dachkante`): `traufe`, `ortgang`, `grat`, `kehle`, `pultkante`.
 - **Bestandteile (partitiv)**: Anfangspunkt und Endpunkt der
@@ -185,8 +202,9 @@ klassifiziert wird.
   geknickter Firstlinie.
 - **Abgrenzung**:
   - **Traufe** (`traufe`): untere, näherungsweise horizontale
-    Randkante; ebenfalls horizontal, aber niedrigste statt höchste
-    Kante und Polygonrandkante statt Schnittkante.
+    Randkante; ebenfalls horizontal, aber Polygonrandkante einer
+    einzelnen Dachfläche statt zusammenlaufende Schnittkante zweier
+    Flächen (und liegt unten statt oben).
   - **Ortgang** (`ortgang`): seitliche, geneigte Randkante; nicht
     näherungsweise horizontal.
   - **Grat** (eigener Eintrag folgt): geneigte konvexe
@@ -232,7 +250,6 @@ fun istFirst(
     s: Strecke,
     dA: Dachflaeche,
     dB: Dachflaeche,
-    alleSchnittstrecken: List<Strecke>,
     eps_W: Double = Toleranzen.WINKEL_EPS,
     eps_L: Double = Toleranzen.LAENGE_EPS
 ): Boolean {
@@ -244,12 +261,21 @@ fun istFirst(
     val sHat = s.einheitsRichtung().werteOder { return false }
     if (abs(sHat dot Vektor.E_Z) > eps_W) return false
     // 4. Beide äußeren Normalen weisen mit positiver z-Komponente nach oben
-    if (dA.aeussereNormale dot Vektor.E_Z <= 0.0) return false
-    if (dB.aeussereNormale dot Vektor.E_Z <= 0.0) return false
-    // 5. z_bar(s) ist Maximum unter allen näherungsweise horizontalen Schnittstrecken
-    val horizontaleSchnitte = alleSchnittstrecken.filter { it.istHorizontal(eps_W) }
-    val maxZ = horizontaleSchnitte.maxOf { it.hoehenMittelwert() }
-    return abs(s.hoehenMittelwert() - maxZ) <= eps_L
+    val nA = dA.aeussereNormale.normiert().werteOder { return false }
+    val nB = dB.aeussereNormale.normiert().werteOder { return false }
+    if ((nA dot Vektor.E_Z) <= 0.0) return false
+    if ((nB dot Vektor.E_Z) <= 0.0) return false
+    // 5. Nach oben zusammenlaufend (konvex), lokal — kein globales z-Maximum:
+    //    pro Fläche neigt sich die äußere Normale horizontal nach außen, zur
+    //    Querseite ihres Flächenstücks. Reine Normalen trennen den First
+    //    nicht von einer waagrechten Kehle/Rinne (= beide nach innen).
+    val w = (sHat cross Vektor.E_Z).normiert().werteOder { return false }
+    val m = s.mittelpunkt()
+    val tauA = (dA.schwerpunkt() - m) dot w
+    val tauB = (dB.schwerpunkt() - m) dot w
+    val aussenA = (nA dot w) * sign(tauA) > eps_W
+    val aussenB = (nB dot w) * sign(tauB) > eps_W
+    return aussenA && aussenB
 }
 ```
 
@@ -262,15 +288,20 @@ fun istFirst(
      |e_hat · e_z| ≤ Toleranzen.WINKEL_EPS.
   4. Beide äußeren Normalen weisen mit positiver z-Komponente nach
      oben: n_{a,A} · e_z > 0 und n_{a,B} · e_z > 0.
-  5. Mittlere z-Höhe jeder Teilstrecke ist gleich dem Maximum der
-     mittleren z-Höhen aller näherungsweise horizontalen
-     Schnittstrecken in der gesamten Dachflächenfamilie, mit
-     Toleranz Toleranzen.LAENGE_EPS.
+  5. Nach oben zusammenlaufend (Bedingung (2)): pro Fläche
+     ⟨n_hat_{a,i}, w⟩ · sign(τ_i) > Toleranzen.WINKEL_EPS, mit
+     w = horizontale Querachse (s_hat × e_z) und τ_i = signierte
+     Querlage des Flächenschwerpunkts. Lokal — kein Bezug auf andere
+     Schnittstrecken.
 - **Edge Cases**:
   - **Nullkante**: ℓ ≤ Toleranzen.LAENGE_EPS → `Entartet.Nullkante`.
-  - **NichtIdentifizierbar**: Keine eindeutig höchste horizontale
-    Schnittkante (z. B. zwei gleichhohe Schnittkanten in
-    unterschiedlichen Dachbereichen) → `Entartet.NichtIdentifizierbar`.
+  - **NichtIdentifizierbar**: ⟨n_hat_{a,i}, w⟩ · sign(τ_i) im
+    Toleranzband [−ε_W, +ε_W] für eine der Flächen (Flächenstück kaum
+    quer geneigt) oder gegenläufig (eine Fläche nach außen, die andere
+    nach innen — weder First noch waagrechte Kehle) →
+    `Entartet.NichtIdentifizierbar`. Eine durchgehend konkave
+    horizontale Schneide (beide < −ε_W) ist eine **waagrechte
+    Kehle/Rinne**, kein First.
   - **Parallele Trägerebenen** (E_A ∥ E_B): Schnittgerade existiert
     nicht; Definition liefert kein Element →
     `Entartet.NichtIdentifizierbar`.

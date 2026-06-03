@@ -232,30 +232,32 @@ Bauteilachse** A(B) zwischen zwei Punkten auf A(B) gemessen. Die
 beiden Anker-Endpunkte sind der **Sparrenfußpunkt** p_a (an oder
 nahe der Traufe; Anfangspunkt der Bauteilachse nach Bedingung 4
 der mathematischen Definition) und der **Sparrenfirstpunkt** p_e
-(an oder nahe dem First; Endpunkt der Bauteilachse). Ein dritter
-ausgezeichneter Punkt auf A(B) ist der **Bleischnitt-Punkt der
-Fußpfettenkerve** p_K nach `hg_kerve.md` Gleichungen (7a)/(7b);
-er teilt die Bauteilachse in den traufseitigen Sparrenüberstand
-[p_K, p_a] und das tragende Innenstück [p_K, p_e].
+(an oder nahe dem First; Endpunkt der Bauteilachse). Der **Kerveckpunkt der Fußpfettenkerve** p_K — Schnittpunkt von
+Sohle (Bleischnitt) und Senkel (Senkelschnitt) nach `hg_kerve.md`
+Gleichung (12) — ist der geometrische Anker des Sparrenfußes; er
+liegt bei der Kervtiefe **im Sparreninneren, nicht auf A(B)**. Seine
+Lot-Projektion auf die Bauteilachse, die **axiale Kervposition**
+p_K^A, teilt A(B) in den traufseitigen Sparrenüberstand [p_a, p_K^A]
+und das tragende Innenstück [p_K^A, p_e].
 
 #### Symbol-Tabelle
 
 | Symbol | Endpunkte auf A(B) | Bedeutung | Verwendet in |
 |---|---|---|---|
 | **`L_S`** | p_a (Sparrenfußpunkt) ↔ p_e (Sparrenfirstpunkt) | **Sparrenlänge im engeren Sinn**: volle Bauteilachsen-Länge des Sparrens; glossarweit normative Lesart von „Sparrenlänge" | `hg_sparren.md` (Definition), `hg_bauteilachse.md` (als Spezialfall von L), Werkplan-Hauptmaß |
-| `s` | p_K ↔ Bleischnitt-Punkt der Firstpfettenkerve (analog p_K, aber an der Firstpfettenkerve) | **Axialer Kervenabstand**: Distanz der beiden Kervenmittelpunkte entlang der Bauteilachse; abgeleitet aus Firstpfetten- und Fußpfettenhöhe und der Dachneigung α via `s = (firstpfetteHoehe − fusspfetteHoehe) / sin(α)` | `hg_firstpfette.md`, BTLx-Export |
-| `ℓ_K-S` | p_K (Fußpfettenkerve) ↔ p_e (Sparrenfirstpunkt) | **Sparrenlänge ohne Überstand** / **Tragspannweiten-Achsenlänge**: Bauteilachsen-Strecke vom Bleischnitt-Punkt der Fußpfettenkerve bis zum Sparrenfirstpunkt; im Pfettendach das tragende Innenstück | `hg_sparrenueberstand.md` Gleichung (6) |
-| `ℓ_üb` | p_K (Fußpfettenkerve) ↔ p_a (Sparrenfußpunkt) | **Sparrenüberstand**: Bauteilachsen-Strecke vom Bleischnitt-Punkt der Fußpfettenkerve bis zum Sparrenfußpunkt; traufseitig auskragender Abschnitt | `hg_sparrenueberstand.md` Gleichung (3) |
+| `s` | Kerveckpunkt p_K (Fußpfettenkerve) ↔ Kerveckpunkt der Firstpfettenkerve, je auf A(B) projiziert | **Axialer Kervenabstand**: Distanz der beiden Kerveckpunkte entlang der Bauteilachse; abgeleitet aus Firstpfetten- und Fußpfettenhöhe und der Dachneigung α via `s = (firstpfetteHoehe − fusspfetteHoehe) / sin(α)` | `hg_firstpfette.md`, BTLx-Export |
+| `ℓ_K-S` | p_K^A (axiale Kervposition Fußpfettenkerve) ↔ p_e (Sparrenfirstpunkt) | **Sparrenlänge ohne Überstand** / **Tragspannweiten-Achsenlänge**: Bauteilachsen-Strecke von der axialen Kervposition der Fußpfettenkerve bis zum Sparrenfirstpunkt; im Pfettendach das tragende Innenstück | `hg_sparrenueberstand.md` Gleichung (6) |
+| `ℓ_üb` | p_K^A (axiale Kervposition Fußpfettenkerve) ↔ p_a (Sparrenfußpunkt) | **Sparrenüberstand**: Bauteilachsen-Strecke von der axialen Kervposition der Fußpfettenkerve bis zum Sparrenfußpunkt; traufseitig auskragender Abschnitt | `hg_sparrenueberstand.md` Gleichung (3) |
 
 #### Beziehungen
 
-Aus der Definition der drei Punkte p_a, p_K, p_e auf der
-Bauteilachse A(B) und der Vorzeichenkonvention (Bedingung 4
-der mathematischen Definition: d_hat entgegen e_hat_fall, p_a unten,
-p_e oben) folgt die Anordnung
+Aus der Definition der drei Achsenpunkte p_a, p_K^A, p_e auf der
+Bauteilachse A(B) (p_K^A = axiale Projektion des Kerveckpunkts) und
+der Vorzeichenkonvention (Bedingung 4 der mathematischen Definition:
+d_hat entgegen e_hat_fall, p_a unten, p_e oben) folgt die Anordnung
 
 ```
-p_a   −−−−   p_K   −−−−   p_e          (auf A(B), d_hat bergauf)
+p_a  −−−−  p_K^A  −−−−  p_e            (auf A(B), d_hat bergauf)
    ◄── ℓ_üb ──►  ◄────── ℓ_K-S ──────►
    ◄──────────── L_S ────────────────►
 ```
@@ -267,8 +269,9 @@ L_S = ℓ_üb + ℓ_K-S.                                                (*)
 ```
 
 Der axiale Kervenabstand `s` zwischen Fußpfetten- und
-Firstpfettenkerve ist die Strecke zwischen den beiden p_K-
-Punkten der beiden Kerven; bei Sparren ohne Firstpfettenkerve
+Firstpfettenkerve ist die axiale Distanz zwischen den beiden
+Kerveckpunkten der beiden Kerven (Projektion auf d_hat, siehe
+`hg_firstpfette.md`); bei Sparren ohne Firstpfettenkerve
 (reine Auflagerung am First, Sparren-an-Sparren-Stoss) ist `s`
 nicht definiert.
 

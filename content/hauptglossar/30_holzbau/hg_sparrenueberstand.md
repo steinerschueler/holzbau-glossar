@@ -95,42 +95,45 @@ Sei
   Bedingung 4 ist p_a der Sparrenfußpunkt traufseitig, p_e der
   Sparrenfirstpunkt firstseitig).
 - K eine Kerve im Sinne von `kerve` an B mit Auflagerung auf einer
-  Fußpfette F im Sinne von `fusspfette`, mit den Kerv-Parametern
-  p_K = (x₀, t, w, α₁, α₂) im Bauteil-Lokal-System L_B (siehe
+  Fußpfette F im Sinne von `fusspfette`, mit dem Parametertupel
+  p_Kerve = (x₀, t, s) im Bauteil-Lokal-System L_B (siehe
   `hg_kerve.md`, mathematische Definition).
-- Der **Bleischnitt-Punkt** p_K ∈ ℝ³ ist der in `hg_kerve.md`,
-  Abschnitt „Bleischnitt-Punkt der vorderen Kervflanke an der
-  Bauteilachse", Gleichungen (7a)/(7b) definierte Schnittpunkt der
-  sparrenfußseitigen (vorderen) Kervflanke g₁ mit der Bauteilachse
-  A(B). Im Bauteil-Lokal-System gilt
-  p_K^lokal = (x₀ + (h_B/2) · cot α₁, 0, h_B/2); im Standardfall
-  α₁ = π/2 reduziert sich p_K^lokal auf (x₀, 0, h_B/2). In W ist
+- Der **Kerveckpunkt** p_K ∈ ℝ³ ist der in `hg_kerve.md`
+  Gleichung (12) definierte Schnittpunkt von **Sohle (Bleischnitt)
+  und Senkel (Senkelschnitt)** der Fußpfettenkerve — die „eindeutige
+  geometrische Singular-Referenz" des Sparrenfußes (Recherche-Bericht
+  `docs/recherche/2026-05-10_sparrenmessung_neubau.md`). Im
+  Bauteil-Lokal-System gilt p_K^lokal = (x₀ + t · tan θ, 0, t) mit
+  der Einbau-Neigung θ. In W ist
   ```
   p_K := T_{L_B → W}(p_K^lokal)                                    (1)
   ```
   mit T_{L_B → W} der Bauteil-Lokal-zu-Welt-Transformation (siehe
-  `lokales_koordinatensystem`). Im Standardfall α₁ = α₂ = π/2 ist
-  die Kervsohle ein Bleischnitt (siehe `hg_bleischnitt.md`); p_K
-  liegt dann auf dem Schnitt dieses Bleischnitts mit der
-  Bauteilachse.
+  `lokales_koordinatensystem`). p_K liegt bei der perpendikulären
+  Kervtiefe t **im Sparreninneren, nicht auf der Bauteilachse**;
+  seine Welt-Höhe ⟨e_hat_z, p_K⟩ ist die lokale Bezugskote der
+  Sparrenkonstruktion (Auflagehöhe der Sohle auf der Fußpfette).
 - Sei p_a ∈ ℝ³ der Sparrenfußpunkt (Anfangspunkt der Bauteilachse
   nach `hg_sparren.md` Bedingung 4).
 
-Dann ist der **Sparrenüberstand** die Strecke
+Sei p_K^A := p_a + ⟨p_K − p_a, d_hat⟩ · d_hat die **Lot-Projektion**
+des Kerveckpunkts auf die Bauteilachse A(B) (die **axiale
+Kervposition**; p_K selbst liegt um die Kervtiefe t neben der
+Achse). Dann ist der **Sparrenüberstand** die Strecke
 
 ```
-S_üb(B, K) := [p_K, p_a] ⊂ A(B),                                   (2)
+S_üb(B, K) := [p_a, p_K^A] ⊂ A(B),                                 (2)
 ```
 
-mit Länge
+mit Länge (axiale Distanz, Projektion auf d_hat)
 
 ```
-ℓ_üb(B, K) := ‖p_K − p_a‖   (in mm).                               (3)
+ℓ_üb(B, K) := ⟨p_K − p_a, d_hat⟩   (in mm).                        (3)
 ```
 
 **Sparrenüberstands-Vorzeichen**: Der Überstand ist genau dann
 **vorhanden** (positiv), wenn der Sparrenfuß p_a tatsächlich
-unterhalb des Bleischnitt-Punkts p_K liegt, also
+unterhalb des Kerveckpunkts p_K liegt, also
 
 ```
 ⟨e_hat_z, p_a⟩ < ⟨e_hat_z, p_K⟩ − ε_L,                                     (4)
@@ -160,7 +163,7 @@ des Punktes p_K, keine alternative Definition der Bezugsebene.
 ## Wohldefiniertheit
 
 - **Existenz**: Für jeden Sparren mit mindestens einer Kerve auf
-  einer Fußpfette ist der Bleischnitt-Punkt p_K nach (1)
+  einer Fußpfette ist der Kerveckpunkt p_K nach (1)
   konstruktiv festgelegt; die Strecke S_üb(B, K) nach (2) ist
   damit wohldefiniert. Existiert kein Sparrenüberstand
   (Sparrenfuß auf der Aussenwandkante, kein Auskragen), kollabiert
@@ -255,8 +258,8 @@ der Bezugsebene ist Überstand) und für die Werkplan-Bemassung
 
 Sei L_S = ‖p_e − p_a‖ die Sparrenlänge (siehe `hg_sparren.md`,
 Erläuterung Sparrenlänge), ℓ_üb der Sparrenüberstand und ℓ_K-S
-die Strecke vom Bleischnitt-Punkt p_K bis zum
-Sparnen-First-Endpunkt p_e. Es gilt die einfache Zerlegung:
+die Strecke von der axialen Kervposition p_K^A bis zum
+Sparren-First-Endpunkt p_e. Es gilt die einfache Zerlegung:
 
 ```
 L_S = ℓ_üb + ℓ_K-S.                                                (6)
@@ -289,14 +292,15 @@ bzw. Flugsparren-Modellierung mit Giebelüberstand).
 
 - **Oberbegriff**: `strecke`. Der Sparrenüberstand ist eine Strecke
   auf der Bauteilachse eines Sparrens mit ausgezeichneten
-  Endpunkten (Bleischnitt-Punkt, Sparrenfuß).
+  Endpunkten (axiale Kervposition p_K^A, Sparrenfuß).
 - **Spezialisierungen**: keine eigenständigen Glossar-Spezialisierungen
   vorgesehen; konkrete Überstandslängen sind Tool-Parameter, keine
   Begriffe.
 - **Bestandteile (partitiv)**:
-  - **Bleischnitt-Punkt** p_K (Strecken-Anfangspunkt, oben):
-    abgeleiteter Punkt auf der Bauteilachse, an dem die Fußpfetten-
-    Kerve aufliegt.
+  - **Axiale Kervposition** p_K^A (Strecken-Anfangspunkt, oben):
+    Lot-Projektion des Kerveckpunkts p_K der Fußpfettenkerve auf die
+    Bauteilachse (der Kerveckpunkt selbst liegt um die Kervtiefe t
+    neben der Achse, siehe (1)–(3)).
   - **Sparrenfußpunkt** p_a (Strecken-Endpunkt, unten):
     geerbt aus dem Sparren als Anfangspunkt der Bauteilachse
     (siehe `hg_sparren.md`, Vorzeichenkonvention).
@@ -318,11 +322,11 @@ bzw. Flugsparren-Modellierung mit Giebelüberstand).
     quellenkonflikt-Block hingewiesen.
   - **Fußpfette** (`fusspfette`): Bauteil, auf dem der Sparren
     aufliegt. Die Fußpfetten-Kerve auf dem Sparren bildet den
-    geometrischen Anker (Bleischnitt-Punkt p_K) für die
+    geometrischen Anker (Kerveckpunkt p_K) für die
     Definition des Sparrenüberstands; die Fußpfette selbst ist
     aber kein Bestandteil des Überstands.
   - **Kerve** (`kerve`): Bearbeitung am Sparren. Die Kerve
-    bestimmt den Bleischnitt-Punkt p_K und damit den oberen
+    bestimmt den Kerveckpunkt p_K und damit den oberen
     Endpunkt der Sparrenüberstands-Strecke; die Kerve selbst
     gehört aber nicht zum Überstand.
   - **Traufe** (`traufe`): horizontale Dachkante an der unteren

@@ -78,10 +78,10 @@ quellenkonflikt: |
   Gratsparrens — die einzige Vorzeichen-Asymmetrie liegt in der
   Konvexitäts-/Konkavitäts-Bedingung der zugeordneten Schnittstrecke:
   Gratsparren verlangt eine **konvexe** Gratstrecke (`hg_grat.md`
-  Bed. 3, positives Spatprodukt der äußeren Normalen mit der
-  aufwärts gerichteten Tangente), Kehlsparren verlangt eine
-  **konkave** Kehlstrecke (`hg_kehle.md` Bed. 2, negatives
-  Spatprodukt). Auf der **konstruktiven Ebene** brechen mehrere
+  Bed. 3: beide äußeren Normalen kippen horizontal nach außen, zur
+  Querseite ihres eigenen Flächenstücks), Kehlsparren verlangt eine
+  **konkave** Kehlstrecke (`hg_kehle.md`: beide Normalen kippen nach
+  innen, zur Kehle hin). Auf der **konstruktiven Ebene** brechen mehrere
   Asymmetrien auf — Wasserführungs- und Schneeansammlungs-Last,
   Abkehlung statt Abgratung der Oberkante, Schifter-Topologie-
   Inversion (Schifter laufen vom First zum Kehlsparren abwärts statt
@@ -95,7 +95,7 @@ quellenkonflikt: |
   „Valley Rafters"): „Kehlsparren sind länger und flacher als
   normale Sparren." Die mathematische Charakterisierung erfolgt
   unten als abgeleiteter Satz (Reduktions-Formel
-  `tan(α_K) = tan(α)·cos(β_plan)`, identisch zur Gratsparren-Formel
+  `tan(α_K) = tan(α)·sin(β_plan)`, identisch zur Gratsparren-Formel
   — die Schnittgeraden-Neigung hängt nur von den Ebenenparametern
   ab, nicht von der Konvexität oder Konkavität der Verschneidung);
   sie folgt aus den Primitiven und ist nicht Teil der Definition.
@@ -223,9 +223,10 @@ Sei
   verschiedene Dachflächen aus 𝒟 mit i ≠ j,
 - s_{ij} ⊂ ℝ³ eine **Kehlstrecke** im Sinne von `hg_kehle.md`,
   also eine Schnittstrecke s_{ij} = F(P_i) ∩ F(P_j), die die
-  Kehlen-Bedingungen (1)–(2) aus `hg_kehle.md` erfüllt
-  (geneigt, konkav, beide äußeren Normalen in oberer Halbkugel,
-  Spatprodukt ⟨n_hat_{a,i} × n_hat_{a,j}, t_hat⟩ < −ε_W),
+  Kehle-Bedingungen aus `hg_kehle.md` erfüllt (geneigt, **konkav**,
+  beide äußeren Normalen in oberer Halbkugel; die Konkavität ist dort
+  positions-basiert über die Querlage der Flächenstücke charakterisiert,
+  nicht mehr über ein Spatprodukt-Vorzeichen),
 - t_hat := (b_{ij} − a_{ij}) / ‖b_{ij} − a_{ij}‖ ∈ S² die Tangente
   von s_{ij} mit s_{ij} = [a_{ij}, b_{ij}] und (Vorzeichenkonvention
   aus `hg_kehle.md`) ⟨t_hat, e_z⟩ > 0 (bergauf orientiert),
@@ -305,40 +306,38 @@ Grundrissprojektion der Kehllinie und der Trauflinie einer der beiden
 Dachflächen gilt
 
 ```
-tan(α_K) = tan(α) · cos(β_plan).                                  (★)
+tan(α_K) = tan(α) · sin(β_plan).                                  (★)
 ```
 
 **Herleitung aus den Primitiven:** Die Herleitung ist exakt parallel
 zur Gratsparren-Reduktionsformel aus `hg_gratsparren.md`. Sei
-π_xy: ℝ³ → ℝ² die Projektion in die Horizontalebene. Die Schnittgerade
-s_{ij} ⊂ ℝ³ projiziert auf eine Gerade π_xy(s_{ij}) ⊂ ℝ². Sei e_hat_t :=
-(t_hat_x, t_hat_y, 0) / ‖(t_hat_x, t_hat_y)‖ der normierte Grundrissrichtungs-
-vektor der Kehllinie und e_hat_fall(E_i) die Falllinie der Dachfläche
-D_i (siehe `hg_falllinie.md`). Dann gilt nach Konstruktion
+π_xy: ℝ³ → ℝ² die Projektion in die Horizontalebene und e_hat_t :=
+(t_hat_x, t_hat_y, 0) / ‖(t_hat_x, t_hat_y)‖ der normierte Grundriss-
+richtungsvektor der Kehllinie. β_plan ist der Winkel zwischen e_hat_t
+und der Trauflinie von D_i; da die Falllinie e_hat_fall(E_i) im
+Grundriss **rechtwinklig** zur Traufe steht, ist die Komponente der
+Kehlrichtung in Falllinien-Richtung gerade der Sinus dieses Winkels:
 
 ```
-cos(β_plan) = |⟨e_hat_t, π_xy(e_hat_fall(E_i)) / ‖π_xy(e_hat_fall(E_i))‖⟩|.
+sin(β_plan) = |⟨e_hat_t, π_xy(e_hat_fall(E_i)) / ‖π_xy(e_hat_fall(E_i))‖⟩|.
 ```
 
-Aus der Geneigtheits-Bedingung (`hg_kehle.md` Bed. 1) und der
-Tatsache, dass t_hat in beiden Trägerebenen E_i und E_j liegt
-(s_{ij} = E_i ∩ E_j), folgt durch Aufspaltung von t_hat in seinen
-horizontalen Anteil und e_z-Anteil mit Höhenfunktion z auf E_i
+Geht man entlang e_hat_t um eine horizontale Einheitslänge, so legt man
+in Falllinien-Richtung die Strecke sin(β_plan) zurück; die Höhe auf D_i
+steigt dabei um sin(β_plan) · tan(α) (Dachneigung tan(α) = Höhenzuwachs
+je horizontale Einheit entlang der Falllinie, siehe `hg_falllinie.md`).
+Die Kehlsparrenneigung ist der Höhenzuwachs je horizontale Einheit
+**entlang der Kehllinie**, also
 
 ```
-⟨t_hat, e_z⟩ / ‖(t_hat_x, t_hat_y)‖ = tan(α) · cos(β_plan)
+tan(α_K) = ⟨t_hat, e_z⟩ / ‖(t_hat_x, t_hat_y)‖ = sin(β_plan) · tan(α). ∎
 ```
 
-und damit `tan(α_K) = ⟨t_hat, e_z⟩ / ‖(t_hat_x, t_hat_y)‖ = tan(α) ·
-cos(β_plan)`. ∎
-
-**Vorzeichen-Unabhängigkeit:** Die Reduktionsformel hängt **nicht**
-vom Vorzeichen des Spatprodukts ⟨n_hat_{a,i} × n_hat_{a,j}, t_hat⟩ ab, das die
-Konvexität (Gratstrecke, positiv) von der Konkavität (Kehlstrecke,
-negativ) trennt. Sie liefert daher dieselbe Reduktion für
-Gratsparren und Kehlsparren — die Schnittgeraden-Neigung ist eine
-Eigenschaft der beiden Trägerebenen, nicht ihrer
-Außenseiten-Orientierung. Diese Identität ist im angelsächsischen
+**Konvexitäts-Unabhängigkeit:** Die Reduktionsformel hängt **nicht**
+davon ab, ob die Verschneidung konvex (Gratstrecke) oder konkav
+(Kehlstrecke) ist — die Schnittgeraden-Neigung ist eine Eigenschaft
+der beiden Trägerebenen, nicht ihrer Außenseiten-Orientierung. Sie
+liefert daher dieselbe Reduktion für Gratsparren und Kehlsparren. Diese Identität ist im angelsächsischen
 Korpus ausdrücklich festgehalten: „A regular hip rafter and a
 regular valley rafter on the same roof typically have the same
 slope if both roof planes have the same pitch."
@@ -425,11 +424,11 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `kehle`, `dachflaeche`.
   Bauteilrolle:** Die Vorzeichen-Asymmetrie zwischen Gratsparren
   und Kehlsparren liegt **ausschließlich** in der
   Konvexitäts-/Konkavitäts-Bedingung der zugeordneten
-  Schnittstrecke (Spatprodukt der äußeren Normalen mit der
-  aufwärts gerichteten Tangente positiv vs. negativ). Diese
-  Trennung wird von `hg_grat.md` Bed. 3 (positiv) und
-  `hg_kehle.md` Bed. 2 (negativ) getragen, ist disjunkt durch das
-  Toleranzband [−ε_W, +ε_W] für entartete Konfigurationen und
+  Schnittstrecke (beide äußeren Normalen kippen horizontal nach
+  außen vs. nach innen). Diese Trennung wird von `hg_grat.md`
+  Bed. 3 (konvex) und `hg_kehle.md` (konkav) getragen, ist disjunkt
+  durch das Toleranzband [−ε_W, +ε_W] der Querlage-Bedingung für
+  entartete/gemischte Konfigurationen und
   liefert eine **eindeutige Klassifikation** jeder geneigten
   Schnittstrecke s_{ij} einer Dachflächenfamilie als entweder
   Grat- oder Kehlstrecke. Ein Bauteil B ist daher zu jeder
@@ -437,7 +436,7 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `kehle`, `dachflaeche`.
   Kehlsparren, nie beides.
 
 - **Reduktions-Formel (★) als Konsequenz, nicht als Axiom**: Die
-  Formel `tan(α_K) = tan(α)·cos(β_plan)` wurde oben aus den
+  Formel `tan(α_K) = tan(α)·sin(β_plan)` wurde oben aus den
   Primitiven hergeleitet; sie ist nicht Bestandteil der Definition
   (Bed. 1–5), sondern beweisbar daraus. Damit ist die Definition
   konservativ im Sinne der HG-Konventionen: die mathematische
@@ -455,8 +454,8 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `kehle`, `dachflaeche`.
   - Gratsparren einer Gratstrecke und Kehlsparren einer Kehlstrecke
     sein (die Konvexitäts- und Konkavitäts-Bedingungen der
     zugeordneten Schnittstrecken aus `hg_grat.md` Bed. 3 und
-    `hg_kehle.md` Bed. 2 sind disjunkt durch das Spatprodukt-
-    Vorzeichen).
+    `hg_kehle.md` sind disjunkt: die äußeren Normalen kippen nach
+    außen bzw. nach innen).
 
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
   bereits definierte Begriffe (`bauteil`, `bauteilachse`,
@@ -498,7 +497,7 @@ ungleichgeneigter Dächer.
 
 Wie der Gratsparren weist auch der Kehlsparren eine **geringere
 Neigung gegenüber den anliegenden Sparren** auf, denn die
-Reduktionsformel `tan(α_K) = tan(α)·cos(β_plan)` hängt nicht vom
+Reduktionsformel `tan(α_K) = tan(α)·sin(β_plan)` hängt nicht vom
 Vorzeichen der Verschneidung ab, sondern nur von den
 Ebenenparametern. Im symmetrischen Fall (gleichgeneigte anliegende
 Dachflächen, rechtwinklige Trauf-Innenecke) gilt
@@ -510,7 +509,7 @@ tan(α_K) = tan(α) / √2.
 Beispiel: bei einer Dachneigung α = 45° hat der Kehlsparren eine
 Neigung von α_K = arctan(1/√2) ≈ 35.26° — exakt dieselbe Neigung
 wie der Gratsparren desselben Daches. Im allgemeinen Fall
-(ungleichgeneigte Dachflächen) gilt `tan(α_K) = tan(α)·cos(β_plan)`.
+(ungleichgeneigte Dachflächen) gilt `tan(α_K) = tan(α)·sin(β_plan)`.
 
 Die zimmermannssprachliche Praxis-Faustregel „Kehlsparren sind
 länger und flacher als normale Sparren" ist die qualitative Lesart
@@ -520,9 +519,9 @@ dieser Reduktion.
 
 Auf der **mathematischen Linien-Ebene** sind Gratsparren und
 Kehlsparren symmetrische Geschwister — sie unterscheiden sich nur
-durch das Vorzeichen des Spatprodukts der äußeren Normalen mit der
-aufwärts gerichteten Tangente (`hg_grat.md` Bed. 3 vs.
-`hg_kehle.md` Bed. 2). Auf der **konstruktiven Ebene** brechen
+durch die Konvexität vs. Konkavität der zugeordneten Schnittstrecke
+(die äußeren Normalen kippen nach außen bzw. nach innen,
+`hg_grat.md` Bed. 3 vs. `hg_kehle.md`). Auf der **konstruktiven Ebene** brechen
 jedoch drei substanzielle Asymmetrien auf, die das Bemessungs-
 und Bearbeitungs-Profil des Kehlsparrens prägen.
 
@@ -731,9 +730,9 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
     oben im Wohldefiniertheits-Block ausgeführt.
   - **Gratsparren** (`gratsparren`): mathematisch exakt
     symmetrisches Geschwister auf einer **konvexen** Gratstrecke
-    (`hg_grat.md` Bed. 3, positives Spatprodukt) statt einer
-    konkaven Kehlstrecke (`hg_kehle.md` Bed. 2, negatives
-    Spatprodukt). Konstruktiv asymmetrisch in Wasserführung,
+    (`hg_grat.md` Bed. 3, Normalen nach außen) statt einer
+    konkaven Kehlstrecke (`hg_kehle.md`, Normalen nach innen).
+    Konstruktiv asymmetrisch in Wasserführung,
     Oberkanten-Bearbeitung (Abgratung vs. Abkehlung) und
     Schifter-Topologie — siehe Erläuterungs-Block.
   - **Schifter** (`schifter`, Folgearbeit): die Schifter setzen am
@@ -818,9 +817,9 @@ import domain.geometrie.Punkt
  *
  * Symmetrie zum Schwester-Begriff Gratsparren:
  *   Auf der Linien-Ebene mathematisch exakt symmetrisch — Unterschied
- *   ausschließlich im Vorzeichen des Spatprodukts der äußeren
- *   Normalen mit der aufwärts gerichteten Tangente
- *   (positiv → Grat, negativ → Kehle). Auf der Konstruktions-Ebene
+ *   ausschließlich in der Konvexität: die äußeren Normalen kippen
+ *   nach außen (Grat) bzw. nach innen, zur Kehle hin (Kehle).
+ *   Auf der Konstruktions-Ebene
  *   asymmetrisch in Wasserführung (Kehlsparren trägt konzentrierte
  *   Niederschlags- und Schneeansammlungs-Last), Oberkanten-
  *   Bearbeitung (Abkehlung statt Abgratung) und Schifter-Topologie
@@ -910,7 +909,7 @@ sealed class KehlsparrenEntartet {
 - **Abgeleitete Eigenschaften** (als Funktionen):
   - `kehlsparrenneigung(): Double` — = Kehlneigung der
     zugeordneten Kehlstrecke, in Radiant. Es gilt
-    `tan(α_K) = tan(α) · cos(β_plan)` mit α =
+    `tan(α_K) = tan(α) · sin(β_plan)` mit α =
     `min(D_i.dachneigung(), D_j.dachneigung())` bzw. allgemein
     der dachflächen-spezifischen Falllinien-Neigung
     (Reduktions-Formel als Konsequenz, nicht als Code-

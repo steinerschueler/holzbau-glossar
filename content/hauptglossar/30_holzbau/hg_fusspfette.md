@@ -222,15 +222,15 @@ Typische Sparrenfuß-Verbindungen auf der Fußpfette:
 ### Fußpfettenhöhe als lokale Bezugskote im Sparren-Tool
 
 Im **Sparren-Tool** der App (Etappe 3.3, Einzel-Sparren mit
-parametrischer Variation) definiert der **Bleischnitt-Punkt p_K
-der Fußpfettenkerve** (siehe `hg_kerve.md`, Abschnitt
-„Bleischnitt-Punkt der vorderen Kervflanke an der Bauteilachse",
-Gleichungen (7a)/(7b)) die **lokale Bezugskote** der
-Sparrenkonstruktion (z = 0 lokal). p_K ist der Schnittpunkt der
-vorderen (sparrenfußseitigen) Kervflanke mit der Bauteilachse des
-Sparrens; im Standardfall α₁ = π/2 ist er ein eindeutiger, auf
-jedem Werkplan exakt rekonstruierbarer geometrischer Punkt am
-Sparrenfuß.
+parametrischer Variation) definiert der **Kerveckpunkt p_K
+der Fußpfettenkerve** (siehe `hg_kerve.md` Gleichung (12)) die
+**lokale Bezugskote** der Sparrenkonstruktion (z = 0 lokal). p_K ist
+der Schnittpunkt von Sohle (Bleischnitt) und Senkel (Senkelschnitt)
+der Fußpfettenkerve — die „eindeutige geometrische Singular-
+Referenz" des Sparrenfußes, auf jedem Werkplan exakt
+rekonstruierbar. Maßgeblich ist seine **Welt-Höhe** als Bezugskote;
+p_K selbst liegt bei der Kervtiefe t im Sparreninneren, nicht auf
+der Bauteilachse.
 
 Alle vertikalen Höhenangaben weiterer Konstruktionspunkte des
 Sparrens (Höhenlage der Firstpfettenkerve, Höhenlage des Sparrenfußes
@@ -241,7 +241,7 @@ und mit der Cadwork-Praxis (Bezugspunkt-Konvention für Dachebenen).
 
 Diese Bezugskote-Rolle ist die tool-spezifische Realisierung des
 allgemeinen Begriffs **Bezugsebene** (siehe `hg_bezugsebene.md`,
-Abschnitt „Anker im Sparren-Tool: Bleischnitt-Punkt p_K der
+Abschnitt „Anker im Sparren-Tool: Kerveckpunkt p_K der
 Fußpfettenkerve"); die Sparren-Tool-Bezugsebene ist die horizontale
 Ebene durch p_K, ihre skalare z-Höhe ist z₀(T_Sparren) = z(p_K).
 Hintergrund und Recherche-Stand siehe

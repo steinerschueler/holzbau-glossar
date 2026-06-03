@@ -153,12 +153,13 @@ der App-Querschnitts-Hierarchie verbunden wird.
 
 Im Fall eines **Anschnitts** (Bearbeitungs-Subtyp `anschnitt`,
 Folgearbeit) am Bauteilende ist die Stirnseite eine ebene
-polygonal berandete Punktmenge in einer Anschnittebene E_AS, deren
-Normale n_hat_AS einen Winkel α_AS ∈ (ε_W, π/2 − ε_W) mit d_hat(L)
-einschließt:
+polygonal berandete Punktmenge in einer Anschnittebene E_AS, die
+einen Anschnittwinkel α_AS ∈ (ε_W, π/2 − ε_W) mit der Bauteilachse
+d_hat(L) einschließt (die Normale n_hat_AS schließt den Komplementär-
+winkel π/2 − α_AS ein):
 
 ```
-|⟨n_hat_AS, d_hat(L)⟩| = cos(α_AS) < 1 − ε_W.                              (4)
+|⟨n_hat_AS, d_hat(L)⟩| = sin(α_AS) < 1 − ε_W.                              (4)
 ```
 
 Die Stirnseite bleibt eine ebene polygonal berandete Punktmenge

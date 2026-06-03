@@ -713,6 +713,14 @@ zitierten Werte aus einer Lignum-Pressemitteilung übernommen sind,
 muss das markiert werden. Ohne diese Trennung entsteht der Eindruck
 einer Primärquellen-Verankerung, die nicht besteht.
 
+**Quellen-Katalog:** Welche Quellen für die Begriffsarbeit überhaupt
+infrage kommen — mit Tier, Einsehbarkeit, Abdeckung und dem **Umgang**
+je Quelle (inkl. Benennungs-Vorrang Lehrbuch > Norm > Berufsbildung >
+Datenformat) — steht im kuratierten Register **`QUELLEN.md`** (gleiches
+Verzeichnis). Diese Sektion §10 definiert nur die **Marker-Syntax** für
+den Einsehungs-Status im Frontmatter; den konkreten Katalog nicht
+duplizieren, sondern auf `QUELLEN.md` verweisen.
+
 ### 10.1 Marker-Syntax
 
 Quellen-Zeilen tragen optional einen Klammer-Suffix mit dem

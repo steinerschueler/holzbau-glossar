@@ -63,9 +63,9 @@ quellenkonflikt: |
 Eine **Pultkante** ist eine Dachkante einer geneigten Dachfläche, die
 vollständig im Rand des Dachflächen-Polygons liegt, näherungsweise
 horizontal verläuft, unter allen näherungsweise horizontalen
-Polygonrandkanten dieser Dachfläche die höchste mittlere Höhe
-besitzt und nicht zugleich Schnittkante mit einer zweiten Dachfläche
-der Familie ist.
+Polygonrandkanten dieser Dachfläche die höchste, von der untersten
+(der Traufe) verschiedene mittlere Höhe besitzt und nicht zugleich
+Schnittkante mit einer zweiten Dachfläche der Familie ist.
 
 ## Mathematische Definition
 
@@ -115,7 +115,15 @@ Familie 𝒟 genau dann, wenn
    ```
    ausgewertet mit Toleranz ε_L auf der Vertikalen (mehrere Kanten
    gleicher Maximalhöhe sind zulässig und werden gemeinsam als
-   Pultkante geführt),
+   Pultkante geführt), **und dieses Maximum liegt echt über dem
+   Minimum**,
+   ```
+   max { z_bar(e) | e ∈ H(D) } − min { z_bar(e) | e ∈ H(D) } > ε_L;
+   ```
+   andernfalls (H(D) auf einer einzigen Höhe) existiert keine
+   Pultkante — die Kante ist die Traufe. Diese Teilbedingung sichert
+   die Disjunktheit zur Traufe **definitorisch**, nicht erst über die
+   Auswertungsreihenfolge,
 4. **Keine zweite Dachfläche**: p erfüllt nicht (∗), d. h. es gibt
    keine andere Dachfläche D_j ∈ 𝒟 (j ≠ i), in deren Polygonbereich
    F(P_j) p ganz enthalten wäre. Anders ausgedrückt: p ist
@@ -142,18 +150,16 @@ besteht sie aus genau einer Strecke.
   ist gewollt.
 - **Disjunktheit zu Traufe**: Traufe ist die Polygonrandkante mit
   **niedrigster** mittlerer Höhe in H(D); Pultkante diejenige mit
-  **höchster**. Bei einer geneigten Dachfläche (α > 0) sind diese
-  Werte verschieden, sofern H(D) mindestens zwei verschiedene
-  Höhen enthält — Regelfall im Holzbau. Bei einer Dachfläche mit nur
-  einer einzigen horizontalen Randkante (z. B. Walmfläche-Dreieck mit
-  einer einzigen Trauf­kante) gibt es keine Pultkante; Bedingung 3
-  liefert dieselbe Kante wie für die Traufe, aber Bedingung 4
-  schließt sie aus, falls sie zugleich Schnittkante eines anderen
-  Dachflächen-Polygons wäre — sonst klassifiziert sie eindeutig als
-  Traufe (untere Kante) und nicht als Pultkante.
-  Operativ wird die Disjunktheit dadurch gesichert, dass eine Kante
-  zuerst auf Schnittkanten-Kriterien (First/Grat/Kehle) geprüft wird,
-  dann auf Traufe (Minimum), dann auf Pultkante (Maximum, alleinig).
+  **höchster** — und nach Bedingung 3 nur dann, wenn sich Minimum und
+  Maximum um mehr als ε_L unterscheiden (H(D) mehr-höhig). Bei einer
+  Dachfläche mit nur einer einzigen horizontalen Randkante (z. B.
+  Walmflächen-Dreieck mit einziger Traufkante) sind Minimum und
+  Maximum dieselbe Kante; Bedingung 3 ist dann **nicht** erfüllt, und
+  es gibt keine Pultkante — die Kante ist die Traufe. Die Disjunktheit
+  ist damit **definitorisch** gesichert, nicht erst über die
+  Auswertungsreihenfolge. Eine vorgelagerte Schnittkanten-Prüfung
+  (First/Grat/Kehle) bleibt als Optimierung sinnvoll, ist für die
+  Korrektheit der Klassifikation aber nicht mehr nötig.
 - **Disjunktheit zu First**: First ist Schnittkante zweier
   Dachflächen; Bedingung 4 schließt das aus.
 - **Disjunktheit zu Ortgang**: Ortgang verläuft entlang der
@@ -252,9 +258,13 @@ fun istPultkante(
     val eHat = e.einheitsRichtung().werteOder { return false }
     if (abs(eHat dot Vektor.E_Z) > eps_W) return false
     // 3. z_bar(e) ist Maximum unter allen näherungsweise horizontalen
-    //    Polygonrandkanten von d
+    //    Polygonrandkanten von d UND dieses Maximum liegt echt über dem
+    //    Minimum (sonst ist e die Traufe, keine Pultkante — Disjunktheit
+    //    definitorisch, nicht über die Auswertungsreihenfolge).
     val horizontale = d.umriss.kanten().filter { it.istHorizontal(eps_W) }
     val maxZ = horizontale.maxOf { it.hoehenMittelwert() }
+    val minZ = horizontale.minOf { it.hoehenMittelwert() }
+    if (maxZ - minZ <= eps_L) return false   // H(D) einhöhig → keine Pultkante
     if (abs(e.hoehenMittelwert() - maxZ) > eps_L) return false
     // 4. e ist keine Schnittkante mit einer anderen Dachfläche der Familie
     val andere = familie.filter { it !== d }
@@ -275,7 +285,9 @@ fun istPultkante(
   4. Mittlere z-Höhe jeder Teilstrecke ist gleich dem Maximum der
      mittleren z-Höhen aller näherungsweise horizontalen
      Polygonrandkanten der Dachfläche, mit Toleranz
-     Toleranzen.LAENGE_EPS.
+     Toleranzen.LAENGE_EPS — und dieses Maximum liegt echt über dem
+     Minimum (max − min > LAENGE_EPS; sonst ist die Kante die Traufe,
+     keine Pultkante).
   5. Keine andere Dachfläche der Familie enthält die Teilstrecke
      in ihrem Polygonbereich (Bedingung 4 in der mathematischen
      Definition).

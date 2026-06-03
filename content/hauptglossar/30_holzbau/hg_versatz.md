@@ -1,7 +1,7 @@
 ---
 id: versatz
 benennung: Versatz
-synonyme: [Versatz-Verbindung, Stirnversatz, Fersenversatz, "doppelter Versatz", "single step joint", "double step joint"]
+synonyme: [Versatz-Verbindung, Stirnversatz, Fersenversatz, Rückversatz, Brustversatz, "doppelter Versatz", "Stirn-Fersen-Versatz", "single step joint", "double step joint"]
 abgelehnte_benennungen: ["birdsmouth", "birdsmouth joint", "bird's mouth", "heel cut", "seat cut", "plumb cut", "step-lapped rafter seat", "rafter notch", "notch", "mortise", "tenon", Versetzung, Stirnschnitt, Schwalbenschwanzversatz]
 oberbegriff: bearbeitung
 begriffstyp: partitiv
@@ -16,6 +16,7 @@ quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, zimmermannsmäßige Verbindungen. Eine konkrete Annex-Stelle für den Versatz ist im Bestand-Eintrag `hg_verbindung.md` mit 'Anhang A' referenziert, durch diese Recherche aber nicht volltext-verifiziert; siehe quellenkonflikt-Block."
   - "DIN 1052:2008-12 (zurückgezogen, ersetzt durch DIN EN 1995-1-1 + NA): führte Versatz unter zimmermannsmäßiger Verbindung gemeinsam mit Verblattung, Verzapfung, Verkämmung; historische Etablierung des Begriffs."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen, Bemessungshilfen. Springer Vieweg, Wiesbaden 2004 (1. Aufl.), Kap. 8.5 'Versätze'. Autoritative geometrische Definition der drei Versatzformen: Stirnversatz = Winkelhalbierende (Beanspruchungswinkel α_S = α_D = γ/2, Bild 8.14); **Fersenversatz/Rückversatz = Druckfläche rechtwinklig zur Strebe** (α_S = γ, α_D = 0, Beiwert k_V,γ, Bild 8.15); rechtwinkliger Versatz = lotrecht zum Gurt (α_S = 0, α_D = γ); doppelter Versatz = Stirn + Ferse (Bild 8.16, Tab. 8.4). Maßgebliche Quelle für die Benennung der ⊥-Strebe-Geometrie als Fersenversatz (s. quellenkonflikt Konflikt 6)."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 7 'Verbindungen', §§ Stirnversatz, Fersenversatz, doppelter Versatz."
   - "Peter, M.; Scheer, C. (Hrsg.): Holzbau-Taschenbuch. Wiley-VCH, Berlin 2015, Kap. 19 'Einfacher Versatz' und Kap. 20 'Doppelter Versatz'."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Versatz'."
@@ -124,6 +125,60 @@ quellenkonflikt: |
   joint` und `double step joint` werden als fachsprachliche
   englische Synonyme aufgenommen.
 
+  **Konflikt 5 — Nur die Druckfläche ist geometrisch normiert:**
+
+  Eine Recherche über neun Fachquellen (2026-06-02 + Colling-Nachtrag:
+  **Colling §8.5 Bild 8.14/8.15 als autoritative Winkel-Quelle**; FRILO HO2+
+  Berechnungsgrundlagen mit Schnittfiguren; Berner Fachhochschule
+  „Historische Holzverbindungen" 2016 mit 3D-Renderings, SIA 265;
+  D.I.E. Statik; bubiza-Wiki; zimmerer-treff; baubeaver; sowie die
+  akademische step-joint-Literatur Branco/Descamps) ergab: **nur die
+  Druckfläche** des Versatz-Ausschnitts ist konventionell festgelegt
+  (Stirn = Winkelhalbierende δ_S = β/2, Beanspruchungswinkel γ/2; Ferse =
+  rechtwinklig zur Strebe δ_F = β − π/2, Beanspruchungswinkel α_S = γ in der
+  Schwelle — Colling Bild 8.15). Die **zweite Schnittfläche (Sohle)** ist in **keiner**
+  Quelle mit einem Winkel definiert; die Ingenieur-Modelle
+  idealisieren nur die **Scherfuge** als waagrechte Analyse-Ebene im
+  Vorholz (Bruchebene des Schubnachweises), nicht als realen Schnitt.
+  Branco/Descamps wörtlich: „no European standards detail how to
+  design this connection … at the joint contact surfaces."
+
+  **Eigene Festlegung:** Die Druckflächenwinkel sind **durch β
+  bestimmt** (Stirn `δ_S = β/2`, Ferse `δ_F = β − π/2`) — nach
+  EN 1995-1-1 „nicht frei wählbar" — und daher **abgeleitete Größen,
+  kein Tupel-Feld** (Recherche-Bericht
+  `docs/recherche/2026-06-02_versatz_winkel_konvention.md`). Frei ist
+  allein der **Stirn-Sohlenwinkel σ_S** (handwerkliche Freimachungs-
+  Fläche), nur zur Wohlgeformtheit des V auf (0, π/2) beschränkt. Die
+  Fersen-Sohle ist konstruktiv ∥ Strebe (`σ = π − β`, 90°-L). Belegt
+  durch Recherche-Bericht 2026-06-02 und Eric-f3d-Review der drei Arten. Doppelt-Tiefen-Konvention (BFH/SIA):
+  Stirn 1/6·h, Ferse 1/4·h; Ferse ≥ 1 cm (DIN) bzw. ≥ 1,5 cm
+  (ÖNORM B 1995) tiefer als Stirn.
+
+  **Konflikt 6 — „Fersenversatz" (⊥ Strebe) vs. „Brustversatz" (Synonym):**
+
+  Die ⊥-Strebe-Geometrie (Druckfläche rechtwinklig zur Strebe,
+  δ_F = β − π/2) heißt im **autoritativen Lehrbuch** (Colling, „Holzbau –
+  Grundlagen", §8.5, Bild 8.15 „Fersen-/Rückversatz": Beanspruchungswinkel
+  α_S = γ in der Schwelle, α_D = 0 in der Strebe, Bemessungs-Beiwert k_V,γ)
+  der **Fersenversatz**. Ebenso bei **BTLx 2.1 / COMPAS Timber**
+  (`StepJointNotch HEEL` — HEEL = Ferse, das Golden-Orakel dieses Eintrags)
+  und bei FRILO. Ein Teil des Web-Korpus (de-academic, baubeaver, pcae)
+  nennt dieselbe ⊥-Strebe-Geometrie **Brustversatz** und führt
+  „Fersenversatz" als separate, weiter zurückversetzte Variante mit
+  größerer Vorholzlänge.
+
+  **Eigene Festlegung:** Maßgeblich ist Colling (autoritatives Lehrbuch)
+  zusammen mit BTLx/COMPAS (unser Validierungs-Orakel): die ⊥-Strebe-Art
+  heißt `FERSE` (Fersenversatz). **Brustversatz** ist als **Synonym** für
+  dieselbe Geometrie geführt (Frontmatter). Der „zurückversetzte" Charakter
+  (Strebennase ragt vor, größere Vorholzlänge) ist eine **Positions-Variante**
+  über x_0/l_v, **kein** eigener Schnitt — Colling modelliert beide unter
+  demselben ⊥-Strebe-Fersenversatz. (Recherche
+  `docs/recherche/2026-06-02_versatz_brust_vs_ferse.md`, Colling-Addendum.
+  Diese Festlegung **revidiert** eine zwischenzeitliche Umbenennung
+  FERSE→BRUST, die nur den Web-Korpus konsultiert hatte.)
+
   Diese Festlegung ist konsistent mit allen konsultierten Quellen.
 ---
 
@@ -205,7 +260,7 @@ mit der Bedeutung
 Die **Parameter** eines Versatzes sind das Tupel
 
 ```
-p_Versatz  :=  ( x_0, art, β, t_S?, δ_S?, t_F?, δ_F?, l_v )       (2)
+p_Versatz  :=  ( x_0, art, β, t_S?, σ_S?, t_F?, b_K?, l_v )              (2)
 ```
 
 mit
@@ -222,19 +277,40 @@ mit
   er die Anschnittwinkel bestimmt).
 - **t_S** ∈ ℝ⁺ ∪ {⊥}: **Versatztiefe Stirn** (mm); Pflicht für
   art ∈ {STIRN, DOPPELT}, ⊥ für art = FERSE.
-- **δ_S** ∈ (0, π/2) ∪ {⊥}: **Anschnittwinkel Stirn** (rad),
-  gemessen zwischen Stirn-Anschnittfläche und der
-  Trägerbauteil-Faserrichtung e_hat_x^B. Pflicht für art ∈ {STIRN,
-  DOPPELT}, ⊥ für art = FERSE.
+- **σ_S** ∈ (0, π/2) ∪ {⊥}: **Sohlenwinkel Stirn** (rad) der **zweiten**
+  Stirn-Schnittfläche (Sohle, kein Hauptdruck) zur Faser. Der Ausschnitt-
+  Apex-Innenwinkel ist `180° − δ_S − σ_S`; flach (σ_S < π/2 − δ_S) ⇒ stumpf.
+  **Nicht normiert** — reine handwerkliche Freimachungs-Fläche (s.
+  quellenkonflikt Konflikt 5). Pflicht für art ∈ {STIRN, DOPPELT}, ⊥ für
+  art = FERSE.
 - **t_F** ∈ ℝ⁺ ∪ {⊥}: **Versatztiefe Ferse** (mm); Pflicht für
   art ∈ {FERSE, DOPPELT}, ⊥ für art = STIRN.
-- **δ_F** ∈ (0, π/2) ∪ {⊥}: **Anschnittwinkel Ferse** (rad),
-  gemessen zwischen Fersen-Anschnittfläche und e_hat_x^B. Pflicht
-  für art ∈ {FERSE, DOPPELT}, ⊥ für art = STIRN.
+- **b_K** ∈ ℝ⁺ ∪ {⊥}: **Versatzkamm-Breite** (mm) — Bemessungs-Kenngröße
+  (Mindest-Steg zwischen den Scherfugen, EC5-Schubnachweis). **Ohne
+  Geometrie-Wirkung** im Werkzeugkörper: der Versatzkamm ist eine **Spitze
+  auf der Oberkante** (z = h_B), kein Plateau (s. Werkzeugkörper DOPPELT).
+  Pflicht **nur** für art = DOPPELT, ⊥ sonst.
 - **l_v** ∈ ℝ⁺: **Vorholzlänge** (mm), Abstand von der vordersten
   Versatz-Stirnkante (am Stirn-Aufsetzpunkt Q für art ∈ {STIRN,
   DOPPELT}, bzw. an der Fersen-Ausstiegskante für art = FERSE)
   bis zum Trägerbauteil-Ende.
+
+**Abgeleitete Anschnittwinkel (durch β bestimmt, kein Tupel-Feld).** Die
+Druckflächen-Winkel sind nach DACH-Konsens und EN 1995-1-1 **nicht frei**,
+sondern durch den Strebenanschlusswinkel β festgelegt (Recherche-Bericht
+`docs/recherche/2026-06-02_versatz_winkel_konvention.md`):
+
+```
+δ_S      =  β / 2          Stirn-Druckfläche = Winkelhalbierende
+δ_F      =  β − π/2        Ferse-Druckfläche = rechtwinklig zur Strebe
+σ_Ferse  =  α  =  π − β    Ferse-Sohle = parallel zur Strebe
+```
+
+Die Winkelhalbierende `δ_S = β/2` ergibt gleichen Hankinson-Winkel in
+Druckstab und Trägerbauteil (Hirnholz-auf-Hirnholz-Optimum); die Ferse weicht
+ab (rechtwinklig zur Strebe) und bildet mit der ∥-Strebe-Sohle einen
+rechtwinkligen L-Apex (90°). **Frei** ist allein die **Stirn-Sohle σ_S**
+(handwerkliche Freimachungs-Fläche, kein Norm-Winkel).
 
 ### Geometrie der Anschnittflächen
 
@@ -247,36 +323,63 @@ Konvention bei
 Q  :=  (x_0, 0, h_B)         in Bauteil-Lokal-Koordinaten.       (3)
 ```
 
-**Stirn-Anschnittfläche** (für art ∈ {STIRN, DOPPELT}):
-Die Anschnittebene Σ_S ist die Ebene durch Q, deren Normale
-ν_hat_S ∈ Π_⊥(B) den Winkel δ_S mit der Trägerbauteil-Längsachse
-e_hat_x^B einschließt und nach unten in das Trägerbauteil zeigt.
-Konstruktiv mit Drehung um e_hat_y^B:
+**V-Ausschnitt (allgemein).** Jeder einfache Versatz-Ausschnitt ist ein
+nach unten zeigendes **Dreieck-Prisma** (V) aus **zwei geneigten**
+Schnitten — einer **Druckfläche** (Winkel δ zur Faser, nimmt den Hauptdruck
+auf) und einer **Sohle** (Winkel σ zur Faser, kein Hauptdruck) —, **keiner
+waagrecht (∥ Unterkante) und keiner lotrecht**. Beide Flächen zeigen
+firstseitig zur Strebe. Damit fällt Collings vierte Form — der
+**rechtwinklige Versatz** (Druckfläche lotrecht zum Gurt, α_S = 0,
+α_D = γ; Colling §8.5, Tab. 8.3) — **aus diesem Modell heraus**: seine
+lotrechte Druckfläche ist kein geneigter V-Schnitt. Modelliert sind
+allein Stirn (Winkelhalbierende), Ferse (⊥ Strebe) und ihre Kombination
+(DOPPELT); der rechtwinklige Versatz ist nicht abgebildet (selten, hoher
+Querzug am Gurt).
+
+In der Lotebene mit Aufsetzpunkt A = (x_A, 0, h_B):
 
 ```
-ν_hat_S  :=  cos(δ_S) · (−e_hat_z^B)  +  sin(δ_S) · (−e_hat_x^B),            (4)
-Σ_S  :=  { P ∈ ℝ³ | ⟨P − Q, ν_hat_S⟩ = 0 }.                          (5)
+A  =  (x_A, 0, h_B)                       Druckfläche ∩ Oberseite (fußseitig)
+C  =  (x_A + t·cot δ, 0, h_B − t)          Apex (Druckfläche ∩ Sohle)        (4)
+B  =  (x_A + t·(cot δ + cot σ), 0, h_B)    Sohle ∩ Oberseite (firstseitig)
 ```
 
-Die Stirn-Anschnittfläche endet auf der Tiefe t_S am
-**Stirn-Tiefenpunkt**
+mit der vertikalen Tiefe t (z-Abfall = t). Die nach innen (ins V) weisenden
+Flächennormalen sind
 
 ```
-P_S  :=  Q  −  t_S · ν_hat_S^⊥                                       (6)
+ν_hat_Druck  =  sin δ · e_hat_x^B  +  cos δ · e_hat_z^B,                     (5)
+ν_hat_Sohle  =  − sin σ · e_hat_x^B  +  cos σ · e_hat_z^B.
 ```
 
-mit ν_hat_S^⊥ als Einheitsvektor in Π_⊥(B), rechtwinklig zu ν_hat_S
-und in das Trägerbauteil-Innere zeigend.
-
-**Fersen-Anschnittfläche** (für art ∈ {FERSE, DOPPELT}):
-Analog mit Anschnittwinkel δ_F, Tiefe t_F, einem Fersen-
-Aufsetzpunkt Q_F (für art = FERSE: Q_F := Q; für art = DOPPELT:
-Q_F liegt um die Versatzkamm-Breite gegen Q in Druckstab-
-Innenseite versetzt) und einer Anschnittebene Σ_F mit Normale
+Der **Apex-Innenwinkel** (Öffnung des Ausschnitts) ist
 
 ```
-ν_hat_F  :=  cos(δ_F) · (−e_hat_z^B)  +  sin(δ_F) · (+e_hat_x^B).            (7)
+∠(A, C, B)  =  π − δ − σ.                                            (6)
 ```
+
+Der Anschnittquerschnitt ist der Durchschnitt dreier Halbräume in der
+Lotebene (über [y_min, y_max] extrudiert kommen die zwei y-Deckel hinzu →
+fünf Halbräume des prismatischen Werkzeugkörpers):
+
+```
+Δ  =  { z ≤ h_B }  ∩  { ⟨P − A, ν_hat_Druck⟩ ≥ 0 }
+                    ∩  { ⟨P − C, ν_hat_Sohle⟩ ≥ 0 }.                 (7)
+```
+
+**Stirn-Ausschnitt** (art ∈ {STIRN, DOPPELT}): Druckfläche =
+**Winkelhalbierende** `δ = δ_S = β/2` (aus β abgeleitet), Sohle = freier Winkel
+`σ = σ_S` (nicht normiert, handwerkliche Freimachung). Flaches σ_S ⇒
+**stumpfer** Apex (π − δ_S − σ_S > π/2). Aufsetzpunkt A_S := Q.
+
+**Fersen-Ausschnitt** (art ∈ {FERSE, DOPPELT}): Druckfläche **rechtwinklig
+zur Strebe** `δ = δ_F = β − π/2`, Sohle **∥ Strebe** `σ = α = π − β`.
+Damit ist der Apex `π − (β − π/2) − (π − β) = π/2` — ein **rechtwinkliger
+L-Ausschnitt** (90°). **Kein** Spiegel der Stirn (gleiche Seite, andere
+Neigungen). Aufsetzpunkt:
+- für **art = FERSE** (einfach): A_F := Q;
+- für **art = DOPPELT**: A_F liegt firstseitig am **Gipfel** der Stirn-Sohle,
+  `x_{A_F} = x_0 + t_S·(cot δ_S + cot σ_S)` (s. Werkzeugkörper DOPPELT).
 
 ### Werkzeugkörper
 
@@ -289,18 +392,28 @@ Volumen, das den Anschnittquerschnitt in der Lotebene Π_⊥(B)
 K_Versatz(p_Versatz)  :=  Δ_Versatz(art)  ×  [y_min, y_max]      (8)
 ```
 
-mit dem Anschnittquerschnitt Δ_Versatz(art) ⊂ Π_⊥(B):
+mit dem Anschnittquerschnitt Δ_Versatz(art) ⊂ Π_⊥(B) als **V-Dreieck**
+conv{A, C, B} nach (4) (Druckfläche A–C, Sohle C–B, offene Mündung B–A auf
+z = h_B):
 
-- **art = STIRN**: Δ_Versatz = conv{ Q, P_S, A_S } ⊂ Π_⊥(B),
-  wobei A_S der Schnittpunkt von Σ_S mit der Trägerbauteil-
-  Oberseite z = h_B fußseitig von Q ist.
-- **art = FERSE**: Δ_Versatz = conv{ Q, P_F, A_F }, wobei
-  A_F der Schnittpunkt von Σ_F mit der Trägerbauteil-Oberseite
-  firstseitig von Q ist.
-- **art = DOPPELT**: Δ_Versatz = conv{ A_S, P_S, P_F, A_F } ⊂
-  Π_⊥(B) (Vier-Eck-Anschnittquerschnitt mit beiden geneigten
-  Anschnittflächen Σ_S und Σ_F und einer dazwischen liegenden
-  Versatzkamm-Sohle).
+- **art = STIRN**: Δ_Versatz = conv{ A_S, C_S, B_S } mit A_S = Q, Druckwinkel
+  δ = δ_S (Winkelhalbierende) und Sohlenwinkel σ = σ_S (frei). Fünf
+  Halbräume (Innennormalen ins V): Oberseite z ≤ h_B, Druckfläche ν_hat_Druck,
+  Sohle ν_hat_Sohle, zwei y-Deckel. Apex stumpf (π − δ_S − σ_S).
+- **art = FERSE**: Δ_Versatz = conv{ A_F, C_F, B_F }, **gleiche Seite** wie die
+  Stirn (firstseitig), Druckfläche **rechtwinklig zur Strebe** (δ_F = β − π/2),
+  Sohle **∥ Strebe** (σ = α = π − β) ⇒ rechtwinkliger L-Apex (90°). **Kein**
+  Spiegel. A_F = Q.
+- **art = DOPPELT**: Der Werkzeugkörper ist die **nicht-konvexe Vereinigung**
+  des **Stirn-V** (vorn, flach: δ_S, σ_S) und des **Fersen-V** (hinten, tief:
+  δ_F, σ = α), **beide firstseitig** zur Strebe. Die Stirn-Sohle steigt
+  firstseitig auf die Oberkante und trifft dort die Fersen-Druckfläche: der
+  Fersen-Aufsetzpunkt sitzt am **Gipfel** der Stirn-Sohle,
+  `x_{A_F} = x_0 + t_S·(cot δ_S + cot σ_S)`. Dazwischen bleibt der
+  **Versatzkamm** als **Spitze auf z = h_B** (kein Plateau; die
+  [versatzkammBreite] `b_K` ist nur Bemessungs-Kenngröße, **ohne
+  Geometrie-Wirkung**). Wirkung (9): `Träger \ (Stirn-V ∪ Fersen-V)`,
+  sequenzielle konvexe Differenz (Träger \ Stirn \ Ferse → `KonvexZerlegung`).
 
 Die **Wirkung** des Versatzes auf das Trägerbauteil ist die
 Boole'sche Differenz nach `bearbeitung`:
@@ -329,12 +442,13 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
   Schwelle, einem Rähm, einem Bundbalken oder einer Fußpfette
   lässt sich das Tupel angeben. Mindestkonfiguration: art =
   STIRN, β = 2π/3 (120°, entspricht einer 60°-Strebe),
-  δ_S = β/2 = π/3, t_S = h_B/6, t_F = ⊥, δ_F = ⊥,
-  l_v = max(8·t_S, 200 mm), T_F = id_SE(3).
+  σ_S = π/12 (freie flache Sohle), t_S = h_B/6, t_F = ⊥,
+  l_v = max(8·t_S, 200 mm), T_F = id_SE(3); daraus abgeleitet
+  δ_S = β/2 = π/3.
 - **Eindeutigkeit der Werkzeugkörper-Konstruktion**: Bei
   festgelegtem Parametertupel p_Versatz und Bauteil B mit
-  bekannter `lokalePlatzierung` sind die Eckpunkte Q, P_S, A_S
-  (bzw. analoge Fersen-Punkte) nach (3), (4)–(6) eindeutig
+  bekannter `lokalePlatzierung` sind die V-Eckpunkte A, C, B
+  (bzw. die analogen Fersen-Punkte) nach (3), (4) eindeutig
   bestimmt, der Anschnittquerschnitt Δ_Versatz(art) ist als
   konvexe Hülle eindeutig festgelegt, und das Werkzeugvolumen
   K_Versatz(p_Versatz) nach (8) ist eindeutig. Die Konstruktion
@@ -355,12 +469,14 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
      Anschnittfläche gilt t_i ≤ h_B − ε_L (i ∈ {S, F}). Ein
      Versatz mit Tiefe ≥ Bauteilhöhe würde das Trägerbauteil
      durchtrennen.
-  4. **Anschnittwinkel im offenen Bereich (0, π/2)**: für jede
-     aktive Anschnittfläche gilt δ_i ∈ (ε_W, π/2 − ε_W). Bei
-     δ_i = 0 fällt die Anschnittfläche mit der Trägerbauteil-
-     Oberseite zusammen (kein Versatz, sondern Lasche); bei
-     δ_i = π/2 fällt sie mit der Trägerbauteil-Stirnfläche
-     zusammen (kein Versatz, sondern Anschnitt).
+  4. **Winkel-Wohlgeformtheit (offener Bereich (0, π/2))**: der
+     **freie** Stirn-Sohlenwinkel σ_S ∈ (ε_W, π/2 − ε_W). Die
+     **abgeleiteten** Druckflächen-Winkel δ_S = β/2 und δ_F = β − π/2
+     folgen aus β und liegen für β ∈ (π/2 + ε_W, π − ε_W) in (0, π/2). Bei
+     Winkel = 0 fällt die Fläche mit der Trägerbauteil-Oberseite
+     zusammen (waagrecht); bei = π/2 mit der Stirnfläche (lotrecht)
+     — in beiden Grenzfällen entartet das V. (σ_S ist nicht
+     normiert, aber zur Wohlgeformtheit des V beschränkt.)
   5. **Vorholzlängen-Positivität**: l_v > ε_L.
   6. **Position innerhalb des Trägerbauteils**: x_0 muss so
      gewählt sein, dass sowohl der Stirn-/Fersen-Aufsetzpunkt
@@ -370,10 +486,11 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
      Bauteilende vorhanden ist. Verletzung → Validierungsfehler
      `VersatzPositionAusserhalbBauteil` (analog zur Kerve).
   7. **Doppelter Versatz — Kammbreite-Positivität**: für
-     art = DOPPELT muss die zwischen P_S und P_F liegende
-     Versatzkamm-Sohle eine positive welt-horizontale
-     Erstreckung haben; geometrisch durch P_S ≠ P_F in der
-     Lotebene erzwungen.
+     art = DOPPELT gilt b_K > ε_L. b_K ist eine **Bemessungs-
+     Kenngröße** (Mindeststeg zwischen den Scherfugen, EC5-Schub)
+     ohne Geometrie-Wirkung — der Versatzkamm ist im Werkzeugkörper
+     eine Spitze auf z = h_B (Stirn-Sohle ∩ Fersen-Druckfläche),
+     kein Plateau der Breite b_K.
 - **Plausibilität (weiche Invarianten, Warnung; kein
   Validierungsfehler — siehe quellenkonflikt-Block):**
   1. **Tiefen-Faustregel NCI NA.12**: für jede aktive
@@ -394,16 +511,16 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
      bzw. t_F; für art = DOPPELT: t_v = max(t_S, t_F)).
      Verletzung → `Warnung.VersatzVorholzZuKurz` mit Hinweis
      auf EC 5 6.5 Schubnachweis.
-  3. **Optimums-Anschnittwinkel Stirnversatz**: für art = STIRN
-     ist δ_S = β/2 (Winkelhalbierende des stumpfen Außenwinkels)
-     das berufssprachlich etablierte Optimum, weil dann der
-     Hankinson-Winkel zur Faser in Druckstab und Trägerbauteil
-     gleich groß und gleich (π − β)/2 ist (siehe
-     `hankinson_winkel` für die Hankinson-Formel; die
-     Optimums-Begründung ist Stufe-3-Inhalt der Theorie-
-     Schicht und folgt formal als Satz aus der Hankinson-
-     Formulierung, nicht als Definition hier). Abweichung von
-     δ_S = β/2 ± ε_W → `Warnung.VersatzAnschnittwinkelNichtOptimal`.
+  3. **Druckflächen-Winkel zwingend aus β (keine Warnung)**:
+     δ_S = β/2 (Stirn, Winkelhalbierende) und δ_F = β − π/2 (Ferse,
+     ⊥ Strebe) sind nach EN 1995-1-1 **nicht frei wählbar**, sondern
+     aus β bestimmt (Recherche-Bericht
+     `docs/recherche/2026-06-02_versatz_winkel_konvention.md`). Die
+     Winkelhalbierende ergibt gleichen Hankinson-Winkel (π − β)/2 in
+     Druckstab und Trägerbauteil (Hirnholz-auf-Hirnholz-Optimum;
+     Stufe-3-Theorie-Inhalt, folgt formal aus der Hankinson-
+     Formulierung, siehe `hankinson_winkel`). Da δ_S/δ_F nicht
+     abweichen können, entfällt die frühere Optimum-Warnung.
   4. **Doppelter Versatz — Tiefendifferenz**: für art = DOPPELT
      gilt die Praxisregel t_F ≥ t_S + 10 mm (Ferse mindestens
      1 cm tiefer als Stirn, sonst Abscher-Gefahr in der
@@ -461,26 +578,36 @@ und die Druckspannungen werden ausgewogen aufgenommen
 (Mönck/Rug Kap. 7; Holzbau-Taschenbuch Kap. 19; Recherche
 §D.3, §C.1). Anwendung: Strebenfuß auf Schwelle, Kopfband-Anschluss.
 
-**Fersenversatz** (`art = FERSE`, Synonyme: hinterer Versatz;
-engl. *heel notch*, *rear notch*). Eine **einzige** geneigte
-Anschnittfläche, deren tiefster Punkt zur Druckstab-Innenseite
-(Ferse) hin zeigt; die Druckstab-Stirn ragt vor. Eingesetzt,
-wenn der Trägerbauteil-Überstand reduziert werden soll, weil
-ein Teil der Vorholzlänge unter dem Druckstab liegt. Die
-Kraftübertragung im Trägerbauteil ist **ungünstiger** als beim
-Stirnversatz, weil der Hankinson-Winkel steiler an der Faser
-liegt (Recherche §C.1; Holzbau-Taschenbuch Kap. 19).
+**Fersenversatz** (`art = FERSE`, Synonyme: hinterer Versatz,
+**Brustversatz**, Rückversatz; engl. *heel notch*, *rear notch*). Eine
+**einzige** geneigte Anschnittfläche **rechtwinklig zur Strebe** abgestirnt
+(δ_F = β − π/2); ihr tiefster Punkt zeigt zur Druckstab-Innenseite (Ferse),
+die Druckstab-Stirn ragt vor. Eingesetzt, wenn der Trägerbauteil-Überstand
+reduziert werden soll, weil ein Teil der Vorholzlänge unter dem Druckstab
+liegt. Die Kraftübertragung im Trägerbauteil ist **deutlich ungünstiger**
+als beim Stirnversatz: der Beanspruchungswinkel zur Schwellen-Faser ist
+α_S = γ (der volle Strebenwinkel) statt γ/2 — nach Hankinson überträgt der
+Stirnversatz bei gleicher Versatztiefe rund 70 % höhere Kräfte (Colling §8.5,
+Bild 8.15 + Tab. 8.4: Beiwert k_V,γ; α_D = 0 in der Strebe). Konstruktiv
+vorteilhaft sind allein der kleinere Einschnitt und die geringere Ausmitte
+e = (h_D − t_V/cos γ)/2 (Recherche §C.1; Colling §8.5; Holzbau-Taschenbuch
+Kap. 19). **Benennung:** zur Begriffs-Kollision „Brustversatz" (Synonym,
+Web-Korpus) ↔ „Fersenversatz" (Colling/BTLx-HEEL) s. quellenkonflikt
+Konflikt 6.
 
 **Doppelter Versatz** (`art = DOPPELT`, Synonyme:
 Stirn-Fersen-Versatz, Doppel-Versatz; engl. *double step joint*).
-Kombination aus Stirn- und Fersenversatz mit **zwei** geneigten
-Anschnittflächen im Trägerbauteil. Höchste Anforderung an
-Passgenauigkeit und höchste Druck-Tragfähigkeit der drei
-Varianten. Praxisregel: der Fersenversatz muss mindestens 1 cm
-tiefer als der Stirnversatz eingeschnitten sein (`t_F ≥ t_S +
-10 mm`), sonst tritt Abscheren in der Versatzkamm-Sohle
-zwischen den beiden Anschnitten ein (Holzbau-Taschenbuch
-Kap. 20; Recherche §C.1, §E.4).
+Kombination aus Stirn- und Fersenversatz mit **zwei** V-Ausschnitten
+im Trägerbauteil, die direkt aufeinander folgen; dazwischen bleibt der
+**Versatzkamm** als **Spitze auf der Oberkante** (Stirn-Sohle trifft
+firstseitig die Fersen-Druckfläche, kein Plateau). Höchste Anforderung
+an Passgenauigkeit und höchste Druck-Tragfähigkeit der drei Varianten.
+Konvention (BFH/SIA): Stirntiefe meist 1/6·h, Fersentiefe 1/4·h.
+Praxisregel: der Fersenversatz muss mindestens 1 cm (DIN 1052) bzw.
+**1,5 cm (ÖNORM B 1995)** tiefer als der Stirnversatz eingeschnitten
+sein (`t_F ≥ t_S + 10…15 mm`), sonst tritt Abscheren im Versatzkamm
+zwischen den beiden Scherfugen ein (Holzbau-Taschenbuch Kap. 20;
+BFH 2016 Kap. 2; Recherche §C.1, §E.4).
 
 ### Englische Falsche Freunde
 
@@ -536,8 +663,9 @@ Dieser Glossareintrag definiert ausschließlich die
 - **Bestandteile (partitiv)** (geerbt von `bearbeitung`):
   - **UUID** (`uuid`): technische Identität, Pflicht.
   - **Typ**: konstant `Versatz`.
-  - **Parameter** (typspezifisch): x_0, art, β, t_S, δ_S, t_F,
-    δ_F, l_v (mit Pflichtfeldern abhängig von `art`).
+  - **Parameter** (typspezifisch): x_0, art, β, t_S, σ_S, t_F,
+    b_K, l_v (mit Pflichtfeldern abhängig von `art`); die Druckflächen-
+    winkel δ_S = β/2, δ_F = β − π/2 sind aus β abgeleitet, kein Feld.
   - **Lokale Platzierung**: SE(3); Identität im Standardfall.
   - **Bezeichnung**: optional.
   - **Keine Backref auf das Bauteil**: das Trägerbauteil ist
@@ -656,12 +784,16 @@ import java.util.UUID
  *   versatztiefeStirn        = t_S,         mm   (Pflicht wenn
  *                                                  art ∈ {STIRN,
  *                                                  DOPPELT}, sonst null)
- *   anschnittwinkelStirn     = δ_S,         rad  (analog)
+ *   anschnittwinkelSohleStirn= σ_S,         rad  (zweiter Schnitt, FREI — einziger freier Winkel)
  *   versatztiefeFerse        = t_F,         mm   (Pflicht wenn
  *                                                  art ∈ {FERSE,
  *                                                  DOPPELT}, sonst null)
- *   anschnittwinkelFerse     = δ_F,         rad  (analog)
+ *   versatzkammBreite        = b_K,         mm   (nur DOPPELT; Bemessung, ohne Geometrie)
  *   vorholzlaenge            = l_v,         mm   (l_v > LAENGE_EPS)
+ *
+ * Abgeleitet aus β (keine Felder): δ_S = β/2 (Stirn-Druckfläche,
+ * Winkelhalbierende), δ_F = β − π/2 (Ferse-Druckfläche, ⊥ Strebe),
+ * σ_Ferse = π − β (Ferse-Sohle, ∥ Strebe). Einziger freier Winkel: σ_S.
  *
  * BTLx-Mapping: StepJoint (BTLx 2.1, S. ?). Parameter-Schema
  * dieser Recherche nicht volltext-verifiziert (Folgearbeit
@@ -674,7 +806,6 @@ import java.util.UUID
  *   - t_i <= h_B * Toleranzen.VERSATZ_TIEFE_FLACH_VIERTEL bei α <= 50°
  *   - t_i <= h_B * Toleranzen.VERSATZ_TIEFE_STEIL_SECHSTEL bei α >= 60°
  *   - l_v >= max(8 * t_v_maßgebend, 200 mm)
- *   - art = STIRN: δ_S == β/2 (Winkelhalbierende, Optimum)
  *   - art = DOPPELT: t_F >= t_S + 10 mm
  */
 data class Versatz(
@@ -683,9 +814,9 @@ data class Versatz(
     val art: VersatzArt,
     val strebenanschlusswinkel: Double,                  // β,   rad
     val versatztiefeStirn: Double? = null,               // t_S, mm
-    val anschnittwinkelStirn: Double? = null,            // δ_S, rad
+    val anschnittwinkelSohleStirn: Double? = null,       // σ_S, rad (zweiter Schnitt, frei — einziger freier Winkel)
     val versatztiefeFerse: Double? = null,               // t_F, mm
-    val anschnittwinkelFerse: Double? = null,            // δ_F, rad
+    val versatzkammBreite: Double? = null,               // b_K, mm (nur DOPPELT; Bemessung)
     val vorholzlaenge: Double,                           // l_v, mm
     override val lokalePlatzierung: LokalePlatzierung
         = LokalePlatzierung.IDENTITAET,
@@ -723,10 +854,9 @@ sealed class VersatzUngueltig {
     object StrebenanschlusswinkelAusserhalb    : VersatzUngueltig()  // β nicht in (π/2, π)
     object TiefeStirnFehltOderNichtPositiv     : VersatzUngueltig()  // bei STIRN/DOPPELT
     object TiefeFerseFehltOderNichtPositiv     : VersatzUngueltig()  // bei FERSE/DOPPELT
-    object AnschnittwinkelStirnAusserhalb      : VersatzUngueltig()  // δ_S nicht in (0, π/2)
-    object AnschnittwinkelFerseAusserhalb      : VersatzUngueltig()  // δ_F nicht in (0, π/2)
+    object AnschnittwinkelSohleStirnAusserhalb : VersatzUngueltig()  // σ_S nicht in (0, π/2) — einziger freier Winkel; δ_S=β/2, δ_F=β−π/2 folgen aus β
     object VorholzlaengeNichtPositiv           : VersatzUngueltig()
-    object DoppelterVersatzKammbreiteEntartet  : VersatzUngueltig()  // P_S = P_F
+    object VersatzkammBreiteFehltOderNichtPositiv : VersatzUngueltig()  // b_K bei DOPPELT
     object PflichtfeldVerletzt                 : VersatzUngueltig()  // art ↔ Tiefen-/Winkelbelegung inkonsistent
 }
 
@@ -755,12 +885,14 @@ sealed class VersatzUngueltig {
   - `art` — Pflicht.
   - `strebenanschlusswinkel` (`β`) — Pflicht.
   - `vorholzlaenge` (`l_v`) — Pflicht.
-  - `versatztiefeStirn` (`t_S`), `anschnittwinkelStirn` (`δ_S`)
-    — Pflicht für `art ∈ {STIRN, DOPPELT}`, `null` für
-    `art = FERSE`.
-  - `versatztiefeFerse` (`t_F`), `anschnittwinkelFerse` (`δ_F`)
-    — Pflicht für `art ∈ {FERSE, DOPPELT}`, `null` für
-    `art = STIRN`.
+  - `versatztiefeStirn` (`t_S`), `anschnittwinkelSohleStirn` (`σ_S`)
+    — Pflicht für `art ∈ {STIRN, DOPPELT}`, `null` für `art = FERSE`.
+  - `versatztiefeFerse` (`t_F`) — Pflicht für
+    `art ∈ {FERSE, DOPPELT}`, `null` für `art = STIRN`.
+  - Druckflächenwinkel `δ_S = β/2`, `δ_F = β − π/2` und Ferse-Sohle
+    `σ_Ferse = π − β` sind **abgeleitet aus β** (kein Feld).
+  - `versatzkammBreite` (`b_K`) — Pflicht für `art = DOPPELT`,
+    `null` sonst; Bemessungs-Kenngröße ohne Geometrie-Wirkung.
   - `lokalePlatzierung` — Pflicht; mindestens
     `LokalePlatzierung.IDENTITAET`.
   - `bezeichnung` — `null` zulässig.

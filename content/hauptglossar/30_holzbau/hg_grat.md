@@ -36,8 +36,9 @@ quellenkonflikt: |
   - **Kehle**: konkav/einspringend — die beiden anliegenden Dachflächen
     bilden eine nach innen weisende Kante (Innenecke).
   Die mathematische Schärfung der qualitativen Begriffe „ausspringend"
-  / „einspringend" durch das Vorzeichen des Spatprodukts
-  ⟨n_hat_a × n_hat_b, t_hat⟩ ist eigene Festlegung; sie ist konsistent mit allen
+  / „einspringend" über die **Querlage der Flächenstücke** (Bedingung
+  (2): jede äußere Normale neigt sich zur Querseite ihres eigenen
+  Flächenstücks) ist eigene Festlegung; sie ist konsistent mit allen
   konsultierten Quellen, die nur die qualitativen Begriffe verwenden.
 
   Klassifikation: Eine Kante einer Dachflächenfamilie soll genau einer
@@ -88,40 +89,54 @@ Eine Schnittstrecke s_{ij} heißt **geneigt**, wenn
 (d. h. t_hat ist nicht näherungsweise horizontal — diese Bedingung grenzt
 Grat und Kehle gemeinsam vom First ab).
 
-Eine geneigte Schnittstrecke s_{ij} heißt **konvex** (ausspringend),
-wenn das gemischte Spatprodukt der äußeren Normalen mit der
-**aufwärts gerichteten** Tangente das positive Zeichen liefert.
-
 **Globale Vorzeichenkonvention für t_hat** (gilt für diesen Eintrag und
 alle Einträge, die `hg_grat.md` voraussetzen — insbesondere
 `hg_gratsparren.md`): Die Tangente t_hat ist **immer bergauf** gewählt,
 formal ⟨t_hat, e_z⟩ > 0 (nach (1) wohldefiniert; bei ⟨t_hat, e_z⟩ < 0
-ersetze t_hat durch −t_hat). Dann verlangen wir
+ersetze t_hat durch −t_hat).
+
+Zur Schärfung von **konvex/konkav** genügen die beiden äußeren Normalen
+allein **nicht**: Ein Grat und eine Kehle können dasselbe Normalenpaar
+besitzen und unterscheiden sich nur darin, auf welcher Seite der Kante
+das jeweilige Flächenstück liegt (Gegenbeispiel in der Erläuterung).
+Die Konvexität wird darum über die **Lage der Flächenstücke relativ
+zur Kante** bestimmt. Sei
 
 ```
-⟨ n_hat_{a,i} × n_hat_{a,j}, t_hat ⟩  ·  σ(i, j)  >  ε_W,            (2)
+w := (t_hat × e_z) / ‖t_hat × e_z‖   ∈ S²
 ```
 
-wobei σ(i, j) ∈ {+1, −1} das Vorzeichen ist, das die zyklische
-Reihenfolge (i, j) so wählt, dass die beiden Dachflächen am Grat
-**im Uhrzeigersinn um t_hat herum** angeordnet sind, wenn man von oben
-auf t_hat schaut. Konkret: Setze σ(i, j) := +1, wenn (i, j) so gewählt
-ist, dass die Drehung von n_hat_{a,i} nach n_hat_{a,j} um die Achse t_hat im
-mathematisch positiven Sinn erfolgt; sonst σ(i, j) := −1. Da das
-Spatprodukt antisymmetrisch in (i, j) ist, ist die Bedingung (2)
-unabhängig von der Reihenfolge der beiden Dachflächen.
-
-Äquivalente, vorzeichen-symmetrische Schreibweise:
+die zur Kantentangente orthogonale **horizontale** Querachse
+(wohldefiniert, solange die Kante nicht lotrecht ist, also
+‖t_hat × e_z‖ > ε_L — bei geneigten Dachkanten stets erfüllt). Sei
+c_i ein innerer Punkt (Flächenschwerpunkt) von F(P_i) und m ∈ s_{ij}
+ein Kantenpunkt. Die **signierte Querlage** des Flächenstücks D_i ist
 
 ```
-sign( ⟨ n_hat_{a,i} × n_hat_{a,j}, t_hat ⟩ )  =  sign( ⟨ n_hat_{a,i} − n_hat_{a,j}, e_hat_⊥ ⟩ )    (2')
+τ_i := ⟨ c_i − m, w ⟩.
 ```
 
-mit e_hat_⊥ := (e_z − ⟨e_z, t_hat⟩ · t_hat) / ‖…‖ als der zur Tangente
-orthogonalen, nach oben weisenden Komponente. Die Bedingung (2'/(2))
-ist genau dann erfüllt, wenn die Winkelhalbierende beider äußerer
-Normalen oberhalb der durch g_{ij} und t_hat aufgespannten Ebene liegt,
-also konvex/ausspringend ist.
+Da sich die beiden Flächen von der Kante aus zu **entgegengesetzten**
+Querseiten erstrecken, gilt τ_i · τ_j < 0. Eine geneigte Schnittstrecke
+s_{ij} heißt **konvex** (ausspringend, Grat), wenn sich **beide**
+äußeren Normalen horizontal zur Querseite ihres **eigenen**
+Flächenstücks neigen:
+
+```
+⟨ n_hat_{a,i}, w ⟩ · sign(τ_i) > ε_W   und
+⟨ n_hat_{a,j}, w ⟩ · sign(τ_j) > ε_W.                                 (2)
+```
+
+Anschaulich: Jede äußere Normale „kippt" horizontal in die
+Erstreckungsrichtung ihres eigenen Flächenstücks, weist also nach
+außen (Außenecke). Bei der **Kehle** ist das Vorzeichen umgekehrt —
+beide Normalen kippen zur jeweils anderen Seite, zur Kehle hin
+(Innenecke): ⟨n_hat_{a,i}, w⟩ · sign(τ_i) < −ε_W (analog für j).
+
+Die Bedingung (2) ist **pro Flächenstück** formuliert und damit
+unmittelbar unabhängig von der Reihenfolge der beiden Dachflächen.
+Sie verwendet die Polygon-Lage F(P_i) — eine reine Normalen-Bedingung
+⟨n_hat_{a,i} × n_hat_{a,j}, t_hat⟩ kann Grat und Kehle nicht trennen.
 
 Eine Schnittstrecke s_{ij} heißt **Grat** der Dachflächenfamilie 𝒟
 genau dann, wenn
@@ -143,21 +158,25 @@ aus genau einer Strecke pro Walmecke.
 - **Existenz der Tangente**: Wegen ℓ(s_{ij}) > ε_L ist t_hat
   wohldefiniert. Die Konvention ⟨t_hat, e_z⟩ > 0 ist wegen (1) erfüllbar
   und legt die Orientierung eindeutig fest.
-- **Unabhängigkeit von der Indexreihenfolge**: Beim Vertauschen
-  i ↔ j wechseln sowohl n_hat_{a,i} × n_hat_{a,j} als auch σ(i, j) ihr
-  Vorzeichen; das Produkt in (2) bleibt invariant. Die Definition
-  hängt also nicht von der Reihenfolge der beiden anliegenden
-  Dachflächen ab.
+- **Unabhängigkeit von der Indexreihenfolge**: Bedingung (2) ist pro
+  Flächenstück formuliert (je eine Ungleichung für i und für j); ein
+  Vertauschen i ↔ j benennt nur die beiden Ungleichungen um. Die
+  Definition hängt also nicht von der Reihenfolge der beiden
+  anliegenden Dachflächen ab.
 - **Unabhängigkeit von der Punktwahl auf s_{ij}**: t_hat ist auf der
   ganzen Strecke konstant; die Bedingungen (1) und (2) sind
   punktunabhängig.
 - **Disjunktheit zu First**: First verlangt |⟨t_hat, e_z⟩| ≤ ε_W; Grat
   verlangt |⟨t_hat, e_z⟩| > ε_W. Beide Klassen sind disjunkt.
 - **Disjunktheit zu Kehle**: Kehle verlangt das umgekehrte Vorzeichen
-  in (2). Bei strikter Ungleichung > ε_W bzw. < −ε_W in beiden
-  Klassen sind sie disjunkt; der Grenzbereich |⟨…⟩| ≤ ε_W bedeutet,
-  dass die Trägerebenen näherungsweise koplanar sind und die Kante
-  als Entartung behandelt wird.
+  in (2): ⟨n_hat_{a,i}, w⟩ · sign(τ_i) < −ε_W. Bei strikter Ungleichung
+  > ε_W (Grat) bzw. < −ε_W (Kehle) sind beide Klassen disjunkt; der
+  Grenzbereich |⟨n_hat_{a,i}, w⟩| ≤ ε_W bedeutet, dass ein Flächenstück
+  kaum quer zur Kante geneigt ist (Falllinie nahezu parallel zur
+  Kante), und die Kante wird als Entartung behandelt. Eine **gemischte**
+  Kante (ein Flächenstück außen, das andere innen geneigt) erfüllt
+  weder Grat noch Kehle — kein echtes Eck, sondern ein durchgehender
+  Knick.
 - **Konsistenz mit `dachkante`**: Ein Grat ist nach Konstruktion eine
   Schnittkante zweier Dachflächen, also eine Dachkante (Fall
   „Schnittkante").
@@ -181,11 +200,17 @@ Konstruktiv liegt entlang des Grats üblicherweise ein
 anliegender Dachflächen trägt. Auf dem Grat sitzt die Eindeckung
 mit eigenen Gratziegeln oder Gratabdeckungen.
 
-Anschauliche Konvexitätsprüfung: Die beiden äußeren Normalen
-n_hat_{a,i} und n_hat_{a,j} weisen am Grat **voneinander weg** (Außenecke);
-ihre Winkelhalbierende zeigt nach **außen-oben**. An einer Kehle
-hingegen weisen die Normalen gewissermaßen **gegeneinander**, und
-die Winkelhalbierende zeigt nach **innen-unten** (Wassersammelpunkt).
+Warum die Normalen allein nicht genügen: Man nehme zwei Dachflächen
+gleicher Neigung an einer gemeinsamen Kante. Ein **Grat** (Λ, beide
+Flächen fallen von der Kante weg) und eine **Kehle** (V, beide Flächen
+steigen von der Kante weg) besitzen **dasselbe Paar äußerer Normalen**
+— sie unterscheiden sich nur darin, welches Flächenstück auf welcher
+Querseite der Kante liegt. Am Grat zeigt jede äußere Normale
+(horizontal) **zur Seite ihres eigenen Flächenstücks** — nach außen;
+an der Kehle zeigt jede Normale zur **Gegenseite**, zur Kehle hin. Das
+ist die Querlage-Bedingung (2). Die Winkelhalbierende beider Normalen
+taugt dafür nicht: bei symmetrischer Neigung weist sie an Grat und
+Kehle gleichermaßen senkrecht nach oben.
 
 ## Beziehungen
 
@@ -260,13 +285,18 @@ fun istGrat(
     val nB = dB.aeussereNormale.normiert().werteOder { return false }
     if ((nA dot Vektor.E_Z) <= 0.0) return false
     if ((nB dot Vektor.E_Z) <= 0.0) return false
-    // 5. Konvexitätsbedingung: Spatprodukt > +eps_W
-    //    (Vorzeichen abhängig von der konsistenten Wahl der Normalenreihenfolge;
-    //    siehe Wohldefiniertheit. In der Implementierung wird die kanonische
-    //    Reihenfolge (i, j) durch die Polygon-Umlaufrichtung der ersten
-    //    Dachfläche fixiert.)
-    val spat = (nA cross nB) dot tHat
-    return spat > eps_W
+    // 5. Konvexitätsbedingung (2): pro Fläche — die äußere Normale neigt
+    //    sich horizontal zur Querseite ihres eigenen Flächenstücks.
+    //    Reine Normalen (nA cross nB) dot tHat trennen Grat und Kehle nicht;
+    //    es braucht die Polygon-Lage. w = horizontale Querachse,
+    //    tau = signierte Querlage des Flächenschwerpunkts.
+    val w = (tHat cross Vektor.E_Z).normiert().werteOder { return false }
+    val m = s.mittelpunkt()
+    val tauA = (dA.schwerpunkt() - m) dot w
+    val tauB = (dB.schwerpunkt() - m) dot w
+    val aussenA = (nA dot w) * sign(tauA) > eps_W
+    val aussenB = (nB dot w) * sign(tauB) > eps_W
+    return aussenA && aussenB
 }
 ```
 
@@ -281,10 +311,11 @@ fun istGrat(
   5. Konvexitätsbedingung (2) erfüllt.
 - **Edge Cases**:
   - **Nullkante**: ℓ ≤ Toleranzen.LAENGE_EPS → `Entartet.Nullkante`.
-  - **NichtIdentifizierbar**: Spatprodukt im Toleranzband
-    [−ε_W, +ε_W] → die beiden Trägerebenen sind näherungsweise
-    koplanar oder die Kante liegt im Grenzfall zwischen Grat und
-    Kehle → `Entartet.NichtIdentifizierbar`.
+  - **NichtIdentifizierbar**: ⟨n_hat_{a,i}, w⟩ · sign(τ_i) im
+    Toleranzband [−ε_W, +ε_W] für eine der beiden Flächen (Flächenstück
+    kaum quer geneigt, Falllinie nahezu parallel zur Kante) oder
+    **gemischte** Kante (ein Flächenstück außen, das andere innen —
+    weder Grat noch Kehle) → `Entartet.NichtIdentifizierbar`.
   - **Parallele Trägerebenen**: keine Schnittgerade →
     `Entartet.NichtIdentifizierbar`.
   - **Horizontale Tangente**: Bedingung (1) verletzt → die Kante ist

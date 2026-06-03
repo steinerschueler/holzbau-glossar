@@ -206,8 +206,11 @@ Sei
 
 - E_AS ⊂ ℝ³ die **Anschnittebene**, Ebene nach `ebene` durch p_σ
   mit Einheitsnormaler n_hat_AS ∈ S²,
-- α_AS := arccos|⟨n_hat_AS, d_hat_σ⟩| ∈ (ε_W, π/2 − ε_W) der **Anschnitt-
-  winkel** mit ε_W := `Toleranzen.WINKEL_EPS`,
+- α_AS := arcsin|⟨n_hat_AS, d_hat_σ⟩| ∈ (ε_W, π/2 − ε_W) der **Anschnitt-
+  winkel** (Winkel zwischen der Anschnittebene E_AS und der
+  Bauteilachse d_hat_σ; α_AS = π/2 für den rechtwinkligen End-
+  schnitt, α_AS → 0 für die tangentiale Lage) mit ε_W :=
+  `Toleranzen.WINKEL_EPS`,
 - 𝓡 ⊂ ℝ³ ein abgeschlossener, beschränkter „Schnitt-Bereichs-
   Polyeder" am Bauteil-Endpunkt, gross genug, dass er das gesamte
   Material des Bauteils auf der Außenseite der Anschnittebene
@@ -287,7 +290,7 @@ mit
 Es gilt nach Konstruktion
 
 ```
-|⟨n_hat_AS, d_hat_σ⟩| = cos(α_AS) < 1 − ε_W,                             (8)
+|⟨n_hat_AS, d_hat_σ⟩| = sin(α_AS) < 1 − ε_W,                             (8)
 ```
 
 also α_AS ≠ π/2; die Stirnseite ist damit **nicht** rechtwinklig
@@ -301,7 +304,8 @@ geneigte (Anschnitt-)Stirnseite.
   durch p_σ mit n_hat_AS unter (3) und mit dem entsprechenden α_AS.
   Mindestkonfiguration: σ = ENDE, n_hat_AS in der durch d_hat(L) und
   einer beliebigen zweiten Welt-Richtung aufgespannten Ebene mit
-  Winkel α_AS zu d_hat(L). Damit existiert F_AS.
+  Winkel π/2 − α_AS zu d_hat(L) (die Anschnittebene schließt dann
+  α_AS mit der Bauteilachse ein). Damit existiert F_AS.
 - **Eindeutigkeit der Identität**: Wie in `hg_bearbeitung.md`
   über UUID v7 nach RFC 9562.
 - **Wohldefiniertheit des Werkzeugkörpers**: Aus E_AS und der
@@ -310,7 +314,7 @@ geneigte (Anschnitt-)Stirnseite.
   Schnitt-Bereichs-Polyeder festgelegt ist. Die Wahl von 𝓡 wirkt
   sich auf die geometrische Repräsentation des Werkzeugkörpers
   aus, nicht auf die Wirkung (6): zwei verschiedene Wahlen
-  𝓡, 𝓡' mit G_B^lokal ⊂ H_−(E_AS) ∪ 𝓡 ∩ 𝓡' liefern dasselbe
+  𝓡, 𝓡' mit (G_B^lokal ∩ H_+(E_AS)) ⊆ 𝓡 ∩ 𝓡' liefern dasselbe
   G_B'(F_AS), weil die Differenz nur den Bauteil-internen
   Schnitt H_+(E_AS) ∩ G_B^lokal entfernt. Konkrete App-Konvention:
   𝓡 wird als minimale axenparallele Bounding-Box um G_B^lokal mit
@@ -503,7 +507,7 @@ dieses Eintrags.
     Identität in SE(3).
   - **Bezeichnung**: optional.
   - **Abgeleitete Eigenschaften** (Funktionen, keine Felder):
-    Anschnittwinkel α_AS = arccos|⟨n_hat_AS, d_hat_σ⟩|; Lot-Lage der
+    Anschnittwinkel α_AS = arcsin|⟨n_hat_AS, d_hat_σ⟩|; Lot-Lage der
     Anschnittebene (Senkel/Bleischnitt/geneigt); resultierende
     Stirnseite nach (7).
 - **Verwendung**:

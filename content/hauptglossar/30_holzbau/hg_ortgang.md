@@ -57,7 +57,8 @@ Sei
   äußerer Normale n_a und Dachneigung α ∈ (0, π/2),
 - (e₁, …, e_k) die zyklische Folge der Polygonrandkanten,
 - e_z = (0, 0, 1)ᵀ die vertikale Achse,
-- ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz.
+- ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz,
+- ε_K := Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz.
 
 Die **Falllinie** der Dachfläche D im Sinne von `hg_falllinie.md`
 ist der eindeutige in E liegende Einheitsvektor mit minimaler
@@ -86,10 +87,12 @@ Falllinie verlaufend**, wenn ihr Einheits-Richtungsvektor
 e_hat_i := (v_{i+1} − v_i) / ‖v_{i+1} − v_i‖
 ```
 
-mit e_hat_fall kollinear ist:
+mit e_hat_fall kollinear ist — als Parallelitäts-Test über das
+normierte Kreuzprodukt geführt (HG_KONVENTIONEN §4: Falllinien-
+Kollinearität → `KOLLINEAR_EPS`, gut konditioniert nahe sin = 0):
 
 ```
-‖e_hat_i × e_hat_fall‖ ≤ ε_W,    äquivalent  |⟨e_hat_i, e_hat_fall⟩| ≥ 1 − ε_W²/2.
+‖e_hat_i × e_hat_fall‖ ≤ ε_K,    äquivalent  |⟨e_hat_i, e_hat_fall⟩| ≥ 1 − ε_K²/2.
 ```
 
 Eine Strecke o ⊂ ℝ³ heißt **Ortgang** der Dachfläche D genau dann,
@@ -98,7 +101,7 @@ wenn
 1. **Randkante**: o ⊂ ∂F(P) — o liegt vollständig im Polygonrand
    von D.
 2. **Falllinien-Lage**: o verläuft entlang der Falllinie:
-   ‖e_hat(o) × e_hat_fall‖ ≤ ε_W.
+   ‖e_hat(o) × e_hat_fall‖ ≤ ε_K.
 3. **Geneigt**: ⟨e_hat(o), e_z⟩ ≠ 0 (genauer: |⟨e_hat(o), e_z⟩| > ε_W);
    damit ist o im Gegensatz zur Traufe nicht horizontal. Diese
    Bedingung folgt automatisch aus 2 zusammen mit α > 0.
@@ -220,19 +223,21 @@ fun istOrtgang(
     e: Strecke,
     d: Dachflaeche,
     eps_W: Double = Toleranzen.WINKEL_EPS,
+    eps_K: Double = Toleranzen.KOLLINEAR_EPS,
     eps_L: Double = Toleranzen.LAENGE_EPS
 ): Boolean {
-    // 0. Dachfläche muss geneigt sein, sonst keine Falllinie
-    val nA = d.aeussereNormale
-    val nzZ = nA dot Vektor.E_Z
-    if (1.0 - nzZ <= eps_W) return false   // α ≈ 0 (Flachdach)
+    // 0. Dachfläche muss geneigt sein, sonst keine Falllinie. Geneigtheit
+    //    als Parallelitäts-Test n_a ∦ e_z über das Kreuzprodukt
+    //    (§4: ‖n × e_z‖ = sin α, gut konditioniert nahe α = 0 — nicht 1 − cos α).
+    val nA = d.aeussereNormale.normiert().werteOder { return false }
+    if ((nA cross Vektor.E_Z).norm <= eps_K) return false   // α ≈ 0 (Flachdach)
     // 1. e ist Polygonrandkante von d
     if (!d.umriss.enthaeltKante(e, eps_L)) return false
-    // 2. e verläuft entlang der Falllinie
+    // 2. e verläuft entlang der Falllinie (Kollinearität über Kreuzprodukt)
     val eHat = e.einheitsRichtung().werteOder { return false }
-    val fallrichtung = (-(Vektor.E_Z - nA * nzZ)).normiert().werteOder { return false }
+    val fallrichtung = (-(Vektor.E_Z - nA * (nA dot Vektor.E_Z))).normiert().werteOder { return false }
     val kreuz = (eHat cross fallrichtung).norm
-    if (kreuz > eps_W) return false
+    if (kreuz > eps_K) return false
     // 3. e ist nicht horizontal (folgt aus 0+2, hier nur Sicherheit)
     if (abs(eHat dot Vektor.E_Z) <= eps_W) return false
     return true
@@ -244,11 +249,12 @@ fun istOrtgang(
   1. ℓ(polylinie) > Toleranzen.LAENGE_EPS — sonst `Entartet.Nullkante`.
   2. Jede Teilstrecke der Polylinie ist Polygonrandkante der
      übergebenen Dachfläche.
-  3. Die Dachfläche ist geneigt (α > Toleranzen.WINKEL_EPS), sonst
-     `Entartet.NichtIdentifizierbar`.
+  3. Die Dachfläche ist geneigt (‖n_a × e_z‖ > Toleranzen.KOLLINEAR_EPS,
+     §4-Parallelitäts-Test über das Kreuzprodukt — nicht 1 − cos α),
+     sonst `Entartet.NichtIdentifizierbar`.
   4. Jede Teilstrecke verläuft entlang der Falllinie der Dachfläche
      (Kollinearität mit e_hat_fall, geprüft mit Kreuzprodukt-
-     Toleranz Toleranzen.WINKEL_EPS).
+     Toleranz Toleranzen.KOLLINEAR_EPS).
 - **Edge Cases**:
   - **Nullkante**: ℓ ≤ Toleranzen.LAENGE_EPS → `Entartet.Nullkante`.
   - **Flachdach** (α = 0): keine Falllinie definierbar →

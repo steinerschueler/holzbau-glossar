@@ -81,12 +81,19 @@ Gesamtlänge ℓ(s) > Toleranzen.LAENGE_EPS haben.
   Dachflächen einen gemeinsamen Streckenanteil besitzen — bei
   Sattel-, Walm-, Pult- und Mansarddächern ist dies konstruktiv
   garantiert.
-- **Eindeutigkeit der Klassifikation**: Eine Strecke kann gleichzeitig
-  Randkante (zweier Dachflächen) und Schnittkante sein; das ist genau
-  der Regelfall an First, Grat und Kehle. Die Klassifikation in die
-  Spezialfälle (Traufe, First, …) erfolgt dann durch zusätzliche
-  geometrische Bedingungen (Lage zur Horizontalen, relative Höhe,
-  Anschluss an Giebelwand) — siehe die jeweiligen Einträge.
+- **Eindeutigkeit der Klassifikation**: Die beiden Math-Bedingungen
+  sind *nicht* exklusiv — eine Strecke kann das Rand-Prädikat (Bed. 1,
+  im Polygonrand) und das Schnitt-Prädikat (Bed. 2, im Flächenschnitt)
+  zugleich erfüllen; das ist genau der Regelfall an First, Grat und
+  Kehle, die im Rand *beider* Flächen liegen. Die **disjunkte Typ-
+  Klassifikation** (reine Randkante vs. Schnittkante, s. u.) richtet
+  sich darum nicht nach Bed. 1 allein, sondern nach der **Zahl
+  anliegender Dachflächen**: genau eine ⇒ reine Randkante, zwei ⇒
+  Schnittkante (eine Schnittkante erfüllt das Rand-Prädikat mit, zählt
+  aber als Schnittkante). Die weitere Aufteilung in die Spezialfälle
+  (Traufe, First, …) erfolgt durch zusätzliche geometrische Bedingungen
+  (Lage zur Horizontalen, relative Höhe, Anschluss an Giebelwand) —
+  siehe die jeweiligen Einträge.
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf die
   bereits definierten Begriffe `strecke`, `dachflaeche`, `polygon`
   und auf elementare Mengentheorie.
@@ -133,14 +140,16 @@ Dachkanten treten in der App an drei Stellen auf:
 Die sechs Spezialisierungen sind als **disjunkte** Klassifikation
 angelegt: Eine Dachkante einer korrekt modellierten
 Dachflächenfamilie soll genau einer dieser sechs Klassen zugeordnet
-werden können. Die disjunkte Trennung erfolgt durch die in den
-einzelnen Einträgen formulierten Klassifikations-Bedingungen:
-- Schnittkante (First/Grat/Kehle) vs. Randkante
-  (Traufe/Ortgang/Pultkante);
+werden können. Erste Trennstufe ist die **Zahl anliegender
+Dachflächen** (zwei ⇒ Schnittkante, genau eine ⇒ reine Randkante); die
+weitere Trennung erfolgt durch die in den einzelnen Einträgen
+formulierten Klassifikations-Bedingungen:
+- Schnittkante (First/Grat/Kehle, zwei anliegende Flächen) vs. reine
+  Randkante (Traufe/Ortgang/Pultkante, eine anliegende Fläche);
 - innerhalb der Schnittkanten: horizontal (First) vs. geneigt
   (Grat, Kehle); innerhalb der geneigten Schnittkanten: konvex
   (Grat) vs. konkav (Kehle);
-- innerhalb der Randkanten: horizontal mit niedrigster Höhe
+- innerhalb der reinen Randkanten: horizontal mit niedrigster Höhe
   (Traufe), horizontal mit höchster Höhe (Pultkante), entlang der
   Falllinie (Ortgang).
 Die sealed-Hierarchie der Implementierung ist im

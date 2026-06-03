@@ -172,7 +172,7 @@ Typische Verbindung zwischen Sparren und Firstpfette:
 Im **Sparren-Tool** der App (Etappe 3.3) ist die **Firstpfettenhöhe**
 der primäre Eingabeparameter für die Höhenausdehnung des Sparrens.
 Sie bezeichnet die **vertikale Höhendifferenz** zwischen dem
-Bleischnitt-Punkt der Firstpfettenkerve und dem Bleischnitt-Punkt
+Kerveckpunkt der Firstpfettenkerve und dem Kerveckpunkt
 der Fußpfettenkerve (= lokale Bezugskote, siehe `fusspfette` und
 `bezugsebene`). Einheit: mm, gemessen entlang der Welt-z-Achse.
 
@@ -187,25 +187,27 @@ Dachebenen-Höhen) bestätigen diese Logik.
 
 Die Position der Firstpfettenkerve **entlang der Sparren-Bauteilachse**
 („axiale Kervposition", relevant für BTLx-Export und Maschinenübergabe)
-ist als Abstand der beiden Bleischnitt-Punkte p_K der Fußpfetten-
-und der Firstpfettenkerve auf der Sparren-Bauteilachse A(B) definiert.
-Sei p_K^Fuß ∈ A(B) der Bleischnitt-Punkt der Fußpfettenkerve und
-p_K^First ∈ A(B) der Bleischnitt-Punkt der Firstpfettenkerve, je
-gemäß `hg_kerve.md` Gleichungen (7a)/(7b) (Schnittpunkt der vorderen
-Kervflanke g₁ mit der Bauteilachse). Da p_K^Fuß und p_K^First
-beide auf der Bauteilachse A(B) liegen, ist ihre Verbindung
-kollinear mit dem Bauteilachsen-Richtungsvektor d_hat; mit der
+ist als **axiale Distanz** der beiden Kerveckpunkte p_K der Fußpfetten-
+und der Firstpfettenkerve entlang der Sparren-Bauteilachse A(B) definiert.
+Sei p_K^Fuß der Kerveckpunkt der Fußpfettenkerve und
+p_K^First der Kerveckpunkt der Firstpfettenkerve, je der Schnittpunkt
+von **Sohle (Bleischnitt) und Senkel (Senkelschnitt)** nach
+`hg_kerve.md` Gleichung (12). Die beiden Kerveckpunkte liegen bei der
+jeweiligen Kervtiefe **im Sparreninneren, nicht auf der Bauteilachse**;
+ihre axiale Kervposition ist die Projektion auf A(B). Mit der
 Vorzeichenkonvention aus `hg_sparren.md` (d_hat zeigt bergauf, also
-entgegen e_hat_fall) gilt
+entgegen e_hat_fall) ist der axiale Kervenabstand die Projektion der
+Verbindung auf d_hat:
 
 ```
 s  :=  ⟨ p_K^First − p_K^Fuß ,  d_hat ⟩                            (s.1)
-    =  ‖ p_K^First − p_K^Fuß ‖,                                 (s.2)
 ```
 
-wobei (s.1) die vorzeichen-behaftete skalare Projektion auf die
-Bauteilachse ist und (s.2) ihre Norm-Form für den Regelfall
-p_K^First „bergauf von" p_K^Fuß (positives Vorzeichen). `s` ist
+ist die vorzeichen-behaftete skalare Projektion der Verbindung auf
+die Bauteilachse (positiv im Regelfall p_K^First „bergauf von"
+p_K^Fuß). Die z-Tiefen der Kerveckpunkte fallen bei der Projektion
+auf d_hat heraus, sodass (s.1) die reine axiale Distanz liefert, auch
+wenn die Eckpunkte selbst neben der Achse liegen. `s` ist
 damit der **axiale Kervenabstand** entlang der Bauteilachse und
 identisch mit dem gleichnamigen Eintrag in der Sparrenlängen-
 Symbol-Tabelle in `hg_sparren.md` (Sparren-Pipeline-Begriffe).
@@ -218,28 +220,28 @@ Lesart der „Kervenposition" am Sparren.
 #### Spezialfall: z-Differenz / sin(α)
 
 Im idealisierten Fall — Pfetten waagerecht, Standardklauenkerven
-mit α₁ = π/2 (vordere Kervflanke senkel, p_K auf gleicher Höhe
-wie die Pfettenoberkante in z), Sparrenachse exakt in der
-Trägerebene der Dachfläche und entgegen e_hat_fall gerichtet — sind
-die z-Koordinaten von p_K^Fuß und p_K^First genau die jeweiligen
-Pfettenhöhen, und die Bauteilachse ist um die Dachneigung α
-gegen die Horizontale geneigt. Dann folgt aus (s.2) die
-geschlossene Form
+(Senkel welt-vertikal, Sohle welt-horizontal), beide Kerven gleich
+tief, Sparrenachse exakt in der Trägerebene der Dachfläche und
+entgegen e_hat_fall gerichtet — sind die Welt-Höhen z(p_K^Fuß) und
+z(p_K^First) um die jeweiligen Pfettenhöhen versetzt, und die
+Bauteilachse ist um die Dachneigung α gegen die Horizontale geneigt.
+Dann folgt aus (s.1) die geschlossene Form
 
 ```
 s  =  ( z(p_K^First) − z(p_K^Fuß) ) / sin(α)                    (s.3)
    =  ( firstpfetteHoehe − fusspfetteHoehe ) / sin(α).          (s.4)
 ```
 
-Lesart: (s.4) ist eine **Konsequenz** von (s.1)/(s.2) im
-idealisierten Fall, kein eigenständiger Definitionsterm. Bei
-geneigten Pfetten, abweichenden Flankenwinkeln (α₁ ≠ π/2,
-cot α₁ ≠ 0) oder einer Bauteilachse ausserhalb der Trägerebene
-weicht die z-Differenz der p_K-Punkte von der Differenz der
-Pfettenhöhen ab; in diesen Fällen liefern (s.1)/(s.2) das
+Lesart: (s.4) ist eine **Konsequenz** von (s.1) im idealisierten
+Fall, kein eigenständiger Definitionsterm — und genau die in der
+Werkplan-Praxis genutzte Form (Recherche-Bericht
+`docs/recherche/2026-05-10_sparrenmessung_neubau.md`, Abschnitt D).
+Bei geneigten Pfetten, ungleichen Kervtiefen oder einer Bauteilachse
+ausserhalb der Trägerebene weicht die z-Differenz der Kerveckpunkte
+von der Differenz der Pfettenhöhen ab; dann liefert (s.1) das
 geometrisch korrekte Ergebnis, (s.3)/(s.4) hingegen nur eine
-Näherung. Die **kanonische Form ist (s.1)/(s.2)**;
-(s.3)/(s.4) wird als idealisierter Spezialfall geführt.
+Näherung. Die **kanonische Form ist (s.1)**; (s.3)/(s.4) wird als
+idealisierter Spezialfall geführt.
 
 Hintergrund und Recherche-Stand siehe
 `docs/recherche/2026-05-10_sparrenmessung_neubau.md`.

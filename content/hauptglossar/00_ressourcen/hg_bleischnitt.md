@@ -173,18 +173,19 @@ Holzbau-Schweiz-Magazin, Sammelserie „Austragen", Teil 4.)
 
 Bleischnitte treten an mehreren Stellen am geneigten Dach auf:
 
-- **Kervsohle** der Standardklauenkerve (siehe `kerve`,
-  α₁ = α₂ = π/2): die Sohle ist ein Bleischnitt; sie liegt
+- **Kervsohle** der Standardklauenkerve (siehe `kerve`): die
+  welt-horizontale Sohle ist ein Bleischnitt; sie liegt
   formschlüssig auf der waagerecht orientierten Pfetten-
-  Oberkante. Die beiden Flanken sind dagegen Senkel.
+  Oberkante. Der Senkel der Kerve ist dagegen ein Senkelschnitt
+  (welt-vertikal).
 - **Bezugsebene des Sparren-Tools**: die Bezugsebene auf der
   Höhe des Bleischnitts der Fußpfetten-Kerve ist selbst ein
   Bleischnitt mit zusätzlicher Bezugsrolle (siehe
   `bezugsebene`).
 - **Sparrenüberstand-Begrenzung**: der obere Endpunkt des
-  Sparrenüberstands liegt am Bleischnitt-Punkt p_K der
-  Fußpfettenkerve (siehe `hg_kerve.md` Gl. (7a)/(7b),
-  `hg_sparrenueberstand.md`).
+  Sparrenüberstands liegt an der axialen Projektion des
+  Kerveckpunkts p_K der Fußpfettenkerve (siehe `hg_kerve.md`
+  Gl. (12), `hg_sparrenueberstand.md`).
 - **Sparrenfuß-Stirnseite** im Standardfall „waagerechter
   Sparrenfußabschnitt" bei Sparren mit horizontaler
   Stirnfläche: die Stirnfläche ist ein Bleischnitt (für
@@ -213,8 +214,8 @@ In Werkplan- und Tool-Sprache wird gelegentlich von der „Höhe
 des Bleischnitts" (z. B. der Fußpfettenkerve) gesprochen. Diese
 Lesart bezeichnet die **abgeleitete Skalar-Größe** z = ⟨e_hat_z, p⟩
 für einen ausgezeichneten Punkt p der Bleischnittebene (etwa den
-Bleischnitt-Punkt p_K der Fußpfettenkerve nach `hg_kerve.md` Gl.
-(7a)/(7b)); sie ist nicht eine alternative Definition des
+Kerveckpunkt p_K der Fußpfettenkerve nach `hg_kerve.md` Gl.
+(12)); sie ist nicht eine alternative Definition des
 Bleischnitts. Der Bleischnitt selbst bleibt eine Ebene mit
 Lage-Klassifikation gemäß (1), kein Punkt und keine Skalar-
 Größe.
@@ -246,8 +247,8 @@ nur numerische Restfehler.
     Es ist keine zusätzliche Information, sondern eine
     ableitbare Eigenschaft der Ebene.
 - **Verwendung**:
-  - Klassifikation der **Kervsohle** in `hg_kerve.md` für den
-    Standardfall α₁ = α₂ = π/2.
+  - Klassifikation der **Kervsohle** in `hg_kerve.md` (die
+    welt-horizontale Sohle ist stets ein Bleischnitt).
   - Klassifikation der **Bezugsebene** im Standardfall (siehe
     `bezugsebene`).
   - Geometrischer Anker des **Sparrenüberstands** (siehe
