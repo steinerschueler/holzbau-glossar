@@ -95,8 +95,8 @@ sauberen `@misc`-Eintrag.
 
 - **Concept-DOI** (verweist immer auf die jeweils neueste Version):
   [10.5281/zenodo.20435319](https://doi.org/10.5281/zenodo.20435319)
-- **Version-DOI v0.6.0** (Stand 2026-05-29 — aktuelles Release):
-  [10.5281/zenodo.20450215](https://doi.org/10.5281/zenodo.20450215)
+- **Version-DOI v0.7.0** (Stand 2026-06-03 — aktuelles Release):
+  [10.5281/zenodo.20532778](https://doi.org/10.5281/zenodo.20532778)
 - Weitere Version-DOIs für künftige Releases sind über die
   [Zenodo-Eintragsseite](https://doi.org/10.5281/zenodo.20435319)
   erreichbar.
@@ -142,9 +142,9 @@ Für einen einzelnen Glossar-Eintrag mit eingefrorenem Stand:
 
 **APA 7:**
 
-> Naville, E. (2026). Kerve. In *Holzbau-Glossar* (v0.6.0).
+> Naville, E. (2026). Kerve. In *Holzbau-Glossar* (v0.7.0).
 > holzbau-glossar.ch.
-> https://doi.org/10.5281/zenodo.20450215
+> https://doi.org/10.5281/zenodo.20532778
 
 **BibTeX** (per Eintrag — fertig zum Download unter jedem Glossar-
 Eintrag):
