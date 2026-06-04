@@ -79,6 +79,11 @@ def on_files(files, config):
     cluster_entries: dict[str, list[tuple[str, str]]] = {}
     # Flache Sammlung für den A-Z-Index: (benennung, virtual_uri, cluster_kurz).
     az_entries: list[tuple[str, str, str]] = []
+    # id → URL-Segment des Clusters, für die Querverweis-Verlinkung der
+    # ``hg_<id>.md``-Code-Spans in ``on_page_content``. id → Benennung
+    # liefert den Tooltip-Text.
+    id_cluster: dict[str, str] = {}
+    id_benennung: dict[str, str] = {}
 
     for cluster_dir, label in CLUSTERS.items():
         cluster_path = content / "hauptglossar" / cluster_dir
@@ -102,6 +107,8 @@ def on_files(files, config):
             files.append(File.generated(config, virtual_uri, content=merged))
             entries.append((benennung, virtual_uri))
             az_entries.append((benennung, virtual_uri, kurz))
+            id_cluster[hg_id] = CLUSTER_URL[cluster_dir]
+            id_benennung[hg_id] = benennung
         cluster_entries[label] = entries
 
     # A-Z-Index als eigene virtuelle Seite anlegen.
@@ -135,6 +142,9 @@ def on_files(files, config):
 
     # Stash for on_nav.
     config["_holzbau_cluster_entries"] = cluster_entries
+    # Stash for on_page_content (Querverweis-Verlinkung).
+    config["_holzbau_id_cluster"] = id_cluster
+    config["_holzbau_id_benennung"] = id_benennung
     return files
 
 
@@ -218,6 +228,41 @@ def on_page_markdown(markdown, page, config, files):
             "{{WEBBKOLL_RESULT}}", _render_webbkoll_block(build_date)
         )
     return markdown
+
+
+# Querverweis-Verlinkung: Inline-Code-Spans, die genau eine Eintrags-Datei
+# benennen (``hg_<id>.md``), werden in einen Link auf den Zieleintrag
+# gehüllt. Die Monospace-Optik bleibt erhalten (das ``<code>`` bleibt
+# unverändert, es wird nur von einem ``<a>`` umschlossen). Greift nur auf
+# Inline-Code; in den syntaxgehighlighteten ``<pre><code>``-Blöcken steht
+# kein ``hg_*.md`` und die Tokens dort sind ohnehin in Spans zerlegt.
+_REF_CODE = re.compile(r"<code>hg_([a-z0-9_]+)\.md</code>")
+
+
+def on_page_content(html, page, config, files):
+    """Verwandle ``hg_<id>.md``-Code-Spans in Querverweis-Links auf den
+    jeweiligen Eintrag (``/{cluster}/{id}/``), ohne die Schrift zu ändern.
+    Selbst-Verweise und unbekannte ids bleiben unverlinkt."""
+    id_cluster = config.get("_holzbau_id_cluster") or {}
+    if not id_cluster or "<code>hg_" not in html:
+        return html
+    id_benennung = config.get("_holzbau_id_benennung") or {}
+
+    # Eigene id der aktuellen Seite — Selbst-Verweis nicht verlinken.
+    own_id = Path(page.file.src_uri).stem if page.file else ""
+
+    def _link(match: re.Match[str]) -> str:
+        hg_id = match.group(1)
+        cluster_url = id_cluster.get(hg_id)
+        if not cluster_url or hg_id == own_id:
+            return match.group(0)
+        tooltip = id_benennung.get(hg_id, hg_id)
+        return (
+            f'<a class="glossar-ref" href="/{cluster_url}/{hg_id}/" '
+            f'title="Zum Eintrag: {tooltip}">{match.group(0)}</a>'
+        )
+
+    return _REF_CODE.sub(_link, html)
 
 
 def _render_webbkoll_block(build_date: str) -> str:
