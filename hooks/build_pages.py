@@ -139,9 +139,16 @@ def on_files(files, config):
 
 
 def on_post_build(config):
-    """Write ``.md``, ``.txt`` and ``.bib`` variants of each entry next
-    to its rendered HTML page, plus the static JSON-API v1 under
-    ``api/v1/``."""
+    """Write ``.md``, ``.txt`` and ``.bib`` variants of each entry *inside*
+    its rendered page directory (``site/{cluster}/{id}/{id}.ext``), plus the
+    static JSON-API v1 under ``api/v1/``.
+
+    Die Assets müssen im Eintrags-Ordner liegen, nicht daneben: Mit
+    ``use_directory_urls`` (MkDocs-Default) wird der Eintrag unter
+    ``/{cluster}/{id}/`` ausgeliefert; der relative Download-href ``{id}.md``
+    (siehe ``_merge_entry``) löst von dort nach ``/{cluster}/{id}/{id}.md``
+    auf. Lägen die Dateien eine Ebene höher (``/{cluster}/{id}.md``), gingen
+    alle Download-Links ins Leere (404)."""
 
     from datetime import date
     from pathlib import Path
@@ -161,14 +168,17 @@ def on_post_build(config):
         if not cluster_path.is_dir():
             continue
         cluster_url = CLUSTER_URL[cluster_dir]
-        out_dir = site_dir / cluster_url
-        out_dir.mkdir(parents=True, exist_ok=True)
 
         for hg_file in sorted(cluster_path.glob("hg_*.md")):
             hg_id = hg_file.stem.removeprefix("hg_")
             hg_text = hg_file.read_text(encoding="utf-8")
             benennung = _extract_benennung(hg_text) or hg_id
             merged_md = _merge_for_download(hg_text, sg_by_id.get(hg_id))
+
+            # In den Eintrags-Ordner schreiben (von MkDocs für index.html
+            # bereits angelegt; mkdir defensiv für Robustheit).
+            out_dir = site_dir / cluster_url / hg_id
+            out_dir.mkdir(parents=True, exist_ok=True)
 
             (out_dir / f"{hg_id}.md").write_text(merged_md, encoding="utf-8")
             (out_dir / f"{hg_id}.txt").write_text(
