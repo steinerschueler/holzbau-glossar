@@ -98,12 +98,12 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - D = (E, P, n_a) eine Dachfläche im Sinne von `dachflaeche` mit
   Trägerebene E, Polygon P und äußerer Normaler n_a,
 - e_hat_fall(E) ∈ S² die Falllinie der Trägerebene E (siehe
   `falllinie`); d. h. ⟨e_hat_fall, e_z⟩ ≤ 0,
-- ε_W := Toleranzen.WINKEL_EPS, ε_L := Toleranzen.LAENGE_EPS.
+- ε_W:= Toleranzen.WINKEL_EPS, ε_L:= Toleranzen.LAENGE_EPS.
 
 Dann heißt B ein **Sparren** der Dachfläche D genau dann, wenn die
 folgenden Bedingungen erfüllt sind:
@@ -139,18 +139,18 @@ folgenden Bedingungen erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Sparrenlänge**: L_S := ‖p_e − p_a‖ (in mm), entlang der
+- **Sparrenlänge**: L_S:= ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen Sparrenfuß und Sparrenfirstpunkt.
 - **Sparrenneigung** (= Dachneigung der zugeordneten Dachfläche):
   ```
-  α_S := arccos(⟨n_a, e_z⟩) = arccos(⟨d_hat, e_hat_horiz⟩),
+  α_S:= arccos(⟨n_a, e_z⟩) = arccos(⟨d_hat, e_hat_horiz⟩),
   ```
-  wobei e_hat_horiz := −(e_hat_fall − ⟨e_hat_fall, e_z⟩ · e_z) /
+  wobei e_hat_horiz:= −(e_hat_fall − ⟨e_hat_fall, e_z⟩ · e_z) /
   ‖e_hat_fall − ⟨e_hat_fall, e_z⟩ · e_z‖ die in die Horizontalebene
   projizierte und nach oben in die Sparrenrichtung umgekehrte
   Falllinie ist.
-- **Sparrenfuß** und **Sparrenfirstpunkt** (als Punkte): F_fuß := p_a,
-  F_first := p_e.
+- **Sparrenfuß** und **Sparrenfirstpunkt** (als Punkte): F_fuß:= p_a,
+  F_first:= p_e.
 - **Sparrenabstand**: bei einer parallelen Sparrenschar
   S_1, …, S_k auf derselben Dachfläche der rechtwinklige Abstand
   benachbarter Bauteilachsen, gemessen in der Trägerebene
@@ -437,111 +437,6 @@ Verortung:
   - **Dachfläche**: zweidimensionales geometrisches Bauteil; der
     Sparren ist ein Stab-Bauteil mit Achse in der Trägerebene
     der Dachfläche.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.bauteil.BauteilId
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Punkt
-import domain.holzbau.Faserrichtung
-
-/**
- * Sparren als Bauteilrolle: Stab-Bauteil entlang der Falllinie einer
- * Dachfläche.
- *
- * Glossar: hg_sparren.md
- *
- * Vorzeichenkonvention (normativ):
- *   p_a = Sparrenfuß  (an/nahe der Traufe)
- *   p_e = Sparrenfirstpunkt (an/nahe dem First / der Pultkante)
- *   d_hat  zeigt nach oben (⟨d_hat, e_z⟩ ≥ 0), entgegen der Falllinie e_hat_fall.
- *
- * Querschnitts- und Werkstoff-Annotationen werden vom umschlossenen
- * Bauteil übernommen. Faserrichtung ist im Regelfall parallel zur
- * Bauteilachse zu setzen.
- */
-data class Sparren(
-    val bauteil: Bauteil,
-    val dachflaeche: Dachflaeche
-) {
-    init {
-        require(bauteil.geometrie is Bauteilgeometrie.Stab) {
-            "Sparren erfordert Stabgeometrie"
-        }
-        // Lage- und Falllinien-Bedingungen werden in der Factory
-        // sparrenAusBauteil(...) geprüft und liefern bei Verletzung
-        // ein Resultat.Fehler mit SparrenEntartet-Variante (siehe unten).
-    }
-
-    val sparrenfuss: Punkt get() = achse().anfang
-    val sparrenfirstpunkt: Punkt get() = achse().ende
-    val laenge: Double get() = achse().laenge        // mm
-    val sparrenneigung: Double                        // rad
-        get() = dachflaeche.dachneigung()
-
-    private fun achse(): Bauteilachse.Gerade =
-        (bauteil.geometrie as Bauteilgeometrie.Stab).achse as Bauteilachse.Gerade
-}
-
-sealed class SparrenEntartet {
-    object NichtInTraegerebene : SparrenEntartet()
-    object NichtAufFalllinie  : SparrenEntartet()
-    object FalscheRichtung    : SparrenEntartet()   // d_hat zeigt nach unten
-    object Nullachse          : SparrenEntartet()
-    object FlacheDachflaeche  : SparrenEntartet()   // α = 0, Falllinie undef.
-}
-```
-
-- **Einheit**: Längen in mm (Double), Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (in der Factory `sparrenAusBauteil(...)` prüfen,
-  bei Verletzung `Resultat.Fehler` mit der jeweiligen
-  `SparrenEntartet`-Variante; niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. p_a, p_e ∈ Trägerebene der Dachfläche bis ε_L — sonst
-     `NichtInTraegerebene`.
-  4. Dachfläche geneigt (α > 0) — sonst `FlacheDachflaeche`.
-  5. |⟨d_hat, e_hat_fall⟩| ≥ 1 − ε_W — sonst `NichtAufFalllinie`.
-  6. ⟨d_hat, e_hat_fall⟩ ≤ −1 + ε_W (d_hat zeigt nach oben) — sonst
-     `FalscheRichtung` (Konsumenten können hier durch Achsen-
-     Umkehr automatisch korrigieren).
-- **Edge Cases**:
-  - **Pultsparren**: Pultdach mit nur einer Dachfläche; Sparren
-    geht von der Traufe zur Pultkante. Definition unverändert
-    anwendbar; p_e liegt dann auf der Pultkante statt am First.
-  - **Sparren am Ortgang**: identisch zum Standardsparren, aber
-    der Bauteilachse fällt mit einer Ortgangkante zusammen
-    (siehe `ortgang`). Nicht zu verwechseln mit dem Sparren als
-    Geometrie der Ortgangkante; der Ortgangsparren ist ein
-    Sparren mit Achse = Ortgangstrecke.
-  - **Aufgekämmter Sparren** (mit eingearbeitetem Versatz an der
-    Fußpfette): die Bauteilachse bleibt die geometrische
-    Schwerlinie; der Versatz ist eine separate Geometrie-
-    Modifikation am Bauteil und nicht Bestandteil der
-    Sparren-Definition.
-  - **Sehr flache Dachfläche** (α → 0): Falllinie wird entartet;
-    in diesem Fall ist die App auf eine Pultdach- bzw. Flachdach-
-    Modellierung ohne klassische Sparrenrichtung umzustellen.
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `sparrenneigung(): Double` — = Dachneigung der zugeordneten
-    Dachfläche, in Radiant.
-  - `auflagerKandidaten(t: Tragwerk): List<Pfette>` — Pfetten in
-    `t`, deren Bauteilachse die Sparrenbauteilachse innerhalb
-    Toleranzen schneidet (Bemessungs-Hilfsfunktion).
-  - `faserneigung(): Double?` — falls Faserrichtung gesetzt:
-    Winkel zwischen Faserrichtung und Sparrenachse; sonst null.
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt `Sparren`
-  (deutsch, Glossarbegriff); Spezialisierungen heißen
-  `Gratsparren`, `Kehlsparren`, `Schiftsparren`.
 
 ## Quellen
 

@@ -101,31 +101,31 @@ Dann ist die **Festigkeitsklasse** ein abhängiger Aufzählungstyp
 über der Subklasse:
 
 ```
-𝓕𝓚 := ⊎_{s ∈ 𝓢} 𝓕𝓚_s
+𝓕𝓚:= ⊎_{s ∈ 𝓢} 𝓕𝓚_s
 ```
 
 mit den werkstoff-spezifischen Klassenmengen
 
 ```
-𝓕𝓚_axiales_holz_C  := { C14, C16, C18, C20, C22, C24, C27, C30,
+𝓕𝓚_axiales_holz_C:= { C14, C16, C18, C20, C22, C24, C27, C30,
                          C35, C40, C45, C50 }              (DIN EN 338)
-𝓕𝓚_axiales_holz_D  := { D18, D24, D27, D30, D35, D40, D50,
+𝓕𝓚_axiales_holz_D:= { D18, D24, D27, D30, D35, D40, D50,
                          D60, D70 }                        (DIN EN 338)
 𝓕𝓚_axiales_holz_GLh:= { GL20h, GL22h, GL24h, GL26h, GL28h,
                          GL30h, GL32h }                    (DIN EN 14080, BSH homogen)
 𝓕𝓚_axiales_holz_GLc:= { GL20c, GL22c, GL24c, GL26c, GL28c,
                          GL30c, GL32c }                    (DIN EN 14080, BSH kombiniert)
 𝓕𝓚_axiales_holz_LVL:= ETA-Klassen je Hersteller            (DIN EN 14374; offen)
-𝓕𝓚_mehrlagenholz   := indirekt über Lagen-Festigkeitsklassen
+𝓕𝓚_mehrlagenholz:= indirekt über Lagen-Festigkeitsklassen
                        jeder Lage (typisch C24) plus
                        Hersteller-Bauteilklasse via ETA    (DIN EN 16351)
 𝓕𝓚_gerichteter_plattenwerkstoff
-                    := { OSB/1, OSB/2, OSB/3, OSB/4 }      (DIN EN 300)
+:= { OSB/1, OSB/2, OSB/3, OSB/4 }      (DIN EN 300)
 𝓕𝓚_isotroper_plattenwerkstoff_P
-                    := { P1, P2, P3, P4, P5, P6, P7 }      (DIN EN 312, Spanplatten)
+:= { P1, P2, P3, P4, P5, P6, P7 }      (DIN EN 312, Spanplatten)
 𝓕𝓚_isotroper_plattenwerkstoff_F
-                    := { HB, MBH, MBL, MDF, HDF }          (DIN EN 622-2/3/5, Faserplatten)
-𝓕𝓚_werkstoff_stahl  := { 4.6, 5.6, 8.8, 10.9, A2-70, A4-70, … }
+:= { HB, MBH, MBL, MDF, HDF }          (DIN EN 622-2/3/5, Faserplatten)
+𝓕𝓚_werkstoff_stahl:= { 4.6, 5.6, 8.8, 10.9, A2-70, A4-70, … }
                                                             (DIN EN ISO 898-1, EN 10088;
                                                              siehe `werkstoff_stahl`)
 ```
@@ -133,13 +133,13 @@ mit den werkstoff-spezifischen Klassenmengen
 Die Zuordnungsfunktion
 
 ```
-festigkeitsklasse : 𝓦 → 𝓕𝓚,  w ↦ festigkeitsklasse(w)
+festigkeitsklasse: 𝓦 → 𝓕𝓚,  w ↦ festigkeitsklasse(w)
 ```
 
 erfüllt die **Konsistenzbedingung**
 
 ```
-∀ w ∈ 𝓦 :  festigkeitsklasse(w) ∈ 𝓕𝓚_subklasse(w),
+∀ w ∈ 𝓦:  festigkeitsklasse(w) ∈ 𝓕𝓚_subklasse(w),
 ```
 
 d. h. die Festigkeitsklasse eines Werkstoffs ist immer einer
@@ -251,91 +251,6 @@ und optional über eine Bauteil-Klasse (ETA).
     Zuordnungstabelle.
   - **„Güteklasse"** (umgangssprachlich): unscharf; im Glossar
     ausgeschlossen.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.holzbau.werkstoff`):
-
-```kotlin
-package domain.holzbau.werkstoff
-
-/**
- * Festigkeitsklasse eines Werkstoffs.
- * Glossar: hg_festigkeitsklasse.md
- *
- * Sealed-Hierarchie nach Werkstoff-Subklasse. Jede Subklasse trägt
- * eine eigene endliche Klassenfolge nach Produktnorm.
- *
- * Konsistenzbedingung: festigkeitsklasse(w) ∈ FK_subklasse(w).
- * Wird in der Werkstoff-Subklasse erzwungen.
- */
-sealed interface Festigkeitsklasse {
-    val bezeichnung: String  // normative Kurzform, z. B. "C24"
-    val normReferenz: String // z. B. "DIN EN 338"
-}
-
-sealed interface AxialesHolzFestigkeitsklasse : Festigkeitsklasse
-enum class CKlasse(override val bezeichnung: String) : AxialesHolzFestigkeitsklasse {
-    C14("C14"), C16("C16"), C18("C18"), C20("C20"), C22("C22"),
-    C24("C24"), C27("C27"), C30("C30"), C35("C35"), C40("C40"),
-    C45("C45"), C50("C50");
-    override val normReferenz = "DIN EN 338"
-}
-enum class DKlasse(override val bezeichnung: String) : AxialesHolzFestigkeitsklasse {
-    D18("D18"), D24("D24"), D27("D27"), D30("D30"), D35("D35"),
-    D40("D40"), D50("D50"), D60("D60"), D70("D70");
-    override val normReferenz = "DIN EN 338"
-}
-enum class GLKlasseHomogen(override val bezeichnung: String) : AxialesHolzFestigkeitsklasse {
-    GL20h("GL20h"), GL22h("GL22h"), GL24h("GL24h"), GL26h("GL26h"),
-    GL28h("GL28h"), GL30h("GL30h"), GL32h("GL32h");
-    override val normReferenz = "DIN EN 14080"
-}
-enum class GLKlasseKombiniert(override val bezeichnung: String) : AxialesHolzFestigkeitsklasse {
-    GL20c("GL20c"), GL22c("GL22c"), GL24c("GL24c"), GL26c("GL26c"),
-    GL28c("GL28c"), GL30c("GL30c"), GL32c("GL32c");
-    override val normReferenz = "DIN EN 14080"
-}
-data class LVLKlasse(
-    override val bezeichnung: String,    // z. B. "Kerto-S", "BauBuche GL75"
-    val etaNummer: String                // z. B. "ETA-14/0349"
-) : AxialesHolzFestigkeitsklasse {
-    override val normReferenz = "DIN EN 14374 (über $etaNummer)"
-}
-
-enum class OSBTyp(override val bezeichnung: String) : Festigkeitsklasse {
-    OSB1("OSB/1"), OSB2("OSB/2"), OSB3("OSB/3"), OSB4("OSB/4");
-    override val normReferenz = "DIN EN 300"
-}
-
-enum class SpanplattenTyp(override val bezeichnung: String) : Festigkeitsklasse {
-    P1("P1"), P2("P2"), P3("P3"), P4("P4"), P5("P5"), P6("P6"), P7("P7");
-    override val normReferenz = "DIN EN 312"
-}
-
-// MDF, HDF, HB, MBH, MBL analog (DIN EN 622-2/3/5).
-// Stahlgüte siehe werkstoff_stahl.
-```
-
-- **Einheit**: dimensionslos (Aufzählung).
-- **Identität**: keine; Werteklasse / enum.
-- **Invariante**: Konsistenz Festigkeitsklasse ↔ Subklasse wird in
-  der Werkstoff-Subklasse zur Konstruktionszeit geprüft (z. B.
-  `AxialesHolz` akzeptiert nur `AxialesHolzFestigkeitsklasse`).
-- **IFC-Mapping**: `IfcMaterial.Name` enthält die Festigkeitsklasse
-  als Teil des Werkstoff-Namens (z. B. „Vollholz C24",
-  „BSH GL24h", „OSB/3"). Property Sets
-  `Pset_MaterialWoodBasedBeam` / `Pset_MaterialWoodBasedPanel`
-  führen die charakteristischen Werte separat.
-- **Edge Cases**:
-  - **Werkstoff ohne Festigkeitsklasse**: nicht zulässig vor
-    Bemessung. Platzhalter-Klasse `UNBEKANNT` während Entwurf;
-    Pflichtauflösung vor Bemessung.
-  - **Mehrfach-Klassifikation** (z. B. „C24 oder C30"): nicht
-    zulässig; muss bei Eingabe aufgelöst werden.
-  - **CLT-Bauteilklasse via ETA**: Folgearbeit; aktuell wird die
-    Bemessung über die Lagen-Klassen geführt.
 
 ## Quellen
 

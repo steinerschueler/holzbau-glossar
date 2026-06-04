@@ -94,7 +94,7 @@ Sei
   als
 
 ```
-z := (1 / 𝓛²(Q)) · ∫_Q x dx,
+z:= (1 / 𝓛²(Q)) · ∫_Q x dx,
 ```
 
 wobei das Integral koordinatenweise über das ebene Lebesgue-Mass
@@ -103,12 +103,12 @@ in E genommen ist.
 Dann ist ein **Querschnitt** das Tupel
 
 ```
-QS := (form, ebene, flaechenschwerpunkt)
+QS:= (form, ebene, flaechenschwerpunkt)
 ```
 
 mit den Pflichtkomponenten
 
-- **form** ∈ 𝓠 := { RECHTECK, RUND, I_PROFIL, T_PROFIL, L_PROFIL,
+- **form** ∈ 𝓠:= { RECHTECK, RUND, I_PROFIL, T_PROFIL, L_PROFIL,
   BELIEBIG_POLYGONAL, … } (bestimmt das Pflichtfeld-Profil der
   konkreten Subklasse; aktuell nur RECHTECK implementiert),
 - **ebene** = E (die Ebene, in der die Punktmenge Q liegt),
@@ -119,7 +119,7 @@ instanziierbar, sondern bezeichnet die Vereinigung der konkreten
 Subklassen-Mengen
 
 ```
-𝓠𝓢 := 𝓡𝓠 ⊎ ⟨weitere Subklassen, Folgearbeit⟩
+𝓠𝓢:= 𝓡𝓠 ⊎ ⟨weitere Subklassen, Folgearbeit⟩
 ```
 
 mit
@@ -165,7 +165,7 @@ Flächenschwerpunkt liegt auf der Bauteilachse.
   z ausserhalb von Q liegen; die Definition fordert nur z ∈ E,
   nicht z ∈ Q.
 - **Abstrakt, nicht instanziierbar**: Querschnitt selbst hat in der
-  Domänen-Schicht keine Konstruktoren (Kotlin: `sealed interface`).
+  Domänen-Schicht keine Konstruktoren.
   Jede Instanz ist notwendigerweise einer der konkreten Subklassen
   zugeordnet.
 - **Disjunktheit der Subklassen**: 𝓡𝓠 und die weiteren Subklassen-
@@ -286,8 +286,7 @@ In der D8a-Implementierung trägt jedes Stabbauteil zunächst nur
     A, I_y, I_z, W_y, W_z, I_p, A_v als abgeleitete Grössen.
 - **Verwendung**:
   - **Bauteil** (`bauteil`): jedes **Stabbauteil** trägt genau
-    einen Querschnitt als Pflichtfeld (D8a; siehe Memory
-    `project_grobplan_erstes_tool`). Plattenbauteile und
+    einen Querschnitt als Pflichtfeld (D8a; siehe). Plattenbauteile und
     Volumenbauteile tragen keinen Querschnitt im Sinne dieses
     Eintrags.
   - **Bauteilachse** (`bauteilachse`): die Verbindungslinie der
@@ -322,151 +321,6 @@ In der D8a-Implementierung trägt jedes Stabbauteil zunächst nur
     eines Bauteils; Querschnitt ist die 2D-Schnittfigur. Bei
     prismatischen Stabbauteilen ist der Polyeder die Extrusion des
     Querschnitts entlang der Bauteilachse.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`zimmermann.domain.bauteil.querschnitt`):
-
-```kotlin
-package zimmermann.domain.bauteil.querschnitt
-
-import zimmermann.domain.geometrie.Ebene
-import zimmermann.domain.geometrie.Punkt
-
-/**
- * Form-Diskriminator eines Querschnitts.
- * Glossar: hg_querschnitt.md
- *
- * Bestimmt die Querschnitt-Subklasse:
- *   RECHTECK             -> RechteckQuerschnitt (b, h)
- *   RUND                 -> RundQuerschnitt (d), Folgearbeit
- *   I_PROFIL             -> IProfilQuerschnitt, Folgearbeit
- *   T_PROFIL             -> TProfilQuerschnitt, Folgearbeit
- *   BELIEBIG_POLYGONAL   -> PolygonalerQuerschnitt, Folgearbeit
- */
-enum class QuerschnittsForm {
-    RECHTECK,
-    RUND,
-    I_PROFIL,
-    T_PROFIL,
-    BELIEBIG_POLYGONAL,
-}
-
-/**
- * Wurzel der App-Querschnitts-Hierarchie für Stabbauteile.
- * Glossar: hg_querschnitt.md
- *
- * Abstrakt, nicht direkt instanziierbar. Konkrete Subklasse aktuell:
- *   - RechteckQuerschnitt (hg_rechteck_querschnitt.md)
- *
- * Weitere Subklassen (Rund, I-Profil, T-Profil, polygonal) sind
- * Folgearbeit, getrieben durch erste Anwendungsfaelle.
- *
- * Pflichtfelder: form (Diskriminator), zusaetzlich subklassen-
- * spezifische Geometriefelder (b, h beim Rechteck etc.).
- *
- * Lokales 2D-Koordinatensystem: Querschnitt ist intern in einem
- * lokalen (u, v)-System mit Ursprung im Flaechenschwerpunkt
- * definiert. Die Einbettung in W erfolgt erst durch das Bauteil
- * (Querschnittsebene + Querschnittsorientierung), nicht durch den
- * Querschnitt selbst. Damit ist ein Querschnitt eine reine
- * Werteklasse (data class), die fuer mehrere Bauteile geteilt
- * werden kann (z. B. Standardgroesse 80x160 KVH).
- *
- * Validierung: konkrete Subklassen stellen Konstruktoren auf
- * `internal` und exponieren ausschliesslich Factory-Methoden
- * `aus(...): Resultat<KonkreterQuerschnitt>`. Vorbild: `Werkstoff`
- * und `LokalePlatzierung.aus(...)`.
- */
-sealed interface Querschnitt {
-    /** Form-Diskriminator; je Subklasse fest. */
-    val form: QuerschnittsForm
-
-    /**
-     * Querschnittsflaeche A in mm^2. Subklassen-Implementierung.
-     * Folgearbeit: voller Querschnittseigenschaften-Eintrag
-     * (querschnittseigenschaften.md).
-     */
-    val flaeche: Double
-}
-```
-
-- **Einheit**: Form dimensionslos (Aufzählung); Querschnitts-
-  geometrie in mm; Flächenmasse in mm² (Folgearbeit
-  `querschnittseigenschaften` für I in mm⁴, W in mm³).
-- **Identität**: Querschnitt trägt **keine** UUID. Querschnitt ist
-  eine Werteklasse (value class / data class), nicht ein
-  identifiziertes Objekt. Identität wird auf der Bauteil-Ebene
-  geführt; mehrere Bauteile dürfen denselben Querschnitt-Wert teilen
-  (z. B. alle Sparren eines Daches mit Standardquerschnitt
-  80 mm × 160 mm).
-- **Lokales vs. globales System**: Querschnitt ist intern lokal in
-  einem 2D-System (u, v) ⊂ Querschnittsebene mit Ursprung im
-  Flächenschwerpunkt definiert. Die Einbettung in W (Lage und
-  Orientierung der Querschnittsebene in W) ist Sache des
-  **Bauteils**, das Querschnitt + Bauteilachse + lokale Orientierung
-  zusammenführt. Diese Trennung ist konsistent mit IFC
-  (`IfcProfileDef` ist 2D, Einbettung über `IfcExtrudedAreaSolid`
-  und `IfcAxis2Placement3D`).
-- **Subklassenpflicht**: `Querschnitt` ist `sealed`; jede Instanz
-  ist notwendigerweise einer der konkreten Subklassen zugeordnet.
-  Die Subklassen prüfen je eigene Invarianten (siehe ihre
-  Implementierungshinweise).
-- **Invarianten** (ausschliesslich in Factory-Methoden
-  `KonkreterQuerschnitt.aus(...): Resultat<KonkreterQuerschnitt>`
-  prüfen; bei Verletzung `Resultat.Fehler` zurückgeben. Kein
-  `init+require` und keine Exception. Vorbild: `Werkstoff`-Hierarchie
-  und `LokalePlatzierung.aus(...)`):
-  1. `form` ist gesetzt und konsistent zur konkreten Subklasse.
-  2. `flaeche > Toleranzen.NORM_EPS` (positives Flächenmass).
-  3. Subklassen-spezifische Geometrieinvarianten (b, h > 0 beim
-     Rechteck etc.).
-- **IFC-Mapping** (Persistenzschicht):
-  - `IfcProfileDef` ← Querschnitt (abstrakte Wurzel).
-  - `IfcRectangleProfileDef` ← `RechteckQuerschnitt`.
-  - `IfcCircleProfileDef` ← `RundQuerschnitt` (Folgearbeit).
-  - `IfcIShapeProfileDef` ← `IProfilQuerschnitt` (Folgearbeit).
-  - Profile-Position (`IfcAxis2Placement2D`): Ursprung im
-    Flächenschwerpunkt, RefDirection als u_hat-Achse.
-- **BTLx-Mapping**: BTLx Part-Element trägt Breite/Höhe direkt;
-  Mapping aus `RechteckQuerschnitt.breite/hoehe` ist 1:1.
-- **Edge Cases**:
-  - **Querschnitt ohne Form-Diskriminator**: nicht erlaubt;
-    Validierungsfehler bei Konstruktion (sealed-Subklasse setzt ihn
-    konstant).
-  - **Entarteter Querschnitt** (Fläche 0, z. B. Linie oder Punkt):
-    nicht erlaubt; Factory liefert `Resultat.Fehler`.
-  - **Veränderlicher Querschnitt** (s ↦ QS(s)): nicht durch diese
-    Hierarchie abgedeckt; Folgearbeit (Trigger: erstes Bauteil mit
-    Verjüngung).
-  - **Querschnitt für Plattenbauteile**: nicht durch diese Hierarchie
-    abgedeckt; Plattenbauteile tragen Plattendicke und
-    Plattengeometrie statt Querschnitt. Eventuelle Erweiterung ist
-    Folgearbeit.
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heisst
-  `Querschnitt` (deutsch, Glossarbegriff); Subklassen heissen
-  `RechteckQuerschnitt`, `RundQuerschnitt`, `IProfilQuerschnitt`,
-  `TProfilQuerschnitt`, `PolygonalerQuerschnitt`.
-
-**Folgearbeit (trigger-basiert):**
-
-- **`querschnittseigenschaften`-Eintrag und -Klasse**: A, I_y, I_z,
-  W_y, W_z, I_p, A_v als abgeleitete Grössen mit geschlossenen
-  Formeln je Subklasse. Trigger: erste Bemessungs-Operation.
-- **`rund_querschnitt`-Eintrag und -Klasse**: kreisförmiger
-  Querschnitt mit Durchmesser d. Trigger: erste Rundholz-Stütze.
-- **`i_profil_querschnitt`-Eintrag und -Klasse**: I-Profil-
-  Querschnitt mit Steg- und Flanschmassen. Trigger: erstes TJI- /
-  OSB-Steg-Bauteil.
-- **`polygonaler_querschnitt`-Eintrag und -Klasse**: beliebiger
-  polygonaler Querschnitt als `Polygon`. Trigger: erstes
-  abgebundenes Sonderbauteil mit nicht-standardisiertem Querschnitt.
-- **Veränderlicher Querschnitt** (Querschnittsfunktion
-  s ↦ QS(s)): Trigger: erster BSH-Binder mit Verjüngung.
-- **Querschnitt für Plattenbauteile**: Trigger: erstes
-  Plattenbauteil mit Querschnitts-Bezug (z. B. Kantenprofil bei
-  CLT-Element).
 
 ## Quellen
 

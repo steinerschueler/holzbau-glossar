@@ -53,16 +53,16 @@ Sei
   Trägerebene E, Umrisspolygon P = (v₁, …, v_k) und äußerer
   Normale n_a,
 - (e₁, …, e_k) die zyklische Folge der Polygonrandkanten
-  e_i := [v_i, v_{i+1}], v_{k+1} := v_1,
+  e_i:= [v_i, v_{i+1}], v_{k+1}:= v_1,
 - e_z = (0, 0, 1)ᵀ die vertikale Achse,
-- ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz,
+- ε_W:= Toleranzen.WINKEL_EPS die Winkeltoleranz,
 - für eine Strecke s = [a, b] der **Höhenmittelwert**
   ```
-  z_bar(s) := ½ · (a_z + b_z)
+  z_bar(s):= ½ · (a_z + b_z)
   ```
   und der **Horizontalitätsmaß**
   ```
-  h(s) := |⟨e_hat(s), e_z⟩|       mit  e_hat(s) := (b − a) / ‖b − a‖.
+  h(s):= |⟨e_hat(s), e_z⟩|       mit  e_hat(s):= (b − a) / ‖b − a‖.
   ```
 
 Eine Polygonrandkante e_i heißt **näherungsweise horizontal**, wenn
@@ -74,7 +74,7 @@ h(e_i) ≤ ε_W.
 Die Menge der näherungsweise horizontalen Randkanten von D sei
 
 ```
-H(D) := { e_i | h(e_i) ≤ ε_W,  i = 1, …, k }.
+H(D):= { e_i | h(e_i) ≤ ε_W,  i = 1, …, k }.
 ```
 
 Eine Strecke t ⊂ ℝ³ heißt **Traufe** der Dachfläche D genau dann,
@@ -177,75 +177,6 @@ Polygonrandkante der ausgekragten Dachfläche.
   - **Dachüberstand**: das ausgekragte Stück der Dachfläche jenseits
     der Außenwand; verschiebt die Trauflinie, ist aber selbst keine
     Kante.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-sealed class Traufe : Dachkante() {
-
-    data class Regulaer(
-        override val polylinie: Streckenzug,
-        val dachflaeche: Dachflaeche
-    ) : Traufe()
-
-    sealed class Entartet : Traufe() {
-        object Nullkante : Entartet()
-        object NichtIdentifizierbar : Entartet()
-    }
-}
-```
-
-Klassifikations-Prädikat in `DachkanteOps.kt`:
-
-```
-fun istTraufe(
-    e: Strecke,
-    d: Dachflaeche,
-    eps_W: Double = Toleranzen.WINKEL_EPS,
-    eps_L: Double = Toleranzen.LAENGE_EPS
-): Boolean {
-    // 1. e ist Polygonrandkante von d
-    if (!d.umriss.enthaeltKante(e, eps_L)) return false
-    // 2. e ist näherungsweise horizontal
-    val eHat = e.einheitsRichtung().werteOder { return false }
-    if (abs(eHat dot Vektor.E_Z) > eps_W) return false
-    // 3. z_bar(e) ist Minimum unter allen näherungsweise horizontalen Polygonrandkanten
-    val horizontale = d.umriss.kanten().filter { it.istHorizontal(eps_W) }
-    val minZ = horizontale.minOf { it.hoehenMittelwert() }
-    return abs(e.hoehenMittelwert() - minZ) <= eps_L
-}
-```
-
-- **Einheit**: alle Koordinaten in mm (Double), Längen in mm.
-- **Invarianten** (in Factory prüfen, niemals Exception):
-  1. ℓ(polylinie) > Toleranzen.LAENGE_EPS — sonst `Entartet.Nullkante`.
-  2. Jede Teilstrecke der Polylinie ist Polygonrandkante der
-     übergebenen Dachfläche.
-  3. Jede Teilstrecke ist näherungsweise horizontal:
-     |e_hat · e_z| ≤ Toleranzen.WINKEL_EPS.
-  4. Mittlere z-Höhe jeder Teilstrecke ist gleich dem Minimum der
-     mittleren z-Höhen aller näherungsweise horizontalen
-     Polygonrandkanten der Dachfläche, mit Toleranz
-     Toleranzen.LAENGE_EPS.
-- **Edge Cases**:
-  - **Nullkante**: ℓ ≤ Toleranzen.LAENGE_EPS → `Entartet.Nullkante`.
-  - **NichtIdentifizierbar**: Keine näherungsweise horizontale
-    Polygonrandkante existiert (z. B. bei einer reinen Schräg-
-    konstruktion ohne horizontale Untergrenze) oder die untere
-    Kante ist nicht eindeutig (z. B. Flachdach, α = 0) →
-    `Entartet.NichtIdentifizierbar`.
-  - **Geknickte Traufe**: zulässig durch Streckenzug-Modellierung
-    (z. B. bei polygonal abgeknicktem Grundriss).
-  - **Dachüberstand**: nicht relevant für die Klassifikation; die
-    Traufkante wird auf dem effektiv vorliegenden Dachflächen-
-    Polygon ausgewertet.
-- **Abgeleitete Operationen**:
-  - `fun trauflaenge(): Double` (mm) = ℓ(polylinie).
-  - `fun trauflinie(): Streckenzug` = polylinie.
-  - `fun anschlussRichtungDachrinne(): Vektor` = Tangentenrichtung
-    der Trauflinie (Hilfsgröße für UI/Rendering).
 
 ## Quellen
 

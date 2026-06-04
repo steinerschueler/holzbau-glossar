@@ -32,7 +32,7 @@ quellenkonflikt: |
 
   Die in der Aufgabenstellung vorgeschlagene Bezeichnung
   „Einrichtungsholz" wurde nach Prüfung **abgelehnt**, weil
-  „Einrichtung" in der Schweizer Branchensprache (Eric, Zimmermann)
+  „Einrichtung" in der Schweizer Branchensprache (Anweiser, Zimmermann)
   und in der DACH-Bauwirtschaft eindeutig den Möbelbau und Innenausbau
   bezeichnet (Wohnungseinrichtung, Inneneinrichtung) und mit der
   Werkstoff-Klassifikation kollidiert.
@@ -47,8 +47,7 @@ quellenkonflikt: |
   - **Axiales Holz** ist die Glossar-interne Klassen-Bezeichnung für
     diejenige Werkstoff-Klasse, die durch genau **eine** dominante
     Faserrichtung entlang einer Bauteilachse charakterisiert ist
-    (Faserrichtungs-Modus HART nach Memory
-    `project_faserrichtung_modi`).
+    (Faserrichtungs-Modus HART nach).
   - Der Begriff ist **kein normierter Holzbau-Begriff**; er ist eine
     Konvention dieses Glossars, geprägt analog zu „axial loaded"
     (axial belastet) im EC5-Kontext und „uniaxial fiber-aligned" im
@@ -89,7 +88,7 @@ Sei
 Dann ist ein **axiales Holz** das Tupel
 
 ```
-AH := (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse,
+AH:= (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse,
        faserrichtung, festigkeitsklasse)
 ```
 
@@ -116,13 +115,13 @@ Konstruktionsregel, analog IFC / BTLx / cadwork):
 ```
 Wenn faserrichtung am Werkstoff nicht explizit gesetzt,
 gilt für ein Bauteil B mit werkstoff = AH:
-  faserrichtung(AH) := bauteil_lokale_x_achse(B).
+  faserrichtung(AH):= bauteil_lokale_x_achse(B).
 ```
 
 Diese Default-Regel ist **prüfbar**: nach Auflösung muss
 faserrichtung in S² liegen und die Norm-Invariante erfüllen. Eine
 fehlende Faserrichtung **nach** Auflösung ist Validierungsfehler,
-keine Warnung (Memory `project_faserrichtung_modi`).
+keine Warnung.
 
 ## Wohldefiniertheit
 
@@ -141,7 +140,7 @@ keine Warnung (Memory `project_faserrichtung_modi`).
   siehe `faserrichtung`).
 - **Pflichtcharakter der Faserrichtung**: f_hat ist in dieser Subklasse
   Pflichtfeld. Die Default-Regel
-  `faserrichtung := bauteil.lokale_x_achse` ist eine
+  `faserrichtung:= bauteil.lokale_x_achse` ist eine
   Konstruktionsregel, kein Erlaubnis-Mechanismus zum Weglassen:
   nach Auflösung muss ein konkreter Vektor vorliegen. Andernfalls
   ist EC5-Bemessung undurchführbar (Hankinson, Lochleibung,
@@ -272,92 +271,6 @@ aufweisen.
   - **`bauteilachse`**: geometrische Längsachse eines Stabbauteils;
     fällt typisch mit der Faserrichtung zusammen, ist aber
     geometrisch und nicht werkstoff-spezifisch definiert.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.holzbau.werkstoff`):
-
-```kotlin
-package domain.holzbau.werkstoff
-
-import domain.geometrie.Einheitsvektor
-import domain.holzbau.Faserrichtung
-import domain.holzbau.Festigkeitsklasse  // eigener Eintrag folgt
-import domain.identifikation.Produktkennzeichnung
-
-/**
- * Axiales Holz: Werkstoff-Klasse mit genau einer dominanten
- * Faserrichtung entlang einer Bauteilachse (Faserrichtungs-Modus HART).
- * Glossar: hg_axiales_holz.md
- *
- * Subklassen: Vollholz, KVH, BSH, BSc, LVL (eigene Folge-Klassen).
- *
- * Pflichtfelder: faserrichtung, festigkeitsklasse plus geerbt von
- *                Werkstoff (faserrichtungsModus, produktkennzeichnung).
- * Plattendicken-Achse: konstant null (kein Plattenwerkstoff).
- *
- * Default-Konvention: Wenn faserrichtung am Bauteil nicht explizit
- * gesetzt, gilt faserrichtung := bauteil.lokale_x_achse. Die
- * Konstruktion eines AxialesHolz-Werkstoffs setzt diese Default-
- * Auflösung als Invariante voraus; ein Werkstoff ohne aufgelöste
- * Faserrichtung ist nicht valide.
- */
-data class AxialesHolz(
-    override val produktkennzeichnung: Produktkennzeichnung,
-    val faserrichtung: Faserrichtung,
-    val festigkeitsklasse: Festigkeitsklasse
-) : Werkstoff {
-    override val faserrichtungsModus: FaserrichtungsModus
-        = FaserrichtungsModus.HART
-
-    override val plattendickenAchse: Einheitsvektor? = null
-
-    init {
-        // 1. produktkennzeichnung kompatibel mit Subklasse
-        //    (DIN EN 14081-1 | DIN EN 15497 | DIN EN 14080 |
-        //     DIN EN 14374); Prüfung in Folge-Eintrag.
-        // 2. festigkeitsklasse kompatibel mit Subklasse
-        //    (C-Klassen oder GL-Klassen oder LVL-ETA).
-        // 3. faserrichtung erfüllt Norm-Invariante
-        //    (geerbt von Einheitsvektor).
-    }
-}
-```
-
-- **Einheit**: Faserrichtung dimensionsloser Einheitsvektor in W;
-  Festigkeitsklasse aus eigener Aufzählung.
-- **Identität**: Werkstoff trägt keine UUID; Identität wird auf
-  Element-Ebene geführt.
-- **Invarianten** (in Fabrikfunktionen / `init` prüfen, bei
-  Verletzung `Resultat.Fehler` bzw. `Entartet`-Variante; niemals
-  Exception):
-  1. `faserrichtungsModus == HART` (Klassen-Invariante).
-  2. `plattendickenAchse == null` (Klassen-Invariante).
-  3. `faserrichtung` erfüllt Norm-Invariante
-     | ‖f_hat‖² − 1 | ≤ Toleranzen.NORM_EPS.
-  4. `produktkennzeichnung` und `festigkeitsklasse` sind konsistent
-     zur konkreten Sub-Subklasse (Vollholz, KVH, BSH, BSc, LVL).
-- **Default-Konvention zur Faserrichtung**: Die Auflösung
-  `faserrichtung := bauteil.lokale_x_achse` erfolgt in der
-  Bauteil-Konstruktion (nicht im Werkstoff selbst), damit der
-  Werkstoff stets eine konkrete Faserrichtung trägt. Ein Werkstoff
-  ohne aufgelöste Faserrichtung ist konstruktiv nicht erzeugbar.
-- **Validierungsregel** (Bemessungs-Schicht): Eine Bauteil-Belastung
-  rechtwinklig zur Faser über lange Distanz (z. B. „Sparren liegt
-  flach unter der Last") ist Plausibilitätswarnung, kein Hartfehler.
-- **Edge Cases**:
-  - **Fehlende Faserrichtung nach Default-Auflösung**: nicht erlaubt;
-    `Entartet.AxialesHolzOhneFaserrichtung`.
-  - **Drehwuchs / Faserabweichung**: nicht durch einen einzelnen
-    Vektor erfasst; Sortierklasse (DIN 4074-1) begrenzt die
-    Abweichung. Eine ortsabhängige Faserrichtung ist Folgearbeit.
-  - **Schräg gesägtes Holz** (Sparrenfußklotz, Auswechslungen):
-    `faserrichtung` weicht von Bauteilachse ab; die Default-Regel
-    wird durch explizites Setzen überschrieben.
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `AxialesHolz` (deutsch, Glossarbegriff); Sub-Subklassen heißen
-  `Vollholz`, `Kvh`, `Bsh`, `Bsc`, `Lvl`.
 
 ## Quellen
 

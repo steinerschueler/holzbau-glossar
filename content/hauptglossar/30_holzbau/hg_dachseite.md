@@ -58,7 +58,7 @@ Sei
 - n_hat_h ∈ S² ∩ {z = 0} die horizontale Projektion der äußeren
   Normalen,
   ```
-  n_hat_h := normiere(n_a − ⟨n_a, e_z⟩ · e_z)
+  n_hat_h:= normiere(n_a − ⟨n_a, e_z⟩ · e_z)
   ```
   (definiert nur, falls ‖n_a − ⟨n_a, e_z⟩ · e_z‖ > Toleranzen.NORM_EPS,
   also α(D) > 0 und n_a nicht vertikal).
@@ -69,7 +69,7 @@ e_z (geographische Konvention: 0° = Norden, 90° = Osten,
 180° = Süden, 270° = Westen):
 
 ```
-ψ(D) := atan2( ⟨n_hat_h, e_E⟩ , ⟨n_hat_h, e_N⟩ )  mod 2π,
+ψ(D):= atan2(⟨n_hat_h, e_E⟩, ⟨n_hat_h, e_N⟩)  mod 2π,
 ```
 
 mit e_E = (1, 0, 0)ᵀ.
@@ -77,7 +77,7 @@ mit e_E = (1, 0, 0)ᵀ.
 Eine **Dachseite** ist das Tupel
 
 ```
-DS(D) := (D, ψ(D))
+DS(D):= (D, ψ(D))
 ```
 
 aus der zugrundeliegenden Dachfläche D und ihrer Orientierung ψ(D).
@@ -177,97 +177,6 @@ Geometrie + Orientierungsmerkmal.
     zwei Dachseiten und gleichzeitig zwei Dachhälften, bei einem
     Walmdach gibt es jedoch vier Dachseiten und nur zwei
     geometrische „Hälften". „Dachhälfte" ist hier abgelehnt.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-package domain.bauteil
-
-import domain.Toleranzen
-import kotlin.math.atan2
-import kotlin.math.PI
-import kotlin.math.sqrt
-
-/**
- * Dachseite: Dachfläche mit Orientierungs-Annotation.
- * Glossar: hg_dachseite.md
- *
- * Strukturell ein Wrapper um Dachflaeche; trägt die Orientierung ψ
- * als abgeleitete skalare Eigenschaft.
- */
-data class Dachseite(
-    val dachflaeche: Dachflaeche
-) {
-    /**
-     * Orientierung ψ ∈ [0, 2π) als Kompasswinkel der äußeren
-     * Normalen-Horizontalprojektion (0 = Nord, 90° = Ost,
-     * 180° = Süd, 270° = West). Liefert null bei Flachdach
-     * (α = 0), wenn keine eindeutige horizontale Orientierung
-     * existiert. Glossar: dachseite#orientierung.
-     */
-    fun orientierung(): Double? {
-        val n = dachflaeche.aeussereNormale
-        val hx = n.x          // Ost
-        val hy = n.y          // Nord
-        val laenge = sqrt(hx * hx + hy * hy)
-        if (laenge <= Toleranzen.NORM_EPS) return null   // Flachdach
-        val psi = atan2(hx / laenge, hy / laenge)         // 0 = Nord
-        return (psi + 2.0 * PI) % (2.0 * PI)
-    }
-
-    fun ausrichtung(): Ausrichtung? {
-        val psi = orientierung() ?: return null
-        val grad = psi * 180.0 / PI
-        return when {
-            grad < 22.5 || grad >= 337.5 -> Ausrichtung.NORD
-            grad < 67.5                   -> Ausrichtung.NORDOST
-            grad < 112.5                  -> Ausrichtung.OST
-            grad < 157.5                  -> Ausrichtung.SUEDOST
-            grad < 202.5                  -> Ausrichtung.SUED
-            grad < 247.5                  -> Ausrichtung.SUEDWEST
-            grad < 292.5                  -> Ausrichtung.WEST
-            else                          -> Ausrichtung.NORDWEST
-        }
-    }
-
-    enum class Ausrichtung {
-        NORD, NORDOST, OST, SUEDOST, SUED, SUEDWEST, WEST, NORDWEST
-    }
-
-    sealed class Entartet {
-        object Horizontal : Entartet()    // α(D) = 0, keine Orientierung
-    }
-}
-```
-
-- **Einheit**: ψ intern in **Radiant** (Double); Anzeige in Grad
-  (Kompasskonvention) am API-Rand.
-- **Konvention**: Welt-Koordinatensystem mit x = Ost, y = Nord,
-  z = oben. Bei abweichender CAD-Konvention ist eine
-  Vorab-Rotation erforderlich.
-- **Invarianten**: alle Invarianten von `Dachflaeche`. Die
-  Orientierung ist eine **abgeleitete** Eigenschaft, kein
-  zusätzliches Feld mit eigener Invariante.
-- **Edge Cases**:
-  - **Flachdach (α = 0)**: `orientierung()` liefert `null`. Eine
-    Flachdachseite hat keine Himmelsrichtung. Die Domänen-Klasse
-    liefert `Entartet.Horizontal`, falls eine
-    Orientierungs-Annotation zwingend erforderlich ist.
-  - **Numerisch fast horizontale Dächer** (α ≪ ε_W): die
-    Orientierung wird numerisch instabil; die Schwelle
-    `laenge ≤ Toleranzen.NORM_EPS` liefert in diesem Fall `null`.
-  - **Mehrere Dachseiten gleicher Orientierung** (z. B.
-    Krüppelwalm mit zwei südorientierten Teilflächen): jede
-    Dachfläche wird unabhängig orientiert; die Klassifikation in
-    Sektoren liefert dann zwei Dachseiten gleicher Ausrichtung.
-- **Verwendungsregel**: Funktionen, die orientierungsabhängige
-  Größen berechnen (Solarstrahlungsertrag, Schlagregenexposition,
-  Windlast-Hauptangriffsrichtung), nehmen `Dachseite` als
-  Parametertyp und nicht den nackten `Dachflaeche`. Damit ist die
-  Notwendigkeit einer Orientierungs-Annotation am API-Rand
-  erkennbar.
 
 ## Quellen
 

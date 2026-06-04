@@ -70,7 +70,7 @@ quellenkonflikt: |
   Benennungen falsch wären, sondern weil sie im Glossar an einen
   anderen Begriff gebunden sind und die hier festgelegte Lesart B
   nicht treffen. Detail-Befund siehe
-  `docs/recherche/2026-05-14_hg_walm.md` §§ 2 und 5.
+  [intern] §§ 2 und 5.
 
   **Keine Norm-Definition des Aggregats.** Weder SIA 232/1, SIA
   265, DIN EN 1995-1-1, DIN 1052, DIN 1356 noch DIN 18338 enthalten
@@ -199,7 +199,7 @@ Sei
 Dann ist ein **Walm** ein Tupel
 
 ```
-W := (uuid, gratsparren, schifter, mittelsparren?,
+W:= (uuid, gratsparren, schifter, mittelsparren?,
       walmflaeche, hauptdachflaechen,
       lage, huelle, bezeichnung?)
 ```
@@ -239,7 +239,7 @@ und den Konsistenzbedingungen
 
 1. **Bauteilgruppen-Konformität**: das Tupel
    (uuid, bestandteile, lage, huelle, bezeichnung?) mit
-   bestandteile := gratsparren ∪ schifter ∪ {mittelsparren |
+   bestandteile:= gratsparren ∪ schifter ∪ {mittelsparren |
    mittelsparren ≠ ⊥} erfüllt alle Konsistenzbedingungen 1–4 von
    `bauteilgruppe` (exklusive Mitgliedschaft, kaskadische
    Lebenszyklus-Bindung, Hüllen-Inklusion, azyklische
@@ -278,7 +278,7 @@ und den Konsistenzbedingungen
 Die **geometrische Punktmenge** des Walms in W ist
 
 ```
-G_W(W) := lage(G_lokal(huelle)) ⊂ ℝ³
+G_W(W):= lage(G_lokal(huelle)) ⊂ ℝ³
 ```
 
 (transformierte Hülle); die alternative Repräsentation als
@@ -561,139 +561,6 @@ Gratlinien) und in der konstruktiven Funktion (Spannweiten-
     von `bauteilgruppe` mit anderer Funktion (Lasteinleitung um
     Öffnung); kein Walm.
 
-## Implementierungshinweis
-
-**Im aktuellen Glossarstand wird keine eigene Code-Klasse `Walm`
-angelegt.** Die ontologische Vorbereitung lebt zunächst nur im
-Glossar; eine Code-Klasse entsteht zusammen mit dem ersten
-konkreten Tool, das einen Walm als Bauteilgruppe modelliert
-(zugleich Trigger für `schifter`, `walmflaeche` und ggf.
-`walmdach`). Der folgende Skizzen-Code ist ausschließlich
-orientierender Implementierungshinweis für diesen Zeitpunkt und
-folgt der Sealed-Hierarchie unter `Bauteilgruppe` aus
-`hg_bauteilgruppe.md`, strukturparallel zur Binder-Skizze in
-`hg_binder.md`.
-
-```kotlin
-// SKIZZE — nicht jetzt anlegen.
-// Glossar: hg_walm.md
-
-package domain.bauteil
-
-import domain.bauteil.Bauteilgruppe
-import domain.bauteil.Gratsparren
-import domain.bauteil.Sparren
-import domain.geometrie.Dachflaeche
-import java.util.UUID
-
-/**
- * Walm: Bauteilgruppe aus genau zwei Gratsparren, einer
- * möglicherweise leeren Menge von Schiftern und einem optionalen
- * Mittelsparren in der zugeordneten Walmflaeche; geometrische
- * Hüllkomponente ist die Walmflaeche, die Gratsparren liegen auf
- * den zwei Walm-Gratlinien zwischen Walmflaeche und den zwei
- * anliegenden Hauptdachflächen.
- *
- * Sealed unter Bauteilgruppe; konkrete Sub-Typen (Vollwalm,
- * Krüppelwalm, Fußwalm, Niedersachsengiebel) entstehen trigger-
- * basiert.
- */
-sealed class Walm : Bauteilgruppe() {
-    abstract val gratsparren: Set<Gratsparren>     // |gratsparren| == 2
-    abstract val schifter: Set<Sparren>            // Folgearbeit Schifter-Typ
-    abstract val mittelsparren: Sparren?           // 0 oder 1
-    abstract val walmflaeche: Dachflaeche          // Folgearbeit Walmflaeche-Typ
-    abstract val hauptdachflaechen: Set<Dachflaeche> // |hauptdachflaechen| == 2
-
-    init {
-        // 1. gratsparren.size == 2                → sonst Entartet.FalscheGratsparrenAnzahl
-        // 2. hauptdachflaechen.size == 2          → sonst Entartet.FalscheHauptdachflaechenAnzahl
-        // 3. Gratsparren auf Walm-Gratlinien      → sonst Entartet.GratsparrenAusserhalbWalmGrat
-        // 4. Schifter ansetzend an Gratsparren    → sonst Entartet.SchifterOhneGratsparren
-        // 5. Mittelsparren in Walmflaeche-Falllinie → sonst Entartet.MittelsparrenAusserhalbWalmflaeche
-        // 6. Bauteilachsen in Walmflaeche-Toleranzband → sonst Entartet.AchseAusserhalbWalmflaeche
-        // 7. Bauteilgruppen-Bedingungen geerbt    → über sealed-Hierarchie
-    }
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant;
-  Lage als SE(3)-Element.
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7);
-  externe Referenzen auf einen Walm gehen ausschließlich auf
-  diese UUID. Bestandteile (Gratsparren, Schifter, Mittelsparren)
-  werden über ihre jeweiligen UUIDs referenziert (Foreign-Key-
-  Regel, Memory `project_bauteil_identifikation`).
-- **Invarianten** (in `init` bzw. Fabrikfunktionen prüfen, bei
-  Verletzung `Resultat.Fehler` bzw. `Entartet`-Variante; niemals
-  Exception werfen):
-  1. `gratsparren.size == 2` ⇒ sonst
-     `Entartet.FalscheGratsparrenAnzahl`.
-  2. `hauptdachflaechen.size == 2` ⇒ sonst
-     `Entartet.FalscheHauptdachflaechenAnzahl`.
-  3. Für jeden g ∈ gratsparren liegt die Bauteilachse auf einer
-     Gratstrecke zwischen walmflaeche und einer Hauptdachfläche
-     aus hauptdachflaechen (im Sinne von `hg_gratsparren.md`
-     Bedingung 3) ⇒ sonst
-     `Entartet.GratsparrenAusserhalbWalmGrat`. Toleranz
-     `Toleranzen.LAENGE_EPS` für Achs-Punkt-zu-Strecke-Abstand,
-     `Toleranzen.KOLLINEAR_EPS` für die Richtung.
-  4. Für jeden s ∈ schifter existiert genau ein g ∈ gratsparren,
-     an dessen Seitenfläche s mit doppelter Schmiege ansetzt ⇒
-     sonst `Entartet.SchifterOhneGratsparren`. Toleranz
-     `Toleranzen.LAENGE_EPS`.
-  5. Ist `mittelsparren ≠ null`, so liegt seine Bauteilachse in
-     walmflaeche entlang der Falllinie ⇒ sonst
-     `Entartet.MittelsparrenAusserhalbWalmflaeche`. Toleranz
-     `Toleranzen.LAENGE_EPS` für Ebenen-Inzidenz,
-     `Toleranzen.KOLLINEAR_EPS` für Falllinien-Kollinearität.
-  6. Für jeden b ∈ bestandteile ist der Abstand der Bauteilachs-
-     punkte zu walmflaeche ≤ Querschnittshöhe(b)/2 +
-     `Toleranzen.LAENGE_EPS` ⇒ sonst
-     `Entartet.AchseAusserhalbWalmflaeche`.
-  7. **Exklusive Mitgliedschaft** (geerbt von `bauteilgruppe`):
-     kein Bauteil b ∈ bestandteile ist zugleich Bestandteil eines
-     anderen Walms oder einer anderen Bauteilgruppe. Prüfung im
-     Modell-Container; bei Verletzung
-     `Entartet.MehrfachMitgliedschaft`.
-- **Edge Cases**:
-  - **Pyramidenwalm-Spitze ohne First**: zulässig mit
-    walmflaeche dreieckig und mittelsparren = null; bei
-    Pyramidendach (vier Walmflächen ohne First) ist die
-    Modellierung als ein Walm-Aggregat oder vier Walm-Aggregate
-    offene Designfrage (siehe Erläuterung „Walm-Anzahl pro Dach").
-  - **Vollwalm symmetrisch mit First**: walmflaeche trapezförmig,
-    mittelsparren genau ein Sparren entlang der Falllinie.
-  - **Krüppelwalm**: walmflaeche endet oberhalb der Traufe; der
-    Walm-Aggregat-Eintrag bleibt strukturell identisch, lediglich
-    die Walmflaeche-Berandung ist eingeschränkt. Der konkrete
-    Sub-Typ folgt in `krueppelwalm`.
-  - **Schmaler Walm ohne Schifter**: |schifter| = 0 zulässig;
-    nur die zwei Gratsparren und ggf. der Mittelsparren tragen
-    die Walmfläche.
-  - **Vollwalmdach mit zwei Walmen**: zwei vollständig disjunkte
-    Walm-Aggregate mit je eigener UUID; je ein Walm pro
-    Giebelseite.
-  - **Bauteil-Wechsel der Walm-Zugehörigkeit** (z. B. ein
-    Gratsparren wird beim Umbau einem anderen Walm zugeordnet):
-    erfordert koordinierte Modifikation beider Walme über den
-    Modell-Container; nicht durch direkten Bauteil-Zugriff.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `geometrieInWelt(): GeometrieInW` = `lage(huelle)` als
-    transformierte Hülle in W (geerbt von `Bauteilgruppe`).
-  - `bestandteilsVereinigung(): GeometrieInW` =
-    ⋃_{b ∈ bestandteile} G_W(b); im Allgemeinen echte Teilmenge
-    der Hülle.
-  - `walmlinien(): Pair<Strecke, Strecke>` = die zwei
-    Gratstrecken zwischen walmflaeche und den Hauptdachflächen;
-    abgeleitet über die Trägerebenen-Schnitte.
-  - `walmneigung(): Double` (rad) = `walmflaeche.dachneigung`;
-    abgeleitet aus der Walmfläche, nicht eigene Größe.
-  - `istKrueppelwalm(): Boolean` = wahr genau dann, wenn die
-    Walm-Trauf-Berandung **oberhalb** der umlaufenden Trauf-
-    Höhe liegt (Folgearbeit, formale Definition in
-    `krueppelwalm`).
-
 ## Quellen
 
 **Primär (normativ):**
@@ -743,49 +610,4 @@ sealed class Walm : Bauteilgruppe() {
   (Snippet-Beleg).
 - DWDS, Lemma „Walm" (Etymologisches Wörterbuch des Deutschen,
   Snippet-Beleg).
-- Recherchebericht `docs/recherche/2026-05-14_hg_walm.md`.
-
-## Folgearbeit (trigger-basiert)
-
-1. **`walmflaeche`** — Spezialisierung von `dachflaeche` mit
-   Berandungsbedingung (dreieckig oder trapezförmig, am
-   giebelseitigen Dachende). Trigger: erster App-Renderer, der
-   Walmflächen von gewöhnlichen Dachflächen unterscheidet, oder
-   erste Walmdach-Modellierung (zugleich Trigger für diesen
-   Walm-Eintrag selbst).
-2. **`schifter`** — bereits in Trigger-Liste
-   `HG_KONVENTIONEN.md` §6 (A) geführt; verkürzte Sparren mit
-   doppelter Schmiege am Gratsparren. Trigger: erste vollständige
-   Walmdach-Modellierung.
-3. **`walmdach`** — Spezialisierung von `dach` (Dachform-Sicht);
-   ein Dach ist ein Walmdach, wenn seine Bauteilgruppen mindestens
-   einen Walm enthalten. Trigger: Dachform-Klassifikation in der
-   App („Welche Dachform liegt vor?").
-4. **`krueppelwalm`** — Walm-Spezialisierung mit synonymen
-   Benennungen Krüppelwalm = Schopfwalm = Halbwalm = Kurzwalm
-   (Korpus-Konsens). Trigger: erste Modellierung eines Walmdachs,
-   das nicht von der Traufe bis zum First reicht.
-5. **`dachausmittlung`** — bereits in Trigger-Liste
-   `HG_KONVENTIONEN.md` (Folgearbeit `verschneidung`); das
-   zeichnerische oder rechnerische Verfahren zur Ermittlung von
-   Walmflächen und Gratlinien aus Grundriss und Dachneigungen.
-   Trigger: erstes Tool zur zeichnerischen oder rechnerischen
-   Walmdach-Konstruktion.
-
-**R-Schritt-Drift in bestehenden Einträgen** (bei nächstem
-R-Schritt nachzuziehen, nicht in diesem Schritt zu ändern):
-
-- **`hg_bauteilgruppe.md` Z. 269–272** sagt im
-  Spezialisierungs-Block „Walm (`walm`): walmförmiger Abschluss
-  eines Daches als Aggregat aus Gratsparren, Schiftern und
-  **Walmsparren**". Die „Walmsparren"-Referenz übernimmt einen
-  Lueger-1904-Sammelbegriff, der in `hg_gratsparren.md` und
-  `hg_kehlsparren.md` als `abgelehnte_benennungen:` geführt ist;
-  die hier festgelegte Komposition ist „Gratsparren, Schifter und
-  im symmetrischen Vollwalm einem Mittelsparren in der Walmfläche
-  (Bauteilrolle `sparren`)". Die Aufzählungs-Formulierung in
-  `hg_bauteilgruppe.md` soll bei nächstem R-Schritt entsprechend
-  korrigiert werden.
-- **`hg_bauteilgruppe.md` Erläuterungs-Block Walm-Beispiel**
-  (Z. 208 ff.) trägt dieselbe Walmsparren-Formulierung und ist
-  analog nachzuziehen.
+- Recherchebericht [intern].

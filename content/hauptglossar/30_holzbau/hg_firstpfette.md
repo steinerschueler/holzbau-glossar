@@ -59,14 +59,14 @@ Sei
 
 - P eine Pfette im Sinne von `pfette` mit Bauteilachse
   a(P) = (p_a, p_e), Richtungs-Einheitsvektor d_hat_P und mittlerer
-  Höhe z_P := (p_a.z + p_e.z) / 2,
+  Höhe z_P:= (p_a.z + p_e.z) / 2,
 - F ein First im Sinne von `first` mit Streckenzug-Repräsentation
   und Richtungs-Einheitsvektor d_hat_F sowie Firstniveau
-  z_F := mittlere Höhe der Firststützpunkte,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
+  z_F:= mittlere Höhe der Firststützpunkte,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
 - δ_z eine konstruktive Höhentoleranz, die die zulässige Differenz
   zwischen Pfetten- und Firstniveau begrenzt; Default
-  δ_z := h_Pfette + ε_L, wobei h_Pfette die (rechteckige) Pfetten-
+  δ_z:= h_Pfette + ε_L, wobei h_Pfette die (rechteckige) Pfetten-
   höhe ist und ε_L = Toleranzen.LAENGE_EPS.
 
 Dann heißt P eine **Firstpfette** genau dann, wenn die folgenden
@@ -97,7 +97,7 @@ Wesentliche abgeleitete Größen:
 - **Firstpfettenlänge**: ‖p_e − p_a‖ (in mm); im Regelfall
   geringfügig kleiner als die Firstlänge des Daches (Überstände
   und Anschnitte abhängig von der Konstruktion).
-- **Vertikalabstand zum First**: Δz := z_F − z_P (vorzeichen-
+- **Vertikalabstand zum First**: Δz:= z_F − z_P (vorzeichen-
   behaftet); Δz = 0, wenn die Firstpfettenachse auf Firstniveau
   liegt; Δz > 0, wenn die Firstpfette unmittelbar unter dem
   First sitzt.
@@ -200,7 +200,7 @@ entgegen e_hat_fall) ist der axiale Kervenabstand die Projektion der
 Verbindung auf d_hat:
 
 ```
-s  :=  ⟨ p_K^First − p_K^Fuß ,  d_hat ⟩                            (s.1)
+s:=  ⟨ p_K^First − p_K^Fuß,  d_hat ⟩                            (s.1)
 ```
 
 ist die vorzeichen-behaftete skalare Projektion der Verbindung auf
@@ -228,14 +228,14 @@ Bauteilachse ist um die Dachneigung α gegen die Horizontale geneigt.
 Dann folgt aus (s.1) die geschlossene Form
 
 ```
-s  =  ( z(p_K^First) − z(p_K^Fuß) ) / sin(α)                    (s.3)
-   =  ( firstpfetteHoehe − fusspfetteHoehe ) / sin(α).          (s.4)
+s  =  (z(p_K^First) − z(p_K^Fuß)) / sin(α)                    (s.3)
+   =  (firstpfetteHoehe − fusspfetteHoehe) / sin(α).          (s.4)
 ```
 
 Lesart: (s.4) ist eine **Konsequenz** von (s.1) im idealisierten
 Fall, kein eigenständiger Definitionsterm — und genau die in der
 Werkplan-Praxis genutzte Form (Recherche-Bericht
-`docs/recherche/2026-05-10_sparrenmessung_neubau.md`, Abschnitt D).
+[intern], Abschnitt D).
 Bei geneigten Pfetten, ungleichen Kervtiefen oder einer Bauteilachse
 ausserhalb der Trägerebene weicht die z-Differenz der Kerveckpunkte
 von der Differenz der Pfettenhöhen ab; dann liefert (s.1) das
@@ -244,7 +244,7 @@ Näherung. Die **kanonische Form ist (s.1)**; (s.3)/(s.4) wird als
 idealisierter Spezialfall geführt.
 
 Hintergrund und Recherche-Stand siehe
-`docs/recherche/2026-05-10_sparrenmessung_neubau.md`.
+[intern].
 
 ### Verbindung zu Stützen / Stuhlsäulen
 
@@ -287,78 +287,6 @@ Verbindungen:
   - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken
     zwischen einem Sparrenpaar; trägt keine Sparren in
     Längsrichtung. Keine Firstpfette.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Pfette
-import kotlin.math.abs
-
-/**
- * Firstpfette: Pfette parallel zum First, am Firstniveau.
- * Glossar: hg_firstpfette.md
- *
- * Vorzeichenkonvention für die Bauteilachse: gemäß lokaler
- * Bezeichnungskonvention (geerbt von Pfette); typisch in
- * Welt-x-Richtung steigend.
- */
-data class Firstpfette(
-    override val bauteil: Bauteil,
-    val first: First,
-    val deltaZMax: Double = Toleranzen.LAENGE_EPS    // δ_z
-) : Pfette.Firstpfette() {
-
-    init {
-        // 1. Pfetten-Bedingungen aus Pfette geerbt (Stabgeometrie,
-        //    Horizontalität, Parallelität zu einer Dachkante).
-        // 2. Parallelität zum First (Bedingung 1 aus hg_firstpfette.md):
-        //    ‖d_hat_P × d_hat_F‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
-        //    Resultat.Fehler(FirstpfetteEntartet.NichtParallel).
-        //    Sinus-Test, bevorzugt für Parallelitäts-Prädikate;
-        //    siehe hauptglossar/_KONVENTIONEN.md Sektion 4.
-        // 3. Firstnah (Bedingung 2):
-        //    |z_P − z_F| ≤ deltaZMax — sonst
-        //    FirstpfetteEntartet.NichtFirstnah.
-        // 4. Eindeutigkeit (Bedingung 3) wird im Tragwerks-Kontext
-        //    geprüft, nicht in init (Cross-Cutting).
-    }
-}
-
-sealed class FirstpfetteEntartet {
-    object NichtParallel : FirstpfetteEntartet()
-    object NichtFirstnah : FirstpfetteEntartet()
-    object MehrdeutigImTragwerk : FirstpfetteEntartet()
-}
-```
-
-- **Einheit**: Längen in mm; Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (zusätzlich zu denen von `Pfette`):
-  1. Parallelität zum First — sonst `NichtParallel`.
-  2. Firstnähe — sonst `NichtFirstnah`.
-  3. Eindeutigkeit als oberste First-parallele Pfette im
-     Tragwerk — sonst `MehrdeutigImTragwerk` (Cross-Cutting).
-- **Edge Cases**:
-  - **Sparrendach**: keine Firstpfette zu modellieren.
-  - **Mehrere Firste am selben Dach** (Walmdach hat keinen
-    durchgehenden First; Krüppelwalm hat einen verkürzten First):
-    je First mindestens eine Firstpfette zulässig; die
-    Eindeutigkeit (Bed. 3) bezieht sich auf den jeweiligen First.
-  - **Aufgesattelte Firstpfette**: z_P > z_F. δ_z muss in diesem
-    Fall entsprechend angepasst werden, sonst greift `NichtFirstnah`.
-- **Abgeleitete Eigenschaften**:
-  - `getrageneSparrenfirstpunkteIn(t: Tragwerk): List<Sparren>` —
-    Sparren in `t`, deren Sparrenfirstpunkt p_e auf der
-    Firstpfettenachse innerhalb Toleranzen liegt. (Frühere
-    Fassung hiess `getrageneSparrenkoepfeIn(...)`; die
-    Umbenennung zieht die Konvention „Sparrenfirstpunkt"
-    aus `hg_sparren.md` nach.)
 
 ## Quellen
 

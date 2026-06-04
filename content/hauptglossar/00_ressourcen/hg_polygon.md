@@ -47,7 +47,7 @@ Sei
 Definiere die **Kanten** zyklisch als Strecken
 
 ```
-e_i := [v_i, v_{i+1}]   für  i = 1, …, k,   v_{k+1} := v_1.
+e_i:= [v_i, v_{i+1}]   für  i = 1, …, k,   v_{k+1}:= v_1.
 ```
 
 Das Tupel (v₁, …, v_k) heißt ein **Polygon** in E genau dann, wenn
@@ -61,21 +61,21 @@ folgende Bedingungen gelten:
    v_{i−1}, v_i, v_{i+1} nicht kollinear (keine „überflüssigen"
    Eckpunkte). *(Diese Bedingung ist optional und kann durch
    einen Vorverarbeitungsschritt zur Normalisierung erzwungen
-   werden; siehe Implementierungshinweis.)*
+   werden.)*
 5. **Einfachheit (Jordan-Bedingung)**: Für alle i, j mit
    i ≠ j und {i+1, j+1} ∩ {i, j} = ∅ gilt
    e_i ∩ e_j = ∅. Nicht benachbarte Kanten schneiden sich nicht;
    benachbarte Kanten teilen genau ihren gemeinsamen Eckpunkt.
 
 Aus Bedingungen 1–3 und 5 folgt, dass die Vereinigung der Kanten
-∂P := e₁ ∪ … ∪ e_k eine einfache geschlossene stückweise lineare
+∂P:= e₁ ∪ … ∪ e_k eine einfache geschlossene stückweise lineare
 Kurve in E ist. Nach dem **Jordan-Kurvensatz** zerlegt ∂P die
 Ebene E in genau zwei zusammenhängende Komponenten, von denen
 genau eine beschränkt ist; diese beschränkte Komponente, vereinigt
 mit ihrem Rand, sei
 
 ```
-F(P) := { x ∈ E | x liegt im beschränkten Bereich von E ∖ ∂P } ∪ ∂P.
+F(P):= { x ∈ E | x liegt im beschränkten Bereich von E ∖ ∂P } ∪ ∂P.
 ```
 
 Das **Polygon** ist dann das Paar P = ((v₁, …, v_k), F(P)) bzw.
@@ -87,9 +87,9 @@ Wesentliche abgeleitete Größen:
 - **Trägerebene**: E.
 - **Eckenzahl**: k ∈ ℕ_{≥3}.
 - **Kantenmenge**: { e₁, …, e_k }.
-- **Umfang**: U(P) := Σ_{i=1}^{k} ‖v_{i+1} − v_i‖ (in mm).
+- **Umfang**: U(P):= Σ_{i=1}^{k} ‖v_{i+1} − v_i‖ (in mm).
 - **Flächeninhalt** (für Polygon mit Einheitsnormale n_hat der
-  Trägerebene): A(P) := ½ · |⟨n_hat, Σ_{i=1}^{k} v_i × v_{i+1}⟩|
+  Trägerebene): A(P):= ½ · |⟨n_hat, Σ_{i=1}^{k} v_i × v_{i+1}⟩|
   (in mm²; verallgemeinert die 2D-Schuhbänder-/Gauß-Trapezformel
   auf eine in ℝ³ liegende Ebene).
 - **Orientierung**: Das Vorzeichen von ⟨n_hat, Σ v_i × v_{i+1}⟩
@@ -250,154 +250,11 @@ verwendende Begriff.
     werden in diesem Glossar **nicht** als Polygon zugelassen.
     Die `KonvexesPolygon`-Implementierung schließt sie für die
     im Holzbau auftretenden Eckreihenfolgen über die lokale
-    Konvexitäts-Invariante aus; die Lücke der Prüfung bei
-    pathologischen Permutationen (Pentagramm-Topologie) ist im
-    Implementierungshinweis dokumentiert. Mit der Folgearbeit
+    Konvexitäts-Invariante aus. Mit der Folgearbeit
     `EinfachesPolygon` werden Selbstschnitte global als
     `Entartet.Selbstschnitt` zurückgewiesen — diese Variante ist
     heute noch nicht im `EntartetGeometrie`-Sealed-Interface
-    vorhanden (siehe Implementierungshinweis).
-
-## Implementierungshinweis
-
-**Code-Eingrenzung:** Codeseitig wird vorerst nur **`KonvexesPolygon`**
-implementiert (geordnete Eckpunkt-Liste in einer Träger-Ebene mit
-Konvexitäts-Invariante). Das deckt typische Bauteil-Querschnitte ab
-(Rechteck, Trapez für Anschnitte) sowie konvexe Begrenzungsflächen
-prismatischer Bauteilkörper. Eine spätere Erweiterung auf allgemeine
-einfache Polygone (`EinfachesPolygon`, nicht selbstüberschneidend,
-möglicherweise nicht-konvex) bleibt vorgesehen — relevant z. B. für
-Dachflächen mit L-Grundriss oder Erker. Der oben definierte allgemeine
-Polygon-Begriff bleibt als Glossar-Spezifikation gültig; `KonvexesPolygon`
-ist der erste implementierte Spezialfall (analog zur Modi-Differenzierung
-in `hg_faserrichtung.md`).
-
-**Grenze der Konvexitätsprüfung:** Die Konvexitätsprüfung über
-aufeinanderfolgende Kanten-Kreuzprodukte stellt sicher, dass alle
-Innenwinkel gleichsinnig sind (lokale Konvexität). Sie erkennt nicht
-alle selbstschneidenden Eckpunktreihenfolgen — etwa ein Pentagramm
-`(v₀, v₂, v₄, v₁, v₃)` mit Eckpunkten eines regulären Pentagons
-liefert konsistente Kreuzprodukt-Vorzeichen und passiert die Prüfung.
-Im Anwendungskontext (Bauteilquerschnitte als Rechtecke, Trapeze,
-Sechsecke aus parametrischer Eingabe) ist diese Lücke praktisch
-irrelevant. Der globale Selbstschnitt-Test ist Teil der späteren
-`EinfachesPolygon`-Erweiterung.
-
-**Entartet-Varianten je Implementierungs-Variante:**
-
-Die `EntartetGeometrie`-Sealed-Class enthält für `KonvexesPolygon`
-strukturell nur:
-
-- `EntartetesPolygon` — < 3 Eckpunkte oder Konvexitäts-Verstoß.
-- `NichtKoplanaresPolygon` — Eckpunkte nicht in einer Träger-Ebene
-  innerhalb `LAENGE_EPS`.
-- `NichtFinit` — ein Eckpunkt enthält NaN/±∞.
-
-`KonvexesPolygon` schließt Selbstschnitte über die lokale Konvexitäts-
-Invariante (gleichsinnige Kanten-Kreuzprodukte) für alle praktisch
-auftretenden Eckreihenfolgen aus. Pathologische Permutationen
-(Pentagramm-Topologie) bleiben unentdeckt — siehe Abschnitt
-„Grenze der Konvexitätsprüfung". Der globale Selbstschnitt-Test
-gehört zur Folgearbeit `EinfachesPolygon`.
-
-Folgearbeit `EinfachesPolygon` (allgemeine einfache, ggf. nicht-konvexe
-Polygone) wird zusätzlich folgende Varianten erfordern, die heute noch
-nicht im `EntartetGeometrie`-Sealed-Interface existieren:
-
-- `Selbstschnitt` — zwei Kanten schneiden sich an einem inneren Punkt.
-- `Nullkante` — zwei aufeinanderfolgende Eckpunkte fallen zusammen
-  (in `KonvexesPolygon` als Konvexitäts-/Mindesteckenzahl-Verstoß über
-  `EntartetesPolygon` mit abgedeckt; in `EinfachesPolygon` als eigene
-  Variante zur feineren Diagnose sinnvoll).
-- `KollineareEckpunkte` — drei aufeinanderfolgende Eckpunkte kollinear,
-  als feinere Klassifikation des heutigen `EntartetesPolygon`.
-- (Weitere bei konkreter Bedarfsklärung.)
-
-Die folgenden Datentyp-, Invarianten- und Edge-Case-Skizzen beschreiben
-in der bestehenden Form überwiegend die **Folgearbeit `EinfachesPolygon`**
-(feinere Varianten, allgemeine Einfachheits-Tests) und sind für die
-aktuelle `KonvexesPolygon`-Implementierung nur teilweise maßgeblich;
-sie stehen hier dokumentiert, damit der Begriffsraum vollständig
-vorbereitet ist.
-
----
-
-**Folgearbeit-Skizze `EinfachesPolygon` (nicht aktuelle Implementierung):**
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.geometrie`):
-
-```
-data class Polygon(
-    val ecken: List<Punkt>,       // (v₁, …, v_k)
-    val traeger: Ebene             // E, alle ecken ∈ E
-) {
-    init {
-        // alle Invarianten 1..5 prüfen, sonst Entartet
-    }
-}
-```
-
-- **Einheit**: Eckpunkt-Koordinaten in mm; Umfang in mm; Fläche in mm².
-- **Invarianten** (in Factory `Polygon.of(ecken, traeger?)` prüfen,
-  bei Verletzung `Resultat.Fehler` mit `Entartet`-Variante zurückgeben,
-  niemals Exception):
-  1. **Mindesteckenzahl**: ecken.size ≥ 3 — sonst `Entartet.ZuWenigEcken`.
-  2. **Koplanarität**: für alle i: |⟨traeger.einheitsNormale,
-     v_i − traeger.stuetzpunkt⟩| ≤ Toleranzen.LAENGE_EPS — sonst
-     `Entartet.NichtPlanar`.
-  3. **Keine Nullkanten**: für alle i: ‖v_{i+1} − v_i‖ >
-     Toleranzen.LAENGE_EPS — sonst `Entartet.Nullkante`.
-  4. **Keine kollinearen Eckentripel** (optional, normalisierbar):
-     für alle i ist ‖(v_i − v_{i−1}) × (v_{i+1} − v_i)‖ >
-     Toleranzen.NORM_EPS · ‖v_i − v_{i−1}‖ · ‖v_{i+1} − v_i‖. Bei
-     Verletzung Normalisierung durch Streichen des mittleren
-     Eckpunkts oder `Entartet.Kollinear` (konfigurierbar).
-  5. **Einfachheit** (Jordan): keine Schnitte zwischen nicht-
-     benachbarten Kanten — sonst `Entartet.Selbstschnitt`. Test
-     in O(k²) hinreichend; für große k Sweep-Line in O(k log k).
-- **Konstruktoren**:
-  - `Polygon.of(ecken: List<Punkt>): Resultat<Polygon, EntartetGeometrie>` —
-    Trägerebene wird aus den ersten drei nicht-kollinearen Punkten
-    abgeleitet.
-  - `Polygon.of(ecken: List<Punkt>, traeger: Ebene): Resultat<Polygon, EntartetGeometrie>` —
-    explizite Trägerebene; Koplanaritätstest gegen `traeger`.
-- **Edge Cases / Entartet-Varianten** (Folgearbeit `EinfachesPolygon`;
-  alle als Varianten der gemeinsamen `EntartetGeometrie`-Hierarchie nach
-  D3-Konvention, kein Exception-Werfen; die feineren Varianten unten sind
-  aktuell **nicht** im Sealed-Interface vorhanden, werden mit
-  `EinfachesPolygon` ergänzt):
-  - `Entartet.ZuWenigEcken` (k < 3) — in `KonvexesPolygon` über
-    `EntartetesPolygon` abgedeckt.
-  - `Entartet.NichtPlanar` (mindestens ein Eckpunkt liegt nicht
-    in der Trägerebene) — in `KonvexesPolygon` als
-    `NichtKoplanaresPolygon` vorhanden.
-  - `Entartet.Nullkante` (zwei aufeinanderfolgende Eckpunkte
-    fallen zusammen).
-  - `Entartet.Kollinear` (drei aufeinanderfolgende Eckpunkte sind
-    kollinear; nur wenn Normalisierung deaktiviert ist).
-  - `Entartet.Selbstschnitt` (nicht einfach) — in `KonvexesPolygon`
-    strukturell ausgeschlossen.
-  - `Entartet.NichtFinit` (ein Eckpunkt enthält NaN/±∞) — in
-    `KonvexesPolygon` als `NichtFinit` vorhanden.
-- **Identität / Gleichheit**:
-  - `gleichZyklisch(other, eps)`: Gleichheit modulo zyklischer
-    Verschiebung der Eckenfolge.
-  - `gleichZyklischOderGespiegelt(other, eps)`: zusätzlich modulo
-    Umkehrung (Orientierungs-blind).
-  - Standard-`equals` ist bewusst strikt (gleiche Reihenfolge),
-    um Datenklassen-Verträge nicht zu verletzen.
-- **Abgeleitete Operationen** (`PolygonOps.kt`):
-  - `fun kanten(): List<Strecke>`.
-  - `fun umfang(): Double` (mm).
-  - `fun flaecheninhalt(): Double` (mm², via 3D-Schuhbänderformel).
-  - `fun orientierungsVorzeichen(nHat: Vektor): Int` ∈ {−1, +1}.
-  - `fun mitOrientierung(nHat: Vektor): Polygon` (kehrt
-    Eckenfolge um, falls Vorzeichen negativ).
-  - `fun enthaeltPunkt(p: Punkt, eps: Double): Boolean` (Even-
-    odd-Test in 2D nach Projektion auf die Trägerebene).
-  - `fun istKonvex(): Boolean`.
-  - `fun normalisiert(): Polygon` (entfernt kollineare Eck-
-    punkte, vereinheitlicht Orientierung gegen die Trägernormale).
+    vorhanden.
 
 ## Quellen
 

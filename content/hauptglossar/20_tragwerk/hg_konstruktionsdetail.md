@@ -50,7 +50,7 @@ quellen_sekundär:
   - "Holzbau Deutschland-Institut: 'Regeldetailkatalog — Planungshilfen für Außenwandbekleidungen aus Holz'. Korpus-Lesart III (Detail als Katalog-Eintrag)."
   - "Lignum: 'Bauteilkatalog' (Brandschutz, Schallschutz). Korpus-Lesart III."
   - "KLH-Detailkatalog (Brettsperrholz, CAD-Detailkatalog 2020)."
-  - "Recherche-Bericht `docs/recherche/2026-05-14_hg_konstruktionsdetail.md`."
+  - "Recherche-Bericht [intern]."
 quellenkonflikt: |
   **Normlücke.** Keine der konsultierten deutschsprachigen Bau- und
   Holzbau-Normen — DIN 1356-1:2024-04, DIN EN 1995-1-1:2010-12,
@@ -258,7 +258,7 @@ Sei
 Dann ist ein **Konstruktionsdetail** das Tupel
 
 ```
-K := (uuid, ausschnitt, knotenpunkt, beteiligte_bauteile,
+K:= (uuid, ausschnitt, knotenpunkt, beteiligte_bauteile,
       beteiligte_verbindungen, beteiligte_auflager,
       beteiligte_bearbeitungen, traegertragwerk, bezeichnung)
 ```
@@ -390,8 +390,7 @@ Verbindungen, Auflager oder Bearbeitungen.
 - **Foreign-Key-Regel.** Alle Mitglieds-Felder
   (`beteiligte_bauteile`, `beteiligte_verbindungen`,
   `beteiligte_auflager`, `beteiligte_bearbeitungen`,
-  `traegertragwerk`) referenzieren ausschließlich UUIDs (Memory
-  `project_bauteil_identifikation`).
+  `traegertragwerk`) referenzieren ausschließlich UUIDs.
 
 - **Ausschnittsregion-Repräsentanten.** Verschiedene Repräsentationen
   desselben geometrischen Bereichs (achsenparalleler Hüllquader vs.
@@ -615,151 +614,6 @@ Werkplan-Sicht bleibt orthogonal.
     transitiv zum Bauwerk, das das `traegertragwerk` enthält. Die
     Beziehung ist nicht direkt modelliert.
 
-## Implementierungshinweis
-
-**Im aktuellen Glossarstand wird ausdrücklich keine Code-Klasse
-`Konstruktionsdetail` angelegt** (analog `hg_bauteilgruppe.md`:
-die ontologische Vorbereitung lebt zunächst nur im Glossar). Die
-Code-Klasse entsteht zusammen mit dem ersten Werkplan-Tool, das
-Detail-Adressierung tatsächlich benötigt. Der folgende
-Skizzen-Code ist orientierender Implementierungs-Hinweis für
-diesen Zeitpunkt.
-
-```kotlin
-// SKIZZE — nicht jetzt anlegen.
-// Glossar: hg_konstruktionsdetail.md
-
-package domain.aggregat.konstruktionsdetail
-
-import domain.geometrie.Punkt
-import java.util.UUID
-
-/** Ausschnittsregion in W: achsenparalleler Hüllquader oder Polyeder. */
-sealed interface Ausschnittsregion {
-    data class HuellquaderAchsenparallel(
-        val min: Punkt,
-        val max: Punkt
-    ) : Ausschnittsregion
-    // Spätere Varianten: HuellquaderOrientiert, Polyederbegrenzt.
-}
-
-/**
- * Konstruktionsdetail: Aggregat-Sicht über einer räumlich
- * abgegrenzten Ausschnittsregion an einem Knotenpunkt eines
- * Tragwerks, das die dort beteiligten Bauteile, Verbindungen,
- * Auflager und Bearbeitungen für die plan- und werkstatt-
- * orientierte Repräsentation bündelt.
- *
- * Glossar: hg_konstruktionsdetail.md
- *
- * NICHT Subtyp von Element. Eigene Aggregat-Klasse, analog
- * Verbindung, Auflager und Tragwerk. Mitgliedschaft nicht-exklusiv
- * (anders als Bauteilgruppe).
- *
- * IFC: IfcGroup mit IfcRelAggregates/IfcRelAssignsToGroup
- *      (Default); IfcElementAssembly nur bei vorgefertigter
- *      Aufbau-Einheit (siehe Erläuterungs-Block).
- * BTLx: keine eigene Entität; manifestiert sich implizit über
- *       beteiligte Parts und Processings.
- */
-data class Konstruktionsdetail(
-    val uuid: UUID,                                       // eigene Identität
-    val ausschnitt: Ausschnittsregion,                    // räumliche Region in W
-    val knotenpunkt: Punkt? = null,                       // optionaler Bezugspunkt
-    val beteiligteBauteile: Set<UUID>,                    // FK auf Bauteile, |...| >= 1
-    val beteiligteVerbindungen: Set<UUID> = emptySet(),   // FK auf Verbindungen
-    val beteiligteAuflager: Set<UUID> = emptySet(),       // FK auf Auflager
-    val beteiligteBearbeitungen: Set<UUID> = emptySet(),  // FK auf Bearbeitungen
-    val traegertragwerk: UUID,                            // FK auf Tragwerk
-    val bezeichnung: String? = null
-) {
-    init {
-        // K1. Nicht-Leere am Knotenpunkt              → Entartet.LeeresDetail
-        // K2. Inzidenz mit ausschnitt (Modell-Lookup) → Entartet.MitgliedNichtInAusschnitt
-        // K3. Tragwerks-Konsistenz (Modell-Lookup)    → Entartet.MitgliedNichtImTragwerk
-        // K4. knotenpunkt in ausschnitt              → Entartet.KnotenpunktAusserhalb
-        // K5. Keine triviale Duplizierung            → Entartet.TrivialeDuplizierung
-        // K6. Nicht-Exklusivität ist Default        — keine Prüfung nötig
-    }
-}
-```
-
-- **Einheit**: Längen in mm (Double); geometrische Träger im
-  W-System.
-- **Identität**: `uuid` ist Pflicht und eigenständig (eigene UUID
-  des Aggregats, RFC 9562 v7, persistent). Externe Verweise auf das
-  Konstruktionsdetail gehen ausschließlich auf diese UUID.
-- **Foreign-Key-Regel**: alle Mitglieds-Felder (Bauteile,
-  Verbindungen, Auflager, Bearbeitungen, Tragwerk) referenzieren
-  ausschließlich UUIDs (Memory `project_bauteil_identifikation`).
-- **Invarianten** (in einer Modell-bezogenen Fabrikfunktion
-  `Konstruktionsdetail.bilde(modell: Modell, …)` geprüft; bei
-  Verletzung `Resultat.Fehler`, niemals Exception):
-  1. K1 — Nicht-Leere → `Entartet.LeeresDetail`.
-  2. K2 — Inzidenz aller Mitglieder mit `ausschnitt` im
-     Toleranzbereich `Toleranzen.LAENGE_EPS` → sonst
-     `Entartet.MitgliedNichtInAusschnitt`.
-  3. K3 — alle Mitglieder gehören zum Träger-Tragwerk → sonst
-     `Entartet.MitgliedNichtImTragwerk`.
-  4. K4 — `knotenpunkt ∈ ausschnitt` (Toleranz `LAENGE_EPS`) →
-     sonst `Entartet.KnotenpunktAusserhalb`.
-  5. K5 — keine triviale Duplizierung mit anderem Detail am
-     selben Tragwerk → sonst `Entartet.TrivialeDuplizierung`.
-- **Toleranz-Anwendung** (siehe `hg_toleranzen.md` §4):
-  - Inzidenz-Tests (K2, K4): `LAENGE_EPS` auf
-    Punkt-/Polygon-Abständen.
-- **Edge Cases**:
-  - **Konstruktionsdetail mit einem Bauteil und einer
-    Bearbeitung** (z. B. „Zapfendetail" zur Dokumentation einer
-    isolierten Bearbeitung): zulässig nach K1.
-  - **Konstruktionsdetail ohne Auflager** (z. B. „Pfettenstoßdetail"
-    im freien Feld eines durchlaufenden Trägers):
-    `beteiligteAuflager = emptySet()` zulässig.
-  - **Konstruktionsdetail mit nur einem Bauteil und ohne weitere
-    Mitglieder**: nicht zulässig (K1) — kein plan- oder
-    werkstattrelevanter Inhalt.
-  - **Mehrfach-Mitgliedschaft eines Bauteils**: zulässig (K6) —
-    derselbe Sparren in Sparrenfußdetail + Mittelpfettendetail +
-    Firstdetail.
-  - **Verschachtelte Konstruktionsdetails** (Detail im Detail):
-    derzeit nicht modelliert; bei Bedarf als Folgearbeit über
-    eine `untergeordnete_details`-Komponente.
-  - **Konstruktionsdetail über Tragwerks-Grenzen hinweg**: nicht
-    zulässig — ein Detail bezieht sich auf genau ein Tragwerk
-    (K3, `traegertragwerk` als Pflichtfeld).
-- **IFC-Export-Mapping**:
-  - **Default**: `IfcGroup` mit eigener `GlobalId`, plus
-    `IfcRelAggregates` (oder `IfcRelAssignsToGroup`) als
-    Mitgliedschafts-Beziehung zu den Bauteilen, Verbindungen,
-    Auflagern und Bearbeitungen.
-  - **Optional** (bei vorgefertigter Aufbau-Einheit):
-    `IfcElementAssembly` mit `PredefinedType = USERDEFINED` und
-    benamtem `ElementType` — verschiebt aber den Charakter zur
-    Bauteilgruppe (siehe `hg_bauteilgruppe.md`).
-  - **Plan-Artefakt** (Lesart I): wird separat über
-    `IfcAnnotation`/`IfcDocumentReference` der Plan-Schicht
-    abgebildet; nicht Gegenstand dieses Mappings.
-- **BTLx-Export**: keine eigene Entität. Das Konstruktionsdetail
-  wird beim BTLx-Export nicht ausgegeben; optional kann es als
-  `UserAttribute` (`DetailGuid`) an den beteiligten Parts vermerkt
-  werden.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `geometrieInWelt(modell: Modell): GeometrieInW` —
-    Vereinigung der Bauteil-Punktmengen, geschnitten mit
-    `ausschnitt`.
-  - `boundingBox(): AABB` — achsenparalleler Hüllquader der
-    Ausschnittsregion in W.
-  - `enthaeltBauteil(b: UUID): Boolean` — `b ∈ beteiligteBauteile`.
-  - `werkplanBezeichnung(): String` — abgeleitete Bezeichnung
-    nach der Grammatik `[Bauteilrolle]<Anschluss-Topologie>-Detail`
-    (Folgearbeit).
-- **Bezeichner-Konvention** (siehe `docs/_CODE_KONVENTIONEN.md`):
-  Domänen-Klasse heißt `Konstruktionsdetail` (deutsch,
-  Glossarbegriff). Synonyme `Detail`, `Anschlussdetail`,
-  `Knotendetail` werden im Code nicht als eigene Klassen geführt,
-  sondern erscheinen ausschließlich als KDoc-Stichworte zu
-  `Konstruktionsdetail`.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -803,4 +657,4 @@ data class Konstruktionsdetail(
 - baubeaver.de, Lemma „Pfetten", „Sparrenfuß".
 - harzerstatik.de, „Variante - Dachdetails - First".
 - Wikipedia, Lemmata „Detail (Bauwesen)" (abgerufen 2026-05-14).
-- Recherche-Bericht: `docs/recherche/2026-05-14_hg_konstruktionsdetail.md`.
+- Recherche-Bericht: [intern].

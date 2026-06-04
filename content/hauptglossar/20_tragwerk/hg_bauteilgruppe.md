@@ -84,7 +84,7 @@ Sei
 Dann ist eine **Bauteilgruppe** ein Tupel
 
 ```
-G := (uuid, bestandteile, lage, huelle, funktion?, bezeichnung?)
+G:= (uuid, bestandteile, lage, huelle, funktion?, bezeichnung?)
 ```
 
 mit
@@ -114,7 +114,7 @@ und den Konsistenzbedingungen
 1. **Exklusive Mitgliedschaft** (zentrale Aggregat-Eigenschaft):
    In einem Modell mit Bauteilgruppen-Menge 𝒢ᴹ gilt
    ```
-   ∀ G₁, G₂ ∈ 𝒢ᴹ : G₁ ≠ G₂ ⇒ G₁.bestandteile ∩ G₂.bestandteile = ∅
+   ∀ G₁, G₂ ∈ 𝒢ᴹ: G₁ ≠ G₂ ⇒ G₁.bestandteile ∩ G₂.bestandteile = ∅
    ```
    Ein Bauteil gehört zu **höchstens einer** Bauteilgruppe pro
    Aggregations-Hierarchie.
@@ -128,7 +128,7 @@ und den Konsistenzbedingungen
    ⋃_{b ∈ bestandteile} G_W(b) ⊆ G_W(G)
    ```
    wobei G_W(b) die Bauteil-Punktmenge in W (siehe `bauteil`) und
-   G_W(G) := lage(G_lokal(huelle)) die transformierte Hülle ist. Die
+   G_W(G):= lage(G_lokal(huelle)) die transformierte Hülle ist. Die
    Hülle muss nicht die konvexe Hülle sein; sie muss nur
    einschließen.
 4. **Verschachtelung erlaubt, Zyklen verboten**: Eine Bauteilgruppe
@@ -142,7 +142,7 @@ und den Konsistenzbedingungen
 Die **geometrische Punktmenge** der Bauteilgruppe in W ist
 
 ```
-G_W(G) := lage(G_lokal(huelle)) ⊂ ℝ³
+G_W(G):= lage(G_lokal(huelle)) ⊂ ℝ³
 ```
 
 (transformierte Hülle); die alternative Repräsentation als
@@ -159,7 +159,7 @@ Teilmenge von G_W(G).
   lage = id_SE(3), huelle = achsenparalleler Hüllquader der beiden
   Bauteil-Bounding-Boxen, funktion = ⊥, bezeichnung = ⊥.
 - **Eindeutigkeit der Identität**: Innerhalb eines Modells gilt
-  ∀ G₁, G₂ : (G₁ ≠ G₂) ⇒ (G₁.uuid ≠ G₂.uuid). Die Gruppen-UUID ist
+  ∀ G₁, G₂: (G₁ ≠ G₂) ⇒ (G₁.uuid ≠ G₂.uuid). Die Gruppen-UUID ist
   konstruktionsseitig zu vergeben (UUID v7 nach RFC 9562) und
   persistent.
 - **Eindeutigkeit der Mitgliedschaft**: Bedingung 1 (exklusive
@@ -317,106 +317,7 @@ ihren Bestandteilen.
     Mitgliedschaft (vs. partitive Bauteilgruppe-Mitgliedschaft).
   - **Element** (`element`): Bauteilgruppen sind keine
     Element-Subtypen; Element-Subtypen sind ausschließlich
-    Bauteil, Verbindungsmittel, Verbinder und Verstärkungselement
-    (Memory `project_element_ontologie`).
-
-## Implementierungshinweis
-
-**Im aktuellen Glossarstand wird ausdrücklich keine Code-Klasse
-`Bauteilgruppe` angelegt** (Memory `project_glossar_konventionen`,
-Briefing `briefing_aggregations_begriffe.md`). Die ontologische
-Vorbereitung lebt zunächst nur im Glossar; die Code-Klasse entsteht
-zusammen mit dem ersten konkreten Subtyp (z. B. `Auswechslung`,
-`Lukarne`), der in einem Tool tatsächlich benötigt wird. Der
-folgende Skizzen-Code ist ausschließlich orientierender
-Implementierungs-Hinweis für den Zeitpunkt, an dem dieser Subtyp
-implementiert wird.
-
-```kotlin
-// SKIZZE — nicht jetzt anlegen.
-// Glossar: hg_bauteilgruppe.md
-
-package domain.bauteil
-
-import domain.bauteil.Bauteil
-import java.util.UUID
-
-/**
- * Bauteilgruppe: partitives Aggregat aus mehreren Bauteilen mit
- * eigener Identität, eigener Hülle und exklusiver Mitgliedschaft.
- *
- * Sealed, weil konkrete Subtypen (Auswechslung, Lukarne, Walm,
- * Erker, Drempel-Aufbau) eigene Constraints und eigene
- * Aggregat-Geometrie tragen. Direktes Instanziieren des
- * Oberbegriffs ist konzeptuell möglich, in der Praxis aber selten
- * sinnvoll.
- */
-sealed class Bauteilgruppe {
-    abstract val uuid: UUID
-    abstract val bestandteile: Set<Bauteil>
-    abstract val lokalePlatzierung: LokalePlatzierung
-    abstract val huelle: Huellgeometrie
-    abstract val bezeichnung: String?
-
-    init {
-        // 1. bestandteile.size >= 2          → sonst Entartet.ZuKleineGruppe
-        // 2. Hüllen-Inklusion (Bedingung 3)  → sonst Entartet.HuelleZuKlein
-        // 3. Exklusive Mitgliedschaft wird auf Modell-Ebene geprüft,
-        //    nicht im Konstruktor (Cross-Aggregat-Invariante).
-    }
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant; Lage
-  als SE(3)-Element (Rotation + Translation, siehe Folgearbeit).
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7);
-  externe Referenzen auf eine Bauteilgruppe gehen ausschließlich auf
-  diese UUID (Aggregat-Wurzel). Bestandteile werden über ihre
-  jeweiligen Bauteil-UUIDs referenziert (Foreign-Key-Regel, Memory
-  `project_bauteil_identifikation`).
-- **Invarianten** (im `init`-Block bzw. in Fabrikfunktionen prüfen,
-  bei Verletzung `Resultat.Fehler` bzw. `Entartet`-Variante;
-  niemals Exception werfen):
-  1. `bestandteile.size >= 2` ⇒ sonst
-     `Entartet.ZuKleineGruppe` (eine einelementige Gruppe ist kein
-     Aggregat).
-  2. **Hüllen-Inklusion**: für jedes b ∈ bestandteile gilt
-     G_W(b) ⊆ G_W(G); bei Verletzung
-     `Entartet.HuelleZuKlein`. Toleranz `Toleranzen.LAENGE_EPS`.
-  3. **Exklusive Mitgliedschaft** (modellweite Cross-Aggregat-
-     Invariante): für jedes b ∈ bestandteile existiert keine
-     andere Bauteilgruppe G' ≠ G mit b ∈ G'.bestandteile. Diese
-     Invariante kann nicht im Gruppen-Konstruktor allein geprüft
-     werden; sie ist Aufgabe des Modell-Containers (Repository,
-     `Bauwerk`-Aggregat-Manager). Bei Verletzung
-     `Entartet.MehrfachMitgliedschaft`.
-  4. **Azyklischer Aggregations-Graph** (bei Verschachtelung):
-     keine Bauteilgruppe darf direkt oder transitiv ihre eigene
-     Vorfahrin sein. Bei Verletzung `Entartet.ZyklischeGruppe`.
-- **Edge Cases**:
-  - **Zwei-Bauteile-Gruppe** (|bestandteile| = 2): zulässig
-    (z. B. einfache Auswechslung aus einem Wechsel und einem
-    auszuwechselnden Sparren).
-  - **Verschachtelte Gruppen** (Lukarne enthält eine
-    Auswechslung um ihr Dachfenster): erlaubt, solange der
-    Aggregations-Graph azyklisch bleibt.
-  - **Bauteil-Wechsel der Gruppen-Zugehörigkeit** (z. B. ein
-    Sparren wird von der Lukarne in die umgebende Dachfläche
-    übergeben): erfordert eine koordinierte Modifikation beider
-    Gruppen über den Modell-Container; nicht durch direkten
-    Bauteil-Zugriff.
-  - **Bauteilgruppe ohne Hülle**: nicht zulässig. Die Hülle ist
-    Pflichtfeld und konstituierende Eigenschaft der Gruppe.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `geometrieInWelt(): GeometrieInW` = `lage(huelle)` als
-    transformierte Hülle in W.
-  - `bestandteilsVereinigung(): GeometrieInW` =
-    ⋃_{b ∈ bestandteile} G_W(b); im Allgemeinen echte Teilmenge
-    der Hülle.
-  - `boundingBox(): AABB` = achsenparalleler Hüllquader in W,
-    abgeleitet aus der Hülle.
-  - `volumen(): Double` (mm³) = Volumen der Hülle.
-  - `enthaelt(b: Bauteil): Boolean` = `b in bestandteile`.
+    Bauteil, Verbindungsmittel, Verbinder und Verstärkungselement.
 
 ## Quellen
 
@@ -452,27 +353,3 @@ sealed class Bauteilgruppe {
   für den Holzbau" (abgerufen 2026-05-09).
 - Wikipedia, Lemmata „Lukarne", „Gaube", „Auswechslung", „Walm"
   (abgerufen 2026-05-09).
-
-## Folgearbeit (trigger-basiert)
-
-Konkrete Spezialisierungen werden definiert, sobald das jeweilige
-Tool sie benötigt:
-
-- `lukarne` / `gaube` — Dachaufbau für Tageslicht und Stehhöhe.
-- `walm` — walmförmiger Abschluss eines Daches.
-- `auswechslung` — Aggregat um eine Öffnung im Dach oder in der
-  Decke (Kamin, Treppenloch, Dachfenster).
-- `erker` — vorspringende Bauteilgruppe.
-- `drempel_aufbau` — Aggregat aus Drempelwand-Bauteilen.
-- `vorgefertigtes_wandelement` / `vorgefertigtes_deckenelement` —
-  Liefereinheit aus Rahmen, Beplankung, Dämmlagen.
-
-Außerdem als Folgearbeit auf Glossar-Ebene:
-
-- `boundingvolume` als Hüllgeometrie-Repräsentation für Aggregate
-  (achsenparalleler Hüllquader, orientierter Hüllquader, konvexer
-  Hüllpolyeder, beliebiger Hüllpolyeder).
-- Ggf. ein abstrakter Oberbegriff `aggregat` über
-  `bauteilgruppe`, `bausystem`, `verbindung` und `tragwerk`, falls
-  sich strukturelle Gemeinsamkeiten (eigene UUID, Lebenszyklus)
-  als hinreichend tragfähig erweisen — derzeit als offen geführt.

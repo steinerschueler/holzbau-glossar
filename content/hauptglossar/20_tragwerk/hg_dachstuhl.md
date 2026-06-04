@@ -58,10 +58,10 @@ quellen_sekundär:
   - "Holzer, S.; Steiger, R.: ETH Zürich, Lehrunterlage 'Holz IV — Dachwerke mit liegendem Stuhl', FS 2023 — Stuhl-Konstruktionen als Teil des zimmermannsmäßigen Dachstuhls."
   - "NIhK Glossary of Prehistoric and Historic Timber Buildings, Lemmata 'roof structure', 'king post truss', 'queen post truss' — historische Stuhl-Konstruktionen."
   - "de.wikipedia.org, Lemmata 'Dachstuhl', 'Dachkonstruktion', 'Sparrendach', 'Fachbegriffe des Zimmererhandwerks' (abgerufen 2026-05-14) — Korpusbelege, nicht autoritativ."
-  - "Recherchebericht docs/recherche/2026-05-14_hg_dachstuhl.md."
+  - "Recherchebericht [intern]."
 quellenkonflikt: |
   **(1) Drei Korpus-Lesarten von „Dachstuhl".** Der Recherchebericht
-  `docs/recherche/2026-05-14_hg_dachstuhl.md` weist im DACH-Korpus drei
+  [intern] weist im DACH-Korpus drei
   voneinander unterscheidbare, gleichermassen belegte Lesarten nach:
 
   - **Lesart 1 — engste, zimmermannssprachliche Lesart (Stuhl als
@@ -229,7 +229,7 @@ Sei
 Dann ist ein **Dachstuhl** das Tupel
 
 ```
-D := (uuid, B, V, A, L)
+D:= (uuid, B, V, A, L)
 ```
 
 mit den Komponenten
@@ -259,7 +259,7 @@ und den Konsistenzbedingungen
 2. **Bauart-Prädikat — Ausschluss werks-vorgefertigter Binder.** In
    einem Modell mit Binder-Menge 𝒢ᴮᴹ gilt
    ```
-   ∀ Bᵢ ∈ 𝒢ᴮᴹ : Bᵢ.bestandteile ∩ B = ∅.
+   ∀ Bᵢ ∈ 𝒢ᴮᴹ: Bᵢ.bestandteile ∩ B = ∅.
    ```
    Kein Bauteil des Dachstuhls ist zugleich Bestandteil eines Binders.
    Äquivalent: jedes b ∈ B ist entweder ein einzelnes
@@ -282,7 +282,7 @@ Die **geometrische Punktmenge** des Dachstuhls im Weltkoordinaten-
 system ist
 
 ```
-G_W(D) := ⋃_{b ∈ B} G_W(b) ⊂ ℝ³
+G_W(D):= ⋃_{b ∈ B} G_W(b) ⊂ ℝ³
 ```
 
 (Vereinigung der bauteilbezogenen Punktmengen nach `bauteil`),
@@ -561,117 +561,6 @@ modelliert (Werkplan, Bemessung).
     gesamtem Dach (siehe `hg_dach.md`-Quellenkonflikt). In der App-
     Sprache abgelehnt; weder Synonym noch eigener Eintrag.
 
-## Implementierungshinweis
-
-**Im aktuellen Glossarstand wird keine eigene Code-Klasse `Dachstuhl`
-angelegt** (analog zu `binder`, `bauwerk`, `dach`, `bauteilgruppe`).
-Die ontologische Vorbereitung lebt zunächst nur im Glossar; eine
-Code-Klasse entsteht zusammen mit dem ersten Tool, das einen
-Dachstuhl explizit als geometrische oder bemessungstechnische Einheit
-modelliert. Der folgende Skizzen-Code orientiert den
-Implementierungs-Zeitpunkt.
-
-```kotlin
-// SKIZZE — nicht jetzt anlegen.
-// Glossar: hg_dachstuhl.md
-
-package domain.bauteil
-
-import domain.bauteil.Tragwerk
-import domain.bauteil.Bauteil
-import domain.bauteil.Binder
-import domain.verbindung.Verbindung
-import java.util.UUID
-
-/**
- * Dachstuhl: zimmermannsmäßig gefertigtes Dachtragwerk; Tragwerk im
- * Sinne von `tragwerk`, dessen Bauteile keine Bestandteile eines
- * werks-vorgefertigten Binders sind.
- *
- * Sealed-Erweiterung: konkrete Sub-Typen `Sparrendach`, `Pfettendach`,
- * `Kehlbalkendach` entstehen trigger-basiert.
- */
-sealed class Dachstuhl(
-    bauteile: Set<Bauteil>,
-    verbindungen: Set<Verbindung>,
-    auflager: Set<Auflager>,
-    lastfaelle: Set<Lastfall> = emptySet()
-) : Tragwerk(bauteile, verbindungen, auflager, lastfaelle) {
-    init {
-        // 1. Tragwerks-Konsistenzbedingungen 1, 2, 2a, 3, 4, 5, 6 (geerbt von Tragwerk).
-        // 2. Bauart-Prädikat: kein bauteile-Element ist Bestandteil
-        //    eines Binders im Modell-Container
-        //                                      → sonst Entartet.BauteilInBinder
-        // 3. (zugesichert, nicht geprüft): alle Verbindungen
-        //    zimmermannsmäßig oder mechanisch, keine werks-vorgefertigt
-        //    (Folgearbeit: Verbindungstyp-Klassifikation).
-    }
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant; Lasten
-  in den späteren Lastfall-/Bemessungstypen in N, N/m, N/m² (SI) —
-  identisch zu `tragwerk`.
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7) —
-  identisch zur Tragwerks-UUID, weil Dachstuhl strukturelle
-  Spezialisierung von Tragwerk ist.
-- **Invarianten** (in `init` bzw. Fabrikfunktionen prüfen; bei
-  Verletzung `Resultat.Fehler` bzw. `Entartet`-Variante, niemals
-  Exception):
-  1. Alle Tragwerks-Invarianten (vgl. `hg_tragwerk.md`
-     Implementierungshinweis Punkte 1–5): `bauteile.isNotEmpty()`,
-     `auflager.isNotEmpty()`, Verbindungs-Inzidenz, Auflager-Inzidenz,
-     Zusammenhang.
-  2. **Bauart-Prädikat (Binder-Ausschluss)**: für jedes
-     b ∈ bauteile prüft der Modell-Container, dass b nicht zugleich
-     Bestandteil eines Binders ist; bei Verletzung
-     `Entartet.BauteilInBinder`. Die Prüfung ist eine Cross-Aggregat-
-     Invariante und wird im Container geführt, nicht in der
-     Dachstuhl-Instanz isoliert.
-  3. **Zimmermannsmäßigkeit der Verbindungen (zugesichert,
-     nicht geprüft)**: bis zur Einführung der Verbindungstyp-
-     Klassifikation als zugesicherte, durch das Modell garantierte
-     Eigenschaft. Sobald `verbindung` ein Bauart-Merkmal trägt:
-     `verbindungen.all { it.bauart != Werkseitig }`, sonst
-     `Entartet.WerksverbindungImDachstuhl`.
-  4. **Stabilitäts- und Lastpfad-Zusicherungen** (qualitativ, nicht
-     geprüft): geerbt von `tragwerk` Bed. 4 und 5; formaler Nachweis
-     in der Bemessungs-Schicht (`statisches_system`).
-- **Edge Cases**:
-  - **Minimaler Dachstuhl** (Sparrenpaar mit Bundbalken auf zwei
-    Auflagern, |B| = 3, |V| = 2, |A| = 2): zulässig; entspricht dem
-    `sparrendach`-Sub-Typ in seiner einfachsten Ausprägung.
-  - **Dachstuhl mit Auswechslung** (Sparren plus Auswechslungs-
-    Bauteilgruppe für Kamin- oder Dachfenster-Durchbruch): zulässig,
-    solange die Auswechslungs-Bauteilgruppe kein Binder ist.
-  - **Dachstuhl mit Stuhl-Konstruktion** (Pfettendach mit liegendem
-    Stuhl): zulässig; der Stuhl ist eine Sub-Bauteilgruppe innerhalb
-    des Dachstuhls.
-  - **Mischtragwerke aus Dachstuhl-Anteil und Binderdach-Anteil**
-    (zimmermannsmäßiger Walm plus werks-vorgefertigte
-    Hauptbinder im Rumpfteil): **kein einziger Dachstuhl**, sondern
-    zwei getrennte Tragwerke (ein Dachstuhl und ein Binderdach)
-    desselben Daches, jeweils mit eigener UUID. Die Cross-Tragwerk-
-    Konsistenz wird in `hg_bauwerk.md` (Tragwerks-Menge des Bauwerks)
-    und in `hg_dach.md` (Tragwerks-Komponente des Daches) geführt.
-  - **Historische Sonderkonstruktionen** (Hängewerk, Sprengwerk):
-    zulässig als Bauteilgruppen innerhalb des Dachstuhls, sofern
-    keine werks-vorgefertigten Aggregate enthalten sind.
-  - **Dachstuhl ohne Lastfälle** (Entwurfsstadium vor Bemessung):
-    `lastfaelle = emptySet()` zulässig, wie bei `tragwerk`.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder;
-  identisch zu `tragwerk`, ggf. ergänzt):
-  - `geometrieInWelt(): GeometrieInW` = Vereinigung der bauteil-
-    bezogenen Punktmengen.
-  - `boundingBox(): AABB` = achsenparalleler Hüllquader.
-  - `inzidenzgraph(): Graph<Bauteil, Verbindung>`.
-  - `enthaelt(bg: Bauteilgruppe): Boolean` = ob `bg` (Auswechslung,
-    Gaube, `stuhl`) eine Sub-Bauteilgruppe des Dachstuhls ist
-    (Bestandteile von `bg` sind Teilmenge der Dachstuhl-Bauteile).
-  - `stuhl(): Stuhl?` = die Stuhl-Sub-Bauteilgruppe des Dachstuhls,
-    sofern eine vorhanden ist (Folgearbeit; abhängig von Eintrag
-    `stuhl`).
-
 ## Quellen
 
 **Primär (normativ):**
@@ -709,36 +598,4 @@ sealed class Dachstuhl(
 - de.wikipedia.org, Lemmata „Dachstuhl", „Dachkonstruktion",
   „Sparrendach", „Fachbegriffe des Zimmererhandwerks" (abgerufen
   2026-05-14).
-- Recherchebericht `docs/recherche/2026-05-14_hg_dachstuhl.md`.
-
-## Folgearbeit (trigger-basiert)
-
-1. **`dachtragwerk`** als Zwischenstufe zwischen `tragwerk` und
-   `dachstuhl`. Trigger: Anlage von `wandtragwerk` oder
-   `deckentragwerk` (sobald das Glossar eine zweite Tragwerks-
-   Spezialisierung nach Anwendungsbereich anlegt). Mit Anlage wird
-   `oberbegriff:` dieses Eintrags von `tragwerk` auf `dachtragwerk`
-   migriert und der Forward-Verweis in `abgrenzung_zu` durch
-   `voraussetzungen` ersetzt.
-2. **`stuhl`** als eigener Eintrag, `begriffstyp: aggregat`,
-   `oberbegriff: bauteilgruppe`. Trägt Lesart 1. Trigger: erste
-   App-Modellierung einer Stuhl-Konstruktion (etwa erste historische
-   Konstruktion oder erste Pfettendach-Variante mit explizitem Stuhl).
-   Sub-Typen `stehender_stuhl`, `liegender_stuhl`,
-   `doppelter_liegender_stuhl` als weitere Folgearbeiten.
-3. **`sparrendach`, `pfettendach`, `kehlbalkendach`** als eigene
-   Einträge unter `dachstuhl`. Trigger: erste App-Modellierung
-   jeweiliger Tragwerks-Subtypen.
-4. **`binderdach`** als eigener Eintrag, Geschwister-Stellung zu
-   `dachstuhl` unter `dachtragwerk`. Trigger: erste App-Modellierung
-   eines Binderdachs; siehe auch `hg_binder.md`-Folgearbeit-Block.
-5. **Verbindungstyp-Klassifikation** als Merkmal-Erweiterung von
-   `verbindung` (Werte `zimmermannsmaessig | mechanisch | werkseitig`).
-   Voraussetzung für die formale Überprüfung von Konsistenzbedingung 3
-   (Zimmermannsmäßigkeit der Verbindungen). Trigger: erste Bemessung
-   oder Validierung, die das Bauart-Prädikat des Dachstuhls
-   mechanisch nachweisen muss.
-6. **HG-Konv. §6.A Trigger-Liste** ergänzen um die Forward-Verweise
-   `dachtragwerk`, `stuhl`, `sparrendach`, `pfettendach`,
-   `kehlbalkendach`, `binderdach`, sobald sie tatsächlich
-   eingeführt werden (Eintrag in die A-Tabelle).
+- Recherchebericht [intern].

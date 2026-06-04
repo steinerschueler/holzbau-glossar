@@ -48,7 +48,7 @@ quellenkonflikt: |
     `typ`-Feld (`VerbindungsTyp`: Stoss, Anschluss, Knoten,
     Eckverbindung).
 
-  Wichtige Setzung (Memory `project_element_ontologie`):
+  Wichtige Setzung:
   Verbindung ist **NICHT** Subtyp von `element`, sondern eigene
   **Aggregat-Klasse** — analog `tragwerk`, `dach`, `dachaufbau`,
   `bauteil_aggregat`. Die Verbindung ist ein Container über mehrere
@@ -103,7 +103,7 @@ Sei
   `verstaerkungselement`,
 - 𝓥_τ die Menge der Verbindungsarten
   ```
-  𝓥_τ := { Stoss, Anschluss, Knoten, Eckverbindung,
+  𝓥_τ:= { Stoss, Anschluss, Knoten, Eckverbindung,
           ZimmermannsmaessigerStoss, ZimmermannsmaessigerAnschluss,
           KlebeVerbindung }
   ```
@@ -116,7 +116,7 @@ Sei
 Dann ist eine **Verbindung** das Tupel
 
 ```
-V := (uuid, typ, beteiligte_bauteile, verbindungsmittel,
+V:= (uuid, typ, beteiligte_bauteile, verbindungsmittel,
       verbinder, verstaerkungen, nachweisverfahren,
       position?, bezeichnung?)
 ```
@@ -409,147 +409,6 @@ mehreren) Tragwerken.
     eines Knotenpunkts; eine Verbindung kann von einem oder
     mehreren Konstruktionsdetails begleitet sein. Verschiedene
     Repräsentations-Ebenen desselben Knotenpunkts.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.aggregat.verbindung`):
-
-```kotlin
-package domain.aggregat.verbindung
-
-import domain.geometrie.Punkt
-import domain.bemessung.Nachweisverfahren    // Folgearbeit
-import java.util.UUID
-
-/** Verbindungsart. */
-sealed interface VerbindungsTyp {
-    data object Stoss                       : VerbindungsTyp
-    data object Anschluss                   : VerbindungsTyp
-    data object Knoten                      : VerbindungsTyp
-    data object Eckverbindung               : VerbindungsTyp
-    data object ZimmermannsmaessigerStoss   : VerbindungsTyp
-    data object ZimmermannsmaessigerAnschluss : VerbindungsTyp
-    data object KlebeVerbindung             : VerbindungsTyp
-}
-
-/**
- * Verbindung: Aggregat aus beteiligten Bauteilen,
- * Verbindungsmitteln, optional Verbindern und
- * Verstärkungselementen, plus Nachweisverfahren.
- *
- * Glossar: hg_verbindung.md
- *
- * NICHT Subtyp von Element. Eigene Aggregat-Klasse, analog
- * Tragwerk/Dach/Dachaufbau.
- *
- * IFC: IfcRelConnectsElements (Beziehung) bzw. IfcGroup mit
- *       IfcRelAggregates.
- * BTLx: implizit über mehrere Parts/Processings; keine eigene
- *       BTLx-Entität.
- */
-data class Verbindung(
-    val uuid: UUID,                                      // eigene Identität als Aggregat
-    val typ: VerbindungsTyp,
-    val beteiligteBauteile: Set<UUID>,                   // FK auf Bauteile, |...| >= 2
-    val verbindungsmittel: Set<UUID> = emptySet(),       // FK auf Verbindungsmittel
-    val verbinder: Set<UUID> = emptySet(),               // FK auf Verbinder, optional
-    val verstaerkungen: Set<UUID> = emptySet(),          // FK auf Verstärkungselemente, optional
-    val nachweisverfahren: Nachweisverfahren,            // Folgearbeit
-    val position: Punkt? = null,                        // Schwerpunkt der Verbindung
-    val bezeichnung: String? = null
-) {
-    init {
-        // C1. beteiligteBauteile.size >= 2
-        // C2. verbindungsmittel-Inzidenz   (in Validierung gegen Modell)
-        // C3. verbinder-Inzidenz           (in Validierung gegen Modell)
-        // C4. verstaerkungen-Inzidenz      (in Validierung gegen Modell)
-        // C5. Mischungsverbot              (alle Verbindungsmittel gleichen Typs)
-        // C6. Nachweisverfahren-Konsistenz (typ ↔ Verbindungsmittelart ↔ Nachweis)
-        // C7. Position-Verträglichkeit     (weich; nur Warnung)
-    }
-}
-```
-
-- **Einheit**: Längen in mm (Double); `position` als `Punkt` in W.
-- **Identität**: `uuid` ist Pflicht, eigenständig (eigene UUID
-  des Aggregats, nicht eine UUID eines Bestandteils).
-- **Foreign-Key-Regel**: alle vier Element-Mengen
-  (`beteiligteBauteile`, `verbindungsmittel`, `verbinder`,
-  `verstaerkungen`) referenzieren ausschließlich UUIDs.
-- **Inzidenz-Validierung** (C2–C4): erfolgt nicht im
-  `init`-Block, weil dort der Modell-Kontext fehlt. Die
-  Validierung wird in der Aggregat-Konstruktion durch eine
-  Modell-bezogene Fabrikfunktion `Verbindung.bilde(modell:
-  Modell, …)` durchgeführt; bei Verletzung liefert sie
-  `Resultat.Fehler(Entartet.InzidenzVerletzt)`.
-- **Mischungsverbot-Validierung** (C5): erfolgt ebenfalls in der
-  Fabrikfunktion mit Modell-Zugriff (Lookup der Verbindungs-
-  mittel-Typen). Bei Verletzung: `Resultat.Fehler(Entartet.
-  Mischungsverbot)`. Sonderausnahmen (Schraube + Beilage etc.)
-  werden über ein optionales Flag `sonderNachweisverfahrenZulassen`
-  geführt.
-- **IFC-Mapping**:
-  - **Variante A** (bevorzugt): `IfcRelConnectsElements`
-    (Subtyp von `IfcRelConnects`) — eine Beziehungs-Entität, die
-    zwei oder mehr Elemente verbindet. Eigenschaften:
-    `RelatingElement`, `RelatedElement` (in IFC nur paarweise;
-    Mehrfach-Verbindungen werden durch mehrere
-    `IfcRelConnectsElements`-Instanzen oder durch `IfcGroup`
-    abgebildet).
-  - **Variante B**: `IfcGroup` (Subtyp von `IfcObjectDefinition`)
-    mit `IfcRelAggregates` als Aggregations-Beziehung. Geeignet,
-    wenn die Verbindung als benamtes Konstruktionsdetail mit
-    eigener Identität geführt werden soll.
-  - Die App entscheidet pro Verbindung; Default ist `IfcGroup`,
-    weil die App-Verbindung eine eigene UUID, einen Typ und
-    Eigenschaften (Nachweisverfahren) trägt — das ist mit
-    `IfcGroup` natürlicher abbildbar als mit
-    `IfcRelConnectsElements`.
-- **BTLx-Mapping**: keine eigene Entität. Die Verbindung wird
-  beim BTLx-Export aufgelöst in:
-  - die beteiligten Bauteil-Parts (mit ihren UUIDs als
-    `Part/@GUID`),
-  - die Verbindungsmittel als Processings (`Drilling`,
-    `Lag-Screw`) oder eigenständige Parts,
-  - die Verbinder als eigene Parts,
-  - die Verstärkungselemente als eigene Parts mit Funktions-
-    attribut.
-  - Die Verbindungs-UUID erscheint nicht im BTLx; sie wird
-    optional als `UserAttribute` an den beteiligten Parts
-    gespeichert (`ConnectionGuid`).
-- **Edge Cases**:
-  - **Verbindung ohne Verbindungsmittel** (rein
-    zimmermannsmäßig): zulässig, sofern `typ` ∈
-    {ZimmermannsmaessigerStoss, ZimmermannsmaessigerAnschluss}
-    und `nachweisverfahren` der zimmermannsmäßige
-    Versatznachweis ist.
-  - **Verbindung mit nur einem Bauteil**: nicht erlaubt;
-    `Entartet.VerbindungOhneZweitesBauteil`.
-  - **Selbst-Verbindung** (Bauteil mit sich selbst): nicht
-    erlaubt; bei doppelten UUIDs in `beteiligteBauteile` greift
-    die Set-Semantik bereits konstruktiv.
-  - **Verbindung mit Mischung von Verbindungsmittel-Typen**:
-    nicht erlaubt (C5); `Entartet.Mischungsverbot`. Ausnahme
-    nur bei explizitem Sonder-Nachweisverfahren.
-  - **Verbindung über mehrere Tragwerke hinweg**: typisch
-    nicht; aber zulässig, wenn das Modell so konstruiert ist
-    (z. B. Trag-Verbindung zwischen Hauptbau und Vordach).
-- **Abgeleitete Eigenschaften**:
-  - `geometrieInWelt(modell: Modell): GeometrieInW` —
-    Vereinigung der geometrischen Punktmengen aller
-    beteiligten Element-Instanzen.
-  - `boundingBox(modell: Modell): AABB` — achsenparalleler
-    Hüllquader in W.
-  - `schwerpunkt(modell: Modell): Punkt` — geometrischer
-    Schwerpunkt der beteiligten Elemente; falls `position`
-    leer ist, wird sie hieraus gefüllt.
-  - `nachweisFuehren(modell: Modell): Nachweisergebnis` —
-    Bemessungs-Schicht-Aufruf (Folgearbeit).
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `Verbindung` (deutsch, Glossarbegriff). Synonyme `Anschluss`,
-  `Knoten`, `Stoss` werden durch das `typ`-Feld differenziert,
-  nicht durch eigene Klassen.
 
 ## Quellen
 

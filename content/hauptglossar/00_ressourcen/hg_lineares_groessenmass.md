@@ -58,10 +58,10 @@ Sei
   - **Fall B (parallele Geraden):** F₁, F₂ ⊂ E zwei parallele
     Geraden in einer gemeinsamen Ebene E (siehe `hg_gerade.md`,
     `hg_ebene.md`); das Maß ist der euklidische Abstand
-    d(F₁, F₂) := inf { ‖p − q‖ | p ∈ F₁, q ∈ F₂ }.
+    d(F₁, F₂):= inf { ‖p − q‖ | p ∈ F₁, q ∈ F₂ }.
   - **Fall C (parallele Ebenen):** F₁, F₂ ⊂ ℝ³ zwei parallele
     Ebenen (siehe `hg_ebene.md`); das Maß ist
-    d(F₁, F₂) := inf { ‖p − q‖ | p ∈ F₁, q ∈ F₂ }.
+    d(F₁, F₂):= inf { ‖p − q‖ | p ∈ F₁, q ∈ F₂ }.
 
 - ℓ ∈ ℝ_{>0} der zugeordnete Maßwert (in mm) mit
   ℓ = d(F₁, F₂) im jeweiligen Fall (Fall A: ℓ = d),
@@ -70,7 +70,7 @@ Sei
 Dann ist das **lineare Größenmaß** das Tupel
 
 ```
-G(F, ℓ, T) := (F, ℓ, T).
+G(F, ℓ, T):= (F, ℓ, T).
 ```
 
 Insbesondere ist G(F, ℓ, T) durch Vergessen des Toleranzfeldes T
@@ -163,58 +163,6 @@ und Platten-Querschnitts-Maße einschlägig.
     Ausführungsnorm; nicht identisch mit dem GPS-Toleranzfeld
     (DIN 18202 ist handwerkliche Bautoleranz, ISO 14405-1 ist
     Maschinenbau-GPS).
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bemassung` —
-künftiges Paket, **nicht** Teil der Sparren-mit-zwei-Kerven-Etappe):
-
-```
-sealed class LinearesGroessenmass {
-    abstract val wert: Double          // in mm, > 0
-    abstract val toleranzfeld: ToleranzFeld  // ClosedFloatingPointRange<Double>
-
-    data class Durchmesser(
-        val formElement: GpsFormElement,  // Zylinder | Kugel | Kreis | Torus
-        override val wert: Double,
-        override val toleranzfeld: ToleranzFeld
-    ) : LinearesGroessenmass()
-
-    data class AbstandParalleleGeraden(
-        val gerade1: Gerade,
-        val gerade2: Gerade,            // parallel zu gerade1
-        override val wert: Double,
-        override val toleranzfeld: ToleranzFeld
-    ) : LinearesGroessenmass()
-
-    data class AbstandParalleleEbenen(
-        val ebene1: Ebene,
-        val ebene2: Ebene,              // parallel zu ebene1
-        override val wert: Double,
-        override val toleranzfeld: ToleranzFeld
-    ) : LinearesGroessenmass()
-}
-```
-
-- **Einheit:** Wert in mm (Double); Toleranzfeld-Grenzen in mm.
-- **Invarianten** (Factory):
-  1. `wert > Toleranzen.LAENGE_EPS` (positiv, nicht entartet).
-  2. `toleranzfeld.start ≤ wert ≤ toleranzfeld.endInclusive`.
-  3. Form-Element-Konsistenz: Bei `AbstandParalleleGeraden` muss
-     `gerade1` parallel zu `gerade2` sein (Test via
-     `KOLLINEAR_EPS`); analog für `AbstandParalleleEbenen` mit
-     parallelen Normalen.
-  4. Wert-Geometrie-Konsistenz: `|wert − d(F₁, F₂)| ≤ LAENGE_EPS`
-     (Maßwert stimmt mit dem geometrischen Abstand überein).
-- **Code-Pendant-Pflicht:** keine (`begriffstyp: merkmal`); die
-  Klasse wird erst eingeführt, wenn ein Tolerierungs-/CNC-Modul
-  gebaut wird.
-- **Edge Cases:**
-  - Nicht-parallele Geraden/Ebenen: kein lineares Größenmaß im
-    Sinne von ISO 14405-1; Konstruktion über Factory mit
-    `Resultat.Fehler`.
-  - Toleranzfeld kollabiert (`start == endInclusive`): zulässig
-    (Nullspiel-Maß), aber im Werkplan ungewöhnlich.
 
 ## Quellen
 

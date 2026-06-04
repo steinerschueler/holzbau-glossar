@@ -55,19 +55,19 @@ Sei
 
 - E ⊂ ℝ³ eine Ebene im Sinne von `ebene` mit nach oben gerichteter
   Einheits-Normalen n_hat ∈ S², ⟨n_hat, e_z⟩ > 0,
-- e_z := (0, 0, 1)ᵀ die vertikale Achse,
-- ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz.
+- e_z:= (0, 0, 1)ᵀ die vertikale Achse,
+- ε_W:= Toleranzen.WINKEL_EPS die Winkeltoleranz.
 
 **Geneigtheits-Voraussetzung**: ‖n_hat × e_z‖ > 0 (äquivalent
 ⟨n_hat, e_z⟩ < 1) — die Ebene ist nicht horizontal, also α > 0 in der
-Charakterisierung über die Dachneigung α := arccos(⟨n_hat, e_z⟩). Der
+Charakterisierung über die Dachneigung α:= arccos(⟨n_hat, e_z⟩). Der
 operative Geneigtheits-Test nutzt nach §4 die Kreuzprodukt-Norm
 ‖n_hat × e_z‖ = sin α (Wohldefiniertheit).
 
 Setze den **horizontalen Anteil von e_z relativ zu E**
 
 ```
-v := e_z − ⟨e_z, n_hat⟩ · n_hat   ∈ E_0,
+v:= e_z − ⟨e_z, n_hat⟩ · n_hat   ∈ E_0,
 ```
 
 wobei E_0 ⊂ ℝ³ der Richtungsraum von E (die durch Translation in den
@@ -84,7 +84,7 @@ also v ≠ 0.
 Die **Falllinie** der Ebene E ist der Einheitsvektor
 
 ```
-e_hat_fall(E) := −v / ‖v‖
+e_hat_fall(E):= −v / ‖v‖
            = −(e_z − ⟨e_z, n_hat⟩ · n_hat) / ‖e_z − ⟨e_z, n_hat⟩ · n_hat‖   ∈ S² ∩ E_0.
 ```
 
@@ -257,108 +257,6 @@ aber bisher nicht als eigenständige Glossareinträge geführt.
     in der Schweiz aber stärker mit der Flachdach-Abdichtungspraxis
     konnotiert (Gefälleeinlagen). Hier abgelehnt zugunsten von
     „Falllinie" für die Richtung und „Dachneigung" für den Winkel.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Package `zimmermann.domain.geometrie`):
-
-```
-package zimmermann.domain.geometrie
-
-import zimmermann.domain.Resultat
-import zimmermann.domain.Toleranzen
-import kotlin.math.abs
-import kotlin.math.sqrt
-
-/**
- * Falllinie einer geneigten Ebene: data class mit Träger-Ebene und
- * Falllinien-Richtung. Konstruktion ausschliesslich über `bilde`,
- * Entartung über das gemeinsame `EntartetGeometrie`-Pattern (siehe
- * project_kotlin_konventionen.md).
- *
- * Glossar: hg_falllinie.md
- */
-@ConsistentCopyVisibility
-data class Falllinie internal constructor(
-    val ebene: Ebene,
-    val richtung: Einheitsvektor,
-) {
-    val neigungswinkel: Double  // ∈ (0, π/2], = arccos(|⟨n_hat, e_z⟩|)
-
-    fun istGleicheFalllinie(other: Falllinie, eps: Double = ...): Boolean
-
-    companion object {
-        fun bilde(
-            ebene: Ebene,
-            eps: Double = Toleranzen.KOLLINEAR_EPS,
-        ): Resultat<Falllinie, EntartetGeometrie> {
-            val nHat = ebene.normale
-            val nz = nHat.dz
-            // v := e_z − ⟨e_z, n_hat⟩·n_hat ist quadratisch in n_hat,
-            // also liefert n_hat → −n_hat dasselbe Resultat (Punktmengen-Sicht).
-            val vx = -nz * nHat.dx
-            val vy = -nz * nHat.dy
-            val vz = 1.0 - nz * nHat.dz
-            val n  = sqrt(vx*vx + vy*vy + vz*vz)   // ‖v‖ = ‖n_hat × e_z‖ = sin α
-            // Geneigtheits-Test über die Sinus-/Kreuzprodukt-Norm (§4),
-            // nahe α = 0 gut konditioniert:
-            if (n <= eps) {
-                return Resultat.Fehler(EntartetGeometrie.HorizontaleEbene)
-            }
-            val richtung = Einheitsvektor.bildeUngeprueft(
-                Vektor(-vx / n, -vy / n, -vz / n)
-            )
-            return Resultat.Erfolg(Falllinie(ebene, richtung))
-        }
-    }
-}
-```
-
-- **Einheit**: dimensionsloser Einheitsvektor; Komponenten in [−1, 1].
-- **Invariante** (Klasse `Falllinie`):
-  1. ‖richtung‖ ∈ 1 ± Toleranzen.NORM_EPS (Einheitsvektor-
-     Invariante, typsystem-getragen).
-  2. ⟨richtung, n_hat⟩ ∈ 0 ± Toleranzen.WINKEL_EPS (liegt in der
-     Ebene; orthogonal zur Normalen).
-  3. ⟨richtung, e_z⟩ ≤ 0 (zeigt nach unten oder horizontal;
-     letzteres nur im Grenzfall α → π/2 — vertikale Ebene mit
-     e_hat_fall = −e_z).
-- **Punktmengen-Sicht (Option A)**: Die Falllinie ist eine
-  Eigenschaft der Ebene als Punktmenge; die Wahl `n_hat` vs. `−n_hat`
-  ändert das Resultat nicht (v ist quadratisch in n_hat). Der
-  Geneigtheits-Test über `‖v‖ = ‖n_hat × e_z‖ = sin α` ist daher
-  vorzeichen-invariant, und `bilde(e)` liefert dasselbe wie
-  `bilde(e.umkehrenNormale())`.
-- **Edge Cases / Entartet-Varianten**:
-  - **`EntartetGeometrie.HorizontaleEbene`**: ‖v‖ = ‖n_hat × e_z‖ =
-    sin α ≤ KOLLINEAR_EPS, d. h. die Ebene ist horizontal (oder
-    numerisch fast horizontal). Keine Falllinie definierbar; jeder
-    horizontale Vektor in der Ebene wäre gleich „flach".
-    Aufrufer entscheiden über die Reaktion (Default: keine
-    Anzeige der Falllinie auf einem Flachdach).
-  - **Vertikale Ebene** (α = π/2, ⟨n_hat, e_z⟩ = 0): geometrisch
-    zulässig; `bilde` liefert e_hat_fall = −e_z. Ist im
-    Anwendungsbereich `dachflaeche` ausgeschlossen, in
-    allgemeinen `ebene`-Kontexten aber gültig.
-- **Identität**: `istGleicheFalllinie` verlangt sowohl
-  Punktmengen-Identität der Trägerebene
-  (`Ebene.istGleicheEbene`) als auch Richtungsgleichheit
-  (`Einheitsvektor.istGleich`). Falllinien zweier paralleler,
-  disjunkter Ebenen mit identischer Neigung haben gleiche
-  Richtung, aber unterschiedliche Trägerebenen — der Test
-  liefert dann `false`.
-- **Folgearbeit / abgeleitete Operationen** (nicht Bestandteil
-  dieser Phase, dokumentiert für später):
-  - `Ebene.hoehenlinienRichtung(): Resultat<Einheitsvektor, EntartetGeometrie>`
-    = `n_hat × e_hat_fall`, horizontale Richtung in E orthogonal zur
-    Falllinie.
-  - `Ebene.steigungProzent(): Resultat<Double, EntartetGeometrie>`
-    = 100 · |⟨e_hat_fall, e_z⟩| / ‖e_hat_fall − ⟨e_hat_fall, e_z⟩ · e_z‖.
-- **Verwendungsregel**: Die Factory `Falllinie.bilde(ebene)` ist
-  auf `Ebene` definiert und damit auch auf der Trägerebene einer
-  `Dachflaeche` verfügbar. Bauteilbezogene Aufrufer
-  (`Ortgang`, `Sparren`) gehen den Umweg über
-  `Falllinie.bilde(dachflaeche.traeger)`.
 
 ## Quellen
 

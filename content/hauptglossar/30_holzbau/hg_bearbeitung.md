@@ -66,7 +66,7 @@ quellenkonflikt: |
     Löschung des Bauteils erlischt sie kaskadierend.
   - **Bearbeitung ist NICHT eine Subklasse von `element`**, weil
     sie kein verbautes Einzelobjekt im Sinne der App-Ontologie
-    ist (Memory `project_element_ontologie`): keine eigene
+    ist: keine eigene
     Materialklasse, kein eigener Bemessungsstatus, kein
     eigenständiger Lebenszyklus. Eine Bearbeitung ist immer an
     genau ein Bauteil gebunden.
@@ -115,7 +115,7 @@ quellenkonflikt: |
       `chamfer` (Fase) — Folgearbeit nach Bedarf.
   Diese Subtypen sind in `voraussetzungen` **nicht** verlinkt,
   weil sie noch nicht als eigene Glossareinträge existieren
-  (siehe Memory `project_glossar_konventionen` zu Forward-
+  (siehe zu Forward-
   Verweisen).
 ---
 
@@ -138,7 +138,7 @@ Sei
 - SE(3) = SO(3) ⋉ ℝ³ die Menge der Starrkörpertransformationen
   (siehe `lokales_koordinatensystem`),
 - 𝓟 die Menge der zulässigen Polyeder im ℝ³ nach `polyeder`,
-- 𝓣 := { Kerve, Bohrung, Versatz, Zapfenloch, Schlitz, Blatt,
+- 𝓣:= { Kerve, Bohrung, Versatz, Zapfenloch, Schlitz, Blatt,
   Kamm, Anschnitt, Fase, … } die endliche Menge der zulässigen
   Bearbeitungstypen (`sealed`-Aufzählung; konkrete Subtypen
   werden in eigenen Glossareinträgen definiert),
@@ -146,7 +146,7 @@ Sei
   Π_τ ⊂ ℝⁿ_τ × ℬ^m_τ (Längen in mm, Winkel in Radiant, Boolesche
   Optionen) sowie eine **Werkzeugkörper-Funktion**
   ```
-  K_τ : Π_τ → 𝓟,    p_τ ↦ K_τ(p_τ),
+  K_τ: Π_τ → 𝓟,    p_τ ↦ K_τ(p_τ),
   ```
   die jedem zulässigen Parametertupel p_τ einen abgeschlossenen,
   beschränkten Polyeder K_τ(p_τ) ⊂ ℝ³ in einem typeigenen
@@ -155,7 +155,7 @@ Sei
 Dann ist eine **Bearbeitung** das Tupel
 
 ```
-F := (uuid, typ, parameter, lokale_platzierung, bezeichnung?)
+F:= (uuid, typ, parameter, lokale_platzierung, bezeichnung?)
 ```
 
 mit
@@ -186,16 +186,16 @@ Die **Wirkung** der Bearbeitung F auf das Bauteil B ist die
 Boole'sche Differenz
 
 ```
-G_B'(F) := G_B^lokal \ T_F( K_τ(p_τ) ) ⊂ ℝ³,                    (1)
+G_B'(F):= G_B^lokal \ T_F(K_τ(p_τ)) ⊂ ℝ³,                    (1)
 ```
 
 wobei G_B^lokal die ungeschwächte Bauteilgeometrie im Bauteil-
-Lokal-System ist und T_F( K_τ(p_τ) ) der ins Bauteil-Lokal-System
+Lokal-System ist und T_F(K_τ(p_τ)) der ins Bauteil-Lokal-System
 überführte Werkzeugkörper. Bei mehreren Bearbeitungen
 F_1, …, F_n eines Bauteils B ist die endgültige Bauteilgeometrie
 
 ```
-G_B^bearbeitet := G_B^lokal \ ⋃_{i=1}^{n} T_{F_i}( K_{τ_i}(p_{τ_i}) ).  (2)
+G_B^bearbeitet:= G_B^lokal \ ⋃_{i=1}^{n} T_{F_i}(K_{τ_i}(p_{τ_i})).  (2)
 ```
 
 Die **Welt-Geometrie** des bearbeiteten Bauteils ergibt sich durch
@@ -203,7 +203,7 @@ Anwendung der Bauteil-Lokal-Platzierung T_{L_B→W} ∈ SE(3) (siehe
 `lokales_koordinatensystem`):
 
 ```
-G_W^bearbeitet(B) := T_{L_B→W}( G_B^bearbeitet ).               (3)
+G_W^bearbeitet(B):= T_{L_B→W}(G_B^bearbeitet).               (3)
 ```
 
 Es gilt strukturell
@@ -224,15 +224,14 @@ verkleinert (subtraktive Festlegung).
   (siehe `kerve`), parameter = Default-Parametertupel der Kerve,
   T_F = Identität in SE(3), bezeichnung = ⊥.
 - **Eindeutigkeit der Identität**: Innerhalb eines Modells gilt
-  ∀ F₁, F₂ : (F₁ ≠ F₂) ⇒ (F₁.uuid ≠ F₂.uuid). UUID v7 nach
+  ∀ F₁, F₂: (F₁ ≠ F₂) ⇒ (F₁.uuid ≠ F₂.uuid). UUID v7 nach
   RFC 9562, vgl. `uuid`.
 - **Eindeutigkeit der Zuordnung**: Jede Bearbeitung gehört zu
   **genau einem** Bauteil. Diese Zuordnung wird über die
   partitive Komposition realisiert: Bearbeitung F ist genau dem
   Bauteil B zugeordnet, in dessen Bearbeitungs-Liste F enthalten
   ist. Die Container-Eigenschaft ist bereits eine Bijektion
-  Bearbeitung → Bauteil (Memory `project_bauteil_identifikation`,
-  partitive Komposition). Mehrfachzuordnung ist strukturell
+  Bearbeitung → Bauteil. Mehrfachzuordnung ist strukturell
   ausgeschlossen; eine geometrisch ähnliche Bearbeitung an einem
   zweiten Bauteil ist eine **eigene Instanz** mit eigener UUID
   in der Bearbeitungs-Liste des zweiten Bauteils.
@@ -265,7 +264,7 @@ verkleinert (subtraktive Festlegung).
   entlang Bauteilachse, z-Achse in Kervtiefe-Richtung); semantisch
   invariant.
 - **Konsistenz Werkzeugkörper ↔ Bauteilgeometrie**: Es ist nicht
-  erforderlich, dass T_F( K_τ(p_τ) ) ⊂ G_B^lokal; ein über die
+  erforderlich, dass T_F(K_τ(p_τ)) ⊂ G_B^lokal; ein über die
   Bauteilberandung hinausragender Werkzeugkörper ist zulässig
   (Standardfall einer Klauenkerve, deren Werkzeugkörper unten aus
   dem Sparren herausragt) und führt einfach zu einer Differenz, die
@@ -302,7 +301,7 @@ optionaler Anzeigename.
 
 ### Vier Element-Subklassen vs. Bearbeitung — die ontologische Trennlinie
 
-In der App-Ontologie (Memory `project_element_ontologie`) gibt es
+In der App-Ontologie gibt es
 vier Element-Subklassen, die alle **additiv** mit einem Bauteil
 verbunden werden:
 
@@ -493,7 +492,7 @@ beider Klassen werden zentral in `hg_toleranzen.md` Sektion
     ist über die partitive Komposition (Container-Beziehung)
     bestimmt, nicht über ein Feld am Bearbeitungs-Objekt.
     Auflösung Bearbeitung-UUID → Bauteil ist Repository-/Index-
-    Aufgabe (siehe Implementierungshinweis).
+    Aufgabe.
 - **Verwendung**:
   - Bestandteil eines **Bauteils** (`bauteil`): das Bauteil führt
     eine geordnete oder ungeordnete Liste von Bearbeitungs-UUIDs
@@ -544,164 +543,6 @@ beider Klassen werden zentral in `hg_toleranzen.md` Sektion
     (`lokales_koordinatensystem`): Bezugssystem für die
     Platzierung der Bearbeitung relativ zum Bauteil. Keine
     Bearbeitung an sich.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.bauteil.bearbeitung`):
-
-```kotlin
-package domain.bauteil.bearbeitung
-
-import domain.bauteil.Bauteil
-import domain.geometrie.LokalePlatzierung
-import java.util.UUID
-
-/**
- * Bearbeitungstyp. Sealed; konkrete Subtypen tragen ihre
- * typspezifischen Parameter selbst.
- *
- * Glossar: hg_bearbeitung.md (sealed `typ`-Aufzählung 𝓣).
- *
- * Phase 2: nur `Kerve` implementiert. Weitere Subtypen folgen
- * trigger-basiert (siehe quellenkonflikt-Block der Glossardatei).
- */
-sealed interface Bearbeitung {
-    /** Technischer Surrogatschlüssel der Bearbeitung. RFC 9562 v7. */
-    val uuid: UUID
-
-    /** Starrkörpertransformation Werkzeug-Bezugssystem → Bauteil-Lokal.
-     *  Siehe `hg_lokales_koordinatensystem.md`. */
-    val lokalePlatzierung: LokalePlatzierung
-
-    /** Optionaler Anzeigename. */
-    val bezeichnung: String?
-
-    // Bewusst ohne Backref auf das Bauteil: die Beziehung
-    // Bearbeitung → Bauteil ist partitive Komposition; das
-    // Bauteil hält seine Bearbeitungen als geordnete Liste.
-    // Die Auflösung Bearbeitungs-UUID → Bauteil ist Aufgabe der
-    // Repository-/Index-Schicht (siehe Implementierungshinweis
-    // hg_bearbeitung.md), nicht der Domänen-Datenklasse.
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant;
-  Lokale Platzierung als SE(3)-Element (Rotation + Translation).
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7),
-  unabhängig vom zugeordneten Bauteil. Damit kann eine Bearbeitung
-  über ihren Lebenszyklus identifiziert, ge-tracked und in der
-  CNC-Werkzeugliste referenziert werden, auch wenn sie
-  nachträglich verändert wird.
-- **Keine Backref auf das Bauteil**: Die Domänen-Datenklasse
-  führt **kein** Feld `bauteilUuid`. Die Beziehung Bearbeitung →
-  Bauteil ist partitive Komposition; das Bauteil hält seine
-  Bearbeitungen als geordnete Liste, und damit ist die
-  Container-Beziehung selbst die Zuordnung. Eine Backref wäre
-  redundante Information und würde eine zusätzliche
-  Konsistenz-Invariante erzwingen (Backref muss zum enthaltenden
-  Bauteil passen).
-- **Repository-Auflösung Bearbeitung → Bauteil**: Wird die
-  Auflösung „zu welchem Bauteil gehört diese Bearbeitungs-UUID?"
-  benötigt (etwa für CNC-Werkzeuglisten oder Bemessungs-
-  Nachweise), erfolgt sie über einen Repository-Lookup
-  (`BauteilRepository.findeBauteilZuBearbeitung(bearbeitungsUuid)`),
-  der den Modell-Container nach dem Bauteil durchsucht, dessen
-  Bearbeitungs-Liste die UUID enthält. Diese Verantwortung liegt
-  in der Persistenz-/Index-Schicht, **nicht** in der
-  Domänen-Datenklasse `Bearbeitung`.
-- **Lebenszyklus / Komposition**: Die Bearbeitung ist im Sinne
-  der **partitiven Komposition** Eigentum des Bauteils und
-  **kein eigenständiges Aggregat**. Wird das Bauteil aus dem
-  Modell entfernt, werden alle zugehörigen Bearbeitungen
-  strukturell mitentfernt (sie sind Bestandteile der
-  Bauteil-Liste). Die Bearbeitung kann **nicht** ohne Bauteil
-  existieren.
-- **Pflicht- und Optionalfelder (normativ)**:
-  - `uuid` — Pflicht, niemals null.
-  - `lokalePlatzierung` — Pflicht; mindestens `LokalePlatzierung.
-    IDENTITAET` zulässig (Werkzeug-Bezugssystem ≡ Bauteil-Lokal).
-  - `bezeichnung` — `null` zulässig.
-  - Typspezifische Parameter — Pflicht, im jeweiligen Subtyp
-    deklariert (z. B. `Kerve.kervtiefe`, `Kerve.kervbreite`).
-  - **Kein** `bauteilUuid`-Feld; die Bauteil-Zugehörigkeit ist
-    die Container-Beziehung in der Bearbeitungs-Liste des
-    Bauteils.
-- **Invarianten** (in Fabrikfunktionen / `init` der Subtypen
-  prüfen, bei Verletzung `Resultat.Fehler` bzw. `Entartet`-
-  Variante; niemals Exception werfen):
-  1. Typspezifische Parameter-Invarianten (siehe Subtyp-Eintrag).
-  2. Plausibilitätsregeln zur Querschnittsschwächung (typabhängig,
-     **weiche** Invariante; Verstoß → Warnung in der Bemessungs-
-     Schicht, **kein** Validierungsfehler).
-- **Berechnung der bearbeiteten Bauteilgeometrie**: G_B^bearbeitet
-  nach Gleichung (2) wird **nicht eager** berechnet, sondern
-  **lazy on demand** in der Geometrie-Schicht (Phase 3.2). Die
-  Domänen-Schicht hält ausschließlich die ungeschwächte
-  Bauteilgeometrie und die Liste der Bearbeitungen; die Boole'sche
-  Differenz ist Aufgabe einer eigenen Komponente
-  `domain.bauteil.geometrie.BearbeitungsAggregator`
-  (Folgearbeit).
-- **BTLx-Export** (Persistenzschicht, Phase 4):
-  - Jede Bearbeitung wird in das passende BTLx-Processing
-    am betroffenen Bauteil-Part übersetzt (siehe Tabelle in
-    Erläuterung). Die Bearbeitungs-UUID erscheint nicht direkt
-    im BTLx-Schema, kann aber als Bearbeitungs-Bezeichnung
-    geführt werden, wenn der CNC-Workflow das benötigt.
-- **IFC-Export** (Persistenzschicht, Phase 4):
-  - Jede Bearbeitung wird als `IfcOpeningElement` mit eigener
-    `GlobalId` (= Bearbeitungs-UUID, Base64-kodiert nach
-    ISO/IEC 9834-8) angelegt; die Beziehung zum Bauteil läuft
-    über `IfcRelVoidsElement`.
-- **Edge Cases**:
-  - **Bearbeitung ohne Bauteilbezug**: strukturell ausgeschlossen.
-    Eine Bearbeitung existiert ausschließlich als Element der
-    Bearbeitungs-Liste eines Bauteils; eine freistehende
-    Bearbeitungs-Instanz hat keinen modellseitigen Zustand.
-    Konstruktion erfolgt über `Bauteil.fuegeBearbeitungHinzu(…)`,
-    nicht über einen freien Bearbeitungs-Konstruktor mit
-    Bauteil-Referenz.
-  - **Bearbeitungs-Werkzeugkörper vollständig oder teilweise
-    außerhalb des Bauteils** (T_F( K_τ(p_τ) ) ⊄ G_B^lokal, also
-    insbesondere die Fälle T_F( K_τ(p_τ) ) ∩ G_B^lokal = ∅
-    *und* T_F( K_τ(p_τ) ) \ G_B^lokal ≠ ∅): geometrisch wäre die
-    Boole'sche Differenz wohldefiniert, aber das Ergebnis hätte
-    keinen sinnvollen Modellzustand (eine ins Leere zeigende
-    Bearbeitung wäre für BTLx-/IFC-Export unsauber und kann
-    keinen formschlüssigen Geometrie-Beitrag mehr leisten).
-    Beide Fälle werden auf Glossar-Subtyp-Ebene gleich hart
-    behandelt: das Anhängen einer solchen Bearbeitung an das
-    Bauteil ist Validierungsfehler und schlägt mit einer subtyp-
-    spezifischen Variante von `BearbeitungAmBauteilUngueltig`
-    fehl (für die Kerve: `KervePositionAusserhalbBauteil`, siehe
-    `hg_kerve.md`). Eine reine Warnung an dieser Stelle ist nicht
-    vorgesehen, weil Modellkonsistenz vor nachträglicher
-    Reparatur-Toleranz steht. Subtyp-Einträge dürfen diese
-    Default-Härte nicht aufweichen.
-  - **Mehrere überlappende Bearbeitungen**: zulässig (z. B. Kerve
-    und Bohrung am selben Bereich); die Reihenfolge der
-    Vereinigung in (2) ist semantisch egal.
-  - **Bearbeitung an einem isotropen Plattenwerkstoff**: zulässig
-    (z. B. Bohrung in Spanplatte); die Faserrichtungs-
-    Plausibilitätswarnung greift dann nicht.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder;
-  Implementierung in der Geometrie-Schicht / Bemessungs-Schicht):
-  - `werkzeugkoerper(): Polyeder` — K_τ(p_τ) im typeigenen
-    Bezugssystem; subtypspezifische Implementierung.
-  - `werkzeugkoerperInBauteilLokal(): Polyeder` —
-    T_F( K_τ(p_τ) ); generisch über Polyeder-Transformation.
-  - `wirkungAuf(b: Bauteil): Polyeder` — G_B^lokal \
-    werkzeugkoerperInBauteilLokal(); Geometrie-Schicht.
-  - `querschnittsschwaechung(b: Bauteil, s: Double): Double` —
-    Anteil der bei Längsparameter s entfernten
-    Querschnittsfläche; Bemessungs-Schicht (EC5 5.2 / SIA 265
-    4.6).
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `Bearbeitung` (deutsch, Glossarbegriff); Subtypen heißen
-  `Kerve`, `Bohrung`, `Versatz`, `Zapfenloch`, `Schlitz`,
-  `Blatt`, `Kamm`, `Anschnitt`, `Fase`. Der Aggregator heißt
-  technisch englisch (`BearbeitungsAggregator`), weil er kein
-  Glossarbegriff ist.
 
 ## Quellen
 

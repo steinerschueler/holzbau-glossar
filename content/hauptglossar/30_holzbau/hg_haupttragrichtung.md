@@ -32,7 +32,7 @@ quellenkonflikt: |
   - Sie ist Pflichtfeld bei Werkstoffen mit Faserrichtungs-Modus
     STRUKTURIERT (`mehrlagenholz`).
   - **Eindeutigkeitsregel** (formal aus der ProHolz-Definition):
-    `haupttragrichtung := lagenstruktur.lagen[0].faserrichtung`
+    `haupttragrichtung:= lagenstruktur.lagen[0].faserrichtung`
     (bis auf Vorzeichen).
   - **Orthogonalität zur Plattendicken-Achse**:
     `⟨haupttragrichtung, plattendicken_achse⟩ ≤ WINKEL_EPS`.
@@ -70,8 +70,8 @@ Sei
 Dann ist die **Haupttragrichtung** des Mehrlagenholzes definiert als
 
 ```
-haupttragrichtung := h_hat
-                   := ℓ₀.faserrichtung
+haupttragrichtung:= h_hat
+:= ℓ₀.faserrichtung
                        (bis auf Vorzeichen),
 ```
 
@@ -93,7 +93,7 @@ mit den Konstruktions-Invarianten
 **Nebentragrichtung** (siehe eigener Eintrag `nebentragrichtung`):
 
 ```
-n_hat := e_hat_d × h_hat ∈ S²,
+n_hat:= e_hat_d × h_hat ∈ S²,
 ```
 
 mit ‖n_hat‖ = 1 wegen ⟨h_hat, e_hat_d⟩ = 0 und ‖h_hat‖ = ‖e_hat_d‖ = 1.
@@ -103,7 +103,7 @@ das Bauteil; in der Praxis erfolgt die Bemessung pro Lage, siehe
 `hankinson_winkel` und `mehrlagenholz`):
 
 ```
-α(F_hat, h_hat) := arccos( | ⟨F_hat, h_hat⟩ | ) ∈ [0, π/2]
+α(F_hat, h_hat):= arccos(| ⟨F_hat, h_hat⟩ |) ∈ [0, π/2]
 ```
 
 Die Hankinson-Formel ist auf der Bauteil-Ebene **nicht** direkt
@@ -226,69 +226,6 @@ lagenweise Hankinson-Auswertung.
     Faserrichtung; sie stimmt mit ℓ₀.faserrichtung überein, hat
     aber eine andere semantische Rolle (Bauteil-Bemessungsachse vs.
     Lagen-Materialachse).
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.holzbau.werkstoff`):
-
-```kotlin
-package domain.holzbau.werkstoff
-
-import domain.geometrie.Einheitsvektor
-
-/**
- * Haupttragrichtung eines Mehrlagenholzes (CLT/BSP, Sperrholz,
- * Multiplex): Einheitsvektor in der Plattenebene, parallel zur
- * Decklage-Faserrichtung (Lage 0 der Lagenstruktur).
- * Glossar: hg_haupttragrichtung.md — ProHolz Austria 2014.
- *
- * Strukturell ein Wrapper um Einheitsvektor; semantische Rolle
- * 'Bauteil-0°-Bemessungsachse'. Pflichtfeld bei Mehrlagenholz.
- *
- * Konstruktions-Invarianten:
- *   H1: orthogonal zur Plattendicken-Achse (innerhalb WINKEL_EPS).
- *   H2: parallel zu lagenstruktur.lagen[0].faserrichtung
- *       (bis auf Vorzeichen).
- *   H3: Norm-Invariante (geerbt).
- */
-@JvmInline
-value class Haupttragrichtung(val richtung: Einheitsvektor) {
-    val x: Double get() = richtung.x
-    val y: Double get() = richtung.y
-    val z: Double get() = richtung.z
-
-    operator fun unaryMinus(): Haupttragrichtung =
-        Haupttragrichtung(-richtung)
-}
-```
-
-- **Einheit**: dimensionslos (geerbt).
-- **Invarianten**: alle Invarianten von `Einheitsvektor` plus H1
-  und H2; geprüft in `Mehrlagenholz.init`, weil dort
-  Plattendicken-Achse und Lagenstruktur verfügbar sind.
-- **Vorzeichenkonvention**: typisch in dieselbe Halbachse wie die
-  längere Plattenformat-Kante; alle Plattenfestigkeiten f_0/f_90
-  sind vorzeicheninvariant.
-- **Edge Cases**:
-  - **Verletzung H1** (Haupttragrichtung nicht rechtwinklig zur
-    Plattendicken-Achse):
-    `Entartet.HaupttragrichtungNichtOrthogonalZurPlattendickenAchse`.
-  - **Verletzung H2** (Haupttragrichtung nicht parallel zur
-    Decklage-Faserrichtung):
-    `Entartet.HaupttragrichtungInkonsistentZurDecklage`.
-  - **Mehrlagenholz mit ungewöhnlicher Decklage** (z. B. 45°-Lage):
-    Haupttragrichtung folgt trotzdem ℓ₀.faserrichtung, weil I5
-    auch bei abweichendem Lagenaufbau gilt. Der UI sollte die
-    Sondersituation explizit anzeigen.
-- **IFC-Mapping** (Persistenzschicht): nicht direkt abgebildet;
-  die Haupttragrichtung ergibt sich aus
-  `IfcMaterialLayerSet.LayerSetDirection` plus Decklage-Faserrichtung.
-- **Verwendungsregel**: Funktionen, die plattenebenebezogene
-  Festigkeiten (f_m,0, f_m,90) berechnen, nehmen
-  `Haupttragrichtung` als Parametertyp und nicht den nackten
-  `Einheitsvektor`. Dadurch wird die semantische Rolle am API-Rand
-  sichtbar.
 
 ## Quellen
 

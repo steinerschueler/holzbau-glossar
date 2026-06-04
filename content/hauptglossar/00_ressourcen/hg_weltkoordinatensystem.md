@@ -90,20 +90,20 @@ Sei
 Dann ist das **Weltkoordinatensystem** das Tupel
 
 ```
-W := (O, e_x, e_y, e_z, η, ω),
+W:= (O, e_x, e_y, e_z, η, ω),
 ```
 
 wobei
 
-- η : 𝔸³ → ℝ³ die Koordinatenabbildung
+- η: 𝔸³ → ℝ³ die Koordinatenabbildung
   ```
   η(p) = (x, y, z)  ⇔  p = O + x·e_x + y·e_y + z·e_z,
   ```
   ist; die Komponenten x, y, z sind in Millimeter zu interpretieren,
 
-- ω : ℝ³ × ℝ³ → ℝ die Winkelmessung um e_z im mathematischen Sinn,
+- ω: ℝ³ × ℝ³ → ℝ die Winkelmessung um e_z im mathematischen Sinn,
   ```
-  ω(u, v) := atan2( ⟨e_z, u_hat × v_hat⟩ , ⟨u_hat, v_hat⟩ )  ∈ (−π, π],
+  ω(u, v):= atan2(⟨e_z, u_hat × v_hat⟩, ⟨u_hat, v_hat⟩)  ∈ (−π, π],
   ```
   mit u_hat = u/‖u‖, v_hat = v/‖v‖, definiert für u, v ∉ Null der
   Toleranz `Toleranzen.NORM_EPS`. ω misst den orientierten Winkel
@@ -128,8 +128,8 @@ Aus W ist eine zweite Winkelkonvention ableitbar, die ausschließlich
 für Eingabe und Anzeige verwendet wird:
 
 ```
-ψ : (Vektor \ vertikal) → [0, 2π),
-ψ(v) := atan2( ⟨v, e_x⟩ , ⟨v, e_y⟩ )  mod 2π          (Azimut)
+ψ: (Vektor \ vertikal) → [0, 2π),
+ψ(v):= atan2(⟨v, e_x⟩, ⟨v, e_y⟩)  mod 2π          (Azimut)
 ```
 
 mit ψ = 0 bei Nord, ψ = π/2 bei Ost, ψ = π bei Süd, ψ = 3π/2 bei
@@ -225,7 +225,7 @@ folgt die normative Trennung zwischen
    (Translation + Rotation) auf W abgebildet wird.
 
 Die Verbindung zwischen W und LV95 wird durch eine **starre
-Transformation** T_{W→LV95} : 𝔸³_W → 𝔸³_LV95 hergestellt,
+Transformation** T_{W→LV95}: 𝔸³_W → 𝔸³_LV95 hergestellt,
 bestehend aus
 
 - einer Translation um den Welt-Ursprung O, in LV95 angegeben durch
@@ -303,159 +303,6 @@ Schichtentrennung.
     stellen berührt und nicht intern verwendet.
   - **Maßtoleranz, Numerik-Toleranz**: andere Begriffsdomäne,
     keine Konkurrenz zu W.
-
-## Implementierungshinweis
-
-Datentyp und Konvention (Domänen-Schicht, Kotlin, Schicht
-`zimmermann.domain.koordinaten`):
-
-```
-package zimmermann.domain.koordinaten
-
-import zimmermann.domain.geometrie.Einheitsvektor
-import zimmermann.domain.geometrie.Punkt
-import kotlin.math.PI
-
-/**
- * Welt-Koordinatensystem der App.
- * Glossar: hg_weltkoordinatensystem.md
- *
- * Konvention (normativ):
- *   - Rechtshändig, kartesisch, ortsfest.
- *   - e_x = Ost, e_y = Nord, e_z = vertikal nach oben.
- *   - Längeneinheit: mm (Double).
- *   - Winkel um e_z intern: Radiant, ab +x gegen den Uhrzeigersinn.
- *
- * Es gibt nur EIN Weltsystem zur Laufzeit. Dieser Typ ist deshalb
- * ein Marker-Objekt; konkrete Punkte/Vektoren in W werden durch
- * die Typen Punkt bzw. Vektor dargestellt, deren Komponenten
- * implizit auf W bezogen sind.
- */
-object Weltkoordinatensystem {
-
-    /** Ursprung O, projektweit fest gewählt. */
-    val URSPRUNG: Punkt = Punkt.URSPRUNG
-
-    /** e_x, Einheitsvektor in Ost-Richtung. */
-    val EX: Einheitsvektor = Einheitsvektor.EX
-
-    /** e_y, Einheitsvektor in Nord-Richtung. */
-    val EY: Einheitsvektor = Einheitsvektor.EY
-
-    /** e_z, Einheitsvektor in Vertikal-Richtung (nach oben). */
-    val EZ: Einheitsvektor = Einheitsvektor.EZ
-
-    /**
-     * Konvertiert ein geodätisches Azimut ψ (Kompass-Konvention:
-     * 0 = Nord, π/2 = Ost) in den mathematischen Winkel φ um e_z
-     * (ab +x gegen den Uhrzeigersinn). Normative Konversion gemäß
-     * Glossar: φ = (π/2 − ψ) mod 2π. Auf ganz ℝ definiert
-     * (Modulo-Reduktion); Resultat in [0, 2π).
-     * Glossar: weltkoordinatensystem#anzeige-konvention-azimut.
-     */
-    fun azimutZuMathematischemWinkel(azimut: Double): Double = ...
-
-    /**
-     * Konvertiert den mathematischen Winkel φ um e_z in ein
-     * geodätisches Azimut ψ. Inverse zu
-     * [azimutZuMathematischemWinkel] modulo 2π. Resultat in [0, 2π).
-     * Glossar: weltkoordinatensystem#anzeige-konvention-azimut.
-     */
-    fun mathematischerWinkelZuAzimut(phi: Double): Double = ...
-}
-```
-
-**Implementiert** (Stand D5-1, Code-Realität in
-`zimmermann.domain.koordinaten.Weltkoordinatensystem`):
-
-- `URSPRUNG`, `EX`, `EY`, `EZ` als delegierte Konstanten an
-  `Punkt.URSPRUNG` bzw. `Einheitsvektor.EX/EY/EZ` — keine
-  Wert-Duplikation, kein Drift-Risiko. Die Typsignatur
-  `Einheitsvektor` (statt `Vektor`) trägt die Norm-Invariante
-  `‖e_i‖ = 1` durch das Typsystem.
-- `azimutZuMathematischemWinkel(azimut: Double): Double` und
-  `mathematischerWinkelZuAzimut(phi: Double): Double` als die
-  einzigen erlaubten Übergangs-Stellen zwischen Anzeige-Azimut ψ
-  und interner mathematischer Winkel-Konvention φ. Beide Funktionen
-  sind auf ganz ℝ total (Modulo-Reduktion auf [0, 2π)),
-  propagieren NaN/±∞ gemäß IEEE-754, werfen niemals.
-- Konstanten `LAENGENEINHEIT = "mm"` und `WINKELEINHEIT = "rad"`
-  als API-lesbare Marker der Domänen-Schicht-Konventionen.
-
-**Trigger-basierte Folgearbeit** (siehe
-`feedback_trigger_basierte_tasks.md`):
-
-- `winkelUmZ(u: Vektor, v: Vektor): Double?` — orientierter
-  mathematischer Winkel von u nach v um e_z, mit `Entartet`-Fall
-  bei zu kurzen Vektoren. **Trigger**: wenn eine Domänen-Operation
-  einen orientierten Winkel zweier Vektoren um die Vertikale
-  benötigt (z. B. Verschneidungsberechnung mit zwei
-  Dachseiten-Normalen).
-- `azimut(v: Vektor): Double?` — Azimut eines 3D-Vektors via
-  Horizontalprojektion auf die x-y-Ebene, mit `Entartet`-Fall bei
-  vertikalen Vektoren (Horizontalprojektion zu kurz). **Trigger**:
-  wenn ein Tool die Berechnung des Azimuts aus einem 3D-Vektor mit
-  Horizontalprojektion verlangt (z. B. Anzeige der
-  Dachseiten-Orientierung als Kompass-Wert aus der Normalen).
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant
-  (Double); Anzeige in Grad. Niemals Mischung in einer Funktion.
-- **Konvention der Achsen**: `EX = Ost`, `EY = Nord`, `EZ = oben`.
-  Diese Zuordnung wird in der gesamten Domänen-Schicht
-  vorausgesetzt und nicht parametrisiert. CAD-Importe mit
-  abweichender Konvention (z. B. y = oben) werden im Importrand
-  durch eine explizite Achsenrotation auf W abgebildet, nicht
-  durch eine alternative Welt-Konfiguration.
-- **Konvention der Winkelmessung**: intern ausnahmslos
-  mathematisch (φ ∈ (−π, π] bzw. [0, 2π) ab +x gegen den
-  Uhrzeigersinn um e_z). Das Azimut ψ ist eine reine
-  Darstellungs- und Eingabe-Transformation am API-Rand. Gemischte
-  Verwendung in einer Funktion ist verboten. Bestehende Glossar-
-  einträge, die ψ produzieren (z. B. `dachseite.orientierung()`),
-  müssen ψ explizit benennen und nicht als „Winkel" simpliciter.
-- **Welt-zu-Lokal-Trennung**: Bauteilkoordinaten in mm bezüglich W
-  mit Ursprung in **Bauwerksnähe**. LV95-Importe werden über einen
-  Geo-Anker (Translation + ggf. Drehung um e_z, Skalierung
-  1 m = 10³ mm) auf W abgebildet. LV95-Koordinaten dürfen
-  **nicht** roh als Bauteilkoordinaten verwendet werden.
-- **Invarianten**:
-  1. `EX × EY = EZ` (Rechtssystem-Bedingung). **Strukturell
-     garantiert** durch Delegation an `Einheitsvektor.EX/EY/EZ`
-     im `geometrie`-Sub-Package — die Rechtssystem-Eigenschaft ist
-     im Vektor-Test (`VektorTest`) bereits durchgängig geprüft.
-     Im `WeltkoordinatensystemTest` zusätzlich als Konsistenz-Check
-     auf der Welt-Konventions-Ebene wiederholt.
-  2. Es existiert genau ein Welt-Objekt zur Laufzeit. Daraus folgt
-     die Modellierung als Kotlin-`object`, nicht als `class`.
-- **Edge Cases**:
-  - **Entartete Basis** (eine Achse linear abhängig von den
-    anderen, oder Linkssystem): in der aktuellen Implementierung
-    **strukturell unmöglich**, weil `EX/EY/EZ` an die normierten
-    `Einheitsvektor`-Konstanten delegieren — eine entartete Basis
-    kann nicht erzeugt werden. Der `Entartet.UngueltigesSystem`-Fall
-    ist deshalb keine reale Variante in `EntartetGeometrie` und
-    bleibt nur als Folgearbeit erwähnt: falls die App später
-    benutzerdefinierte Welt-Koordinatensysteme zulässt (z. B.
-    nicht-rechtshändige Subsysteme für Spezial-Anwendungen),
-    müsste eine entsprechende Variante in `EntartetGeometrie`
-    eingeführt und der Konstruktor mit `Resultat`-Wrapping
-    versehen werden.
-  - **Sehr großer Welt-Ursprung-Versatz** (z. B. unmittelbarer
-    Bezug zu LV95): wird durch die Welt-zu-Lokal-Trennung
-    abgefangen. Wenn dennoch ein Modell mit Koordinaten ≫ 10⁶ mm
-    erstellt wird, ist die Annahme `LAENGE_EPS = 10⁻³ mm` zu
-    überprüfen (siehe `hg_toleranzen.md`).
-  - **Dauerlauf-Drift / Zeitabhängigkeit**: W ist zeitlich
-    konstant. Plattenbewegung, Gezeiten, Erdrotation und sonstige
-    geophysikalische Effekte sind für Holzbau-Bauwerke (Spanne
-    ≤ 10⁴ mm, Lebensdauer ≤ 10² Jahre) deutlich kleiner als
-    `Toleranzen.LAENGE_EPS` und werden nicht modelliert.
-- **Verwendungsregel**: Funktionen, die Punkte oder Vektoren
-  entgegennehmen, gehen ohne weitere Annotation davon aus, dass
-  diese in W gegeben sind. Bauteil- und Lokalkoordinaten erhalten
-  einen eigenen Wrapper-Typ (z. B. `BauteilLokal<T>`) mit
-  expliziter `nachWelt(transformation)`-Operation; eine implizite
-  Reinterpretation von Komponenten ist verboten (siehe `hg_punkt.md`).
 
 ## Quellen
 

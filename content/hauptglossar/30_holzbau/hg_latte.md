@@ -93,16 +93,16 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - D = (E, P, n_a) eine Dachfläche im Sinne von `dachflaeche` mit
   Trägerebene E (Stützpunkt p₀, Normalenvektor n_a), Polygon P und
   äußerer Normaler n_a,
 - S ein Sparren der Dachfläche D im Sinne von `sparren`, mit
   Richtungs-Einheitsvektor d_hat_S der Sparrenachse,
-- e_z := (0, 0, 1)ᵀ die vertikale Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-  ε_W := Toleranzen.WINKEL_EPS,
-  ε_L := Toleranzen.LAENGE_EPS.
+- e_z:= (0, 0, 1)ᵀ die vertikale Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+  ε_W:= Toleranzen.WINKEL_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS.
 
 Dann heißt B eine **Latte** der Dachfläche D genau dann, wenn die
 folgenden Bedingungen erfüllt sind:
@@ -143,11 +143,11 @@ folgenden Bedingungen erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Lattenlänge**: L_L := ‖p_e − p_a‖ (in mm), entlang der
+- **Lattenlänge**: L_L:= ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen den Lattenenden.
 - **Lattenrichtung**: d_hat ∈ S² mit |⟨d_hat, e_z⟩| ≤ ε_K und
   |⟨d_hat, d_hat_S⟩| ≤ ε_K.
-- **Latten-Höhenlage**: z_L := (p_a.z + p_e.z) / 2; bei einer
+- **Latten-Höhenlage**: z_L:= (p_a.z + p_e.z) / 2; bei einer
   exakt horizontalen Latte gilt p_a.z = p_e.z = z_L.
 - **Lattenachsabstand** (Lattenweite): bei einer parallelen
   Lattenschar L_1, …, L_n auf derselben Dachfläche der
@@ -395,137 +395,6 @@ außerhalb der Holzbau-Modellierung dieses Glossars.
   - **Bauteil** (`bauteil`): die Latte ist eine Spezialisierung
     von Bauteil mit zusätzlichen geometrischen Constraints; ein
     Bauteil ohne Bauteilrolle ist keine Latte.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Punkt
-import kotlin.math.abs
-
-/**
- * Latte als Bauteilrolle: stabförmiges Sekundärbauteil quer auf
- * Sparren als Auflage der Eindeckung.
- *
- * Glossar: hg_latte.md
- *
- * Vorzeichenkonvention: Die Bauteilachse ist gerichtet, aber welcher
- * Endpunkt p_a bzw. p_e ist, ist nicht durch eine geometrische
- * Bedingung festgelegt (analog zur Pfette). Empfehlung gemäß
- * hg_bauteilachse.md: p_a nach lokaler Bezeichnungskonvention.
- */
-data class Latte(
-    val bauteil: Bauteil,
-    val dachflaeche: Dachflaeche
-) {
-    init {
-        require(bauteil.geometrie is Bauteilgeometrie.Stab) {
-            "Latte erfordert Stabgeometrie"
-        }
-        // Lage-, Horizontalitäts- und Orthogonalitäts-Bedingungen
-        // werden in der Factory latteAusBauteil(...) geprüft und
-        // liefern bei Verletzung ein Resultat.Fehler mit
-        // LatteEntartet-Variante (siehe unten).
-    }
-
-    val achse: Bauteilachse.Gerade
-        get() = (bauteil.geometrie as Bauteilgeometrie.Stab).achse
-                as Bauteilachse.Gerade
-    val laenge: Double get() = achse.laenge          // mm
-    val richtung: Einheitsvektor get() = achse.richtung
-    val hoehe: Double                                 // mm, mittlere z-Lage
-        get() = (achse.anfang.z + achse.ende.z) / 2.0
-
-    /**
-     * Horizontalitätsprädikat: |⟨d_hat, e_z⟩| ≤ KOLLINEAR_EPS.
-     *
-     * Sinus-Test gegen e_z-Parallelität; KOLLINEAR_EPS ist
-     * bevorzugt für Lot- und Parallelitäts-Prädikate
-     * (siehe hauptglossar/HG_KONVENTIONEN.md Sektion 4).
-     */
-    fun istHorizontal(eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean =
-        abs(richtung.z) <= eps
-
-    /**
-     * Rechtwinkligkeitsprädikat zur Sparrenachse:
-     * |⟨d_hat, d_hat_S⟩| ≤ KOLLINEAR_EPS.
-     */
-    fun stehtRechtwinkligZuSparren(
-        sparren: Sparren,
-        eps: Double = Toleranzen.KOLLINEAR_EPS
-    ): Boolean = abs(richtung.dot(sparren.richtung)) <= eps
-}
-
-sealed class LatteEntartet {
-    object Nullachse                  : LatteEntartet()
-    object NichtParallelZurDachflaeche: LatteEntartet()
-    object NichtHorizontal            : LatteEntartet()
-    object NichtOrthogonalZumSparren  : LatteEntartet()
-    object AusserStandardquerschnitt  : LatteEntartet()  // Warnung
-    object FlacheDachflaeche          : LatteEntartet()  // α = 0
-}
-```
-
-- **Einheit**: Längen in mm (Double), Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (in der Factory `latteAusBauteil(...)` prüfen,
-  bei Verletzung `Resultat.Fehler` mit `LatteEntartet`-Variante;
-  niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. |⟨n_a, d_hat⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst
-     `NichtParallelZurDachflaeche` (Sinus-Test gegen Normalen-
-     Parallelität).
-  4. |⟨d_hat, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst
-     `NichtHorizontal` (Sinus-Test gegen e_z-Parallelität).
-  5. |⟨d_hat, d_hat_S⟩| ≤ Toleranzen.KOLLINEAR_EPS für mindestens einen
-     Sparren S der Dachfläche — sonst `NichtOrthogonalZumSparren`.
-  6. Dachfläche geneigt (α > 0) — sonst `FlacheDachflaeche`
-     (Sparrenrichtung undefiniert).
-  7. **Optional/Warnung**: Querschnitt ∈ { 24/48, 30/50, 40/60 mm }
-     — sonst `AusserStandardquerschnitt` als Hinweis, nicht
-     als harter Fehler.
-- **Edge Cases**:
-  - **Pultlatte am Pultdach**: die zugeordnete Dachfläche besitzt
-    nur eine einzige Sparrenrichtung (entlang der Falllinie der
-    einzigen Dachfläche); Bedingung 4 wird gegen diese
-    Sparrenrichtung geprüft. Definition unverändert anwendbar.
-  - **Sehr flache Dachfläche** (α → 0): Falllinie und damit
-    Sparrenrichtung werden entartet; in diesem Fall ist die
-    Latten-Modellierung nicht anwendbar (Flachdach hat keine
-    Lattung; siehe `dachaufbau` Edge Case Flachdach mit
-    Funktionsklasse `ABDICHTUNG`).
-  - **Latte am Walm / am Grat**: Latten enden an Grat- bzw.
-    Kehlsparren auf Gehrung. Die geometrische Latten-Definition
-    bleibt anwendbar; die Endpunkte p_a, p_e liegen auf der
-    Schnittlinie der parallel-versetzten Ebene E' mit der
-    benachbarten parallel-versetzten Ebene E''.
-  - **Geschiftete Latte** (Latte zwischen Schiftsparren auf einer
-    Walmfläche): geometrisch identisch zur Standardlatte, nur
-    kürzer.
-  - **Ausser-Standard-Querschnitt** (z. B. 50/30 mm hochkant
-    statt liegend): Bedingung 7 schlägt mit Warnung an; die
-    Latten-Definition bleibt geometrisch erfüllt.
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `getrageneSparrenIn(t: Tragwerk): List<Sparren>` — Sparren in
-    `t`, deren Bauteilachse die Lattenbauteilachse innerhalb
-    Toleranzen schneidet (Bemessungs-Hilfsfunktion).
-  - `lattenabstandZuNachbar(l: Latte): Double?` — Achsabstand zur
-    Nachbarlatte entlang d_hat_S, falls beide auf derselben
-    Dachfläche und parallel.
-  - `faserneigung(): Double?` — falls Faserrichtung gesetzt:
-    Winkel zwischen Faserrichtung und Lattenachse; sonst null.
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt `Latte`
-  (deutsch, Glossarbegriff). Spezialisierungen sind nicht
-  vorgesehen; „Traglatte" und „Dachlatte" sind Synonyme, keine
-  Subtypen.
 
 ## Quellen
 

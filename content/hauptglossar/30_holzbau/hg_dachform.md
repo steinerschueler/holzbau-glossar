@@ -13,7 +13,7 @@ quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen): die einzelnen Dachformen (Sattel-, Pult-, Walm-, Krüppelwalm-, Mansard-, Zelt-) werden im Korpus als bekannt vorausgesetzt; ein geschlossener Begriffseintrag „Dachform“ ist nicht geführt."
   - "DIN EN 1991-1-3:2010-12 'Eurocode 1 – Einwirkungen auf Tragwerke – Teil 1-3: Schneelasten', Tab. 5.2 und Bilder 5.1/5.2 (Pult- und Satteldach), Abschnitt 5.3.4 (Mehrfeld-Dächer), Abschnitt 5.3.5 (Tonnendach), Anhang B (Schneeverwehungen, u. a. Sheddach): Dachform-Namen werden operativ als Eingang in Formbeiwerte μ_i verwendet, ohne sie definitorisch festzulegen."
   - "DIN EN 1991-1-4:2010-12 'Eurocode 1 – Einwirkungen auf Tragwerke – Teil 1-4: Windlasten', Abschnitt 7.2: Druck- und Sogbeiwerte werden für Flach-, Pult-, Sattel-, Walm-, Trog- und gebogene Dächer differenziert; die Formen werden vorausgesetzt, nicht definiert."
-  - "DIN 1356-1:1995-02 / :2024-04 'Bauzeichnungen – Teil 1: Arten, Inhalte und Grundregeln der Darstellung': zeichnungstechnische Symbolik für die Darstellung der Dachform in Bauaufrissen (Volltext nicht verifiziert)."
+  - "DIN 1356-1:1995-02 /:2024-04 'Bauzeichnungen – Teil 1: Arten, Inhalte und Grundregeln der Darstellung': zeichnungstechnische Symbolik für die Darstellung der Dachform in Bauaufrissen (Volltext nicht verifiziert)."
   - "buildingSMART, IFC 4.3, IfcRoofTypeEnum: 14 PredefinedType-Werte (FLAT_ROOF, SHED_ROOF, GABLE_ROOF, HIP_ROOF, HIPPED_GABLE_ROOF, GAMBREL_ROOF, MANSARD_ROOF, BARREL_ROOF, RAINBOW_ROOF, BUTTERFLY_ROOF, PAVILION_ROOF, DOME_ROOF, FREEFORM, USERDEFINED, NOTDEFINED) als externes Pendant; https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcRoofTypeEnum.htm. [direkt]"
 quellen_sekundär:
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015, Kap. 'Dachformen'."
@@ -113,13 +113,13 @@ Sei
 
 - d = (T, 𝒟, A) ein Dach im Sinne von `dach` mit Dachflächen-Familie
   𝒟 = { D₁, …, D_m }, m ≥ 1, D_i = (E_i, P_i, n_{a,i}),
-- α_i := α(D_i) ∈ [0, π/2) die Dachneigung jeder Dachfläche D_i
+- α_i:= α(D_i) ∈ [0, π/2) die Dachneigung jeder Dachfläche D_i
   nach `dachneigung`,
 - K(D_i, D_j) ⊂ ℝ³ der Schnitt der berandeten Dachflächen
   F(P_i) ∩ F(P_j) für i ≠ j; dieser Schnitt ist entweder leer, ein
   einzelner Punkt oder eine Strecke (gemeinsame Randstrecke) gemäß
   der Selbstüberlapps-Bedingung in `dach`,
-- 𝓚(d) := { K(D_i, D_j) | i ≠ j, K(D_i, D_j) ist eine Strecke } die
+- 𝓚(d):= { K(D_i, D_j) | i ≠ j, K(D_i, D_j) ist eine Strecke } die
   Menge der gemeinsamen Randstrecken,
 - klass: 𝓚(d) → {first, grat, kehle} die Klassifikation jeder
   gemeinsamen Randstrecke gemäß den Einträgen `first`, `grat`,
@@ -136,12 +136,12 @@ Dann ist die **Dachform** von d die Klassifikations-Funktion
 
 ```
 form: Dach → 𝓕
-form(d) := Φ( m, (α_i)_{i=1..m}, 𝓚(d), klass, (κ_i)_{i=1..m} )
+form(d):= Φ(m, (α_i)_{i=1..m}, 𝓚(d), klass, (κ_i)_{i=1..m})
 ```
 
 wobei
 
-- 𝓕 := { Flachdach, Pultdach, Satteldach, Walmdach,
+- 𝓕:= { Flachdach, Pultdach, Satteldach, Walmdach,
   Krüppelwalmdach, Zeltdach, Mansarddach(s, β), Schmetterlingsdach,
   Sheddach(n), Tonnendach, Bogendach(r) } ∪ {Freiform}
   der endliche Werte-Katalog ist (zwölf etablierte Formen plus
@@ -198,7 +198,7 @@ Fällen `Schmetterlingsdach`. „Trogdach" wird als Synonym von
 Schmetterlingsdach geführt, nicht als eigener Φ-Wert.
 ```
 
-ε_α := Toleranzen.WINKEL_EPS ist der Grenzwert, ab dem eine
+ε_α:= Toleranzen.WINKEL_EPS ist der Grenzwert, ab dem eine
 einzelne Dachfläche als „nicht horizontal" gilt; faktisch wird in
 der Praxis ein größerer Schwellenwert (etwa 7°/10° nach Lignum)
 verwendet, dieser ist aber **nicht normativ** und gehört in die
@@ -388,141 +388,6 @@ sind im Quellenkonflikt-Block beschrieben.
     ein Bauwerk kann mehrere Dächer unterschiedlicher Dachform
     tragen.
 
-## Implementierungshinweis
-
-Die Dachform wird im Code als **`sealed class Dachform`** modelliert,
-weil einige Form-Werte parametrisch sind (Mansarddach: Seitenzahl
-und Knickwinkel; Sheddach: Anzahl Pult-Elemente; Krüppelwalmdach:
-Krüppel-Höhe oder -Anteil; Bogendach: Krümmungsradius). Ein reines
-`enum class` reicht für diese Werte nicht aus.
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-/**
- * Dachform: klassifikatorisches geometrisches Merkmal eines Daches.
- * Glossar: hg_dachform.md
- *
- * Strukturell ein Wert am `Dach`, keine eigene Identität. Wird über
- * `Dach.dachform()` aus der Topologie der Dachflächen-Familie 𝒟
- * abgeleitet.
- *
- * Sealed-Hierarchie (nicht Enum), weil einige Werte parametrisch
- * sind (Mansarddach, Sheddach, Krüppelwalmdach, Bogendach).
- */
-sealed class Dachform {
-
-    /** m = 1, α ≤ Toleranzen.WINKEL_EPS. */
-    data object Flachdach : Dachform()
-
-    /** m = 1, α > Toleranzen.WINKEL_EPS. */
-    data object Pultdach : Dachform()
-
-    /** m = 2, ein horizontaler First. */
-    data object Satteldach : Dachform()
-
-    /** m = 4, ein First plus zwei Walme bis zur Traufe. */
-    data object Walmdach : Dachform()
-
-    /**
-     * Wie Walmdach, Walme erreichen nicht die Traufe.
-     * @param kruppelHoeheAnteil h_k / h_g ∈ (0, 1) — Verhältnis
-     *        der Krüppelwalm-Höhe zur Giebelhöhe.
-     */
-    data class Krueppelwalmdach(val kruppelHoeheAnteil: Double) : Dachform()
-
-    /** m ≥ 3, alle Dachflächen treffen in einer Spitze. */
-    data object Zeltdach : Dachform()
-
-    /**
-     * Pro Dachseite zwei Neigungs-Segmente mit horizontalem Knick.
-     * @param seiten 2 (entspricht IFC GAMBREL_ROOF, Sattel-Variante)
-     *               oder 4 (entspricht IFC MANSARD_ROOF, Walm-Variante).
-     * @param knickwinkel β ∈ (0, π/2) — Knickwinkel zwischen oberem
-     *                   und unterem Segment, in Radiant.
-     */
-    data class Mansarddach(val seiten: Int, val knickwinkel: Double) : Dachform()
-
-    /** m = 2, ein zentrale Kehle (V-förmig). */
-    data object Schmetterlingsdach : Dachform()
-
-    /**
-     * n hintereinander gereihte Pult-Elemente mit lotrechten
-     * Zwischenflächen.
-     * @param anzahlSheds n ≥ 2.
-     */
-    data class Sheddach(val anzahlSheds: Int) : Dachform()
-
-    /** Halbkreis-Querschnitt. */
-    data object Tonnendach : Dachform()
-
-    /**
-     * Kreissegment-Querschnitt kleiner als Halbkreis.
-     * @param kruemmungsradius r > 0 in mm.
-     */
-    data class Bogendach(val kruemmungsradius: Double) : Dachform()
-
-    /** Ausweichwert für nicht klassifizierbare Geometrien. */
-    data object Freiform : Dachform()
-}
-
-/**
- * Klassifikations-Funktion form: Dach → 𝓕.
- * Glossar: hg_dachform.md, Mathematische Definition.
- */
-fun Dach.dachform(): Dachform = TODO("Implementierung folgt in Etappe Walmdach-Tool")
-```
-
-- **Einheit**: Knickwinkel β intern in **Radiant** (Double);
-  Krümmungsradius in **mm** (Double); Krüppelwalm-Anteil
-  **dimensionslos** (Double in (0, 1)). Anzeige in Grad
-  ausschließlich am API-Rand.
-- **Identität**: keine. Dachform ist ein Wert am Dach, kein Objekt
-  mit eigener UUID.
-- **Invarianten**:
-  - `Krueppelwalmdach.kruppelHoeheAnteil` ∈ (0, 1); 0 entspricht
-    Walmdach, 1 entspricht Satteldach mit beidseitigem Giebel.
-  - `Mansarddach.seiten` ∈ {2, 4}; andere Werte sind unzulässig.
-  - `Mansarddach.knickwinkel` ∈ (Toleranzen.WINKEL_EPS,
-    π/2 − Toleranzen.WINKEL_EPS).
-  - `Sheddach.anzahlSheds` ≥ 2; n = 1 ist Pultdach.
-  - `Bogendach.kruemmungsradius` > 0 mm.
-- **Edge Cases**:
-  - **Mehrfach-Klassifikation**: bei Mischformen (z. B.
-    Mansard-Sattel mit unterschiedlichen Knickwinkeln auf den
-    zwei Seiten) liefert `Dach.dachform()` `Dachform.Freiform`.
-  - **Grenzfälle Walm ↔ Zelt**: First-Länge ≤
-    `Toleranzen.LAENGE_EPS` ⇒ Zeltdach.
-  - **Grenzfälle Walm ↔ Krüppelwalm**: Krüppel-Höhen-Anteil ≤
-    `Toleranzen.LAENGE_EPS`-relativ ⇒ Walmdach.
-  - **Pyramidendach**: spezifischer Subfall des Zeltdachs mit
-    vier gleichen Dachflächen über quadratischem Grundriss; im
-    Code als Eigenschaft `Zeltdach.istPyramide()` (Folgearbeit),
-    nicht als eigener Wert.
-- **IFC-Mapping** (Folgearbeit im IFC-Export-Modul):
-  - `Flachdach` → `FLAT_ROOF`
-  - `Pultdach` → `SHED_ROOF`
-  - `Satteldach` → `GABLE_ROOF`
-  - `Walmdach` → `HIP_ROOF`
-  - `Krueppelwalmdach` → `HIPPED_GABLE_ROOF`
-  - `Zeltdach` → `PAVILION_ROOF`
-  - `Mansarddach(2, β)` → `GAMBREL_ROOF`
-  - `Mansarddach(4, β)` → `MANSARD_ROOF`
-  - `Schmetterlingsdach` → `BUTTERFLY_ROOF`
-  - `Sheddach(n)` → Komposition von n × `SHED_ROOF` **oder**
-    `FREEFORM` mit `ObjectType = "Sheddach"`; Behandlung im
-    IFC-Export entscheiden (siehe Quellenkonflikt).
-  - `Tonnendach` → `BARREL_ROOF`
-  - `Bogendach(r)` → `RAINBOW_ROOF`
-  - `Freiform` → `FREEFORM` mit `ObjectType`-String.
-- **Verwendungsregel**: Funktionen der Last-Eingabe (Schneelast,
-  Windlast) nehmen die Dachform als Klassifikations-Eingang, um die
-  passenden Formbeiwerte aus EN 1991-1-3 bzw. EN 1991-1-4
-  auszuwählen. Die Geometrie selbst (α_i, Stützweiten) bleibt
-  unabhängig führend.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -534,7 +399,7 @@ fun Dach.dachform(): Dachform = TODO("Implementierung folgt in Etappe Walmdach-T
   Bilder 5.1/5.2, Anhang B.
 - DIN EN 1991-1-4:2010-12, „Eurocode 1: Einwirkungen auf
   Tragwerke – Teil 1-4: Windlasten", Abschnitt 7.2.
-- DIN 1356-1:1995-02 / :2024-04, „Bauzeichnungen – Teil 1:
+- DIN 1356-1:1995-02 /:2024-04, „Bauzeichnungen – Teil 1:
   Arten, Inhalte und Grundregeln der Darstellung", Abschnitt 5
   (Volltext nicht verifiziert).
 

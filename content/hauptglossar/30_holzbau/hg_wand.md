@@ -40,7 +40,7 @@ quellen_sekundär:
   - "Großmann, R.: Konstruktionen des deutschen Fachwerkbaus. 1987 — TTH-Primärquelle der Fachwerk-Wand-Komposition."
   - "Thesaurus Traditioneller Holzbau (TTH), RWTH Aachen, Hierarchie-Facette 1922 'Fachwerk-Bauteile'."
   - "buildingSMART International: 'IFC4.3 Documentation' (Version 4.3.2.0, 2024), `IfcWall` und `IfcElementAssembly` (PredefinedType BRACED_FRAME, RIGID_FRAME)."
-  - "Recherche-Bericht: docs/recherche/2026-05-16_wand_aggregat.md (§B Aggregat-Architektur, §C Wand-Aggregat, §G Drift-Funde, §J CH-Asymmetrie)."
+  - "Recherche-Bericht: [intern] (§B Aggregat-Architektur, §C Wand-Aggregat, §G Drift-Funde, §J CH-Asymmetrie)."
 quellenkonflikt: |
   Sechs Punkte werden hier ausdrücklich aufgelöst.
 
@@ -220,14 +220,14 @@ Sei
 - 𝒰 der UUID-Raum nach `uuid`,
 - 𝒢_huelle die Menge der zulässigen Hüllgeometrie-Repräsentationen
   einer Bauteilgruppe (siehe `bauteilgruppe`),
-- e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-  ε_L := Toleranzen.LAENGE_EPS.
+- e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS.
 
 Dann ist eine **Wand** ein Tupel
 
 ```
-W := (uuid, schwellen, raehm, staender, riegel, streben,
+W:= (uuid, schwellen, raehm, staender, riegel, streben,
       kopfbaender, fussbaender, knaggen, wandebene,
       lage, huelle, funktion?, bezeichnung?)
 ```
@@ -280,7 +280,7 @@ und den Konsistenzbedingungen
    (uuid, bestandteile, lage, huelle, funktion?, bezeichnung?)
    mit
    ```
-   bestandteile := schwellen ∪ raehm ∪ staender ∪ riegel ∪
+   bestandteile:= schwellen ∪ raehm ∪ staender ∪ riegel ∪
                    streben ∪ kopfbaender ∪ fussbaender ∪ knaggen
    ```
    erfüllt alle Konsistenzbedingungen 1–4 von `bauteilgruppe`
@@ -340,7 +340,7 @@ und den Konsistenzbedingungen
 Die **geometrische Punktmenge** der Wand in W ist
 
 ```
-G_W(W) := lage(G_lokal(huelle)) ⊂ ℝ³
+G_W(W):= lage(G_lokal(huelle)) ⊂ ℝ³
 ```
 
 (transformierte Hülle); die Vereinigung der Bestandteils-
@@ -535,7 +535,7 @@ ist Modell-zeitlich.
 
 Die Default-Modellierung dieses Eintrags ist die
 **Riegelbau-CH-Lesart** mit allen Aussteifungs-Bauteilen
-optional. Eric als CH-Zimmermann arbeitet primär in dieser
+optional. Anweiser als CH-Zimmermann arbeitet primär in dieser
 Lesart; die Welle-12-Setzung ist auf seinen
 CH-Berufskorpus zugeschnitten.
 
@@ -647,144 +647,6 @@ CH-Berufskorpus zugeschnitten.
     Strebe-Pfosten-Zapfen); sie ist selbst keine
     Verbindung.
 
-## Implementierungshinweis
-
-**Im aktuellen Glossarstand wird keine eigene Code-Klasse
-`Wand` angelegt.** Die ontologische Vorbereitung lebt zunächst
-nur im Glossar; eine Code-Klasse entsteht zusammen mit dem
-ersten konkreten Tool, das eine Wand als Bauteilgruppe
-modelliert (zugleich Trigger für `vorgefertigtes_wandelement`
-und ggf. die Schicht-Aggregat-Familie). Der folgende Skizzen-
-Code ist ausschliesslich orientierender Implementierungshinweis
-für diesen Zeitpunkt und folgt der Sealed-Hierarchie unter
-`Bauteilgruppe` aus `hg_bauteilgruppe.md`, strukturparallel zur
-Walm-/Binder-Skizze in `hg_walm.md`/`hg_binder.md`.
-
-```kotlin
-// SKIZZE — nicht jetzt anlegen.
-// Glossar: hg_wand.md
-
-package domain.bauteil
-
-import domain.bauteil.Bauteilgruppe
-import domain.bauteil.Schwelle
-import domain.bauteil.Raehm
-import domain.bauteil.Staender
-import domain.bauteil.Riegel
-import domain.bauteil.Strebe
-import domain.bauteil.Kopfband
-import domain.bauteil.Fussband
-import domain.bauteil.Knagge
-import domain.geometrie.Ebene
-import java.util.UUID
-
-/**
- * Wand: Bauteilgruppe aus Schwelle(n), Rähm(en), Ständern und
- * optional Riegeln, Streben, Kopf-/Fussbändern und Knaggen,
- * deren Bauteilachsen in einer gemeinsamen lotrechten Wandebene
- * liegen.
- *
- * Sealed unter Bauteilgruppe; konkrete Sub-Typen
- * (vorgefertigtes Wandelement, Aussenwand, Innenwand) entstehen
- * trigger-basiert.
- */
-sealed class Wand : Bauteilgruppe() {
-    abstract val schwellen: Set<Schwelle>          // |schwellen| >= 1
-    abstract val raehm: Set<Raehm>                 // |raehm| >= 1
-    abstract val staender: Set<Staender>           // |staender| >= 2
-    abstract val riegel: Set<Riegel>               // >= 0
-    abstract val streben: Set<Strebe>              // >= 0
-    abstract val kopfbaender: Set<Kopfband>        // >= 0
-    abstract val fussbaender: Set<Fussband>        // >= 0
-    abstract val knaggen: Set<Knagge>              // >= 0
-    abstract val wandebene: Ebene                  // lotrecht
-    abstract val funktion: WandFunktion?           // optional
-
-    init {
-        // 1. schwellen.size >= 1
-        // 2. raehm.size >= 1
-        // 3. staender.size >= 2
-        // 4. wandebene lotrecht
-        // 5. alle Bauteilachsen in Wandebene (Toleranzband eps_L)
-        // 6. Ständer zwischen Schwelle und Rähm verankert
-        // 7. Bauteilrollen-Constraints geerbt
-        // 8. Bauteilgruppen-Bedingungen geerbt
-    }
-}
-
-enum class WandFunktion {
-    AUSSTEIFEND,                     // Wandscheibe (DIN EN 1995-1-1 §9.2)
-    LASTTRAGEND_NICHT_AUSSTEIFEND,   // trägt vertikal, nicht horizontal
-    NICHT_TRAGEND,                   // rein raumabschliessend
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant;
-  Lage als SE(3)-Element.
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7);
-  externe Referenzen auf eine Wand gehen ausschliesslich auf
-  diese UUID. Bestandteile (Schwellen, Rähm, Ständer, ...)
-  werden über ihre jeweiligen UUIDs referenziert (Foreign-Key-
-  Regel, Memory `project_bauteil_identifikation`).
-- **Invarianten** (in `init` bzw. Fabrikfunktionen prüfen, bei
-  Verletzung `Resultat.Fehler` bzw. `Entartet`-Variante; niemals
-  Exception werfen):
-  1. `schwellen.size >= 1` ⇒ sonst `Entartet.KeineSchwelle`.
-  2. `raehm.size >= 1` ⇒ sonst `Entartet.KeinRaehm`.
-  3. `staender.size >= 2` ⇒ sonst `Entartet.ZuWenigStaender`.
-  4. Wandebene lotrecht: `|n_hat_W · e_z| ≤ Toleranzen.KOLLINEAR_EPS`
-     ⇒ sonst `Entartet.WandebeneNichtLotrecht`.
-  5. Für jedes Bauteil b ∈ bestandteile: beide Endpunkte der
-     Bauteilachse liegen in der Wandebene
-     (Punkt-Ebene-Abstand ≤ `Toleranzen.LAENGE_EPS`) ⇒ sonst
-     `Entartet.BauteilAusserhalbWandebene`.
-  6. Für jeden Ständer p ∈ staender: ein Endpunkt von a(p) liegt
-     auf einer Schwellen-Achse, der andere auf einer Rähm-Achse
-     ⇒ sonst `Entartet.StaenderOhneAnschluss`.
-  7. **Exklusive Mitgliedschaft** (geerbt von `bauteilgruppe`):
-     kein Bauteil b ∈ bestandteile ist zugleich Bestandteil
-     einer anderen Wand-Bauteilgruppe oder eines geschwister-
-     lichen Aggregats, das es als Mitglied führen würde
-     (Andreaskreuz, Mann). Bei Verletzung
-     `Entartet.MehrfachMitgliedschaft`.
-- **Edge Cases**:
-  - **Wand mit nur Schwelle + Rähm + 2 Ständern (Eckwand-
-    Mindestform)**: zulässig; entartet zu einem einzigen
-    Gefach ohne Aussteifung.
-  - **Wand mit Doppel-Rähm oder Stockschwelle**: zulässig;
-    |raehm| > 1 oder |schwellen| > 1.
-  - **Eckwand-Übergang**: zwei Wände treffen rechtwinklig in
-    einem Eckständer; der Eckständer wird einer der beiden
-    Wände zugeordnet (Modell-Entscheidung).
-  - **T-Stoss-Wand**: eine Wand stösst in der Mitte an eine
-    andere; die anschliessende Wand hat einen Eckständer,
-    der nicht zur Hauptwand gehört.
-  - **Wand mit Andreaskreuz / Mann-Figur**: die Bauteile des
-    Andreaskreuzes/Manns werden je nach Modell-Entscheidung
-    entweder der Wand-Bauteilgruppe **oder** dem
-    Andreaskreuz-/Mann-Aggregat zugeordnet, nicht beiden
-    (exklusive Mitgliedschaft).
-  - **Holzrahmenbau-Wand ohne Diagonal-Bauteile**: zulässig;
-    alle Aussteifungs-Mengen leer. Die Aussteifungs-Funktion
-    erfolgt über das parallele Schicht-Aggregat (Folgearbeit).
-  - **Wand mit gebrochener oder geknickter Grundrissform**:
-    nicht zulässig — eine geknickte Wand-Form wird als
-    **zwei oder mehr separate Wand-Bauteilgruppen**
-    modelliert, je eine pro Wandebene. Polygonal-Wände
-    sind Folgearbeit (IFC `IfcWall.PredefinedType.POLYGONAL`).
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `geometrieInWelt(): GeometrieInW` = `lage(huelle)` als
-    transformierte Hülle in W (geerbt von `Bauteilgruppe`).
-  - `laenge(): Double` (mm) = horizontale Ausdehnung der
-    Wand in der Wandebene; aus Schwelle abgeleitet.
-  - `hoehe(): Double` (mm) = vertikale Ausdehnung der Wand;
-    aus z-Differenz Schwelle/Rähm.
-  - `istWandscheibe(): Boolean` = `funktion == AUSSTEIFEND`.
-  - `aussteifungs_typ(): Set<Aussteifungstyp>` =
-    {DIAGONAL_STREBE, DIAGONAL_BAND, ANDREASKREUZ_VERWANDT,
-    BEPLANKUNG_VERWANDT, ...} abgeleitet aus der
-    Komposition.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -827,50 +689,8 @@ enum class WandFunktion {
 - Wikipedia, Lemma „Wand" (allgemeine Architektur-Lesart).
 - Wikipedia, Lemma „Riegelbau" / „Ständerbauweise".
 - Recherche-Bericht:
-  `docs/recherche/2026-05-16_wand_aggregat.md`.
+  [intern].
 - Recherche-Bericht (Vorgänger):
-  `docs/recherche/2026-05-15_pfosten_staender.md`,
-  `docs/recherche/2026-05-15_strebe_kopfband_bug.md`,
-  `docs/recherche/2026-05-15_fussband_knagge.md`.
-
-## Folgearbeit (trigger-basiert)
-
-1. **`vorgefertigtes_wandelement`** — Holztafelbau-Wand als
-   werkseitig vorgefertigte Liefereinheit. Trigger: erstes
-   Tool zur Holztafelbau-Modellierung.
-2. **Schicht-Aggregat-Familie** (`schicht_aggregat`,
-   `beplankungs_aggregat`, `daemm_aggregat`) — orthogonale
-   Aggregat-Linie für Wand-Schichten (Beplankung, Dämmung,
-   Verkleidung). Trigger: erste Holzrahmenbau-/Tafelbau-
-   Modellierung mit Beplankungs-Aussteifung.
-3. **`raumwand`** (Cluster `40_architektur/`) — architektonische
-   Wand-Lesart (Lesart A). Trigger: erste Raumplanungs-/
-   Architektur-Tool-Linie.
-4. **`brandwand`**, **`trennwand`** — brandschutz- bzw.
-   nutzungstechnische Wand-Spezialisierungen. Trigger:
-   Brandschutz-/Raumakustik-Tool-Erweiterung.
-5. **Code-Klasse `Wand`** und Sealed-Hierarchie. Trigger:
-   erstes Tool, das Wand-Aggregate als Modell-Entität führt
-   (`hg_bauteilgruppe.md` Z. 325–333).
-6. **SIA-265-Verifikation**: bei Volltext-Zugriff (Eric)
-   SIA 265:2021 §1.1 Fachausdrücke direkt prüfen, ob „Wand"
-   und „Wandscheibe" als Lemmata geführt sind.
-7. **Lignum HBT 1 (2024)-Verifikation der CH-Aussteifungs-
-   Praxis**: bei Eric-Zugang punktuelle Begriffsregister-
-   Sichtung; bestätigt oder präzisiert die Riegelbau-CH-
-   Default-Modellierung.
-
-**R-Schritt-Drift in bestehenden Einträgen** (bei R2 dieser
-Welle nachgezogen):
-
-- **`hg_strebe.md`, `hg_kopfband.md`, `hg_fussband.md`,
-  `hg_riegel.md`, `hg_staender.md`** verwenden in
-  Folgearbeit-Triggern und Beziehungs-Abschnitten den
-  Begriff `wandbauteil` als geplante Zwischenebene /
-  Sammel-Sealed-Hierarchie. Dieser Begriff ist mit Welle 12
-  aufgelöst (siehe Quellenkonflikt-Block (6)): die
-  Sammel-Funktion wird durch die Mitgliedschaft im
-  `wand`-Aggregat erfüllt, eine `wandbauteil`-Zwischenebene
-  ist nicht erforderlich. Bei R2 werden die fünf Einträge
-  textuell aktualisiert (Folgearbeit-Trigger umformuliert
-  auf `wand`-Aggregat-Mitgliedschaft).
+  [intern],
+  [intern],
+  [intern].

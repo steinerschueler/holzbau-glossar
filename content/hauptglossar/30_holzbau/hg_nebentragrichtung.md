@@ -29,7 +29,7 @@ quellenkonflikt: |
   - Die **Nebentragrichtung** ist der Einheitsvektor in W, in der
     Plattenebene, rechtwinklig zur Haupttragrichtung.
   - Sie ist eine **abgeleitete, redundante Größe**:
-    `nebentragrichtung := plattendicken_achse × haupttragrichtung`.
+    `nebentragrichtung:= plattendicken_achse × haupttragrichtung`.
     Sie wird im Datenmodell explizit geführt, weil:
     1. UI und Bemessungsformeln auf sie direkt zugreifen
        (f_m,90, E_90).
@@ -67,7 +67,7 @@ Sei
 Dann ist die **Nebentragrichtung** definiert als
 
 ```
-nebentragrichtung := n_hat := e_hat_d × h_hat ∈ S².
+nebentragrichtung:= n_hat:= e_hat_d × h_hat ∈ S².
 ```
 
 Die Orthogonalitäts-Bedingung ⟨h_hat, e_hat_d⟩ = 0 sichert ‖n_hat‖ = 1 (siehe
@@ -207,80 +207,6 @@ konsistent mit:
     L-Richtung der Holzfaser einer einzelnen Holzlamelle. Die
     Nebentragrichtung ist eine makroskopische Plattenebenen-
     Bemessungsachse, kein Materialachsen-Vektor einer Lage.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.holzbau.werkstoff`):
-
-```kotlin
-package domain.holzbau.werkstoff
-
-import domain.geometrie.Einheitsvektor
-
-/**
- * Nebentragrichtung eines Mehrlagenholzes (CLT/BSP, Sperrholz,
- * Multiplex): Einheitsvektor in der Plattenebene, rechtwinklig
- * zur Haupttragrichtung.
- * Glossar: hg_nebentragrichtung.md — ProHolz Austria 2014.
- *
- * Strukturell ein Wrapper um Einheitsvektor; semantische Rolle
- * 'Bauteil-90°-Bemessungsachse'. Pflichtfeld bei Mehrlagenholz.
- *
- * Mathematisch redundant: nebentragrichtung := plattendicken_achse
- * x haupttragrichtung. Wird trotzdem explizit gespeichert
- * (API-Klarheit, Konsistenzpruefung).
- *
- * Konstruktions-Invarianten:
- *   N1: orthogonal zur Plattendicken-Achse (innerhalb WINKEL_EPS).
- *   N2: orthogonal zur Haupttragrichtung (innerhalb WINKEL_EPS).
- *   N3: nebentragrichtung = plattendicken_achse x haupttragrichtung
- *       (innerhalb NORM_EPS).
- *   N4: Norm-Invariante (geerbt).
- */
-@JvmInline
-value class Nebentragrichtung(val richtung: Einheitsvektor) {
-    val x: Double get() = richtung.x
-    val y: Double get() = richtung.y
-    val z: Double get() = richtung.z
-
-    operator fun unaryMinus(): Nebentragrichtung =
-        Nebentragrichtung(-richtung)
-
-    companion object {
-        /**
-         * Konstruiert die Nebentragrichtung aus Plattendicken-Achse
-         * und Haupttragrichtung (Default-Konstruktion).
-         */
-        fun ausPlattenachsen(
-            plattendickenAchse: Einheitsvektor,
-            haupttragrichtung: Einheitsvektor
-        ): Resultat<Nebentragrichtung, EntartetGeometrie> { /* Kreuzprodukt + Normierung */ TODO() }
-    }
-}
-```
-
-- **Einheit**: dimensionslos (geerbt).
-- **Invarianten**: alle Invarianten von `Einheitsvektor` plus N1,
-  N2, N3; geprüft in `Mehrlagenholz.init`, weil dort
-  Plattendicken-Achse und Haupttragrichtung verfügbar sind.
-- **Vorzeichenkonvention**: durch Kreuzprodukt-Definition fest;
-  konsistent mit Welt-Rechtssystem.
-- **Edge Cases**:
-  - **Inkonsistenz mit e_hat_d × h_hat** (N3 verletzt):
-    `Entartet.NebentragrichtungInkonsistent`.
-  - **Verletzte Orthogonalität (N1 oder N2)**:
-    `Entartet.NebentragrichtungNichtOrthogonal`.
-  - **Mehrlagenholz mit nicht-orthogonalen h_hat und e_hat_d**: das ist
-    bereits in `mehrlagenholz` Konstruktions-Invariante; bei
-    Verletzung scheitert die Werkstoff-Konstruktion vor der
-    Nebentragrichtungs-Berechnung.
-- **IFC-Mapping** (Persistenzschicht): nicht direkt abgebildet;
-  die Nebentragrichtung ergibt sich implizit aus
-  Layer-Set-Direction und 0°/90°-Konvention der Lagenstruktur.
-- **Verwendungsregel**: Funktionen, die Plattenfestigkeiten f_m,90
-  / E_90 verwenden, nehmen `Nebentragrichtung` als typsicheren
-  Parameter, nicht den nackten `Einheitsvektor`.
 
 ## Quellen
 

@@ -84,10 +84,7 @@ quellenkonflikt: |
     eigenen Hauptglossar-Eintrag; sie ist als
     `SchichtFunktion.KONTERLATTUNG` im `hg_dachaufbau.md`-Aggregat
     geführt. Strukturparallel zur `latte`/`traglattung`-Asymmetrie.
-  - **„counter batten" / „counter lath"** sind englische Pendants;
-    nach CLAUDE.md / Eric-Linie sind englische Fachbegriffe in der
-    Hauptdefinition nicht zulässig und auch nicht als Synonyme
-    geführt; sie stehen in `abgelehnte_benennungen` als
+  - **„counter batten" / „counter lath"** sind englische Pendants; sie stehen in `abgelehnte_benennungen` als
     Anglizismus-Sperre.
   - **„Dachlatte"** und **„Traglatte"** bezeichnen im DACH-Korpus
     eindeutig die `latte`-Bauteilrolle (rechtwinklig zum Sparren)
@@ -122,7 +119,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = `Bauteilachse.Gerade`(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - D = (E, P, n_a) eine Dachfläche im Sinne von `dachflaeche` mit
   Trägerebene E (Stützpunkt p₀ ∈ E), Polygon P und äußerer
   Einheits-Normalen n_a ∈ S²,
@@ -131,10 +128,10 @@ Sei
 - h_K ∈ ℝ mit h_K > 0 der **Versatz** der Konterlatte zur
   Trägerebene E in Richtung n_a (≡ Höhe der Konterlatte im
   prismatischen Standardfall),
-- ε_W := Toleranzen.WINKEL_EPS,
-  ε_L := Toleranzen.LAENGE_EPS.
+- ε_W:= Toleranzen.WINKEL_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS.
 
-Sei E_K(h_K) := { x ∈ ℝ³ | ⟨n_a, x − p₀⟩ = h_K } die zur Trägerebene
+Sei E_K(h_K):= { x ∈ ℝ³ | ⟨n_a, x − p₀⟩ = h_K } die zur Trägerebene
 E in Richtung n_a um h_K parallel-versetzte Ebene.
 
 Dann heißt B eine **Konterlatte** der Dachfläche D mit Versatz h_K
@@ -177,15 +174,15 @@ genau dann, wenn die folgenden Bedingungen erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Konterlattenlänge**: L_K := ‖p_e − p_a‖ (in mm), entlang der
+- **Konterlattenlänge**: L_K:= ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen den Konterlattenenden. Im prismatischen
   Standardfall gilt L_K = L_S für den darunter liegenden
   Sparren.
 - **Konterlatten-Versatz** (= Lüftungsspaltmaß zur Trägerebene):
-  h_K := ⟨n_a, p_a − p₀⟩ (in mm); nach Bed. 3 ist h_K für p_a und
+  h_K:= ⟨n_a, p_a − p₀⟩ (in mm); nach Bed. 3 ist h_K für p_a und
   p_e bis auf ε_L identisch.
 - **Konterlatten-Neigung** (= Sparren-Neigung = Dachneigung
-  der zugeordneten Dachfläche): α_K := α (siehe
+  der zugeordneten Dachfläche): α_K:= α (siehe
   `hg_dachneigung.md`), aus Bed. 2 und Bed. 4 folgend.
 
 ## Wohldefiniertheit
@@ -440,154 +437,6 @@ geführt — strukturparallel zur `latte` / `traglattung`-Asymmetrie.
     siehe `hg_dachaufbau.md` `SchichtFunktion.KONTERLATTUNG`):
     Schicht-/Plural-Lesart dieses Bauteils; die Konterlatte ist
     ein einzelnes Element dieser Schicht.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.bauteil.Bauteilgeometrie
-import domain.bauteil.Dachflaeche
-import domain.bauteil.Sparren
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Punkt
-import domain.holzbau.Faserrichtung
-
-/**
- * Konterlatte als Bauteilrolle: Stab-Bauteil parallel zum Sparren,
- * parallel-versetzt zur Trägerebene der zugeordneten Dachfläche,
- * Schicht zwischen Unterdach/Sparren und Traglattung.
- *
- * Glossar: hg_konterlatte.md
- *
- * Vorzeichenkonvention (normativ, identisch zu Sparren):
- *   p_a am traufseitigen Achsenendpunkt,
- *   p_e am firstseitigen Achsenendpunkt,
- *   d_hat zeigt nach oben (⟨d_hat, e_z⟩ ≥ 0), entgegen der Falllinie e_hat_fall.
- *
- * Versatz h_K (in mm) = ⟨n_a, p_a − p₀⟩ ≥ Toleranzen.LAENGE_EPS;
- * im prismatischen Standardfall identisch zur Konterlattenhöhe.
- *
- * Querschnitts- und Werkstoff-Annotationen werden vom umschlossenen
- * Bauteil übernommen. Faserrichtung ist im Regelfall parallel zur
- * Bauteilachse zu setzen.
- */
-data class Konterlatte(
-    val bauteil: Bauteil,
-    val dachflaeche: Dachflaeche,
-    val versatz: Double                       // mm, = h_K
-) {
-    init {
-        require(bauteil.geometrie is Bauteilgeometrie.Stab) {
-            "Konterlatte erfordert Stabgeometrie"
-        }
-        require(versatz > Toleranzen.LAENGE_EPS) {
-            "Konterlatte erfordert positiven Versatz h_K > LAENGE_EPS"
-        }
-        // Lage-, Falllinien- und Richtungs-Bedingungen werden in der
-        // Factory konterlatteAusBauteil(...) geprüft und liefern bei
-        // Verletzung Resultat.Fehler mit KonterlatteEntartet-Variante.
-    }
-
-    val traufseitigerEndpunkt: Punkt get() = achse().anfang
-    val firstseitigerEndpunkt: Punkt get() = achse().ende
-    val laenge: Double get() = achse().laenge        // mm
-    val neigung: Double                              // rad
-        get() = dachflaeche.dachneigung()
-
-    private fun achse(): Bauteilachse.Gerade =
-        (bauteil.geometrie as Bauteilgeometrie.Stab).achse
-                as Bauteilachse.Gerade
-}
-
-sealed class KonterlatteEntartet {
-    object Nullachse                : KonterlatteEntartet()
-    object FlacheDachflaeche        : KonterlatteEntartet()
-    object NichtParallelVersetzt    : KonterlatteEntartet()
-    object NichtAufFalllinie        : KonterlatteEntartet()
-    object FalscheRichtung          : KonterlatteEntartet()
-    object UnzulaessigerVersatz     : KonterlatteEntartet()  // h_K ≤ 0
-}
-```
-
-- **Einheit**: Längen und Versatz in mm (Double); Winkel intern in
-  Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (in der Factory `konterlatteAusBauteil(...)`
-  prüfen, bei Verletzung `Resultat.Fehler` mit der jeweiligen
-  `KonterlatteEntartet`-Variante; niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > `Toleranzen.LAENGE_EPS` — sonst `Nullachse`.
-  3. Dachfläche geneigt (α > `Toleranzen.WINKEL_EPS`) — sonst
-     `FlacheDachflaeche`.
-  4. Versatz `h_K > Toleranzen.LAENGE_EPS` — sonst
-     `UnzulaessigerVersatz`.
-  5. `|⟨n_a, p_a − p₀⟩ − h_K| ≤ Toleranzen.LAENGE_EPS` und
-     `|⟨n_a, p_e − p₀⟩ − h_K| ≤ Toleranzen.LAENGE_EPS` — sonst
-     `NichtParallelVersetzt`.
-  6. `|⟨d_hat, e_hat_fall⟩| ≥ 1 − Toleranzen.WINKEL_EPS` — sonst
-     `NichtAufFalllinie`.
-  7. `⟨d_hat, e_hat_fall⟩ ≤ −1 + Toleranzen.WINKEL_EPS` (d_hat zeigt nach
-     oben) — sonst `FalscheRichtung` (Konsumenten können hier
-     durch Achsen-Umkehr automatisch korrigieren).
-- **Toleranz-Konventionen** (siehe `HG_KONVENTIONEN.md` §4):
-  Bedingungen 2, 4, 5 sind Längen-/Abstands-Tests (Lage-
-  Bedingungen auf E_K) und verwenden `LAENGE_EPS`. Bedingung 3
-  ist ein Winkel-Vergleich auf die Dachneigung (gegen ε_W am
-  Rand) und verwendet `WINKEL_EPS`. Bedingungen 6 und 7 sind
-  Vorzeichen-/Kollinearitäts-Tests gegen die Falllinie, die hier
-  als explizite Winkel-Distanz zur Achsenrichtung (Cosinus-Test
-  gegen ±1) formuliert sind — strukturell identisch zur
-  Sparren-Vorzeichenkonvention; sie verwenden `WINKEL_EPS`
-  (konsistent mit `hg_sparren.md` Bedingungen 3 und 4).
-- **Edge Cases**:
-  - **Aufsparrendämmung**: Die Konterlatte sitzt nicht direkt auf
-    dem Sparren, sondern auf einer dazwischenliegenden
-    Dämmschicht/Unterdach-Konstruktion. Die geometrische
-    Definition bleibt invariant: Lage in E_K(h_K) mit größerem h_K
-    (Versatz schließt die Dämmlage ein). Modellierung: h_K wird
-    Funktion des Schichtaufbaus, nicht des Konterlatten-
-    Querschnitts allein.
-  - **Konterlatte über mehrteiligen Sparren** (Stoß): Die
-    Konterlatte ist als **ein** Bauteil mit einer Bauteilachse zu
-    modellieren; mehrteilige Sparren darunter sind eigene Bauteile
-    und für die Konterlatten-Definition irrelevant.
-  - **Flache Dachfläche** (α → 0): Falllinie wird entartet
-    (`hg_falllinie.md`); Bedingung 2 dieses Eintrags schließt den
-    Fall aus. Für Flachdach-Hinterlüftungslatten existiert keine
-    Bauteilrolle „Konterlatte" in diesem Glossar; sie würden über
-    eine eigene Bauteilrolle (Folgearbeit) oder generisch als
-    `bauteil` mit Schichtzuordnung `SchichtFunktion.KONTERLATTUNG`
-    geführt.
-  - **Konterlatte mit Längsstoß** (mehrere Konterlatten-Bauteile
-    über demselben Sparren in Reihe): jedes Teilstück ist eine
-    eigene Konterlatte mit eigener Bauteilachse; die Reihen-
-    Zuordnung erfolgt über das Dachaufbau-Aggregat.
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `neigung(): Double` — = Dachneigung der zugeordneten
-    Dachfläche, in Radiant.
-  - `auflagerSparren(t: Tragwerk): Sparren?` — der Sparren in `t`,
-    dessen Bauteilachse parallel zur Konterlatten-Bauteilachse
-    und innerhalb Toleranzen darunter (entgegen n_a um h_K
-    versetzt) liegt. Im Regelfall genau einer.
-  - `faserneigung(): Double?` — falls Faserrichtung gesetzt:
-    Winkel zwischen Faserrichtung und Konterlatten-Achse; sonst
-    null.
-  - `pruefeMindestlueftung(norm: Norm): Resultat<Unit>` —
-    parametrische Validierung gegen normabhängige Mindesthöhen
-    (DIN 4108-3, ZVDH, SIA 232/1); nicht Bestandteil der
-    Bauteilrolle-Definition, sondern Anforderung an den
-    Dachaufbau.
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt
-  `Konterlatte` (deutsch, Glossarbegriff); keine
-  Bauteilrolle-Spezialisierungen vorgesehen (eine eventuelle
-  „Flachdach-Hinterlüftungslatte" wäre eine eigene Bauteilrolle,
-  keine Konterlatten-Spezialisierung).
 
 ## Quellen
 

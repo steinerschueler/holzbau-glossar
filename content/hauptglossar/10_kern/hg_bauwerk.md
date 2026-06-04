@@ -139,7 +139,7 @@ Sei
 Dann ist ein **Bauwerk** das Tupel
 
 ```
-W_b := (uuid, tragwerke, weitere_bauteile, standort, bezeichnung?)
+W_b:= (uuid, tragwerke, weitere_bauteile, standort, bezeichnung?)
 ```
 
 mit
@@ -180,7 +180,7 @@ und den Konsistenzbedingungen
    Bauwerk-Komposition.
 2. **Gesamt-Bauteilmenge**: Die Bauteilmenge des Bauwerks ist
    ```
-   B(W_b) := ( ⋃_{T ∈ tragwerke} T.B ) ∪ weitere_bauteile
+   B(W_b):= (⋃_{T ∈ tragwerke} T.B) ∪ weitere_bauteile
    ```
    und ist endlich.
 3. **Geometrische Konsistenz**: Alle Bauteile b ∈ B(W_b) sind in W
@@ -208,7 +208,7 @@ Weltkoordinatensystem ist die Vereinigung der bauteilbezogenen
 Punktmengen
 
 ```
-G_W(W_b) := ⋃_{b ∈ B(W_b)} G_W(b) ⊂ ℝ³.
+G_W(W_b):= ⋃_{b ∈ B(W_b)} G_W(b) ⊂ ℝ³.
 ```
 
 ## Wohldefiniertheit
@@ -220,7 +220,7 @@ G_W(W_b) := ⋃_{b ∈ B(W_b)} G_W(b) ⊂ ℝ³.
   für ein einfachstes Bauwerk wie eine Brücke aus einem einzigen
   Tragwerk auf einem definierten Standort).
 - **Eindeutigkeit der Identität**: Innerhalb eines Modells gilt
-  ∀ W₁, W₂ : (W₁ ≠ W₂) ⇒ (W₁.uuid ≠ W₂.uuid). Die Bauwerks-UUID ist
+  ∀ W₁, W₂: (W₁ ≠ W₂) ⇒ (W₁.uuid ≠ W₂.uuid). Die Bauwerks-UUID ist
   konstruktionsseitig zu vergeben (UUID v7 nach RFC 9562) und
   persistent über den gesamten Lebenszyklus.
 - **Eindeutigkeit der Komponentenzuordnung**: tragwerke und
@@ -468,139 +468,6 @@ Subglossar-Pendant entfaltet.
     Konstruktion); im Holzbau eher als Synonym von Tragwerk-
     Konstruktion verwendet. Als abgelehnte Benennung geführt.
 
-## Implementierungshinweis
-
-**Im aktuellen Glossarstand wird ausdrücklich keine Code-Klasse
-`Bauwerk` angelegt.** Das erste Tool (Sparren mit zwei Kerven,
-Etappe D7/D8) arbeitet auf der Bauteil-/Bearbeitungs-Ebene; eine
-Bauwerk-Klasse ist erst sinnvoll, wenn ein Tool ganze
-Bauwerkskonfigurationen verwaltet (Phase 4 ff.). Der folgende
-Skizzen-Code ist ausschließlich orientierender Implementierungs-
-Hinweis.
-
-```kotlin
-// SKIZZE — nicht jetzt anlegen.
-// Glossar: hg_bauwerk.md
-
-package domain.bauwerk
-
-import domain.bauteil.Bauteil
-import domain.bauteil.Tragwerk
-import domain.standort.Standort   // eigener Eintrag folgt
-import java.util.UUID
-
-/**
- * Bauwerk: Top-Level-Aggregat über Tragwerken, weiteren Bauteilen
- * und Standortbezug. Eigene UUID-Identität; nicht Element-Subtyp.
- *
- * Glossar: hg_bauwerk.md
- * IFC-Pendant: IfcFacility (abstrakt) / IfcBuilding (konkret).
- *
- * Pflichtfelder: uuid, tragwerke (≥ 1), standort.
- * Optionalfelder: weitereBauteile, bezeichnung.
- *
- * Foreign-Key-Regel (siehe Memory project_bauteil_identifikation):
- * externe Referenzen auf das Bauwerk gehen ausschließlich auf
- * `uuid` — nicht auf `bezeichnung`.
- */
-data class Bauwerk(
-    val uuid: UUID,
-    val tragwerke: Set<Tragwerk>,
-    val weitereBauteile: Set<Bauteil> = emptySet(),
-    val standort: Standort,
-    val bezeichnung: String? = null,
-) {
-    init {
-        // 1. tragwerke.isNotEmpty()
-        //    → sonst Entartet.BauwerkOhneTragwerk
-        // 2. Disjunktheit: weitereBauteile ∩ ( ⋃ tragwerke.B ) = ∅
-        //    → sonst Entartet.BauteilDoppeltKlassifiziert
-        // 3. Auflager-Disjunktheit zwischen Tragwerken
-        //    → sonst Entartet.AuflagerDoppeltZugeordnet
-        // 4. standort ist gesetzt (Standort-eigene Invarianten ererbt)
-    }
-
-    /** Gesamt-Bauteilmenge B(W_b) = ⋃ tragwerke.B ∪ weitereBauteile. */
-    fun bauteile(): Set<Bauteil> =
-        tragwerke.flatMap { it.bauteile }.toSet() + weitereBauteile
-
-    fun bauteilNach(uuid: UUID): Bauteil? =
-        bauteile().firstOrNull { it.uuid == uuid }
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant;
-  Standort-Georeferenzierung in den späteren `standort`-Typen
-  abhängig vom Bezugsrahmen (LV95 in m, WGS84 in Grad).
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7);
-  externe Referenzen auf ein Bauwerk gehen ausschließlich auf diese
-  UUID. IFC-Mapping: auf `IfcRoot.GlobalId` der zugehörigen
-  `IfcFacility`-Instanz (22-stellig Base64 nach ISO/IEC 9834-8).
-- **Invarianten** (im `init`-Block prüfen, bei Verletzung
-  `Resultat.Fehler` bzw. `Entartet`-Variante; niemals Exception
-  werfen):
-  1. `tragwerke.isNotEmpty()` ⇒ sonst
-     `Entartet.BauwerkOhneTragwerk` (SIA 260 §2.1).
-  2. **Bauteil-Disjunktheit**: für jedes b ∈ weitereBauteile gilt
-     b ∉ T.bauteile für jedes T ∈ tragwerke ⇒ sonst
-     `Entartet.BauteilDoppeltKlassifiziert`.
-  3. **Auflager-Disjunktheit**: die Auflager-Mengen verschiedener
-     Tragwerke an demselben Bauwerk sind disjunkt ⇒ sonst
-     `Entartet.AuflagerDoppeltZugeordnet`.
-  4. `standort` ist gesetzt (Pflichtfeld; sobald `standort` als
-     eigener Eintrag mit eigenen Invarianten existiert, ererben
-     diese transitiv).
-- **Edge Cases**:
-  - **Bauwerk mit einem einzigen Tragwerk und keinen weiteren
-    Bauteilen**: zulässig (z. B. eine einfache Brücke). Mindestens
-    ein Tragwerk; weitere Bauteile dürfen leer sein.
-  - **Bauwerk mit mehreren Tragwerken**: zulässig (Hauptgebäude-
-    Tragwerk + unabhängiges Vordach-Tragwerk; Brücke mit Überbau-
-    Tragwerk und Pfeiler-Tragwerken). Modellseitig getrennte
-    `Tragwerk`-Instanzen, am Bauwerk gemeinsam aggregiert.
-  - **Bauwerk ohne expliziten Standort**: nicht erlaubt im finalen
-    Modell; in frühen Entwurfsstadien kann ein Platzhalter-
-    Standort (Bauwerks-Ursprung in W ohne Georeferenzierung)
-    geführt werden, der vor IFC-Export aufgelöst sein muss.
-  - **Verschachtelung**: Bauwerke werden in der App **nicht**
-    verschachtelt (kein Bauwerk-im-Bauwerk). Ein Großbauvorhaben
-    mit mehreren Gebäuden auf einem Grundstück wird als
-    **mehrere Bauwerks-Instanzen** modelliert, die denselben
-    Standort-/Grundstücks-Bezug teilen. (IFC kennt
-    `IfcFacilityPart` für längsschnittweise Brückenabschnitte;
-    diese Verfeinerung ist Folgearbeit.)
-  - **Subtyp-Klassifikation Gebäude vs. Ingenieurbauwerk**: in
-    der konkreten Subklasse-Hierarchie (Folgearbeit) zu treffen;
-    nicht in der hier definierten Wurzel.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `bauteile(): Set<Bauteil>` = Gesamt-Bauteilmenge.
-  - `geometrieInWelt(): GeometrieInW` = ⋃_{b ∈ bauteile()} G_W(b).
-  - `boundingBox(): AABB` = achsenparalleler Hüllquader in W über
-    allen Bauteilen.
-  - `tragwerkFuer(b: Bauteil): Tragwerk?` = das Tragwerk, dessen
-    Mitglied b ist (Null, falls b ∈ weitereBauteile).
-- **IFC-Mapping** (Persistenzschicht, je Subklasse explizit zu
-  dokumentieren):
-  | Bauwerk-Lesart      | IFC-Klasse              |
-  |---------------------|-------------------------|
-  | Wurzel (abstrakt)   | `IfcFacility`           |
-  | Gebäude             | `IfcBuilding`           |
-  | Brücke              | `IfcBridge`             |
-  | Straße              | `IfcRoad`               |
-  | Bahnstrecke         | `IfcRailway`            |
-  | Hafen/Schleuse      | `IfcMarineFacility`     |
-  - `uuid` → `IfcRoot.GlobalId` der `IfcFacility`-Instanz.
-  - `bezeichnung` → `IfcRoot.Name`.
-  - `standort` → Aggregations-Beziehung `IfcRelAggregates` zu
-    `IfcSite` (IFC-Pflichtknoten ein Bauwerk eindeutig
-    georeferenzieren).
-  - `tragwerke` → Mengen lastabtragender `IfcBuiltElement`-
-    Instanzen innerhalb der `IfcFacility`; gegebenenfalls
-    `IfcStructuralAnalysisModel` als analytische Sicht.
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `Bauwerk` (deutsch, Glossarbegriff); Subklassen heißen `Gebaeude`,
-  `Ingenieurbauwerk`.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -638,49 +505,3 @@ data class Bauwerk(
   „Hochbau", „Tiefbau" (abgerufen 2026-05-14).
 - baunormenlexikon.de, bauprofessor.de — DIN-EN-1990-Begriffs-
   Erläuterungen (abgerufen 2026-05-14).
-
-## Folgearbeit (trigger-basiert)
-
-Konkrete Spezialisierungen und Bestandteile werden definiert, sobald
-das jeweilige Tool oder Modellierungs-Schritt sie benötigt:
-
-- **`gebaeude`** — Subtyp „Bauwerk mit Schutzfunktion" (ISO 6707-1
-  „building", IFC `IfcBuilding`). Trigger: erste App-Phase, in der
-  Wohn-/Geschäftsgebäude über die reine Dach-Modellierung hinaus
-  modelliert werden (Geschosse, Raumzellen).
-- **`ingenieurbauwerk`** — Subtyp „Bauwerk des Tief-/Verkehrs-/
-  Wasserbaus" (ISO 6707-1 „civil engineering works", IFC
-  `IfcBridge`/`IfcRoad`/`IfcRailway`/`IfcMarineFacility`). Trigger:
-  spätere App-Phase mit Brücken-/Wasserbau-Werkzeugen.
-- **`standort`** — geometrischer Aufstellungsort des Bauwerks,
-  Site-Pendant zu IFC `IfcSite`. Trigger: erste Georeferenzierung
-  der App-Daten (LV95 / WGS84 / EPSG). Löst gleichzeitig die
-  Forward-Verweise `lv95` und `wgs84` in
-  `hg_weltkoordinatensystem.md` auf.
-- **`grundstueck`** / **`liegenschaft`** — liegenschaftsrechtliche
-  Begriffe; eigener Eintrag bei Bedarf (z. B. wenn die App
-  Liegenschaftsdaten persistiert oder gegen Schweizer Grundbuch-
-  oder deutsche Liegenschaftskataster mappt).
-- **`bauliche_anlage`** — baurechtlicher Oberbegriff der MBO §2;
-  niedrige Priorität. Nur dann, wenn die App Bauantragsdaten oder
-  Baurechts-Compliance modelliert.
-- **`dachstuhl`** — zimmermannssprachliche enge Lesart des
-  Dachtragwerks. Folgearbeit bereits in `hg_tragwerk.md` notiert.
-- **`hochbau`** / **`tiefbau`** — Klassifikations-Achsen; eigener
-  Eintrag nur, falls in der App eine entsprechende Sichtenklassifikation
-  modelliert wird. In der Regel als abgelehnte Benennungen am
-  Bauwerks-Eintrag belassen.
-- **`konstruktion`** — mehrdeutig; bei Bedarf als eigener Eintrag mit
-  Disambiguator (z. B. `konstruktion_geometrisch` /
-  `konstruktion_konstruktionsweise`).
-
-Auf Glossar-Konventions-Ebene:
-
-- **Sichtungs-Tabellen-Pflege in `HG_KONVENTIONEN.md` §6.A**:
-  Forward-Verweise aus diesem Eintrag (`gebaeude`,
-  `ingenieurbauwerk`, `bauliche_anlage`, `standort`, `grundstueck`,
-  `liegenschaft`, `hochbau`, `tiefbau`, `dachstuhl`, `konstruktion`)
-  in die (A)-Trigger-Liste aufnehmen.
-- **`hg_bausystem.md`** und **`hg_dach.md`** tragen `bauwerk`
-  in `abgrenzung_zu:` (im selben R-Schritt nachgezogen, in dem
-  dieser Eintrag entstand).

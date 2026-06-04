@@ -24,7 +24,7 @@ quellen_sekundär:
   - "Natterer, J.; Herzog, T.; Volz, M.: Holzbau-Atlas. 4. Aufl., Birkhäuser, Basel 2003, Kap. 'Tragwerke' / 'Anschlüsse'."
   - "Baustatik-Wiki Wismar (Hochschule Wismar): 'Direkte und indirekte Lagerung' — direkte Lagerung über Druckspannungen vom lastbringenden ins lasttragende Bauteil; indirekte Lagerung mit Aufhängung in die Druckzone."
   - "Wikipedia, Lemma 'Lager (Statik)' (abgerufen 2026-05-14): Lager als „in der Mechanik abstrahierte Verbindungen zwischen einem Starrkörper (Tragwerk) und seiner Umgebung“, mit Wertigkeit und Lagerreaktion."
-  - "Recherche-Bericht `docs/recherche/2026-05-14_hg_auflager.md`."
+  - "Recherche-Bericht [intern]."
 quellenkonflikt: |
   **Normlücke.** Keine der konsultierten deutschsprachigen Holzbau-
   und Tragwerks-Normen — SIA 260:2013, SIA 261:2020, SIA 265:2021,
@@ -104,7 +104,7 @@ quellenkonflikt: |
   „Anschluss“ und „Knoten“ werden abgelehnt, weil sie in
   `hg_verbindung.md` bereits als Verbindungs-Synonyme reserviert
   sind und auf die Anschluss-/Bemessungs-Seite (EC5 Kap. 8) zielen,
-  nicht auf die Tragwerks-Seite (EC5 Kap. 5, Lagerreaktion). 
+  nicht auf die Tragwerks-Seite (EC5 Kap. 5, Lagerreaktion).
   „Sparrenfuß“ ist nur eine geometrische Spezialisierung
   („Sparrenfuß ist die Stelle, an der ein Sparrenauflager sitzt“)
   und keine Auflager-Hauptbenennung. Englische Pendants („support“,
@@ -148,12 +148,12 @@ Sei
 - 𝓑 die Menge der Bauteile nach `hg_bauteil.md`,
 - 𝓟 die Menge der Polygone nach `hg_polygon.md` (Repräsentation
   einer Polygon-Fläche in ℝ³ mit Ebene und Eckpunktfolge),
-- 𝓓 := {0, 1, 2} die Menge der geometrischen Dimensionen
+- 𝓓:= {0, 1, 2} die Menge der geometrischen Dimensionen
   (0 = Punkt, 1 = Linie, 2 = Fläche),
 - 𝓜 die Menge der **geometrischen Manifestationen**
 
   ```
-  𝓜 := { (d, g) ∈ 𝓓 × (ℝ³ ∪ 𝓢 ∪ 𝓟)
+  𝓜:= { (d, g) ∈ 𝓓 × (ℝ³ ∪ 𝓢 ∪ 𝓟)
        | d = 0 ⇒ g ∈ ℝ³
          d = 1 ⇒ g ∈ 𝓢          (Strecke nach `hg_strecke.md`)
          d = 2 ⇒ g ∈ 𝓟 }
@@ -161,24 +161,24 @@ Sei
 
   also ein Paar aus Dimension und dimensions-passendem
   geometrischem Träger,
-- 𝓕 := {fest, frei, federnd(k)} die Menge der **Komponenten-
+- 𝓕:= {fest, frei, federnd(k)} die Menge der **Komponenten-
   Wertigkeiten** je Freiheitsgrad, wobei `federnd(k)` eine
   lineare Federsteifigkeit `k ∈ ℝ₊` trägt
   (translatorisch in N/mm, rotatorisch in N·mm/rad),
-- 𝓦 := 𝓕⁶ die Menge der **Auflager-Wertigkeiten** als
+- 𝓦:= 𝓕⁶ die Menge der **Auflager-Wertigkeiten** als
   geordnetes 6-Tupel über den Freiheitsgraden
   (Tx, Ty, Tz, Rx, Ry, Rz) im W-System,
-- 𝓛𝓐 := {direkt, indirekt, ⊥} die Klassifikation der
+- 𝓛𝓐:= {direkt, indirekt, ⊥} die Klassifikation der
   **Lagerungsart** im Sinne der Baustatik-Konvention
   direkt/indirekt; `⊥` für „nicht klassifiziert“,
-- 𝓢𝓣 := {baugrund} ∪ 𝒰 die Menge der **Stützungs-Gegenüber**:
+- 𝓢𝓣:= {baugrund} ∪ 𝒰 die Menge der **Stützungs-Gegenüber**:
   entweder der Baugrund (Welt-Rand) oder die UUID eines
   weiteren tragenden Bauteils.
 
 Dann ist ein **Auflager** das Tupel
 
 ```
-A := (uuid, manifestation, gestuetztes_bauteil, gestuetzt_durch,
+A:= (uuid, manifestation, gestuetztes_bauteil, gestuetzt_durch,
       wertigkeit, lagerungsart, bezeichnung)
 ```
 
@@ -226,7 +226,7 @@ translatorischer Freiheitsgrad gesperrt ist (sonst wäre das
 Auflager keine Stützung). Formal:
 
 ```
-∃ i ∈ {Tx, Ty, Tz} : w_i ≠ frei.
+∃ i ∈ {Tx, Ty, Tz}: w_i ≠ frei.
 ```
 
 Die rotatorischen Komponenten dürfen für d = 0 (Punkt-
@@ -504,190 +504,6 @@ zeigen, das zugleich Mitglied einer `Verbindung` ist).
     ist die statisch-mechanische Sicht, Konstruktionsdetail die
     werkplan-orientierte Sicht am selben Knoten.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.aggregat.auflager`):
-
-```kotlin
-package domain.aggregat.auflager
-
-import domain.geometrie.Polygon
-import domain.geometrie.Punkt
-import domain.geometrie.Strecke
-import java.util.UUID
-
-/** Komponenten-Wertigkeit je Freiheitsgrad. */
-sealed interface KomponentenWertigkeit {
-    data object Fest : KomponentenWertigkeit
-    data object Frei : KomponentenWertigkeit
-    /** Lineare Federsteifigkeit; translatorisch N/mm, rotatorisch N·mm/rad. */
-    data class Federnd(val steifigkeit: Double) : KomponentenWertigkeit
-}
-
-/** Wertigkeit als 6-Tupel über (Tx, Ty, Tz, Rx, Ry, Rz) im W-System. */
-data class AuflagerWertigkeit(
-    val tx: KomponentenWertigkeit,
-    val ty: KomponentenWertigkeit,
-    val tz: KomponentenWertigkeit,
-    val rx: KomponentenWertigkeit,
-    val ry: KomponentenWertigkeit,
-    val rz: KomponentenWertigkeit
-) {
-    /**
-     * Anzahl gesperrter Freiheitsgrade (alle nicht-`Frei` Komponenten).
-     * Wird vom statischen System (`hg_statisches_system.md` Abzählformel
-     * `n = a + s + z − 6·k`) als Summand `a` benötigt.
-     */
-    fun gesperrteFhg(): Int =
-        listOf(tx, ty, tz, rx, ry, rz)
-            .count { it !is KomponentenWertigkeit.Frei }
-}
-
-/** Geometrische Manifestation mit Dimensions-typisiertem Träger. */
-sealed interface AuflagerManifestation {
-    val dimension: Int                              // 0, 1 oder 2
-    data class Punktfoermig(val ort: Punkt)         : AuflagerManifestation { override val dimension = 0 }
-    data class Linienfoermig(val linie: Strecke)    : AuflagerManifestation { override val dimension = 1 }
-    data class Flaechenfoermig(val flaeche: Polygon): AuflagerManifestation { override val dimension = 2 }
-}
-
-/** Lagerungsart nach Baustatik-Konvention. */
-sealed interface Lagerungsart {
-    data object Direkt   : Lagerungsart
-    data object Indirekt : Lagerungsart
-    data object Unbekannt: Lagerungsart
-}
-
-/** Stützungs-Gegenüber: Baugrund oder weiteres tragendes Bauteil. */
-sealed interface StuetzungsGegenueber {
-    data object Baugrund : StuetzungsGegenueber
-    data class TragendesBauteil(val bauteilUuid: UUID) : StuetzungsGegenueber
-}
-
-/**
- * Auflager: Aggregat aus geometrischer Manifestation und mechanischer
- * Wertigkeit, das genau ein Bauteil mit dem Baugrund oder mit genau
- * einem weiteren tragenden Bauteil inzident verknüpft.
- *
- * Glossar: hg_auflager.md
- *
- * NICHT Subtyp von Element. Eigene Aggregat-Klasse, analog Verbindung
- * und Tragwerk.
- *
- * IFC: IfcStructuralConnection (Point/Curve/SurfaceConnection) plus
- *      IfcBoundaryCondition (Node/Edge/Face) als AppliedCondition.
- * BTLx: keine eigene Entität.
- */
-data class Auflager(
-    val uuid: UUID,                                       // eigene Identität als Aggregat
-    val manifestation: AuflagerManifestation,             // 0D/1D/2D in W
-    val gestuetztesBauteil: UUID,                         // FK auf das gestützte Bauteil
-    val gestuetztDurch: StuetzungsGegenueber,             // Baugrund oder FK auf tragendes Bauteil
-    val wertigkeit: AuflagerWertigkeit,                   // 6-Tupel pro FHG
-    val lagerungsart: Lagerungsart = Lagerungsart.Unbekannt,
-    val bezeichnung: String? = null
-) {
-    init {
-        // A1. gestuetztesBauteil existiert im Modell           (Modell-Validierung)
-        // A2. manifestation.traegerLiegtAuf(bauteil, eps)      (Modell-Validierung)
-        // A3. gestuetztDurch != TragendesBauteil(gestuetztesBauteil)
-        // A4. mindestens ein translatorischer FHG ist nicht Frei
-        // A5. lagerungsart-Konsistenz (zugesichert, nicht hart)
-        // A6. Keine triviale Duplizierung mit anderem Auflager am selben Bauteil
-    }
-}
-```
-
-- **Einheit**: Längen in mm (Double); Federsteifigkeiten
-  translatorisch in N/mm, rotatorisch in N·mm/rad;
-  geometrische Träger im W-System.
-- **Identität**: `uuid` ist Pflicht und eigenständig (eigene
-  UUID des Aggregats, nicht eine UUID eines Bauteils oder
-  einer Bearbeitung).
-- **Foreign-Key-Regel**: `gestuetztesBauteil` und ggf. das
-  Bauteil in `StuetzungsGegenueber.TragendesBauteil`
-  referenzieren ausschließlich UUIDs (Memory
-  `project_bauteil_identifikation`).
-- **Invarianten** (in der Aggregat-Fabrikfunktion
-  `Auflager.bilde(modell: Modell, …)` geprüft; bei Verletzung
-  `Resultat.Fehler`, niemals Exception):
-  1. `gestuetztesBauteil` existiert im Modell ⇒ sonst
-     `Entartet.BauteilUnbekannt`.
-  2. Geometrische Inzidenz (A2) im Toleranzbereich
-     `Toleranzen.LAENGE_EPS` ⇒ sonst
-     `Entartet.ManifestationNichtAmBauteil`.
-  3. Stützungs-Disjunktheit (A3) ⇒ sonst
-     `Entartet.SelbstStuetzung`.
-  4. Mindestens ein translatorischer Freiheitsgrad
-     ≠ `Frei` (A4) ⇒ sonst `Entartet.OhneStuetzung`.
-- **Edge Cases**:
-  - **Punktauflager mit voller Einspannung** (alle 6
-    Komponenten `Fest`): zulässig (Köcherstütze, Sockel-
-    Einspannung).
-  - **Flächenauflager mit nur einer translatorischen
-    Sperrung** (typisch Tz fest, Tx/Ty frei): zulässig als
-    Loslager-Idealisierung einer durchlaufenden Bodenplatte.
-  - **Indirekte Lagerung**: zulässig; `lagerungsart =
-    Indirekt`; geometrische Manifestation typisch
-    seitliche Linien- oder Flächen-Anbindung.
-  - **Mehrfach-Auflagerung eines Bauteils**: zulässig; jedes
-    Auflager ist eigene Aggregat-Instanz mit eigener UUID.
-  - **Auflager auf demselben tragenden Bauteil mit
-    identischer Manifestation und Wertigkeit**: nicht
-    erlaubt (A6); `Entartet.TrivialeDuplizierung`.
-  - **Federsteifigkeit 0 / ∞**: `Federnd(0.0)` ist
-    semantisch `Frei`; `Federnd(Double.POSITIVE_INFINITY)`
-    ist `Fest`. Beim Aggregat-Aufbau in die kanonische Form
-    normalisieren.
-- **Toleranz-Anwendung** (siehe `hg_toleranzen.md` §4):
-  - Geometrische Inzidenz (A2): `LAENGE_EPS`.
-  - Polygon-Identität in der Manifestation: `LAENGE_EPS`
-    auf Eckpunkten.
-  - Federsteifigkeits-Vergleich (für die Normalisierung
-    `Federnd(0) → Frei`): `NORM_EPS`-analog mit explizitem
-    Default `1e-12` an der App-Konstante
-    `AuflagerToleranzen.FEDER_EPS` — Folgearbeit in
-    `hg_toleranzen.md`, falls die Anwendung breit wird.
-- **IFC-Export-Mapping**:
-  - `manifestation.dimension = 0` → `IfcStructuralPointConnection`.
-  - `manifestation.dimension = 1` → `IfcStructuralCurveConnection`.
-  - `manifestation.dimension = 2` → `IfcStructuralSurfaceConnection`.
-  - `wertigkeit` → `AppliedCondition` mit
-    `IfcBoundaryNodeCondition` / `IfcBoundaryEdgeCondition` /
-    `IfcBoundaryFaceCondition` (dimensions-passend).
-  - `Fest` → `IfcBoolean(.TRUE.)`,
-    `Frei` → `IfcBoolean(.FALSE.)`,
-    `Federnd(k)` → `IfcLinearStiffness(k)` mit passender
-    Einheit.
-  - `gestuetztesBauteil` → `IfcRelConnectsStructuralMember`-
-    Beziehung zwischen `IfcStructuralConnection` und dem
-    `IfcStructuralMember` des Bauteils.
-- **BTLx-Export**: keine eigene Entität; das Auflager wird
-  beim BTLx-Export nicht ausgegeben. Optional kann es als
-  `UserAttribute` (`SupportGuid`) am beteiligten Bauteil-Part
-  vermerkt werden.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine
-  Felder):
-  - `geometrieInWelt(): GeometrieInW` — der geometrische
-    Träger der Manifestation im W-System.
-  - `dimensionalitaet(): Int` —
-    `manifestation.dimension` ∈ {0, 1, 2}.
-  - `istIdealFest(): Boolean` — alle 6 Wertigkeits-
-    Komponenten = `Fest`.
-  - `istLoslager(): Boolean` — genau ein translatorischer
-    FHG `Fest`, alle übrigen `Frei`.
-  - `istFestlager(): Boolean` — alle drei translatorischen
-    FHG `Fest`, alle drei rotatorischen `Frei`.
-  - `auflagerlaenge(): Double?` — für Flächen- und Linien-
-    Auflager die Auflagerlänge ℓ (EC5 6.1.5) als Bemessungs-
-    Größe; für Punktauflager `null`.
-- **Bezeichner-Konvention** (siehe `docs/_CODE_KONVENTIONEN.md`):
-  Domänen-Klasse heißt `Auflager` (deutsch, Glossarbegriff).
-  Synonyme `Lager` und `Stützung` werden im Code nicht als
-  eigene Klassen geführt, sondern erscheinen ausschließlich
-  als KDoc-Stichworte zu `Auflager`.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -742,4 +558,4 @@ data class Auflager(
   2026-05-14).
 - D.I.E.-Statik, „Sparrenauflager Pfette genagelt“ (abgerufen
   2026-05-14).
-- Recherche-Bericht: `docs/recherche/2026-05-14_hg_auflager.md`.
+- Recherche-Bericht: [intern].

@@ -8,7 +8,7 @@ begriffstyp: merkmal
 voraussetzungen: [versatz, bauteilachse, lotebene, toleranzen]
 abgrenzung_zu: [versatz, stirnseite, kerve, senkel, bleischnitt, anschnitt, stirn]
 status: entwurf
-subglossar_pendant: notwendig  # Begründung: die Term-Überladung Ferse↔Ferserl↔heel cut ist eine lernrelevante Verwechslung (didaktischer Kern); siehe Implementierungshinweis.
+subglossar_pendant: notwendig  # Begründung: die Term-Überladung Ferse↔Ferserl↔heel cut ist eine lernrelevante Verwechslung (didaktischer Kern).
 quellen_primär:
   - "DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland zum Eurocode 5, NCI NA.12 'Zimmermannsmäßige Verbindungen': regelt den Versatz (Versatztiefe, Vorholzlänge, Anschnittwinkel) ohne eigene Typologie; die Lage-Bezeichnung 'Ferse' tritt nur gebunden im Fersenversatz auf. Paywall (DIN-Media); über Sekundärbeschreibungen und `hg_versatz.md` belegt, Volltext nicht eingesehen [via: hg_versatz.md / NCI NA.12-Sekundärbeschreibung]."
 quellen_sekundär:
@@ -106,11 +106,11 @@ Sei
   einschließt (siehe `bauteilachse`, `versatz`),
 - T das liegende **Trägerbauteil** (Schwelle, Rähm, Bundbalken,
   Fußpfette) mit Oberseite auf der Lokal-Höhe z = h_B,
-- v := V mit p_Versatz = (x_0, FERSE, β, ⊥, ⊥, t_F, ⊥, l_v) ein
+- v:= V mit p_Versatz = (x_0, FERSE, β, ⊥, ⊥, t_F, ⊥, l_v) ein
   **Fersenversatz** nach `versatz` (Tupel (2) dort), mit Versatztiefe
-  t_F > 0 und dem **Aufsetzpunkt** Q := (x_0, 0, h_B) ∈ ℝ³ — dem
+  t_F > 0 und dem **Aufsetzpunkt** Q:= (x_0, 0, h_B) ∈ ℝ³ — dem
   Schnittpunkt der Druckstab-Achse mit der Trägerbauteil-Oberseite,
-- A_F := Q der **Fersen-Aufsetzpunkt** des einfachen Fersenversatzes und
+- A_F:= Q der **Fersen-Aufsetzpunkt** des einfachen Fersenversatzes und
   Δ_Versatz(FERSE) ⊂ Π_⊥(B) der Fersen-Anschnittquerschnitt nach
   `versatz` (V-Dreieck conv{A_F, C_F, B_F}, Druckfläche rechtwinklig zur
   Strebe δ_F = β − π/2, Sohle parallel zur Strebe σ = π − β).
@@ -118,7 +118,7 @@ Sei
 Dann ist die **Ferse** von v die ausgezeichnete Lage
 
 ```
-Ferse(v)  :=  ( A_F, ê_innen )                                       (1)
+Ferse(v):=  (A_F, ê_innen)                                       (1)
 ```
 
 mit
@@ -260,46 +260,6 @@ oder nur eine Auslauf-Ecke (Stirnversatz), hängt vom Verbindungstyp ab.
   - **Anschnitt** (`anschnitt`): allgemeine schräge Endausbildung;
     die Fersen-Druckfläche ist ein spezieller Anschnitt am Versatz, die
     Ferse selbst aber eine Lage, kein Anschnitt.
-
-## Implementierungshinweis
-
-**Kein eigenes Code-Pendant erforderlich** (`begriffstyp: merkmal` ist
-nach §3 pendant-frei). Die Ferse ist im Code bereits als Wert der
-Konfigurations-Achse `VersatzArt.FERSE` am `Versatz` vorhanden
-(`hg_versatz.md`); ein eigener `@GlossarBegriff(GlossarTerm.FERSE)`-Typ
-wird **nicht** angelegt. Der Fersen-Aufsetzpunkt A_F und die Innenrichtung
-ê_innen sind aus dem `Versatz`-Parametertupel (x_0, β, art) ableitbar
-(abgeleitete Eigenschaft am `Versatz`, kein eigener Konstruktor).
-
-- **Datentyp**: keiner eigenständig; Lage am `Versatz` (Enum-Wert
-  `art = FERSE` plus die ableitbaren A_F, ê_innen).
-- **Einheit**: A_F in mm (Bauteil-Lokalkoordinaten), ê_innen
-  dimensionsloser Einheitsvektor in Π_⊥(B).
-- **Toleranzen**: für die Geometrie an der Ferse gelten die Versatz-
-  Toleranzen (`hg_versatz.md`); die Richtungs-Auszeichnung ê_innen ist
-  über Π_⊥(B) und die Trägerbauteil-Achse bestimmt (Parallelitäts-
-  Tests via `KOLLINEAR_EPS`, falls eine Klassifikations-Hilfsfunktion
-  eingeführt wird).
-- **Edge Cases**:
-  - **Stirnversatz** (`art = STIRN`): die Ferse existiert als Lage
-    (hintere Auslauf-Ecke), trägt aber **keine** Druckfläche; eine
-    naive Abfrage einer „Fersen-Druckfläche" am Stirnversatz ist
-    undefiniert und muss `art` prüfen.
-  - **Doppelter Versatz** (`art = DOPPELT`): A_F sitzt nicht bei Q,
-    sondern am Gipfel der Stirn-Sohle (`hg_versatz.md`); die Lage-
-    Auszeichnung verschiebt sich entsprechend.
-  - **EN-Importfalle**: ein BTLx/COMPAS-Import, der `heel cut` (engl.,
-    Birdsmouth) mechanisch nach „Ferse" übersetzt, ordnet die Geometrie
-    falsch zu (lotrechter Kerv-Senkel statt geneigte Versatz-Druckfläche)
-    — beim EN↔DE-Mapping `heel cut` → `senkel`/`kerve`, **nicht** → Ferse.
-
-**Begründung `subglossar_pendant: notwendig`.** Die Term-Überladung
-(Ferse-Druckfläche ‖ Ferserl=Kerve ‖ heel cut=Senkel) ist eine
-**lernrelevante Verwechslung**: gerade der importierte EN-Fehlschluss
-„Ferse=senkrecht" und das österr. „Ferserl" sind typische Stolpersteine,
-deren Auflösung didaktischen Wert hat. Damit ist die didaktische
-Subglossar-Hülle (Schnuppi–Meister) gerechtfertigt — keine Abweichung vom
-`notwendig`-Normalfall.
 
 ## Quellen
 

@@ -84,7 +84,7 @@ Sei
 Dann ist ein **Bausystem** ein Tupel
 
 ```
-S := (uuid, mitglieder, funktion, bezeichnung?)
+S:= (uuid, mitglieder, funktion, bezeichnung?)
 ```
 
 mit
@@ -105,7 +105,7 @@ und den Konsistenzbedingungen
 1. **Nicht-Exklusive Mitgliedschaft** (zentrale Bausystem-
    Eigenschaft): In einem Modell mit Bausystem-Menge 𝒮ᴹ ist
    ```
-   ∀ S₁, S₂ ∈ 𝒮ᴹ : S₁ ≠ S₂ ⇏ S₁.mitglieder ∩ S₂.mitglieder = ∅
+   ∀ S₁, S₂ ∈ 𝒮ᴹ: S₁ ≠ S₂ ⇏ S₁.mitglieder ∩ S₂.mitglieder = ∅
    ```
    Mitgliedschaften können sich beliebig überlappen; ein Bauteil
    kann gleichzeitig Mitglied beliebig vieler Bausysteme sein. Auch
@@ -142,7 +142,7 @@ Die **abgeleitete geometrische Punktmenge** als Vereinigung der
 Mitglieder-Punktmengen ist immer verfügbar:
 
 ```
-G_W(S) := ⋃_{b ∈ mitglieder} G_W(b) ⊂ ℝ³.
+G_W(S):= ⋃_{b ∈ mitglieder} G_W(b) ⊂ ℝ³.
 ```
 
 ## Wohldefiniertheit
@@ -154,7 +154,7 @@ G_W(S) := ⋃_{b ∈ mitglieder} G_W(b) ⊂ ℝ³.
   bezeichnung = ⊥ (zulässig als noch nicht befülltes System in
   Definition).
 - **Eindeutigkeit der Identität**: Innerhalb eines Modells gilt
-  ∀ S₁, S₂ : (S₁ ≠ S₂) ⇒ (S₁.uuid ≠ S₂.uuid). Die Bausystem-UUID
+  ∀ S₁, S₂: (S₁ ≠ S₂) ⇒ (S₁.uuid ≠ S₂.uuid). Die Bausystem-UUID
   ist konstruktionsseitig zu vergeben (UUID v7 nach RFC 9562) und
   persistent.
 - **Mitgliedschafts-Funktion ist nicht funktional**: Anders als bei
@@ -167,7 +167,7 @@ G_W(S) := ⋃_{b ∈ mitglieder} G_W(b) ⊂ ℝ³.
   zusätzlichen Pflichtfelder hinzu und ändert keine
   Bauteil-Eigenschaften.
 - **Wohldefiniertheit bei intensionaler Auswahl-Regel**: Wenn S
-  durch eine Auswahl-Regel φ : 𝓑 → {true, false} definiert ist,
+  durch eine Auswahl-Regel φ: 𝓑 → {true, false} definiert ist,
   gilt mitglieder = { b ∈ 𝓑 | φ(b) = true } zum
   Auswertungszeitpunkt. Die Regel φ muss deterministisch und seitens
   des Modells reproduzierbar sein; bei nicht-deterministischer Regel
@@ -329,102 +329,7 @@ Bauteilgruppen zu verletzen.
     eines Daches; eigene Aggregat-Semantik, nicht primär ein
     funktionales Bausystem.
   - **Element** (`element`): Bausysteme sind keine
-    Element-Subtypen (Memory `project_element_ontologie`).
-
-## Implementierungshinweis
-
-**Im aktuellen Glossarstand wird ausdrücklich keine Code-Klasse
-`Bausystem` angelegt** (Memory `project_glossar_konventionen`,
-Briefing `briefing_aggregations_begriffe.md`). Die ontologische
-Vorbereitung lebt zunächst nur im Glossar; die Code-Klasse entsteht
-zusammen mit dem ersten konkreten Subtyp, der in einem Tool
-tatsächlich benötigt wird (vermutlich entweder eine konkrete
-Tragwerk-Implementierung oder eine Dachflächen-Sicht). Der folgende
-Skizzen-Code ist ausschließlich orientierender Implementierungs-
-Hinweis.
-
-```kotlin
-// SKIZZE — nicht jetzt anlegen.
-// Glossar: hg_bausystem.md
-
-package domain.bauteil
-
-import domain.bauteil.Bauteil
-import java.util.UUID
-
-/**
- * Bausystem: funktionale, nicht-exklusive Gruppierung von
- * Bauteilen nach gemeinsamer Aufgabe. Keine eigene Aggregat-
- * Identität im DDD-Sinn — die Mitglieder sind die Aggregate, das
- * Bausystem ist die Klammer.
- *
- * Sealed, weil konkrete Subtypen (Tragwerk, Aussteifungssystem,
- * Dachflächen-Sicht, Schichtaufbau-Lage, Eindeckung,
- * Hüllkonstruktion) eigene Funktion-Klassifikationen und eigene
- * Auswahl-Regeln tragen.
- */
-sealed class Bausystem {
-    abstract val uuid: UUID
-    abstract val mitglieder: Set<Bauteil>      // extensional
-    abstract val funktion: BausystemFunktion
-    abstract val bezeichnung: String?
-
-    // Keine Invariante "mitglieder.isNotEmpty()" — leere Bausysteme
-    // sind in der Definitions-Phase zulässig.
-
-    // Keine Invariante "Mitglieder gehören zu keinem anderen
-    // Bausystem" — Mehrfachmitgliedschaft ist die zentrale
-    // Eigenschaft.
-}
-
-enum class BausystemFunktion {
-    TRAGWERK, AUSSTEIFUNG, HUELLKONSTRUKTION,
-    EINDECKUNG, SCHICHTAUFBAU_LAGE, BEFESTIGUNGSSYSTEM,
-    /* Folgearbeit: erweitern, sobald konkrete Subtypen entstehen */
-}
-```
-
-- **Einheit**: Längen (sofern eine optionale Bausystem-Geometrie
-  existiert) in mm (Double); Winkel intern in Radiant.
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7);
-  externe Referenzen auf ein Bausystem gehen ausschließlich auf
-  diese UUID. Mitglieder werden über ihre Bauteil-UUIDs
-  referenziert.
-- **Invarianten** (im `init`-Block prüfen, bei Verletzung
-  `Resultat.Fehler` bzw. `Entartet`-Variante; niemals Exception
-  werfen):
-  1. Keine Mindestgröße: `mitglieder.size >= 0` (leere Bausysteme
-     in Definition zulässig).
-  2. **Keine** Exklusivitäts-Prüfung gegen andere Bausysteme.
-     Mehrfachmitgliedschaft ist die zentrale Eigenschaft und
-     ausdrücklich zugelassen.
-  3. Bei intensionaler Definition durch Auswahl-Regel φ: φ muss
-     deterministisch sein; bei nicht-deterministischer Regel
-     `Entartet.NichtDeterministischeAuswahlregel`.
-- **Edge Cases**:
-  - **Leeres Bausystem**: zulässig (Definition ohne Mitglieder).
-  - **Bausystem mit einem Mitglied**: zulässig (z. B. ein
-    einzelner Kragträger als alleiniges Tragwerk).
-  - **Vollständige Überlappung mit anderem Bausystem**
-    (S₁.mitglieder = S₂.mitglieder bei verschiedenen funktionen):
-    zulässig (z. B. „Tragwerk" und „Holzkonstruktion" decken
-    sich, wenn alle Bauteile aus Holz und tragend sind).
-  - **Mitgliedschaft eines Bauteils in einer Bauteilgruppe und
-    in einem Bausystem gleichzeitig**: zulässig (z. B. ein
-    Wechselbalken einer Auswechslungs-Bauteilgruppe ist
-    gleichzeitig Mitglied des Tragwerks-Bausystems).
-  - **Entfernen eines Bauteils aus dem Modell**: das Bauteil wird
-    automatisch aus allen Bausystem-Mitgliederlisten entfernt;
-    die Bausysteme bleiben als Gruppierungen bestehen
-    (gegebenenfalls leer).
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `geometrieInWelt(): GeometrieInW` = ⋃_{b ∈ mitglieder} G_W(b).
-  - `boundingBox(): AABB` = achsenparalleler Hüllquader in W über
-    den Mitgliedern.
-  - `enthaelt(b: Bauteil): Boolean` = `b in mitglieder`.
-  - `auswahlregel(): (Bauteil) -> Boolean` (optional, bei
-    intensional definierten Bausystemen): die deterministische
-    Mitgliedschafts-Funktion.
+    Element-Subtypen.
 
 ## Quellen
 
@@ -460,32 +365,3 @@ enum class BausystemFunktion {
   für den Holzbau" (abgerufen 2026-05-09).
 - Wikipedia, Lemmata „Tragwerk" und „Aussteifung" (abgerufen
   2026-05-09).
-
-## Folgearbeit (trigger-basiert)
-
-Konkrete Spezialisierungen werden definiert oder ontologisch
-angebunden, sobald das jeweilige Tool sie benötigt:
-
-- **`tragwerk` (existiert bereits)** — funktionale Sicht „alle
-  lastabtragenden Bauteile". Strukturell eine Spezialisierung von
-  Bausystem; eine formale Anbindung (`oberbegriff: bausystem` in
-  `hg_tragwerk.md`) ist eine sinnvolle Folge-Korrektur, ist aber
-  nicht Gegenstand dieses Eintrags und wird Eric zur Entscheidung
-  vorgelegt (siehe Übergabe-Notiz dieses Auftrags).
-- `aussteifungssystem` — Sicht über aussteifende Bauteile.
-- `eindeckung` — Sicht über Eindeckungsbauteile (Ziegel,
-  Schindeln, Bahnenware).
-- `huellkonstruktion` — Sicht über die Außenhülle des Bauwerks.
-- `befestigungssystem` — Sicht über Verbindungsmittel und
-  Verbinder eines gemeinsamen Befestigungs-Zwecks.
-- Erweiterte Lesart von `dachflaeche` als funktionales Bausystem
-  „alle Bauteile dieser Dachseite" — wenn ein Tool diese Sicht
-  braucht, als zusätzliche Begriffsschicht modellieren.
-
-Außerdem als Folgearbeit auf Glossar-Ebene:
-
-- Ggf. ein abstrakter Oberbegriff `aggregat` über
-  `bauteilgruppe`, `bausystem`, `verbindung` und `tragwerk`, falls
-  sich strukturelle Gemeinsamkeiten (eigene UUID, Gruppierungs-
-  Beziehung) als hinreichend tragfähig erweisen — derzeit als
-  offen geführt.

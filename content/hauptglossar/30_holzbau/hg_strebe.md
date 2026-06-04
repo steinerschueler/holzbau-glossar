@@ -30,10 +30,10 @@ quellen_sekundär:
   - "bauredakteur.de 'Fachwerk – Begriffe und Konstruktion': funktionale Trennung Strebe / Kopfband / Fußband / Andreaskreuz."
   - "baubeaver.de 'Fachwerkhaus': Strebenstellungs-Praxis, 70–75°-Empfehlung gegen 45°-Default des Kopfbands."
   - "architektvergleich.ch 'Riegelbau Schweiz': CH-Pendant zum DE-Fachwerk; Streben generisch im Wandgerüst, Kopfband/Bug nicht eigenständig."
-  - "Recherche-Bericht: docs/recherche/2026-05-15_strebe_kopfband_bug.md."
+  - "Recherche-Bericht: [intern]."
 quellenkonflikt: |
   Drei Punkte sind in der Recherche
-  (`docs/recherche/2026-05-15_strebe_kopfband_bug.md`) auflösungs-
+  ([intern]) auflösungs-
   bedürftig und werden hier ausdrücklich festgelegt.
 
   **(1) Wikipedia-Subsumption vs. TTH-Trennung.** Wikipedia/Strebe
@@ -97,26 +97,14 @@ quellenkonflikt: |
   Lignum) als z. B. das Kopfband, im modernen Hochbau aber
   konstruktiv überwiegend durch Beplankungs-Aussteifung verdrängt.
 
-  **(4) BauNetz-Wissen Block-Signal (HTTP 403).** Die WebFetch-
-  Anfrage an `baunetzwissen.de/glossar/s/strebe-6633282` lieferte
-  HTTP 403 (Bot-Detektion der Domain). Aussagen aus BauNetz Wissen
+  **(4) BauNetz-Wissen.** Aussagen aus BauNetz Wissen
   sind ausschließlich aus WebSearch-Snippets rekonstruiert und mit
-  `[einsicht: snippet]` markiert. Block ist domain-weit (gilt auch
-  von der Hauptinstanz aus); keine Hauptinstanz-Eskalation
-  notwendig. Verifikations-Trigger: Eric-Browser-Direktblick bei
-  späterer Welle.
+  `[einsicht: snippet]` markiert.
 
-  **(5) SIA-265-Verifikations-Trigger.** SIA 265:2021 §1.1
+  **(5) SIA-265.** SIA 265:2021 §1.1
   „Fachausdrücke" enthält laut Lignum-Pressemitteilung 2021 eine
-  geschlossene Definitionsliste der Holzbau-Fachbegriffe (analog
-  Welle 9 Quellenkonflikt-Punkt 5 in `hg_staender.md`). Der
-  Norm-Volltext ist **nicht direkt eingesehen** (SIA-Shop-Paywall);
-  Marker-Konvention nach §10 ist mit `[via: Lignum-Pressemitteilung
-  2021]` gesetzt. Bei Eric-Volltext-Zugriff (Memory
-  `feedback_subagent_findings_verifizieren`) ist die Wurzel-
-  Benennung „Strebe" gegen die SIA-265-Lemmatisierung zu prüfen.
-  Best Case: SIA 265 führt „Strebe" und „Kopfband" parallel — dann
-  ist die hier getroffene Geschwister-Trennung voll bestätigt.
+  geschlossene Definitionsliste der Holzbau-Fachbegriffe. Der
+  Norm-Volltext ist **nicht direkt eingesehen** (SIA-Shop-Paywall).
 
   **(6) TTH-verwandte-Terme als Synonyme — eigene Festlegung.**
   Der TTH-Eintrag „Strebe" (Begriff-ID 903) listet `Biege`,
@@ -156,7 +144,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - E_W eine Wandebene (Ebene im Sinne von `ebene`) mit Stützpunkt
   p_W und Normalenvektor n_hat_W ∈ S², wobei n_hat_W horizontal liegt
   (|⟨n_hat_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
@@ -168,10 +156,10 @@ Sei
   ‖d_hat_{A_i} − ⟨d_hat_{A_i}, e_z⟩ e_z‖ > 1 − ε_K, gleichbedeutend
   mit |⟨d_hat_{A_i}, e_z⟩| ≤ ε_K) oder ein **lotrechtes** Anker-Bauteil
   (Ständer, Pfosten — ‖d_hat_{A_i} × e_z‖ ≤ ε_K) ist,
-- e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-  ε_L := Toleranzen.LAENGE_EPS,
-  ε_W := Toleranzen.WINKEL_EPS.
+- e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS,
+  ε_W:= Toleranzen.WINKEL_EPS.
 
 Dann heißt B eine **Strebe** der Wand mit Wandebene E_W und
 Ankern (A₁, A₂) genau dann, wenn die folgenden Bedingungen
@@ -186,7 +174,7 @@ alle erfüllt sind:
    ```
 
 3. **Echte Diagonale (weder lotrecht noch horizontal)**: Der
-   Winkel α(B) := arccos(|⟨d_hat, e_z⟩|) zwischen Bauteilachse und
+   Winkel α(B):= arccos(|⟨d_hat, e_z⟩|) zwischen Bauteilachse und
    Lotachse erfüllt
    ```
    ε_W < α(B) < π/2 − ε_W,
@@ -227,14 +215,14 @@ alle erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Strebenlänge**: L_S := ‖p_e − p_a‖ (in mm), entlang der
+- **Strebenlänge**: L_S:= ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen den beiden Anker-Endpunkten.
-- **Strebenneigung gegen Horizontale**: β_S := π/2 − α(B),
+- **Strebenneigung gegen Horizontale**: β_S:= π/2 − α(B),
   typisch 35°–80° (45°-Werte sind im Fachstrebe-Fall häufig,
   60°–80° bei steilen Fachwerk-Streben — Wikipedia/Strebe
   „mindestens zwei gegenläufige Streben", baubeaver 70–75°-
   Praxis-Empfehlung).
-- **Wandebenen-Achsenrichtung**: t_hat_W := projektiere d_hat in die
+- **Wandebenen-Achsenrichtung**: t_hat_W:= projektiere d_hat in die
   Wandebene, dient als Default-Faserrichtung am Bauteil
   (Faserrichtung axial entlang der Bauteilachse).
 
@@ -375,8 +363,7 @@ Bauteilrollen (Welle-8/9-Analogie zu `RiegelPosition`,
 - **UNSPEZIFIZIERT**: Position nicht zugewiesen (Default).
 
 In der Domänen-Schicht werden diese Positionen als Wert eines
-Merkmals `StrebePosition` am Strebe-Bauteil geführt (siehe
-Implementierungshinweis), nicht als Subtyp-Hierarchie.
+Merkmals `StrebePosition` am Strebe-Bauteil geführt, nicht als Subtyp-Hierarchie.
 
 ### Statische Beanspruchungsklassen (Annotation, keine Bauteilrolle)
 
@@ -522,212 +509,6 @@ Teil dieses Eintrags; die Versatz-Bearbeitung ist eigene
   - **Bauteil** (`bauteil`): die Strebe ist eine Spezialisierung
     von Bauteil mit zusätzlichen Lage-Constraints.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Ebene
-import domain.geometrie.Punkt
-import kotlin.math.abs
-import kotlin.math.acos
-
-/**
- * Strebe als Bauteilrolle: diagonales Stab-Bauteil in einer
- * Wandebene zwischen zwei Anker-Bauteilen, das mit ihnen einen
- * unverschieblichen Dreiecksverband zur horizontalen
- * Aussteifung der Wandscheibe bildet.
- *
- * Glossar: hg_strebe.md
- *
- * Die Sub-Lesarten Fuß-/Kopf-/Fach-/Lang-/Eck-Strebe sind
- * Positions-Annotationen, keine Subtypen. Welle-9-Analogie zu
- * `StaenderPosition` in `hg_staender.md`.
- *
- * Trennlinie zum Kopfband: das Kopfband hat seinen Pfosten-Anker
- * am Pfosten-Kopf; die Kopfstrebe hat ihn am Pfosten-Fuß oder
- * in der Pfosten-Mitte. Die App-seitige Klassifikation erfolgt
- * über das Wand-Aggregat (Folgearbeit) anhand der z-Lage des
- * Pfosten-Anker-Endpunkts relativ zu z_min^P und z_max^P.
- */
-data class Strebe(
-    val bauteil: Bauteil,
-    /** Wandebene; aus den Anker-Bauteilachsen abgeleitet. */
-    val wandebene: Ebene,
-    /** Positions-Annotation in der Wand. Default UNSPEZIFIZIERT. */
-    val position: StrebePosition = StrebePosition.UNSPEZIFIZIERT,
-) {
-    val achse: Bauteilachse.Gerade
-        get() = (bauteil.geometrie as Bauteilgeometrie.Stab).achse
-                as Bauteilachse.Gerade
-    val laenge: Double get() = achse.laenge          // mm
-    val richtung: Einheitsvektor get() = achse.richtung
-
-    /**
-     * Diagonal-Prädikat: weder lotrecht noch horizontal.
-     *
-     * α(B) = arccos(|⟨d_hat, e_z⟩|);  ε_W < α < π/2 − ε_W.
-     */
-    fun istDiagonal(eps: Double = Toleranzen.WINKEL_EPS): Boolean {
-        val d = richtung
-        val cosAlpha = abs(d.z)              // |⟨d_hat, e_z⟩| mit e_z = (0,0,1)
-        if (cosAlpha < eps) return false      // horizontal
-        if (cosAlpha > 1.0 - eps) return false // lotrecht
-        val alpha = acos(cosAlpha)
-        return alpha > eps && alpha < (Math.PI / 2.0 - eps)
-    }
-}
-
-/**
- * Positions-Annotation einer Strebe in der Wand. Die Sub-Lesarten
- * unterscheiden sich durch topologische Anker-Lage (Schwelle-/
- * Rähm-/Riegel-/Pfosten-Bezug), nicht durch eigene Geometrie-
- * oder Statik-Constraints. Daher Merkmal, nicht Subtyp.
- *
- * Glossar: hg_strebe.md (siehe Erläuterung „Strebenpositionen
- * in der Wand").
- */
-enum class StrebePosition {
-    /** Vom Schwellen-/Riegel-Niveau aufwärts gegen Pfosten/Ständer. */
-    FUSSSTREBE,
-    /** Vom Pfosten/Ständer aufwärts gegen Rähm/Oberen Riegel. */
-    KOPFSTREBE,
-    /** Diagonale eines einzelnen Gefachs (Riegel-Ecke zu Pfosten-Ecke). */
-    FACHSTREBE,
-    /** Mehrere Gefache überspannende Diagonale (Schwertung/Steigband). */
-    LANGSTREBE,
-    /** An einer Wandecke eingebaute Diagonale (Eck-Aussteifung). */
-    ECKSTREBE,
-    /** Position nicht zugewiesen (Default). */
-    UNSPEZIFIZIERT,
-}
-
-sealed class StrebeEntartet {
-    object Nullachse                    : StrebeEntartet()
-    object NichtInWandebene             : StrebeEntartet()
-    object Lotrecht                     : StrebeEntartet()   // α ≤ ε_W
-    object Horizontal                   : StrebeEntartet()   // α ≥ π/2 − ε_W
-    object KeinAnkerAufBauteilachse     : StrebeEntartet()
-    object KeinHorizontalerAnker        : StrebeEntartet()
-    object WandebeneNichtLotrecht       : StrebeEntartet()
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil
-  (Memory `project_bauteil_identifikation`).
-- **Invarianten** (in der Factory `strebeAusBauteil(...)`
-  prüfen, bei Verletzung `Resultat.Fehler` mit
-  `StrebeEntartet`-Variante; niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. Wandebene lotrecht: |⟨n_hat_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
-     — sonst `WandebeneNichtLotrecht`.
-  4. Beide Endpunkte in Wandebene (Punkt-Ebene-Abstand ≤
-     Toleranzen.LAENGE_EPS) — sonst `NichtInWandebene`.
-  5. α(B) > Toleranzen.WINKEL_EPS — sonst `Horizontal`.
-  6. α(B) < π/2 − Toleranzen.WINKEL_EPS — sonst `Lotrecht`.
-  7. Beide Endpunkte je auf einer Anker-Bauteilachse
-     (Punkt-Gerade-Abstand ≤ Toleranzen.LAENGE_EPS) — sonst
-     `KeinAnkerAufBauteilachse`.
-  8. Mindestens einer der Anker ist horizontal (Bauteilachse
-     mit |⟨d_hat_A, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS) — sonst
-     `KeinHorizontalerAnker` (zwei Pfosten-Anker = Pfosten-zu-
-     Pfosten-Strebe, ein zulässiger Sonderfall im historischen
-     Fachwerkbau; in Welle 10 unter `KeinHorizontalerAnker`
-     bewusst ausgeschlossen, Folgearbeit-Trigger zur Lockerung
-     der Bedingung 4).
-- **Edge Cases**:
-  - **Pfosten-zu-Pfosten-Strebe**: zwei lotrechte Anker, kein
-    horizontaler. Im historischen Fachwerkbau zulässig (zwei
-    benachbarte Ständer mit dazwischen gespannter Diagonale).
-    In Welle 10 als `KeinHorizontalerAnker`-Fehler markiert;
-    Folgearbeit-Trigger zur Bedingungs-Lockerung bei
-    Wand-Aggregat-Welle.
-  - **Strebe mit Pfosten-Kopf-Anker**: Anker-Endpunkt nahe
-    `z_max^P` des Pfostens. Grenzfall zur Kopfband-Klassifikation;
-    in `position = KOPFSTREBE` führen, falls der zweite Anker
-    horizontal ist und nicht ausschließlich am Längsholz darüber;
-    sonst als Kopfband klassifizieren (siehe `hg_kopfband.md`).
-    Die Klassifikation erfolgt im Wand-Aggregat anhand der
-    z-Lage und der Anker-Tupel-Konfiguration.
-  - **Sehr flache Strebe** (α nahe π/2 − ε_W, d. h. fast
-    horizontal): typisch nicht funktional als Wand-Aussteifung
-    wirksam; geometrisch toleriert, statisch in der Bemessung
-    auszuschließen. Folgearbeit-Trigger bei Bemessungs-
-    Modellierung.
-  - **Sehr steile Strebe** (α nahe ε_W, fast lotrecht):
-    typisch Pfosten-/Ständer-nahe Sub-Lesart oder Stempel;
-    statisch nicht als Diagonale wirksam. Wie oben.
-  - **Andreaskreuz-Mitglied**: zwei einzelne Streben-Instanzen,
-    die sich im Wandebene kreuzen; jede ist eine eigene
-    `Strebe`-Instanz. Die Aggregation zum Andreaskreuz ist
-    Folgearbeit (eigenes `andreaskreuz`-Aggregat).
-  - **Mann-Figur-Mitglied**: Strebe-Instanz innerhalb eines
-    Mann-/Wilder-Mann-Bündels; Aggregat-Folgearbeit beim
-    historischen Fachwerk-Tool.
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `neigung(): Double` — β_S = π/2 − α(B), Strebenneigung
-    gegen die Horizontale in rad.
-  - `beanspruchungsklasse(t: Tragwerk): StrebenBeanspruchung?`
-    — Druck / Zug / Wechsel, abgeleitet aus der Last-Berechnung;
-    Folgearbeit bei Bemessungs-Modellierung.
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt `Strebe`
-  (deutsch, Glossarbegriff); Positions-Enum heißt `StrebePosition`.
-  Spezialisierungs-Subtypen sind nicht vorgesehen; Spannstrebe
-  und Strebesäule sind Folgearbeit-Trigger für eigene
-  Bauteilrollen.
-- **Folgearbeit-Trigger** (für `_FOLGEARBEITEN_*.md` oder die
-  Wand-Aggregat-Welle-Planung):
-  - `fussband`: Geschwister-Rolle zum Kopfband am Pfosten-Fuß;
-    bewusst in Welle 10 nicht angelegt. Trigger: erste Mann-
-    Figuren-Modellierung oder bei nächster Wand-Welle.
-  - `knagge`: dreieckiges Vollholz als Konsole; eigene Bauteil-
-    rolle. Trigger: Deckenbalken-Konsole / Pfetten-Konsole-
-    Modellierung.
-  - `kniestrebe`: Dachstuhl-Diagonale; eigener Eintrag bei
-    Dachstuhl-Welle (stehender / liegender Stuhl).
-  - `andreaskreuz`: Aggregat (zwei sich kreuzende Streben);
-    Aggregat-Folgearbeit beim Wand-Aggregat.
-  - `mann`: Aggregat (Mann-Figur / Halber Mann / Wilder Mann /
-    Hessenmann); Aggregat-Folgearbeit bei historischer Fachwerk-
-    Welle.
-  - `spannstrebe`: TTH-Sub-Lesart der Strebe mit Zug-Default;
-    Folgearbeit bei historischer Fachwerk-Welle.
-  - `strebesaeule`: TTH-Sub-Lesart der Strebe mit säulen-
-    artigem Querschnitt; Folgearbeit bei historischer Fachwerk-
-    Welle.
-  - `zugband`, `windrispenband`: Stahl-Aussteifungselemente;
-    eigene Bauteilrollen. Trigger: erstes Hallenbau-Tool oder
-    CLT-Anschluss-Welle.
-  - `stuhlsaeule`, `haengesaeule`: Dach-Vertikalhölzer;
-    Folgearbeit Dachstuhl / Hängewerk.
-  - `wand` (Aggregat, mit Welle 12 angelegt, siehe
-    `hg_wand.md`): die Strebe ist Mitglied einer
-    Wand-Bauteilgruppe. Eine Zwischenebene `wandbauteil`
-    wurde mit Welle 12 verworfen (App-Drift; siehe
-    `hg_wand.md` Quellenkonflikt-Block (6)). Die
-    Sammel-Funktion „Wand-Bauteilrolle" wird über die
-    Aggregat-Mitgliedschaft realisiert.
-  - **SIA-265-Verifikation**: bei Volltext-Zugriff (Eric)
-    SIA 265:2021 §1.1 Fachausdrücke direkt prüfen, ob „Strebe",
-    „Kopfband" und „Bug" als Lemmata geführt sind; Wurzel-Wahl
-    und Synonymie ggf. als ABW-Welle korrigieren (siehe
-    Quellenkonflikt-Block (5)).
-  - **BauNetz-Wissen-Direkteinsicht**: Browser-Direktblick
-    durch Eric bei `baunetzwissen.de/glossar/s/strebe-6633282`;
-    bei substantiellen Aussagen Marker an der entsprechenden
-    `quellen_primär:`-Zeile von `[einsicht: snippet]` auf
-    `[direkt]` aufrücken (Block-Signal, siehe Quellenkonflikt-
-    Block (4)). Per §10.3 trägt `quellen_sekundär:` selbst
-    keine Marker.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -788,4 +569,4 @@ sealed class StrebeEntartet {
 - Simpson Strong-Tie: „Aussteifung, Lochbänder", strongtie.de.
 - DERIX: „Lexikon Aussteifung", derix.de.
 - Recherche-Bericht:
-  `docs/recherche/2026-05-15_strebe_kopfband_bug.md`.
+  [intern].

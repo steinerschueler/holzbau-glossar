@@ -67,7 +67,7 @@ Sei
 - 𝒟 = { D₁, …, D_m } mit m ≥ 1 eine endliche, nicht-leere Familie
   von Dachflächen D_i = (E_i, P_i, n_{a,i}) im Sinne von
   `dachflaeche`,
-- F := ⋃_{i=1..m} F(P_i) ⊂ ℝ³ die geometrische
+- F:= ⋃_{i=1..m} F(P_i) ⊂ ℝ³ die geometrische
   Vereinigungsfläche der Dachflächen (Trägerbereich),
 - M ⊂ ℝ³ eine endliche, nicht-leere Punktwolke der **Eindeckungs-
   bzw. Abdichtungs-Oberseite**: für jedes Eindeckungs- bzw.
@@ -79,19 +79,19 @@ Sei
 Für jeden Punkt q ∈ F(P_i) sei
 
 ```
-ρ_i(q) := sup { t ∈ ℝ | ∃ x ∈ M : x = q + t · n_{a,i}, t ≥ 0 }
+ρ_i(q):= sup { t ∈ ℝ | ∃ x ∈ M: x = q + t · n_{a,i}, t ≥ 0 }
 ```
 
 der **Höhenabtrag** der Eindeckungspunktwolke entlang der äußeren
 Normalen der zugehörigen Dachfläche, mit der Konvention
-sup ∅ := 0. Ist q ∈ F(P_i) ∩ F(P_j) auf einer gemeinsamen
+sup ∅:= 0. Ist q ∈ F(P_i) ∩ F(P_j) auf einer gemeinsamen
 Randstrecke zweier Dachflächen, so wird ρ als Maximum über die
 zuständigen Indizes genommen.
 
 Dann ist die **Dachhaut** des Daches die Bildmenge
 
 ```
-H := { q + ρ(q) · n_{a(q)} | q ∈ F }   ⊂ ℝ³,
+H:= { q + ρ(q) · n_{a(q)} | q ∈ F }   ⊂ ℝ³,
 ```
 
 wobei n_{a(q)} die äußere Normale der für q lokal zuständigen
@@ -100,11 +100,11 @@ Dachfläche bezeichnet.
 Äquivalent (parametrisch über jede Dachfläche):
 
 ```
-H_i := { q + ρ_i(q) · n_{a,i} | q ∈ F(P_i) },
-H   := ⋃_{i=1..m} H_i.
+H_i:= { q + ρ_i(q) · n_{a,i} | q ∈ F(P_i) },
+H:= ⋃_{i=1..m} H_i.
 ```
 
-Die Funktion h_i : F(P_i) → ℝ, q ↦ ρ_i(q), heißt
+Die Funktion h_i: F(P_i) → ℝ, q ↦ ρ_i(q), heißt
 **Höhenfunktion** der Dachhaut über der Dachfläche D_i; sie liefert
 in der Praxis stückweise glatte, im Bereich von wenigen
 Zentimetern variierende Werte (Profilhöhe der Eindeckung).
@@ -214,60 +214,6 @@ liegende Material wechselt.
   - **Unterdach** (`unterdach`, bereits angelegt): die
     zweite, unter der Eindeckung liegende wasserführende Ebene.
     Nicht Bestandteil der Dachhaut, sondern des Dachaufbaus.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-data class Dachhaut(
-    val dachflaechen: List<Dachflaeche>,         // 𝒟, Trägerbereich F = ⋃ F(P_i)
-    val hoehenfunktion: (Punkt, Int) -> Double  // ρ_i(q) für i = Index der Dachfläche
-) {
-    init {
-        // 1. dachflaechen.isNotEmpty()                  → sonst Entartet.LeerTraeger
-        // 2. hoehenfunktion liefert Werte ≥ 0           → ansonsten Entartet.NegativeHoehe
-    }
-
-    fun punktAuf(q: Punkt, i: Int): Punkt =
-        q + dachflaechen[i].aeussereNormale * hoehenfunktion(q, i)
-
-    fun mittlereDicke(): Double = /* numerische Integration über F(P_i) */
-}
-```
-
-- **Einheit**: Längen und Höhenfunktionswerte in mm (Double).
-- **Repräsentation**: Die Dachhaut wird selten direkt eingegeben.
-  Sie wird typischerweise aus dem `dachaufbau` und der konkreten
-  Eindeckung abgeleitet — entweder analytisch (für Flachdächer
-  mit konstanter Abdichtungsdicke ρ ≡ const) oder numerisch (für
-  Profilziegel als obere Hüllfläche der Pfannenkämme).
-- **Invarianten** (in `init` prüfen, bei Verletzung
-  `Resultat.Fehler` oder `Entartet`-Variante zurückgeben, niemals
-  Exception werfen):
-  1. `dachflaechen.isNotEmpty()` ⇒ sonst `Entartet.LeerTraeger`.
-  2. `hoehenfunktion` liefert für jedes (q, i) einen Wert
-     ≥ −Toleranzen.LAENGE_EPS ⇒ sonst `Entartet.NegativeHoehe`.
-  3. `hoehenfunktion` ist beschränkt durch eine plausible
-     Maximalhöhe (z. B. < 200 mm für übliche Eindeckungen);
-     Verletzung als Warnung, nicht als harter Fehler.
-- **Edge Cases**:
-  - **Rohbau ohne Eindeckung**: ρ ≡ 0, Dachhaut = Dachfläche.
-    Zulässig.
-  - **Flachdach mit homogener Folienabdichtung**: ρ = const,
-    Dachhaut ist parallele Verschiebung der Dachfläche.
-  - **Profilziegel** (z. B. Doppelmuldenfalzziegel): ρ schwankt
-    periodisch über der Fläche; in der App typischerweise als
-    mittlere Hüllfläche dargestellt.
-  - **Knicke an First/Grat**: Dachhaut ist nicht glatt, sondern
-    knickbehaftet; entspricht der Realität (Firstabdeckung).
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `mittlereDicke(): Double` (mm) = mittlerer Wert von ρ über F.
-  - `gesamtflaeche(): Double` (mm²) = Flächeninhalt von H,
-    leicht größer als der Flächeninhalt von F (Schrägstellung
-    durch ρ-Variation).
-  - `liegtAussen(p: Punkt, eps): Boolean` = Test, ob Punkt p in
-    der nach außen weisenden Halbraumseite von H liegt.
 
 ## Quellen
 

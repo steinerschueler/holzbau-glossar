@@ -118,7 +118,7 @@ Sei
 - O ∈ 𝔸 ein **Ursprung**,
 - B = (b_1, …, b_n) eine geordnete **Basis** von V (linear
   unabhängige n-elementige Familie aus V, die V erzeugt),
-- η : 𝔸 → ℝⁿ die **Koordinatenabbildung**
+- η: 𝔸 → ℝⁿ die **Koordinatenabbildung**
   ```
   η(p) = (x_1, …, x_n)  ⇔  p = O + x_1·b_1 + … + x_n·b_n.
   ```
@@ -126,7 +126,7 @@ Sei
 Dann ist ein **Koordinatensystem** auf 𝔸 das Tupel
 
 ```
-K := (O, B, n, η).
+K:= (O, B, n, η).
 ```
 
 η heisst die durch (O, B) erzeugte Koordinatenabbildung.
@@ -167,7 +167,7 @@ trägt, wird in seinem eigenen Glossareintrag normativ festgelegt
   als p = O + v mit v ∈ V darstellen lässt und v in der Basis B
   eindeutig in Komponenten zerfällt.
 - **Bijektivität von η**: η ist bijektiv. Surjektivität folgt aus
-  der Konstruktion η⁻¹(x_1, …, x_n) := O + x_1·b_1 + … + x_n·b_n.
+  der Konstruktion η⁻¹(x_1, …, x_n):= O + x_1·b_1 + … + x_n·b_n.
   Injektivität folgt aus der eindeutigen Basisdarstellung in V.
 - **Unabhängigkeit der Operationen von der Wahl des Repräsentanten**:
   Bei festgelegtem (O, B) ist η eine Bijektion, und alle
@@ -272,43 +272,6 @@ Spezialisierungen `weltkoordinatensystem` (Ost/Nord/Zenit) und
     Koordinatensystems wird durch (O, b_i) festgelegt; ein
     Koordinatensystem hat n Achsen, ist aber selbst keine Achse.
 
-## Implementierungshinweis
-
-Der Oberbegriff `koordinatensystem` ist als `hilfsbegriff`
-gekennzeichnet (HG-Konvention §3, Tabelle Code-Pendant-Pflicht);
-er **muss kein** eigenes Code-Pendant in der Domänen-Schicht
-tragen. In der aktuellen Implementierung existieren ausschliesslich
-Pendants für die kartesischen 3-dimensionalen Spezialisierungen:
-
-- `zimmermann.domain.koordinaten.Weltkoordinatensystem` — Singleton
-  (Kotlin-`object`) für die globale Festlegung.
-- `zimmermann.domain.koordinaten.LokalePlatzierung` und
-  `zimmermann.domain.koordinaten.Rotation` — `data class`-Familie
-  für bauteileigene Lokalsysteme als starre Transformation
-  T ∈ SE(3) relativ zum Weltsystem.
-
-Eine gemeinsame abstrakte Basisklasse oder ein `sealed interface`
-über beiden Spezialisierungen ist **nicht vorgesehen**: die
-strukturellen Unterschiede zwischen Singleton (Welt) und
-data-class-Familie (Lokal) sind so gross, dass eine gemeinsame
-Schnittstelle keine sinnvolle Abstraktion trägt; die
-fachsprachliche Familienzugehörigkeit reicht aus.
-
-**Trigger-basierte Folgearbeit:**
-
-- **`lv95`-Eintrag** anlegen, sobald die App eine
-  Georeferenzierung gegen den Schweizer Bezugsrahmen LV95
-  vornimmt. Das Code-Pendant ist eine reine Importrand-Operation
-  (Welt-Ursprungs-Anker mit (E, N, H) in Metern), nicht eine
-  eigene Domänen-Klasse.
-- **`wgs84`-Eintrag** analog für GNSS-Importschnittstellen.
-- **`bezugssystem`-Eintrag** **nicht** geplant: der Begriff ist im
-  Holzbau-Korpus nicht etabliert und in den angrenzenden Korpora
-  mehrdeutig (siehe `quellenkonflikt:` Konflikt 1). Sollte die
-  App eine geodätische Schicht (CRS = CS + Datum) brauchen,
-  würde sie über `lv95` und `wgs84` als konkrete CRS-Pendants
-  realisiert, nicht über einen abstrakten `bezugssystem`-Eintrag.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -351,4 +314,4 @@ fachsprachliche Familienzugehörigkeit reicht aus.
   Koordinatensystem", „Affine Koordinaten", „Krummlinige
   Koordinaten", „Affine space" (abgerufen 2026-05-14).
 - Recherche-Bericht
-  `docs/recherche/2026-05-14_hg_koordinatensystem.md`.
+  [intern].

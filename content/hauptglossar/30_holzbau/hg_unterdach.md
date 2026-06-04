@@ -101,7 +101,7 @@ quellenkonflikt: |
   wandert der Wert in die parametrische Funktion mit
   `UnterdachNorm.SIA_232_1` als normativem Beleg, ohne die Begriffs-
   definition zu berühren. Recherche-Bericht:
-  `docs/recherche/2026-05-14_hg_unterdach.md`.
+  [intern].
 
   **(6) Oberbegriff.** Ein passender Oberbegriff fehlt im Glossar:
   weder `schicht` (geplant, vgl. `data class Schicht` in
@@ -159,7 +159,7 @@ Sei
 - A = (𝒟, 𝒮, H) ein **Dachaufbau** im Sinne von `dachaufbau` mit
   Dachflächen-Familie 𝒟 = { D₁, …, D_m }, geordneter Schichtfolge
   𝒮 = (S₁, …, S_k) von innen nach aussen, und Dachhaut H,
-- F := ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich der Dachflächen,
+- F:= ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich der Dachflächen,
 - ein Index j* ∈ { 1, …, k } so gewählt, dass die Schicht S_{j*}
   die Funktionsklasse `SchichtFunktion.UNTERDACH` trägt,
 - d_{j*} ∈ ℝ_{>0} (in mm) die Dicke von S_{j*},
@@ -171,7 +171,7 @@ Sei
 Dann ist ein **Unterdach** das Quadrupel
 
 ```
-U := (𝒟, S_{j*}, α_max, h_max)
+U:= (𝒟, S_{j*}, α_max, h_max)
 ```
 
 mit den Konsistenzbedingungen
@@ -203,7 +203,7 @@ in der externen, parametrischen Validierungsfunktion
 
 ```
 klassifiziereNachStauwasser(h_max: Double, norm: UnterdachNorm)
-    : Beanspruchungsklasse
+: Beanspruchungsklasse
 ```
 
 (analog zu `pruefeMindestlueftung(norm)` an `hg_konterlatte.md`,
@@ -337,7 +337,7 @@ Sinne von SIA 232/1.
 - **Spezialisierungen** (sealed-Hierarchie nach SIA 232/1; die
   konkreten h_max-Schwellen sind nicht hier verankert, sondern
   in `klassifiziereNachStauwasser(h_max, norm)` pro Norm
-  belegt — siehe Implementierungshinweis):
+  belegt):
   - **Normal beanspruchtes Unterdach** — frei abfliessendes
     Wasser, kein Stauwasserdruck.
   - **Erhöht beanspruchtes Unterdach** — begrenzter
@@ -393,147 +393,6 @@ Sinne von SIA 232/1.
     **über** der Konterlattung; Auflager der Eindeckung. Keine
     Berührung mit der Unterdach-Ebene.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-sealed class Unterdach {
-    abstract val dachflaechen: List<Dachflaeche>
-    abstract val schicht: Schicht           // mit funktion = UNTERDACH
-    abstract val maxStauwasserhoehe: Double // mm; Eingabeparameter
-                                            // pro Instanz, nicht
-                                            // Klassen-Konstante
-
-    data class NormalBeansprucht(
-        override val dachflaechen: List<Dachflaeche>,
-        override val schicht: Schicht,
-        override val maxStauwasserhoehe: Double
-    ) : Unterdach() {
-        // Zusatz-Invarianten:
-        //  - h_referenz ≤ 800 m ü. M.
-        //  - dachneigung ≥ Mindest-Neigung der Eindeckung
-    }
-
-    data class ErhoehtBeansprucht(
-        override val dachflaechen: List<Dachflaeche>,
-        override val schicht: Schicht,
-        override val maxStauwasserhoehe: Double
-    ) : Unterdach() {
-        // Zusatz-Invarianten:
-        //  - Nähte wasserdicht verklebt oder verschweisst
-    }
-
-    data class AusserordentlichBeansprucht(
-        override val dachflaechen: List<Dachflaeche>,
-        override val schicht: Schicht,
-        override val maxStauwasserhoehe: Double = Double.POSITIVE_INFINITY
-    ) : Unterdach() {
-        // Zusatz-Invarianten:
-        //  - wasserdichter Werkstoff
-        //  - Nagel-/Schraub-Dichtungen Pflicht (oder ETA-Verzicht)
-    }
-}
-
-// Lokale Norm-Aufzählung für Unterdach-Klassifikation. Eindeutiger
-// Klassenname, um Kollisionen mit lokalen Norm-Enums in
-// hg_dachabdichtung.md (AbdichtungsNorm) und hg_waermedaemmung.md
-// (WaermedaemmungsNorm) zu vermeiden. Folgearbeit-Trigger: sobald
-// mehrere Bauphysik-Module dieselbe Norm referenzieren, wird ein
-// zentraler hg_norm.md angelegt und die lokalen Enums migriert.
-enum class UnterdachNorm { SIA_232_1, DIN_4108_3, ZVDH_FACHREGEL, OENORM_B_4119 }
-
-// Parametrische Klassifikation: bindet h_max an eine konkrete Norm
-// bzw. App-Konvention. Hier — und nur hier — sind die numerischen
-// Schwellwerte materialisiert.
-fun klassifiziereNachStauwasser(
-    hMax: Double,
-    norm: UnterdachNorm
-): Beanspruchungsklasse = when (norm) {
-    UnterdachNorm.SIA_232_1 -> when {
-        hMax <= Toleranzen.LAENGE_EPS        -> Beanspruchungsklasse.NORMAL
-        // App-Konvention auf Basis Sekundärquellen-Konsens
-        // (pro clima Schweiz, Sager, Bauder, Gebäudehülle Schweiz);
-        // nicht aus SIA-Norm-Wortlaut zitiert.
-        hMax <= 50.0                         -> Beanspruchungsklasse.ERHOEHT
-        else                                  -> Beanspruchungsklasse.AUSSERORDENTLICH
-    }
-    // OENORM B 4119 kennt zusätzlich „erhöht regensicher";
-    // bei einer späteren AT-Erweiterung hier zu ergänzen.
-    else -> error("UnterdachNorm $norm: Schwellwerte noch nicht hinterlegt.")
-}
-
-// Pruef-Pendant am Bauteil (Stil wie pruefeMindestlueftung an
-// hg_konterlatte.md): vergleicht die deklarierte Klasse mit der
-// aus h_max + norm errechneten.
-fun Unterdach.pruefeKlasse(norm: UnterdachNorm): Resultat<Unit> {
-    val errechnet = klassifiziereNachStauwasser(maxStauwasserhoehe, norm)
-    return if (errechnet == this.klasse()) Resultat.Ok(Unit)
-           else Resultat.Fehler.KlassenInkonsistenz(deklariert = klasse(),
-                                                    errechnet = errechnet,
-                                                    norm = norm)
-}
-```
-
-- **Einheit**: Stauwasserhöhe in mm (Double); Schichtdicke in mm
-  (über `Schicht.dicke` geerbt).
-- **Trennung Definition ↔ Norm-Schwellen**: Die definitorische
-  Bedingung ist allein die Monotonie aus Konsistenzbedingung (4).
-  Konkrete Zahlen (50 mm zwischen erhöht und ausserordentlich
-  in SIA 232/1; mögliche andere Schwellen in ÖNORM B 4119) leben
-  ausschliesslich in `klassifiziereNachStauwasser(h, norm)` —
-  analog zur Auslagerung normabhängiger Mindesthöhen in
-  `pruefeMindestlueftung(norm)` an `hg_konterlatte.md`. Damit
-  bleibt die `Unterdach`-Klasse normagnostisch und gegen
-  Norm-Revisionen stabil.
-- **Invarianten** (in `init` jedes Subtyps prüfen, bei Verletzung
-  `Resultat.Fehler` bzw. `Entartet`-Variante zurückgeben, niemals
-  Exception werfen):
-  1. `dachflaechen.isNotEmpty()` ⇒ sonst `Entartet.LeerTraeger`.
-  2. `schicht.funktion == SchichtFunktion.UNTERDACH` ⇒ sonst
-     `Entartet.FalscheSchichtFunktion`.
-  3. `schicht.dicke > Toleranzen.LAENGE_EPS` ⇒ sonst
-     `Entartet.NullDickeSchicht`.
-  4. `maxStauwasserhoehe ≥ 0` (auch `+∞` zulässig) ⇒ sonst
-     `Entartet.NegativeSchwelle`.
-  5. Subtyp-spezifische Zusatz-Invarianten (Höhenlage,
-     Mindestneigung, Bahn-Nahtsystem) werden über Pre-Conditions
-     der jeweiligen Factory-Methoden geprüft, nicht im `init`,
-     weil sie Kontext-Informationen aus dem umgebenden Dach
-     brauchen.
-  6. Konsistenz zwischen Subtyp und `maxStauwasserhoehe` wird
-     **nicht** im `init` erzwungen, sondern über die externe
-     Funktion `pruefeKlasse(norm)` — damit bleibt die Klasse
-     normagnostisch.
-- **Edge Cases**:
-  - **Schalung ohne Bahn** (kein gültiges Unterdach): wird in der
-    Konstruktion als `Entartet.FalscheSchichtFunktion` abgewiesen,
-    weil die Schicht der Schalung die Funktion `SCHALUNG` trägt,
-    nicht `UNTERDACH`.
-  - **Mehrlagiges Unterdach** (Bahn + Notdach-Lage): wird als
-    **mehrere** `Unterdach`-Instanzen modelliert, eine pro
-    UNTERDACH-Schicht im Aufbau.
-  - **Klassen-Aufwertung**: ein Unterdach der Klasse
-    `ErhoehtBeansprucht` erfüllt automatisch die Anforderungen
-    der Klasse `NormalBeansprucht`; eine Klassen-Erniedrigung
-    ist hingegen keine zulässige Operation.
-  - **Flachdach**: ein Flachdach (α_i ≈ 0 für alle Dachflächen)
-    hat im Regelfall **kein** Unterdach, sondern eine
-    `dachabdichtung` als alleinige wasserführende Ebene (SIA 271,
-    DIN 18531). Die Konstruktion `Unterdach(...)` über einem
-    Flachdach ist begrifflich zulässig, aber bauphysikalisch
-    untypisch; entsprechende Warnung im
-    `dachaufbau.validierePlausibilitaet()`.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `klasse(): Beanspruchungsklasse` =
-    Enum-Wert NORMAL / ERHOEHT / AUSSERORDENTLICH (zur
-    Sealed-Diskriminierung in Listen).
-  - `haeltStauwasserhoehe(h: Double): Boolean` =
-    `h ≤ maxStauwasserhoehe`.
-  - `mindestensKlasse(α: Beanspruchungsklasse): Boolean` =
-    `this.klasse() ≥ α` in der natürlichen Ordnung
-    NORMAL < ERHOEHT < AUSSERORDENTLICH.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -575,4 +434,4 @@ fun Unterdach.pruefeKlasse(norm: UnterdachNorm): Resultat<Unit> {
   Unterdächer" — als Falsifikationsbeleg für die ÖNORM-
   Herkunft des Begriffs „erhöht regensicher".
 
-**Recherche-Bericht:** `docs/recherche/2026-05-14_hg_unterdach.md`.
+**Recherche-Bericht:** [intern].

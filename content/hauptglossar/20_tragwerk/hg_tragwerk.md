@@ -126,7 +126,7 @@ Sei
 Dann ist ein **Tragwerk** das Tupel
 
 ```
-T := (uuid, B, V, A, L)
+T:= (uuid, B, V, A, L)
 ```
 
 mit
@@ -155,7 +155,7 @@ Aggregatbestandteile transitiv erfasst. Wer die Gesamt-Element-
 Menge des Tragwerks benötigt, bildet
 
 ```
-E(T) := B ∪ ⋃_{v ∈ V} elemente(v)
+E(T):= B ∪ ⋃_{v ∈ V} elemente(v)
 ```
 
 (mit `elemente(v)` als der Menge aller Element-Bestandteile der
@@ -176,12 +176,12 @@ und den Konsistenzbedingungen
 2a. **Auflager-Exklusivität zwischen Tragwerken** (cross-Tragwerk-
    Invariante): Ein Auflager a ∈ A gehört genau einem Tragwerk an.
    In einem Modell mit Tragwerks-Menge 𝒯ᴹ gilt
-   ∀ T₁, T₂ ∈ 𝒯ᴹ : T₁.uuid ≠ T₂.uuid ⇒ T₁.A ∩ T₂.A = ∅.
+   ∀ T₁, T₂ ∈ 𝒯ᴹ: T₁.uuid ≠ T₂.uuid ⇒ T₁.A ∩ T₂.A = ∅.
    Diese Bedingung spiegelt `hg_bauwerk.md` Bed. 4 (Auflager-
    Disjunktheit zwischen Tragwerken am selben Bauwerk) auf
    Tragwerks-Seite.
 3. **Zusammenhang**: Der ungerichtete Inzidenzgraph G(T) mit
-   Knotenmenge B und Kantenmenge { (b₁, b₂) | ∃ v ∈ V :
+   Knotenmenge B und Kantenmenge { (b₁, b₂) | ∃ v ∈ V:
    {b₁, b₂} ⊆ B(v) } ∪ { (b, a) | a ∈ A, b = b(a) } ist
    zusammenhängend; getrennte Tragwerke werden als getrennte
    Instanzen modelliert.
@@ -213,7 +213,7 @@ Die **geometrische Punktmenge** des Tragwerks im
 Weltkoordinatensystem ist
 
 ```
-G_W(T) := ⋃_{b ∈ B} G_W(b) ⊂ ℝ³
+G_W(T):= ⋃_{b ∈ B} G_W(b) ⊂ ℝ³
 ```
 
 (Vereinigung der bauteilbezogenen Punktmengen nach `bauteil`).
@@ -442,106 +442,6 @@ Auflager, Lastfälle) die Aggregat-Substanz tragen.
     bauteilbezogene Realität, statisches System die bemessungs-
     technische Idealisierung. Beide stehen in einer
     Abstraktions-Relation, sind aber **nicht identisch**.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.bauteil.Bauteil
-import java.util.UUID
-
-/**
- * Tragwerk: Aggregat lastabtragender Bauteile mit Verbindungen,
- * Auflagern und Lastfällen.
- *
- * Glossar: hg_tragwerk.md
- *
- * Sammelbegriffe Verbindung, Auflager, Lastfall werden in
- * Folgeeinträgen formal definiert; im aktuellen Glossarstand als
- * Platzhalter-Typen geführt.
- */
-data class Tragwerk(
-    val bauteile: Set<Bauteil>,                  // B, lastabtragend
-    val verbindungen: Set<Verbindung>,           // V, eigener Typ folgt
-    val auflager: Set<Auflager>,                 // A, eigener Typ folgt
-    val lastfaelle: Set<Lastfall> = emptySet()   // L, optional in frühen Stadien
-) {
-    init {
-        // 1. bauteile.isNotEmpty()             → sonst Entartet.LeeresTragwerk
-        // 2. auflager.isNotEmpty()             → sonst Entartet.OhneAuflager
-        // 3. ∀ v ∈ verbindungen: v.bauteile ⊆ bauteile
-        //                                      → sonst Entartet.VerbindungOhneBauteil
-        // 4. ∀ a ∈ auflager: a.bauteil ∈ bauteile
-        //                                      → sonst Entartet.AuflagerOhneBauteil
-        // 5. Inzidenzgraph zusammenhängend     → sonst Entartet.NichtZusammenhaengend
-    }
-
-    fun bauteileNach(uuid: UUID): Bauteil? =
-        bauteile.firstOrNull { it.uuid == uuid }
-
-    fun istDachtragwerk(): Boolean = /* Klassifikation aus Bauteilrollen */ TODO()
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant; Lasten
-  in den späteren Lastfall-/Bemessungstypen in N, N/m, N/m² (SI).
-- **Identität**: Tragwerks-Instanzen führen eine eigene `TragwerkId`
-  (UUID, RFC 9562 v7, persistent, Pflicht — mathematische Tupel-
-  Komponente, siehe Definitions-Block). Bauteile werden ausschließlich
-  über `uuid` referenziert (Foreign-Key-Regel, siehe Memory
-  `project_bauteil_identifikation`).
-- **Invarianten** (in `init` prüfen, bei Verletzung `Resultat.Fehler`
-  bzw. `Entartet`-Variante zurückgeben, niemals Exception werfen):
-  1. `bauteile.isNotEmpty()` ⇒ sonst `Entartet.LeeresTragwerk`.
-  2. `auflager.isNotEmpty()` ⇒ sonst `Entartet.OhneAuflager`.
-  3. Jede Verbindung referenziert ausschließlich Bauteile aus
-     `bauteile` ⇒ sonst `Entartet.VerbindungOhneBauteil`.
-  4. Jedes Auflager referenziert genau ein Bauteil aus
-     `bauteile` ⇒ sonst `Entartet.AuflagerOhneBauteil`.
-  5. Der Inzidenzgraph (Knoten = Bauteile + Auflager, Kanten =
-     Verbindungen + Bauteil-Auflager-Inzidenzen) ist
-     zusammenhängend ⇒ sonst `Entartet.NichtZusammenhaengend`
-     (mehrere getrennte Tragwerke werden als getrennte Instanzen
-     modelliert).
-  6. **Stabilität** (qualitativ, **nicht** in `init` geprüft):
-     für 3D-Tragwerke mindestens sechs unabhängige
-     Auflagerreaktions-Komponenten oder gleichwertiges
-     Stabilitätssystem. Formaler Nachweis durch
-     `statisches_system.istStabil()` in der Bemessungs-Schicht.
-- **Edge Cases**:
-  - **Einzelbauteil-Tragwerk** (|B| = 1, |V| = 0, |A| = 1):
-    zulässig (z. B. Kragträger).
-  - **Mehrere getrennte Tragwerke an einem Bauwerk**: als
-    getrennte `Tragwerk`-Instanzen modellieren, nicht als ein
-    einziges Tragwerk mit nicht-zusammenhängendem Inzidenzgraph.
-  - **Tragwerk ohne explizite Lastfälle** (Entwurfsstadium vor
-    Bemessung): `lastfaelle = emptySet()` zulässig; in der
-    Bemessungs-Schicht ist L ≠ ∅ Vorbedingung für die
-    Tragsicherheits-Nachweise.
-  - **Mischformen** (Pfettendach mit Kehlbalken, BSH-Binder
-    kombiniert mit zimmermannsmäßigen Sparren): zulässig; die
-    konstruktive Subtyp-Klassifikation (`sparrendach`,
-    `pfettendach`, …) ist bei Mischformen **nicht** eindeutig
-    und wird in der Domänen-Schicht als Mehrfach-Klassifikation
-    oder als „Mischsystem" abgebildet.
-  - **Verbindungsmittel-Geometrie**: Nägel, Schrauben usw. werden
-    nicht als Bauteile in B geführt (siehe `bauteil`), sondern als
-    Bestandteile der Verbindungs-Menge V mit eigener Geometrie
-    und Identität.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `geometrieInWelt(): GeometrieInW` = Vereinigung der
-    Bauteil-Punktmengen ⋃_{b ∈ B} G_W(b).
-  - `boundingBox(): AABB` = achsenparalleler Hüllquader in W.
-  - `inzidenzgraph(): Graph<Bauteil, Verbindung>` = der
-    ungerichtete Graph mit Bauteilen als Knoten und Verbindungen
-    als Kanten.
-  - `auflagerVon(b: Bauteil): Set<Auflager>` = alle Auflager, die
-    b stützen.
-  - `statischesSystem(): StatischesSystem` = abgeleitete
-    Idealisierung für die Bemessung (Folgearbeit).
 
 ## Quellen
 

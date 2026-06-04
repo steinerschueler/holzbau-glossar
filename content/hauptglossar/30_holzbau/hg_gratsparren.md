@@ -129,7 +129,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat_G := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat_G:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - 𝒟 = {D_1, …, D_m} eine Dachflächenfamilie im Sinne von
   `dachflaeche`,
 - D_i = (E_i, P_i, n_{a,i}) und D_j = (E_j, P_j, n_{a,j}) zwei
@@ -138,13 +138,13 @@ Sei
   also eine Schnittstrecke s_{ij} = F(P_i) ∩ F(P_j), die die
   Grat-Bedingungen (1)–(4) aus `hg_grat.md` erfüllt
   (geneigt, konvex, beide äußeren Normalen in oberer Halbkugel),
-- t_hat := (b_{ij} − a_{ij}) / ‖b_{ij} − a_{ij}‖ ∈ S² die Tangente
+- t_hat:= (b_{ij} − a_{ij}) / ‖b_{ij} − a_{ij}‖ ∈ S² die Tangente
   von g_{ij} mit g_{ij} = [a_{ij}, b_{ij}] und (Vorzeichenkonvention
   aus `hg_grat.md`) ⟨t_hat, e_z⟩ > 0 (bergauf orientiert),
-- e_z := (0, 0, 1)ᵀ die vertikale Achse,
-- ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz,
-- ε_K := Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz,
-- ε_L := Toleranzen.LAENGE_EPS die Längentoleranz.
+- e_z:= (0, 0, 1)ᵀ die vertikale Achse,
+- ε_W:= Toleranzen.WINKEL_EPS die Winkeltoleranz,
+- ε_K:= Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz,
+- ε_L:= Toleranzen.LAENGE_EPS die Längentoleranz.
 
 Dann heißt B ein **Gratsparren** der Gratstrecke g_{ij} der
 Dachflächenfamilie 𝒟 genau dann, wenn die folgenden Bedingungen
@@ -193,7 +193,7 @@ erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Gratsparrenlänge**: L_{S,G} := ‖p_e − p_a‖ (in mm), entlang
+- **Gratsparrenlänge**: L_{S,G}:= ‖p_e − p_a‖ (in mm), entlang
   der Bauteilachse zwischen Gratsparrenfuß und
   Gratsparrenfirstpunkt.
 
@@ -201,12 +201,12 @@ Wesentliche abgeleitete Größen:
   Gratstrecke, siehe `hg_grat.md`, abgeleitete Operation
   `gratneigung()`):
   ```
-  α_G := arcsin(|⟨t_hat, e_z⟩|) = arcsin(⟨d_hat_G, e_z⟩).
+  α_G:= arcsin(|⟨t_hat, e_z⟩|) = arcsin(⟨d_hat_G, e_z⟩).
   ```
   Wertebereich α_G ∈ (0, π/2) bei nicht-entarteten Walmdach-Graten.
 
 - **Gratsparrenfuß** und **Gratsparrenfirstpunkt** (als Punkte):
-  F_{fuß,G} := p_a, F_{first,G} := p_e.
+  F_{fuß,G}:= p_a, F_{first,G}:= p_e.
 
 ### Abgeleiteter Satz — Reduktions-Formel der Gratsparrenneigung
 
@@ -220,7 +220,7 @@ tan(α_G) = tan(α) · sin(β_plan).                                  (★)
 ```
 
 **Herleitung aus den Primitiven:** Sei π_xy: ℝ³ → ℝ² die
-Projektion in die Horizontalebene und e_hat_t :=
+Projektion in die Horizontalebene und e_hat_t:=
 (t_hat_x, t_hat_y, 0) / ‖(t_hat_x, t_hat_y)‖ der normierte Grundriss-
 richtungsvektor der Gratlinie. β_plan ist der Winkel zwischen e_hat_t
 und der Trauflinie von D_i; da die Falllinie e_hat_fall(E_i) im
@@ -569,127 +569,6 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
     der Schweiz und Süddeutschland selten und mehrdeutig.
   - **Schiftsparren** (`schiftsparren`, Folgearbeit): Synonym zu
     Schifter; siehe oben.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.bauteil.BauteilId
-import domain.bauteil.Grat
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Punkt
-
-/**
- * Gratsparren als Bauteilrolle: Stab-Bauteil entlang einer
- * Gratstrecke (geneigte konvexe Schnittkante zweier Dachflächen).
- *
- * Glossar: hg_gratsparren.md
- *
- * Asymmetrie zum Oberbegriff Sparren:
- *   Die Falllinien-Kollinearität aus hg_sparren.md Bed. 3 wird durch
- *   eine Gratlinien-Kollinearität ersetzt; statt einer einzelnen
- *   Dachfläche ist eine Gratstrecke g_{ij} zugeordnet (Lage auf der
- *   Schnittgeraden zweier Trägerebenen).
- *
- * Vorzeichenkonvention (normativ):
- *   p_a = Gratsparrenfuß       (am Trauf-Eckpunkt der Walm-Ecke)
- *   p_e = Gratsparrenfirstpunkt (am Firstend-Punkt / Walm-Spitze)
- *   d_hat_G zeigt bergauf (⟨d_hat_G, e_z⟩ > 0), kollinear zur
- *   aufwärts gerichteten Gratlinien-Tangente t_hat.
- */
-data class Gratsparren(
-    val bauteil: Bauteil,
-    val grat: Grat,                  // zugeordnete Gratstrecke (Regulaer-Variante)
-) {
-    init {
-        require(bauteil.geometrie is Bauteilgeometrie.Stab) {
-            "Gratsparren erfordert Stabgeometrie"
-        }
-        // Lage- und Gratlinien-Bedingungen werden in der Factory
-        // gratsparrenAusBauteil(...) geprüft und liefern bei Verletzung
-        // ein Resultat.Fehler mit GratsparrenEntartet-Variante (siehe unten).
-    }
-
-    val gratsparrenfuss: Punkt        get() = achse().anfang
-    val gratsparrenfirstpunkt: Punkt  get() = achse().ende
-    val laenge: Double                get() = achse().laenge          // mm
-    val gratsparrenneigung: Double                                     // rad
-        get() = grat.gratneigung()
-
-    private fun achse(): Bauteilachse.Gerade =
-        (bauteil.geometrie as Bauteilgeometrie.Stab).achse as Bauteilachse.Gerade
-}
-
-sealed class GratsparrenEntartet {
-    object NichtAufGratlinie       : GratsparrenEntartet()
-    object NichtKollinearZurTangente : GratsparrenEntartet()
-    object FalscheRichtung         : GratsparrenEntartet()   // d_hat_G zeigt bergab
-    object Nullachse               : GratsparrenEntartet()
-    object EntarteteGratstrecke    : GratsparrenEntartet()
-}
-```
-
-- **Einheit**: Längen in mm (Double), Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (in der Factory `gratsparrenAusBauteil(...)` prüfen,
-  bei Verletzung `Resultat.Fehler` mit der jeweiligen
-  `GratsparrenEntartet`-Variante; niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. Zugeordnete Gratstrecke `grat` ist `Grat.Regulaer` mit
-     wohldefinierten Endpunkten — sonst `EntarteteGratstrecke`.
-  4. p_a und p_e liegen auf der Gratlinien-Geraden bis ε_L —
-     sonst `NichtAufGratlinie`.
-  5. ‖d_hat_G × t_hat‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
-     `NichtKollinearZurTangente`.
-     (§4 HG-Konvention: Kollinearitäts-Test über das normierte
-     Kreuzprodukt mit `KOLLINEAR_EPS`, **nicht** über
-     `WINKEL_EPS`.)
-  6. ⟨d_hat_G, t_hat⟩ ≥ +1 − Toleranzen.WINKEL_EPS — sonst
-     `FalscheRichtung` (Konsumenten können durch Achsen-Umkehr
-     automatisch korrigieren).
-- **Edge Cases**:
-  - **Krüppelwalm-Gratsparren**: Gratsparren endet auf einer
-    Mittel- oder Kehlbohle statt am Firstend-Punkt; die
-    Definition bleibt anwendbar, p_e liegt dann auf einer
-    inneren Stelle der Gratstrecke.
-  - **Vollwalm-Pyramide**: vier Gratsparren laufen an einer
-    Spitze zusammen; jeder einzelne Gratsparren erfüllt die
-    Definition gegen seine eigene Gratstrecke; die
-    Knotenbehandlung an der Spitze ist Aufgabe des Tragwerk-
-    Aggregats.
-  - **Ungleichgeneigte Walme**: Reduktions-Formel (★) bleibt
-    gültig mit β_plan ≠ 45°; die Definition unverändert
-    anwendbar.
-  - **Gratsparren mit Verbearbeitung (Abgratung, Absenkung)**:
-    die Bauteilachse bleibt die geometrische Schwerlinie; die
-    Bearbeitungen sind separate Geometrie-Modifikationen am
-    Bauteil und nicht Bestandteil der Gratsparren-Definition.
-  - **Sehr kleine Walmflächen / kurze Gratstrecke**: bei
-    ‖g_{ij}‖ → ε_L wird die Gratstrecke entartet; in diesem Fall
-    liefert die Factory `EntarteteGratstrecke`.
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `gratsparrenneigung(): Double` — = Gratneigung der
-    zugeordneten Gratstrecke, in Radiant. Es gilt
-    `tan(α_G) = tan(α) · sin(β_plan)` mit α =
-    `min(D_i.dachneigung(), D_j.dachneigung())` bzw. allgemein
-    der dachflächen-spezifischen Falllinien-Neigung
-    (Reduktions-Formel als Konsequenz, nicht als Code-
-    Berechnungs-Identität).
-  - `dachflaechenPaar(): Pair<Dachflaeche, Dachflaeche>` —
-    die beiden zugeordneten Dachflächen (D_i, D_j).
-  - `planWinkel(d: Dachflaeche): Double` — Grundrissprojektions-
-    Winkel β_plan zwischen Gratlinie und Trauflinie der
-    Dachfläche `d`; Bemessungs-Hilfsfunktion.
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt `Gratsparren`
-  (deutsch, Glossarbegriff); zugeordnete Gratstrecke ist
-  `Grat.Regulaer`.
 
 ## Quellen
 

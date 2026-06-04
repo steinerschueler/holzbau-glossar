@@ -56,8 +56,7 @@ quellenkonflikt: |
 
   Konsequenz: **Funktion bestimmt die Klasse, nicht das Material.**
   Die App führt zwei getrennte Element-Subklassen mit getrennten
-  UUIDs für die zwei funktionalen Auftrittsformen (Memory
-  `project_element_ontologie`, Designregel 2).
+  UUIDs für die zwei funktionalen Auftrittsformen.
 
   Begriffstyp-Wahl:
   Geprüft wurden zwei Varianten:
@@ -109,7 +108,7 @@ Sei
 - 𝓑 die Menge der Bauteile nach `bauteil`,
 - 𝓥𝓢_τ die Menge der Verstärkungstypen
   ```
-  𝓥𝓢_τ := { Querzugverstaerkung,
+  𝓥𝓢_τ:= { Querzugverstaerkung,
             Querdruckverstaerkung,
             Schubverstaerkung,
             Auflagerverstaerkung,
@@ -119,12 +118,12 @@ Sei
   (sealed enum; eigene Folge-Einträge),
 - 𝓦 die Menge der Werkstoffe (typisch Stahl der Schraube),
 - 𝓔𝓣𝓐 die Menge der ETA-Referenzen (siehe `eta_referenz`),
-- A := [0, 2π) die Menge der Winkel (intern Radiant; Anzeige Grad).
+- A:= [0, 2π) die Menge der Winkel (intern Radiant; Anzeige Grad).
 
 Dann ist ein **Verstärkungselement** das Tupel
 
 ```
-VS := (uuid, geometrie, lokale_platzierung, werkstoff,
+VS:= (uuid, geometrie, lokale_platzierung, werkstoff,
        basis_verbindungsmittel, verstaerkt,
        verstaerkungstyp, winkel_zur_faser, eta_zulassung,
        positionsnummer?, produktkennzeichnung?, bezeichnung?)
@@ -359,145 +358,6 @@ werden müssen.
     sein, sind aber nicht selbst Verbindung.
   - **Element** (`element`): abstrakter Oberbegriff;
     Verstärkungselement ist eine konkrete Subklasse.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.element.verstaerkung`):
-
-```kotlin
-package domain.element.verstaerkung
-
-import domain.element.Element
-import domain.element.verbindungsmittel.VerbindungsmittelTyp
-import domain.geometrie.Geometrie
-import domain.geometrie.LokalePlatzierung
-import domain.holzbau.Werkstoff
-import domain.identifikation.Positionsnummer
-import domain.identifikation.Produktkennzeichnung
-import domain.identifikation.ETAReferenz
-import java.util.UUID
-
-/** Verstärkungstyp nach EC5:2022-Entwurf und ETA. */
-sealed interface VerstaerkungsTyp {
-    data object Querzugverstaerkung      : VerstaerkungsTyp
-    data object Querdruckverstaerkung    : VerstaerkungsTyp
-    data object Schubverstaerkung        : VerstaerkungsTyp
-    data object Auflagerverstaerkung     : VerstaerkungsTyp
-    data object AusklinkungsVerstaerkung : VerstaerkungsTyp
-    data object DurchbruchVerstaerkung   : VerstaerkungsTyp
-}
-
-/**
- * Eingebettete Verbindungsmittel-Spezifikation, die das
- * Verstärkungselement von einem Verbindungsmittel-Typ ausleiht.
- * Eigene UUID hat sie nicht — die UUID gehört dem
- * Verstärkungselement.
- */
-data class VerbindungsmittelSpezifikation(
-    val typ: VerbindungsmittelTyp,
-    val nenndurchmesser: Double,        // mm
-    val nennlaenge: Double              // mm
-)
-
-/**
- * Verstärkungselement: physisch ein Verbindungsmittel
- * (typisch Vollgewindeschraube), funktional in einer
- * Verstärkungsrolle nach EC5:2022 / ETA.
- *
- * Glossar: hg_verstaerkungselement.md
- *
- * Ontologische Pointe: dasselbe Material kann Verbindungsmittel
- * ODER Verstärkungselement sein — nie beides gleichzeitig.
- * Funktion bestimmt die Klasse.
- *
- * IFC: IfcMechanicalFastener + Custom-Pset für Verstärkungs-
- *       Funktion (z. B. IsReinforcement = TRUE).
- * BTLx: typisch eigenes Part mit @GUID + Funktionsattribut.
- */
-data class Verstaerkungselement(
-    override val uuid: UUID,
-    override val geometrie: Geometrie,
-    override val lokalePlatzierung: LokalePlatzierung,
-    override val werkstoff: Werkstoff,
-    val basisVerbindungsmittel: VerbindungsmittelSpezifikation,
-    val verstaerkt: UUID,                        // FK auf das verstärkte Bauteil
-    val verstaerkungstyp: VerstaerkungsTyp,
-    val winkelZurFaser: Double,                  // Radiant, in [0, π/2]
-    val etaZulassung: ETAReferenz,               // Pflicht (kein null)
-    override val positionsnummer: Positionsnummer? = null,
-    override val produktkennzeichnung: Produktkennzeichnung? = null,
-    override val bezeichnung: String? = null
-) : Element {
-    init {
-        // 1. winkelZurFaser in [0.0, PI/2 + Toleranzen.WINKEL_EPS]
-        // 2. basisVerbindungsmittel.nenndurchmesser > Toleranzen.LAENGE_EPS
-        // 3. basisVerbindungsmittel.nennlaenge      > Toleranzen.LAENGE_EPS
-        // 4. verstaerkt != uuid                     (kein Selbstbezug)
-        // 5. etaZulassung-Existenz konsistenter Wert (in ETAReferenz geprüft)
-    }
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant
-  (Anzeige in Grad).
-- **Identität**: `uuid` von `element` ererbt. Die UUID des
-  Verstärkungselements ist **nicht** die UUID eines
-  Verbindungsmittel-Objekts; die App führt die Verstärkungs-
-  schraube als eigenes physisches Stück.
-- **Spezifikations-Verweis**: das Pflichtfeld
-  `basisVerbindungsmittel` ist als **eingebettetes Tupel**
-  (kein UUID-Verweis) modelliert, weil ein Verstärkungselement
-  in der App nicht über ein paralleles Verbindungsmittel-Objekt
-  „gehängt" wird, sondern dessen Spezifikation rollt. Damit
-  bleibt die Element-Hierarchie sauber disjunkt.
-- **Foreign-Key-Regel**: `verstaerkt: UUID` referenziert das
-  verstärkte Bauteil ausschließlich per UUID.
-- **IFC-Mapping**:
-  - IFC-Klasse: `IfcMechanicalFastener`.
-  - Custom-Pset oder Property: `Pset_Reinforcement` (eigenes
-    App-Pset) oder Custom-Property `IsReinforcement = TRUE`,
-    plus `ReinforcementType` (Querzug / Querdruck / Schub).
-  - Property Set zusätzlich: `Pset_FastenerCommon` (Reference,
-    NominalDiameter, NominalLength) wie für reguläre
-    Verbindungsmittel.
-- **BTLx-Mapping**:
-  - **Standardfall**: eigenes `Part` mit `@GUID` + Funktions-
-    attribut (z. B. UserAttribute `Function = Reinforcement`).
-  - **Alternativfall**: kombiniertes `Lag-Screw`-Processing am
-    verstärkten Bauteil + Funktionsattribut.
-- **Edge Cases**:
-  - **Verstärkungselement ohne ETA**: nicht erlaubt;
-    `Entartet.VerstaerkungOhneEta`. Eine Vollgewindeschraube ohne
-    ETA muss als Verbindungsmittel mit zweifelhafter Eignung,
-    nicht als Verstärkungselement klassifiziert werden.
-  - **Verstärkungselement, das ein Plattenwerkstoff-Bauteil
-    verstärkt**: faserlose Werkstoffe sind im typischen
-    Anwendungsfall nicht relevant; Modellierung möglich, aber
-    `winkelZurFaser` verliert Bemessungs-Bedeutung. Die App
-    erlaubt diese Modellierung mit Warnung in der Bemessungs-
-    Schicht.
-  - **Verstärkungselement, das mehrere Bauteile durchquert**:
-    nicht als Verstärkungselement modellieren, sondern als
-    Verbindungsmittel mit |verbindet| ≥ 2.
-  - **Doppel-Klassifikation**: dieselbe physische Schraube darf
-    nicht gleichzeitig als Verbindungsmittel und als
-    Verstärkungselement modelliert sein. Wird sie funktional in
-    beiden Rollen wirksam (sehr selten), ist die Bemessung
-    konservativ als Verstärkungselement zu führen (axial), oder
-    der Konstruktionsfall wird vermieden.
-- **Abgeleitete Eigenschaften**:
-  - `effektiveEindrehlaenge(): Double` — die für die Auszieh-
-    Bemessung wirksame Länge ℓ_ef im Holz (geometrische
-    Berechnung aus Achse, Bauteilgeometrie und Eindrehrichtung).
-  - `geometrieInWelt(): GeometrieInW` — Schrauben-Sweep unter
-    `lokalePlatzierung` transformiert nach W.
-  - `axialeTragfaehigkeit(): Double` — F_ax,Rk nach ETA bzw.
-    EC5:2022 (Bemessungs-Schicht, Folgearbeit).
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `Verstaerkungselement` (deutsch ohne Umlaut, Glossarbegriff).
-  Spezialisierungen heißen `Querzugverstaerkung`,
-  `Querdruckverstaerkung`, `Schubverstaerkung`.
 
 ## Quellen
 

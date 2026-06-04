@@ -34,6 +34,14 @@ rsync -a --delete \
     --exclude='*' \
     "$SOURCE/lerninhalt/subglossar/" "$TARGET/subglossar/"
 
+# Öffentlich-Filter: App-Implementierung (Kotlin/Implementierungshinweis),
+# interne Projekt-TODOs (Folgearbeit) und Autoren-Prozess-Bezüge aus den
+# HG-Einträgen entfernen bzw. anonymisieren ("Eric" → "Anweiser"). content/
+# ist der öffentliche Spiegel (Website/API/DOI); Single Source of Truth
+# bleibt zimmermann_app. Idempotent; läuft nach jedem rsync, weil --delete
+# sonst die Vollfassung wiederherstellt. Nur hg_*.md (nicht Konventionen/SG).
+python3 "$(dirname "$0")/hg_public_filter.py" "$TARGET"
+
 HG_COUNT=$(find "$TARGET/hauptglossar" -name 'hg_*.md' | wc -l)
 SG_COUNT=$(find "$TARGET/subglossar" -name 'sg_*.md' | wc -l)
 echo "Sync abgeschlossen: $HG_COUNT Hauptglossar-Einträge, $SG_COUNT Subglossar-Einträge."

@@ -49,8 +49,8 @@ Dann sind der durch (p₀, n) definierte **geschlossene Halbraum** H_bar
 und der **offene Halbraum** H° ⊂ ℝ³ die Mengen
 
 ```
-H_bar(p₀, n) := { x ∈ ℝ³ | ⟨n, x − p₀⟩ ≥ 0 },
-H°(p₀, n) := { x ∈ ℝ³ | ⟨n, x − p₀⟩ > 0 }.
+H_bar(p₀, n):= { x ∈ ℝ³ | ⟨n, x − p₀⟩ ≥ 0 },
+H°(p₀, n):= { x ∈ ℝ³ | ⟨n, x − p₀⟩ > 0 }.
 ```
 
 Der **Rand** beider Mengen ist die Ebene
@@ -61,7 +61,7 @@ Der **Rand** beider Mengen ist die Ebene
 
 und es gilt H_bar = H° ∪ ∂H sowie H° = H_bar \ ∂H.
 
-In **Hesse-Normalform** mit n_hat := n / ‖n‖ und d := ⟨n_hat, p₀⟩ wird
+In **Hesse-Normalform** mit n_hat:= n / ‖n‖ und d:= ⟨n_hat, p₀⟩ wird
 
 ```
 H_bar(p₀, n) = { x ∈ ℝ³ | ⟨n_hat, x⟩ ≥ d },
@@ -71,7 +71,7 @@ H°(p₀, n) = { x ∈ ℝ³ | ⟨n_hat, x⟩ > d }.
 Wesentliche abgeleitete Größen für x ∈ ℝ³:
 
 - **Vorzeichenbehafteter Abstand zur Randebene**:
-  d_H(x) := ⟨n_hat, x − p₀⟩, in mm. d_H(x) > 0 ⇔ x ∈ H°,
+  d_H(x):= ⟨n_hat, x − p₀⟩, in mm. d_H(x) > 0 ⇔ x ∈ H°,
   d_H(x) = 0 ⇔ x ∈ ∂H, d_H(x) < 0 ⇔ x ∉ H_bar.
 - **Komplementärer Halbraum**: H_bar(p₀, −n) bzw. H°(p₀, −n); es gilt
   H_bar(p₀, n) ∪ H_bar(p₀, −n) = ℝ³ und
@@ -151,101 +151,6 @@ Vorzeichen umzukehren.
     Schnittmenge geschlossener Halbräume; ein Halbraum ist also
     der atomare Bestandteil eines Polyeders, jedoch selbst
     unbeschränkt.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.geometrie`):
-
-```
-enum class HalbraumArt { GESCHLOSSEN, OFFEN }
-
-data class Halbraum internal constructor(
-    val ebene: Ebene,                                      // Randebene mit Orientierung
-    val art: HalbraumArt = HalbraumArt.GESCHLOSSEN,
-) {
-    val stuetzpunkt: Punkt get() = ebene.stuetzpunkt       // Convenience: p₀
-    val normale: Einheitsvektor get() = ebene.normale      // Convenience: n_hat, in den Halbraum hinein
-}
-```
-
-- **Repräsentation als `Ebene` + `art`**: Der Halbraum delegiert seine
-  Randdaten an die bereits in der Domänen-Schicht etablierte
-  [`Ebene`](hg_ebene.md), statt `stuetzpunkt` und `normale` direkt zu
-  speichern. Das hat zwei Konsequenzen: (a) die Einheitsvektor-
-  Invariante `‖n_hat‖ ≈ 1` ist **typsystem-getragen** (durch den Typ
-  `Einheitsvektor`) und braucht keine `init`-Validierung; (b) die
-  Identitätsprüfungen, Operationen und Toleranzen der Ebene werden
-  konsistent wiederverwendet (`umkehrenNormale`, `abstand`, etc.).
-  Convenience-Properties `stuetzpunkt` und `normale` halten die
-  Glossar-nahe API-Optik erhalten.
-- **Einheit**: Stützpunkt-Koordinaten in mm (Double). Die Normale ist
-  per Typ `Einheitsvektor` normiert (`‖n_hat‖ ≈ 1`); eine Normierung in
-  abgeleiteten Operationen entfällt.
-- **Konvention der Normalenrichtung**: die Normale `n_hat` zeigt **in
-  den Halbraum hinein**. Für x mit ⟨n_hat, x − p₀⟩ > 0 gilt x ∈ H°.
-  Diese Konvention ist verbindlich und im KDoc jeder Konstruktor-
-  und Operationsmethode zu nennen.
-- **Default `art = GESCHLOSSEN`**: für Inzidenz-Tests und
-  Bauteilbegrenzungen ist die geschlossene Variante mit Toleranz-
-  test (`d_H(x) ≥ −Toleranzen.LAENGE_EPS`) numerisch robust und
-  fachlich angemessen — Punkte exakt auf der Berandung gehören dazu.
-  Die offene Variante ist nur für strikte Trennungstests
-  vorgesehen.
-- **Invarianten** (durch Konstruktion getragen, keine `init`-Prüfung
-  nötig):
-  1. `n_hat` ist Einheitsvektor — typsystem-getragen über `Einheitsvektor`.
-  2. Alle Komponenten von `stuetzpunkt` und `n_hat` finit — durch die
-     Factory `Ebene.ausStuetzpunktUndNormale` bzw. die Invarianten
-     von `Einheitsvektor` und `Punkt` getragen.
-- **Konstruktoren** (Companion-Factories, alle ohne Wurf):
-  - `Halbraum.ausEbene(e: Ebene, art = GESCHLOSSEN): Resultat<Halbraum, EntartetGeometrie>`
-    — übernimmt `e` direkt; liefert stets `Erfolg`, da die Ebene-
-    Invarianten typsystem-getragen sind. Aufrufer ist verantwortlich,
-    dass `e.normale` in den gewünschten Halbraum zeigt (vgl. Konvention
-    bei `dachflaeche`, deren Außennormale in den Außen-Halbraum zeigt).
-  - `Halbraum.ausStuetzpunktUndNormale(p, n_hat, art = GESCHLOSSEN): Resultat<Halbraum, EntartetGeometrie>`
-    — delegiert an `Ebene.ausStuetzpunktUndNormale`; kann
-    `Fehler(NichtFinit)` liefern, wenn `p` nicht-finit ist.
-  - **Kein dedizierter `ausEbeneAndereSeite`** — die Operation ist
-    durch `komplement()` (Methode auf der Instanz) bzw. `ausEbene(e.umkehrenNormale(), art)`
-    substituiert.
-- **Methoden** (auf der Instanz):
-  - `komplement(): Halbraum` — `Halbraum(ebene.umkehrenNormale(), art)`,
-    spiegelt die Normale, behält die `art`. Beschreibt den Halbraum
-    auf der anderen Seite derselben Randebene; **nicht** das
-    mengentheoretische Komplement (siehe unten).
-  - `mitArt(neueArt: HalbraumArt): Halbraum` — Topologie-Wechsel ohne
-    Geometrie-Änderung.
-- **Edge Cases / Entartet-Varianten**:
-  - **Nicht-finite Stützpunkt-Koordinaten** (`ausStuetzpunktUndNormale`):
-    `EntartetGeometrie.NichtFinit`. Einzige strukturell erreichbare
-    Entartung der aktuellen API.
-  - **Numerische Lage am Rand**: für x mit |d_H(x)| ≤
-    Toleranzen.LAENGE_EPS klassifiziert `enthaelt(x)` x als auf der
-    Randebene liegend. Bei `art = GESCHLOSSEN` gilt x ∈ H_bar, bei
-    `art = OFFEN` gilt x ∉ H°.
-  - **NullNormale** ist in der aktuellen API **nicht erreichbar**, weil
-    die Konstruktoren nur `Einheitsvektor` akzeptieren (Norm-Invariante
-    typsystem-getragen). Folgearbeit: falls eine künftige API einen
-    rohen `Vektor` als Normale akzeptieren sollte, ist
-    `EntartetGeometrie.NullNormale` (`‖n‖² ≤ Toleranzen.NORM_EPS`) als
-    weitere Entartet-Variante einzuführen.
-- **Abgeleitete Operationen** (auf der Instanz, `Halbraum.kt`):
-  - Randebene: direkt über `ebene` zugreifbar (kein Methodenwrapper nötig).
-  - Signierter Abstand: `ebene.abstand(p)`, in mm. Vorzeichen folgt
-    der Halbraum-Konvention (positiv im Inneren), da `ebene.normale`
-    in den Halbraum zeigt.
-  - `enthaelt(p: Punkt, eps: Double = Toleranzen.LAENGE_EPS): Boolean`
-    je nach `art`:
-    - `GESCHLOSSEN`: `ebene.abstand(p) ≥ −eps`.
-    - `OFFEN`:       `ebene.abstand(p) >  eps`.
-    Bei nicht-finitem `p` liefert `ebene.abstand(p)` `NaN`, und
-    `enthaelt` gibt `false` zurück (NaN-Out-Konvention).
-  - `komplement()` ist **nicht** das mengentheoretische Komplement: die
-    `art` wird nicht zwischen GESCHLOSSEN und OFFEN gewechselt.
-    Konsumenten, die das mengentheoretische Komplement benötigen,
-    kombinieren `komplement().mitArt(...)` mit dem entsprechenden
-    Art-Wechsel.
 
 ## Quellen
 

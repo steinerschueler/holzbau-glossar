@@ -46,13 +46,13 @@ Sei
 Dann ist die durch (p₀, v) definierte **Gerade** g ⊂ ℝ³ die Menge
 
 ```
-g(p₀, v) := { p₀ + t · v ∈ ℝ³ | t ∈ ℝ }.
+g(p₀, v):= { p₀ + t · v ∈ ℝ³ | t ∈ ℝ }.
 ```
 
 Die Abbildung
 
 ```
-γ : ℝ → ℝ³,   γ(t) := p₀ + t · v
+γ: ℝ → ℝ³,   γ(t):= p₀ + t · v
 ```
 
 heißt **Parametrisierung** der Geraden. Sie ist injektiv (wegen
@@ -60,11 +60,11 @@ v ≠ 0) und surjektiv auf g.
 
 Wesentliche abgeleitete Größen für x ∈ ℝ³:
 
-- **Einheits-Richtung**: v_hat := v / ‖v‖ ∈ S² (bis auf Vorzeichen).
+- **Einheits-Richtung**: v_hat:= v / ‖v‖ ∈ S² (bis auf Vorzeichen).
 - **Vorzeichenbehafteter Parameter** von x ∈ g bezüglich (p₀, v_hat):
-  t(x) := ⟨x − p₀, v_hat⟩, in mm.
-- **Orthogonale Projektion** auf g: π_g(x) := p₀ + ⟨x − p₀, v_hat⟩ · v_hat.
-- **Abstand** Punkt–Gerade: d_g(x) := ‖x − π_g(x)‖, in mm.
+  t(x):= ⟨x − p₀, v_hat⟩, in mm.
+- **Orthogonale Projektion** auf g: π_g(x):= p₀ + ⟨x − p₀, v_hat⟩ · v_hat.
+- **Abstand** Punkt–Gerade: d_g(x):= ‖x − π_g(x)‖, in mm.
 
 ## Wohldefiniertheit
 
@@ -77,7 +77,7 @@ bezeichnen:
    { p₀ + (λt)·v | t ∈ ℝ } = { p₀ + s·v | s ∈ ℝ }. Insbesondere gilt
    g(p₀, v) = g(p₀, −v): die Gerade ist **ungerichtet**.
 2. **Verschiebung des Stützpunkts entlang v**: Für jedes s ∈ ℝ und
-   p₀' := p₀ + s·v gilt g(p₀', v) = g(p₀, v), denn { p₀' + t·v | t ∈ ℝ }
+   p₀':= p₀ + s·v gilt g(p₀', v) = g(p₀, v), denn { p₀' + t·v | t ∈ ℝ }
    = { p₀ + (s + t)·v | t ∈ ℝ } = g(p₀, v).
 3. **Allgemeine Stützpunktwahl**: Für jedes p₀' ∈ g(p₀, v) gilt
    g(p₀', v) = g(p₀, v), denn p₀' − p₀ ∈ ℝ·v (Folge von 2).
@@ -148,68 +148,6 @@ zusammen mit einem Stützpunkt p₀ definiert er eine.
   - **Vektor** (`vektor`): ortsfreie gerichtete Verschiebung. Der
     Richtungsvektor v einer Geraden ist ein Vektor, die Gerade selbst
     ist es nicht.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.geometrie`):
-
-```
-data class Gerade(
-    val stuetzpunkt: Punkt,   // p₀
-    val richtung: Vektor      // v, ‖richtung‖² > Toleranzen.NORM_EPS
-) {
-    init {
-        // ‖richtung‖² > Toleranzen.NORM_EPS, sonst Entartet.Nullrichtung
-    }
-}
-```
-
-- **Einheit**: Stützpunkt-Koordinaten und Komponenten der Richtung in
-  mm (Double). Die Richtung ist in der Standard-Repräsentation nicht
-  zwingend normiert; abgeleitete Operationen normieren intern.
-- **Invarianten** (in `init` bzw. Factory prüfen, bei Verletzung
-  `Entartet`-Variante zurückgeben, niemals Exception):
-  1. ‖richtung‖² > Toleranzen.NORM_EPS (sonst keine Gerade definierbar).
-  2. Alle Komponenten von `stuetzpunkt` und `richtung` finit (kein NaN,
-     kein ±∞).
-- **Konstruktoren**:
-  - `Gerade.ausStuetzpunktUndRichtung(p0, v): Resultat<Gerade, EntartetGeometrie>`
-  - `Gerade.ausZweiPunkten(a, b): Resultat<Gerade, EntartetGeometrie>` mit Failure-Variante
-    `Entartet.Nullrichtung`, falls ‖b − a‖² ≤ Toleranzen.NORM_EPS.
-  - `Gerade.ausStrecke(s: Strecke): Gerade` (Trägergerade einer
-    Strecke; durch die Invariante der Strecke garantiert nicht
-    entartet).
-- **Edge Cases / Entartet-Varianten**:
-  - **Nullrichtung** (‖v‖² ≤ Toleranzen.NORM_EPS): `Entartet.Nullrichtung`.
-    Keine Gerade definierbar (entartete „Punktgerade").
-  - **Nicht-finite Koordinaten** in `stuetzpunkt` oder `richtung`:
-    `Entartet.NichtFinit`.
-  - **Zwei-Punkt-Konstruktion mit fast gleichen Punkten**
-    (‖b − a‖ knapp über Toleranz): zulässig, aber numerisch sensibel;
-    Hinweis im Domain-Test.
-- **Identität / Gleichheit**:
-  - `fun istGleich(other: Gerade, eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean`
-    (Synonym `istIdentischZu(other, eps)`) prüft (i) Kollinearität
-    von `richtung` und `other.richtung`
-    über das Kreuzprodukt der normierten Vektoren und (ii) Inzidenz
-    von `other.stuetzpunkt` mit `this` (siehe `enthaelt`).
-  - Direkter `==`-Vergleich auf der Datenklasse vergleicht nur
-    Repräsentanten, **nicht** Geraden als Punktmengen, und ist daher
-    für geometrische Identität ungeeignet.
-- **Abgeleitete Operationen** (`GeradeOps.kt`):
-  - `fun einheitsRichtung(): Vektor` = richtung.normiert().werteOder { error("Invariante 1 verletzt") }
-    (durch Invariante 1 zur Laufzeit nie betroffen).
-  - `fun punktAuf(t: Double): Punkt` = stuetzpunkt + t · richtung.
-  - `fun parameterVon(p: Punkt): Double` =
-    ⟨p − stuetzpunkt, einheitsRichtung()⟩ (in mm; nur sinnvoll, wenn
-    `enthaelt(p)` gilt, sonst Projektion).
-  - `fun projizieren(p: Punkt): Punkt` = stuetzpunkt +
-    ⟨p − stuetzpunkt, einheitsRichtung()⟩ · einheitsRichtung().
-  - `fun abstand(p: Punkt): Double` = ‖p − projizieren(p)‖, in mm.
-  - `fun enthaelt(p: Punkt, eps: Double = Toleranzen.LAENGE_EPS): Boolean`
-    = abstand(p) ≤ eps.
-  - `fun umkehrenRichtung(): Gerade` = Gerade(stuetzpunkt, −richtung)
-    (gleiche Punktmenge, entgegengesetzter Richtungsrepräsentant).
 
 ## Quellen
 

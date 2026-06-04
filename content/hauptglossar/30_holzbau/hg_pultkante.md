@@ -76,18 +76,18 @@ Sei
   `dachflaeche` mit Trägerebene E, Umrisspolygon P = (v₁, …, v_k),
   äußerer Normale n_a und Dachneigung α ∈ (0, π/2),
 - (e₁, …, e_k) die zyklische Folge der Polygonrandkanten
-  e_i := [v_i, v_{i+1}], v_{k+1} := v_1,
+  e_i:= [v_i, v_{i+1}], v_{k+1}:= v_1,
 - e_z = (0, 0, 1)ᵀ die vertikale Achse,
-- ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz,
-- ε_L := Toleranzen.LAENGE_EPS die Längentoleranz,
+- ε_W:= Toleranzen.WINKEL_EPS die Winkeltoleranz,
+- ε_L:= Toleranzen.LAENGE_EPS die Längentoleranz,
 - für eine Strecke s = [a, b] der **Höhenmittelwert**
-  z_bar(s) := ½ · (a_z + b_z) und das **Horizontalitätsmaß**
-  h(s) := |⟨e_hat(s), e_z⟩| (vgl. `traufe`).
+  z_bar(s):= ½ · (a_z + b_z) und das **Horizontalitätsmaß**
+  h(s):= |⟨e_hat(s), e_z⟩| (vgl. `traufe`).
 
 Die Menge der näherungsweise horizontalen Polygonrandkanten von D ist
 
 ```
-H(D) := { e_i | h(e_i) ≤ ε_W,  i = 1, …, k }.
+H(D):= { e_i | h(e_i) ≤ ε_W,  i = 1, …, k }.
 ```
 
 Eine Polygonrandkante e_i heißt **Schnittkante mit einer anderen
@@ -222,97 +222,6 @@ werden.
   - **Attika** / **Attikakante**: aufgehende Mauerkrone an einem
     Flachdachrand; betrifft nicht das Pultdach und ist hier nicht
     definiert.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-sealed class Pultkante : Dachkante() {
-
-    data class Regulaer(
-        override val polylinie: Streckenzug,
-        val dachflaeche: Dachflaeche
-    ) : Pultkante()
-
-    sealed class Entartet : Pultkante() {
-        object Nullkante : Entartet()
-        object NichtIdentifizierbar : Entartet()
-    }
-}
-```
-
-Klassifikations-Prädikat in `DachkanteOps.kt`:
-
-```
-fun istPultkante(
-    e: Strecke,
-    d: Dachflaeche,
-    familie: List<Dachflaeche>,
-    eps_W: Double = Toleranzen.WINKEL_EPS,
-    eps_L: Double = Toleranzen.LAENGE_EPS
-): Boolean {
-    // 1. e ist Polygonrandkante von d
-    if (!d.umriss.enthaeltKante(e, eps_L)) return false
-    // 2. e ist näherungsweise horizontal
-    val eHat = e.einheitsRichtung().werteOder { return false }
-    if (abs(eHat dot Vektor.E_Z) > eps_W) return false
-    // 3. z_bar(e) ist Maximum unter allen näherungsweise horizontalen
-    //    Polygonrandkanten von d UND dieses Maximum liegt echt über dem
-    //    Minimum (sonst ist e die Traufe, keine Pultkante — Disjunktheit
-    //    definitorisch, nicht über die Auswertungsreihenfolge).
-    val horizontale = d.umriss.kanten().filter { it.istHorizontal(eps_W) }
-    val maxZ = horizontale.maxOf { it.hoehenMittelwert() }
-    val minZ = horizontale.minOf { it.hoehenMittelwert() }
-    if (maxZ - minZ <= eps_L) return false   // H(D) einhöhig → keine Pultkante
-    if (abs(e.hoehenMittelwert() - maxZ) > eps_L) return false
-    // 4. e ist keine Schnittkante mit einer anderen Dachfläche der Familie
-    val andere = familie.filter { it !== d }
-    for (dj in andere) {
-        if (dj.umriss.enthaeltStrecke(e, eps_L)) return false
-    }
-    return true
-}
-```
-
-- **Einheit**: alle Koordinaten in mm (Double), Längen in mm.
-- **Invarianten** (in Factory prüfen, niemals Exception):
-  1. ℓ(polylinie) > Toleranzen.LAENGE_EPS — sonst `Entartet.Nullkante`.
-  2. Jede Teilstrecke der Polylinie ist Polygonrandkante der
-     übergebenen Dachfläche.
-  3. Jede Teilstrecke ist näherungsweise horizontal:
-     |e_hat · e_z| ≤ Toleranzen.WINKEL_EPS.
-  4. Mittlere z-Höhe jeder Teilstrecke ist gleich dem Maximum der
-     mittleren z-Höhen aller näherungsweise horizontalen
-     Polygonrandkanten der Dachfläche, mit Toleranz
-     Toleranzen.LAENGE_EPS — und dieses Maximum liegt echt über dem
-     Minimum (max − min > LAENGE_EPS; sonst ist die Kante die Traufe,
-     keine Pultkante).
-  5. Keine andere Dachfläche der Familie enthält die Teilstrecke
-     in ihrem Polygonbereich (Bedingung 4 in der mathematischen
-     Definition).
-- **Edge Cases**:
-  - **Nullkante**: ℓ ≤ Toleranzen.LAENGE_EPS → `Entartet.Nullkante`.
-  - **NichtIdentifizierbar**: Keine näherungsweise horizontale obere
-    Polygonrandkante existiert (z. B. bei einer Walmfläche-Dreieck
-    ohne obere horizontale Kante) oder die obere Kante ist zugleich
-    Schnittkante mit einer anderen Dachfläche (dann First/Grat/Kehle
-    statt Pultkante) → `Entartet.NichtIdentifizierbar`.
-  - **Flachdach** (α = 0): obere Kante nicht von unterer Kante
-    unterscheidbar → `Entartet.NichtIdentifizierbar`.
-  - **Geneigte obere Kante** (z. B. Pultdach mit schrägem
-    Wandanschluss): Bedingung 2 verletzt → die Kante ist als
-    Ortgang zu klassifizieren, nicht als Pultkante.
-  - **Wandanschluss**: Eine Pultkante kann zugleich
-    Wandanschlusskante sein; das wirkt sich nicht auf die Pultkante-
-    Klassifikation aus. Die Wand ist keine Dachfläche der Familie 𝒟.
-  - **Geknickte Pultkante**: zulässig durch Streckenzug-Modellierung;
-    jede Teilstrecke wird einzeln klassifiziert.
-- **Abgeleitete Operationen**:
-  - `fun pultkantenlaenge(): Double` (mm) = ℓ(polylinie).
-  - `fun pultlinie(): Streckenzug` = polylinie.
-  - `fun pulthoehe(): Double` (mm) = mittlere z-Koordinate der
-    Polylinie (Bezugsmaß für die Pultdachhöhe gegenüber der Traufe).
 
 ## Quellen
 

@@ -216,7 +216,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat_K := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat_K:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - 𝒟 = {D_1, …, D_m} eine Dachflächenfamilie im Sinne von
   `dachflaeche`,
 - D_i = (E_i, P_i, n_{a,i}) und D_j = (E_j, P_j, n_{a,j}) zwei
@@ -227,13 +227,13 @@ Sei
   beide äußeren Normalen in oberer Halbkugel; die Konkavität ist dort
   positions-basiert über die Querlage der Flächenstücke charakterisiert,
   nicht mehr über ein Spatprodukt-Vorzeichen),
-- t_hat := (b_{ij} − a_{ij}) / ‖b_{ij} − a_{ij}‖ ∈ S² die Tangente
+- t_hat:= (b_{ij} − a_{ij}) / ‖b_{ij} − a_{ij}‖ ∈ S² die Tangente
   von s_{ij} mit s_{ij} = [a_{ij}, b_{ij}] und (Vorzeichenkonvention
   aus `hg_kehle.md`) ⟨t_hat, e_z⟩ > 0 (bergauf orientiert),
-- e_z := (0, 0, 1)ᵀ die vertikale Achse,
-- ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz,
-- ε_K := Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz,
-- ε_L := Toleranzen.LAENGE_EPS die Längentoleranz.
+- e_z:= (0, 0, 1)ᵀ die vertikale Achse,
+- ε_W:= Toleranzen.WINKEL_EPS die Winkeltoleranz,
+- ε_K:= Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz,
+- ε_L:= Toleranzen.LAENGE_EPS die Längentoleranz.
 
 Dann heißt B ein **Kehlsparren** der Kehlstrecke s_{ij} der
 Dachflächenfamilie 𝒟 genau dann, wenn die folgenden Bedingungen
@@ -282,7 +282,7 @@ erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Kehlsparrenlänge**: L_{S,K} := ‖p_e − p_a‖ (in mm), entlang
+- **Kehlsparrenlänge**: L_{S,K}:= ‖p_e − p_a‖ (in mm), entlang
   der Bauteilachse zwischen Kehlsparrenfuß und
   Kehlsparrenfirstpunkt.
 
@@ -290,13 +290,13 @@ Wesentliche abgeleitete Größen:
   Kehlstrecke, siehe `hg_kehle.md`, abgeleitete Operation
   `kehlneigung()`):
   ```
-  α_K := arcsin(|⟨t_hat, e_z⟩|) = arcsin(⟨d_hat_K, e_z⟩).
+  α_K:= arcsin(|⟨t_hat, e_z⟩|) = arcsin(⟨d_hat_K, e_z⟩).
   ```
   Wertebereich α_K ∈ (0, π/2) bei nicht-entarteten Verschneidungs-
   Kehlen.
 
 - **Kehlsparrenfuß** und **Kehlsparrenfirstpunkt** (als Punkte):
-  F_{fuß,K} := p_a, F_{first,K} := p_e.
+  F_{fuß,K}:= p_a, F_{first,K}:= p_e.
 
 ### Abgeleiteter Satz — Reduktions-Formel der Kehlsparrenneigung
 
@@ -311,7 +311,7 @@ tan(α_K) = tan(α) · sin(β_plan).                                  (★)
 
 **Herleitung aus den Primitiven:** Die Herleitung ist exakt parallel
 zur Gratsparren-Reduktionsformel aus `hg_gratsparren.md`. Sei
-π_xy: ℝ³ → ℝ² die Projektion in die Horizontalebene und e_hat_t :=
+π_xy: ℝ³ → ℝ² die Projektion in die Horizontalebene und e_hat_t:=
 (t_hat_x, t_hat_y, 0) / ‖(t_hat_x, t_hat_y)‖ der normierte Grundriss-
 richtungsvektor der Kehllinie. β_plan ist der Winkel zwischen e_hat_t
 und der Trauflinie von D_i; da die Falllinie e_hat_fall(E_i) im
@@ -787,141 +787,6 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
     der Schweiz und Süddeutschland selten und mehrdeutig.
   - **Schiftsparren** (`schiftsparren`, Folgearbeit): Synonym zu
     Schifter; siehe oben.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.bauteil.BauteilId
-import domain.bauteil.Kehle
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Punkt
-
-/**
- * Kehlsparren als Bauteilrolle: Stab-Bauteil entlang einer
- * Kehlstrecke (geneigte konkave Schnittkante zweier Dachflächen).
- *
- * Glossar: hg_kehlsparren.md
- *
- * Asymmetrie zum Oberbegriff Sparren:
- *   Die Falllinien-Kollinearität aus hg_sparren.md Bed. 3 wird durch
- *   eine Kehllinien-Kollinearität ersetzt; statt einer einzelnen
- *   Dachfläche ist eine Kehlstrecke s_{ij} zugeordnet (Lage auf der
- *   Schnittgeraden zweier Trägerebenen).
- *
- * Symmetrie zum Schwester-Begriff Gratsparren:
- *   Auf der Linien-Ebene mathematisch exakt symmetrisch — Unterschied
- *   ausschließlich in der Konvexität: die äußeren Normalen kippen
- *   nach außen (Grat) bzw. nach innen, zur Kehle hin (Kehle).
- *   Auf der Konstruktions-Ebene
- *   asymmetrisch in Wasserführung (Kehlsparren trägt konzentrierte
- *   Niederschlags- und Schneeansammlungs-Last), Oberkanten-
- *   Bearbeitung (Abkehlung statt Abgratung) und Schifter-Topologie
- *   (Schifter von oben statt von unten).
- *
- * Vorzeichenkonvention (normativ):
- *   p_a = Kehlsparrenfuß       (am Trauf-Innen-Eckpunkt)
- *   p_e = Kehlsparrenfirstpunkt (am Firstend-Punkt der Kehllinie)
- *   d_hat_K zeigt bergauf (⟨d_hat_K, e_z⟩ > 0), kollinear zur
- *   aufwärts gerichteten Kehllinien-Tangente t_hat.
- */
-data class Kehlsparren(
-    val bauteil: Bauteil,
-    val kehle: Kehle,                // zugeordnete Kehlstrecke (Regulaer-Variante)
-) {
-    init {
-        require(bauteil.geometrie is Bauteilgeometrie.Stab) {
-            "Kehlsparren erfordert Stabgeometrie"
-        }
-        // Lage- und Kehllinien-Bedingungen werden in der Factory
-        // kehlsparrenAusBauteil(...) geprüft und liefern bei Verletzung
-        // ein Resultat.Fehler mit KehlsparrenEntartet-Variante (siehe unten).
-    }
-
-    val kehlsparrenfuss: Punkt        get() = achse().anfang
-    val kehlsparrenfirstpunkt: Punkt  get() = achse().ende
-    val laenge: Double                get() = achse().laenge          // mm
-    val kehlsparrenneigung: Double                                     // rad
-        get() = kehle.kehlneigung()
-
-    private fun achse(): Bauteilachse.Gerade =
-        (bauteil.geometrie as Bauteilgeometrie.Stab).achse as Bauteilachse.Gerade
-}
-
-sealed class KehlsparrenEntartet {
-    object NichtAufKehllinie         : KehlsparrenEntartet()
-    object NichtKollinearZurTangente : KehlsparrenEntartet()
-    object FalscheRichtung           : KehlsparrenEntartet()   // d_hat_K zeigt bergab
-    object Nullachse                 : KehlsparrenEntartet()
-    object EntarteteKehlstrecke      : KehlsparrenEntartet()
-}
-```
-
-- **Einheit**: Längen in mm (Double), Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (in der Factory `kehlsparrenAusBauteil(...)` prüfen,
-  bei Verletzung `Resultat.Fehler` mit der jeweiligen
-  `KehlsparrenEntartet`-Variante; niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. Zugeordnete Kehlstrecke `kehle` ist `Kehle.Regulaer` mit
-     wohldefinierten Endpunkten — sonst `EntarteteKehlstrecke`.
-  4. p_a und p_e liegen auf der Kehllinien-Geraden bis ε_L —
-     sonst `NichtAufKehllinie`.
-  5. ‖d_hat_K × t_hat‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
-     `NichtKollinearZurTangente`.
-     (§4 HG-Konvention: Kollinearitäts-Test über das normierte
-     Kreuzprodukt mit `KOLLINEAR_EPS`, **nicht** über
-     `WINKEL_EPS`.)
-  6. ⟨d_hat_K, t_hat⟩ ≥ +1 − Toleranzen.WINKEL_EPS — sonst
-     `FalscheRichtung` (Konsumenten können durch Achsen-Umkehr
-     automatisch korrigieren).
-- **Edge Cases**:
-  - **Verschneidung Sattel × Sattel (T-Anbau)**: Kehlsparren endet
-    am Firstend-Punkt der niedrigeren Firstlinie auf der höheren
-    Hauptdachfläche; die Definition bleibt anwendbar.
-  - **Verschneidung Dachgaube × Hauptdach**: zwei Kehlsparren
-    seitlich der Gaube; jeder erfüllt die Definition gegen seine
-    eigene Kehlstrecke.
-  - **Ungleichgeneigte Verschneidung**: Reduktions-Formel (★)
-    bleibt gültig mit β_plan ≠ 45°; die Definition unverändert
-    anwendbar.
-  - **Kehlsparren mit Verbearbeitung (Abkehlung, Absenkung,
-    Anhebung)**: die Bauteilachse bleibt die geometrische
-    Schwerlinie; die Bearbeitungen sind separate Geometrie-
-    Modifikationen am Bauteil und nicht Bestandteil der
-    Kehlsparren-Definition.
-  - **Verlängerung über den Trauf-Innen-Eckpunkt hinaus**:
-    p_a liegt auf einer Verlängerung der Kehllinien-Geraden
-    jenseits von a_{ij}; die Definition bleibt anwendbar, sofern
-    p_a auf der Geraden durch s_{ij} liegt (Bed. 2 testet
-    Inzidenz auf der **Gerade** durch die Kehlstrecke, nicht
-    Enthaltensein in der Strecke selbst).
-  - **Sehr kleine Verschneidungsflächen / kurze Kehlstrecke**:
-    bei ‖s_{ij}‖ → ε_L wird die Kehlstrecke entartet; in diesem
-    Fall liefert die Factory `EntarteteKehlstrecke`.
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `kehlsparrenneigung(): Double` — = Kehlneigung der
-    zugeordneten Kehlstrecke, in Radiant. Es gilt
-    `tan(α_K) = tan(α) · sin(β_plan)` mit α =
-    `min(D_i.dachneigung(), D_j.dachneigung())` bzw. allgemein
-    der dachflächen-spezifischen Falllinien-Neigung
-    (Reduktions-Formel als Konsequenz, nicht als Code-
-    Berechnungs-Identität).
-  - `dachflaechenPaar(): Pair<Dachflaeche, Dachflaeche>` —
-    die beiden zugeordneten Dachflächen (D_i, D_j).
-  - `planWinkel(d: Dachflaeche): Double` — Grundrissprojektions-
-    Winkel β_plan zwischen Kehllinie und Trauflinie der
-    Dachfläche `d`; Bemessungs-Hilfsfunktion.
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt `Kehlsparren`
-  (deutsch, Glossarbegriff); zugeordnete Kehlstrecke ist
-  `Kehle.Regulaer`.
 
 ## Quellen
 

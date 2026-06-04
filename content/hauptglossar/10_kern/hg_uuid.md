@@ -69,8 +69,8 @@ Elements und jedes identitätstragenden Aggregats geführt wird.
 
 Sei
 
-- 𝔹 := {0, 1} die Menge der Bits,
-- 𝓤 := 𝔹¹²⁸ die Menge der 128-Bit-Wörter.
+- 𝔹:= {0, 1} die Menge der Bits,
+- 𝓤:= 𝔹¹²⁸ die Menge der 128-Bit-Wörter.
 
 Eine **UUID** ist ein Element u ∈ 𝓤. Die zwei in der App
 relevanten Versionen sind durch Bit-Layout-Constraints
@@ -110,7 +110,7 @@ Byte ohne Padding in 22 Zeichen `[A-Za-z0-9_$]` (IFC-Form
 `IfcGloballyUniqueId`):
 
 ```
-b22 : 𝓤 → Σ²²,    bijektiv,
+b22: 𝓤 → Σ²²,    bijektiv,
 mit  Σ = { A..Z, a..z, 0..9, _, $ }.
 ```
 
@@ -136,9 +136,7 @@ domänenrelevanten Schwelle.
   sondern als Garantie der Erzeugungsverfahren formuliert.
 - **Persistenz**: Eine UUID ist nach Vergabe **unveränderlich**.
   Implementierungen, die UUIDs „rotieren" oder „rekonstruieren",
-  sind nicht regelkonform. In der App folgt daraus, dass UUIDs in
-  unveränderlichen Werttypen (Kotlin `value class` über `UUID`)
-  gehalten werden.
+  sind nicht regelkonform.
 - **Versions-Bestimmtheit**: Die Versions-Bits eindeutig
   identifizieren das Erzeugungsverfahren; eine UUID kann ohne
   Kontextwissen daraufhin geprüft werden.
@@ -208,9 +206,9 @@ Diese Regel ist die Schutzlinie der referentiellen Integrität:
 Mapping-Felder
 
 ```
-ifc_global_id : String?   (22-stellig Base64; aus letztem IFC-Import)
-btlx_guid     : String?   (aus letztem BTLx-Import)
-revit_unique_id : String? (CAD-spezifisch; bei Bedarf)
+ifc_global_id: String?   (22-stellig Base64; aus letztem IFC-Import)
+btlx_guid: String?   (aus letztem BTLx-Import)
+revit_unique_id: String? (CAD-spezifisch; bei Bedarf)
 ```
 
 zur Rückverfolgung. Die Mapping-Felder sind ohne Identitätsanspruch
@@ -236,11 +234,7 @@ geführt und dürfen sich bei jedem Re-Import ändern.
     nicht das Element. Andere Spur, anderer Zweck. **Verortung
     am Werkstoff, nicht am Element direkt**: Der Zugriff vom
     Element aus läuft strikt
-    `element.werkstoff.produktkennzeichnung` (Memory
-    `project_bauteil_identifikation` — die drei
-    Identifikator-Spuren am Element sind eine Modellierungs-Sicht;
-    die Produktkennzeichnung ist indirekt über den Werkstoff
-    erreichbar).
+    `element.werkstoff.produktkennzeichnung`.
   - **Bezeichnung** (freier Anzeigename): hat keinen
     Identitätsanspruch.
   - **IFC GlobalId**: `IfcGloballyUniqueId` ist die
@@ -252,125 +246,6 @@ geführt und dürfen sich bei jedem Re-Import ändern.
     fällt der Primärschlüssel mit der UUID zusammen, ist aber
     konzeptuell ein anderer Begriff (Datenbankebene vs.
     Domänenebene; Khorikov 2019).
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`zimmermann.domain.identifikation`):
-
-```kotlin
-package zimmermann.domain.identifikation
-
-import zimmermann.domain.Resultat
-import java.util.UUID as JavaUUID
-
-/**
- * Universally Unique Identifier nach RFC 9562.
- * Glossar: hg_uuid.md
- *
- * Default-Version: v7 (zeit-sortierbar, B-Tree-freundlich).
- * v4 nur bei expliziter Privacy-Anforderung.
- *
- * Foreign-Key-Regel: alle Verweise auf Elemente/Aggregate
- * referenzieren ausschließlich diesen Typ — niemals
- * Positionsnummer oder Produktkennzeichnung.
- *
- * Validierung erfolgt ausnahmslos über die Factory-Funktionen im
- * Companion mit Rückgabetyp `Resultat<Uuid, UuidParseFehler>`. Die
- * Domänen-Schicht wirft niemals Exceptions; Java-Boundary-Aufrufe
- * (`JavaUUID.fromString`) werden in expliziten try/catch-Blöcken
- * gefangen und in `Resultat.Fehler` gewrappt. Vorbild:
- * `zimmermann.domain.koordinaten.LokalePlatzierung.aus(...)`.
- */
-@JvmInline
-value class Uuid internal constructor(val wert: JavaUUID) {
-
-    /** Kanonische Form 8-4-4-4-12. */
-    fun kanonisch(): String = wert.toString()
-
-    /** URN-Form `urn:uuid:...`. */
-    fun urn(): String = "urn:uuid:${wert}"
-
-    /** IFC-Form: 22-stellig Base64 nach ISO/IEC 9834-8. */
-    fun ifcGlobalId(): String = IfcGuidCodec.encode(wert)
-
-    companion object {
-        /** Neue UUID v7 (Default für Element-Erzeugung). */
-        fun neuV7(): Uuid = Uuid(UuidV7Generator.next())
-
-        /** Neue UUID v4 (kein Zeitbezug; Privacy-Modus). */
-        fun neuV4(): Uuid = Uuid(JavaUUID.randomUUID())
-
-        /**
-         * Parst eine UUID aus der kanonischen 8-4-4-4-12-Form.
-         *
-         * Java-Boundary: `JavaUUID.fromString` kann eine
-         * `IllegalArgumentException` werfen; sie wird hier
-         * abgefangen und in `Resultat.Fehler` gewrappt.
-         * Die Domänen-Schicht propagiert keine Exceptions.
-         */
-        fun ausKanonisch(s: String): Resultat<Uuid, UuidParseFehler> =
-            try {
-                Resultat.Erfolg(Uuid(JavaUUID.fromString(s)))
-            } catch (_: IllegalArgumentException) {
-                Resultat.Fehler(UuidParseFehler.UngueltigesFormat)
-            }
-
-        /** Aus IFC-22-stellig Base64 parsen. */
-        fun ausIfcGlobalId(s: String): Resultat<Uuid, UuidParseFehler> = IfcGuidCodec.decode(s)
-    }
-}
-
-/** ISO/IEC 9834-8 / IFC Base64 22-Codec (kein RFC-Base64; eigenes Alphabet). */
-internal object IfcGuidCodec {
-    fun encode(u: JavaUUID): String = TODO("Implementierung in Folge-Auftrag")
-    fun decode(s: String): Resultat<Uuid, UuidParseFehler> = TODO("Implementierung in Folge-Auftrag")
-}
-
-/** UUID-v7-Generator (Unix-ms + Zufall). */
-internal object UuidV7Generator {
-    fun next(): JavaUUID = TODO("Implementierung in Folge-Auftrag; "
-        + "PostgreSQL 18 uuidv7() bzw. java.util.UUID-Selbstbau")
-}
-```
-
-- **Einheit**: keine (Bit-Wort).
-- **Identität (im Identitätsbegriff)**: Eine UUID **ist** die
-  Identität; sie hat keine eigene Identität jenseits ihres
-  Bit-Werts.
-- **Vergabe**: ausschließlich systemseitig bei Element-Erzeugung.
-  Niemals händisch in Konstruktor-Aufrufen setzen.
-- **Persistenz-Garantie**:
-  - Niemals überschreiben.
-  - Bei IFC-/BTLx-Re-Import nicht ersetzen; externe GUIDs landen
-    in eigenen Mapping-Feldern.
-  - Bei Modell-Migrationen (Schema-Änderungen) wandert die UUID
-    unverändert mit.
-- **Invarianten** (in Codec-Funktionen prüfen, bei Verletzung
-  `Resultat.Fehler`; niemals Exception):
-  1. 128-Bit-Wert ist nicht der Null-UUID
-     (`00000000-0000-0000-0000-000000000000`).
-  2. Versions-Nibble ∈ {1, 4, 6, 7, 8}.
-  3. Varianten-Nibble ∈ {8, 9, a, b}.
-- **Edge Cases**:
-  - **Null-UUID** (`00000000-…`): in der App **verboten** als
-    Element-UUID (verwechslungsanfällig mit „nicht initialisiert").
-    Codec lehnt Parsing ab.
-  - **UUID v1 mit MAC-Adresse**: bei Import aus Altsystemen
-    zulässig; bei Eigen-Erzeugung **verboten** (Privacy).
-  - **Kollisionsverdacht**: bei Persistenz-Insert mit DB-UNIQUE-
-    Constraint-Verletzung wird ein Programmierfehler vermutet
-    (Kollisionswahrscheinlichkeit ≈ 10⁻¹⁹); Behandlung als
-    `Entartet.UuidKollision` mit Logeintrag.
-  - **String-Parsing**: case-insensitive für Hex-Ziffern,
-    case-sensitive für ISO/IEC 9834-8-Base64.
-- **Mapping-Felder für externe GUIDs** (auf Element-Ebene, nicht
-  hier):
-  - `ifc_global_id: String?` (22-stellig Base64; letzter
-    IFC-Import).
-  - `btlx_guid: String?` (BTLx-Import).
-  - Weitere CAD-spezifische Felder nach Bedarf
-    (`revit_unique_id`, `archicad_global_id` …).
 
 ## Quellen
 

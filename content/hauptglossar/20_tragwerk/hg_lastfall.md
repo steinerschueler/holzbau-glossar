@@ -24,7 +24,7 @@ quellen_sekundär:
   - "Marti, P.: Tragwerksentwurf. ETH Zürich, IBK; SIA-260-Einführung (PDF, archiv.ibk.ethz.ch)."
   - "SIA-D 0211 'Erläuterungen zur Tragwerksnorm SIA 260', sgeb.ch."
   - "Lüchinger, P.: 'Konzept der Tragwerksnormen SIA', Forum Holzbau."
-  - "Recherche-Bericht: `docs/recherche/2026-05-14_hg_lastfall.md`."
+  - "Recherche-Bericht: [intern]."
 quellenkonflikt: |
   **Norm-Asymmetrie zwischen SIA 260, EN 1990 und DIN 1055-100.** Keine
   der drei Hoch-Tier-Quellen trägt eine einheitlich geschlossene
@@ -168,7 +168,7 @@ quellenkonflikt: |
   Web-Volltext, WebFetch im Sandbox-Profil nicht freigegeben).
   Die hier zitierten Definitions-Wortlaute stützen sich auf
   Sekundärquellen-Konsens. Die Lücke ist in
-  `docs/recherche/2026-05-14_hg_lastfall.md` §A und §L dokumentiert.
+  [intern] §A und §L dokumentiert.
 ---
 
 ## Prosa-Definition
@@ -196,7 +196,7 @@ Sei
   außergewöhnlich, Erdbeben), einen charakteristischen Wert
   und eine semantische Identität (z. B. „Schnee“, „Wind Süd“,
   „Nutzlast Wohnen“),
-- 𝓢 := {persistent, transient, accidental, seismic} die Menge der
+- 𝓢:= {persistent, transient, accidental, seismic} die Menge der
   **Bemessungssituationen** nach EN 1990 §3.2 bzw. SIA 260 §4.4
   (Schicht 2; eigener Glossareintrag `bemessungssituation` folgt),
 - 𝓥𝓔 die Menge der **Einwirkungs-Anordnungen**: jede Anordnung ist
@@ -213,7 +213,7 @@ Sei
 Dann ist ein **Lastfall** das Tupel
 
 ```
-ℓ := (uuid, bemessungssituation, leiteinwirkung, begleiteinwirkungen,
+ℓ:= (uuid, bemessungssituation, leiteinwirkung, begleiteinwirkungen,
       einwirkungs_anordnung, inzidenz, bezeichnung)
 ```
 
@@ -237,7 +237,7 @@ mit den Komponenten
 Die Gesamt-Einwirkungsmenge des Lastfalls ist
 
 ```
-E(ℓ) := {leiteinwirkung} ∪ begleiteinwirkungen.
+E(ℓ):= {leiteinwirkung} ∪ begleiteinwirkungen.
 ```
 
 ### Konsistenzbedingungen
@@ -576,188 +576,6 @@ sitzt er aber als Element von L in einem Tragwerk.
     Tragwerk; das statische System trägt die daraus
     abgeleiteten reduzierten Modell-Lasten.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.aggregat.lastfall`):
-
-```kotlin
-package domain.aggregat.lastfall
-
-import java.util.UUID
-
-/** Einwirkungs-Kategorie nach EN 1990 §4.1.1 / SIA 260 §4. */
-enum class Einwirkungskategorie { STAENDIG_G, VERAENDERLICH_Q, AUSSERGEWOEHNLICH_A, ERDBEBEN_AE }
-
-/** Bemessungssituation nach EN 1990 §3.2. */
-enum class Bemessungssituation { PERSISTENT, TRANSIENT, ACCIDENTAL, SEISMIC }
-
-/**
- * Einwirkung (Schicht 1) — Folgeeintrag `einwirkung`.
- * Hier nur als Vorwärts-Referenz auf eigene Identität und Kategorie.
- */
-data class Einwirkung(
-    val uuid: UUID,
-    val kategorie: Einwirkungskategorie,
-    val bezeichnung: String
-    /* + charakteristischer Wert, semantische Identität — Folgearbeit */
-)
-
-/** Geometrische Verteilung einer Einwirkung im W-System (Folgearbeit). */
-sealed interface EinwirkungsVerteilung {
-    /* Punkt-, Linien-, Flächen-, Volumen-Verteilung mit Wert+Richtung
-     * pro Träger; im Folgeeintrag `einwirkung` ausformuliert. */
-}
-
-/** Inzidenz einer Einwirkung zu einer Bauteil-Stelle. */
-data class EinwirkungsInzidenz(
-    val einwirkungUuid: UUID,
-    val bauteilUuid: UUID
-    /* + optional: Bauteilflaeche/Kante/Punkt-Selektor — Folgearbeit */
-)
-
-/**
- * Lastfall (Schicht 3): Aggregat aus physikalisch verträglicher Anordnung
- * gleichzeitig wirkender Einwirkungen für einen bestimmten Nachweis.
- *
- * Glossar: hg_lastfall.md
- *
- * NICHT Subtyp von Element. Eigene Aggregat-Klasse, analog Verbindung,
- * Tragwerk, Auflager.
- *
- * IFC: IfcStructuralLoadCase (Subtyp von IfcStructuralLoadGroup).
- * BTLx: keine eigene Entität.
- */
-data class Lastfall(
-    val uuid: UUID,
-    val bemessungssituation: Bemessungssituation,
-    val leiteinwirkung: Einwirkung,
-    val begleiteinwirkungen: Set<Einwirkung>,
-    val einwirkungsAnordnung: Map<UUID, EinwirkungsVerteilung>,    // EinwirkungUuid -> Verteilung
-    val inzidenz: Set<EinwirkungsInzidenz>,
-    val bezeichnung: String? = null
-) {
-    init {
-        // L1. leiteinwirkung ∉ begleiteinwirkungen
-        // L2. ∀ e ∈ E(ℓ): einwirkungsAnordnung[e.uuid] != null
-        // L3. ∀ e ∈ E(ℓ): { i ∈ inzidenz | i.einwirkungUuid == e.uuid }.isNotEmpty()
-        // L4. Modell-Validierung: jede inzidenz.bauteilUuid existiert im Modell
-        // L5. physikalische Verträglichkeit (zugesichert, nicht geprüft)
-        // L6. Kategorie-Konsistenz mit Bemessungssituation (zugesichert)
-    }
-
-    /** Gesamt-Einwirkungsmenge E(ℓ). */
-    fun einwirkungen(): Set<Einwirkung> = begleiteinwirkungen + leiteinwirkung
-}
-```
-
-- **Einheit**: Längen in mm (Double); Lasten in N (Einzelkraft),
-  N/m (Linienlast), N/m² (Flächenlast); Temperatur in K
-  (Differenz) bzw. °C (absoluter Wert mit dokumentierter
-  Referenz); Winkel intern in Radiant. Alle Last-Werte
-  konsistent SI.
-
-- **Identität**: `uuid` ist Pflicht und eigenständig (eigene UUID
-  des Aggregats; nicht UUID eines Bauteils, einer Einwirkung
-  oder einer Bemessungssituation).
-
-- **Foreign-Key-Regel**: Bauteil-Bezüge in `inzidenz` und in
-  späteren Lastpfad-Aussagen referenzieren ausschließlich Bauteil-
-  UUIDs (Memory `project_bauteil_identifikation`). Einwirkungs-
-  Bezüge in `inzidenz` und in `einwirkungsAnordnung`
-  referenzieren ausschließlich Einwirkungs-UUIDs.
-
-- **Invarianten** (in der Aggregat-Fabrikfunktion
-  `Lastfall.bilde(modell: Modell, …)` geprüft; bei Verletzung
-  `Resultat.Fehler`, niemals Exception):
-  1. `leiteinwirkung !in begleiteinwirkungen` ⇒ sonst
-     `Entartet.LeiteinwirkungDoppelt` (L1).
-  2. Anordnung für jede Einwirkung definiert ⇒ sonst
-     `Entartet.AnordnungUnvollstaendig` (L2).
-  3. Inzidenz für jede Einwirkung nicht-leer ⇒ sonst
-     `Entartet.InzidenzLeer` (L3).
-  4. Jede in `inzidenz` referenzierte Bauteil-UUID existiert im
-     Modell ⇒ sonst `Entartet.BauteilUnbekannt` (L4).
-  5. **Physikalische Verträglichkeit (L5)** und **Kategorie-
-     Konsistenz mit Bemessungssituation (L6)**: zugesichert,
-     **nicht** im `init` geprüft. Formale Prüfung erfolgt in der
-     Bemessungs-Schicht (Lastkombinations-Generator).
-
-- **Edge Cases**:
-  - **Lastfall mit leerer Begleitmenge**: zulässig (reine
-    Eigenlast-Situation; Leiteinwirkung = Eigenlast,
-    `begleiteinwirkungen = emptySet()`).
-  - **Außergewöhnlicher Lastfall**: `bemessungssituation =
-    ACCIDENTAL` mit mindestens einer A-Einwirkung in E(ℓ);
-    typisch: Anprall als Leiteinwirkung, Eigenlast und
-    quasi-ständige Nutzlast als Begleiteinwirkungen.
-  - **Erdbeben-Lastfall**: `bemessungssituation = SEISMIC` mit
-    mindestens einer A_E-Einwirkung; in der Schweiz nach
-    SIA 261 §16 mit zonen- und bauwerksklassenabhängigen Werten.
-  - **Mehrere Lastfälle mit derselben Einwirkungsmenge**:
-    zulässig bei unterschiedlicher Anordnung oder Inzidenz
-    (z. B. „Wind aus Süd“ und „Wind aus Nord“).
-  - **Lastfall ohne Tragwerk**: formal zulässig (Eingangs-
-    Bibliothek); im typischen Modellzustand sitzt der Lastfall
-    in der L-Komponente eines Tragwerks.
-  - **Vermischung Schicht 3 / Schicht 4 ablehnen**: ein
-    Aufruf-Code, der einen Lastfall als „Lastkombination mit
-    γ = 1“ konstruieren möchte, wird abgewiesen — der dafür
-    vorgesehene Aggregat-Typ ist `Lastkombination` (Folgearbeit),
-    nicht `Lastfall`.
-
-- **Toleranz-Anwendung** (siehe `hg_toleranzen.md` §4):
-  - Im Lastfall selbst keine geometrischen Toleranzen, da die
-    geometrischen Träger in `EinwirkungsVerteilung` und
-    `EinwirkungsInzidenz` ihre eigene Toleranz-Anwendung
-    mitbringen (`LAENGE_EPS` für Bauteil-Inzidenz-Punkte).
-  - Last-Werte (N, N/m, N/m²) tragen keine geometrischen
-    Toleranzen; ihre numerische Toleranz ist Sache der
-    Bemessungs-Schicht.
-
-- **IFC-Export-Mapping**:
-  - `Lastfall` → `IfcStructuralLoadCase` (Subtyp von
-    `IfcStructuralLoadGroup`) mit eigener `GlobalId` aus
-    `uuid`; `SelfWeightCoefficients` aus Eigenlast-Anordnung,
-    falls dargestellt.
-  - `bemessungssituation` → Property auf der enthaltenden
-    `IfcStructuralLoadGroup` oder im umschließenden
-    `IfcStructuralAnalysisModel`.
-  - `leiteinwirkung` und jede `e ∈ begleiteinwirkungen` →
-    `IfcStructuralAction` (Point/Curve/Surface je nach
-    Verteilungs-Dimension) mit `AppliedLoad` als
-    passender `IfcStructuralLoad`-Subtyp.
-  - `inzidenz` → `IfcRelConnectsStructuralActivity` zwischen
-    `IfcStructuralAction` und `IfcStructuralItem` des Bauteils.
-  - Eine spätere `Lastkombination` (Folgearbeit) wird als
-    `IfcStructuralLoadGroup` mit
-    `PredefinedType = LOAD_COMBINATION` exportiert und
-    referenziert die enthaltenen `IfcStructuralLoadCase`-
-    Instanzen.
-
-- **BTLx-Export**: keine eigene Entität; Lastfälle werden beim
-  BTLx-Export nicht ausgegeben (BTLx ist Maschinen-Format für
-  die zerspanende Vorfertigung, nicht für die Bemessungs-Schicht).
-
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `einwirkungen(): Set<Einwirkung>` — Vereinigung
-    `{leiteinwirkung} ∪ begleiteinwirkungen`.
-  - `bauteilUuids(): Set<UUID>` — Menge aller Bauteil-UUIDs in
-    `inzidenz`.
-  - `enthaeltKategorie(k: Einwirkungskategorie): Boolean` —
-    Existenz einer Einwirkung der Kategorie k in E(ℓ).
-  - `istAussergewoehnlich(): Boolean` —
-    `bemessungssituation == ACCIDENTAL`.
-  - `istErdbebenLastfall(): Boolean` —
-    `bemessungssituation == SEISMIC`.
-
-- **Bezeichner-Konvention** (siehe `docs/_CODE_KONVENTIONEN.md`):
-  Domänen-Klasse heißt `Lastfall` (deutsch, Glossarbegriff).
-  „Belastungsfall“, „Lastannahme“ und englische Pendants
-  (`load case`, `action`) werden weder als Klassen noch als
-  KDoc-Stichworte geführt; sie sind ausdrücklich als
-  abgelehnte Benennungen markiert.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -813,4 +631,4 @@ data class Lastfall(
 - standards.buildingsmart.org, IFC-4.3-Lexikon, Einträge
   `IfcStructuralLoadCase`, `IfcStructuralLoadGroup`,
   `IfcStructuralAction` (abgerufen 2026-05-14).
-- Recherche-Bericht: `docs/recherche/2026-05-14_hg_lastfall.md`.
+- Recherche-Bericht: [intern].

@@ -103,7 +103,7 @@ Sei
   Stahl, Edelstahl A2/A4; Hartholz für Holzlaschen),
 - 𝓥𝓑_τ die Menge der Verbinder-Typen
   ```
-  𝓥𝓑_τ := { Balkenschuh, Winkelverbinder, Knotenblech,
+  𝓥𝓑_τ:= { Balkenschuh, Winkelverbinder, Knotenblech,
             Schlitzblech, SherpaVerbinder, KnappVerbinder,
             PitzlVerbinder, Holzlasche, Zugband, Druckband,
             Verbindungsplatte }
@@ -115,7 +115,7 @@ Sei
 Dann ist ein **Verbinder** das Tupel
 
 ```
-VB := (uuid, geometrie, lokale_platzierung, werkstoff,
+VB:= (uuid, geometrie, lokale_platzierung, werkstoff,
        typ, befestigt_durch,
        eta_zulassung?, stahlguete?,
        positionsnummer?, produktkennzeichnung?, bezeichnung?)
@@ -155,7 +155,7 @@ verbundenen Bauteile** ergibt sich (transitiv) aus den
 Verbindungsmitteln:
 
 ```
-verbundene_bauteile(VB) := ⋃_{vm ∈ befestigt_durch} verbindet(vm).
+verbundene_bauteile(VB):= ⋃_{vm ∈ befestigt_durch} verbindet(vm).
 ```
 
 ## Wohldefiniertheit
@@ -313,120 +313,6 @@ ist die „Verbinderliste" eine eigene Sicht.
     Verbindung, nicht selbst die Verbindung.
   - **Element** (`element`): abstrakter Oberbegriff;
     Verbinder ist eine konkrete Subklasse.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.element.verbinder`):
-
-```kotlin
-package domain.element.verbinder
-
-import domain.element.Element
-import domain.geometrie.Geometrie
-import domain.geometrie.LokalePlatzierung
-import domain.holzbau.Werkstoff
-import domain.identifikation.Positionsnummer
-import domain.identifikation.Produktkennzeichnung
-import domain.identifikation.Stahlguete
-import domain.identifikation.ETAReferenz
-import java.util.UUID
-
-/** Verbinder-Typ. */
-sealed interface VerbinderTyp {
-    data object Balkenschuh        : VerbinderTyp
-    data object Winkelverbinder    : VerbinderTyp
-    data object Knotenblech        : VerbinderTyp
-    data object Schlitzblech       : VerbinderTyp
-    data object SherpaVerbinder    : VerbinderTyp
-    data object KnappVerbinder     : VerbinderTyp
-    data object PitzlVerbinder     : VerbinderTyp
-    data object Holzlasche         : VerbinderTyp
-    data object Zugband            : VerbinderTyp
-    data object Druckband          : VerbinderTyp
-    data object Verbindungsplatte  : VerbinderTyp
-}
-
-/**
- * Verbinder: vermittelndes Bauteil zwischen Holzstäben, das selbst
- * durch Verbindungsmittel befestigt wird (EC5 8.2.3 indirekte
- * Verbindung).
- *
- * Glossar: hg_verbinder.md
- *
- * IFC: IfcDiscreteAccessory (Subtyp von IfcElementComponent).
- * BTLx: eigenes Part mit @GUID oder Reference.
- *
- * Synonym laut EC5: Verbindungselement.
- */
-data class Verbinder(
-    override val uuid: UUID,
-    override val geometrie: Geometrie,
-    override val lokalePlatzierung: LokalePlatzierung,
-    override val werkstoff: Werkstoff,
-    val typ: VerbinderTyp,
-    val befestigtDurch: List<UUID>,    // FK auf Verbindungsmittel-UUIDs, |...| >= 1
-    val etaZulassung: ETAReferenz? = null,
-    val stahlguete: Stahlguete? = null,
-    override val positionsnummer: Positionsnummer? = null,
-    override val produktkennzeichnung: Produktkennzeichnung? = null,
-    override val bezeichnung: String? = null
-) : Element {
-    init {
-        // 1. befestigtDurch.isNotEmpty()
-        // 2. befestigtDurch.all { it != uuid }   (kein Selbstbezug)
-        // 3. befestigtDurch.distinct().size == befestigtDurch.size
-    }
-}
-```
-
-- **Einheit**: Längen in mm (Double). Winkel intern in Radiant.
-- **Identität**: `uuid` von `element` ererbt.
-- **Foreign-Key-Regel**: `befestigtDurch` referenziert
-  ausschließlich Verbindungsmittel-UUIDs. Die mittelbar verbundenen
-  Bauteile werden nicht direkt persistiert, sondern über die
-  Verbindungsmittel transitiv ermittelt.
-- **IFC-Mapping**:
-  - IFC-Klasse: `IfcDiscreteAccessory` (Subtyp von
-    `IfcElementComponent`).
-  - Predefined Types: ANCHORPLATE (Verankerungsplatte), BRACKET
-    (Konsolen-/Winkelverbinder), SHOE (Balkenschuh), USERDEFINED
-    (Sonstige; z. B. Sherpa).
-  - Property Sets: `Pset_DiscreteAccessoryCommon`,
-    `Pset_DiscreteAccessoryGeneral`.
-  - Hersteller-BIM-Bibliotheken (Simpson Strong-Tie, Rothoblaas,
-    BMF, Sherpa) liefern Verbinder als `IfcDiscreteAccessory` aus.
-- **BTLx-Mapping**:
-  - **Standardfall**: eigenes `Part` mit `@GUID`
-    (entspricht `Verbinder.uuid`).
-  - **Alternativfall**: `Reference` auf eine externe
-    Hersteller-Bibliothek mit ETA-Bezug.
-  - Die zugehörigen Bohrlöcher in den verbundenen Holz-Bauteilen
-    werden als `Drilling`-Processings geführt — das sind nicht die
-    Verbinder selbst, sondern die Bearbeitungen, die durch die
-    Verbindungsmittel im Holz entstehen.
-- **Edge Cases**:
-  - **Verbinder ohne Verbindungsmittel** (|befestigtDurch| = 0):
-    nicht erlaubt; `Entartet.UnbefestigterVerbinder`.
-  - **Verbinder, der nur ein Bauteil mit dem Untergrund verbindet**
-    (Wandanker an Beton): zulässig, sofern eine virtuelle Bauteil-
-    UUID `Untergrund`/`Fundament` im Modell existiert. Das ist eine
-    Modellierungs-Konvention, nicht eine Eigenschaft des Verbinders.
-  - **Knotenblech als Tragglied** (Diagonale im Stahlfachwerk):
-    nicht als Verbinder, sondern als Stahl-Bauteil modellieren.
-  - **Holzlasche aus Hartholz**: Werkstoff = Holz, nicht Stahl;
-    Konsistenz wird in der Bemessung beachtet (eigene
-    Versagens-Mechanismen).
-- **Abgeleitete Eigenschaften**:
-  - `verbundeneBauteile(model: Modell): Set<UUID>` —
-    transitiv ermittelt aus `befestigtDurch` und den
-    `verbindet`-Listen der Verbindungsmittel.
-  - `geometrieInWelt(): GeometrieInW` — Verbinder-Geometrie unter
-    `lokalePlatzierung` transformiert nach W.
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `Verbinder` (deutsch, Glossarbegriff). Synonym
-  `Verbindungselement` (EC5) wird in KDoc erwähnt, aber nicht als
-  zweite Klasse geführt.
 
 ## Quellen
 

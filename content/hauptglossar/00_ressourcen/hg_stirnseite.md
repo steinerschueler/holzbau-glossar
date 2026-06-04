@@ -116,12 +116,12 @@ Sei
 - ∂F_S ⊂ E_S ein **Polygon in Berandungs-Lesart** (siehe
   `hg_polygon.md`, Abschnitt „Zwei zulässige Lesarten"), das die
   Bauteilberandung an dem jeweiligen Bauteilende bildet,
-- ε_W := Toleranzen.WINKEL_EPS.
+- ε_W:= Toleranzen.WINKEL_EPS.
 
 **Stirnseite am Bauteilanfang** (s = 0):
 
 ```
-S_a(B) := (∂F_S^{(a)}, E_S^{(a)}, n_hat_S^{(a)}, p_a)                   (1)
+S_a(B):= (∂F_S^{(a)}, E_S^{(a)}, n_hat_S^{(a)}, p_a)                   (1)
           mit ∂F_S^{(a)} = Bauteilberandung von B in E_S^{(a)}
           am Bauteilanfang p_a.
 ```
@@ -129,7 +129,7 @@ S_a(B) := (∂F_S^{(a)}, E_S^{(a)}, n_hat_S^{(a)}, p_a)                   (1)
 **Stirnseite am Bauteilende** (s = L):
 
 ```
-S_e(B) := (∂F_S^{(e)}, E_S^{(e)}, n_hat_S^{(e)}, p_e)                   (2)
+S_e(B):= (∂F_S^{(e)}, E_S^{(e)}, n_hat_S^{(e)}, p_e)                   (2)
           mit ∂F_S^{(e)} = Bauteilberandung von B in E_S^{(e)}
           am Bauteilende p_e.
 ```
@@ -221,8 +221,8 @@ keine Validierungsregel.
   `anschnitt`, Folgearbeit). In beiden Fällen ist die Trägerebene
   eindeutig (modulo Vorzeichen, vgl. `ebene` Wohldefiniertheits-
   Abschnitt). Die kanonische Vorzeichenwahl ist „äußere Normale",
-  also n_hat_S^{(a)} := −d_hat(0) (Anfangs-Stirnseite, prismatisch) bzw.
-  n_hat_S^{(e)} := +d_hat(L) (End-Stirnseite, prismatisch); im
+  also n_hat_S^{(a)}:= −d_hat(0) (Anfangs-Stirnseite, prismatisch) bzw.
+  n_hat_S^{(e)}:= +d_hat(L) (End-Stirnseite, prismatisch); im
   Anschnittfall zeigt n_hat_AS analog aus dem Bauteil heraus.
 - **Anschnitt als Sonderfall**: Bei einem Anschnitt (Bearbeitung
   am Bauteilende) bleibt das Bauteilende eine ebene Schnittfläche;
@@ -406,129 +406,6 @@ geführt.
     die Faser durch die Fläche aus; an der Längsseite liegt die
     Faser in der Fläche. Die Faserrichtung ist Annotation des
     Bauteils, die Stirnseite eine Bauteilfläche.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.bauteil.flaeche`):
-
-```kotlin
-package domain.bauteil.flaeche
-
-import domain.geometrie.Ebene
-import domain.geometrie.KonvexesPolygon
-import domain.geometrie.Punkt
-import domain.geometrie.Vektor
-
-/**
- * Stirnseite: Endfläche eines Stab-Bauteils, an der die Faser
- * durch die Schnittfläche austritt.
- *
- * Glossar: hg_stirnseite.md
- *
- * Im prismatischen Standardfall rechtwinklig zur Bauteilachse
- * (und damit zugleich Querschnitt im Sinne von hg_querschnitt.md);
- * im Anschnittfall mit Schnittwinkel α_AS ∈ (0, π/2) gegen die
- * Bauteilachse — dann polygonal berandete Endfläche, aber kein
- * Querschnitt.
- *
- * Trägerpolygon ∂F_S in Berandungs-Lesart (siehe hg_polygon.md);
- * Aussennormale n_hat_S zeigt per Konvention aus dem Bauteil heraus.
- */
-data class Stirnseite(
-    val berandung: KonvexesPolygon,   // ∂F_S in Berandungs-Lesart
-    val position: Endposition,        // ANFANG | ENDE
-    val aussennormale: Vektor,        // n_hat_S, ‖aussennormale‖ ≈ 1
-    val bezugspunkt: Punkt,           // p_a bzw. p_e
-)
-
-/** An welchem Ende des Bauteils die Stirnseite liegt. */
-enum class Endposition {
-    ANFANG,   // s = 0, n_hat_S := −d_hat(0)
-    ENDE,     // s = L, n_hat_S := +d_hat(L)
-}
-```
-
-- **Einheit**: Punktkoordinaten in mm; Vektor dimensionslos
-  (Einheitsvektor); Querschnitt nach `querschnitt`.
-- **Identität**: keine eigene UUID. Die Stirnseite ist eine
-  abgeleitete Sicht auf das Bauteil-Ende; sie wird konstruktiv
-  aus dem Bauteil bezogen, nicht persistiert.
-- **Pflicht- und Optionalfelder**:
-  - `berandung` — Pflicht; Bauteilberandungs-Polygon ∂F_S in
-    Berandungs-Lesart (siehe `hg_polygon.md`, Abschnitt „Zwei
-    zulässige Lesarten"). Im prismatischen Standardfall identisch
-    mit der Polygonberandung des Querschnitts am Bauteilende; im
-    Anschnittfall die durch die Anschnittebene erzeugte
-    Polygonberandung.
-  - `position` — Pflicht; ANFANG oder ENDE.
-  - `aussennormale` — Pflicht; per Konvention aus dem Bauteil heraus.
-  - `bezugspunkt` — Pflicht; Bauteil-Endpunkt p_a bzw. p_e.
-- **Invarianten** (in Companion-Factory `Stirnseite.aus(bauteil,
-  position)`, `Resultat.Fehler` bei Verletzung; keine Exception):
-  1. `aussennormale` ist normiert (‖aussennormale‖ ≈ 1 innerhalb
-     `Toleranzen.NORM_EPS`).
-  2. Im prismatischen Standardfall: `aussennormale` ist parallel
-     zur Bauteilachsen-Tangente am Endpunkt (Anschnittwinkel
-     α_AS = π/2).
-  3. Im Anschnittfall: 0 < α_AS < π/2 (Anschnitt-Bearbeitung als
-     Vorbedingung).
-- **Konstruktion**: Die Stirnseite wird **abgeleitet** aus dem
-  Bauteil und der gewählten Endposition; sie wird **nicht** als
-  unabhängiges Objekt konstruiert. Die Domänen-Schicht stellt
-  Faktor-Funktionen `Bauteil.stirnseiteAm(position)` bereit,
-  die das jeweilige `Stirnseite`-Objekt aus dem Bauteilkontext
-  zusammensetzen.
-- **IFC-Mapping** (Persistenzschicht, Phase 4):
-  - Stirnseite wird nicht als eigene IFC-Entität geführt; sie
-    ist eine Sicht auf die `IfcExtrudedAreaSolid`-Endfläche des
-    Bauteils.
-- **Edge Cases**:
-  - **Stirnseite an einem Bauteil mit Anschnitt** (Anschnittwinkel
-    α_AS < π/2): die Stirnseite hat eine grössere Fläche als der
-    Bauteilquerschnitt rechtwinklig zur Achse; das Verhältnis ist
-    `1 / sin(α_AS)`.
-  - **Stirnseite an einem Bauteil mit Faserrichtung-Modus
-    SCHWACH oder KEINE** (z. B. OSB, Spanplatte, siehe
-    Memory `project_faserrichtung_modi`): Bedingung (5) ist für
-    diese Modi nicht sinnvoll; die geometrische Stirnseite bleibt
-    aber definiert. Plattenwerkstoffe werden bevorzugt mit dem
-    Begriff `plattenkante` (Folgearbeit) modelliert.
-  - **Doppelter Anschnitt am selben Bauteilende** (Schiftsparren-
-    Doppelschnitt): zwei Anschnitte führen zu zwei Schnittflächen
-    am selben Endpunkt; jede ist eine eigene Stirnseite des
-    bearbeiteten Bauteils. Die App führt sie als getrennte
-    `Stirnseite`-Instanzen mit derselben `position`, aber
-    unterschiedlichen `aussennormale`.
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt `Stirnseite`
-  (deutsch, Glossarbegriff). `Endposition.ANFANG` / `Endposition.ENDE`
-  sind technische Konstanten ohne eigenen Glossarbezug.
-
-**Folgearbeit (trigger-basiert):**
-
-- **Bauteilfläche** (`bauteilflaeche`-Eintrag, Folgearbeit):
-  Sammelkategorie für Stirnseite und Längsseite als die beiden
-  disjunkten ebenen Aussenflächen-Klassen eines Stabbauteils.
-  Stirnseite und Längsseite sind derzeit symmetrisch direkt unter
-  `polygon` in Berandungs-Lesart aufgehängt; ein gemeinsamer
-  Sammel-Oberbegriff existiert nicht. Trigger: erste Domänen-Klasse
-  oder Visualisierungs-Operation, die Stirn- und Längsseite
-  einheitlich als „Bauteilfläche" adressieren muss (z. B.
-  Sammel-Iteration über alle Aussenflächen eines Bauteils,
-  einheitliche Aussennormalen-Behandlung im Renderer).
-- **Hirnholzschutz** (`hirnholzschutz`-Eintrag, Folgearbeit):
-  konstruktive und chemische Schutzmassnahmen an exponierten
-  Stirnseiten nach DIN 68800-2. Trigger: erste Bemessung mit
-  Bewitterungs-Beurteilung.
-- **Anschnitt** (`anschnitt`-Eintrag, Folgearbeit als Bearbeitungs-
-  Subtyp; siehe `hg_bearbeitung.md`): Bearbeitung am Bauteilende mit
-  Schnittwinkel ≠ π/2. Trigger: erstes Tool, das angeschnittene
-  Bauteilenden modelliert.
-- **Plattenkante** (`plattenkante`-Eintrag, Folgearbeit): Stirn-
-  Entsprechung bei Plattenbauteilen, mit von der Stirnseite
-  abweichender Definition (Faserrichtung-Modus-Spezifika nach
-  `hg_faserrichtungs_modus.md`). Trigger: erstes Plattenbauteil mit
-  expliziter Kantenmodellierung.
 
 ## Quellen
 

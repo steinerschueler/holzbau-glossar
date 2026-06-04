@@ -35,8 +35,8 @@ quellen_sekundär:
   - "Wikipedia, Lemma 'Fachwerkhaus': Mann-Figuren als Schmuckformen im DE-Fachwerk (Mittelhessen, Schwaben, Franken)."
   - "Hessenpark, Freilichtmuseum: Sammlungs- und Dokumentations-Bestand zu hessischen Fachwerk-Schmuckformen seit 1980er."
   - "Lignum (Hrsg.): Holzbautabellen HBT 1 (2024). Lignum, Zürich. CH-Riegelbau-Korpus (Volltext nicht zugänglich)."
-  - "Recherche-Bericht: docs/recherche/2026-05-16_wand_aggregat.md (§E Mann-Familie)."
-  - "Recherche-Bericht (Vorgänger): docs/recherche/2026-05-15_strebe_kopfband_bug.md (Welle 10, §D.2 Komposition); docs/recherche/2026-05-15_fussband_knagge.md (Welle 11, §F.1 MANN_FIGUR-Vorgriff)."
+  - "Recherche-Bericht: [intern] (§E Mann-Familie)."
+
 quellenkonflikt: |
   Sechs Punkte werden hier ausdrücklich aufgelöst.
 
@@ -92,7 +92,7 @@ quellenkonflikt: |
   **DE-historische Sub-Familie**; sie wird für die
   CH-Schwerpunkt-Tool-Linie als ein einziger Sammeleintrag
   geführt, mit Sub-Varianten als trigger-basierte
-  Folgearbeit. Eric als CH-Zimmermann kennt den Begriff
+  Folgearbeit. Anweiser als CH-Zimmermann kennt den Begriff
   „Mann" als DE-Fachwerk-Phänomen, hat ihn aber nicht in
   seinem aktiven Berufskorpus. Die Welle-12-Modellierung
   ist auf diese Asymmetrie zugeschnitten.
@@ -121,7 +121,7 @@ quellenkonflikt: |
   **(5) `MannVariante`-Enum-Granularität — Sammeleintrag
   mit Sub-Varianten als Folgearbeit.** Drei
   Modellierungs-Optionen wurden in der Recherche
-  (`docs/recherche/2026-05-16_wand_aggregat.md` §E.2)
+  ([intern] §E.2)
   geprüft:
 
   - **Option A**: 7 eigene Glossareinträge (mann,
@@ -131,7 +131,7 @@ quellenkonflikt: |
     Contra: 7 Einträge für eine regional-historische
     Sub-Familie mit identischer struktureller Logik
     (Bündel-Aussteifung am Pfosten); hoher Wartungs-
-    Overhead; Eric ist CH-Zimmermann ohne aktiven Bezug
+    Overhead; Anweiser ist CH-Zimmermann ohne aktiven Bezug
     zur hessischen/schwäbischen Sub-Familie.
   - **Option B**: 1 Sammeleintrag mit `MannVariante`-Enum
     aller 7 Sub-Varianten. Pro: ein Eintrag mit Enum-
@@ -161,20 +161,6 @@ quellenkonflikt: |
   Sanierungs-/Restaurierungs-Tool-Bedarf, dann mit eigenen
   geometrischen Constraints pro Sub-Eintrag.
 
-  **(6) `MANN_FIGUR`-Auflösung aus Welle 11.** Welle 11 hat
-  im `FussbandPosition`-Enum (`hg_fussband.md` Z. 688–700)
-  den Wert `MANN_FIGUR` als **Annotation am Einzel-Fussband**
-  mit Eric-Bestätigung „Vorgriff bis Welle 12" eingeführt.
-  Welle 12 löst dies auf nach Option (a) der Recherche
-  (`docs/recherche/2026-05-16_wand_aggregat.md` §F):
-
-  - `MANN_FIGUR` wird aus `FussbandPosition`-Enum
-    **entfernt**.
-  - Die Mitgliedschaft eines Fussbands in einer Mann-Figur
-    wird über die **Bauteilgruppen-Mitgliedschaft**
-    (`Mann.bestandteile.contains(fussband_uuid)`) ausgedrückt.
-  - `FussbandPosition` behält nur konstruktive Positions-
-    Werte (ECK, BUND, ZWISCHEN, UNSPEZIFIZIERT).
   - Das `hg_fussband.md`-Frontmatter wird entsprechend
     aktualisiert (Refactor R1 dieser Welle).
 
@@ -182,7 +168,7 @@ quellenkonflikt: |
   Z. 116–120 (exklusive Mitgliedschaft; die Mann-
   Bauteilgruppe weiss, welche Fussbänder zu ihr gehören —
   das Fussband selbst muss das nicht zusätzlich
-  annotieren) und mit Memory `project_bauteil_identifikation`
+  annotieren) und mit
   (FK auf UUID; Beziehungen verlaufen über die Aggregat-
   Wurzel, nicht über Annotationen am Mitglied).
 ---
@@ -212,16 +198,16 @@ Sei
 - 𝒰 der UUID-Raum nach `uuid`,
 - 𝒢_huelle die Menge der zulässigen Hüllgeometrie-
   Repräsentationen einer Bauteilgruppe,
-- e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-  ε_L := Toleranzen.LAENGE_EPS,
-- 𝓥 := {DEFAULT, HALB, WILD, HESSEN, SCHWAEB} die
+- e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS,
+- 𝓥:= {DEFAULT, HALB, WILD, HESSEN, SCHWAEB} die
   Variante-Wertemenge (Welle-12-Klassifikation).
 
 Dann ist ein **Mann** ein Tupel
 
 ```
-M := (uuid, pfosten, kopfbaender, fussbaender,
+M:= (uuid, pfosten, kopfbaender, fussbaender,
       zentrale_strebe?, wandebene, variante,
       lage, huelle, bezeichnung?)
 ```
@@ -256,10 +242,10 @@ und den Konsistenzbedingungen
 1. **Bauteilgruppen-Konformität**: das implizite Bauteilgruppen-
    Tupel `(uuid, bestandteile, lage, huelle, bezeichnung?)` mit
    ```
-   bestandteile := {pfosten} ∪ kopfbaender ∪ fussbaender ∪
-                   (zentrale_strebe ∈ 𝓢_Str ? {zentrale_strebe} : ∅)
+   bestandteile:= {pfosten} ∪ kopfbaender ∪ fussbaender ∪
+                   (zentrale_strebe ∈ 𝓢_Str ? {zentrale_strebe}: ∅)
    ```
-   und `funktion := ⊥` (Mann führt keinen eigenständigen
+   und `funktion:= ⊥` (Mann führt keinen eigenständigen
    `funktion`-Wert; die Aussteifungs-Funktion ist intrinsisch
    und in `variante` mitcodiert) erfüllt alle Konsistenz-
    bedingungen 1–4 von `bauteilgruppe`. Die mann-spezifischen
@@ -328,7 +314,7 @@ und den Konsistenzbedingungen
 Die **geometrische Punktmenge** in W ist
 
 ```
-G_W(M) := lage(G_lokal(huelle)) ⊂ ℝ³.
+G_W(M):= lage(G_lokal(huelle)) ⊂ ℝ³.
 ```
 
 ## Wohldefiniertheit
@@ -495,7 +481,7 @@ Aussteifung am Pfosten) ist in CH-Fachwerk-Häusern
 realisierbar und punktuell belegt, aber **ohne
 CH-spezifische Namen**.
 
-Konsequenz: Eric als CH-Zimmermann kennt den Begriff
+Konsequenz: Anweiser als CH-Zimmermann kennt den Begriff
 „Mann" als DE-Fachwerk-Phänomen, hat ihn aber nicht im
 aktiven Berufskorpus. Die Welle-12-Modellierung ist auf
 diese Asymmetrie zugeschnitten: ein Sammeleintrag,
@@ -529,19 +515,6 @@ Riegel). Eine alternative Modellierung (Mann als
 verschachteltes Aggregat der Wand) ist über
 Bauteilgruppen-Bedingung 4 (Verschachtelung erlaubt)
 zulässig.
-
-### `MANN_FIGUR`-Welle-11-Auflösung
-
-Welle 11 hat im `FussbandPosition`-Enum den Wert
-`MANN_FIGUR` als Annotation am Einzel-Fussband
-eingeführt (`hg_fussband.md` Z. 688–700). Welle 12
-löst dies auf nach Recherche-Empfehlung (Option (a),
-siehe Quellenkonflikt-Block (6)): die Mann-
-Mitgliedschaft eines Fussbands wird über die
-Bauteilgruppen-Mitgliedschaft des Mann-Aggregats
-ausgedrückt (`Mann.fussbaender.contains(fussband)`),
-nicht über eine Annotation am Fussband. Die
-Auflösung wird im Refactor R1 dieser Welle umgesetzt.
 
 ## Beziehungen
 
@@ -625,131 +598,6 @@ Auflösung wird im Refactor R1 dieser Welle umgesetzt.
     `bauteilgruppe`, mit anderer geometrischer
     Konfiguration.
 
-## Implementierungshinweis
-
-**Im aktuellen Glossarstand wird keine eigene Code-Klasse
-`Mann` angelegt.** Die ontologische Vorbereitung lebt
-zunächst nur im Glossar; eine Code-Klasse entsteht
-zusammen mit dem ersten konkreten Tool, das Mann-
-Aggregate als Modell-Entität führt (typisch Sanierungs-/
-Restaurierungs-Tool für DE-Fachwerkbestand).
-
-```kotlin
-// SKIZZE — nicht jetzt anlegen.
-// Glossar: hg_mann.md
-
-package domain.bauteil
-
-import domain.bauteil.Bauteilgruppe
-import domain.bauteil.Staender
-import domain.bauteil.Kopfband
-import domain.bauteil.Fussband
-import domain.bauteil.Strebe
-import domain.geometrie.Ebene
-import java.util.UUID
-
-/**
- * Mann: Bauteilgruppe aus einem zentralen Pfosten/Ständer mit
- * symmetrischen Kopfband- und Fussbandpaaren, optional ergänzt
- * um eine zentrale Strebe (Wilder Mann). DE-Fachwerk-spezifische
- * Bündel-Aussteifung am Pfosten; historischer Schwerpunkt
- * alemannisch-fränkisch 1470–1550.
- *
- * Sealed unter Bauteilgruppe.
- */
-sealed class Mann : Bauteilgruppe() {
-    abstract val pfosten: Staender             // genau 1
-    abstract val kopfbaender: Set<Kopfband>    // 0–2
-    abstract val fussbaender: Set<Fussband>    // 0–2
-    abstract val zentraleStrebe: Strebe?       // 0–1, nur bei WILD
-    abstract val wandebene: Ebene              // lotrecht
-    abstract val variante: MannVariante
-
-    init {
-        // 1. Pfosten lotrecht in wandebene
-        // 2. kopfbaender.size in 0..2; fussbaender.size in 0..2
-        // 3. Bandpaar-Symmetrie bei DEFAULT/WILD/HESSEN/SCHWAEB
-        // 4. Bandpaar-Asymmetrie bei HALB
-        // 5. zentraleStrebe == null außer bei WILD
-        // 6. |kopfbaender ∪ fussbaender| >= 1
-        // 7. alle Bauteilachsen in wandebene
-        // 8. Bauteilgruppen-Bedingungen geerbt
-    }
-}
-
-/**
- * Varianten-Klassifikation der Mann-Familie (Welle-12-Grob-
- * Klassifikation, siehe `hg_mann.md` Quellenkonflikt-Block (5)).
- * Feinere Sub-Varianten als trigger-basierte Folgearbeit.
- */
-enum class MannVariante {
-    /** Default-Mann: 1 Pfosten + 2 Kopfbänder + 2 Fussbänder. */
-    DEFAULT,
-    /** Halber Mann: asymmetrische Reduktion auf ein Bandpaar. */
-    HALB,
-    /** Wilder Mann: 4 Bänder + zentrale Strebe. */
-    WILD,
-    /** Hessenmann: asymmetrische Bandlängen (Hessenpark-Korpus). */
-    HESSEN,
-    /** Schwäbisches Männle/Weible/Kindle: schwäbische Sub-Familie. */
-    SCHWAEB,
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7).
-- **Invarianten** (in `init` bzw. Fabrikfunktionen prüfen):
-  1. Pfosten lotrecht in Wandebene ⇒ sonst
-     `Entartet.PfostenNichtLotrecht` oder
-     `Entartet.PfostenAusserhalbWandebene`.
-  2. `kopfbaender.size in 0..2 && fussbaender.size in 0..2`
-     ⇒ sonst `Entartet.ZuVieleBaender`.
-  3. Jedes Band-Bauteil hat den Pfosten-Anker am
-     entsprechenden Pfosten-Ende (Kopf/Fuss, je Bauteilrolle)
-     ⇒ sonst `Entartet.BandFalschVerankert`.
-  4. Symmetrie bei DEFAULT/WILD/HESSEN/SCHWAEB:
-     |kopfbaender| == 2 und |fussbaender| == 2 ⇒ sonst
-     `Entartet.UnsymmetrischOhneHalbVariante`.
-  5. Asymmetrie bei HALB: |kopfbaender ∪ fussbaender| in 1..3
-     ⇒ sonst `Entartet.HalbVarianteFalschGefuellt`.
-  6. `zentraleStrebe != null` impliziert `variante == WILD`
-     ⇒ sonst `Entartet.ZentraleStrebeOhneWildVariante`.
-  7. `|kopfbaender ∪ fussbaender| >= 1` ⇒ sonst
-     `Entartet.KeinBand` (Mann ohne Bänder ist kein Mann).
-  8. Alle Bauteilachsen in der Wandebene
-     (Punkt-Ebene-Abstand der Endpunkte ≤
-     `Toleranzen.LAENGE_EPS`) ⇒ sonst
-     `Entartet.MitgliedAusserhalbWandebene`.
-- **Edge Cases**:
-  - **Halber Mann mit nur einem Kopfband**: zulässig;
-    `variante = HALB`, |kopfbaender| = 1, |fussbaender| = 0
-    oder umgekehrt.
-  - **Wilder Mann ohne zentrale Strebe**: nicht zulässig
-    (Bedingung 6 in der Sealed-Hierarchie); würde als
-    `DEFAULT` klassifiziert.
-  - **Hessenmann mit drei-viertel-geschosshöhen Fussbändern**:
-    geometrisch über die Fussband-Längen erfasst; die
-    geometrische Spezifikation ist Folgearbeit
-    (`hg_hessenmann.md`-Trigger).
-  - **Mann am Eck-Pfosten**: der Pfosten ist gleichzeitig
-    Eckständer einer Wand; die Mann-Bauteilgruppe und die
-    Wand-Bauteilgruppe können sich am Pfosten überschneiden
-    — die exklusive Mitgliedschaft erfordert eine
-    Modell-Entscheidung (Pfosten gehört zu Wand oder zu
-    Mann).
-  - **Mehrere Männer in derselben Wand**: zulässig; jeder
-    Pfosten kann seine eigene Mann-Bauteilgruppe haben
-    (z. B. Mann-Reihen in DE-Schmuckfachwerk).
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `pfostenHoehe(): Double` (mm) =
-    z_max^pfosten − z_min^pfosten.
-  - `istSymmetrisch(): Boolean` = wahr für
-    DEFAULT/WILD/HESSEN/SCHWAEB.
-  - `bandPaareKopf(): Pair<Kopfband, Kopfband>?` =
-    die zwei symmetrischen Kopfbänder, wenn vorhanden.
-  - `bandPaareFuss(): Pair<Fussband, Fussband>?` =
-    analog für Fussbänder.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -784,51 +632,7 @@ enum class MannVariante {
 **Korpus (nicht autoritativ):**
 
 - Recherche-Bericht:
-  `docs/recherche/2026-05-16_wand_aggregat.md`.
+  [intern].
 - Recherche-Bericht (Vorgänger):
-  `docs/recherche/2026-05-15_strebe_kopfband_bug.md`,
-  `docs/recherche/2026-05-15_fussband_knagge.md`.
-
-## Folgearbeit (trigger-basiert)
-
-1. **`hg_halber_mann.md`** — asymmetrische Halb-
-   Konfiguration als eigener Eintrag mit präziser
-   Komposition. Trigger: Sanierungs-Tool-Bedarf für
-   DE-Fachwerkbestand.
-2. **`hg_wilder_mann.md`** — vier Diagonalen plus zentrale
-   Strebe; Wilde-Mann-Geometrie mit hessisch-fränkischer
-   Verortung. Trigger: DE-Mittelhessen-/Niedersachsen-
-   Spezifikum.
-3. **`hg_hessenmann.md`** — Hessenpark-Korpus-Spezifikum
-   mit drei-viertel-geschosshöhen Fussbändern und zum
-   Dachwinkel verkürzten Kopfbändern. Trigger:
-   Hessenpark-/Stadtallendorf-Restaurierungs-Tool.
-4. **`hg_schwaebisches_maennle.md`**,
-   **`hg_schwaebisches_weible.md`**,
-   **`hg_schwaebisches_kindle.md`** — schwäbische
-   Sub-Trio-Varianten mit unterschiedlichen Dimensionen.
-   Trigger: schwäbische Sanierungs-App-Etappe.
-5. **`gefach`** (Folgearbeit-Trigger gemeinsam mit
-   `hg_andreaskreuz.md`) — der Gefach-Begriff; Mann-
-   Figuren können mehrere Gefache übergreifen.
-6. **Code-Klasse `Mann`** und Sealed-Hierarchie. Trigger:
-   erstes Tool, das Mann-Aggregate als Modell-Entität führt.
-7. **SIA-265-Verifikation**: bei Volltext-Zugriff (Eric)
-   prüfen, ob die SIA-Norm CH-spezifische Mann-Lemmata
-   führt (Erwartung: nein).
-8. **Lignum HBT 1 (2024)-Verifikation der CH-Negativ-
-   Evidenz**: bei Eric-Zugang punktuelle Sichtung des
-   Begriffsregisters; bestätigt oder falsifiziert die
-   CH-Asymmetrie.
-
-**R-Schritt-Drift in `hg_fussband.md`** (bei R1 dieser
-Welle nachgezogen):
-
-- `hg_fussband.md` `FussbandPosition`-Enum (Z. 688–700)
-  enthält den Wert `MANN_FIGUR` als Welle-11-Vorgriff.
-  Welle 12 löst dies auf nach Option (a): Wert aus Enum
-  entfernen; `abgrenzung_zu:`-Liste um `mann`,
-  `andreaskreuz` ergänzt belassen (war bereits durch
-  Welle 11 als Forward-Verweis eingetragen, wird mit
-  Welle 12 zu echtem Rück-Verweis). Edit in `hg_fussband.md`
-  bei R1.
+  [intern],
+  [intern].

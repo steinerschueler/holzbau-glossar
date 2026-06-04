@@ -25,7 +25,7 @@ quellen_sekundär:
   - "Branco, J. M.; Descamps, T.: Analysis and strengthening of carpentry joints — Single step joint: overview. academia.edu (Korpus-Quelle für engl. Pendant)."
   - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'StepJoint' und 'StepJointNotch' (Processings-Liste S. 8 ff.); Parameter-Schemata aus dieser Recherche nicht volltext-eingesehen."
   - "baunetzwissen.de: 'Zimmermannsmäßige Verbindungen' (abgerufen 2026-05-14), mit Sekundärzitat zu DIN EN 1995-1-1/NA NCI NA.12."
-  - "Recherche-Bericht `docs/recherche/2026-05-14_hg_versatz.md` (Quellen-Lage und Auflösung der drei Subtypen)."
+  - "Recherche-Bericht [intern] (Quellen-Lage und Auflösung der drei Subtypen)."
 quellenkonflikt: |
   Es gibt **keine** im Volltext zugängliche normative Definition
   des Versatzes mit geschlossener geometrischer Charakterisierung;
@@ -35,7 +35,7 @@ quellenkonflikt: |
   hier aus dem Lehrbuch- und Sekundärquellen-Konsens
   (Mönck/Rug Kap. 7, Holzbau-Taschenbuch Kap. 19/20,
   Natterer/Herzog, Gerner, baunetzwissen.de) rekonstruiert und
-  durch die Recherche `docs/recherche/2026-05-14_hg_versatz.md`
+  durch die Recherche [intern]
   belegt.
 
   **Konflikt 1 — Normative Verankerung NCI NA.12 (DE) vs. SIA 265 Annex A (CH):**
@@ -147,11 +147,11 @@ quellenkonflikt: |
   bestimmt** (Stirn `δ_S = β/2`, Ferse `δ_F = β − π/2`) — nach
   EN 1995-1-1 „nicht frei wählbar" — und daher **abgeleitete Größen,
   kein Tupel-Feld** (Recherche-Bericht
-  `docs/recherche/2026-06-02_versatz_winkel_konvention.md`). Frei ist
+  [intern]). Frei ist
   allein der **Stirn-Sohlenwinkel σ_S** (handwerkliche Freimachungs-
   Fläche), nur zur Wohlgeformtheit des V auf (0, π/2) beschränkt. Die
   Fersen-Sohle ist konstruktiv ∥ Strebe (`σ = π − β`, 90°-L). Belegt
-  durch Recherche-Bericht 2026-06-02 und Eric-f3d-Review der drei Arten. Doppelt-Tiefen-Konvention (BFH/SIA):
+  durch Recherche-Bericht 2026-06-02 und Anweiser-f3d-Review der drei Arten. Doppelt-Tiefen-Konvention (BFH/SIA):
   Stirn 1/6·h, Ferse 1/4·h; Ferse ≥ 1 cm (DIN) bzw. ≥ 1,5 cm
   (ÖNORM B 1995) tiefer als Stirn.
 
@@ -175,7 +175,7 @@ quellenkonflikt: |
   (Strebennase ragt vor, größere Vorholzlänge) ist eine **Positions-Variante**
   über x_0/l_v, **kein** eigener Schnitt — Colling modelliert beide unter
   demselben ⊥-Strebe-Fersenversatz. (Recherche
-  `docs/recherche/2026-06-02_versatz_brust_vs_ferse.md`, Colling-Addendum.
+  [intern], Colling-Addendum.
   Diese Festlegung **revidiert** eine zwischenzeitliche Umbenennung
   FERSE→BRUST, die nur den Web-Korpus konsultiert hatte.)
 
@@ -219,12 +219,12 @@ Sei
   Druckstab-Achse d_hat_S und der Trägerbauteil-Achse e_hat_x^B,
   gemessen als stumpfer Außenwinkel:
   ```
-  β  :=  π − arccos( |⟨d_hat_S, e_hat_x^B⟩| ),
+  β:=  π − arccos(|⟨d_hat_S, e_hat_x^B⟩|),
   ```
   d. h. β ∈ (π/2, π) bezeichnet die Öffnung zwischen Druckstab
   und Trägerbauteil auf der Druckstab-Seite,
-- ε_L := Toleranzen.LAENGE_EPS,
-- ε_W := Toleranzen.WINKEL_EPS.
+- ε_L:= Toleranzen.LAENGE_EPS,
+- ε_W:= Toleranzen.WINKEL_EPS.
 
 Der **Anschnitt der Anschnittfläche** wird in der Lotebene
 Π_⊥(B) des Trägerbauteils (`lotebene`: welt-vertikale Ebene
@@ -240,7 +240,7 @@ ist trivial durch Anwendung der `lokalePlatzierung`.
 Der Versatz trägt eine diskrete **Art-Klassifikation**
 
 ```
-art  ∈  𝒜  :=  { STIRN, FERSE, DOPPELT }                          (1)
+art  ∈  𝒜:=  { STIRN, FERSE, DOPPELT }                          (1)
 ```
 
 mit der Bedeutung
@@ -260,7 +260,7 @@ mit der Bedeutung
 Die **Parameter** eines Versatzes sind das Tupel
 
 ```
-p_Versatz  :=  ( x_0, art, β, t_S?, σ_S?, t_F?, b_K?, l_v )              (2)
+p_Versatz:=  (x_0, art, β, t_S?, σ_S?, t_F?, b_K?, l_v)              (2)
 ```
 
 mit
@@ -298,7 +298,7 @@ mit
 **Abgeleitete Anschnittwinkel (durch β bestimmt, kein Tupel-Feld).** Die
 Druckflächen-Winkel sind nach DACH-Konsens und EN 1995-1-1 **nicht frei**,
 sondern durch den Strebenanschlusswinkel β festgelegt (Recherche-Bericht
-`docs/recherche/2026-06-02_versatz_winkel_konvention.md`):
+[intern]):
 
 ```
 δ_S      =  β / 2          Stirn-Druckfläche = Winkelhalbierende
@@ -320,7 +320,7 @@ Bauteil-Lokalsystems. Der Druckstab-Aufsetzpunkt Q liegt nach
 Konvention bei
 
 ```
-Q  :=  (x_0, 0, h_B)         in Bauteil-Lokal-Koordinaten.       (3)
+Q:=  (x_0, 0, h_B)         in Bauteil-Lokal-Koordinaten.       (3)
 ```
 
 **V-Ausschnitt (allgemein).** Jeder einfache Versatz-Ausschnitt ist ein
@@ -370,14 +370,14 @@ fünf Halbräume des prismatischen Werkzeugkörpers):
 **Stirn-Ausschnitt** (art ∈ {STIRN, DOPPELT}): Druckfläche =
 **Winkelhalbierende** `δ = δ_S = β/2` (aus β abgeleitet), Sohle = freier Winkel
 `σ = σ_S` (nicht normiert, handwerkliche Freimachung). Flaches σ_S ⇒
-**stumpfer** Apex (π − δ_S − σ_S > π/2). Aufsetzpunkt A_S := Q.
+**stumpfer** Apex (π − δ_S − σ_S > π/2). Aufsetzpunkt A_S:= Q.
 
 **Fersen-Ausschnitt** (art ∈ {FERSE, DOPPELT}): Druckfläche **rechtwinklig
 zur Strebe** `δ = δ_F = β − π/2`, Sohle **∥ Strebe** `σ = α = π − β`.
 Damit ist der Apex `π − (β − π/2) − (π − β) = π/2` — ein **rechtwinkliger
 L-Ausschnitt** (90°). **Kein** Spiegel der Stirn (gleiche Seite, andere
 Neigungen). Aufsetzpunkt:
-- für **art = FERSE** (einfach): A_F := Q;
+- für **art = FERSE** (einfach): A_F:= Q;
 - für **art = DOPPELT**: A_F liegt firstseitig am **Gipfel** der Stirn-Sohle,
   `x_{A_F} = x_0 + t_S·(cot δ_S + cot σ_S)` (s. Werkzeugkörper DOPPELT).
 
@@ -389,7 +389,7 @@ Volumen, das den Anschnittquerschnitt in der Lotebene Π_⊥(B)
 `lokalePlatzierung`) entlang e_hat_y^B extrudiert:
 
 ```
-K_Versatz(p_Versatz)  :=  Δ_Versatz(art)  ×  [y_min, y_max]      (8)
+K_Versatz(p_Versatz):=  Δ_Versatz(art)  ×  [y_min, y_max]      (8)
 ```
 
 mit dem Anschnittquerschnitt Δ_Versatz(art) ⊂ Π_⊥(B) als **V-Dreieck**
@@ -419,14 +419,14 @@ Die **Wirkung** des Versatzes auf das Trägerbauteil ist die
 Boole'sche Differenz nach `bearbeitung`:
 
 ```
-G_B'(F)  :=  G_B^lokal  \  K_Versatz(p_Versatz).                 (9)
+G_B'(F):=  G_B^lokal  \  K_Versatz(p_Versatz).                 (9)
 ```
 
 Damit ist ein **Versatz** (als Subtyp von `bearbeitung`) das
 Tupel
 
 ```
-F  :=  (uuid, typ = Versatz, parameter = p_Versatz,
+F:=  (uuid, typ = Versatz, parameter = p_Versatz,
        lokale_platzierung = T_F, bezeichnung?)                  (10)
 ```
 
@@ -495,7 +495,7 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
   Validierungsfehler — siehe quellenkonflikt-Block):**
   1. **Tiefen-Faustregel NCI NA.12**: für jede aktive
      Anschnittfläche gilt:
-     - α ≤ 50° (flacher Strebenanschluss, α := π − β):
+     - α ≤ 50° (flacher Strebenanschluss, α:= π − β):
        t_i ≤ h_B / 4,
      - α ≥ 60° (steiler Strebenanschluss):
        t_i ≤ h_B / 6,
@@ -515,7 +515,7 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
      δ_S = β/2 (Stirn, Winkelhalbierende) und δ_F = β − π/2 (Ferse,
      ⊥ Strebe) sind nach EN 1995-1-1 **nicht frei wählbar**, sondern
      aus β bestimmt (Recherche-Bericht
-     `docs/recherche/2026-06-02_versatz_winkel_konvention.md`). Die
+     [intern]). Die
      Winkelhalbierende ergibt gleichen Hankinson-Winkel (π − β)/2 in
      Druckstab und Trägerbauteil (Hirnholz-auf-Hirnholz-Optimum;
      Stufe-3-Theorie-Inhalt, folgt formal aus der Hankinson-
@@ -747,206 +747,6 @@ Dieser Glossareintrag definiert ausschließlich die
     Bemessungsschnitt am Versatzort durch die maßgebende
     Tiefe t_v erfasst wird.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.bauteil.bearbeitung`):
-
-```kotlin
-package domain.bauteil.bearbeitung
-
-import domain.Toleranzen
-import domain.geometrie.LokalePlatzierung
-import java.util.UUID
-
-/**
- * Versatz: keilförmige Ausnehmung im Trägerbauteil, gegen die
- * ein druckbeanspruchtes Anschlussbauteil (Strebe, Kopfband,
- * Sparren im Sparrendach) mit einer (Stirn-/Fersenversatz) oder
- * zwei (doppelter Versatz) geneigten Stirnflächen formschlüssig
- * unter einem Winkel zur Trägerbauteil-Faser drückt.
- *
- * Glossar: hg_versatz.md (Subtyp von hg_bearbeitung.md).
- *
- * Konfigurations-Achse statt sealed-Hierarchie: die drei
- * Hauptausprägungen Stirnversatz, Fersenversatz, doppelter
- * Versatz teilen Bemessungsklasse und Parametertupel und
- * unterscheiden sich nur in der `art`-Klassifikation und in der
- * Belegung der optionalen Tiefen-/Anschnittwinkel-Felder.
- *
- * Parameter:
- *   position                 = x_0,         mm   (Position des
- *                                                  Stirn-Aufsetzpunkts
- *                                                  Q entlang der
- *                                                  Trägerbauteil-Achse)
- *   art                      = art ∈ {STIRN, FERSE, DOPPELT}
- *   strebenanschlusswinkel   = β,           rad  (β ∈ (π/2, π))
- *   versatztiefeStirn        = t_S,         mm   (Pflicht wenn
- *                                                  art ∈ {STIRN,
- *                                                  DOPPELT}, sonst null)
- *   anschnittwinkelSohleStirn= σ_S,         rad  (zweiter Schnitt, FREI — einziger freier Winkel)
- *   versatztiefeFerse        = t_F,         mm   (Pflicht wenn
- *                                                  art ∈ {FERSE,
- *                                                  DOPPELT}, sonst null)
- *   versatzkammBreite        = b_K,         mm   (nur DOPPELT; Bemessung, ohne Geometrie)
- *   vorholzlaenge            = l_v,         mm   (l_v > LAENGE_EPS)
- *
- * Abgeleitet aus β (keine Felder): δ_S = β/2 (Stirn-Druckfläche,
- * Winkelhalbierende), δ_F = β − π/2 (Ferse-Druckfläche, ⊥ Strebe),
- * σ_Ferse = π − β (Ferse-Sohle, ∥ Strebe). Einziger freier Winkel: σ_S.
- *
- * BTLx-Mapping: StepJoint (BTLx 2.1, S. ?). Parameter-Schema
- * dieser Recherche nicht volltext-verifiziert (Folgearbeit
- * Phase 4, Recherche §J.3 Trigger C).
- *
- * IFC-Mapping: IfcOpeningElement (Voiding-Beziehung über
- *              IfcRelVoidsElement an das Trägerbauteil-IfcMember).
- *
- * Plausibilität (weiche Invarianten, Warnung):
- *   - t_i <= h_B * Toleranzen.VERSATZ_TIEFE_FLACH_VIERTEL bei α <= 50°
- *   - t_i <= h_B * Toleranzen.VERSATZ_TIEFE_STEIL_SECHSTEL bei α >= 60°
- *   - l_v >= max(8 * t_v_maßgebend, 200 mm)
- *   - art = DOPPELT: t_F >= t_S + 10 mm
- */
-data class Versatz(
-    override val uuid: UUID,
-    val position: Double,                                // x_0, mm
-    val art: VersatzArt,
-    val strebenanschlusswinkel: Double,                  // β,   rad
-    val versatztiefeStirn: Double? = null,               // t_S, mm
-    val anschnittwinkelSohleStirn: Double? = null,       // σ_S, rad (zweiter Schnitt, frei — einziger freier Winkel)
-    val versatztiefeFerse: Double? = null,               // t_F, mm
-    val versatzkammBreite: Double? = null,               // b_K, mm (nur DOPPELT; Bemessung)
-    val vorholzlaenge: Double,                           // l_v, mm
-    override val lokalePlatzierung: LokalePlatzierung
-        = LokalePlatzierung.IDENTITAET,
-    override val bezeichnung: String? = null,
-) : Bearbeitung {
-    // Kein Feld bauteilUuid: die Zugehörigkeit zum Trägerbauteil
-    // ist die Container-Beziehung (Versatz ∈ Bauteil.bearbeitungen),
-    // siehe hg_bearbeitung.md / hg_versatz.md (partitive Komposition).
-    // Konstruktion über `Versatz.aus(...)` (Companion-Factory),
-    // nicht direkt: die selbstreferenziellen Invarianten werden
-    // dort in einem Resultat-Typ erfasst und liefern bei
-    // Verletzung `VersatzUngueltig`-Varianten zurück, statt eine
-    // Exception zu werfen.
-    companion object { /* aus(...): Resultat<Versatz, VersatzUngueltig> */ }
-}
-
-/**
- * Konfigurations-Achse: welche Anschnittflächen der Versatz
- * trägt.
- *
- * STIRN    = Stirnversatz (eine geneigte Anschnittfläche an
- *            Druckstab-Vorderseite)
- * FERSE    = Fersenversatz (eine geneigte Anschnittfläche an
- *            Druckstab-Innenseite)
- * DOPPELT  = doppelter Versatz (beide Anschnittflächen, mit
- *            Versatzkamm-Sohle dazwischen)
- */
-enum class VersatzArt { STIRN, FERSE, DOPPELT }
-
-// Selbstreferenzielle Invarianten — verlangen nur die Versatz-
-// Parameter selbst, geprüft im `Versatz.aus(...)`-Companion;
-// entsprechen Wohldefiniertheit harte Invarianten 1–5, 7.
-sealed class VersatzUngueltig {
-    object NichtFinit                          : VersatzUngueltig()
-    object StrebenanschlusswinkelAusserhalb    : VersatzUngueltig()  // β nicht in (π/2, π)
-    object TiefeStirnFehltOderNichtPositiv     : VersatzUngueltig()  // bei STIRN/DOPPELT
-    object TiefeFerseFehltOderNichtPositiv     : VersatzUngueltig()  // bei FERSE/DOPPELT
-    object AnschnittwinkelSohleStirnAusserhalb : VersatzUngueltig()  // σ_S nicht in (0, π/2) — einziger freier Winkel; δ_S=β/2, δ_F=β−π/2 folgen aus β
-    object VorholzlaengeNichtPositiv           : VersatzUngueltig()
-    object VersatzkammBreiteFehltOderNichtPositiv : VersatzUngueltig()  // b_K bei DOPPELT
-    object PflichtfeldVerletzt                 : VersatzUngueltig()  // art ↔ Tiefen-/Winkelbelegung inkonsistent
-}
-
-// Bauteil-relative Invarianten — verlangen Zugriff auf
-// Bauteilhöhe, Bauteillänge und Strebenanschlusswinkel; geprüft
-// erst beim Anhängen an das Bauteil (`Bauteil.Stab.mitBearbeitung(b)`),
-// nicht im Companion. Liefern bei Verletzung
-// `BearbeitungAmBauteilUngueltig`-Varianten:
-//   - VersatzTiefeUeberBauteilhoehe
-//   - VersatzPositionAusserhalbBauteil
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-  Lokale Platzierung als SE(3)-Element (Rotation + Translation).
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7).
-- **Keine Backref auf das Bauteil**: siehe `hg_bearbeitung.md`,
-  Implementierungshinweis. Die Auflösung Versatz-UUID →
-  Trägerbauteil ist Repository-/Index-Aufgabe.
-- **Lebenszyklus / Komposition**: Der Versatz ist Eigentum des
-  Trägerbauteils und **kein eigenständiges Aggregat**. Wird das
-  Trägerbauteil aus dem Modell entfernt, werden alle zugehörigen
-  Versätze strukturell mitentfernt.
-- **Pflicht- und Optionalfelder (normativ)**:
-  - `uuid` — Pflicht, niemals null.
-  - `position` (`x_0`) — Pflicht.
-  - `art` — Pflicht.
-  - `strebenanschlusswinkel` (`β`) — Pflicht.
-  - `vorholzlaenge` (`l_v`) — Pflicht.
-  - `versatztiefeStirn` (`t_S`), `anschnittwinkelSohleStirn` (`σ_S`)
-    — Pflicht für `art ∈ {STIRN, DOPPELT}`, `null` für `art = FERSE`.
-  - `versatztiefeFerse` (`t_F`) — Pflicht für
-    `art ∈ {FERSE, DOPPELT}`, `null` für `art = STIRN`.
-  - Druckflächenwinkel `δ_S = β/2`, `δ_F = β − π/2` und Ferse-Sohle
-    `σ_Ferse = π − β` sind **abgeleitet aus β** (kein Feld).
-  - `versatzkammBreite` (`b_K`) — Pflicht für `art = DOPPELT`,
-    `null` sonst; Bemessungs-Kenngröße ohne Geometrie-Wirkung.
-  - `lokalePlatzierung` — Pflicht; mindestens
-    `LokalePlatzierung.IDENTITAET`.
-  - `bezeichnung` — `null` zulässig.
-- **Invarianten**:
-  1. Harte Invarianten (Wohldefiniertheit Punkte 1–7) → in
-     `Versatz.aus(...)` und beim Anhängen ans Bauteil geprüft;
-     Verletzung liefert `Resultat.Fehler(VersatzUngueltig.*)`
-     bzw. `BearbeitungAmBauteilUngueltig.Versatz*`.
-  2. Weiche Invarianten (Wohldefiniertheit Plausibilität 1–4)
-     → Warnung in der Bemessungs-Schicht (`Warnung.Versatz*`),
-     **kein** Validierungsfehler.
-- **App-Konstanten** (Toleranzen-Modul, neu einzuführen):
-  - `Toleranzen.VERSATZ_TIEFE_FLACH_VIERTEL` (Default `1.0/4.0`)
-    — Faustregel-Tiefen-Obergrenze für α ≤ 50°.
-  - `Toleranzen.VERSATZ_TIEFE_STEIL_SECHSTEL` (Default `1.0/6.0`)
-    — Faustregel-Tiefen-Obergrenze für α ≥ 60°.
-  - `Toleranzen.VERSATZ_VORHOLZ_MINDESTLAENGE_MM` (Default
-    `200.0`) — Mindest-Vorholzlänge in mm.
-  - `Toleranzen.VERSATZ_VORHOLZ_FAKTOR` (Default `8.0`) —
-    Vorholz-Faktor (l_v ≥ Faktor · t_v).
-  - `Toleranzen.VERSATZ_KAMM_MINDESTHOEHE_MM` (Default `10.0`)
-    — Mindest-Tiefendifferenz t_F − t_S beim doppelten Versatz.
-- **Edge Cases**:
-  - **Versatz ohne Trägerbauteilbezug**: strukturell
-    ausgeschlossen (partitive Komposition).
-  - **Versatz-Werkzeugkörper außerhalb des Trägerbauteils**:
-    Validierungsfehler `VersatzPositionAusserhalbBauteil`,
-    analog zur Kerve (siehe `hg_bearbeitung.md` Edge Cases).
-  - **Mehrere überlappende Versätze**: zulässig (z. B. zwei
-    nebeneinander liegende Strebenanschlüsse mit eigenen
-    Versätzen); die Reihenfolge der Vereinigung ist semantisch
-    egal (siehe `hg_bearbeitung.md` (2)).
-  - **Versatz an einem Plattenwerkstoff**: praktisch nicht
-    sinnvoll (Versätze sind Vollholz-Verbindungen); strukturell
-    nicht ausgeschlossen, aber `Warnung.VersatzAnNichtVollholz`
-    bei Anwendung auf Bauteile mit Faserrichtungs-Modus
-    `STRUKTURIERT`, `SCHWACH` oder `KEINE` (Memory
-    `project_faserrichtung_modi`).
-- **Abgeleitete Eigenschaften** (Geometrie- / Bemessungs-
-  Schicht, Folgearbeit):
-  - `werkzeugkoerper(): Polyeder` — K_Versatz(p_Versatz) im
-    typeigenen Bezugssystem.
-  - `wirkungAuf(b: Bauteil): Polyeder` — Boole'sche Differenz.
-  - `hankinsonWinkelTraeger(): Double` — (π − β)/2 für den
-    Optimums-Stirnversatz, allgemein abhängig von δ.
-  - `hankinsonWinkelDruckstab(): Double` — analog.
-  - `querschnittsschwaechung(b: Bauteil, s: Double): Double` —
-    Anteil der bei Längsparameter s entfernten
-    Querschnittsfläche (EC 5 5.2 / 6.5).
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `Versatz` (deutsch, Glossarbegriff); Enum `VersatzArt` mit
-  Werten `STIRN`, `FERSE`, `DOPPELT`. Mapping-Konstanten und
-  Plausibilitäts-Warnungen tragen den Präfix `Versatz*`.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -994,7 +794,7 @@ sealed class VersatzUngueltig {
 **Korpus (nicht autoritativ):**
 
 - Recherche-Bericht
-  `docs/recherche/2026-05-14_hg_versatz.md` (Quellen-Lage,
+  [intern] (Quellen-Lage,
   Auflösung der drei Subtypen, englisches Vergleichsmaterial).
 - baubeaver.de: „Die 5 wichtigsten Versatz-Arten",
   „Stirnversatz" (Korpus für DACH-Praxisterminologie).

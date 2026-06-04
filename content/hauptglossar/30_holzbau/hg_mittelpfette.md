@@ -60,7 +60,7 @@ Sei
 
 - P eine Pfette im Sinne von `pfette` mit Bauteilachse
   a(P) = (p_a, p_e) und mittlerer Höhe
-  z_P := (p_a.z + p_e.z) / 2,
+  z_P:= (p_a.z + p_e.z) / 2,
 - D eine zugeordnete Dachfläche im Sinne von `dachflaeche` mit
   Trägerebene E und äußerer Normaler n_a,
 - d_hat_F ∈ S² die Richtung des Firsts F (oder, falls kein First
@@ -72,7 +72,7 @@ Sei
   Firstpfette (siehe `firstpfette`); falls keine Firstpfette
   existiert (z. B. Sparrendach), ist die Mittelpfette nicht
   anwendbar,
-- ε_K := Toleranzen.KOLLINEAR_EPS, ε_L := Toleranzen.LAENGE_EPS.
+- ε_K:= Toleranzen.KOLLINEAR_EPS, ε_L:= Toleranzen.LAENGE_EPS.
 
 Dann heißt P eine **Mittelpfette** genau dann, wenn die folgenden
 Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
@@ -90,7 +90,7 @@ Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
    Dachfläche oder unmittelbar darunter (Höhenversatz ≤
    Pfettenhöhe). Formal:
    ```
-   max( |⟨n_a, p_a − p₀⟩|, |⟨n_a, p_e − p₀⟩| ) ≤ h_Pfette + ε_L,
+   max(|⟨n_a, p_a − p₀⟩|, |⟨n_a, p_e − p₀⟩|) ≤ h_Pfette + ε_L,
    ```
    wobei p₀ ∈ E ein Stützpunkt und h_Pfette die Pfettenhöhe ist.
 
@@ -102,8 +102,8 @@ Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Vertikalabstand zur Fußpfette**: Δz_Fuß := z_P − z_Fuß.
-- **Vertikalabstand zur Firstpfette**: Δz_First := z_First − z_P.
+- **Vertikalabstand zur Fußpfette**: Δz_Fuß:= z_P − z_Fuß.
+- **Vertikalabstand zur Firstpfette**: Δz_First:= z_First − z_P.
 - **Sparren-Teil-Spannweiten**: Im Pfettendach mit Mittelpfette
   teilt sich die Sparrenspannweite in zwei Abschnitte mit
   Längen, die proportional zu Δz_Fuß und Δz_First (gemessen
@@ -226,77 +226,6 @@ Typische Verbindung zwischen Sparren und Mittelpfette:
     völlig anders. Die Mittelpfette verläuft entlang der
     Firstrichtung (parallel zur Firstkante), der Kehlbalken
     rechtwinklig dazu (parallel zur Sparrenebene quer).
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Pfette
-
-/**
- * Mittelpfette: Pfette in Zwischenlage zwischen Fußpfette und
- * Firstpfette, parallel zum First.
- *
- * Glossar: hg_mittelpfette.md
- *
- * Synonym: Zwischenpfette.
- */
-data class Mittelpfette(
-    override val bauteil: Bauteil,
-    val dachflaeche: Dachflaeche
-) : Pfette.Mittelpfette() {
-
-    init {
-        // 1. Pfetten-Bedingungen aus Pfette geerbt.
-        // 2. Parallelität zur Firstrichtung der Dachfläche
-        //    (Bedingung 1 aus hg_mittelpfette.md).
-        // 3. Lage in/unter der Trägerebene (Bedingung 2):
-        //    max(|⟨n_a, p_a − p₀⟩|, |⟨n_a, p_e − p₀⟩|) ≤
-        //    h_Pfette + LAENGE_EPS.
-        // 4. Zwischenlage (Bedingung 3) wird im Tragwerks-Kontext
-        //    gegen die konkrete Fuß- und Firstpfette geprüft.
-    }
-}
-
-sealed class MittelpfetteEntartet {
-    object NichtParallelZumFirst : MittelpfetteEntartet()
-    object NichtInDachflaeche    : MittelpfetteEntartet()
-    object NichtInZwischenlage   : MittelpfetteEntartet()
-    object KeineFirstpfetteVorhanden : MittelpfetteEntartet()
-    object KeineFusspfetteVorhanden  : MittelpfetteEntartet()
-}
-```
-
-- **Einheit**: Längen in mm; Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (zusätzlich zu denen von `Pfette`):
-  1. Parallelität zur Firstrichtung — sonst
-     `NichtParallelZumFirst`.
-  2. Lage in/unter der Trägerebene — sonst `NichtInDachflaeche`.
-  3. Zwischenlage zwischen Fuß- und Firstpfette (Cross-Cutting,
-     im Tragwerks-Kontext geprüft) — sonst `NichtInZwischenlage`.
-- **Edge Cases**:
-  - **Mehrere Mittelpfetten je Dachseite**: zulässig; alle
-    erfüllen Bedingung 1–3 individuell.
-  - **Pultdach**: kein First vorhanden; d_hat_F wird durch die
-    Traufenrichtung ersetzt. Mittelpfette zwischen Fußpfette
-    (an der Traufe) und Pultpfette (an der Pultkante).
-  - **Sparrendach**: keine Mittelpfette zu modellieren.
-  - **Mittelpfette gleichauf mit Fuß- oder Firstpfette**:
-    technisch nicht sinnvoll; durch strikte Ungleichung
-    ausgeschlossen.
-- **Abgeleitete Eigenschaften**:
-  - `getrageneSparrenIn(t: Tragwerk): List<Sparren>` — Sparren
-    in `t`, deren Bauteilachse die Mittelpfettenachse innerhalb
-    Toleranzen schneidet.
-  - `sparrenSpannweitenAufteilung(s: Sparren): Pair<Double, Double>?`
-    — die zwei Teil-Spannweiten des Sparrens beidseits der
-    Mittelpfette, sofern die Mittelpfette diesen Sparren trägt.
 
 ## Quellen
 

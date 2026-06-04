@@ -21,7 +21,7 @@ quellen_sekundär:
   - "Mäntylä, M.: An Introduction to Solid Modeling. Computer Science Press 1988, Kap. 6 (Boundary Representation): Face-with-Role-Pattern als Annotations-Schicht über der Topologie."
 quellenkonflikt: |
   **Asymmetrie zwischen Recherche-Empfehlung und App-Festlegung.** Die
-  Vorabrecherche (`docs/recherche/2026-05-14_hg_bauteilflaeche.md`) hat
+  Vorabrecherche ([intern]) hat
   die Hypothese, „Bauteilfläche" sei im DACH-Holzbau-Korpus ein
   etablierter Single-Word-Fachbegriff, **falsifiziert**: weder in den
   konsultierten Normen (DIN 4074-1, DIN EN 14081-1, DIN EN 14080,
@@ -38,18 +38,9 @@ quellenkonflikt: |
   Eintreten des Folgearbeit-Triggers (`HG_KONVENTIONEN.md` §6.A)
   anlegen.
 
-  **Eric/Hauptinstanz hat dennoch entschieden, den Eintrag jetzt
-  anzulegen** — als App-eigener Konstruktbegriff mit CAD/CAM-Anker
+  App-eigener Konstruktbegriff mit CAD/CAM-Anker
   statt Norm-Anker. Begründung dieser Entscheidung:
 
-  - Die Domänen-Schicht der App benötigt absehbar einen einheitlichen
-    Adressierungs-Begriff für die ebenen Aussenflächen eines Bauteils
-    (Sammel-Iteration im Renderer, BTLx-Export-Schicht mit
-    Reference-Side-Mapping, Bearbeitungs-Verortung). Die Symmetrie
-    zwischen `laengsseite` und `stirnseite` ist im bisherigen Glossar
-    bereits präfiguriert (`hg_laengsseite.md` und `hg_stirnseite.md`
-    führen einen gleichlautenden Folgearbeit-Block); der jetzt
-    angelegte Sammelbegriff schliesst diese Symmetrie.
   - Die CAD/CAM-Praxis (BTL/BTLx Reference Sides RS1–RS6 seit 2006
     cadwork/SEMA-Standard; Hundegger BVN/BVX; Dietrich's Timber
     Coordinate Systems) trägt das Konzept einer indexierten,
@@ -65,10 +56,7 @@ quellenkonflikt: |
 
   **Verhältnis zu den Spezialisierungs-Einträgen.** Die bestehenden
   Einträge `hg_laengsseite.md` und `hg_stirnseite.md` tragen
-  `oberbegriff: bauteilflaeche` (Migration im selben R-Schritt
-  nachgezogen, in dem dieser Eintrag entstand). Der entsprechende
-  Trigger-Eintrag in `HG_KONVENTIONEN.md` §6.A wurde mit derselben
-  R-Schritt-Welle gestrichen.
+  `oberbegriff: bauteilflaeche`.
 
   **Festlegung dieses Glossars** (konsistent mit allen konsultierten
   Quellen):
@@ -89,7 +77,7 @@ quellenkonflikt: |
     Modellierungslinie folgt der CAD/CAM-Praxis (BTL/BTLx, cadwork
     intern, Dietrich's) und entspricht in der mathematisch-CAD-
     Literatur dem „Face-with-Role"-Pattern (Hoffmann, Mäntylä).
-  - **Hauptbenennung „Bauteilfläche"** (Eric-Festlegung im Auftrag).
+  - **Hauptbenennung „Bauteilfläche"**.
     „Bauteilseite" ist als Synonym geführt, weil alle bisherigen
     Spezialisierungen (Längsseite, Stirnseite, Schmalseite, Breitseite,
     Dachseite) `-seite`-Komposita sind. „Bezugsseite" ist als
@@ -142,7 +130,7 @@ Sei
 - I_B eine endliche Indexmenge zur Adressierung der ausgezeichneten
   Aussenflächen von B (zum Beispiel `I_B ⊆ {RS1, …, RS6}` im
   prismatischen BTLx-Fall),
-- ρ : I_B → F_B eine **Rollen-Zuordnung**, die jedem
+- ρ: I_B → F_B eine **Rollen-Zuordnung**, die jedem
   Adressierungs-Index ι ∈ I_B genau eine Facette ρ(ι) ∈ F_B
   zuordnet, mit ρ injektiv (jede ausgezeichnete Aussenfläche trägt
   genau einen Index).
@@ -150,8 +138,8 @@ Sei
 Eine **Bauteilfläche** von B ist ein Tupel
 
 ```
-BF(B, ι) := (F_l, E_l, n_hat_l, B, ι)                                    (1)
-            mit F_l := ρ(ι),   ι ∈ I_B,   l ∈ {1, …, k}.
+BF(B, ι):= (F_l, E_l, n_hat_l, B, ι)                                    (1)
+            mit F_l:= ρ(ι),   ι ∈ I_B,   l ∈ {1, …, k}.
 ```
 
 Die Tupel-Bestandteile sind:
@@ -171,7 +159,7 @@ Die Tupel-Bestandteile sind:
 Die **Menge aller Bauteilflächen** von B ist
 
 ```
-𝓑𝓕(B) := { BF(B, ι) | ι ∈ I_B } ⊆ F_B × ℰ × S² × {B} × I_B,         (2)
+𝓑𝓕(B):= { BF(B, ι) | ι ∈ I_B } ⊆ F_B × ℰ × S² × {B} × I_B,         (2)
 ```
 
 mit |𝓑𝓕(B)| = |I_B|. Die Abbildung ι ↦ BF(B, ι) ist injektiv.
@@ -242,7 +230,7 @@ mit |𝓑𝓕(B)| = |I_B|. Die Abbildung ι ↦ BF(B, ι) ist injektiv.
     (siehe `bearbeitung`, Folgearbeit). Der Adressierungs-Index ι
     ändert sich nicht.
   - **Plattenbauteile mit Faserrichtungs-Modus SCHWACH / KEINE**
-    (OSB, Spanplatte, siehe Memory `project_faserrichtung_modi`):
+    (OSB, Spanplatte, siehe):
     die Bauteilflächen-Geometrie ist unberührt; die semantische
     Spezialisierungs-Familie ist eine andere (Plattenfläche /
     Plattenkante / Schmalseite / Breitseite im
@@ -329,7 +317,7 @@ Orientierungs-Annotation. Eine Migration ihrer Beziehung in die
 Bauteilflächen-Familie ist möglich, aber nicht zwingend; sie wird
 im Folgearbeit-Block vorgemerkt.
 
-### Plattenwerkstoff-Familie (Memory `project_faserrichtung_modi`)
+### Plattenwerkstoff-Familie
 
 Plattenwerkstoffe mit Faserrichtungs-Modi STRUKTURIERT, SCHWACH
 oder KEINE tragen eine eigene Bauteilflächen-Familie:
@@ -427,174 +415,6 @@ Definition selbst bleibt einheitlich.
     Spezialisierungs-Beziehung (Bauteilfläche-Sein impliziert eine
     der Spezialisierungen).
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.bauteil.flaeche`):
-
-```kotlin
-package domain.bauteil.flaeche
-
-import domain.bauteil.Bauteil
-import domain.geometrie.Ebene
-import domain.geometrie.Polygon
-import domain.geometrie.Vektor
-import domain.identifikation.Uuid
-
-/**
- * Bauteilfläche: ebene Aussenfläche eines Bauteils als Facette des
- * Bauteilpolyeders mit Aussennormalen-Konvention, Bauteil-Referenz
- * und Adressierungs-Index (z. B. BTLx RS1–RS6).
- *
- * Glossar: hg_bauteilflaeche.md
- *
- * Die Klasse ist eine sealed-Basis für die konkreten
- * Spezialisierungen (Längsseite, Stirnseite, Dachseite, Schmalseite,
- * Breitseite, Plattenfläche, Plattenkante, …). Die Spezialisierungen
- * tragen rollenspezifische Constraints (Lage zur Bauteilachse,
- * Faserrichtungs-Bezug, Plattenwerkstoff-Achse).
- *
- * Aussennormale n_hat_l zeigt per Konvention aus dem Bauteilpolyeder
- * heraus; ihre Orientierung folgt aus der Mannigfaltigkeits-
- * Orientierung der Bauteilhülle (siehe hg_polyeder.md).
- */
-sealed class Bauteilflaeche {
-    abstract val polygon: Polygon               // F_l in Berandungs-Lesart
-    abstract val traegerebene: Ebene             // E_l, durch p_0 ∈ F_l und n_hat_l
-    abstract val aussennormale: Vektor           // n_hat_l, ‖aussennormale‖ ≈ 1
-    abstract val bauteil: Uuid                   // B (UUID-Referenz)
-    abstract val adressierung: AdressierungsIndex // ι ∈ I_B (z. B. BTLx RS1–RS6)
-}
-
-/**
- * Adressierungs-Index einer Bauteilfläche im Kontext ihres Bauteils.
- * Im prismatischen Stab-Standardfall entspricht der Index der
- * BTLx-Reference-Side-Konvention (RS1–RS4 Längs, RS5/RS6 Stirn).
- *
- * Folgearbeit: Plattenbauteil-Adressierung (RS-Schema oder eigenes)
- * und gekrümmte Bauteile.
- */
-sealed class AdressierungsIndex {
-    data class BtlxReferenceSide(val nummer: Int) : AdressierungsIndex()
-    // weitere Adressierungs-Schemata folgen
-}
-```
-
-- **Einheit**: Polygonkoordinaten in mm; Aussennormale dimensionslos
-  (Einheitsvektor).
-- **Identität**: keine eigene UUID. Die Bauteilfläche ist eine
-  **abgeleitete Sicht** auf das Bauteilpolyeder und trägt ihre
-  Identität indirekt über die Kombination aus `bauteil` (UUID-
-  Referenz) und `adressierung` (Index). Diese Wahl ist konsistent
-  mit den bereits existierenden Spezialisierungen `laengsseite` und
-  `stirnseite` (beide ohne eigene UUID).
-- **Pflicht- und Optionalfelder**:
-  - `polygon` — Pflicht; ebenes Polygon in Berandungs-Lesart.
-  - `traegerebene` — Pflicht; durch das Polygon und die
-    Aussennormale eindeutig bestimmt (siehe Wohldefiniertheit).
-  - `aussennormale` — Pflicht; aus dem Bauteilpolyeder heraus zeigend.
-  - `bauteil` — Pflicht; UUID-Referenz auf das zugehörige Bauteil.
-  - `adressierung` — Pflicht; Index ι ∈ I_B im Kontext des Bauteils.
-- **Invarianten** (in Companion-Factory der jeweiligen
-  Spezialisierung, `Resultat.Fehler` bei Verletzung; keine
-  Exception):
-  1. `aussennormale` ist normiert (‖aussennormale‖² ≈ 1 innerhalb
-     `Toleranzen.NORM_EPS`).
-  2. `traegerebene` enthält alle Eckpunkte von `polygon`
-     (Polygon-Berandung liegt in der Trägerebene; per `polygon`-
-     Definition Bedingung 1).
-  3. `traegerebene.normale` ist parallel zu `aussennormale`
-     (Mannigfaltigkeits-Orientierungs-Konsistenz; siehe
-     `Toleranzen.KOLLINEAR_EPS`).
-  4. `bauteil` referenziert eine existierende Bauteil-Instanz im
-    Modell-Zustand.
-  5. `adressierung` ist im Kontext des referenzierten Bauteils
-     eindeutig (jeder Index nur einer Bauteilfläche zugeordnet;
-     Rollen-Zuordnung ρ ist injektiv).
-- **Konstruktion**: Bauteilflächen werden aus dem Bauteil-Polyeder
-  und der Rollen-Zuordnung abgeleitet, nicht unabhängig
-  konstruiert. Die Domänen-Schicht stellt Faktor-Funktionen
-  `Bauteil.bauteilflaechen()` und
-  `Bauteil.bauteilflaecheBeiIndex(adressierung)` bereit.
-- **IFC-Mapping** (Persistenzschicht, Phase 4):
-  - Bauteilfläche → `IfcFace` mit `IfcFaceBound` und (sofern
-    Trägergeometrie persistiert) `IfcFaceSurface` auf einer
-    `IfcPlane`.
-  - Adressierungs-Index und Rollen-Klassifikation → `IfcPropertySet`
-    am `IfcFace` (App-Konvention; kein normatives IFC-Property-Set
-    für diese Klassifikation vorhanden).
-  - Verbindungs-Sicht zweier Bauteilflächen →
-    `IfcConnectionSurfaceGeometry` mit `SurfaceOnRelatingElement`
-    und `SurfaceOnRelatedElement`.
-- **BTLx-Mapping** (Persistenzschicht, Phase 4):
-  - Bauteilfläche → BTLx Reference Side (RS1–RS6 im prismatischen
-    Stab-Standardfall).
-  - Bearbeitung auf einer Bauteilfläche → `ReferencePlaneID`-
-    Attribut des zugehörigen Bearbeitungs-Elements im BTLx-Schema.
-- **Edge Cases**:
-  - **Bauteilfläche an Bauteil mit Rundquerschnitt**: nicht-ebene
-    Mantelfläche; nicht als Bauteilfläche im engen Sinne dieses
-    Eintrags geführt, sondern als `mantelflaeche` (Folgearbeit) oder
-    als tessellierte Familie ebener Bauteilflächen (App-Wahl).
-  - **Bauteilfläche an Bauteil mit Bearbeitung** (Kerve, Versatz,
-    Schlitz, Bohrung): die Polygon-Berandung enthält die durch die
-    Bearbeitung erzeugten zusätzlichen Eckpunkte. Bei
-    durchgehenden Bohrungen entsteht keine neue Bauteilfläche
-    (die Bohrung wird über `bearbeitung` referenziert, nicht über
-    eine eigene Bauteilfläche).
-  - **Bauteilfläche an Plattenbauteil**: die Spezialisierungs-
-    Familie ist eine andere (`plattenflaeche` / `plattenkante` /
-    `plattenschmalseite` / `plattenbreitseite` — Folgearbeit). Die
-    Bauteilflächen-Definition selbst bleibt anwendbar.
-  - **Sehr kleine Bauteilflächen** (Polygon-Flächeninhalt < etwa
-    Toleranzen.FLAECHE_EPS): tritt typisch bei Tessellierung
-    auf; die App kann solche Mikro-Facetten zusammenfassen oder
-    als entartet ausweisen (Geometrie-Schicht-Entscheidung).
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt
-  `Bauteilflaeche` (deutsch, Glossarbegriff; ASCII-Schreibweise
-  wegen Kotlin-Identifier-Konvention). Die `sealed class`-Hierarchie
-  trägt die bereits existierenden Spezialisierungs-Klassen
-  `Laengsseite` und `Stirnseite` als Subtypen (Migrations-
-  Folgearbeit, siehe unten).
-
-**Folgearbeit (trigger-basiert):**
-
-- **Migration der Code-Hierarchie**: Umstellung von
-  `data class Laengsseite` und `data class Stirnseite` auf
-  `class Laengsseite : Bauteilflaeche()` bzw.
-  `class Stirnseite : Bauteilflaeche()` mit gemeinsamer
-  sealed-Basis. Auslöser: erste Domänen-Operation, die einheitlich
-  über die Bauteilflächen eines Bauteils iteriert.
-- **Schmalseite / Breitseite** (Stab-Spezialisierungen bei
-  Rechteck-Querschnitt): Folgearbeit gemäss Folgearbeit-Block in
-  `hg_laengsseite.md`.
-- **Mantelfläche** (rotationssymmetrische Stab-Bauteile): eigener
-  Glossar-Eintrag und Code-Subtyp; Auslöser: erstes Bauteil mit
-  Rundquerschnitt.
-- **Plattenflächen-Familie**: `plattenflaeche` (Ober-/Unterseite),
-  `plattenkante` (Stirn-Entsprechung), bei gerichtetem
-  Plattenwerkstoff zusätzlich `plattenschmalseite` und
-  `plattenbreitseite`. Auslöser: erstes Plattenbauteil mit
-  expliziter Flächenmodellierung. Diese Familie ist eine
-  eigenständige Spezialisierungs-Achse der Bauteilfläche und
-  orthogonal zur Stab-Familie (Längsseite / Stirnseite); ihre
-  Differenzierung folgt dem Faserrichtungs-Modus des Bauteils
-  (Memory `project_faserrichtung_modi`).
-- **Dachseite-Verhältnis klären**: aktuell `oberbegriff:
-  dachflaeche` mit `begriffstyp: merkmal`. Eine zusätzliche Sicht
-  als Spezialisierung von `bauteilflaeche` (über die Dachbauteil-
-  Aussenflächen eines Dachflächen-Aggregats) ist möglich, aber
-  nicht zwingend. Auslöser: erste App-Operation, die Dachseiten und
-  Stab-Bauteilflächen einheitlich adressieren muss.
-- **Adressierungs-Index-Vereinheitlichung**: aktuell ist der Index
-  als sealed `AdressierungsIndex` mit `BtlxReferenceSide` als
-  einzigem Konstruktor angelegt. Weitere Adressierungs-Schemata
-  (Plattenbauteil-Codes, gekrümmte Bauteile, Hohlkasten) werden
-  bei Bedarf ergänzt.
-- **`IfcPropertySet`-Schema** für die Rollen-Klassifikation:
-  App-Konvention, ohne IFC-normativen Standard. Folgearbeit Phase 4
-  bei IFC-Export-Etappe.
-
 ## Quellen
 
 **Primär (normativ und technisch-standard):**
@@ -642,4 +462,4 @@ sealed class AdressierungsIndex {
   für den Holzbau"; zimmerei-neuss.de Lexikon; baubeaver.de Glossar;
   lignocam.com BTLx-Übersicht (DE) — „Bauteilfläche" tritt in
   keinem dieser Glossare als Lemma auf.
-- Recherche-Bericht: `docs/recherche/2026-05-14_hg_bauteilflaeche.md`.
+- Recherche-Bericht: [intern].

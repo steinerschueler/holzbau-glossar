@@ -31,11 +31,11 @@ quellen_sekundär:
   - "baubeaver.de 'Fachwerkhaus': Fußband-Praxis am Pfosten-Fuss."
   - "Informationszentrum Umgebindehaus, HS Zittau/Görlitz: 'Schäden an Kopfbändern und Knaggen', umgebindehaus.hszg.de/service/sanierungshandbuch — Sanierungs-Hinweise gelten symmetrisch für Fussband."
   - "landschaftzukunftev.de: 'Kopfband und Knagge – Unterschiedliche Bauweisen.pdf'."
-  - "Recherche-Bericht: docs/recherche/2026-05-15_fussband_knagge.md."
-  - "Recherche-Bericht (Vorgänger): docs/recherche/2026-05-15_strebe_kopfband_bug.md (Welle 10, §B.1, §D.2, §F.2, §H.2)."
+  - "Recherche-Bericht: [intern]."
+  - "Recherche-Bericht (Vorgänger): [intern] (Welle 10, §B.1, §D.2, §F.2, §H.2)."
 quellenkonflikt: |
   Acht Punkte sind in der Recherche
-  (`docs/recherche/2026-05-15_fussband_knagge.md`) auflösungs-
+  ([intern]) auflösungs-
   bedürftig und werden hier ausdrücklich festgelegt. Die Punkte
   (1), (4) und (6) sind symmetrisch zu `hg_kopfband.md`
   übernommen (TTH-vs.-Wikipedia, BauNetz-Block, SIA-Verifikation);
@@ -156,30 +156,20 @@ quellenkonflikt: |
   geschosshöhe). Die ursprüngliche Welle-11-Lesart
   „Verbindung-Aggregat" ist mit Welle 12 zugunsten von
   `oberbegriff: bauteilgruppe` revidiert; siehe
-  `docs/recherche/2026-05-16_wand_aggregat.md` §B.4 und
+  [intern] §B.4 und
   §H. In `abgrenzung_zu:` sind `mann`, `andreaskreuz` als
   echte (nicht mehr Forward-) Rück-Verweise enthalten. Das
   Fussband bleibt **strukturelle Basis** der Komposition,
   trägt aber selbst keine Mann-Figur-spezifische Geometrie.
 
-  **(7) SIA-265-Verifikations-Trigger.** SIA 265:2021 §1.1
+  **(7) SIA-265.** SIA 265:2021 §1.1
   „Fachausdrücke" enthält laut Lignum-Pressemitteilung 2021
-  eine geschlossene Definitionsliste der Holzbau-Fachbegriffe
-  (analog Welle 9 in `hg_staender.md` und Welle 10 in
-  `hg_strebe.md`, `hg_kopfband.md`). Der Norm-Volltext ist
-  **nicht direkt eingesehen** (SIA-Shop-Paywall); Marker
-  `[via: Lignum-Pressemitteilung 2021]` nach
-  HG_KONVENTIONEN.md §10. Bei Eric-Volltext-Zugriff prüfen,
-  ob „Fussband" als Lemma geführt ist und ob SIA die
-  Wikipedia-Subsumption oder die TTH-Trennung folgt.
+  eine geschlossene Definitionsliste der Holzbau-Fachbegriffe. Der Norm-Volltext ist
+  **nicht direkt eingesehen** (SIA-Shop-Paywall).
 
-  **(8) BauNetz-Wissen Block-Signal (HTTP 403).** Anfragen an
-  `baunetzwissen.de/glossar/...` liefern domain-weit HTTP 403
-  (Bot-Detektion). Aussagen aus BauNetz Wissen sind ausschliesslich
+  **(8) BauNetz-Wissen.** Aussagen aus BauNetz Wissen sind ausschliesslich
   aus WebSearch-Snippets rekonstruiert und mit
-  `[einsicht: snippet]` markiert (analog `hg_kopfband.md`
-  Quellenkonflikt-Block (4)). Der Block ist domain-weit; keine
-  Hauptinstanz-Eskalation notwendig.
+  `[einsicht: snippet]` markiert.
 ---
 
 ## Prosa-Definition
@@ -201,26 +191,26 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - E_W eine Wandebene (Ebene im Sinne von `ebene`) mit Stützpunkt
   p_W und Normalenvektor n_hat_W ∈ S², wobei n_hat_W horizontal liegt
   (|⟨n_hat_W, e_z⟩| ≤ ε_K — die Wand steht lotrecht im Sinne von
   HG_KONVENTIONEN.md §1),
 - P ein lotrechtes Anker-Bauteil (Ständer im Sinne von
   `hg_staender.md` oder Pfosten als Synonym) mit Bauteilachse
-  a(P) = (p_a^P, p_e^P), z-Extrema z_min^P := min(p_a^P.z,
-  p_e^P.z) und z_max^P := max(p_a^P.z, p_e^P.z), Pfosten-Fuss-
-  Punkt p_F^P := arg min{p.z : p ∈ a(P)},
+  a(P) = (p_a^P, p_e^P), z-Extrema z_min^P:= min(p_a^P.z,
+  p_e^P.z) und z_max^P:= max(p_a^P.z, p_e^P.z), Pfosten-Fuss-
+  Punkt p_F^P:= arg min{p.z: p ∈ a(P)},
 - H ein horizontales Anker-Bauteil (Schwelle im Sinne von
   `hg_schwelle.md` oder unterer Riegel im Sinne von
   `hg_riegel.md`) mit Bauteilachse a(H) = (p_a^H, p_e^H) und
   |⟨d_hat_H, e_z⟩| ≤ ε_K (horizontal), wobei H **unter** P liegt
   im Sinne ‖z_max^H − p_F^P.z‖ ≤ ε_L (mit z_max^H = max(p_a^H.z,
   p_e^H.z)),
-- e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-  ε_L := Toleranzen.LAENGE_EPS,
-  ε_W := Toleranzen.WINKEL_EPS.
+- e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS,
+  ε_W:= Toleranzen.WINKEL_EPS.
 
 Dann heißt B ein **Fussband** der Wand mit Wandebene E_W,
 Pfosten P und unterem Längsholz H genau dann, wenn die folgenden
@@ -235,7 +225,7 @@ Bedingungen alle erfüllt sind:
    ```
 
 3. **Echte Diagonale (weder lotrecht noch horizontal)**: Der
-   Winkel α(B) := arccos(|⟨d_hat, e_z⟩|) zwischen Bauteilachse und
+   Winkel α(B):= arccos(|⟨d_hat, e_z⟩|) zwischen Bauteilachse und
    Lotachse erfüllt
    ```
    ε_W < α(B) < π/2 − ε_W,
@@ -282,13 +272,13 @@ Bedingungen alle erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Fussbandlänge**: L_F := ‖p_e − p_a‖ (in mm), zwischen
+- **Fussbandlänge**: L_F:= ‖p_e − p_a‖ (in mm), zwischen
   Pfosten-Fuss-Anker und unterem Längsholz-Anker.
-- **Fussbandneigung gegen Horizontale**: β_F := π/2 − α(B),
+- **Fussbandneigung gegen Horizontale**: β_F:= π/2 − α(B),
   Default-Wert im Korpus ~45°, Praxis-Range 35–55°.
   Die Definition fixiert β_F **nicht** auf 45° (Korpus-
   Konsens ist „typisch", keine Norm-Festlegung).
-- **Wandebenen-Achsenrichtung**: t_hat_W := projektiere d_hat in die
+- **Wandebenen-Achsenrichtung**: t_hat_W:= projektiere d_hat in die
   Wandebene, dient als Default-Faserrichtung am Bauteil.
 
 ## Wohldefiniertheit
@@ -505,8 +495,7 @@ Inzidenz im Wand-Aggregat (Folgearbeit Welle 12).
 Die CH-Negativ-Evidenz zur Begriffsverwendung bedeutet **nicht**,
 dass das Bauteil in CH nicht existiert — es wird nur seltener
 spezifisch benannt (analog Kopfband-Asymmetrie in
-`hg_kopfband.md`). Bei Eric-Volltext-Zugriff auf Lignum HBT 1
-(2024) ist die CH-Begriffsbasis zu präzisieren.
+`hg_kopfband.md`).
 
 ### Häufigkeit im Vergleich zum Kopfband
 
@@ -569,17 +558,7 @@ Simpson) angeschlossen.
 - **Positions-Annotation** (Merkmal am Fussband, kein Subtyp;
   optional, analog `KopfbandPosition` Welle 10):
   - **Fussbandposition** (`FussbandPosition`-Enum): Wert aus
-    { ECK, BUND, ZWISCHEN, UNSPEZIFIZIERT }. (Welle-12-
-    Refactor R1: der Wert `MANN_FIGUR` wurde mit Anlage
-    `hg_mann.md` aus dem Enum entfernt; die Mann-
-    Mitgliedschaft eines Fussbands wird ab Welle 12 über
-    die Bauteilgruppen-Mitgliedschaft im Mann-Aggregat
-    ausgedrückt — `Mann.fussbaender.contains(fussband)` —
-    statt durch Annotation am Einzel-Fussband. Siehe
-    `hg_mann.md` Quellenkonflikt-Block (6) und
-    Recherche-Bericht
-    `docs/recherche/2026-05-16_wand_aggregat.md` §F
-    Option (a).)
+    { ECK, BUND, ZWISCHEN, UNSPEZIFIZIERT }.
 - **Verwendung / Beziehung zu anderen Bauteilen**:
   - **Ständer** / **Pfosten** (`staender`): lotrechtes
     Anker-Bauteil mit Anker-Endpunkt **am Pfosten-Fuss**
@@ -612,224 +591,6 @@ Simpson) angeschlossen.
   - **Bauteil** (`bauteil`): das Fussband ist eine
     Spezialisierung von Bauteil mit zusätzlichen Lage-
     Constraints.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Ebene
-import domain.geometrie.Punkt
-import kotlin.math.abs
-import kotlin.math.acos
-
-/**
- * Fussband als Bauteilrolle: diagonales Stab-Bauteil in einer
- * Wandebene zwischen Pfosten-Fuss und darunterliegendem
- * horizontalem Längsholz (Schwelle, unterer Riegel). Versteift
- * die Pfosten-Längsholz-Verbindung gegen horizontale Lasten
- * und bindet Zug-Kräfte zwischen Pfosten und Schwelle, die die
- * reine Pfosten-Schwelle-Verzapfung nicht aufnehmen kann.
- *
- * Glossar: hg_fussband.md
- *
- * Das Fussband ist geometrisch die Punkt-Spiegelung des
- * Kopfbands am Pfosten-Mittelpunkt — symmetrisch in Geometrie,
- * asymmetrisch in der Korpus-Lesart: die Zug-Lesart ist beim
- * Fussband explizit gleichberechtigt belegt (Wikipedia/Fußband:
- * „Fußbänder dienen dazu, Zug-Kräfte zu binden, da
- * Verzapfungen nur Druck übertragen können").
- *
- * Trennlinie zum Kopfband: der Pfosten-Anker liegt am
- * Pfosten-Fuss (Bedingung 5); zum Kopfband: Pfosten-Kopf;
- * zur Strebe: Pfosten-Mittel.
- *
- * Im modernen Schweizer Korpus ist „Fussband" wenig belegt;
- * das Bauteil wird über die geometrische Anker-Bedingung
- * modelliert, nicht über die Benennung.
- */
-data class Fussband(
-    val bauteil: Bauteil,
-    /** Wandebene; aus Pfosten- und Längsholz-Achse abgeleitet. */
-    val wandebene: Ebene,
-    /** Positions-Annotation am Pfosten-Fuss. Default UNSPEZIFIZIERT. */
-    val position: FussbandPosition = FussbandPosition.UNSPEZIFIZIERT,
-) {
-    val achse: Bauteilachse.Gerade
-        get() = (bauteil.geometrie as Bauteilgeometrie.Stab).achse
-                as Bauteilachse.Gerade
-    val laenge: Double get() = achse.laenge          // mm
-    val richtung: Einheitsvektor get() = achse.richtung
-
-    /**
-     * Diagonal-Prädikat: weder lotrecht noch horizontal.
-     *
-     * α(B) = arccos(|⟨d_hat, e_z⟩|);  ε_W < α < π/2 − ε_W.
-     */
-    fun istDiagonal(eps: Double = Toleranzen.WINKEL_EPS): Boolean {
-        val d = richtung
-        val cosAlpha = abs(d.z)
-        if (cosAlpha < eps) return false      // horizontal
-        if (cosAlpha > 1.0 - eps) return false // lotrecht
-        val alpha = acos(cosAlpha)
-        return alpha > eps && alpha < (Math.PI / 2.0 - eps)
-    }
-}
-
-/**
- * Positions-Annotation eines Fussbands an seinem Pfosten-Fuss.
- * Analog `KopfbandPosition` aus Welle 10.
- *
- * Die Sub-Lesarten unterscheiden sich durch die topologische
- * Lage des Pfostens in der Wand, nicht durch eigene
- * geometrische Constraints am Fussband selbst. Daher Merkmal,
- * nicht Subtyp.
- *
- * **Welle-12-Refactor R1:** der frühere Wert `MANN_FIGUR`
- * (Welle-11-Vorgriff) ist mit Anlage `hg_mann.md` aus dem
- * Enum entfernt. Die Mann-Mitgliedschaft eines Fussbands wird
- * ab Welle 12 über die Bauteilgruppen-Mitgliedschaft des
- * Mann-Aggregats (`Mann.fussbaender.contains(fussband_uuid)`)
- * ausgedrückt, nicht durch Annotation am Einzel-Fussband.
- * Siehe `hg_mann.md` Quellenkonflikt-Block (6) und
- * `docs/recherche/2026-05-16_wand_aggregat.md` §F Option (a).
- *
- * Glossar: hg_fussband.md (siehe Erläuterung „Anordnung am
- * Pfosten").
- */
-enum class FussbandPosition {
-    /** Am Eckständer; eine Wandebene, eine Wand-Richtung. */
-    ECK,
-    /** Am Bundständer; in einer Binderebene mit Querverband. */
-    BUND,
-    /** Am Zwischenständer; fachgerecht paarweise beidseitig. */
-    ZWISCHEN,
-    /** Position nicht zugewiesen (Default). */
-    UNSPEZIFIZIERT,
-    // Welle-12-Refactor R1: MANN_FIGUR aus Enum entfernt; die
-    // Mann-Mitgliedschaft eines Fussbands wird über die
-    // Bauteilgruppen-Mitgliedschaft des Mann-Aggregats
-    // ausgedrückt (`Mann.fussbaender.contains(fussband_uuid)`),
-    // nicht durch Annotation am Einzel-Fussband. Siehe
-    // hg_mann.md Quellenkonflikt-Block (6).
-}
-
-sealed class FussbandEntartet {
-    object Nullachse                       : FussbandEntartet()
-    object NichtInWandebene                : FussbandEntartet()
-    object Lotrecht                        : FussbandEntartet()
-    object Horizontal                      : FussbandEntartet()
-    object KeinPfostenAnker                : FussbandEntartet()
-    object KeinLaengsholzAnker             : FussbandEntartet()
-    object PfostenAnkerNichtAmFuss         : FussbandEntartet()
-    object LaengsholzNichtUnterPfosten     : FussbandEntartet()
-    object WandebeneNichtLotrecht          : FussbandEntartet()
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil
-  (Memory `project_bauteil_identifikation`).
-- **Invarianten** (in der Factory `fussbandAusBauteil(...)`
-  prüfen, bei Verletzung `Resultat.Fehler` mit
-  `FussbandEntartet`-Variante; niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. Wandebene lotrecht: |⟨n_hat_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
-     — sonst `WandebeneNichtLotrecht`.
-  4. Beide Endpunkte in Wandebene (Punkt-Ebene-Abstand ≤
-     Toleranzen.LAENGE_EPS) — sonst `NichtInWandebene`.
-  5. α(B) > Toleranzen.WINKEL_EPS — sonst `Horizontal`.
-  6. α(B) < π/2 − Toleranzen.WINKEL_EPS — sonst `Lotrecht`.
-  7. Genau einer der Endpunkte auf der Pfosten-Bauteilachse a(P)
-     (Punkt-Gerade-Abstand ≤ Toleranzen.LAENGE_EPS) — sonst
-     `KeinPfostenAnker`.
-  8. Der andere Endpunkt auf der unteren Längsholz-Bauteilachse
-     a(H) (Punkt-Gerade-Abstand ≤ Toleranzen.LAENGE_EPS) — sonst
-     `KeinLaengsholzAnker`.
-  9. Pfosten-Endpunkt am Pfosten-Fuss:
-     |p_P.z − z_min^P| ≤ 3 · Toleranzen.LAENGE_EPS — sonst
-     `PfostenAnkerNichtAmFuss` (strukturelle Trennlinie zum
-     Kopfband und zur Strebe).
-  10. Längsholz liegt unter Pfosten-Fuss: p_H.z + Toleranzen.LAENGE_EPS
-      < p_P.z — sonst `LaengsholzNichtUnterPfosten`.
-- **Edge Cases**:
-  - **Eckfussband am Eckständer**: zwei Fussbänder an demselben
-    Pfosten-Fuss, eines pro angeschlossener Wandebene. Im Modell
-    zwei eigenständige `Fussband`-Instanzen, je
-    `position = ECK`, jede in ihrer eigenen Wandebene.
-  - **Beidseitiges Fussband am Zwischenständer**: zwei Fussbänder
-    in derselben Wandebene, je eines pro Wand-Richtung.
-  - **Mann-Figur-Mitglied**: Fussband als Mitglied einer
-    Mann-Bauteilgruppe (siehe `hg_mann.md`). Welle-12-
-    Auflösung: die Mann-Mitgliedschaft wird über die
-    Bauteilgruppen-Mitgliedschaft im `mann`-Aggregat
-    (`Mann.fussbaender.contains(fussband_uuid)`)
-    ausgedrückt, nicht durch eine Annotation am Fussband.
-    Das Einzel-Fussband bleibt eigenständige Instanz und
-    trägt eine seiner konstruktiven `FussbandPosition`-
-    Werte (typisch `ECK` oder `ZWISCHEN`).
-  - **Fussband im Geschoss-Inneren** (unterer Riegel als
-    Längsholz statt Schwelle): geometrisch identisch zur
-    Schwellen-Variante; Klassifikation bleibt Fussband.
-  - **Sehr flaches Fussband** (α nahe π/2 − ε_W, fast
-    horizontal): konstruktiv unüblich; geometrisch toleriert,
-    statisch auszuschliessen. Folgearbeit-Trigger bei Bemessung.
-  - **Pfosten-Anker exakt an z_min^P + ε_L · 3**: Grenzfall zur
-    Strebe-Klassifikation; durch die Toleranz-Konstante in
-    beiden Definitionen konsistent ausgeschlossen.
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `neigung(): Double` — β_F = π/2 − α(B), Fussbandneigung
-    gegen die Horizontale in rad. Erwartung 35°–55°.
-  - `pfostenAnker(t: Tragwerk): Staender?` — der Ständer, dessen
-    Bauteilachse den Pfosten-Endpunkt enthält und dessen Fuss
-    am Anker-Endpunkt liegt; null, wenn keine eindeutige
-    Zuordnung möglich.
-  - `laengsholzAnker(t: Tragwerk): Bauteil?` — das horizontale
-    Längsholz (Schwelle, unterer Riegel), dessen Bauteilachse
-    den Längsholz-Endpunkt enthält.
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt
-  `Fussband` (deutsch, Glossarbegriff, CH-Schreibung mit `ss`);
-  Positions-Enum heißt `FussbandPosition`. Spezialisierungs-
-  Subtypen sind nicht vorgesehen.
-- **Folgearbeit-Trigger** (für `_FOLGEARBEITEN_*.md` oder die
-  Wand-Aggregat-Welle-Planung):
-  - `mann` (mit Welle 12 angelegt, siehe `hg_mann.md`):
-    Bauteilgruppen-Aggregat aus Pfosten + Kopfbändern +
-    Fussbändern (+ optional zentraler Strebe) am gleichen
-    Pfosten. Sub-Varianten (`halber_mann`, `wilder_mann`,
-    `hessenmann`, `schwaebisches_maennle`,
-    `schwaebisches_weible`, `schwaebisches_kindle`) als
-    Folgearbeit-Trigger bei DE-Sanierungs-Tool-Bedarf
-    (siehe `hg_mann.md`).
-  - `andreaskreuz` (mit Welle 12 angelegt, siehe
-    `hg_andreaskreuz.md`): Aggregat zweier sich kreuzender
-    Streben im Gefach; geschwisterlich zur Mann-Familie.
-  - `fusswinkelholz` (`hg_fusswinkelholz.md`-Trigger): falls
-    die dekorative Volumen-Variante als eigene Sub-Lesart der
-    Knagge geführt werden soll, separater Eintrag oder
-    Erweiterung von `hg_knagge.md` (siehe `hg_knagge.md`
-    Quellenkonflikt-Block (6)).
-  - `wand` (Aggregat, mit Welle 12 angelegt, siehe
-    `hg_wand.md`): das Fussband ist Mitglied einer
-    Wand-Bauteilgruppe. Eine Zwischenebene `wandbauteil`
-    wurde mit Welle 12 verworfen (App-Drift); die
-    Sammel-Funktion „Wand-Bauteilrolle" wird über die
-    Aggregat-Mitgliedschaft realisiert.
-  - **SIA-265-Verifikation**: bei Volltext-Zugriff (Eric)
-    SIA 265:2021 §1.1 Fachausdrücke direkt prüfen, ob
-    „Fussband" als Lemma geführt ist (Quellenkonflikt-Block
-    (7)).
-  - **Lignum HBT 1 (2024)-Verifikation der CH-Asymmetrie**:
-    bei Eric-Zugang punktuelle Begriffsregister-Sichtung
-    „Fussband"; bestätigt oder falsifiziert die CH-Negativ-
-    Evidenz (Quellenkonflikt-Block (5)).
 
 ## Quellen
 
@@ -886,6 +647,6 @@ sealed class FussbandEntartet {
 - fachwerk.de Forum (Fussband-/Kopfband-Praxis).
 - kulturdenkmalhaus.de Glossar Umgebindehaus.
 - Recherche-Bericht:
-  `docs/recherche/2026-05-15_fussband_knagge.md`.
+  [intern].
 - Recherche-Bericht (Vorgänger):
-  `docs/recherche/2026-05-15_strebe_kopfband_bug.md`.
+  [intern].

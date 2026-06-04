@@ -57,8 +57,7 @@ quellenkonflikt: |
     Constraints jenseits ihrer Höhen- oder Öffnungs-Lage, und keine
     trägt eigene statische Defaults jenseits derer, die sich aus dem
     Wandsystem ergeben. Konsequenz für die Modellierung: ein
-    `RiegelPosition`-Merkmal am Riegel-Bauteil (siehe
-    Implementierungshinweis), keine sealed-class-Sub-Hierarchie.
+    `RiegelPosition`-Merkmal am Riegel-Bauteil, keine sealed-class-Sub-Hierarchie.
     Die Komposita stehen daher in `abgelehnte_benennungen`, soweit
     sie als alleinstehende Bauteilbenennung verwendet werden sollen;
     als Positions-Etikett bleiben sie zulässig.
@@ -116,7 +115,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - E_W eine Wandebene (Ebene im Sinne von `ebene`) mit Stützpunkt
   p_W und Normalenvektor n_hat_W ∈ S², wobei n_hat_W horizontal liegt
   (|⟨n_hat_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
@@ -125,10 +124,10 @@ Sei
   Forward-Verweis `pfosten`) mit Bauteilachsen entlang
   Einheitsvektoren v_hat₁, v_hat₂ ∈ S², wobei
   |⟨v_hatᵢ, e_z⟩| ≥ 1 − ε_K  (Lotrechtheit, Sinus-Test gegen e_z),
-- e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-  ε_W := Toleranzen.WINKEL_EPS,
-  ε_L := Toleranzen.LAENGE_EPS.
+- e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+  ε_W:= Toleranzen.WINKEL_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS.
 
 Dann heißt B ein **Riegel** zwischen P₁ und P₂ in der Wandebene
 E_W genau dann, wenn die folgenden Bedingungen erfüllt sind:
@@ -173,10 +172,10 @@ E_W genau dann, wenn die folgenden Bedingungen erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Riegellänge**: L_R := ‖p_e − p_a‖ (in mm), entlang der
+- **Riegellänge**: L_R:= ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen den Anschlüssen an P₁ und P₂.
 - **Riegelrichtung**: d_hat ∈ S² mit |⟨d_hat, e_z⟩| ≤ ε_K.
-- **Riegel-Höhenlage**: z_R := (p_a.z + p_e.z) / 2; bei einer
+- **Riegel-Höhenlage**: z_R:= (p_a.z + p_e.z) / 2; bei einer
   exakt horizontalen Riegelachse gilt p_a.z = p_e.z = z_R.
 
 ## Wohldefiniertheit
@@ -294,8 +293,7 @@ eigenständigen Bauteilrollen (siehe Quellenkonflikt-Block):
   verwendet.
 
 In der Domänen-Schicht werden diese Positionen als Wert eines
-Merkmals `RiegelPosition` am Riegel-Bauteil geführt (siehe
-Implementierungshinweis), nicht als Subtyp-Hierarchie.
+Merkmals `RiegelPosition` am Riegel-Bauteil geführt, nicht als Subtyp-Hierarchie.
 
 ### Sturzriegel-Doppelnatur
 
@@ -455,177 +453,6 @@ hier nur als Lesehilfe genannt.
     von Bauteil mit zusätzlichen geometrischen Constraints; ein
     Bauteil ohne Bauteilrolle ist kein Riegel.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Ebene
-import domain.geometrie.Punkt
-import kotlin.math.abs
-
-/**
- * Riegel als Bauteilrolle: horizontales Stab-Bauteil zwischen zwei
- * vertikal stehenden Stab-Bauteilen (Pfosten / Ständern) in einer
- * gemeinsamen Wandebene; primär aussteifend, ohne primären
- * vertikalen Lastpfad.
- *
- * Glossar: hg_riegel.md
- *
- * Die Sub-Lesarten Brust-/Sturz-/Stockwerks-/Zwischen-/Kopf-/
- * Schwellen-/Rähm-Riegel sind Positions-Annotationen, keine
- * Subtypen. Sie werden über das Merkmal `position` getragen.
- *
- * Vorzeichenkonvention: Die Bauteilachse ist gerichtet, aber welcher
- * Endpunkt p_a bzw. p_e ist, ist nicht durch eine geometrische
- * Bedingung festgelegt (analog zu Pfette und Latte). Empfehlung
- * gemäß hg_bauteilachse.md: p_a nach lokaler
- * Bezeichnungskonvention.
- */
-data class Riegel(
-    val bauteil: Bauteil,
-    /** Wandebene; aus den Pfostenachsen abgeleitet. */
-    val wandebene: Ebene,
-    /** Positions-Annotation in der Wand. Default UNSPEZIFIZIERT. */
-    val position: RiegelPosition = RiegelPosition.UNSPEZIFIZIERT,
-) {
-    val achse: Bauteilachse.Gerade
-        get() = (bauteil.geometrie as Bauteilgeometrie.Stab).achse
-                as Bauteilachse.Gerade
-    val laenge: Double get() = achse.laenge          // mm
-    val richtung: Einheitsvektor get() = achse.richtung
-    val hoehe: Double                                 // mm, mittlere z-Lage
-        get() = (achse.anfang.z + achse.ende.z) / 2.0
-
-    /**
-     * Horizontalitätsprädikat: |⟨d_hat, e_z⟩| ≤ KOLLINEAR_EPS.
-     *
-     * Sinus-Test gegen e_z-Parallelität; KOLLINEAR_EPS ist
-     * bevorzugt für Lot- und Parallelitäts-Prädikate
-     * (siehe hauptglossar/HG_KONVENTIONEN.md §4).
-     */
-    fun istHorizontal(eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean =
-        abs(richtung.z) <= eps
-}
-
-/**
- * Positions-Annotation eines Riegels in der Wand. Die Sub-Lesarten
- * unterscheiden sich durch Höhenlage und Öffnungs-Bezug, nicht
- * durch eigene geometrische oder statische Constraints. Daher
- * Merkmal, nicht Subtyp.
- *
- * Glossar: hg_riegel.md (siehe Erläuterung „Riegelpositionen in
- * der Wand").
- */
-enum class RiegelPosition {
-    /** Unterhalb einer Fenster-Öffnung, auf Brüstungshöhe. */
-    BRUST,
-    /** Oberhalb einer Tür- oder Fenster-Öffnung; Doppelnatur mit Sturz. */
-    STURZ,
-    /** Oberster Riegel pro Stockwerk, nahe Geschossdecke. */
-    STOCKWERK,
-    /** Zwischen anderen Riegeln, ohne Öffnungs-Bezug. */
-    ZWISCHEN,
-    /** Kopf-, Schwellen-, Rähm-Riegel und nicht klassifizierbare Lagen. */
-    SONSTIGE,
-    /** Position nicht zugewiesen (Default). */
-    UNSPEZIFIZIERT,
-}
-
-sealed class RiegelEntartet {
-    object Nullachse                    : RiegelEntartet()
-    object NichtHorizontal              : RiegelEntartet()
-    object NichtInWandebene             : RiegelEntartet()
-    object NichtRechtwinkligZuPfosten   : RiegelEntartet()
-    object EndpunktNichtAnPfosten       : RiegelEntartet()
-    object WandebeneNichtLotrecht       : RiegelEntartet()
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil
-  (Memory `project_bauteil_identifikation`).
-- **Invarianten** (in der Factory `riegelAusBauteil(...)` prüfen,
-  bei Verletzung `Resultat.Fehler` mit `RiegelEntartet`-Variante;
-  niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. |⟨d_hat, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst
-     `NichtHorizontal` (Sinus-Test gegen e_z-Parallelität;
-     KOLLINEAR_EPS, vgl. HG_KONVENTIONEN.md §4).
-  4. Wandebene lotrecht: |⟨n_hat_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
-     — sonst `WandebeneNichtLotrecht`.
-  5. Beide Endpunkte in Wandebene (Punkt-Ebene-Abstand ≤
-     Toleranzen.LAENGE_EPS) — sonst `NichtInWandebene`.
-  6. Rechtwinkligkeit zu beiden begrenzenden Pfostenachsen:
-     |⟨d_hat, v_hatᵢ⟩| ≤ Toleranzen.KOLLINEAR_EPS für i = 1, 2 — sonst
-     `NichtRechtwinkligZuPfosten` (Sinus-Test).
-  7. Endpunkte fallen mit Pfostenachsen zusammen
-     (Punkt-Gerade-Abstand ≤ Toleranzen.LAENGE_EPS) — sonst
-     `EndpunktNichtAnPfosten`.
-- **Edge Cases**:
-  - **Sturzriegel** mit Doppelnatur Sturz: `position = STURZ`;
-    die Riegel-Constraints bleiben anwendbar; die Sturz-
-    Funktion ist Eigenschaft der Tragwerks-Analyse und wird in
-    einer eigenen Sturz-Modellierung getragen (Folgearbeit).
-  - **Schiefstehende Pfosten** (Schwellenverdrehung beim
-    Aufrichten): die Lot-Bedingung an v_hatᵢ schlägt fehl; der
-    Riegel würde dann nicht mehr horizontal an die Pfosten
-    anschließen. In der Praxis wird die Wand vor dem Einsetzen
-    der Riegel ausgerichtet; ein kleiner Toleranzbereich ist
-    durch KOLLINEAR_EPS abgedeckt.
-  - **Dach-Riegel** (Druckriegel, Spannriegel, Sprengriegel,
-    Binderriegel): NICHT als `Riegel` instanziieren; eigene
-    Bauteilrolle bei Aufnahme historischer Dachformen
-    (Folgearbeit: Hängewerk-/Sprengwerk-Tool).
-  - **Fliegender Quer-Balken ohne Endauflager an zwei
-    Pfosten**: ist kein Riegel im Sinne dieses Eintrags;
-    Bedingung 5 (`EndpunktNichtAnPfosten`) schlägt fehl. Solche
-    Bauteile werden als allgemeines Stab-Bauteil ohne Rolle
-    geführt.
-  - **Sehr kurze Riegel** (Stürze über schmaler Öffnung
-    zwischen eng stehenden Pfosten): Definition unverändert
-    anwendbar; Bedingung 1 (`Nullachse`) schlägt nur bei
-    entarteter Achse fehl.
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `pfostenAnSchluss(t: Tragwerk): Pair<Pfosten, Pfosten>?` —
-    die beiden Pfosten, an denen der Riegel anschließt; null,
-    wenn keine eindeutige Zuordnung möglich.
-  - `gefachOben(t: Tragwerk): Riegel?` /
-    `gefachUnten(t: Tragwerk): Riegel?` — angrenzende Riegel
-    im selben Gefach-Stapel (Folgearbeit: erste Gefach-
-    Modellierung).
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt `Riegel`
-  (deutsch, Glossarbegriff); Positions-Enum heißt
-  `RiegelPosition`. Spezialisierungs-Subtypen sind nicht
-  vorgesehen.
-- **Folgearbeit-Trigger** (für `_FOLGEARBEITEN_*.md` oder die
-  Wand-Welle-Planung):
-  - `pfosten` / `ständer`: Träger des Riegels; Pflicht-
-    Eintrag der Wand-Welle.
-  - `schwelle`: unterstes Wand-Längsholz; Wand-Welle.
-  - `raehm`: oberstes Wand-Längsholz; Wand-Welle.
-  - `sturz`: bei erster Wand-Öffnungs-Modellierung
-    (Tür/Fenster), trägt die Doppelnatur-Funktion des
-    Sturzriegels.
-  - `druckriegel` / `spannriegel` / `sprengriegel` /
-    `binderriegel`: Dach-Riegel-Lesart; eigener
-    Hauptglossar-Eintrag erst beim Hängewerk- oder
-    Sprengwerk-Tool — diese App führt die Lesart **jetzt
-    nicht**.
-  - `wand` (Aggregat, mit Welle 12 angelegt, siehe
-    `hg_wand.md`): der Riegel ist Mitglied einer
-    Wand-Bauteilgruppe. Eine Zwischenebene `wandbauteil`
-    wurde mit Welle 12 verworfen (App-Drift); die
-    Sammel-Funktion „Wand-Bauteilrolle" wird über die
-    Aggregat-Mitgliedschaft realisiert.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -662,4 +489,4 @@ sealed class RiegelEntartet {
   (abgerufen 2026-05-14).
 - architektvergleich.ch — „Riegelbau Schweiz" (abgerufen
   2026-05-14).
-- Recherche-Bericht: `docs/recherche/2026-05-14_hg_riegel.md`.
+- Recherche-Bericht: [intern].

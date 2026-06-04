@@ -71,7 +71,7 @@ Sei
 Dann ist die **Bauteilachse** von B die Punktmenge
 
 ```
-A(B) := { z(s) ∈ ℝ³ | s ∈ [0, L] }
+A(B):= { z(s) ∈ ℝ³ | s ∈ [0, L] }
 ```
 
 zusammen mit ihrer natürlichen Parametrisierung s ↦ z(s).
@@ -84,7 +84,7 @@ g ⊂ ℝ³ liegen, ist die Bauteilachse die Strecke
 A(B) = [z(0), z(L)] ⊂ g,
 ```
 
-mit Anfangspunkt p_a := z(0), Endpunkt p_e := z(L), Trägergerade
+mit Anfangspunkt p_a:= z(0), Endpunkt p_e:= z(L), Trägergerade
 g = g(p_a, p_e − p_a) und Länge L = ‖p_e − p_a‖. Als Achse im Sinne
 von `achse` ist A(B) = (g, ρ = Bauteilhauptachse).
 
@@ -288,100 +288,6 @@ sortierung verwendet.
     fällt die neutrale Faser mit der Bauteilachse zusammen, im
     allgemeinen Fall nicht. Die Bauteilachse ist geometrisch, die
     neutrale Faser mechanisch.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`zimmermann.domain.geometrie`, D4-Stand):
-
-```kotlin
-package zimmermann.domain.geometrie
-
-/**
- * Bauteilachse als geometrische Hauptachse eines Stabbauteils,
- * realisiert als Wrapper über einer Strecke.
- * Glossar: hg_bauteilachse.md
- */
-@ConsistentCopyVisibility
-public data class Bauteilachse internal constructor(
-    public val strecke: Strecke,
-) {
-    public companion object {
-        public fun aus(strecke: Strecke): Resultat<Bauteilachse, EntartetGeometrie>
-        public fun ausPunkten(anfang: Punkt, ende: Punkt): Resultat<Bauteilachse, EntartetGeometrie>
-    }
-}
-```
-
-- **Strukturelle Beziehung zu `Achse` (semantisch, nicht
-  strukturell)**: Die im Glossar ausgewiesene Hierarchie
-  `bauteilachse oberbegriff achse` wird im Code **nicht** als
-  Kotlin-Vererbung umgesetzt. `Achse` (Wrapper über `Gerade`,
-  unbegrenzt, ungerichtet) und `Bauteilachse` (Wrapper über
-  `Strecke`, begrenzt, gerichtet) sind strukturell verschiedene
-  Datentypen mit verschiedenen Trägergeometrien. Eine Vererbung
-  wäre semantisch falsch (eine Bauteilachse ist als Punktmenge
-  endlich, eine Achse beidseitig unbegrenzt). Die Hierarchie ist
-  daher als Querverweis im KDoc dokumentiert, nicht als
-  Sealed-Interface umgesetzt.
-- **Einheit**: Punktkoordinaten in mm; Länge in mm; Richtungsvektor
-  dimensionslos (Einheitsvektor).
-- **Vorzeichenkonvention (normativ, verschoben auf die
-  Bauteilrolle)**: Auf der Ebene des generischen Typs `Bauteilachse`
-  ist die Reihenfolge `anfang → ende` festgelegt (geerbt aus
-  `Strecke`), aber **welcher** geometrische Endpunkt als Anfang
-  gilt, ist durch die konkrete Bauteilrolle zu konkretisieren
-  (siehe Spezialisierungs-Einträge `sparrenachse`, `pfettenachse`,
-  `stuetzenachse`). Bei Konstruktion einer Bauteilachse ohne
-  konkrete Rolle ist die Reihenfolge willkürlich und der
-  Konsumenten-Code darf sich nicht darauf verlassen. Die
-  Vorzeichenkonvention ist Teil der Identität: `umkehren()`
-  produziert eine semantisch andere Bauteilachse (anders als bei
-  `Strecke.istGleichUngerichtet`, das die Orientierung ignoriert).
-- **Invarianten** (geerbt aus `Strecke`):
-  - ‖ende − anfang‖² > `Toleranzen.NORM_EPS`.
-  - Beide Endpunkte finit.
-- **Konstruktoren** (Companion-Factories, geprüft):
-  - `Bauteilachse.aus(strecke: Strecke): Resultat<Bauteilachse, EntartetGeometrie>`
-    — trivialer Erfolg (Strecke-Invariante reicht; das
-    Resultat-Wrapping wahrt API-Konsistenz mit den anderen
-    Geometrie-Factories).
-  - `Bauteilachse.ausPunkten(anfang: Punkt, ende: Punkt): Resultat<Bauteilachse, EntartetGeometrie>`
-    — delegiert an `Strecke.ausPunkten` und propagiert deren
-    Entartungs-Resultate (`NichtFinit`, `NullStrecke`).
-- **Identität / Gleichheit**: `equals` ist strukturell-exakt
-  (data-class-Standard). Für gerichtete geometrische Identität
-  steht `istGleicheBauteilachse(other, eps)` zur Verfügung; sie
-  ignoriert **nicht** die Reihenfolge — Bauteilachse ist
-  gerichtet.
-- **Bezug zur Faserrichtung**: Die Klasse `Bauteilachse` enthält
-  **keine** Faserrichtung als Feld. Die Faserrichtung ist
-  Annotation des `Bauteil`s, nicht der Achse (siehe `hg_bauteil.md`
-  und `hg_faserrichtung.md`). Eine Hilfsfunktion
-  `faserneigung(achse: Bauteilachse, faser: Faserrichtung): Double`
-  liegt in der Bemessungs-Schicht und nicht im Geometrie-Modul.
-- **Verwendungsregel**: Funktionen, die eine Bauteilachse
-  benötigen, nehmen `Bauteilachse` als Parametertyp und nicht den
-  nackten `Strecke`. Damit ist am API-Rand sichtbar, dass die
-  Strecke eine Bauteilrolle trägt; eine willkürliche Strecke kann
-  nicht versehentlich als Bauteilachse verwendet werden.
-
-**Folgearbeit (trigger-basiert):**
-
-- **Bauteil-Referenz auf der Bauteilachse** (z. B. `bauteilId: UUID`)
-  — wenn die Bauteilachse aus dem Bauteil heraus referenziert
-  werden muss (etwa für Konsistenz-Prüfung „Achse durch
-  Querschnittsschwerpunkte"). Bis dahin lebt die Bauteilachse als
-  reines Geometrie-Objekt.
-- **Gekrümmte Bauteilachse als `Streckenzug`-Variante**
-  (z. B. `sealed interface Bauteilachse` mit `Gerade(strecke: Strecke)`
-  und `Gekruemmt(zug: Streckenzug)`) — wenn ein Anwendungsfall
-  einen gebogenen BSH-Bogen modellieren muss. Bis dahin ist nur
-  der gerade Fall (häufigster Fall im Holzbau) implementiert.
-- **Konkretisierung der Vorzeichenkonvention** in den
-  rollenspezifischen Klassen `Sparrenachse`, `Pfettenachse`,
-  `Stuetzenachse` — wenn die konkreten Bauteil-Begriffe
-  (Sparren, Pfette, Stütze) implementiert werden (D8).
 
 ## Quellen
 

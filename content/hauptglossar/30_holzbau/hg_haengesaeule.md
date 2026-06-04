@@ -23,10 +23,10 @@ quellen_sekundär:
   - "Wikipedia, Lemma 'King post truss' (en.wikipedia.org/wiki/King_post) — englisches Pendant für einfaches Hängewerk."
   - "NIhK Glossary of Prehistoric and Historic Timber Buildings, Lemmata 'king post truss', 'queen post truss' — historische Hängewerk-Konstruktionen."
   - "Fraunhofer IBP: 'Konstruktion und Funktion einer Hängesäule', denkmalpflege.fraunhofer.de — Restaurierungs-Kontext (nicht direkt eingesehen)."
-  - "Recherche-Bericht: docs/recherche/2026-05-16_tragglieder_vertikal.md §F."
+  - "Recherche-Bericht: [intern] §F."
 quellenkonflikt: |
   Fünf Punkte sind in der Recherche
-  (`docs/recherche/2026-05-16_tragglieder_vertikal.md` §F)
+  ([intern] §F)
   auflösungs-bedürftig und werden hier ausdrücklich festgelegt.
 
   **(1) Zug-Element-Charakter — fundamentaler Unterschied zu
@@ -93,8 +93,7 @@ quellenkonflikt: |
   Funktion ist identisch zur historischen Holz-Hängesäule, der
   Werkstoff wechselt.
 
-  Diese Werkstoff-Drift wirft eine **Element-Ontologie-Frage**
-  (Memory `project_element_ontologie`) auf: Wechselt mit dem
+  Diese Werkstoff-Drift wirft eine **Element-Ontologie-Frage** auf: Wechselt mit dem
   Werkstoff das Element-Subtyp von `bauteil` zu `verbindungs-
   mittel` oder `verstaerkungselement`?
 
@@ -188,15 +187,15 @@ Sei
 - B ein Bauteil im Sinne von `bauteil` mit Stabgeometrie
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - BK ein Bundbalken (horizontales Zug-Element des Hängewerks) mit
   Bauteilachse a(BK) und Mittelpunkt m_BK = (p_a^BK + p_e^BK) / 2,
 - S₁, S₂ zwei Streben (schräge Druck-Elemente des Hängewerks) mit
   Bauteilachsen a(S₁), a(S₂), die sich im Punkt s = a(S₁) ∩ a(S₂)
   schneiden,
-- e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-- ε_L := Toleranzen.LAENGE_EPS.
+- e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+- ε_L:= Toleranzen.LAENGE_EPS.
 
 Dann heißt B eine **Hängesäule** des Hängewerks mit Bundbalken BK
 und Streben S₁, S₂ genau dann, wenn die folgenden Bedingungen alle
@@ -252,8 +251,8 @@ erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Hängesäulen-Länge**: L_HS := ‖p_e − p_a‖ (in mm).
-- **Hängesäulen-Neigung**: α := acos(⟨d_hat, e_z⟩) (in rad). Im
+- **Hängesäulen-Länge**: L_HS:= ‖p_e − p_a‖ (in mm).
+- **Hängesäulen-Neigung**: α:= acos(⟨d_hat, e_z⟩) (in rad). Im
   einfachen Hängewerk gilt typisch α ≤ ε_W (Lotrechtheit); im
   doppelten Hängewerk α leicht > ε_W.
 
@@ -505,144 +504,6 @@ sind funktional invers.
     Verstärkung einer historischen Holz-Hängesäule).
   - **Bauteil** (`bauteil`): Oberbegriff.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Punkt
-
-/**
- * Hängesäule als holz-spezifische Bauteilrolle im Hängewerk:
- * aufstrebendes Stab-Bauteil mit Bundbalken-Anker am unteren
- * Endpunkt und Streben-Schnittpunkt-Anker am oberen Endpunkt.
- * Zug-Element — invertierter Lastpfad relativ zur Stütze und
- * Stuhlsäule.
- *
- * Glossar: hg_haengesaeule.md
- *
- * Werkstoff-Default: Holz (Vollholz, BSH). Werkstoff-Drift zu
- * Stahl-Zugstab im modernen Hallenbau ist im Quellenkonflikt-
- * Block dokumentiert; bei Modellierungs-Entscheidung pro
- * Konstruktions-Detail wird zwischen Bauteil (Fall A),
- * Verbindungsmittel (Fall B) und Verstärkungselement (Fall C)
- * unterschieden.
- *
- * Vorzeichenkonvention: p_a = Fuß (am Bundbalken), p_e = Kopf
- * (am Streben-Schnittpunkt oder Spannriegel).
- *
- * Holz-Exklusivität in der App-Default-Lesart; die Stahl-
- * Variante wird über das Werkstoff-Merkmal geführt.
- */
-data class Haengesaeule(
-    val bauteil: Bauteil,
-    val konfiguration: HaengesaeulenKonfiguration =
-        HaengesaeulenKonfiguration.UNBESTIMMT,
-) {
-    val achse: Bauteilachse.Gerade
-        get() = (bauteil.geometrie as Bauteilgeometrie.Stab).achse
-                as Bauteilachse.Gerade
-    val laenge: Double get() = achse.laenge          // mm
-    val richtung: Einheitsvektor get() = achse.richtung
-    val fuss: Punkt get() = achse.anfang
-    val kopf: Punkt get() = achse.ende
-}
-
-/**
- * Konfiguration der Hängesäule im Hängewerk: einfach (king post)
- * oder doppelt (queen post). Diskriminierung über die Hängewerk-
- * Aggregat-Konfiguration, nicht über die Hängesäulen-Bauteilrolle
- * allein.
- */
-enum class HaengesaeulenKonfiguration {
-    EINFACH,   // king post
-    DOPPELT,   // queen post (einer von zwei)
-    UNBESTIMMT,
-}
-
-sealed class HaengesaeuleEntartet {
-    object Nullachse                    : HaengesaeuleEntartet()
-    object NichtAufstrebend             : HaengesaeuleEntartet()  // p_a.z ≥ p_e.z
-    object KeinBundbalkenAnker          : HaengesaeuleEntartet()
-    object KeinStrebenSchnittpunkt      : HaengesaeuleEntartet()
-    object DruckLastpfadStattZug        : HaengesaeuleEntartet()  // Sanity-Check
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (in der Factory `haengesaeuleAusBauteil(...)`
-  prüfen):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. p_a.z + Toleranzen.LAENGE_EPS < p_e.z — sonst
-     `NichtAufstrebend`.
-  4. Bundbalken-Anker am Fuß (Punkt-Geraden-Abstand
-     ≤ Toleranzen.LAENGE_EPS) — sonst `KeinBundbalkenAnker`.
-  5. Streben-Schnittpunkt-Anker am Kopf (oder Spannriegel-Anker
-     im doppelten Hängewerk) — sonst `KeinStrebenSchnittpunkt`.
-  6. Zug-Lastpfad-Zusicherung qualitativ; im Modell formal nicht
-     überprüft (siehe Bedingung 5 in mathematischer Definition).
-- **Edge Cases**:
-  - **Einfaches Hängewerk** (king post): eine Hängesäule am
-    Bundbalken-Mittelpunkt; Streben-Schnittpunkt am First. Achse
-    lotrecht. `konfiguration = EINFACH`.
-  - **Doppeltes Hängewerk** (queen post): zwei Hängesäulen-
-    Instanzen, je eine an den Drittelpunkten des Bundbalkens;
-    Spannriegel zwischen den beiden Köpfen. Achsen typisch leicht
-    geneigt. `konfiguration = DOPPELT`.
-  - **Hängesäule am Drittelpunkt** (statt Mittelpunkt): nur im
-    doppelten Hängewerk relevant; Bedingung 3 lockert auf
-    Bundbalken-Drittelpunkt.
-  - **Stahl-Zugstab im modernen Hallenbau** (Fall A in
-    Quellenkonflikt-Punkt 3): zulässig als Hängesäule mit
-    `werkstoff = Stahl`. Geometrisch typisch Rund- oder
-    Profilstab statt Holz-Vollquerschnitt; Querschnitts-
-    Bedingung der Stütze (q_max ≤ 4·q_min) gilt analog.
-  - **Stahl-Verstärkung historischer Holz-Hängesäule** (Fall C):
-    NICHT als Hängesäule modelliert, sondern als
-    `verstaerkungselement`. Die historische Holz-Hängesäule
-    bleibt eigenes Hängesäulen-Bauteil.
-  - **Sehr lange Hängesäule** (mehrgeschossige Hängewerks-Halle):
-    zulässig; geometrische Bedingungen sind unverändert. Die
-    Knick-Bemessung ist Aufgabe der Bemessungs-Schicht.
-  - **Schräggestellte Hängesäule** (leichte Neigung im doppelten
-    Hängewerk): zulässig; Bedingung 2 fordert nur die
-    aufstrebende Orientierung, nicht die strikte Lotrechtheit.
-- **Folgearbeit-Trigger**:
-  - `hg_haengewerk.md`: Aggregat-Eintrag analog `hg_walm.md`/
-    `hg_binder.md`/`hg_dachstuhl.md`. Bauteilgruppe / Tragwerk
-    aus Bundbalken + 2 Streben + 1 (oder 2) Hängesäule(n) +
-    ggf. Spannriegel. Trigger: erste konkrete Hängewerk-
-    Modellierung (Hallenbau, Sanierungs-Tool, Brücken-Tool).
-  - `hg_sprengwerk.md`: inverses Hängewerk. Trigger: erste
-    Sprengwerk-Modellierung.
-  - `hg_bundbalken.md`: horizontaler Hauptbalken im Hängewerk
-    (Auflager der Hängesäule). Forward-Verweis, im aktuellen
-    Glossarstand nicht angelegt.
-  - `hg_spannriegel.md`: Querholz im doppelten Hängewerk und im
-    liegenden Stuhl. Trigger: erste Hängewerk-/Liegender-Stuhl-
-    Modellierung.
-  - `hg_stahl_zugstab.md`: Stahl-Variante der Hängesäule im
-    modernen Hallenbau (Fall A in Quellenkonflikt-Punkt 3).
-    Trigger: erste Hallenbinder-Modellierung mit Stahl-
-    Zugstäben. Alternative: Erweiterung von `hg_haengesaeule.md`
-    um den Werkstoff-Drift.
-  - **Element-Subtyp-Klärung** (Fall A vs. B vs. C in
-    Quellenkonflikt-Punkt 3): bei erster Hallenbinder-Modellierung
-    formale ABW-Welle zur Klärung der Bauteil-/Verbindungsmittel-/
-    Verstärkungselement-Zuordnung.
-  - **SIA-265-Verifikation**: bei Volltext-Zugriff (Eric) SIA
-    265:2021 §1.1 Fachausdrücke direkt prüfen.
-  - **Sanierungs-/Restaurierungs-Tool**: aktiviert das Lemma
-    voll. Trigger: erste konkrete CH-Sanierungs-Modellierung.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -669,7 +530,7 @@ sealed class HaengesaeuleEntartet {
   denkmalpflege.fraunhofer.de.
 - Wikipedia, Lemmata „Hängesäule", „Hängewerk", „Sprengwerk",
   „King post", „Queen post" (abgerufen 2026-05-16).
-- Recherche-Bericht: `docs/recherche/2026-05-16_tragglieder_vertikal.md` §F.
+- Recherche-Bericht: [intern] §F.
 
 **Korpus (nicht autoritativ):**
 

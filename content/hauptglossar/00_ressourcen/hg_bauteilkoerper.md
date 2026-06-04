@@ -17,7 +17,7 @@ quellen_sekundär:
   - "baulexikon.brz.eu, Lemma 'Volumenkörper': räumlich geschlossener 3D-Körper zur Darstellung von Bauteilen in CAD- und BIM-Modellen, Basis für Mengen und Kollisionserkennung."
   - "Hoffmann, C. M.: Geometric and Solid Modeling – An Introduction. Morgan Kaufmann, San Mateo 1989, Kap. 3 (B-Rep) und Kap. 4 (CSG)."
   - "Mäntylä, M.: An Introduction to Solid Modeling. Computer Science Press, Rockville 1988, Kap. 6 (Boundary Representation)."
-  - "Recherche zum Begriff im DACH-Holzbau-Korpus: docs/recherche/2026-05-14_hg_bauteilkoerper.md (Stand 2026-05-14)."
+  - "Recherche zum Begriff im DACH-Holzbau-Korpus: [intern] (Stand 2026-05-14)."
 quellenkonflikt: |
   **Wichtige Markierung — der Begriff ist im DACH-Holzbau-Korpus nicht
   etabliert.** Weder die einschlägigen Holzbau-Normen (SIA 265:2021,
@@ -30,7 +30,7 @@ quellenkonflikt: |
   Achse + Querschnitt bzw. Trägerfläche + Dicke und macht keine
   begriffliche Achse „Bauteil ontologisch ↔ Bauteilkörper
   geometrisch" auf. Vollständige Quellenlage und Negativ-Befunde:
-  `docs/recherche/2026-05-14_hg_bauteilkoerper.md`.
+  [intern].
 
   Der Eintrag ist damit **App-getragen und IFC-verankert**, nicht
   Holzbau-Standard. Das einzige normativ tragende Schema, das die
@@ -104,7 +104,7 @@ Sei
 - 𝒰 der UUID-Raum nach `uuid`,
 - 𝒫 die Menge aller Polyeder im Sinne von `polyeder`.
 
-Die **Volumen-Auffüllung** ord : 𝒢 → 𝒫 ordnet jeder Geometrie-
+Die **Volumen-Auffüllung** ord: 𝒢 → 𝒫 ordnet jeder Geometrie-
 Repräsentation ihr Polyeder im lokalen Bauteil-Koordinatensystem zu:
 
 - für (achse, querschnitt) ∈ 𝒢_stab: das prismatische bzw. allgemein
@@ -118,30 +118,30 @@ Repräsentation ihr Polyeder im lokalen Bauteil-Koordinatensystem zu:
 Dann ist der **Bauteilkörper** des Bauteils B das Tupel
 
 ```
-K(B) := (uuid_B, P_W),
+K(B):= (uuid_B, P_W),
 ```
 
 mit
 
-- **uuid_B** := B.uuid ∈ 𝒰: die UUID des Trägerbauteils (keine eigene
+- **uuid_B**:= B.uuid ∈ 𝒰: die UUID des Trägerbauteils (keine eigene
   Identität; der Bauteilkörper trägt die Identität seines Bauteils),
 - **P_W** ∈ 𝒫: das Polyeder, dessen Eckpunkte aus den lokalen
   Eckpunkten von ord(B.geometrie) durch die SE(3)-Transformation
   B.lage in W überführt sind:
 
   ```
-  P_W := lage_anwenden(B.lage, ord(B.geometrie)),
+  P_W:= lage_anwenden(B.lage, ord(B.geometrie)),
   ```
 
   wobei `lage_anwenden` jeden Eckpunkt v_lokal ∈ ℝ³ des lokalen
-  Polyeders auf den Eckpunkt v_W := B.lage(v_lokal) im
+  Polyeders auf den Eckpunkt v_W:= B.lage(v_lokal) im
   Weltkoordinatensystem abbildet und die Inzidenzstruktur (Kanten,
   Flächen, Außennormalen) topologisch erhält.
 
 Die Punktmenge des Bauteilkörpers in W ist
 
 ```
-|K(B)| := |P_W| ⊂ ℝ³.
+|K(B)|:= |P_W| ⊂ ℝ³.
 ```
 
 Sie ist nach Konstruktion identisch zur Bauteil-Punktmenge G_W(B)
@@ -161,7 +161,7 @@ Vereinigung ebener Polygone berandet.
 
 - **Eindeutigkeit der Identität**: Der Bauteilkörper trägt keine
   eigene UUID; seine Identität ist B.uuid des Trägerbauteils.
-  Damit gilt: ∀ B₁, B₂ : (B₁ ≠ B₂) ⇒ (K(B₁) ≠ K(B₂)), und es gibt
+  Damit gilt: ∀ B₁, B₂: (B₁ ≠ B₂) ⇒ (K(B₁) ≠ K(B₂)), und es gibt
   keine zwei Bauteilkörper an demselben Bauteil. Diese Festlegung
   spiegelt die IFC-Architektur: `IfcSolidModel` als
   Repräsentations-Item trägt keine `GlobalId`; sie sitzt am
@@ -363,100 +363,6 @@ Querschnitt-Sweep zu einem Bauteilkörper.
     `IfcShapeRepresentation` mit `RepresentationIdentifier
     = 'Body'`, nicht zur `IfcShapeRepresentation` insgesamt.
 
-## Implementierungshinweis
-
-**Codeseitig vorerst nicht als eigener Datentyp implementiert.**
-Der Bauteilkörper wird in der Domänen-Schicht als **abgeleitete
-Sicht** an `Bauteil` realisiert, nicht als eigene Klasse. Die
-Begründung folgt der α-Lesart:
-
-- Ein eigener `Bauteilkoerper`-Datentyp würde dieselben Felder
-  tragen wie `(uuid, Polyeder)` und entstünde immer nur durch
-  Berechnung aus `Bauteil`. Eine persistierte oder unabhängig
-  konstruierbare Instanz hätte keine Modell-Substanz.
-- Die Berechnung wird stattdessen als Funktion
-  `Bauteil.bauteilkoerper(): Polyeder` (bzw. mit
-  `Resultat<Polyeder, EntartetGeometrie>` wo nötig) ausgeführt.
-
-Datentyp-Skizze (Domänen-Schicht, Kotlin, Schicht
-`domain.bauteil`, ergänzend zu `hg_bauteil.md`):
-
-```kotlin
-package domain.bauteil
-
-import domain.geometrie.Polyeder
-import domain.geometrie.KonvexerPolyeder
-import domain.Resultat
-import domain.geometrie.EntartetGeometrie
-
-/**
- * Abgeleitete 3D-Volumen-Sicht eines Bauteils im Welt-Koordinaten-
- * system. Glossar: hg_bauteilkoerper.md
- *
- * Strukturell keine eigene Datenklasse: der Bauteilkörper hat keine
- * Identität jenseits seines Trägerbauteils. Er wird auf Anfrage als
- * Polyeder im Welt-Koordinatensystem berechnet.
- */
-fun Bauteil.bauteilkoerper(): Resultat<Polyeder, EntartetGeometrie> {
-    val lokalesPolyeder: Polyeder = when (val g = geometrie) {
-        is Bauteilgeometrie.Stab     -> sweepPrisma(g.achse, g.querschnitt)
-        is Bauteilgeometrie.Flaeche  -> aufdickungsPrisma(g.traeger, g.dicke)
-        is Bauteilgeometrie.Volumen  -> g.polyeder
-        else                         -> error("unerreichbar: Bauteilgeometrie ist sealed")
-    }
-    return lokalesPolyeder.transformiere(lokalePlatzierung)
-}
-```
-
-- **Einheit**: Eckpunkt-Koordinaten in mm; Volumen in mm³;
-  Oberfläche in mm². Außennormalen dimensionslos (Einheits-
-  vektoren).
-- **Bezugssystem**: immer das Welt-Koordinatensystem W
-  (`weltkoordinatensystem`). Wer Operationen im lokalen
-  Bauteil-System ausführen will, arbeitet auf
-  `ord(B.geometrie)` direkt; das Ergebnis ist dann **kein**
-  Bauteilkörper im Sinne dieses Eintrags.
-- **Identität**: trägt B.uuid; keine eigene UUID. Adressierung
-  aus der Visualisierung (Mesh-Selektion, Picking) und aus IFC-
-  Export-Mappings erfolgt über B.uuid.
-- **Toleranzen** (geerbt von `polyeder`): Eckpunkt-Identität über
-  `Toleranzen.LAENGE_EPS`, Flächeninhalt-Schwelle über
-  `Toleranzen.FLAECHE_EPS`, Norm-Test der Außennormalen über
-  `Toleranzen.NORM_EPS`, Volumen-Schwelle über
-  `Toleranzen.VOLUMEN_EPS`.
-- **Entartet-Varianten**: Werden durchgereicht vom
-  Polyeder-Konstruktor (siehe `hg_polyeder.md`,
-  Implementierungshinweis: `EntartetGeometrie.LeeresHalbraumSystem`,
-  `UnbeschraenktesPolyeder`, `NichtFinit` für die
-  `KonvexerPolyeder`-Variante; weitere Varianten für die
-  Folgearbeit `BRepPolyeder`). Zusätzliche, bauteilkörper-
-  spezifische Varianten sind nicht vorgesehen.
-- **Edge Cases**:
-  - **Stabbauteil mit Achsenlänge ≤ LAENGE_EPS**: Bauteilkörper
-    nicht konstruierbar; bereits `Bauteil`-Konstruktor lehnt ab.
-  - **Flächenbauteil mit Dicke ≤ LAENGE_EPS**: Bauteilkörper
-    nicht konstruierbar; bereits `Bauteil`-Konstruktor lehnt ab.
-  - **Volumenbauteil**: Bauteilkörper ist das gelieferte Polyeder
-    nach Anwendung der Lage; keine zusätzliche Konstruktion.
-  - **Bearbeitungen** (Kerven, Versätze, Zapfen): Der Begriff
-    deckt den **bearbeiteten Endzustand** ab. Wie die
-    Bearbeitungen in die Polyeder-Konstruktion eingehen
-    (CSG-Differenz auf Halbraum-Schnitt-Basis, B-Rep-
-    Boolesche Operationen), regelt die Domänen-Schicht; der
-    Glossarbegriff verlangt nur, dass das Endpolyeder die
-    Bauteil-Punktmenge nach Bearbeitungen darstellt.
-- **Abgeleitete Eigenschaften** (Funktionen am Polyeder, siehe
-  `hg_polyeder.md`):
-  - `volumen(): Double` (mm³),
-  - `oberflaeche(): Double` (mm²),
-  - `schwerpunkt(): Punkt` (Volumenschwerpunkt in W),
-  - `huellquader(): AABB` (achsenparalleler Hüllquader in W).
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Funktion heißt
-  `bauteilkoerper()` (deutsch, Glossarbegriff). Die zugrunde
-  liegenden Sweep-Helfer `sweepPrisma`, `aufdickungsPrisma`
-  sind technische Hilfsfunktionen und tragen englische bzw.
-  technische Namen, soweit sie keine Glossar-Entsprechung haben.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -495,4 +401,4 @@ fun Bauteil.bauteilkoerper(): Resultat<Polyeder, EntartetGeometrie> {
 - Wikipedia, Lemmata „Volumenmodell", „CAD",
   „Industry Foundation Classes" (abgerufen 2026-05-14).
 - Recherche-Bericht zur Begriffslage:
-  `docs/recherche/2026-05-14_hg_bauteilkoerper.md`.
+  [intern].

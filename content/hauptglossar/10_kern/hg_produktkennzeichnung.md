@@ -47,8 +47,7 @@ quellenkonflikt: |
     DIN EN 14080, FSH nach DIN EN 14374). Die App speichert die
     relevante Variante.
   - Identifiziert wird die **Charge / Lieferung / das Produkt**,
-    **niemals die Einbauposition** (vgl. Memory
-    `project_bauteil_identifikation`).
+    **niemals die Einbauposition** (vgl.).
   - **Verortung am Werkstoff, nicht am Element**: Die
     Produktkennzeichnung ist Pflichtfeld eines Werkstoffs
     (`werkstoff.produktkennzeichnung`), nicht direktes Feld eines
@@ -118,7 +117,7 @@ Sei
 Eine **Produktkennzeichnung** ist ein Tupel
 
 ```
-R := (h, t, o)
+R:= (h, t, o)
 ```
 
 mit
@@ -134,7 +133,7 @@ Beispiele konkreter 𝒯ₕ:
 **Vollholz nach DIN 4074-1:2012** (Sortierstempel):
 
 ```
-𝒯_Vollholz_DIN4074  :=  {
+𝒯_Vollholz_DIN4074:=  {
    sortierklasse  ∈ { S 7, S 10, S 13, MS 7, MS 10, MS 13 },
    holzart        ∈ Kurzzeichen-Liste (z. B. C24, C30 sind
                                         Festigkeitsklassen,
@@ -146,7 +145,7 @@ Beispiele konkreter 𝒯ₕ:
 **Vollholz CE nach DIN EN 14081-1:2019**:
 
 ```
-𝒯_Vollholz_EN14081  :=  𝒯_Vollholz_DIN4074  ∪  {
+𝒯_Vollholz_EN14081:=  𝒯_Vollholz_DIN4074  ∪  {
    festigkeitsklasse  ∈ { C14, C16, C18, C20, C22, C24, C27,
                           C30, C35, C40, C45, C50, … },
    notifikations_stelle ∈ String,
@@ -157,7 +156,7 @@ Beispiele konkreter 𝒯ₕ:
 **BSH nach DIN EN 14080:2013, Anhang ZA** (CE-Kennzeichnung):
 
 ```
-𝒯_BSH_EN14080  :=  {
+𝒯_BSH_EN14080:=  {
    hersteller_id          ∈ String,
    festigkeitsklasse      ∈ { GL20h, GL22h, GL24h, GL26h, GL28h,
                               GL30h, GL32h,
@@ -176,22 +175,22 @@ Pflichtfeldern (Querschnitt, Dichteklasse, …).
 
 Die App speichert die Produktkennzeichnung als
 **Summen-/Sealed-Type** über die Werkstoffklassen mit jeweils
-eigenem Feldsatz (siehe Implementierungshinweis).
+eigenem Feldsatz.
 
 **Beziehung Charge ↔ Element**: Sei 𝓡 die Menge aller
 Produktkennzeichnungen, 𝓔 die Menge aller Elemente. Dann ist die
 Charge-Element-Relation
 
 ```
-charge_in : 𝓔 → 𝓡 ∪ {⊥}     (Element → Charge oder „nicht gesetzt"),
-elemente_aus_charge : 𝓡 → 𝒫(𝓔)  (Charge → Element-Menge).
+charge_in: 𝓔 → 𝓡 ∪ {⊥}     (Element → Charge oder „nicht gesetzt"),
+elemente_aus_charge: 𝓡 → 𝒫(𝓔)  (Charge → Element-Menge).
 ```
 
 Im Regelfall ist `elemente_aus_charge(R)` mehrelementig (eine
 Charge wird auf mehrere Elemente verteilt). Im Fügeholz-
 Sonderfall (Stoßung aus zwei Bezugsquellen) wird `charge_in(E)`
 über eine zusätzliche Komposita-Relation
-`element_aus_chargen : 𝓔 → 𝒫(𝓡)` ergänzt.
+`element_aus_chargen: 𝓔 → 𝒫(𝓡)` ergänzt.
 
 ## Wohldefiniertheit
 
@@ -310,187 +309,6 @@ Produktkennzeichnung geführt.
     durch CAD-IDs ersetzt. Eigener historischer Eintrag
     (Folgearbeit) möglich; **nicht** als Produktkennzeichnung
     geführt.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`zimmermann.domain.identifikation`):
-
-```kotlin
-package zimmermann.domain.identifikation
-
-import zimmermann.domain.Resultat
-import java.time.Year
-
-/**
- * Normativ kodifizierte Identifikation einer Holzwerkstoff-Charge
- * (oder eines Einzelprodukts).
- *
- * Glossar: hg_produktkennzeichnung.md
- *
- * Aggregat: je Werkstoffklasse unterschiedliche Pflichtfelder
- * (Sealed-Type-Hierarchie). Identifiziert die Charge, NIEMALS die
- * Einbauposition.
- *
- * Verortung: Pflichtfeld eines Werkstoffs
- * (`Werkstoff.produktkennzeichnung`), NICHT direktes Feld eines
- * Elements. Ein Element greift auf die Produktkennzeichnung über
- * `element.werkstoff.produktkennzeichnung` zu.
- *
- * Validierung: Konstruktoren der Subtypen sind `internal`;
- * Erzeugung erfolgt über Factory-Funktionen mit Rückgabetyp
- * `Resultat<…, ProduktkennzeichnungUngueltig>`. Die Domänen-Schicht
- * wirft niemals Exceptions. Vorbild:
- * `zimmermann.domain.koordinaten.LokalePlatzierung.aus(...)`.
- */
-sealed interface Produktkennzeichnung {
-
-    /** Vollholz nach DIN 4074-1, optional CE nach DIN EN 14081-1. */
-    data class Vollholz(
-        val sortierklasse: VollholzSortierklasse,    // S 7, S 10, S 13, MS 7, …
-        val holzart: HolzartKurzzeichen,             // FI, TA, KI, …
-        val hersteller: HerstellerId,
-        val sortierer: SortiererId? = null,          // DIN 4074-1 optional; darf == hersteller sein
-        val ce: CeKennzeichnungVollholz? = null      // gesetzt bei DIN EN 14081
-    ) : Produktkennzeichnung
-
-    /** BSH/BalkSH nach DIN EN 14080:2013, Anhang ZA (CE Pflicht). */
-    data class Brettschichtholz(
-        val hersteller: HerstellerId,
-        val festigkeitsklasse: FestigkeitsklasseGL,  // GL20h, GL24c, …
-        val klebstofftyp: Klebstofftyp,              // I oder II nach EN 301
-        val produktionswoche: Produktionswoche,
-        val notifikationsStelle: NotifikationsStelle,
-        val wpkZertifikat: WpkZertifikatNummer,
-        val ceEtikettJahr: Year
-    ) : Produktkennzeichnung
-
-    /** Furnierschichtholz nach DIN EN 14374. */
-    data class Furnierschichtholz(
-        val hersteller: HerstellerId,
-        val produktbezeichnung: String,              // z. B. Kerto-S
-        val produktionswoche: Produktionswoche,
-        val notifikationsStelle: NotifikationsStelle,
-        val wpkZertifikat: WpkZertifikatNummer,
-        val ceEtikettJahr: Year
-    ) : Produktkennzeichnung
-
-    // Weitere Subtypen (BSP, Plattenwerkstoffe, …) als Folgearbeit.
-}
-
-@JvmInline value class HerstellerId(val wert: String)
-@JvmInline value class SortiererId(val wert: String)
-@JvmInline value class NotifikationsStelle(val wert: String)
-@JvmInline value class WpkZertifikatNummer(val wert: String)
-@JvmInline value class HolzartKurzzeichen(val wert: String)
-
-enum class VollholzSortierklasse { S7, S10, S13, MS7, MS10, MS13 }
-enum class FestigkeitsklasseGL {
-    GL20H, GL22H, GL24H, GL26H, GL28H, GL30H, GL32H,
-    GL20C, GL22C, GL24C, GL26C, GL28C, GL30C, GL32C
-}
-enum class Klebstofftyp { I, II }
-
-/**
- * Produktionswoche nach ISO-8601-Wochenkalender (1..53).
- *
- * Konstruktor `internal`; Erzeugung über
- * [Produktionswoche.aus] mit Rückgabetyp
- * `Resultat<Produktionswoche, ProduktkennzeichnungUngueltig>`.
- * Vorbild: `LokalePlatzierung.aus(...)`.
- */
-data class Produktionswoche internal constructor(val woche: Int, val jahr: Year) {
-    companion object {
-        fun aus(woche: Int, jahr: Year): Resultat<Produktionswoche, ProduktkennzeichnungUngueltig> =
-            if (woche in 1..53) Resultat.Erfolg(Produktionswoche(woche, jahr))
-            else Resultat.Fehler(ProduktkennzeichnungUngueltig.WocheAusserhalb)
-    }
-}
-
-/** Domänen-Fehlerfälle der Produktkennzeichnungs-Validierung (keine Exceptions). */
-sealed interface ProduktkennzeichnungUngueltig {
-    object WocheAusserhalb : ProduktkennzeichnungUngueltig
-    // weitere Varianten je Subtyp-Validierung in Folgearbeit
-}
-
-data class CeKennzeichnungVollholz(
-    val festigkeitsklasse: FestigkeitsklasseC,    // C14, …, C50
-    val notifikationsStelle: NotifikationsStelle,
-    val ceEtikettJahr: Year
-)
-
-enum class FestigkeitsklasseC {
-    C14, C16, C18, C20, C22, C24, C27, C30, C35, C40, C45, C50
-}
-```
-
-- **Einheit**: keine (Aggregat aus normativ vorgegebenen Feldern).
-- **Mutabilität**: stabil; ändert sich nur bei Charge-Wechsel
-  des Elements (Materialdisposition, Fehlbestellung).
-- **Trennung Position ≠ Charge**: Produktkennzeichnung enthält
-  **kein** Positionsfeld. Wer Position und Charge gemeinsam
-  speichern will, hält die Positionsnummer am Element
-  (`element.positionsnummer`) und die Produktkennzeichnung am
-  Werkstoff (`element.werkstoff.produktkennzeichnung`); ein
-  Mischfeld ist konstruktiv ausgeschlossen.
-- **1 → n Relation Charge → Elemente**: Eine
-  `Produktkennzeichnung`-Instanz darf von mehreren Elementen
-  geteilt werden (eine Charge auf zehn Sparren). Der Pfad führt
-  über den gemeinsamen Werkstoff: mehrere Elemente referenzieren
-  denselben Werkstoff, der die geteilte Produktkennzeichnung
-  trägt. In der Persistenzschicht entsprechend als eigene
-  Tabelle `werkstoff` mit FK `element.werkstoff_id →
-  werkstoff.id (UUID)` und Spalten/Joins für die
-  Produktkennzeichnungs-Felder modelliert.
-- **n → m Relation Element → Chargen** (Sonderfall Fügeholz):
-  ein Element ist dann mit mehreren Werkstoff-Instanzen verknüpft
-  (jede mit eigener Produktkennzeichnung) über eine
-  Hilfstabelle `element_werkstoff_anteil` mit Mengen- oder
-  Längen-Anteil pro Charge. Eigener Eintrag `fuegestoss`
-  (Folgearbeit) regelt Geometrie und Bemessung.
-- **IFC-Mapping** (Persistenzschicht):
-  - Material-Resource (`IfcMaterial`) erhält Property Set
-    `Pset_MaterialWoodBasedBeam` bzw. `Pset_MaterialWoodBasedPanel`
-    mit den Pflichtfeldern.
-  - CE-relevante Felder (Notifikations-Stelle, WPK-Zertifikat,
-    Produktionswoche) werden in einem eigenen `Pset_Manufacturing`
-    geführt.
-- **BTLx-Mapping**: Material-Element des Parts; CE-Felder als
-  zusätzliche Attribute. Folgearbeit präzisiert Field-Mapping.
-- **Edge Cases**:
-  - **Werkstoff ohne aufgelöste Produktkennzeichnung**: im
-    frühen Entwurfsstadium darf der Werkstoff eine Platzhalter-
-    Produktkennzeichnung tragen (vgl. `hg_werkstoff.md`,
-    `Produktkennzeichnung.UNBEKANNT`); muss vor Fertigung /
-    Bemessung aufgelöst sein. Auf Element-Ebene gibt es kein
-    eigenes Produktkennzeichnungs-Feld, das `null` sein könnte.
-  - **Werkstoff-Mismatch** (Subklasse h der Produktkennzeichnung
-    inkonsistent zur Werkstoff-Subklasse, der sie zugeordnet ist):
-    → `Entartet.WerkstoffMismatch` als Resultat-Fehlerfall der
-    Werkstoff-Factory.
-  - **Lesbarkeit auf Baustelle**: bei verlorener oder unleserlicher
-    Kennzeichnung gilt das Bauteil als nicht-CE-konform; in der
-    App kann ein Element den Status `Produktkennzeichnung.UNLESBAR`
-    erhalten (zukünftiger Subtyp), das Tragfähigkeitsnachweise
-    sperrt.
-  - **Historische Bauteile** (Bestandsbau, Sanierung): keine
-    moderne Produktkennzeichnung; eine ergänzende
-    in-situ-Sortierung nach DIN 4074 erzeugt eine nachträgliche
-    Kennzeichnung. Im Glossar als `produktkennzeichnung_in_situ`
-    ein Folgeeintrag möglich.
-  - **Mehrfachstempel** (Holz mit alter und neuer Sortierung):
-    der zeitlich jüngere, gültige Stempel zählt; die ältere
-    Markierung wird als historische Information geführt.
-  - **Sortierer = Hersteller** (Vollholz, DIN 4074-1): die
-    Identitäten von `sortierer` und `hersteller` dürfen
-    zusammenfallen. DIN 4074-1 verlangt keine organisatorische
-    Trennung; im typischen Anwendungsfall der **visuellen
-    Sortierung im Hersteller-Werk** durch einen werkseigenen,
-    nach DIN 4074-1 ausgebildeten Sortierer ist
-    `sortierer == hersteller` der Regelfall und ausdrücklich
-    zulässig. Eine getrennte Belegung beider Felder ist nur dann
-    erforderlich, wenn die Sortierung extern (z. B. durch eine
-    unabhängige Sortierstelle nach Anlieferung) erfolgt.
 
 ## Quellen
 

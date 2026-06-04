@@ -51,12 +51,12 @@ v = v_x · e_x + v_y · e_y + v_z · e_z   mit   (v_x, v_y, v_z) ∈ ℝ³.
 Die euklidische **Norm** (Länge) ist
 
 ```
-‖v‖ := √(v_x² + v_y² + v_z²).
+‖v‖:= √(v_x² + v_y² + v_z²).
 ```
 
 Ein Vektor heißt **Einheitsvektor**, wenn ‖v‖ = 1, und **Nullvektor**,
 wenn v = (0, 0, 0)ᵀ. Die Sphäre der Einheitsvektoren wird mit
-S² := { v ∈ ℝ³ | ‖v‖ = 1 } bezeichnet.
+S²:= { v ∈ ℝ³ | ‖v‖ = 1 } bezeichnet.
 
 ## Wohldefiniertheit
 
@@ -102,43 +102,6 @@ sind die zulässigen Mischoperationen.
   - **Gerade**: ein eindimensionaler affiner Unterraum, definiert
     durch Punkt + Richtungsvektor; nicht identisch mit dem
     Richtungsvektor selbst.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.geometrie`):
-
-```
-data class Vektor(
-    val x: Double,   // mm (oder dimensionslos für Einheitsvektoren)
-    val y: Double,
-    val z: Double
-)
-```
-
-- **Einheit**: Im Längen-Kontext (Differenzvektor zweier Punkte) in
-  mm. Im Richtungs-Kontext (Normalenvektor, Faserrichtung)
-  dimensionslos und auf Norm 1 normiert. Die Domänen-Schicht
-  unterscheidet beides typkonsistent über Wrapper bzw. Konvention,
-  niemals durch implizite Reinterpretation.
-- **Invarianten**: keine auf `Vektor` selbst. Für Einheitsvektoren
-  wird die Bedingung ‖v‖ ∈ 1 ± Toleranzen.NORM_EPS in den Klassen
-  geprüft, die einen Einheitsvektor erwarten (z. B. `Ebene.normale`).
-- **Edge Cases**:
-  - Nullvektor (‖v‖ = 0): zulässig als Wert, aber nicht als
-    Richtung. Versuche, einen Nullvektor zu normieren, liefern
-    `Resultat.Fehler` bzw. `EntartetGeometrie.Nullrichtung`.
-  - NaN/±∞ in einer Komponente: `EntartetGeometrie.NichtFinit`.
-  - Sehr kleine, aber nicht-null Vektoren (‖v‖ < Toleranzen.NORM_EPS):
-    werden als entartet behandelt; Normierung würde numerisch
-    instabil.
-- **Abgeleitete Operationen**:
-  - `operator fun plus(w: Vektor): Vektor`
-  - `operator fun minus(w: Vektor): Vektor`
-  - `operator fun times(s: Double): Vektor` (Skalarmultiplikation)
-  - `infix fun dot(w: Vektor): Double` (Skalarprodukt)
-  - `infix fun cross(w: Vektor): Vektor` (Kreuzprodukt)
-  - `val norm: Double` = √(x² + y² + z²)
-  - `fun normiert(): Resultat<Vektor, EntartetGeometrie>` (liefert `Resultat.Fehler` bei Nullvektor)
 
 ## Quellen
 

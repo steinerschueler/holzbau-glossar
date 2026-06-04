@@ -18,18 +18,18 @@ quellen_sekundär:
   - "Lignum (Hrsg.): Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor', lignum.ch/auf_einen_klick/news/ — Hinweis auf SIA-265-Definitionsliste, werkstoffneutrale Stütze-Lesart."
   - "Lignum 'Holz A–Z / Konstruktion', lignum.ch/holz_a_z/konstruktion/ — CH-Praxis-Linie: Stütze als Oberbegriff für tragende Vertikalbauteile im Skelettbau und in der Pfosten-Riegel-Fassade."
   - "Lignum (Hrsg.): Holzbautabellen HBT 1 (2024). Lignum, Zürich. Begriffsregister 'Stütze' (Volltext nicht zugänglich, Verlags-Schaufenster)."
-  - "BauNetz Wissen Holz, Lemma 'Stützen | Holz', baunetzwissen.de/holz/fachwissen/konstruktionselemente — Snippet: 'Stütze … im Holzbau auch als Pfosten, Ständer oder Stiel bezeichnet'; HTTP 403 dauerhaft blockiert seit Welle-11, Inhalt aus WebSearch-Snippets rekonstruiert."
+  - "BauNetz Wissen Holz, Lemma 'Stützen | Holz', baunetzwissen.de/holz/fachwissen/konstruktionselemente — Snippet: 'Stütze … im Holzbau auch als Pfosten, Ständer oder Stiel bezeichnet'; Inhalt aus WebSearch-Snippets rekonstruiert."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 'Druckstäbe' und 'Skelettbau'."
   - "Natterer, J.; Herzog, T.; Volz, M.: Holzbau-Atlas. 4. Aufl., Birkhäuser, Basel 2003, Kap. 'Skelettbau / Pfosten-Riegel-Konstruktion'."
   - "Wikipedia, Lemma 'Stütze (Bauteil)' — werkstoffneutrale Lesart mit DIN-1045-1-Zitat; Holz, Naturstein, Mauerwerk, Beton, Stahl, Aluminium als geeignete Baustoffe; im Holzbau auch als Pfosten, Ständer oder Stiel bezeichnet."
   - "Wikipedia, Lemma 'Skelettbau (Holz)' — Stütze als zentrales Vertikalbauteil der Pfosten-Riegel-Konstruktion."
   - "Pollmeier 'BauBuche-Stützen im Skelettbau', pollmeier.com — Hersteller-Praxis für moderne LVL-Stützen im CH-/DE-Holzskelettbau."
   - "Holzer, S.; Steiger, R.: ETH Zürich, Lehrunterlage 'Holz IV — Dachwerke mit liegendem Stuhl', FS 2023 — Stuhl-Konstruktionen als Sonderfall vertikaler Lastabtragung mit Stuhlsäulen statt allgemeiner Stützen."
-  - "Recherche-Bericht: docs/recherche/2026-05-16_tragglieder_vertikal.md."
-  - "Recherche-Bericht: docs/recherche/2026-05-15_pfosten_staender_lastpfad.md — Welle-9-Vorgänger, CH-Korpus-Lage Pfosten/Ständer/Stütze."
+  - "Recherche-Bericht: [intern]."
+  - "Recherche-Bericht: [intern] — Welle-9-Vorgänger, CH-Korpus-Lage Pfosten/Ständer/Stütze."
 quellenkonflikt: |
   Sieben Punkte sind in der Recherche
-  (`docs/recherche/2026-05-16_tragglieder_vertikal.md` §C, §D, §G, §I,
+  ([intern] §C, §D, §G, §I,
   §K) auflösungs-bedürftig und werden hier ausdrücklich festgelegt.
 
   **(1) Werkstoff-Neutralität (Lignum-/DIN-1045-1-Linie).** Wikipedia/
@@ -73,7 +73,7 @@ quellenkonflikt: |
 
   **(3) Geschwister-Rolle zu `staender`, nicht Oberbegriff.** Welle-9-
   Empfehlung (`hg_staender.md` Quellenkonflikt-Punkt 3 und 7,
-  `docs/recherche/2026-05-15_pfosten_staender_lastpfad.md` §I): Ständer
+  [intern] §I): Ständer
   und Stütze sind **Geschwister-Bauteilrollen unter `bauteil`**, nicht
   Oberbegriff ↔ Subtyp. Begründung (zusammengeführt aus Welle-9):
 
@@ -92,14 +92,14 @@ quellenkonflikt: |
   Eigene Festlegung: `oberbegriff: bauteil` (nicht `staender`); die
   beiden Rollen sind Geschwister.
 
-  **(4) Eric-CH-Berufspraxis-„Pfosten"-Lesart und Stütze-Bauteilrolle.**
-  Eric (Schweizer Zimmermann, Domain Expert; Memory `user_role`) hat
+  **(4) Anweiser-CH-Berufspraxis-„Pfosten"-Lesart und Stütze-Bauteilrolle.**
+  Anweiser (Schweizer Zimmermann, Domain Expert) hat
   in der Welle-9-Folgearbeit-Diskussion eine CH-berufssprachliche
   Lastpfad-Trennung formuliert: in seiner Praxis ist „Pfosten" das
   direkt-tragende, geschoss-übergreifende, oft freistehende vertikale
   Holz mit grösserem Querschnitt — semantisch genau die hier
   definierte Stütze. Das ist im publizierten CH-Korpus
-  (`docs/recherche/2026-05-15_pfosten_staender_lastpfad.md` §B.5, §C,
+  ([intern] §B.5, §C,
   §F) als Pfosten/Ständer-Lemmatrennung NICHT verankert; das
   etablierte CH-Lemma für die direkt-tragende vertikale Bauteilrolle
   ist „Stütze" (modern, Lignum-Linie) oder „Hochstud" (historisch,
@@ -110,29 +110,18 @@ quellenkonflikt: |
   Doppel-Synonymie schaffte Wortgleichheit mit Bedeutungsverschiebung
   und Drift-Risiko). „Pfosten" steht in `abgelehnte_benennungen:` und
   gleichzeitig in `abgrenzung_zu:` (siehe HG-Konvention §5a Drift-
-  Warnschild — Ständer/Stütze sind im Praxis-Korpus durch Erics
-  Lesart in einer Drift-Konstellation). Erics CH-Berufspraxis-Lesart
+  Warnschild — Ständer/Stütze sind im Praxis-Korpus durch Anweisers
+  Lesart in einer Drift-Konstellation). Anweisers CH-Berufspraxis-Lesart
   ist hier als Quellenkonflikt-Dokumentation aufgenommen, mit
   Rückverweis auf `hg_staender.md` Quellenkonflikt-Punkt 7 und auf
-  `docs/recherche/2026-05-15_pfosten_staender_lastpfad.md`.
-  „Hochstud" wird (nach Eric-Entscheidung 2026-05-16) nicht als
+  [intern].
+  „Hochstud" wird (nach Anweiser-Entscheidung 2026-05-16) nicht als
   Folgearbeit-Eintrag aufgenommen.
 
-  **(5) SIA-265-Verifikations-Trigger.** SIA 265:2021 §1.1
+  **(5) SIA-265.** SIA 265:2021 §1.1
   „Fachausdrücke" enthält laut Lignum-Pressemitteilung 2021 eine
   geschlossene Definitionsliste der Holzbau-Fachbegriffe; der
-  Norm-Volltext ist **nicht direkt eingesehen** (SIA-Shop-Paywall;
-  Block-Signal, analog Welle 8/9/10/11/12). Marker-Konvention nach
-  §10 ist mit `[via: Lignum-Pressemitteilung 2021]` gesetzt. Bei
-  Eric-Volltext-Zugriff (Memory
-  `feedback_subagent_findings_verifizieren`) ist die Wurzel-Benennung
-  „Stütze" gegen die SIA-265-Lemmatisierung zu prüfen. Best Case: SIA
-  265 führt „Stütze" als werkstoffneutrales Lemma und unterscheidet
-  Geschoss-/Pfosten-/Stiel-Sub-Lesarten — dann ist die hier getroffene
-  Werkstoff-Neutralität voll bestätigt. Falls SIA 265 dagegen
-  „Druckglied" als Wurzel-Lemma setzt (DIN-1045-1-Parallele), ist
-  „Stütze" als praxisnahes Synonym zu führen, die Wurzel-Wahl wird per
-  ABW-Welle korrigiert.
+  Norm-Volltext ist **nicht direkt eingesehen** (SIA-Shop-Paywall).
 
   **(6) Säule als Subtyp (Forward-Verweis zu `hg_saeule.md`).** Welle
   13 legt `hg_saeule.md` als architektonisch-klassischen Subtyp der
@@ -177,13 +166,13 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - q_B = (q_max, q_min) die Querschnitts-Hauptabmessungen von B
   (größte und kleinste Abmessung im rechtwinklig zur Bauteilachse
   liegenden Querschnitt), q_min > 0,
-- e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-- ε_L := Toleranzen.LAENGE_EPS.
+- e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+- ε_L:= Toleranzen.LAENGE_EPS.
 
 Dann heißt B eine **Stütze** genau dann, wenn die folgenden Bedingungen
 alle erfüllt sind:
@@ -237,7 +226,7 @@ alle erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Stützenlänge**: L_St := ‖p_e − p_a‖ (in mm), entlang der
+- **Stützenlänge**: L_St:= ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen Fuß und Kopf. Bei exakt lotrechter Stütze gilt
   L_St = p_e.z − p_a.z.
 - **Stützenrichtung**: d_hat ∈ S² mit ‖d_hat × e_z‖ ≤ ε_K und d_hat · e_z > 0
@@ -360,7 +349,7 @@ Die Trennung zwischen Stütze und Ständer folgt der **Wand-Inzidenz**:
 Die Welle-9-Erkenntnis (`hg_staender.md` Punkt 3, 7) hält fest, dass
 diese Trennung in der CH-Praxis (Lignum-Linie) klar ist: „Ständer" für
 Wand, „Stütze" für Skelett. Die berufssprachliche Realität ist
-unschärfer — „Pfosten" wird in Erics CH-Berufspraxis für die direkt-
+unschärfer — „Pfosten" wird in Anweisers CH-Berufspraxis für die direkt-
 tragende, geschoss-übergreifende Stütze verwendet (siehe
 Quellenkonflikt-Punkt 4) — die Lemma-Wahl im Glossar bleibt aber bei
 „Stütze" als CH-/DACH-aktiver werkstoffneutraler Bauteilrolle.
@@ -393,7 +382,7 @@ Quellenkonflikt-Punkt 4) — die Lemma-Wahl im Glossar bleibt aber bei
 
 - **Pfosten** (`pfosten`, kein eigener Eintrag): in `hg_staender.md`
   als Synonym geführt (moderne Praxis nutzt Pfosten und Ständer
-  synonym); in Erics CH-Berufspraxis aber für die direkt-tragende
+  synonym); in Anweisers CH-Berufspraxis aber für die direkt-tragende
   Stütze verwendet. Doppel-Synonymie wird vermieden, indem Pfosten
   hier in `abgelehnte_benennungen:` steht; siehe Quellenkonflikt
   Punkt 4.
@@ -403,10 +392,10 @@ Quellenkonflikt-Punkt 4) — die Lemma-Wahl im Glossar bleibt aber bei
   Bedingung 4 nicht hinreichend, weil ein massiver Pfeiler aus
   Mauerwerk durchaus q_max ≤ 4·q_min erfüllt; die Trennung liegt im
   Werkstoff und im konstruktiven Kontext, nicht in der Geometrie.
-- **Hochstud** (`hochstud`, kein eigener Eintrag, Eric-Entscheidung
+- **Hochstud** (`hochstud`, kein eigener Eintrag, Anweiser-Entscheidung
   2026-05-16): historisch CH (Aargau-Mittelland, 16.–19. Jh.), eine
   geschoss-übergreifende Stütze in Bauernhäusern, durchgehend von
-  Boden bis Firstpfette. Per Eric-Entscheidung 2026-05-16 nicht als
+  Boden bis Firstpfette. Per Anweiser-Entscheidung 2026-05-16 nicht als
   Folgearbeit-Eintrag aufgenommen.
 
 ## Beziehungen
@@ -455,7 +444,7 @@ Quellenkonflikt-Punkt 4) — die Lemma-Wahl im Glossar bleibt aber bei
     Bauteilrolle, nicht Subtyp der Stütze (holz-exklusiv, mit
     spezifischem Stuhlpfetten-Anschluss).
   - **Pfosten** (Forward-Verweis, kein eigener Eintrag): in
-    `hg_staender.md` Synonym; in Erics CH-Berufspraxis für die
+    `hg_staender.md` Synonym; in Anweisers CH-Berufspraxis für die
     Stütze verwendet. Drift-Disambiguation, siehe Quellenkonflikt
     Punkt 4.
   - **Pfeiler** (Forward-Verweis, kein eigener Eintrag):
@@ -479,142 +468,6 @@ Quellenkonflikt-Punkt 4) — die Lemma-Wahl im Glossar bleibt aber bei
   - **Hochstud** (Forward-Verweis, kein eigener Eintrag): CH-
     historische Sub-Lesart einer geschoss-übergreifenden Stütze.
   - **Bauteil** (`bauteil`): Oberbegriff. Stütze ist Spezialisierung.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Punkt
-import kotlin.math.max
-import kotlin.math.min
-
-/**
- * Stütze als werkstoffneutrale Bauteilrolle: lotrechtes Stab-Bauteil
- * mit Querschnitts-Verhältnis q_max ≤ 4·q_min (DIN 1045-1) ohne
- * Wand-Inzidenz; punktueller Lastträger im Skelettbau, Pfosten-
- * Riegel-Konstruktion, Hallenbinder-Auflager.
- *
- * Glossar: hg_stuetze.md
- *
- * Vorzeichenkonvention: Die Bauteilachse ist vom Fuß (p_a, am
- * Auflager / der Gründung) zum Kopf (p_e, an aufgehender Tragebene)
- * gerichtet. Wie bei Ständer ist die Orientierung geometrisch
- * zwingend.
- *
- * Werkstoff-Neutralität: Holz, Stahl, Stahlbeton, Mauerwerk, Stein.
- * Werkstoff wird über bauteil.werkstoff geführt, nicht über
- * Subtyp-Hierarchie. Holz-spezifische Spezialisierung
- * `Holzstuetze` ist Folgearbeit.
- *
- * Disjunkt zu `Staender`: Eine Stütze ist nicht Mitglied einer
- * Wand-Bauteilgruppe; Bauteile mit Wand-Inzidenz qualifizieren als
- * Ständer, nicht als Stütze.
- */
-data class Stuetze(
-    val bauteil: Bauteil,
-    /** Querschnitts-Hauptabmessungen (q_max, q_min) in mm. */
-    val querschnitt: Querschnittsabmessungen,
-) {
-    val achse: Bauteilachse.Gerade
-        get() = (bauteil.geometrie as Bauteilgeometrie.Stab).achse
-                as Bauteilachse.Gerade
-    val laenge: Double get() = achse.laenge          // mm
-    val richtung: Einheitsvektor get() = achse.richtung
-    val fuss: Punkt get() = achse.anfang
-    val kopf: Punkt get() = achse.ende
-
-    /** Lotrechtheitsprädikat: ‖d_hat × e_z‖ ≤ KOLLINEAR_EPS. */
-    fun istLotrecht(eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean {
-        val d = richtung
-        val sinusQuadrat = d.x * d.x + d.y * d.y
-        return sinusQuadrat <= eps * eps
-    }
-
-    /** DIN-1045-1: q_max ≤ 4·q_min. */
-    fun erfuelltStuetzenQuerschnitt(): Boolean =
-        querschnitt.qMax <= 4.0 * querschnitt.qMin
-}
-
-data class Querschnittsabmessungen(
-    val qMax: Double,   // mm
-    val qMin: Double,   // mm
-)
-
-sealed class StuetzeEntartet {
-    object Nullachse              : StuetzeEntartet()
-    object NichtLotrecht          : StuetzeEntartet()
-    object FalscheOrientierung    : StuetzeEntartet()  // p_a.z ≥ p_e.z
-    object QuerschnittWandartig   : StuetzeEntartet()  // q_max > 4·q_min
-    object MitWandInzidenz        : StuetzeEntartet()  // → Staender
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil
-  (Memory `project_bauteil_identifikation`).
-- **Invarianten** (in der Factory `stuetzeAusBauteil(...)` prüfen,
-  bei Verletzung `Resultat.Fehler` mit `StuetzeEntartet`-Variante;
-  niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. ‖d_hat × e_z‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst `NichtLotrecht`.
-  4. p_a.z + Toleranzen.LAENGE_EPS < p_e.z — sonst
-     `FalscheOrientierung`.
-  5. q_max ≤ 4·q_min — sonst `QuerschnittWandartig`.
-  6. Keine Wand-Inzidenz: Bauteil ist nicht Mitglied einer Wand-
-     Bauteilgruppe (Cross-Aggregat-Prüfung im Modell-Container) —
-     sonst `MitWandInzidenz` (mit Empfehlung zur Umwandlung in
-     `Staender`).
-- **Edge Cases**:
-  - **Geneigte Stütze**: leicht aus dem Lot geneigte Stütze (z. B.
-    expressive Architektur, Hallenbau-Schrägbinder-Auflager). Wenn
-    Bedingung 2 verletzt ist, qualifiziert das Bauteil nicht als
-    Stütze im Sinne dieses Eintrags. Geneigte tragende Stäbe sind
-    typisch Streben oder spezielle Schräg-Stützen; eine eigene
-    Spezialisierung `schraege_stuetze` ist Folgearbeit.
-  - **Geschossstütze**: Stütze über mehrere Geschosse mit Stoß auf
-    Geschossdecke. In der App-Modellierung als eine Stütze pro
-    Geschoss (Stoß = Auflager / Knoten) oder als durchgehende
-    Stütze (Modell-Entscheidung).
-  - **Pendelstütze und eingespannte Stütze**: geometrisch
-    identisch; Unterschied liegt im Auflager-Typ
-    (gelenkig vs. biegesteif) und damit im `auflager`-Eintrag,
-    nicht in der Stütze selbst.
-  - **Sehr schlanke Stütze (q_max/q_min nahe 1)**: zulässig, etwa
-    runde Holzstütze oder Stahl-Rundrohr. Bedingung 4 ist mit
-    Gleichheit erfüllt.
-  - **Wandartige Stütze (q_max/q_min > 4)**: nicht zulässig als
-    Stütze; das Bauteil ist im DIN-1045-1-Sinn eine Wand. Im
-    Holzbau typischerweise eine CLT-Wandelement, eine Wandscheibe
-    aus mehreren Ständern oder eine massive Holzwand.
-  - **Mit Wand-Inzidenz**: ein in eine Wand eingebundenes
-    lotrechtes Holz qualifiziert als `staender`, nicht als
-    `stuetze` (Bedingung 6). Bei strukturellem Zweifel die
-    Wand-Inzidenz vorrangig prüfen.
-- **Folgearbeit-Trigger**:
-  - `hg_holzstuetze.md`: holz-spezifische Spezialisierung mit
-    CH-spezifischen Bemessungsregeln nach SIA 265:2021 §5.
-    Trigger: erstes Tool, das Holz-Stützen explizit bemisst.
-  - `hg_schraege_stuetze.md`: geneigte Stütze als Schwester-Rolle
-    oder Subtyp. Trigger: erste expressive Architektur- oder
-    Hallenbau-Schrägbinder-Modellierung.
-  - `hg_stuetzenfuss.md` und `hg_stuetzenkopf.md`: Anschluss-
-    Detail-Einträge analog `hg_konstruktionsdetail.md`. Trigger:
-    erste Verbindungs-Detail-Modellierung am Stützen-Endpunkt.
-  - **SIA-265-Verifikation**: bei Volltext-Zugriff (Eric) SIA
-    265:2021 §1.1 Fachausdrücke direkt prüfen, ob „Stütze" als
-    Lemma geführt ist; Wurzel-Wahl ggf. als ABW-Welle korrigieren
-    (siehe Quellenkonflikt-Block (5)).
-  - **Skelettbau-Tool**: erste Skelettbau-Modellierung mit
-    Pfosten-Riegel-Raster. Ankert die `stuetze`-Verwendung im
-    App-Code.
 
 ## Quellen
 
@@ -652,5 +505,5 @@ sealed class StuetzeEntartet {
 - baunetzwissen.de „Stützen | Holz".
 - binderholz, Hasslacher, Hüttemann BSH-Hersteller.
 - SIHGA / Simpson Strong-Tie Stützenfuss-Verbinder.
-- Recherche-Bericht: `docs/recherche/2026-05-16_tragglieder_vertikal.md`.
-- Recherche-Bericht: `docs/recherche/2026-05-15_pfosten_staender_lastpfad.md`.
+- Recherche-Bericht: [intern].
+- Recherche-Bericht: [intern].

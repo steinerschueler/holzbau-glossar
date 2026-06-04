@@ -37,7 +37,7 @@ quellenkonflikt: |
   vorausgesetzt, geschlossene Festlegung über zimmermanns-
   sprachlichen Korpus). Vollständige Quellenlage und
   Falsifizier-Bereitschaft im Recherchebericht
-  `docs/recherche/2026-05-14_hg_anschnitt.md`.
+  [intern].
 
   **Drei-Trennung Kerve ↔ Stirnseite ↔ Anschnitt:**
 
@@ -189,16 +189,16 @@ Sei
   τ = Anschnitt ∈ 𝓣,
 - B ∈ 𝓑 das zugehörige Stab-Bauteil mit Bauteilachse A(B), die
   Tangentenrichtung d_hat(s) ∈ S² an der Stelle s ∈ [0, L], Anfangs-
-  punkt p_a := A(B)(0) und Endpunkt p_e := A(B)(L) (siehe
+  punkt p_a:= A(B)(0) und Endpunkt p_e:= A(B)(L) (siehe
   `bauteilachse`),
 - σ ∈ {ANFANG, ENDE} die **Anschnittseite** (analog zu
   `Endposition` in `hg_stirnseite.md`); setze
 
   ```
-  p_σ := { p_a , falls σ = ANFANG;
-           p_e , falls σ = ENDE }                                  (1a)
-  d_hat_σ := { −d_hat(0) , falls σ = ANFANG;
-            +d_hat(L) , falls σ = ENDE }                              (1b)
+  p_σ:= { p_a, falls σ = ANFANG;
+           p_e, falls σ = ENDE }                                  (1a)
+  d_hat_σ:= { −d_hat(0), falls σ = ANFANG;
+            +d_hat(L), falls σ = ENDE }                              (1b)
   ```
 
   (d_hat_σ ist die nach außen gerichtete Tangentenrichtung am
@@ -206,10 +206,10 @@ Sei
 
 - E_AS ⊂ ℝ³ die **Anschnittebene**, Ebene nach `ebene` durch p_σ
   mit Einheitsnormaler n_hat_AS ∈ S²,
-- α_AS := arcsin|⟨n_hat_AS, d_hat_σ⟩| ∈ (ε_W, π/2 − ε_W) der **Anschnitt-
+- α_AS:= arcsin|⟨n_hat_AS, d_hat_σ⟩| ∈ (ε_W, π/2 − ε_W) der **Anschnitt-
   winkel** (Winkel zwischen der Anschnittebene E_AS und der
   Bauteilachse d_hat_σ; α_AS = π/2 für den rechtwinkligen End-
-  schnitt, α_AS → 0 für die tangentiale Lage) mit ε_W :=
+  schnitt, α_AS → 0 für die tangentiale Lage) mit ε_W:=
   `Toleranzen.WINKEL_EPS`,
 - 𝓡 ⊂ ℝ³ ein abgeschlossener, beschränkter „Schnitt-Bereichs-
   Polyeder" am Bauteil-Endpunkt, gross genug, dass er das gesamte
@@ -219,8 +219,8 @@ Sei
 Die **Anschnittebene** zerlegt ℝ³ in zwei abgeschlossene Halbräume
 
 ```
-H_+(E_AS) := { x ∈ ℝ³ | ⟨n_hat_AS, x − p_σ⟩ ≥ 0 },                    (2a)
-H_−(E_AS) := { x ∈ ℝ³ | ⟨n_hat_AS, x − p_σ⟩ ≤ 0 }.                    (2b)
+H_+(E_AS):= { x ∈ ℝ³ | ⟨n_hat_AS, x − p_σ⟩ ≥ 0 },                    (2a)
+H_−(E_AS):= { x ∈ ℝ³ | ⟨n_hat_AS, x − p_σ⟩ ≤ 0 }.                    (2b)
 ```
 
 Per Konvention zeigt n_hat_AS **aus dem Bauteil heraus**:
@@ -237,7 +237,7 @@ Der **Werkzeugkörper** der Anschnitt-Bearbeitung ist die Begrenzung
 des Außenseiten-Halbraums auf den Schnitt-Bereichs-Polyeder 𝓡:
 
 ```
-K_Anschnitt(p_τ) := H_+(E_AS) ∩ 𝓡 ⊂ ℝ³.                          (4)
+K_Anschnitt(p_τ):= H_+(E_AS) ∩ 𝓡 ⊂ ℝ³.                          (4)
 ```
 
 K_Anschnitt(p_τ) ist ein abgeschlossener, beschränkter Polyeder
@@ -248,7 +248,7 @@ Damit ist eine **Anschnitt-Bearbeitung** im Sinne von
 `hg_bearbeitung.md` das Tupel
 
 ```
-F_AS := (uuid, Anschnitt, p_τ = (σ, E_AS), T_F, bezeichnung?),    (5)
+F_AS:= (uuid, Anschnitt, p_τ = (σ, E_AS), T_F, bezeichnung?),    (5)
 ```
 
 mit
@@ -259,13 +259,13 @@ mit
 - **T_F** ∈ SE(3): lokale Platzierung des typeigenen Bezugs-
   Koordinatensystems im Bauteil-Lokal-System (per Konvention
   Identität in SE(3), wenn p_τ direkt im Bauteil-Lokal-System
-  parametrisiert ist; siehe Implementierungshinweis).
+  parametrisiert ist).
 
 Die **Wirkung** des Anschnitts auf das Bauteil ist die Boole'sche
 Differenz nach `hg_bearbeitung.md` (1):
 
 ```
-G_B'(F_AS) = G_B^lokal \ T_F( K_Anschnitt(p_τ) ).                 (6)
+G_B'(F_AS) = G_B^lokal \ T_F(K_Anschnitt(p_τ)).                 (6)
 ```
 
 Geometrisch entspricht (6) dem Abschneiden des Bauteilmaterials,
@@ -275,7 +275,7 @@ Das **Resultat** des Anschnitts ist eine geneigte **Stirnseite**
 nach `hg_stirnseite.md` an der Anschnittseite σ:
 
 ```
-S_σ(B; F_AS) := (∂F_S, E_AS, n_hat_AS, p_σ)                          (7)
+S_σ(B; F_AS):= (∂F_S, E_AS, n_hat_AS, p_σ)                          (7)
 ```
 
 mit
@@ -582,182 +582,6 @@ dieses Eintrags.
     die Bauteilachse, sondern eine Bearbeitung am Endpunkt der
     Achse.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.bauteil.bearbeitung`):
-
-```kotlin
-package domain.bauteil.bearbeitung
-
-import domain.bauteil.flaeche.Endposition
-import domain.geometrie.Ebene
-import domain.geometrie.LokalePlatzierung
-import java.util.UUID
-
-/**
- * Anschnitt: subtraktive Bearbeitung am Bauteilendpunkt durch
- * eine einzige Anschnittebene; erzeugt eine geneigte Stirnseite
- * mit Anschnittwinkel α_AS ∈ (ε_W, π/2 − ε_W).
- *
- * Glossar: hg_anschnitt.md
- *
- * Modelliert im Erstentwurfs-Umfang ausschliesslich den
- * einfachen Endanschnitt (BTLx `JackRafterCut`). Längsanschnitt
- * (`LongitudinalCut`), Doppelanschnitt (`DoubleCut`), Schmiege
- * und Hexenschnitt sind Folgearbeiten mit eigenen
- * Bearbeitungs-Subtypen.
- *
- * Vorzeichenkonvention der Anschnittebenen-Normalen: zeigt aus
- * dem Bauteil heraus, d. h. ⟨n_hat_AS, d_hat_σ⟩ > 0 mit d_hat_σ als
- * nach aussen gerichteter Bauteilachsen-Tangente an der
- * Anschnittseite.
- */
-data class Anschnitt(
-    override val uuid: UUID,
-    val anschnittseite: Endposition,         // ANFANG | ENDE
-    val anschnittebene: Ebene,               // E_AS, n_hat_AS unter (3)
-    override val lokalePlatzierung: LokalePlatzierung,
-    override val bezeichnung: String? = null,
-) : Bearbeitung
-```
-
-- **Einheit**: Punktkoordinaten in mm; Anschnittebene als
-  Hesse-Normalform mit Einheits-Normaler.
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562
-  v7, geerbt von `bearbeitung`), unabhängig vom zugeordneten
-  Bauteil. Keine Backref auf das Bauteil (partitive Komposition,
-  siehe `hg_bearbeitung.md`).
-- **Pflicht- und Optionalfelder**:
-  - `uuid` — Pflicht, niemals null.
-  - `anschnittseite` — Pflicht; `Endposition.ANFANG` oder
-    `Endposition.ENDE` (gemeinsame Enum-Konvention mit
-    `Stirnseite`, siehe `hg_stirnseite.md` Implementierungs-
-    hinweis).
-  - `anschnittebene` — Pflicht; Hesse-Normalform mit
-    Einheitsnormaler unter Vorzeichenkonvention (3).
-  - `lokalePlatzierung` — Pflicht; in der Standard-Konvention
-    `LokalePlatzierung.IDENTITAET` (Werkzeug-Bezugssystem
-    direkt im Bauteil-Lokal-System).
-  - `bezeichnung` — `null` zulässig.
-- **Invarianten** (in Companion-Factory
-  `Anschnitt.aus(bauteil, anschnittseite, anschnittebene)`,
-  `Resultat.Fehler` bei Verletzung; niemals Exception):
-  1. `anschnittebene.normaleEinheit()` ist normiert
-     (`‖n_hat_AS‖² ≈ 1` innerhalb `Toleranzen.NORM_EPS`).
-  2. **Inzidenz**: der zugehörige Bauteil-Endpunkt p_σ
-     (`p_a` bei ANFANG, `p_e` bei ENDE) liegt auf der
-     Anschnittebene (`|⟨n_hat_AS, p_σ − stützpunkt⟩| ≤
-     Toleranzen.LAENGE_EPS`).
-  3. **Aussennormale-Konvention** (3):
-     `⟨n_hat_AS, d_hat_σ⟩ > 0` mit `d_hat_σ` als nach aussen
-     gerichteter Tangente an der Anschnittseite.
-  4. **Anschnittwinkel-Wertebereich**: `α_AS ∈ (ε_W, π/2 −
-     ε_W)`. α_AS = π/2 (rechtwinkliger Endschnitt) oder
-     α_AS → 0 (tangentialer Anschnitt) sind unzulässig.
-     `Resultat.Fehler`-Variante:
-     `AnschnittwinkelAusserhalbZulaessigemBereich`.
-  5. **Anschnittebene-Bauteil-Inzidenz** (analog
-     `hg_bearbeitung.md` Edge Case): die Anschnittebene muss
-     den Bauteilkörper am Endpunkt schneiden;
-     `Resultat.Fehler`-Variante:
-     `AnschnittebeneAusserhalbBauteil`.
-- **Konstruktion**: Anschnitt wird über die Companion-Factory
-  `Anschnitt.aus(bauteil, anschnittseite, anschnittebene)`
-  oder die Convenience-Funktion
-  `Bauteil.fuegeAnschnittHinzu(anschnittseite, anschnittebene)`
-  erzeugt; nicht über einen freien Konstruktor (die
-  Bauteil-Inzidenz-Invarianten verlangen Kenntnis des
-  Bauteils).
-- **Werkzeugkörper** (abgeleitete Eigenschaft, Geometrie-
-  Schicht, Phase 3.2):
-  `werkzeugkoerper(): Polyeder` realisiert
-  `K_Anschnitt(p_τ) = H_+(E_AS) ∩ 𝓡` mit der App-Konvention
-  für 𝓡 (axenparallele Bounding-Box um den Bauteilkörper am
-  Endpunkt mit `LAENGE_EPS`-Sicherheitsabstand). Die konkrete
-  Polyeder-Repräsentation ist Aufgabe des
-  `BearbeitungsAggregator`, siehe `hg_bearbeitung.md`.
-- **Resultat-Stirnseite** (abgeleitete Eigenschaft):
-  `resultatStirnseite(bauteil: Bauteil): Stirnseite` erzeugt
-  die Stirnseite nach (7) — Trägerebene = `anschnittebene`,
-  `position = anschnittseite`, `aussennormale =
-  anschnittebene.normaleEinheit()`, `bezugspunkt = p_σ`,
-  `berandung` = Schnittpolygon der Anschnittebene mit dem
-  bearbeiteten Bauteilkörper.
-- **BTLx-Export** (Persistenzschicht, Phase 4):
-  - **Primäres Mapping**: `JackRafterCut` mit Parametern
-    `Orientation` (ANFANG/ENDE), `StartX`/`StartY`
-    (Anschnittpunkt auf der Bezugsfläche), `Angle` und
-    `Inclination` (aus der Anschnittebenen-Normalen relativ
-    zur BTLx-Referenzebene berechnet).
-  - **Nicht im Erstentwurfs-Umfang**: `LongitudinalCut`
-    (Folgearbeit `laengsanschnitt`), `DoubleCut`
-    (Folgearbeit `schmiege` bzw. `hexenschnitt`),
-    `TriangleCut` (Sonderfall, ggf. Folgearbeit).
-- **IFC-Export** (Persistenzschicht, Phase 4):
-  - Anschnitt wird als `IfcOpeningElement` mit eigener
-    `GlobalId` (= Bearbeitungs-UUID) angelegt; die Beziehung
-    zum Bauteil läuft über `IfcRelVoidsElement` (siehe
-    `hg_bearbeitung.md` IFC-Mapping).
-- **Edge Cases**:
-  - **Anschnitt mit α_AS exakt π/2**: ausgeschlossen
-    durch Invariante (4). Wer das Bauteilende rechtwinklig
-    geschnitten haben möchte, modelliert **keinen** Anschnitt
-    (das ist der prismatische Standardfall, siehe
-    `hg_stirnseite.md`).
-  - **Mehrere Anschnitte am selben Bauteilendpunkt**
-    (Doppelanschnitt-Sonderfall, Folgearbeit
-    `hexenschnitt`/`schmiege`): zulässig als zwei separate
-    `Anschnitt`-Instanzen mit derselben `anschnittseite`,
-    aber unterschiedlichen `anschnittebene`. Die App führt
-    sie als unabhängige Bearbeitungen mit eigenen UUIDs; die
-    Wirkung kombiniert sich nach `hg_bearbeitung.md` (2).
-  - **Anschnitt + Kerve am selben Bauteilende**: zulässig
-    und im Korpus üblich (Sparrenfuß mit Klauenkerve und
-    Stirnanschnitt unterhalb der Kerve). Beide Bearbeitungen
-    sind unabhängig; ihre Wirkungen kombinieren sich
-    reihenfolge-invariant.
-  - **Anschnitt an einem Bauteil mit Faserrichtung-Modus
-    SCHWACH oder KEINE** (z. B. OSB, Spanplatte): zulässig;
-    die Anschnitt-Geometrie ist von der Faserrichtung
-    unabhängig. Plattenwerkstoffe werden bevorzugt nicht mit
-    `Anschnitt` modelliert, sondern als Plattenbauteile mit
-    Plattenkante (Folgearbeit, siehe `hg_stirnseite.md`).
-  - **Numerisch flacher Anschnitt** (α_AS nahe ε_W): Invariante
-    (4) lehnt unzulässige Werte ab; im zulässigen, aber
-    praxisuntypischen Korridor (α_AS < π/12) gibt die
-    Bemessungs-Schicht eine Warnung aus (weiche Invariante).
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heisst
-  `Anschnitt` (deutsch, Glossarbegriff). `Endposition.ANFANG`/
-  `Endposition.ENDE` werden mit `Stirnseite` geteilt
-  (gemeinsame Konvention).
-
-**Folgearbeit (trigger-basiert):**
-
-- **`schmiege`** (Anschnitt-Spezialisierung an Schifter-Grat-/
-  Kehl-Verschneidung mit Anfallflächen-Bezugsrolle; drei
-  Sub-Spezialisierungen Fußschmiege, Lotschmiege/
-  Senkelschmiege, Backenschmiege). Trigger: erstes
-  Walmdach-Tool mit Schiftern (Memory
-  `project_grobplan_erstes_tool`, nach D7/D8).
-- **`hexenschnitt`** (Doppelanschnitt am Traufendpunkt eines
-  Grat- oder Kehlsparrens). Trigger: Walmdach-Tool mit
-  Dachkasten-Detail.
-- **`laengsanschnitt`** (Anschnitt mitten am Bauteil in
-  Bauteil-Längsrichtung, BTLx `LongitudinalCut`). Trigger:
-  erstes Tool mit Sparrenverbreiterung oder Längsverjüngung.
-- **`schiftung`** (Verfahren zur Bestimmung der
-  Anschnittwinkel an Schiftern, Subglossar-Sektion bei
-  `anschnitt` für Lehrlingsstufe / Geselle). Trigger:
-  TG-4-Subglossar-Anlage zu diesem Eintrag.
-- **Cross-Verweis-Einlösung in `hg_senkel.md` und
-  `hg_bleischnitt.md`**: deren Folgearbeit-Blöcke nennen
-  „Cross-Verweis in `hg_sparren.md` bei Anlage des
-  `anschnitt.md`-Eintrags" als Trigger. Trigger ist mit
-  Anlage dieses Eintrags eingetreten; die Cross-Verweise
-  werden im jeweils nächsten Etappenschritt in
-  `hg_sparren.md` nachgezogen.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -807,4 +631,4 @@ data class Anschnitt(
   *Hexenschnitt*.
 - compas_timber-API (Gramazio Kohler Research):
   *BTLx Fabrication Module* (Klassen-Liste).
-- Recherchebericht: `docs/recherche/2026-05-14_hg_anschnitt.md`.
+- Recherchebericht: [intern].

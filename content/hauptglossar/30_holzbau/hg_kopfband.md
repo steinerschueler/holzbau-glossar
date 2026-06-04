@@ -32,10 +32,10 @@ quellen_sekundär:
   - "landschaftzukunftev.de: 'Kopfband und Knagge – Unterschiedliche Bauweisen.pdf'."
   - "immoportal.com Glossar 'Kopfband'."
   - "fuhrberger.de: 'Streben und Kopfwinkel'."
-  - "Recherche-Bericht: docs/recherche/2026-05-15_strebe_kopfband_bug.md."
+  - "Recherche-Bericht: [intern]."
 quellenkonflikt: |
   Drei Punkte sind in der Recherche
-  (`docs/recherche/2026-05-15_strebe_kopfband_bug.md`) auflösungs-
+  ([intern]) auflösungs-
   bedürftig und werden hier ausdrücklich festgelegt.
 
   **(1) Wikipedia subsumiert Kopfband unter Strebe; TTH nicht.**
@@ -66,8 +66,7 @@ quellenkonflikt: |
   **(2) „Bug" und „Kopfbüge" — Synonyme, keine eigenen Einträge.**
   TTH ID 832 listet **„Achselband, Bug"** ausdrücklich als
   Synonyme. Wikipedia/Kopfband bestätigt „auch Bug oder Kopfbüge".
-  BauNetz-Snippet bestätigt dasselbe (snippet-basiert,
-  Block-Signal). Im **Holzbau-Korpus** ist „Bug" **nicht
+  BauNetz-Snippet bestätigt dasselbe (snippet-basiert). Im **Holzbau-Korpus** ist „Bug" **nicht
   mehrdeutig** — die Mehrdeutigkeit liegt zwischen Domänen
   (Schiff: Bug = Spitze des Rumpfs; Möbel: Bug = gebogenes Eckholz;
   Skiboard: Bug = Spitze), ist aber für die App-Domäne
@@ -96,19 +95,11 @@ quellenkonflikt: |
   Im `erlaeuterung`-Block ist die CH/DE-Asymmetrie als
   Bauweisen-Verteilung erwähnt; der App-Nutzer (CH-Zimmermann)
   ordnet das Bauteil über die geometrische Anker-Bedingung ein,
-  nicht über die Benennung. Bei Eric-Volltext-Zugriff auf
-  **Lignum HBT 1 (2024)** kann die CH-Praxis-Asymmetrie
-  präzisiert oder falsifiziert werden (Verifikations-Trigger).
+  nicht über die Benennung.
 
-  **(4) BauNetz-Wissen Block-Signal (HTTP 403).** Die WebFetch-
-  Anfrage an `baunetzwissen.de/glossar/k/kopfband-6629384`
-  lieferte HTTP 403 (Bot-Detektion der Domain). Aussagen aus
+  **(4) BauNetz-Wissen.** Aussagen aus
   BauNetz Wissen sind ausschließlich aus WebSearch-Snippets
-  rekonstruiert und mit `[einsicht: snippet]` markiert. Der Block
-  ist domain-weit (gilt auch von der Hauptinstanz aus); keine
-  Hauptinstanz-Eskalation notwendig. Verifikations-Trigger: Eric-
-  Browser-Direktblick bei späterer Welle (gleicher Trigger wie
-  für `hg_strebe.md`).
+  rekonstruiert und mit `[einsicht: snippet]` markiert.
 
   **(5) „Kopfwinkel" / „Kopfwinkelholz" — korpus-unsicher,
   abgelehnt.** Der Begriff „Kopfwinkel" taucht in
@@ -119,16 +110,10 @@ quellenkonflikt: |
   Praxis. In `abgelehnte_benennungen:` aufgenommen, weil als
   alleinstehende Bauteil-Benennung mehrdeutig.
 
-  **(6) SIA-265-Verifikations-Trigger.** SIA 265:2021 §1.1
+  **(6) SIA-265.** SIA 265:2021 §1.1
   „Fachausdrücke" enthält laut Lignum-Pressemitteilung 2021 eine
-  geschlossene Definitionsliste der Holzbau-Fachbegriffe (analog
-  Welle 9 Quellenkonflikt-Punkt 5 in `hg_staender.md`,
-  `hg_strebe.md` Quellenkonflikt-Punkt 5). Der Norm-Volltext ist
-  **nicht direkt eingesehen** (SIA-Shop-Paywall); Marker-
-  Konvention nach §10 ist mit `[via: Lignum-Pressemitteilung
-  2021]` gesetzt. Bei Eric-Volltext-Zugriff ist zu prüfen, ob
-  „Kopfband" und „Bug" als Lemmata geführt sind und ob SIA die
-  Wikipedia-Subsumption oder die TTH-Trennung folgt.
+  geschlossene Definitionsliste der Holzbau-Fachbegriffe. Der Norm-Volltext ist
+  **nicht direkt eingesehen** (SIA-Shop-Paywall).
 ---
 
 ## Prosa-Definition
@@ -151,7 +136,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - E_W eine Wandebene (Ebene im Sinne von `ebene`) mit Stützpunkt
   p_W und Normalenvektor n_hat_W ∈ S², wobei n_hat_W horizontal liegt
   (|⟨n_hat_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
@@ -159,19 +144,19 @@ Sei
 - P ein lotrechtes Anker-Bauteil (Ständer im Sinne von
   `hg_staender.md` oder Pfosten als Synonym; siehe
   Quellenkonflikt-Block dort) mit Bauteilachse
-  a(P) = (p_a^P, p_e^P), z-Extrema z_min^P := min(p_a^P.z,
-  p_e^P.z) und z_max^P := max(p_a^P.z, p_e^P.z), Pfosten-Kopf-
-  Punkt p_K^P := arg max{p.z : p ∈ a(P)},
+  a(P) = (p_a^P, p_e^P), z-Extrema z_min^P:= min(p_a^P.z,
+  p_e^P.z) und z_max^P:= max(p_a^P.z, p_e^P.z), Pfosten-Kopf-
+  Punkt p_K^P:= arg max{p.z: p ∈ a(P)},
 - H ein horizontales Anker-Bauteil (Rähm im Sinne von `hg_raehm.md`,
   Pfette im Sinne von `hg_pfette.md`, oder Unterzug als
   Forward-Verweis) mit Bauteilachse a(H) = (p_a^H, p_e^H) und
   ‖d_hat_H − ⟨d_hat_H, e_z⟩ e_z‖ > 1 − ε_K (horizontal:
   |⟨d_hat_H, e_z⟩| ≤ ε_K), wobei H **über** P liegt im Sinne
   ‖p_K^P.z − z_min^H‖ ≤ ε_L (mit z_min^H = min(p_a^H.z, p_e^H.z)),
-- e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-  ε_L := Toleranzen.LAENGE_EPS,
-  ε_W := Toleranzen.WINKEL_EPS.
+- e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS,
+  ε_W:= Toleranzen.WINKEL_EPS.
 
 Dann heißt B ein **Kopfband** der Wand mit Wandebene E_W, Pfosten
 P und Längsholz H genau dann, wenn die folgenden Bedingungen
@@ -186,7 +171,7 @@ alle erfüllt sind:
    ```
 
 3. **Echte Diagonale (weder lotrecht noch horizontal)**: Der
-   Winkel α(B) := arccos(|⟨d_hat, e_z⟩|) zwischen Bauteilachse und
+   Winkel α(B):= arccos(|⟨d_hat, e_z⟩|) zwischen Bauteilachse und
    Lotachse erfüllt
    ```
    ε_W < α(B) < π/2 − ε_W,
@@ -230,13 +215,13 @@ alle erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Kopfbandlänge**: L_K := ‖p_e − p_a‖ (in mm), zwischen
+- **Kopfbandlänge**: L_K:= ‖p_e − p_a‖ (in mm), zwischen
   Pfosten-Kopf-Anker und Längsholz-Anker.
-- **Kopfbandneigung gegen Horizontale**: β_K := π/2 − α(B),
+- **Kopfbandneigung gegen Horizontale**: β_K:= π/2 − α(B),
   Default-Wert im Korpus ~45°, Praxis-Range 35–55°.
   Die Definition fixiert β_K **nicht** auf 45° (Korpus-Konsens
   ist „typisch", keine Norm-Festlegung).
-- **Wandebenen-Achsenrichtung**: t_hat_W := projektiere d_hat in die
+- **Wandebenen-Achsenrichtung**: t_hat_W:= projektiere d_hat in die
   Wandebene, dient als Default-Faserrichtung am Bauteil.
 
 ## Wohldefiniertheit
@@ -441,8 +426,6 @@ Wand-Inzidenz im Wand-Aggregat (Folgearbeit).
 Die CH-Negativ-Evidenz zur Begriffsverwendung (siehe
 Quellenkonflikt-Block (3)) bedeutet **nicht**, dass das Bauteil
 in CH nicht existiert — es wird nur seltener spezifisch benannt.
-Bei Eric-Volltext-Zugriff auf Lignum HBT 1 (2024) ist die CH-
-Begriffsbasis zu präzisieren.
 
 ### Andere Bedeutungen / Englisch
 
@@ -523,212 +506,6 @@ Begriffsbasis zu präzisieren.
     Spezialisierung von Bauteil mit zusätzlichen Lage-
     Constraints.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Ebene
-import domain.geometrie.Punkt
-import kotlin.math.abs
-import kotlin.math.acos
-
-/**
- * Kopfband als Bauteilrolle: diagonales Stab-Bauteil in einer
- * Wandebene zwischen Pfosten-Kopf und darüberliegendem
- * horizontalem Längsholz (Rähm, Pfette, Unterzug). Versteift
- * die Pfosten-Längsholz-Verbindung und verkürzt die
- * Spannweite des Längsholzes.
- *
- * Glossar: hg_kopfband.md
- *
- * Die Synonyme Bug, Kopfbüge, Achselband sind TTH-fest und
- * gelten als gleichwertige berufssprachliche Benennungen
- * (TTH ID 832, Quelle Großmann 1987 S. 70). Im modernen
- * Schweizer Korpus ist „Kopfband" wenig belegt; das Bauteil
- * wird über die geometrische Anker-Bedingung modelliert,
- * nicht über die Benennung.
- *
- * Trennlinie zur Strebe: der Pfosten-Anker liegt am
- * Pfosten-Kopf (Bedingung 5); die Strebe hat ihn am
- * Pfosten-Fuß oder in der Pfosten-Mitte.
- */
-data class Kopfband(
-    val bauteil: Bauteil,
-    /** Wandebene; aus Pfosten- und Längsholz-Achse abgeleitet. */
-    val wandebene: Ebene,
-    /** Positions-Annotation am Pfosten-Kopf. Default UNSPEZIFIZIERT. */
-    val position: KopfbandPosition = KopfbandPosition.UNSPEZIFIZIERT,
-) {
-    val achse: Bauteilachse.Gerade
-        get() = (bauteil.geometrie as Bauteilgeometrie.Stab).achse
-                as Bauteilachse.Gerade
-    val laenge: Double get() = achse.laenge          // mm
-    val richtung: Einheitsvektor get() = achse.richtung
-
-    /**
-     * Diagonal-Prädikat: weder lotrecht noch horizontal.
-     *
-     * α(B) = arccos(|⟨d_hat, e_z⟩|);  ε_W < α < π/2 − ε_W.
-     */
-    fun istDiagonal(eps: Double = Toleranzen.WINKEL_EPS): Boolean {
-        val d = richtung
-        val cosAlpha = abs(d.z)              // |⟨d_hat, e_z⟩| mit e_z = (0,0,1)
-        if (cosAlpha < eps) return false      // horizontal
-        if (cosAlpha > 1.0 - eps) return false // lotrecht
-        val alpha = acos(cosAlpha)
-        return alpha > eps && alpha < (Math.PI / 2.0 - eps)
-    }
-}
-
-/**
- * Positions-Annotation eines Kopfbands an seinem Pfosten-Kopf.
- * Die Sub-Lesarten unterscheiden sich durch die topologische
- * Lage des Pfostens in der Wand (Ecke, Bund, Zwischen), nicht
- * durch eigene geometrische Constraints am Kopfband selbst.
- * Daher Merkmal, nicht Subtyp.
- *
- * Glossar: hg_kopfband.md (siehe Erläuterung „Anordnung am
- * Pfosten").
- */
-enum class KopfbandPosition {
-    /** Am Eckständer; eine Wandebene, eine Wand-Richtung. */
-    ECK,
-    /** Am Bundständer; in einer Binderebene mit Querverband. */
-    BUND,
-    /** Am Zwischenständer; fachgerecht paarweise beidseitig. */
-    ZWISCHEN,
-    /** Position nicht zugewiesen (Default). */
-    UNSPEZIFIZIERT,
-}
-
-sealed class KopfbandEntartet {
-    object Nullachse                       : KopfbandEntartet()
-    object NichtInWandebene                : KopfbandEntartet()
-    object Lotrecht                        : KopfbandEntartet()
-    object Horizontal                      : KopfbandEntartet()
-    object KeinPfostenAnker                : KopfbandEntartet()
-    object KeinLaengsholzAnker             : KopfbandEntartet()
-    object PfostenAnkerNichtAmKopf         : KopfbandEntartet()
-    object LaengsholzNichtUeberPfosten     : KopfbandEntartet()
-    object WandebeneNichtLotrecht          : KopfbandEntartet()
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil
-  (Memory `project_bauteil_identifikation`).
-- **Invarianten** (in der Factory `kopfbandAusBauteil(...)`
-  prüfen, bei Verletzung `Resultat.Fehler` mit
-  `KopfbandEntartet`-Variante; niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. Wandebene lotrecht: |⟨n_hat_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
-     — sonst `WandebeneNichtLotrecht`.
-  4. Beide Endpunkte in Wandebene (Punkt-Ebene-Abstand ≤
-     Toleranzen.LAENGE_EPS) — sonst `NichtInWandebene`.
-  5. α(B) > Toleranzen.WINKEL_EPS — sonst `Horizontal`.
-  6. α(B) < π/2 − Toleranzen.WINKEL_EPS — sonst `Lotrecht`.
-  7. Genau einer der Endpunkte auf der Pfosten-Bauteilachse a(P)
-     (Punkt-Gerade-Abstand ≤ Toleranzen.LAENGE_EPS) — sonst
-     `KeinPfostenAnker`.
-  8. Der andere Endpunkt auf der Längsholz-Bauteilachse a(H)
-     (Punkt-Gerade-Abstand ≤ Toleranzen.LAENGE_EPS) — sonst
-     `KeinLaengsholzAnker`.
-  9. Pfosten-Endpunkt am Pfosten-Kopf:
-     |p_P.z − z_max^P| ≤ 3 · Toleranzen.LAENGE_EPS — sonst
-     `PfostenAnkerNichtAmKopf` (strukturelle Trennlinie zur
-     Strebe und zum künftigen Fußband).
-  10. Längsholz liegt über Pfosten-Kopf: p_H.z + Toleranzen.LAENGE_EPS
-      > p_P.z — sonst `LaengsholzNichtUeberPfosten`.
-- **Edge Cases**:
-  - **Eckkopfband am Eckständer**: zwei Kopfbänder an demselben
-    Pfosten-Kopf, eines pro angeschlossener Wandebene. Im Modell
-    zwei eigenständige `Kopfband`-Instanzen, je
-    `position = ECK`, jede in ihrer eigenen Wandebene.
-  - **Beidseitiges Kopfband am Zwischenständer**: zwei Kopfbänder
-    in derselben Wandebene, je eines pro Wand-Richtung. Zwei
-    eigenständige `Kopfband`-Instanzen mit `position = ZWISCHEN`.
-  - **Pfette als Längsholz** (Dach-naher Kontext): das Kopfband
-    verbindet Pfosten-Kopf mit Pfette-Unterkante. Bedingung 10
-    bleibt gültig (Pfette liegt über Pfosten-Kopf). Klassifikation
-    bleibt Kopfband; die Pfetten-Inzidenz wird über das Wand-/
-    Dach-Aggregat (Folgearbeit) referenziert.
-  - **Unterzug als Längsholz**: bei Pfosten-Reihen im Geschoss-
-    Inneren (Skelettbau-nahe Konstruktion) ist das Längsholz
-    ein Unterzug, kein Rähm. Geometrisch identisch; Klassifikation
-    bleibt Kopfband.
-  - **Mann-Figur-Mitglied**: Kopfband als Mitglied einer Mann-/
-    Wilder-Mann-Figur; Aggregat-Folgearbeit. Jedes Kopfband im
-    Bündel ist eine eigenständige `Kopfband`-Instanz.
-  - **Sehr flaches Kopfband** (α nahe π/2 − ε_W, fast horizontal):
-    konstruktiv unüblich; geometrisch toleriert, statisch
-    auszuschließen. Folgearbeit-Trigger bei Bemessung.
-  - **Pfosten-Anker exakt an z_max^P − ε_L · 3**: Grenzfall zur
-    Strebe-Klassifikation; durch die Toleranz-Konstante in beiden
-    Definitionen konsistent ausgeschlossen, die App bricht den
-    Build bei doppelter Klassifizierung als Inkonsistenz ab.
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `neigung(): Double` — β_K = π/2 − α(B), Kopfbandneigung
-    gegen die Horizontale in rad. Erwartung 35°–55°, kein
-    harter Constraint.
-  - `pfostenAnker(t: Tragwerk): Staender?` — der Ständer, dessen
-    Bauteilachse den Pfosten-Endpunkt enthält und dessen Kopf
-    am Anker-Endpunkt liegt; null, wenn keine eindeutige
-    Zuordnung möglich.
-  - `laengsholzAnker(t: Tragwerk): Bauteil?` — das horizontale
-    Längsholz (Rähm, Pfette, Unterzug), dessen Bauteilachse den
-    Längsholz-Endpunkt enthält.
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt `Kopfband`
-  (deutsch, Glossarbegriff); Positions-Enum heißt `KopfbandPosition`.
-  Spezialisierungs-Subtypen sind nicht vorgesehen.
-- **Folgearbeit-Trigger** (für `_FOLGEARBEITEN_*.md` oder die
-  Wand-Aggregat-Welle-Planung):
-  - `fussband`: **Geschwister-Rolle** am Pfosten-Fuß
-    (symmetrisches Gegenstück zum Kopfband). TTH-fest unter
-    „Band (Bauteil)"-Sub-Facette neben Kopfband. **Bewusst in
-    Welle 10 nicht angelegt** — eigener Eintrag bei nächster
-    Wand-Welle oder bei erster Mann-Figuren-Modellierung.
-  - `knagge`: dreieckiges Vollholz als Konsole; eigene
-    Bauteilrolle. Trigger: Deckenbalken-Konsole / Pfetten-
-    Konsole-Modellierung.
-  - `kniestrebe`: Dachstuhl-Diagonale; eigener Eintrag bei
-    Dachstuhl-Welle.
-  - `mann`: Aggregat (Mann-Figur / Halber Mann / Wilder Mann /
-    Hessenmann); Aggregat-Folgearbeit bei historischer Fachwerk-
-    Welle.
-  - `andreaskreuz`: Aggregat zweier sich kreuzender Streben;
-    Aggregat-Folgearbeit beim Wand-Aggregat.
-  - `unterzug`: horizontales Tragwerk-Längsholz unter Geschoss-
-    decken; Folgearbeit Skelettbau-Tool oder erste Decken-
-    Modellierung.
-  - `zugband`, `windrispenband`: Stahl-Aussteifungselemente;
-    eigene Bauteilrollen. Trigger: erstes Hallenbau-Tool /
-    CLT-Anschluss-Welle.
-  - `wand` (Aggregat, mit Welle 12 angelegt, siehe
-    `hg_wand.md`): das Kopfband ist Mitglied einer
-    Wand-Bauteilgruppe. Eine Zwischenebene `wandbauteil`
-    wurde mit Welle 12 verworfen (App-Drift; siehe
-    `hg_wand.md` Quellenkonflikt-Block (6)).
-  - **SIA-265-Verifikation**: bei Volltext-Zugriff (Eric)
-    SIA 265:2021 §1.1 Fachausdrücke direkt prüfen, ob
-    „Kopfband" und „Bug" als Lemmata geführt sind; Wurzel-
-    Wahl ggf. als ABW-Welle korrigieren (siehe
-    Quellenkonflikt-Block (6)).
-  - **Lignum HBT 1 (2024)-Verifikation der CH-Asymmetrie**:
-    bei Eric-Zugang punktuelle Begriffsregister-Sichtung
-    „Kopfband", „Bug"; bestätigt oder falsifiziert die CH-
-    Negativ-Evidenz (siehe Quellenkonflikt-Block (3)).
-  - **BauNetz-Wissen-Direkteinsicht**: Browser-Direktblick
-    durch Eric bei `baunetzwissen.de/glossar/k/kopfband-6629384`
-    (Block-Signal, siehe Quellenkonflikt-Block (4)).
-
 ## Quellen
 
 **Primär (normativ):**
@@ -790,4 +567,4 @@ sealed class KopfbandEntartet {
 - Stora Enso: *CLT Technische Broschüre.* storaenso.com.
 - DERIX: „Lexikon Aussteifung", derix.de.
 - Recherche-Bericht:
-  `docs/recherche/2026-05-15_strebe_kopfband_bug.md`.
+  [intern].

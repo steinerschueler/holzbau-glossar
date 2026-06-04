@@ -120,7 +120,7 @@ Sei
 Dann ist ein **Werkstoff Stahl** das Tupel
 
 ```
-WSt := (faserrichtungs_modus, produktkennzeichnung,
+WSt:= (faserrichtungs_modus, produktkennzeichnung,
         plattendicken_achse, stahlguete, streckgrenze?, zugfestigkeit?)
 ```
 
@@ -140,18 +140,18 @@ mit
 Die **Stahlgüte** 𝓢𝓖 ist der disjunkte Aufzählungstyp
 
 ```
-𝓢𝓖 := 𝓢𝓖_unlegiert ⊎ 𝓢𝓖_nichtrostend ⊎ 𝓢𝓖_baustahl,
+𝓢𝓖:= 𝓢𝓖_unlegiert ⊎ 𝓢𝓖_nichtrostend ⊎ 𝓢𝓖_baustahl,
 ```
 
 mit
 
 ```
-𝓢𝓖_unlegiert  := { 4.6, 4.8, 5.6, 5.8, 6.8, 8.8, 9.8, 10.9, 12.9 }
+𝓢𝓖_unlegiert:= { 4.6, 4.8, 5.6, 5.8, 6.8, 8.8, 9.8, 10.9, 12.9 }
                                               (DIN EN ISO 898-1)
-𝓢𝓖_nichtrostend := { A1-50, A1-70, A1-80, A2-50, A2-70, A2-80,
+𝓢𝓖_nichtrostend:= { A1-50, A1-70, A1-80, A2-50, A2-70, A2-80,
                      A3-50, A3-70, A4-50, A4-70, A4-80, A5-50, A5-70 }
                                               (DIN EN ISO 3506-1)
-𝓢𝓖_baustahl   := { S235, S275, S355, S420, S460 }
+𝓢𝓖_baustahl:= { S235, S275, S355, S420, S460 }
                                               (DIN EN 10025-1, für
                                                Verbinder-Stahlbleche)
 ```
@@ -160,23 +160,23 @@ mit
 DIN EN ISO 898-1 Tab. 5 und EN ISO 3506-1):
 
 ```
-4.6   :  f_y,k = 240,   f_u,k = 400   N/mm²
-5.6   :  f_y,k = 300,   f_u,k = 500   N/mm²
-6.8   :  f_y,k = 480,   f_u,k = 600   N/mm²
-8.8   :  f_y,k = 640,   f_u,k = 800   N/mm²
-10.9  :  f_y,k = 900,   f_u,k = 1000  N/mm²
-12.9  :  f_y,k = 1080,  f_u,k = 1200  N/mm²
-A2-70 :  f_y,k = 450,   f_u,k = 700   N/mm²
-A4-70 :  f_y,k = 450,   f_u,k = 700   N/mm²
-A2-80 :  f_y,k = 600,   f_u,k = 800   N/mm²
-S235  :  f_y,k = 235,   f_u,k = 360   N/mm²  (Bauteildicke ≤ 16 mm)
-S275  :  f_y,k = 275,   f_u,k = 410   N/mm²
-S355  :  f_y,k = 355,   f_u,k = 490   N/mm²
+4.6:  f_y,k = 240,   f_u,k = 400   N/mm²
+5.6:  f_y,k = 300,   f_u,k = 500   N/mm²
+6.8:  f_y,k = 480,   f_u,k = 600   N/mm²
+8.8:  f_y,k = 640,   f_u,k = 800   N/mm²
+10.9:  f_y,k = 900,   f_u,k = 1000  N/mm²
+12.9:  f_y,k = 1080,  f_u,k = 1200  N/mm²
+A2-70:  f_y,k = 450,   f_u,k = 700   N/mm²
+A4-70:  f_y,k = 450,   f_u,k = 700   N/mm²
+A2-80:  f_y,k = 600,   f_u,k = 800   N/mm²
+S235:  f_y,k = 235,   f_u,k = 360   N/mm²  (Bauteildicke ≤ 16 mm)
+S275:  f_y,k = 275,   f_u,k = 410   N/mm²
+S355:  f_y,k = 355,   f_u,k = 490   N/mm²
 ```
 
 Es ist 𝓦𝓢𝓽 ⊂ 𝓦, d. h. die Menge der Stahl-Werkstoffe ist die
 fünfte Geschwister-Teilmenge der Werkstoff-Menge
-(`𝓦 := 𝓐𝓗 ⊎ 𝓜𝓛 ⊎ 𝓖𝓟 ⊎ 𝓘𝓟 ⊎ 𝓦𝓢𝓽`, siehe `werkstoff`) mit
+(`𝓦:= 𝓐𝓗 ⊎ 𝓜𝓛 ⊎ 𝓖𝓟 ⊎ 𝓘𝓟 ⊎ 𝓦𝓢𝓽`, siehe `werkstoff`) mit
 `faserrichtungs_modus = KEINE`. Die Disjunktheit zu
 `isotroper_plattenwerkstoff` (gleicher Modus) wird über die
 sealed-Subklassen-Identität und das unterschiedliche
@@ -260,7 +260,7 @@ Stahl als Werkstoff im Holzbau tritt in drei Element-Rollen auf:
 | Verstärkungselement        | Vollgewindeschraube                  | EN 14592    |
 
 Alle drei Elemente sind Geschwister unter `element` (siehe
-`element`, Memory `project_element_ontologie`); sie tragen
+`element`); sie tragen
 gemeinsam einen Werkstoff der Subklasse Stahl.
 
 ### Holzbau-Bemessung mit Stahleigenschaften
@@ -339,194 +339,6 @@ Rahmen der vier Modi.
     Holzbau-Glossar nur über die Stahlgüten-Aufzählung
     referenziert; Stahlbau-spezifische Bemessung fällt
     außerhalb des App-Geltungsbereichs.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.holzbau.werkstoff`):
-
-```kotlin
-package domain.holzbau.werkstoff
-
-import domain.geometrie.Einheitsvektor
-import domain.identifikation.Produktkennzeichnung
-
-/**
- * Stahlgüte als Festigkeits-Aufzählung für Verbindungsmittel,
- * Verbinder und Verstärkungselemente.
- * Glossar: hg_werkstoff_stahl.md (Subtyp `Festigkeitsklasse` in
- * der allgemeinen Festigkeitsklassen-Hierarchie).
- */
-sealed interface Stahlguete {
-    val bezeichnung: String
-    val streckgrenze: Double  // N/mm²
-    val zugfestigkeit: Double // N/mm²
-    val normReferenz: String
-}
-
-enum class StahlgueteUnlegiert(
-    override val bezeichnung: String,
-    override val streckgrenze: Double,
-    override val zugfestigkeit: Double
-) : Stahlguete {
-    SG_4_6 ("4.6",  240.0, 400.0),
-    SG_5_6 ("5.6",  300.0, 500.0),
-    SG_6_8 ("6.8",  480.0, 600.0),
-    SG_8_8 ("8.8",  640.0, 800.0),
-    SG_10_9("10.9", 900.0, 1000.0),
-    SG_12_9("12.9", 1080.0, 1200.0);
-    override val normReferenz = "DIN EN ISO 898-1"
-}
-
-enum class StahlgueteNichtrostend(
-    override val bezeichnung: String,
-    override val streckgrenze: Double,
-    override val zugfestigkeit: Double
-) : Stahlguete {
-    A2_70("A2-70", 450.0, 700.0),
-    A4_70("A4-70", 450.0, 700.0),
-    A2_80("A2-80", 600.0, 800.0);
-    override val normReferenz = "DIN EN ISO 3506-1"
-}
-
-enum class StahlgueteBaustahl(
-    override val bezeichnung: String,
-    override val streckgrenze: Double,
-    override val zugfestigkeit: Double
-) : Stahlguete {
-    S235("S235", 235.0, 360.0),
-    S275("S275", 275.0, 410.0),
-    S355("S355", 355.0, 490.0);
-    override val normReferenz = "DIN EN 10025-1"
-}
-
-/**
- * Werkstoff Stahl: fünfte Werkstoff-Subklasse, für Verbindungsmittel,
- * Verbinder und Verstärkungselemente im Holzbau.
- * Glossar: hg_werkstoff_stahl.md
- *
- * Trägt keine Faserrichtung, keine Lagenstruktur, keine
- * Plattenrichtung. Faserrichtungs-Modus = KEINE im Sinne von
- * 3D-Isotropie (siehe hg_faserrichtungs_modus.md).
- *
- * Pflichtfelder: stahlguete plus geerbt von Werkstoff
- *                (faserrichtungsModus = KEINE, produktkennzeichnung).
- * Optionalfelder: streckgrenzeExplizit, zugfestigkeitExplizit (aus
- *                 Stahlgüte ableitbar, optional explizit
- *                 überschreibbar).
- * Plattendicken-Achse: konstant null.
- *
- * Validierung: Konstruktor `internal`; Erzeugung erfolgt
- * ausschliesslich über die Factory `WerkstoffStahl.aus(...)` mit
- * Rückgabetyp `Resultat<WerkstoffStahl, WerkstoffStahlUngueltig>`.
- * Invarianten werden in der Factory geprueft, nicht in `init+require`.
- * Bei Verletzung wird `Resultat.Fehler` zurueckgegeben; es wird nie
- * eine Exception geworfen. Vorbild: `LokalePlatzierung.aus(...)`.
- */
-data class WerkstoffStahl internal constructor(
-    override val produktkennzeichnung: Produktkennzeichnung,
-    val stahlguete: Stahlguete,
-    /** Optional explizit; default ableiten aus stahlguete. */
-    val streckgrenzeExplizit: Double? = null,
-    /** Optional explizit; default ableiten aus stahlguete. */
-    val zugfestigkeitExplizit: Double? = null
-) : Werkstoff {
-    override val faserrichtungsModus: FaserrichtungsModus
-        = FaserrichtungsModus.KEINE
-
-    override val plattendickenAchse: Einheitsvektor? = null
-
-    /** Effektive Streckgrenze (explizit oder aus Stahlgüte). */
-    val streckgrenze: Double
-        get() = streckgrenzeExplizit ?: stahlguete.streckgrenze
-
-    /** Effektive Zugfestigkeit (explizit oder aus Stahlgüte). */
-    val zugfestigkeit: Double
-        get() = zugfestigkeitExplizit ?: stahlguete.zugfestigkeit
-
-    companion object {
-        /**
-         * Erzeugt einen WerkstoffStahl. Validierung:
-         *  1. streckgrenzeExplizit, sofern gesetzt, > 0.
-         *  2. zugfestigkeitExplizit, sofern gesetzt, > 0.
-         *  3. produktkennzeichnung kompatibel mit Element-Subklasse
-         *     (EN 14592 / EN 14545 / EN 10025-1) — Folgearbeit.
-         *  4. streckgrenzeExplizit konsistent mit
-         *     stahlguete.streckgrenze innerhalb Norm-Toleranz —
-         *     Folgearbeit.
-         * Bei Verletzung wird Resultat.Fehler zurueckgegeben.
-         */
-        fun aus(
-            produktkennzeichnung: Produktkennzeichnung,
-            stahlguete: Stahlguete,
-            streckgrenzeExplizit: Double? = null,
-            zugfestigkeitExplizit: Double? = null
-        ): Resultat<WerkstoffStahl, WerkstoffStahlUngueltig> = when {
-            streckgrenzeExplizit != null && streckgrenzeExplizit <= 0.0 ->
-                Resultat.Fehler(WerkstoffStahlUngueltig.StreckgrenzeNichtPositiv)
-            zugfestigkeitExplizit != null && zugfestigkeitExplizit <= 0.0 ->
-                Resultat.Fehler(WerkstoffStahlUngueltig.ZugfestigkeitNichtPositiv)
-            else -> Resultat.Erfolg(
-                WerkstoffStahl(
-                    produktkennzeichnung,
-                    stahlguete,
-                    streckgrenzeExplizit,
-                    zugfestigkeitExplizit
-                )
-            )
-        }
-    }
-}
-
-/** Domänen-Fehlerfälle der WerkstoffStahl-Validierung (keine Exceptions). */
-sealed interface WerkstoffStahlUngueltig {
-    object StreckgrenzeNichtPositiv : WerkstoffStahlUngueltig
-    object ZugfestigkeitNichtPositiv : WerkstoffStahlUngueltig
-    // weitere Varianten (Produktkennzeichnungs-Kompatibilitaet,
-    // Stahlgueten-Konsistenz) in Folgearbeit.
-}
-```
-
-- **Einheit**: `streckgrenze` und `zugfestigkeit` in N/mm²
-  (= MPa). Anzeige in N/mm² (Holzbau-Konvention).
-- **Identität**: keine; Werteklasse / data class. Stahl-Werkstoff
-  ist durch (Stahlgüte, Produktkennzeichnung) identisch.
-- **Invarianten** (ausschliesslich in der Factory
-  `WerkstoffStahl.aus(...): Resultat<WerkstoffStahl,
-  WerkstoffStahlUngueltig>` prüfen; bei Verletzung
-  `Resultat.Fehler` zurückgeben. Kein `init+require` und keine
-  Exception; der Konstruktor ist `internal` und wird nur aus der
-  Factory aufgerufen. Vorbild: `LokalePlatzierung.aus(...)`):
-  1. `faserrichtungsModus == KEINE` (Klassen-Invariante).
-  2. `plattendickenAchse == null` (Klassen-Invariante).
-  3. `streckgrenze > 0` und `zugfestigkeit > 0`.
-  4. Wenn `streckgrenzeExplizit` gesetzt: konsistent mit
-     `stahlguete.streckgrenze` innerhalb Norm-Toleranz
-     (Folgearbeit; aktuell ohne Strikt-Prüfung).
-  5. `produktkennzeichnung` konsistent zur Element-Subklasse
-     (EN 14592 / EN 14545 / EN 10025-1).
-- **IFC-Mapping** (Persistenzschicht):
-  - `IfcMaterial.Name` ← „Stahl " + Stahlgüte (z. B. „Stahl 8.8",
-    „Stahl A2-70", „Stahl S355").
-  - `IfcMaterial.Category` ← „steel".
-  - Property Set `Pset_MaterialSteel` (IFC-Standard) mit
-    `YieldStress` ← `streckgrenze`, `UltimateStress` ←
-    `zugfestigkeit`.
-- **Edge Cases**:
-  - **Streckgrenze ohne Stahlgüte** (nur explizit): nicht
-    zulässig; Stahlgüte ist Pflichtfeld. Eine Stahlgüte ohne
-    Tabellen-Zuordnung wird über `StahlgueteIndividuell` als
-    Folge-Subtyp geführt (Folgearbeit).
-  - **Stahl mit ungewöhnlichen Eigenschaften** (Sonderlegierungen
-    z. B. Wetterfeste Stähle S355J0W): Folgearbeit; eigener
-    Stahlgüten-Eintrag.
-  - **Verzinkter / Galvanisierter Stahl**: Beschichtung ist
-    Korrosionsschutz, kein Werkstoff-Merkmal. Wird in der
-    `produktkennzeichnung` geführt (CE-Klasse mit Korrosions-
-    Stufe), nicht im Werkstoff selbst.
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `WerkstoffStahl` (deutsch, Glossarbegriff zusammengezogen, weil
-  „Werkstoff Stahl" als Token nicht zulässig).
 
 ## Quellen
 

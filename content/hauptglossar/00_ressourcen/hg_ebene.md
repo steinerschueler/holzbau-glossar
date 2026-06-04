@@ -45,11 +45,11 @@ Sei
 Dann ist die durch (p₀, n) definierte **Ebene** E ⊂ ℝ³ die Menge
 
 ```
-E(p₀, n) := { x ∈ ℝ³ | ⟨n, x − p₀⟩ = 0 }.
+E(p₀, n):= { x ∈ ℝ³ | ⟨n, x − p₀⟩ = 0 }.
 ```
 
-Äquivalent in **Hesse-Normalform**: Sei n_hat := n / ‖n‖ ∈ S² und
-d := ⟨n_hat, p₀⟩ ∈ ℝ. Dann gilt
+Äquivalent in **Hesse-Normalform**: Sei n_hat:= n / ‖n‖ ∈ S² und
+d:= ⟨n_hat, p₀⟩ ∈ ℝ. Dann gilt
 
 ```
 E(p₀, n) = { x ∈ ℝ³ | ⟨n_hat, x⟩ = d }.
@@ -60,10 +60,10 @@ repräsentiert E bis auf das Vorzeichen (n_hat, d) ↔ (−n_hat, −d) eindeuti
 
 Wesentliche abgeleitete Größen für x ∈ ℝ³:
 
-- **Vorzeichenbehafteter Abstand**: d_E(x) := ⟨n_hat, x⟩ − d (in mm).
+- **Vorzeichenbehafteter Abstand**: d_E(x):= ⟨n_hat, x⟩ − d (in mm).
 - **Unsignierter Abstand**: |d_E(x)| (in mm).
-- **Orthogonale Projektion**: π_E(x) := x − d_E(x) · n_hat.
-- **Halbräume**: H⁺ := { x | d_E(x) > 0 }, H⁻ := { x | d_E(x) < 0 }.
+- **Orthogonale Projektion**: π_E(x):= x − d_E(x) · n_hat.
+- **Halbräume**: H⁺:= { x | d_E(x) > 0 }, H⁻:= { x | d_E(x) < 0 }.
 
 ## Wohldefiniertheit
 
@@ -140,72 +140,6 @@ Anschauliche Lesarten:
     Ebene selbst, sondern wird durch zwei Ebenen aufgespannt; das
     berufssprachliche Suffix „-ebene" im Schichtnamen ist ein
     Sprach-Stolperstein und keine geometrische Aussage.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.geometrie`):
-
-```
-data class Ebene(
-    val stuetzpunkt: Punkt,   // p₀
-    val normale: Vektor       // n, ‖normale‖ > Toleranzen.NORM_EPS
-) {
-    init {
-        // ‖normale‖ > Toleranzen.NORM_EPS, sonst Entartet.NullNormale
-    }
-}
-
-// Kanonische Repräsentation (Hesse-Normalform):
-data class EbeneHesse(
-    val einheitsNormale: Vektor,  // n_hat, ‖n_hat‖ ≈ 1
-    val abstandUrsprung: Double    // d = ⟨n_hat, p₀⟩, in mm
-)
-```
-
-- **Einheit**: Stützpunkt und Abstandswert in mm. Die Normale ist
-  in der Standard-Repräsentation `Ebene` nicht zwingend normiert;
-  in `EbeneHesse` ist sie auf 1 normiert.
-- **Invarianten** (in `init` bzw. Factory):
-  1. ‖normale‖ > Toleranzen.NORM_EPS (sonst keine Ebene, sondern
-     entartet → `Entartet.NullNormale`).
-  2. Alle Komponenten finit (kein NaN, kein ±∞).
-- **Konstruktoren**:
-  - `Ebene.ausStuetzpunktUndNormale(p0, n): Resultat<Ebene, EntartetGeometrie>`
-  - `Ebene.ausDreiPunkten(p1, p2, p3): Resultat<Ebene, EntartetGeometrie>` mit
-    Fehler-Variante `Entartet.Kollinear`, falls
-    ‖(p₂ − p₁) × (p₃ − p₁)‖ ≤ Toleranzen.NORM_EPS.
-  - `Ebene.ausHesseNormalform(nHat, d): Resultat<Ebene, EntartetGeometrie>`.
-- **Edge Cases / Entartet-Varianten**:
-  - **Nullnormale** (n = 0): `Entartet.NullNormale`. Keine Ebene
-    definierbar.
-  - **Drei kollineare Punkte**: `Entartet.Kollinear`. Die Drei-
-    Punkte-Konstruktion liefert keinen eindeutigen Normalen-
-    vektor.
-  - **Nicht-finite Koordinaten**: `Entartet.NichtFinit`.
-  - **Numerisch fast parallele Inputs** (Konstruktion aus zwei
-    Strecken, deren Kreuzprodukt nahe null ist): `Entartet.FastKollinear`,
-    konfigurierbarer Schwellwert `Toleranzen.KOLLINEAR_EPS`.
-- **Abgeleitete Operationen** (`EbeneOps.kt`):
-  - `fun einheitsNormale(): Vektor` = normale.normiert().werteOder { error("Invariante 1 verletzt") }
-    (zur Laufzeit nie betroffen, durch Invariante 1 abgesichert).
-  - `fun hesse(): EbeneHesse`.
-  - `fun signierterAbstand(p: Punkt): Double` =
-    ⟨einheitsNormale(), p − stuetzpunkt⟩, in mm. Vorzeichen folgt
-    der Orientierung von `normale`.
-  - `fun abstand(p: Punkt): Double` = |signierterAbstand(p)|.
-  - `fun projizieren(p: Punkt): Punkt` = p − signierterAbstand(p) ·
-    einheitsNormale().
-  - `fun enthaelt(p: Punkt, eps: Double = Toleranzen.LAENGE_EPS):
-    Boolean` = abstand(p) ≤ eps.
-  - `fun umkehrenOrientierung(): Ebene` = Ebene(stuetzpunkt, −normale)
-    (gleiche Punktmenge, entgegengesetzte Orientierung).
-- **Bemerkung zur Orientierung**: Die Ebene als Punktmenge ist
-  nicht orientiert; der Datentyp `Ebene` trägt jedoch durch das
-  Vorzeichen von `normale` eine Orientierung mit. Konsumenten,
-  die nur die Punktmenge benötigen (z. B. Schnitttests), dürfen
-  sich darauf nicht verlassen; Konsumenten, die Halbräume
-  unterscheiden (z. B. Dachfläche, Außennormale), nutzen das
-  Vorzeichen explizit.
 
 ## Quellen
 

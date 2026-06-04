@@ -99,13 +99,13 @@ Sei
 Eine **Positionsnummer** ist ein Tripel
 
 ```
-P := (projekt, kategorie, kennung) ∈ 𝓟 × 𝓚 × 𝓢
+P:= (projekt, kategorie, kennung) ∈ 𝓟 × 𝓚 × 𝓢
 ```
 
 mit der Eindeutigkeitsbedingung
 
 ```
-∀ E₁, E₂ ∈ 𝓔 :
+∀ E₁, E₂ ∈ 𝓔:
    E₁ ≠ E₂  ∧  P(E₁), P(E₂) ≠ ⊥
    ∧  projekt(E₁) = projekt(E₂)
    ∧  kategorie(E₁) = kategorie(E₂)
@@ -119,7 +119,7 @@ Die Positionsnummer ist **mutable**: sie darf jederzeit über eine
 Aktualisierungsoperation
 
 ```
-neuvergabe : 𝓔 × 𝓢 → 𝓔,    neuvergabe(E, k') := E mit kennung := k'
+neuvergabe: 𝓔 × 𝓢 → 𝓔,    neuvergabe(E, k'):= E mit kennung:= k'
 ```
 
 geändert werden, sofern die Eindeutigkeitsbedingung im Scope
@@ -235,8 +235,7 @@ Beziehung, **nicht** in den Identifikator.
     Der Zugriff vom Element aus läuft strikt
     `element.werkstoff.produktkennzeichnung`. Die drei
     Identifikator-Spuren (UUID, Positionsnummer,
-    Produktkennzeichnung) sind eine Modellierungs-Sicht aus Memory
-    `project_bauteil_identifikation`; die Produktkennzeichnungs-
+    Produktkennzeichnung) sind eine Modellierungs-Sicht aus; die Produktkennzeichnungs-
     Spur ist indirekt über den Werkstoff erreichbar.
   - **Bezeichnung**: freier Anzeigename ohne Strukturanspruch
     (kein Eindeutigkeits-Constraint).
@@ -252,133 +251,6 @@ Beziehung, **nicht** in den Identifikator.
   - **BTLx `Part/@SingleMemberNumber`**: BTLx-Persistenz-Slot
     der Positionsnummer für identische Teile. Kein eigener
     Glossar-Begriff.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`zimmermann.domain.identifikation`):
-
-```kotlin
-package zimmermann.domain.identifikation
-
-import zimmermann.domain.Resultat
-
-/**
- * Humanlesbarer Geschäftsschlüssel eines Elements.
- * Glossar: hg_positionsnummer.md
- *
- * Konvention dieses Tools, KEINE Norm. Eindeutigkeit ist
- * scoped pro (Projekt, Kategorie). Mutable. Niemals als
- * Foreign-Key-Ziel verwenden — alle FK referenzieren
- * ausschließlich Element.uuid.
- *
- * Validierung erfolgt ausschließlich über die Factory
- * `Positionsnummer.aus(...)` mit Rückgabetyp
- * `Resultat<Positionsnummer, PositionsnummerUngueltig>`.
- * Der Konstruktor ist `internal`; `init { require(...) }` wird
- * NICHT verwendet, weil die Domänen-Schicht keine Exceptions
- * werfen darf. Vorbild:
- * `zimmermann.domain.koordinaten.LokalePlatzierung.aus(...)`.
- */
-@JvmInline
-value class Positionsnummer internal constructor(val kennung: String) {
-
-    companion object {
-        private const val MAX_LAENGE = 64
-
-        /**
-         * Erzeugt eine Positionsnummer aus einer Roh-Kennung.
-         *
-         * Liefert
-         *  - [Resultat.Erfolg] mit der Positionsnummer, wenn die Kennung
-         *    nicht leer ist, höchstens [MAX_LAENGE] Zeichen umfasst und
-         *    keine Steuerzeichen enthält,
-         *  - [Resultat.Fehler] mit der jeweiligen
-         *    [PositionsnummerUngueltig]-Variante sonst.
-         */
-        fun aus(kennung: String): Resultat<Positionsnummer, PositionsnummerUngueltig> = when {
-            kennung.isBlank() ->
-                Resultat.Fehler(PositionsnummerUngueltig.Leer)
-            kennung.length > MAX_LAENGE ->
-                Resultat.Fehler(PositionsnummerUngueltig.ZuLang)
-            kennung.any { it.isISOControl() } ->
-                Resultat.Fehler(PositionsnummerUngueltig.Steuerzeichen)
-            else ->
-                Resultat.Erfolg(Positionsnummer(kennung))
-        }
-    }
-}
-
-/** Domänen-Fehlerfälle der Positionsnummer-Validierung (keine Exceptions). */
-sealed interface PositionsnummerUngueltig {
-    object Leer : PositionsnummerUngueltig
-    object ZuLang : PositionsnummerUngueltig
-    object Steuerzeichen : PositionsnummerUngueltig
-}
-
-/**
- * Projekt- und Kategorien-Scope der Eindeutigkeit.
- * Wird in der Persistenzschicht als UNIQUE-Constraint
- * über (projektId, kategorie, positionsnummer) abgebildet.
- */
-data class PositionsnummerScope(
-    val projektId: ProjektId,
-    val kategorie: ElementKategorie
-)
-
-enum class ElementKategorie {
-    BAUTEIL, VERBINDUNGSMITTEL, VERBINDER, VERSTAERKUNGSELEMENT
-}
-```
-
-- **Einheit**: keine (humanlesbarer String).
-- **Mutabilität**: mutable. Eine Aktualisierung über
-  `Element.copy(positionsnummer = …)` (Kotlin-Datenklasse)
-  ändert keine Foreign Keys, weil keine Foreign Keys auf die
-  Positionsnummer existieren.
-- **Vergabe**:
-  - In der Praxis manuell über Werkplan oder automatisch über
-    cadwork-Pos-Nr.-Generator (gleicher Pos-Nr.-Wert für
-    geometrisch + attributiv identische Teile).
-  - In der App: optionale Vergabe-Operation
-    `Element.vergabePositionsnummer(scope, kennung)`.
-- **Eindeutigkeits-Erzwingung** (Persistenzschicht):
-  ```sql
-  UNIQUE (projekt_id, element_kategorie, positionsnummer)
-       WHERE positionsnummer IS NOT NULL;
-  ```
-  In Kotlin/in-memory: vor Insert prüfen; bei Verletzung
-  `Resultat.Fehler(KollisionInScope)`.
-- **Padding-Empfehlung**:
-  - Format `<Kürzel>-<3-stellig laufend>` (z. B. `S-007`,
-    `P-012`) für Projekte bis 1 000 Teile pro Kategorie.
-  - Format `<Kürzel>-<4-stellig laufend>` für größere Projekte.
-  - Padding ist **Empfehlung**, kein Pflicht-Constraint.
-- **IFC-/BTLx-Mapping** (Persistenzschicht):
-  - IFC-Export: `IfcElement.Tag := positionsnummer.kennung`.
-    Alternativ `Pset_BeamCommon.Reference`.
-  - BTLx-Export: `Part/@SingleMemberNumber :=
-    positionsnummer.kennung`. Identische Teile (gleiche
-    Geometrie + Attribute) teilen die SingleMemberNumber.
-- **Edge Cases**:
-  - **Element ohne Positionsnummer**: zulässig im frühen
-    Entwurfsstadium (`null`).
-  - **Renumbering**: zulässig; FK bleiben unverändert (es gibt
-    keine FK auf die Pos-Nr.).
-  - **Kollision im Scope**: vor Insert prüfen, bei Verletzung
-    `Resultat.Fehler(KollisionInScope)`. Niemals Exception.
-  - **Mehrere Elemente mit gleicher Pos-Nr. in verschiedenen
-    Kategorien**: zulässig (Scope schließt Kategorie ein), z. B.
-    ein Bauteil `S-12` und eine Verbindungsmittelreihe `S-12`
-    koexistieren.
-  - **Sonderzeichen / Unicode**: zulässig, aber empfohlen
-    UTF-8-Standard ohne Sonderzeichen außer `-`, `_`, `.` und
-    Zahlen/Buchstaben. Steuerzeichen sind verboten.
-- **Anti-Pattern-Schutz**: Die App vermeidet Klassifikations-
-  Encoding in der Pos-Nr. Empfehlung im UI: Nur Element-
-  Kategorie + laufende Nummer + optional Geschoss erlauben;
-  weitere Attribute (Material, Festigkeitsklasse, Lieferant)
-  in eigenen Feldern.
 
 ## Quellen
 

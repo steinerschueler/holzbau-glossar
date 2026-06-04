@@ -91,7 +91,7 @@ Sei
 Dann ist ein **Element** das Tupel
 
 ```
-E := (uuid, geometrie, lokale_platzierung, werkstoff,
+E:= (uuid, geometrie, lokale_platzierung, werkstoff,
       positionsnummer?, produktkennzeichnung?, bezeichnung?)
 ```
 
@@ -120,7 +120,7 @@ instanziierbar, sondern bezeichnet die Vereinigung der vier
 konkreten Subklassen-Mengen
 
 ```
-𝓔 := 𝓑 ⊎ 𝓥𝓜 ⊎ 𝓥𝓑 ⊎ 𝓥𝓢
+𝓔:= 𝓑 ⊎ 𝓥𝓜 ⊎ 𝓥𝓑 ⊎ 𝓥𝓢
 ```
 
 mit
@@ -135,7 +135,7 @@ Die geometrische Punktmenge eines Elements im
 Weltkoordinatensystem ist
 
 ```
-G_W(E) := { lokale_platzierung(p) | p ∈ G_lokal(geometrie) } ⊂ ℝ³.
+G_W(E):= { lokale_platzierung(p) | p ∈ G_lokal(geometrie) } ⊂ ℝ³.
 ```
 
 ## Wohldefiniertheit
@@ -146,21 +146,16 @@ G_W(E) := { lokale_platzierung(p) | p ∈ G_lokal(geometrie) } ⊂ ℝ³.
   (siehe `uuid`); Geometrie und lokale Platzierung sind
   Pflichtfelder mit nicht-leerer Wertemenge.
 - **Eindeutigkeit der Identität**: Innerhalb eines Modells gilt
-  ∀ E₁, E₂ : (E₁ ≠ E₂) ⇒ (E₁.uuid ≠ E₂.uuid). Die UUID ist
+  ∀ E₁, E₂: (E₁ ≠ E₂) ⇒ (E₁.uuid ≠ E₂.uuid). Die UUID ist
   technisch und persistent; siehe `uuid` für die Eindeutigkeits-
   garantie nach RFC 9562.
 - **Abstrakt, nicht instanziierbar**: Element selbst hat keine
-  Konstruktoren in der Domänen-Schicht (Kotlin: `sealed
-  interface` oder `abstract class`). Jede Instanz ist
+  Konstruktoren in der Domänen-Schicht. Jede Instanz ist
   notwendigerweise einer der vier Subklassen zugeordnet.
 - **Disjunktheit der Subklassen**: 𝓑, 𝓥𝓜, 𝓥𝓑, 𝓥𝓢 sind paarweise
   disjunkt. Die Klassifikation eines konkreten Objekts in eine der
   vier Mengen ist eine Konstruktionsentscheidung, nicht eine
-  Eigenschaft des Materials (Memory `project_element_ontologie`,
-  Designregel 2: dieselbe Vollgewindeschraube ist
-  Verbindungsmittel im Abscher-Anschluss, Verstärkungselement
-  als Querzugverstärkung — getrennt instanziiert mit eigener
-  UUID; siehe `hg_verstaerkungselement.md`).
+  Eigenschaft des Materials.
 - **Unabhängigkeit von der Wahl des lokalen Koordinatensystems**:
   Für jede zulässige Wahl des lokalen Element-Koordinatensystems
   liefert die zugehörige `lokale_platzierung` SE(3)-Transformation
@@ -172,7 +167,7 @@ G_W(E) := { lokale_platzierung(p) | p ∈ G_lokal(geometrie) } ⊂ ℝ³.
   das Fehlen einer Definition. Die Identitätspflicht wird
   ausschließlich durch `uuid` erfüllt; positionsnummer und
   produktkennzeichnung sind orthogonale Identifikator-Spuren mit
-  je eigenem Zweck (siehe Memory `project_bauteil_identifikation`).
+  je eigenem Zweck (siehe).
 - **Nicht-Zirkularität**: Die Definition verwendet ausschließlich
   die Primitive `uuid`, `weltkoordinatensystem`, `toleranzen`,
   den (angelegten) Werkstoff-Oberbegriff `werkstoff` sowie die als
@@ -212,8 +207,7 @@ selbst keine verbauten Einzelobjekte. Sie führen eine eigene
 UUID-Klasse für ihre Identität, gehören aber strukturell auf eine
 andere Hierarchie-Ebene.
 
-**Drei orthogonale Identifikator-Spuren** (Memory
-`project_bauteil_identifikation`): Jedes Element trägt potenziell
+**Drei orthogonale Identifikator-Spuren**: Jedes Element trägt potenziell
 drei verschiedene Identifikatoren mit unterschiedlichen Zwecken
 und Semantiken:
 
@@ -280,137 +274,6 @@ Positionsnummer oder Materialwechsel bricht keine Beziehung.
   - **Lokales Koordinatensystem**
     (`lokales_koordinatensystem`, eigener Eintrag folgt):
     Bezugssystem, **kein Element**.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.element`):
-
-```kotlin
-package domain.element
-
-import domain.geometrie.Geometrie         // eigener Eintrag folgt
-import domain.geometrie.LokalePlatzierung // SE(3); eigener Eintrag folgt
-import domain.holzbau.werkstoff.Werkstoff // sealed; vier Subklassen
-                                          // (axiales_holz, mehrlagenholz,
-                                          //  gerichteter_plattenwerkstoff,
-                                          //  isotroper_plattenwerkstoff)
-import domain.identifikation.Positionsnummer
-import domain.identifikation.Produktkennzeichnung
-import java.util.UUID
-
-/**
- * Wurzel der App-Ontologie für verbaute Einzelobjekte.
- * Glossar: hg_element.md
- *
- * Abstrakt, nicht direkt instanziierbar. Konkrete Subklassen sind
- * Bauteil, Verbindungsmittel, Verbinder, Verstärkungselement.
- *
- * Pflichtfelder: uuid, geometrie, lokalePlatzierung, werkstoff.
- * Optionalfelder: positionsnummer, produktkennzeichnung, bezeichnung.
- *
- * Foreign-Key-Regel (siehe Memory project_bauteil_identifikation):
- * Verweise aus Verbindungen, Aggregaten, BCF-Issues etc.
- * referenzieren ausschließlich `uuid`, niemals `positionsnummer`
- * oder `produktkennzeichnung`.
- */
-sealed interface Element {
-    /** Technischer Surrogatschlüssel (UUID v7). Pflicht, persistent. */
-    val uuid: UUID
-
-    /** Geometrische Repräsentation im lokalen Element-Koordinatensystem. */
-    val geometrie: Geometrie
-
-    /** SE(3)-Transformation lokal → W. */
-    val lokalePlatzierung: LokalePlatzierung
-
-    /** Werkstoff-Klasse. Glossar: hg_werkstoff.md (sealed, 4 Subklassen). */
-    val werkstoff: Werkstoff
-
-    /** Humanlesbarer Geschäftsschlüssel (mutable, scoped). */
-    val positionsnummer: Positionsnummer?
-
-    /** Normativ kodifizierte Charge-Identifikation. */
-    val produktkennzeichnung: Produktkennzeichnung?
-
-    /** Freier Anzeigename. */
-    val bezeichnung: String?
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant;
-  lokale Platzierung als SE(3)-Element (Rotation + Translation).
-- **Identität**:
-  - `uuid` ist Pflicht und wird **bei Objekterzeugung
-    systemseitig** vergeben (UUID v7 nach RFC 9562, siehe `uuid`).
-    Niemals händisch setzen.
-  - `uuid` wird nach der Erzeugung **niemals geändert**, auch
-    nicht bei IFC-/BTLx-Re-Import (externe GUIDs landen in
-    eigenen Mapping-Feldern, nicht in `uuid`).
-  - **Foreign Keys aller anderen Domänen-Klassen** referenzieren
-    ausschließlich `uuid` — niemals `positionsnummer` oder
-    `produktkennzeichnung`. Diese Regel ist die Schutzlinie der
-    referentiellen Integrität.
-- **Subklassenpflicht**: `Element` ist `sealed`; jede Instanz ist
-  notwendigerweise einer der vier konkreten Subklassen
-  Bauteil/Verbindungsmittel/Verbinder/Verstärkungselement
-  zugeordnet (Glossareinträge angelegt; Bauteil-Umstellung auf
-  `oberbegriff: element` im Update-Task #16).
-- **Optionalität (normativ)**:
-  - `positionsnummer: Positionsnummer?` — `null` zulässig im
-    frühen Entwurfsstadium; wird typischerweise erst bei
-    Werkplan-Erstellung vergeben. Niemals als Default-String
-    setzen.
-  - `produktkennzeichnung: Produktkennzeichnung?` — `null`
-    zulässig solange noch keine Charge zugewiesen ist; wird bei
-    Materialdisposition gesetzt.
-  - `bezeichnung: String?` — `null` zulässig; Anzeige fällt dann
-    auf `positionsnummer` oder UUID zurück.
-- **Invarianten** (in Fabrikfunktionen / `init` der Subklassen
-  prüfen, bei Verletzung `Resultat.Fehler` bzw. `Entartet`-Variante;
-  niemals Exception werfen):
-  1. `uuid` ist gesetzt und kein Null-UUID.
-  2. `geometrie` ist nicht-degeneriert (Subklassen-spezifisch,
-     siehe je Subklasse-Eintrag).
-  3. `lokalePlatzierung` ist eine gültige SE(3)-Transformation
-     (Rotation orthogonal, Determinante +1).
-  4. `werkstoff` ist gesetzt.
-- **IFC-Mapping** (Persistenzschicht, je Subklasse explizit
-  dokumentieren):
-  | Subklasse           | IFC-Klasse                                 | BTLx                                |
-  |---------------------|--------------------------------------------|-------------------------------------|
-  | Bauteil             | IfcBeam / IfcColumn / IfcMember / IfcPlate | Part mit @GUID                      |
-  | Verbindungsmittel   | IfcMechanicalFastener                      | Processing oder eigenes Part        |
-  | Verbinder           | IfcDiscreteAccessory                       | eigenes Part oder Reference         |
-  | Verstärkungselement | IfcMechanicalFastener + Pset_Function      | wie VM + Funktionsattribut          |
-  - `uuid` → `IfcRoot.GlobalId` (22-stellig Base64 nach
-    ISO/IEC 9834-8) bzw. BTLx `Part/@GUID`.
-  - `positionsnummer` → `IfcElement.Tag` bzw. BTLx
-    `SingleMemberNumber`.
-  - `produktkennzeichnung` → IFC Material-Resource Property Sets
-    (`Pset_MaterialWoodBasedBeam`, `Pset_MaterialWoodBasedPanel`)
-    bzw. BTLx Material-Element.
-- **Edge Cases**:
-  - **Element ohne lokale Platzierung**: nicht erlaubt;
-    mindestens Identität in SE(3) (lokales System ≡ W) ist
-    Pflicht.
-  - **Element ohne Werkstoff**: nicht erlaubt; jeder verbaute
-    Gegenstand hat eine Materialklasse (Holz, Stahl,
-    Verbindungsmittelstahl, …). In sehr frühen Entwurfsphasen
-    kann ein Platzhalter-Werkstoff `Werkstoff.UNBEKANNT`
-    geführt werden, der vor Bemessung aufgelöst sein muss.
-  - **Aggregate**: NICHT als Element instanziieren; eigene
-    Klassen `Verbindung`, `Tragwerk`, `Dach`, `BauteilAggregat`
-    (Folgearbeit).
-  - **Versionierung / Revisionen**: Eine Modelländerung ohne
-    Identitätsänderung lässt `uuid` unverändert (mutiertes
-    Element). Eine konstruktive Neuanlage als Ersatz erzeugt
-    eine neue UUID. Die Wahl zwischen event-sourced und
-    temporal-versioniert ist Folgearbeit (Memory
-    `project_bauteil_identifikation`).
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `Element` (deutsch, Glossarbegriff); Subklassen heißen
-  `Bauteil`, `Verbindungsmittel`, `Verbinder`,
-  `Verstaerkungselement`.
 
 ## Quellen
 

@@ -38,7 +38,7 @@ quellenkonflikt: |
     Plattendimension (Plattendicke) angibt.
   - **Default-Konvention** (analog zur Bauteilachsen-Konvention bei
     stabförmigen Bauteilen `axiales_holz`):
-    `plattendicken_achse := bauteil.lokale_z_achse`,
+    `plattendicken_achse:= bauteil.lokale_z_achse`,
     wobei die lokale z-Achse des Bauteils per Konstruktionsregel
     rechtwinklig zu den beiden Plattenformat-Richtungen liegt.
     Diese Default-Regel ist prüfbar; nach Auflösung muss
@@ -46,8 +46,7 @@ quellenkonflikt: |
   - Die Vorzeichenkonvention („Plattendicken-Achse zeigt von der
     Unterseite zur Oberseite des Bauteils") ist auf der Bauteil-
     Ebene zu setzen, weil viele Plattenwerkstoffe weder eine
-    ausgezeichnete Ober- noch Unterseite haben (Memory
-    `project_plattenwerkstoffe`). Im allgemeinen Fall ist
+    ausgezeichnete Ober- noch Unterseite haben. Im allgemeinen Fall ist
     `plattendicken_achse` bis auf Vorzeichen eindeutig.
 ---
 
@@ -72,14 +71,14 @@ Dann ist die **Plattendicken-Achse** des Plattenbauteils B eine
 Annotation
 
 ```
-plattendicken_achse(B) := e_hat ∈ S²,
+plattendicken_achse(B):= e_hat ∈ S²,
 ```
 
 mit der Eigenschaft, dass die **Plattenebene** als affine Ebene
 durch den Bauteilbezugspunkt definiert ist als
 
 ```
-Π(B) := { p ∈ ℝ³ | ⟨p − p_0, e_hat⟩ = 0 }
+Π(B):= { p ∈ ℝ³ | ⟨p − p_0, e_hat⟩ = 0 }
 ```
 
 (p_0 ein Bezugspunkt auf der Mittelebene des Bauteils;
@@ -92,7 +91,7 @@ zur Bauteilachsen-Konvention für stabförmige Bauteile):
 Wenn plattendicken_achse am Werkstoff nicht explizit gesetzt,
 gilt für ein Plattenbauteil B mit Werkstoff-Modus ∈
 {STRUKTURIERT, SCHWACH, KEINE}:
-  plattendicken_achse(B) := bauteil_lokale_z_achse(B).
+  plattendicken_achse(B):= bauteil_lokale_z_achse(B).
 ```
 
 Die lokale z-Achse des Plattenbauteils ist per Konstruktionsregel
@@ -124,8 +123,7 @@ Eintrag siehe `plattenlaengsrichtung`, `haupttragrichtung`,
   festgelegt ist. Bei Plattenwerkstoffen mit ausgezeichneter Ober-/
   Unterseite (z. B. beschichtete Platten, Akustikplatten mit
   Strukturschicht) ist die Vorzeichenkonvention „e_hat zeigt von der
-  Unterseite zur Oberseite". Bei seitenisotropen Platten (Memory
-  `project_plattenwerkstoffe`) ist die Vorzeichenwahl konventionell
+  Unterseite zur Oberseite". Bei seitenisotropen Platten ist die Vorzeichenwahl konventionell
   und beim Bauteil zu dokumentieren; alle Bemessungs-Eigenschaften
   sind vorzeicheninvariant.
 - **Pflichtcharakter**: Bei Werkstoff-Modus ∈ {STRUKTURIERT,
@@ -140,7 +138,7 @@ Eintrag siehe `plattenlaengsrichtung`, `haupttragrichtung`,
   `plattenlaengsrichtung`, `haupttragrichtung`, `nebentragrichtung`
   ist Konstruktions-Invariante; eine Verletzung ist
   Validierungsfehler.
-- **Default-Auflösung**: Die Konvention `plattendicken_achse :=
+- **Default-Auflösung**: Die Konvention `plattendicken_achse:=
   bauteil.lokale_z_achse` ist eine Konstruktionsregel, kein
   Erlaubnis-Mechanismus zum Weglassen. Nach Auflösung muss ein
   konkreter Vektor in S² vorliegen.
@@ -186,8 +184,7 @@ Diese Default-Regel ist Industriepraxis (cadwork, Cadwork Lexikon
 ### Vorzeichen — Ober- vs. Unterseite
 
 Bei vielen Plattenwerkstoffen (Spanplatte, MDF, OSB ohne
-Sichtseite) sind Ober- und Unterseite gleichwertig (Memory
-`project_plattenwerkstoffe`). In diesem Fall ist das Vorzeichen
+Sichtseite) sind Ober- und Unterseite gleichwertig. In diesem Fall ist das Vorzeichen
 der Plattendicken-Achse konventionell. Bei beschichteten Platten,
 Akustikplatten mit Strukturschicht oder bei BSP mit
 ausgezeichneter Sichtseite (Sichtqualität AB / Industriequalität
@@ -235,69 +232,6 @@ NSI) wird das Vorzeichen physikalisch festgelegt.
     (z. B. waagrechte CLT-Decke: Plattendicken-Achse vertikal;
     senkrechte BSP-Wand: Plattendicken-Achse horizontal).
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.holzbau.werkstoff`):
-
-```kotlin
-package domain.holzbau.werkstoff
-
-import domain.geometrie.Einheitsvektor
-
-/**
- * Plattendicken-Achse eines Plattenwerkstoffs/Plattenbauteils:
- * Einheitsvektor in der Rolle 'rechtwinklig zur Plattenebene'.
- * Glossar: hg_plattendicken_achse.md
- *
- * Strukturell ein Wrapper um Einheitsvektor, der die semantische
- * Rolle typsicher kommuniziert. Pflichtfeld bei Werkstoff-Modus
- * STRUKTURIERT/SCHWACH/KEINE; nicht definiert bei Modus HART.
- *
- * Default-Konvention: Wenn am Werkstoff nicht explizit gesetzt,
- * gilt plattendicken_achse := bauteil.lokale_z_achse.
- */
-@JvmInline
-value class PlattendickenAchse(val richtung: Einheitsvektor) {
-    val x: Double get() = richtung.x
-    val y: Double get() = richtung.y
-    val z: Double get() = richtung.z
-
-    operator fun unaryMinus(): PlattendickenAchse =
-        PlattendickenAchse(-richtung)
-}
-```
-
-- **Einheit**: dimensionslos (geerbt von `einheitsvektor`).
-- **Invariante**: alle Invarianten von `Einheitsvektor`,
-  insbesondere | ‖e_hat‖² − 1 | ≤ Toleranzen.NORM_EPS.
-- **Vorzeichenkonvention**: Bei seitenisotropen Plattenwerkstoffen
-  (Memory `project_plattenwerkstoffe`) konventionell; bei Platten
-  mit ausgezeichneter Sichtseite physikalisch festgelegt
-  („Plattendicken-Achse zeigt von der Unterseite zur Oberseite").
-  Vorzeichen ist beim verwendenden Bauteil zu dokumentieren.
-- **Konsistenzprüfungen** (am verwendenden Werkstoff in Fabrik-
-  funktionen / `init` prüfen, bei Verletzung `Resultat.Fehler`,
-  niemals Exception):
-  1. Norm-Invariante (geerbt).
-  2. Orthogonalität zu allen anderen Plattenrichtungen
-     (Plattenlängsrichtung, Haupttragrichtung, Nebentragrichtung)
-     innerhalb WINKEL_EPS.
-- **Edge Cases**:
-  - **Plattendicken-Achse bei Stabbauteil** (`axiales_holz`):
-    nicht definiert; `Werkstoff.plattendickenAchse == null`
-    (Klassen-Invariante).
-  - **Fehlende Plattendicken-Achse nach Default-Auflösung**:
-    `Entartet.PlattendickenAchseNichtAufloesbar` (z. B. bei
-    Bauteilen ohne wohldefinierte lokale z-Achse).
-  - **Plattendicken-Achse parallel zur Plattenlängsrichtung**:
-    geometrisch entartet; Validierungsfehler.
-- **Verwendungsregel**: Funktionen, die werkstoff- oder platten-
-  ebene-relative Größen berechnen (Lagenstruktur-Stapelung,
-  Plattenfestigkeiten f_m,0/f_m,90), nehmen `PlattendickenAchse`
-  als Parametertyp und nicht den nackten `Einheitsvektor`. Dadurch
-  wird die semantische Rolle am API-Rand sichtbar.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -321,7 +255,7 @@ value class PlattendickenAchse(val richtung: Einheitsvektor) {
 
 **Korpus (nicht autoritativ):**
 
-- Memory `project_plattenwerkstoffe` (interner Projektkontext,
+- (interner Projektkontext,
   abgerufen 2026-05-08).
 - BTLx 2.x Specification (design2machine, Stand 2024).
 - cadwork Lexikon (abgerufen 2026-05-08).

@@ -28,7 +28,7 @@ quellen_sekundär:
   - "AGZ (Arbeitsgemeinschaft Ziegelindustrie Schweiz): Mindestdachneigungen 2022."
   - "Holzbau Deutschland, Merkblatt 'Begriffe und Klassifizierungen für den Holzbau'."
   - "Polybau / suissetec: Wegleitung zur Norm SIA 232/1."
-  - "Recherchebericht docs/recherche/2026-05-14_hg_eindeckung.md."
+  - "Recherchebericht [intern]."
 quellenkonflikt: |
   **Trennung Dachdeckung ↔ Dachabdichtung.** Die DACH-Normen ziehen
   seit der Ausgabe 2019 von VOB/C eine **harte Linie** zwischen
@@ -147,7 +147,7 @@ Dachaufbaus A genau dann, wenn
 Die **Eindeckung** des Daches ist dann das Paar
 
 ```
-Eindeckung := (S_k, σ)
+Eindeckung:= (S_k, σ)
 ```
 
 mit S_k als der Schicht-Funktionsklasse (im Sinne der
@@ -334,110 +334,6 @@ Unterscheidung wird in der App über die `dachneigung` und den
     Eindeckungselemente) gehören dem Dachaufbau an, aber
     nicht der Eindeckung selbst.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-package domain.bauteil
-
-import domain.geometrie.Polygon
-import domain.Toleranzen
-import kotlin.math.PI
-
-/**
- * Eindeckung als äußerste Schicht eines geneigten Daches.
- * Glossar: hg_eindeckung.md
- *
- * Sealed mit Subtypen pro Material; jeder Subtyp trägt seine
- * material-spezifische Mindestdachneigung (alpha_min) und
- * Regeldachneigung (alpha_rdn) als Konstante.
- */
-sealed class Eindeckung {
-    abstract val alphaMin: Double          // Radiant, > 0
-    abstract val alphaRdn: Double          // Radiant, >= alphaMin
-    abstract val materialKennung: String   // Produkt-/Norm-Identifikator
-
-    /** Test, ob die Eindeckung auf der gegebenen Dachfläche
-     *  zulässig (>= MDN) bzw. innerhalb der Regelausführung
-     *  (>= RDN) ist. */
-    fun zulaessig(neigung: Double): Boolean =
-        neigung >= alphaMin - Toleranzen.WINKEL_EPS
-
-    fun innerhalbRegelausfuehrung(neigung: Double): Boolean =
-        neigung >= alphaRdn - Toleranzen.WINKEL_EPS
-}
-
-data class Ziegeleindeckung(
-    val ziegeltyp: Ziegeltyp,
-    override val materialKennung: String
-) : Eindeckung() {
-    override val alphaMin: Double = 10.0 * PI / 180.0    // ZVDH MDN Ziegel
-    override val alphaRdn: Double get() = ziegeltyp.rdn
-}
-
-data class Stehfalzeindeckung(
-    val blechmaterial: Blechmaterial,
-    override val materialKennung: String
-) : Eindeckung() {
-    override val alphaMin: Double = 3.0 * PI / 180.0
-    override val alphaRdn: Double = 7.0 * PI / 180.0
-}
-
-// weitere Subtypen analog: Schiefereindeckung,
-// Trapezprofileindeckung, Bitumenschindeleindeckung,
-// Holzschindeleindeckung, Reeteindeckung,
-// Solareindeckung, Glaseindeckung
-```
-
-- **Einheit:** Mindest- und Regeldachneigung intern in
-  **Radiant** (Double). Anzeige in Grad oder Prozent
-  ausschließlich am API-Rand (analog zu `dachneigung`).
-- **Invarianten** (in `init` prüfen, bei Verletzung
-  `Resultat.Fehler` bzw. `Entartet`-Variante zurückgeben,
-  niemals Exception werfen):
-  1. `alphaMin > Toleranzen.WINKEL_EPS` (positive
-     Mindestneigung; Flachdach-Material ist keine Eindeckung
-     im Sinne dieser Definition) ⇒ sonst
-     `Entartet.FlachdachMaterial`.
-  2. `alphaRdn >= alphaMin - Toleranzen.WINKEL_EPS`
-     (Regeldachneigung nicht unter Mindestdachneigung) ⇒
-     sonst `Entartet.RdnUnterMdn`.
-  3. `alphaMin < PI / 2.0` (Mindestneigung kleiner als
-     Senkrechte) ⇒ sonst `Entartet.SenkrechteEindeckung`.
-- **Edge Cases:**
-  - **Flachdach (α = 0):** keine Eindeckung; die äußerste
-    Schicht ist eine `dachabdichtung`. Wird durch Bedingung 2
-    der mathematischen Definition (α ≥ α_min > 0) und durch
-    `Entartet.FlachdachMaterial` erfasst.
-  - **Zwischenbereich MDN ≤ α < RDN:** Eindeckung zulässig,
-    aber außerhalb der Regelausführung; erfordert
-    Zusatzmaßnahmen am Unterdach. Wird durch
-    `innerhalbRegelausfuehrung()` als Boolean-Sicht
-    ausgewiesen, nicht als harter Fehler.
-  - **BIPV / Indach-PV als Eindeckung:** zulässig; das Modul
-    übernimmt die regensichere Funktion und ist selbst eine
-    Eindeckung. Aufdach-PV ist demgegenüber **keine**
-    Eindeckung (kein Subtyp).
-  - **Material-spezifische RDN- und MDN-Werte** sind
-    Konstante des jeweiligen Subtyps; die normativen Werte
-    der ZVDH-Fachregeln bzw. der AGZ-Tabelle werden als
-    Default vorgehalten und können produkt-spezifisch
-    überschrieben werden.
-- **IFC-Mapping** (am API-Rand des IFC-Exporters, nicht im
-  Datentyp selbst): `IfcCovering` mit `PredefinedType =
-  ROOFING`; Material-Schichtung über
-  `IfcRelAssociatesMaterial` und `IfcMaterialLayerSet`;
-  Verknüpfung zum `IfcRoof`-Aggregat über
-  `IfcRelCoversBldgElements`.
-- **Beziehung zum `dachaufbau`-Datentyp:** Die Eindeckung
-  ist die `schichten.last()` eines `Dachaufbau`-Tupels mit
-  `funktion = SchichtFunktion.EINDECKUNG`. Die sealed-
-  Hierarchie hier ergänzt das materialspezifische Verhalten,
-  das `Schicht` allein nicht trägt; ein `Dachaufbau` mit
-  Eindeckung referenziert den `Eindeckung`-Subtyp über das
-  `material`-Feld der äußersten `Schicht`.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -490,7 +386,7 @@ data class Stehfalzeindeckung(
 **Korpus (nicht autoritativ):**
 
 - Recherchebericht
-  `docs/recherche/2026-05-14_hg_eindeckung.md`.
+  [intern].
 - BauNetz Wissen: „Dachabdichtungsnorm DIN 18531",
   „Normen zu Deckungsmaterialien".
 - Wissenwiki: „Regeldachneigung", „Fachregel für

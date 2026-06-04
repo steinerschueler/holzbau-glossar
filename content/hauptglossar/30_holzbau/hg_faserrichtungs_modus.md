@@ -39,7 +39,7 @@ quellenkonflikt: |
     Festigkeit pro Beanspruchungsart in der Plattenebene; quasi-
     isotrop).
 
-  Eigene Festlegung in diesem Glossar (Memory `project_faserrichtung_modi`):
+  Eigene Festlegung in diesem Glossar:
 
   - Der **Faserrichtungs-Modus** ist ein Aufzählungstyp mit genau vier
     Werten { HART, STRUKTURIERT, SCHWACH, KEINE }, die die vier
@@ -96,13 +96,13 @@ Sei
 Dann ist der **Faserrichtungs-Modus** der Aufzählungstyp
 
 ```
-𝓜𝓜 := { HART, STRUKTURIERT, SCHWACH, KEINE }
+𝓜𝓜:= { HART, STRUKTURIERT, SCHWACH, KEINE }
 ```
 
 mit der Zuordnungsfunktion
 
 ```
-faserrichtungs_modus : 𝓦 → 𝓜𝓜,
+faserrichtungs_modus: 𝓦 → 𝓜𝓜,
                      w ↦ faserrichtungs_modus(w),
 ```
 
@@ -182,8 +182,7 @@ ungenügend zur Unterscheidung von `isotroper_plattenwerkstoff` und
 - **Konsistenz Modus ↔ Pflichtfelder**: Das Pflichtfeld-Profil je
   Modus ist eine **harte Invariante** der jeweiligen Werkstoff-
   Subklasse, nicht eine Empfehlung. Eine Modus-Pflichtfeld-Verletzung
-  ist Validierungsfehler, kein Warning (Memory
-  `project_faserrichtung_modi`).
+  ist Validierungsfehler, kein Warning.
 - **Nicht-Zirkularität**: Die Definition verwendet ausschließlich den
   Begriff `werkstoff` als Träger der Modus-Zuordnung sowie
   `toleranzen`. Sie kommt nicht in ihrer eigenen Definition vor.
@@ -282,61 +281,6 @@ Werkstoff, weil:
     der Faserrichtungs-Modus ist eine konkrete, vierwertige
     Diskretisierung der Anisotropie-Klasse, kein Kontinuum.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.holzbau.werkstoff`):
-
-```kotlin
-package domain.holzbau.werkstoff
-
-/**
- * Faserrichtungs-Modus eines Werkstoffs.
- * Glossar: hg_faserrichtungs_modus.md — Memory project_faserrichtung_modi.
- *
- * Bestimmt das Pflichtfeld-Profil der Faserrichtungs-Annotationen
- * der Werkstoff-Subklasse:
- *   HART          -> 1 Vektor faserrichtung
- *   STRUKTURIERT  -> Lagenstruktur >= 3 + Haupttragrichtung
- *   SCHWACH       -> 1 Vektor plattenlaengsrichtung
- *   KEINE         -> keine Faserrichtungs-Annotation; getragen sowohl
- *                    von IsotroperPlattenwerkstoff (in Plattenebene
- *                    quasi-isotrop, mit plattendickenAchse) als auch
- *                    von WerkstoffStahl (3D-isotrop, ohne
- *                    plattendickenAchse).
- *
- * Partielle Diskriminante des sealed-Werkstoff-Typs: HART, STRUKTURIERT
- * und SCHWACH identifizieren ihre Subklasse eindeutig; KEINE wird von
- * zwei Subklassen geteilt, deren Disjunktheit über die sealed-Identität
- * getragen wird.
- */
-enum class FaserrichtungsModus { HART, STRUKTURIERT, SCHWACH, KEINE }
-```
-
-- **Einheit**: dimensionslos (Aufzählung).
-- **Identität**: keine. Aufzählungstyp ohne Felder.
-- **Invarianten**: keine über die Aufzählung selbst hinaus; die
-  Modus-Pflichtfeld-Konsistenz wird in der jeweiligen Werkstoff-
-  Subklasse erzwungen (siehe `axiales_holz`, `mehrlagenholz`,
-  `gerichteter_plattenwerkstoff`, `isotroper_plattenwerkstoff`,
-  `werkstoff_stahl`).
-- **IFC-Mapping** (Persistenzschicht): nicht direkt abgebildet; der
-  Modus ergibt sich implizit aus der `IfcMaterial.Category` bzw. der
-  Wahl von `Pset_MaterialWoodBasedBeam` vs.
-  `Pset_MaterialWoodBasedPanel`.
-- **Validierungsregel** (zur Konstruktionszeit der Werkstoff-
-  Subklasse): Die Konsistenz Modus ↔ Subklasse ist Klassen-
-  Invariante. Bei Verletzung `Resultat.Fehler` bzw.
-  `Entartet.ModusSubklassenInkonsistenz`; niemals Exception.
-- **Edge Cases**:
-  - **Unbekannter Werkstoff** (Hybrid-Werkstoffe, neuartige Komposite):
-    aktuell nicht abgedeckt. Folgearbeit `werkstoff_hybrid` mit
-    eigenem Modus oder Modus-Erweiterung.
-  - **Stahl als Werkstoff** (`werkstoff_stahl`): Modus KEINE im Sinne
-    von 3D-Isotropie. Die Stahl-Klasse trägt keinerlei Faserrichtungs-,
-    Lagen- oder Plattenrichtungs-Felder und keine Plattendicken-Achse
-    (siehe `werkstoff_stahl`).
-
 ## Quellen
 
 **Primär (normativ):**
@@ -363,7 +307,7 @@ enum class FaserrichtungsModus { HART, STRUKTURIERT, SCHWACH, KEINE }
 
 **Korpus (nicht autoritativ):**
 
-- Memory `project_faserrichtung_modi` (interner Projektkontext,
+- (interner Projektkontext,
   Memory-System, abgerufen 2026-05-08).
 - Wikipedia, Lemmata „Anisotropie", „Holzwerkstoff" (abgerufen
   2026-05-08).

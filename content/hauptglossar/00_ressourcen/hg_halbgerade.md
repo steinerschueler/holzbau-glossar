@@ -44,7 +44,7 @@ Dann ist die durch (p₀, v) definierte **Halbgerade** h ⊂ ℝ³ die
 Menge
 
 ```
-h(p₀, v) := { p₀ + t · v ∈ ℝ³ | t ∈ [0, ∞) }.
+h(p₀, v):= { p₀ + t · v ∈ ℝ³ | t ∈ [0, ∞) }.
 ```
 
 Die Halbgerade ist **gerichtet**: anders als bei der Geraden gilt
@@ -55,7 +55,7 @@ Ursprungspunkt p₀ (h(p₀, v) ∩ h(p₀, −v) = {p₀}).
 Wesentliche abgeleitete Größen:
 
 - **Trägergerade**: g(p₀, v) ⊃ h(p₀, v).
-- **Einheits-Richtung**: v_hat := v / ‖v‖.
+- **Einheits-Richtung**: v_hat:= v / ‖v‖.
 - **Komplementäre Halbgerade**: h(p₀, −v).
 
 ## Wohldefiniertheit
@@ -114,41 +114,6 @@ Sie ist von der Strecke (zwei Endpunkte) und der Geraden
   - **Vektor** (`vektor`): ortsfreie Verschiebung; eine Halbgerade
     ist die ortsgebundene Realisierung einer „Richtung ab einem
     Punkt".
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.geometrie`):
-
-```
-data class Halbgerade(
-    val ursprung: Punkt,      // p₀
-    val richtung: Vektor      // v, ‖richtung‖² > Toleranzen.NORM_EPS
-) {
-    init {
-        // ‖richtung‖² > Toleranzen.NORM_EPS, sonst Entartet.Nullrichtung
-    }
-}
-```
-
-- **Einheit**: Ursprungs-Koordinaten und Richtungskomponenten in mm
-  (Double). Die Richtung ist intern nicht zwingend normiert.
-- **Invarianten**:
-  1. ‖richtung‖² > Toleranzen.NORM_EPS.
-  2. Alle Komponenten finit.
-- **Edge Cases / Entartet-Varianten**:
-  - **Nullrichtung**: `Entartet.Nullrichtung`.
-  - **Nicht-finite Koordinaten**: `Entartet.NichtFinit`.
-- **Abgeleitete Operationen** (`HalbgeradeOps.kt`):
-  - `fun einheitsRichtung(): Vektor`.
-  - `fun punktAuf(t: Double): Punkt` für alle reellen t. Für t < 0
-    liegt das Ergebnis nicht auf der Halbgeraden, sondern auf der
-    komplementären Halbgeraden; der Aufrufer kann das mit
-    `enthaelt(p)` prüfen, falls nötig.
-  - `fun traegergerade(): Gerade` = Gerade(ursprung, richtung).
-  - `fun komplement(): Halbgerade` = Halbgerade(ursprung, −richtung).
-  - `fun enthaelt(p: Punkt, eps: Double = Toleranzen.LAENGE_EPS): Boolean`
-    = (a) `traegergerade().enthaelt(p, eps)` und (b)
-    `⟨p − ursprung, einheitsRichtung()⟩ ≥ −eps`.
 
 ## Quellen
 

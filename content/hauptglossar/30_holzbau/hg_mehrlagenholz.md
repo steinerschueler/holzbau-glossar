@@ -31,7 +31,7 @@ quellenkonflikt: |
   lagenweise um 90° wechseln".
 
   Eigene Festlegung in diesem Glossar (Konvention zur Klassifikation
-  der Faserrichtungs-Modi, Memory `project_faserrichtung_modi`):
+  der Faserrichtungs-Modi):
 
   - **Mehrlagenholz** ist die Glossar-interne Klassen-Bezeichnung für
     diejenige Werkstoff-Klasse, deren konstitutives Merkmal eine
@@ -84,7 +84,7 @@ L = (ℓ₁, …, ℓₙ) mit n ≥ 3.
 Dann ist ein **Mehrlagenholz** das Tupel
 
 ```
-ML := (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse,
+ML:= (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse,
        lagenstruktur, haupttragrichtung, nebentragrichtung)
 ```
 
@@ -279,104 +279,6 @@ konstitutive Merkmal des Mehrlagenholzes ist die
     `axiales_holz`. Bei Mehrlagenholz wird die geometrische
     Annotation pro Lage geführt, nicht als globale Bauteil-
     Annotation.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.holzbau.werkstoff`):
-
-```kotlin
-package domain.holzbau.werkstoff
-
-import domain.geometrie.Einheitsvektor
-import domain.holzbau.Lagenstruktur     // eigener Eintrag folgt
-import domain.identifikation.Produktkennzeichnung
-
-/**
- * Mehrlagenholz: Werkstoff-Klasse mit mindestens drei kreuzweise
- * verleimten Lagen mit lagenweise wechselnder Faserrichtung
- * (Faserrichtungs-Modus STRUKTURIERT).
- * Glossar: hg_mehrlagenholz.md
- *
- * Subklassen: Brettsperrholz / CLT, Sperrholz, Multiplex
- *             (eigene Folge-Klassen).
- *
- * Pflichtfelder: lagenstruktur (n >= 3), haupttragrichtung,
- *                nebentragrichtung, plattendickenAchse.
- *
- * Schnittwinkel-Konsequenz: keine einheitliche Bauteil-Faserrichtung;
- * Visualisierung muss alle Lagen mit ihren Faserrichtungen darstellen.
- */
-data class Mehrlagenholz(
-    override val produktkennzeichnung: Produktkennzeichnung,
-    val lagenstruktur: Lagenstruktur,
-    val haupttragrichtung: Einheitsvektor,
-    val nebentragrichtung: Einheitsvektor,
-    override val plattendickenAchse: Einheitsvektor
-) : Werkstoff {
-    override val faserrichtungsModus: FaserrichtungsModus
-        = FaserrichtungsModus.STRUKTURIERT
-
-    init {
-        // 1. lagenstruktur.lagen.size >= 3
-        // 2. ⟨haupttragrichtung, plattendickenAchse⟩ <= WINKEL_EPS
-        //    (haupttragrichtung orthogonal zur Plattendicken-Achse)
-        // 3. ⟨nebentragrichtung, plattendickenAchse⟩ <= WINKEL_EPS
-        //    UND ⟨nebentragrichtung, haupttragrichtung⟩ <= WINKEL_EPS
-        // 4. nebentragrichtung == plattendickenAchse × haupttragrichtung
-        //    (algebraisch konsistent)
-        // 5. Klassische CLT-Symmetrie:
-        //    optional, aber wenn nicht erfüllt -> Marker
-        //    "abweichender Lagenaufbau" gesetzt.
-        // 6. Decklage steuert Haupttragrichtung:
-        //    lagenstruktur.lagen.first().faserrichtung == haupttragrichtung
-        //    (bis auf Vorzeichen).
-    }
-}
-```
-
-- **Einheit**: Vektoren dimensionsloser Einheitsvektor in W;
-  Lagendicken in mm.
-- **Identität**: Werkstoff trägt keine UUID; Identität auf
-  Element-Ebene.
-- **Invarianten** (in Fabrikfunktionen / `init` prüfen, bei
-  Verletzung `Resultat.Fehler` bzw. `Entartet`-Variante; niemals
-  Exception):
-  1. `faserrichtungsModus == STRUKTURIERT` (Klassen-Invariante).
-  2. `lagenstruktur.lagen.size >= 3`.
-  3. `haupttragrichtung` orthogonal zu `plattendickenAchse`
-     (innerhalb WINKEL_EPS).
-  4. `nebentragrichtung == plattendickenAchse × haupttragrichtung`
-     (algebraisch konsistent, NORM_EPS-Toleranz).
-  5. Decklage-Konsistenz: `lagenstruktur.lagen.first().faserrichtung`
-     stimmt mit `haupttragrichtung` überein (bis auf Vorzeichen).
-  6. Lagenausrichtung: alle Lagen-Faserrichtungen parallel oder
-     rechtwinklig zur Haupttragrichtung, ODER Marker
-     „abweichender Lagenaufbau" gesetzt.
-  7. Klassische CLT-Symmetrie (Decklage 0 = Decklage n−1, n
-     ungerade): optional, Standard für CLT.
-- **IFC-Mapping** (Persistenzschicht):
-  - `IfcMaterialLayerSet` mit `IfcMaterialLayer` pro Lage.
-  - `LayerSetDirection` = `AXIS3` (Plattendicken-Achse).
-  - `IfcMaterialLayer.LayerThickness` = Lagendicke.
-  - Property Set `Pset_MaterialWoodBasedPanel`.
-- **Edge Cases**:
-  - **Lagenstruktur mit < 3 Lagen**: nicht zulässig in dieser
-    Klasse; `Entartet.MehrlagenholzZuWenigeLagen`. Zwei parallele
-    Lagen sind Balkenschichtholz (`axiales_holz`); zwei kreuzweise
-    Lagen sind ein Sonderfall, der nicht zu STRUKTURIERT zählt.
-  - **Asymmetrischer Lagenaufbau**: zulässig mit explizitem
-    Marker; in der App ist eine Eigenschaft `abweichenderLagenaufbau:
-    Boolean` zu führen (Folgearbeit, Eintrag `lagenstruktur`).
-  - **45°-Lagen** (Erdbebenanwendung, Sonderfall): zulässig mit
-    explizitem Marker; Lagenausrichtungs-Invariante 6 wird durch
-    den Marker ausgesetzt.
-  - **Schnittwinkel-Anfrage**: liefert eine Liste von Faser-
-    winkeln je Lage, nicht einen einzelnen Wert. Funktion
-    `faserwinkelProLage(F: Vektor): List<Double>`.
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `Mehrlagenholz` (deutsch, Glossarbegriff); Sub-Subklassen heißen
-  `Brettsperrholz` (Synonym `Clt`, `Bsp`), `Sperrholz`, `Multiplex`.
 
 ## Quellen
 

@@ -27,7 +27,7 @@ quellen_sekundär:
   - "SIGA (Hrsg.): Technischer Leitfaden 'Witterungsschutz und Luftdichtheit für den Holzbau', aktuelle Auflage."
   - "ZVDH-Fachregel für Dachdeckungen, Stand 2024-04 (Schichtbegriffe für geneigte Dächer)."
   - "baunormenlexikon.de zu DIN 4108-3 (Bauteilschicht) und DIN 4108-7 (Luftdichtheitsschicht)."
-  - "Recherchebericht docs/recherche/2026-05-14_hg_schicht.md."
+  - "Recherchebericht [intern]."
 quellenkonflikt: |
   **(1) Norm-Definitions-Lücke.** Keine der konsultierten DACH-Normen
   (SIA 232/1, SIA 271, SIA 180, DIN 4108-3, DIN 4108-7, DIN 18531-1,
@@ -131,7 +131,7 @@ Sei
 - d ∈ ℝ mit d > `Toleranzen.LAENGE_EPS` eine konstante Dicke (in mm),
 - 𝓕 die diskrete Funktionsklassen-Menge
   ```
-  𝓕 := { Dampfbremse, Wärmedämmung, Schalung, Unterdach,
+  𝓕:= { Dampfbremse, Wärmedämmung, Schalung, Unterdach,
          Konterlattung, Traglattung, Eindeckung, Abdichtung,
          Trennlage, Luftdichtheitsebene, Installationsebene,
          Innenverkleidung, Sonstige }
@@ -146,7 +146,7 @@ Sei
 Dann ist eine **Schicht** das Tupel
 
 ```
-S := (M, d, f, π)
+S:= (M, d, f, π)
 ```
 
 mit den Konsistenzbedingungen
@@ -169,7 +169,7 @@ Schichtfolge des Träger-Aggregats — siehe Wohldefiniertheit.
 
 Die **abgeleitete Geometrie** einer Schicht ist
 ```
-G(S, F, i, A) := { p + t · n_hat(p) : p ∈ F, t ∈ [t_i, t_i + d] }
+G(S, F, i, A):= { p + t · n_hat(p): p ∈ F, t ∈ [t_i, t_i + d] }
 ```
 mit
 
@@ -178,7 +178,7 @@ mit
 - n_hat(p) der nach außen gerichteten Trägerflächen-Normalen an p,
 - i ∈ {1, …, k} dem Index der Schicht in der Folge 𝒮 = (S₁, …, S_k)
   des Trägers,
-- t_i := Σ_{j=1..i-1} d_j dem Basis-Offset der Schicht.
+- t_i:= Σ_{j=1..i-1} d_j dem Basis-Offset der Schicht.
 
 ## Wohldefiniertheit
 
@@ -319,7 +319,7 @@ den Funktions-Subtyp-Einträgen verankert, nicht hier.
   damit fachlich Spezialisierungen der Funktionsschicht. Im Code
   sind sie **keine** sealed-Subtypen von `Schicht`, sondern eigene
   sealed-Klassen mit einer `schicht: Schicht`-Komponente
-  (Komposition, siehe Quellenkonflikt 5 und Implementierungshinweis):
+  (Komposition, siehe Quellenkonflikt 5):
   - `eindeckung` (`hg_eindeckung.md`) — sealed pro Material.
   - `unterdach` (`hg_unterdach.md`) — sealed pro Beanspruchungs-
     Klasse.
@@ -386,141 +386,6 @@ den Funktions-Subtyp-Einträgen verankert, nicht hier.
     Eigenständiger HG-Eintrag mit `oberbegriff: schicht`; Code:
     Komposition.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Package `domain.bauteil` oder
-`domain.aufbau`):
-
-```kotlin
-/**
- * Generischer Wertetyp für eine Bauteilschicht: Material + Dicke +
- * Funktionsklasse + funktions-spezifische Parameter. Trägt **keine**
- * eigene Identität (keine UUID, kein IfcRoot-Pendant) und **keine**
- * sealed-Subtypen für die Funktionsschicht-Begriffe `eindeckung`,
- * `unterdach`, `dampfbremse`, `waermedaemmung`, `dachabdichtung` —
- * diese sind eigene sealed-Klassen, die `Schicht` als Komponente
- * halten (Komposition statt Vererbung, siehe Quellenkonflikt 5).
- */
-@GlossarBegriff(GlossarTerm.SCHICHT)
-data class Schicht(
-    val material: MaterialId,            // 𝓦, siehe `werkstoff`
-    val dicke: Double,                   // mm, > Toleranzen.LAENGE_EPS
-    val funktion: SchichtFunktion,       // Funktionsklasse, Enum
-    val parameter: SchichtParameter = SchichtParameter.Keine
-) {
-    init {
-        // Konstruktor-Pre-Conditions: in der App über
-        // Resultat<Schicht>-Factory geprüft (Konvention, siehe
-        // unten). Die hier dokumentierten Bedingungen entsprechen
-        // Konsistenzbedingungen 1–5 der mathematischen Definition.
-    }
-}
-
-/**
- * Funktions-spezifische Parameter-Tupel (Menge 𝓟_f). Für die meisten
- * Funktionsklassen ist 𝓟_f = ∅ (`SchichtParameter.Keine`); für
- * `DAMPFBREMSE`, `WAERMEDAEMMUNG`, `LUFTDICHTHEITSEBENE` gibt es
- * skalare Parameter, die hier als plausibilitätswirksame
- * **Zusatz-Annotation** an der Schicht stehen. Die normative
- * Detail-Modellierung (z. B. sd-Wert-Funktion einer
- * feuchteadaptiven Bahn) lebt im jeweiligen Funktionsschicht-
- * Aggregat (`hg_dampfbremse.md` etc.), nicht hier.
- */
-sealed class SchichtParameter {
-    object Keine : SchichtParameter()
-
-    /** sd-Wert in m; für DAMPFBREMSE oder LUFTDICHTHEITSEBENE. */
-    data class SdWert(val sd: Double) : SchichtParameter()
-
-    /** Bemessungs-Wärmeleitfähigkeit in W/(m·K); für WAERMEDAEMMUNG. */
-    data class Lambda(val lambda: Double) : SchichtParameter()
-}
-
-enum class SchichtFunktion {
-    DAMPFBREMSE, WAERMEDAEMMUNG, SCHALUNG, UNTERDACH,
-    KONTERLATTUNG, TRAGLATTUNG, EINDECKUNG, ABDICHTUNG,
-    TRENNLAGE, LUFTDICHTHEITSEBENE, INSTALLATIONSEBENE,
-    INNENVERKLEIDUNG, SONSTIGE
-}
-```
-
-**Komposition statt Vererbung — Beispiel `Unterdach`** (analog für
-`Eindeckung`, `Dampfbremse`, `Waermedaemmung`, `Dachabdichtung`,
-siehe jeweilige HG-Einträge):
-
-```kotlin
-sealed class Unterdach {
-    abstract val dachflaechen: List<Dachflaeche>
-    abstract val schicht: Schicht        // mit funktion = UNTERDACH
-    abstract val maxStauwasserhoehe: Double
-    // ... pro Beanspruchungs-Klasse weitere Subtypen
-}
-```
-
-Konstruktor-Invariante an jedem Funktionsschicht-Aggregat:
-
-```kotlin
-require(schicht.funktion == SchichtFunktion.UNTERDACH)
-// (bzw. EINDECKUNG / DAMPFBREMSE / WAERMEDAEMMUNG / ABDICHTUNG)
-```
-
-Damit ist das Pairing Funktionsschicht-Aggregat ↔ Schichtfunktion
-hart geprüft, und die Schicht-Klasse bleibt schlank.
-
-- **Einheit**: Dicke in mm (Double), Sd-Wert in m, Wärmeleitfähigkeit
-  λ in W/(m·K). Winkel kommen in der Schicht-Definition nicht vor.
-
-- **Invarianten** (geprüft beim Eintritt in das Modell — Konvention
-  `Resultat<Schicht>`-Konstruktoren, niemals `init { require(...) }`):
-  1. `material` ist ein gültiger Werkstoff-Identifikator
-     gemäss `werkstoff` ⇒ sonst `Entartet.UnbekannterWerkstoff`.
-  2. `dicke > Toleranzen.LAENGE_EPS` ⇒ sonst
-     `Entartet.NullDickeSchicht`.
-  3. funktions-spezifische Parameter-Wertebereiche (Sd > 0;
-     λ > 0; …) ⇒ jeweils funktions-spezifische Fehlervariante.
-  4. **Optional/konfigurierbar**: Material-Funktions-Verträglichkeit
-     als Plausibilitäts-Hinweis (z. B. `funktion = DAMPFBREMSE`
-     impliziert Materialklasse Folie / Bahn / Pappe / variable
-     Membran). Nicht harter Fehler, sondern
-     `Schicht.validierePlausibilitaet(): List<Hinweis>`.
-
-- **Keine UUID**. Die Schicht ist Wert-Tupel. Referenz auf eine
-  Schicht im Modell erfolgt über (Träger-Aggregat-UUID, Index in 𝒮),
-  analog `IfcMaterialLayerSet`-Position.
-
-- **Edge Cases**:
-  - **Sehr dünne Folienschicht** (Dampfbremse, d ≈ 0,2 mm):
-    `LAENGE_EPS = 1·10⁻³ mm` ist hinreichend klein.
-  - **Schicht aus einer einzigen durchgehenden Membran**:
-    keine zusätzliche Bauteil-Liste nötig.
-  - **Schicht aus n Einzelbauteilen** (Mineralwolle-Bahnen,
-    Schalbretter, Latten): parallele `List<Bauteil>` am Träger-
-    Aggregat; nicht im Schicht-Tupel.
-  - **Nicht-konstante Dicke** (Gefälledämmung, Aufdoppelung): nicht
-    von dieser Definition abgedeckt; spätere Erweiterung mit
-    Schichtdicken-Funktion d(p) statt Skalar.
-  - **Hinterlüftungsebene** (Luftspalt zwischen Konter- und
-    Traglatten): wird im Modell als `Schicht` mit
-    `funktion = SchichtFunktion.KONTERLATTUNG` und
-    `material = MaterialId.LUFT` oder als App-Konvention separat
-    geführt — Festlegung in `hg_konterlatte.md`.
-
-- **IFC-Mapping**:
-  | App | IFC 4.3 |
-  |---|---|
-  | `Schicht` | `IfcMaterialLayer` |
-  | `Schicht.dicke` | `IfcMaterialLayer.LayerThickness` |
-  | `Schicht.material` | `IfcMaterialLayer.Material` (`IfcMaterial`) |
-  | `Schicht.funktion` | `IfcMaterialLayer.Category` (`IfcLabel`-String) |
-  | Schichtfolge `𝒮` eines `dachaufbau` | `IfcMaterialLayerSet.MaterialLayers` (geordnet) |
-  | Verwendung am Bauteil | `IfcMaterialLayerSetUsage` |
-
-  Empfohlene `Category`-Strings beim Export (kompatibel mit Praxis-CAD):
-  `"VaporRetarder"`, `"Insulation"`, `"Sheathing"`, `"Membrane"`,
-  `"Counterbattens"`, `"Battens"`, `"Covering"`, `"WaterproofMembrane"`,
-  `"Separation"`, `"AirSealing"`, `"InstallationLayer"`, `"Finish"`,
-  `"Other"`.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -543,7 +408,7 @@ hart geprüft, und die Schicht-Klasse bleibt schlank.
   Abschnitt 5.
 - ISO 16739-1:2024 / IFC 4.3, Entities `IfcMaterialLayer`,
   `IfcMaterialLayerSet`, `IfcMaterialLayerSetUsage`. Online:
-  https://ifc43-docs.standards.buildingsmart.org/ .
+  https://ifc43-docs.standards.buildingsmart.org/.
 
 **Sekundär:**
 
@@ -557,4 +422,4 @@ hart geprüft, und die Schicht-Klasse bleibt schlank.
   Luftdichtheit für den Holzbau.* Aktuelle Auflage.
 - ZVDH, Fachregel für Dachdeckungen, Stand 2024-04.
 - baunormenlexikon.de — Einträge zu DIN 4108-3 und DIN 4108-7.
-- Recherchebericht `docs/recherche/2026-05-14_hg_schicht.md`.
+- Recherchebericht [intern].

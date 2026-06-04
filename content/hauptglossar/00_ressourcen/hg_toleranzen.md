@@ -47,7 +47,7 @@ entartet vs. regulär in der Domänen-Schicht dient.
 Sei
 
 - 𝕄 ⊂ ℝ die Menge der in IEEE 754 binary64 darstellbaren reellen Zahlen,
-- d : X × X → ℝ_{≥0} eine Abweichungsfunktion auf einer geometrischen
+- d: X × X → ℝ_{≥0} eine Abweichungsfunktion auf einer geometrischen
   Größenmenge X (z. B. Längenabweichung, Winkelabweichung,
   Flächeninhalt, sin des eingeschlossenen Winkels),
 - ε ∈ 𝕄 mit ε ≥ 0 ein fester Schwellwert.
@@ -56,7 +56,7 @@ Dann heißen zwei Größen a, b ∈ X **bezüglich der Toleranz ε gleich**
 genau dann, wenn
 
 ```
-gleich_ε(a, b) :⇔ d(a, b) ≤ ε.
+gleich_ε(a, b):⇔ d(a, b) ≤ ε.
 ```
 
 Eine Toleranz ist die Festlegung des Paares (d, ε). Im vorliegenden
@@ -72,10 +72,7 @@ Glossar werden fünf solche Paare normativ benannt:
 | `KOLLINEAR_EPS`  | d(u, v) = ‖u_hat × v_hat‖ = |sin∠(u, v)|, u_hat, v_hat normiert     | dimensionslos | 1·10⁻⁹       |
 
 Die konkreten Zahlenwerte sind **empfohlene Default-Werte** dieses
-Eintrags; die kanonische Quelle der im Code verwendeten Werte ist die
-Kotlin-Klasse `domain.Toleranzen`. Eine Implementierung darf abweichen,
-muss die Abweichung aber im Code-Kommentar dieser Klasse mit Verweis
-auf einen Glossarbegriff begründen.
+Eintrags.
 
 ## Wohldefiniertheit
 
@@ -90,8 +87,7 @@ auf einen Glossarbegriff begründen.
   (d(a, b) = d(b, a)). Die Relation gleich_ε ist reflexiv und symmetrisch,
   jedoch im Allgemeinen **nicht transitiv**; sie ist also keine
   Äquivalenzrelation, sondern eine Toleranzrelation im Sinne von Poston.
-  Diese fehlende Transitivität ist im Implementierungshinweis zu
-  beachten (kein naives Clustering durch wiederholten Gleichheitstest).
+
 - Nicht-Zirkularität: Die Definition verwendet ausschließlich reelle
   Zahlen, die Primitive Punkt, Vektor, Strecke, Ebene, Polygon (mit
   ihren Längen-, Winkel-, Flächen- und Normfunktionen) und das
@@ -198,7 +194,7 @@ Abweichung.
   - `Vektor.istNull`: ‖v‖² ≤ NORM_EPS ⇒ `Entartet.Nullvektor`.
   - `Vektor.istEinheit`: | ‖v‖² − 1 | ≤ NORM_EPS.
   - Eingangsprüfung von Normalenvektoren in `Ebene` und
-    `Dachflaeche` (siehe Implementierungshinweise dort).
+    `Dachflaeche`.
 
 ### Flächen-Toleranz `FLAECHE_EPS`
 
@@ -302,8 +298,8 @@ Alle elf Plausibilitäts-Konstanten teilen drei Eigenschaften:
    baunetzwissen.de) und sind in den jeweiligen Einträgen unter
    `quellenkonflikt:` dokumentiert. Eine Volltext-Verifikation gegen
    den NA-/DIN-1052-/SIA-265-Wortlaut ist Folgearbeit (siehe
-   Recherche-Berichte `docs/recherche/2026-05-14_hg_versatz.md` und
-   `docs/recherche/2026-05-14_hg_zapfen.md`).
+   Recherche-Berichte [intern] und
+   [intern]).
 3. **Konfigurierbarkeit.** Eine projekt-, norm- oder
    regionalspezifische Überschreibung der Defaults ist
    ausdrücklich vorgesehen — z. B. Kervtiefe `1.0/4.0` für IRC-
@@ -343,155 +339,6 @@ Alle elf Plausibilitäts-Konstanten teilen drei Eigenschaften:
     eine Toleranz im Sinne dieses Eintrags. Toleranzen werden so
     gewählt, dass sie viele Größenordnungen über dem
     Maschinenepsilon liegen, sind aber kein Vielfaches davon.
-
-## Implementierungshinweis
-
-Datentyp und Werte (Domänen-Schicht, Kotlin, Schicht
-`domain.Toleranzen`):
-
-```
-package domain
-
-/**
- * Numerische Klassifikationsschwellen für geometrische Vergleiche.
- * Glossar: hg_toleranzen.md
- *
- * Diese Werte sind die kanonische Quelle der Implementierung.
- * Abweichungen vom Default des Glossars sind hier zu begründen.
- */
-object Toleranzen {
-    /** Längen-Toleranz, mm. Glossar: toleranzen#laenge_eps */
-    const val LAENGE_EPS: Double = 1.0e-3
-
-    /** Winkel-Toleranz, rad. Glossar: toleranzen#winkel_eps */
-    const val WINKEL_EPS: Double = 1.0e-9
-
-    /** Norm-Toleranz für ‖v‖² bzw. |‖v‖² − 1|. Glossar: toleranzen#norm_eps */
-    const val NORM_EPS: Double = 1.0e-12
-
-    /** Flächen-Toleranz, mm². Glossar: toleranzen#flaeche_eps */
-    const val FLAECHE_EPS: Double = 1.0e-6
-
-    /** Kollinearitäts-Toleranz für ‖u_hat × v_hat‖, dimensionslos.
-     *  Glossar: toleranzen#kollinear_eps */
-    const val KOLLINEAR_EPS: Double = 1.0e-9
-
-    // ----- Bearbeitungs-Plausibilitäts-Konstanten -----
-    // Weiche Faustregeln, kein Validierungsfehler bei Verletzung.
-    // Glossar: toleranzen, Sektion „Bearbeitungs-Plausibilitäts-
-    // Konstanten".
-
-    /** Kervtiefe ≤ ⅓ der Sparrenhöhe.
-     *  Glossar: hg_kerve.md (Plausibilität). */
-    const val KERVTIEFE_FAUSTREGEL_DRITTEL: Double = 1.0 / 3.0
-
-    /** Versatztiefe ≤ ¼ der Bauteilhöhe bei flachem
-     *  Strebenanschluss α ≤ 50° (NCI NA.12).
-     *  Glossar: hg_versatz.md. */
-    const val VERSATZ_TIEFE_FLACH_VIERTEL: Double = 1.0 / 4.0
-
-    /** Versatztiefe ≤ ⅙ der Bauteilhöhe bei steilem
-     *  Strebenanschluss α ≥ 60° (NCI NA.12).
-     *  Glossar: hg_versatz.md. */
-    const val VERSATZ_TIEFE_STEIL_SECHSTEL: Double = 1.0 / 6.0
-
-    /** Vorholz-Faktor: l_v ≥ Faktor · t_v (NCI NA.12).
-     *  Glossar: hg_versatz.md. */
-    const val VERSATZ_VORHOLZ_FAKTOR: Double = 8.0
-
-    /** Mindest-Vorholzlänge in mm (NCI NA.12).
-     *  Glossar: hg_versatz.md. */
-    const val VERSATZ_VORHOLZ_MINDESTLAENGE_MM: Double = 200.0
-
-    /** Doppelter Versatz: Mindest-Tiefendifferenz t_F − t_S in mm.
-     *  Glossar: hg_versatz.md. */
-    const val VERSATZ_KAMM_MINDESTHOEHE_MM: Double = 10.0
-
-    /** Zapfenbreite ≈ ⅓ der Bauteildicke (DIN 1052 §15).
-     *  Glossar: hg_zapfen.md. */
-    const val ZAPFENBREITE_FAUSTREGEL_DRITTEL: Double = 1.0 / 3.0
-
-    /** Mindest-Restholz seitlich des Zapfenlochs in mm.
-     *  Glossar: hg_zapfenloch.md. */
-    const val ZAPFENLOCH_RESTHOLZ_SEITLICH_MIN: Double = 30.0
-
-    /** Mindest-Zapfenluft (Lochtiefe − Zapfenlänge) in mm.
-     *  Glossar: hg_zapfenloch.md. */
-    const val ZAPFENLUFT_MIN: Double = 5.0
-
-    /** Maximal-Zapfenluft (Lochtiefe − Zapfenlänge) in mm.
-     *  Glossar: hg_zapfenloch.md. */
-    const val ZAPFENLUFT_MAX: Double = 10.0
-
-    // ZAPFENLOCH_RESTHOLZ_UNTEN_MIN ist kein Skalar, sondern eine
-    // bauteilabhängige Regel d_F(B) ≥ 2·t; sie wird in der
-    // Bemessungs-Schicht als Funktion realisiert, nicht als
-    // konstanter Wert hier.
-}
-```
-
-- **Einheit**: je Toleranz unterschiedlich, siehe Tabelle und
-  Unterabschnitte. Niemals Einheiten mischen. Für die
-  Bearbeitungs-Plausibilitäts-Konstanten gilt: dimensionslose
-  Bruchteile (`*_DRITTEL`, `*_VIERTEL`, `*_SECHSTEL`,
-  `*_FAKTOR`) sind reine `Double`-Werte; Mindest-Maße tragen das
-  Suffix `_MM` und sind in Millimetern angegeben.
-- **Invarianten** (EPS-Konstanten):
-  1. Alle Werte sind endlich, nicht-negativ und kleiner als 1.
-  2. LAENGE_EPS² ≤ FLAECHE_EPS (Konsistenz Längen-↔Flächen-Toleranz).
-  3. WINKEL_EPS und KOLLINEAR_EPS liegen in derselben Größenordnung
-     (sin α ≈ α für kleine α).
-  4. NORM_EPS ≤ LAENGE_EPS² (Norm-Quadrat-Test ist mindestens so
-     scharf wie der Längen-Test auf den Nullvektor).
-- **Invarianten** (Plausibilitäts-Konstanten):
-  1. Alle Bruchteil-Werte (`*_DRITTEL`, `*_VIERTEL`,
-     `*_SECHSTEL`) liegen im offenen Intervall (0, 1).
-  2. `VERSATZ_TIEFE_STEIL_SECHSTEL < VERSATZ_TIEFE_FLACH_VIERTEL`
-     (steilere Strebe → schärfere Tiefen-Schranke).
-  3. `ZAPFENLUFT_MIN < ZAPFENLUFT_MAX` (nicht-leeres
-     Plausibilitäts-Intervall).
-  4. Alle Mindest-Maße (`*_MM`) sind strikt positiv und größer
-     als `LAENGE_EPS` (sonst würde die Faustregel mit der
-     numerischen Toleranz kollidieren).
-  5. `VERSATZ_VORHOLZ_FAKTOR > 1` (Vorholzlänge mindestens
-     größer als die Versatztiefe selbst).
-- **Verwendungsregel**: Funktionen, die einen Toleranzvergleich
-  durchführen, akzeptieren den Schwellwert als optionalen Parameter
-  mit dem entsprechenden `Toleranzen.*`-Default. Direkte
-  Float-Gleichheit (`==`, `!=`) auf Längen, Winkel oder
-  Flächeninhalten ist verboten. Plausibilitäts-Konstanten
-  werden in der Bemessungs-Schicht (nicht in der Geometrie-
-  Schicht) angewandt und produzieren `Warnung.*`-Werte, niemals
-  `Resultat.Fehler`.
-- **Edge Cases**:
-  - **Nicht-Transitivität**: Aus
-    `gleich_ε(a, b)` und `gleich_ε(b, c)` folgt **nicht**
-    `gleich_ε(a, c)`. Insbesondere darf nicht durch wiederholten
-    Gleichheitstest ein Cluster aufgebaut werden; für
-    Punktverschmelzung ist ein expliziter Cluster-Algorithmus mit
-    fester Bezugswahl zu verwenden.
-  - **Skalierung**: Werden Modelle nicht in mm, sondern in einer
-    anderen Längeneinheit verwendet, sind LAENGE_EPS und
-    FLAECHE_EPS entsprechend zu skalieren. Eine globale Umstellung
-    der Längeneinheit ist im aktuellen Domänenmodell **nicht**
-    vorgesehen (CLAUDE.md: Längen in mm).
-  - **Sehr große Bauteile**: Bei Koordinaten ≫ 10⁴ mm wächst der
-    absolute Rundungsfehler einer Koordinate proportional. Falls
-    künftig Modelle ≫ 10⁶ mm zugelassen werden, sind die Defaults
-    neu zu prüfen und in diesem Eintrag zu aktualisieren.
-  - **Plausibilitäts-Konstante an einem fachfremden Bauteil**:
-    Eine Versatz-Tiefen-Faustregel auf einen Plattenwerkstoff
-    angewandt liefert formal einen Wert, ist aber fachlich
-    sinnfrei. Die Anwendung der Plausibilitäts-Konstanten auf
-    Bauteile mit Faserrichtungs-Modus `STRUKTURIERT`, `SCHWACH`
-    oder `KEINE` erzeugt eine eigene Warnung (siehe
-    `hg_versatz.md` Edge Cases) und blockiert nicht.
-  - **Plausibilitäts-Konstante außerhalb der Norm-Geltung**:
-    Die NCI-NA.12-Konstanten sind für den DACH-Raum kalibriert.
-    Bei einem Projekt unter anderem Normwerk (z. B. IRC in
-    Nordamerika) wird die Konstante über das Konfigurationsobjekt
-    der Bemessungs-Schicht überschrieben (Folgearbeit); der
-    Default-Wert dieses Eintrags bleibt unverändert.
 
 ## Quellen
 

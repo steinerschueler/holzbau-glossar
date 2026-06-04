@@ -40,7 +40,7 @@ quellenkonflikt: |
     Kraftvektor F ∈ ℝ³ \\ {0} und einer Faserrichtung f_hat ∈ S²
     (oder analog auf einer Plattenlängsrichtung / Haupttragrichtung
     für Werkstoffe ohne strenge L-Faserrichtung):
-       α(F, f_hat) := arccos( |F · f_hat| / ‖F‖ )  ∈ [0, π/2].
+       α(F, f_hat):= arccos(|F · f_hat| / ‖F‖)  ∈ [0, π/2].
     Die Reduktion auf [0, π/2] erfolgt durch den Betrag
     |F · f_hat|; physikalisch ist die Faserachse ungerichtet, daher ist
     der Winkel zu f_hat und −f_hat gleich.
@@ -54,7 +54,7 @@ quellenkonflikt: |
     Mehrlagenholz-Bauteil mit Lagenstruktur (ℓ₀, …, ℓ_{n−1}) wird
     α nicht skalar auf Bauteilebene berechnet, sondern als Vektor
     (α_0, …, α_{n−1}) je Lage:
-       α_i(F) := α(F, ℓ_i.faserrichtung).
+       α_i(F):= α(F, ℓ_i.faserrichtung).
     Diese Konsequenz ist explizit in der App umzusetzen
     (Visualisierung pro Lage, vgl. Blaß/Flaig 2012, Kap. 4).
   - **Anwendung bei OSB**: Bei Modus SCHWACH ist α auf die
@@ -92,19 +92,19 @@ Sei
 Dann ist der **Hankinson-Winkel** α definiert als die Funktion
 
 ```
-α : (ℝ³ \ {0}) × S² → [0, π/2],
-α(F, f_hat) := arccos( |⟨F, f_hat⟩| / ‖F‖ ).
+α: (ℝ³ \ {0}) × S² → [0, π/2],
+α(F, f_hat):= arccos(|⟨F, f_hat⟩| / ‖F‖).
 ```
 
 Der Betrag |⟨F, f_hat⟩| sichert, dass α ∈ [0, π/2] und dass α
 invariant unter Vorzeichenwechsel von f_hat ist (die Faserachse ist
 physikalisch ungerichtet; siehe `faserrichtung` Wohldefiniertheit).
 
-**Spezialisierung mit normiertem Kraftvektor**: Für F_hat := F / ‖F‖
+**Spezialisierung mit normiertem Kraftvektor**: Für F_hat:= F / ‖F‖
 ∈ S² vereinfacht sich die Formel zu
 
 ```
-α(F_hat, f_hat) = arccos( |⟨F_hat, f_hat⟩| ).
+α(F_hat, f_hat) = arccos(|⟨F_hat, f_hat⟩|).
 ```
 
 **Lagenweise Auswertung bei Mehrlagenholz**: Sei B ein Bauteil mit
@@ -113,7 +113,7 @@ Lagenstruktur L = (ℓ₀, …, ℓ_{n−1}) (siehe `lagenstruktur`). Dann
 ist der Hankinson-Winkel **pro Lage**
 
 ```
-α_i(F) := α(F, ℓ_i.faserrichtung)     für i ∈ {0, …, n−1},
+α_i(F):= α(F, ℓ_i.faserrichtung)     für i ∈ {0, …, n−1},
 ```
 
 ein Tupel von n Winkeln. Eine einzelne „Bauteil-α" gibt es bei
@@ -275,88 +275,6 @@ ist hier nicht definiert; α-Anfragen liefern „nicht zutreffend".
   - **`haupttragrichtung`**: bei Mehrlagenholz **nicht** Bezugsachse
     für α (das wäre eine Mittelung); pro Lage wird
     ℓ_i.faserrichtung verwendet.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Package
-`zimmermann.domain.geometrie`):
-
-```kotlin
-package zimmermann.domain.geometrie
-
-import zimmermann.domain.Resultat
-import kotlin.math.abs
-import kotlin.math.acos
-
-/**
- * Hankinson-Winkel α zwischen Kraftrichtung und Faserachse.
- * Glossar: hg_hankinson_winkel.md
- *
- * Wertebereich: [0, π/2] Radiant. Vorzeicheninvariant gegen
- * F und n_hat (Faserachse ungerichtet, Kraftrichtungs-Vorzeichen
- * irrelevant für Faserwinkel).
- */
-public object HankinsonWinkel {
-
-    /** Vektor-Variante: F kann Nullvektor / nicht-finit sein. */
-    public fun von(
-        kraft: Vektor,
-        faserrichtung: Einheitsvektor,
-    ): Resultat<Double, EntartetGeometrie> {
-        if (!kraft.istFinit()) return Resultat.Fehler(EntartetGeometrie.NichtFinit)
-        if (kraft.istNullvektor()) return Resultat.Fehler(EntartetGeometrie.Nullrichtung)
-        val cosAbs = (abs(faserrichtung dot kraft) / kraft.norm).coerceIn(0.0, 1.0)
-        return Resultat.Erfolg(acos(cosAbs))
-    }
-
-    /** Einheitsvektor-Variante: strukturell nicht fehlschlagbar. */
-    public fun von(
-        kraftrichtung: Einheitsvektor,
-        faserrichtung: Einheitsvektor,
-    ): Double = acos(abs(kraftrichtung dot faserrichtung).coerceIn(0.0, 1.0))
-}
-```
-
-- **Einheit**: α intern in Radiant (Double). Anzeige in Grad
-  (CLAUDE.md-Konvention).
-- **Wertebereich**: [0, π/2] = [0°, 90°].
-- **Methodenname**: `von(...)` (deutsch, „Hankinson-Winkel **von** F
-  und n_hat") gemäß `project_kotlin_konventionen.md` (deutsche
-  Bezeichner für Glossarbegriffe).
-- **Toleranzen**: arccos-Argument auf [0, 1] geklemmt
-  (`coerceIn`); Eingaben müssen `Einheitsvektor`-Norm-Invariante
-  erfüllen (NORM_EPS-Toleranz geerbt).
-- **Identität**: keine; reine Funktion / `object`.
-- **Fehlerbehandlung**: kein `throw` für entartete Eingaben
-  (CLAUDE.md, `project_kotlin_konventionen.md`). Stattdessen
-  `Resultat<Double, EntartetGeometrie>` mit den vorhandenen
-  Varianten:
-  - **‖F‖² ≤ NORM_EPS**: `Resultat.Fehler(EntartetGeometrie.Nullrichtung)`.
-  - **F enthält NaN / ±∞**: `Resultat.Fehler(EntartetGeometrie.NichtFinit)`.
-  - Die Einheitsvektor-Variante kann strukturell nicht fehlschlagen
-    (Norm-Invariante per Typ; `coerceIn` fängt Float-Rundung).
-- **Edge Cases**:
-  - **Faserrichtung antiparallel zur Kraft**: α = 0 (nicht π); der
-    Betrag im Skalarprodukt sichert dies.
-  - **Faserrichtung rechtwinklig zur Kraft**: α = π/2.
-  - **Werkstoff Modus KEINE**: α nicht zutreffend; Aufrufer muss
-    Modus prüfen, bevor er α anfragt. Eine eigene Klassifikations-
-    schicht (Werkstoff-Modus → α-Verfügbarkeit) ist Folgearbeit.
-- **Folgearbeit (YAGNI-ausgelagert)**:
-  - **`alphaProLage(...)`** für Mehrlagenholz (Blass/Flaig 2012):
-    sobald `Lagenstruktur` modelliert ist, einen Iterator über die
-    Lagen anbieten, der `von(F, ℓ_i.faserrichtung)` je Lage aufruft.
-    Trigger: erstmaliges Anlegen von `domain/holzbau/`.
-  - **Hankinson-Formel** `f_α = f_0·f_90 / (f_0·sin²α + f_90·cos²α)`:
-    Bemessungs-Schicht (DIN EN 1995-1-1, SIA 265). Trigger:
-    erstmalige Bemessungs-Tools.
-  - **OSB-Bezugsachse** auf `plattenlaengsrichtung` umstellen:
-    sobald Plattenwerkstoff-Werkstoffklasse modelliert ist, Faktor
-    aus `werkstoff.faserrichtungsModus` ableiten.
-- **Verwendungsregel**: Bemessungsfunktionen (f_α, f_h,α,k) in der
-  späteren Bemessungs-Schicht nehmen `HankinsonWinkel.von(...)` als
-  Eingangsgröße. Die Geometrie-Schicht stellt α; die
-  Bemessungs-Schicht setzt es in EC5-Formeln ein.
 
 ## Quellen
 

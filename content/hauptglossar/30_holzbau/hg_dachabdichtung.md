@@ -34,7 +34,7 @@ quellen_sekundär:
   - "Holzbau Deutschland, Merkblatt 'Begriffe und Klassifizierungen für den Holzbau'."
   - "Bauder AG, Triflex GmbH, Sika Schweiz AG, Soprema GmbH: Produktdokumentationen Bitumen-, Kunststoff- und Flüssigabdichtungssysteme."
   - "ZinCo GmbH, Bundesverband GebäudeGrün (BuGG), Fachvereinigung Bauwerksbegrünung (FBB): Aufbaurichtlinien Dachbegrünung über Abdichtung."
-  - "Recherche-Bericht docs/recherche/2026-05-14_hg_dachabdichtung.md."
+  - "Recherche-Bericht [intern]."
 quellenkonflikt: |
   **(1) Trennung Dachabdichtung ↔ Eindeckung — auf Norm-Titel-Ebene seit
   2019.** Die DACH-Normen ziehen seit der Ausgabe 2019 von VOB Teil C
@@ -173,7 +173,7 @@ quellenkonflikt: |
   derdichtebau.de zum K1/K2-Wegfall). Norm-Wortlaute können im Detail
   von den hier rekonstruierten Begriffen abweichen; eine Verifikation
   aus den Originalen erfolgt bei nächster Gelegenheit. Recherche-
-  Bericht: `docs/recherche/2026-05-14_hg_dachabdichtung.md`.
+  Bericht: [intern].
 
   **(10) Lokales Norm-Enum `AbdichtungsNorm`.** Die Norm-Aufzählung in
   der parametrischen Klassifikation
@@ -215,7 +215,7 @@ Sei
   Trägerflächen-Familie 𝒟 = { D₁, …, D_m }, geordneter Schichtfolge
   𝒮 = (S₁, …, S_k) von innen nach außen und abgeleiteter Dachhaut
   H im Sinne von `dachhaut`,
-- F := ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich des Aufbaus,
+- F:= ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich des Aufbaus,
 - h_max ∈ ℝ_{≥0} ∪ { +∞ } (in mm) die zulässige Wasserdruck-Höhe der
   Abdichtungs-Bauart als frei wählbare Tupel-Komponente.
 
@@ -248,7 +248,7 @@ Dachaufbaus A genau dann, wenn:
 Die **Dachabdichtung** ist dann das Tripel
 
 ```
-Dachabdichtung := (S_k, h_max, μ)
+Dachabdichtung:= (S_k, h_max, μ)
 ```
 
 mit S_k als der Schicht-Funktionsklasse (im Sinne der Aufbau-
@@ -487,175 +487,6 @@ Damp-Proof-Course-Membranen bezogen).
     mechanischer Schutz, UV-Schutz bei Bitumenabdichtungen). Sie ist
     Folge-Schicht, kein Abdichtungs-Bestandteil.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-package domain.bauteil
-
-import domain.geometrie.Polygon
-import domain.Toleranzen
-import kotlin.math.PI
-
-/**
- * Dachabdichtung als äußerste, durchgehende, wasserdichte Schicht
- * eines Flachdaches oder eines genutzten Daches.
- * Glossar: hg_dachabdichtung.md
- *
- * Sealed mit Subtypen pro Material (Bitumen, Kunststoff/Elastomer,
- * Flüssigkunststoff); Begrünung ist bewusst kein Subtyp, sondern
- * Folge-Schicht im Dachaufbau (siehe FLL-Richtlinie 2018).
- *
- * Anders als Eindeckung trägt die Dachabdichtung KEINE
- * material-spezifische Mindestdachneigung (alpha_min); die Funktion
- * "wasserdicht" ist neigungsunabhängig (Bedingung 4 der mathematischen
- * Definition). Statt einer Neigungs-Schwelle trägt sie eine
- * Druckwasser-Schwelle (maxDruckwasserhoehe), die analog zur
- * h_max-Behandlung bei Unterdach normagnostisch geführt wird.
- */
-sealed class Dachabdichtung {
-    abstract val materialKennung: String        // Produkt-/Norm-Identifikator
-    abstract val maxDruckwasserhoehe: Double    // mm; +Inf zulässig
-
-    /** Test, ob die Abdichtung einer Wassersäule der gegebenen Höhe
-     *  standhält. Normagnostisch — konkrete Norm-Schwellen leben in
-     *  klassifiziereNachAnwendungsklasse(...). */
-    fun haeltDruckwasserhoehe(h: Double): Boolean =
-        h <= maxDruckwasserhoehe + Toleranzen.LAENGE_EPS
-}
-
-enum class Lagigkeit { EINLAGIG, ZWEILAGIG, DREILAGIG }
-
-enum class Befestigung {
-    GESCHWEISST, VOLLFLAECHIG_GEKLEBT, MECHANISCH_BEFESTIGT, LOSE_VERLEGT
-}
-
-enum class KunststoffSystem { PVC_P, FPO, TPO, EPDM, ECB }
-
-enum class HarzSystem { PMMA, PUR, UP }
-
-data class Bitumenabdichtung(
-    val lagigkeit: Lagigkeit,
-    val befestigung: Befestigung,
-    val wurzelfest: Boolean,                   // FLL-/EN-13948-geprüft
-    override val materialKennung: String,
-    override val maxDruckwasserhoehe: Double
-) : Dachabdichtung()
-
-data class Kunststoffabdichtung(
-    val kunststoffsystem: KunststoffSystem,
-    val befestigung: Befestigung,
-    val wurzelfest: Boolean,                   // FLL-/EN-13948-geprüft
-    override val materialKennung: String,
-    override val maxDruckwasserhoehe: Double
-) : Dachabdichtung()
-
-data class Fluessigkunststoffabdichtung(
-    val harzsystem: HarzSystem,
-    val schichtdickeMm: Double,                // Mindest 2.1 mm in DIN 18531:2025
-    override val materialKennung: String,
-    override val maxDruckwasserhoehe: Double
-) : Dachabdichtung()
-
-// Lokale Norm-Aufzählung für Dachabdichtungs-Klassifikation.
-// Eindeutiger Klassenname, um Kollisionen mit lokalen Norm-Enums in
-// hg_unterdach.md (UnterdachNorm) und hg_waermedaemmung.md
-// (WaermedaemmungsNorm) zu vermeiden. Folgearbeit-Trigger: sobald
-// mehrere Bauphysik-Module dieselbe Norm referenzieren, wird ein
-// zentraler hg_norm.md angelegt und die lokalen Enums migriert.
-enum class AbdichtungsNorm {
-    SIA_232_1, SIA_271_2021,
-    DIN_4108_3, ZVDH_FACHREGEL,
-    DIN_18531_2017, DIN_18531_2025, DIN_18336_2023,
-    OENORM_B_3691, OENORM_B_4119
-}
-
-enum class Nutzungsart { NICHT_GENUTZT, GENUTZT_BALKON_LOGGIA, GENUTZT_TERRASSE_BEFAHREN }
-
-// Parametrische Klassifikation: bindet eine Abdichtungs-Bauart an
-// eine konkrete Norm-Ausgabe. Hier — und nur hier — sind die
-// normabhängigen Klassen materialisiert.
-//
-// Für DIN_18531_2017: alte K1/K2-Logik (Anwendungsklassen).
-// Für DIN_18531_2025: keine Anwendungsklassen mehr (null);
-//                     Auswahl rein über Nutzung × Neigung.
-// Für SIA_271_2021:   andere Klassifikation (Warmdach/Umkehrdach/...).
-fun klassifiziereNachAnwendungsklasse(
-    abd: Dachabdichtung,
-    nutzung: Nutzungsart,
-    neigungRad: Double,
-    norm: AbdichtungsNorm
-): Anwendungsklasse? = when (norm) {
-    AbdichtungsNorm.DIN_18531_2017 -> /* TODO: K1/K2-Logik aus 2017er-Ausgabe */ null
-    AbdichtungsNorm.DIN_18531_2025 -> null   // Klassen existieren nicht mehr
-    AbdichtungsNorm.SIA_271_2021   -> null   // andere Strukturierung
-    AbdichtungsNorm.OENORM_B_3691  -> null   // Bauart-Klassifikation, nicht Anwendungsklasse
-    else                -> error("AbdichtungsNorm $norm: Klassifikation nicht hinterlegt.")
-}
-```
-
-- **Einheit:** Druckwasser-Schwelle und Schichtdicke in mm (Double);
-  Schicht-Funktion über `Schicht.funktion = ABDICHTUNG` referenziert.
-- **Trennung Definition ↔ Norm-Schwellen:** Die definitorische
-  Bedingung ist allein die Wasserdichtheit gegen Druckwasser bis
-  `maxDruckwasserhoehe`. Konkrete Werte (Mindestschichtdicken,
-  K1/K2-Klassen-Zuordnung, ÖNORM-Bauart-Klassifikation) leben
-  ausschließlich in der parametrischen Sicht
-  `klassifiziereNachAnwendungsklasse(...)` und in
-  produktspezifischen Default-Konstanten der Subtypen — analog zur
-  Auslagerung in `klassifiziereNachStauwasser(h, norm)` an
-  `hg_unterdach.md`. Damit bleibt die `Dachabdichtung`-Klasse
-  normagnostisch.
-- **Invarianten** (in `init` jedes Subtyps prüfen, bei Verletzung
-  `Resultat.Fehler` bzw. `Entartet`-Variante zurückgeben, niemals
-  Exception werfen):
-  1. `materialKennung.isNotBlank()` ⇒ sonst `Entartet.LeerMaterialKennung`.
-  2. `maxDruckwasserhoehe >= 0.0` (auch `+∞` zulässig) ⇒ sonst
-     `Entartet.NegativeDruckwasserSchwelle`.
-  3. Bei `Bitumenabdichtung`: `lagigkeit != EINLAGIG ||
-     befestigung == VOLLFLAECHIG_GEKLEBT` (einlagige Bitumen-Bahnen
-     nur in Sonderfällen; Plausibilitäts-Hinweis, nicht harte Schranke).
-  4. Bei `Fluessigkunststoffabdichtung`: `schichtdickeMm >= 1.8 -
-     Toleranzen.LAENGE_EPS` ⇒ sonst `Entartet.UnterschritteneSchichtdicke`
-     (1,8 mm war die alte K1-Schwelle; 2,1 mm ist die heutige Regel).
-- **Edge Cases:**
-  - **Flachdach (α = 0):** zentrale Anwendung der Dachabdichtung;
-    keine Sonderfall-Behandlung erforderlich. Anders als bei der
-    Eindeckung (`Entartet.FlachdachMaterial`) ist die Konstruktion
-    `Dachabdichtung(...)` über einer Dachfläche mit α = 0 der
-    Regelfall.
-  - **Genutztes geneigtes Dach (Balkon, Loggia, Laubengang):** ebenfalls
-    zulässig; DIN 18531-5 deckt diese Anwendung. Die App unterscheidet
-    den Anwendungsfall über `Nutzungsart`, nicht über einen Subtyp.
-  - **Wurzelfestigkeit:** Wenn das Aufbau-Modell oberhalb der
-    Dachabdichtung eine `dachbegruenung`-Schicht enthält, muss
-    entweder `wurzelfest == true` am Bitumen-/Kunststoff-Subtyp gelten,
-    oder eine zusätzliche Wurzelschutz-Schicht (DIN EN 13948) ist im
-    `dachaufbau` unmittelbar zwischen Abdichtung und Begrünungsaufbau
-    geführt. Konsistenz-Prüfung in `dachaufbau.validierePlausibilitaet()`.
-  - **K1/K2-Bestandsfälle:** ein importierter Dachaufbau, der noch
-    eine K1/K2-Klassifikation trägt, wird über
-    `klassifiziereNachAnwendungsklasse(..., AbdichtungsNorm.DIN_18531_2017)` auf
-    die alte Klasse abgebildet; ein Re-Mapping auf
-    `AbdichtungsNorm.DIN_18531_2025` liefert `null` und zwingt die App, die
-    Klassen-Information als historische Annotation zu führen.
-- **IFC-Mapping** (am API-Rand des IFC-Exporters, nicht im Datentyp
-  selbst): `IfcCovering` mit `PredefinedType = ROOFING`; Material-
-  Schichtung über `IfcRelAssociatesMaterial` und
-  `IfcMaterialLayerSet`; Verknüpfung zum `IfcRoof`-Aggregat über
-  `IfcRelCoversBldgElements`. Die Trennung zur Eindeckung (gleicher
-  Enum-Wert `ROOFING`) wird beim Export über `dachneigung` und das
-  Material-System abgeleitet, nicht über einen unterschiedlichen
-  Enum-Wert.
-- **Beziehung zum `dachaufbau`-Datentyp:** Die Dachabdichtung ist die
-  `schichten.last()` eines `Dachaufbau`-Tupels, wenn dessen äußerste
-  Schicht `funktion = SchichtFunktion.ABDICHTUNG` trägt; analog
-  zur Beziehung Eindeckung ↔ Dachaufbau bei geneigten Dächern. Ein
-  Dachaufbau hat entweder eine Eindeckung **oder** eine Dachabdichtung
-  als äußerste Schicht, nicht beides (exklusiv durch die
-  Funktions-Enumeration der `Schicht`).
-
 ## Quellen
 
 **Primär (normativ):**
@@ -714,7 +545,7 @@ fun klassifiziereNachAnwendungsklasse(
 **Korpus (nicht autoritativ):**
 
 - Recherche-Bericht
-  `docs/recherche/2026-05-14_hg_dachabdichtung.md`.
+  [intern].
 - magazin-quartier.de, dach-sachverstaendiger.de, derdichtebau.de:
   zum K1/K2-/Einwirkungsklassen-Wegfall in DIN 18531:2025-08.
 - Wikipedia, Lemmata „Dachabdichtung", „Flachdach", „Bitumenbahn",

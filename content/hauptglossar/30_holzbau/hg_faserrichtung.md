@@ -58,7 +58,7 @@ Sei
 Dann ist die **Faserrichtung** des Bauteils B eine Annotation
 
 ```
-faserrichtung(B) := f_hat ∈ S²,
+faserrichtung(B):= f_hat ∈ S²,
 ```
 
 die die idealisierte lokale Längsachse des Holzfaserverlaufs in B
@@ -72,7 +72,7 @@ der angreifenden Kraft, Richtung einer Bauteilachse): der Winkel
 α(f_hat, r_hat) ∈ [0, π/2] zwischen Faserrichtung und r_hat ist
 
 ```
-α(f_hat, r_hat) := arccos( | ⟨f_hat, r_hat⟩ | ),
+α(f_hat, r_hat):= arccos(| ⟨f_hat, r_hat⟩ |),
 ```
 
 wobei der Betrag des Skalarproduktes die antipodale Mehrdeutigkeit
@@ -123,7 +123,7 @@ der Tangens des Winkels zwischen Faserrichtung und Bauteillängsachse.
 Faserrichtung im engen Sinn — als ein einzelner Vektor f_hat ∈ S² am
 Bauteil — ist nur bei der Werkstoff-Subklasse `axiales_holz`
 sinnvoll definiert (Faserrichtungs-Modus HART, siehe
-`faserrichtungs_modus` und Memory `project_faserrichtung_modi`).
+`faserrichtungs_modus` und).
 Für die übrigen Werkstoff-Subklassen treten andere Begriffe an die
 Stelle der Faserrichtung:
 
@@ -266,76 +266,6 @@ Faserrichtung längs des Stabes). Sie kann aber **abweichen**:
   - **`hankinson_winkel`** (`hankinson_winkel`): aus Faserrichtung
     und Kraftrichtung abgeleiteter Winkel α ∈ [0, π/2], Eingang in
     die Hankinson-Formel für richtungsabhängige Festigkeit.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.holzbau`):
-
-```
-package domain.holzbau
-
-import domain.geometrie.Einheitsvektor
-
-/**
- * Faserrichtung eines Bauteils: Einheitsvektor in der Rolle
- * 'lokale Hauptachse der Holzfaser parallel zur Stammachse'.
- * Glossar: hg_faserrichtung.md
- *
- * Strukturell ein Wrapper um Einheitsvektor, der die semantische
- * Rolle typsicher kommuniziert. Verhindert Verwechslung mit anderen
- * Einheitsvektor-Rollen (Normalenvektor, Achsenrichtung) am API-Rand.
- */
-@JvmInline
-value class Faserrichtung(val richtung: Einheitsvektor) {
-
-    /**
-     * Faserwinkel zu einer beliebigen Richtung r_hat. Ergebnis in [0, π/2].
-     * Berücksichtigt die antipodale Mehrdeutigkeit der Faserachse durch
-     * Betrag des Skalarproduktes.
-     * Glossar: faserrichtung#faserwinkel.
-     */
-    fun faserwinkel(r: Einheitsvektor): Double {
-        val cos = kotlin.math.abs(
-            richtung.x * r.x + richtung.y * r.y + richtung.z * r.z
-        ).coerceIn(0.0, 1.0)
-        return kotlin.math.acos(cos)
-    }
-}
-```
-
-- **Einheit**: dimensionslos (geerbt von `einheitsvektor`).
-- **Invariante**: alle Invarianten von `Einheitsvektor`, insbesondere
-  | ‖f_hat‖² − 1 | ≤ Toleranzen.NORM_EPS.
-- **Vorzeichenkonvention**: Wird mit der Konstruktion eines Bauteils
-  festgelegt, in der Regel „f_hat zeigt in dieselbe Halbachse wie die
-  Bauteillängsachse von Anfangs- zu Endpunkt". Diese Konvention ist
-  beim jeweiligen Bauteil zu dokumentieren; der Faserwinkel ist
-  vorzeicheninvariant.
-- **Edge Cases**:
-  - **Bauteil ohne wohldefinierte Faserrichtung** (Plattenwerkstoffe
-    mit gekreuzten Lagen, Holzwerkstoffe mit isotroper Verteilung):
-    nicht durch diesen Typ abgedeckt. Solche Bauteile erhalten
-    entweder mehrere Faserrichtungen pro Lage oder einen separaten
-    Werkstoff-Begriff in Folgearbeit.
-  - **Verbindungsstelle (Keilzinken, Zapfen, Versatz)**: lokale
-    Faserrichtung mehrdeutig; die Annotation `Faserrichtung` ist
-    Eigenschaft des einzelnen Bauteils, nicht der Verbindung.
-    Verbindungen werden auf der Verbindungs-Geometrieebene separat
-    behandelt.
-  - **Drehwuchs/Faserabweichung über Bauteillänge**: durch die
-    Idealisierung als einzelner Einheitsvektor nicht erfasst. Die
-    Sortierklasse (DIN 4074-1) begrenzt die zulässige Abweichung;
-    eine ortsabhängige Faserrichtung wäre eine künftige
-    Verfeinerung (Vektorfeld f_hat(x) auf dem Bauteilkörper).
-  - **Faserrichtung antiparallel zur Bauteillängsachse**: zulässig.
-    Der Faserwinkel zu antipodalen Richtungen ist 0 (nicht π); die
-    Implementierung verwendet `abs(skalarprodukt)`.
-- **Verwendungsregel**: Funktionen, die werkstoffabhängige
-  Festigkeiten oder Steifigkeiten berechnen, nehmen `Faserrichtung`
-  als Parametertyp und nicht den nackten `Einheitsvektor`. Dadurch
-  wird die semantische Rolle am API-Rand sichtbar und Vertauschungen
-  mit Normalenvektoren oder Bauteillängsachsen werden zur
-  Compile-Zeit verhindert.
 
 ## Quellen
 

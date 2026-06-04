@@ -108,10 +108,10 @@ Sei
   Trägerebene E ⊂ ℝ³, Umrisspolygon P = (v₁, …, v_k) ⊂ E und nach
   aussen weisender Einheits-Normale n_a ∈ S² mit ⟨n_a, e_z⟩ ≥ 0
   (siehe `hg_dachflaeche.md`),
-- F(D) := F(P) ⊂ E das von P berandete, abgeschlossene Flächenstück
+- F(D):= F(P) ⊂ E das von P berandete, abgeschlossene Flächenstück
   der Dachfläche,
 - B ein Bauwerk im Sinne von `bauwerk`,
-- π_xy : ℝ³ → ℝ²,  π_xy(x, y, z) := (x, y) die orthogonale Projektion
+- π_xy: ℝ³ → ℝ²,  π_xy(x, y, z):= (x, y) die orthogonale Projektion
   auf die Welt-xy-Ebene,
 - A_B ⊂ ℝ² die **Aussenwand-Fluchtlinien-Hülle** des Bauwerks B in
   der xy-Ebene; sie ist das einfache geschlossene Polygon (oder die
@@ -119,13 +119,13 @@ Sei
   die Projektion der aussenseitigen Aussenwand-Aussenflächen von B in
   Höhe der Dach-Anschlusslage darstellt (operationell: die untere
   Berandung der Dachgeschoss-Aussenwände, projiziert auf die xy-Ebene),
-- ε_L := Toleranzen.LAENGE_EPS die Längen-Toleranz.
+- ε_L:= Toleranzen.LAENGE_EPS die Längen-Toleranz.
 
 Dann ist der **Dachüberstand** der Dachfläche D bezüglich des Bauwerks B
 die Teilmenge
 
 ```
-Ü(D, B) := { x ∈ F(D) | π_xy(x) ∉ A_B^◦ }                          (1)
+Ü(D, B):= { x ∈ F(D) | π_xy(x) ∉ A_B^◦ }                          (1)
 ```
 
 mit A_B^◦ als dem topologischen Inneren von A_B in der xy-Ebene
@@ -137,7 +137,7 @@ Die **Überstands-Länge** (horizontale Projektionstiefe) in einem
 Randpunkt p ∈ ∂F(D) ∩ Ü(D, B) ist
 
 ```
-ℓ_⊥(p; D, B) := inf_{q ∈ ∂A_B}  ‖π_xy(p) − q‖₂   (in mm),         (2)
+ℓ_⊥(p; D, B):= inf_{q ∈ ∂A_B}  ‖π_xy(p) − q‖₂   (in mm),         (2)
 ```
 
 also der euklidische Abstand der xy-Projektion von p zum nächst-
@@ -397,105 +397,6 @@ mit entsprechend hoher Anforderung an Tragwerk und Sparrenüberstand.
     bestimmt zusammen mit der horizontalen Projektionstiefe die
     geneigte Bauteil-Überstandslänge (Gleichung (3)), ist aber
     selbst kein Überstand.
-
-## Implementierungshinweis
-
-**Code-Pendant-Pflicht**: Nach `HG_KONVENTIONEN.md` §3 ist `merkmal`
-nicht pendant-pflichtig. Wenn ein Pendant existiert, soll es
-`@GlossarBegriff(GlossarTerm.DACHUEBERSTAND)` tragen. Empfehlung:
-zunächst kein eigenes Pendant; die Überstands-Tiefen je Dachkante
-werden als annotierende Felder oder als Map an `Dachflaeche` (bzw.
-am Bauwerk-Aggregat) geführt. Erst bei tatsächlichem Bedarf an einer
-zusammenfassenden Sicht (etwa Bemassungs-Tool für das Dach-Aggregat)
-ein Pendant ergänzen.
-
-Skizze einer minimalen, freiwilligen Repräsentation (nicht erzwungen):
-
-```kotlin
-package domain.bauteil.dachgeometrie
-
-/**
- * Dachüberstands-Profil einer Dachfläche: Tiefe (horizontale
- * Projektion in mm) je Polygonrand-Kantenklasse.
- *
- * Glossar: hg_dachueberstand.md
- *
- * Werte ≥ 0; 0 bedeutet „kein Überstand entlang dieser Kantenart".
- * Die geometrische Lage des Überstands ergibt sich konstruktiv aus
- * der Dachfläche und dem Bauwerks-Aussenwand-Polygon.
- */
-data class DachueberstandsProfil(
-    val traufseitig:   Double = 0.0,   // ℓ_⊥ entlang `traufe`,    in mm
-    val ortgangseitig: Double = 0.0,   // ℓ_⊥ entlang `ortgang`,   in mm
-    // weitere Kantenarten (Pultkante, Grat, Kehle) bei Bedarf
-)
-```
-
-- **Einheit**: Tiefe in mm (Double); horizontale Projektion ℓ_⊥ nach
-  Gleichung (2).
-- **Identität**: keine eigene UUID. Der Dachüberstand ist als Merkmal
-  an der `dachflaeche` (bzw. am `bauwerk`-Aggregat) geführt und nicht
-  als eigenständiges Objekt persistiert.
-- **Invarianten** (in Companion-Factory, falls Pendant eingeführt
-  wird; `Resultat.Fehler` bei Verletzung, keine Exception):
-  1. Alle Tiefen-Werte sind finit und ≥ 0 (Toleranzen.LAENGE_EPS).
-  2. Tiefen-Werte > ca. 2500 mm sind zulässig, aber Tools können
-     einen Warn-Hinweis „Tiefe legt Vordach-Klassifikation nahe"
-     setzen — keine Invariante.
-- **Toleranzen**:
-  - Punkt-Innen-/Aussen-Test gegen A_B^◦ (Gleichung (1)):
-    Toleranzen.LAENGE_EPS in mm.
-  - Tiefen-Bemassung und Vergleich gegen Sparrenüberstand
-    (Gleichung (3)): Toleranzen.LAENGE_EPS.
-- **Edge Cases**:
-  - **Dachüberstand mit Tiefe 0** (bündige Dachfläche): zulässig;
-    Ü(D, B) = ∅.
-  - **Asymmetrische Tiefen** (traufseitig 600, giebelseitig 300):
-    Standardfall, korrekt durch separate Felder im Profil
-    repräsentiert.
-  - **Walmdach**: die Walmflächen haben in der Regel nur einen
-    Traufüberstand (keinen Ortgangüberstand, weil Walmflächen
-    keinen Ortgang besitzen, sondern Grate als Schnittkanten).
-  - **Pultdach**: zusätzlich zur Traufseite kann eine Pultkante
-    auskragen; das ist ein weiterer Tiefen-Eintrag im Profil
-    (Folgearbeit, sobald `pultkante` als Glossar-Begriff angelegt
-    ist).
-  - **Bauwerk mit Innenhof**: A_B ist mehrfach zusammenhängend
-    (Mehrloch-Polygon); die Definition (1) gilt unverändert, der
-    Innenhof-Rand ist Teil des Aussenwand-Polygonrands.
-  - **Bauwerk ohne abgeschlossene Aussenwand** (Pavillon, reine
-    Stützen-Konstruktion): A_B ist nicht definiert; die
-    geometrische Konstruktion Ü(D, B) versagt. In diesem Fall ist
-    das Tragwerk typischerweise als Vordach zu klassifizieren
-    (Folgearbeit `vordach`).
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heisst
-  `DachueberstandsProfil` (deutsch, Glossarbegriff; ASCII wegen
-  Kotlin-Identifier-Konvention).
-
-**Folgearbeit (trigger-basiert):**
-
-- **`traufueberstand`** — traufseitiger Subtyp als eigener
-  Glossarbegriff. Trigger: erstes Tool/Werkplan, das die
-  traufseitige Überstandstiefe als separat geführten Parameter
-  benötigt (Sparrenplan-Werkplan-Tool, Schneelast-Tool an der
-  Trauflage).
-- **`ortgangueberstand`** — giebelseitiger Subtyp als eigener
-  Glossarbegriff. Trigger: erstes Tool mit Flugsparren- oder
-  Pfettenüberstand-Modellierung (Walmdach/Satteldach mit
-  Giebelwand).
-- **`vordach`** — eigenständige Bauteilgruppe mit eigener
-  Tragstruktur. Trigger: erstes Tool mit Vordach- bzw.
-  Lauben-Modellierung mit eigenständiger Stützung (Konsolen,
-  Stützen).
-- **`pfettenueberstand`** — konstruktiver Mechanismus des
-  Ortgangüberstands am Bauteil Pfette. Trigger: erstes Tool mit
-  Pfetten-Modellierung mit Giebelüberstand (vgl.
-  `hg_sparrenueberstand.md`, Folgearbeit, bereits notiert).
-- **Aussenwand-Fluchtlinien-Polygon des Bauwerks**: operationelle
-  Konstruktion der Menge A_B aus dem `bauwerk`-Aggregat. Trigger:
-  erstes Tool, das Dachüberstand gegen ein konkretes
-  Bauwerks-Modell auswerten muss (statt gegen einen abstrakten
-  Parameter).
 
 ## Quellen
 

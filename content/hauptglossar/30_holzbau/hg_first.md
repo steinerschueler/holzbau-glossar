@@ -65,14 +65,14 @@ Sei
 - F(P_i) ⊂ E_i und F(P_j) ⊂ E_j die berandeten abgeschlossenen
   Flächenstücke,
 - e_z = (0, 0, 1)ᵀ die vertikale Achse,
-- ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz,
-- ε_L := Toleranzen.LAENGE_EPS die Längentoleranz.
+- ε_W:= Toleranzen.WINKEL_EPS die Winkeltoleranz,
+- ε_L:= Toleranzen.LAENGE_EPS die Längentoleranz.
 
 Definiere die **gemeinsame Schnittstrecke** der beiden Dachflächen
 als
 
 ```
-s_{ij} := F(P_i) ∩ F(P_j).
+s_{ij}:= F(P_i) ∩ F(P_j).
 ```
 
 Da E_i und E_j sich in der Geraden g_{ij} schneiden und beide F(P_•)
@@ -81,7 +81,7 @@ ein abgeschlossenes (möglicherweise leeres oder einpunktiges)
 Streckenstück auf g_{ij}. Sein Richtungs-Einheitsvektor sei
 
 ```
-e_hat_{ij} := (Endpunkt − Anfangspunkt) / ‖Endpunkt − Anfangspunkt‖,
+e_hat_{ij}:= (Endpunkt − Anfangspunkt) / ‖Endpunkt − Anfangspunkt‖,
           falls ℓ(s_{ij}) > ε_L; andernfalls undefiniert.
 ```
 
@@ -105,13 +105,13 @@ weg) besitzen dasselbe Normalenpaar und unterscheiden sich nur in der
 Querlage ihrer Flächenstücke. Sei
 
 ```
-w := (e_hat_{ij} × e_z) / ‖e_hat_{ij} × e_z‖   ∈ S²
+w:= (e_hat_{ij} × e_z) / ‖e_hat_{ij} × e_z‖   ∈ S²
 ```
 
 die zur Firstkante orthogonale **horizontale** Querachse (wohldefiniert,
 da s_{ij} horizontal ist, also ‖e_hat_{ij} × e_z‖ ≈ 1). Sei c_i ein
 innerer Punkt (Flächenschwerpunkt) von F(P_i) und m ∈ s_{ij} ein
-Kantenpunkt; die **signierte Querlage** ist τ_i := ⟨c_i − m, w⟩ (mit
+Kantenpunkt; die **signierte Querlage** ist τ_i:= ⟨c_i − m, w⟩ (mit
 τ_i · τ_j < 0). Dann ist s_{ij} ein **First** genau dann, wenn
 
 ```
@@ -222,97 +222,6 @@ klassifiziert wird.
     First; Materialbauteile, nicht Kante. Hier nicht definiert.
   - **Dachhöhe**: vertikaler Abstand zwischen Trauf- und
     Firsthöhe; ein Maß, keine Kante.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-sealed class First : Dachkante() {
-
-    data class Regulaer(
-        override val polylinie: Streckenzug,
-        val dachflaecheA: Dachflaeche,
-        val dachflaecheB: Dachflaeche
-    ) : First()
-
-    sealed class Entartet : First() {
-        object Nullkante : Entartet()
-        object NichtIdentifizierbar : Entartet()
-    }
-}
-```
-
-Klassifikations-Prädikat in `DachkanteOps.kt`:
-
-```
-fun istFirst(
-    s: Strecke,
-    dA: Dachflaeche,
-    dB: Dachflaeche,
-    eps_W: Double = Toleranzen.WINKEL_EPS,
-    eps_L: Double = Toleranzen.LAENGE_EPS
-): Boolean {
-    // 1. s liegt im gemeinsamen Polygonbereich von dA und dB
-    if (!liegtImSchnitt(s, dA, dB, eps_L)) return false
-    // 2. ℓ(s) > eps_L
-    if (s.laenge() <= eps_L) return false
-    // 3. s ist näherungsweise horizontal
-    val sHat = s.einheitsRichtung().werteOder { return false }
-    if (abs(sHat dot Vektor.E_Z) > eps_W) return false
-    // 4. Beide äußeren Normalen weisen mit positiver z-Komponente nach oben
-    val nA = dA.aeussereNormale.normiert().werteOder { return false }
-    val nB = dB.aeussereNormale.normiert().werteOder { return false }
-    if ((nA dot Vektor.E_Z) <= 0.0) return false
-    if ((nB dot Vektor.E_Z) <= 0.0) return false
-    // 5. Nach oben zusammenlaufend (konvex), lokal — kein globales z-Maximum:
-    //    pro Fläche neigt sich die äußere Normale horizontal nach außen, zur
-    //    Querseite ihres Flächenstücks. Reine Normalen trennen den First
-    //    nicht von einer waagrechten Kehle/Rinne (= beide nach innen).
-    val w = (sHat cross Vektor.E_Z).normiert().werteOder { return false }
-    val m = s.mittelpunkt()
-    val tauA = (dA.schwerpunkt() - m) dot w
-    val tauB = (dB.schwerpunkt() - m) dot w
-    val aussenA = (nA dot w) * sign(tauA) > eps_W
-    val aussenB = (nB dot w) * sign(tauB) > eps_W
-    return aussenA && aussenB
-}
-```
-
-- **Einheit**: alle Koordinaten in mm (Double), Längen in mm.
-- **Invarianten** (in Factory prüfen, niemals Exception):
-  1. ℓ(polylinie) > Toleranzen.LAENGE_EPS — sonst `Entartet.Nullkante`.
-  2. Jede Teilstrecke der Polylinie liegt im Schnittbereich
-     F(P_A) ∩ F(P_B) der beiden anliegenden Dachflächen.
-  3. Jede Teilstrecke ist näherungsweise horizontal:
-     |e_hat · e_z| ≤ Toleranzen.WINKEL_EPS.
-  4. Beide äußeren Normalen weisen mit positiver z-Komponente nach
-     oben: n_{a,A} · e_z > 0 und n_{a,B} · e_z > 0.
-  5. Nach oben zusammenlaufend (Bedingung (2)): pro Fläche
-     ⟨n_hat_{a,i}, w⟩ · sign(τ_i) > Toleranzen.WINKEL_EPS, mit
-     w = horizontale Querachse (s_hat × e_z) und τ_i = signierte
-     Querlage des Flächenschwerpunkts. Lokal — kein Bezug auf andere
-     Schnittstrecken.
-- **Edge Cases**:
-  - **Nullkante**: ℓ ≤ Toleranzen.LAENGE_EPS → `Entartet.Nullkante`.
-  - **NichtIdentifizierbar**: ⟨n_hat_{a,i}, w⟩ · sign(τ_i) im
-    Toleranzband [−ε_W, +ε_W] für eine der Flächen (Flächenstück kaum
-    quer geneigt) oder gegenläufig (eine Fläche nach außen, die andere
-    nach innen — weder First noch waagrechte Kehle) →
-    `Entartet.NichtIdentifizierbar`. Eine durchgehend konkave
-    horizontale Schneide (beide < −ε_W) ist eine **waagrechte
-    Kehle/Rinne**, kein First.
-  - **Parallele Trägerebenen** (E_A ∥ E_B): Schnittgerade existiert
-    nicht; Definition liefert kein Element →
-    `Entartet.NichtIdentifizierbar`.
-  - **Geknickter First** (z. B. bei polygonal abgeknicktem
-    Dachgrundriss): zulässig durch Streckenzug-Modellierung; jede
-    Teilstrecke wird einzeln klassifiziert.
-- **Abgeleitete Operationen**:
-  - `fun firstlaenge(): Double` (mm) = ℓ(polylinie).
-  - `fun firstlinie(): Streckenzug` = polylinie.
-  - `fun firsthoehe(): Double` (mm) = mittlere z-Koordinate der
-    Polylinie (Bezugsmaß für die Dachhöhe).
 
 ## Quellen
 

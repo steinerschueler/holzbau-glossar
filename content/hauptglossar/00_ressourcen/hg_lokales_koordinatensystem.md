@@ -49,8 +49,7 @@ quellenkonflikt: |
   `(T₁ ∘ T₂)(p) = T₁(T₂(p))`. Manche Lehrbücher der elementaren
   Linearen Algebra schreiben die umgekehrte Konvention. Eigene
   Festlegung dieses Glossars: "rechts wirkt zuerst", konsistent mit
-  `LokalePlatzierung.komponiere` und `Rotation.komponiere` (siehe
-  Implementierungshinweis).
+  `LokalePlatzierung.komponiere` und `Rotation.komponiere`.
 
   Konflikt 3 — Achsen-Festlegung am Bauteil:
   EN ISO 5459 lässt die Zuordnung x/y/z-Achse zu Bauteilmerkmalen
@@ -96,12 +95,12 @@ Sei
 Dann ist ein **lokales Koordinatensystem** das Tupel
 
 ```
-L := (O_L, e_x^L, e_y^L, e_z^L, η_L),
+L:= (O_L, e_x^L, e_y^L, e_z^L, η_L),
 ```
 
 wobei
 
-- η_L : 𝔸³ → ℝ³ die Koordinatenabbildung
+- η_L: 𝔸³ → ℝ³ die Koordinatenabbildung
   ```
   η_L(p) = (x_L, y_L, z_L)  ⇔  p = O_L + x_L·e_x^L + y_L·e_y^L + z_L·e_z^L
   ```
@@ -114,12 +113,12 @@ T_{L→W} ∈ SE(3) hergestellt, eindeutig bestimmt durch
 
 - den **Translations-Vektor** t ∈ ℝ³ — die Welt-Koordinaten von O_L:
   ```
-  t := η(O_L) ∈ ℝ³,    Längeneinheit mm.
+  t:= η(O_L) ∈ ℝ³,    Längeneinheit mm.
   ```
 - die **Rotation** R ∈ SO(3) — die orthogonale Matrix mit Determinante
   +1, deren Spalten die Welt-Koordinaten der lokalen Basisvektoren sind:
   ```
-  R := ( η(e_x^L) | η(e_y^L) | η(e_z^L) ) ∈ ℝ^{3×3},    R^T R = I, det R = +1.
+  R:= (η(e_x^L) | η(e_y^L) | η(e_z^L)) ∈ ℝ^{3×3},    R^T R = I, det R = +1.
   ```
 
 Die Rechtssystem-Bedingung `e_x^L × e_y^L = e_z^L` ist äquivalent zu
@@ -128,13 +127,13 @@ Die Rechtssystem-Bedingung `e_x^L × e_y^L = e_z^L` ist äquivalent zu
 **Aktive Wirkung auf einen Punkt** mit lokalen Koordinaten p_L ∈ ℝ³:
 
 ```
-T_{L→W}(p_L) := R · p_L + t                                       (1)
+T_{L→W}(p_L):= R · p_L + t                                       (1)
 ```
 
 — ergibt die Welt-Koordinaten desselben affinen Punktes. Die Inverse ist
 
 ```
-T_{W→L}(q) := R^T · (q − t) = R^T · q − R^T · t                   (2)
+T_{W→L}(q):= R^T · (q − t) = R^T · q − R^T · t                   (2)
 ```
 
 (weil R^{-1} = R^T für R ∈ SO(3)).
@@ -144,7 +143,7 @@ translationsinvariant. Folglich wirkt T_{L→W} auf einem Vektor v ∈ ℝ³
 **rein durch die Rotation**:
 
 ```
-T_{L→W}(v) := R · v.                                              (3)
+T_{L→W}(v):= R · v.                                              (3)
 ```
 
 Diese Unterscheidung ist mathematisch zwingend, nicht bloß
@@ -295,8 +294,7 @@ vollständig abgedeckt; die zugehörigen **Glossareinträge** und ihre
 **Implementierungs-Klassen** (Bauteil-Hierarchie, Szenengraph) sind
 Folgearbeit der Phasen D7/D8 und nicht Gegenstand des vorliegenden
 Eintrags. Die Code-Klasse `LokalePlatzierung` deckt die starre
-Transformation als Einzelglied bereits ab (siehe
-Implementierungshinweis), die **Verkettung** über mehrere Hierarchie-
+Transformation als Einzelglied bereits ab, die **Verkettung** über mehrere Hierarchie-
 Stufen ist begrifflich vorbereitet, aber noch nicht als
 Datenstruktur implementiert.
 
@@ -336,148 +334,6 @@ Datenstruktur implementiert.
   - **LV95 / WGS84**: externe Geo-Bezugssysteme; lokale
     Bauteilkoordinatensysteme werden **nicht** in LV95/WGS84
     geführt, sondern intern in mm bezüglich W.
-
-## Implementierungshinweis
-
-**Bestehende Code-Realität (Stand D5-2):**
-
-Die starre Transformation T_{L→W} eines Lokalsystems ist in der
-Domänen-Schicht durch die Klasse
-`zimmermann.domain.koordinaten.LokalePlatzierung` repräsentiert; die
-Drehkomponente R ∈ SO(3) ist in
-`zimmermann.domain.koordinaten.Rotation` als Einheits-Quaternion
-realisiert. Die im Code dokumentierten Operationen sind die
-Referenz für diesen Glossareintrag — keine zusätzlichen Operationen
-werden hier eingeführt.
-
-```kotlin
-package zimmermann.domain.koordinaten
-
-/**
- * Starre Transformation (Translation + Rotation) eines lokalen
- * Koordinatensystems relativ zum Weltkoordinatensystem.
- *
- * Glossar: hg_lokales_koordinatensystem.md
- *
- * Felder-Semantik (normativ):
- *   - translation : Welt-Koordinaten des Lokal-Ursprungs O_L,
- *     entspricht t in der Glossar-Definition (Gleichung 1).
- *   - rotation    : Orientierung der Lokal-Basis relativ zur Welt;
- *     entspricht R ∈ SO(3) als Einheits-Quaternion.
- *
- * Wirkung (Glossar Gleichung 1):
- *   p_welt = rotation.rotiere(p_lokal) + translation.
- */
-public data class LokalePlatzierung internal constructor(
-    public val translation: Vektor,
-    public val rotation: Rotation,
-) { /* … */ }
-```
-
-**Im Code implementiert** (`LokalePlatzierung`, vollständig durch
-diesen Glossareintrag normativ gedeckt):
-
-- `transformiere(p: Punkt) : Punkt` — Wirkung (1) auf Punkte
-  (Lokal → Welt).
-- `transformiere(v: Vektor) : Vektor` und
-  `transformiere(e: Einheitsvektor) : Einheitsvektor` — Wirkung (3)
-  auf Verschiebungs-Vektoren bzw. Richtungen, rein rotativ.
-- `inverseTransformiere(p: Punkt) : Punkt` etc. — Wirkung (2),
-  T_{W→L}.
-- `inverse() : LokalePlatzierung` — liefert (R^T, −R^T · t) als neues
-  `LokalePlatzierung`-Objekt; wohldefiniert für jede gültige Instanz.
-- `komponiere(other: LokalePlatzierung) : LokalePlatzierung` —
-  binäre Komposition gemäß (4) mit Lese-Reihenfolge "rechts wirkt
-  zuerst": `(this komponiere other).transformiere(p) =
-  this.transformiere(other.transformiere(p))`. Damit ist die
-  Verschachtelung (5)/(6) auf der Code-Ebene als wiederholte
-  `komponiere`-Verkettung darstellbar.
-- `istGleichePlatzierung(other, eps)` — Toleranz-basierter Vergleich
-  unter Berücksichtigung der Quaternionen-Doppel-Überdeckung.
-- `IDENTITAET = LokalePlatzierung(Vektor.NULL, Rotation.IDENTITAET)` —
-  Identitäts-Element von SE(3), entspricht L = W.
-- `aus(translation, rotation) : Resultat<LokalePlatzierung,
-  EntartetGeometrie>` — Konstruktor mit Endlichkeits-Prüfung der
-  Translation; Rotation trägt ihre Norm-Invariante per Typ.
-
-**Im Code implementiert** (`Rotation`, R ∈ SO(3)):
-
-- `rotiere(v: Vektor) : Vektor`, `rotiere(e: Einheitsvektor) :
-  Einheitsvektor`, `rotiere(p: Punkt) : Punkt` — Drehung um den
-  Welt-Ursprung.
-- `inverse() : Rotation` — konjugiertes Quaternion `(w, −x, −y, −z)`.
-- `komponiere(other) : Rotation` — Hamilton-Produkt
-  `this · other`, Lese-Reihenfolge "rechts wirkt zuerst".
-- `istGleicheRotation(other, eps)` — Vergleich unter Doppel-
-  Überdeckung.
-- `IDENTITAET = (1, 0, 0, 0)`.
-- `ausAchseUndWinkel(achse: Einheitsvektor, winkel: Double) :
-  Resultat<Rotation, EntartetGeometrie>` — Rodrigues-/Quaternion-
-  Konstruktion `q = (cos(α/2), sin(α/2)·achse)`.
-- `ausQuaternion(w, x, y, z) : Resultat<Rotation, EntartetGeometrie>`
-  — Konstruktor mit Normierung und Endlichkeits-/Null-Prüfung.
-
-**Konventionen:**
-
-- **Einheit**: Translation in mm (Double); Rotation dimensionslos
-  (Einheits-Quaternion). Niemals Mischung in einer Funktion.
-- **Konvention der starren Transformation**: ausnahmslos
-  `p_welt = R · p_lokal + t` (Gleichung 1 dieses Eintrags); die
-  passive Konvention `R · (p_lokal − t')` ist verboten.
-- **Konvention der Komposition**: ausnahmslos "rechts wirkt zuerst"
-  (Gleichungen 4–6). Wer eine andere Reihenfolge benötigt, vertauscht
-  die Operanden vor dem Aufruf.
-- **Wirkung auf Vektoren**: rein rotativ (Gleichung 3). Eine
-  Translation auf einer Verschiebung anzuwenden ist mathematisch
-  falsch und in der Schnittstelle nicht möglich (`transformiere(v:
-  Vektor)` ruft nur `rotation.rotiere(v)` auf).
-- **Verkettungs-Reihenfolge der Inverse**: `T.inverse() ∘ T = id` und
-  `T ∘ T.inverse() = id` (jeweils im Sinne von
-  `istGleichePlatzierung`). Daraus folgt für eine Kette
-  `T_n ∘ … ∘ T_1`: Inverse = `T_1.inverse() ∘ … ∘ T_n.inverse()`.
-
-**Invarianten:**
-
-1. `R^T · R = I ∧ det R = +1` — strukturell garantiert durch die
-   Einheits-Quaternion-Repräsentation in `Rotation` und die
-   Norm-Invariante der Companion-Factories.
-2. Translation endlich (kein NaN, kein ±∞) — strukturell garantiert
-   durch `LokalePlatzierung.aus` mit `Resultat`-Wrapping und
-   `@ConsistentCopyVisibility`.
-3. Komposition zweier gültiger Platzierungen ist wieder eine gültige
-   Platzierung — folgt aus 1 und 2 sowie der Norm-Erhaltung von
-   `Rotation.rotiere`.
-
-**Edge Cases:**
-
-- **L = W**: Spezialfall `LokalePlatzierung.IDENTITAET`, transformiert
-  jeden Punkt strukturell-exakt auf sich selbst.
-- **Reine Translation** (R = I): `LokalePlatzierung(t, Rotation.
-  IDENTITAET)` mit `t ≠ 0`. Erlaubt; transformiere wirkt rein
-  additiv.
-- **Reine Rotation um O_W** (t = 0): erlaubt; transformiere wirkt
-  rein als Drehung um den Welt-Ursprung.
-- **Nicht-finite Translation**: durch `LokalePlatzierung.aus`
-  ausgeschlossen (`Resultat.Fehler(EntartetGeometrie.NichtFinit)`).
-- **Null-Quaternion oder nicht-finite Quaternion-Komponenten**:
-  durch `Rotation.ausQuaternion` ausgeschlossen
-  (`EntartetGeometrie.Nullrichtung` bzw.
-  `EntartetGeometrie.NichtFinit`).
-- **Numerische Akkumulation bei tiefer Verschachtelung**: bei
-  Verschachtelungstiefe n ≤ 10 strukturell vernachlässigbar; tiefere
-  Ketten siehe Wohldefiniertheit.
-
-**Verwendungsregel:**
-
-- Funktionen, die Punkte oder Vektoren entgegennehmen, gehen ohne
-  weitere Annotation davon aus, dass diese in **W** gegeben sind
-  (siehe `hg_weltkoordinatensystem.md`, Verwendungsregel).
-- Lokale Koordinaten erhalten in der späteren Bauteil-Schicht einen
-  eigenen Wrapper-Typ (z. B. `BauteilLokal<T>`) mit expliziter
-  `nachWelt(platzierung: LokalePlatzierung) → T`-Operation; eine
-  implizite Reinterpretation lokaler Komponenten als
-  Welt-Komponenten ist verboten. Der Wrapper-Typ ist Folgearbeit von
-  D7/D8.
 
 ## Quellen
 

@@ -83,7 +83,7 @@ Sei
 Dann ist eine **Lage** das Tupel
 
 ```
-ℓ := (dicke, faserrichtung, festigkeitsklasse, position) ∈
+ℓ:= (dicke, faserrichtung, festigkeitsklasse, position) ∈
      ℝ⁺ × S² × 𝓕𝓚_AH × ℕ₀
 ```
 
@@ -115,7 +115,7 @@ das Bauteil seinen Bezugspunkt p₀ in der Bauteilmitte hat, ist die
 Mittenebene der Lage ℓ_i auf Höhe
 
 ```
-z_i := −d/2 + Σ_{j=0}^{i−1} ℓ_j.dicke + ℓ_i.dicke / 2
+z_i:= −d/2 + Σ_{j=0}^{i−1} ℓ_j.dicke + ℓ_i.dicke / 2
 ```
 
 mit d = Σ_j ℓ_j.dicke der Gesamtdicke. Diese Größe ist abgeleitet
@@ -237,85 +237,6 @@ geführt, weil:
     weil keine STRUKTURIERTE Anisotropie vorliegt. Lage im Sinne
     dieses Glossars ist nur bei Modus STRUKTURIERT
     (`mehrlagenholz`) relevant.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.holzbau.werkstoff`):
-
-```kotlin
-package domain.holzbau.werkstoff
-
-import domain.geometrie.Einheitsvektor
-import domain.holzbau.Faserrichtung
-
-/**
- * Lage: einzelne Holzschicht innerhalb einer Lagenstruktur eines
- * Mehrlagenholzes (DIN EN 16351, EN 636).
- * Glossar: hg_lage.md
- *
- * Aggregat aus vier Pflichtfeldern; trägt keine UUID, keine
- * Geometrie über die Dicke hinaus. Räumliche Position ergibt sich
- * aus position und Plattendicken-Achse des umgebenden
- * Mehrlagenholzes.
- */
-data class Lage(
-    /** Lagendicke in mm, > 0. */
-    val dicke: Double,
-    /** Lagenfaserrichtung in W (Einheitsvektor in der Plattenebene). */
-    val faserrichtung: Faserrichtung,
-    /** Lagenfestigkeitsklasse (axiales Holz, typ. C24 bei CLT). */
-    val festigkeitsklasse: AxialesHolzFestigkeitsklasse,
-    /** 0-basierte Lagennummer von außen. */
-    val position: Int
-) {
-    init {
-        require(dicke > 0.0) {
-            "Lagendicke muss positiv sein, war $dicke"
-        }
-        require(position >= 0) {
-            "Lagenposition muss >= 0 sein, war $position"
-        }
-        // faserrichtung erbt Norm-Invariante von Einheitsvektor.
-    }
-}
-```
-
-- **Einheit**: `dicke` in mm (Double, CLAUDE.md-Konvention);
-  übrige Felder dimensionslos.
-- **Identität**: keine; Werteklasse / data class. Eine Lage ist
-  durch ihren Inhalt identisch, nicht durch eine UUID.
-- **Invarianten** (in `init` prüfen, bei Verletzung
-  `IllegalArgumentException` als require — alternativ Resultat-
-  Wrapping in einer Fabrikfunktion `Lage.erzeuge(...): Resultat<Lage, EntartetGeometrie>`,
-  je nach Aufruferschicht):
-  1. `dicke > 0` (positiv).
-  2. `position >= 0`.
-  3. `faserrichtung` erfüllt Norm-Invariante (geerbt von
-     `Einheitsvektor`).
-  4. `festigkeitsklasse ∈ 𝓕𝓚_AH` (durch Typ erzwungen:
-     `AxialesHolzFestigkeitsklasse`).
-- **Konsistenz mit Lagenstruktur** (geprüft in `lagenstruktur`,
-  nicht in `lage`):
-  - Position ist innerhalb der Lagenstruktur eindeutig (Bijektion
-    auf {0, …, n−1}).
-  - Faserrichtung parallel oder rechtwinklig zur Haupttragrichtung
-    des umgebenden Mehrlagenholzes (im Standardlayout).
-- **IFC-Mapping** (Persistenzschicht):
-  - `IfcMaterialLayer.LayerThickness` ← `dicke` (mm umrechnen auf
-    IFC-Längeneinheit).
-  - `IfcMaterialLayer.Material.Name` ← Festigkeitsklasse-Name.
-  - `IfcMaterialLayer.Priority` ← `position`.
-- **Edge Cases**:
-  - **Dicke = 0**: nicht zulässig; `IllegalArgumentException` bzw.
-    `Entartet.LageDickeNichtPositiv`.
-  - **Position negativ oder zu groß**: nicht zulässig; Bereich
-    {0, …, n−1} wird in `lagenstruktur` geprüft.
-  - **Faserrichtung 45°**: zulässig nur bei
-    `lagenstruktur.abweichenderLagenaufbau == true`; sonst
-    Validierungsfehler beim Aufnehmen in die Lagenstruktur.
-  - **Mehrere Lagen mit identischer Position**: nicht zulässig;
-    Bijektivitätsprüfung in `lagenstruktur`.
 
 ## Quellen
 

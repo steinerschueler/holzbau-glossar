@@ -302,7 +302,7 @@ Sei
 - h_B > 0 die Bauteilhöhe in lokaler z-Richtung (mm),
 - b_B > 0 die Bauteilbreite in lokaler y-Richtung (mm),
 - ℓ_B > 0 die Bauteillänge in lokaler x-Richtung (mm),
-- ε_L := Toleranzen.LAENGE_EPS, ε_W := Toleranzen.WINKEL_EPS.
+- ε_L:= Toleranzen.LAENGE_EPS, ε_W:= Toleranzen.WINKEL_EPS.
 
 Sei weiter Π_⊥(B) ⊂ ℝ³ die **Lotebene** des Bauteils
 (`lotebene`): die welt-vertikale Ebene, die die Bauteilachse
@@ -310,7 +310,7 @@ A_B enthält. In Π_⊥(B) seien
 
 ```
 e_hat_h  ∈  Π_⊥(B)  mit  ⟨e_hat_h, e_hat_z^welt⟩ = 0  und  ⟨e_hat_h, e_hat_x^B⟩ > 0,
-e_hat_v  :=  e_hat_z^welt,                                                (0)
+e_hat_v:=  e_hat_z^welt,                                                (0)
 ```
 
 also e_hat_h die welt-horizontale Richtung in der Lotebene, in
@@ -322,7 +322,7 @@ Lotebene.
 Die **Parameter** einer Kerve sind das Tupel
 
 ```
-p_Kerve := (x_0, t, s)                                         (1)
+p_Kerve:= (x_0, t, s)                                         (1)
 ```
 
 mit
@@ -370,9 +370,9 @@ Senkelausstieg C, Kerveckpunkt P, Sohlenausstieg A — sind dann
 (in Bauteil-Lokal-Koordinaten)
 
 ```
-C  :=  (x_0, 0, 0)                                               (2)
-P  :=  C  +  (t / cos θ) · e_hat_v  =  (x_0 + t · tan θ, 0, t)    (3)
-A  :=  P  +  (−s) · w · e_hat_h,   mit  w = t / sin θ            (4)
+C:=  (x_0, 0, 0)                                               (2)
+P:=  C  +  (t / cos θ) · e_hat_v  =  (x_0 + t · tan θ, 0, t)    (3)
+A:=  P  +  (−s) · w · e_hat_h,   mit  w = t / sin θ            (4)
 ```
 
 Hierbei werden e_hat_h und e_hat_v über die lokale_platzierung des
@@ -397,14 +397,14 @@ Die **Sohlenebene** Σ_S ist die welt-horizontale Ebene durch
 P, also die Niveaufläche
 
 ```
-Σ_S  :=  { Q ∈ ℝ³ |  ⟨Q − P, e_hat_v⟩ = 0 }.                          (5)
+Σ_S:=  { Q ∈ ℝ³ |  ⟨Q − P, e_hat_v⟩ = 0 }.                          (5)
 ```
 
 Die **Senkelebene** Σ_N ist die welt-vertikale Ebene durch P
 und C, gespannt von e_hat_v und e_hat_y^B (Bauteilquerrichtung), also
 
 ```
-Σ_N  :=  { Q ∈ ℝ³ |  ⟨Q − P, e_hat_h⟩ = 0 }.                          (6)
+Σ_N:=  { Q ∈ ℝ³ |  ⟨Q − P, e_hat_h⟩ = 0 }.                          (6)
 ```
 
 Beide Ebenen stehen welt-aligned senkrecht aufeinander
@@ -416,14 +416,14 @@ Die **Sohle** ist das Segment auf Σ_S vom Kerveckpunkt P bis
 zum Sohlenausstieg A:
 
 ```
-S  :=  { P + λ · (−s · e_hat_h) | 0 ≤ λ ≤ w }.                        (7)
+S:=  { P + λ · (−s · e_hat_h) | 0 ≤ λ ≤ w }.                        (7)
 ```
 
 Der **Senkel** ist das Segment auf Σ_N vom Kerveckpunkt P bis
 zum Senkelausstieg C:
 
 ```
-N  :=  { P + λ · (−e_hat_v) | 0 ≤ λ ≤ |PC| }                          (8)
+N:=  { P + λ · (−e_hat_v) | 0 ≤ λ ≤ |PC| }                          (8)
 ```
 
 mit welt-vertikaler Länge |PC| = t / cos θ ≥ t (Gleichheit nur
@@ -442,13 +442,13 @@ das den dreieckigen Kerv-Querschnitt in der Lotebene Π_⊥(B)
 nach `lokalePlatzierung`) entlang e_hat_y^B extrudiert:
 
 ```
-K_Kerve(p_Kerve)  :=  Δ_Kerve  ×  [y_min, y_max]                  (9)
+K_Kerve(p_Kerve):=  Δ_Kerve  ×  [y_min, y_max]                  (9)
 ```
 
 mit dem Kerv-Dreieck
 
 ```
-Δ_Kerve  :=  conv{ A, P, C }  ⊂  Π_⊥(B)                          (10)
+Δ_Kerve:=  conv{ A, P, C }  ⊂  Π_⊥(B)                          (10)
 ```
 
 (konvexe Hülle der drei Eckpunkte) und dem y-Intervall
@@ -461,7 +461,7 @@ Die **Wirkung** der Kerve auf das Bauteil ist die Boole'sche
 Differenz nach `bearbeitung`:
 
 ```
-G_B'(F)  :=  G_B^lokal  \  K_Kerve(p_Kerve).                     (11)
+G_B'(F):=  G_B^lokal  \  K_Kerve(p_Kerve).                     (11)
 ```
 
 ### Kerveckpunkt p_K als Anker
@@ -472,7 +472,7 @@ Anker der Kerve und wird in nachgelagerten Sparren-Pipeline-
 Begriffen als **p_K** referenziert:
 
 ```
-p_K  :=  P  =  (x_0 + t · tan θ, 0, t)  in Bauteil-Lokal-Koord.        (12)
+p_K:=  P  =  (x_0 + t · tan θ, 0, t)  in Bauteil-Lokal-Koord.        (12)
 ```
 
 (Die x-Komponente x_0 + t · tan θ folgt aus (2) und (3); p_K ist
@@ -490,7 +490,7 @@ Damit ist eine **Kerve** (als Subtyp von `bearbeitung`) das
 Tupel
 
 ```
-F  :=  (uuid, typ = Kerve, parameter = p_Kerve,
+F:=  (uuid, typ = Kerve, parameter = p_Kerve,
        lokale_platzierung = id_SE(3), bezeichnung?)              (13)
 ```
 
@@ -738,294 +738,6 @@ in y-Richtung beschrieben.
     eine lokale Querschnittsschwächung herbei, die im
     Bemessungsschnitt am Kervort durch t und w · cos θ = t · cot θ
     erfasst wird.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.bauteil.bearbeitung`):
-
-```kotlin
-package domain.bauteil.bearbeitung
-
-import domain.Toleranzen
-import domain.geometrie.LokalePlatzierung
-import java.util.UUID
-
-/**
- * Klauenkerve: dreieckiger Ausschnitt aus der Unterseite eines
- * Stab-Bauteils, begrenzt durch eine welt-horizontale Sohle
- * (Bleischnitt) und einen welt-vertikalen Senkel. Beide
- * Schnittflächen stehen welt-aligned senkrecht aufeinander
- * (90°-Bedingung der Kerve, Dietrichs-Abgrenzung gegen den
- * V-Schnitt).
- *
- * Glossar: hg_kerve.md (Subtyp von hg_bearbeitung.md).
- *
- * Parameter:
- *   position     = x_0,  mm  (Position des Senkelausstiegs C
- *                             entlang der Bauteilachse, Bauteil-
- *                             lokale Koordinate)
- *   kervtiefe    = t,    mm  (perpendikuläre Tiefe von der
- *                             Unterseite zur Sohle, in Bauteil-
- *                             lokal z-Richtung;
- *                             0 < t <= bauteilHoehe - LAENGE_EPS)
- *   senkelSeite  = s,        (diskreter Parameter
- *                             ∈ {FUSSSEITIG, FIRSTSEITIG})
- *
- * Abgeleitet (kein Feld):
- *   sohlenlaenge(b) = w = t / sin θ,  mm  (welt-horizontale
- *                             Projektion der Sohle; bauteil-relativ,
- *                             verlangt θ aus b.lokalePlatzierung)
- *
- * BTLx-Mapping: BirdsMouth (BTLx 2.1, S. 24–28). Die welt-
- * Ausrichtung der Schnittflächen wird beim Export in die
- * BTLx-Inclination-Parameter umgerechnet, die von der
- * Sparren-Einbau-Neigung θ abhängen.
- *
- * IFC-Mapping:  IfcOpeningElement (Voiding-Beziehung über
- *               IfcRelVoidsElement an das Sparren-IfcMember).
- *
- * Plausibilität (weiche Invariante, Warnung):
- *   t <= bauteilHoehe * Toleranzen.KERVTIEFE_FAUSTREGEL_DRITTEL
- */
-data class Kerve(
-    override val uuid: UUID,
-    val position: Double,                                // x_0, mm
-    val kervtiefe: Double,                               // t,   mm
-    val senkelSeite: SenkelSeite = SenkelSeite.FUSSSEITIG,
-    override val lokalePlatzierung: LokalePlatzierung
-        = LokalePlatzierung.IDENTITAET,
-    override val bezeichnung: String? = null,
-) : Bearbeitung {
-    // Kein Feld bauteilUuid: die Zugehörigkeit zum Bauteil ist
-    // die Container-Beziehung (Kerve ∈ Bauteil.bearbeitungen),
-    // siehe hg_bearbeitung.md / hg_kerve.md (partitive Komposition).
-    // Kein Feld sohlenlaenge: w = t / sin θ ist bauteil-relativ
-    // abgeleitet (verlangt θ) und als Funktion `sohlenlaenge(b)`
-    // gefuehrt, nicht als gespeicherter Parameter.
-    // Konstruktion über `Kerve.aus(...)` (Companion-Factory),
-    // nicht direkt: die selbstreferenziellen Invarianten werden
-    // dort in einem Resultat-Typ erfasst und liefern bei
-    // Verletzung `KerveUngueltig`-Varianten zurück, statt eine
-    // Exception zu werfen.
-    companion object { /* aus(...): Resultat<Kerve, KerveUngueltig> */ }
-}
-
-/**
- * Diskreter Parameter: auf welcher Seite des Sohlen-Ausschnitts
- * der Senkel sitzt. FUSSSEITIG = Senkel am fußwärtigen Ende der
- * Sohle (Sohle erstreckt sich von Senkelausstieg in firstwärtige
- * Richtung); FIRSTSEITIG = Senkel am firstwärtigen Ende.
- */
-enum class SenkelSeite { FUSSSEITIG, FIRSTSEITIG }
-
-// (a) Selbstreferenzielle Invarianten — verlangen nur die
-//     Kerv-Parameter selbst, geprüft im `Kerve.aus(...)`-Companion;
-//     entsprechen Wohldefiniertheit harte Invariante 1.
-sealed class KerveUngueltig {
-    object NichtFinit            : KerveUngueltig()  // NaN/∞ in einem Parameter
-    object KervtiefeNichtPositiv : KerveUngueltig()  // t <= LAENGE_EPS
-}
-// Hinweis: die ehemaligen `KerveZuSchmal`- und
-// `FlankenwinkelEntartet`-Fälle aus der vorherigen Definition
-// entfallen. `KerveZuSchmal` war ein Trapez-Pathologie-Fall,
-// der in der Dreiecks-Geometrie nicht mehr auftritt;
-// `FlankenwinkelEntartet` betraf einen α-Wertebereich, der in
-// der welt-aligned Geometrie keinen Parameter mehr darstellt
-// (die 90°-Bedingung zwischen Sohle und Senkel ist strukturell
-// erzwungen). Auch `SohlenlaengeNichtPositiv` entfällt: w = t/sin θ
-// ist keine freie Eingabe mehr, sondern bauteil-relativ abgeleitet;
-// an seine Stelle tritt die Neigungs-Bedingung (θ > WINKEL_EPS)
-// als `BauteilNeigungZuFlach` in `BearbeitungAmBauteilUngueltig`.
-
-// (b) Bauteil-relative Invarianten — verlangen Zugriff auf das
-//     enthaltende Bauteil (h_B, b_B, ℓ_B, Querschnittstyp,
-//     Einbau-Neigung θ aus `lokalePlatzierung` des Bauteils),
-//     geprüft beim Anhängen in `Bauteil.Stab.mitBearbeitung(b)`;
-//     entsprechen Wohldefiniertheit harte Invarianten 2, 3 und 4.
-sealed class BearbeitungAmBauteilUngueltig {
-    object KervtiefeUeberBauteilhoehe       : BearbeitungAmBauteilUngueltig()  // t > h_B - LAENGE_EPS
-    object BauteilNeigungZuFlach            : BearbeitungAmBauteilUngueltig()  // θ <= WINKEL_EPS: Sohle parallel zur Unterseite, w = t/sin θ divergiert
-    object KervePositionAusserhalbBauteil   : BearbeitungAmBauteilUngueltig()  // Senkel- oder Sohlenausstieg ausserhalb [ε_L, ℓ_B - ε_L]
-    object BauteilQuerschnittNichtUnterstuetzt
-                                            : BearbeitungAmBauteilUngueltig()  // Kerve nur an Stab-Bauteil mit Rechteckquerschnitt
-}
-```
-
-Die Trennung in zwei sealed Hierarchien ist bewusst:
-`KerveUngueltig` betrifft die Kerve isoliert (Parameter-Sanity,
-parameterlokal prüfbar), `BearbeitungAmBauteilUngueltig`
-betrifft die Beziehung Kerve ↔ Bauteil und kann erst beim
-Anhängen geprüft werden, weil sie h_B, ℓ_B, den Bauteil-
-querschnittstyp und die Einbau-Neigung θ benötigt. Eine
-einzelne Hierarchie würde diese Schichtung verschleifen und
-den `Kerve.aus(...)`-Companion zwingen, eine Bauteil-Referenz
-entgegenzunehmen — was die Konstruktion einer Kerve unzulässig
-an ein konkretes Bauteil koppeln würde.
-
-- **Einheit**: Längen in mm (Double); diskrete Senkelseite als
-  Enum.
-- **Identität**: `uuid` von `bearbeitung` ererbt; persistent
-  (RFC 9562 v7).
-- **Keine Backref auf das Bauteil**: Die Datenklasse `Kerve`
-  führt **kein** Feld `bauteilUuid`. Die Zugehörigkeit zum
-  Sparren ist die Container-Beziehung
-  `kerve ∈ sparren.bearbeitungen`. Auflösung Kerven-UUID →
-  Sparren erfolgt über einen Repository-Lookup
-  (`BauteilRepository.findeBauteilZuBearbeitung(kerveUuid)`),
-  nicht über ein Feld am Kerven-Objekt.
-- **Pflicht- und Optionalfelder (normativ)**:
-  - `position`, `kervtiefe` — Pflicht, beide in mm. Die
-    Sohlenlänge `w` ist **kein Feld**, sondern bauteil-relativ
-    abgeleitet (`sohlenlaenge(b) = t / sin θ`).
-  - `senkelSeite` — Default `FUSSSEITIG` (typische Schweizer und
-    süddeutsche Klauenkerve an der Fußpfette).
-  - `lokalePlatzierung` — Default `IDENTITAET` (Werkzeug-
-    Bezugssystem ≡ Bauteil-Lokal-System); für Kerven mit Y-
-    Versatz oder Werkzeug, das y-seitig über die Bauteilbreite
-    hinausragt (einfache, seitlich offene Kerve), abweichend.
-  - `bezeichnung` — `null` zulässig.
-- **Invarianten**:
-  - **Hart** (Validierungsfehler, kein Exception-Wurf):
-    - **Selbstreferenziell** (`Kerve.aus(...)` Companion-Factory,
-      Resultat-Typ mit `KerveUngueltig`-Varianten): Wohl-
-      definiertheit harte Invariante 1 (Senkelseite ist
-      strukturell durch das Enum garantiert, Invariante 5).
-    - **Bauteil-relativ** (`Bauteil.Stab.mitBearbeitung(b)`,
-      Resultat-Typ mit `BearbeitungAmBauteilUngueltig`-Varianten):
-      Wohldefiniertheit harte Invarianten 2, 3 (Neigung) und 4.
-  - **Weich** (Warnung in der Bemessungs-/Validierungs-Schicht,
-    nicht im `init`):
-    - `kervtiefe ≤ bauteilHoehe * Toleranzen.KERVTIEFE_FAUSTREGEL_DRITTEL`
-      → `Warnung.KerveZuTief`.
-    - `sohlenlaenge(b) = kervtiefe / sin θ ∈ [60.0, 240.0]`
-      (Standard-Pfettenbreitenbereich, mm) →
-      `Warnung.AtypischeSohlenlaenge` außerhalb.
-- **Toleranzen-Konstanten** (in `domain.Toleranzen` zu ergänzen,
-  Folgearbeit):
-  ```kotlin
-  /** Faustregel-Bruchteil der Bauteilhöhe für die maximale
-   *  Kervtiefe nach deutschsprachiger Zimmermannspraxis.
-   *  Glossar: hg_kerve.md, quellenkonflikt-Block.
-   *  Default 1/3; projekt- oder normspezifisch überschreibbar
-   *  (z. B. 1/4 für IRC R802.7.1, 1/6 für die konservative
-   *  Klauen-Lesart nach Stuermer / woodworking.de).
-   *  Die Faustregel wird nicht aktiv validiert; eine zusätzliche
-   *  Toleranzkonstante ist daher nicht vorgesehen. */
-  const val KERVTIEFE_FAUSTREGEL_DRITTEL: Double = 1.0 / 3.0
-  ```
-- **BTLx-Export** (Persistenzschicht, Phase 4):
-  - Die Kerve wird als `BirdsMouth`-Processing am Sparren-Part
-    geführt (BTLx 2.1, S. 24–28). Mapping (überarbeitet auf
-    die welt-aligned Kervgeometrie; konkrete Inclination-
-    Berechnungen sind Folgearbeit):
-    | App-Parameter         | BTLx-Parameter                    |
-    |-----------------------|-----------------------------------|
-    | `position`            | `StartX`                          |
-    | (intern y = 0)        | `StartY = 0`                      |
-    | `kervtiefe`           | `Depth` (mit Achtung auf Bezug:   |
-    |                       |  BTLx Depth ist perpendikulär zur |
-    |                       |  ReferencePlane, was bei Bauteil- |
-    |                       |  Lokal-Referenz dem hier definier-|
-    |                       |  ten t entspricht)                |
-    | `sohlenlaenge(b)`     | `WidthCounterPart` (abgeleitet     |
-    |  = t / sin θ          |  w = t/sin θ, über cos θ von der   |
-    |                       |  welt-horizontalen Projektion auf |
-    |                       |  das BTLx-Referenzmass)           |
-    | `senkelSeite`         | bestimmt Vorzeichen-Konvention    |
-    |                       |  von `Inclination1` vs            |
-    |                       |  `Inclination2`                   |
-    | (BTLx `Inclination1`) | aus θ und senkelSeite (Folgearbeit)|
-    | (BTLx `Inclination2`) | aus θ und senkelSeite (Folgearbeit)|
-    | (BTLx `Angle`)        | 90° (Standardfall)                |
-    | (BTLx `RafterNailHole`) | nicht modelliert (Folgearbeit)  |
-  - Die App-Klasse repräsentiert die volle BTLx-Parameter-Menge
-    durch eine reduzierte, kanonische Teilmenge; nicht-genutzte
-    BTLx-Parameter werden auf ihre Defaults gesetzt.
-- **IFC-Export** (Persistenzschicht, Phase 4):
-  - Die Kerve wird als `IfcOpeningElement` mit eigener
-    `GlobalId` (= Kerven-UUID, Base64-kodiert) angelegt; die
-    Beziehung zum Sparren läuft über `IfcRelVoidsElement` mit
-    dem Sparren-IfcMember/IfcBeam als Master.
-- **Edge Cases**:
-  - **Kerve am Sparrenfuß auf Fußpfette**: Standardfall;
-    position klein, kervtiefe = 30…40 mm (≈ h_B/3),
-    sohlenlaenge = Pfettenbreite (z. B. 120 mm),
-    senkelSeite = FUSSSEITIG (Schweizer und süddeutscher
-    Standard).
-  - **Kerve in Sparrenmitte auf Mittelpfette**: position in der
-    Sparrenmitte; senkelSeite kann je nach Tragwerks-Kontext
-    FUSSSEITIG oder FIRSTSEITIG sein. Die App erzwingt keine
-    Kervpositions-Beziehung zur Pfettenposition; das ist
-    Tragwerks-Konsistenzprüfung (Folgearbeit).
-  - **Kerve am Sparrenfirstpunkt**: typisch wird der Sparren am
-    First mit einem Senkelriss-Anschnitt abgeschnitten und
-    nicht mit einer Kerve versehen (zimmerer-treff.com); falls
-    doch eine Kerve verwendet wird, gilt sie als regulärer Fall
-    mit position nahe ℓ_B.
-  - **Zwei Kerven an einem Sparren** (Fußpfette + Mittelpfette,
-    Pfettendach): zwei `Kerve`-Instanzen mit eigenen UUIDs in
-    derselben Bearbeitungs-Liste des Sparrens; geometrisch nach
-    `bearbeitung` reihenfolgeunabhängig vereinigt.
-  - **Einfache (seitlich offene) Kerve**: modelliert durch eine
-    `lokalePlatzierung`, deren y-Extent über die volle Bauteil-
-    breite b_B hinausreicht; geometrisch derselbe Werkzeug-
-    körper wie die Standardklauenkerve, aber mit Schnittflächen,
-    die zu beiden Sparren-Längsseiten hin offen sind. Kein
-    eigener Subtyp.
-  - **Doppelkerve über Mittelpfette** (Pfette wird umgriffen):
-    zwei `Kerve`-Instanzen mit derselben `position`-Region und
-    entgegengesetzten `senkelSeite`-Werten, die zusammen die
-    Pfette von beiden Seiten umfassen. Modellidiom, kein
-    eigener Subtyp.
-  - **Kerve auf Stahl-/Betonträger oder Mauerwerkskante**:
-    geometrisch identisch zur Sparren-auf-Pfette-Kerve; das
-    Gegenholz ist kein Teil der Kervdefinition.
-  - **Kerve an einem Plattenbauteil**: geometrisch zulässig,
-    aber zimmermannsmäßig untypisch; die App warnt (eine Kerve
-    an einem Plattenwerkstoff ist meist als `Schlitz` oder
-    `Anschnitt` besser modelliert).
-  - **Sparren ohne Kerve, formschlüssig nur durch Verbinder**
-    (Balkenschuh, Tellerkopfschraube, Sparrenpfettenanker):
-    kein Kerve-Eintrag nötig; die Verbindung wird über
-    `verbinder` / `verbindungsmittel` modelliert.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder;
-  Implementierung in der Geometrie-Schicht, Phase 3.2):
-  - `kerveckpunkt(b: Bauteil): Punkt` — p_K = P in Bauteil-Lokal-
-    Koordinaten = (x_0 + t · tan θ, 0, t) nach (12); benötigt die
-    Einbau-Neigung θ aus `b.lokalePlatzierung` (bauteil-relativ).
-    Anker-Funktion für die Sparren-Pipeline-Begriffe `Bezugsebene`,
-    `Sparrenueberstand`.
-  - `senkelausstieg(): Punkt` — C in Bauteil-Lokal-Koordinaten
-    = (x_0, 0, 0) nach (2); kerveigen (ohne Bauteil).
-  - `sohlenlaenge(b: Bauteil): Double` — abgeleitete Sohlenlänge
-    w = t / sin θ (mm), welt-horizontale Projektion der Sohle;
-    benötigt die Einbau-Neigung θ aus `b.lokalePlatzierung`.
-  - `sohlenausstieg(b: Bauteil): Punkt` — A in Bauteil-Lokal-
-    Koordinaten nach (4) mit w = `sohlenlaenge(b)`; liegt auf der
-    Bauteil-Unterseite (z = 0); benötigt θ aus `b.lokalePlatzierung`.
-  - `werkzeugkoerper(b: Bauteil): Polyeder` — K_Kerve(p_Kerve)
-    nach (9)–(10), aufgespannt im welt-System und in Bauteil-
-    Lokal-Koordinaten zurückprojiziert; Standardfall: prisma-
-    tischer Polyeder entlang e_hat_y^B mit dreieckigem Querschnitt
-    in der Lotebene.
-  - `sohlenflaeche(b: Bauteil): Double` — Fläche der Sohle (mm²) =
-    w · b_B = (t / sin θ) · b_B (Auflagefläche auf der Pfette, in
-    welt-horizontaler Projektion); für die Druckpressungs-
-    Bemessung; benötigt θ aus `b.lokalePlatzierung`.
-  - `restholz(b: Bauteil): Double` — h_B − t (mm); fließt in
-    den Schubnachweis am Kervort nach EC5 6.5 ein.
-  - `istFaustregelEingehalten(b: Bauteil, fraktion: Double =
-    Toleranzen.KERVTIEFE_FAUSTREGEL_DRITTEL): Boolean` —
-    weiche Plausibilitätsprüfung.
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt `Kerve`
-  (deutsch, Glossarbegriff). Spezialisierungen heißen
-  `Stuhlkerve`, `Walmkerve`, `WienerKastl` (Folgearbeit).
-  `Doppelkerve`, `Versatzkerve` und `EinfacheKerve` sind
-  **keine** eigenen Klassen, sondern Modellierungs-Idiome aus
-  `Kerve` (+ `Versatz` für Versatzkerve, + erweiterter
-  `lokalePlatzierung` für einfache Kerve, + zweite `Kerve`-
-  Instanz für Doppelkerve).
 
 ## Quellen
 

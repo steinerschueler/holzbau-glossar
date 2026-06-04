@@ -70,8 +70,7 @@ quellenkonflikt: |
   Die beiden Begriffe sind disjunkt und werden in dieser App als
   getrennte Glossareinträge geführt; `pfettenueberstand` ist
   Folgearbeit und wird hier nur in `abgrenzung_zu` referenziert,
-  ohne dass der Eintrag bereits existiert (Forward-Verweis nach
-  Memory `project_glossar_konventionen`).
+  ohne dass der Eintrag bereits existiert (Forward-Verweis nach).
 
   Diese Festlegung ist konsistent mit allen konsultierten Quellen,
   sobald die Lesart-A-Konvention für „Sparrenkopf" zugrundegelegt
@@ -102,11 +101,11 @@ Sei
   Gleichung (12) definierte Schnittpunkt von **Sohle (Bleischnitt)
   und Senkel (Senkelschnitt)** der Fußpfettenkerve — die „eindeutige
   geometrische Singular-Referenz" des Sparrenfußes (Recherche-Bericht
-  `docs/recherche/2026-05-10_sparrenmessung_neubau.md`). Im
+  [intern]). Im
   Bauteil-Lokal-System gilt p_K^lokal = (x₀ + t · tan θ, 0, t) mit
   der Einbau-Neigung θ. In W ist
   ```
-  p_K := T_{L_B → W}(p_K^lokal)                                    (1)
+  p_K:= T_{L_B → W}(p_K^lokal)                                    (1)
   ```
   mit T_{L_B → W} der Bauteil-Lokal-zu-Welt-Transformation (siehe
   `lokales_koordinatensystem`). p_K liegt bei der perpendikulären
@@ -116,19 +115,19 @@ Sei
 - Sei p_a ∈ ℝ³ der Sparrenfußpunkt (Anfangspunkt der Bauteilachse
   nach `hg_sparren.md` Bedingung 4).
 
-Sei p_K^A := p_a + ⟨p_K − p_a, d_hat⟩ · d_hat die **Lot-Projektion**
+Sei p_K^A:= p_a + ⟨p_K − p_a, d_hat⟩ · d_hat die **Lot-Projektion**
 des Kerveckpunkts auf die Bauteilachse A(B) (die **axiale
 Kervposition**; p_K selbst liegt um die Kervtiefe t neben der
 Achse). Dann ist der **Sparrenüberstand** die Strecke
 
 ```
-S_üb(B, K) := [p_a, p_K^A] ⊂ A(B),                                 (2)
+S_üb(B, K):= [p_a, p_K^A] ⊂ A(B),                                 (2)
 ```
 
 mit Länge (axiale Distanz, Projektion auf d_hat)
 
 ```
-ℓ_üb(B, K) := ⟨p_K − p_a, d_hat⟩   (in mm).                        (3)
+ℓ_üb(B, K):= ⟨p_K − p_a, d_hat⟩   (in mm).                        (3)
 ```
 
 **Sparrenüberstands-Vorzeichen**: Der Überstand ist genau dann
@@ -150,7 +149,7 @@ Punkt p_K der Fußpfettenkerve"); ihre abgeleitete skalare z-Höhe
 ist
 
 ```
-z₀(T_Sparren) := ⟨e_hat_z, p_K⟩.                                       (5)
+z₀(T_Sparren):= ⟨e_hat_z, p_K⟩.                                       (5)
 ```
 
 Damit liegt der Sparrenüberstand vollständig **im Bereich
@@ -354,133 +353,6 @@ bzw. Flugsparren-Modellierung mit Giebelüberstand).
     Der Sparrenüberstand liegt im Sparren-Tool im Bereich
     z < z₀(T_Sparren) (siehe Erläuterung); diese Beziehung ist
     abgeleitet, nicht definitorisch.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.bauteil.dachgeometrie`):
-
-```kotlin
-package domain.bauteil.dachgeometrie
-
-import domain.bauteil.Sparren
-import domain.bauteil.bearbeitung.Kerve
-import domain.geometrie.Punkt
-import domain.geometrie.Strecke
-
-/**
- * Sparrenüberstand: traufseitiges Auskragstück eines Sparrens
- * vom Bleischnitt der Fußpfetten-Kerve bis zum Sparrenfuß.
- *
- * Glossar: hg_sparrenueberstand.md
- *
- * Im Sparren-Tool liegt der Sparrenüberstand im Bereich
- * z < z₀(T_Sparren) (unterhalb der Bezugsebene).
- *
- * Die Klasse repräsentiert die Strecke [p_K, p_a] auf der
- * Sparren-Bauteilachse und ist eine abgeleitete Sicht; sie wird
- * konstruktiv aus Sparren + Fußpfetten-Kerve abgeleitet.
- */
-data class Sparrenueberstand(
-    val bleischnittPunkt: Punkt,    // p_K, oberer Endpunkt
-    val sparrenfussPunkt: Punkt,      // p_a, unterer Endpunkt
-) {
-    /** Strecken-Länge in mm. */
-    val laenge: Double get() = strecke().laenge
-
-    fun strecke(): Strecke = /* Strecke.aus(bleischnittPunkt, sparrenfussPunkt) */ TODO()
-
-    /** True, wenn Überstand tatsächlich vorhanden (laenge > LAENGE_EPS). */
-    fun istVorhanden(): Boolean = TODO()
-
-    companion object {
-        /**
-         * Konstruktion aus Sparren + Fußpfetten-Kerve. Verlangt,
-         * dass die Kerve auf einer Fußpfette aufliegt; sonst
-         * Resultat.Fehler.
-         */
-        fun aus(
-            sparren: Sparren,
-            fusspfettenKerve: Kerve,
-        ): Resultat<Sparrenueberstand, SparrenueberstandUngueltig> = TODO()
-    }
-}
-
-sealed class SparrenueberstandUngueltig {
-    object KerveNichtAufFusspfette        : SparrenueberstandUngueltig()
-    object SparrenfussOberhalbBleischnitt : SparrenueberstandUngueltig()
-    object NichtFinit                      : SparrenueberstandUngueltig()
-}
-```
-
-- **Einheit**: Punktkoordinaten in mm, Länge in mm.
-- **Identität**: keine eigene UUID. Der Sparrenüberstand ist eine
-  abgeleitete Sicht; er wird konstruktiv aus Sparren + Fußpfetten-
-  Kerve gewonnen, nicht persistiert.
-- **Pflicht- und Optionalfelder**:
-  - `bleischnittPunkt` — Pflicht; Bauteilachsen-Punkt am
-    Auflager.
-  - `sparrenfussPunkt` — Pflicht; Bauteilachsen-Endpunkt p_a des
-    Sparrens.
-- **Invarianten** (in Companion-Factory `Sparrenueberstand.aus(...)`,
-  `Resultat.Fehler` bei Verletzung; keine Exception):
-  1. `bleischnittPunkt` und `sparrenfussPunkt` sind finit.
-  2. Im Standardfall (Überstand vorhanden): die Welt-z-Höhe von
-     `sparrenfussPunkt` ist kleiner als die Welt-z-Höhe von
-     `bleischnittPunkt` minus `Toleranzen.LAENGE_EPS`. Bei
-     Verletzung dieser Bedingung: `SparrenueberstandUngueltig.
-     SparrenfussOberhalbBleischnitt` (semantisch: kein Überstand
-     vorhanden, oder Sparrenrichtungs-Vorzeichen falsch).
-  3. Die Fußpfetten-Kerve liegt tatsächlich auf einer `Fusspfette`
-     auf (Tragwerks-Konsistenz; geprüft beim Anhängen, nicht im
-     Companion). Bei Verletzung:
-     `SparrenueberstandUngueltig.KerveNichtAufFusspfette`.
-- **Konstruktion**: Die Klasse wird über die Companion-Factory
-  `Sparrenueberstand.aus(sparren, fusspfettenKerve)` konstruiert,
-  nicht über den Default-Konstruktor; alle Invarianten werden im
-  Resultat-Typ erfasst.
-- **Edge Cases**:
-  - **Sparrenüberstand mit Länge 0** (Sparrenfuß auf der Aussen-
-    wandkante): zulässig, `istVorhanden()` liefert false. Tritt
-    bei Bauten mit unterschnittenem Dach (Aussenwand bündig mit
-    Dachfläche) auf.
-  - **Sparrenüberstand bei Sparren ohne Fußpfetten-Kerve** (z. B.
-    Anschluss über Versatz, Verbinder, Balkenschuh): nicht durch
-    diese Klasse abgedeckt. Folgearbeit (Trigger: erstes Tool mit
-    Sparrenfuß-Anschluss ohne Kerve).
-  - **Sparrenüberstand bei mehreren Fußpfetten-Kerven am selben
-    Sparren** (Mehrschiff-Dach): die referenzierte Kerve muss
-    durch die Tool-Konfiguration disambiguiert werden; default
-    ist die geometrisch unterste (kleinste z-Höhe in W).
-  - **Sparrenüberstand am Pultsparren oder Schiftsparren**: die
-    Definition gilt unverändert, sofern eine Fußpfetten-Kerve
-    existiert.
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt
-  `Sparrenueberstand` (deutsch, Glossarbegriff; ASCII-Schreibweise
-  wegen Kotlin-Identifier-Konvention).
-
-**Folgearbeit (trigger-basiert):**
-
-- **`pfettenueberstand`** (Pfettenüberstand giebelseitig):
-  giebelseitiges Hinausragen der Pfette über die Giebelwand;
-  eigener Begriff mit eigenem geometrischen Bezugskonzept.
-  Trigger: erstes Tool, das Pfetten-Modellierung mit
-  Giebelüberstand verlangt (Walmdach-Tool, Satteldach-Tool mit
-  Giebelwand).
-- **`flugsparren_ueberstand`** (Flugsparren-Überstand
-  giebelseitig): freistehende Sparrenpaare an der Giebelwand mit
-  Auflage auf giebelseitig auskragenden Pfetten. Trigger:
-  erstes Tool mit Flugsparren-Modellierung.
-- **Sparrenüberstand bei Sparren ohne Kerve**: Erweiterung der
-  Definition auf Sparrenfuß-Anschlüsse über Versatz, Verbinder
-  oder Balkenschuh. Trigger: erstes Tool mit kervlosem Sparren-
-  Anschluss.
-- **Trauflösungs-Subtypen** (Stirnbrett, Kastenuntersicht, offene
-  Sparrenuntersicht): Ergänzung als Visualisierungs-Varianten;
-  Trigger: erstes 3D-Visualisierungs-Tool für Trauflösungen.
-- **Werkplan-Bemassungs-Begriffe** (Sparrenüberstand-Längenangabe
-  als Teil der Sparrenlängen-Zerlegung nach Gleichung (6)):
-  Trigger: erstes Werkplan-Beschriftungs-Tool.
 
 ## Quellen
 

@@ -40,8 +40,7 @@ quellenkonflikt: |
   EC5 Kap. 8) **oder** Verstärkungselement (Querzug-/Querdruck-/
   Schubverstärkung, axiale Bemessung nach EC5:2022 / ETA). Diese App
   löst den Konflikt durch eine eigene Element-Subklasse
-  `verstaerkungselement`; siehe dort und Memory
-  `project_element_ontologie`. **Funktion bestimmt die Klasse, nicht
+  `verstaerkungselement`; siehe dort und. **Funktion bestimmt die Klasse, nicht
   das Material.**
 
   IFC-Mapping ist ebenfalls konsistent: alle stiftförmigen und
@@ -82,7 +81,7 @@ Sei
 - 𝓔 die Menge der Elemente nach `element`,
 - 𝓤 der UUID-Raum nach `uuid`,
 - 𝓑 die Menge der Bauteile nach `bauteil`,
-- 𝓦_VM := werkstoff_stahl ∪ axiales_holz ∪ {⊥_klebstoff} die
+- 𝓦_VM:= werkstoff_stahl ∪ axiales_holz ∪ {⊥_klebstoff} die
   Werkstoffmenge der Verbindungsmittel, formal referenziert auf die
   Werkstoff-Hierarchie (Stahl für stiftförmige und nicht-stiftförmige
   metallische Verbindungsmittel; axiales Holz für Holzdübel aus
@@ -93,12 +92,12 @@ Sei
   wird (Folgearbeit),
 - 𝓥𝓜_τ die Menge der Verbindungsmittel-Typen
   ```
-  𝓥𝓜_τ := { Nagel, Schraube, Bolzen, Stabduebel,
+  𝓥𝓜_τ:= { Nagel, Schraube, Bolzen, Stabduebel,
             Klammer, Holzduebel, NagelPlatte,
             DuebelBesondererBauart, Klebung }
   ```
   (sealed enum; eigene Folge-Einträge),
-- 𝓛 := ℝ⁺ die Menge der zulässigen Längen in mm,
+- 𝓛:= ℝ⁺ die Menge der zulässigen Längen in mm,
 - 𝓔𝓣𝓐 die Menge der ETA-Referenzen (eigener Folge-Eintrag
   `eta_referenz`),
 - 𝓢𝓰 die Menge der Stahlgüten (eigener Folge-Eintrag `stahlguete`).
@@ -106,7 +105,7 @@ Sei
 Dann ist ein **Verbindungsmittel** das Tupel
 
 ```
-VM := (uuid, geometrie, lokale_platzierung, werkstoff,
+VM:= (uuid, geometrie, lokale_platzierung, werkstoff,
        typ, nenndurchmesser, nennlaenge, achse,
        verbindet, multiplizitaet,
        eta_zulassung?, stahlguete?,
@@ -335,8 +334,7 @@ Stückliste n × der Eintrag erzeugt; die UUID ist genau eine.
     physische Objektklasse wie ein Verbindungsmittel (typisch
     Vollgewindeschraube), aber in **Verstärkungsfunktion** mit
     eigener axialer Bemessung nach EC5:2022 / ETA. **Funktion
-    bestimmt die Klasse, nicht das Material** (Memory
-    `project_element_ontologie`, Designregel 2). Wer denselben
+    bestimmt die Klasse, nicht das Material**. Wer denselben
     Schraubentyp einmal als Anschluss-Schraube und einmal als
     Querzugverstärkung einbaut, instanziiert zwei verschiedene
     Element-Subklassen.
@@ -346,153 +344,6 @@ Stückliste n × der Eintrag erzeugt; die UUID ist genau eine.
     Tragstück, Verbindung das Aggregat darüber.
   - **Element** (`element`): abstrakter Oberbegriff;
     Verbindungsmittel ist eine konkrete Subklasse.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.element.verbindungsmittel`):
-
-```kotlin
-package domain.element.verbindungsmittel
-
-import domain.element.Element
-import domain.geometrie.Geometrie
-import domain.geometrie.LokalePlatzierung
-import domain.geometrie.Strecke
-import domain.holzbau.Werkstoff
-import domain.identifikation.Positionsnummer
-import domain.identifikation.Produktkennzeichnung
-import domain.identifikation.Stahlguete
-import domain.identifikation.ETAReferenz
-import java.util.UUID
-
-/** Verbindungsmittel-Typ nach EC5 Kap. 8 plus Klebung (Kap. 10). */
-sealed interface VerbindungsmittelTyp {
-    data object Nagel              : VerbindungsmittelTyp
-    data object Klammer            : VerbindungsmittelTyp
-    data object Bolzen             : VerbindungsmittelTyp
-    data object Stabduebel         : VerbindungsmittelTyp
-    data object Schraube           : VerbindungsmittelTyp
-    data object Holzduebel         : VerbindungsmittelTyp
-    data object NagelPlatte        : VerbindungsmittelTyp
-    data object DuebelBesondererBauart : VerbindungsmittelTyp
-    data object Klebung            : VerbindungsmittelTyp
-}
-
-/**
- * Verbindungsmittel: einzelnes mechanisches oder geklebtes
- * Tragstück, das Kräfte zwischen Bauteilen überträgt.
- *
- * Glossar: hg_verbindungsmittel.md
- *
- * Repräsentation folgt dem cadwork-Konzept "Verbindungsmittelachse
- * (VBA)": die Achse trägt Position/Richtung, der Typ trägt die
- * Spezifikation. Daraus generiert: Werkplan-Symbol,
- * Bohrlochbearbeitung am Bauteil, Stücklisten-Eintrag, statische
- * Position.
- *
- * IFC: IfcMechanicalFastener (Subtyp von IfcElementComponent).
- * BTLx: hybrid — meist Processing am Bauteil (Drilling, Lag-Screw),
- *        bei sichtbaren Tragelementen eigenes Part mit GUID.
- */
-data class Verbindungsmittel(
-    override val uuid: UUID,
-    override val geometrie: Geometrie,
-    override val lokalePlatzierung: LokalePlatzierung,
-    override val werkstoff: Werkstoff,
-    val typ: VerbindungsmittelTyp,
-    val nenndurchmesser: Double,        // mm
-    val nennlaenge: Double,             // mm
-    val achse: Strecke,                 // Verbindungsmittelachse in W
-    val verbindet: List<UUID>,          // FK auf Bauteil-UUIDs, |verbindet| >= 2
-    val multiplizitaet: Int = 1,        // n >= 1; eine Instanz kann eine Gruppe sein
-    val etaZulassung: ETAReferenz? = null,
-    val stahlguete: Stahlguete? = null,
-    override val positionsnummer: Positionsnummer? = null,
-    override val produktkennzeichnung: Produktkennzeichnung? = null,
-    override val bezeichnung: String? = null
-) : Element {
-    init {
-        // 1. nenndurchmesser > Toleranzen.LAENGE_EPS
-        // 2. nennlaenge > Toleranzen.LAENGE_EPS
-        // 3. achse.laenge() <= nennlaenge + Toleranzen.LAENGE_EPS
-        // 4. verbindet.size >= 2
-        // 5. verbindet.all { it != uuid }   (kein Selbstbezug)
-        // 6. multiplizitaet >= 1
-    }
-}
-```
-
-- **Einheit**: Längen in mm (Double). Winkel intern in Radiant.
-- **Identität**: `uuid` von `element` ererbt; eine Instanz mit
-  `multiplizitaet > 1` führt **eine** UUID, nicht n UUIDs.
-- **Geometrie-Repräsentation**:
-  - **Stiftförmig** (Nagel, Schraube, Bolzen, Stabdübel, Klammer):
-    Achse als `Strecke`, Querschnitt als Kreis mit Durchmesser
-    `nenndurchmesser`. Die Geometrie wird durch Sweep erzeugt; sie
-    ist nicht eigenständig im Tupel persistiert (abgeleitet aus
-    `achse`, `typ`, `nenndurchmesser`, `nennlaenge`).
-  - **Nagelplatte / Dübel besonderer Bauart**: 2D-Plattengeometrie
-    mit Dicke; eigene Geometrie-Variante in Folgearbeit.
-  - **Klebung**: Klebfugen-Fläche zwischen zwei Bauteilen; eigene
-    Geometrie-Variante in Folgearbeit.
-- **Foreign-Key-Regel** (siehe `uuid`): `verbindet: List<UUID>` und
-  jede andere Beziehung referenzieren ausschließlich UUIDs.
-- **Multiplizität und Bemessung**: `multiplizitaet = n` repräsentiert
-  eine Gruppe; die effektive Anzahl n_ef nach EC5 Gl. 8.17 (für
-  Schraubenreihen in Faserrichtung) ist
-  ```
-  n_ef = min(n, n^0.9 · (a₁ / (13 · d))^(1/4))
-  ```
-  und wird in der Bemessungs-Schicht berechnet, nicht im Glossar.
-- **IFC-Mapping** (Persistenzschicht):
-  - IFC-Klasse: `IfcMechanicalFastener` (Subtyp von
-    `IfcElementComponent`, **NICHT** `IfcBuildingElement`).
-  - Property Sets: `Pset_FastenerCommon` (Reference,
-    NominalDiameter, NominalLength), `Pset_MechanicalFastener`
-    (NominalLength, NailLength, NominalDiameter, Strength,
-    PreLoad).
-  - Multiplizität: ein `IfcMechanicalFastener` darf „one or many"
-    repräsentieren; die App verwendet i. d. R. eine Instanz pro
-    funktionaler Gruppe.
-  - Hersteller-BIM-Bibliotheken (Rothoblaas, Würth, SFS, Simpson
-    Strong-Tie) liefern alle Verbindungsmittel als
-    `IfcMechanicalFastener` aus.
-- **BTLx-Mapping** (Persistenzschicht):
-  - **Standardfall**: `Processing` am betroffenen Bauteil
-    (`Drilling` für Stabdübel/Bolzen, `Lag-Screw` für
-    Holzschrauben). Das Verbindungsmittel ist dann **nicht** als
-    eigenes Part im BTLx-File geführt.
-  - **Sonderfall** (lange Vollgewindeschrauben, Gewindestangen,
-    ETA-Verstärkungsschrauben mit eigener Stückliste, sichtbare
-    Tragelemente): eigenes `Part` mit `@GUID` (entspricht
-    `Verbindungsmittel.uuid`).
-  - Die Wahl ist exportseitig pro Verbindungsmittel-Instanz
-    konfigurierbar; Default folgt aus `typ` und `nennlaenge`.
-- **Edge Cases**:
-  - **Verbindungsmittel mit |verbindet| = 1**: nicht erlaubt
-    (eine Bohrung in einem einzelnen Bauteil ist eine Bauteil-
-    Bearbeitung, kein Verbindungsmittel). Konstruktor liefert
-    `Resultat.Fehler` bzw. `Entartet.VerbindungsmittelOhneAnschluss`.
-  - **Achse-Länge ≫ Nennlänge**: nicht erlaubt;
-    `Entartet.AchseLaengerAlsNennlaenge`.
-  - **Doppel-UUID in `verbindet`**: nicht erlaubt;
-    `Entartet.DoppelterAnschluss`.
-  - **Verstärkungs-Schraube**: niemals als `Verbindungsmittel`
-    instanziieren, sondern als `Verstaerkungselement`.
-- **Abgeleitete Eigenschaften**:
-  - `geometrieInWelt(): GeometrieInW` — Sweep des Typ-Querschnitts
-    entlang der Achse, transformiert nach W.
-  - `bohrlochAn(b: Bauteil): Bohrloch` — die Bohrlochbearbeitung,
-    die das Verbindungsmittel im Bauteil b erzeugt
-    (Implementierung in der Geometrie-Schicht, Folgearbeit).
-  - `effektiveAnzahl(achsabstand: Double): Double` — n_ef nach
-    EC5 Gl. 8.17 (Bemessungs-Schicht).
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `Verbindungsmittel` (deutsch, Glossarbegriff); Spezialisierungen
-  heißen `Nagel`, `Schraube`, `Bolzen`, `Stabduebel`,
-  `Klammer`, `Holzduebel`, `NagelPlatte`,
-  `DuebelBesondererBauart`, `Klebung`.
 
 ## Quellen
 

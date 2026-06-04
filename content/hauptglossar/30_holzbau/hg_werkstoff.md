@@ -51,8 +51,7 @@ quellenkonflikt: |
     in der Plattenebene.
 
   Eigene Festlegung in diesem Glossar (konsistent mit allen
-  konsultierten Quellen, zusätzlich Memory
-  `project_faserrichtung_modi`):
+  konsultierten Quellen, zusätzlich):
 
   - **Werkstoff** ist hier der **abstrakte Oberbegriff** der App-
     Werkstoff-Hierarchie und damit eine **Materialklassen-Wurzel**,
@@ -69,9 +68,7 @@ quellenkonflikt: |
     SCHWACH / KEINE). Diese Klassifikation ist bemessungsrelevant
     (EC5-Hankinson, Lochleibung, Mindestabstände) und nicht
     Ornament.
-  - **Werkstoff Stahl** ist die fünfte Subklasse (Memory
-    `project_element_ontologie`: Verbindungsmittel, Verbinder,
-    Verstärkungselemente tragen einen Stahl-Werkstoff). Sie ist
+  - **Werkstoff Stahl** ist die fünfte Subklasse. Sie ist
     extensional Bestandteil der Werkstoff-Menge 𝓦, trägt aber
     keine Bemessungsanisotropie im Holzwerkstoff-Sinn (Stahl ist
     3D-isotrop). Der Werkstoff-Begriff dieses Glossars ist also
@@ -95,7 +92,7 @@ quellenkonflikt: |
     binäre Strukturregel. Die Festlegung ist eine eigenständige
     App-interne Modellierungsentscheidung, die konsistent aus der
     Anisotropie-Charakterisierung der vier Faserrichtungs-Modi
-    folgt (Memory `project_faserrichtung_modi`), und wird hier —
+    folgt, und wird hier —
     analog zur App-internen Konvention „Welt-zu-Lokal-Trennung" —
     offen als solche markiert.
 ---
@@ -118,18 +115,18 @@ und Verstärkungselemente) instanziiert wird.
 
 Sei
 
-- 𝓜𝓜 := { HART, STRUKTURIERT, SCHWACH, KEINE } die Menge der
-  **Faserrichtungs-Modi** (Memory `project_faserrichtung_modi`),
+- 𝓜𝓜:= { HART, STRUKTURIERT, SCHWACH, KEINE } die Menge der
+  **Faserrichtungs-Modi**,
 - 𝓟 die Menge der zulässigen Produktkennzeichnungen (siehe
   `produktkennzeichnung`),
 - S² ⊂ ℝ³ die Einheitssphäre (siehe `einheitsvektor`),
-- 𝓐 := S² ⊎ {⊥} die Menge der zulässigen Plattendicken-Achsen
+- 𝓐:= S² ⊎ {⊥} die Menge der zulässigen Plattendicken-Achsen
   (Vektor oder „nicht gesetzt").
 
 Dann ist ein **Werkstoff** das Tupel
 
 ```
-W := (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse?,
+W:= (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse?,
       ⟨subklassen-spezifische Felder⟩)
 ```
 
@@ -151,7 +148,7 @@ instanziierbar, sondern bezeichnet die Vereinigung der fünf
 konkreten Subklassen-Mengen
 
 ```
-𝓦 := 𝓐𝓗 ⊎ 𝓜𝓛 ⊎ 𝓖𝓟 ⊎ 𝓘𝓟 ⊎ 𝓦𝓢𝓽
+𝓦:= 𝓐𝓗 ⊎ 𝓜𝓛 ⊎ 𝓖𝓟 ⊎ 𝓘𝓟 ⊎ 𝓦𝓢𝓽
 ```
 
 mit
@@ -169,11 +166,11 @@ mit
 Die Subklassen sind durch ihren Faserrichtungs-Modus charakterisiert:
 
 ```
-∀ w ∈ 𝓐𝓗  : faserrichtungs_modus(w) = HART
-∀ w ∈ 𝓜𝓛  : faserrichtungs_modus(w) = STRUKTURIERT
-∀ w ∈ 𝓖𝓟  : faserrichtungs_modus(w) = SCHWACH
-∀ w ∈ 𝓘𝓟  : faserrichtungs_modus(w) = KEINE
-∀ w ∈ 𝓦𝓢𝓽 : faserrichtungs_modus(w) = KEINE
+∀ w ∈ 𝓐𝓗: faserrichtungs_modus(w) = HART
+∀ w ∈ 𝓜𝓛: faserrichtungs_modus(w) = STRUKTURIERT
+∀ w ∈ 𝓖𝓟: faserrichtungs_modus(w) = SCHWACH
+∀ w ∈ 𝓘𝓟: faserrichtungs_modus(w) = KEINE
+∀ w ∈ 𝓦𝓢𝓽: faserrichtungs_modus(w) = KEINE
 ```
 
 Die fünf Mengen sind paarweise disjunkt und ihre Vereinigung deckt
@@ -188,8 +185,7 @@ trägt genau einen Werkstoff w(E) ∈ 𝓦 als Pflichtfeld.
 ## Wohldefiniertheit
 
 - **Existenz**: Für jeden konkreten Holzwerkstoff am Markt lässt
-  sich der Faserrichtungs-Modus eindeutig bestimmen
-  (Memory `project_faserrichtung_modi`). Die vier Holzwerkstoff-
+  sich der Faserrichtungs-Modus eindeutig bestimmen. Die vier Holzwerkstoff-
   Subklassen decken alle in EC5 / SIA 265 / EN 13986 zugelassenen
   Holzwerkstoffe ab; die fünfte Subklasse `werkstoff_stahl` deckt
   die für den Holzbau relevanten Stahl-Elemente (Verbindungsmittel,
@@ -203,8 +199,7 @@ trägt genau einen Werkstoff w(E) ∈ 𝓦 als Pflichtfeld.
   sealed-Subklassen-Identität getragen (siehe
   `faserrichtungs_modus`).
 - **Abstrakt, nicht instanziierbar**: Werkstoff selbst hat keine
-  Konstruktoren in der Domänen-Schicht (Kotlin: `sealed
-  interface`). Jede Instanz ist notwendigerweise einer der fünf
+  Konstruktoren in der Domänen-Schicht. Jede Instanz ist notwendigerweise einer der fünf
   Subklassen zugeordnet.
 - **Disjunktheit der Subklassen**: 𝓐𝓗, 𝓜𝓛, 𝓖𝓟, 𝓘𝓟, 𝓦𝓢𝓽 sind
   paarweise disjunkt. Die Klassifikation eines konkreten Werkstoffs
@@ -251,7 +246,7 @@ um Faktor 8 bis 30 höher als rechtwinklig zur Faser; die Faserrichtung
 ist daher direkte Bemessungseingabe (Hankinson-Formel, Lochleibungs-
 festigkeit f_h,α,k, Mindestabstände der Verbindungsmittel).
 
-### Vier Faserrichtungs-Modi (Memory `project_faserrichtung_modi`)
+### Vier Faserrichtungs-Modi
 
 | Modus           | Subklasse                          | Pflichtfeld im Datenmodell                     |
 |-----------------|------------------------------------|------------------------------------------------|
@@ -358,112 +353,6 @@ Produktkennzeichnungen tragen.
     parallel/senkrecht): sind quantitative Attribute eines
     konkreten Werkstoffs, nicht der abstrakten Klasse Werkstoff.
     Werden in der Festigkeitsklassen-Hierarchie geführt.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `zimmermann.domain.holzbau.werkstoff`):
-
-```kotlin
-package zimmermann.domain.holzbau.werkstoff
-
-import zimmermann.domain.geometrie.Einheitsvektor
-import zimmermann.domain.identifikation.Produktkennzeichnung
-
-/**
- * Faserrichtungs-Modus eines Werkstoffs.
- * Glossar: hg_werkstoff.md — Memory project_faserrichtung_modi.
- *
- * Bestimmt das Pflichtfeld-Profil der Werkstoff-Subklasse:
- *   HART          -> 1 Vektor faserrichtung
- *   STRUKTURIERT  -> Lagenstruktur >= 3 + Haupttragrichtung
- *   SCHWACH       -> 1 Vektor plattenlaengsrichtung
- *   KEINE         -> nur plattendicken_achse
- */
-enum class FaserrichtungsModus { HART, STRUKTURIERT, SCHWACH, KEINE }
-
-/**
- * Wurzel der App-Werkstoff-Hierarchie.
- * Glossar: hg_werkstoff.md
- *
- * Abstrakt, nicht direkt instanziierbar. Konkrete Subklassen sind
- * AxialesHolz, Mehrlagenholz, GerichteterPlattenwerkstoff,
- * IsotroperPlattenwerkstoff (eigene Folge-Klassen).
- *
- * Pflichtfelder: faserrichtungsModus, produktkennzeichnung.
- * Optionalfeld: plattendickenAchse (Pflicht bei Plattenwerkstoffen,
- *               null bei axialem Holz).
- *
- * Validierung: konkrete Subklassen stellen Konstruktoren auf
- * `internal` und exponieren ausschliesslich Factory-Methoden
- * `aus(...): Resultat<KonkreterWerkstoff>`. Invarianten werden
- * in der Factory geprueft, nicht in `init+require`. Bei Verletzung
- * wird `Resultat.Fehler` zurueckgegeben; es wird nie eine Exception
- * geworfen. Vorbild: `LokalePlatzierung.aus(...)`.
- */
-sealed interface Werkstoff {
-    /** Anisotropie-Charakterisierung; je Subklasse fest. */
-    val faserrichtungsModus: FaserrichtungsModus
-
-    /** Normative Produktkennzeichnung (CE / DIN 4074 / EN 14080 / …). */
-    val produktkennzeichnung: Produktkennzeichnung
-
-    /**
-     * Plattendicken-Achse (Einheitsvektor in W) bei Plattenwerkstoffen;
-     * null bei axialem Holz.
-     */
-    val plattendickenAchse: Einheitsvektor?
-}
-```
-
-- **Einheit**: Faserrichtungs-Modus dimensionslos (Aufzählung);
-  Plattendicken-Achse dimensionsloser Einheitsvektor.
-- **Identität**: Werkstoff trägt **keine** UUID. Werkstoff ist eine
-  Werteklasse (value class / data class), nicht ein identifiziertes
-  Objekt. Identität wird auf der Element-Ebene geführt; mehrere
-  Elemente dürfen denselben Werkstoff-Wert teilen.
-- **Subklassenpflicht**: `Werkstoff` ist `sealed`; jede Instanz ist
-  notwendigerweise einer der fünf konkreten Subklassen zugeordnet
-  (vier Holzwerkstoff-Subklassen plus `WerkstoffStahl`). Die
-  Subklassen prüfen je eigene Invarianten (siehe ihre
-  Implementierungshinweise).
-- **Invarianten** (ausschliesslich in Factory-Methoden
-  `KonkreterWerkstoff.aus(...): Resultat<KonkreterWerkstoff>`
-  prüfen; bei Verletzung `Resultat.Fehler` zurückgeben. Kein
-  `init+require` und keine Exception; Konstruktoren der Subklassen
-  sind `internal` und werden nur aus der Factory aufgerufen.
-  Vorbild: `LokalePlatzierung.aus(...)` und das Factory-Pattern
-  der D6-Skizzen):
-  1. `faserrichtungsModus` ist gesetzt.
-  2. `produktkennzeichnung` ist gesetzt und konsistent zur
-     Subklasse (z. B. `EN 14080` nur bei `AxialesHolz`-BSH).
-  3. Konsistenz Modus ↔ Plattendicken-Achse:
-     - HART: `plattendickenAchse == null`.
-     - STRUKTURIERT, SCHWACH: `plattendickenAchse != null` und
-       Norm-Invariante geerbt von `Einheitsvektor`.
-     - KEINE: subklassen-abhängig. `IsotroperPlattenwerkstoff`
-       fordert `plattendickenAchse != null`; `WerkstoffStahl`
-       fordert `plattendickenAchse == null`.
-- **IFC-Mapping** (Persistenzschicht):
-  - `IfcMaterial.Name` ← Subklasse + Festigkeitsklasse
-    (z. B. „Vollholz C24", „BSH GL24h", „BSP CL3-h").
-  - `IfcMaterial.Category` ← Subklasse (z. B. „axial timber",
-    „cross-laminated timber").
-  - Property Sets: `Pset_MaterialWoodBasedBeam` (axiales Holz),
-    `Pset_MaterialWoodBasedPanel` (Plattenwerkstoffe).
-- **Edge Cases**:
-  - **Werkstoff ohne Faserrichtungs-Modus**: nicht erlaubt;
-    Validierungsfehler bei Konstruktion.
-  - **Werkstoff ohne Produktkennzeichnung**: nicht erlaubt;
-    in frühen Entwurfsphasen darf eine Platzhalter-
-    Produktkennzeichnung `Produktkennzeichnung.UNBEKANNT`
-    geführt werden, die vor Bemessung aufgelöst sein muss.
-  - **Mischwerkstoffe** (z. B. Hybrid CLT-Beton): nicht durch
-    diese Hierarchie abgedeckt; eigene Folge-Klasse
-    `werkstoff_hybrid` (Folgearbeit).
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `Werkstoff` (deutsch, Glossarbegriff); Subklassen heißen
-  `AxialesHolz`, `Mehrlagenholz`, `GerichteterPlattenwerkstoff`,
-  `IsotroperPlattenwerkstoff`.
 
 ## Quellen
 

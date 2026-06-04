@@ -31,7 +31,7 @@ quellenkonflikt: |
   Magazin-Sammelserie „Austragen" des Berufsverbands Holzbau
   Schweiz. Die genaue Heft-/Seitenangabe für Teil 4 ist in der
   Recherche **nicht abschließend verifiziert**; der Eintrag wird
-  als `entwurf` geführt, bis Eric die Stellenangabe bestätigt
+  als `entwurf` geführt, bis Anweiser die Stellenangabe bestätigt
   oder korrigiert. Methodisches Vorgehen analog zu
   `hg_bauteilachse.md` und `hg_bezugsebene.md` (Begriff in Normen
   vorausgesetzt, Festlegung über Berufspraxis-Primärquelle).
@@ -72,7 +72,7 @@ Sei
   oben zeigt und damit die **Lotachsen-Richtung** trägt,
 - E ⊂ ℝ³ eine Ebene im Sinne von `ebene`, repräsentiert in
   Hesse-Normalform durch das Paar (n_hat, d) ∈ S² × ℝ,
-- ε_K := `Toleranzen.KOLLINEAR_EPS` die einschlägige
+- ε_K:= `Toleranzen.KOLLINEAR_EPS` die einschlägige
   dimensionslose Toleranzkonstante für Skalarprodukt-basierte
   Lage-Tests (siehe `toleranzen`).
 
@@ -95,7 +95,7 @@ Die zugehörige **Senkelmenge** ist die Klasse aller Ebenen, die
 (1) erfüllen:
 
 ```
-𝒮 := { E ⊂ ℝ³ | E Ebene, |⟨n_hat_E, e_hat_z⟩| ≤ ε_K }.                  (2)
+𝒮:= { E ⊂ ℝ³ | E Ebene, |⟨n_hat_E, e_hat_z⟩| ≤ ε_K }.                  (2)
 ```
 
 Senkel ist damit ein **Prädikat** (`istSenkel: Ebene → Bool`),
@@ -245,83 +245,6 @@ Zimmermannstoleranz; sie filtert nur numerische Restfehler.
     die Lotachsen-Richtung e_hat_z fest, gegen die Senkel und
     Bleischnitt gemessen werden. Ohne Welt-Koordinatensystem
     sind Senkel und Bleischnitt nicht definiert.
-
-## Implementierungshinweis
-
-**Kein eigener Code-Typ.** Senkel wird in der Domänen-Schicht
-als **Prädikat** über `Ebene` realisiert, nicht als
-data class oder Subtyp. Die Implementierung lebt als
-Erweiterungsfunktion auf `Ebene`:
-
-```kotlin
-package domain.geometrie
-
-import domain.Toleranzen
-import kotlin.math.abs
-
-/**
- * Prädikat: ist diese Ebene ein Senkel?
- *
- * Eine Ebene ist genau dann Senkel, wenn ihre Normale
- * rechtwinklig zur Welt-Lotachse e_hat_z = (0, 0, 1) steht, d. h.
- *
- *   |⟨n_hat, e_hat_z⟩| ≤ Toleranzen.KOLLINEAR_EPS.
- *
- * Glossar: hg_senkel.md (Prädikat über `hg_ebene.md`).
- *
- * Wohldefiniertheit: das Prädikat ist invariant unter
- * Vorzeichenwechsel der Hesse-Normalform (Betrags-Bedingung),
- * siehe Glossar Wohldefiniertheit.
- */
-fun Ebene.istSenkel(eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean {
-    val nz = this.normaleEinheit().z       // ⟨n_hat, e_hat_z⟩
-    return abs(nz) <= eps
-}
-```
-
-- **Einheit**: dimensionsloser Skalarprodukt-Vergleich.
-- **Identität**: keine; Senkel ist eine Eigenschaft, kein Objekt.
-- **Toleranz**: `KOLLINEAR_EPS` (nicht `WINKEL_EPS`), siehe
-  Wohldefiniertheits-Block.
-- **Edge Cases**:
-  - **Geneigte Ebene mit kleinem Lotabstand-Cosinus** (z. B.
-    Dachneigung 89,99°): klassifiziert per (1) **nicht** als
-    Senkel, sondern als geneigte Ebene; das ist beabsichtigt
-    (Senkel ist ein scharfer Lage-Begriff, nicht „nahe
-    senkrecht").
-  - **Bezugsebene als Senkel**: theoretisch möglich, in der
-    App nicht im Standard-Modellierungspfad vorgesehen
-    (siehe `bezugsebene`); kein Sonderverhalten.
-  - **Welt-Koordinatensystem mit anderer e_hat_z-Wahl**: das
-    Prädikat ist gegen die im `weltkoordinatensystem`
-    festgelegte Lotachsen-Richtung formuliert; eine
-    Abweichung wäre eine Verletzung der Welt-Konvention und
-    keine Senkel-Klassifikation.
-
-**Folgearbeit (trigger-basiert):**
-
-- **`senkelstoss`** (Senkelstoss zwischen zwei Sparren): zwei
-  Sparren stossen mit ihren Senkel-Stirnflächen aneinander
-  (typisch am First). Trigger: erstes Tool mit Sparren-an-
-  Sparren-Stoss am First.
-- **`senkelriss`** (Senkelriss als Werkplan-Begriff):
-  zeichnerische Darstellung der Senkellage in Auf- und
-  Seitenriss. Trigger: erstes Werkplan-Beschriftungs-Tool.
-- **Klassifikations-Hilfsfunktion `Ebene.lotLage()`**: liefert
-  einen Enum `LotLage = SENKEL | BLEISCHNITT | GENEIGT` für
-  die einheitliche Klassifikation. Trigger: erstes Tool, das
-  diese Klassifikation in einer Schleife über mehrere Ebenen
-  benötigt.
-- **Cross-Verweis in `hg_sparren.md`**: Sparren-Stirnseiten-Anschnitte
-  (z. B. Sparrenfuß-Senkelstoß) sind ein natürlicher Anwendungsfall
-  von Senkel/Bleischnitt. Trigger: bei Anlage des `anschnitt.md`-
-  Eintrags (Folgearbeit aus `hg_bearbeitung.md`), gemeinsam mit den
-  anderen Sparren-Schnitt-Begriffen einbauen.
-- **Cross-Verweis in `hg_dachflaeche.md`**: eine Dachfläche ist weder
-  Senkel noch Bleischnitt (geneigte Ebene); Abgrenzungs-Hinweis ist
-  sinnvoll. Trigger: bei erstem Tool, das Dachflächen-Geometrie mit
-  nicht-trivialen Schnittwinkeln behandelt, oder bei nächster
-  substanzieller `hg_dachflaeche.md`-Überarbeitung.
 
 ## Quellen
 

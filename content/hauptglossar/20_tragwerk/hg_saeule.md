@@ -16,10 +16,10 @@ quellen_sekundär:
   - "Wikipedia, Lemma 'Säulenordnung', de.wikipedia.org/wiki/S%C3%A4ulenordnung — architektonische Klassifikation der Säulenproportionen."
   - "Wikipedia, Lemma 'Liste von Fachbegriffen des Zimmererhandwerks' [via: Welle-9-Recherche §B.2]: 'Säule = Stütze mit gleichbleibendem Querschnitt' — in Konflikt mit Wikipedia/Säule (Entasis-Befund), siehe Quellenkonflikt-Punkt 2."
   - "Vitruvius: De architectura libri decem (etwa 25 v. Chr.) — antike Säulenordnungen, klassische Säulen-Proportionsregeln. Nicht direkt eingesehen, über Wikipedia/Säulenordnung."
-  - "Recherche-Bericht: docs/recherche/2026-05-16_tragglieder_vertikal.md §D."
+  - "Recherche-Bericht: [intern] §D."
 quellenkonflikt: |
   Vier Punkte sind in der Recherche
-  (`docs/recherche/2026-05-16_tragglieder_vertikal.md` §D)
+  ([intern] §D)
   auflösungs-bedürftig und werden hier ausdrücklich festgelegt.
 
   **(1) Säule als Subtyp von Stütze (klassisch-architektonisch).**
@@ -117,9 +117,9 @@ Sei
 - S eine Stütze im Sinne von `stuetze` mit zugrunde liegendem Bauteil
   B (alle Stützen-Bedingungen 1–6 von `hg_stuetze.md` erfüllt),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖,
-- e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS.
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖,
+- e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS.
 
 Dann heißt B eine **Säule** genau dann, wenn die folgenden
 Bedingungen alle erfüllt sind:
@@ -346,78 +346,6 @@ geführt.
   - **Bauteil** (`bauteil`): über `stuetze` mittelbarer
     Oberbegriff.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.bauteil.Stuetze
-
-/**
- * Säule als architektonisch-klassischer Subtyp der Stütze: lotrechtes
- * Stab-Bauteil mit Dreigliederung Basis-Schaft-Kapitell und ggf.
- * Säulenordnung. Konstruktiv eine Stütze; ästhetisch eine
- * architektonisch inszenierte Sonderform.
- *
- * Glossar: hg_saeule.md
- *
- * Architektur-Zusicherung (Basis-Schaft-Kapitell) wird im Glossar
- * nicht formal überprüft. Säulenordnung ist optionales Merkmal.
- *
- * Im modernen Holzbau-Korpus nicht alleinstehend aktiv; primär als
- * Wortstamm-Anker für stuhlsaeule und haengesaeule geführt.
- */
-data class Saeule(
-    val stuetze: Stuetze,
-    val ordnung: Saeulenordnung = Saeulenordnung.UNGEORDNET,
-)
-
-enum class Saeulenordnung {
-    DORISCH,
-    IONISCH,
-    KORINTHISCH,
-    TOSKANISCH,
-    KOMPOSIT,
-    UNGEORDNET,
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil
-  (geerbt von `Stuetze`).
-- **Invarianten** (in der Factory `saeuleAusStuetze(...)` prüfen):
-  1. Alle Stützen-Invarianten (Stab-Geometrie, Lotrechtheit,
-     Vorzeichen, Querschnitts-Verhältnis, keine Wand-Inzidenz)
-     sind erfüllt.
-  2. Freistehender Charakter: keine Mitgliedschaft in einer
-     Stuhl-, Hängewerk- oder Wand-Bauteilgruppe (Cross-Aggregat-
-     Prüfung).
-  3. Architektur-Zusicherung wird nicht formal geprüft.
-- **Edge Cases**:
-  - **Säule ohne Basis/Kapitell** (moderne Schaft-Säule): zulässig;
-    die Architektur-Zusicherung ist nicht formal überprüft.
-  - **Polygonale Säule** (achteckiger Schaft, statt rund):
-    zulässig; Querschnitts-Form ist nicht eingeschränkt, solange
-    q_max ≤ 4·q_min erfüllt ist (geerbt von Stütze).
-  - **Kannelierte Säule** (mit senkrechten Rillen am Schaft):
-    zulässig; die Schaft-Oberflächengestaltung ist nicht
-    konstitutiv für die Säulen-Bauteilrolle.
-- **Folgearbeit-Trigger**:
-  - `hg_kapitell.md`, `hg_basis.md`, `hg_schaft.md`: partitive
-    Säulen-Bestandteile. Trigger: erste architektonische
-    Modellierung mit Säulen-Detail (Tempelbau-Tool,
-    Restaurierungs-Tool).
-  - `hg_pfeiler.md`: Mauerwerks-/Stein-Pfeiler als Geschwister-
-    Bauteilrolle. Trigger: erste Mauerwerk-Modellierung.
-  - `hg_pilaster.md`: wand-angelagerte flache Säule. Trigger:
-    erste klassische Innenarchitektur-Modellierung.
-  - **Tempelbau-/Restaurierungs-Tool**: aktiviert die
-    Architektur-Zusicherung und die Säulenordnungs-Klassifikation
-    formal. Trigger: erste konkrete App-Phase, die Säulenordnungen
-    modelliert.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -431,7 +359,7 @@ enum class Saeulenordnung {
   (Architektur)", „Schaft (Architektur)", „Entasis", „Pfeiler",
   „Pilaster" (abgerufen 2026-05-16).
 - Vitruvius: *De architectura libri decem.* etwa 25 v. Chr.
-- Recherche-Bericht: `docs/recherche/2026-05-16_tragglieder_vertikal.md` §D.
+- Recherche-Bericht: [intern] §D.
 
 **Korpus (nicht autoritativ):**
 

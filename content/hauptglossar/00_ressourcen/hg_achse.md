@@ -57,14 +57,14 @@ Sei
 Dann ist eine **Achse** A ein Tupel
 
 ```
-A := (g, ρ)   mit ρ ∈ 𝓡,
+A:= (g, ρ)   mit ρ ∈ 𝓡,
 ```
 
 bestehend aus der **Trägergeraden** g und der **Rolle** ρ. Die durch
 A bezeichnete Punktmenge in ℝ³ ist die der Trägergeraden:
 
 ```
-|A| := g.
+|A|:= g.
 ```
 
 Eine Achse kann zusätzlich **gerichtet** sein: dann gehört zur Rolle
@@ -76,7 +76,7 @@ sind dann äquivalent.
 Wesentliche Spezialisierungen ergeben sich aus der Wahl von ρ:
 
 - **Symmetrieachse** (ρ = Symmetrie): g ist Fixpunktmenge einer
-  Spiegelung S_g : ℝ³ → ℝ³ einer betrachteten Punktmenge X ⊂ ℝ³,
+  Spiegelung S_g: ℝ³ → ℝ³ einer betrachteten Punktmenge X ⊂ ℝ³,
   d. h. S_g(X) = X.
 - **Drehachse** (ρ = Drehung): g ist die Fixpunktmenge einer
   Drehung R_{g, φ} ∈ SO(3) um den Winkel φ ≠ 0; gerichtete
@@ -195,99 +195,6 @@ sie wäre eine Spezialisierung „Bauwerksachse" oder
     in diesem Sinne. Eine Bauteilachse ist eine Achse; die
     Faserrichtung beschreibt die Materialhauptrichtung relativ
     zum Bauteilkörper, nicht eine Gerade in ℝ³.
-
-## Implementierungshinweis
-
-Der Glossarbegriff „Achse" wird in der Domänen-Schicht
-(`zimmermann.domain.geometrie`, D4-Stand) als schlanker
-**Wrapper-Datentyp** über einer `Gerade` realisiert, der die
-Achsenrolle ρ als Aufzählung trägt. Strukturell ist `Achse` damit
-keine `sealed interface` mit Subtyp pro Rolle, sondern eine
-`data class`. Die im Glossar als Spezialisierungen genannten
-Achsenrollen (Symmetrieachse, Drehachse, Bezugsachse,
-Koordinatenachse, Bauteilhauptachse) werden als Enum-Konstanten
-geführt; rollenspezifische Operationen sind in D4 noch nicht
-erforderlich und werden als Folgearbeit hinzugefügt, wenn sie
-gebraucht werden (siehe „Folgearbeit" unten).
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`zimmermann.domain.geometrie`):
-
-```kotlin
-package zimmermann.domain.geometrie
-
-/**
- * Achse als Annotation einer Geraden mit semantischer Rolle.
- * Glossar: hg_achse.md
- */
-public data class Achse(
-    public val gerade: Gerade,
-    public val rolle: AchsenRolle = AchsenRolle.UNSPEZIFIZIERT,
-)
-
-public enum class AchsenRolle {
-    SYMMETRIEACHSE,
-    DREHACHSE,
-    BEZUGSACHSE,
-    KOORDINATENACHSE,
-    BAUTEILHAUPTACHSE,
-    UNSPEZIFIZIERT,
-}
-```
-
-- **Einheit**: erbt von `gerade` (Stützpunkt-Koordinaten in mm,
-  Richtungsvektor-Komponenten dimensionslos bis auf Skalierung).
-- **Rolle als Datenfeld vs. Typinformation**: D4-pragmatisch wird
-  die Rolle ρ als `enum`-Feld gespeichert, **nicht** über
-  Subtypen. Begründung: in der aktuellen Phase gibt es keine
-  rollenspezifischen Operationen, die ein Subtyp typsicher tragen
-  müsste; ein Enum-Feld vermeidet Klassen-Hypertrophie. Wenn
-  später rollenspezifische Operationen anfallen (z. B.
-  `fun drehung(achse: Drehachse, winkel: Double): Lage`), werden
-  die betreffenden Rollen als eigene Wrapper-Klassen herausgezogen
-  (Folgearbeit).
-- **Gerichtetheit**: Eine `Achse` über einer `Gerade` ist
-  strukturell ungerichtet (`Gerade.umkehren()` liefert dieselbe
-  Punktmenge). Gerichtete Achsen werden bei Bedarf durch eigene
-  Klassen modelliert (analog zu `Bauteilachse`, die strukturell
-  über `Strecke` läuft und damit gerichtet ist).
-- **Strukturelle Beziehung zu `Bauteilachse`**: Die im Glossar
-  ausgewiesene Hierarchie `bauteilachse oberbegriff achse` ist
-  **semantisch** zu lesen, nicht als Kotlin-Vererbung. `Achse`
-  (Wrapper über `Gerade`, unbegrenzt, ungerichtet) und
-  `Bauteilachse` (Wrapper über `Strecke`, begrenzt, gerichtet)
-  sind strukturell verschieden; eine Vererbung wäre semantisch
-  falsch. Beide Klassen stehen unabhängig nebeneinander; die
-  KDoc verweist explizit auf die Glossar-Hierarchie als
-  semantische Beziehung.
-- **Edge Cases / Entartet-Varianten**: Die `Gerade`-Factory fängt
-  alle entarteten Eingaben ab (`Nullrichtung`, `NichtFinit`); die
-  `Achse`-Konstruktion fügt keine zusätzlichen Invarianten hinzu
-  und kann daher als nackte `data class` ohne Factory geführt
-  werden. Inkonsistenz-Prüfungen Rolle ↔ Geometrie (z. B.
-  Symmetrieachse einer konkreten Punktmenge) sind Sache der
-  jeweiligen Anwendungsstelle, nicht der `Achse`-Klasse.
-- **Identität / Gleichheit**: `equals` (data-class-Standard) ist
-  strukturell-exakt; für geometrische Identität stellen die
-  Methoden `istGleicheAchse(other, eps)` (Geraden-Identität UND
-  gleiche Rolle) und `istGleicheAchsenLinie(other, eps)`
-  (Geraden-Identität, Rolle ignoriert) zur Verfügung.
-- **Verwendungsregel**: Funktionen, die eine Achse mit einer
-  konkreten Rolle benötigen, prüfen `rolle` explizit oder nehmen
-  einen rollenspezifischen Wrapper-Typ entgegen, sobald dieser
-  eingeführt ist.
-
-**Folgearbeit (trigger-basiert):**
-
-- **Rollen als eigene Wrapper-Klassen** (`Drehachse`,
-  `Koordinatenachse`, `Symmetrieachse`, `Bezugsachse`) — wenn
-  rollenspezifische Operationen erforderlich werden (z. B.
-  Drehung um eine Drehachse, Koordinatentransformation entlang
-  einer Koordinatenachse). Bis dahin reicht die Enum-Rolle.
-- **`sealed interface Achse` mit Subtypen statt Enum** — wenn
-  mindestens zwei Rollen rollenspezifische API tragen und der
-  Refactoring-Aufwand sich gegen den Vorteil typsicherer
-  Operationen lohnt.
 
 ## Quellen
 

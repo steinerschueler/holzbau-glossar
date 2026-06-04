@@ -35,7 +35,7 @@ quellenkonflikt: |
   **Nagelplattenbinder** als Produktklasse („vorgefertigte tragende
   Bauteile mit Nagelplattenverbindungen") regelt, nicht den
   Oberbegriff Binder selbst. Detail-Befund siehe
-  `docs/recherche/2026-05-14_hg_binder.md`.
+  [intern].
 
   Die Schweizer und die deutsche Korpussprache unterscheiden sich:
 
@@ -140,7 +140,7 @@ Sei
 Dann ist ein **Binder** ein Tupel
 
 ```
-Bᵢ := (uuid, bestandteile, verbindungen, tragebene, auflagerpunkte,
+Bᵢ:= (uuid, bestandteile, verbindungen, tragebene, auflagerpunkte,
        lage, huelle, bezeichnung?)
 ```
 
@@ -188,13 +188,13 @@ und den Konsistenzbedingungen
 2. **Verbindungs-Inzidenz**: jede Verbindung v ∈ verbindungen
    referenziert ausschliesslich Bauteile aus bestandteile,
    ```
-   ∀ v ∈ verbindungen : bauteile(v) ⊆ bestandteile
+   ∀ v ∈ verbindungen: bauteile(v) ⊆ bestandteile
    ```
    wobei bauteile(v) die Bauteilmenge der Verbindung v gemäss
    `verbindung` bezeichnet.
 3. **Zusammenhang**: der ungerichtete Inzidenzgraph
-   G(Bᵢ) := (bestandteile, E) mit
-   E := { {b₁, b₂} | ∃ v ∈ verbindungen : {b₁, b₂} ⊆ bauteile(v) }
+   G(Bᵢ):= (bestandteile, E) mit
+   E:= { {b₁, b₂} | ∃ v ∈ verbindungen: {b₁, b₂} ⊆ bauteile(v) }
    ist zusammenhängend; getrennte Binder werden als getrennte
    Instanzen modelliert.
 4. **Tragebenen-Lage**: für jedes b ∈ bestandteile liegt die
@@ -218,7 +218,7 @@ und den Konsistenzbedingungen
 Die **geometrische Punktmenge** des Binders in W ist
 
 ```
-G_W(Bᵢ) := lage(G_lokal(huelle)) ⊂ ℝ³
+G_W(Bᵢ):= lage(G_lokal(huelle)) ⊂ ℝ³
 ```
 
 (transformierte Hülle); die alternative Repräsentation als Vereinigung
@@ -462,136 +462,6 @@ Oberbegriff trifft.
     genannten Klassifikations-Achsen; eigene Einträge folgen
     trigger-basiert.
 
-## Implementierungshinweis
-
-**Im aktuellen Glossarstand wird keine eigene Code-Klasse `Binder`
-angelegt.** Die ontologische Vorbereitung lebt zunächst nur im
-Glossar; eine Code-Klasse entsteht zusammen mit dem ersten
-konkreten Sub-Typ (typischerweise `Sparrenbinder` oder
-`Nagelplattenbinder`), der in einem Tool tatsächlich benötigt wird.
-Der folgende Skizzen-Code ist ausschliesslich orientierender
-Implementierungs-Hinweis für den Zeitpunkt, an dem dieser Sub-Typ
-implementiert wird, und folgt der Sealed-Hierarchie unter
-`Bauteilgruppe` aus `hg_bauteilgruppe.md`.
-
-```kotlin
-// SKIZZE — nicht jetzt anlegen.
-// Glossar: hg_binder.md
-
-package domain.bauteil
-
-import domain.bauteil.Bauteilgruppe
-import domain.bauteil.Bauteil
-import domain.geometrie.Ebene
-import domain.geometrie.Punkt
-import domain.verbindung.Verbindung
-import java.util.UUID
-
-/**
- * Binder: Bauteilgruppe, deren Bestandteile zusammen ein
- * statisches Dreieck oder ein parallelgurtiges Trag-Aggregat in
- * einer expliziten Tragebene bilden und zwischen mindestens zwei
- * Auflagerpunkten eine Spannweite überspannen.
- *
- * Sealed unter Bauteilgruppe; konkrete Sub-Typen entlang der drei
- * Klassifikations-Achsen (statisches System, Bauart/Werkstoff,
- * Tragwerks-Hierarchie) entstehen trigger-basiert.
- */
-sealed class Binder : Bauteilgruppe() {
-    abstract val verbindungen: Set<Verbindung>
-    abstract val tragebene: Ebene
-    abstract val auflagerpunkte: Set<Punkt>
-
-    init {
-        // 1. bestandteile.size >= 2          → sonst Entartet.ZuKleinerBinder
-        // 2. verbindungen.isNotEmpty()       → sonst Entartet.OhneVerbindung
-        // 3. auflagerpunkte.size >= 2        → sonst Entartet.ZuWenigAuflagerpunkte
-        // 4. Verbindungs-Inzidenz            → sonst Entartet.VerbindungOhneBestandteil
-        // 5. Zusammenhang Inzidenzgraph      → sonst Entartet.NichtZusammenhaengenderBinder
-        // 6. Bauteilachsen in Tragebene      → sonst Entartet.AchseAusserhalbTragebene
-        // 7. Auflagerpunkte in Tragebene     → sonst Entartet.AuflagerpunktAusserhalbTragebene
-        // 8. Mindest-Spannweite              → sonst Entartet.ZusammenfallendeAuflagerpunkte
-    }
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant; Lage
-  als SE(3)-Element.
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7);
-  externe Referenzen auf einen Binder gehen ausschliesslich auf diese
-  UUID. Bestandteile und Verbindungen werden über ihre jeweiligen
-  UUIDs referenziert (Foreign-Key-Regel).
-- **Invarianten** (in `init` bzw. Fabrikfunktionen prüfen, bei
-  Verletzung `Resultat.Fehler` bzw. `Entartet`-Variante; niemals
-  Exception werfen):
-  1. `bestandteile.size >= 2` ⇒ sonst `Entartet.ZuKleinerBinder`.
-  2. `verbindungen.isNotEmpty()` ⇒ sonst `Entartet.OhneVerbindung`.
-  3. `auflagerpunkte.size >= 2` ⇒ sonst
-     `Entartet.ZuWenigAuflagerpunkte`.
-  4. Jede Verbindung referenziert ausschliesslich Bauteile aus
-     `bestandteile` ⇒ sonst `Entartet.VerbindungOhneBestandteil`.
-     Toleranz nicht erforderlich (Mengenzugehörigkeit).
-  5. Der Bestandteils-Inzidenzgraph ist zusammenhängend ⇒ sonst
-     `Entartet.NichtZusammenhaengenderBinder`.
-  6. Für jede Bauteilachse a(b), b ∈ bestandteile, ist der
-     Maximalabstand der Achspunkte zu `tragebene`
-     ≤ `Toleranzen.LAENGE_EPS` ⇒ sonst
-     `Entartet.AchseAusserhalbTragebene`. Bauteile ohne
-     eindimensionale Bauteilachse sind ausgenommen.
-  7. Für jeden Auflagerpunkt p ist der Abstand zu `tragebene`
-     ≤ `Toleranzen.LAENGE_EPS` ⇒ sonst
-     `Entartet.AuflagerpunktAusserhalbTragebene`.
-  8. Für mindestens ein Paar (p₁, p₂) gilt
-     ‖p₁ − p₂‖ > `Toleranzen.LAENGE_EPS` ⇒ sonst
-     `Entartet.ZusammenfallendeAuflagerpunkte`.
-  9. **Exklusive Mitgliedschaft** (modellweite Cross-Aggregat-
-     Invariante, geerbt von `Bauteilgruppe`): kein Bauteil
-     b ∈ bestandteile ist zugleich Bestandteil eines anderen Binders
-     oder einer anderen Bauteilgruppe in der Aggregations-Hierarchie.
-     Prüfung im Modell-Container; bei Verletzung
-     `Entartet.MehrfachMitgliedschaft`. Die Exklusivität gilt
-     analog für die **`verbindungen`-Komponente**: jede Verbindung
-     v ∈ verbindungen verbindet ausschliesslich Bauteile innerhalb
-     dieses Binders und ist nicht zugleich Bestandteil einer anderen
-     Bauteilgruppe. Der Lebenszyklus der Verbindungen ist
-     kaskadisch an den Binder gekoppelt (Entfernen des Binders
-     entfernt die Verbindungen, nicht die einzelnen Bauteile).
-- **Edge Cases**:
-  - **Sparrenbinder als Mindestkonfiguration** (zwei Sparren plus
-    Bundbalken, |bestandteile| = 3, |verbindungen| = 3 oder kombiniert
-    zu 1 First-Knoten plus 2 Fusspunkten): zulässig.
-  - **Einzelner BSH-Träger**: **nicht** als Binder zulässig
-    (|bestandteile| = 1 verletzt Bedingung 1); als `bauteil` mit
-    Werkstoff Brettschichtholz zu führen.
-  - **Verschachtelte Binder** (Hauptbinder enthält eine
-    Sub-Aussteifung als Bauteilgruppe): nach `bauteilgruppe`
-    Bedingung 4 zulässig, solange der Aggregations-Graph azyklisch
-    bleibt.
-  - **Bauteil-Wechsel der Binder-Zugehörigkeit**: erfordert eine
-    koordinierte Modifikation der betroffenen Binder über den
-    Modell-Container; nicht durch direkten Bauteil-Zugriff.
-  - **Mehrteilige Auflagerung** (Binder auf Pfettenwand, Stütze
-    und Auswechslung): zulässig, sofern alle drei Auflagerpunkte
-    in `auflagerpunkte` geführt werden.
-  - **Krumme oder polygonale Untergurte** (Bogenbinder, Hetzer-
-    Binder): die Tragebene bleibt eine Ebene; die Bauteilachsen der
-    krummen Bestandteile liegen näherungsweise (im
-    Toleranzbereich) in dieser Ebene, der Toleranzhorizont kann
-    pro Sub-Typ erweitert werden.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `geometrieInWelt(): GeometrieInW` = `lage(huelle)` als
-    transformierte Hülle in W (geerbt von `Bauteilgruppe`).
-  - `bestandteilsVereinigung(): GeometrieInW` =
-    ⋃_{b ∈ bestandteile} G_W(b); im Allgemeinen echte Teilmenge
-    der Hülle.
-  - `spannweite(): Double` (mm) = maximaler Abstand zwischen Paaren
-    aus `auflagerpunkte`; bei genau zwei Auflagerpunkten gleich
-    ‖p₁ − p₂‖.
-  - `inzidenzgraph(): Graph<Bauteil, Verbindung>` = der ungerichtete
-    Graph mit Bestandteilen als Knoten und Verbindungen als Kanten.
-  - `tragebenenNormale(): Vektor` = Normalenvektor der Tragebene
-    in W.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -633,57 +503,4 @@ sealed class Binder : Bauteilgruppe() {
   2026-05-14).
 - en.wikipedia.org, Lemma „Timber roof truss" (abgerufen
   2026-05-14, für englische Begriffs-Abgrenzung).
-- Recherchebericht `docs/recherche/2026-05-14_hg_binder.md`.
-
-## Folgearbeit (trigger-basiert)
-
-Sub-Typen werden definiert, sobald das jeweilige Tool sie
-geometrisch oder bemessungstechnisch braucht. Die folgenden sieben
-Folgearbeit-Trigger sind absehbar:
-
-1. **`nagelplattenbinder`** — Bauart-Spezialisierung mit
-   Stahl-Nagelplatten an den Knoten; normativer Anker in
-   DIN EN 14250:2010 (Produktanforderungen, CE-Kennzeichnung).
-   Trigger: erstes Tool, das einen Nagelplattenbinder geometrisch
-   oder bemessungstechnisch modelliert.
-2. **`sparrenbinder`** — statisches Dreieck aus zwei Sparren und
-   einem Bundbalken; klassische zimmermannsmäßige Bauart.
-   Trigger: erstes Tool, das einen Sparrenbinder als
-   Aggregat aus benannten Bauteilrollen modelliert.
-3. **`pfettenbinder`** — Hauptträger eines Hauptträger-
-   Nebenträger-Systems; trägt Pfetten, die wiederum Sparren tragen.
-   Trigger: erstes Tool, das ein Pfettenbinder-System (z. B.
-   Hallendach mit Pfettenwand-Auflagerung) modelliert.
-4. **`bsh_binder`** (Brettschichtholz-Binder, Leimbinder) —
-   Werkstoff-/Verbindungs-Spezialisierung mit verleimten Lamellen
-   nach DIN EN 14080. Trigger: erstes Tool, das einen BSH-Binder
-   (Hallenbau, weitspannender Geschossbau) geometrisch modelliert.
-5. **`fachwerkbinder`** — Bauart-Achse: Stab-Fachwerk mit Stäben
-   und Knoten in der Tragebene. Trigger: erstes Tool, das die
-   Fachwerk-Topologie (Knoten-Stab-Inzidenzen) explizit darstellt.
-6. **`vollwandbinder`** — Bauart-Achse, Gegenpol zum Fachwerkbinder:
-   flächige Tragebene. Trigger: erstes Tool, das vollwandige
-   Binder mit flächigen Bestandteilen darstellt.
-7. **`hauptbinder`** — Tragwerks-Hierarchie-Rolle (Primär-
-   Lastabtragungs-Niveau in einem Hauptträger-Nebenträger-System).
-   Trigger: erstes Tool, das die Hierarchie-Rolle Primär-/Sekundär-
-   Binder in einem Tragwerk auflöst (etwa für die
-   Werkstattzeichnung mit Achs-Numerierung). Offene Designfrage,
-   ob „Hauptbinder" als eigener Eintrag oder als Annotation am
-   Binder geführt wird; der Korpus-Sprachgebrauch ist
-   uneinheitlich.
-
-Ebenfalls als Folgearbeit auf Glossar-Ebene absehbar, aber nicht
-in den sieben Trigger-Bindern enthalten:
-
-- `binderdach` — das Tragwerks-System, in dem Binder die
-  Primärtragglieder sind (parallel zu `sparrendach`,
-  `pfettendach`, `kehlbalkendach` aus dem `tragwerk`-Eintrag).
-- `bundbalken` — horizontales Zugglied im Sparrenbinder (verbindet
-  die Sparrenfüße); aktuell als impliziter Bestandteil im
-  Sparrenbinder-Block geführt. Trigger: erster Sparrenbinder-
-  Eintrag (`sparrenbinder.md`), der die Mindestkonfiguration
-  „zwei Sparren + Bundbalken" formal definiert.
-- Eintragung des englischen Fachglossar-Mapping (`truss`,
-  `girder`, `nail-plate truss`, `glulam beam`) als
-  Korpus-Begriffe in einer späteren Übersetzungs-Schicht.
+- Recherchebericht [intern].

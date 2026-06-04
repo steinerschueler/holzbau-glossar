@@ -81,20 +81,20 @@ Sei
   von Dachflächen D_i = (E_i, P_i, n_{a,i}) im Sinne von
   `dachflaeche`,
 - A ein Dachaufbau im Sinne von `dachaufbau`, definiert über dem
-  Trägerbereich F := ⋃_{i=1..m} F(P_i),
+  Trägerbereich F:= ⋃_{i=1..m} F(P_i),
 - H = H(A) die aus A abgeleitete Dachhaut im Sinne von `dachhaut`
   (obere Hüllfläche der äußersten Schicht von A).
 
 Dann ist ein **Dach** das Tripel
 
 ```
-Dach := (T, 𝒟, A)
+Dach:= (T, 𝒟, A)
 ```
 
 mit den Konsistenzbedingungen
 
 1. **Trägerbezug des Dachaufbaus**: Der Dachaufbau A ist genau
-   über F := ⋃_i F(P_i) definiert, d. h. seine Trägerflächen sind
+   über F:= ⋃_i F(P_i) definiert, d. h. seine Trägerflächen sind
    die Elemente von 𝒟.
 2. **Statische Auflagerung der Dachflächen**: Jede Dachfläche
    D_i ∈ 𝒟 wird konstruktiv von Elementen aus T getragen
@@ -102,7 +102,7 @@ mit den Konsistenzbedingungen
    nicht als formal überprüfbares Prädikat — die formale Auflager-
    Relation wird mit dem späteren Eintrag `tragwerk` nachgeliefert).
 3. **Geschlossenheit der Hülle nach oben**: Der gerichtete
-   Halbraum-Verband H⁺ := ⋃_i { x | ⟨n_{a,i}, x − p_{0,i}⟩ > 0 }
+   Halbraum-Verband H⁺:= ⋃_i { x | ⟨n_{a,i}, x − p_{0,i}⟩ > 0 }
    ist die nach außen weisende Seite des Daches. Es existiert kein
    Punkt im umbauten Raum, der durch eine vertikale Halbgerade nach
    oben den Verband ⋃_i F(P_i) verfehlt (Wohldefiniertheit der
@@ -112,7 +112,7 @@ Der **geometrische Anteil** des Daches ist die durch 𝒟 erzeugte
 Punktmenge
 
 ```
-G(Dach) := ⋃_{i=1..m} F(P_i) ⊂ ℝ³,
+G(Dach):= ⋃_{i=1..m} F(P_i) ⊂ ℝ³,
 ```
 
 die **äußere Hüllfläche** des Daches ist die Dachhaut H = H(A).
@@ -226,70 +226,6 @@ Fachliteratur verbreitete Vermischung dieser drei Konzepte auf.
   - **Gebäudehülle**: das gesamte raumabschließende
     Hüllaggregat (Dach + Außenwände + Bodenplatte).
     Übergeordneter Aggregatbegriff, nicht Synonym.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-data class Dach(
-    val tragwerk: Tragwerk,                  // T, eigener Typ folgt
-    val dachflaechen: List<Dachflaeche>,     // 𝒟, Reihenfolge bedeutungslos
-    val dachaufbau: Dachaufbau               // A
-) {
-    init {
-        // 1. dachflaechen.isNotEmpty()                  → sonst Entartet.LeeresDach
-        // 2. dachaufbau.dachflaechen entspricht
-        //    dachflaechen (gleicher Trägerbereich)      → sonst Entartet.AufbauTraegerInkonsistent
-        // 3. Kein flächiger Selbstüberlapp der Dachflächen
-        //    außer entlang gemeinsamer Ränder
-        //    (First, Grat, Kehle)                       → sonst Entartet.SelbstUeberlapp
-    }
-
-    fun dachhaut(): Dachhaut = dachaufbau.dachhaut()
-}
-```
-
-- **Einheit**: alle Geometrie-Komponenten in mm; Dachneigungen
-  intern in Radiant.
-- **Invarianten** (in `init` prüfen, bei Verletzung
-  `Resultat.Fehler` bzw. `EntartetGeometrie`-Variante zurückgeben, niemals
-  Exception werfen):
-  1. `dachflaechen.isNotEmpty()` ⇒ sonst `Entartet.LeeresDach`.
-  2. Trägerbereich des Dachaufbaus deckt sich mit
-     `dachflaechen` bis auf Toleranzen.LAENGE_EPS am Rand;
-     Verletzung ⇒ `Entartet.AufbauTraegerInkonsistent`.
-  3. Paarweise Dachflächen-Schnitte sind entweder leer oder
-     bestehen aus gemeinsamen Randstrecken (First, Grat, Kehle);
-     ein flächiger Selbstüberlapp ist verboten ⇒
-     `Entartet.SelbstUeberlapp`.
-  4. Auflagerung jeder D_i ∈ 𝒟 durch Elemente aus T;
-     Verletzung ⇒ `Entartet.NichtAufgelagert` (formal nachgeliefert,
-     sobald `tragwerk` definiert ist).
-- **Edge Cases**:
-  - **Pultdach** (m = 1): zulässig.
-  - **Flachdach** (alle α_i ≤ Toleranzen.WINKEL_EPS): zulässig,
-    Sonderfall der Definition; Außenabschluss des Dachaufbaus
-    typischerweise eine ABDICHTUNG.
-  - **Mehrere getrennte Dächer auf einem Gebäude** (z. B. zwei
-    Satteldachflügel mit Lichthof dazwischen): werden als zwei
-    getrennte `Dach`-Instanzen modelliert, nicht als ein einziges
-    Dach mit nicht-zusammenhängender Dachflächen-Familie.
-  - **Aufbauten** (Gauben, Schornsteindurchführungen): die
-    Gaubenflächen sind eigenständige Dachflächen in 𝒟, die
-    Schornsteindurchführung ist eine lokale Aussparung in
-    Dachfläche und Dachaufbau (Modellierung in späterem Eintrag
-    `dachoeffnung`).
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `geometrischerAnteil(): Geometrie` = Vereinigung der F(P_i).
-  - `gesamtflaeche(): Double` (mm²) = Σ flaecheninhalt(D_i).
-  - `dachform(): Dachform` = Klassifikation aus Anzahl,
-    Neigungen und Topologie der D_i (eigener Eintrag `dachform`
-    folgt).
-  - `dachhaut(): Dachhaut` = abgeleitete Hüllfläche aus
-    `dachaufbau`.
-  - `enthaelt(p: Punkt, eps): Boolean` = ∃ D_i ∈ 𝒟 mit
-    `D_i.enthaelt(p, eps)`.
 
 ## Quellen
 

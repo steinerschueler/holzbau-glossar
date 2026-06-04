@@ -38,7 +38,7 @@ eine reine Richtung ohne metrischen Längenanteil repräsentiert.
 Sei
 
 - v ∈ ℝ³ ein Vektor (siehe `vektor`),
-- ‖v‖ := √(v_x² + v_y² + v_z²) seine euklidische Norm,
+- ‖v‖:= √(v_x² + v_y² + v_z²) seine euklidische Norm,
 - NORM_EPS ∈ ℝ_{>0} die Norm-Toleranz aus `toleranzen`.
 
 Dann heißt v **Einheitsvektor** genau dann, wenn
@@ -56,14 +56,14 @@ bzw. in der Domänen-Schicht prüfbar
 Die Menge aller (idealen) Einheitsvektoren ist die **Einheitssphäre**
 
 ```
-S² := { v ∈ ℝ³ | ‖v‖ = 1 } ⊂ ℝ³.
+S²:= { v ∈ ℝ³ | ‖v‖ = 1 } ⊂ ℝ³.
 ```
 
 **Konstruktion durch Normierung**: Für einen Vektor v ∈ ℝ³ mit
 ‖v‖² > NORM_EPS ist
 
 ```
-v_hat := v / ‖v‖ ∈ S²
+v_hat:= v / ‖v‖ ∈ S²
 ```
 
 der zu v gehörige Einheitsvektor; v_hat ist genau dann definiert, wenn v
@@ -152,92 +152,6 @@ Eingang.
     spezifischen semantischen Rolle. Strukturell identisch zu einem
     allgemeinen Einheitsvektor, aber zusätzlich annotiert mit der
     Bedeutung „Materialachse".
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.geometrie`):
-
-```
-package domain.geometrie
-
-/**
- * Einheitsvektor: Vektor mit ‖v‖ = 1 ± NORM_EPS.
- * Glossar: hg_einheitsvektor.md
- *
- * Wrapper-Typ um Vektor, der die Einheitsnorm zur Konstruktionszeit
- * prüft. Die Domänen-Schicht verwendet Einheitsvektor überall dort,
- * wo eine reine Richtung erwartet wird (Normalenvektoren, Faser-
- * richtung, Geraden-Richtung in normierter Form).
- */
-public class Einheitsvektor private constructor(public val vektor: Vektor) {
-
-    // Properties: dx, dy, dz, normQuadrat, norm — delegiert an `vektor`.
-    // Operatoren: unaryMinus, dot, cross, get.
-    // Methoden: istGleich, istParallelZu, istAntiparallelZu, istOrthogonalZu.
-
-    public companion object {
-        /** Kanonische Achsen, rechnerisch normiert; ueber `bildeUngeprueft`. */
-        public val EX: Einheitsvektor = bildeUngeprueft(Vektor.EX)
-        public val EY: Einheitsvektor = bildeUngeprueft(Vektor.EY)
-        public val EZ: Einheitsvektor = bildeUngeprueft(Vektor.EZ)
-
-        /**
-         * Erzeugt einen Einheitsvektor durch Normierung von [v]. Wirft niemals.
-         * Liefert
-         *  - `Resultat.Erfolg(v / ‖v‖)`, wenn `v` finit und `‖v‖² > eps`,
-         *  - `Resultat.Fehler(EntartetGeometrie.NichtFinit)`, wenn eine
-         *    Komponente NaN oder ±∞ ist,
-         *  - `Resultat.Fehler(EntartetGeometrie.Nullrichtung)`, wenn
-         *    `‖v‖² ≤ eps`.
-         */
-        public fun bilde(
-            v: Vektor,
-            eps: Double = Toleranzen.NORM_EPS,
-        ): Resultat<Einheitsvektor, EntartetGeometrie> {
-            if (!v.istFinit()) return Resultat.Fehler(EntartetGeometrie.NichtFinit)
-            if (v.normQuadrat <= eps) return Resultat.Fehler(EntartetGeometrie.Nullrichtung)
-            return Resultat.Erfolg(Einheitsvektor(v * (1.0 / v.norm)))
-        }
-
-        /**
-         * Erzeugt einen Einheitsvektor **ohne** Norm-Pruefung. Aufrufer
-         * garantiert `‖normalisierter‖ ≈ 1`. Vorgesehen fuer Operationen, die
-         * rechnerisch einen Einheitsvektor liefern (Vorzeichenumkehr,
-         * Achsenkonstanten).
-         */
-        internal fun bildeUngeprueft(normalisierter: Vektor): Einheitsvektor =
-            Einheitsvektor(normalisierter)
-    }
-}
-```
-
-- **Einheit**: dimensionslos. Ein Einheitsvektor trägt **nie**
-  Längeninformation in mm.
-- **Invariante**: | (v.dx² + v.dy² + v.dz²) − 1 | ≤ Toleranzen.NORM_EPS.
-  Die Invariante wird in der Companion-Factory `bilde(...)` zur
-  Konstruktionszeit geprüft; ein bereits konstruierter
-  `Einheitsvektor` darf von Klienten als invariant angenommen werden.
-- **Edge Cases**:
-  - **Nullvektor** (‖v‖² ≤ NORM_EPS): `Einheitsvektor.bilde(...)`
-    liefert `EntartetGeometrie.Nullrichtung`. Der Aufrufer
-    entscheidet über die fachliche Reaktion (Fehlermeldung im UI,
-    Defaultachse usw.).
-  - **NaN/±∞ in einer Komponente**: durch `bilde(...)` abgefangen
-    (Prüfung `!v.istFinit()` erfolgt **vor** dem Norm-Test); das
-    Ergebnis ist `EntartetGeometrie.NichtFinit`.
-  - **Sehr kleine, aber nicht-null Vektoren** (NORM_EPS < ‖v‖² ≪ 1):
-    werden numerisch sicher normiert, bleiben aber fachlich
-    fragwürdig (z. B. fast-paralleler Sparrenanschnitt). Die
-    fachliche Plausibilität ist Aufgabe des Aufrufers, nicht des
-    Konstruktors.
-  - **Antipodale Mehrdeutigkeit**: v_hat und −v_hat sind beides gültige
-    Einheitsvektoren. Wo nur die ungerichtete Richtung relevant ist
-    (z. B. Geraden-Richtung), ist die Vorzeichenwahl konventionell
-    festzulegen (siehe Glossareintrag des verwendenden Begriffs).
-- **Verwendungsregel**: Funktionen, die eine Richtung erwarten
-  (Normalenvektor, Faserrichtung, Achse), nehmen `Einheitsvektor` als
-  Parametertyp, **nicht** `Vektor`. Dadurch wird die
-  Norm-Invariante typsicher kommuniziert und am API-Rand erzwungen.
 
 ## Quellen
 

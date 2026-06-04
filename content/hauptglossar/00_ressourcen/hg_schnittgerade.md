@@ -56,9 +56,9 @@ Sei
 - E₁ = (p₁, n_hat₁) und E₂ = (p₂, n_hat₂) zwei Ebenen im Sinne von `ebene`
   in Hesse-Normalform, also mit normierten Normalen ‖n_hat₁‖ = ‖n_hat₂‖ = 1
   und vorzeichenbehafteten Ursprungs­abständen
-  d₁ := ⟨n_hat₁, p₁⟩ und d₂ := ⟨n_hat₂, p₂⟩ (in mm),
-- ε_K := Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz,
-- ε_L := Toleranzen.LAENGE_EPS die Längentoleranz.
+  d₁:= ⟨n_hat₁, p₁⟩ und d₂:= ⟨n_hat₂, p₂⟩ (in mm),
+- ε_K:= Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz,
+- ε_L:= Toleranzen.LAENGE_EPS die Längentoleranz.
 
 **Existenzbedingung.** Die Schnittgerade existiert genau dann, wenn
 
@@ -71,14 +71,14 @@ Sei
 **Richtungsvektor.** Unter Bedingung (E) ist
 
 ```
-v := n_hat₁ × n_hat₂ ∈ ℝ³ \ {0},
-t_hat := v / ‖v‖    ∈ S².
+v:= n_hat₁ × n_hat₂ ∈ ℝ³ \ {0},
+t_hat:= v / ‖v‖    ∈ S².
 ```
 
 **Stützpunkt.** Unter Bedingung (E) ist
 
 ```
-x₀ := ( d₁ · (n_hat₂ × t_hat)  +  d₂ · (t_hat × n_hat₁) ) / ‖v‖             (S)
+x₀:= (d₁ · (n_hat₂ × t_hat)  +  d₂ · (t_hat × n_hat₁)) / ‖v‖             (S)
 ```
 
 ein Punkt mit ⟨n_hat₁, x₀⟩ = d₁ und ⟨n_hat₂, x₀⟩ = d₂, also x₀ ∈ E₁ ∩ E₂.
@@ -87,7 +87,7 @@ ein Punkt mit ⟨n_hat₁, x₀⟩ = d₁ und ⟨n_hat₂, x₀⟩ = d₂, also 
 g(E₁, E₂) ⊂ ℝ³ ist die Punktmenge
 
 ```
-g(E₁, E₂) := E₁ ∩ E₂ = { x₀ + t · t_hat ∈ ℝ³ | t ∈ ℝ },
+g(E₁, E₂):= E₁ ∩ E₂ = { x₀ + t · t_hat ∈ ℝ³ | t ∈ ℝ },
 ```
 
 also die Gerade im Sinne von `gerade` mit Stützpunkt x₀ und
@@ -103,7 +103,7 @@ Ebene × Ebene  ⟶  Gerade ∪ {Entartet.ParalleleEbenen,
 mit
 
 ```
-schnittGerade(E₁, E₂) :=
+schnittGerade(E₁, E₂):=
   Entartet.IdentischeEbenen,    falls ‖n_hat₁ × n_hat₂‖ ≤ ε_K  und
                                        |⟨n_hat₁, p₂ − p₁⟩| ≤ ε_L
   Entartet.ParalleleEbenen,     falls ‖n_hat₁ × n_hat₂‖ ≤ ε_K  und
@@ -230,127 +230,6 @@ geometrisch der Lotfußpunkt vom Ursprung auf die Schnittgerade.
   - **Halbgerade** (`halbgerade`): einseitig begrenzter Ausschnitt
     einer Geraden. Die Schnittmenge zweier Ebenen ist niemals eine
     Halbgerade, sondern stets unbegrenzt zweiseitig.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.geometrie`):
-
-```
-@ConsistentCopyVisibility
-data class Schnittgerade internal constructor(
-    val gerade: Gerade,            // zugrundeliegende Gerade (Stützpunkt + Richtung)
-    val ebeneA: Ebene,             // Referenz auf E₁
-    val ebeneB: Ebene              // Referenz auf E₂
-) {
-    val stuetzpunkt: Punkt get() = gerade.stuetzpunkt   // x₀ nach (S), in mm
-    val richtung: Einheitsvektor get() = gerade.richtung // t_hat, ‖t_hat‖² ≈ 1
-}
-```
-
-Begründung der Komposition über `gerade: Gerade` (statt direkter Felder
-`stuetzpunkt` und `richtung`): DRY — die Klasse `Gerade` (Glossareintrag
-`gerade`, D2) kapselt bereits die Invarianten Stützpunkt + Einheits­tangente
-inklusive Validierung; eine Schnittgerade ist eine Gerade mit zusätzlicher
-Erzeuger-Information, was sich strukturell als Komposition über `Gerade`
-ausdrücken lässt. Der Konstruktor ist `internal`, damit Schnittgeraden
-ausschließlich über die Companion-Factory entstehen können (Invarianten-
-Schutz).
-
-Konstruktor (Companion-Factory `Schnittgerade.bilde`, Wrapper über
-`Ebene.schnitt`):
-
-```
-companion object {
-    fun bilde(
-        ebeneA: Ebene,
-        ebeneB: Ebene,
-        eps: Double = Toleranzen.KOLLINEAR_EPS
-    ): Resultat<Schnittgerade, EntartetGeometrie> =
-        ebeneA.schnitt(ebeneB, eps).abbilden { gerade ->
-            Schnittgerade(gerade, ebeneA, ebeneB)
-        }
-}
-```
-
-Die Methode `Ebene.schnitt(other, eps): Resultat<Gerade, EntartetGeometrie>`
-führt den Schnitt-Algorithmus nach (S) durch und liefert eine reine
-`Gerade` (ohne Erzeuger-Information). `Schnittgerade.bilde` reichert das
-Erfolgs-Resultat um die Erzeuger-Ebenen an und propagiert den Fehlertyp
-unverändert.
-
-- **Fehlertyp**: gemeinsame Sealed-Hierarchie
-  `EntartetGeometrie` (Code-Pattern, kein Glossarbegriff; siehe
-  `domain/geometrie/EntartetGeometrie.kt`). Die für Ebene-Ebene-Schnitt
-  relevanten Varianten sind:
-  - `EntartetGeometrie.IdentischeEbenen` — ‖n_hat₁ × n_hat₂‖ ≤ KOLLINEAR_EPS und
-    |⟨n_hat₁, p₂ − p₁⟩| ≤ LAENGE_EPS: Trägerebenen identisch, Schnittmenge
-    ist eine Ebene, keine Gerade.
-  - `EntartetGeometrie.ParalleleEbenen` — ‖n_hat₁ × n_hat₂‖ ≤ KOLLINEAR_EPS und
-    |⟨n_hat₁, p₂ − p₁⟩| > LAENGE_EPS: Trägerebenen echt parallel und
-    disjunkt, Schnittmenge ist leer.
-  Eine eigene `SchnittgeradeEntartet`-Sealed-Class entfällt zugunsten
-  der gemeinsamen Hierarchie (Konvention für alle D2/D3-Klassen).
-- **Einheit**: Stützpunkt-Koordinaten in mm (Double); Richtung
-  dimensionslos und auf Einheitslänge normiert (Typ `Einheitsvektor`);
-  `ebeneA` und `ebeneB` sind Referenzen auf die ursprünglichen
-  `Ebene`-Werte (für nachgelagerte Klassifikation).
-- **Invarianten** (in Factory prüfen, niemals Exception):
-  1. ‖richtung‖² ∈ [1 − Toleranzen.NORM_EPS, 1 + Toleranzen.NORM_EPS]
-     (Einheits-Tangente; algorithmisch durch Konstruktion garantiert).
-  2. `stuetzpunkt` liegt in beiden erzeugenden Ebenen:
-     |signierterAbstand_E₁(stuetzpunkt)| ≤ Toleranzen.LAENGE_EPS und
-     |signierterAbstand_E₂(stuetzpunkt)| ≤ Toleranzen.LAENGE_EPS.
-  3. `richtung` steht orthogonal zu beiden Normalen:
-     |⟨richtung, n_hat₁⟩| ≤ Toleranzen.KOLLINEAR_EPS und
-     |⟨richtung, n_hat₂⟩| ≤ Toleranzen.KOLLINEAR_EPS.
-  4. Alle Komponenten finit (kein NaN, kein ±∞).
-- **Edge Cases / Entartet-Varianten**:
-  - **ParalleleEbenen**: ‖n_hat₁ × n_hat₂‖ ≤ KOLLINEAR_EPS und
-    Hesse-Abstand der zweiten Ebene zur ersten > LAENGE_EPS;
-    keine Schnittgerade existiert.
-  - **IdentischeEbenen**: ‖n_hat₁ × n_hat₂‖ ≤ KOLLINEAR_EPS und
-    Hesse-Abstand ≤ LAENGE_EPS; die Schnittmenge ist eine ganze
-    Ebene und damit keine Gerade.
-  - **Nahezu parallel** (‖n_hat₁ × n_hat₂‖ knapp über KOLLINEAR_EPS):
-    zulässig, aber numerisch sensibel (Stützpunkt-Berechnung skaliert
-    mit 1/‖v‖). Bei Bedarf kann der Aufrufer eine schärfere
-    Toleranz übergeben.
-  - **Nicht-finite Eingaben**: durch Eingabe-Validierung der
-    `Ebene`-Konstruktoren bereits ausgeschlossen (siehe `hg_ebene.md`).
-- **Identität / Gleichheit**: zwei Identitäts-Methoden, je nach
-  benötigter Strenge:
-  - `istGleicheGerade(other, eps)` — **lockerer** Test: vergleicht nur
-    die zugrundeliegende Geraden-Punktmenge (delegiert an
-    `Gerade.istGleich`) und ignoriert die Erzeuger-Ebenen. Anwendungs­
-    fall: dieselbe Linie kann aus verschiedenen Ebenenpaaren entstehen
-    — drei nicht-koplanare Ebenen, die sich in einer gemeinsamen Linie
-    treffen, liefern paarweise unterschiedliche Schnittgeraden mit
-    identischer Punktmenge; diese sind `istGleicheGerade`-äquivalent.
-  - `istGleicheSchnittgerade(other, eps)` — **strenger** Test: zusätzlich
-    zur Geraden-Identität muss die **Menge** der Erzeuger-Ebenen gleich
-    sein, ungeordnet verglichen via `Ebene.istGleicheEbene`:
-    `{ebeneA, ebeneB} = {other.ebeneA, other.ebeneB}`. Anwendungs­fall:
-    wenn die Erzeuger-Information für nachgelagerte Klassifikation
-    (First/Grat/Kehle) Teil der Identität ist.
-  Direkter `==`-Vergleich auf der Datenklasse ist exakt-bitweise und
-  unterscheidet daher Repräsentanten, deren Geraden- oder Erzeuger-
-  Komponenten lediglich numerisch äquivalent sind; für geometrische
-  Identität ist er ungeeignet.
-- **Orientierung**: Die Schnittgerade ist als Punktmenge
-  ungerichtet. Die in der Datenklasse gespeicherte Tangente
-  t_hat = n_hat₁ × n_hat₂ ist abhängig von der Reihenfolge (E₁, E₂); für
-  kanonische Tangenten­orientierungen (z. B. „nach oben" bei
-  Grat/Kehle) ist eine zusätzliche Konvention im Aufrufer
-  festzulegen, siehe `hg_grat.md` und `hg_kehle.md`.
-- **Abgeleitete Operationen**:
-  - `fun beschneidenAuf(F1: Polygon, F2: Polygon): Resultat<Strecke, EntartetGeometrie>`
-    – Schnitt der Schnittgerade mit dem gemeinsamen Polygonbereich
-    F(P₁) ∩ F(P₂); Grundlage für die Schnittstrecke s_{ij} aus
-    `hg_first.md`, `hg_grat.md`, `hg_kehle.md`. (Folgearbeit, nicht in D4-1
-    realisiert.)
-  - **Vergissfunktor zur reinen Geraden**: über das Feld `gerade`
-    direkt zugänglich (`schnittgerade.gerade : Gerade`); keine
-    separate `alsGerade()`-Methode nötig.
 
 ## Quellen
 

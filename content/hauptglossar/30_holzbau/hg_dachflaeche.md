@@ -48,13 +48,13 @@ Sei
   Eckpunkten v_i ∈ E und k ≥ 3,
 - F(P) ⊂ E das von P berandete, abgeschlossene Flächenstück
   (innerer Bereich vereinigt mit Rand),
-- α := arccos(⟨n, e_z⟩) der Winkel zwischen n und der vertikalen
+- α:= arccos(⟨n, e_z⟩) der Winkel zwischen n und der vertikalen
   Achse e_z = (0, 0, 1)ᵀ.
 
 Dann heißt das Tripel
 
 ```
-D := (E, P, n_a)
+D:= (E, P, n_a)
 ```
 
 mit n_a ∈ {+n, −n} als der nach außen weisenden Wahl der Normalen
@@ -137,54 +137,6 @@ Dachfläche bei einspringendem oder ausspringendem Eck).
     Orientierungs-Annotation (vgl. `hg_dachseite.md`).
   - **Dachneigungswinkel α**: ein Merkmal der Dachfläche, kein
     eigenständiges Bauteil.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil` bzw.
-`domain.geometrie`):
-
-```
-data class Dachflaeche(
-    val traeger: Ebene,        // E
-    val umriss: Polygon,       // P, Eckpunkte ∈ traeger
-    val aeussereNormale: Vektor // n_a, ‖n_a‖ = 1, n_a · e_z ≥ 0
-)
-```
-
-- **Einheit**: Eckpunkt-Koordinaten in mm (Double); α intern in
-  Radiant.
-- **Invarianten** (in `init`-Block prüfen, bei Verletzung
-  `Resultat.Fehler` bzw. `Entartet`-Variante zurückgeben, niemals
-  Exception werfen):
-  1. Alle v_i ∈ traeger, getestet mit
-     |⟨n, v_i − p₀⟩| ≤ Toleranzen.LAENGE_EPS (Standardwert 1e-3 mm
-     = 1 µm, bezogen auf normalisiertes n; siehe `hg_toleranzen.md` für
-     die kanonischen Default-Werte).
-  2. Polygon-Flächeninhalt > Toleranzen.FLAECHE_EPS.
-  3. ‖n_a‖ ∈ 1 ± Toleranzen.NORM_EPS.
-  4. n_a · e_z > Toleranzen.WINKEL_EPS  (n_a weist in die obere
-     Halbkugel **und** die Dachfläche ist nicht vertikal, α < π/2 —
-     Bedingungen 2 und 3 zusammen; cos α weg von 0 ist gut
-     konditioniert, daher Cosinus-Schwelle mit WINKEL_EPS, kein
-     Kreuzprodukt). Verletzung (senkrechte Wand) → `Entartet.Senkrecht`.
-- **Edge Cases**:
-  - α = 0: zulässig (Flachdach). Bei α = 0 ist die Wahl der äußeren
-    Normalen durch die Bedingung n_a · e_z = 1 (statt ≥ 0) zu
-    erzwingen; n_a = −e_z ist verboten (Kellerdecke wäre kein Dach).
-  - α → π/2: degeneriert zur senkrechten Wand. Gemäß Definition
-    ausgeschlossen (α < π/2). Die Domänen-Klasse liefert in diesem
-    Fall `Entartet.Senkrecht`.
-  - Nicht-planarer Polygonzug: numerische Punkte, die nicht exakt in
-    E liegen, werden bis Toleranzen.LAENGE_EPS akzeptiert; darüber
-    hinaus `Entartet.NichtPlanar`.
-  - Nicht-einfaches Polygon (Selbstschnitt): `Entartet.Selbstschnitt`.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `dachneigung(): Radiant` = arccos(aeussereNormale · e_z).
-  - `flaecheninhalt(): Double` (mm²) aus dem Umriss-Polygon.
-  - `traufe(): Strecke?`, `first(): Strecke?`, `ortgang(): List<Strecke>`
-    werden in Folge-Einträgen der genannten Kantenbegriffe definiert
-    und greifen auf die Klassifikation der Polygonkanten nach
-    Lage und Nachbarschaft zurück.
 
 ## Quellen
 

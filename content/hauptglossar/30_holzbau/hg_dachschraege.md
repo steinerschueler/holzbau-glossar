@@ -60,32 +60,32 @@ Sei
 - A = (𝒟, 𝒮, H) ein Dachaufbau im Sinne von `dachaufbau` mit
   D ∈ 𝒟 und Schichtfolge 𝒮 = (S₁, …, S_k) (von innen nach außen,
   S_j mit Dicke d_j > 0),
-- d_A := Σ_{j=1..k} d_j die Gesamtdicke des Dachaufbaus auf D
+- d_A:= Σ_{j=1..k} d_j die Gesamtdicke des Dachaufbaus auf D
   (siehe `dachaufbau`).
 
 Dann ist die **Dachschräge** zu D die Fläche
 
 ```
-S(D, A) := (E_S, P_S, n_S)
+S(D, A):= (E_S, P_S, n_S)
 ```
 
 mit
 
 - **innenseitiger Trägerebene**
   ```
-  E_S := { x ∈ ℝ³ | ⟨n_a, x − p₀⟩ = 0 } − d_A · n_a
+  E_S:= { x ∈ ℝ³ | ⟨n_a, x − p₀⟩ = 0 } − d_A · n_a
        = { y + (− d_A) · n_a | y ∈ E }
        = { z ∈ ℝ³ | ⟨n_a, z − (p₀ − d_A · n_a)⟩ = 0 },
   ```
   also der um −d_A · n_a verschobenen Ebene E,
 - **innenseitigem Polygon**
   ```
-  P_S := (v₁ − d_A · n_a, …, v_k − d_A · n_a),
+  P_S:= (v₁ − d_A · n_a, …, v_k − d_A · n_a),
   ```
   also dem starr nach innen verschobenen Umriss von D,
 - **innenseitiger Normale**
   ```
-  n_S := − n_a ∈ S²,
+  n_S:= − n_a ∈ S²,
   ```
   also der raumseitigen, in den Innenraum weisenden Einheits-Normale
   (⟨n_S, e_z⟩ ≤ 0).
@@ -217,117 +217,6 @@ Tauwasserrechnung im Schichtaufbau maßgeblich ist.
   nicht als raumseitig sichtbare Fläche existiert; die formale
   Geometrie bleibt aber konstruierbar, die Entartung ist
   semantisch (Sichtbarkeit), nicht geometrisch.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-package domain.bauteil
-
-import domain.geometrie.Ebene
-import domain.geometrie.Polygon
-import domain.geometrie.Vektor
-import domain.geometrie.Einheitsvektor
-import domain.Toleranzen
-
-/**
- * Dachschräge: raumseitige Bezugsfläche zu einer Dachfläche,
- * parallel verschoben um die Gesamtdicke des Dachaufbaus.
- * Glossar: hg_dachschraege.md
- */
-data class Dachschraege(
-    val traeger: Ebene,                 // E_S
-    val umriss: Polygon,                // P_S, Eckpunkte ∈ traeger
-    val raumseitigeNormale: Einheitsvektor   // n_S = −n_a
-) {
-    init {
-        // Invarianten siehe unten
-    }
-
-    companion object {
-        /**
-         * Konstruiert die Dachschräge aus einer Dachfläche und ihrem
-         * Dachaufbau über starre Translation um −d_A · n_a.
-         */
-        fun ausDachflaeche(
-            d: Dachflaeche,
-            a: Dachaufbau
-        ): Resultat<Dachschraege, EntartetGeometrie> {
-            val dA = a.gesamtdicke()
-            if (dA <= Toleranzen.LAENGE_EPS)
-                return Resultat.Fehler(EntartetGeometrie.NullVersatz)
-            val nA = d.aeussereNormale
-            // Versatz nach innen
-            val versatz = Vektor(-dA * nA.x, -dA * nA.y, -dA * nA.z)
-            val neuesPolygon = Polygon(
-                d.umriss.eckpunkte.map { it + versatz }
-            )
-            val nS = Einheitsvektor.ausVektor(
-                Vektor(-nA.x, -nA.y, -nA.z)
-            ).werteOder { return Resultat.Fehler(it) }
-            val neueEbene = Ebene.ausPunktUndNormale(
-                neuesPolygon.eckpunkte.first(), nS
-            )
-            return Resultat.Erfolg(
-                Dachschraege(neueEbene, neuesPolygon, nS)
-            )
-        }
-    }
-
-    sealed class Entartet {
-        object KeineInnenSichtbar : Entartet()    // semantisch, nicht geometrisch
-        object NullVersatz : Entartet()           // d_A ≤ LAENGE_EPS
-        object Horizontal : Entartet()            // α(D) ≈ 0 → Decke, nicht Dachschräge
-    }
-}
-```
-
-- **Einheit**: Polygonpunkte in mm (Double); Normale dimensionslos.
-- **Invarianten** (in `init`-Block bzw. Factory prüfen, niemals
-  Exception werfen):
-  1. Alle Eckpunkte ∈ `traeger` (mit Toleranzen.LAENGE_EPS).
-  2. Polygon-Flächeninhalt > Toleranzen.FLAECHE_EPS.
-  3. ‖raumseitigeNormale‖ ∈ 1 ± Toleranzen.NORM_EPS.
-  4. ⟨raumseitigeNormale, e_z⟩ ≤ Toleranzen.WINKEL_EPS  (n_S zeigt
-     in die untere Halbkugel oder Horizontale, da n_a in die obere).
-  5. ‖raumseitigeNormale × e_z‖ > Toleranzen.KOLLINEAR_EPS  (Dach-
-     schräge nicht horizontal — Decke-Ausschluss; betragsgleich zu
-     ‖n_a × e_z‖, da n_S = −n_a). Verletzung liefert
-     `Entartet.Horizontal` (siehe Edge Case α(D) = 0).
-- **Edge Cases**:
-  - **d_A → 0** (kein Dachaufbau, etwa offene Pergola): Konstruktion
-    liefert `Resultat.Fehler` bzw. `EntartetGeometrie.NullVersatz`. Die
-    Dachschräge wäre mit der Dachfläche identisch und damit kein
-    eigenständiges Objekt.
-  - **α(D) = 0** (Flachdach): per Definition ausgeschlossen
-    (Bedingung 3). Die innenseitige Fläche ist dann eine **Decke**;
-    die Domänen-Klasse liefert `Entartet.Horizontal`.
-  - **Nicht-konstanter Aufbau** (Aufdoppelung, Gefälledämmung):
-    nicht von dieser Definition abgedeckt; die Idealisierung als
-    Skalar d_A versagt. Erweiterung über ortsabhängige Dicke d_A(x)
-    erforderlich.
-  - **Abgehängte Innenbekleidung**: bildet eine **zweite**
-    raumseitige Fläche unterhalb der idealisierten Dachschräge;
-    formale Behandlung über einen erweiterten `Dachaufbau`, der
-    die Innenbekleidung als zusätzliche Schicht trägt, und
-    Re-Konstruktion der Dachschräge mit aktualisiertem d_A.
-  - **Sichtsparren-Konstruktion**: die Dachschräge ist nicht
-    durchgängig eine ebene Fläche, sondern wechselt zwischen
-    Sparren-Untersicht und Schalungs-Untersicht. Idealisiert wird
-    sie auf die unterste, raumseitig sichtbare Holzschicht
-    bezogen; eine differenzierte Modellierung erfolgt erst in
-    Folgearbeit (eigener Eintrag `sichtdach`).
-- **Abgeleitete Operationen**:
-  - `dachneigung(): Double` (Radiant) = arccos(⟨−raumseitigeNormale,
-    e_z⟩); identisch zur Dachneigung der zugehörigen Dachfläche.
-  - `flaecheninhalt(): Double` (mm²) aus dem Umriss-Polygon;
-    identisch zur Dachfläche, da starre Translation
-    flächenerhaltend ist.
-  - `stehhoehenLinie(z₀: Double): Strecke?` — Schnitt der Dachschräge
-    mit der Horizontalebene z = z₀, als Hilfsgröße für
-    Wohnflächenrechnungen (z. B. z₀ = 2000 mm). In Folgearbeit
-    näher zu definieren.
 
 ## Quellen
 

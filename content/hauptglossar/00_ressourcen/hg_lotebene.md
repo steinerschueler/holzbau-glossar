@@ -17,7 +17,7 @@ quellen_sekundär:
   - "Hartmann, E.: Darstellende Geometrie für Bauingenieure, Skript, TU Darmstadt (www2.mathematik.tu-darmstadt.de/~ehartmann/darg15.pdf, Volltext nicht eingesehen): Lotebene als Standard-Konstruktion der darstellenden Geometrie (mathematische Lesart)."
   - "Henke, K.: Darstellende Geometrie, Skript, Lehrstuhl für Holzbau und Baukonstruktion TU München (Volltext nicht eingesehen): Lotebene/Hilfsebene im Kontext orthogonale Parallelprojektion."
   - "LEIFIphysik, Brockhaus 'Horizont': Vertikalebene / lotrechte Ebene als Ebene, die das Lot enthält (geodätisch-astronomischer Sprachgebrauch)."
-  - "docs/recherche/2026-05-14_hg_lotebene.md — interner Recherche-Bericht zur Begriffslage, Negativbefund Holzbau-Korpus, Abgrenzung der drei Bedeutungssphären (Mathematik / Geodäsie / Holzbau)."
+  - "[intern] — interner Recherche-Bericht zur Begriffslage, Negativbefund Holzbau-Korpus, Abgrenzung der drei Bedeutungssphären (Mathematik / Geodäsie / Holzbau)."
 quellenkonflikt: |
   Der Begriff „Lotebene" trägt **zwei nicht deckungsgleiche
   etablierte Bedeutungen** im deutschsprachigen Fachgebrauch, und
@@ -100,7 +100,7 @@ quellenkonflikt: |
   verwendet.
 
   Detailrecherche und Quellenlage: siehe
-  `docs/recherche/2026-05-14_hg_lotebene.md`.
+  [intern].
 ---
 
 ## Prosa-Definition
@@ -123,15 +123,15 @@ Sei
 - A_B = [p_a, p_e] ⊂ ℝ³ die **Bauteilachse** von B im Sinne von
   `bauteilachse`, repräsentiert durch Anfangspunkt p_a,
   Endpunkt p_e und Richtungs-Einheitsvektor
-  d_hat_B := (p_e − p_a) / ‖p_e − p_a‖ ∈ S²,
+  d_hat_B:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S²,
 - O_B ∈ A_B ein beliebiger Punkt der Bauteilachse (z. B.
   p_a oder der Bauteil-Ursprung der lokalen Platzierung),
 - E ⊂ ℝ³ eine Ebene im Sinne von `ebene`, repräsentiert in
   Hesse-Normalform durch das Paar (n_hat, d) ∈ S² × ℝ,
-- ε_K := `Toleranzen.KOLLINEAR_EPS` die einschlägige
+- ε_K:= `Toleranzen.KOLLINEAR_EPS` die einschlägige
   dimensionslose Toleranzkonstante für Skalarprodukt-basierte
   Lage-Tests (siehe `toleranzen`),
-- ε_L := `Toleranzen.LAENGE_EPS` die Längen-Toleranzkonstante
+- ε_L:= `Toleranzen.LAENGE_EPS` die Längen-Toleranzkonstante
   für die Achsen-Inzidenz-Prüfung.
 
 **Voraussetzung (nicht-vertikale Bauteilachse):**
@@ -152,7 +152,7 @@ Bedingungen erfüllt sind:
 (L2)  A_B ⊂ E:             dist(p_a, E)  ≤  ε_L  ∧  dist(p_e, E)  ≤  ε_L.
 ```
 
-Dabei bezeichnet `dist(q, E) := |⟨n_hat, q⟩ − d|` den vorzeichenlosen
+Dabei bezeichnet `dist(q, E):= |⟨n_hat, q⟩ − d|` den vorzeichenlosen
 Punkt-Ebenen-Abstand (siehe `ebene`).
 
 **Konstruktive Form** (Punkt-Normale-Repräsentation): Unter der
@@ -160,17 +160,17 @@ Voraussetzung (V) ist die **Lotebene** Π_⊥(B) eindeutig festgelegt
 durch
 
 ```
-Π_⊥(B)  :=  { O_B  +  s · e_hat_z^welt  +  t · d_hat_B  |  s, t ∈ ℝ }    (1)
+Π_⊥(B):=  { O_B  +  s · e_hat_z^welt  +  t · d_hat_B  |  s, t ∈ ℝ }    (1)
 ```
 
 mit Stützpunkt O_B ∈ A_B und aufspannenden Richtungen e_hat_z^welt
 und d_hat_B. Äquivalente Hesse-Repräsentation: Normaleneinheitsvektor
 
 ```
-n_hat_Π  :=  (e_hat_z^welt × d_hat_B) / ‖e_hat_z^welt × d_hat_B‖                    (2)
+n_hat_Π:=  (e_hat_z^welt × d_hat_B) / ‖e_hat_z^welt × d_hat_B‖                    (2)
 ```
 
-und Stützabstand d_Π := ⟨n_hat_Π, O_B⟩, also
+und Stützabstand d_Π:= ⟨n_hat_Π, O_B⟩, also
 
 ```
 Π_⊥(B)  =  { q ∈ ℝ³ |  ⟨n_hat_Π, q⟩  =  d_Π }.                        (3)
@@ -218,8 +218,7 @@ wohldefiniert ist.
   (L1) und (L2) sind dann von einer ganzen einparametrigen Schar
   von Ebenen erfüllt, und Π_⊥(B) ist **nicht eindeutig
   festgelegt**. Die Lotebene ist in diesem Fall **undefiniert**;
-  Anwendungs-Code muss diese Singularität explizit behandeln
-  (siehe Implementierungshinweis).
+  Anwendungs-Code muss diese Singularität explizit behandeln.
 
 - **Existenz im Toleranz-Grenzbereich**: Wird (V) gerade noch
   erfüllt (|⟨d_hat_B, e_hat_z^welt⟩| nahe an 1 − ε_K), so ist n_hat_Π
@@ -276,7 +275,7 @@ Ausrichtung tragen.
 
 Der Begriff ist im Holzbau-Korpus **nicht als stehender
 Fachbegriff belegt** (Recherche-Bericht
-`docs/recherche/2026-05-14_hg_lotebene.md`); er wird in diesem
+[intern]); er wird in diesem
 Glossar in Analogie zu `senkel` und `bleischnitt` eingeführt
 und ist konsistent mit dem geodätisch-astronomischen
 Sprachgebrauch (Wikipedia „Lotrichtung", „Vertikalkreis"). Die
@@ -403,110 +402,6 @@ Stabbauteile mit deutlich geneigter Achse (Sparren) gedacht.
     Bedingung (L1) formuliert ist. Ohne Welt-Koordinatensystem
     ist die Lotebene nicht definiert.
 
-## Implementierungshinweis
-
-**Kein eigener Code-Typ.** Lotebene wird in der Domänen-Schicht
-als **Konstruktor-Funktion** auf einem Stabbauteil realisiert,
-die eine `Ebene` zurückliefert (analog zur `senkel`/`bleischnitt`-
-Prädikat-Form, aber mit Konstruktor-Charakter wegen der
-Achsen-Inzidenz-Bedingung). Die Funktion ist ein Resultat-Typ,
-weil sie bei welt-vertikaler Bauteilachse undefiniert ist:
-
-```kotlin
-package domain.geometrie
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import kotlin.math.abs
-
-/**
- * Lotebene eines Stabbauteils: die welt-vertikale Ebene, die
- * die Bauteilachse enthält.
- *
- * Konstruktion (siehe hg_lotebene.md Gl. (1)–(3)):
- *
- *   n_hat_Π = (e_hat_z^welt × d_hat_B) / ‖e_hat_z^welt × d_hat_B‖,
- *   d_Π = ⟨n_hat_Π, O_B⟩.
- *
- * Singularität: Bei welt-vertikaler Bauteilachse
- * (|⟨d_hat_B, e_hat_z^welt⟩| > 1 − KOLLINEAR_EPS) ist die Lotebene
- * **nicht eindeutig** — der Konstruktor liefert dann
- * `Lotebene.AchseVertikal`.
- *
- * Glossar: hg_lotebene.md (Spezialisierung von hg_senkel.md
- * mit zusätzlicher Bauteilachsen-Inzidenz).
- */
-sealed class LotebeneResultat {
-    data class Ebene(val ebene: domain.geometrie.Ebene) : LotebeneResultat()
-    data object AchseVertikal : LotebeneResultat()
-}
-
-fun Bauteil.lotebene(
-    eps: Double = Toleranzen.KOLLINEAR_EPS
-): LotebeneResultat {
-    val d = this.achse.richtungEinheit()        // d_hat_B
-    val ez = WeltKoordinatensystem.eZ            // e_hat_z^welt
-    val cos = abs(d.skalar(ez))                  // |⟨d_hat_B, e_hat_z^welt⟩|
-    if (cos > 1.0 - eps) return LotebeneResultat.AchseVertikal
-    val n = ez.kreuz(d).normiert()               // n_hat_Π
-    val o = this.achse.anfangspunkt()            // O_B
-    return LotebeneResultat.Ebene(
-        domain.geometrie.Ebene.ausPunktUndNormale(o, n)
-    )
-}
-```
-
-- **Einheit**: keine direkte Einheit; die Lotebene ist eine Ebene
-  im Welt-Koordinatensystem (Längeneinheit der Stützabstände in
-  mm, geerbt von `ebene`).
-- **Identität**: keine eigene Identität; die Lotebene wird aus
-  dem Bauteil abgeleitet und trägt keine eigene UUID. Mehrfache
-  Aufrufe von `bauteil.lotebene()` liefern dieselbe Ebene (modulo
-  Vorzeichen der Normale).
-- **Toleranz**: `KOLLINEAR_EPS` für die Singularitätsbedingung
-  (V). Die Inzidenz-Prüfung (L2) verwendet `LAENGE_EPS` für die
-  Endpunkt-Abstände — relevant, wenn eine vorgegebene Ebene als
-  Lotebene-Kandidat klassifiziert werden soll (Prädikatlesart,
-  hier nicht primär implementiert).
-- **Edge Cases**:
-  - **Welt-vertikale Stütze** (Stützen-artiges Bauteil mit
-    d_hat_B = ±e_hat_z^welt): Konstruktor liefert
-    `LotebeneResultat.AchseVertikal`; aufrufender Code muss den
-    Fall behandeln (z. B. Lotebene durch zusätzliche
-    Konvention festlegen oder Geometrie-Pfad abbrechen).
-  - **Bauteil mit gekrümmter Achse**: nicht im Scope des
-    Konstruktors; die Lotebene ist für Stabbauteile mit gerader
-    Achse definiert. Für gekrümmte Achsen müsste die Lotebene
-    punktweise (pro Achsen-Parameter s) konstruiert werden;
-    Folgearbeit-Trigger.
-  - **Numerische Konditionierung nahe der Singularität**: bei
-    |⟨d_hat_B, e_hat_z^welt⟩| nahe 1 − ε_K wird das Kreuzprodukt
-    kurz und n_hat_Π ungenau; in der Praxis irrelevant, weil
-    diese Konfiguration weit jenseits realer Sparren-Neigungen
-    liegt.
-
-**Folgearbeit (trigger-basiert):**
-
-- **`vertikalebene`** als allgemeinerer Geschwister-Begriff
-  (Senkel **ohne** Achsen-Inzidenz, im Sprachgebrauch der
-  Geodäsie/Astronomie): nicht im aktuellen Tool-Bedarf;
-  Trigger: erstes Tool, das eine welt-vertikale Ebene ohne
-  Bauteilachsen-Bindung als eigenständiges Objekt benötigt.
-  Bis dahin reicht `senkel` als Oberbegriff.
-- **Vereinheitlichung mit `hg_sparren.md` L182**: dort wird
-  „Vertikalebene" einmal informell verwendet; bei nächster
-  substanzieller `hg_sparren.md`-Überarbeitung in „Lotebene"
-  angleichen oder explizit als Synonym führen.
-- **Lotebene für gekrümmte Bauteilachsen**: punktweise
-  Konstruktion entlang der natürlichen Achsen-Parametrisierung.
-  Trigger: erstes Tool mit gekrümmten Bauteilen (BSH-Bögen,
-  gekrümmte Brettschichtholz-Träger).
-- **`falllinie`-Cross-Verweis**: die Falllinie einer Dachfläche
-  durch einen Punkt liegt in einer Lotebene durch diesen Punkt
-  und die Dachflächen-Normale; Strukturparallele zur
-  Bauteilachsen-Konstruktion hier. Trigger: bei nächster
-  substanzieller `hg_falllinie.md`-Überarbeitung.
-
 ## Quellen
 
 **Primär (normativ und konzeptuell):**
@@ -537,7 +432,7 @@ fun Bauteil.lotebene(
 
 **Recherche-Bericht (intern):**
 
-- `docs/recherche/2026-05-14_hg_lotebene.md` — Belegfreiheit
+- [intern] — Belegfreiheit
   im DACH-Holzbau-Korpus, drei Bedeutungssphären (Mathematik /
   Geodäsie / Holzbau), Lesart-Optionen, Negativbefunde
   (SIA 265, DIN EN 1995-1-1, DIN 1052, Holzbau-Atlas,

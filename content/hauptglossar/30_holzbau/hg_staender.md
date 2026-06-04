@@ -30,8 +30,8 @@ quellen_sekundär:
   - "architektvergleich.ch 'Riegelbau Schweiz': CH-Pendant zum DE-Fachwerk, einheitlich 'Ständer' für das Wand-Senkrechtbauteil."
 quellenkonflikt: |
   Sieben Punkte sind in den Recherchen
-  (`docs/recherche/2026-05-15_pfosten_staender.md` und
-  `docs/recherche/2026-05-15_pfosten_staender_lastpfad.md`)
+  ([intern] und
+  [intern])
   nicht widerspruchsfrei und werden hier ausdrücklich aufgelöst.
 
   **(1) Pfosten-Asymmetrie: erdverankert (historisch) vs. modern
@@ -79,8 +79,7 @@ quellenkonflikt: |
   reservieren **„Stütze"** als Oberbegriff für die werkstoffneutrale,
   punktuell tragende Tragwerks-Rolle (Skelettbau, Pfosten-Riegel-
   Fassade, Hallenbinder). „Pfosten" ist in der CH-Praxis weniger
-  prominent. Da der App-Eigentümer Schweizer Zimmermann ist
-  (Memory `user_role`), ist die CH-Linie für die Wurzelwahl
+  prominent. Da der App-Eigentümer Schweizer Zimmermann ist, ist die CH-Linie für die Wurzelwahl
   ausschlaggebend.
 
   Eigene Festlegung: **„Ständer" als Wurzel, „Pfosten" als Synonym.**
@@ -108,21 +107,11 @@ quellenkonflikt: |
   stehen `staender` und `pfosten` bereits parallel; in
   `hg_riegel.md` Z. 9 fehlt `staender` und wird ergänzt).
 
-  **(5) SIA-265-Verifikations-Trigger.** SIA 265:2021 §1.1
+  **(5) SIA-265.** SIA 265:2021 §1.1
   „Fachausdrücke" enthält laut Lignum-Pressemitteilung 2021
   erstmals eine geschlossene Definitionsliste der Holzbau-
   Fachbegriffe. Der Norm-Volltext ist **nicht direkt eingesehen**
-  (SIA-Shop-Paywall); die Marker-Konvention nach §10 ist mit
-  `[via: Lignum-Pressemitteilung 2021]` im `quellen_primär:`
-  gesetzt. Falls Eric später Volltext-Zugriff erwirbt (Memory
-  `feedback_subagent_findings_verifizieren`), ist die Wurzel-Wahl
-  „Ständer" gegen die SIA-265-Lemmatisierung zu prüfen. Best Case:
-  SIA 265 führt „Stütze" als werkstoffneutralen Tragwerks-Begriff
-  und „Ständer" als wand-spezifischen Begriff — dann ist die hier
-  getroffene Wahl voll bestätigt. Falls SIA 265 dagegen „Pfosten"
-  als Default für das Wand-Senkrechtbauteil setzt, ist ein
-  Wurzel-Tausch (Pfosten ↔ Ständer in Synonymie-Stellung) als
-  ABW-Welle zu durchführen.
+  (SIA-Shop-Paywall).
 
   **(6) `cripple stud` als false friend.** Das englische `cripple
   stud` bezeichnet einen **verkürzten Ständer** ober- oder
@@ -136,8 +125,8 @@ quellenkonflikt: |
   Englisch-Praktiker) und weil die App-Sprache „Stempel" /
   „Kurzständer" für diesen Fall in der Erläuterung führt.
 
-  **(7) Eric-CH-Berufspraxis-Lastpfad-Trennung.** Eric
-  (Schweizer Zimmermann, Domain Expert; Memory `user_role`)
+  **(7) Anweiser-CH-Berufspraxis-Lastpfad-Trennung.** Anweiser
+  (Schweizer Zimmermann, Domain Expert)
   hält fest: in seiner Berufspraxis trennen sich Pfosten und
   Ständer entlang des **Lastpfads** — Pfosten nimmt Last
   **direkt** auf (geschoss-übergreifend, von First/Pfette bis
@@ -146,11 +135,11 @@ quellenkonflikt: |
   Stockschwelle).
 
   Diese Trennung ist im publizierten CH-Korpus
-  (`docs/recherche/2026-05-15_pfosten_staender_lastpfad.md`) **nicht
+  ([intern]) **nicht
   als Pfosten/Ständer-Lemmatrennung verankert**. Geprüft wurden
   Lignum (lignum.ch/holz_a_z/konstruktion), holzbaukultur.ch
   („Pfosten wird nicht als eigenständiges Bauteil oder Synonym
-  erwähnt"; Hauptinstanz-WebFetch-verifiziert), SIA 265:2021
+  erwähnt"), SIA 265:2021
   indirekt (Snippet-Konsens: Stab/Stütze/Druckglied, keine
   Pfosten/Ständer-Lemmatrennung), Bauernhausforschung Schweiz,
   Bauatlas Appenzellerland, Steko-System, architektvergleich.ch.
@@ -163,13 +152,12 @@ quellenkonflikt: |
     Mehrreihenständerbau und Hochstudhäuser; durchgehend vom
     Boden bis zur Firstpfette)
 
-  Erics inhaltliche Bauteilrollen-Intuition ist damit
+  Anweisers inhaltliche Bauteilrollen-Intuition ist damit
   **konsistent** mit der CH-Praxis, nur die **Lemma-Wahl** weicht
-  ab: was Eric „Pfosten" nennt, heisst im publizierten CH-Korpus
+  ab: was Anweiser „Pfosten" nennt, heisst im publizierten CH-Korpus
   „Stütze" (modern) oder „Hochstud" (historisch).
 
-  **Sub-Punkt — Strickbau-Kontext** (Bauatlas Appenzellerland,
-  Hauptinstanz-WebFetch-verifiziert): im Strickbau-CH-Korpus
+  **Sub-Punkt — Strickbau-Kontext** (Bauatlas Appenzellerland): im Strickbau-CH-Korpus
   wird eine **andere** Pfosten/Ständer-Trennung geführt — Pfosten
   = vertikales **Stabilisierungselement bei Öffnungen** (nicht
   primär tragend); Ständer = vertikales **tragendes Bauteil im
@@ -180,18 +168,18 @@ quellenkonflikt: |
 
   Eigene Festlegung: „Pfosten" bleibt **Synonym zu Ständer** im
   Sinne von Punkt 1 (Asymmetrie-Disambiguation für die moderne
-  synonyme Praxis). Erics Lastpfad-Trennung deutet konzeptuell
+  synonyme Praxis). Anweisers Lastpfad-Trennung deutet konzeptuell
   auf die **Folgearbeit `hg_stuetze.md`** (Cluster `20_tragwerk/`,
   werkstoffneutral, direkt-tragende Vertikalrolle) hin — sobald
   die App eine Skelettbau-/Holzskelett-Lesart benötigt. **Folge-
-  arbeit-Trigger:** beim Anlegen von `hg_stuetze.md` ist Erics
+  arbeit-Trigger:** beim Anlegen von `hg_stuetze.md` ist Anweisers
   „Pfosten"-Lesart als CH-berufssprachliches Synonym im
   Quellenkonflikt-Block zu erwähnen, mit Verweis hierher.
   „Hochstud" (alemannisch-deutsch, Wortstamm „Stud" = Stütze,
   Aargau-Mittelland 16.–19. Jh., Bauernhausforschung Schweiz)
   ist als historischer CH-Bauernhaus-Begriff zwar dokumentiert
   (Welle-9-Nachjustierungs-Recherche §B.2, §C.5), wird hier
-  aber **nicht als Folgearbeit-Eintrag aufgenommen** (Eric-
+  aber **nicht als Folgearbeit-Eintrag aufgenommen** (Anweiser-
   Entscheidung 2026-05-16): nicht aktiv im modernen CH-Berufs-
   korpus, App-Tool-Linie nicht auf Bauernhaus-Sanierung
   ausgelegt. Strickbau-Familie (`hg_strickbalken.md`,
@@ -218,7 +206,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - E_W eine Wandebene (Ebene im Sinne von `ebene`) mit Stützpunkt
   p_W und Normalenvektor n_hat_W ∈ S², wobei n_hat_W horizontal liegt
   (|⟨n_hat_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
@@ -227,9 +215,9 @@ Sei
   a(S) = (p_a^S, p_e^S) (vgl. `schwelle`),
 - R ein Rähm in derselben Wandebene mit Bauteilachse
   a(R) = (p_a^R, p_e^R) (vgl. `raehm`),
-- e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-  ε_L := Toleranzen.LAENGE_EPS.
+- e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS.
 
 Dann heißt B ein **Ständer** der Wand mit Wandebene E_W,
 Schwelle S und Rähm R genau dann, wenn die folgenden Bedingungen
@@ -282,13 +270,13 @@ alle erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Ständerlänge**: L_S := ‖p_e − p_a‖ (in mm), entlang der
+- **Ständerlänge**: L_S:= ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen Schwellen-Anschluss und Rähm-Anschluss.
   Bei exakt lotrechter Ständerachse gilt L_S = p_e.z − p_a.z.
 - **Ständerrichtung**: d_hat ∈ S² mit ‖d_hat × e_z‖ ≤ ε_K und
   d_hat · e_z > 0 (durch Bedingung 3 festgelegt). Damit ist
   d_hat ≈ +e_z.
-- **Geschosshöhe**: h_G := p_e.z − p_a.z; bei lotrechtem
+- **Geschosshöhe**: h_G:= p_e.z − p_a.z; bei lotrechtem
   Ständer identisch mit L_S, bei toleranzbehafteter Schiefstellung
   bis auf KOLLINEAR_EPS‧L_S kleiner als L_S.
 
@@ -423,8 +411,7 @@ Welle-8-Analogie zu `RiegelPosition` in `hg_riegel.md`):
   unter einer Fensteröffnung. Englisch `cripple stud`.
 
 In der Domänen-Schicht werden diese Positionen als Wert eines
-Merkmals `StaenderPosition` am Ständer-Bauteil geführt (siehe
-Implementierungshinweis), nicht als Subtyp-Hierarchie.
+Merkmals `StaenderPosition` am Ständer-Bauteil geführt, nicht als Subtyp-Hierarchie.
 
 ### Geschossdurchgehender vs. geschossweiser Ständer
 
@@ -630,223 +617,6 @@ behandelt.
     Constraints; ein Bauteil ohne Bauteilrolle ist kein
     Ständer.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Ebene
-import domain.geometrie.Punkt
-import kotlin.math.abs
-
-/**
- * Ständer als Bauteilrolle: lotrechtes Stab-Bauteil in einer
- * Wand, dessen Fuß auf der Schwelle und dessen Kopf am Rähm
- * derselben Wandebene aufliegt; primärer vertikaler Lastpfad
- * der Holzwand zwischen Rähm und Schwelle.
- *
- * Glossar: hg_staender.md
- *
- * Die Sub-Lesarten Eck-/Bund-/Zwischen-/Innen-/Leibungs-/
- * Stempel-Ständer sind Positions-Annotationen, keine Subtypen.
- * Sie werden über das Merkmal `position` getragen (Welle-9-
- * Analogie zu `RiegelPosition` in `hg_riegel.md`).
- *
- * Vorzeichenkonvention: Die Bauteilachse ist vom Fuß
- * (p_a, auf Schwelle) zum Kopf (p_e, am Rähm) gerichtet.
- * Anders als bei Pfette, Riegel und Rähm ist hier eine
- * geometrisch zwingende Orientierung sinnvoll, weil Fuß und
- * Kopf konstruktiv asymmetrisch sind.
- */
-data class Staender(
-    val bauteil: Bauteil,
-    /** Wandebene; aus Schwellen- und Rähm-Achsen abgeleitet. */
-    val wandebene: Ebene,
-    /** Positions-Annotation in der Wand. Default UNSPEZIFIZIERT. */
-    val position: StaenderPosition = StaenderPosition.UNSPEZIFIZIERT,
-) {
-    val achse: Bauteilachse.Gerade
-        get() = (bauteil.geometrie as Bauteilgeometrie.Stab).achse
-                as Bauteilachse.Gerade
-    val laenge: Double get() = achse.laenge          // mm
-    val richtung: Einheitsvektor get() = achse.richtung
-    /** Fuß-Punkt (auf Schwelle), per Vorzeichenkonvention p_a. */
-    val fuss: Punkt get() = achse.anfang
-    /** Kopf-Punkt (am Rähm), per Vorzeichenkonvention p_e. */
-    val kopf: Punkt get() = achse.ende
-    /** Geschosshöhe (mittlere z-Differenz Kopf − Fuß). */
-    val geschosshoehe: Double                         // mm
-        get() = achse.ende.z - achse.anfang.z
-
-    /**
-     * Lotrechtheitsprädikat: ‖d_hat × e_z‖ ≤ KOLLINEAR_EPS.
-     *
-     * Sinus-Test gegen e_z-Parallelität; KOLLINEAR_EPS ist
-     * bevorzugt für Lot- und Parallelitäts-Prädikate
-     * (siehe hauptglossar/HG_KONVENTIONEN.md §4).
-     */
-    fun istLotrecht(eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean {
-        val d = richtung
-        // ‖d × e_z‖² = d.x² + d.y²   (mit e_z = (0,0,1))
-        val sinusQuadrat = d.x * d.x + d.y * d.y
-        return sinusQuadrat <= eps * eps
-    }
-}
-
-/**
- * Positions-Annotation eines Ständers in der Wand. Die Sub-
- * Lesarten unterscheiden sich durch topologische Lage
- * (Inzidenz mit Wandecke, Binder, Öffnungs-Leibung), nicht
- * durch eigene geometrische oder statische Constraints. Daher
- * Merkmal, nicht Subtyp.
- *
- * Glossar: hg_staender.md (siehe Erläuterung „Ständerpositionen
- * in der Wand").
- */
-enum class StaenderPosition {
-    /** An einer Wandecke; Inzidenz mit zwei Wandebenen. */
-    ECK,
-    /** In einer Binderebene; querverlaufende Tragachse. */
-    BUND,
-    /** In der Wandfläche zwischen Eck-/Bundständern. */
-    ZWISCHEN,
-    /** In einer Innenwand (Abgrenzung Außenwand-Ständer). */
-    INNEN,
-    /** An Tür- oder Fensterleibung, oft Doppelständer. */
-    LEIBUNG,
-    /** Kurzständer (Länge < Geschosshöhe), englisch `cripple stud`. */
-    STEMPEL,
-    /** Position nicht zugewiesen (Default). */
-    UNSPEZIFIZIERT,
-}
-
-sealed class StaenderEntartet {
-    object Nullachse                    : StaenderEntartet()
-    object NichtLotrecht                : StaenderEntartet()
-    object FalscheOrientierung          : StaenderEntartet()  // p_a.z ≥ p_e.z
-    object NichtInWandebene             : StaenderEntartet()
-    object FussNichtAnSchwelle          : StaenderEntartet()
-    object KopfNichtAnRaehm             : StaenderEntartet()
-    object WandebeneNichtLotrecht       : StaenderEntartet()
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil
-  (Memory `project_bauteil_identifikation`).
-- **Invarianten** (in der Factory `staenderAusBauteil(...)`
-  prüfen, bei Verletzung `Resultat.Fehler` mit
-  `StaenderEntartet`-Variante; niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. ‖d_hat × e_z‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
-     `NichtLotrecht` (Sinus-Test gegen e_z-Parallelität;
-     KOLLINEAR_EPS, vgl. HG_KONVENTIONEN.md §4).
-  4. p_a.z + Toleranzen.LAENGE_EPS < p_e.z — sonst
-     `FalscheOrientierung` (Vorzeichenkonvention Fuß → Kopf).
-  5. Wandebene lotrecht: |⟨n_hat_W, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
-     — sonst `WandebeneNichtLotrecht`.
-  6. Beide Endpunkte in Wandebene (Punkt-Ebene-Abstand ≤
-     Toleranzen.LAENGE_EPS) — sonst `NichtInWandebene`.
-  7. Fuß auf Schwellen-Achse
-     (Punkt-Gerade-Abstand ≤ Toleranzen.LAENGE_EPS) — sonst
-     `FussNichtAnSchwelle`.
-  8. Kopf auf Rähm-Achse
-     (Punkt-Gerade-Abstand ≤ Toleranzen.LAENGE_EPS) — sonst
-     `KopfNichtAnRaehm`.
-- **Edge Cases**:
-  - **Eckständer**: Inzidenz mit zwei Wandebenen E_W,1 und
-    E_W,2. Die `wandebene`-Eigenschaft der `Staender`-
-    Instanz ist eine der beiden Wandebenen; die zweite Wand-
-    ebene wird über das Wand-Aggregat (Folgearbeit) referenziert.
-    `position = ECK`.
-  - **Bundständer**: Inzidenz mit einer querverlaufenden
-    Binder-Achse zusätzlich zur Wandebene. Im klassischen
-    Fachwerk-Wandgerüstbau tragend für Stichbalken /
-    Geschossdecken-Anschluss. `position = BUND`.
-  - **Doppelständer an Leibung**: zwei eigenständige Ständer-
-    Bauteile mit `position = LEIBUNG`, geometrisch beide
-    Bedingungen erfüllend, im Abstand der Bauteilbreite
-    nebeneinander stehend. Komposition wird beim Wand-
-    Aggregat (Folgearbeit) behandelt.
-  - **Stempel / Kurzständer**: Ständer mit Länge < Geschoss-
-    höhe. Bedingungen 5 (Fuß an Schwelle) bzw. 6 (Kopf an
-    Rähm) werden gegen die jeweils nähere horizontale
-    Achse geprüft (Brüstungsriegel, Sturzriegel, statt
-    Schwelle oder Rähm direkt); die Definition ist insofern
-    zu lockern und das Wand-Aggregat trägt die korrekte
-    Auflager-Zuordnung. **Bei strikter Schwellen-/Rähm-
-    Bedingung qualifiziert ein Stempel nicht als Ständer im
-    Sinne dieses Eintrags** — Folgearbeit: Verallgemeinerung
-    der Bedingungen 5/6 auf „nächstes horizontales Auflager
-    in der Wandebene", bei der ersten Stempel-Modellierung.
-  - **Geschossdurchgehender Ständer** (klassische
-    Ständerbauweise 13.–17. Jh.): ein Ständer reicht über
-    mehrere Geschosse von der Grundschwelle bis zum
-    Dach-Rähm; das Geschossbalkenlager ist als Stichbalkenlage
-    eingezapft. Die App führt die **geschossweise Lesart**
-    als Default; geschossdurchgehende Ständer sind
-    Folgearbeit bei historischer Fachwerk-Modellierung.
-  - **Schiefstehender Ständer** (Schwellenverdrehung beim
-    Aufrichten): die Lot-Bedingung 2 schlägt fehl; in der
-    Praxis wird die Wand vor dem Einsetzen ausgerichtet, ein
-    kleiner Toleranzbereich ist durch KOLLINEAR_EPS abgedeckt.
-  - **Erdgerammter Pfosten (historische Pfostenbauweise)**:
-    nicht durch diesen Eintrag gedeckt. Bedingung 5 (Anschluss
-    an Schwelle) schlägt fehl, da keine Schwelle existiert.
-    Folgearbeit-Trigger bei historischer Pfostenbauweise-
-    Modellierung; gehört nicht zur Ständer-Familie sondern
-    zur eigenen historischen Bauweise.
-  - **Freistehende Holzstütze ohne Wand-Einbindung**
-    (Skelettbau, Pfosten-Riegel-Fassade): qualifiziert
-    nicht als Ständer (Bedingungen 5/6 schlagen fehl). Gehört
-    zur Bauteilrolle `stuetze` (Folgearbeit, Cluster
-    `20_tragwerk/`).
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `aufgesetztAuf(t: Tragwerk): Schwelle?` — die Schwelle,
-    deren Bauteilachse den Fuß-Punkt enthält (Bedingung 5);
-    null, wenn keine eindeutige Zuordnung möglich.
-  - `traegt(t: Tragwerk): Raehm?` — das Rähm, dessen
-    Bauteilachse den Kopf-Punkt enthält (Bedingung 6).
-  - `nachbarRiegel(t: Tragwerk): List<Riegel>` — Riegel in
-    derselben Wandebene, deren Endpunkte auf der Ständer-
-    Bauteilachse anschließen (Folgearbeit: erste Gefach-
-    Modellierung).
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt
-  `Staender` (deutsch, Glossarbegriff); Positions-Enum heißt
-  `StaenderPosition`. Spezialisierungs-Subtypen sind nicht
-  vorgesehen.
-- **Folgearbeit-Trigger** (für `_FOLGEARBEITEN_*.md` oder die
-  Wand-Aggregat-Welle-Planung):
-  - `stuetze`: Geschwister-Rolle für werkstoffneutrale,
-    punktuell tragende Vertikalbauteile ohne Wand-Bindung;
-    Cluster `20_tragwerk/`. Trigger: erstes Skelettbau-/
-    Hallenbinder-Tool.
-  - `haengesaeule`: Zugstab im Hängewerk-Dachtragwerk;
-    eigener Hauptglossar-Eintrag erst beim Hängewerk-Tool.
-  - `stuhlsaeule`: Vertikalholz im Dachstuhl (stehender/
-    liegender Stuhl); eigener Eintrag erst beim
-    Dachstuhl-Tool.
-  - `stockschwelle`: Schwelle des Obergeschosses auf
-    Geschossdecke; Trigger bei Mehrgeschoss-Wand-Modellierung.
-  - `wand` (Aggregat, mit Welle 12 angelegt, siehe
-    `hg_wand.md`): der Ständer ist Pflicht-Mitglied (≥ 2)
-    einer Wand-Bauteilgruppe. Eine Zwischenebene
-    `wandbauteil` wurde mit Welle 12 verworfen
-    (App-Drift); die Sammel-Funktion „Wand-Bauteilrolle"
-    wird über die Aggregat-Mitgliedschaft realisiert.
-  - **SIA-265-Verifikation**: bei Volltext-Zugriff (Eric)
-    SIA 265:2021 §1.1 Fachausdrücke direkt prüfen, ob
-    „Ständer", „Stütze" oder „Pfosten" als Lemma geführt
-    sind; Wurzel-Wahl ggf. als ABW-Welle korrigieren (siehe
-    Quellenkonflikt-Block (5)).
-
 ## Quellen
 
 **Primär (normativ):**
@@ -902,4 +672,4 @@ sealed class StaenderEntartet {
 - The Craftsman Blog „Timber, Balloon, or Platform Frame?"
   (englischer Begriffsraum stud/post/column).
 - Recherche-Bericht:
-  `docs/recherche/2026-05-15_pfosten_staender.md`.
+  [intern].

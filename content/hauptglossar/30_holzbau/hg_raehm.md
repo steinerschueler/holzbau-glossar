@@ -121,10 +121,10 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
-- e_z := (0, 0, 1)ᵀ die vertikale Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-  ε_L := Toleranzen.LAENGE_EPS.
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+- e_z:= (0, 0, 1)ᵀ die vertikale Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS.
 
 Sei ferner W eine Holzwand mit
 - Wandflucht-Richtung d_hat_W ∈ S² (horizontale Längsrichtung der
@@ -171,14 +171,14 @@ Bedingungen erfüllt sind:
    Bedingungen 1–4 mit derselben Wand W erfüllt und dessen
    mittlere Höhe z_{B′} > z_B + ε_L erfüllt; in Worten: das
    Rähm ist die oberste längs-parallele Komponente der Wand W.
-   z_B := (p_a.z + p_e.z) / 2.
+   z_B:= (p_a.z + p_e.z) / 2.
 
 Wesentliche abgeleitete Größen:
 
-- **Rähmlänge**: L_R := ‖p_e − p_a‖ (in mm), entlang der
+- **Rähmlänge**: L_R:= ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen den Rähm-Enden.
 - **Rähmrichtung**: d_hat ∈ S² mit |⟨d_hat, e_z⟩| ≤ ε_K und d_hat ‖ d_hat_W.
-- **Rähm-Höhenlage**: z_R := (p_a.z + p_e.z) / 2; bei exakt
+- **Rähm-Höhenlage**: z_R:= (p_a.z + p_e.z) / 2; bei exakt
   horizontalem Rähm gilt p_a.z = p_e.z = z_R.
 
 ## Wohldefiniertheit
@@ -415,121 +415,6 @@ allgemeinen Rahmen-Wurzel — daher die zulässigen Synonyme
     und in deren Höhennähe, ist aber nicht identisch (Traufe ist
     Dachgeometrie, Rähm ist Wand-Bauteil).
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.bauteil.Bauteilgeometrie
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Punkt
-import kotlin.math.abs
-
-/**
- * Rähm als Bauteilrolle: oberster horizontaler Längsträger einer
- * hölzernen Wand. Geschwister-Rolle zu Pfette, Schwelle, Sparren
- * unter Bauteil; nicht Subtyp von Pfette (Wand-Dach-Trennung).
- *
- * Glossar: hg_raehm.md
- *
- * Synonyme: Rahmholz, Rähmholz, Rähmbalken (DACH-Korpus).
- * Abgelehnt: Wandpfette (Korpus-Synonym, kollidiert mit
- * hg_pfette.md), Wandriegel (mehrdeutig — Riegel ist Querholz),
- * Mauerschwelle/Mauerbank (Fußpfette-Synonyme, keine Rähm-
- * Synonyme), englische Pendants (top plate / wall plate /
- * raising plate / double top plate).
- */
-sealed class Raehm {
-    abstract val bauteil: Bauteil
-
-    val achse: Bauteilachse.Gerade
-        get() = (bauteil.geometrie as Bauteilgeometrie.Stab).achse
-                as Bauteilachse.Gerade
-    val laenge: Double get() = achse.laenge          // mm
-    val richtung: Einheitsvektor get() = achse.richtung
-    val hoehe: Double                                 // mm, mittlere z-Lage
-        get() = (achse.anfang.z + achse.ende.z) / 2.0
-
-    /**
-     * Horizontalitätsprädikat: ‖d_hat × e_z‖ ≤ KOLLINEAR_EPS.
-     *
-     * Sinus-Test gegen e_z-Parallelität; KOLLINEAR_EPS ist
-     * bevorzugt für Lot- und Parallelitäts-Prädikate
-     * (siehe HG_KONVENTIONEN.md Sektion 4).
-     */
-    fun istHorizontal(eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean =
-        abs(richtung.z) <= eps
-}
-
-sealed class RaehmEntartet {
-    object Nullachse              : RaehmEntartet()
-    object NichtHorizontal        : RaehmEntartet()
-    object NichtWandParallel      : RaehmEntartet()
-    object KeinePfostenInzidenz   : RaehmEntartet()
-    object NichtObersteKomponente : RaehmEntartet()
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (in der Konstruktor-Factory prüfen, bei
-  Verletzung `Resultat.Fehler` mit `RaehmEntartet`-Variante;
-  niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > `Toleranzen.LAENGE_EPS` — sonst `Nullachse`.
-  3. `‖d_hat × e_z‖ ≤ Toleranzen.KOLLINEAR_EPS` — sonst
-     `NichtHorizontal` (Sinus-Test gegen e_z-Parallelität,
-     bevorzugt für Lot-Prädikate; siehe `HG_KONVENTIONEN.md`
-     Sektion 4).
-  4. Parallelität zur Wandflucht `d_hat_W`: `‖d_hat × d_hat_W‖ ≤ ε_K` —
-     sonst `NichtWandParallel`.
-  5. Pfosten-Köpfe-Inzidenz: mindestens zwei Pfosten-Köpfe liegen
-     innerhalb `LAENGE_EPS` auf der Rähmachse — sonst
-     `KeinePfostenInzidenz`. Die Prüfung erfordert den
-     Wand-Kontext und wird in der Wand-Aggregat-Factory geführt
-     (Cross-Cutting; nicht im Rähm-Konstruktor allein).
-  6. Eindeutigkeit als oberste Längskomponente der Wand W — sonst
-     `NichtObersteKomponente`. Auch Cross-Cutting im
-     Wand-Aggregat.
-- **Edge Cases**:
-  - **Doppeltes Rähm (US-Platform-Framing)**: in DACH-Tradition
-    unüblich. Bei Übernahme entweder als zwei vertikal benachbarte
-    Rähm-Bauteile mit Bedingung 6 lokal verletzt (obere
-    qualifiziert, untere als zusätzliches Längs-Bauteil ohne
-    Rähm-Rolle) oder als kompositer Rähm-Querschnitt (eine
-    Bauteilachse, doppelte Querschnittshöhe). Modellierungs-Wahl
-    ist Folgearbeit, falls die App diesen Fall stützt.
-  - **Eck-Anschluss zweier Wände**: jede Wand hat ihr eigenes Rähm;
-    die Rähm-Stücke treffen an der Wandecke und sind durch
-    Eckblatt/Verkämmung/Stahlblech-Verbinder verbunden. Die
-    Bauteilachsen-Endpunkte fallen geometrisch zusammen, die
-    Bauteilidentitäten bleiben getrennt.
-  - **Funktionale Überlagerung Rähm/Fußpfette**: ein Bauteil hat
-    genau eine Bauteilrolle. Wenn das Bauteil konstruktiv im
-    Wandgefüge sitzt (Zapfen mit Pfosten, Aufnahme von Streben),
-    ist es Rähm und nicht Fußpfette — auch wenn es die
-    Sparrenfüße trägt.
-  - **Wand ohne Pfosten** (z. B. massive Bohlenwand, Strickbau):
-    Bedingung 5 (Pfosten-Köpfe-Inzidenz) ist im Sinne dieses
-    Eintrags nicht anwendbar. Strickbau und Bohlenwand sind als
-    Wand-Subtypen mit eigener Top-Konstruktion zu führen
-    (Folgearbeit beim Wand-Eintrag); der Begriff „Rähm" ist
-    klassisch an Pfosten-/Ständer-Wände gebunden.
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `getragenePfosten(): List<Pfosten>` — Pfosten der Wand, deren
-    Kopf auf der Rähmachse liegt.
-  - `eckenIn(t: Tragwerk): List<RaehmEcke>` — Eckverbindungs-
-    Punkte mit Nachbarwand-Rähmen (Bemessungs-Hilfsfunktion).
-- **Bezeichner-Konvention** (CLAUDE.md / Code-Konventionen):
-  Klasse heißt `Raehm` (deutsch, Glossarbegriff; ASCII-
-  Transliteration des Umlauts entsprechend Code-Konventionen);
-  Anzeigename in der UI ist „Rähm".
-
 ## Quellen
 
 **Primär (normativ; Begriff vorausgesetzt, nicht als Lemma):**
@@ -577,5 +462,5 @@ sealed class RaehmEntartet {
   (`baunetzwissen.de`), abgerufen 2026-05-14.
 - Informationsdienst Holz, „Holzbausysteme — eine Übersicht"
   (`informationsdienst-holz.de`), abgerufen 2026-05-14.
-- Recherche-Bericht `docs/recherche/2026-05-14_hg_raehm.md` mit
+- Recherche-Bericht [intern] mit
   vollständigem Quellenapparat und Tier-Klassifikation.

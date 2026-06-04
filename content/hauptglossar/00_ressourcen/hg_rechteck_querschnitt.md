@@ -86,21 +86,21 @@ Sei
 Dann ist ein **Rechteck-Querschnitt** das Tupel
 
 ```
-RQ := (form, ebene, flaechenschwerpunkt, breite, hoehe)
+RQ:= (form, ebene, flaechenschwerpunkt, breite, hoehe)
      = (RECHTECK, E, z, b, h)
 ```
 
 mit der Punktmenge in lokalen (u, v)-Koordinaten
 
 ```
-Q_lokal(b, h) := { (u, v) ∈ ℝ² | −b/2 ≤ u ≤ b/2  ∧  −h/2 ≤ v ≤ h/2 }
+Q_lokal(b, h):= { (u, v) ∈ ℝ² | −b/2 ≤ u ≤ b/2  ∧  −h/2 ≤ v ≤ h/2 }
               = [−b/2, b/2] × [−h/2, h/2]
 ```
 
 und der zugehörigen Punktmenge in W
 
 ```
-Q(RQ) := { z + u·u_hat + v·v_hat ∈ ℝ³ | (u, v) ∈ Q_lokal(b, h) }.
+Q(RQ):= { z + u·u_hat + v·v_hat ∈ ℝ³ | (u, v) ∈ Q_lokal(b, h) }.
 ```
 
 Es ist 𝓡𝓠 ⊂ 𝓠𝓢, d. h. die Menge der Rechteck-Querschnitte ist eine
@@ -110,10 +110,10 @@ disjunkte Teilmenge der Querschnitts-Menge mit `form = RECHTECK`.
 Uhrzeigersinn, beginnend mit dem Eckpunkt im Quadranten (+u, +v)):
 
 ```
-v₁ = ( +b/2, +h/2 )
-v₂ = ( −b/2, +h/2 )
-v₃ = ( −b/2, −h/2 )
-v₄ = ( +b/2, −h/2 )
+v₁ = (+b/2, +h/2)
+v₂ = (−b/2, +h/2)
+v₃ = (−b/2, −h/2)
+v₄ = (+b/2, −h/2)
 ```
 
 In W-Koordinaten:
@@ -127,8 +127,8 @@ v_i^W = z + u_i · u_hat + v_i · v_hat   für i = 1, …, 4.
 
 ```
 z_lokal = (1 / (b·h)) · ∫∫_{Q_lokal} (u, v) du dv
-        = ( (1/b) · ∫_{-b/2}^{+b/2} u du,  (1/h) · ∫_{-h/2}^{+h/2} v dv )
-        = ( 0, 0 ).
+        = ((1/b) · ∫_{-b/2}^{+b/2} u du,  (1/h) · ∫_{-h/2}^{+h/2} v dv)
+        = (0, 0).
 ```
 
 Damit gilt z = z + 0·u_hat + 0·v_hat, d. h. der Flächenschwerpunkt in W
@@ -137,7 +137,7 @@ stimmt mit dem Ursprung des lokalen Querschnittssystems überein.
 **Querschnittsfläche**:
 
 ```
-A := 𝓛²(Q(RQ)) = b · h   (in mm²).
+A:= 𝓛²(Q(RQ)) = b · h   (in mm²).
 ```
 
 ## Wohldefiniertheit
@@ -158,8 +158,7 @@ A := 𝓛²(Q(RQ)) = b · h   (in mm²).
 - **Wohldefiniertheit des lokalen Systems (u_hat, v_hat)**: Die Wahl von
   (u_hat, v_hat) als rechtshändiges Orthonormalsystem in E bestimmt die
   Orientierung der Breiten- und Höhenkanten in W. Diese Wahl ist
-  **Festlegung des Bauteils**, nicht des Querschnitts (siehe
-  Implementierungshinweis unten und `hg_bauteil.md`); auf der Ebene des
+  **Festlegung des Bauteils**, nicht des Querschnitts (siehe `hg_bauteil.md`); auf der Ebene des
   Querschnitts wird (u_hat, v_hat) als gegeben vorausgesetzt. Die Punktmenge
   Q(RQ) hängt von dieser Wahl ab; alternative rechtshändige
   Orthonormalsysteme (z. B. Drehung um 90°) ergeben andere
@@ -196,7 +195,7 @@ Querschnittstyp:
 - **Furnierschichtholz / LVL** (DIN EN 14374): rechteckig, breite
   Stege bis 1800 mm.
 
-Im Sparrendach-Standardfall (Memory `project_grobplan_erstes_tool`)
+Im Sparrendach-Standardfall
 ist der Sparren ein Vollholz- oder KVH-Bauteil mit Rechteck-
 Querschnitt, typisch 80×160 oder 100×200 mm. Daher ist der
 Rechteck-Querschnitt der **Default-Subtyp** für die D8a-Bauteilklasse.
@@ -266,8 +265,7 @@ die Einbettungs-Information; letztere lebt im Bauteil.
     v_hat-Achse (Bauteil-z).
 - **Verwendung**:
   - **Bauteil** (`bauteil`): jedes **Stabbauteil** trägt typisch einen
-    Rechteck-Querschnitt als Pflichtfeld (D8a; siehe Memory
-    `project_grobplan_erstes_tool`); im Standardfall Vollholz/KVH/BSH.
+    Rechteck-Querschnitt als Pflichtfeld (D8a; siehe); im Standardfall Vollholz/KVH/BSH.
   - **Sparren** (`sparren`): Standardfall, 80×160 oder 100×200 mm.
   - **Pfette** (`pfette`): Standardfall, 120×160 oder 140×200 mm.
   - **Stütze** (Folgearbeit): Standardfall, 120×120 oder 140×140 mm.
@@ -291,112 +289,6 @@ die Einbettungs-Information; letztere lebt im Bauteil.
     Schwerpunkt des Rechteck-Querschnitts liegt auf der Bauteilachse.
   - **Bauteil** (`bauteil`): Rechteck-Querschnitt ist Eigenschaft
     eines Stabbauteils, nicht das Bauteil selbst.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`zimmermann.domain.bauteil.querschnitt`):
-
-```kotlin
-package zimmermann.domain.bauteil.querschnitt
-
-import zimmermann.domain.geometrie.Toleranzen
-import zimmermann.domain.fehler.EntartetGeometrie
-import zimmermann.domain.fehler.Resultat
-
-/**
- * Rechteck-Querschnitt: Querschnitt-Subklasse mit rechteckiger
- * Schnittfigur in der Querschnittsebene.
- * Glossar: hg_rechteck_querschnitt.md
- *
- * Pflichtfelder: breite b > 0, hoehe h > 0 (in mm).
- * Form: konstant RECHTECK.
- *
- * Lokales 2D-System: Ursprung im Flaechenschwerpunkt, lokale
- * u-Achse parallel zur Breitenkante (Bauteil-y), lokale v-Achse
- * parallel zur Hoehenkante (Bauteil-z). Punktmenge:
- * [-b/2, b/2] x [-h/2, h/2].
- *
- * Die Einbettung der Querschnittsebene in W (Lage des Schwerpunkts,
- * Orientierung der lokalen Achsen) ist Sache des Bauteils, nicht
- * des Querschnitts. RechteckQuerschnitt ist daher eine Werteklasse,
- * die fuer mehrere Bauteile geteilt werden kann.
- *
- * Validierung: Konstruktion ausschliesslich ueber Factory
- * `RechteckQuerschnitt.aus(breite, hoehe): Resultat<RechteckQuerschnitt,
- * EntartetGeometrie>`. Konstruktor ist `internal`. Vorbild:
- * `LokalePlatzierung.aus(...)`.
- */
-@ConsistentCopyVisibility
-public data class RechteckQuerschnitt internal constructor(
-    public val breite: Double,
-    public val hoehe: Double,
-) : Querschnitt {
-    public override val form: QuerschnittsForm = QuerschnittsForm.RECHTECK
-
-    public override val flaeche: Double get() = breite * hoehe
-
-    public companion object {
-        public fun aus(
-            breite: Double,
-            hoehe: Double,
-        ): Resultat<RechteckQuerschnitt, EntartetGeometrie> {
-            // 1. Endlich.
-            // 2. breite > Toleranzen.NORM_EPS, hoehe > Toleranzen.NORM_EPS.
-            // 3. konkrete Pruefung in Factory; bei Verletzung
-            //    Resultat.Fehler(EntartetGeometrie.NullQuerschnitt).
-            TODO("D8a-Implementierung")
-        }
-    }
-}
-```
-
-- **Einheit**: Breite und Höhe in mm (Double); Fläche in mm²;
-  Form-Diskriminator dimensionslos (Aufzählung).
-- **Identität**: Rechteck-Querschnitt trägt **keine** UUID. Werteklasse
-  (data class); zwei Rechteck-Querschnitte mit identischen (b, h)
-  sind structurally equal und dürfen geteilt werden (z. B. ein
-  Standardquerschnitt 80×160 für alle Sparren eines Daches).
-- **Lokales 2D-System (Konvention)**: u_hat = Bauteil-y (Breitenrichtung,
-  parallel zu b), v_hat = Bauteil-z (Höhenrichtung, parallel zu h). Diese
-  Konvention wird im Bauteil bei der Einbettung der Querschnittsebene
-  in W realisiert; der Querschnitt selbst trägt nur (b, h).
-- **Invarianten** (in Factory `RechteckQuerschnitt.aus(...)` prüfen,
-  bei Verletzung `Resultat.Fehler(EntartetGeometrie.NullQuerschnitt)`
-  zurückgeben; kein `init+require`, keine Exception):
-  1. `form == QuerschnittsForm.RECHTECK` (Klassen-Invariante).
-  2. `breite.isFinite() && hoehe.isFinite()`.
-  3. `breite > Toleranzen.NORM_EPS && hoehe > Toleranzen.NORM_EPS`
-     (positives Flächenmass A = b·h > 0).
-  4. **Keine** Forderung b ≤ h (flachkant ist erlaubt).
-- **Standardgrössen** (Lignum HBT, Memory `reference_richtpreise_holzbau`,
-  als Konstanten in `RechteckQuerschnitt.Standardgroessen` zu führen,
-  Folgearbeit):
-  - Vollholz / KVH: 60×120, 80×160, 100×200, 120×240, 140×240, 160×240.
-  - BSH: Breite ∈ {80, 100, 120, 140, 160, 200, 240}, Höhe in
-    40-mm-Stufen.
-- **IFC-Mapping**:
-  - `IfcRectangleProfileDef.XDim` ← `breite`.
-  - `IfcRectangleProfileDef.YDim` ← `hoehe`.
-  - `IfcRectangleProfileDef.Position` ← `IfcAxis2Placement2D` mit
-    Location im Schwerpunkt (lokal Origin) und RefDirection als u_hat.
-- **BTLx-Mapping**: Part-Element mit `Width = breite`, `Height = hoehe`.
-- **Edge Cases**:
-  - **Quadrat-Querschnitt** (b == h): erlaubt; keine eigene Klasse,
-    sondern Wertspezialisierung. Stützenquerschnitt 120×120 ist
-    typischer Anwendungsfall.
-  - **Sehr schmaler Querschnitt** (b ≪ h, z. B. 24×240): erlaubt;
-    Plattenstreifen oder Lattung. Bemessungsschicht prüft Kipp-
-    stabilität.
-  - **Negative oder Null-Werte**: nicht erlaubt; Factory liefert
-    `Resultat.Fehler`.
-  - **Nicht-finite Werte (NaN, ±∞)**: nicht erlaubt; Factory liefert
-    `Resultat.Fehler`.
-  - **Sehr grosse Werte** (b · h > 10⁹ mm² ≈ 1 m² Querschnitt):
-    erlaubt, aber in der Praxis unüblich; keine harte Obergrenze.
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heisst
-  `RechteckQuerschnitt` (deutsch, Glossarbegriff zusammengesetzt aus
-  Subtyp + Oberbegriff).
 
 ## Quellen
 

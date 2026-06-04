@@ -152,8 +152,7 @@ formulierten Klassifikations-Bedingungen:
 - innerhalb der reinen Randkanten: horizontal mit niedrigster Höhe
   (Traufe), horizontal mit höchster Höhe (Pultkante), entlang der
   Falllinie (Ortgang).
-Die sealed-Hierarchie der Implementierung ist im
-Implementierungshinweis weiter unten skizziert.
+
 - **Bestandteile (partitiv)**: Anfangs- und Endpunkt der Strecke bzw.
   Stützpunkte des Streckenzugs.
 - **Abgrenzung**:
@@ -166,54 +165,6 @@ Implementierungshinweis weiter unten skizziert.
   - **Bauteilkante** (z. B. Sparrenoberkante): physische Kante eines
     Holzbauteils, die nicht notwendig im Polygonrand einer
     Dachfläche liegt.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-sealed class Dachkante {
-    abstract val polylinie: Streckenzug   // 1..n Strecken, gemeinsame Endpunkte
-
-    data class Randkante(
-        override val polylinie: Streckenzug,
-        val dachflaeche: Dachflaeche
-    ) : Dachkante()
-
-    data class Schnittkante(
-        override val polylinie: Streckenzug,
-        val dachflaecheA: Dachflaeche,
-        val dachflaecheB: Dachflaeche
-    ) : Dachkante()
-
-    sealed class Entartet : Dachkante() {
-        object Nullkante : Entartet()
-        object NichtIdentifizierbar : Entartet()
-    }
-}
-```
-
-- **Einheit**: alle Koordinaten in mm (Double), Längen in mm.
-- **Invarianten** (in Factory prüfen, niemals Exception):
-  1. ℓ(polylinie) > Toleranzen.LAENGE_EPS — sonst `Entartet.Nullkante`.
-  2. Jede Strecke der Polylinie liegt im jeweiligen Polygonrand bzw.
-     im Schnitt der beiden Dachflächen-Polygone (geprüft mit
-     `LAENGE_EPS`-Toleranz auf den Punkt-Polygon-Abstand).
-- **Edge Cases**:
-  - **Nullkante**: Strecke der Länge 0 (etwa bei
-    zusammenfallenden Eckpunkten zweier benachbarter Dachflächen) →
-    `Entartet.Nullkante`.
-  - **NichtIdentifizierbar**: Strecke, die weder vollständig im
-    Polygonrand einer Dachfläche noch im Schnitt zweier Dachflächen
-    liegt; tritt etwa bei numerisch ungenau eingegebenen Modellen
-    auf → `Entartet.NichtIdentifizierbar`.
-  - **Geknickte Kante** (z. B. polygonaler First eines verzogenen
-    Daches): zulässig durch Streckenzug-Modellierung; jede einzelne
-    Teilstrecke muss die Lagebedingung erfüllen.
-- **Klassifikation in Spezialfälle**: erfolgt in
-  `DachkanteOps.kt` durch Prädikate `istTraufe(...)`,
-  `istFirst(...)`, `istOrtgang(...)` etc., siehe die Einträge der
-  jeweiligen Spezialbegriffe.
 
 ## Quellen
 

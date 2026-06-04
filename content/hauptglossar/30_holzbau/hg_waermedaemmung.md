@@ -195,12 +195,12 @@ Sei
 - A = (𝒟, 𝒮, H) ein **Dachaufbau** im Sinne von `dachaufbau` mit
   Dachflächen-Familie 𝒟 = { D₁, …, D_m }, geordneter Schichtfolge
   𝒮 = (S₁, …, S_k) von innen nach aussen, und Dachhaut H,
-- F := ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich der Dachflächen,
+- F:= ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich der Dachflächen,
 - ein Index j* ∈ { 1, …, k } so gewählt, dass die Schicht S_{j*}
   die Funktionsklasse `SchichtFunktion.WAERMEDAEMMUNG` trägt,
 - d_{j*} ∈ ℝ_{>0} (in mm) die Dicke von S_{j*},
 - m ∈ ℳ ein **Material** aus der Materialklasse
-  ℳ := { MINERALWOLLE, HOLZFASER, ZELLULOSE, PUR_PIR, EPS, XPS,
+  ℳ:= { MINERALWOLLE, HOLZFASER, ZELLULOSE, PUR_PIR, EPS, XPS,
   HANF, SCHAFWOLLE, FLACHS, SONSTIGE } gemäss den Produkt-Normen
   DIN EN 13162–13171, EN 15101-1 sowie nationalen Zulassungen,
 - λ ∈ ℝ_{>0} (in W/(m·K)) der Bemessungswert der
@@ -209,12 +209,12 @@ Sei
 - ρ ∈ ℝ_{>0} (in kg/m³) die Rohdichte,
 - c_p ∈ ℝ_{>0} (in J/(kg·K)) die spezifische Wärmekapazität,
 - σ ∈ Σ ein **konstruktiver Subtyp** aus der sealed-Familie
-  Σ := { ZWISCHENSPARREN, AUFSPARREN, UNTERSPARREN, SONSTIGE }.
+  Σ:= { ZWISCHENSPARREN, AUFSPARREN, UNTERSPARREN, SONSTIGE }.
 
 Dann ist eine **Wärmedämmung** das Septupel
 
 ```
-W := (𝒟, S_{j*}, m, λ, ρ, c_p, σ)
+W:= (𝒟, S_{j*}, m, λ, ρ, c_p, σ)
 ```
 
 mit den Konsistenzbedingungen
@@ -248,7 +248,7 @@ Der **Wärmedurchlasswiderstand der Wärmedämmungs-Schicht** ist
 abgeleitet:
 
 ```
-R_W := d_{j*} / λ   (m²·K/W).
+R_W:= d_{j*} / λ   (m²·K/W).
 ```
 
 Der **U-Wert des Gesamtaufbaus** und die **Bewertung gegen eine
@@ -478,222 +478,6 @@ unter der Dachabdichtung. Der konstruktive Subtyp ist hier
     Modellierung eines Brandschutz-Nachweises nach SIA 232/1
     Anhang oder DIN 4102 / EN 13501.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-sealed class Waermedaemmung {
-    abstract val dachflaechen: List<Dachflaeche>
-    abstract val schicht: Schicht           // mit funktion = WAERMEDAEMMUNG
-    abstract val material: Daemmmaterial    // orthogonale Material-Achse
-    abstract val lambda: Double             // W/(m·K), Bemessungswert λ_B
-    abstract val rohdichte: Double          // kg/m³
-    abstract val cP: Double                 // J/(kg·K)
-
-    data class Zwischensparrendaemmung(
-        override val dachflaechen: List<Dachflaeche>,
-        override val schicht: Schicht,
-        override val material: Daemmmaterial,
-        override val lambda: Double,
-        override val rohdichte: Double,
-        override val cP: Double
-    ) : Waermedaemmung() {
-        // Zusatz-Invariante (kontextabhängig, in Factory geprüft):
-        //   schicht-Index j* liegt in der Tragwerksebene T (Sparren-
-        //   /Schalungs-Schicht des Aufbaus); inhomogene U-Wert-
-        //   Berechnung nach DIN EN ISO 6946 mit Grenzwertverfahren.
-    }
-
-    data class Aufsparrendaemmung(
-        override val dachflaechen: List<Dachflaeche>,
-        override val schicht: Schicht,
-        override val material: Daemmmaterial,
-        override val lambda: Double,
-        override val rohdichte: Double,
-        override val cP: Double
-    ) : Waermedaemmung() {
-        // Zusatz-Invariante: schicht-Index j* > max(T); homogene
-        // Berechnung; Plausibilitäts-Warnung, wenn material nicht
-        // druckfest (z. B. nicht-druckfeste Mineralwolle).
-    }
-
-    data class Untersparrendaemmung(
-        override val dachflaechen: List<Dachflaeche>,
-        override val schicht: Schicht,
-        override val material: Daemmmaterial,
-        override val lambda: Double,
-        override val rohdichte: Double,
-        override val cP: Double
-    ) : Waermedaemmung() {
-        // Zusatz-Invariante: schicht-Index j* < min(T); typisch
-        // als Ergänzung zu Zwischensparrendaemmung.
-    }
-
-    data class SonstigeWaermedaemmung(
-        override val dachflaechen: List<Dachflaeche>,
-        override val schicht: Schicht,
-        override val material: Daemmmaterial,
-        override val lambda: Double,
-        override val rohdichte: Double,
-        override val cP: Double
-    ) : Waermedaemmung() {
-        // Flachdach, vollflächig ohne Sparren-Bezug; keine
-        // Lage-Bedingung.
-    }
-
-    // Abgeleitete Grösse: Wärmedurchlasswiderstand der Schicht
-    // R_W = d / λ  (m²·K/W).
-    fun waermedurchlasswiderstand(): Double = schicht.dicke / 1000.0 / lambda
-    //                                          mm → m
-}
-
-enum class Daemmmaterial {
-    MINERALWOLLE,      // DIN EN 13162; Glas- oder Steinwolle
-    HOLZFASER,         // DIN EN 13171
-    ZELLULOSE,         // EN 15101-1; Einblas
-    PUR_PIR,           // DIN EN 13165
-    EPS,               // DIN EN 13163
-    XPS,               // DIN EN 13164
-    HANF,              // nationale Zulassung
-    SCHAFWOLLE,        // nationale Zulassung
-    FLACHS,            // nationale Zulassung
-    SONSTIGE
-}
-
-// Lokale Norm-Aufzählung für Wärmedämmungs-Klassifikation.
-// Eindeutiger Klassenname, um Kollisionen mit lokalen Norm-Enums in
-// hg_unterdach.md (UnterdachNorm) und hg_dachabdichtung.md
-// (AbdichtungsNorm) zu vermeiden — Wertebereiche überlappen
-// teilweise (SIA_232_1, DIN_4108_3, ZVDH_FACHREGEL, OENORM_B_4119
-// sind auch in UnterdachNorm enthalten), aber Untermengen sind
-// unterschiedlich. Folgearbeit-Trigger: sobald mehrere
-// Bauphysik-Module dieselbe Norm referenzieren, wird ein
-// zentraler hg_norm.md angelegt und die lokalen Enums migriert.
-enum class WaermedaemmungsNorm {
-    // Übergreifende Holz-/Dachbau-Normen (auch in UnterdachNorm enthalten):
-    SIA_232_1, DIN_4108_3, ZVDH_FACHREGEL, OENORM_B_4119,
-    // Wärmeschutz-Erweiterung:
-    GEG_2024, DIN_4108_2, DIN_EN_ISO_6946, DIN_EN_ISO_9229,
-    SIA_180, SIA_380_1, MUKEN_2014,
-    PASSIVHAUS_2015, MINERGIE_2017, MINERGIE_P_2017,
-    KFW_70_2024, KFW_55_2024, KFW_40_2024
-}
-
-enum class BauteilArt { STEILDACH, FLACHDACH, AUSSENWAND, BODEN, SONSTIGES }
-enum class MassnahmenArt { NEUBAU, SANIERUNG, MINDESTSCHUTZ }
-
-// U-Wert-Effizienzklasse aus U-Wert + Norm; analog
-// klassifiziereNachStauwasser an hg_unterdach.md.
-fun klassifiziereNachUWert(uWert: Double, norm: WaermedaemmungsNorm): Effizienzklasse = when (norm) {
-    WaermedaemmungsNorm.GEG_2024            -> when { uWert <= 0.15 -> Effizienzklasse.HOCHEFFIZIENT
-                                       uWert <= 0.20 -> Effizienzklasse.EFFIZIENT
-                                       uWert <= 0.24 -> Effizienzklasse.GEG_KONFORM
-                                       uWert <= 0.74 -> Effizienzklasse.MINDESTSCHUTZ
-                                       else          -> Effizienzklasse.UNGENUEGEND }
-    WaermedaemmungsNorm.MUKEN_2014          -> when { uWert <= 0.10 -> Effizienzklasse.HOCHEFFIZIENT
-                                       uWert <= 0.17 -> Effizienzklasse.MUKEN_NEUBAU
-                                       uWert <= 0.20 -> Effizienzklasse.MUKEN_SANIERUNG
-                                       else          -> Effizienzklasse.UNGENUEGEND }
-    WaermedaemmungsNorm.MINERGIE_2017       -> if (uWert <= 0.15) Effizienzklasse.MINERGIE_KONFORM
-                                else                Effizienzklasse.UNGENUEGEND
-    WaermedaemmungsNorm.MINERGIE_P_2017     -> if (uWert <= 0.10) Effizienzklasse.MINERGIE_P_KONFORM
-                                else                Effizienzklasse.UNGENUEGEND
-    WaermedaemmungsNorm.KFW_40_2024         -> if (uWert <= 0.15) Effizienzklasse.KFW_40_KONFORM
-                                else                Effizienzklasse.UNGENUEGEND
-    WaermedaemmungsNorm.PASSIVHAUS_2015     -> if (uWert <= 0.15) Effizienzklasse.PASSIVHAUS_KONFORM
-                                else                Effizienzklasse.UNGENUEGEND
-    else                     -> error("WaermedaemmungsNorm $norm: U-Wert-Schwellen nicht hinterlegt.")
-}
-
-// Anforderungsprüfung gegen eine Norm; analog
-// pruefeMindestlueftung an hg_konterlatte.md.
-fun pruefeWaermeschutzAnforderung(
-    uWert: Double,
-    norm: WaermedaemmungsNorm,
-    bauteilArt: BauteilArt,
-    massnahmenArt: MassnahmenArt
-): Resultat<Unit> {
-    val grenze = when (norm to bauteilArt to massnahmenArt) {
-        // GEG 2024
-        (WaermedaemmungsNorm.GEG_2024 to BauteilArt.STEILDACH to MassnahmenArt.NEUBAU)     -> 0.24
-        (WaermedaemmungsNorm.GEG_2024 to BauteilArt.STEILDACH to MassnahmenArt.SANIERUNG)  -> 0.24
-        (WaermedaemmungsNorm.GEG_2024 to BauteilArt.FLACHDACH to MassnahmenArt.NEUBAU)     -> 0.20
-        // MuKEn 2014
-        (WaermedaemmungsNorm.MUKEN_2014 to BauteilArt.STEILDACH to MassnahmenArt.NEUBAU)    -> 0.17
-        (WaermedaemmungsNorm.MUKEN_2014 to BauteilArt.STEILDACH to MassnahmenArt.SANIERUNG) -> 0.20
-        // DIN 4108-2 Mindestschutz
-        (WaermedaemmungsNorm.DIN_4108_2 to BauteilArt.STEILDACH to MassnahmenArt.MINDESTSCHUTZ) -> 0.74
-        else -> return Resultat.Fehler.NormSchwellwertFehlt(norm, bauteilArt, massnahmenArt)
-    }
-    return if (uWert <= grenze) Resultat.Ok(Unit)
-           else Resultat.Fehler.WaermeschutzUngenuegend(uWert, grenze, norm)
-}
-```
-
-- **Einheiten:** Schichtdicke in mm (Double; über `Schicht.dicke`
-  geerbt); λ in W/(m·K); ρ in kg/m³; c_p in J/(kg·K); U-Wert in
-  W/(m²·K); R-Wert in m²·K/W. **Niemals** Einheiten in derselben
-  Funktion mischen — die Funktion `waermedurchlasswiderstand()`
-  konvertiert mm → m explizit.
-- **Trennung Definition ↔ Norm-Schwellen:** Die definitorische
-  Bedingung ist allein die positive Dicke + positive Material-
-  kennwerte + Funktionsklasse + Lage-Bedingung. Konkrete U-Wert-
-  Schwellen (0,15 / 0,17 / 0,20 / 0,24 / 0,74 W/(m²·K)) leben
-  ausschliesslich in `pruefeWaermeschutzAnforderung(...)` und
-  `klassifiziereNachUWert(...)` — analog zur Auslagerung
-  normabhängiger Schwellen in `klassifiziereNachStauwasser(...)`
-  an `hg_unterdach.md`. Damit bleibt `Waermedaemmung` normagnostisch
-  und gegen Norm-Revisionen stabil.
-- **Invarianten** (in `init` jedes Subtyps prüfen, bei Verletzung
-  `Resultat.Fehler` bzw. `Entartet`-Variante zurückgeben, niemals
-  Exception werfen):
-  1. `dachflaechen.isNotEmpty()` ⇒ sonst `Entartet.LeerTraeger`.
-  2. `schicht.funktion == SchichtFunktion.WAERMEDAEMMUNG` ⇒ sonst
-     `Entartet.FalscheSchichtFunktion`.
-  3. `schicht.dicke > Toleranzen.LAENGE_EPS` ⇒ sonst
-     `Entartet.NullDickeSchicht`.
-  4. `lambda > 0.0 && rohdichte > 0.0 && cP > 0.0` ⇒ sonst
-     `Entartet.NichtpositiveMaterialkennwerte`.
-  5. `lambda in 0.015..0.070` ⇒ sonst Plausibilitäts-**Warnung**
-     (kein harter Fehler) — Werte ausserhalb sind selten, aber
-     nicht ausgeschlossen (Vakuumdämmung, Aerogel,
-     ungewöhnliche Schüttungen).
-  6. Subtyp-spezifische Lage-Bedingungen (j* in/oberhalb/unterhalb
-     der Tragwerksebene) werden in Factory-Methoden des umgebenden
-     `Dachaufbau` geprüft, nicht im `init` der Wärmedämmung, weil
-     sie Kontext-Informationen aus 𝒮 brauchen.
-- **Edge Cases:**
-  - **Mehrere Wärmedämm-Schichten im selben Aufbau** (Zwischen + Auf,
-    Zwischen + Unter): werden als **mehrere** `Waermedaemmung`-
-    Instanzen modelliert, je Schicht eine; jede mit eigenem
-    Subtyp und Material.
-  - **Flachdach ohne Sparren-Bezug:** Subtyp `SonstigeWaermedaemmung`
-    ist die zulässige Wahl; Tragwerksebene T = ∅, Lage-Bedingung
-    trivial erfüllt.
-  - **Druckfestigkeits-Anforderung bei Aufsparren:** wird **nicht**
-    als harte Invariante erzwungen (das Material-Feld ist
-    enum-wertig, nicht über Druckfestigkeits-Kennwerte
-    qualifiziert); Plausibilitäts-Warnung über
-    `validierePlausibilitaet(): List<Hinweis>`.
-  - **Einblas-Form bei Zellulose:** analog Plausibilitäts-Warnung,
-    keine harte Invariante; Zellulose ausserhalb eines geschlossenen
-    Hohlraums (Zwischensparrenfeld) ist konstruktiv ungewöhnlich,
-    aber nicht ausgeschlossen.
-  - **Mindestwärmeschutz nach DIN 4108-2 vs. Energieeffizienz nach
-    GEG/MuKEn:** unterschiedliche `MassnahmenArt`-Werte; die
-    Validierungsfunktion unterscheidet zwischen MINDESTSCHUTZ
-    (0,74 W/(m²·K)) und NEUBAU/SANIERUNG (0,17 – 0,24 W/(m²·K)).
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `waermedurchlasswiderstand(): Double` = `schicht.dicke /
-    1000.0 / lambda` (m²·K/W). Konvertiert mm → m explizit.
-  - `subtyp(): WaermedaemmSubtyp` — Sealed-Diskriminator
-    (ZWISCHENSPARREN / AUFSPARREN / UNTERSPARREN / SONSTIGE)
-    zur Listen-Klassifikation.
-  - `volumetrischeWaermekapazitaet(): Double` = `rohdichte * cP`
-    (J/(m³·K)) — relevant für Sommerhitzeschutz-Bewertung
-    ausserhalb der Definition.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -756,4 +540,4 @@ fun pruefeWaermeschutzAnforderung(
   Zwischensparrendämmung.
 - trockenbau-ausbau.de zu Sommerhitzeschutz.
 
-**Recherche-Bericht:** `docs/recherche/2026-05-14_hg_waermedaemmung.md`.
+**Recherche-Bericht:** [intern].

@@ -31,7 +31,7 @@ quellenkonflikt: |
 
   Der Auftragsbriefing-Stand vermutete EC5 §8 als zentrale
   Bemessungsstelle. Die Recherche
-  (`docs/recherche/2026-05-14_hg_zapfen.md`, §E) zeigt: EC5 §8
+  ([intern], §E) zeigt: EC5 §8
   trägt den Titel „Anschlüsse mit metallischen Verbindungsmitteln"
   und deckt zimmermannsmässige Verbindungen **nicht direkt** ab.
   Die einschlägigen Stellen sind stattdessen:
@@ -265,12 +265,12 @@ Sei
 - die **Stirnseite** S_B des Bauteils (`stirnseite`) jene
   Bauteilfläche mit x = ℓ_B im Lokalsystem; ihr Flächennormalen-
   Vektor ist e_hat_x^B,
-- ε_L := Toleranzen.LAENGE_EPS.
+- ε_L:= Toleranzen.LAENGE_EPS.
 
 Die **Parameter** eines Zapfens sind das Tupel
 
 ```
-p_Zapfen := (ℓ_Z, w_Z, h_Z, y_Z, z_Z, κ)                          (1)
+p_Zapfen:= (ℓ_Z, w_Z, h_Z, y_Z, z_Z, κ)                          (1)
 ```
 
 mit
@@ -295,7 +295,7 @@ Die **Zapfen-Hervorragung** Z(p_Zapfen) ⊂ ℝ³ ist im Bauteil-
 Lokal-System der abgeschlossene Polyeder
 
 ```
-Z(p_Zapfen) := { (x, y, z) ∈ ℝ³ :
+Z(p_Zapfen):= { (x, y, z) ∈ ℝ³:
     ℓ_B − ℓ_Z  ≤  x  ≤  ℓ_B,
     |y − y_Z|  ≤  w_Z/2  +  (ℓ_B − x) · tan κ,                    (2)
     |z − z_Z|  ≤  h_Z/2 }.
@@ -318,20 +318,20 @@ umgibt — analog zur Konstruktion einer Bohrung mit
 Durchgangs-Effekt. Konkret:
 
 ```
-W_y^- := { (x, y, z) ∈ ℝ³ :
+W_y^-:= { (x, y, z) ∈ ℝ³:
             ℓ_B − ℓ_Z ≤ x ≤ ℓ_B,
             0 ≤ y ≤ y_Z − w_Z/2 − (ℓ_B − x) · tan κ,
             0 ≤ z ≤ h_B }
 
-W_y^+ := { (x, y, z) ∈ ℝ³ :
+W_y^+:= { (x, y, z) ∈ ℝ³:
             ℓ_B − ℓ_Z ≤ x ≤ ℓ_B,
             y_Z + w_Z/2 + (ℓ_B − x) · tan κ ≤ y ≤ b_B,
             0 ≤ z ≤ h_B }
 
-W_z^- := [ℓ_B − ℓ_Z, ℓ_B] × [0, b_B] × [0,         z_Z − h_Z/2]
-W_z^+ := [ℓ_B − ℓ_Z, ℓ_B] × [0, b_B] × [z_Z + h_Z/2, h_B]
+W_z^-:= [ℓ_B − ℓ_Z, ℓ_B] × [0, b_B] × [0,         z_Z − h_Z/2]
+W_z^+:= [ℓ_B − ℓ_Z, ℓ_B] × [0, b_B] × [z_Z + h_Z/2, h_B]
 
-K_Zapfen(p_Zapfen) := (W_y^- ∪ W_y^+ ∪ W_z^- ∪ W_z^+) ∩ G_B^lokal.        (3)
+K_Zapfen(p_Zapfen):= (W_y^- ∪ W_y^+ ∪ W_z^- ∪ W_z^+) ∩ G_B^lokal.        (3)
 ```
 
 W_y^- und W_y^+ sind die **seitlichen Wangen** in lokaler
@@ -360,7 +360,7 @@ Bauteildicke) entfallen W_z^- und W_z^+ entsprechend.
 Äquivalent gilt:
 
 ```
-K_Zapfen(p_Zapfen) = { (x, y, z) ∈ G_B^lokal :
+K_Zapfen(p_Zapfen) = { (x, y, z) ∈ G_B^lokal:
     ℓ_B − ℓ_Z ≤ x ≤ ℓ_B } \ Z(p_Zapfen),                          (3')
 ```
 
@@ -374,7 +374,7 @@ die für die Implementierung verbindliche Konstruktion.
 Ein **Zapfen** ist dann die Bearbeitung
 
 ```
-F_Zapfen := (uuid, τ = Zapfen, p_Zapfen, T_F = identitaet,
+F_Zapfen:= (uuid, τ = Zapfen, p_Zapfen, T_F = identitaet,
              bezeichnung)                                          (4)
 ```
 
@@ -388,7 +388,7 @@ Die **Wirkung** auf das Bauteil ist nach `hg_bearbeitung.md`
 Gleichung (1):
 
 ```
-G_B'(F_Zapfen)  :=  G_B^lokal  \  K_Zapfen(p_Zapfen)
+G_B'(F_Zapfen):=  G_B^lokal  \  K_Zapfen(p_Zapfen)
                  =  G_B^lokal ∩ (ℝ³ \ K_Zapfen(p_Zapfen))         (5)
 
    =  (G_B^lokal  ∩  { x  <  ℓ_B − ℓ_Z })
@@ -446,7 +446,7 @@ Anschauung.
   (`hg_polyeder.md` Zeile 319–331) ist davon unberührt, weil
   jede einzelne Wange konvex ist und K_Zapfen als CSG-
   Vereinigung von vier `KonvexerPolyeder`-Instanzen dargestellt
-  wird (siehe Implementierungshinweis); der Domänen-Typ
+  wird; der Domänen-Typ
   `KonvexerPolyeder` muss die Vereinigung nicht selbst tragen.
 - **Topologie von K_Zapfen**:
   - **Standardfall** (0 < w_Z < b_B und 0 < h_Z < h_B,
@@ -745,156 +745,6 @@ nicht im Glossar geführt.
     des hervorstehenden Bauteils; das Holznagel-Pendant zum
     Sicherungs-Konzept liegt als eigene Element-Instanz vor.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.bauteil.bearbeitung`):
-
-```kotlin
-package domain.bauteil.bearbeitung
-
-import domain.geometrie.LokalePlatzierung
-import java.util.UUID
-
-/**
- * Zapfen — subtraktive Bearbeitung am Bauteilende, die durch
- * Entfernen der Wangen eine rechteckige (oder schwalbenschwanz-
- * förmige) Hervorragung entlang der Bauteilachse stehen lässt.
- *
- * Glossar: hg_zapfen.md.
- *
- * Komplementärbearbeitung: [Zapfenloch] am aufnehmenden
- * Bauteil (`hg_zapfenloch.md`); aggregiert über
- * `Verbindung` mit `typ = ZimmermannsmaessigerAnschluss`.
- */
-data class Zapfen(
-    override val uuid: UUID,
-    override val lokalePlatzierung: LokalePlatzierung,
-    override val bezeichnung: String?,
-    /** Zapfenlänge in mm, > 0; siehe hg_zapfen.md (1) ℓ_Z. */
-    val zapfenlaenge: Double,
-    /** Zapfenbreite in mm, > 0; siehe hg_zapfen.md (1) w_Z. */
-    val zapfenbreite: Double,
-    /** Zapfenhöhe in mm, > 0; siehe hg_zapfen.md (1) h_Z. */
-    val zapfenhoehe: Double,
-    /** y-Position der Zapfen-Mitte im Bauteil-Lokal-System in mm.
-     *  Default b_B/2 (achsmittig). */
-    val yPosition: Double,
-    /** z-Position der Zapfen-Mitte im Bauteil-Lokal-System in mm.
-     *  Default h_B/2 (achsmittig). */
-    val zPosition: Double,
-    /** Konizitätswinkel in rad, 0 ≤ κ < π/4. κ = 0 entspricht
-     *  dem Kantzapfen, κ > 0 dem Schwalbenschwanz-Zapfen. */
-    val konizitaet: Double,
-) : Bearbeitung
-```
-
-- **Einheit**: Längen in mm (Double); Konizitätswinkel in
-  Radiant (Double, intern); Anzeige der Konizität in Grad ist
-  Aufgabe der UI-Schicht. Lokale Platzierung als SE(3)-Element
-  (Rotation + Translation), Standardwert `LokalePlatzierung.
-  IDENTITAET`.
-- **Identität**: `uuid` Pflicht und persistent (RFC 9562 v7);
-  Bauteil-Zugehörigkeit über die Container-Beziehung in der
-  Bearbeitungs-Liste des Bauteils (`hg_bearbeitung.md`); keine
-  Backref am Zapfen-Objekt.
-- **Toleranzen**:
-  - `LAENGE_EPS` (mm): für Vergleiche der Längen-Parameter
-    gegen Null und gegen die Bauteilgeometrie-Schranken
-    (ℓ_Z ≤ ℓ_B − ε_L, w_Z ≤ b_B − 2ε_L, h_Z ≤ h_B − 2ε_L).
-  - `WINKEL_EPS` (rad): für den Konizitäts-Vergleich
-    (0 ≤ κ < π/4 − ε_W).
-- **Invarianten** (in Fabrikfunktion / `init` prüfen, bei
-  Verletzung `Resultat.Fehler` mit subtypspezifischer
-  `BearbeitungAmBauteilUngueltig`-Variante zurückgeben, keine
-  Exception):
-  1. `zapfenlaenge > LAENGE_EPS`.
-  2. `zapfenbreite > LAENGE_EPS`.
-  3. `zapfenhoehe > LAENGE_EPS`.
-  4. `0 ≤ konizitaet < π/4 − WINKEL_EPS`.
-  5. `zapfenlaenge ≤ bauteillaenge − LAENGE_EPS`.
-  6. `zapfenbreite ≤ bauteilbreite − 2·LAENGE_EPS`.
-  7. `zapfenhoehe ≤ bauteildicke − 2·LAENGE_EPS`.
-  8. Zapfen liegt vollständig im Bauteilquerschnitt
-     (yPosition ± zapfenbreite/2 innerhalb [0, b_B] mit
-     Toleranz, analog für z).
-- **Weiche Plausibilitätsprüfung** (Warnung, kein
-  Validierungsfehler):
-  - `zapfenbreite ≈ bauteilbreite · TOLERANZEN.
-    ZAPFENBREITE_FAUSTREGEL_DRITTEL` (default 1.0/3.0).
-    Abweichungen erzeugen eine Warnung in der Bemessungs-
-    Schicht, blockieren die Modellierung nicht.
-- **Lebenszyklus / Komposition**: Eigentum genau eines
-  Bauteils; bei Löschung kaskadiert (siehe
-  `hg_bearbeitung.md`).
-- **Berechnung der Wirkung**: nach `hg_bearbeitung.md`
-  Gleichung (1) lazy on demand in der Geometrie-Schicht; die
-  Domänen-Schicht hält ausschliesslich die Parameter, die
-  Boole'sche Differenz ist Aufgabe von
-  `domain.bauteil.geometrie.BearbeitungsAggregator`.
-- **Werkzeugkörper-Konstruktion in Code** (Geometrie-Schicht,
-  Folgearbeit): K_Zapfen wird gemäss Definition (3) als
-  **Vereinigung von bis zu vier `KonvexerPolyeder`-Instanzen**
-  konstruiert: W_y^- und W_y^+ (seitliche Wangen, Quader für
-  κ = 0 bzw. konvexe trapezoide Prismen für κ > 0), W_z^- und
-  W_z^+ (obere und untere Wangen, stets achsparallele Quader).
-  Wangen mit Volumen ≤ `LAENGE_EPS³` werden weggelassen (Fall
-  w_Z = b_B oder h_Z = h_B, dann reduziert sich K_Zapfen auf
-  zwei Wangen). Jede Wange ist als `KonvexerPolyeder` über
-  ihre Halbraum-Darstellung (H-Rep, sechs Halbräume für einen
-  Quader, fünf bzw. sechs für ein konvexes Prisma mit
-  trapezförmigem Querschnitt) konstruierbar; die Vereinigung
-  ist eine CSG-Operation, die der `BearbeitungsAggregator`
-  beim Anwenden der Bauteilkörper-Differenz (5) durchführt
-  (`G_B' = G_B^lokal \ (W_y^- ∪ W_y^+ ∪ W_z^- ∪ W_z^+) =
-  ((G_B^lokal \ W_y^-) \ W_y^+) \ W_z^-) \ W_z^+`,
-  sukzessive Differenz mit den vier konvexen Wangen).
-- **BTLx-Export** (Persistenzschicht, Phase 4):
-  - `Zapfen` mit `konizitaet = 0` → BTLx-Processing `Tenon`
-    mit Parametern `ReferencePlaneId`, `StartX`, `StartY`,
-    `StartDepth = 0`, `Angle = 0`, `Inclination = 0`,
-    `Length = zapfenlaenge`, `Width = zapfenbreite`,
-    `Height = zapfenhoehe`.
-  - `Zapfen` mit `konizitaet > 0` → BTLx-Processing
-    `DovetailTenon` mit `ConeAngle = konizitaet`.
-- **IFC-Export** (Persistenzschicht, Phase 4):
-  - Asymmetrisch zum Zapfenloch (`zapfenloch` →
-    `IfcOpeningElement`): der Zapfen wird **nicht** als
-    eigenständiges IFC-Subtraktionselement exportiert,
-    sondern in die Body-Repräsentation
-    (`IfcProductRepresentation`) des Bauteils selbst
-    eingerechnet — die Bauteilgeometrie nach Bearbeitung
-    (G_B' nach (5)) ist der IFC-Body. Die Bearbeitungs-UUID
-    wird als `IfcPropertySet`-Eintrag mit Verweis auf das
-    BTLx-Processing geführt.
-- **Edge Cases**:
-  - **Zapfenlänge grösser als Bauteilrest**: ℓ_Z > ℓ_B − ε_L
-    → Validierungsfehler
-    `ZapfenLaengeUeberschreitetBauteil`.
-  - **Zapfen nicht achsmittig**: y_Z oder z_Z so verschoben,
-    dass die Zapfen-Hervorragung über den Bauteilquerschnitt
-    hinausragt → Validierungsfehler
-    `ZapfenPositionAusserhalbQuerschnitt`.
-  - **Konizität in negative Richtung**: κ < 0 ist verboten
-    (käme einer „Hinterschneidung am Stumpf" gleich, die
-    geometrisch nicht durch Wangen-Wegnahme realisierbar
-    wäre) → Validierungsfehler `ZapfenKonizitaetNegativ`.
-  - **Zapfen am Bauteilanfang statt Bauteilende**: durch
-    Drehung des Bauteil-Lokal-Systems abbildbar; die
-    Standardform dieses Eintrags definiert den Zapfen am
-    Ende (x = ℓ_B). Eine alternative Konvention „Zapfen am
-    Anfang" ist über `LokalePlatzierung` mit Rotation um
-    π um e_hat_y^B oder e_hat_z^B parametrisierbar.
-  - **Mehrere Zapfen am selben Bauteilende** (Doppelzapfen):
-    zulässig; jeder Zapfen ist eine eigene Bearbeitungs-
-    Instanz mit eigener UUID in der Bauteil-
-    Bearbeitungsliste, unterschiedlichen y_Z (oder z_Z) und
-    eventuell unterschiedlichen Breiten.
-- **Bezeichner-Konvention** (`docs/_CODE_KONVENTIONEN.md`):
-  Domänen-Klasse `Zapfen` (deutsch, Glossarbegriff);
-  Parameter `zapfenlaenge`, `zapfenbreite`, `zapfenhoehe`,
-  `yPosition`, `zPosition`, `konizitaet`.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -945,5 +795,5 @@ data class Zapfen(
 
 **Recherche-Bericht:**
 
-- `docs/recherche/2026-05-14_hg_zapfen.md` (2026-05-14):
+- [intern] (2026-05-14):
   Konsolidierte Recherche zu Zapfen und Zapfenloch.

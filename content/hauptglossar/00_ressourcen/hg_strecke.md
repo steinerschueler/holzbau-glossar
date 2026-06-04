@@ -61,16 +61,16 @@ Dann ist die **Strecke** [a, b] definiert als die abgeschlossene
 konvexe Hülle von {a, b}:
 
 ```
-[a, b] := { (1 − t)·a + t·b ∈ ℝ³ | t ∈ [0, 1] }
+[a, b]:= { (1 − t)·a + t·b ∈ ℝ³ | t ∈ [0, 1] }
        = { a + t·(b − a) | t ∈ [0, 1] }.
 ```
 
 Wesentliche abgeleitete Größen:
 
-- **Richtungsvektor**: r := b − a ∈ ℝ³ \ {0}.
-- **Länge**: ℓ([a, b]) := ‖b − a‖ ∈ ℝ_{>0} (in mm).
-- **Mittelpunkt**: m := ½·(a + b).
-- **Einheits-Richtung**: e_hat := r / ‖r‖ ∈ S².
+- **Richtungsvektor**: r:= b − a ∈ ℝ³ \ {0}.
+- **Länge**: ℓ([a, b]):= ‖b − a‖ ∈ ℝ_{>0} (in mm).
+- **Mittelpunkt**: m:= ½·(a + b).
+- **Einheits-Richtung**: e_hat:= r / ‖r‖ ∈ S².
 
 Die Strecke ist **ungeordnet**, wenn nur ihre Punktmenge zählt
 (dann gilt [a, b] = [b, a]); sie ist **geordnet** (orientiert),
@@ -153,47 +153,6 @@ Wirkung entfaltet.
   - **Vektor**: ortsfrei, beschreibt nur Richtung und Länge; eine
     Strecke ist die ortsgebundene Realisierung eines Vektors
     zwischen zwei festen Punkten.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.geometrie`):
-
-```
-data class Strecke(
-    val anfang: Punkt,
-    val ende: Punkt
-) {
-    init {
-        // ‖ende − anfang‖ > Toleranzen.LAENGE_EPS, sonst Entartet
-    }
-}
-```
-
-- **Einheit**: Endpunkt-Koordinaten in mm (Double); Länge in mm.
-- **Invarianten** (in `init` oder `Strecke.of(...)` -Factory prüfen,
-  bei Verletzung `Entartet`-Variante zurückgeben, niemals
-  Exception):
-  1. ‖ende − anfang‖ > Toleranzen.LAENGE_EPS.
-  2. Alle Komponenten von `anfang` und `ende` finit (kein NaN, kein ±∞).
-- **Orientierung**: Die Datenklasse ist geordnet (anfang ≠ ende
-  unterscheidet sich von ende ≠ anfang). Für ungeordnete
-  Vergleiche steht `gleichUngeordnet(other, eps)` bereit.
-- **Edge Cases**:
-  - `anfang ≈ ende` (innerhalb Toleranz): `Entartet.NullStrecke`.
-  - Nicht-finite Koordinaten: `Entartet.NichtFinit`.
-  - Sehr kurze Strecken (knapp über Toleranz): zulässig, aber
-    Richtungsableitungen wie e_hat = (b − a)/‖b − a‖ sind numerisch
-    sensibel; die Domänen-Schicht warnt im Test, nicht zur Laufzeit.
-- **Abgeleitete Operationen** (in `StreckeOps.kt`):
-  - `fun laenge(): Double` = ‖ende − anfang‖
-  - `fun richtung(): Vektor` = ende − anfang
-  - `fun einheitsRichtung(): Resultat<Vektor, EntartetGeometrie>` (Fehler bei
-    NullStrecke)
-  - `fun mittelpunkt(): Punkt` = (anfang + ende − O) / 2 ... O.h.
-    `Punkt((a.x+b.x)/2, …)`
-  - `fun punktAuf(t: Double): Punkt` für t ∈ [0, 1] mit
-    Klemmung/Validierung außerhalb.
-  - `fun umkehren(): Strecke` = Strecke(ende, anfang).
 
 ## Quellen
 

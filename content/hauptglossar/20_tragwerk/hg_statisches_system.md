@@ -55,7 +55,7 @@ quellen_sekundär:
   - "Wikipedia, Lemma 'Lager (Statik)' (abgerufen 2026-05-14): Lager als „abstrahierte Verbindungen zwischen einem Starrkörper (Tragwerk) und seiner Umgebung“."
   - "Wikipedia, Lemma 'Statische Bestimmtheit' (abgerufen 2026-05-14): Abzählformeln eben/räumlich, notwendiges versus hinreichendes Kriterium."
   - "buildingSMART, IFC-4.3.2-Dokumentation Structural-Analysis-Domain, Lexical-Einträge `IfcStructuralAnalysisModel` und `IfcRelAssignsToProduct` (Sekundärrezeption über WebSearch-Snippets, da WebFetch der buildingSMART-Seiten in der Recherche verweigert wurde)."
-  - "Recherche-Bericht `docs/recherche/2026-05-14_hg_statisches_system.md`."
+  - "Recherche-Bericht [intern]."
 quellenkonflikt: |
   **Normlücke.** Keine der konsultierten deutschsprachigen Tragwerks-
   Normen — SIA 260:2013, SIA 265:2021, DIN EN 1990:2010-12,
@@ -113,9 +113,8 @@ quellenkonflikt: |
   Basistragwerk).
 
   **Oberbegriff — bewusste Entscheidung für `null`.** Die
-  Recherche (`docs/recherche/2026-05-14_hg_statisches_system.md`
-  Abschnitt G.2) hat die Wahl zwischen `null` und `tragwerk` als
-  Diskussions-Punkt für die Hauptinstanz herausgearbeitet. Hier
+  Recherche ([intern]
+  Abschnitt G.2) hat die Wahl zwischen `null` und `tragwerk` herausgearbeitet. Hier
   wird `null` gesetzt mit drei zusammenwirkenden Gründen:
 
   1. **Strukturparallelität** zu `auflager` und `verbindung`,
@@ -226,7 +225,7 @@ kontrahiert (siehe Wohldefiniertheit, Knoten-Kontraktion).
 Ein **Stab** des statischen Systems ist das Tripel
 
 ```
-m := (uuid_m, traegerstrecke, basisbauteil)
+m:= (uuid_m, traegerstrecke, basisbauteil)
 ```
 
 mit
@@ -251,7 +250,7 @@ Sei 𝓣ʜ die Menge der **Berechnungs-Theorie-Annahmen** des
 statischen Systems:
 
 ```
-𝓣ʜ := { linear_erster_ordnung,
+𝓣ʜ:= { linear_erster_ordnung,
         geometrisch_nichtlinear_zweiter_ordnung,
         materiell_nichtlinear,
         voll_nichtlinear_dritter_ordnung }.
@@ -264,7 +263,7 @@ Die App-Default-Wahl ist `linear_erster_ordnung`.
 Dann ist ein **Statisches System** das Tupel
 
 ```
-S := (uuid, basistragwerk, K, M, F, A, L, theorie, bezeichnung)
+S:= (uuid, basistragwerk, K, M, F, A, L, theorie, bezeichnung)
 ```
 
 mit den Komponenten
@@ -299,7 +298,7 @@ Bauteilachse (Polygonzug-Approximation gekrümmter
 Bauteilachsen). Formal:
 
 ```
-∀ m ∈ M : ∃ b ∈ T.B : b.uuid = m.basisbauteil
+∀ m ∈ M: ∃ b ∈ T.B: b.uuid = m.basisbauteil
                     ∧ traegerstrecke(m) ≈ bauteilachse(b),
 ```
 
@@ -337,7 +336,7 @@ trägt eine ableitbare Eigenschaft `istStabil(): Boolean`. Die
 Abzählformel im räumlichen Fall ist
 
 ```
-n := a + s + z − 6 · k,
+n:= a + s + z − 6 · k,
 ```
 
 mit
@@ -350,7 +349,7 @@ mit
 - `k` = |K| (Anzahl der Knoten).
 
 Im ebenen Fall (Sonderfall der Projektion auf eine Ebene)
-gilt entsprechend `n := a + s + z − 3 · k`. Die Interpretation
+gilt entsprechend `n:= a + s + z − 3 · k`. Die Interpretation
 ist `n > 0` ⇒ n-fach statisch unbestimmt; `n = 0` ⇒ statisch
 bestimmt (**notwendiges**, nicht hinreichendes Kriterium —
 selbst bei n = 0 kann das System kinematisch verschieblich
@@ -371,7 +370,7 @@ Schicht).
 Die geometrische Punktmenge des statischen Systems in W ist
 
 ```
-G_W(S) := K ∪ ⋃_{m ∈ M} traegerstrecke(m) ∪ ⋃_{f ∈ F} flaeche(f)
+G_W(S):= K ∪ ⋃_{m ∈ M} traegerstrecke(m) ∪ ⋃_{f ∈ F} flaeche(f)
                 ⊂ ℝ³.
 ```
 
@@ -380,17 +379,14 @@ G_W(S) := K ∪ ⋃_{m ∈ M} traegerstrecke(m) ∪ ⋃_{f ∈ F} flaeche(f)
 - **Existenz**: für jedes konkrete Tragwerk T ∈ 𝒯 lässt sich
   ein statisches System konstruieren. Die kanonische
   Konstruktion ist:
-  1. Knotenmenge K := { p_a, p_e | für jede Bauteilachse von
+  1. Knotenmenge K:= { p_a, p_e | für jede Bauteilachse von
      T.B } modulo `LAENGE_EPS`-Identität (Knoten-Kontraktion).
-  2. Stab-Menge M := { (uuid_m, bauteilachse(b).strecke, b.uuid) |
+  2. Stab-Menge M:= { (uuid_m, bauteilachse(b).strecke, b.uuid) |
      b ∈ T.B } für stabförmige Bauteile (geometrie ∈ 𝒢_stab in
      `hg_bauteil.md`-Lesart).
-  3. F := ∅ (Default; Folgearbeit für Flächenbauteile).
-  4. A := T.A; L := T.L.
-  5. theorie := linear_erster_ordnung (Default).
-  Diese kanonische Konstruktion ist Inhalt der Funktion
-  `Tragwerk.statischesSystem()`, die in `hg_tragwerk.md`
-  Implementierungshinweis als Folgearbeit angekündigt ist.
+  3. F:= ∅ (Default; Folgearbeit für Flächenbauteile).
+  4. A:= T.A; L:= T.L.
+  5. theorie:= linear_erster_ordnung (Default).
 
 - **Eindeutigkeit der Identität**: die UUID des statischen
   Systems ist unabhängig von der UUID seines Basistragwerks
@@ -510,9 +506,6 @@ Mit zwei Zuggliedern (Decken- und Kehlbalken): s = 4,
 n = 4 + 4 + 0 − 3·3 = −1. Eine kinematisch stabile Konfiguration
 erfordert weitere Sperrungen (z. B. Übergang zu einem
 Pfettendach mit Mittelpfette als zusätzlichem Auflager).
-
-Die App führt diese Abzählung als `statischesSystem.bestimmtheit():
-Bestimmtheit` (Folgearbeit, siehe Implementierungshinweis).
 
 ### Berechnungs-Theorie
 
@@ -635,229 +628,6 @@ die Bemessungs-Information ist dort nicht abbildbar.
     Basisklasse aus `hg_bauteil.md`) im Code implementiert
     wird.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.aggregat.statischessystem`):
-
-```kotlin
-package domain.aggregat.statischessystem
-
-import domain.aggregat.auflager.Auflager
-import domain.bauteil.Bauteil
-import domain.bauteil.Tragwerk
-import domain.geometrie.Punkt
-import domain.geometrie.Strecke
-import java.util.UUID
-
-/** Berechnungs-Theorie-Annahme des statischen Systems. */
-sealed interface BerechnungsTheorie {
-    data object LinearErsterOrdnung                    : BerechnungsTheorie
-    data object GeometrischNichtlinearZweiterOrdnung   : BerechnungsTheorie
-    data object MateriellNichtlinear                   : BerechnungsTheorie
-    data object VollNichtlinearDritterOrdnung          : BerechnungsTheorie
-}
-
-/** Klassifikation der Bestimmtheit aus S7-Abzählformel. */
-sealed interface Bestimmtheit {
-    data class StatischUnbestimmt(val grad: Int)       : Bestimmtheit
-    data object StatischBestimmt                       : Bestimmtheit
-    data class KinematischVerschieblich(val grad: Int) : Bestimmtheit
-}
-
-/** Knoten im statischen System: Punkt in W mit eigener Identität. */
-data class Knoten(
-    val uuid: UUID,
-    val ort: Punkt
-)
-
-/** Stab im statischen System: gerichtete Strecke mit Bauteil-UUID-Referenz. */
-data class Stab(
-    val uuid: UUID,
-    val traegerstrecke: Strecke,             // Anfang/Ende in der Knotenmenge
-    val basisbauteil: UUID                   // FK auf Bauteil im Basistragwerk
-)
-
-/**
- * Statisches System: Aggregat aus Knoten, Stäben (1D), optional
- * Flächenelementen (2D, Folgearbeit), übernommenen Auflagern und
- * Lastfällen, Berechnungs-Theorie-Annahme und Referenz auf das
- * Basistragwerk.
- *
- * Glossar: hg_statisches_system.md
- *
- * NICHT Subtyp eines fachlichen Trägerbegriffs. Eigenes Aggregat,
- * analog Verbindung und Auflager. Brücke zum Tragwerk über das
- * Feld basistragwerk (Pendant zu IfcRelAssignsToProduct).
- *
- * IFC: IfcStructuralAnalysisModel mit IfcStructuralCurveMember,
- *      IfcStructuralConnection, IfcStructuralActivity.
- * BTLx: keine Pendant-Entität.
- */
-data class StatischesSystem(
-    val uuid: UUID,                          // eigene Identität als Aggregat
-    val basistragwerk: UUID,                 // FK auf Tragwerk; physisch-analytische Brücke
-    val knoten: Set<Knoten>,                 // K, |K| >= 1
-    val staebe: Set<Stab>,                   // M
-    val flaechenelemente: Set<Flaechenelement> = emptySet(),  // F, Default ∅, Folgearbeit
-    val auflager: Set<Auflager>,             // A ⊆ T.A
-    val lastfaelle: Set<Lastfall> = emptySet(),               // L ⊆ T.L, Folgearbeit
-    val theorie: BerechnungsTheorie = BerechnungsTheorie.LinearErsterOrdnung,
-    val bezeichnung: String? = null
-) {
-    init {
-        // S1. Knoten-Stab-Inzidenz       (Modell-Validierung)
-        // S2. Stab-Bauteilachsen-Konsistenz (Modell-Validierung mit Tragwerks-Lookup)
-        // S3. Auflager-Knoten-Inzidenz   (Modell-Validierung)
-        // S4. A ⊆ T.A                    (Modell-Validierung mit Tragwerks-Lookup)
-        // S5. L ⊆ T.L                    (Modell-Validierung)
-        // S6. Knoten-Vollständigkeit     (keine isolierten Knoten)
-        // S7. Stabilität abgeleitet      (siehe bestimmtheit())
-    }
-
-    /** Abzählformel im räumlichen Fall (S7, notwendiges Kriterium). */
-    fun bestimmtheit(): Bestimmtheit {
-        val a = auflager.sumOf { it.gesperrteFhg() }
-        val s = staebe.size
-        val z = 0                                // Stabgelenke noch nicht modelliert
-        val k = knoten.size
-        val n = a + s + z - 6 * k
-        return when {
-            n > 0  -> Bestimmtheit.StatischUnbestimmt(n)
-            n == 0 -> Bestimmtheit.StatischBestimmt
-            else   -> Bestimmtheit.KinematischVerschieblich(-n)
-        }
-    }
-
-    /** Notwendiges Stabilitäts-Kriterium aus S7. */
-    fun istStabilNotwendig(): Boolean = bestimmtheit() !is Bestimmtheit.KinematischVerschieblich
-
-    /** Hinreichendes Stabilitäts-Kriterium: Folgearbeit (Bemessungs-Schicht). */
-    fun istStabil(): Boolean = TODO("Hinreichendes Kriterium: Determinante der Gleichgewichts-Matrix")
-}
-
-/** Platzhalter-Typ; eigener Eintrag folgt. */
-data class Flaechenelement(val uuid: UUID /* ... */)
-// Lastfall ist in domain.aggregat.lastfall.Lastfall ausformuliert
-// (siehe hg_lastfall.md).
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant;
-  Lasten in der späteren Lastfall-Schicht in N, N/m, N/m² (SI).
-- **Identität**: `uuid` ist Pflicht und eigenständig (eigene UUID
-  des Aggregats, RFC 9562 v7, persistent).
-- **Foreign-Key-Regel**: `basistragwerk`, `stab.basisbauteil`
-  und alle Auflager-Referenzen gehen ausschließlich auf UUIDs
-  (Memory `project_bauteil_identifikation`).
-- **Pflicht- und Optionalfelder**:
-  - `basistragwerk`, `knoten`, `staebe`, `auflager`, `theorie`
-    sind Pflicht.
-  - `flaechenelemente` (Default ∅, Folgearbeit für 2D-Pendant),
-    `lastfaelle` (Default ∅ im Entwurfsstadium vor Bemessung),
-    `bezeichnung` (frei) sind optional.
-- **Invarianten** (in der Aggregat-Fabrikfunktion
-  `StatischesSystem.bilde(modell: Modell, tragwerk: Tragwerk, …)`
-  geprüft; bei Verletzung `Resultat.Fehler`, niemals Exception):
-  1. `knoten.isNotEmpty()` ⇒ sonst `Entartet.LeeresSystem`.
-  2. S1 (Knoten-Stab-Inzidenz): jeder Stab-Endpunkt ist im
-     `LAENGE_EPS`-Sinn ein Knoten in `knoten` ⇒ sonst
-     `Entartet.StabEndpunktAusserhalbKnoten`.
-  3. S2 (Stab-Bauteilachsen-Konsistenz): jeder
-     `stab.basisbauteil` existiert in `tragwerk.bauteile`, und
-     die Trägerstrecke entspricht der Bauteilachsen-Strecke
-     (Toleranz `LAENGE_EPS`) ⇒ sonst
-     `Entartet.StabOhneBasisbauteil` bzw.
-     `Entartet.TraegerstreckeAbweichend`.
-  4. S3 (Auflager-Knoten-Inzidenz): Punkt-Auflager liegen auf
-     Knoten; Linien-/Flächenauflager auf Stäben (bzw.
-     Flächenelementen) ⇒ sonst `Entartet.AuflagerOhneInzidenz`.
-  5. S4, S5 (Teilmengen-Konsistenz): `auflager ⊆ tragwerk.auflager`
-     und `lastfaelle ⊆ tragwerk.lastfaelle` ⇒ sonst
-     `Entartet.AuflagerNichtImTragwerk` bzw.
-     `Entartet.LastfallNichtImTragwerk`.
-  6. S6 (Knoten-Vollständigkeit): jeder Knoten ist mindestens
-     einmal inzident ⇒ sonst `Entartet.IsolierterKnoten`.
-  7. S7 (Stabilität als abgeleitete Eigenschaft): **nicht** in
-     `init` geprüft; nur über `bestimmtheit()` abrufbar.
-     Konstruktion eines kinematisch verschieblichen statischen
-     Systems ist zulässig (Entwurfsstadium); die Stabilität
-     wird in der Bemessungs-Schicht erzwungen.
-- **Knoten-Kontraktion** (Wohldefiniertheits-Konvention): bei
-  der kanonischen Konstruktion aus einem Tragwerk werden
-  Bauteil-Achsen-Endpunkte mit Abstand ≤ `LAENGE_EPS` zu
-  **einem** Knoten kontrahiert. Implementiert in der
-  Fabrikfunktion `Tragwerk.statischesSystem()`.
-- **Edge Cases**:
-  - **Leeres statisches System** (|K| = 0 ∨ |M| = 0): nicht
-    erlaubt; mindestens ein Knoten und ein Stab (oder
-    Flächenelement) müssen vorhanden sein.
-  - **Statisches System ohne Auflager**: nicht erlaubt im
-    räumlichen Fall (Bestimmtheit wäre n < 0); im Code als
-    `Entartet.OhneAuflager` abgelehnt (geerbt aus Tragwerk-
-    Konsistenz S4 mit |T.A| ≥ 1).
-  - **Mehrere statische Systeme an einem Tragwerk**: zulässig;
-    z. B. ein lineares System für GZG und ein nichtlineares
-    für Stabilität. Beide referenzieren dasselbe
-    `basistragwerk` mit unterschiedlicher `uuid` und
-    `theorie`.
-  - **Knoten an identischem geometrischem Ort**: nicht
-    erlaubt im `LAENGE_EPS`-Sinn (Knoten-Kontraktion in der
-    Fabrikfunktion); manuelle Konstruktion mit Duplikaten
-    liefert `Entartet.KnotenDuplikat`.
-  - **Statisches System ohne 2D-Anteil**: Default; `F = ∅`.
-    Aktueller App-Stand.
-  - **Statisches System mit Stabgelenken**: noch nicht
-    modelliert; `z = 0` in der Abzählformel S7. Folgearbeit,
-    sobald Anschluss-Federsteifigkeiten aus Verbindungen
-    einfliessen.
-- **Toleranz-Anwendung** (siehe `hg_toleranzen.md` §4):
-  - Knoten-Identität und Stab-Endpunkt-Inzidenz: `LAENGE_EPS`.
-  - Trägerstrecken-Abweichung von der Bauteilachse:
-    `LAENGE_EPS` an den Endpunkten.
-  - Punkt-Auflager-Inzidenz auf Knoten: `LAENGE_EPS`.
-- **IFC-Export-Mapping**:
-  - `StatischesSystem` → `IfcStructuralAnalysisModel` mit
-    `GlobalId`, `Name`, `PredefinedType` (abgeleitet aus
-    `theorie`).
-  - `staebe` → `IfcStructuralCurveMember`-Instanzen, je
-    UUID-tragend.
-  - `knoten` → bei Punkt-Auflager-Inzidenz als
-    `IfcStructuralPointConnection`; sonst implizit über
-    Stab-Endpunkte.
-  - `auflager` mit `AppliedCondition` (siehe `hg_auflager.md`-
-    IFC-Mapping).
-  - `lastfaelle` → `IfcStructuralLoadGroup`-Instanzen
-    (Folgearbeit).
-  - `basistragwerk` und `stab.basisbauteil` →
-    `IfcRelAssignsToProduct`-Beziehungen zwischen
-    `IfcStructuralMember` und `IfcBeam`/`IfcColumn`/`IfcWall`.
-- **BTLx-Export**: keine Pendant-Entität. Bemessungs-
-  Information wird im BTLx-Export nicht ausgegeben.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine
-  Felder):
-  - `geometrieInWelt(): GeometrieInW` — Vereinigung der
-    Knoten-Orte, Stab-Trägerstrecken und (falls vorhanden)
-    Flächenelement-Träger.
-  - `boundingBox(): AABB` — achsenparalleler Hüllquader in W.
-  - `inzidenzgraph(): Graph<Knoten, Stab>` — ungerichteter
-    Graph mit Knoten als Graphknoten und Stäben als Kanten.
-  - `bestimmtheit(): Bestimmtheit` — Klassifikation aus S7
-    (notwendiges Kriterium).
-  - `istStabilNotwendig(): Boolean` — notwendiges
-    Stabilitäts-Kriterium (Abzählung n ≥ 0).
-  - `istStabil(): Boolean` — hinreichendes Kriterium
-    (Folgearbeit Bemessungs-Schicht; Determinante der
-    Gleichgewichts-Matrix).
-- **Bezeichner-Konvention** (siehe `docs/_CODE_KONVENTIONEN.md`):
-  Domänen-Klasse heisst `StatischesSystem` (deutsch,
-  Glossarbegriff). Synonyme `Tragwerksmodell`,
-  `Stabwerksmodell`, `Strukturmodell` erscheinen ausschliesslich
-  als KDoc-Stichworte. Die innere sealed-Klasse `Element` des
-  statischen Systems (für die Vereinigung von `Stab` und
-  `Flaechenelement`) ist **nicht** zu verwechseln mit der
-  ontologischen `element`-Basisklasse aus `hg_bauteil.md`; sie
-  ist Implementierungs-intern.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -915,4 +685,4 @@ data class Flaechenelement(val uuid: UUID /* ... */)
   (abgerufen 2026-05-14).
 - ingenieurkurse.de, „Tragwerksmodell", „Statische
   Bestimmtheit (Abzählformel)" (Sekundärrezeption).
-- Recherche-Bericht: `docs/recherche/2026-05-14_hg_statisches_system.md`.
+- Recherche-Bericht: [intern].

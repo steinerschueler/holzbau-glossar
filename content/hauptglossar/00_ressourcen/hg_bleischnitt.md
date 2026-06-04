@@ -31,7 +31,7 @@ quellenkonflikt: |
   Magazin-Sammelserie „Austragen" des Berufsverbands Holzbau
   Schweiz. Die genaue Heft-/Seitenangabe für Teil 4 ist in der
   Recherche **nicht abschließend verifiziert**; der Eintrag
-  wird als `entwurf` geführt, bis Eric die Stellenangabe
+  wird als `entwurf` geführt, bis Anweiser die Stellenangabe
   bestätigt oder korrigiert. Methodisches Vorgehen analog zu
   `hg_bauteilachse.md`, `hg_bezugsebene.md` und der Schwester-Datei
   `hg_senkel.md`.
@@ -81,7 +81,7 @@ Sei
   oben zeigt und damit die **Lotachsen-Richtung** trägt,
 - E ⊂ ℝ³ eine Ebene im Sinne von `ebene`, repräsentiert in
   Hesse-Normalform durch das Paar (n_hat, d) ∈ S² × ℝ,
-- ε_K := `Toleranzen.KOLLINEAR_EPS` die einschlägige
+- ε_K:= `Toleranzen.KOLLINEAR_EPS` die einschlägige
   dimensionslose Toleranzkonstante für Skalarprodukt-basierte
   Lage-Tests (siehe `toleranzen`).
 
@@ -104,7 +104,7 @@ Die zugehörige **Bleischnitt-Menge** ist die Klasse aller
 Ebenen, die (1) erfüllen:
 
 ```
-ℬ := { E ⊂ ℝ³ | E Ebene, |⟨n_hat_E, e_hat_z⟩| ≥ 1 − ε_K }.              (2)
+ℬ:= { E ⊂ ℝ³ | E Ebene, |⟨n_hat_E, e_hat_z⟩| ≥ 1 − ε_K }.              (2)
 ```
 
 Bleischnitt ist damit ein **Prädikat** (`istBleischnitt: Ebene
@@ -285,86 +285,6 @@ nur numerische Restfehler.
     Bleischnitt und Senkel gemessen werden. Ohne
     Welt-Koordinatensystem sind Bleischnitt und Senkel nicht
     definiert.
-
-## Implementierungshinweis
-
-**Kein eigener Code-Typ.** Bleischnitt wird in der
-Domänen-Schicht als **Prädikat** über `Ebene` realisiert,
-nicht als data class oder Subtyp. Die Implementierung lebt als
-Erweiterungsfunktion auf `Ebene`:
-
-```kotlin
-package domain.geometrie
-
-import domain.Toleranzen
-import kotlin.math.abs
-
-/**
- * Prädikat: ist diese Ebene ein Bleischnitt?
- *
- * Eine Ebene ist genau dann Bleischnitt, wenn ihre Normale
- * parallel oder antiparallel zur Welt-Lotachse e_hat_z = (0, 0, 1)
- * steht, d. h.
- *
- *   |⟨n_hat, e_hat_z⟩| ≥ 1 − Toleranzen.KOLLINEAR_EPS.
- *
- * Glossar: hg_bleischnitt.md (Prädikat über `hg_ebene.md`).
- *
- * Wohldefiniertheit: das Prädikat ist invariant unter
- * Vorzeichenwechsel der Hesse-Normalform (Betrags-Bedingung),
- * siehe Glossar Wohldefiniertheit.
- */
-fun Ebene.istBleischnitt(eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean {
-    val nz = this.normaleEinheit().z       // ⟨n_hat, e_hat_z⟩
-    return abs(nz) >= 1.0 - eps
-}
-```
-
-- **Einheit**: dimensionsloser Skalarprodukt-Vergleich.
-- **Identität**: keine; Bleischnitt ist eine Eigenschaft, kein
-  Objekt.
-- **Toleranz**: `KOLLINEAR_EPS` (nicht `WINKEL_EPS`), siehe
-  Wohldefiniertheits-Block.
-- **Edge Cases**:
-  - **Geneigte Ebene mit kleinem Lot-Abstand-Sinus** (z. B.
-    Dachneigung 0,01°): klassifiziert per (1) **nicht** als
-    Bleischnitt, sondern als geneigte Ebene; das ist
-    beabsichtigt (Bleischnitt ist ein scharfer Lage-Begriff,
-    nicht „nahe waagerecht").
-  - **Bezugsebene als Bleischnitt**: Standardfall; das
-    Prädikat liefert `true` für jede horizontale Bezugsebene
-    (siehe `bezugsebene`). Kein Sonderverhalten.
-  - **Welt-Koordinatensystem mit anderer e_hat_z-Wahl**: das
-    Prädikat ist gegen die im `weltkoordinatensystem`
-    festgelegte Lotachsen-Richtung formuliert; eine
-    Abweichung wäre eine Verletzung der Welt-Konvention und
-    keine Bleischnitt-Klassifikation.
-
-**Folgearbeit (trigger-basiert):**
-
-- **`hoehenlinie`** (Höhenlinie als ausgezeichneter
-  Bleischnitt-Schnitt durch eine Bauteilfläche): Trigger:
-  erstes Tool, das Höhenlinien-Konstruktion an Bauteilen
-  benötigt (z. B. Walmdach-Tool zur Konstruktion des
-  Walmgrats über Höhenlinien-Schnitte).
-- **`bleiriss`** (Bleiriss als Werkplan-Begriff): Trigger:
-  erstes Werkplan-Beschriftungs-Tool.
-- **Klassifikations-Hilfsfunktion `Ebene.lotLage()`**: liefert
-  einen Enum `LotLage = SENKEL | BLEISCHNITT | GENEIGT` für
-  die einheitliche Klassifikation. Trigger: erstes Tool, das
-  diese Klassifikation in einer Schleife über mehrere Ebenen
-  benötigt.
-- **Cross-Verweis in `hg_sparren.md`**: Sparren-Stirnseiten-Anschnitte
-  (z. B. Bleischnitt am Sparrenfuß bei waagerecht abgeschnittenem
-  Sparrenende) sind ein natürlicher Anwendungsfall von
-  Senkel/Bleischnitt. Trigger: bei Anlage des `anschnitt.md`-Eintrags
-  (Folgearbeit aus `hg_bearbeitung.md`), gemeinsam mit den anderen
-  Sparren-Schnitt-Begriffen einbauen.
-- **Cross-Verweis in `hg_dachflaeche.md`**: eine Dachfläche ist weder
-  Bleischnitt noch Senkel (geneigte Ebene); Abgrenzungs-Hinweis ist
-  sinnvoll. Trigger: bei erstem Tool, das Dachflächen-Geometrie mit
-  nicht-trivialen Schnittwinkeln behandelt, oder bei nächster
-  substanzieller `hg_dachflaeche.md`-Überarbeitung.
 
 ## Quellen
 

@@ -34,11 +34,11 @@ quellen_sekundär:
   - "immoportal.com: Glossar 'Knagge' — Konsolen-Funktion."
   - "Profix AG (CH): shop.profix.swiss Holzbauverbinder 'Knagge' — Stahl-Verbinder mit Begriffs-Drift."
   - "SPAX, Simpson Strong-Tie: Stahlblech-Winkelverbinder 'Knagge' (DACH-Industrie)."
-  - "Recherche-Bericht: docs/recherche/2026-05-15_fussband_knagge.md."
-  - "Recherche-Bericht (Vorgänger): docs/recherche/2026-05-15_strebe_kopfband_bug.md (Welle 10, §F.2 Abgrenzung Kopfband ↔ Knagge)."
+  - "Recherche-Bericht: [intern]."
+  - "Recherche-Bericht (Vorgänger): [intern] (Welle 10, §F.2 Abgrenzung Kopfband ↔ Knagge)."
 quellenkonflikt: |
   Neun Punkte sind in der Recherche
-  (`docs/recherche/2026-05-15_fussband_knagge.md`) auflösungs-
+  ([intern]) auflösungs-
   bedürftig und werden hier ausdrücklich festgelegt. Punkt (1)
   etabliert das **Volumen-Bauteil-Muster** im Hauptglossar
   (Knagge ist die erste Bauteilrolle ohne `bauteilachse`-
@@ -72,7 +72,7 @@ quellenkonflikt: |
   bzw. Verzapfungs-Anker am stützenden Pfosten/Ständer) und
   (b) eine **Auflager-Fläche** (Oberseite der Knagge unter dem
   getragenen Balken/der Pfette) modelliert; nicht über eine
-  Bauteilachse. Eric als Domain-Experte hat dieses Muster für
+  Bauteilachse. Anweiser als Domain-Experte hat dieses Muster für
   Volumen-Bauteilrollen explizit etabliert: die Knagge dient
   als **Vorbild** für künftige Volumen-Bauteilrollen
   (insbesondere `hg_aufschiebling.md` als Dachstuhl-Geschwister,
@@ -92,8 +92,7 @@ quellenkonflikt: |
   Jahrzehnten auf **Stahlblech-Winkelverbinder** ausgedehnt —
   Profix AG (CH) führt im Katalog eine „Knagge" als Stahl-
   Holzbauverbinder, SPAX-Knagge und Simpson Strong-Tie KNAG
-  desgleichen. Element-Ontologie (Memory
-  `project_element_ontologie`): Bauteil / Verbindungsmittel /
+  desgleichen. Element-Ontologie: Bauteil / Verbindungsmittel /
   Verbinder / Verstärkungselement sind als Geschwister unter
   der abstrakten Element-Basisklasse geführt. Eine Stahl-
   „Knagge" ist konstruktiv ein **Verbindungsmittel** oder
@@ -151,8 +150,7 @@ quellenkonflikt: |
   als material-übergreifender Oberbegriff (Stein/Stahl/Holz/
   Beton) wäre konsistent mit anderen material-übergreifenden
   Begriffen (`bauteil`, `auflager`, `tragwerk`), ist aber im
-  aktuellen App-Scope nicht akut: der Holzbau-Fokus
-  (Memory `project_zimmermann_app`) macht Stein-/Stahl-/Beton-
+  aktuellen App-Scope nicht akut: der Holzbau-Fokus macht Stein-/Stahl-/Beton-
   Konsolen erst bei einer Hybrid-Konstruktions-Welle nötig.
 
   Eigene Festlegung: **`oberbegriff: bauteil`** (direkt
@@ -208,13 +206,9 @@ quellenkonflikt: |
   mathematischen Definition explizit gemacht (Bedingung 4
   trennt Pfosten-Anker p_P und Auflager-Fläche A_A).
 
-  **(8) SIA-265-Verifikations-Trigger.** SIA 265:2021 §1.1
+  **(8) SIA-265.** SIA 265:2021 §1.1
   „Fachausdrücke" wurde nicht direkt eingesehen
-  (Paywall, analog Welle 9/10). Falls SIA „Knagge" als Lemma
-  führt oder einen anderen CH-spezifischen Bauteilrollen-
-  Namen verwendet, ist `hg_knagge.md` entsprechend zu
-  präzisieren. Verifikations-Trigger bei Eric-Volltext-
-  Zugriff.
+  (Paywall).
 
   **(9) Mann-Figur-Nicht-Mitgliedschaft.** Die Knagge ist
   **kein** Mitglied einer Mann-Figur — Mann-Figuren sind
@@ -246,7 +240,7 @@ Sei
   App-Modellierung durch ihre konvexe Hülle ersetzt, die
   Wohldefiniertheit ist davon unabhängig — siehe
   Wohldefiniertheits-Block),
-- W das Weltkoordinatensystem mit e_z := (0, 0, 1)ᵀ als
+- W das Weltkoordinatensystem mit e_z:= (0, 0, 1)ᵀ als
   vertikale Welt-Achse,
 - A_P ⊂ ℝ³ eine **Pfosten-Anker-Fläche** des Bauteil-Körpers
   von B (eine ebene Fläche des Knagge-Polyeders, an der die
@@ -260,9 +254,9 @@ Sei
   mit Bauteilachse a(S),
 - T ein getragenes Bauteil (Deckenbalken, Pfette, Sparren,
   Riegel) mit Bauteilachse a(T),
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-  ε_L := Toleranzen.LAENGE_EPS,
-  ε_W := Toleranzen.WINKEL_EPS.
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS,
+  ε_W:= Toleranzen.WINKEL_EPS.
 
 Dann heißt B eine **Knagge** mit Pfosten-Anker A_P am
 stützenden Bauteil S und Auflager-Fläche A_A für das getragene
@@ -306,7 +300,7 @@ erfüllt sind:
    Auflager-Fläche A_A trägt einen Punkt q_T der Bauteilachse
    a(T) des getragenen Bauteils mit Toleranz ε_L:
    ```
-   ∃ q_T ∈ a(T) :  dist(q_T, A_A) ≤ ε_L.
+   ∃ q_T ∈ a(T):  dist(q_T, A_A) ≤ ε_L.
    ```
    Insbesondere muss a(T) die Knagge **berühren**, nicht
    schneiden (Auflager-Beziehung, kein Anker).
@@ -320,7 +314,7 @@ erfüllt sind:
    zusammen.
 
 6. **Kompaktheit**: der Knagge-Körper-Durchmesser
-   diam(B.koerper) := max{‖p − q‖ : p, q ∈ B.koerper} bleibt
+   diam(B.koerper):= max{‖p − q‖: p, q ∈ B.koerper} bleibt
    in der Praxis-Range
    ```
    ε_L < diam(B.koerper) < L_max,
@@ -334,15 +328,15 @@ erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Knagge-Volumen**: V_K := vol(B.koerper) (in mm³); für
+- **Knagge-Volumen**: V_K:= vol(B.koerper) (in mm³); für
   klassische Dreieck-Prismen-Knaggen ist V_K = ½ · a · b · t
   mit Schenkellängen a, b und Tiefe t in Pfosten-Wand-
   Richtung.
-- **Anker-Achsen-Winkel**: ϑ := arccos(|⟨n_hat_P, n_hat_A⟩|), Winkel
+- **Anker-Achsen-Winkel**: ϑ:= arccos(|⟨n_hat_P, n_hat_A⟩|), Winkel
   zwischen Pfosten-Anker-Normale und Auflager-Normale;
   Default-Wert im historischen Fachwerk ~45° (gleichschenklige
   Dreieck-Knagge), Praxis-Range 30°–60°.
-- **Auflager-Fläche-Inhalt**: A := area(A_A) (in mm²), trägt
+- **Auflager-Fläche-Inhalt**: A:= area(A_A) (in mm²), trägt
   die Reibungs- und Auflagerdruck-Kapazität nach DIN 1052
   §12.5.
 
@@ -388,8 +382,7 @@ Wesentliche abgeleitete Größen:
   gleichzeitig Knagge und Strebe/Kopfband/Fussband.
 - **Abgrenzung zur Stahl-Knagge**: industrielle Stahl-
   Verbinder mit „Knagge"-Markenamen sind Verbindungsmittel
-  oder Verbinder im Sinne der Element-Ontologie (Memory
-  `project_element_ontologie`), nicht Bauteile. Die App-
+  oder Verbinder im Sinne der Element-Ontologie, nicht Bauteile. Die App-
   Element-Hierarchie unterscheidet beide Klassen; eine
   Stahl-„Knagge" wird in der App nicht als Knagge-Bauteilrolle
   klassifiziert.
@@ -659,266 +652,6 @@ Thurgauer und Appenzeller Riegelbauten).
     Spezialisierung mit Volumen-Geometrie und Konsolen-
     Constraints.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilgeometrie
-import domain.geometrie.Ebene
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Polygon
-import domain.geometrie.Punkt
-import kotlin.math.abs
-import kotlin.math.acos
-import kotlin.math.cos
-import kotlin.math.PI
-
-/**
- * Knagge als Bauteilrolle: dreieckiger Vollholz-Block, der
- * vom stützenden Pfosten/Ständer aus konsolenartig
- * vorspringt und einen darüber- oder seitlich getragenen
- * Balken (Deckenbalken, Pfette, Sparren) trägt.
- *
- * Glossar: hg_knagge.md
- *
- * Konstitutive Eigenschaft: die Knagge ist die ERSTE
- * Bauteilrolle im Hauptglossar mit Volumen-Geometrie statt
- * Stab-Geometrie — sie etabliert das Muster für künftige
- * Volumen-Bauteilrollen (Aufschiebling, Spielleisten,
- * Konsolen-Klötze). Voraussetzungs-Liste enthält NICHT
- * `bauteilachse`, sondern definiert Geometrie über zwei
- * ausgezeichnete Anker-Flächen am Bauteil-Polyeder.
- *
- * Industrielle Stahl-„Knaggen" (Profix, SPAX, Simpson) sind
- * KEINE Knaggen im Sinne dieses Eintrags — sie gehören in die
- * Element-Klasse `verbindungsmittel`. Memory
- * `project_element_ontologie`: Bauteil / Verbindungsmittel /
- * Verbinder / Verstärkungselement als Geschwister.
- */
-data class Knagge(
-    val bauteil: Bauteil,
-    /**
-     * Pfosten-Anker-Fläche: ausgezeichneter Face des
-     * Knagge-Polyeders, an dem die Verzapfung mit dem
-     * stützenden Pfosten/Ständer anliegt.
-     */
-    val pfostenAnker: Polygon,
-    /**
-     * Auflager-Fläche: ausgezeichneter Face des
-     * Knagge-Polyeders, auf dem der getragene Balken/die
-     * Pfette aufliegt.
-     */
-    val auflagerFlaeche: Polygon,
-    /** Hauptlesart der Knagge. Default UNSPEZIFIZIERT. */
-    val lesart: KnaggeLesart = KnaggeLesart.UNSPEZIFIZIERT,
-) {
-    /**
-     * Pfosten-Anker-Normale: nach aussen weisender
-     * Einheitsvektor der Pfosten-Anker-Fläche.
-     */
-    val pfostenAnkerNormale: Einheitsvektor
-        get() = pfostenAnker.normale
-
-    /**
-     * Auflager-Normale: nach oben weisender Einheitsvektor
-     * der Auflager-Fläche.
-     */
-    val auflagerNormale: Einheitsvektor
-        get() = auflagerFlaeche.normale
-
-    /**
-     * Anker-Achsen-Winkel ϑ = arccos(|⟨n_hat_P, n_hat_A⟩|),
-     * Default ~45° bei gleichschenkliger Dreieck-Knagge.
-     */
-    fun ankerAchsenWinkel(): Double {
-        val cosTheta = abs(pfostenAnkerNormale dot auflagerNormale)
-        return acos(cosTheta.coerceIn(0.0, 1.0))
-    }
-
-    /**
-     * Auflager-Neigungs-Prädikat: Bedingung 3 aus
-     * hg_knagge.md (Auflager-Fläche höchstens 45° gegen
-     * Horizontale geneigt).
-     */
-    fun istAuflagerSchwachGeneigt(
-        eps: Double = Toleranzen.KOLLINEAR_EPS,
-    ): Boolean {
-        val nz = auflagerNormale.z
-        return nz >= cos(PI / 4.0) - eps
-    }
-}
-
-/**
- * Hauptlesart einer Knagge im DACH-Holzbau-Korpus. Trennt
- * die zwei dominanten Anwendungsfälle; feinere
- * historisch-dekorative Sub-Lesarten (Hängeknagge,
- * Kopfwinkelholz-Lage, Fußwinkelholz-Lage) sind
- * `erlaeuterung:`-Hinweise im Glossar, nicht Enum-Werte
- * (siehe hg_knagge.md Quellenkonflikt-Block (6)).
- *
- * Glossar: hg_knagge.md (siehe Erläuterung „Sub-Lesarten").
- */
-enum class KnaggeLesart {
-    /**
-     * Historische Fachwerk-Knagge (Kragetage): stützt einen
-     * vorkragenden Deckenbalken vom unteren Pfosten ab.
-     * Mitteleuropäische und nordeuropäische Fachwerkfassaden,
-     * ca. 14.–17. Jh.
-     */
-    FACHWERK_KONSOLE,
-
-    /**
-     * Moderne Dachstuhl-Knagge (Sparren-Pfetten-Anschluss):
-     * sichert die Pfette gegen Kippen auf einer geneigten
-     * Stütze oder am Sparren. Bemessung nach DIN
-     * 1052:2004-08 §12.5 (Tabelle 10 Nagelabstände,
-     * Mindestholzdicke t₁,req).
-     */
-    DACHSTUHL_KIPPSICHERUNG,
-
-    /** Lesart nicht zugewiesen (Default). */
-    UNSPEZIFIZIERT,
-}
-
-sealed class KnaggeEntartet {
-    object KeinVolumenkoerper              : KnaggeEntartet()
-    object AnkerFlaechenKoplanar           : KnaggeEntartet()
-    object PfostenAnkerNichtBeiPfosten     : KnaggeEntartet()
-    object PfostenAnkerNormaleParallelZuAchse : KnaggeEntartet()
-    object AuflagerZuSteilGeneigt          : KnaggeEntartet()
-    object KeinGetragenesBauteil           : KnaggeEntartet()
-    object AnkerStuetzpunkteIdentisch      : KnaggeEntartet()
-    object KoerperZuKlein                  : KnaggeEntartet()
-    object KoerperZuGross                  : KnaggeEntartet()
-}
-```
-
-- **Einheit**: Längen in mm (Double), Flächen in mm², Volumen
-  in mm³, Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden
-  Bauteil (Memory `project_bauteil_identifikation`).
-- **Geometrie-Klasse**: `Bauteilgeometrie.Volumen` (nicht
-  `.Stab`) — siehe Quellenkonflikt-Block (1). Die App-
-  Code-Schicht muss die sealed-Hierarchie `Bauteilgeometrie`
-  um die Volumen-Variante erweitern, falls noch nicht
-  geschehen (vermutlich Folgearbeit beim ersten
-  Volumen-Bauteilrollen-Pendant).
-- **Invarianten** (in der Factory `knaggeAusBauteil(...)`
-  prüfen, bei Verletzung `Resultat.Fehler` mit
-  `KnaggeEntartet`-Variante; niemals Exception):
-  1. Bauteil-Geometrie vom Typ `Bauteilgeometrie.Volumen`.
-  2. Bauteil-Polyeder existiert und ist nicht entartet —
-     sonst `KeinVolumenkoerper`.
-  3. Anker-Flächen nicht koplanar:
-     ‖n_hat_P × n_hat_A‖ > Toleranzen.KOLLINEAR_EPS — sonst
-     `AnkerFlaechenKoplanar`.
-  4. Pfosten-Anker-Stützpunkt q_P auf der Pfosten-
-     Bauteilachse a(S) (Punkt-Gerade-Abstand ≤
-     Toleranzen.LAENGE_EPS) — sonst
-     `PfostenAnkerNichtBeiPfosten`.
-  5. Pfosten-Anker-Normale rechtwinklig zur Pfosten-Achse:
-     |⟨n_hat_P, d_hat_S⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst
-     `PfostenAnkerNormaleParallelZuAchse`.
-  6. Auflager-Fläche schwach geneigt:
-     ⟨n_hat_A, e_z⟩ ≥ cos(π/4) − Toleranzen.KOLLINEAR_EPS —
-     sonst `AuflagerZuSteilGeneigt`.
-  7. Auflager-Inzidenz mit getragenem Bauteil: dist(a(T),
-     A_A) ≤ Toleranzen.LAENGE_EPS für ein gewähltes
-     getragenes Bauteil T — sonst `KeinGetragenesBauteil`.
-  8. Anker-Stützpunkt-Trennung: dist(q_P, q_A) ≥
-     Toleranzen.LAENGE_EPS — sonst
-     `AnkerStuetzpunkteIdentisch`.
-  9. Körper-Durchmesser in der Praxis-Range:
-     Toleranzen.LAENGE_EPS < diam(körper) — sonst
-     `KoerperZuKlein`.
-  10. diam(körper) < 800 mm (Default-Höchstwert; im
-      `Konfiguration`-Objekt konfigurierbar) — sonst
-      `KoerperZuGross`.
-- **Edge Cases**:
-  - **Eckknagge am Eckständer**: zwei Knaggen an demselben
-    Pfosten, eine pro angeschlossener Wandrichtung. Zwei
-    eigenständige `Knagge`-Instanzen.
-  - **Fachwerk-Konsole mit geschwungener Unterseite**: die
-    Hypotenuse-Seite des Knagge-Polyeders ist konvex
-    gekrümmt; im App-Modell durch ihre konvexe Hülle
-    approximiert (Wohldefiniertheits-Block). Die geschwungene
-    Detail-Geometrie kann optional als `dekoration`-
-    Annotation am Bauteil geführt werden.
-  - **Pfetten-Knagge an geneigter Pfette**: die Pfette
-    selbst ist horizontal oder leicht geneigt; die Knagge
-    sitzt rechtwinklig zur Pfetten-Längsrichtung am Sparren-
-    oder Stützen-Auflager. `lesart = DACHSTUHL_KIPPSICHERUNG`.
-  - **Doppel-Knagge je Pfosten**: zwei Knaggen am gleichen
-    Pfosten, oft auf beiden Wandrichtungen oder oben/unten
-    am gleichen Auflager-Bauteil. Zwei eigenständige
-    Instanzen, keine Aggregat-Beziehung.
-  - **Hängeknagge**: dekorative Sub-Lesart mit
-    nach-unten-gerichteter Hypotenuse, statisch weiterhin
-    Konsole. `lesart = FACHWERK_KONSOLE`, dekorative Note
-    als Annotation.
-  - **Knagge am Pfosten-Fuss in Fussband-Lage**
-    (Fußwinkelholz): geometrisch eine Knagge, deren Pfosten-
-    Anker am Pfosten-**Fuss** und deren Auflager-Fläche am
-    unteren Längsholz (Schwelle) sitzt. Wohldefiniert nach
-    Bedingungen 1–6; die App-Klassifikation bleibt Knagge
-    (siehe `hg_fussband.md` Quellenkonflikt-Block (4)).
-  - **Sehr kleine Knagge** (diam < 100 mm): konstruktiv
-    untypisch, geometrisch toleriert.
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `volumen(): Double` — V_K = vol(körper).
-  - `auflagerflaecheninhalt(): Double` — A = area(A_A).
-  - `stuetzendesBauteil(t: Tragwerk): Bauteil?` — der
-    Pfosten/Ständer, dessen Bauteilachse durch q_P verläuft.
-  - `getragenesBauteil(t: Tragwerk): Bauteil?` — der
-    Deckenbalken/die Pfette, dessen Bauteilachse die
-    Auflager-Fläche berührt.
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt
-  `Knagge` (deutsch, Glossarbegriff); Lesart-Enum heißt
-  `KnaggeLesart`. Spezialisierungs-Subtypen sind nicht
-  vorgesehen — feinere historisch-dekorative Sub-Lesarten
-  bleiben Erläuterungs-Hinweise im Glossar.
-- **Folgearbeit-Trigger** (für `_FOLGEARBEITEN_*.md` oder die
-  jeweils einschlägige Welle-Planung):
-  - **`hg_konsole.md`**: material-übergreifender Oberbegriff
-    (Stein/Stahl/Holz/Beton); Trigger Hybrid-Konstruktions-
-    Welle. Bei Anlage `oberbegriff:` der Knagge auf `konsole`
-    migrieren (Quellenkonflikt-Block (5)). Eintrag in
-    HG_KONVENTIONEN §6-(A)-Tabelle bei der nächsten Pflege.
-  - **`hg_aufschiebling.md`**: zweite Volumen-Bauteilrolle
-    im Hauptglossar; verwandter Volumen-Block im Dachstuhl-
-    Kontext. Trigger Dachstuhl-Welle / erste Aufschiebling-
-    Modellierung. Knagge dient als Vorbild für das
-    Voraussetzungs-Muster ohne `bauteilachse`.
-  - **Stahl-Knagge (`verbindungsmittel`-Familie)**: bei
-    erster Modellierung industrieller Stahl-Holzbauverbinder
-    eigene Bauteilklassen-Hierarchie (Profix-Reihe, SPAX-
-    Reihe, Simpson-KNAG-Reihe). Element-Ontologie-Memory
-    `project_element_ontologie` ist Leitfaden.
-  - **`hg_deckenbalken.md`** und **`hg_unterzug.md`**: das
-    getragene Bauteil im historischen Kragetagen-Anwendungsfall.
-    Trigger Geschossdecken-Welle.
-  - **SIA-265-Verifikation**: bei Volltext-Zugriff (Eric)
-    SIA 265:2021 §1.1 und §8 (Anschlüsse) direkt prüfen
-    (Quellenkonflikt-Block (8)).
-  - **DIN-1052-§12.5-Verifikation**: D.I.E.-Statik-Doku
-    liefert via die.de bereits die §12.5-Volltext-Inhalte
-    (Tabelle 10, t₁,req); bei Bedarf separater
-    Verifikations-Trigger im `_FOLGEARBEITEN_*.md`.
-  - **BauNetz-Wissen-Direkteinsicht**: Browser-Direktblick
-    durch Eric bei `baunetzwissen.de/glossar/k/knagge-...`
-    (Block-Signal, Quellenkonflikt-Block aus
-    `hg_kopfband.md` Welle 10 übertragen).
-  - **Bauteilgeometrie.Volumen-Code-Erweiterung**: bei
-    erster Implementierung dieser Klasse die sealed-
-    Hierarchie `Bauteilgeometrie` um die Volumen-Variante
-    erweitern, falls noch nicht geschehen. Knagge ist die
-    erste Verwendung dieses Codepfads.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -994,7 +727,7 @@ sealed class KnaggeEntartet {
 - fachwerk.de Forum.
 - kulturdenkmalhaus.de Glossar Umgebindehaus.
 - Recherche-Bericht:
-  `docs/recherche/2026-05-15_fussband_knagge.md`.
+  [intern].
 - Recherche-Bericht (Vorgänger):
-  `docs/recherche/2026-05-15_strebe_kopfband_bug.md`
+  [intern]
   (Welle 10, §F.2 Abgrenzung Kopfband ↔ Knagge).

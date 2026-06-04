@@ -34,7 +34,7 @@ quellenkonflikt: |
   jeder Strecke s_i mit dem Anfangspunkt der nachfolgenden Strecke
   s_{i+1} zusammenfällt. Äquivalent ist die Repräsentation als
   Punktfolge (p_0, p_1, …, p_n) mit n+1 ≥ 2 Stützpunkten und
-  s_i := [p_{i−1}, p_i]. Geschlossenheit (p_n = p_0) ist eine
+  s_i:= [p_{i−1}, p_i]. Geschlossenheit (p_n = p_0) ist eine
   Eigenschaft, kein Subtyp. Selbstüberschneidungen sind zulässig,
   außer wo durch einen verwendenden Begriff (z. B. `polygon`)
   ausgeschlossen. Diese Festlegung ist konsistent mit DIN ISO 80000-2,
@@ -60,12 +60,12 @@ Sei
 - n ∈ ℕ_{≥1} die Anzahl der Strecken,
 - (p_0, p_1, …, p_n) ∈ (ℝ³)^{n+1} eine geordnete Folge von n+1
   **Stützpunkten**,
-- ε_L := Toleranzen.LAENGE_EPS die Längen-Toleranz.
+- ε_L:= Toleranzen.LAENGE_EPS die Längen-Toleranz.
 
 Die zu der Stützpunktfolge gehörenden **Teilstrecken** sind
 
 ```
-s_i := [p_{i−1}, p_i]    für i = 1, …, n.
+s_i:= [p_{i−1}, p_i]    für i = 1, …, n.
 ```
 
 Die Stützpunktfolge (p_0, …, p_n) heißt **Streckenzug** L genau dann,
@@ -85,7 +85,7 @@ Der Streckenzug selbst ist die Vereinigung seiner Teilstrecken als
 Punktmenge in ℝ³:
 
 ```
-|L| := ⋃_{i=1}^{n} s_i ⊂ ℝ³,
+|L|:= ⋃_{i=1}^{n} s_i ⊂ ℝ³,
 ```
 
 zusammen mit der geordneten Stützpunktfolge (p_0, …, p_n) als
@@ -95,8 +95,8 @@ strukturelle Information. In implementierungsnaher Form ist L = (p_0,
 **Klassifikation nach Schließung**:
 
 ```
-L heißt geschlossen   :⇔  ‖p_n − p_0‖ ≤ ε_L
-L heißt offen         :⇔  L ist nicht geschlossen.
+L heißt geschlossen:⇔  ‖p_n − p_0‖ ≤ ε_L
+L heißt offen:⇔  L ist nicht geschlossen.
 ```
 
 Beide Varianten sind gültig.
@@ -105,7 +105,7 @@ Beide Varianten sind gültig.
 verwendendem Kontext):
 
 ```
-L heißt einfach   :⇔  für alle i, j ∈ {1, …, n} mit i ≠ j gilt
+L heißt einfach:⇔  für alle i, j ∈ {1, …, n} mit i ≠ j gilt
                        s_i ∩ s_j = ∅, außer für benachbarte Indizes
                        j = i+1 (gemeinsamer Eckpunkt p_i) und im
                        geschlossenen Fall zusätzlich für (i, j) =
@@ -120,12 +120,12 @@ Wesentliche abgeleitete Größen:
 
 - **Stützpunktanzahl**: |Stützpunkte(L)| = n + 1.
 - **Streckenanzahl**: n.
-- **Länge**: ℓ(L) := Σ_{i=1}^{n} ‖p_i − p_{i−1}‖ (in mm).
+- **Länge**: ℓ(L):= Σ_{i=1}^{n} ‖p_i − p_{i−1}‖ (in mm).
 - **Anfangspunkt**: p_0; **Endpunkt**: p_n.
 - **Sehnenvektor**: p_n − p_0; bei geschlossenem L gleich
   Nullvektor (innerhalb ε_L).
 - **Anschlussvektor an Eckpunkt p_i** (1 ≤ i ≤ n−1):
-  Knickwinkel θ_i := arccos(⟨e_hat_i, e_hat_{i+1}⟩) mit e_hat_i :=
+  Knickwinkel θ_i:= arccos(⟨e_hat_i, e_hat_{i+1}⟩) mit e_hat_i:=
   (p_i − p_{i−1}) / ‖p_i − p_{i−1}‖; θ_i = 0 entspricht
   fortgesetzter Kollinearität, θ_i = π einer Umkehr.
 
@@ -147,7 +147,7 @@ Wesentliche abgeleitete Größen:
   (p_n, p_{n−1}, …, p_0) liefert denselben Streckenzug als
   Punktmenge |L|, jedoch entgegengesetzt orientiert. Identität
   modulo Orientierung ist als separate Vergleichsoperation
-  bereitgestellt (siehe Implementierungshinweis).
+  bereitgestellt.
 - **Wohldefiniertheit der Länge**: ℓ(L) = Σ‖p_i − p_{i−1}‖ ist als
   Summe wohldefinierter euklidischer Längen eindeutig und
   invariant unter Translation, Rotation und Spiegelung.
@@ -226,115 +226,6 @@ verwendet; beide sind im Glossar Synonyme.
   - **Selbstüberschneidende Streckenzüge**: zulässig in der
     allgemeinen Definition; werden erst dort ausgeschlossen, wo
     Einfachheit verlangt wird (z. B. `polygon`).
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.geometrie`):
-
-```
-package domain.geometrie
-
-import domain.Toleranzen
-
-/**
- * Streckenzug in ℝ³ als geordnete Folge von Stützpunkten.
- * Glossar: hg_streckenzug.md
- *
- * Repräsentation als Punktfolge garantiert die Anschlussbedingung
- * strukturell (kein Inkonsistenzrisiko zwischen Endpunkt s_i und
- * Anfangspunkt s_{i+1}). Die Streckenfolge wird abgeleitet.
- */
-data class Streckenzug internal constructor(
-    val stuetzpunkte: List<Punkt>
-) {
-    // Konstruktion ausschliesslich ueber Streckenzug.aus(...);
-    // der Default-Konstruktor ist `internal`, damit die Invarianten
-    // (≥ 2 Stützpunkte, keine Nullstrecken, finite Koordinaten)
-    // nicht umgangen werden können.
-
-    companion object {
-        fun aus(
-            pts: List<Punkt>,
-            epsL: Double = Toleranzen.LAENGE_EPS
-        ): Resultat<Streckenzug, EntartetGeometrie> {
-            if (pts.size < 2) return Resultat.Fehler(EntartetGeometrie.ZuWenigPunkte)
-            if (pts.any { !it.istFinit() }) return Resultat.Fehler(EntartetGeometrie.NichtFinit)
-            for (i in 1 until pts.size) {
-                if ((pts[i] - pts[i-1]).norm <= epsL)
-                    return Resultat.Fehler(EntartetGeometrie.NullStrecke)
-            }
-            return Resultat.Erfolg(Streckenzug(pts.toList()))
-        }
-    }
-}
-```
-
-Die Entartungs-Varianten werden über die gemeinsame Sealed Class
-`EntartetGeometrie` geführt (analog zu den anderen
-Geometrieklassen), nicht über eine eigene `Streckenzug.Entartet`.
-
-- **Einheit**: Stützpunkt-Koordinaten in mm (Double); Länge in mm.
-- **Invarianten** (in Factory `Streckenzug.aus(...)` prüfen, bei
-  Verletzung Entartet-Variante zurückgeben, niemals Exception):
-  1. **Mindestpunktzahl**: stuetzpunkte.size ≥ 2 — sonst
-     `EntartetGeometrie.ZuWenigPunkte` (entspricht n ≥ 1 Strecke).
-  2. **Keine Nullstrecke**: für alle i ∈ 1..n−1 ist
-     ‖pts[i] − pts[i−1]‖ > Toleranzen.LAENGE_EPS — sonst
-     `EntartetGeometrie.NullStrecke` (gemeinsame Variante ohne
-     Index-Parameter).
-  3. **Finite Koordinaten**: keine NaN, keine ±∞ — sonst
-     `EntartetGeometrie.NichtFinit`.
-- **Bewusst nicht als Entartung modelliert**:
-  - **Kollineare Stützpunkte**: drei aufeinanderfolgende
-    kollineare Stützpunkte sind ein **gültiger** Sonderfall
-    (z. B. eine Trauflinie, die durch einen Hilfspunkt geteilt
-    ist). Eine Normalisierung kann durch
-    `Streckenzug.normalisiert()` (entfernt kollineare
-    Zwischenpunkte) explizit angefordert werden.
-  - **Selbstschnitt**: nicht-benachbarte Strecken, die sich
-    schneiden, sind in der allgemeinen Definition zulässig. Die
-    Eigenschaft `istEinfach()` ist als Test verfügbar; ein
-    Streckenzug, der die Einfachheit verletzt, ist deshalb nicht
-    entartet, sondern nur „nicht einfach". Verwendende Begriffe
-    (z. B. `polygon`) lehnen Selbstschnitt durch eigene
-    Validierung ab.
-- **Edge Cases / Klassifikationen**:
-  - **Geschlossen**: `‖pts.last - pts.first‖ ≤ Toleranzen.LAENGE_EPS`
-    — Eigenschaft, kein Defekt.
-  - **Offen**: nicht geschlossen — Eigenschaft, kein Defekt.
-  - **Trivialer Streckenzug** (n = 1): zulässig; entspricht einer
-    einzelnen Strecke. Verwender, die n ≥ 2 erwarten, prüfen das
-    explizit (z. B. `polygon` mit k ≥ 3).
-  - **Sehr kurze Teilstrecken** (knapp über LAENGE_EPS):
-    zulässig, aber numerisch sensibel für Knickwinkel- und
-    Kollinearitätsberechnungen; die Domänen-Schicht warnt im
-    Test, nicht zur Laufzeit.
-- **Identität / Gleichheit**:
-  - Standard-`equals`: strikt gleiche Punktfolge in derselben
-    Reihenfolge.
-  - `gleichInvers(other, eps)`: gleich modulo Umkehrung der
-    Reihenfolge.
-  - `gleichZyklisch(other, eps)`: nur sinnvoll für geschlossene
-    Streckenzüge; gleich modulo zyklischer Verschiebung der
-    Stützpunkte.
-- **Abgeleitete Operationen** (`StreckenzugOps.kt`):
-  - `fun strecken(): List<Strecke>` — abgeleitete Streckenfolge.
-  - `fun laenge(): Double` — Σ ‖p_i − p_{i−1}‖ (mm).
-  - `fun anfang(): Punkt` = pts.first;
-    `fun ende(): Punkt` = pts.last.
-  - `fun istGeschlossen(eps: Double = Toleranzen.LAENGE_EPS):
-     Boolean` = `(ende() - anfang()).norm <= eps`.
-  - `fun istEinfach(eps: Double): Boolean` — Selbstschnitt-Test
-    in O(n²) (oder O(n log n) per Sweep-Line bei Bedarf).
-  - `fun istKoplanar(eps: Double): Boolean` — Test, ob alle
-    Stützpunkte in einer gemeinsamen Ebene liegen
-    (Voraussetzung für Polygon-Bildung).
-  - `fun normalisiert(eps: Double): Streckenzug` — entfernt
-    kollineare Zwischenpunkte.
-  - `fun umkehren(): Streckenzug` =
-    Streckenzug(stuetzpunkte.reversed()).
-  - `fun knickwinkel(i: Int): Double` für 1 ≤ i ≤ n−1 —
-    Innenwinkel zwischen den anliegenden Strecken.
 
 ## Quellen
 

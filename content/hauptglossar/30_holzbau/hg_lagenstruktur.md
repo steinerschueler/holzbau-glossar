@@ -52,7 +52,7 @@ quellenkonflikt: |
        (bis auf Vorzeichen)`.
   - **Lagenausrichtungs-Regel** als formale Invariante:
     `abweichenderLagenaufbau == false ⇒
-       ∀ i : ∠(lagen[i].faserrichtung, h_hat) ∈ {0, π/2}` (innerhalb
+       ∀ i: ∠(lagen[i].faserrichtung, h_hat) ∈ {0, π/2}` (innerhalb
     Toleranzen.WINKEL_EPS).
   - **Position-Bijektivität**: die `position`-Felder der Lagen sind
     eine Bijektion auf {0, …, n−1} und stimmen mit der Listenreihung
@@ -80,12 +80,12 @@ Sei
 - 𝓛 die Menge der Lagen (siehe `lage`),
 - h_hat ∈ S² die Haupttragrichtung des umgebenden Mehrlagenholzes
   (siehe `haupttragrichtung`),
-- ε_W := Toleranzen.WINKEL_EPS.
+- ε_W:= Toleranzen.WINKEL_EPS.
 
 Dann ist eine **Lagenstruktur** L das Tupel
 
 ```
-L := (lagen, abweichenderLagenaufbau)
+L:= (lagen, abweichenderLagenaufbau)
 ```
 
 mit
@@ -100,7 +100,7 @@ mit
        |lagen| = n ≥ 3.
 
 (I2) Position-Bijektivität:
-       ∀ i ∈ {0, …, n−1} : lagen[i].position = i.
+       ∀ i ∈ {0, …, n−1}: lagen[i].position = i.
 
 (I3) Symmetrie-Regel (im Standardlayout):
        abweichenderLagenaufbau = false  ⇒
@@ -112,7 +112,7 @@ mit
 
 (I4) Lagenausrichtungs-Regel (im Standardlayout):
        abweichenderLagenaufbau = false  ⇒
-         ∀ i : ∠(lagen[i].faserrichtung, h_hat) ∈ {0, π/2}
+         ∀ i: ∠(lagen[i].faserrichtung, h_hat) ∈ {0, π/2}
               (innerhalb ε_W),
        d. h. jede Lagen-Faserrichtung ist parallel oder rechtwinklig
        zur Haupttragrichtung.
@@ -126,7 +126,7 @@ mit
 **Abgeleitete Größe — Gesamtdicke**:
 
 ```
-gesamtdicke(L) := Σ_{i=0}^{n−1} lagen[i].dicke ∈ ℝ⁺
+gesamtdicke(L):= Σ_{i=0}^{n−1} lagen[i].dicke ∈ ℝ⁺
 ```
 
 Die Gesamtdicke entspricht der Plattendicke nach DIN EN 13986 und
@@ -135,7 +135,7 @@ ist redundant zum Bauteil-Volumen (Folge-Eintrag).
 **Lagen-Mittenebenen** (abgeleitet, für Visualisierung):
 
 ```
-z_i := −gesamtdicke(L)/2 + Σ_{j=0}^{i−1} lagen[j].dicke
+z_i:= −gesamtdicke(L)/2 + Σ_{j=0}^{i−1} lagen[j].dicke
                           + lagen[i].dicke / 2
 ```
 
@@ -263,94 +263,6 @@ ihren individuellen Faserrichtungen darstellen.
     konsistent mit Lagenstruktur, geprüft in `mehrlagenholz`.
   - **„Schichtaufbau"** (umgangssprachlich): synonym verwendet,
     aber unscharf. Lagenstruktur ist die formale Repräsentation.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.holzbau.werkstoff`):
-
-```kotlin
-package domain.holzbau.werkstoff
-
-/**
- * Lagenstruktur eines Mehrlagenholzes (CLT/BSP, Sperrholz,
- * Multiplex): geordnete Liste von Lagen mit n >= 3 plus Marker
- * für abweichende Lagenaufbauten.
- * Glossar: hg_lagenstruktur.md
- *
- * Standardlayout: ungerade Lagenanzahl, Decklage 0 = Decklage n-1
- * (Symmetrie), alle Faserrichtungen parallel/rechtwinklig zur
- * Haupttragrichtung. Bei abweichenderLagenaufbau = true werden
- * Symmetrie und Orthogonalitaet ausgesetzt (z. B. 45°-Lagen,
- * asymmetrische Layouts).
- *
- * Gesamtdicke ist abgeleitet (Sum Lagendicken).
- */
-data class Lagenstruktur(
-    val lagen: List<Lage>,
-    val abweichenderLagenaufbau: Boolean = false
-) {
-    /** Abgeleitete Gesamtdicke in mm. */
-    val gesamtdicke: Double get() = lagen.sumOf { it.dicke }
-
-    init {
-        // I1: Mindestanzahl
-        require(lagen.size >= 3) {
-            "Lagenstruktur braucht mindestens 3 Lagen, hat ${lagen.size}"
-        }
-        // I2: Position-Bijektivitaet
-        require(lagen.withIndex().all { (i, l) -> l.position == i }) {
-            "Lagen-Positionen muessen 0..n-1 sein und mit Listenindex uebereinstimmen"
-        }
-        // I3 + I4: Symmetrie + Orthogonalitaet werden in der
-        // konstruktion des Mehrlagenholzes geprueft, weil dort die
-        // Haupttragrichtung verfuegbar ist.
-    }
-
-    companion object {
-        /**
-         * Prueft Symmetrie-Regel I3 gegen die uebergebene
-         * Haupttragrichtung. Wird in Mehrlagenholz.init aufgerufen.
-         */
-        fun pruefeSymmetrie(
-            ls: Lagenstruktur,
-            haupttragrichtung: Einheitsvektor,
-            winkelEps: Double
-        ): Resultat<Unit, EntartetGeometrie> { /* ... */ TODO() }
-    }
-}
-```
-
-- **Einheit**: `gesamtdicke` in mm (Double). Übrige Felder
-  dimensionslos.
-- **Identität**: keine; Werteklasse / data class.
-- **Invarianten**:
-  1. (I1) `lagen.size >= 3`.
-  2. (I2) Position-Bijektivität: `lagen[i].position == i`.
-  3. (I3, I4, I5) werden in `Mehrlagenholz.init` geprüft, weil
-     die Haupttragrichtung dort verfügbar ist.
-- **IFC-Mapping** (Persistenzschicht):
-  - `IfcMaterialLayerSet` mit `IfcMaterialLayer`-Liste in
-    derselben Reihenfolge wie `lagen`.
-  - `IfcMaterialLayerSet.LayerSetDirection = AXIS3` (parallel zur
-    Plattendicken-Achse).
-  - `IfcMaterialLayer.Priority = lagen[i].position`.
-- **Edge Cases**:
-  - **Lagenstruktur mit < 3 Lagen**:
-    `IllegalArgumentException` bzw.
-    `Entartet.LagenstrukturZuWenigeLagen`.
-  - **Doppelte Lagenpositionen**: `IllegalArgumentException`
-    bzw. `Entartet.LagenpositionenNichtBijektiv`.
-  - **Symmetrie-Verletzung im Standardlayout**: in
-    `Mehrlagenholz.init` zurückgewiesen, sofern
-    `abweichenderLagenaufbau = false`.
-  - **Gerade Lagenanzahl im Standardlayout**: Symmetrie-Regel I3
-    fordert ungerade Anzahl; gerade Anzahl nur bei
-    `abweichenderLagenaufbau = true`.
-  - **45°-Lagen**: zulässig nur bei
-    `abweichenderLagenaufbau = true`.
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `Lagenstruktur` (deutsch, Glossarbegriff).
 
 ## Quellen
 

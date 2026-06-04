@@ -87,13 +87,13 @@ Sei
 
 - P eine Pfette im Sinne von `pfette` mit Bauteilachse
   a(P) = (p_a, p_e) und mittlerer Höhe
-  z_P := (p_a.z + p_e.z) / 2,
+  z_P:= (p_a.z + p_e.z) / 2,
 - T eine Traufe im Sinne von `traufe` mit Streckenzug-
   Repräsentation und Richtungs-Einheitsvektor d_hat_T sowie mittlerer
-  Höhe z_T := mittlere Höhe der Traufenstützpunkte,
-- ε_K := Toleranzen.KOLLINEAR_EPS, ε_L := Toleranzen.LAENGE_EPS,
+  Höhe z_T:= mittlere Höhe der Traufenstützpunkte,
+- ε_K:= Toleranzen.KOLLINEAR_EPS, ε_L:= Toleranzen.LAENGE_EPS,
 - δ_z eine konstruktive Höhentoleranz für die Trauflagen-Nähe,
-  Default δ_z := h_Pfette + ε_L (h_Pfette = Pfettenhöhe).
+  Default δ_z:= h_Pfette + ε_L (h_Pfette = Pfettenhöhe).
 
 Dann heißt P eine **Fußpfette** genau dann, wenn die folgenden
 Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
@@ -120,14 +120,14 @@ Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Vertikalabstand zur Traufe**: Δz := z_P − z_T (vorzeichen-
+- **Vertikalabstand zur Traufe**: Δz:= z_P − z_T (vorzeichen-
   behaftet); Δz ≈ 0, wenn die Fußpfettenoberkante mit der
   Trauf-Höhe zusammenfällt; Δz < 0 möglich, wenn die Fußpfette
   unter der Traufkante liegt (z. B. eingelassene Mauerlatte).
 - **Auflagerart**: Annotation, ob die Fußpfette auf Mauerwerk /
   Stahlbeton (dann „Mauerlatte"), auf Holzkonstruktion (Rähm,
   Stuhlschwelle) oder freitragend (zwischen Stützen) aufgelagert
-  ist; siehe Implementierungshinweis.
+  ist.
 
 ## Wohldefiniertheit
 
@@ -245,7 +245,7 @@ Abschnitt „Anker im Sparren-Tool: Kerveckpunkt p_K der
 Fußpfettenkerve"); die Sparren-Tool-Bezugsebene ist die horizontale
 Ebene durch p_K, ihre skalare z-Höhe ist z₀(T_Sparren) = z(p_K).
 Hintergrund und Recherche-Stand siehe
-`docs/recherche/2026-05-10_sparrenmessung_neubau.md`.
+[intern].
 
 ### Schweizer Sprachgebrauch
 
@@ -304,115 +304,6 @@ Fachliteratur vor.
     Sparrenfuß; die Fußpfette liegt parallel zur Traufe und in
     deren Höhe, ist aber nicht identisch mit der Traufe (die
     Traufe ist Geometrie, die Fußpfette ist Bauteil).
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Pfette
-
-/** Auflagerart der Fußpfette; relevant für die Bezeichnung. */
-enum class FusspfetteAuflager {
-    MAUERWERK,                // qualifiziert als „Mauerlatte" (streng)
-    STAHLBETON_RINGBALKEN,    // ebenfalls „Mauerlatte"
-    HOLZKONSTRUKTION,         // auf Rähm, Stuhlschwelle etc.
-    FREITRAGEND_ZWISCHEN_STUETZEN,
-    UNBEKANNT
-}
-
-/**
- * Fußpfette: unterste Pfette eines Dachtragwerks, parallel zur
- * Traufe.
- *
- * Glossar: hg_fusspfette.md
- *
- * Synonyme: Mauerlatte (eingeschränkt: nur bei Auflagerung auf
- * Mauerwerk/Stahlbeton im strengen Sinne), Schwellpfette (regional
- * CH/AT/Süd-DE), Traufpfette.
- *
- * Vorzeichenkonvention für die Bauteilachse: gemäß lokaler
- * Bezeichnungskonvention (geerbt von Pfette).
- */
-data class Fusspfette(
-    override val bauteil: Bauteil,
-    val traufe: Traufe,
-    val auflager: FusspfetteAuflager = FusspfetteAuflager.UNBEKANNT,
-    val deltaZMax: Double = Toleranzen.LAENGE_EPS    // δ_z
-) : Pfette.Fusspfette() {
-
-    init {
-        // 1. Pfetten-Bedingungen aus Pfette geerbt.
-        // 2. Parallelität zur Traufe (Bedingung 1 aus hg_fusspfette.md):
-        //    ‖d_hat_P × d_hat_T‖ ≤ Toleranzen.KOLLINEAR_EPS — sonst
-        //    Resultat.Fehler(FusspfetteEntartet.NichtParallelZurTraufe).
-        //    Sinus-Test, bevorzugt für Parallelitäts-Prädikate;
-        //    siehe hauptglossar/_KONVENTIONEN.md Sektion 4.
-        // 3. Traufnähe (Bedingung 2):
-        //    |z_P − z_T| ≤ deltaZMax — sonst
-        //    FusspfetteEntartet.NichtTraufnah.
-        // 4. Eindeutigkeit als unterste (Bedingung 3) wird im
-        //    Tragwerks-Kontext geprüft.
-    }
-
-    /**
-     * Mauerlatten-Prädikat im strengen Sinne: nur bei direkter
-     * Auflagerung auf Mauerwerk oder Stahlbeton-Ringbalken.
-     */
-    val istMauerlatteImEngerenSinne: Boolean
-        get() = auflager == FusspfetteAuflager.MAUERWERK ||
-                auflager == FusspfetteAuflager.STAHLBETON_RINGBALKEN
-
-    /**
-     * Anzeigename: bevorzugt „Fußpfette"; bei Auflagerung auf
-     * Mauerwerk darf zusätzlich „(Mauerlatte)" annotiert werden.
-     */
-    fun anzeigeName(): String = when (auflager) {
-        FusspfetteAuflager.MAUERWERK,
-        FusspfetteAuflager.STAHLBETON_RINGBALKEN ->
-            "Fußpfette (Mauerlatte)"
-        else -> "Fußpfette"
-    }
-}
-
-sealed class FusspfetteEntartet {
-    object NichtParallelZurTraufe : FusspfetteEntartet()
-    object NichtTraufnah          : FusspfetteEntartet()
-    object MehrdeutigImTragwerk   : FusspfetteEntartet()
-}
-```
-
-- **Einheit**: Längen in mm; Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (zusätzlich zu denen von `Pfette`):
-  1. Parallelität zur Traufe — sonst `NichtParallelZurTraufe`.
-  2. Traufnähe — sonst `NichtTraufnah`.
-  3. Eindeutigkeit als unterste Trauf-parallele Pfette im
-     Tragwerk — sonst `MehrdeutigImTragwerk` (Cross-Cutting).
-- **Edge Cases**:
-  - **Sparrendach mit Mauerlatte**: zulässig, aber statisch
-    nachrangig (siehe Wohldefiniertheit).
-  - **Pultdach**: nur eine Traufe, die untere Dachkante; die
-    Fußpfette liegt dort. Es gibt keine Firstpfette, sondern
-    eine Pultpfette an der Pultkante.
-  - **Walmdach**: vier Trauflinien; je Trauflinie maximal eine
-    Fußpfette. Die vier Fußpfetten verschiedener Dachseiten
-    treffen an den Eckpunkten zusammen (Eckverbindung).
-  - **Mehrere Fußpfetten am selben Trauflinienabschnitt**:
-    durch die Eindeutigkeitsbedingung ausgeschlossen.
-  - **Eingelassene Mauerlatte**: z_P liegt unterhalb von z_T;
-    in diesem Fall δ_z muss die Einlasstiefe abdecken.
-- **Abgeleitete Eigenschaften**:
-  - `getrageneSparrenfuesseIn(t: Tragwerk): List<Sparren>` —
-    Sparren in `t`, deren Sparrenfuß p_a auf der Fußpfetten-
-    achse innerhalb Toleranzen liegt.
-  - `verankerungsAbstand(): Double?` — typischer Achsabstand
-    der Mauerlatten-Anker (Bemessungs-Hilfsfunktion, falls
-    `istMauerlatteImEngerenSinne`).
 
 ## Quellen
 

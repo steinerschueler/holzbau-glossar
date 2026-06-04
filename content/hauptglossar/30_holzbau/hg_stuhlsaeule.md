@@ -24,10 +24,10 @@ quellen_sekundär:
   - "Wikipedia, Lemma 'Dachstuhl' (de.wikipedia.org/wiki/Dachstuhl): 'Bei einer hölzernen Stuhlkonstruktion in einem Dachtragwerk werden die Stützen beziehungsweise Stiele auch als Stuhlpfosten, Stuhlsäulen oder Binderstiele bezeichnet.'"
   - "Wikipedia, Lemma 'Stehender Stuhl' (de.wikipedia.org/wiki/Stehender_Stuhl) — einfach/doppelt/mehrfach stehend, Bauteil-Familie Stuhlsäule + Stuhlpfette + Stuhlschwelle + Kopfband + Fußband bildet die Stuhlwand."
   - "Wikipedia, Lemma 'Liegender Stuhl' — schräggestellte Stuhlsäulen mit Spannriegel; stützenfreier Dachraum."
-  - "Recherche-Bericht: docs/recherche/2026-05-16_tragglieder_vertikal.md §E."
+  - "Recherche-Bericht: [intern] §E."
 quellenkonflikt: |
   Sechs Punkte sind in der Recherche
-  (`docs/recherche/2026-05-16_tragglieder_vertikal.md` §E)
+  ([intern] §E)
   auflösungs-bedürftig und werden hier ausdrücklich festgelegt.
 
   **(1) Druck-Element-Charakter.** Die Stuhlsäule ist im
@@ -149,16 +149,16 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - P eine Stuhlpfette (Pfetten-Spezialisierung im Dachstuhl, im
   aktuellen Glossarstand Forward-Verweis `stuhlpfette`) mit
   Bauteilachse a(P) = (p_a^P, p_e^P),
 - T ein horizontaler Auflagerbalken (Stuhlschwelle, Geschoss-
   Deckenbalken oder Bundbalken) mit Bauteilachse a(T),
-- e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-- ε_L := Toleranzen.LAENGE_EPS,
-- ε_W := Toleranzen.WINKEL_EPS.
+- e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+- ε_L:= Toleranzen.LAENGE_EPS,
+- ε_W:= Toleranzen.WINKEL_EPS.
 
 Dann heißt B eine **Stuhlsäule** mit zugehöriger Stuhlpfette P und
 Auflagerbalken T genau dann, wenn die folgenden Bedingungen alle
@@ -213,11 +213,11 @@ erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Stuhlsäulenlänge**: L_SS := ‖p_e − p_a‖ (in mm).
-- **Stuhlsäulen-Neigung**: α := acos(⟨d_hat, e_z⟩) (in rad). Im
+- **Stuhlsäulenlänge**: L_SS:= ‖p_e − p_a‖ (in mm).
+- **Stuhlsäulen-Neigung**: α:= acos(⟨d_hat, e_z⟩) (in rad). Im
   stehenden Stuhl gilt α ≤ ε_W (Lotrechtheit); im liegenden Stuhl
   ist α > ε_W (typisch 15°–35° gegen die Lotachse).
-- **Stuhlsäulen-Variante**: V := stehend, wenn α ≤ ε_W; sonst
+- **Stuhlsäulen-Variante**: V:= stehend, wenn α ≤ ε_W; sonst
   liegend.
 
 ## Wohldefiniertheit
@@ -486,139 +486,6 @@ truss**".
     (zimmermannsmäßiges Dachtragwerk).
   - **Bauteil** (`bauteil`): Oberbegriff.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Punkt
-import kotlin.math.acos
-
-/**
- * Stuhlsäule als holz-spezifische Bauteilrolle: aufstrebendes Stab-
- * Bauteil im Dachstuhl mit Stuhlpfetten-Anschluss am Kopf und
- * Auflagerbalken-Anschluss (Stuhlschwelle / Deckenbalken /
- * Bundbalken) am Fuß. Druck-Element im Pfettendach mit Stuhl-
- * Konstruktion.
- *
- * Glossar: hg_stuhlsaeule.md
- *
- * Variante: stehender Stuhl (lotrecht) oder liegender Stuhl
- * (schräg). Diskriminierung über die Stuhlsäulen-Neigung gegen die
- * Lotachse.
- *
- * Holz-Exklusivität: konstitutiv. Im Stahl-/Stahlbeton-Tragwerk
- * existieren keine Stuhlsäulen.
- *
- * Vorzeichenkonvention: p_a = Fuß (am Auflagerbalken), p_e = Kopf
- * (an der Stuhlpfette).
- */
-data class Stuhlsaeule(
-    val bauteil: Bauteil,
-    val variante: StuhlsaeulenVariante = StuhlsaeulenVariante.UNBESTIMMT,
-) {
-    val achse: Bauteilachse.Gerade
-        get() = (bauteil.geometrie as Bauteilgeometrie.Stab).achse
-                as Bauteilachse.Gerade
-    val laenge: Double get() = achse.laenge          // mm
-    val richtung: Einheitsvektor get() = achse.richtung
-    val fuss: Punkt get() = achse.anfang
-    val kopf: Punkt get() = achse.ende
-
-    /** Neigung gegen die Lotachse e_z, in rad. */
-    val neigungGegenLot: Double
-        get() = acos(richtung.z.coerceIn(-1.0, 1.0))
-
-    fun istStehend(eps: Double = Toleranzen.WINKEL_EPS): Boolean =
-        neigungGegenLot <= eps
-}
-
-/**
- * Variante der Stuhlsäule: stehender Stuhl (lotrecht) oder
- * liegender Stuhl (schräg).
- *
- * Folgearbeit-Trigger für sealed-Subtypen StehendeStuhlsaeule und
- * LiegendeStuhlsaeule als bauteilrolle-Verschachtelung
- * (HG_KONVENTIONEN §3 erlaubt das).
- */
-enum class StuhlsaeulenVariante {
-    STEHEND,
-    LIEGEND,
-    UNBESTIMMT,
-}
-
-sealed class StuhlsaeuleEntartet {
-    object Nullachse                 : StuhlsaeuleEntartet()
-    object NichtAufstrebend          : StuhlsaeuleEntartet()  // p_a.z ≥ p_e.z
-    object KeinStuhlpfettenAnschluss : StuhlsaeuleEntartet()
-    object KeinAuflagerbalken        : StuhlsaeuleEntartet()
-    object PfetteNichtHorizontal     : StuhlsaeuleEntartet()
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (in der Factory `stuhlsaeuleAusBauteil(...)`
-  prüfen):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. p_a.z + Toleranzen.LAENGE_EPS < p_e.z — sonst
-     `NichtAufstrebend`.
-  4. Stuhlpfetten-Anschluss am Kopf: Punkt-Geraden-Abstand
-     ≤ Toleranzen.LAENGE_EPS — sonst `KeinStuhlpfettenAnschluss`.
-  5. Stuhlpfette horizontal: |⟨d_hat_P, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS
-     — sonst `PfetteNichtHorizontal`.
-  6. Auflagerbalken-Anschluss am Fuß: Punkt-Geraden-Abstand
-     ≤ Toleranzen.LAENGE_EPS — sonst `KeinAuflagerbalken`.
-- **Edge Cases**:
-  - **Stehende Stuhlsäule** (Lotrecht): typisch im einfach oder
-    doppelt stehenden Stuhl; Neigung gegen Lot ≤ Toleranzen.WINKEL_EPS.
-  - **Liegende Stuhlsäule** (schräg): typisch in der Sparrenebene
-    geneigt, mit Anschluss am Spannriegel oben statt direkter
-    Stuhlpfetten-Anschluss; die Definition lockert auf
-    Stuhlpfette ODER Spannriegel als oberes Auflager.
-  - **Mehrfach stehende Stuhlsäulen** (drei oder mehr Reihen): pro
-    Stuhlsäulen-Instanz eine eigene Stuhlpfette und Stuhlschwelle.
-  - **Stuhlsäule am First** (einfach stehender Stuhl): obere
-    Stuhlpfette ist die Firstpfette; konstruktive Sonderform.
-  - **Stuhlsäule mit Stuhlschwellen-Fuss vs. direkter Deckenbalken-
-    Fuss**: die Definition lässt beide Auflagerbalken-Typen zu
-    (Bedingung 5). In der historischen CH-Praxis (vor 1900) oft
-    direkter Deckenbalken-Auflauf ohne separate Stuhlschwelle.
-  - **Sehr kurze Stuhlsäule** (Zwerg-Stuhlsäule unter Kehlbalken-
-    Dach): zulässig, sofern die geometrischen und topologischen
-    Bedingungen 1–6 erfüllt sind.
-- **Folgearbeit-Trigger**:
-  - `hg_stuhlpfette.md`: Pfetten-Spezialisierung am Stuhlsäulen-
-    Kopf (analog `hg_firstpfette.md`/`hg_mittelpfette.md`/
-    `hg_fusspfette.md` aus Welle 8). Trigger: Welle-13-Folge.
-  - `hg_stuhlschwelle.md`: Schwelle-Spezialisierung am Stuhlsäulen-
-    Fuß; auch Welle-8-Folgearbeit-Trigger aus `hg_schwelle.md`.
-  - `hg_stuhlwand.md`: Bauteilgruppe aus Stuhlsäule + Stuhlpfette
-    + Stuhlschwelle + Kopfband + Fußband. Trigger:
-    Dachstuhl-Aggregat-Verfeinerung.
-  - `hg_spannriegel.md`: Querholz im liegenden Stuhl. Trigger:
-    Liegender-Stuhl-Folgearbeit oder Hängewerk-Folgearbeit.
-  - `hg_stehender_stuhl.md` und `hg_liegender_stuhl.md`:
-    Aggregate / Bauteilgruppen, die die Stuhlsäulen-Varianten
-    konstruktiv umfassen. Trigger: erste konkrete Dachstuhl-Tool-
-    Modellierung.
-  - `hg_stuhl.md` (Welle-12-Folgearbeit aus `hg_dachstuhl.md`):
-    Stütz-Bauteilgruppe, Lesart 1 von „Dachstuhl".
-  - `hg_strebesaeule.md`: Strebe-/Säule-Mischform; TTH-Sub-Lemma
-    1922. Trigger: Klärung TTH-Sub-Lemma.
-  - **Stuhlsäulenkopf-Kämpfer**: Konstruktionsdetail-Eintrag
-    (analog `hg_konstruktionsdetail.md`). Trigger: erste
-    Detail-Modellierung.
-  - **SIA-265-Verifikation**: bei Volltext-Zugriff (Eric) SIA
-    265:2021 §1.1 Fachausdrücke direkt prüfen.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -649,10 +516,10 @@ sealed class StuhlsaeuleEntartet {
 - Wikipedia, Lemmata „Dachstuhl", „Stehender Stuhl", „Liegender
   Stuhl", „Liste von Fachbegriffen des Zimmererhandwerks"
   (abgerufen 2026-05-16).
-- Recherche-Bericht: `docs/recherche/2026-05-16_tragglieder_vertikal.md` §E.
+- Recherche-Bericht: [intern] §E.
 
 **Korpus (nicht autoritativ):**
 
-- baunetzwissen.de „Dachstuhl-Konstruktionen" (HTTP 403 blockiert).
+- baunetzwissen.de „Dachstuhl-Konstruktionen".
 - dach24.online „Der Dachstuhl: Arten, Konstruktion und Kosten".
 - fertighauswelt.de „Der Dachstuhl".

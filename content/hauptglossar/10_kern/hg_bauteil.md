@@ -53,13 +53,11 @@ quellenkonflikt: |
     `gerichteter_plattenwerkstoff` über `plattenlaengsrichtung`
     (Pflicht); bei `isotroper_plattenwerkstoff` keine
     Faserrichtung in Plattenebene (semantisch nicht definiert,
-    nur `plattendicken_achse`). Siehe Memory
-    `project_faserrichtung_modi`.
+    nur `plattendicken_achse`). Siehe.
   - Verbindungsmittel (Nägel, Schrauben, Bolzen, Stabdübel) zählen
     in dieser App nicht als Bauteile, sondern bilden eigene
     Element-Subklassen unter `element` — siehe `verbindungsmittel`,
-    `verbinder`, `verstaerkungselement` (Memory
-    `project_element_ontologie`).
+    `verbinder`, `verstaerkungselement`.
 
   Spezialisierungen (Stab-, Flächen-, Volumenbauteil) und konkrete
   Bauteilrollen (Sparren, Pfette, Stütze, Strebe, Schalung,
@@ -110,22 +108,22 @@ Sei
     Faserplatte),
   - `werkstoff_stahl` (typisch nicht für Holzbau-Bauteile, Ausnahme
     z. B. Stahltragglieder in Mischsystemen);
-  - 𝒲 := axiales_holz ∪ mehrlagenholz ∪ gerichteter_plattenwerkstoff
+  - 𝒲:= axiales_holz ∪ mehrlagenholz ∪ gerichteter_plattenwerkstoff
     ∪ isotroper_plattenwerkstoff ∪ werkstoff_stahl,
 - 𝒢 die Menge der zulässigen Geometrie-Repräsentationen, gegliedert
   nach Dominanzdimension:
-  - 𝒢_stab : Achse + Querschnitt (1D-dominant; Repräsentation
+  - 𝒢_stab: Achse + Querschnitt (1D-dominant; Repräsentation
     siehe `bauteilachse`, eigener Eintrag folgt),
-  - 𝒢_flaeche : begrenzte Trägerfläche + Dicke (2D-dominant;
+  - 𝒢_flaeche: begrenzte Trägerfläche + Dicke (2D-dominant;
     Repräsentation über `ebene`, `polygon` und einen Dickenwert),
-  - 𝒢_volumen : Polyeder (3D, allgemein; Repräsentation siehe
+  - 𝒢_volumen: Polyeder (3D, allgemein; Repräsentation siehe
     `polyeder`, eigener Eintrag folgt),
-  - 𝒢 := 𝒢_stab ∪ 𝒢_flaeche ∪ 𝒢_volumen.
+  - 𝒢:= 𝒢_stab ∪ 𝒢_flaeche ∪ 𝒢_volumen.
 
 Dann ist ein **Bauteil** ein Tupel
 
 ```
-B := (uuid, positionsnummer?, produktkennzeichnung?,
+B:= (uuid, positionsnummer?, produktkennzeichnung?,
       lage, geometrie, werkstoff, annotationen)
 ```
 
@@ -133,7 +131,7 @@ mit den von `element` ererbten Identifikatoren
 
 - **uuid** ∈ 𝒰 (Pflicht, technischer Surrogatschlüssel, persistent;
   alle Foreign Keys anderer Domänenobjekte zeigen ausschließlich auf
-  diese UUID, siehe Memory `project_bauteil_identifikation`),
+  diese UUID, siehe),
 - **positionsnummer** ∈ ℘ ∪ {⊥} (optional, mutable, humanlesbarer
   Geschäftsschlüssel für Werkpläne und Baustelle),
 - **produktkennzeichnung** ∈ ℘𝒦 ∪ {⊥} (optional, normierte Material-/
@@ -156,7 +154,7 @@ und den bauteil-spezifischen Pflicht- und Optionalfeldern
 Die Punktmenge des Bauteils im Weltkoordinatensystem ist
 
 ```
-G_W(B) := { lage(p) | p ∈ G_lokal(geometrie) } ⊂ ℝ³,
+G_W(B):= { lage(p) | p ∈ G_lokal(geometrie) } ⊂ ℝ³,
 ```
 
 wobei G_lokal(geometrie) die durch die jeweilige Geometrie-
@@ -166,8 +164,7 @@ Trägerfläche fortgesetzt zu einem Volumen über die Dicke;
 Polyeder selbst).
 
 Die Annotationen 𝒜 sind ein Tupel, **dessen Pflichtfeld-Profil von
-der Werkstoff-Subklasse bestimmt wird** (Memory
-`project_faserrichtung_modi`; siehe `faserrichtungs_modus`):
+der Werkstoff-Subklasse bestimmt wird**:
 
 | Werkstoff-Subklasse              | Modus         | Pflicht-Annotationen                                  |
 |----------------------------------|---------------|-------------------------------------------------------|
@@ -180,8 +177,7 @@ In jedem Modus zusätzlich optional:
 
 - **vorzugsseite?** ∈ {Oberseite, Unterseite, beidseitig markiert}
   ∪ {⊥}: optionale Seitenorientierung — `vorzugsseite` ist immer
-  optional, weil nicht alle Plattenwerkstoffe eine Sichtseite haben
-  (Memory `project_plattenwerkstoffe`); ⊥ für seitenisotrope Bauteile.
+  optional, weil nicht alle Plattenwerkstoffe eine Sichtseite haben; ⊥ für seitenisotrope Bauteile.
 - **festigkeitsklasse?**: Werkstoff-Festigkeitsklasse nach
   EN 14081-1, EN 14080 etc. (z. B. C24, GL24h, BSP-Q3) — siehe
   `festigkeitsklasse` — oder ⊥.
@@ -204,7 +200,7 @@ ebenfalls unzulässig.
   (Identität), geometrie ∈ 𝒢_stab, werkstoff ∈ axiales_holz,
   faserrichtung = lokale x-Achse, alle übrigen Optionalfelder = ⊥.
 - **Eindeutigkeit der Identität**: Innerhalb eines Modells gilt
-  ∀ B₁, B₂ : (B₁ ≠ B₂) ⇒ (B₁.uuid ≠ B₂.uuid). Die UUID ist
+  ∀ B₁, B₂: (B₁ ≠ B₂) ⇒ (B₁.uuid ≠ B₂.uuid). Die UUID ist
   konstruktionsseitig zu vergeben (UUID v7 nach RFC 9562) und
   persistent über den gesamten Lebenszyklus. Die optionale
   Positionsnummer ist mutable und unterliegt keiner Foreign-Key-
@@ -212,8 +208,7 @@ ebenfalls unzulässig.
 - **Unabhängigkeit von der Wahl des lokalen Bauteil-Koordinaten-
   systems**: Für jede zulässige Wahl des lokalen Systems liefert die
   zugehörige Lage SE(3)-Transformation dieselbe Punktmenge G_W(B).
-  Die Wahl des lokalen Systems ist Modellierungskonvention (siehe
-  Implementierungshinweis); semantisch invariant.
+  Die Wahl des lokalen Systems ist Modellierungskonvention; semantisch invariant.
 - **Konsistenz Werkstoff ↔ Annotationen** (werkstoffklassen-
   spezifische Pflichtfelder, siehe `faserrichtungs_modus`):
   - Bei `werkstoff` ∈ axiales_holz: `faserrichtung` ∈ S² ist Pflicht
@@ -272,7 +267,7 @@ gegliedert** statt monolithisch:
 Welcher Richtungsbegriff am Bauteil pflichtig ist (`faserrichtung`,
 `haupttragrichtung`, `plattenlaengsrichtung`, oder keiner), wird
 durch die Werkstoff-Subklasse bestimmt (siehe
-`faserrichtungs_modus`, Memory `project_faserrichtung_modi`):
+`faserrichtungs_modus`):
 
 - `axiales_holz` (Vollholz, KVH, BSH, LVL): einzelner
   `faserrichtung`-Vektor — Pflicht.
@@ -286,13 +281,13 @@ durch die Werkstoff-Subklasse bestimmt (siehe
 
 **Vorzugsseite bleibt optional**, weil viele Plattenwerkstoffe (auch
 solche mit Faserrichtung wie OSB) keine ausgezeichnete Sichtseite
-haben (Memory `project_plattenwerkstoffe`). Die Optionalität der
+haben. Die Optionalität der
 Vorzugsseite ist eine eigenständige Modellierungs-Festlegung, nicht
 gekoppelt an die Faserrichtungs-Modi.
 
 **Verbindungsmittel, Verbinder und Verstärkungselemente sind keine
 Bauteile**, sondern eigene Element-Subklassen unter dem gemeinsamen
-Oberbegriff `element` (Memory `project_element_ontologie`):
+Oberbegriff `element`:
 
 - `verbindungsmittel` (Nagel, Schraube, Bolzen, Stabdübel, Klammer,
   Holzdübel, Klebung): das einzelne kraftübertragende Stück;
@@ -416,189 +411,6 @@ Aggregat-Oberbegriff (`bauteil_aggregat`, eigener Eintrag folgt).
     Verbindungsmitteln + Verbindern + Verstärkungen an einem
     Knotenpunkt; keine Element-Subklasse, sondern eigene
     Aggregat-Hierarchie.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.bauteil.Element
-import domain.bauteil.Geometrie
-import domain.bauteil.LokalePlatzierung
-import domain.holzbau.Einheitsvektor
-import domain.holzbau.Faserrichtung
-import domain.holzbau.Lagenstruktur
-import domain.holzbau.Positionsnummer
-import domain.holzbau.Produktkennzeichnung
-import domain.holzbau.Werkstoff
-import java.util.UUID
-
-/** Geometrie-Repräsentation, klassifiziert nach Dominanzdimension. */
-sealed interface Bauteilgeometrie : Geometrie {
-    /** 1D-dominant: Achse + Querschnitt. Achse-Eintrag folgt. */
-    data class Stab(val achse: Bauteilachse, val querschnitt: Querschnitt) : Bauteilgeometrie
-    /** 2D-dominant: Trägerfläche + Dicke. */
-    data class Flaeche(val traeger: Trägerflaeche, val dicke: Double) : Bauteilgeometrie
-    /** 3D-allgemein: Polyeder. Eintrag folgt. */
-    data class Volumen(val polyeder: Polyeder) : Bauteilgeometrie
-}
-
-/** Optionale Seitenorientierung; null für seitenisotrope Bauteile. */
-enum class Seitenorientierung { OBERSEITE_MARKIERT, UNTERSEITE_MARKIERT, BEIDSEITIG_UNTERSCHIEDLICH }
-
-/**
- * Werkstoffklassen-spezifisches Annotations-Tupel. Der Subtyp wird
- * durch die Werkstoff-Subklasse bestimmt (harte Invariante, siehe
- * Memory `project_faserrichtung_modi`).
- */
-sealed class BauteilAnnotationen {
-    /** axiales_holz: Vollholz, KVH, BSH, LVL. */
-    data class Axial(val faserrichtung: Faserrichtung) : BauteilAnnotationen()
-    /** mehrlagenholz: BSP/CLT, Sperrholz, Multiplex. */
-    data class Mehrlagig(
-        val lagenstruktur: Lagenstruktur,
-        val haupttragrichtung: Einheitsvektor
-    ) : BauteilAnnotationen()
-    /** gerichteter_plattenwerkstoff: OSB. */
-    data class Gerichtete_Platte(
-        val plattenlaengsrichtung: Einheitsvektor
-    ) : BauteilAnnotationen()
-    /** isotroper_plattenwerkstoff: Spanplatte, MDF, HDF, Faserplatte. */
-    data class Isotrope_Platte(
-        val plattendicken_achse: Einheitsvektor
-    ) : BauteilAnnotationen()
-}
-
-/**
- * Generisches Bauteil. Konkrete Bauteilrollen (Sparren, Pfette,
- * Stütze, Strebe, Schalung, Plattenwerkstoff, BSP-Element) sind
- * Spezialisierungen mit zusätzlichen Constraints.
- *
- * Glossar: hg_bauteil.md
- *
- * Pflichtfelder (ererbt aus Element bzw. werkstoffklassen-spezifisch):
- * uuid, werkstoff, geometrie, lokalePlatzierung, annotationen.
- * Optional: positionsnummer, produktkennzeichnung, bezeichnung.
- *
- * Falls die Element-Basis als `sealed class` modelliert ist, statt
- * `: Element` durch `: Element()` ersetzen; das Schema bleibt gleich.
- */
-data class Bauteil(
-    override val uuid: UUID,                                  // Element, Pflicht (RFC 9562 v7)
-    override val positionsnummer: Positionsnummer? = null,    // Element, mutable, optional
-    override val produktkennzeichnung: Produktkennzeichnung? = null,  // Element, optional
-    override val werkstoff: Werkstoff,                        // Element, Pflicht
-    override val geometrie: Geometrie,                        // Element
-    override val lokalePlatzierung: LokalePlatzierung,        // Element
-    val annotationen: BauteilAnnotationen,                    // werkstoffklassen-spezifisch
-    val bezeichnung: String? = null,
-) : Element {
-    companion object {
-        /**
-         * Konstruktor-Helper: erzeugt ein Bauteil mit frisch
-         * generierter UUID v7. Die uuid7-Generierung liegt in der
-         * Persistenzschicht; hier inline als Platzhalter angedeutet.
-         */
-        fun neu(
-            werkstoff: Werkstoff,
-            geometrie: Geometrie,
-            lokalePlatzierung: LokalePlatzierung,
-            annotationen: BauteilAnnotationen,
-            positionsnummer: Positionsnummer? = null,
-            produktkennzeichnung: Produktkennzeichnung? = null,
-            bezeichnung: String? = null,
-        ): Bauteil = Bauteil(
-            uuid = uuid7Generieren(),  // siehe Persistenzschicht
-            positionsnummer = positionsnummer,
-            produktkennzeichnung = produktkennzeichnung,
-            werkstoff = werkstoff,
-            geometrie = geometrie,
-            lokalePlatzierung = lokalePlatzierung,
-            annotationen = annotationen,
-            bezeichnung = bezeichnung,
-        )
-    }
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant; Lage
-  als SE(3)-Element (Rotation + Translation, siehe `lage`/Folgearbeit).
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7);
-  Vergabe beim Konstruieren des Bauteils, nicht aus Geometrie
-  abgeleitet. Verbindungen, Bemessungen und Anschlussdetails
-  referenzieren Bauteile ausschließlich über `uuid`, nicht über
-  Geometrie-Vergleich. Foreign-Key-Regel siehe Memory
-  `project_bauteil_identifikation`.
-- **Pflicht- und Optionalfelder (normativ)**:
-  - `annotationen: BauteilAnnotationen` — Pflicht; der Subtyp ist
-    durch die Werkstoff-Subklasse bestimmt (harte Invariante,
-    siehe unten). Niemals weglassen, niemals Defaults der
-    werkstoffklassen-fremden Modi setzen.
-  - `positionsnummer: Positionsnummer?` — `null` zulässig
-    (mutable, humanlesbarer Geschäftsschlüssel).
-  - `produktkennzeichnung: Produktkennzeichnung?` — `null` zulässig
-    während des Entwurfsstadiums (z. B. vor Materialbestellung).
-  - `bezeichnung: String?` — `null` zulässig; Anzeige fällt dann auf
-    `uuid`, `positionsnummer` oder Bauteilrolle zurück.
-- **Invarianten** (im `init`-Block bzw. in Fabrikfunktionen prüfen,
-  bei Verletzung `Resultat.Fehler` bzw. `Entartet`-Variante; niemals
-  Exception werfen):
-  1. Norm-Invariante aller in `annotationen` enthaltenen
-     Einheitsvektoren (`faserrichtung`, `haupttragrichtung`,
-     `plattenlaengsrichtung`, `plattendicken_achse`):
-     | ‖v_hat‖² − 1 | ≤ Toleranzen.NORM_EPS (geerbt von
-     `einheitsvektor`).
-  2. Geometrie-spezifische Nicht-Degeneriertheit:
-     - Stab: Achsenlänge > Toleranzen.LAENGE_EPS,
-       Querschnitt-Fläche > Toleranzen.FLAECHE_EPS.
-     - Fläche: Trägerflächeninhalt > Toleranzen.FLAECHE_EPS,
-       Dicke > Toleranzen.LAENGE_EPS.
-     - Volumen: Polyeder-Volumen > Toleranzen.VOLUMEN_EPS.
-  3. Werkstoff ↔ Annotationen: Diese Konsistenz ist eine **harte**
-     Invariante (Validierungsfehler bei Verstoß): das
-     Annotations-Subtyp muss zum Werkstoff passen
-     (`axiales_holz` ↔ `Axial`,
-     `mehrlagenholz` ↔ `Mehrlagig`,
-     `gerichteter_plattenwerkstoff` ↔ `Gerichtete_Platte`,
-     `isotroper_plattenwerkstoff` ↔ `Isotrope_Platte`).
-     Bei Verstoß `Resultat.Fehler` bzw.
-     `Entartet.WerkstoffAnnotationenInkonsistent` zurückgeben.
-     Plausibilitätsprüfungen gegen die Belastung (z. B. Sparren
-     rechtwinklig zur Faser belastet) sind weiche Invarianten in
-     der Bemessungs-Schicht.
-- **Edge Cases**:
-  - **Bauteil ohne festgelegte Lage**: nicht erlaubt; Lage ist
-    Pflichtfeld (mindestens Identität in SE(3)).
-  - **Bauteil mit isotropem Plattenwerkstoff** (Spanplatte, MDF):
-    `annotationen = BauteilAnnotationen.Isotrope_Platte(...)`
-    mit ausschließlich `plattendicken_achse`; in der Plattenebene
-    keine Faserrichtung (siehe Memory `project_faserrichtung_modi`).
-  - **Bauteil mit beidseitig unterschiedlicher Sichtseite**
-    (z. B. einseitig beschichtete Spanplatte): die Vorzugsseite
-    wird, falls modelliert, separat geführt (eigener Eintrag
-    `vorzugsseite` folgt); Geometrieseite oben/unten ist durch
-    Trägerfläche-Normale festgelegt.
-  - **Verbindungsmittel-Modellierung**: NICHT als Bauteil
-    instanziieren; eigene Klasse `Verbindungsmittel`
-    (Folgearbeit).
-  - **Aggregate**: NICHT als Bauteil instanziieren; eigene Klasse
-    `BauteilAggregat` (Folgearbeit).
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `geometrieInWelt(): GeometrieInW` — Geometrie unter Anwendung
-    der Lage transformiert nach W.
-  - `boundingBox(): AABB` — achsenparalleler Hüllquader in W.
-  - `volumen(): Double` (mm³) — abhängig von Geometrie-Variante.
-  - `faserwinkelZu(r: Einheitsvektor): Double?` — liefert Winkel
-    zwischen Faserrichtung (bzw. werkstoffklassen-spezifischer
-    Hauptrichtung im Annotations-Subtyp) und Referenzrichtung r;
-    `null` bei `BauteilAnnotationen.Isotrope_Platte`, weil in der
-    Plattenebene keine Richtung definiert ist.
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `Bauteil` (deutsch, Glossarbegriff); Spezialisierungen heißen
-  `Sparren`, `Pfette` etc. (deutsch). Technische Hilfstypen heißen
-  englisch (`UUID`, `Lage`, `AABB`).
 
 ## Quellen
 

@@ -137,7 +137,7 @@ quellenkonflikt: |
   (`hg_verbindung.md`, `VerbindungsTyp.ZimmermannsmaessigerAnschluss`),
   nicht durch einen eigenen Aggregat-Eintrag
   `zapfen_verbindung` (siehe Recherche-Bericht
-  `docs/recherche/2026-05-14_hg_zapfen.md` §H). Der
+  [intern] §H). Der
   Erläuterungs-Block beider Einträge trägt dasselbe Material
   zur Zapfenverbindung als Gesamtkonzept.
 ---
@@ -173,12 +173,12 @@ Sei
   oder einer anderen kanonischen Wahl, sodass der
   Werkzeugkörper bei positiver Lochtiefe in den Bauteilkörper
   hinein zeigt,
-- ε_L := Toleranzen.LAENGE_EPS, ε_W := Toleranzen.WINKEL_EPS.
+- ε_L:= Toleranzen.LAENGE_EPS, ε_W:= Toleranzen.WINKEL_EPS.
 
 Die **Parameter** eines Zapfenlochs sind das Tupel
 
 ```
-p_ZL := (F, u_0, v_0, b, h, t, ψ, variante, κ)                    (1)
+p_ZL:= (F, u_0, v_0, b, h, t, ψ, variante, κ)                    (1)
 ```
 
 mit
@@ -228,7 +228,7 @@ Sei R(ψ) ∈ SO(2) die ebene Rotation um ψ; das Loch-Rechteck in
 der Bezugsfläche ist
 
 ```
-□_F  :=  { (u, v) ∈ ℝ² |
+□_F:=  { (u, v) ∈ ℝ² |
            |u − u_0|_R(ψ) ≤ b/2  und  |v − v_0|_R(ψ) ≤ h/2 }       (2)
 ```
 
@@ -238,14 +238,14 @@ Für die **Standard-Variante** ist der Werkzeugkörper das
 gerade Prisma
 
 ```
-K_ZL^Standard  :=  □_F × [0, t]   ⊂   ℝ² × ℝ⁺                     (3)
+K_ZL^Standard:=  □_F × [0, t]   ⊂   ℝ² × ℝ⁺                     (3)
 ```
 
 im Flächen-Koordinatensystem, wobei die dritte Komponente die
 Tiefe in Richtung e_hat_n^F ist. In Bauteil-Lokal-Koordinaten:
 
 ```
-K_ZL^Standard(B, p_ZL)  :=  T_F→B( □_F × [0, t] ).                (4)
+K_ZL^Standard(B, p_ZL):=  T_F→B(□_F × [0, t]).                (4)
 ```
 
 Für die **Schwalbenschwanz-Variante** (DovetailMortise) ist
@@ -253,14 +253,14 @@ der Werkzeugkörper ein Pyramidenstumpf mit zur Eintrittsfläche
 hin schmäler werdendem Querschnitt:
 
 ```
-K_ZL^Schwalbenschwanz  :=  { (u, v, z) ∈ ℝ³ |  0 ≤ z ≤ t,
+K_ZL^Schwalbenschwanz:=  { (u, v, z) ∈ ℝ³ |  0 ≤ z ≤ t,
    (u, v) ∈ □_F^{ψ, b(z), h} }                                    (5)
 ```
 
 mit
 
 ```
-b(z)  :=  b  −  2 · z · tan(κ),   (Loch verengt sich nach innen
+b(z):=  b  −  2 · z · tan(κ),   (Loch verengt sich nach innen
                                    in u-Richtung um den Konus κ),
 ```
 
@@ -275,7 +275,7 @@ körper die Vereinigung des Standard-Werkzeugkörpers mit einer
 zusätzlichen flachen Anlagestufe an der Bezugsfläche:
 
 ```
-K_ZL^Haus  :=  K_ZL^Standard  ∪  □_F^{Haus} × [0, t_Haus],         (6)
+K_ZL^Haus:=  K_ZL^Standard  ∪  □_F^{Haus} × [0, t_Haus],         (6)
 ```
 
 mit einem grösseren Rechteck □_F^{Haus} ⊃ □_F (Schultern der
@@ -289,14 +289,14 @@ In allen Varianten ist die **Wirkung** des Zapfenlochs auf das
 Bauteil B die Boole'sche Differenz nach `bearbeitung`:
 
 ```
-G_B'(F)  :=  G_B^lokal  \  K_ZL^{variante}(B, p_ZL).               (7)
+G_B'(F):=  G_B^lokal  \  K_ZL^{variante}(B, p_ZL).               (7)
 ```
 
 Damit ist ein **Zapfenloch** (als Subtyp von `bearbeitung`)
 das Tupel
 
 ```
-F_ZL  :=  (uuid, typ = Zapfenloch, parameter = p_ZL,
+F_ZL:=  (uuid, typ = Zapfenloch, parameter = p_ZL,
           lokale_platzierung = id_SE(3), bezeichnung?)             (8)
 ```
 
@@ -651,159 +651,6 @@ Fertigungs-Schicht.
     ein eigenes Element (Verbindungsmittel), nicht Teil des
     Zapfenlochs.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.bauteil.bearbeitung`):
-
-```kotlin
-package domain.bauteil.bearbeitung
-
-import domain.geometrie.LokalePlatzierung
-import java.util.UUID
-
-/**
- * Zapfenloch: rechteckige (oder schwalbenschwanzförmige)
- * prismatische Aussparung am Trägerbauteil zur Aufnahme eines
- * Zapfens (siehe `Zapfen`).
- *
- * Glossar: hg_zapfenloch.md.
- *
- * Phase 4.x (Folgearbeit, Trigger: Stuhlsäulen-Pfetten-
- * Anschluss).
- */
-data class Zapfenloch(
-    override val uuid: UUID,
-    /** Bezugsfläche am Bauteil (BezugsflaechenId; eine der
-     *  sechs Aussenflächen des Quader-Bauteilkörpers). */
-    val bezugsflaeche: BezugsflaechenId,
-    /** Lochmittelpunkt in u-Richtung der Bezugsfläche, in mm. */
-    val u0: Double,
-    /** Lochmittelpunkt in v-Richtung der Bezugsfläche, in mm. */
-    val v0: Double,
-    /** Lochbreite in u-Richtung, in mm. */
-    val breite: Double,
-    /** Lochhöhe in v-Richtung, in mm. */
-    val hoehe: Double,
-    /** Lochtiefe in Richtung der inneren Flächen-Normalen, in mm. */
-    val tiefe: Double,
-    /** Drehwinkel des Loch-Rechtecks gegen die u-Achse der
-     *  Bezugsfläche, in Radiant. Standard 0.0. */
-    val drehwinkel: Double = 0.0,
-    /** Geometrievariante: Standard, Schwalbenschwanz, Haus. */
-    val variante: ZapfenlochVariante = ZapfenlochVariante.STANDARD,
-    /** Konuswinkel der Schwalbenschwanz-Variante, in Radiant.
-     *  Bei variante = Standard / Haus erzwungen 0.0. */
-    val konuswinkel: Double = 0.0,
-    override val lokalePlatzierung: LokalePlatzierung = LokalePlatzierung.IDENTITAET,
-    override val bezeichnung: String? = null,
-) : Bearbeitung
-```
-
-- **Einheit**: Längen (u_0, v_0, b, h, t) in mm (Double);
-  Winkel (ψ, κ) intern in Radiant (Anzeige in Grad).
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7),
-  unabhängig vom zugeordneten Bauteil.
-- **Keine Backref auf das Bauteil**: analog zu `kerve` und
-  `bearbeitung`. Die Beziehung Zapfenloch → Bauteil ist
-  partitive Komposition; das Bauteil hält seine Zapfenlöcher
-  als Element seiner Bearbeitungs-Liste. Die Auflösung
-  „zu welchem Bauteil gehört diese Zapfenloch-UUID?" ist
-  Repository-Aufgabe.
-- **Bezugsflächen-Adressierung**: `BezugsflaechenId` ist ein
-  enum-artiges Wertobjekt, das eine der Aussenflächen des
-  Bauteilkörpers benennt (typisch sechs Werte beim Quader-
-  Bauteil: `LAENGSSEITE_OBEN`, `LAENGSSEITE_UNTEN`,
-  `LAENGSSEITE_LINKS`, `LAENGSSEITE_RECHTS`,
-  `STIRNSEITE_ANFANG`, `STIRNSEITE_ENDE`). Die konkrete
-  Geometrie der Bezugsfläche (Ursprung, e_hat_u^F, e_hat_v^F, e_hat_n^F)
-  wird aus dem Bauteil-Lokal-System und dem
-  Bauteil-Querschnitt abgeleitet.
-- **Lebenszyklus / Komposition**: identisch zu `kerve` und
-  `bearbeitung`.
-- **Pflicht- und Optionalfelder (normativ)**:
-  - `uuid` — Pflicht, niemals null.
-  - `bezugsflaeche`, `u0`, `v0`, `breite`, `hoehe`, `tiefe` —
-    Pflicht.
-  - `drehwinkel` — Default 0.0.
-  - `variante` — Default `STANDARD`.
-  - `konuswinkel` — Default 0.0; bei variante ≠ Schwalbenschwanz
-    in der Fabrik-Validierung auf 0.0 zwangsgesetzt.
-  - `lokalePlatzierung` — Default `LokalePlatzierung.IDENTITAET`.
-  - `bezeichnung` — `null` zulässig.
-- **Invarianten** (in der Fabrikfunktion
-  `Zapfenloch.aus(...)` und beim Anhängen
-  `Bauteil.mitBearbeitung(zl)` prüfen; bei Verletzung
-  `Resultat.Fehler` mit subtypspezifischer Variante; niemals
-  Exception werfen):
-  1. `breite > Toleranzen.LAENGE_EPS` →
-     `ZapfenlochBreiteUngueltig`.
-  2. `hoehe > Toleranzen.LAENGE_EPS` →
-     `ZapfenlochHoeheUngueltig`.
-  3. `tiefe > Toleranzen.LAENGE_EPS` →
-     `ZapfenlochTiefeUngueltig`.
-  4. `tiefe < d_F(B) - Toleranzen.LAENGE_EPS` (bauteil-relativ,
-     beim Anhängen geprüft) → andernfalls
-     `ZapfenlochTiefeAusserhalbBauteil`.
-  5. Loch-Rechteck vollständig innerhalb der Bezugsfläche
-     (bauteil-relativ, beim Anhängen geprüft) → andernfalls
-     `ZapfenlochAusserhalbBezugsflaeche`.
-  6. `variante == SCHWALBENSCHWANZ ⇒ 0 < konuswinkel ≤ π/4`
-     und `breite - 2 * tiefe * tan(konuswinkel) >
-     Toleranzen.LAENGE_EPS` →
-     `SchwalbenschwanzKonusUngueltig`.
-  7. `variante in {STANDARD, HAUS} ⇒ konuswinkel == 0.0`
-     (strukturell durch Datentyp-Wahl erzwungen oder in
-     Fabrik-Validierung auf 0.0 zwangsgesetzt).
-- **Berechnung der bearbeiteten Bauteilgeometrie**: lazy on
-  demand in der Geometrie-Schicht (analog zu `kerve`); die
-  Domänen-Schicht hält ausschliesslich die Parameter.
-- **BTLx-Export** (Phase 4): Mapping nach der Tabelle in der
-  Erläuterung; Mortise / DovetailMortise / HouseMortise /
-  JapaneseMortise.
-- **IFC-Export** (Phase 4): `IfcOpeningElement` mit eigener
-  `GlobalId` (= Zapfenloch-UUID, Base64-kodiert nach
-  ISO/IEC 9834-8); Wirkung via `IfcRelVoidsElement` auf das
-  Trägerbauteil.
-- **Edge Cases**:
-  - **Durchgehendes Zapfenloch** (t = d_F(B) − ε_L): zulässig,
-    aber die Bemessungs-Schicht warnt, dass damit kein
-    Restholz unter dem Loch verbleibt und EC5 §6.5 Schub
-    nicht direkt anwendbar ist. Eine echte Durchstemmung
-    (t = d_F(B)) ist in der App als `schlitz` (Folgearbeit)
-    zu modellieren, sobald der Schlitz-Eintrag vorliegt.
-  - **Schwalbenschwanz-Zapfenloch mit Konuswinkel 0**:
-    strukturell unzulässig (würde die Variante semantisch
-    auf Standard reduzieren); in der Fabrik-Validierung
-    abgelehnt.
-  - **Mehrere überlappende Zapfenlöcher**: zulässig (analog
-    zu mehreren überlappenden Bearbeitungen in
-    `bearbeitung`); semantisch egal in der Aggregation, aber
-    in der Praxis ungewöhnlich.
-  - **Zapfenloch an einem Bauteil ohne ebene Bezugsfläche**
-    (krumme Bauteilkörper, NURBS-Bauteile): in der ersten
-    Tool-Phase ausgeschlossen; das Zapfenloch ist nur an
-    quaderförmig idealisierten Bauteilen definiert. Die
-    Erweiterung auf krumme Bezugsflächen ist Folgearbeit.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `werkzeugkoerper(): Polyeder` —
-    K_ZL^{variante}(B, p_ZL) im Bauteil-Lokal-System;
-    variantenspezifische Implementierung (Quader,
-    Pyramidenstumpf, Quader + Anlagestufe).
-  - `oeffnungsrechteck(): Polygon` — □_F nach (2) in der
-    Bezugsfläche; nützlich für die Visualisierung.
-  - `lochwand_normal(): Einheitsvektor` — e_hat_n^F; Hauptachse
-    des Querdruck-Nachweises an der Lochwand.
-  - `querdruck_lochflaeche(): Double` — Fläche der
-    drucktragenden Lochwand (b · h für Standard); Bemessungs-
-    Schicht (EC5 §6.1.5).
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heisst
-  `Zapfenloch` (deutsch, Glossarbegriff); Variantenenum heisst
-  `ZapfenlochVariante` mit Werten `STANDARD`,
-  `SCHWALBENSCHWANZ`, `HAUS`. Die Bezugsflächen-Adresse
-  `BezugsflaechenId` ist ein eigener Wertbegriff (Folgearbeit,
-  ggf. eigener Glossar-Hilfsbegriff).
-
 ## Quellen
 
 **Primär (normativ):**
@@ -859,6 +706,6 @@ data class Zapfenloch(
 - zimmerer-treff.com, „Zapfenverbindungen".
 - schreiner-seiten.de, „Schlitz und Zapfen".
 - Recherche-Bericht
-  `docs/recherche/2026-05-14_hg_zapfen.md` (interner Anker
+  [intern] (interner Anker
   für die Quellen-Synthese, einschliesslich Sandbox-blockierter
   Norm-Volltexte).

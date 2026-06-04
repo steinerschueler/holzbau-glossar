@@ -75,11 +75,11 @@ Sei
   g_{ij} ⊂ ℝ³ (Schnittgerade der Trägerebenen),
 - F(P_i) ⊂ E_i und F(P_j) ⊂ E_j die berandeten abgeschlossenen
   Flächenstücke,
-- s_{ij} := F(P_i) ∩ F(P_j) die gemeinsame Schnittstrecke (vgl.
+- s_{ij}:= F(P_i) ∩ F(P_j) die gemeinsame Schnittstrecke (vgl.
   `first`),
 - e_z = (0, 0, 1)ᵀ die vertikale Achse,
-- ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz,
-- ε_L := Toleranzen.LAENGE_EPS die Längentoleranz.
+- ε_W:= Toleranzen.WINKEL_EPS die Winkeltoleranz,
+- ε_L:= Toleranzen.LAENGE_EPS die Längentoleranz.
 
 Sei ℓ(s_{ij}) > ε_L und t_hat der Einheits-Tangentenvektor von s_{ij},
 mit der Konvention ⟨t_hat, e_z⟩ > 0 (Tangente nach oben orientiert; vgl.
@@ -103,14 +103,14 @@ Flächenstücke relativ zur Kante** bestimmt — wie in `hg_grat.md`, mit
 umgekehrtem Vorzeichen. Sei
 
 ```
-w := (t_hat × e_z) / ‖t_hat × e_z‖   ∈ S²
+w:= (t_hat × e_z) / ‖t_hat × e_z‖   ∈ S²
 ```
 
 die zur Kantentangente orthogonale **horizontale** Querachse
 (wohldefiniert, solange die Kante nicht lotrecht ist, also
 ‖t_hat × e_z‖ > ε_L). Sei c_i ein innerer Punkt (Flächenschwerpunkt)
 von F(P_i) und m ∈ s_{ij} ein Kantenpunkt; die **signierte Querlage**
-des Flächenstücks D_i ist τ_i := ⟨c_i − m, w⟩ (mit τ_i · τ_j < 0).
+des Flächenstücks D_i ist τ_i:= ⟨c_i − m, w⟩ (mit τ_i · τ_j < 0).
 Eine geneigte Schnittstrecke s_{ij} heißt **konkav** (einspringend,
 Kehle), wenn sich **beide** äußeren Normalen horizontal zur
 **Gegenseite** ihres eigenen Flächenstücks neigen:
@@ -231,93 +231,6 @@ Aufrissdarstellung des Dachs gebräuchlich.
     Bauteil, nicht Kante. Hier nicht definiert.
   - **Kehlsparren** (`kehlsparren`, bereits angelegt):
     Tragwerksbalken unter der Kehlkante; Bauteil, nicht Kante.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-sealed class Kehle : Dachkante() {
-
-    data class Regulaer(
-        override val polylinie: Streckenzug,
-        val dachflaecheA: Dachflaeche,
-        val dachflaecheB: Dachflaeche
-    ) : Kehle()
-
-    sealed class Entartet : Kehle() {
-        object Nullkante : Entartet()
-        object NichtIdentifizierbar : Entartet()
-    }
-}
-```
-
-Klassifikations-Prädikat in `DachkanteOps.kt`:
-
-```
-fun istKehle(
-    s: Strecke,
-    dA: Dachflaeche,
-    dB: Dachflaeche,
-    eps_W: Double = Toleranzen.WINKEL_EPS,
-    eps_L: Double = Toleranzen.LAENGE_EPS
-): Boolean {
-    // 1. Schnittkante: s liegt im gemeinsamen Polygonbereich von dA und dB
-    if (!liegtImSchnitt(s, dA, dB, eps_L)) return false
-    if (s.laenge() <= eps_L) return false
-    // 2. Tangente, nach oben orientiert
-    var tHat = s.einheitsRichtung().werteOder { return false }
-    if ((tHat dot Vektor.E_Z) < 0.0) tHat = -tHat
-    // 3. Geneigt (nicht horizontal): grenzt Grat/Kehle gegen First ab
-    if (abs(tHat dot Vektor.E_Z) <= eps_W) return false
-    // 4. Beide Normalen in oberer Halbkugel
-    val nA = dA.aeussereNormale.normiert().werteOder { return false }
-    val nB = dB.aeussereNormale.normiert().werteOder { return false }
-    if ((nA dot Vektor.E_Z) <= 0.0) return false
-    if ((nB dot Vektor.E_Z) <= 0.0) return false
-    // 5. Konkavitätsbedingung (2): pro Fläche — die äußere Normale neigt
-    //    sich horizontal zur Gegenseite ihres eigenen Flächenstücks (nach
-    //    innen). Wie istGrat mit umgekehrtem Vorzeichen; reine Normalen
-    //    (nA cross nB) dot tHat trennen Grat und Kehle nicht.
-    val w = (tHat cross Vektor.E_Z).normiert().werteOder { return false }
-    val m = s.mittelpunkt()
-    val tauA = (dA.schwerpunkt() - m) dot w
-    val tauB = (dB.schwerpunkt() - m) dot w
-    val innenA = (nA dot w) * sign(tauA) < -eps_W
-    val innenB = (nB dot w) * sign(tauB) < -eps_W
-    return innenA && innenB
-}
-```
-
-- **Einheit**: alle Koordinaten in mm (Double), Längen in mm.
-- **Invarianten** (in Factory prüfen, niemals Exception):
-  1. ℓ(polylinie) > Toleranzen.LAENGE_EPS — sonst `Entartet.Nullkante`.
-  2. Jede Teilstrecke der Polylinie liegt im Schnittbereich
-     F(P_A) ∩ F(P_B) der beiden anliegenden Dachflächen.
-  3. Jede Teilstrecke ist geneigt: |t_hat · e_z| > Toleranzen.WINKEL_EPS.
-  4. Beide äußeren Normalen weisen mit positiver z-Komponente nach
-     oben.
-  5. Konkavitätsbedingung (2) erfüllt.
-- **Edge Cases**:
-  - **Nullkante**: ℓ ≤ Toleranzen.LAENGE_EPS → `Entartet.Nullkante`.
-  - **NichtIdentifizierbar**: ⟨n_hat_{a,i}, w⟩ · sign(τ_i) im
-    Toleranzband [−ε_W, +ε_W] für eine der beiden Flächen (Flächenstück
-    kaum quer geneigt, Falllinie nahezu parallel zur Kante) oder
-    **gemischte** Kante (ein Flächenstück nach außen, das andere nach
-    innen — weder Grat noch Kehle) → `Entartet.NichtIdentifizierbar`.
-  - **Parallele Trägerebenen**: keine Schnittgerade →
-    `Entartet.NichtIdentifizierbar`.
-  - **Horizontale Tangente**: Bedingung (1) verletzt → die Kante ist
-    ein First, keine Kehle.
-  - **Geknickte Kehlinie** (z. B. bei polygonal abgeknickten
-    Verschneidungen): zulässig durch Streckenzug-Modellierung; jede
-    Teilstrecke wird einzeln klassifiziert.
-- **Abgeleitete Operationen**:
-  - `fun kehllaenge(): Double` (mm) = ℓ(polylinie).
-  - `fun kehllinie(): Streckenzug` = polylinie.
-  - `fun kehlneigung(): Double` = arcsin(|t_hat · e_z|) (Winkel der
-    Kehllinie gegen die Horizontale; Bezugsmaß für die Bemessung
-    von Kehlsparren und Kehlblech-Längen).
 
 ## Quellen
 

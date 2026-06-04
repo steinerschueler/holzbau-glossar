@@ -57,8 +57,8 @@ Sei
   äußerer Normale n_a und Dachneigung α ∈ (0, π/2),
 - (e₁, …, e_k) die zyklische Folge der Polygonrandkanten,
 - e_z = (0, 0, 1)ᵀ die vertikale Achse,
-- ε_W := Toleranzen.WINKEL_EPS die Winkeltoleranz,
-- ε_K := Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz.
+- ε_W:= Toleranzen.WINKEL_EPS die Winkeltoleranz,
+- ε_K:= Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz.
 
 Die **Falllinie** der Dachfläche D im Sinne von `hg_falllinie.md`
 ist der eindeutige in E liegende Einheitsvektor mit minimaler
@@ -68,10 +68,10 @@ Bergab-Richtung). Operational liefert die Projektionsform aus
 `hg_falllinie.md` Gleichung (vgl. dortige Symbol-Konvention)
 
 ```
-e_hat_fall := −(e_z − ⟨e_z, n_a⟩ · n_a) / ‖e_z − ⟨e_z, n_a⟩ · n_a‖.
+e_hat_fall:= −(e_z − ⟨e_z, n_a⟩ · n_a) / ‖e_z − ⟨e_z, n_a⟩ · n_a‖.
 ```
 
-Lesart des Minus-Zeichens: Der Term v := e_z − ⟨e_z, n_a⟩·n_a
+Lesart des Minus-Zeichens: Der Term v:= e_z − ⟨e_z, n_a⟩·n_a
 ist die orthogonale Projektion von e_z in den Richtungsraum von
 E und zeigt entlang der steilsten Richtung in E **nach oben**;
 das vorangestellte Minus dreht die Richtung gemäß der
@@ -84,7 +84,7 @@ Eine Polygonrandkante e_i = [v_i, v_{i+1}] heißt **entlang der
 Falllinie verlaufend**, wenn ihr Einheits-Richtungsvektor
 
 ```
-e_hat_i := (v_{i+1} − v_i) / ‖v_{i+1} − v_i‖
+e_hat_i:= (v_{i+1} − v_i) / ‖v_{i+1} − v_i‖
 ```
 
 mit e_hat_fall kollinear ist — als Parallelitäts-Test über das
@@ -196,81 +196,6 @@ Gefälle abläuft.
   - **Falllinie**: die Richtung des größten Gefälles auf der
     Dachfläche; ist eine Richtung, keine Kante. Wird im Eintrag als
     Hilfsgröße eingeführt; eigener Glossareintrag folgt bei Bedarf.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-sealed class Ortgang : Dachkante() {
-
-    data class Regulaer(
-        override val polylinie: Streckenzug,
-        val dachflaeche: Dachflaeche
-    ) : Ortgang()
-
-    sealed class Entartet : Ortgang() {
-        object Nullkante : Entartet()
-        object NichtIdentifizierbar : Entartet()
-    }
-}
-```
-
-Klassifikations-Prädikat in `DachkanteOps.kt`:
-
-```
-fun istOrtgang(
-    e: Strecke,
-    d: Dachflaeche,
-    eps_W: Double = Toleranzen.WINKEL_EPS,
-    eps_K: Double = Toleranzen.KOLLINEAR_EPS,
-    eps_L: Double = Toleranzen.LAENGE_EPS
-): Boolean {
-    // 0. Dachfläche muss geneigt sein, sonst keine Falllinie. Geneigtheit
-    //    als Parallelitäts-Test n_a ∦ e_z über das Kreuzprodukt
-    //    (§4: ‖n × e_z‖ = sin α, gut konditioniert nahe α = 0 — nicht 1 − cos α).
-    val nA = d.aeussereNormale.normiert().werteOder { return false }
-    if ((nA cross Vektor.E_Z).norm <= eps_K) return false   // α ≈ 0 (Flachdach)
-    // 1. e ist Polygonrandkante von d
-    if (!d.umriss.enthaeltKante(e, eps_L)) return false
-    // 2. e verläuft entlang der Falllinie (Kollinearität über Kreuzprodukt)
-    val eHat = e.einheitsRichtung().werteOder { return false }
-    val fallrichtung = (-(Vektor.E_Z - nA * (nA dot Vektor.E_Z))).normiert().werteOder { return false }
-    val kreuz = (eHat cross fallrichtung).norm
-    if (kreuz > eps_K) return false
-    // 3. e ist nicht horizontal (folgt aus 0+2, hier nur Sicherheit)
-    if (abs(eHat dot Vektor.E_Z) <= eps_W) return false
-    return true
-}
-```
-
-- **Einheit**: alle Koordinaten in mm (Double), Längen in mm.
-- **Invarianten** (in Factory prüfen, niemals Exception):
-  1. ℓ(polylinie) > Toleranzen.LAENGE_EPS — sonst `Entartet.Nullkante`.
-  2. Jede Teilstrecke der Polylinie ist Polygonrandkante der
-     übergebenen Dachfläche.
-  3. Die Dachfläche ist geneigt (‖n_a × e_z‖ > Toleranzen.KOLLINEAR_EPS,
-     §4-Parallelitäts-Test über das Kreuzprodukt — nicht 1 − cos α),
-     sonst `Entartet.NichtIdentifizierbar`.
-  4. Jede Teilstrecke verläuft entlang der Falllinie der Dachfläche
-     (Kollinearität mit e_hat_fall, geprüft mit Kreuzprodukt-
-     Toleranz Toleranzen.KOLLINEAR_EPS).
-- **Edge Cases**:
-  - **Nullkante**: ℓ ≤ Toleranzen.LAENGE_EPS → `Entartet.Nullkante`.
-  - **Flachdach** (α = 0): keine Falllinie definierbar →
-    `Entartet.NichtIdentifizierbar`.
-  - **NichtIdentifizierbar**: Polygonrand enthält keine entlang der
-    Falllinie verlaufende Kante (z. B. bei einer rein dreieckigen
-    Walmfläche, deren beide nicht-horizontalen Kanten Grate sind) →
-    `Entartet.NichtIdentifizierbar`.
-  - **Geknickter Ortgang** (z. B. bei Mansarddach mit gestuftem
-    Giebel): zulässig durch Streckenzug-Modellierung; jede
-    Teilstrecke wird einzeln klassifiziert.
-- **Abgeleitete Operationen**:
-  - `fun ortganglaenge(): Double` (mm) = ℓ(polylinie).
-  - `fun ortganglinie(): Streckenzug` = polylinie.
-  - `fun gefaelle(): Double` = ⟨−e_hat(polylinie), e_z⟩ (sin der
-    Dachneigung; korrespondiert zu α der Dachfläche).
 
 ## Quellen
 

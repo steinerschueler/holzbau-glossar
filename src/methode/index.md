@@ -71,6 +71,21 @@ Einträge tragen einen Status (`entwurf`, `in_revision`, `final`) und
 einen Reife-Marker zur Quellen-Disziplin. Die Webseite bildet den
 jeweils aktuellen Stand des Quell-Repos ab.
 
+## Der Anweiser
+
+Fachliche Festlegungen, die nicht unmittelbar aus einer Norm oder Quelle
+folgen, sondern bewusst für dieses Glossar getroffen werden, schreibt der
+Text dem **Anweiser** zu — der fachlich verantwortlichen Rolle hinter den
+Einträgen. Wo in einem Eintrag von „dem Anweiser" die Rede ist, ist diese
+Rolle gemeint, nicht eine beiläufig genannte Person: Der Fließtext bleibt
+bewusst frei von Personennamen, weil eine Begriffs-Definition für sich
+stehen soll und nicht an einen einzelnen Menschen gebunden ist.
+
+Die namentliche Urheberschaft bleibt davon unberührt und über die
+[Zitier-Angaben](../zitieren.md) (Autor, ORCID, DOI) vollständig
+referenzierbar — dort, wo sie für die wissenschaftliche Nachnutzung
+gebraucht wird.
+
 ## Verbindliche Konventions-Quellen
 
 Diese Methode-Seite ist die menschenlesbare Zusammenfassung. Die

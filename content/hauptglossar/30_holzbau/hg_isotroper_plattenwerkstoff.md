@@ -31,7 +31,7 @@ quellenkonflikt: |
   Klassifikation als Faserrichtungs-Modus KEINE.
 
   Eigene Festlegung in diesem Glossar (Konvention zur Klassifikation
-  der Faserrichtungs-Modi, Memory `project_faserrichtung_modi`):
+  der Faserrichtungs-Modi):
 
   - **Isotroper Plattenwerkstoff** ist die Glossar-interne Klassen-
     Bezeichnung für diejenige Werkstoff-Klasse, deren konstitutives
@@ -82,7 +82,7 @@ Sei
 Dann ist ein **isotroper Plattenwerkstoff** das Tupel
 
 ```
-IP := (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse)
+IP:= (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse)
 ```
 
 mit
@@ -203,8 +203,7 @@ Begründung:
   Bemessungsschritte (Hankinson, Lochleibung, Mindestabstände)
   fehlerhaft auslösen.
 
-Diese harte Invariante folgt der Setzung im Memory
-`project_faserrichtung_modi`.
+Diese harte Invariante folgt der Setzung im.
 
 ## Beziehungen
 
@@ -245,88 +244,6 @@ Diese harte Invariante folgt der Setzung im Memory
     Einheitsvektor-Annotation an einem Bauteil mit Werkstoff
     `axiales_holz`. Bei isotropem Plattenwerkstoff ist die
     Faserrichtungs-Annotation **harte Invariante: nicht zulässig**.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.holzbau.werkstoff`):
-
-```kotlin
-package domain.holzbau.werkstoff
-
-import domain.geometrie.Einheitsvektor
-import domain.identifikation.Produktkennzeichnung
-
-/**
- * Isotroper Plattenwerkstoff: Plattenwerkstoff ohne Vorzugsrichtung
- * in der Plattenebene (Faserrichtungs-Modus KEINE).
- * Glossar: hg_isotroper_plattenwerkstoff.md
- *
- * Subklassen: Spanplatte (P4-P7), MDF, HDF, harte Faserplatte,
- *             mittelharte Faserplatte (eigene Folge-Klassen).
- *
- * Pflichtfelder: nur plattendickenAchse.
- * KEINE Faserrichtung, keine Plattenlängsrichtung in der Plattenebene.
- *
- * Validierungsregel: Eine Faserrichtungs-Annotation an einem Element
- * mit diesem Werkstoff ist semantisch falsch und führt zu
- * Resultat.Fehler(Entartet.IsotroperWerkstoffMitFaserrichtung).
- */
-data class IsotroperPlattenwerkstoff(
-    override val produktkennzeichnung: Produktkennzeichnung,
-    override val plattendickenAchse: Einheitsvektor
-) : Werkstoff {
-    override val faserrichtungsModus: FaserrichtungsModus
-        = FaserrichtungsModus.KEINE
-
-    init {
-        // 1. plattendickenAchse erfüllt Norm-Invariante
-        //    (geerbt von Einheitsvektor).
-        // 2. produktkennzeichnung ist eine Spanplatten-/MDF-/HDF-/
-        //    Faserplatten-Kennzeichnung nach EN 312 / EN 622-2/-3/-5.
-    }
-}
-```
-
-- **Einheit**: Plattendicken-Achse dimensionsloser Einheitsvektor in
-  W.
-- **Identität**: Werkstoff trägt keine UUID; Identität auf
-  Element-Ebene.
-- **Invarianten** (in Fabrikfunktionen / `init` prüfen, bei
-  Verletzung `Resultat.Fehler` bzw. `Entartet`-Variante; niemals
-  Exception):
-  1. `faserrichtungsModus == KEINE` (Klassen-Invariante).
-  2. `plattendickenAchse != null` (Klassen-Invariante; einzige
-     geometrische Vektor-Eigenschaft).
-  3. `plattendickenAchse` erfüllt Norm-Invariante.
-  4. `produktkennzeichnung` ist Spanplatten-/MDF-/HDF-/
-     Faserplatten-Kennzeichnung.
-- **Cross-Element-Invariante** (in Bauteil-Validierung): Wenn
-  `bauteil.werkstoff` ∈ `IsotroperPlattenwerkstoff`, dann muss
-  `bauteil.faserrichtung == null` gelten. Verletzung führt zu
-  `Entartet.IsotroperWerkstoffMitFaserrichtung`.
-- **IFC-Mapping** (Persistenzschicht):
-  - `IfcMaterial.Name` = „Spanplatte P5" / „MDF" / „HDF" / etc.
-  - Property Set `Pset_MaterialWoodBasedPanel`.
-  - Keine `LongitudinalDirection`-Property gesetzt (würde
-    Vorzugsrichtung suggerieren).
-- **Edge Cases**:
-  - **Beschichtete Spanplatte** (z. B. melaminbeschichtet):
-    Werkstoff bleibt `IsotroperPlattenwerkstoff`; die Beschichtung
-    erzeugt eine Vorzugsseite, aber keine Faserrichtung.
-    Vorzugsseite ist eine separate Bauteil-Annotation, nicht
-    Werkstoff-Eigenschaft.
-  - **Versuch, Faserrichtung zu setzen**: harter Fehler,
-    `Entartet.IsotroperWerkstoffMitFaserrichtung`.
-  - **Versuch, Plattenlängsrichtung zu setzen**: nicht möglich
-    (Feld existiert nicht in dieser Klasse). Statisch durch
-    Datenmodell verhindert.
-  - **Quadratische Plattenformate**: kein Konflikt; die fehlende
-    Längsrichtung ist hier semantisch korrekt.
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `IsotroperPlattenwerkstoff` (deutsch, Glossarbegriff);
-  Sub-Subklassen heißen `Spanplatte`, `Mdf`, `Hdf`,
-  `HarteFaserplatte`, `MittelharteFaserplatte`.
 
 ## Quellen
 

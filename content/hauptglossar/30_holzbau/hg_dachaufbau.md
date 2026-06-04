@@ -49,7 +49,7 @@ Sei
 - 𝒟 = { D₁, …, D_m } mit m ≥ 1 eine endliche, nicht-leere Familie
   von Dachflächen D_i = (E_i, P_i, n_{a,i}) im Sinne von
   `dachflaeche` (geometrische Auflagefläche des Aufbaus),
-- F := ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich,
+- F:= ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich,
 - 𝒮 = (S₁, S₂, …, S_k) mit k ≥ 1 eine endlich indizierte, von **innen
   nach außen** geordnete Folge von Schicht-Bauteilen, wobei jede
   Schicht S_j durch
@@ -66,7 +66,7 @@ Sei
 Dann ist der **Dachaufbau** das Tripel
 
 ```
-A := (𝒟, 𝒮, H)
+A:= (𝒟, 𝒮, H)
 ```
 
 mit
@@ -90,7 +90,7 @@ und den Konsistenzbedingungen
 Die **Gesamtdicke** des Dachaufbaus ist
 
 ```
-d_A := Σ_{j=1..k} d_j   (in mm).
+d_A:= Σ_{j=1..k} d_j   (in mm).
 ```
 
 ## Wohldefiniertheit
@@ -197,89 +197,6 @@ ebenfalls etabliert, insbesondere wenn Architekt und Dachdecker
   - **Unterdach, Wärmedämmung, Dampfbremse, Konterlattung,
     Traglattung**: einzelne Schichten innerhalb des Dachaufbaus,
     je mit eigenem Glossareintrag (folgen).
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-data class Dachaufbau(
-    val dachflaechen: List<Dachflaeche>,    // 𝒟, geometrische Auflage
-    val schichten: List<Schicht>            // 𝒮, von innen nach außen
-) {
-    init {
-        // 1. dachflaechen.isNotEmpty()           → sonst Entartet.LeerTraeger
-        // 2. schichten.isNotEmpty()              → sonst Entartet.LeererAufbau
-        // 3. ∀ s ∈ schichten: s.dicke > Toleranzen.LAENGE_EPS
-        //                                         → sonst Entartet.NullDickeSchicht
-        // 4. schichten.last().funktion ∈
-        //      { EINDECKUNG, ABDICHTUNG }        → sonst Entartet.KeinAussenabschluss
-    }
-
-    fun gesamtdicke(): Double = schichten.sumOf { it.dicke }   // mm
-    fun aussenschicht(): Schicht = schichten.last()
-    fun innenschicht(): Schicht = schichten.first()
-
-    fun dachhaut(): Dachhaut = Dachhaut.ausAussenschicht(this)
-}
-
-data class Schicht(
-    val material: MaterialId,         // Platzhalter, eigener Typ folgt
-    val dicke: Double,                // mm, > 0
-    val funktion: SchichtFunktion
-)
-
-enum class SchichtFunktion {
-    DAMPFBREMSE, WAERMEDAEMMUNG, SCHALUNG, UNTERDACH,
-    KONTERLATTUNG, TRAGLATTUNG, EINDECKUNG, ABDICHTUNG,
-    TRENNLAGE, SONSTIGE
-}
-```
-
-- **Einheit**: Schichtdicken in mm (Double).
-- **Invarianten** (in `init` prüfen, bei Verletzung
-  `Resultat.Fehler` bzw. `Entartet`-Variante zurückgeben, niemals
-  Exception werfen):
-  1. `dachflaechen.isNotEmpty()` ⇒ sonst `Entartet.LeerTraeger`.
-  2. `schichten.isNotEmpty()` ⇒ sonst `Entartet.LeererAufbau`.
-  3. Jede Schichtdicke d_j > Toleranzen.LAENGE_EPS ⇒ sonst
-     `Entartet.NullDickeSchicht`.
-  4. Funktion der äußersten Schicht ∈
-     { EINDECKUNG, ABDICHTUNG } ⇒ sonst
-     `Entartet.KeinAussenabschluss`.
-  5. **Optional/konfigurierbar**: bauphysikalische
-     Plausibilität (Dampfbremse warmseitig der Wärmedämmung,
-     Konterlattung unter Traglattung). Kein harter Fehler,
-     sondern Warnung über `dachaufbau.validierePlausibilitaet():
-     List<Hinweis>`.
-- **Edge Cases**:
-  - **Einlagig** (k = 1, nur Eindeckung): zulässig (z. B.
-    historischer Stadel ohne Dämmung). Dachaufbau besteht dann
-    aus einer einzigen Schicht.
-  - **Sehr dünne Folienschichten** (Dampfbremse, d ≈ 0,2 mm):
-    Toleranz LAENGE_EPS = 1·10⁻³ mm ist hinreichend klein, um
-    auch sehr dünne Schichten als positive Dicke zu erkennen.
-  - **Mehrere Dachflächen mit unterschiedlichem Aufbau** (z. B.
-    Hauptdach gedämmt, Vordach ungedämmt): werden als
-    **getrennte** `Dachaufbau`-Instanzen modelliert, jeweils mit
-    der zugehörigen Teilmenge der Trägerflächen.
-  - **Plattenwerkstoffe** (OSB, Holzschalung, Holzfaserplatten):
-    werden auf dieser Aggregations-Ebene als Schicht mit
-    konstanter Dicke modelliert. Die Geometrie einzelner Platten
-    inkl. Faserrichtung und Seitenorientierung wird in späteren
-    Glossareinträgen behandelt.
-  - **Schichten mit nicht-konstanter Dicke** (Aufdoppelungen,
-    Gefälledämmung): nicht von dieser Definition abgedeckt;
-    erfordern eine spätere Erweiterung mit Schichtdicken-Funktion
-    d_j(p) statt Skalar.
-  - **Flachdach** (alle α_i ≈ 0): zulässig; äußerste Schicht ist
-    typischerweise eine ABDICHTUNG, nicht eine EINDECKUNG.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `gesamtdicke(): Double` (mm) = Σ d_j.
-  - `aussenschicht(): Schicht` = `schichten.last()`.
-  - `innenschicht(): Schicht` = `schichten.first()`.
-  - `dachhaut(): Dachhaut` = obere Hüllfläche der Außenseite von
-    `aussenschicht()`.
 
 ## Quellen
 

@@ -24,7 +24,7 @@ quellen_sekundär:
   - "Holzfaser-Verband: Merkblatt 'Anschlüsse und Fugen – Details für Holzmassivbau'."
 quellenkonflikt: |
   Drei Punkte sind in der Recherche
-  (`docs/recherche/2026-05-14_hg_schwelle.md`) nicht
+  ([intern]) nicht
   widerspruchsfrei und werden hier ausdrücklich aufgelöst.
 
   **(1) Familien-Begriff vs. Grundschwellen-Lesart.** Im
@@ -59,8 +59,7 @@ quellenkonflikt: |
   Benennungen.** `hg_fusspfette.md` führt englische Pendants
   (`wall plate`, `eaves purlin`) in `abgelehnte_benennungen:`.
   Dieser Eintrag weicht davon ab und führt `sill plate`,
-  `sole plate`, `mudsill`, `bottom plate` als Synonyme
-  (Eric-Linie, Auftrag 2026-05-14). Begründung: Die englischen
+  `sole plate`, `mudsill`, `bottom plate` als Synonyme. Begründung: Die englischen
   Begriffe sind im internationalen Holzrahmenbau-Diskurs (CLT-
   Engineering, IRC, CSA O86) als Pendants etabliert und werden
   in Schweizer Ingenieurbüros mit internationalen Auftraggebern
@@ -122,16 +121,16 @@ Sei
 
 - B ein Bauteil im Sinne von `bauteil` mit Bauteilachse
   a(B) = (p_a, p_e) ∈ ℝ³ × ℝ³ und Richtungs-Einheitsvektor
-  d_hat_B := (p_e − p_a) / ‖p_e − p_a‖,
-- e_hat_z := (0, 0, 1) die Welt-z-Achse nach `weltkoordinatensystem`,
+  d_hat_B:= (p_e − p_a) / ‖p_e − p_a‖,
+- e_hat_z:= (0, 0, 1) die Welt-z-Achse nach `weltkoordinatensystem`,
 - E_⊥ eine horizontale Bezugsebene im Sinne von `bezugsebene` mit
   Normalen-Einheitsvektor e_hat_z (die Oberkante des Auflagers, im
-  Folgenden „Auflagerebene" genannt) und Höhe z_E := z-Koordinate
+  Folgenden „Auflagerebene" genannt) und Höhe z_E:= z-Koordinate
   jedes Punktes in E_⊥,
-- z_B := (p_a.z + p_e.z) / 2 die mittlere Höhe der Bauteilachse,
+- z_B:= (p_a.z + p_e.z) / 2 die mittlere Höhe der Bauteilachse,
 - h_B die Querschnittshöhe von B nach `querschnitt`,
-- ε_K := Toleranzen.KOLLINEAR_EPS, ε_L := Toleranzen.LAENGE_EPS,
-- δ_z := h_B / 2 + ε_L die konstruktive Höhentoleranz für die
+- ε_K:= Toleranzen.KOLLINEAR_EPS, ε_L:= Toleranzen.LAENGE_EPS,
+- δ_z:= h_B / 2 + ε_L die konstruktive Höhentoleranz für die
   Auflagernähe.
 
 Dann heißt B eine **Schwelle** bezüglich E_⊥ genau dann, wenn die
@@ -175,10 +174,10 @@ folgenden Bedingungen alle erfüllt sind:
 Wesentliche abgeleitete Größen:
 
 - **Schwellen-Oberkante (lokale Bezugskote)**:
-  z_OK(B) := z_B + h_B / 2; übliche Werkplan-Bezugskote für
+  z_OK(B):= z_B + h_B / 2; übliche Werkplan-Bezugskote für
   Wandhöhen und Pfosten-Längen.
 - **Vertikalabstand zur Auflagerebene**:
-  Δz := z_B − h_B / 2 − z_E ≥ 0 (Unterkante über Auflager;
+  Δz:= z_B − h_B / 2 − z_E ≥ 0 (Unterkante über Auflager;
   meist Dicke der Trennlage / Sperrlage, typisch 1–3 mm).
 - **Abstand zur OK Gelände** (Holzschutz-Größe nach
   DIN 68800-2): z_B − h_B / 2 − z_OKG, vorzeichenbehaftet,
@@ -425,150 +424,6 @@ nicht weiter behandelt.
     Grundschwelle, in der modernen Bauweise ausschließlich
     Fenster-Bauteil.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.geometrie.Bezugsebene
-
-/** Auflagerart der Schwelle; relevant für die Holzschutz-Bewertung. */
-enum class SchwelleAuflager {
-    BODENPLATTE_STAHLBETON,        // Stahlbeton-Bodenplatte direkt
-    SOCKEL_MAUERWERK,              // gemauerter Sockel auf Fundament
-    SOCKEL_STAHLBETON,             // Stahlbeton-Sockel
-    GESCHOSSDECKE_HOLZ,            // im Mehrgeschoss-Holztafelbau (Stockschwellen-Konfiguration)
-    GESCHOSSDECKE_STAHLBETON,      // Mehrgeschoss mit Stahlbeton-Decke
-    UNBEKANNT
-}
-
-/** Gebrauchsklasse nach EN 335 / DIN 68800-1, Instanz-Eigenschaft. */
-enum class Gebrauchsklasse {
-    GK_0, GK_1, GK_2, GK_3_1, GK_3_2, GK_4, GK_5,
-    UNBEKANNT
-}
-
-/**
- * Schwelle: unterster horizontaler Längsträger einer Wand,
- * unmittelbar auf einer Auflagerebene (Fundament, Sockel,
- * Bodenplatte, oder Geschossdecke).
- *
- * Glossar: hg_schwelle.md
- *
- * Synonyme: Grundschwelle (enges Synonym, CH und Fachwerk),
- * Schwellholz, Schwellbalken, Grundbalken; englisch sill plate /
- * sole plate / mudsill / bottom plate (US-Praxis-Disambiguation
- * im Erläuterungsblock).
- */
-data class Schwelle(
-    override val bauteil: Bauteil,
-    val auflagerebene: Bezugsebene,
-    val auflager: SchwelleAuflager = SchwelleAuflager.UNBEKANNT,
-    val gebrauchsklasse: Gebrauchsklasse = Gebrauchsklasse.UNBEKANNT,
-    val abstandZuOKGelaende: Double? = null            // mm, vorzeichenbehaftet, optional
-) : Bauteil.Schwelle() {
-
-    init {
-        // 1. Horizontalität (Bedingung 1 aus hg_schwelle.md):
-        //    |d_hat_B · e_hat_z| ≤ Toleranzen.KOLLINEAR_EPS — sonst
-        //    Resultat.Fehler(SchwelleEntartet.NichtHorizontal).
-        //    Sinus-Test; siehe HG_KONVENTIONEN.md Sektion 4.
-        // 2. Auflagernähe (Bedingung 2): Unterkante des
-        //    Schwellen-Querschnitts ≤ Toleranzen.LAENGE_EPS
-        //    oberhalb der Auflagerebene — sonst
-        //    SchwelleEntartet.NichtAufAuflager.
-        // 3. Unterste Wand-Längslage (Bedingung 3) und
-        // 4. Pfosten-Auflager (Bedingung 4) werden im
-        //    Tragwerks-Kontext geprüft.
-    }
-
-    /**
-     * Schwellen-Oberkante als lokale Bezugskote für Wandhöhen
-     * und Pfosten-Längen.
-     */
-    fun oberkante(): Double =
-        bauteil.bauteilachse.mittlereHoehe() + bauteil.querschnitt.hoehe / 2.0
-
-    /**
-     * Prüfung der DIN-68800-2-Mindestabstände zur OK Gelände.
-     * Liefert true, wenn der Abstand für die gegebene
-     * Zusatzmaßnahme zulässig ist.
-     */
-    fun erfuelltMindestabstand(
-        zusatz: HolzschutzZusatzmassnahme
-    ): Boolean? {
-        val abstand = abstandZuOKGelaende ?: return null
-        return when (zusatz) {
-            HolzschutzZusatzmassnahme.KEINE        -> abstand >= 300.0
-            HolzschutzZusatzmassnahme.KIESBETT     -> abstand >= 150.0
-            HolzschutzZusatzmassnahme.ABDICHTUNG_18533 -> abstand >=  50.0
-        }
-    }
-
-    /**
-     * Anzeigename: bevorzugt „Schwelle"; bei Auflagerung auf
-     * Geschossdecke darf zusätzlich „(Stockschwelle)" annotiert
-     * werden, sobald hg_stockschwelle.md existiert.
-     */
-    fun anzeigeName(): String = "Schwelle"
-}
-
-enum class HolzschutzZusatzmassnahme {
-    KEINE,
-    KIESBETT,                  // 16/32 mm, ≥ 15 cm Breite, ≥ 30 cm Abstand
-    ABDICHTUNG_18533           // Bauwerksabdichtung nach DIN 18533
-}
-
-sealed class SchwelleEntartet {
-    object NichtHorizontal      : SchwelleEntartet()
-    object NichtAufAuflager     : SchwelleEntartet()
-    object NichtUnterstesLaengsbauteil : SchwelleEntartet()
-    object KeinPfostenAufgesetzt: SchwelleEntartet()
-}
-```
-
-- **Einheit**: Längen in mm; Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (zusätzlich zu denen von `Bauteil`):
-  1. Horizontalität der Bauteilachse — sonst `NichtHorizontal`.
-  2. Auflagernähe zu einer horizontalen Auflagerebene — sonst
-     `NichtAufAuflager`.
-  3. Unterstes Längsbauteil entlang der Wandlinie — sonst
-     `NichtUnterstesLaengsbauteil` (Tragwerks-Cross-Cutting).
-  4. Mindestens ein aufgesetzter Pfosten / Ständer — sonst
-     `KeinPfostenAufgesetzt` (Tragwerks-Cross-Cutting).
-- **Edge Cases**:
-  - **Doppel-Schwelle** (zwei übereinanderliegende Bretter im
-    Holztafelbau): das untere Bauteil qualifiziert; das obere
-    wird als separates Bauteil mit eigener Rolle oder als
-    Schwellen-Paket-Komponente modelliert.
-  - **Eckverbindung zweier Schwellen verschiedener Wände**: je
-    Wandlinie eine Schwelle; die Eckverbindung (Blattung, Zapfen,
-    Stoss) ist eigene Bearbeitung an beiden Schwellen.
-  - **Schwelle in Wandöffnung** (Türstock): die Schwelle ist in
-    der Wandöffnung unterbrochen; die Türschwelle des Türrahmens
-    ist eigenes Bauteil und nicht Bestandteil der Wand-Schwelle.
-  - **Eingelassene Schwelle**: bei sehr geringer Aufbauhöhe
-    sitzt die Schwelle in einer Aussparung des Sockels;
-    Bedingung 2 mit δ_z um die Einlasstiefe erweitern.
-  - **Stockschwelle** (Mehrgeschoss): Auflagerebene E_⊥ ist die
-    Geschossdecke statt Sockel/Bodenplatte; geometrisch
-    qualifiziert nach denselben Bedingungen 1–4.
-- **Abgeleitete Eigenschaften**:
-  - `getrageneStaenderIn(t: Tragwerk): List<Pfosten>` — Pfosten
-    in `t`, deren unterer Endpunkt auf der Schwellen-Bauteilachse
-    innerhalb Toleranzen liegt.
-  - `holzschutzNachweis(): NachweisErgebnis` — Auswertung
-    `abstandZuOKGelaende` gegen DIN-68800-2-Maße in Kombination
-    mit `HolzschutzZusatzmassnahme`.
-  - `gebrauchsklasseAusEinbau(): Gebrauchsklasse` — Ableitung
-    der GK aus konstruktiver Einbettung (Bewitterung, Vordach,
-    Trocknung).
-
 ## Quellen
 
 **Primär (normativ):**
@@ -602,4 +457,4 @@ sealed class SchwelleEntartet {
 - Baukobox, „Schwelle, Schwellenholz" (abgerufen 2026-05-14).
 - BILP, FH Finnholz Lexikon, Bohnholzbau Lexikon (abgerufen
   2026-05-14).
-- Recherche-Bericht: `docs/recherche/2026-05-14_hg_schwelle.md`.
+- Recherche-Bericht: [intern].

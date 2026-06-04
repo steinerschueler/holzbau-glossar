@@ -28,7 +28,7 @@ quellenkonflikt: |
   Eigenschaft sind im aktuellen Markt nicht zu identifizieren.
 
   Eigene Festlegung in diesem Glossar (Konvention zur Klassifikation
-  der Faserrichtungs-Modi, Memory `project_faserrichtung_modi`):
+  der Faserrichtungs-Modi):
 
   - **Gerichteter Plattenwerkstoff** ist die Glossar-interne Klassen-
     Bezeichnung für diejenige Werkstoff-Klasse, deren konstitutives
@@ -73,7 +73,7 @@ Sei
 Dann ist ein **gerichteter Plattenwerkstoff** das Tupel
 
 ```
-GP := (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse,
+GP:= (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse,
        plattenlaengsrichtung)
 ```
 
@@ -98,7 +98,7 @@ Konstruktionsregel):
 ```
 Wenn plattenlaengsrichtung am Werkstoff nicht explizit gesetzt,
 gilt für ein Bauteil B mit werkstoff = GP:
-  plattenlaengsrichtung(GP) := bauteil_lokale_x_achse(B)
+  plattenlaengsrichtung(GP):= bauteil_lokale_x_achse(B)
                               parallel zur längeren Plattenformat-Kante.
 ```
 
@@ -161,8 +161,8 @@ Trotz der internen Schichtung verhält sich OSB nicht wie BSP:
   BSP (γ-Verfahren EC5 Anhang B).
 - DIN EN 12369-1 führt charakteristische Werte für f_m,0,k und
   f_m,90,k getrennt, das Verhältnis liegt typischerweise bei
-  ca. 1,8 : 1 (deutlich schwächer als bei BSH parallel/rechtwinklig
-  mit ca. 8 : 1).
+  ca. 1,8: 1 (deutlich schwächer als bei BSH parallel/rechtwinklig
+  mit ca. 8: 1).
 
 ### EC5-Tabellen für OSB (Auszug, normativer Hinweis)
 
@@ -249,89 +249,6 @@ Bemessungsrelevanz im UI kommunizieren.
     `plattenlaengsrichtung` geführt; sie ist semantisch
     unterschiedlich (Werkstoff-Eigenschaft, nicht
     Bauteil-Annotation einer L-Achse im strengen Sinn).
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.holzbau.werkstoff`):
-
-```kotlin
-package domain.holzbau.werkstoff
-
-import domain.geometrie.Einheitsvektor
-import domain.identifikation.Produktkennzeichnung
-
-/**
- * Gerichteter Plattenwerkstoff: Plattenwerkstoff mit schwacher,
- * aber bemessungsrelevanter Vorzugsrichtung in der Plattenebene
- * (Faserrichtungs-Modus SCHWACH).
- * Glossar: hg_gerichteter_plattenwerkstoff.md
- *
- * Stand der Technik 2026: einzige Sub-Subklasse ist OSB nach
- * DIN EN 300 (OSB/1, OSB/2, OSB/3, OSB/4).
- *
- * Pflichtfelder: plattenlaengsrichtung, plattendickenAchse.
- *
- * Default-Konvention: Wenn plattenlaengsrichtung nicht explizit
- * gesetzt, gilt plattenlaengsrichtung := bauteil.lokale_x_achse,
- * d. h. die längere Plattenformat-Kante. Abweichungen explizit
- * markieren.
- */
-data class GerichteterPlattenwerkstoff(
-    override val produktkennzeichnung: Produktkennzeichnung,
-    val plattenlaengsrichtung: Einheitsvektor,
-    override val plattendickenAchse: Einheitsvektor
-) : Werkstoff {
-    override val faserrichtungsModus: FaserrichtungsModus
-        = FaserrichtungsModus.SCHWACH
-
-    init {
-        // 1. ⟨plattenlaengsrichtung, plattendickenAchse⟩ <= WINKEL_EPS
-        //    (plattenlaengsrichtung in der Plattenebene)
-        // 2. Norm-Invarianten geerbt von Einheitsvektor.
-        // 3. produktkennzeichnung kompatibel mit OSB nach DIN EN 300.
-    }
-}
-```
-
-- **Einheit**: Vektoren dimensionsloser Einheitsvektor in W.
-- **Identität**: Werkstoff trägt keine UUID; Identität auf
-  Element-Ebene.
-- **Invarianten** (in Fabrikfunktionen / `init` prüfen, bei
-  Verletzung `Resultat.Fehler` bzw. `Entartet`-Variante; niemals
-  Exception):
-  1. `faserrichtungsModus == SCHWACH` (Klassen-Invariante).
-  2. `plattendickenAchse != null` (Klassen-Invariante; Pflichtfeld
-     bei Plattenwerkstoffen).
-  3. `plattenlaengsrichtung` ist Einheitsvektor.
-  4. `plattenlaengsrichtung` ⊥ `plattendickenAchse` (innerhalb
-     WINKEL_EPS).
-  5. `produktkennzeichnung` ist eine OSB-Kennzeichnung nach
-     DIN EN 300.
-- **IFC-Mapping** (Persistenzschicht):
-  - `IfcMaterial.Name` = „OSB/2" / „OSB/3" / „OSB/4".
-  - Property Set `Pset_MaterialWoodBasedPanel` mit
-    `LongitudinalDirection` = Plattenlängsrichtung.
-  - `IfcMaterialLayerSet` mit einer Logischen Lage (die interne
-    Strand-Schichtung wird nicht modelliert, weil
-    bemessungstechnisch effektive Plattenrichtung verwendet wird).
-- **Edge Cases**:
-  - **Quer eingebaute OSB-Platte**: zulässig; Plattenlängsrichtung
-    ist Werkstoff-Eigenschaft, nicht Bauteil-Hauptrichtung.
-    Plattenlängsrichtung wird explizit gesetzt (z. B. parallel zur
-    kurzen Bauteilkante).
-  - **Sonderformate ohne klare Längsachse** (quadratische OSB-
-    Platten): Plattenlängsrichtung muss aus Hersteller-
-    Information (Strand-Ausrichtung) übernommen werden, nicht
-    aus Plattenformat-Geometrie ableitbar.
-  - **Faserrichtungs-Annotation an Bauteil**: bei Werkstoff
-    `gerichteter_plattenwerkstoff` ist die `faserrichtung`-
-    Annotation am Bauteil **nicht** zulässig (es gibt keine
-    L-Richtung im strengen Sinn). Stattdessen wird die
-    Plattenlängsrichtung am Werkstoff geführt.
-- **Bezeichner-Konvention** (CLAUDE.md): Domänen-Klasse heißt
-  `GerichteterPlattenwerkstoff` (deutsch, Glossarbegriff);
-  Sub-Subklasse heißt `Osb` mit Typ-Attribut `OsbTyp`.
 
 ## Quellen
 

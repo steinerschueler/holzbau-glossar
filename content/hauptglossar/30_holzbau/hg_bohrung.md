@@ -11,7 +11,7 @@ status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5.2 (Berücksichtigung der Querschnittsschwächungen): Bohrungen reduzieren den anrechenbaren Nettoquerschnitt; die geschwächte Stelle ist Bemessungsobjekt. Eine geometrische Definition des Begriffs 'Bohrung' enthält der Eurocode nicht; er wird als Tatbestand vorausgesetzt."
-  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 8.3.1.2 (Nägel): Vorbohrpflicht für ρ_k > 500 kg/m³ und Nageldurchmesser d > 6 mm (in einigen Editionen d > 8 mm); Holzteildicke t < max{ 7d ; (13d − 30) · ρ_k / 400 }. Die Vorbohrung ist als Bohrloch geringeren Durchmessers vor dem Eintreiben des Nagels auszuführen."
+  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 8.3.1.2 (Nägel): Vorbohrpflicht für ρ_k > 500 kg/m³ und Nageldurchmesser d > 6 mm (in einigen Editionen d > 8 mm); Holzteildicke t < max{ 7d; (13d − 30) · ρ_k / 400 }. Die Vorbohrung ist als Bohrloch geringeren Durchmessers vor dem Eintreiben des Nagels auszuführen."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 8.5 (Bolzen): Bohrloch im Holz darf den Bolzennenndurchmesser um bis zu 1 mm übersteigen (gewöhnliche Bolzen); beim Passbolzen ist das Bohrloch gleich dem Nenndurchmesser auszuführen. Im Stahlblech bis zu d + 2 mm."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 8.6 (Stabdübel): Bohrloch im Holz ist mit dem Nenndurchmesser des Stabdübels auszuführen (Passsitz); Bohrloch im Stahlblech ≤ d + 1 mm."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 8.7 (Schrauben): Vorbohrpflichten typabhängig; Holzschrauben in der Regel ab d ≥ 6 mm bei ρ_k ≤ 500 kg/m³, ab d ≥ 4 mm bei ρ_k > 500 kg/m³ vorzubohren. Vollgewindeschrauben mit ETA in den ETA-Grenzen vorbohrfrei."
@@ -24,7 +24,7 @@ quellen_sekundär:
   - "Holzbau-Handbuch, Reihe 2 'Tragwerksplanung', Teil 1 'Verbindungen', Folge 1 'Verbindungen mit stiftförmigen Verbindungsmitteln', Informationsdienst Holz, aktuelle Auflage: Vorbohr-Praxis und Bohrlochtoleranzen."
   - "ETA-11/0190, 'Würth ASSY plus VG, ASSY 3.0, ASSY 4.0': Vorbohrgrenzen für Vollgewindeschrauben in ETA-Bewertung."
   - "Z-9.1-519, 'Schrauben mit Vollgewinde als Verbindungsmittel und als Verstärkung von Holzbauteilen' (SPAX, DIBt): Vorbohr-Vorgaben."
-  - "Recherche-Bericht docs/recherche/2026-05-14_hg_bohrung.md (Bestand-Verortung, Typologie, IFC/BTLx-Mapping, Quellen-Tier-Bewertung)."
+  - "Recherche-Bericht [intern] (Bestand-Verortung, Typologie, IFC/BTLx-Mapping, Quellen-Tier-Bewertung)."
 quellenkonflikt: |
   Keine Holzbau-Norm (DIN EN 1995-1-1, SIA 265, DIN 1052, DIN 68800)
   führt eine geschlossene geometrische Definition des Begriffs
@@ -187,37 +187,37 @@ Sei
 - α ∈ {DURCHGANG, SACKLOCH} eine **Tiefen-Erstreckungsmarke**,
 - t ∈ ℝ⁺ ∪ {⊥} eine **Tiefe** (in mm), mit t ∈ ℝ⁺ falls α = SACKLOCH
   und t = ⊥ falls α = DURCHGANG,
-- ε_L := Toleranzen.LAENGE_EPS, ε_N := Toleranzen.NORM_EPS.
+- ε_L:= Toleranzen.LAENGE_EPS, ε_N:= Toleranzen.NORM_EPS.
 
 Das **Parametertupel** einer Bohrung ist
 
 ```
-p_Bohrung := (p_S, a_hat, d, α, t)                                    (1)
+p_Bohrung:= (p_S, a_hat, d, α, t)                                    (1)
 ```
 
 mit den oben genannten Bedingungen an die Komponenten.
 
 ### Werkzeugkörper
 
-Sei r := d/2 der Bohrungsradius. Der **infinite Achsenzylinder**
+Sei r:= d/2 der Bohrungsradius. Der **infinite Achsenzylinder**
 mit Achse durch p_S in Richtung a_hat und Radius r ist die Punktmenge
 
 ```
 Z_∞(p_S, a_hat, r)
-   := { q ∈ ℝ³ |  ‖ (q − p_S) − ⟨q − p_S, a_hat⟩ · a_hat ‖ ≤ r }.        (2)
+:= { q ∈ ℝ³ |  ‖ (q − p_S) − ⟨q − p_S, a_hat⟩ · a_hat ‖ ≤ r }.        (2)
 ```
 
 Der **Halbraum-Anker** an p_S in Achsrichtung ist
 
 ```
-H_+(p_S, a_hat)  :=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≥ 0 }.                  (3)
+H_+(p_S, a_hat):=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≥ 0 }.                  (3)
 ```
 
 Der **Werkzeugkörper** der Bohrung ist dann
 
 ```
 K_Bohrung(p_Bohrung)
-   :=  Z_∞(p_S, a_hat, r)  ∩  H_+(p_S, a_hat)  ∩  Σ(α, t, p_S, a_hat, G_B^lokal)  (4)
+:=  Z_∞(p_S, a_hat, r)  ∩  H_+(p_S, a_hat)  ∩  Σ(α, t, p_S, a_hat, G_B^lokal)  (4)
 ```
 
 mit dem **Tiefen-Schnittkörper** Σ:
@@ -225,19 +225,19 @@ mit dem **Tiefen-Schnittkörper** Σ:
 - für α = SACKLOCH:
   ```
   Σ(SACKLOCH, t, p_S, a_hat, ·)
-     :=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≤ t },                          (5a)
+:=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≤ t },                          (5a)
   ```
   d. h. der Werkzeugkörper ist der endliche Kreiszylinder der
   Höhe t mit kreisförmigen Endflächen rechtwinklig zu a_hat.
 - für α = DURCHGANG:
   ```
   Σ(DURCHGANG, ⊥, p_S, a_hat, G_B^lokal)
-     :=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≤ t_max(p_S, a_hat, G_B^lokal) },   (5b)
+:=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≤ t_max(p_S, a_hat, G_B^lokal) },   (5b)
   ```
   wobei
   ```
   t_max(p_S, a_hat, G_B^lokal)
-     :=  sup{ λ ∈ ℝ⁺ |  p_S + λ · a_hat ∈ G_B^lokal }                 (6)
+:=  sup{ λ ∈ ℝ⁺ |  p_S + λ · a_hat ∈ G_B^lokal }                 (6)
   ```
   die maximale Eindringlänge der Achse in das Bauteil ist (das
   Supremum existiert, da G_B^lokal beschränkt ist).
@@ -252,7 +252,7 @@ p_Bohrung, T_F, bezeichnung?) auf das Bauteil B ist die
 Boole'sche Differenz nach `bearbeitung` Gl. (1):
 
 ```
-G_B'(F)  :=  G_B^lokal  \  T_F( K_Bohrung(p_Bohrung) ).           (7)
+G_B'(F):=  G_B^lokal  \  T_F(K_Bohrung(p_Bohrung)).           (7)
 ```
 
 Im Standardfall (T_F = id_{SE(3)}) ist der Werkzeugkörper bereits
@@ -267,7 +267,7 @@ Damit ist eine **Bohrung** als Subtyp von `bearbeitung` das
 Tupel
 
 ```
-F  :=  (uuid, typ = Bohrung, parameter = p_Bohrung,
+F:=  (uuid, typ = Bohrung, parameter = p_Bohrung,
        lokale_platzierung = T_F, bezeichnung?)                    (8)
 ```
 
@@ -304,7 +304,7 @@ Eindeutigkeit der Zuordnung).
   Wird der Werkzeugkörper-Konstruktor in einem typeigenen
   Bezugssystem geführt (z. B. mit p_S = 0 und a_hat = e_hat_z), und der
   Übergang in das Bauteil-Lokal-System über T_F ∈ SE(3)
-  realisiert, ist das Ergebnis T_F( K_Bohrung^typ ) identisch
+  realisiert, ist das Ergebnis T_F(K_Bohrung^typ) identisch
   zum direkt im Bauteil-Lokal-System konstruierten
   K_Bohrung(p_Bohrung), weil SE(3)-Transformationen Kreiszylinder
   auf Kreiszylinder gleicher Achsenrichtung und gleichen
@@ -352,8 +352,7 @@ Eindeutigkeit der Zuordnung).
   `lokales_koordinatensystem`, `punkt`, `vektor`, `polyeder`,
   `toleranzen`). Sie verweist auf `querschnitt` (Voraussetzung
   für die Querschnittsschwächungs-Plausibilität, weiche
-  Invariante) nicht in der Definition selbst, sondern nur im
-  Implementierungshinweis. Sie kommt nicht in ihrer eigenen
+  Invariante) nicht in der Definition selbst. Sie kommt nicht in ihrer eigenen
   Definition vor.
 - **Plausibilität der Querschnittsschwächung** (weiche Invariante,
   nicht Bestandteil der Definition): Bohrungen reduzieren den
@@ -544,136 +543,6 @@ führen, nicht hier.
     Modellseitig nicht als eigenständige `Bohrung` geführt,
     sondern als Folgegeometrie des Verbindungsmittels.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.bauteil.bearbeitung`):
-
-```kotlin
-package domain.bauteil.bearbeitung
-
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.LokalePlatzierung
-import domain.geometrie.Punkt
-import java.util.UUID
-
-/**
- * Bohrung — kreiszylindrische subtraktive Bearbeitung an einem
- * Bauteil. Sealed-Subtyp von [Bearbeitung].
- *
- * Glossar: hg_bohrung.md
- *
- * @property startpunkt Achsen-Startpunkt in Bauteil-Lokal-Koordinaten;
- *           Pflicht.
- * @property achse Achsen-Einheitsvektor in Bauteil-Lokal-Koordinaten;
- *           Pflicht (Invariante: |‖a_hat‖² − 1| ≤ Toleranzen.NORM_EPS).
- * @property nenndurchmesser Bohrungsdurchmesser in mm; > Toleranzen.LAENGE_EPS.
- * @property tiefenart DURCHGANG oder SACKLOCH.
- * @property tiefe Tiefe in mm bei SACKLOCH; null bei DURCHGANG.
- *           Invariante: tiefenart == SACKLOCH ⇔ tiefe != null.
- */
-data class Bohrung(
-    override val uuid: UUID,
-    override val lokalePlatzierung: LokalePlatzierung,
-    override val bezeichnung: String?,
-    val startpunkt: Punkt,
-    val achse: Einheitsvektor,
-    val nenndurchmesser: Double,
-    val tiefenart: Tiefenart,
-    val tiefe: Double?,
-) : Bearbeitung {
-
-    enum class Tiefenart { DURCHGANG, SACKLOCH }
-}
-```
-
-- **Einheit**: Längen (Startpunkt-Koordinaten, Durchmesser,
-  Tiefe) in mm (Double); Achsenvektor dimensionslos
-  (Einheitsvektor).
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7),
-  unabhängig vom zugeordneten Bauteil (siehe `bearbeitung`).
-- **Keine Backref auf das Bauteil**: konsistent mit
-  `bearbeitung` — die Zuordnung läuft über die
-  Container-Beziehung in der Bearbeitungs-Liste des Bauteils,
-  nicht über ein Feld am Bohrungs-Objekt.
-- **Pflicht- und Optionalfelder (normativ)**:
-  - `uuid`, `lokalePlatzierung`, `startpunkt`, `achse`,
-    `nenndurchmesser`, `tiefenart` — Pflicht.
-  - `tiefe` — Pflicht-konsistent mit `tiefenart`: bei
-    `DURCHGANG` muss `tiefe == null` sein; bei `SACKLOCH` muss
-    `tiefe != null` und `tiefe > Toleranzen.LAENGE_EPS` sein.
-  - `bezeichnung` — null zulässig.
-- **Invarianten** (in Fabrikfunktion `Bohrung.erzeugen(...)` prüfen,
-  bei Verletzung `Resultat.Fehler` mit subtypspezifischer
-  Variante zurückgeben; niemals Exception werfen):
-  1. `nenndurchmesser > Toleranzen.LAENGE_EPS`.
-  2. `|‖achse.vektor‖² − 1| ≤ Toleranzen.NORM_EPS` (Einheitsvektor).
-  3. `tiefenart == SACKLOCH ⇒ tiefe != null && tiefe > Toleranzen.LAENGE_EPS`.
-  4. `tiefenart == DURCHGANG ⇒ tiefe == null`.
-  5. Werkzeugkörper trifft Bauteilkörper mit messbarem Volumen
-     (Validierungsfehler `BohrungAusserhalbBauteil` bei
-     Verletzung; geprüft in `Bauteil.fuegeBearbeitungHinzu(...)`).
-- **Berechnung des Werkzeugkörpers**:
-  - `werkzeugkoerper(): Polyeder` — Approximation des
-    Kreiszylinders durch reguläres N-Eck-Prisma; N je nach
-    Visualisierungs-Genauigkeit (Default N = 32 für die
-    Domänen-Schicht-Berechnung der Boole'schen Differenz; N kann
-    in der Visualisierungs-Schicht höher gewählt werden für
-    Rendering). Die Wahl von N ist Modellierungs-Konvention der
-    Geometrie-Schicht, nicht Bestandteil der Definition.
-  - Für α = DURCHGANG wird der Werkzeugkörper als endlicher
-    Zylinder über die Eindringlänge t_max nach (6) berechnet,
-    eventuell mit kleinem Überstand (≥ Toleranzen.LAENGE_EPS),
-    um Tangenten-Artefakte an der Bauteilberandung zu vermeiden.
-- **BTLx-Export** (Persistenzschicht, Phase 4):
-  - Mapping auf `Drilling`-Processing am betroffenen Bauteil-Part.
-  - Parameter-Übersetzung gemäss Erläuterung 'BTLx- und IFC-
-    Übersetzung'.
-- **IFC-Export** (Persistenzschicht, Phase 4):
-  - Mapping auf `IfcOpeningElement` mit `SweptSolid`-Body
-    (`IfcExtrudedAreaSolid` / `IfcCircleProfileDef` als
-    Representation), `PredefinedType` aus
-    `IfcOpeningElementTypeEnum` gemäss `tiefenart`.
-- **Edge Cases**:
-  - **Bohrung mit Achse parallel zur Bauteiloberfläche** (a_hat
-    tangential zur Berandung in p_S): geometrisch möglich, im
-    Modell aber sinnleer, weil die Boole'sche Differenz den
-    Werkzeugkörper sofort wieder verlässt; durch die
-    Bauteilwirksamkeits-Invariante (5) ausgeschlossen.
-  - **Bohrung mit Startpunkt vollständig innerhalb des
-    Bauteils** (p_S ∈ int(G_B^lokal)): zulässig (etwa für
-    eingeleimte Gewindestangen, deren Achse nicht an einer
-    Oberfläche beginnt); der Werkzeugkörper schliesst dann auch
-    den Anfangs-Halbzylinder ein, der innerhalb des Bauteils
-    liegt.
-  - **Durchgangsbohrung in ein nicht-konvexes Bauteil** (etwa
-    nach vorangegangener Kerve): t_max nach (6) ist trotzdem
-    wohldefiniert; die Boole'sche Differenz arbeitet stabil
-    auch über durchquerte Hohlräume hinweg.
-  - **Bohrung in einen isotropen Plattenwerkstoff** (Spanplatte,
-    OSB): zulässig; die Faserrichtungs-Plausibilitäts-Warnung
-    aus der Bemessungsschicht greift nicht.
-  - **Bohrung an einem Plattenwerkstoff mit Plattendicken-
-    Achse** (CLT, BSP): die Achse a_hat kann in Plattendicken-
-    Richtung (rechtwinklig zur Plattenebene) oder in
-    Plattenebene liegen; beide Fälle sind geometrisch zulässig
-    und für unterschiedliche Anwendungen typisch (Bohrung
-    rechtwinklig zur Plattenebene für Verbindungsmittel-
-    Vorbereitung; Bohrung in Plattenebene für Glued-in-Rod-
-    Anschlüsse).
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder;
-  Implementierung in Geometrie-Schicht und Bemessungs-Schicht):
-  - `werkzeugkoerper(): Polyeder` — K_Bohrung nach (4) im
-    Bauteil-Lokal-System.
-  - `effektiveTiefe(b: Bauteil): Double` — t bei SACKLOCH;
-    t_max(p_S, a_hat, G_B^lokal) bei DURCHGANG (Geometrie-Schicht).
-  - `querschnittsschwaechung(b: Bauteil, s: Double): Double` —
-    Anteil der bei Längsparameter s entfernten Querschnittsfläche
-    (Bemessungs-Schicht, EC5 5.2).
-- **Bezeichner-Konvention**: Domänen-Klasse heisst `Bohrung`
-  (deutsch, Glossarbegriff); das innere Enum heisst `Tiefenart`
-  mit Werten `DURCHGANG` und `SACKLOCH` (deutsch).
-
 ## Quellen
 
 **Primär (normativ):**
@@ -711,7 +580,7 @@ data class Bohrung(
 
 **Korpus (nicht autoritativ):**
 
-- Recherche-Bericht `docs/recherche/2026-05-14_hg_bohrung.md`
+- Recherche-Bericht [intern]
   (Bestand-Verortung, Typologie, IFC/BTLx-Mapping, Quellen-Tier-
   Bewertung).
 - Wikipedia, Lemmata „Bohrung", „Durchgangsbohrung", „Sackloch"

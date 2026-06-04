@@ -51,7 +51,7 @@ Sei
 Dann ist das **Längenmaß** über s das Tripel
 
 ```
-L(s, ℓ, u) := (s, ℓ, u)   mit   ℓ = ‖b − a‖   (numerische Konsistenz).
+L(s, ℓ, u):= (s, ℓ, u)   mit   ℓ = ‖b − a‖   (numerische Konsistenz).
 ```
 
 Die numerische Konsistenzbedingung ℓ = ‖b − a‖ ist im Sinne der
@@ -62,7 +62,7 @@ exakter Gleichheit; in der Domänen-Schicht gilt
 ## Wohldefiniertheit
 
 - **Existenz und Eindeutigkeit:** Für jede Strecke [a, b] mit a ≠ b
-  ist der zugeordnete Maßwert ℓ := ‖b − a‖ eindeutig bestimmt (siehe
+  ist der zugeordnete Maßwert ℓ:= ‖b − a‖ eindeutig bestimmt (siehe
   `hg_strecke.md`, Wohldefiniertheit der Länge).
 - **Repräsentanten-Unabhängigkeit:** Das Längenmaß ist invariant
   unter Vertauschung (a, b) ↔ (b, a), weil ‖b − a‖ = ‖a − b‖.
@@ -119,43 +119,6 @@ mit GPS-Festlegungen — ist die Spezialisierung
     Zeichnung; das Längenmaß ist das Resultat dieser Tätigkeit, nicht
     die Tätigkeit selbst. Im Glossar nicht eigenständig geführt
     (reiner Prozessbegriff).
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bemassung` —
-künftiges Paket):
-
-```
-data class Laengenmass(
-    val strecke: Strecke,
-    val wert: Double,           // in mm
-    val einheit: Laengeneinheit // MILLIMETER fix für diese App
-) {
-    init {
-        // Konsistenz: |wert − strecke.laenge()| ≤ Toleranzen.LAENGE_EPS
-        // wert ≥ 0
-    }
-}
-```
-
-- **Einheit:** Wert in mm (Double); Endpunkt-Koordinaten in mm.
-- **Invarianten** (`init` oder Factory):
-  1. `wert ≥ 0` (Längen sind nicht-negativ; bei Bedarf
-     `wert > Toleranzen.LAENGE_EPS` für Nicht-Entartung).
-  2. `|wert − strecke.laenge()| ≤ Toleranzen.LAENGE_EPS`
-     (numerische Konsistenz mit der zugrundeliegenden Strecke).
-  3. `wert` finit (kein NaN, kein ±∞).
-- **Code-Pendant-Pflicht:** keine (`begriffstyp: merkmal`); die
-  Klasse wird erst eingeführt, wenn das Bemaßungs-Modul gebaut wird
-  (nicht Teil der aktuellen Sparren-mit-zwei-Kerven-Etappe).
-- **Edge Cases:**
-  - `wert ≈ 0`: degeneriertes Längenmaß (Punktmaß); im Werkplan
-    nicht zulässig.
-  - Diskrepanz `wert ≠ strecke.laenge()`: kennzeichnet entweder
-    Maßeintragungs-Fehler im CAD-Workflow oder einen
-    Soll-Ist-Vergleich (Soll-Wert manuell eingetragen, Ist-Wert
-    aus Geometrie); die App entscheidet beim Bemaßungs-Modul, wie
-    Soll/Ist getrennt geführt werden.
 
 ## Quellen
 

@@ -63,7 +63,7 @@ Sei
 Dann ist die **Dachneigung** der Dachfläche D der Winkel
 
 ```
-α(D) := arccos(⟨n_a, e_z⟩) ∈ [0, π/2].
+α(D):= arccos(⟨n_a, e_z⟩) ∈ [0, π/2].
 ```
 
 Äquivalente Charakterisierung über die Falllinie: Sei
@@ -99,15 +99,15 @@ ist der „Höhenunterschied pro horizontalem Abstand" entlang der
 Falllinie und entspricht der in Prozent angegebenen Holzbau-Praxis:
 
 ```
-Neigung in Prozent := 100 · tan(α(D)).
+Neigung in Prozent:= 100 · tan(α(D)).
 ```
 
 **Anzeigeformen** (intern Radiant, ausschließlich am API-Rand
 konvertiert):
 
 ```
-α_grad    := α · 180 / π                 (Grad, Hauptanzeige)
-α_prozent := 100 · tan(α)                (Prozent, Holzbau-Praxis)
+α_grad:= α · 180 / π                 (Grad, Hauptanzeige)
+α_prozent:= 100 · tan(α)                (Prozent, Holzbau-Praxis)
 ```
 
 ## Wohldefiniertheit
@@ -223,100 +223,6 @@ gegenüber der Horizontalen ist exakt die Dachneigung α.
   - **„Dachgefälle"**: in einigen Quellen synonym verwendet, in
     der Schweiz aber stärker mit Flachdach-/Abdichtungspraxis
     konnotiert. Hier abgelehnt zugunsten von „Dachneigung".
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil` bzw.
-`domain.geometrie`):
-
-```
-package domain.bauteil
-
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Vektor
-import domain.Toleranzen
-import kotlin.math.acos
-import kotlin.math.tan
-import kotlin.math.PI
-
-/**
- * Dachneigung als Funktion einer Dachfläche.
- * Glossar: hg_dachneigung.md
- *
- * Wird als reine Funktion auf Dachflaeche bereitgestellt, nicht als
- * eigenständiger Datentyp: die Neigung ist ein abgeleitetes Merkmal,
- * keine selbständige Entität.
- */
-fun Dachflaeche.dachneigung(): Double {
-    val cos = aeussereNormale.z.coerceIn(0.0, 1.0)
-    return acos(cos)        // Radiant, ∈ [0, π/2]
-}
-
-fun Dachflaeche.dachneigungGrad(): Double =
-    dachneigung() * 180.0 / PI
-
-fun Dachflaeche.dachneigungProzent(): Double {
-    val a = dachneigung()
-    require(a < PI / 2.0 - Toleranzen.WINKEL_EPS) {
-        "Dachneigung 90° (vertikale Wand) hat keine Prozentanzeige"
-    }
-    return 100.0 * tan(a)
-}
-
-/** Klassifikation nach Branchen-Faustbereichen (nicht normativ). */
-enum class DachneigungsKlasse { FLACH, SCHWACH_GENEIGT, GENEIGT, STEIL }
-
-fun Dachflaeche.dachneigungsKlasse(): DachneigungsKlasse {
-    val grad = dachneigungGrad()
-    return when {
-        grad < 10.0  -> DachneigungsKlasse.FLACH
-        grad < 20.0  -> DachneigungsKlasse.SCHWACH_GENEIGT
-        grad < 60.0  -> DachneigungsKlasse.GENEIGT
-        else         -> DachneigungsKlasse.STEIL
-    }
-}
-```
-
-- **Einheit**: intern **Radiant** (Double). Anzeige in Grad oder
-  Prozent ausschließlich am API-Rand. Niemals Mischung in einer
-  Funktion.
-- **Wertebereich**: α ∈ [0, π/2). α = π/2 ist nach `dachflaeche`-
-  Definition ausgeschlossen (Wand, nicht Dach); die `require`-
-  Bedingung in `dachneigungProzent` schützt vor Division-by-Zero
-  bzw. tan(π/2) → ∞.
-- **Invariante (vererbt von `dachflaeche`)**:
-  ‖aeussereNormale‖ ∈ 1 ± Toleranzen.NORM_EPS, n_a · e_z ≥ 0.
-  Damit ist `n_a.z ∈ [0 − ε, 1 + ε]`; `coerceIn(0.0, 1.0)` macht
-  arccos numerisch sicher.
-- **Edge Cases**:
-  - **Flachdach (α = 0)**: zulässig. n_a = e_z, arccos(1) = 0.
-    Prozentanzeige liefert 0 %. Die Falllinie ist nicht eindeutig,
-    spielt für die Neigung selbst aber keine Rolle.
-  - **Senkrechte Wand (α → π/2)**: durch `dachflaeche`-Bedingung 3
-    ausgeschlossen; die Wand wird nicht als Dachfläche modelliert.
-    Falls eine pathologisch konstruierte Dachfläche ⟨n_a, e_z⟩ ≈ 0
-    aufweist, liefert `dachneigung` einen Wert nahe π/2 und die
-    Prozentanzeige wirft eine Exception über `require`.
-  - **Numerische Überschreitung von 1**: ⟨n_a, e_z⟩ kann durch
-    Rundung minimal über 1 liegen; `coerceIn` fängt das ab und
-    verhindert NaN aus arccos.
-  - **Anisotrope Skalierung des Modells**: nicht zulässig; das
-    Welt-Koordinatensystem ist isotrop in mm. Bei einer
-    fehlerhaften Skalierung der Modelldaten gibt die Funktion ein
-    konsistentes, aber möglicherweise fachlich falsches Ergebnis
-    zurück.
-- **Abgeleitete Operationen**:
-  - `dachneigung(): Double` (Radiant) als kanonische Form.
-  - `dachneigungGrad(): Double` für Anzeige.
-  - `dachneigungProzent(): Double` für Holzbau-Praxis.
-  - `falllinie(): Strecke?` (siehe `hg_falllinie.md`) entlang der
-    Richtung e_hat_fall = −(e_z − (e_z · n_hat) · n_hat), normiert und mit
-    der Vorzeichenkonvention ⟨e_hat_fall, e_z⟩ ≤ 0 (nach unten)
-    gewählt.
-- **Verwendungsregel**: Funktionen der Bemessungs- und
-  Lastrechnung (Schneelast, Windlast) erhalten den Winkel **immer
-  in Radiant**; nur UI-/Reportgeneratoren rufen die Grad-/Prozent-
-  Varianten auf.
 
 ## Quellen
 

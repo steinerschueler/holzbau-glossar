@@ -35,7 +35,7 @@ quellenkonflikt: |
   - Sie ist Pflichtfeld bei Werkstoffen mit Faserrichtungs-Modus
     SCHWACH (`gerichteter_plattenwerkstoff`, zum Stand 2026 nur OSB).
   - **Default-Konvention**: Wenn am Werkstoff nicht explizit gesetzt,
-    gilt `plattenlaengsrichtung := bauteil.lokale_x_achse`,
+    gilt `plattenlaengsrichtung:= bauteil.lokale_x_achse`,
     wobei die lokale x-Achse per Konstruktionsregel parallel zur
     längeren Plattenformat-Kante liegt (Plattenformat z. B.
     2500 × 1250 → 2500-mm-Richtung).
@@ -79,7 +79,7 @@ Dann ist die **Plattenlängsrichtung** des Plattenbauteils B eine
 Annotation
 
 ```
-plattenlaengsrichtung(B) := e_hat_l ∈ S²,
+plattenlaengsrichtung(B):= e_hat_l ∈ S²,
 ```
 
 mit der Orthogonalitäts-Invariante zur Plattendicken-Achse
@@ -99,7 +99,7 @@ bzw. in der Domänen-Schicht prüfbar
 ```
 Wenn plattenlaengsrichtung am Werkstoff nicht explizit gesetzt,
 gilt für ein Plattenbauteil B mit Werkstoff-Modus SCHWACH:
-  plattenlaengsrichtung(B) := bauteil_lokale_x_achse(B),
+  plattenlaengsrichtung(B):= bauteil_lokale_x_achse(B),
 ```
 
 wobei die lokale x-Achse per Konstruktionsregel parallel zur
@@ -109,7 +109,7 @@ längeren Plattenformat-Kante (z. B. 2500-mm-Richtung bei Format
 **Plattenquerrichtung** (abgeleitet, redundant):
 
 ```
-e_hat_q := e_hat_d × e_hat_l ∈ S²,
+e_hat_q:= e_hat_d × e_hat_l ∈ S²,
 ```
 
 mit ‖e_hat_q‖ = 1 wegen ⟨e_hat_l, e_hat_d⟩ = 0 und ‖e_hat_l‖ = ‖e_hat_d‖ = 1. Die
@@ -119,7 +119,7 @@ Plattenebene rechtwinklige Richtung.
 **Faserwinkel zur Kraft** (für Hankinson-Auswertung bei OSB):
 
 ```
-α(F_hat, e_hat_l) := arccos( | ⟨F_hat, e_hat_l⟩ | ) ∈ [0, π/2]
+α(F_hat, e_hat_l):= arccos(| ⟨F_hat, e_hat_l⟩ |) ∈ [0, π/2]
 ```
 
 (siehe `hankinson_winkel`); EC5-Tabellen führen für OSB die
@@ -146,7 +146,7 @@ Interpolation ist abgeschwächt zulässig.
   Invariante; eine Verletzung ist Validierungsfehler.
 - **Norm-Invariante**: e_hat_l erbt | ‖e_hat_l‖² − 1 | ≤
   Toleranzen.NORM_EPS aus `einheitsvektor`.
-- **Default-Auflösung**: Die Konvention `plattenlaengsrichtung :=
+- **Default-Auflösung**: Die Konvention `plattenlaengsrichtung:=
   bauteil.lokale_x_achse` ist Konstruktionsregel, nicht
   Erlaubnis-Mechanismus zum Weglassen. Nach Auflösung muss ein
   konkreter Vektor in S² mit erfüllter Orthogonalitäts-Invariante
@@ -193,7 +193,7 @@ OSB-Standardformate (DIN EN 13986):
 
 Hersteller-Datenblätter (EGGER, Kronospan) bestätigen diese
 Konvention. Die App nimmt diese Konvention als Default
-(`plattenlaengsrichtung := bauteil.lokale_x_achse`); abweichende
+(`plattenlaengsrichtung:= bauteil.lokale_x_achse`); abweichende
 Verlegungen (z. B. OSB-Brett quer eingebaut) müssen durch
 explizites Setzen modelliert werden.
 
@@ -239,65 +239,6 @@ parallel zur Schubbeanspruchung zu maximieren.
   - **`bauteilachse`**: geometrische Längsachse eines Stabbauteils;
     bei Plattenbauteilen nicht direkt anwendbar. Die lokale x-Achse
     eines Plattenbauteils ist die Default-Plattenlängsrichtung.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.holzbau.werkstoff`):
-
-```kotlin
-package domain.holzbau.werkstoff
-
-import domain.geometrie.Einheitsvektor
-
-/**
- * Plattenlängsrichtung eines gerichteten Plattenwerkstoffs (OSB):
- * Einheitsvektor in der Plattenebene, parallel zur Strand-
- * Längsrichtung der Decklagen.
- * Glossar: hg_plattenlaengsrichtung.md
- *
- * Strukturell ein Wrapper um Einheitsvektor; semantische Rolle
- * 'Plattenlängsrichtung des Modus SCHWACH'. Pflichtfeld bei
- * GerichteterPlattenwerkstoff.
- *
- * Default-Konvention: Wenn am Werkstoff nicht explizit gesetzt,
- * gilt plattenlaengsrichtung := bauteil.lokale_x_achse.
- *
- * Konstruktions-Invariante: orthogonal zur Plattendicken-Achse
- * (innerhalb WINKEL_EPS).
- */
-@JvmInline
-value class Plattenlaengsrichtung(val richtung: Einheitsvektor) {
-    val x: Double get() = richtung.x
-    val y: Double get() = richtung.y
-    val z: Double get() = richtung.z
-
-    operator fun unaryMinus(): Plattenlaengsrichtung =
-        Plattenlaengsrichtung(-richtung)
-}
-```
-
-- **Einheit**: dimensionslos (geerbt).
-- **Invariante**: alle Invarianten von `Einheitsvektor` plus
-  Orthogonalität zur Plattendicken-Achse:
-  `| richtung dot plattendickenAchse | ≤ Toleranzen.WINKEL_EPS`.
-- **Vorzeichenkonvention**: typisch in dieselbe Halbachse wie die
-  längere Plattenformat-Kante; alle EC5-Festigkeiten sind
-  vorzeicheninvariant.
-- **Konsistenzprüfungen** (am verwendenden Werkstoff prüfen, bei
-  Verletzung `Resultat.Fehler`):
-  1. Norm-Invariante (geerbt).
-  2. Orthogonalität zur Plattendicken-Achse innerhalb WINKEL_EPS.
-- **Edge Cases**:
-  - **Verletzte Orthogonalität**:
-    `Entartet.PlattenlaengsrichtungNichtOrthogonalZurPlattendickenAchse`.
-  - **Plattenlängsrichtung bei nicht-OSB-Werkstoff**:
-    Validierungsfehler; nicht erlaubt bei Modus HART, STRUKTURIERT,
-    KEINE.
-  - **Quer eingebautes OSB-Brett** (Plattenlängsrichtung
-    ≠ längere Plattenformat-Kante): zulässig durch explizites Setzen,
-    aber Plausibilitätswarnung in der Bemessungs-Schicht (verlustige
-    Steifigkeit in Hauptbeanspruchungsrichtung).
 
 ## Quellen
 

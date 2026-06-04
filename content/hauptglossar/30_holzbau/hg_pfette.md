@@ -69,11 +69,11 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
-- e_z := (0, 0, 1)ᵀ die vertikale Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-  ε_W := Toleranzen.WINKEL_EPS,
-  ε_L := Toleranzen.LAENGE_EPS.
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+- e_z:= (0, 0, 1)ᵀ die vertikale Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+  ε_W:= Toleranzen.WINKEL_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS.
 
 Dann heißt B eine **Pfette** genau dann, wenn die folgenden
 Bedingungen erfüllt sind:
@@ -106,10 +106,10 @@ Bedingungen erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Pfettenlänge**: L_P := ‖p_e − p_a‖ (in mm), entlang der
+- **Pfettenlänge**: L_P:= ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen den Pfettenenden.
 - **Pfettenrichtung**: d_hat ∈ S² mit |⟨d_hat, e_z⟩| ≤ ε_K.
-- **Pfetten-Höhenlage**: z_P := (p_a.z + p_e.z) / 2; bei einer
+- **Pfetten-Höhenlage**: z_P:= (p_a.z + p_e.z) / 2; bei einer
   exakt horizontalen Pfette gilt p_a.z = p_e.z = z_P.
 - **Pfettenanfang** und **Pfettenende** als Punkte: p_a, p_e (die
   Vorzeichenkonvention wird durch die Bauteilrolle bzw. lokale
@@ -304,104 +304,6 @@ definiert. Hier nur als Verortung:
     Eine Pfette kann **Bestandteil höchstens einer Bauteilgruppe**
     sein (`hg_bauteilgruppe.md` Bed. 1 — exklusive Mitgliedschaft).
     Eine Pfettenbinder-Pfette gehört exklusiv zu diesem Binder.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Punkt
-import kotlin.math.abs
-
-/**
- * Pfette als Bauteilrolle: horizontaler Längsträger des
- * Dachtragwerks, parallel zu einer Dachkante.
- *
- * Glossar: hg_pfette.md
- *
- * Oberbegriff der drei Spezialisierungen Firstpfette, Mittelpfette,
- * Fußpfette. Die generische Pfette enthält keine Lage-Festlegung
- * relativ zum First/zur Traufe; das ist Sache der Subtypen.
- */
-sealed class Pfette {
-    abstract val bauteil: Bauteil
-
-    val achse: Bauteilachse.Gerade
-        get() = (bauteil.geometrie as Bauteilgeometrie.Stab).achse
-                as Bauteilachse.Gerade
-    val laenge: Double get() = achse.laenge          // mm
-    val richtung: Einheitsvektor get() = achse.richtung
-    val hoehe: Double                                 // mm, mittlere z-Lage
-        get() = (achse.anfang.z + achse.ende.z) / 2.0
-
-    /**
-     * Horizontalitätsprädikat: |⟨d_hat, e_z⟩| ≤ KOLLINEAR_EPS.
-     *
-     * Sinus-Test gegen e_z-Parallelität; KOLLINEAR_EPS ist
-     * bevorzugt für Lot- und Parallelitäts-Prädikate
-     * (siehe hauptglossar/_KONVENTIONEN.md Sektion 4).
-     */
-    fun istHorizontal(eps: Double = Toleranzen.KOLLINEAR_EPS): Boolean =
-        abs(richtung.z) <= eps
-
-    /** Subtypen mit konkreter Lage am Dach. */
-    abstract class Firstpfette : Pfette()
-    abstract class Mittelpfette : Pfette()
-    abstract class Fusspfette : Pfette()
-}
-
-sealed class PfetteEntartet {
-    object Nullachse        : PfetteEntartet()
-    object NichtHorizontal  : PfetteEntartet()
-    object KeineParallelKante : PfetteEntartet()
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (in der jeweiligen Subtyp-Factory prüfen, bei
-  Verletzung `Resultat.Fehler` mit `PfetteEntartet`-Variante;
-  niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. |⟨d_hat, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst `NichtHorizontal`
-     (Sinus-Test, bevorzugt für Lot-Prädikate; siehe
-     `_KONVENTIONEN.md` Sektion 4).
-  4. Existenz einer Dachkante k im Tragwerks-Kontext mit
-     |⟨d_hat, d_hat_k⟩| ≥ 1 − ε_W — sonst `KeineParallelKante`. Die
-     Bedingung wird in der Konstruktion mit Bezug auf die
-     zugeordnete Dachfläche geprüft.
-- **Edge Cases**:
-  - **Geneigte Pfette** (Pultdach mit kontinuierlich abfallender
-    Pfette, oder „abgesetzte" Pfette über mehrere Höhen): nicht
-    durch den vorliegenden Pfettenbegriff abgedeckt; entweder
-    als segmentierte Pfettenfolge mit individuellen horizontalen
-    Pfettenabschnitten oder als eigener Begriff
-    `geneigte_pfette` (Folgearbeit).
-  - **Gekrümmte BSH-Pfette**: würde Bauteilachse.Gekruemmt
-    erfordern; Bedingung 2 ist dann punktweise (Tangenten-
-    Horizontalität) zu prüfen. Im Standardfall liegen Pfetten
-    gerade vor.
-  - **Pfette als Mauerlatte ohne tragende Wand-/Säulen-Auflager**:
-    konstruktiv möglich, aber statisch nur sinnvoll als
-    „kontinuierliche Auflagerung auf der Mauerkrone"; die
-    Modellierung erfolgt dann über ein Linien-Auflager
-    (`auflager`, eigener Eintrag folgt).
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `parallelKantenIm(t: Tragwerk): List<Dachkante>` — Dachkanten
-    in `t`, deren Richtung kollinear zur Pfettenachse ist.
-  - `getrageneSparrenIn(t: Tragwerk): List<Sparren>` — Sparren in
-    `t`, deren Bauteilachse die Pfettenachse innerhalb
-    Toleranzen schneidet (Bemessungs-Hilfsfunktion).
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt `Pfette`
-  (deutsch, Glossarbegriff); Spezialisierungen heißen
-  `Firstpfette`, `Mittelpfette`, `Fusspfette`.
 
 ## Quellen
 

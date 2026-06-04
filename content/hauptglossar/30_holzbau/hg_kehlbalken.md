@@ -31,7 +31,7 @@ quellenkonflikt: |
   Sparrenpaar) sowie die zugehörige Tragwerks-Bauart (Kehlbalkendach
   als statisch unbestimmtes System) charakterisiert. Die Quellenlage
   ist damit **identisch zu Sparren, Pfette und Binder**. Detail-Befund
-  siehe `docs/recherche/2026-05-14_hg_kehlbalken.md`.
+  siehe [intern].
 
   Eigene Festlegung in diesem Glossar:
 
@@ -178,7 +178,7 @@ Sei
   (`geometrie ∈ 𝒢_stab`),
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
-  d_hat := (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+  d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 - (S₁, S₂) ein Sparrenpaar im Sinne von `sparren`, mit
   Sparrenfuß-Punkten p^{(i)}_fuß und Sparrenfirstpunkten
   p^{(i)}_first für i ∈ {1, 2},
@@ -188,10 +188,10 @@ Sei
   voraussetzungsgemäss koplanar bis ε_L (geometrische
   Konsistenz-Bedingung eines Sparrenpaars),
 - n_paar ∈ S² ein Einheitsnormalenvektor von E_paar,
-- e_z := (0, 0, 1)ᵀ die Welt-Lotachse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-  ε_W := Toleranzen.WINKEL_EPS,
-  ε_L := Toleranzen.LAENGE_EPS.
+- e_z:= (0, 0, 1)ᵀ die Welt-Lotachse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+  ε_W:= Toleranzen.WINKEL_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS.
 
 Dann heißt B ein **Kehlbalken** des Sparrenpaars (S₁, S₂) genau
 dann, wenn die folgenden Bedingungen erfüllt sind:
@@ -223,11 +223,11 @@ dann, wenn die folgenden Bedingungen erfüllt sind:
 4. **Anschluss an beide Sparrenachsen**: Die beiden Endpunkte
    liegen — bis auf eine zuordnungsabhängige Permutation —
    auf den Bauteilachsen der beiden Sparren des Paars. Formal:
-   es gibt eine Bijektion σ : {a, e} → {1, 2} und reelle
+   es gibt eine Bijektion σ: {a, e} → {1, 2} und reelle
    Parameter t_a, t_e ∈ [0, 1] derart, dass
    ```
-   ‖p_a − ( p^{(σ(a))}_fuß + t_a · (p^{(σ(a))}_first − p^{(σ(a))}_fuß) )‖ ≤ ε_L
-   ‖p_e − ( p^{(σ(e))}_fuß + t_e · (p^{(σ(e))}_first − p^{(σ(e))}_fuß) )‖ ≤ ε_L.
+   ‖p_a − (p^{(σ(a))}_fuß + t_a · (p^{(σ(a))}_first − p^{(σ(a))}_fuß))‖ ≤ ε_L
+   ‖p_e − (p^{(σ(e))}_fuß + t_e · (p^{(σ(e))}_first − p^{(σ(e))}_fuß))‖ ≤ ε_L.
    ```
    Die Endpunkte p_a, p_e liegen damit auf den geraden
    Bauteilachsen der beiden Sparren, jeweils im offenen Bereich
@@ -255,15 +255,15 @@ dann, wenn die folgenden Bedingungen erfüllt sind:
 
 Wesentliche abgeleitete Größen:
 
-- **Kehlbalkenlänge**: L_K := ‖p_e − p_a‖ (in mm), entlang der
+- **Kehlbalkenlänge**: L_K:= ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen den beiden Anschlusspunkten an den Sparren.
-- **Kehlbalken-Höhenlage**: z_K := (p_a.z + p_e.z) / 2; bei einer
+- **Kehlbalken-Höhenlage**: z_K:= (p_a.z + p_e.z) / 2; bei einer
   exakt horizontalen Bauteilachse gilt p_a.z = p_e.z = z_K nach
   Bedingung 2.
 - **Sparrenpaar-Ebene** E_paar: die Tragebene des Kehlbalkens; sie
   ist rechtwinklig zur Trauflinie und enthält die beiden Sparren-
   Bauteilachsen.
-- **Höhenparameter** t_bar := (t_a + t_e) / 2 ∈ (0, 1): mittlerer
+- **Höhenparameter** t_bar:= (t_a + t_e) / 2 ∈ (0, 1): mittlerer
   Sparren-Längenparameter der beiden Anschlusspunkte; charakterisiert
   die Höhenlage des Kehlbalkens relativ zur Sparrenlänge. Dient als
   abgeleitete Klassifikations-Größe (Faustregel-Bandbreite), nicht
@@ -287,7 +287,7 @@ Wesentliche abgeleitete Größen:
   Vorgabe: das Sparrenpaar ist gegenüber seiner Mittelsenkrechten
   spiegelsymmetrisch, und Welt-Lot e_z liegt rechtwinklig zu d_hat
   (Bedingung 2), sodass weder Falllinie noch Lot eine Richtung
-  innerhalb d_hat auszeichnen. Die Bijektion σ : {a, e} → {1, 2}
+  innerhalb d_hat auszeichnen. Die Bijektion σ: {a, e} → {1, 2}
   in Bedingung 4 ist daher **konventional** und keine Eigenschaft
   des Kehlbalkens selbst; sie ist Bestandteil der Bauteilachse-
   Konstruktion und kann etwa lexikographisch über die Bauteil-
@@ -521,130 +521,6 @@ gehört höchstens zu einem Kehlbalkenbinder.
     Verbindungen und Auflagern; der Kehlbalken ist Element des
     Tragwerks, nicht selbst Tragwerk.
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```kotlin
-package domain.bauteil
-
-import domain.Toleranzen
-import domain.bauteil.Bauteil
-import domain.bauteil.Bauteilachse
-import domain.bauteil.BauteilId
-import domain.bauteil.Bauteilgeometrie
-import domain.geometrie.Einheitsvektor
-import domain.geometrie.Ebene
-import domain.geometrie.Punkt
-
-/**
- * Kehlbalken als Bauteilrolle: horizontales Querholz zwischen einem
- * Sparrenpaar in dessen Tragebene, oberhalb der Sparrenfußpunkte und
- * unterhalb der Sparrenfirstpunkte.
- *
- * Glossar: hg_kehlbalken.md
- *
- * Geometrische Constraints:
- *   1. Stabgeometrie, Achsenlänge > LAENGE_EPS.
- *   2. Bauteilachse horizontal (Sinus-Test gegen e_z, KOLLINEAR_EPS).
- *   3. Endpunkte in der Sparrenpaar-Ebene (bis LAENGE_EPS).
- *   4. Endpunkte auf den Bauteilachsen der beiden Sparren des Paars
- *      mit Sparren-Längsparametern t_a, t_e ∈ (0, 1).
- *   5./6. t_a, t_e strikt zwischen 0 und 1 (Bund-/Hahnenbalken-
- *      Trennung).
- *
- * Vorzeichenkonvention der Bauteilachse: konventional über die
- * Bauteil-IDs der beiden Sparren (S₁ mit id(S₁) < id(S₂) → p_a am
- * S₁-Anschluss, p_e am S₂-Anschluss). Die Konvention ist nicht
- * Bestandteil der Definition, sondern Konstruktor-Detail.
- *
- * Querschnitts- und Werkstoff-Annotationen werden vom umschlossenen
- * Bauteil übernommen. Faserrichtung ist im Regelfall parallel zur
- * Bauteilachse zu setzen.
- */
-data class Kehlbalken(
-    val bauteil: Bauteil,
-    val sparrenpaar: Pair<Sparren, Sparren>
-) {
-    // Alle Konsistenzbedingungen werden in der Factory
-    // kehlbalkenAusBauteil(...) geprüft und liefern bei Verletzung
-    // ein Resultat.Fehler mit KehlbalkenEntartet-Variante.
-    // Kein init { require(...) } gemäss docs/_CODE_KONVENTIONEN.md
-    // (init-require-Verbot: niemals Exception werfen).
-
-    val anschlusspunktS1: Punkt get() = achse().anfang
-    val anschlusspunktS2: Punkt get() = achse().ende
-    val laenge: Double get() = achse().laenge        // mm
-    val hoehe: Double                                 // mm (Welt-z)
-        get() = (anschlusspunktS1.z + anschlusspunktS2.z) / 2.0
-
-    private fun achse(): Bauteilachse.Gerade =
-        (bauteil.geometrie as Bauteilgeometrie.Stab).achse as Bauteilachse.Gerade
-}
-
-sealed class KehlbalkenEntartet {
-    object Nullachse              : KehlbalkenEntartet()
-    object NichtHorizontal        : KehlbalkenEntartet()
-    object NichtInSparrenpaarEbene: KehlbalkenEntartet()
-    object KeinAnschlussAnSparren : KehlbalkenEntartet()
-    object AmSparrenfuss          : KehlbalkenEntartet()  // t_a oder t_e ≤ 0
-    object AmSparrenfirst         : KehlbalkenEntartet()  // t_a oder t_e ≥ 1
-    object SparrenpaarEntartet    : KehlbalkenEntartet()  // 4 Punkte nicht koplanar
-}
-```
-
-- **Einheit**: Längen in mm (Double), Winkel intern in Radiant.
-- **Identität**: `BauteilId` aus dem zugrunde liegenden Bauteil.
-- **Invarianten** (in der Factory `kehlbalkenAusBauteil(...)` prüfen,
-  bei Verletzung `Resultat.Fehler` mit der jeweiligen
-  `KehlbalkenEntartet`-Variante; niemals Exception):
-  1. Stabgeometrie und Bauteilachse vom Typ `Bauteilachse.Gerade`.
-  2. Achsenlänge > Toleranzen.LAENGE_EPS — sonst `Nullachse`.
-  3. Sparrenpaar-Ebene konstruierbar (vier Sparren-Endpunkte koplanar
-     bis ε_L) — sonst `SparrenpaarEntartet`.
-  4. |⟨d_hat, e_z⟩| ≤ Toleranzen.KOLLINEAR_EPS — sonst `NichtHorizontal`.
-  5. p_a, p_e in der Sparrenpaar-Ebene bis ε_L — sonst
-     `NichtInSparrenpaarEbene`.
-  6. p_a auf Sparren-Achse von S₁ und p_e auf Sparren-Achse von S₂
-     mit Sparren-Längsparametern t_a, t_e bis ε_L — sonst
-     `KeinAnschlussAnSparren`.
-  7. t_a > ε und t_e > ε (mit ε im Sinne von ε_L / Sparrenlänge) —
-     sonst `AmSparrenfuss`.
-  8. t_a < 1 − ε und t_e < 1 − ε — sonst `AmSparrenfirst`.
-- **Toleranz-Wahl**: Bedingung 4 nutzt `KOLLINEAR_EPS` (Sinus-Test
-  gegen e_z, Lot-Prädikat); Bedingungen 3, 5, 6 nutzen `LAENGE_EPS`
-  (Koordinaten- und Distanz-Tests); Bedingungen 7, 8 nutzen
-  `LAENGE_EPS` umgerechnet auf den dimensionslosen Sparren-
-  Längsparameter (ε = LAENGE_EPS / L_S). Vergleiche
-  `HG_KONVENTIONEN.md` §4.
-- **Edge Cases**:
-  - **Symmetrisches Sparrenpaar** (Standardfall, Satteldach): p_a, p_e
-    liegen auf gleicher Höhe; Bedingung 2 ist automatisch erfüllt,
-    wenn t_a = t_e.
-  - **Asymmetrisches Sparrenpaar** (unterschiedliche Sparrenlängen
-    oder -neigungen): t_a ≠ t_e ist nötig, um p_a und p_e auf
-    gleicher Welt-z-Höhe zu halten (Bedingung 2 zwingt die
-    Horizontalität).
-  - **Kehlbalken in einem Kehlbalkenbinder** (Bauteilgruppe): die
-    exklusive Mitgliedschaft (`hg_bauteilgruppe.md` Bed. 1) wird am
-    Aggregat geprüft, nicht am einzelnen Kehlbalken.
-  - **Pultdach**: kein Sparrenpaar → Kehlbalken nicht definierbar.
-    Aussteifende Querhölzer sind dort andere Bauteilrollen.
-  - **Sehr kurzer Kehlbalken nahe am First** (t_bar → 1): konstruktiv
-    in Richtung Hahnenbalken; die Trennung ist konventional und
-    nicht über eine numerische Schwelle in der Definition geregelt.
-    Im Code wird die Bauteilrolle Kehlbalken vs. Hahnenbalken am
-    Aggregat (Kehlbalkenbinder / Dachstuhl-Modell) entschieden,
-    sobald der eigene Eintrag `hahnenbalken` angelegt ist.
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `hoehenparameter(): Pair<Double, Double>` — (t_a, t_e), die
-    Sparren-Längsparameter der beiden Anschlusspunkte.
-  - `faserneigung(): Double?` — falls Faserrichtung gesetzt:
-    Winkel zwischen Faserrichtung und Kehlbalken-Bauteilachse;
-    sonst null.
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt `Kehlbalken`
-  (deutsch, Glossarbegriff).
-
 ## Quellen
 
 **Primär (normativ):**
@@ -685,4 +561,4 @@ sealed class KehlbalkenEntartet {
   „Zange (Bauteil)" (abgerufen 2026-05-14).
 - DWDS, Eintrag „Kehle" (etymologische Verankerung).
 - Wiktionary, Eintrag „Kehlbalken" (lexikographische Definition).
-- Recherche-Bericht `docs/recherche/2026-05-14_hg_kehlbalken.md`.
+- Recherche-Bericht [intern].

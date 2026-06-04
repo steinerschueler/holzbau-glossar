@@ -23,7 +23,7 @@ quellen_sekundär:
   - "Fraunhofer-IBP: Anwendungshinweise zu DIN EN 15026 (hygrothermische Simulation, WUFI)."
   - "pro clima Technische Information: INTELLO/INTELLO PLUS, DB+ — feuchtevariabler sd-Wert-Bereich."
   - "SIGA.swiss: Produktdaten Majrex 200 — Hygrobrid-Membran mit richtungsabhängigem sd-Wert."
-  - "Recherchebericht docs/recherche/2026-05-14_hg_dampfbremse.md."
+  - "Recherchebericht [intern]."
 quellenkonflikt: |
   **(1) sd-Wert-Schwelle 100 m falsifiziert.** Die ursprüngliche
   Auftrags-Hypothese verortete die Trenngrenze zwischen Dampfbremse
@@ -39,7 +39,7 @@ quellenkonflikt: |
   Glossareintrag wird die DIN-4108-3-Grenze 1500 m verwendet; die
   100-m-Linie ist nur in der Erläuterung als PE-Folie-Praxis-Schwelle
   vermerkt. Recherche-Bericht:
-  `docs/recherche/2026-05-14_hg_dampfbremse.md`, Abschnitt C.
+  [intern], Abschnitt C.
 
   **(2) „Dampfsperre veraltet" — Hersteller-Konsens, nicht Norm.**
   Die Auftrags-Aussage „Dampfsperre veralteter Begriff, durch
@@ -165,14 +165,14 @@ Sei
 - A = (𝒟, 𝒮, H) ein **Dachaufbau** im Sinne von `dachaufbau` mit
   Dachflächen-Familie 𝒟 = { D₁, …, D_m }, geordneter Schichtfolge
   𝒮 = (S₁, …, S_k) von innen nach aussen, und Dachhaut H,
-- F := ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich der Dachflächen,
+- F:= ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich der Dachflächen,
 - ein Index j* ∈ { 1, …, k } so gewählt, dass die Schicht S_{j*}
   die Funktionsklasse `SchichtFunktion.DAMPFBREMSE` trägt,
 - d_{j*} ∈ ℝ_{>0} (in mm) die Dicke von S_{j*},
 - φ_bar ∈ [0, 1] die mittlere relative Feuchte im Querschnitt der
   Bahn (dimensionslos),
 - σ ∈ { **innen**, **aussen** } die Seite der Bahn,
-- s_d : [0, 1] × { innen, aussen } → ℝ_{>0} die sd-Wert-Funktion
+- s_d: [0, 1] × { innen, aussen } → ℝ_{>0} die sd-Wert-Funktion
   der Bahn, Einheit m,
 - s_min, s_max ∈ ℝ_{>0} mit s_min ≤ s_max die zertifizierten
   Schranken der Bahn nach DIN EN 13984.
@@ -180,7 +180,7 @@ Sei
 Dann ist eine **Dampfbremse** das Quintupel
 
 ```
-B := (𝒟, S_{j*}, s_d, s_min, s_max)
+B:= (𝒟, S_{j*}, s_d, s_min, s_max)
 ```
 
 mit den Konsistenzbedingungen
@@ -301,7 +301,7 @@ sd-Wert-Klassifikation eingegrenzt:
 | **diffusionshemmend**  | 0,5 m ≤ sd ≤ 1500 m | **Dampfbremse**       |
 | diffusionsdicht        | sd > 1500 m      | `dampfsperre` (Forward A) |
 
-Die im Auftrag angedeutete Schwelle „sd = 100 m" zwischen
+Die Schwelle „sd = 100 m" zwischen
 Dampfbremse und Dampfsperre ist **keine normative Grenze**,
 sondern eine **Praxis-Konvention**: klassische PE-Folie
 (d ≈ 0,2 mm, µ ≈ 500 000) erreicht sd ≈ 100 m und wird im
@@ -454,194 +454,6 @@ Bibliothek.
     Dampfbremse realisiert; bauphysikalisch und definitorisch
     aber getrennt — siehe `quellenkonflikt:` (3).
 
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht `domain.bauteil`):
-
-```
-package domain.bauteil
-
-import domain.Toleranzen
-
-/**
- * Dampfbremse als raumseitige diffusionshemmende Schicht
- * des Dachaufbaus. Glossar: hg_dampfbremse.md
- *
- * Sealed-Hierarchie nach Form der sd-Wert-Funktion:
- *   Konventionell  — sd konstant in (φ_bar, σ).
- *   Feuchteadaptiv — sd antiton in φ_bar, symmetrisch in σ.
- *   Hygrobrid      — sd asymmetrisch in σ.
- */
-sealed class Dampfbremse {
-    abstract val dachflaechen: List<Dachflaeche>
-    abstract val schicht: Schicht          // mit funktion = DAMPFBREMSE
-    abstract val sdMin: Double             // m, untere Schranke (>= 0.5)
-    abstract val sdMax: Double             // m, obere Schranke (<= 1500.0)
-
-    /** Punktwert der sd-Wert-Funktion in der gegebenen
-     *  mittleren relativen Feuchte phi (∈ [0,1]) und auf der
-     *  gegebenen Seite. */
-    abstract fun sdWert(phi: Double, seite: Seite): Double  // m
-
-    enum class Seite { INNEN, AUSSEN }
-
-    data class Konventionell(
-        override val dachflaechen: List<Dachflaeche>,
-        override val schicht: Schicht,
-        val sdKonst: Double                // m, im Bereich [0.5, 1500.0]
-    ) : Dampfbremse() {
-        override val sdMin: Double get() = sdKonst
-        override val sdMax: Double get() = sdKonst
-        override fun sdWert(phi: Double, seite: Seite): Double = sdKonst
-    }
-
-    data class Feuchteadaptiv(
-        override val dachflaechen: List<Dachflaeche>,
-        override val schicht: Schicht,
-        override val sdMin: Double,
-        override val sdMax: Double,
-        // Antitone Funktion phi -> sd(phi); im Code als
-        // monotone Tabelle oder Closure realisiert.
-        val sdKurve: (Double) -> Double
-    ) : Dampfbremse() {
-        override fun sdWert(phi: Double, seite: Seite): Double = sdKurve(phi)
-    }
-
-    data class Hygrobrid(
-        override val dachflaechen: List<Dachflaeche>,
-        override val schicht: Schicht,
-        override val sdMin: Double,
-        override val sdMax: Double,
-        val sdKurveInnen: (Double) -> Double,
-        val sdKurveAussen: (Double) -> Double
-    ) : Dampfbremse() {
-        override fun sdWert(phi: Double, seite: Seite): Double = when (seite) {
-            Seite.INNEN  -> sdKurveInnen(phi)
-            Seite.AUSSEN -> sdKurveAussen(phi)
-        }
-    }
-}
-
-// DIN-4108-3-Klassifikation eines sd-Werts als parametrische
-// Funktion (analog klassifiziereNachStauwasser an
-// hg_unterdach.md). Hier — und nur hier — sind die
-// Schwellenwerte materialisiert.
-enum class DiffusionsKlasse { OFFEN, HEMMEND, DICHT }
-
-// Lokale Norm-Aufzählung für Dampfbremsen-Klassifikation. Eindeutiger
-// Klassenname analog zu UnterdachNorm (hg_unterdach.md),
-// AbdichtungsNorm (hg_dachabdichtung.md) und WaermedaemmungsNorm
-// (hg_waermedaemmung.md), um Kollisionen zu vermeiden.
-// Folgearbeit-Trigger: sobald mehrere Bauphysik-Module dieselbe
-// Norm referenzieren (DIN 4108-3 ist auch in UnterdachNorm und
-// WaermedaemmungsNorm geführt), wird ein zentraler hg_norm.md
-// angelegt und die lokalen Enums migriert.
-enum class DampfbremsenNorm { DIN_4108_3, SIA_180, OENORM_B_8110_2 }
-
-fun klassifiziereNachSdWert(sd: Double, norm: DampfbremsenNorm): DiffusionsKlasse =
-    when (norm) {
-        DampfbremsenNorm.DIN_4108_3 -> when {
-            sd <  0.5    -> DiffusionsKlasse.OFFEN
-            sd <= 1500.0 -> DiffusionsKlasse.HEMMEND
-            else         -> DiffusionsKlasse.DICHT
-        }
-        else -> error("DampfbremsenNorm $norm: sd-Schwellen noch nicht hinterlegt.")
-    }
-```
-
-- **Einheit:** sd-Wert in **Metern** (Double); Schichtdicke der
-  Bahn in mm (über `Schicht.dicke` geerbt). Die zwei Einheiten
-  sind in der Bauphysik kanonisch (sd in m, Schichtdicke in mm)
-  und werden nicht miteinander vermischt.
-- **Mittlere relative Feuchte φ_bar** als Eingabe der sd-Wert-
-  Funktion ist dimensionslos in [0, 1].
-- **Trennung Definition ↔ Norm-Schwellen.** Die definitorische
-  Bedingung an die Bahn ist
-  0,5 m ≤ s_min ≤ s_max ≤ 1500 m. Die konkrete Klassifikation
-  eines beliebigen sd-Werts (offen / hemmend / dicht) ist in der
-  parametrischen Funktion `klassifiziereNachSdWert(sd, norm)`
-  pro Norm materialisiert — analog zur Auslagerung
-  normabhängiger Stauwasser-Schwellen in
-  `klassifiziereNachStauwasser(h, norm)` an `hg_unterdach.md`.
-- **Invarianten** (in `init` jedes Subtyps prüfen, bei Verletzung
-  `Resultat.Fehler` bzw. `Entartet`-Variante zurückgeben, niemals
-  Exception werfen):
-  1. `dachflaechen.isNotEmpty()` ⇒ sonst `Entartet.LeerTraeger`.
-  2. `schicht.funktion == SchichtFunktion.DAMPFBREMSE` ⇒ sonst
-     `Entartet.FalscheSchichtFunktion`.
-  3. `schicht.dicke > Toleranzen.LAENGE_EPS` ⇒ sonst
-     `Entartet.NullDickeSchicht`.
-  4. `sdMin >= 0.5 - Toleranzen.LAENGE_EPS / 1000.0` (untere
-     diffusionshemmende Schranke der DIN 4108-3, sd in m;
-     Toleranz auf Mikrometer-Skalenwert) ⇒ sonst
-     `Entartet.DiffusionsoffeneBahn`.
-  5. `sdMax <= 1500.0 + Toleranzen.LAENGE_EPS / 1000.0` (obere
-     Schranke gegen Dampfsperre; sd > 1500 m gehört zu
-     `dampfsperre`) ⇒ sonst `Entartet.Diffusionsdicht`.
-  6. `sdMin <= sdMax` ⇒ sonst `Entartet.SchrankenVerdreht`.
-  7. **Subtyp-spezifisch:**
-     - `Konventionell`: `sdMin == sdMax == sdKonst` ⇒ sonst
-       `Entartet.NichtKonstant`.
-     - `Feuchteadaptiv`: `sdKurve` ist antiton im Sinne von
-       φ_bar₁ ≤ φ_bar₂ ⇒ sdKurve(φ_bar₁) ≥ sdKurve(φ_bar₂). Wird über eine
-       Stichprobe in [0, 1] geprüft (z. B. 11 Stützstellen
-       0,0; 0,1; …; 1,0); Verletzung ⇒ `Entartet.NichtAntiton`.
-     - `Hygrobrid`: `sdKurveInnen(phi) ≠ sdKurveAussen(phi)` für
-       mindestens ein φ_bar ∈ [0, 1]. Verletzung ⇒
-       `Entartet.NichtAsymmetrisch` (in diesem Fall wäre der
-       korrekte Subtyp `Feuchteadaptiv` oder `Konventionell`).
-- **Edge Cases:**
-  - **Diffusionsoffene Bahn (sd < 0,5 m, z. B. Unterdachbahn,
-    Fassadenbahn):** **keine Dampfbremse**; gehört zur
-    diffusionsoffenen Klasse. Wird durch Bedingung 4 abgewiesen
-    (`Entartet.DiffusionsoffeneBahn`).
-  - **Diffusionsdichte Bahn (sd > 1500 m, z. B. Aluminium-
-    Verbundbahn, Bitumen-Schweissbahn):** **keine Dampfbremse**;
-    gehört in die Klasse `dampfsperre` (Forward-Verweis A).
-    Wird durch Bedingung 5 abgewiesen (`Entartet.Diffusionsdicht`).
-  - **Grenzfall sd = 0,5 m oder sd = 1500 m:** beide Werte sind
-    inkl. zulässig (DIN 4108-3 fasst die Schranke jeweils
-    schliessend, im Glossar wird die Toleranz auf Mikrometer-
-    Skala zugelassen, um Floating-Point-Rauschen zu absorbieren).
-  - **PE-Folie SD100:** sd ≈ 100 m konstant, Subtyp
-    `Konventionell` mit `sdKonst = 100.0`. Im Volksmund oft
-    „Dampfsperre" genannt, normativ aber Dampfbremse — siehe
-    Erläuterung.
-  - **Holzwerkstoffplatte (OSB, Vollholzschalung)** als Schicht
-    mit diffusionshemmender Wirkung: kann als `Konventionell`
-    mit produkt-spezifischem `sdKonst` (typ. 1–4 m bei 15 mm
-    OSB) modelliert werden, wenn ihre `SchichtFunktion`
-    DAMPFBREMSE ist; alternativ als `LUFTDICHTHEITSEBENE` oder
-    `SCHALUNG` mit dampfhemmender Nebenwirkung — die Wahl der
-    Funktionsklasse ist konstruktive Entscheidung.
-  - **Sanierungs-Doppelbelegung:** ein Aufbau mit doppelter
-    Diffusionssicherung (Bestands-Dampfbremse + neue raumseitige
-    Schicht) wird als zwei DAMPFBREMSE-Schichten im selben
-    Aufbau modelliert; jede ist eine eigenständige Dampfbremsen-
-    Instanz.
-  - **Flachdach:** ein Flachdach hat im Regelfall eine
-    `dachabdichtung` als alleinige wasserführende Ebene aussen
-    und kann zusätzlich eine raumseitige Dampfbremse oder
-    Dampfsperre tragen (Warmdach mit Dampfsperre unter der
-    Wärmedämmung). Die Dampfbremse ist im Flachdach-Aufbau
-    bauphysikalisch zulässig.
-- **Abgeleitete Eigenschaften** (als Funktionen, keine Felder):
-  - `klasse(norm: DampfbremsenNorm): DiffusionsKlasse` — bei einer
-    Dampfbremse stets `HEMMEND`; bei Bahnen, die fälschlich als
-    Dampfbremse konstruiert werden, deckt die parametrische
-    Klassifikationsfunktion die Inkonsistenz auf.
-  - `sdMittelwert(): Double` — arithmetischer Mittelwert der
-    sd-Wert-Funktion über [0, 1] (für Feuchteadaptiv und
-    Hygrobrid); bei Konventionell trivial `sdKonst`.
-  - `istFeuchteadaptiv(): Boolean` — true, wenn der Subtyp
-    `Feuchteadaptiv` oder `Hygrobrid` ist.
-- **IFC-Mapping** (am API-Rand des IFC-Exporters, nicht im
-  Datentyp selbst): `IfcMaterialLayer` mit
-  `Category = "VapourBarrier"` (oder `"VapourControlLayer"`);
-  sd-Wert über `Pset_MaterialCommon.VaporPermeability` bzw.
-  µ-Zahl mit `LayerThickness`. Kein eigenständiges
-  `Pset_VapourBarrier` im IFC-Standard 4.3.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -689,7 +501,7 @@ fun klassifiziereNachSdWert(sd: Double, norm: DampfbremsenNorm): DiffusionsKlass
 **Korpus (nicht autoritativ):**
 
 - Recherchebericht
-  `docs/recherche/2026-05-14_hg_dampfbremse.md`.
+  [intern].
 - BauNetz Wissen: „Stoffeigenschaften und Wasserdampfdiffusions-
   widerstand"; „Dampfbremse, Dampfsperre, Luftdichtheit".
 - energie-experten.org: „sd-Wert".

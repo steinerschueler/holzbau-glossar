@@ -34,8 +34,8 @@ quellen_sekundär:
   - "Wikipedia, Lemma 'Fachwerkhaus': Andreaskreuz als regionales Ornament-Element in DE-Mitteldeutschland (Frankenwald), Sachsen (Vogtland) und Niedersachsen."
   - "BauNetz Wissen, Glossar-Holz, Lemma 'Andreaskreuz' (baunetzwissen.de)."
   - "Lignum (Hrsg.): Holzbautabellen HBT 1 (2024). Lignum, Zürich. CH-Riegelbau-Diagonalverbände (Volltext nicht zugänglich)."
-  - "Recherche-Bericht: docs/recherche/2026-05-16_wand_aggregat.md (§D Andreaskreuz)."
-  - "Recherche-Bericht (Vorgänger): docs/recherche/2026-05-15_strebe_kopfband_bug.md (Welle 10, §A.2 Lemma-Disambiguator-Befund, §D.2 Andreaskreuz/Mann-Komposition)."
+  - "Recherche-Bericht: [intern] (§D Andreaskreuz)."
+  - "Recherche-Bericht (Vorgänger): [intern] (Welle 10, §A.2 Lemma-Disambiguator-Befund, §D.2 Andreaskreuz/Mann-Komposition)."
 quellenkonflikt: |
   Fünf Punkte werden hier ausdrücklich aufgelöst.
 
@@ -108,24 +108,12 @@ quellenkonflikt: |
   veraltet"; Feuerbock und Malkreuz mit Begründung
   „fachlich falsch (Wikipedia-Klarstellung)".
 
-  **(4) Lemma-Disambiguator-Wechsel zwischen Welle-10- und
-  Welle-12-Recherche.** Die Welle-10-Recherche
-  (`docs/recherche/2026-05-15_strebe_kopfband_bug.md` §A.2)
-  vermerkte für `wiki/Andreaskreuz_(Bauwesen)` einen
-  HTTP-404-Befund. Die Welle-12-Recherche
-  (`docs/recherche/2026-05-16_wand_aggregat.md` §A.1) hat
-  den korrekten Disambiguator `_(Fachwerk)` verwendet und
-  WebFetch war erfolgreich. Hauptinstanz-WebFetch in
-  dieser Welle hat den Befund unabhängig verifiziert. Die
-  Welle-12-URL `https://de.wikipedia.org/wiki/Andreaskreuz_(Fachwerk)`
-  ist die korrekte Quelle.
-
   **(5) CH-Verbreitung.** Im CH-Riegelbau ist das
   Andreaskreuz belegt, aber **weniger prominent** als in
   DE-Fachwerk-Mitteldeutschland (Frankenwald), Sachsen
   (Vogtland) und Niedersachsen (Wikipedia/Fachwerkhaus,
   Wikipedia/Andreaskreuz (Fachwerk) — Beispiele Göttingen,
-  Frankfurt, Weismain, Weimar). Eric als CH-Zimmermann
+  Frankfurt, Weismain, Weimar). Anweiser als CH-Zimmermann
   kennt das Andreaskreuz als Begriff, hat es aber in
   der CH-Praxis seltener im Bestand. Die Welle-12-
   Modellierung führt das Andreaskreuz als allgemeine
@@ -157,15 +145,15 @@ Sei
 - 𝒰 der UUID-Raum nach `uuid`,
 - 𝒢_huelle die Menge der zulässigen Hüllgeometrie-Repräsentationen
   einer Bauteilgruppe,
-- e_z := (0, 0, 1)ᵀ die vertikale Welt-Achse,
-- ε_K := Toleranzen.KOLLINEAR_EPS,
-  ε_L := Toleranzen.LAENGE_EPS,
-  ε_W := Toleranzen.WINKEL_EPS.
+- e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
+- ε_K:= Toleranzen.KOLLINEAR_EPS,
+  ε_L:= Toleranzen.LAENGE_EPS,
+  ε_W:= Toleranzen.WINKEL_EPS.
 
 Dann ist ein **Andreaskreuz** ein Tupel
 
 ```
-A := (uuid, streben, wandebene, kreuzungspunkt,
+A:= (uuid, streben, wandebene, kreuzungspunkt,
       lage, huelle, funktion?, bezeichnung?)
 ```
 
@@ -210,7 +198,7 @@ und den Konsistenzbedingungen
 4. **Streben kreuzen sich strikt im Inneren beider
    Bauteilachsen**: Bezeichne mit s₁, s₂ ∈ streben die zwei
    Streben mit a(s_i) = (p_a^{i}, p_e^{i}), und mit
-   L_i := {p_a^{i} + t · (p_e^{i} − p_a^{i}) : t ∈ [0, 1]}
+   L_i:= {p_a^{i} + t · (p_e^{i} − p_a^{i}): t ∈ [0, 1]}
    die abgeschlossene Strecke (innere Punktmenge der
    Bauteilachse). Es existiert ein Punkt
    k = kreuzungspunkt ∈ ℝ³ mit
@@ -231,7 +219,7 @@ und den Konsistenzbedingungen
    d. h. die zwei Streben sind echt nicht-parallel; der
    Kreuzungswinkel
    ```
-   γ := arccos(|⟨d_hat_1, d_hat_2⟩|) ∈ (ε_W, π/2]
+   γ:= arccos(|⟨d_hat_1, d_hat_2⟩|) ∈ (ε_W, π/2]
    ```
    ist positiv. Default-Wert im Korpus γ ≈ π/2 (rechtwinkliges
    X), praktische Range 60°–90°.
@@ -242,7 +230,7 @@ und den Konsistenzbedingungen
    oder zwei Ständer plus zwei Riegel —), in dessen Berandung
    beide Strecken L_1, L_2 ihre Endpunkte haben:
    ```
-   ∀ i ∈ {1, 2} : {p_a^{i}, p_e^{i}} ⊂ ∂G_g
+   ∀ i ∈ {1, 2}: {p_a^{i}, p_e^{i}} ⊂ ∂G_g
    ```
    (bis auf Toleranz ε_L). Die Endpunkte liegen typisch
    diagonal gegenüber: p_a^{1} und p_e^{2} an einer
@@ -254,7 +242,7 @@ und den Konsistenzbedingungen
 Die **geometrische Punktmenge** des Andreaskreuzes in W ist
 
 ```
-G_W(A) := lage(G_lokal(huelle)) ⊂ ℝ³.
+G_W(A):= lage(G_lokal(huelle)) ⊂ ℝ³.
 ```
 
 ## Wohldefiniertheit
@@ -380,7 +368,7 @@ weniger prominent als in DE-Fachwerk. Wikipedia/Fachwerkhaus
 (CH-Sektion) erwähnt „rote Balken und weisse Ausfachung"
 als CH-Riegelhaus-Charakteristikum, aber keine spezifische
 Andreaskreuz-Verbreitung. Im Erläuterungs-Block dieses
-Eintrags wird der DE-Schwerpunkt thematisiert; Eric als
+Eintrags wird der DE-Schwerpunkt thematisiert; Anweiser als
 CH-Zimmermann kennt den Begriff als Bestandteil des
 Holzbau-Fachvokabulars, hat ihn aber in der CH-Praxis
 seltener im Bestand.
@@ -399,7 +387,7 @@ geometrisch:
   Fussband, optional Strebe) sind alle an einem
   gemeinsamen Pfosten als zentraler Achse verankert.
 
-Die Abgrenzung ist im Auftrag der Welle 12 explizit als
+Die Abgrenzung ist als
 „geometrisch sauber getrennt" formuliert: Andreaskreuz am
 Gefach, Mann am Pfosten. Keine geometrische Überlappung,
 auch wenn beide Aggregate in derselben Wand vorkommen
@@ -494,105 +482,6 @@ plus ein Andreaskreuz im Brüstungsfeld).
     `bauteilgruppe`, mit anderer geometrischer
     Konfiguration.
 
-## Implementierungshinweis
-
-**Im aktuellen Glossarstand wird keine eigene Code-Klasse
-`Andreaskreuz` angelegt.** Die ontologische Vorbereitung lebt
-zunächst nur im Glossar; eine Code-Klasse entsteht zusammen
-mit dem ersten konkreten Tool, das Andreaskreuze als
-Bauteilgruppe modelliert (zugleich Trigger für `gefach`).
-
-```kotlin
-// SKIZZE — nicht jetzt anlegen.
-// Glossar: hg_andreaskreuz.md
-
-package domain.bauteil
-
-import domain.bauteil.Bauteilgruppe
-import domain.bauteil.Strebe
-import domain.geometrie.Ebene
-import domain.geometrie.Punkt
-import java.util.UUID
-
-/**
- * Andreaskreuz: Bauteilgruppe aus genau zwei sich kreuzenden
- * Streben in einer gemeinsamen Wandebene innerhalb eines
- * Gefachs. Statisch wirksame Wandaussteifung und/oder Schmuck.
- *
- * Sealed unter Bauteilgruppe.
- */
-sealed class Andreaskreuz : Bauteilgruppe() {
-    abstract val streben: Set<Strebe>        // |streben| == 2
-    abstract val wandebene: Ebene            // lotrecht
-    abstract val funktion: AndreaskreuzFunktion?
-
-    val kreuzungspunkt: Punkt
-        get() = berechneKreuzungspunkt(streben)
-
-    init {
-        // 1. streben.size == 2          → sonst Entartet.FalscheStrebenAnzahl
-        // 2. beide Streben in wandebene → sonst Entartet.StrebeAusserhalbWandebene
-        // 3. beide Streben diagonal     → erbt Strebe.istDiagonal
-        // 4. Streben kreuzen sich strikt im Inneren
-        //                               → sonst Entartet.KeinKreuzungspunkt oder
-        //                                 Entartet.SchnittAmEndpunkt
-        // 5. Streben nicht parallel     → sonst Entartet.StrebenParallel
-        // 6. beide Streben im selben Gefach
-        //                               → sonst Entartet.NichtImSelbenGefach
-        // 7. Bauteilgruppen-Bedingungen geerbt
-    }
-}
-
-enum class AndreaskreuzFunktion {
-    AUSSTEIFEND,
-    DEKORATIV,
-}
-```
-
-- **Einheit**: Längen in mm (Double); Winkel intern in Radiant.
-- **Identität**: `uuid` ist Pflicht und persistent (RFC 9562 v7).
-- **Invarianten** (in `init` bzw. Fabrikfunktionen prüfen):
-  1. `streben.size == 2` ⇒ sonst `Entartet.FalscheStrebenAnzahl`.
-  2. Wandebene lotrecht ⇒ sonst `Entartet.WandebeneNichtLotrecht`.
-  3. Beide Streben-Endpunkte in Wandebene
-     (Punkt-Ebene-Abstand ≤ `Toleranzen.LAENGE_EPS`) ⇒ sonst
-     `Entartet.StrebeAusserhalbWandebene`.
-  4. Beide Streben echt diagonal (Strebe-Constraint geerbt).
-  5. Kreuzungspunkt im inneren beider Bauteilachsen
-     (Parameter t_i ∈ (ε_L/L_i, 1 − ε_L/L_i) im Geraden-
-     Schnitt) ⇒ sonst `Entartet.SchnittAmEndpunkt` oder
-     `Entartet.KeinKreuzungspunkt`.
-  6. Streben nicht parallel (|⟨d_hat_1, d_hat_2⟩| ≤ 1 − KOLLINEAR_EPS)
-     ⇒ sonst `Entartet.StrebenParallel`.
-  7. Beide Streben im selben Gefach (gemeinsame begrenzende
-     Bauteile) ⇒ sonst `Entartet.NichtImSelbenGefach`.
-- **Edge Cases**:
-  - **Asymmetrisches Andreaskreuz** (Kreuzungspunkt nicht im
-    Gefach-Zentrum): zulässig; Bedingungen 4–6 erfüllt.
-  - **Geschossübergreifendes Andreaskreuz** (19.-Jh.-
-    Variante, mehrere Gefache überspannend): zulässig, wenn
-    Bedingung 6 entsprechend auf das übergeordnete Gefach
-    bezogen wird.
-  - **Andreaskreuz mit Blatt-Verbindung am Kreuzungspunkt**:
-    die zwei Streben bleiben zwei distinct Mitglieder; die
-    Blatt-Verbindung wird über ein eigenes `Verbindung`-
-    Aggregat zwischen ihnen modelliert.
-  - **Dekoratives Andreaskreuz mit schwachen Streben**:
-    zulässig; `funktion = DEKORATIV`.
-  - **Andreaskreuz an Brüstungsfeld**: typisch flacher,
-    kleiner Gefach-Bereich unterhalb von Fenstern;
-    geometrisch identisch zum Vollgefach-Andreaskreuz.
-- **Abgeleitete Eigenschaften** (als Funktionen):
-  - `kreuzungswinkel(): Double` (rad) = γ aus Bedingung 5.
-  - `istRechtwinkliges_X(): Boolean` = `|kreuzungswinkel() − π/2|`
-    ≤ `Toleranzen.WINKEL_EPS`.
-  - `istSymmetrisch(): Boolean` = wahr, wenn Kreuzungspunkt
-    nahe dem geometrischen Zentrum des umschliessenden
-    Gefachs.
-  - `aussteifungsRichtung(): Vektor` = Hauptrichtung der
-    Aussteifungswirkung in der Wandebene; aus den zwei
-    Streben-Richtungen abgeleitet.
-
 ## Quellen
 
 **Primär (normativ):**
@@ -625,27 +514,6 @@ enum class AndreaskreuzFunktion {
 **Korpus (nicht autoritativ):**
 
 - Recherche-Bericht:
-  `docs/recherche/2026-05-16_wand_aggregat.md`.
+  [intern].
 - Recherche-Bericht (Vorgänger):
-  `docs/recherche/2026-05-15_strebe_kopfband_bug.md` (Welle 10).
-
-## Folgearbeit (trigger-basiert)
-
-1. **`gefach`** — der das Andreaskreuz umschliessende
-   Wandfeld-Begriff; geometrische Definition als
-   Polygon-Innenbereich zwischen vier begrenzenden
-   Bauteilen (Schwelle/Rähm + zwei Ständer, oder zwei
-   Riegel + zwei Ständer). Trigger: erstes Tool, das
-   Gefache als eigene Modell-Entität führt; bis dahin
-   operationalisiert über die begrenzenden Bauteile.
-2. **`brueckmauer` / `brueckschnurmauer`** — historische
-   regionale Sub-Lesarten von Fachwerk-Brüstungsfeldern;
-   Folgearbeit-Trigger im historischen Korpus.
-3. **Code-Klasse `Andreaskreuz`** und Sealed-Hierarchie.
-   Trigger: erstes Tool, das Andreaskreuze als
-   Modell-Entität führt.
-4. **SIA-265-Verifikation**: bei Volltext-Zugriff (Eric)
-   SIA 265:2021 §1.1 prüfen, ob „Andreaskreuz" oder
-   „Kreuzstrebe" als Lemma geführt ist.
-5. **Lignum HBT 1 (2024)-Verifikation**: CH-Praxis-Status
-   des Andreaskreuzes im Riegelbau-Korpus.
+  [intern] (Welle 10).

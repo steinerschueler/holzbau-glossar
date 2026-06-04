@@ -82,7 +82,7 @@ Sei
 Dann ist die **Bezugsebene** des Tools T die Ebene
 
 ```
-E_bez(T) := { x ∈ ℝ³ | ⟨e_hat_z, x⟩ = z₀(T) },                       (1)
+E_bez(T):= { x ∈ ℝ³ | ⟨e_hat_z, x⟩ = z₀(T) },                       (1)
 ```
 
 in Hesse-Normalform (siehe `ebene`) repräsentiert durch das Paar
@@ -94,15 +94,15 @@ Welt-Geometrie G_W(B) ⊂ ℝ³:
 
 - **Höhe gegen Bezugsebene** eines Punktes p ∈ G_W(B):
   ```
-  h_E(p; T) := ⟨e_hat_z, p⟩ − z₀(T) = signierterAbstand(p, E_bez(T)).  (2)
+  h_E(p; T):= ⟨e_hat_z, p⟩ − z₀(T) = signierterAbstand(p, E_bez(T)).  (2)
   ```
   Positive Werte liegen oberhalb, negative unterhalb der
   Bezugsebene.
 - **Bauteil-Höhenbereich**:
   ```
   [h_min(B; T), h_max(B; T)]  mit
-  h_min := min { h_E(p; T) | p ∈ G_W(B) },
-  h_max := max { h_E(p; T) | p ∈ G_W(B) }.
+  h_min:= min { h_E(p; T) | p ∈ G_W(B) },
+  h_max:= max { h_E(p; T) | p ∈ G_W(B) }.
   ```
 
 **Tool-spezifische Festlegung von z₀(T)**: Die App fixiert z₀(T)
@@ -125,7 +125,7 @@ ist p_K = T_{L_B → W}(p_K^lokal). Die Bezugsebene nutzt allein die
 Lage; damit ist
 
 ```
-z₀(T_Sparren)  :=  ⟨e_hat_z, p_K⟩,                                    (3)
+z₀(T_Sparren):=  ⟨e_hat_z, p_K⟩,                                    (3)
 ```
 
 und die Bezugsebene des Sparren-Tools ist die horizontale Ebene
@@ -187,7 +187,7 @@ Tool-Dokumentation, **nicht** in diesem Glossareintrag fixiert:
 
 | Tool                    | Bezugsebene (Beispiel-Festlegung)                              |
 |-------------------------|----------------------------------------------------------------|
-| Sparren-Tool            | Horizontale Ebene durch den Kerveckpunkt p_K der Fußpfettenkerve (Höhe der lokalen Bezugskote; siehe `hg_kerve.md` Gl. (12); `hg_fusspfette.md`; `docs/recherche/2026-05-10_sparrenmessung_neubau.md`) |
+| Sparren-Tool            | Horizontale Ebene durch den Kerveckpunkt p_K der Fußpfettenkerve (Höhe der lokalen Bezugskote; siehe `hg_kerve.md` Gl. (12); `hg_fusspfette.md`; [intern]) |
 | Wandschichtaufbau       | OK Rohboden                                                    |
 | Walmdach-Tool           | OK Wandkrone (= OK Mauerwerk / Wandkrone, traufseitig)         |
 | Stützen-Tool            | OK Fundament / OK Schwelle                                     |
@@ -289,91 +289,6 @@ eine ganze Ebene fest).
     auf einer ausgezeichneten Fläche der Fußpfette (OK, UK,
     Bleischnitt) verankert sein; sie ist aber nicht selbst die
     Fußpfette.
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.geometrie.kontext`):
-
-```kotlin
-package domain.geometrie.kontext
-
-import domain.geometrie.Ebene
-
-/**
- * Bezugsebene eines Tools: horizontale Ebene in W mit festgelegter
- * z-Höhe, die als Höhenreferenz z = 0 für die im Tool modellierten
- * Bauteile dient.
- *
- * Glossar: hg_bezugsebene.md
- *
- * Pflichtfeld: bezugshoehe (z₀ in mm). Die Trägerebene ergibt sich
- * konstruktiv aus (n_hat = e_hat_z, d = bezugshoehe).
- */
-@ConsistentCopyVisibility
-data class Bezugsebene internal constructor(
-    val bezugshoehe: Double,        // z₀(T), mm in W
-) {
-    /** Trägerebene als Ebene-Wert (Hesse-Normalform mit n_hat = e_hat_z). */
-    fun ebene(): Ebene = /* Ebene mit Normale (0, 0, 1), d = bezugshoehe */ TODO()
-
-    companion object {
-        /**
-         * Konstruktion aus einer Bezugshöhe. Validiert nur, dass
-         * die Höhe finit ist; alle finiten Werte sind zulässig.
-         */
-        fun aus(bezugshoehe: Double): Resultat<Bezugsebene, BezugsebeneUngueltig> = TODO()
-    }
-}
-
-sealed class BezugsebeneUngueltig {
-    object NichtFinit : BezugsebeneUngueltig()  // NaN/±∞
-}
-```
-
-- **Einheit**: Bezugshöhe in mm (Double). Welt-Achsenkonvention
-  e_hat_z vertikal nach oben.
-- **Identität**: keine UUID. Die Bezugsebene ist eine Werteklasse
-  (data class), kein identifiziertes Objekt; sie gehört zur Tool-
-  Konfiguration und teilt deren Lebenszyklus.
-- **Pflicht- und Optionalfelder**:
-  - `bezugshoehe` — Pflicht, mm.
-  - Die Normale ist konstant e_hat_z (Standardfall horizontale
-    Bezugsebene); für geneigte Bezugsebenen wird ein eigener Subtyp
-    `GeneigteBezugsebene` als Folgearbeit vorgesehen (Trigger:
-    erstes Tool mit nicht-horizontalem Höhenbezug).
-- **Invarianten** (in Companion-Factory `Bezugsebene.aus(...)`,
-  `Resultat.Fehler` bei Verletzung; keine Exception):
-  - `bezugshoehe.isFinite()` — sonst `BezugsebeneUngueltig.NichtFinit`.
-- **Tool-Bindung**: Die Bezugsebene wird **nicht** als globaler
-  Singleton geführt; sie ist Bestandteil der Tool-Konfiguration
-  und wird beim Tool-Start instanziiert. Eine zentrale Registry
-  „Bezugsebene des Modells" gibt es nicht; jedes Tool hält seine
-  eigene.
-- **IFC-Mapping** (Persistenzschicht, Phase 4):
-  - Die Bezugsebene wird als Höhenkomponente des
-    `IfcGeometricRepresentationContext` der Tool-Repräsentation
-    geführt; konkret als `WorldCoordinateSystem` mit angepasstem
-    Ursprung (z = bezugshoehe) gegen den globalen IFC-Projektnullpunkt.
-- **Edge Cases**:
-  - **bezugshoehe = 0**: zulässig; die Bezugsebene fällt mit der
-    Welt-z-Nullebene zusammen.
-  - **bezugshoehe < 0**: zulässig (z. B. Tool, dessen Höhenbezug
-    unterhalb des globalen Modellnullpunkts liegt).
-  - **Geneigte Bezugsebene**: nicht durch diesen Datentyp abgedeckt
-    (Folgearbeit, Trigger: erstes Tool mit nicht-horizontalem
-    Höhenbezug).
-
-**Folgearbeit (trigger-basiert):**
-
-- **Geneigte Bezugsebene** (`GeneigteBezugsebene` als eigener Subtyp
-  oder Erweiterung): Trigger: erstes Tool mit Bezugsebene parallel
-  zu einer Dachfläche oder einer geneigten Wand.
-- **Tool-spezifische Bezugsebenen-Einträge** (z. B. `bezugsebene_sparren_tool.md`,
-  `bezugsebene_wandschichtaufbau.md`): Trigger: Aufnahme des
-  jeweiligen Tools in die App.
-- **Werkplan-Bemassungs-Anbindung** (Höhenbezug-Texte „+2.50 ab
-  OK Fußpfette"): Trigger: erstes Werkplan-Beschriftungs-Tool.
 
 ## Quellen
 

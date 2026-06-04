@@ -29,8 +29,7 @@ quellenkonflikt: |
   synonym für die zur Bauteilachse parallelen Aussenflächen eines
   Stab-Bauteils.
 
-  Eric hat die folgende Festlegung getroffen (in der vorigen
-  Klärungsrunde bestätigt):
+  Anweiser hat die folgende Festlegung getroffen:
 
   - **Kein Sammelbegriff `bauteilflaeche`**: Stirnseite und
     Längsseite werden als getrennte Glossarbegriffe direkt unter
@@ -88,7 +87,7 @@ Sei
 - F ⊂ ∂G_B^lokal eine ebene polygonal berandete Teilfläche der
   Bauteiloberfläche mit Trägerebene E_F und Trägerebenen-Normaler
   n_hat_F ∈ S²,
-- ε_W := Toleranzen.WINKEL_EPS.
+- ε_W:= Toleranzen.WINKEL_EPS.
 
 Die Teilfläche F heißt eine **Längsseite** von B genau dann, wenn
 gilt:
@@ -164,8 +163,7 @@ wesentlichen Komponente quer zur Trägerebene verläuft.
 - **Faserrichtungs-Bedingung (2) ist nicht-konstitutiv**: Bedingung
   (2) charakterisiert den Längsseiten-Begriff für Bauteile mit
   axialer Faserrichtung; bei Drehwuchs, Schrägsägung oder
-  Faserrichtungs-Modi STRUKTURIERT/SCHWACH/KEINE
-  (Memory `project_faserrichtung_modi`) kann sie verletzt sein,
+  Faserrichtungs-Modi STRUKTURIERT/SCHWACH/KEINE kann sie verletzt sein,
   ohne dass die geometrische Längsseiten-Eigenschaft betroffen ist.
   Sie ist semantisch erläuternd, nicht validierend.
 - **Nicht-Zirkularität**: Die Definition stützt sich auf
@@ -311,123 +309,6 @@ die Begriffe Längsseite und Mantelfläche sind disjunkt.
     `polygon` (Berandungs-Lesart) geführt, ohne gemeinsamen
     Sammel-Oberbegriff. Ein expliziter Begriff `bauteilflaeche`
     als Sammelkategorie ist Folgearbeit (siehe Folgearbeit-Block).
-
-## Implementierungshinweis
-
-Datentyp (Domänen-Schicht, Kotlin, Schicht
-`domain.bauteil.flaeche`):
-
-```kotlin
-package domain.bauteil.flaeche
-
-import domain.bauteil.querschnitt.QuerschnittsKantenIndex
-import domain.geometrie.Ebene
-import domain.geometrie.KonvexesPolygon
-import domain.geometrie.Vektor
-
-/**
- * Längsseite: Aussenfläche eines Stab-Bauteils mit Trägerebene
- * parallel zur Bauteilachse.
- *
- * Glossar: hg_laengsseite.md
- *
- * Aussennormale n_hat_F zeigt per Konvention aus dem Bauteil heraus.
- *
- * Beim Rechteckquerschnitt sind vier Längsseiten konstruierbar;
- * sie werden über den Querschnitts-Kantenindex (Schmal-/Breitseite,
- * Folgearbeit) identifiziert.
- */
-data class Laengsseite(
-    val polygon: KonvexesPolygon,           // ∂F mit Trägerebene
-    val aussennormale: Vektor,               // n_hat_F, ‖aussennormale‖ ≈ 1
-    val querschnittsKante: QuerschnittsKantenIndex,  // Index der Querschnitts-
-                                                      // erzeugendenkante; Folgearbeit
-)
-```
-
-- **Einheit**: Polygonkoordinaten in mm; Vektor dimensionslos
-  (Einheitsvektor).
-- **Identität**: keine eigene UUID. Die Längsseite ist eine
-  abgeleitete Sicht auf die Bauteiloberfläche; sie wird konstruktiv
-  aus dem Bauteil bezogen, nicht persistiert.
-- **Pflicht- und Optionalfelder**:
-  - `polygon` — Pflicht; ebenes Polygon der Längsseiten-Berandung.
-  - `aussennormale` — Pflicht; per Konvention aus dem Bauteil heraus.
-  - `querschnittsKante` — Pflicht; Index der erzeugenden
-    Querschnittskante. Der Datentyp `QuerschnittsKantenIndex` ist
-    Folgearbeit (Trigger: erste Visualisierung mit
-    Schmal-/Breitseiten-Unterscheidung).
-- **Invarianten** (in Companion-Factory `Laengsseite.aus(bauteil,
-  querschnittsKante)`, `Resultat.Fehler` bei Verletzung; keine
-  Exception):
-  1. `aussennormale` ist normiert (‖aussennormale‖ ≈ 1 innerhalb
-     `Toleranzen.NORM_EPS`).
-  2. Die Trägerebene des Polygons enthält die Bauteilachsen-Tangente:
-     |⟨aussennormale, d_hat⟩| ≤ Toleranzen.WINKEL_EPS (Bedingung (1)).
-  3. Die `querschnittsKante` ist konsistent mit dem Querschnitt
-     des Bauteils (Index liegt in [0, k−1] für einen Querschnitt
-     mit k Kanten).
-- **Konstruktion**: Die Längsseite wird **abgeleitet** aus dem
-  Bauteil und dem Querschnitts-Kantenindex; sie wird **nicht** als
-  unabhängiges Objekt konstruiert. Die Domänen-Schicht stellt
-  Faktor-Funktionen `Bauteil.laengsseiten()` und
-  `Bauteil.laengsseiteAn(kantenIndex)` bereit.
-- **IFC-Mapping** (Persistenzschicht, Phase 4):
-  - Längsseite wird nicht als eigene IFC-Entität geführt; sie ist
-    eine Sicht auf die Mantelfläche des
-    `IfcExtrudedAreaSolid`-Sweep-Körpers.
-- **Edge Cases**:
-  - **Längsseite an einem Bauteil mit Rundquerschnitt**: die
-    Mantelfläche ist nicht eben; in diesem Glossar nicht als
-    Längsseite geführt. Stattdessen Folgearbeit `mantelflaeche`
-    für rotationssymmetrische Stab-Bauteile.
-  - **Längsseite an einem Bauteil mit Drehwuchs/Schrägsägung**:
-    die Faserrichtungs-Bedingung (2) kann verletzt sein; die
-    geometrische Längsseite bleibt definiert.
-  - **Bauteil mit Faserrichtungs-Modus SCHWACH oder KEINE** (z. B.
-    OSB, Spanplatte): Bedingung (2) nicht sinnvoll; die App
-    bevorzugt für Plattenwerkstoffe ohnehin den Begriff
-    `plattenflaeche` (Folgearbeit).
-  - **Längsseite mit Bearbeitung** (Kerve, Versatz, Schlitz):
-    die Polygonberandung der Längsseite wird durch die Bearbeitung
-    modifiziert; die App führt entweder die ungeschwächte
-    Längsseite mit zusätzlicher Bearbeitungsliste oder die
-    bearbeitete Längsseite mit komplexerer Polygonberandung. Die
-    Wahl ist Implementierungssache der Geometrie-Schicht
-    (Folgearbeit Phase 3.2).
-- **Bezeichner-Konvention** (CLAUDE.md): Klasse heißt `Laengsseite`
-  (deutsch, Glossarbegriff; ASCII-Schreibweise wegen
-  Kotlin-Identifier-Konvention).
-
-**Folgearbeit (trigger-basiert):**
-
-- **Bauteilfläche** (`bauteilflaeche`-Eintrag, Folgearbeit):
-  Sammelkategorie für Stirnseite und Längsseite als die beiden
-  disjunkten ebenen Aussenflächen-Klassen eines Stabbauteils.
-  Die Symmetrie der beiden Begriffe unter `polygon`
-  (Berandungs-Lesart) reicht derzeit ohne expliziten
-  Sammel-Oberbegriff. Trigger: erste Domänen-Klasse oder
-  Visualisierungs-Operation, die Stirn- und Längsseite einheitlich
-  als „Bauteilfläche" adressieren muss (z. B. Sammel-Iteration
-  über alle Aussenflächen eines Bauteils, einheitliche
-  Aussennormalen-Behandlung im Renderer).
-- **Schmalseite** (`schmalseite`-Eintrag und -Klasse):
-  Längsseite eines Bauteils mit rechteckigem Querschnitt parallel
-  zur Querschnittsbreite. Trigger: erstes Tool mit Schmal-/Breit-
-  Unterscheidung (Faserneigungs-Sortierung, Sicht-Untersicht-
-  Markierung).
-- **Breitseite** (`breitseite`-Eintrag und -Klasse): siehe
-  Schmalseite.
-- **Mantelfläche** (`mantelflaeche`-Eintrag): nicht-ebene Mantel-
-  fläche rotationssymmetrischer Stab-Bauteile (Rundholzstütze).
-  Trigger: erstes Bauteil mit Rundquerschnitt.
-- **Plattenfläche** (`plattenflaeche`-Eintrag): Stirn-Entsprechung
-  bei Plattenbauteilen (Oberseite, Unterseite einer Platte). Trigger:
-  erstes Plattenbauteil mit expliziter Flächenmodellierung.
-- **Querschnitts-Kantenindex**
-  (`QuerschnittsKantenIndex`-Datentyp): Indizierung der Längsseiten
-  über die Querschnittskanten. Trigger: erste Visualisierung mit
-  Schmal-/Breitseiten-Unterscheidung.
 
 ## Quellen
 
