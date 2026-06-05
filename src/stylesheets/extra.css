@@ -394,6 +394,128 @@ html .md-typeset details.glossar-section h6 { font-size: 1.0rem !important; }
 }
 
 /* ──────────────────────────────────────────────────────────────────────
+ * Hamburger-Menü: Akkordeon statt Drill-Down (Mobil-Breakpoint).
+ *
+ * Material macht die primäre Navigation im schmalen Modus (< 76.25em) zu
+ * einem Drill-Down: Klick auf einen Cluster schiebt eine vollflächige
+ * Unter-Ebene mit Zurück-Pfeil über die Liste — die anderen Cluster
+ * verschwinden. Gewünscht ist stattdessen ein Akkordeon wie auf dem
+ * Desktop: Der Cluster-Name (ein <a>) navigiert zur Übersicht
+ * (navigation.indexes), der Pfeil (ein <label> am Toggle) klappt die
+ * Begriffe inline auf/zu, und die übrigen Cluster bleiben sichtbar.
+ *
+ * Voraussetzung: navigation.prune ist entfernt (mkdocs.yml) — sonst hätte
+ * nur der aktive Cluster Begriffe + Toggle im DOM.
+ *
+ * Mechanik: die verschachtelte .md-nav wird vom Overlay
+ * (position:absolute, full-height, transform:translateX) auf ein inline
+ * CSS-Grid-Akkordeon umgestellt (grid-template-rows 0fr→1fr via :checked) —
+ * exakt wie Materials Desktop-Akkordeon. Der Drill-Down-Kopf (Zurück-Pfeil)
+ * entfällt. Greift nur auf die verschachtelten .md-nav, nicht auf den
+ * Drawer .md-nav--primary selbst. */
+@media screen and (max-width: 76.1875em) {
+  .md-nav--primary .md-nav {
+    position: static;
+    height: auto;
+    transform: none;
+    opacity: 1;
+    background: none;
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows 0.25s cubic-bezier(0.86, 0, 0.07, 1),
+                visibility 0s 0.25s;
+  }
+  .md-nav--primary .md-nav__toggle:checked ~ .md-nav,
+  .md-nav--primary .md-nav__toggle.md-toggle--indeterminate ~ .md-nav {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: grid-template-rows 0.25s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+  .md-nav--primary .md-nav > .md-nav__list {
+    overflow: hidden;
+    min-height: 0;
+    box-shadow: none;
+  }
+  /* Drill-Down-Kopf (Zurück-Pfeil) der Unter-Ebenen entfällt im Akkordeon;
+   * der Drawer-Haupttitel (for=__drawer) bleibt unberührt. */
+  .md-nav--primary .md-nav .md-nav__title {
+    display: none;
+  }
+  /* Begriffe unter dem Cluster einrücken — sichtbare Hierarchie gegenüber
+   * den Überbegriffen. Trifft nur Links in verschachtelten Navs (Begriffe),
+   * nicht die Cluster-Links selbst. */
+  .md-nav--primary .md-nav .md-nav__link {
+    padding-left: 1.4rem;
+  }
+
+  /* Keine eingehängte Seiten-Gliederung (TOC) in der primären Navigation.
+   * Material hängt im schmalen Modus die Kapitel-Liste (md-nav--secondary)
+   * der aktiven Seite unter deren Nav-Eintrag — das lässt eine einzelne
+   * Seite wie „Startseite" als ausklappbare Section erscheinen (und das
+   * Akkordeon-Grid kollidierte mit deren Struktur). Eine einzelne Seite
+   * soll kein Untermenü vortäuschen; echte Sections (Cluster, Methode,
+   * via .md-nav nested) bleiben unberührt. */
+  .md-nav--primary .md-nav--secondary {
+    display: none;
+  }
+  /* Ausklapp-Pfeil nur an EINZELNEN aktiven Seiten entfernen (nicht an
+   * aktiven Sections/Clustern — die sollen aufklappbar bleiben). */
+  .md-nav--primary
+    .md-nav__item--active:not(.md-nav__item--nested)
+    > .md-nav__link
+    .md-nav__icon {
+    display: none;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+ * Anheftbares Menü (Pin-Toggle).
+ *
+ * Im schmalen Modus (< 76.25em) ist die Navigation normalerweise ein
+ * Overlay-Drawer: Hamburger öffnet sie ÜBER dem Inhalt, beim Navigieren
+ * verschwindet sie. Mit dem Pin-Toggle (Header-Knopf, gesetzt via
+ * pin-nav.js → <html class="nav-pinned"> + localStorage) bleibt die
+ * Sidebar permanent links STEHEN und der Inhalt rückt nach rechts daneben
+ * — wie die Desktop-Sidebar, nur umschaltbar. Greift nur im schmalen
+ * Breakpoint; auf breitem Desktop ist die Sidebar ohnehin permanent.
+ *
+ * Der Pin-Knopf selbst ist nur im schmalen Modus sichtbar.
+ * ────────────────────────────────────────────────────────────────────── */
+.nav-pin-toggle { display: none; }
+
+@media screen and (max-width: 76.1875em) {
+  /* Pin-Knopf im Header zeigen (nur hier sinnvoll). */
+  .nav-pin-toggle { display: block; }
+  /* Aktiver (angehefteter) Zustand: Akzentfarbe. */
+  html.nav-pinned .nav-pin-toggle { color: var(--md-accent-fg-color); }
+
+  /* Sidebar dauerhaft eingeschoben (left:0), unter dem Header, kein Overlay-
+   * Schatten. translateX(12.1rem) = Sidebar-Breite, hebt den Off-screen-
+   * Versatz (left:-12.1rem) auf. */
+  html.nav-pinned .md-sidebar--primary {
+    transform: translateX(12.1rem);
+    box-shadow: none;
+    top: 2.4rem;
+    height: calc(100% - 2.4rem);
+    z-index: 1;
+  }
+  /* Inhalt rückt nach rechts, macht der Sidebar Platz. */
+  html.nav-pinned .md-main {
+    padding-left: 12.1rem;
+  }
+  /* Kein abdunkelnder Hintergrund mehr (war Teil des Overlays). */
+  html.nav-pinned .md-overlay {
+    display: none;
+  }
+  /* Der eigene Drawer-Kopf (Logo/Titel) oben in der Sidebar ist im
+   * angehefteten Zustand redundant zum Header — ausblenden. */
+  html.nav-pinned .md-nav--primary > .md-nav__title[for="__drawer"] {
+    display: none;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────
  * Print-Stylesheet — beim Druck eines Glossar-Eintrags entfällt die
  * gesamte Navigations-Chrome (Header, Sidebars, Footer, Download-Knöpfe,
  * Suchfeld). Akkordeon-Sektionen werden automatisch geöffnet, damit
