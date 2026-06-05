@@ -1,6 +1,7 @@
 ---
 id: dampfbremse
 benennung: Dampfbremse
+kurz: "Eine Dampfbremse ist eine Folie auf der Raumseite der Dämmung, die feuchte Raumluft bremst, damit in der Dämmung kein Wasser ausfällt und das Holz nicht nass wird."
 synonyme: [Dampfbremsfolie, "diffusionshemmende Schicht", Klimamembran]
 abgelehnte_benennungen: [Dampfsperre, Luftdichtheitsebene, Luftdichtungsbahn, Tauwassersperre, "PE-Folie", "vapour barrier", "vapour retarder", "air barrier"]
 oberbegriff: schicht

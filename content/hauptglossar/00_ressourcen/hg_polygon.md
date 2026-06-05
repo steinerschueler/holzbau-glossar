@@ -1,6 +1,7 @@
 ---
 id: polygon
 benennung: Polygon
+kurz: "Ein Polygon ist eine ebene Fläche, die von lauter geraden Strecken zu einem geschlossenen Vieleck umrandet wird — wie ein Dreieck, ein Rechteck oder jedes andere Vieleck."
 synonyme: [Vieleck, "ebenes Polygon", "einfaches Polygon"]
 abgelehnte_benennungen: [Mehreck, Polyzug, "polygon"]
 oberbegriff: null

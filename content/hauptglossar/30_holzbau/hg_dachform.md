@@ -1,6 +1,7 @@
 ---
 id: dachform
 benennung: Dachform
+kurz: "Die Dachform beschreibt, wie ein Dach von aussen aussieht — wie viele Dachflächen es hat, wie sie zueinander stehen und wie steil sie sind, etwa als Satteldach, Walmdach oder Flachdach."
 synonyme: [Dachtyp, Dachgestalt]
 abgelehnte_benennungen: [Dachart, "roof shape", "roof type", "roof form"]
 oberbegriff: null

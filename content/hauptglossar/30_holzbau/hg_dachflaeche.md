@@ -1,6 +1,7 @@
 ---
 id: dachflaeche
 benennung: Dachfläche
+kurz: "Eine Dachfläche ist eine der ebenen, schrägen (oder beim Flachdach waagrechten) Seiten eines Daches, über die das Regenwasser abläuft."
 synonyme: []
 abgelehnte_benennungen: [Dachhaut, Dachdeckung, "roof surface", "roof slope"]
 oberbegriff: ebene

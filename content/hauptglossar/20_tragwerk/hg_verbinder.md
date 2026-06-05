@@ -1,6 +1,7 @@
 ---
 id: verbinder
 benennung: Verbinder
+kurz: "Ein Verbinder ist ein meist stählernes Zwischenstück — etwa ein Balkenschuh oder ein Winkel —, das zwischen zwei Hölzer gesetzt und selbst mit Schrauben oder Nägeln an beiden befestigt wird, um sie zu koppeln."
 synonyme: [Verbindungselement]
 abgelehnte_benennungen: [Anschlussmittel, Verbindung, Verbindungsmittel, Beschlag, "connector", "fitting", "Hardware"]
 oberbegriff: element

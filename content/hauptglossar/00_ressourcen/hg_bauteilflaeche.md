@@ -1,6 +1,7 @@
 ---
 id: bauteilflaeche
 benennung: Bauteilfläche
+kurz: "Eine Bauteilfläche ist eine der ebenen Aussenseiten eines Bauteils — etwa die Oberseite, eine Längsseite oder ein Stirnende eines Balkens —, die einen eindeutigen Namen hat, damit man genau sagen kann, wo etwas anliegt oder bearbeitet wird."
 synonyme: ["Bauteilseite", "Bezugsseite"]
 abgelehnte_benennungen: ["Flächenrolle", "Fläche", "face", "component face"]
 oberbegriff: null

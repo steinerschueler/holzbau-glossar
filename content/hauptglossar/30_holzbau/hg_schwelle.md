@@ -1,6 +1,7 @@
 ---
 id: schwelle
 benennung: Schwelle
+kurz: "Eine Schwelle ist der unterste waagrechte Balken einer Holzwand, der direkt auf dem Fundament oder Sockel aufliegt, die senkrechten Pfosten trägt und das trockene Wandholz vom feuchten Untergrund trennt."
 synonyme: [Grundschwelle, Schwellholz, Schwellenholz, Schwellbalken, Grundbalken]
 abgelehnte_benennungen: [Mauerschwelle, Sohlbank, Fußschwelle, Saumschwelle, Stockschwelle, Setzschwelle, Vorschwelle, Balkenschwelle, Richtschwelle, Schwellpfette, "sill plate", "sole plate", "mudsill", "bottom plate", "ground plate", "ground sill", groundsel]
 oberbegriff: bauteil

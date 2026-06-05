@@ -1,6 +1,7 @@
 ---
 id: isotroper_plattenwerkstoff
 benennung: Isotroper Plattenwerkstoff
+kurz: "Ein isotroper Plattenwerkstoff ist eine Holzplatte wie Spanplatte oder MDF, bei der die Späne kreuz und quer liegen, sodass sie in alle Richtungen der Fläche gleich viel aushält."
 synonyme: ["Plattenwerkstoff ohne Vorzugsrichtung", "in Plattenebene quasi-isotroper Holzwerkstoff"]
 abgelehnte_benennungen: [Spanplatte, MDF, HDF, Faserplatte, "particleboard", "fibreboard", richtungsisotroper_plattenwerkstoff]
 oberbegriff: werkstoff

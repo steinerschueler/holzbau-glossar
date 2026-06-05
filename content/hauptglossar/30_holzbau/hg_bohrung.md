@@ -1,6 +1,7 @@
 ---
 id: bohrung
 benennung: Bohrung
+kurz: "Eine Bohrung ist ein rundes Loch im Holz, das mit dem Bohrer gemacht wird und entweder ganz durch das Bauteil geht oder nur ein Stück tief als Sackloch — etwa für eine Schraube oder einen Bolzen."
 synonyme: [Bohrloch]
 abgelehnte_benennungen: [Loch, "Öffnung", "drill hole", "bore", "hole", "Drilling", "Sackloch", "Durchgangsloch"]
 oberbegriff: bearbeitung

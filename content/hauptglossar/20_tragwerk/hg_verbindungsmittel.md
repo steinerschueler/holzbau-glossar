@@ -1,6 +1,7 @@
 ---
 id: verbindungsmittel
 benennung: Verbindungsmittel
+kurz: "Ein Verbindungsmittel ist ein einzelnes Befestigungsstück, das zwei Hölzer zusammenhält und die Kräfte überträgt — ein Nagel, eine Schraube, ein Bolzen oder eine Leimfuge."
 synonyme: [mechanisches Verbindungsmittel]
 abgelehnte_benennungen: [Befestigungsmittel, Verbindung, Verbindungselement, "fastener", "connector", "Beschlag"]
 oberbegriff: element

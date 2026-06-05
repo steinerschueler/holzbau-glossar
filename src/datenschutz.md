@@ -109,6 +109,13 @@ Quellcode und Glossar-Inhalte werden öffentlich auf GitHub gehostet
 Das DOI-System wird über Zenodo (CERN) bereitgestellt
 ([zenodo.org](https://zenodo.org)).
 
+## Lizenz der Inhalte
+
+Alle Inhalte dieser Seite stehen unter **Creative Commons Namensnennung
+4.0 International (CC BY 4.0)** — frei verwendbar, auch kommerziell,
+solange die Quelle genannt wird. Die genauen Bedingungen, was erlaubt
+ist und was die Lizenz verlangt, stehen auf der [Lizenz-Seite](lizenz.md).
+
 ## Kontakt
 
 Für Fragen zum Datenschutz siehe die Kontaktangaben im

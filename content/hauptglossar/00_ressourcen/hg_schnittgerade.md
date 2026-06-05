@@ -1,6 +1,7 @@
 ---
 id: schnittgerade
 benennung: Schnittgerade
+kurz: "Eine Schnittgerade ist die gerade Linie, die entsteht, wo zwei flache Flächen aufeinandertreffen — wie die Kante, an der zwei Dachflächen am First zusammenstossen."
 synonyme: ["Schnittlinie zweier Ebenen", "Verschneidungsgerade", "Schnittachse zweier Ebenen"]
 abgelehnte_benennungen: [Schnittkante, Verschneidung, Schnitt, "intersection line", "line of intersection"]
 oberbegriff: gerade

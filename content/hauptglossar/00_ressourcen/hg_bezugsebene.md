@@ -1,6 +1,7 @@
 ---
 id: bezugsebene
 benennung: Bezugsebene
+kurz: "Eine Bezugsebene ist eine festgelegte waagrechte Höhe, von der aus man alle anderen Höhen misst — wie der Boden, der als «null» gilt und über dem alles seine Höhe bekommt."
 synonyme: ["Bezugshöhenebene", "Höhenbezugsebene", "Tool-Bezugsebene"]
 abgelehnte_benennungen: ["Nullebene", "Grundebene", "datum plane", "reference plane", "z=0-Ebene"]
 oberbegriff: ebene

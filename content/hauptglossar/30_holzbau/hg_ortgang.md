@@ -1,6 +1,7 @@
 ---
 id: ortgang
 benennung: Ortgang
+kurz: "Der Ortgang ist die schräge seitliche Dachkante am Giebel, die vom First hinunter zur Traufe verläuft und die Dachfläche am Hausende abschliesst."
 synonyme: [Ortgangkante, Giebelkante, "seitliche Dachkante"]
 abgelehnte_benennungen: [Ortbrett, Windbrett, Ortgangbrett, Giebel, Giebelseite, "rake", "verge", "gable edge"]
 oberbegriff: dachkante

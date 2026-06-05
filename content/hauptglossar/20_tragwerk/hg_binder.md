@@ -1,6 +1,7 @@
 ---
 id: binder
 benennung: Binder
+kurz: "Ein Binder ist ein im Werk fertig zusammengebautes, meist dreieckiges Trag-Gerüst aus mehreren Hölzern, das in regelmässigen Abständen aufgestellt wird und allein eine ganze Dachbreite überspannt."
 synonyme: [Dachbinder, Holzbinder]
 abgelehnte_benennungen: ["truss", "binder", "girder", "roof truss", "trussed rafter", "nail-plate truss", "glulam beam", Dachträger, Dachstuhlbinder, Bindebalken]
 oberbegriff: bauteilgruppe

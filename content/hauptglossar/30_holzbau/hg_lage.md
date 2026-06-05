@@ -1,6 +1,7 @@
 ---
 id: lage
 benennung: Lage
+kurz: "Eine Lage ist eine einzelne Holzschicht innerhalb einer verleimten Mehrschicht-Platte (wie Sperrholz oder Brettsperrholz), mit eigener Dicke und eigener Faserrichtung. Alternativ: Im Zimmereialltag meint «Lage» auch einfach, wie und wo ein Bauteil im Raum liegt."
 synonyme: ["Einzellage", "Lamelle (im Mehrlagenholz)", "Furnierlage", "Brettlage", "ply"]
 abgelehnte_benennungen: [Schicht, Brettschicht, Lamelle, Furnier, "layer", "lamination"]
 oberbegriff: null

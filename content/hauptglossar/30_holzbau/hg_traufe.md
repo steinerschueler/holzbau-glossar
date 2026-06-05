@@ -1,6 +1,7 @@
 ---
 id: traufe
 benennung: Traufe
+kurz: "Die Traufe ist die unterste waagrechte Kante eines Schrägdachs am Dachrand, an der das Regenwasser abläuft und meist die Dachrinne sitzt."
 synonyme: [Traufkante, Trauflinie, Tropfkante]
 abgelehnte_benennungen: [Traufseite, Traufbereich, Dachrinne, Rinneneinhang, "eaves", "eaves edge"]
 oberbegriff: dachkante

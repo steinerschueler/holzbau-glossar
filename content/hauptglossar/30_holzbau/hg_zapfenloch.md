@@ -1,6 +1,7 @@
 ---
 id: zapfenloch
 benennung: Zapfenloch
+kurz: "Ein Zapfenloch ist ein rechteckiges Loch, das in einen Balken gestemmt wird, damit der herausstehende Zapfen eines anderen Balkens genau hineinpasst und beide Hölzer fest ineinandergreifen."
 synonyme: [Zapfenaussparung, Zapfenausnehmung, "mortise", "mortice"]
 abgelehnte_benennungen: [Loch, Bohrung, Schlitz, Tasche, Aussparung, "hole", "pocket", "mortise hole", Zapfenverbindung, Verzapfung]
 oberbegriff: bearbeitung

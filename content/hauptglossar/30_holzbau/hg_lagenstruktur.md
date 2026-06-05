@@ -1,6 +1,7 @@
 ---
 id: lagenstruktur
 benennung: Lagenstruktur
+kurz: "Eine Lagenstruktur ist der gesamte Schichtaufbau einer verleimten Mehrschicht-Platte — also wie viele Holzschichten übereinanderliegen, wie dick jede ist und in welche Richtung ihre Fasern jeweils zeigen, meist über Kreuz wechselnd."
 synonyme: ["Lagenaufbau", "Lagenfolge", "Schichtaufbau (im Mehrlagenholz)", "lay-up"]
 abgelehnte_benennungen: [Schichtung, Plattenaufbau, "layer set", "stack", "ply schedule"]
 oberbegriff: null

@@ -39,6 +39,7 @@ theme:
     - navigation.tracking
     - navigation.top
     - navigation.prune
+    - navigation.indexes
     - toc.follow
     - search.suggest
     - search.highlight

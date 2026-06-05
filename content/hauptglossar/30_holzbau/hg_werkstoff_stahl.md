@@ -1,6 +1,7 @@
 ---
 id: werkstoff_stahl
 benennung: Werkstoff Stahl
+kurz: "Werkstoff Stahl ist das Material Stahl, aus dem im Holzbau die Verbindungsteile wie Schrauben, Nägel, Bolzen und Beschläge bestehen — ein Material, das in alle Richtungen gleich fest ist, anders als Holz."
 synonyme: ["Stahl (Werkstoff)", "Stahlwerkstoff", "Werkstoff von Verbindungsmitteln und Verbindern"]
 abgelehnte_benennungen: [Stahl, Eisen, Metall, "steel", "metal", "fastener material"]
 oberbegriff: werkstoff

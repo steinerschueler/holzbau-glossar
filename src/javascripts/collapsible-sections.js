@@ -24,46 +24,57 @@
 
     // Wir wickeln nur die Top-Level-H2 des Inhalts, nicht H2 in Tabellen
     // oder Code-Blöcken.
-    const headings = Array.from(article.children).filter(
-      el => el.tagName === "H2"
-    );
-    if (headings.length === 0) return;
-
     const openByDefault = window.matchMedia(DESKTOP_MQ).matches;
 
-    headings.forEach(h2 => {
-      const details = document.createElement("details");
-      details.className = "glossar-section";
-      if (openByDefault) details.open = true;
+    // Wickelt jede Top-Level-H2 von `container` in eine Akkordeon-Section
+    // (.glossar-section). Das Einsammeln stoppt an der Subglossar-Block-
+    // Grenze, damit die letzte Hauptglossar-Section („Quelle herunterladen")
+    // den separaten SG-Block nicht verschluckt.
+    function wrapIn(container) {
+      const headings = Array.from(container.children).filter(
+        el => el.tagName === "H2"
+      );
+      headings.forEach(h2 => {
+        const details = document.createElement("details");
+        details.className = "glossar-section";
+        if (openByDefault) details.open = true;
 
-      // Anker-ID des H2 auf das <details>-Element übernehmen, damit
-      // direkte Anchor-Links (.../#prosa-definition) weiterhin auf die
-      // jetzt aufklappbare Section zeigen.
-      if (h2.id) details.id = h2.id;
+        // Anker-ID des H2 übernehmen, damit Direkt-Links (.../#prosa-
+        // definition) weiterhin auf die aufklappbare Section zeigen.
+        if (h2.id) details.id = h2.id;
 
-      // Material's Permalink-Anchor (¶) aus dem H2-Inhalt entfernen,
-      // bevor wir ihn ins Summary übernehmen — das Summary ist selbst
-      // klickbar zum Öffnen, ein zusätzlicher Permalink-Anchor stört
-      // visuell (Material's hover-only-CSS greift auf <h2>, nicht auf
-      // <summary>).
-      const clone = h2.cloneNode(true);
-      clone.querySelectorAll("a.headerlink").forEach(a => a.remove());
+        // Material's Permalink-Anchor (¶) vor der Summary-Übernahme
+        // entfernen — das Summary ist selbst klickbar zum Öffnen.
+        const clone = h2.cloneNode(true);
+        clone.querySelectorAll("a.headerlink").forEach(a => a.remove());
 
-      const summary = document.createElement("summary");
-      summary.className = "glossar-section-summary";
-      summary.innerHTML = clone.innerHTML;
-      details.appendChild(summary);
+        const summary = document.createElement("summary");
+        summary.className = "glossar-section-summary";
+        summary.innerHTML = clone.innerHTML;
+        details.appendChild(summary);
 
-      // Alle Geschwister-Elemente bis zum nächsten H2 hineinverschieben.
-      let next = h2.nextElementSibling;
-      while (next && next.tagName !== "H2") {
-        const toMove = next;
-        next = next.nextElementSibling;
-        details.appendChild(toMove);
-      }
+        let next = h2.nextElementSibling;
+        while (
+          next &&
+          next.tagName !== "H2" &&
+          !next.classList.contains("subglossar-block")
+        ) {
+          const toMove = next;
+          next = next.nextElementSibling;
+          details.appendChild(toMove);
+        }
 
-      h2.parentNode.replaceChild(details, h2);
-    });
+        h2.parentNode.replaceChild(details, h2);
+      });
+    }
+
+    // 1) Hauptglossar-Sektionen (Top-Level des Artikels) — stoppt am SG-Block.
+    wrapIn(article);
+    // 2) Subglossar-Block (ein <div>, kein Collapsible): seine Stufen-H2
+    //    werden — wie die HG-Sektionen — zu sichtbar gestapelten, einzeln
+    //    ausklappbaren Akkordeon-Kapiteln gewickelt.
+    const sgBlock = article.querySelector(".subglossar-block");
+    if (sgBlock) wrapIn(sgBlock);
 
     // Falls die URL einen Anchor enthält, öffne die enthaltende Section.
     if (window.location.hash) {

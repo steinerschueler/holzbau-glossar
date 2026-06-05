@@ -1,6 +1,7 @@
 ---
 id: einheitsvektor
 benennung: Einheitsvektor
+kurz: "Ein Einheitsvektor ist ein Richtungspfeil von genau einer Einheit Länge, der nur eine Richtung angibt — wie der Zeiger eines Kompasses, der bloss zeigt wohin, nicht wie weit."
 synonyme: ["Normierter Vektor", "Vektor mit Norm 1", "Einheitsrichtungsvektor"]
 abgelehnte_benennungen: [Richtung, Richtungsvektor, Normalvektor, "unit vector", "direction"]
 oberbegriff: vektor

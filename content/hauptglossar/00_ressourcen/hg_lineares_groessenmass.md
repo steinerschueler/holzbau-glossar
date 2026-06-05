@@ -1,6 +1,7 @@
 ---
 id: lineares_groessenmass
 benennung: Lineares Größenmaß
+kurz: "Ein lineares Grössenmass ist eine geradlinige Massangabe für die Grösse eines Form-Teils — etwa eine Breite, eine Höhe oder ein Durchmesser —, zu der ein erlaubter Spielraum nach oben und unten gehören darf."
 synonyme: ["lineares Maß einer Größe", "lineares Größenmerkmal"]
 abgelehnte_benennungen: [Größenmaß, "linear size", "linear size dimension", "size dimension"]
 oberbegriff: laengenmass

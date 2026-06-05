@@ -1,6 +1,7 @@
 ---
 id: kehle
 benennung: Kehle
+kurz: "Eine Kehle ist die geneigte, nach innen springende Dachkante, in der zwei Dachflächen wie eine Rinne zusammenlaufen und in der sich das Regenwasser beider Flächen sammelt."
 synonyme: [Kehlkante, Kehllinie, Ixe]
 abgelehnte_benennungen: [Kehlblech, Kehlbohle, Kehlsparren, "valley", "valley line"]
 oberbegriff: dachkante

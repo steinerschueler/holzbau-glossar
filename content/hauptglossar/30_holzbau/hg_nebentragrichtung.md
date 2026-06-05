@@ -1,6 +1,7 @@
 ---
 id: nebentragrichtung
 benennung: Nebentragrichtung
+kurz: "Die Nebentragrichtung ist bei einer Holzplatte die schwächere Richtung quer zur Haupttragrichtung — die Richtung, in der die Platte weniger Last tragen kann und sich leichter durchbiegt."
 synonyme: ["90°-Richtung (CLT)", "Querrichtung (Mehrlagenholz)", "secondary load-bearing direction", "weaker axis of CLT"]
 abgelehnte_benennungen: [Querrichtung, Nebenachse, Plattenquerachse, "minor axis", "weak direction"]
 oberbegriff: einheitsvektor

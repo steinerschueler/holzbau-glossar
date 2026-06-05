@@ -1,6 +1,7 @@
 ---
 id: bauteil
 benennung: Bauteil
+kurz: "Ein Bauteil ist ein einzelnes, fertiges Stück eines Bauwerks — etwa ein Balken, ein Sparren oder eine Wand —, das aus einem bestimmten Material besteht und eine eigene Aufgabe hat, zum Beispiel Lasten zu tragen."
 synonyme: [Bauelement, Konstruktionselement]
 abgelehnte_benennungen: [Bauglied, Element, Stück, "structural component", "building component", "member"]
 oberbegriff: element

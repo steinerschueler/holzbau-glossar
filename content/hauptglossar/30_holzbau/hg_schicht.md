@@ -1,6 +1,7 @@
 ---
 id: schicht
 benennung: Schicht
+kurz: "Eine Schicht ist eine der übereinanderliegenden Lagen in einem Wand- oder Dachaufbau mit einer bestimmten Aufgabe — etwa die Wärmedämmung, die Dampfbremse oder die wasserführende Bahn —, jede aus einem eigenen Material und mit eigener Dicke."
 synonyme: [Bauteilschicht, Funktionsschicht, Funktionsebene]
 abgelehnte_benennungen: [Lage, Ebene, "layer", "building layer"]
 oberbegriff: null

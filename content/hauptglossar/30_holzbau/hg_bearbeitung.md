@@ -1,6 +1,7 @@
 ---
 id: bearbeitung
 benennung: Bearbeitung
+kurz: "Eine Bearbeitung ist jede Stelle, an der von einem Holzstück Material weggenommen wird — etwa ein Einschnitt, ein Loch oder ein schräger Schnitt —, damit das Bauteil passt oder mit anderen zusammengefügt werden kann."
 synonyme: [Holzbearbeitung, Abbund-Bearbeitung, "Bearbeitung am Bauteil", subtraktive Bearbeitung]
 abgelehnte_benennungen: [Bearbeitungsschritt, Operation, Abbundoperation, Verarbeitung, Holzverbindung, Verbindung, "processing", "machining", "feature", "cutout", "subtractive feature"]
 oberbegriff: null

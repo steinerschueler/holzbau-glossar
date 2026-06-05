@@ -1,6 +1,7 @@
 ---
 id: tragwerk
 benennung: Tragwerk
+kurz: "Ein Tragwerk ist das tragende Gerüst eines Bauwerks — die Gesamtheit aller Bauteile, die zusammenwirken —, das alle Lasten wie Gewicht, Schnee und Wind aufnimmt und sicher in den Boden ableitet, ähnlich dem Skelett, das einen Körper aufrecht hält."
 synonyme: [Tragsystem, Tragkonstruktion]
 abgelehnte_benennungen: [Gerüst, Skelett, "structural frame", "load-bearing structure", "structure"]
 oberbegriff: bausystem

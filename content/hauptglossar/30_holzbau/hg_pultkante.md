@@ -1,6 +1,7 @@
 ---
 id: pultkante
 benennung: Pultkante
+kurz: "Eine Pultkante ist die obere waagrechte Abschlusskante eines Pultdachs, das nur in eine Richtung abfällt — also die hohe Kante gegenüber der tieferliegenden Traufe, wo beim Satteldach der First wäre."
 synonyme: [Pultdachoberkante, "obere Dachkante (Pultdach)", Pultfirst]
 abgelehnte_benennungen: [First, Firstkante, "obere Dachkante", Wandanschluss, Attikakante, "shed roof ridge", "high eaves"]
 oberbegriff: dachkante

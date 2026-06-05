@@ -1,6 +1,7 @@
 ---
 id: kopfband
 benennung: Kopfband
+kurz: "Ein Kopfband ist eine kurze schräge Strebe, die oben am Pfosten ansetzt und ihn mit dem darüberliegenden waagrechten Balken zu einem festen Dreieck verbindet, damit diese Ecke nicht wackelt."
 synonyme: [Bug, Kopfbüge, Achselband]
 abgelehnte_benennungen: [Kopfwinkel, Kopfwinkelholz, Knagge, "knee brace", "corner brace", "head brace"]
 oberbegriff: bauteil

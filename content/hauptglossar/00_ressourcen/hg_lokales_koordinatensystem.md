@@ -1,6 +1,7 @@
 ---
 id: lokales_koordinatensystem
 benennung: Lokales Koordinatensystem
+kurz: "Ein lokales Koordinatensystem ist ein eigenes kleines Bezugsraster, das fest an einem einzelnen Bauteil klebt und sich mitdreht, wenn man das Bauteil dreht — so, als hätte das Bauteil sein eigenes «oben, unten, vorne, hinten» eingebaut, unabhängig von der Welt ringsum."
 synonyme: ["Bauteilkoordinatensystem", "Bauteil-Lokal", "lokales Bezugssystem", "Lokal-CRS", "Bauteilframe"]
 abgelehnte_benennungen: [Lokalsystem, Bauteilachsensystem, "local coordinate system", "local frame", "object frame", "body frame", LCS]
 oberbegriff: koordinatensystem

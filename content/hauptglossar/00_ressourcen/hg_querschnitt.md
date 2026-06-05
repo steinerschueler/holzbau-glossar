@@ -1,6 +1,7 @@
 ---
 id: querschnitt
 benennung: Querschnitt
+kurz: "Ein Querschnitt ist die Schnittfläche, die man sieht, wenn man ein Bauteil quer durchsägt und auf die Schnittstelle schaut — bei einem Balken zum Beispiel ein Rechteck."
 synonyme: ["Bauteilquerschnitt", "Stabquerschnitt", "Profilquerschnitt", "Schnittfigur (rechtwinklig zur Bauteilachse)"]
 abgelehnte_benennungen: [Profil, Schnitt, Querschnittsfläche, "cross section", "section"]
 oberbegriff: null

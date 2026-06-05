@@ -1,6 +1,7 @@
 ---
 id: pfette
 benennung: Pfette
+kurz: "Eine Pfette ist ein langer waagrechter Balken, der quer unter den Sparren liegt und parallel zum Dachfirst verläuft, und der das Gewicht der Sparren aufnimmt und an seine Stützen (Wände oder Säulen) weitergibt."
 synonyme: []
 abgelehnte_benennungen: [Längsbalken, Pfettenbalken, Pfettenträger, "purlin", Mauerlatte, Schwellpfette, Latte, Riegel]
 oberbegriff: bauteil

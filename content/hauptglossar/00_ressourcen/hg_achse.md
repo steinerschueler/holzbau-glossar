@@ -1,6 +1,7 @@
 ---
 id: achse
 benennung: Achse
+kurz: "Eine Achse ist eine gedachte gerade Linie, die als feste Bezugslinie dient — zum Beispiel die Linie, um die sich etwas dreht, oder die Mittellinie, an der man ein Bauteil ausrichtet. Alternativ: Auf dem Bauplan ist eine Achse eine durchnummerierte Hilfslinie (etwa «Achse A»), an der eine ganze Reihe von Stützen oder Wänden aufgereiht ist."
 synonyme: ["Bezugslinie", "Bezugsachse (allgemein)", "axis"]
 abgelehnte_benennungen: [Mittellinie, Linie, Strahl, "axis line", "centerline"]
 oberbegriff: gerade

@@ -1,6 +1,7 @@
 ---
 id: strecke
 benennung: Strecke
+kurz: "Eine Strecke ist die kürzeste gerade Verbindung zwischen zwei Punkten, mit einem klaren Anfang und einem klaren Ende — wie eine straff gespannte Schnur dazwischen."
 synonyme: [Linienstück, "geschlossene Strecke", "abgeschlossene Strecke"]
 abgelehnte_benennungen: [Linie, Gerade, Segment, "line segment"]
 oberbegriff: null

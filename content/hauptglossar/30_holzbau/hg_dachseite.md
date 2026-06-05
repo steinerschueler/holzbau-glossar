@@ -1,6 +1,7 @@
 ---
 id: dachseite
 benennung: Dachseite
+kurz: "Eine Dachseite ist eine Dachfläche mit einem Hinweis auf ihre Lage — etwa Wetterseite, Sonnenseite oder Traufseite —, damit klar ist, welche Seite des Daches gemeint ist."
 synonyme: ["Seite des Daches", "geneigte Außenseite eines Daches"]
 abgelehnte_benennungen: [Dachfläche, Dachschräge, Dachhälfte, "roof side"]
 oberbegriff: dachflaeche

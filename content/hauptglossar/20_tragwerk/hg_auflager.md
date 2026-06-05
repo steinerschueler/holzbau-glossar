@@ -1,6 +1,7 @@
 ---
 id: auflager
 benennung: Auflager
+kurz: "Ein Auflager ist die Stelle, an der ein Bauteil aufliegt und sein Gewicht abgibt — so wie ein Balken auf einer Mauer ruht oder ein Tischbein auf dem Boden steht."
 synonyme: [Lager, Stützung]
 abgelehnte_benennungen: [Anschluss, Knoten, Sparrenfuß, Mauerbank, Mauerlatte, "support", "bearing", "seat", "saddle"]
 oberbegriff: null

@@ -1,6 +1,7 @@
 ---
 id: versatz
 benennung: Versatz
+kurz: "Ein Versatz ist eine keilförmige Aussparung, die in einen tragenden Balken geschnitten wird, sodass ein schräger Druckbalken (etwa eine Strebe oder ein Sparren) mit seinem zugeschnittenen Ende formschlüssig und rutschsicher hineinpasst und seine Last überträgt."
 synonyme: [Versatz-Verbindung, Stirnversatz, Fersenversatz, Rückversatz, Brustversatz, "doppelter Versatz", "Stirn-Fersen-Versatz", "single step joint", "double step joint"]
 abgelehnte_benennungen: ["birdsmouth", "birdsmouth joint", "bird's mouth", "heel cut", "seat cut", "plumb cut", "step-lapped rafter seat", "rafter notch", "notch", "mortise", "tenon", Versetzung, Stirnschnitt, Schwalbenschwanzversatz]
 oberbegriff: bearbeitung

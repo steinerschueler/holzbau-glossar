@@ -1,6 +1,7 @@
 ---
 id: verbindung
 benennung: Verbindung
+kurz: "Eine Verbindung ist die Stelle, an der mehrere Bauteile zusammentreffen und durch Nägel, Schrauben oder eingearbeitete Holzfügungen kraftschlüssig zusammenwirken — also der ganze «Knotenpunkt», nicht ein einzelnes Stück darin."
 synonyme: [Anschluss, Knoten, Stoss]
 abgelehnte_benennungen: [Verbindungsmittel, Verbinder, "joint", "connection", "node", "Holzverbindung"]
 oberbegriff: null

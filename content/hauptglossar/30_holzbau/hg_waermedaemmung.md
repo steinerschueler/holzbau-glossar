@@ -1,6 +1,7 @@
 ---
 id: waermedaemmung
 benennung: Wärmedämmung
+kurz: "Eine Wärmedämmung ist eine Schicht aus einem schlecht wärmeleitenden Material wie Mineralwolle oder Holzfaser, die in Wand oder Dach eingebaut wird, damit im Winter die Wärme nicht nach draussen entweicht."
 synonyme: [Dämmung, Dämmschicht, Wärmedämmschicht]
 abgelehnte_benennungen: [Isolierung, Wärmeisolierung, "thermal insulation", "insulation", "roof insulation"]
 oberbegriff: schicht

@@ -1,6 +1,7 @@
 ---
 id: konterlatte
 benennung: Konterlatte
+kurz: "Eine Konterlatte ist eine schmale Holzleiste, die längs auf den Sparren (in Gefällerichtung) genagelt wird und einen Luftspalt schafft, durch den das Dach unter der Eindeckung hinterlüftet wird und trocknen kann."
 synonyme: [Lüftungslatte, Hinterlüftungslatte]
 abgelehnte_benennungen: [Dachlatte, Traglatte, Querlatte, Distanzlatte, Belüftungslatte, "counter batten", "counter lath"]
 oberbegriff: bauteil

@@ -1,6 +1,7 @@
 ---
 id: kehlbalken
 benennung: Kehlbalken
+kurz: "Ein Kehlbalken ist ein waagrechter Balken, der zwei gegenüberliegende Dachsparren auf halber Höhe miteinander verbindet, damit sie sich nicht durchbiegen oder auseinanderdrücken."
 synonyme: [Kehlriegel]
 abgelehnte_benennungen: [Hahnenbalken, Spannriegel, Zange, Kehlzange, "collar beam", "collar tie", "collar", "rafter tie"]
 oberbegriff: bauteil

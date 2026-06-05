@@ -1,6 +1,7 @@
 ---
 id: punkt
 benennung: Punkt
+kurz: "Ein Punkt ist eine einzelne, genau bestimmte Stelle im Raum — unendlich klein, ohne Länge, Breite oder Höhe, wie das winzige Mal, das ein angespitzter Bleistift hinterlässt."
 synonyme: [Ortspunkt, "Punkt im Raum"]
 abgelehnte_benennungen: [Stelle, Position, "point"]
 oberbegriff: null

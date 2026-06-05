@@ -1,6 +1,7 @@
 ---
 id: positionsnummer
 benennung: Positionsnummer
+kurz: "Eine Positionsnummer ist die kurze Nummer, mit der ein Bauteil auf dem Plan und am Stück selbst markiert ist — ähnlich der Teilenummer in einer Möbel-Bauanleitung —, damit jeder weiss, welches Stück wohin gehört."
 synonyme: ["Pos-Nr.", "Werkplan-Position", "Positionskennung"]
 abgelehnte_benennungen: [Bauteilnummer, Stücknummer, Nummer, "part number", "tag", "position number", "item number"]
 oberbegriff: null

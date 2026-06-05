@@ -1,6 +1,7 @@
 ---
 id: bauteilgruppe
 benennung: Bauteilgruppe
+kurz: "Eine Bauteilgruppe ist eine feste Einheit aus mehreren Bauteilen, die zusammengehören und als ein Stück behandelt werden — wie eine fertige Dachgaube, die man als Ganzes plant, einbaut und auch wieder entfernt."
 synonyme: ["zusammengesetztes Element", "Element-Assembly", Bauaggregat]
 abgelehnte_benennungen: [Bauteilkomplex, Konstruktion, System, Bausystem, Baugruppe, "assembly", "composite element", "sub-assembly"]
 oberbegriff: null

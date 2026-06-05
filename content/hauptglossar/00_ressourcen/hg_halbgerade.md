@@ -1,6 +1,7 @@
 ---
 id: halbgerade
 benennung: Halbgerade
+kurz: "Eine Halbgerade ist eine schnurgerade Linie, die an einem festen Punkt beginnt und von dort aus nur in eine Richtung endlos weiterläuft — wie ein Lichtstrahl, der von einer Lampe ausgeht."
 synonyme: [Strahl, "geschlossene Halbgerade", "abgeschlossene Halbgerade"]
 abgelehnte_benennungen: [Halbstrecke, Strahllinie, "ray", "half-line"]
 oberbegriff: null

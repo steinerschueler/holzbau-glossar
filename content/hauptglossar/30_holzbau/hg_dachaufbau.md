@@ -1,6 +1,7 @@
 ---
 id: dachaufbau
 benennung: Dachaufbau
+kurz: "Der Dachaufbau ist die Abfolge aller Schichten, die von innen nach aussen auf dem Dachgerüst liegen — etwa Dampfbremse, Dämmung und Eindeckung —, bis hinauf zur äussersten wetterfesten Schicht."
 synonyme: [Dacheindeckungsschichten]
 abgelehnte_benennungen: [Dachhaut, Dachpaket, "roof build-up", "roof assembly"]
 oberbegriff: null

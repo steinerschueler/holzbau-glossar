@@ -1,6 +1,7 @@
 ---
 id: mehrlagenholz
 benennung: Mehrlagenholz
+kurz: "Ein Mehrlagenholz ist eine Holzplatte aus mehreren kreuzweise verleimten Brettschichten — wie Sperrholz oder Brettsperrholz —, deren wechselnde Faserrichtung sie in alle Richtungen stabil und formstabil macht."
 synonyme: [Lagenholz, "Holzwerkstoff mit kreuzweise verleimten Lagen", "cross-layered timber"]
 abgelehnte_benennungen: [Schichtholz, Lagenwerkstoff, Schichtwerkstoff, "layered wood", "multi-layer timber"]
 oberbegriff: werkstoff

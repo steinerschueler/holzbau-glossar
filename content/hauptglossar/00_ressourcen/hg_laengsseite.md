@@ -1,6 +1,7 @@
 ---
 id: laengsseite
 benennung: Längsseite
+kurz: "Eine Längsseite ist eine der langen, flachen Seiten eines Balkens, die der ganzen Länge nach verläuft — die Fläche, an der die Holzfasern entlanglaufen, nicht die kurze Endfläche."
 synonyme: ["Längsfläche", "Bauteillängsseite", "Mantelfläche (eines Stab-Bauteils)"]
 abgelehnte_benennungen: ["Seitenfläche", "Längsseite des Brettes", "side face", "lateral face", "long side"]
 oberbegriff: bauteilflaeche

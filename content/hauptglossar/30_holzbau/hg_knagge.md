@@ -1,6 +1,7 @@
 ---
 id: knagge
 benennung: Knagge
+kurz: "Eine Knagge ist ein kurzer, meist dreieckiger Holzklotz, der wie eine kleine Konsole seitlich aus einem Pfosten herausragt und einen darüberliegenden Balken abstützt, dessen Last er in den Pfosten weitergibt."
 synonyme: []
 abgelehnte_benennungen: [Kopfband, Bug, Kopfbüge, Kopfwinkelholz, Fußwinkelholz, Fusswinkelholz, "knee", "console", "corbel", "stahl-knagge", "schaftknagge", Profix-Knagge, SPAX-Knagge]
 oberbegriff: bauteil

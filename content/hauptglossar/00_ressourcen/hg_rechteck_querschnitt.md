@@ -1,6 +1,7 @@
 ---
 id: rechteck_querschnitt
 benennung: Rechteck-Querschnitt
+kurz: "Ein Rechteck-Querschnitt ist ein Querschnitt in Rechteckform, festgelegt durch eine Breite und eine Höhe — die typische Schnittform eines gewöhnlichen Kantholzbalkens."
 synonyme: ["rechteckiger Querschnitt", "Rechteckprofil", "Vollholzquerschnitt (rechteckig)", "Kantholzquerschnitt"]
 abgelehnte_benennungen: [Rechteckform, Vierkantquerschnitt, Vierkant, "rectangular cross section", "rectangular profile"]
 oberbegriff: querschnitt

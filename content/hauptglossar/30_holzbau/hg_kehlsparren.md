@@ -1,6 +1,7 @@
 ---
 id: kehlsparren
 benennung: Kehlsparren
+kurz: "Ein Kehlsparren ist der schräge Balken, der in der nach innen einspringenden Ecke liegt, wo zwei Dachflächen wie in einer Rinne zusammenstossen, und der die Last beider Dachseiten samt dem dort zusammenlaufenden Regen- und Schmelzwasser nach unten trägt."
 synonyme: [Kehl-Sparren]
 abgelehnte_benennungen:
   [Verschneidungssparren, Walmsparren, Ixe, "valley rafter", "valley"]

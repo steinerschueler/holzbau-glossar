@@ -1,6 +1,7 @@
 ---
 id: laengenmass
 benennung: Längenmaß
+kurz: "Ein Längenmass ist eine in eine Zeichnung eingetragene Massangabe, die sagt, wie weit zwei Punkte voneinander entfernt sind — die Masszahl mit den kleinen Pfeilen, etwa «1200 mm»."
 synonyme: ["lineares Maß", "Längen-Maßeintrag"]
 abgelehnte_benennungen: [Maßstrecke, "linear dimension", "Maß"]
 oberbegriff: strecke

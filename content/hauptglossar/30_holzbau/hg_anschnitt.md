@@ -1,6 +1,7 @@
 ---
 id: anschnitt
 benennung: Anschnitt
+kurz: "Ein Anschnitt ist ein schräg statt gerade abgesägtes Balkenende, damit es sauber an ein anderes Bauteil anschliesst — ähnlich dem schrägen Anspitzen eines Bleistifts."
 synonyme: [Stirnanschnitt, "geneigter Endschnitt", Anschnittschnitt]
 abgelehnte_benennungen: [Schrägschnitt, Kappschnitt, "chamfer", "bevel", "miter cut", "end cut", "angle cut", "cut"]
 oberbegriff: bearbeitung

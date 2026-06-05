@@ -1,6 +1,7 @@
 ---
 id: plattendicken_achse
 benennung: Plattendicken-Achse
+kurz: "Die Plattendicken-Achse ist die gedachte Richtung quer durch eine Holzplatte hindurch — vom einen flachen Gesicht zum anderen, in Richtung der dünnsten Abmessung."
 synonyme: ["Plattennormale", "Dickenrichtung", "Plattendickenrichtung", "out-of-plane axis"]
 abgelehnte_benennungen: [Plattennormalvektor, Plattenachse, Z-Achse, "thickness direction", "panel normal"]
 oberbegriff: einheitsvektor

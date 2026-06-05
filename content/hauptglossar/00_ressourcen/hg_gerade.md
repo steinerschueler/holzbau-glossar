@@ -1,6 +1,7 @@
 ---
 id: gerade
 benennung: Gerade
+kurz: "Eine Gerade ist eine vollkommen schnurgerade Linie, die nach beiden Seiten endlos weiterläuft und nirgends anfängt oder aufhört."
 synonyme: ["affine Gerade", "Linie (Geometrie)", "eindimensionaler affiner Unterraum"]
 abgelehnte_benennungen: [Linie, Strecke, Strahl, Achse, "line", "straight line"]
 oberbegriff: null

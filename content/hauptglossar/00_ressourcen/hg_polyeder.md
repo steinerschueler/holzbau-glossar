@@ -1,6 +1,7 @@
 ---
 id: polyeder
 benennung: Polyeder
+kurz: "Ein Polyeder ist ein massiver Körper, der ringsum nur von ebenen Flächen begrenzt wird — wie ein Würfel, ein Ziegelstein oder ein zugesägter Holzklotz, ganz ohne runde Stellen."
 synonyme: ["Vielflach", "Vielflächner", "Polytop (3D)", "festes Polyeder"]
 abgelehnte_benennungen: [Körper, Volumenkörper, Mehrflächner, "polyhedron", "solid"]
 oberbegriff: null

@@ -1,6 +1,7 @@
 ---
 id: element
 benennung: Element
+kurz: "Ein Element ist der Sammelbegriff für jedes einzelne verbaute Stück eines Bauwerks — vom grossen tragenden Balken bis zur kleinen Schraube, die ihn festhält. Alternativ: Im Elementbau ist ein Element eine vorgefertigte, grössere Baugruppe — etwa ein ganzes Wand-, Decken- oder Dachelement —, die fertig auf die Baustelle geliefert und dort nur noch montiert wird."
 synonyme: [Modellelement, identifizierbares Objekt]
 abgelehnte_benennungen: [Bauelement, Objekt, Ding, Stück, "element", "object", "product", "item"]
 oberbegriff: null

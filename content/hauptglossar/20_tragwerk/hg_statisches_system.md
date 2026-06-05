@@ -1,6 +1,7 @@
 ---
 id: statisches_system
 benennung: Statisches System
+kurz: "Ein statisches System ist das vereinfachte Strichmännchen-Modell eines Tragwerks — die Hölzer werden zu blossen Linien, die Auflager zu Punkten —, mit dem sich die Kräfte im Bauwerk berechnen lassen."
 synonyme: [Tragwerksmodell, Stabwerksmodell, Strukturmodell]
 abgelehnte_benennungen:
   - Bemessungsmodell

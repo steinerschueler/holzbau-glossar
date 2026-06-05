@@ -1,6 +1,7 @@
 ---
 id: wand
 benennung: Wand
+kurz: "Eine Wand ist die zusammengehörige Holz-Baugruppe aus unterer Schwelle, oberem Rähm und den senkrechten Ständern dazwischen — ergänzt um aussteifende Schräghölzer —, die einen Raum abschliesst und das Gewicht von Decke und Dach trägt."
 synonyme: [Wandscheibe, Wandtafel, Wandelement]
 abgelehnte_benennungen:
   [Wandbauteil, Mauer, Bretterwand, Trennwand-Konstruktion,

@@ -1,6 +1,7 @@
 ---
 id: haupttragrichtung
 benennung: Haupttragrichtung
+kurz: "Die Haupttragrichtung ist bei einer mehrlagig verleimten Holzplatte die Richtung, in der sie am steifsten und tragfähigsten ist — nämlich die Faserrichtung ihrer äusseren Deckschicht."
 synonyme: ["Decklamellen-Richtung", "0°-Richtung (CLT)", "main load-bearing direction", "stronger axis of CLT"]
 abgelehnte_benennungen: [Tragrichtung, Hauptachse, Plattenlängsachse, "main bearing axis", "strong direction"]
 oberbegriff: einheitsvektor

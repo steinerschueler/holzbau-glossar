@@ -1,6 +1,7 @@
 ---
 id: stuhlsaeule
 benennung: Stuhlsäule
+kurz: "Eine Stuhlsäule ist ein stützender Pfosten im Dachstuhl, der eine darüberliegende Pfette von unten abfängt und deren Last auf einen tragenden Querbalken oder die Decke darunter weiterleitet."
 synonyme: [Stuhlpfosten, Binderstiel, Stuhlstiel]
 abgelehnte_benennungen: [Stuhl, Säule, Bundpfosten, Pfosten, Ständer, "king post (engerer Sinn)", "queen post"]
 oberbegriff: bauteil

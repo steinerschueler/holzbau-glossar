@@ -1,6 +1,7 @@
 ---
 id: first
 benennung: First
+kurz: "Der First ist die oberste waagrechte Kante eines Dachs, an der die beiden Dachflächen ganz oben zusammenlaufen."
 synonyme: [Dachfirst, Firstkante, Firstlinie]
 abgelehnte_benennungen: [Firstpfette, Firstziegel, Firstbalken, Höhe, "ridge", "ridgeline"]
 oberbegriff: dachkante

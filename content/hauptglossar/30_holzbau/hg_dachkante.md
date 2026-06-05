@@ -1,6 +1,7 @@
 ---
 id: dachkante
 benennung: Dachkante
+kurz: "Eine Dachkante ist eine Linie am Dach, an der eine Dachfläche endet oder zwei Dachflächen aufeinandertreffen — etwa der First oben, die Traufe unten oder ein Grat."
 synonyme: [Dachrandkante, "Begrenzungskante einer Dachfläche"]
 abgelehnte_benennungen: [Dachrand, Dachkontur, "roof edge"]
 oberbegriff: strecke

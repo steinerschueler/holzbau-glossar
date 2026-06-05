@@ -1,6 +1,7 @@
 ---
 id: dachabdichtung
 benennung: Dachabdichtung
+kurz: "Eine Dachabdichtung ist die wasserdichte, fugenlose Aussenhaut eines flachen Daches aus Folie oder Bahnen, die das Wasser komplett abhält, auch wenn es einmal stehen bleibt."
 synonyme: [Flachdachabdichtung, Abdichtung]
 abgelehnte_benennungen: [Dichtungsbahn, Abdichtungssystem, Dachpappe, Flachdach, Bedachung, Dacheindeckung, Dachhaut, "roof waterproofing", "flat roof membrane", "roofing membrane", "waterproofing membrane"]
 oberbegriff: schicht

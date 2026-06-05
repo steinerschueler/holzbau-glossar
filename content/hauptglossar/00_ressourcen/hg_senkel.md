@@ -1,6 +1,7 @@
 ---
 id: senkel
 benennung: Senkel
+kurz: "Ein Senkel ist eine lotrecht stehende Schnittfläche am Holz — so steil wie die Schnur eines frei hängenden Bleilots, nach dem er benannt ist."
 synonyme: [Senkelschnitt, Senkelfläche, "lotrechte Schnittfläche"]
 abgelehnte_benennungen: ["vertikaler Schnitt", "vertical cut", "plumb cut"]
 oberbegriff: ebene

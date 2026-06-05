@@ -1,6 +1,7 @@
 ---
 id: ferse
 benennung: Ferse
+kurz: "Die Ferse ist die hintere, tiefste Stelle am schräg eingeschnittenen Fuss einer Holzstrebe, an der sie sich fest gegen das darunterliegende Holz abstützt — ähnlich der Ferse eines Fusses."
 synonyme: [Brust]
 abgelehnte_benennungen: ["heel cut", "heel", "Ferserl", "plumb cut"]
 oberbegriff: versatz

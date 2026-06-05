@@ -1,6 +1,7 @@
 ---
 id: mittelpfette
 benennung: Mittelpfette
+kurz: "Eine Mittelpfette ist ein langer waagrechter Balken, der auf halber Höhe der Dachschräge unter den Sparren längs verläuft und sie dort zusätzlich abstützt, damit sie nicht durchhängen."
 synonyme: [Zwischenpfette]
 abgelehnte_benennungen: [Mittelträger, "middle purlin", Mittelbalken]
 oberbegriff: pfette

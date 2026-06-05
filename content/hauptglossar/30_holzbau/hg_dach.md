@@ -1,6 +1,7 @@
 ---
 id: dach
 benennung: Dach
+kurz: "Ein Dach ist der oberste Abschluss eines Gebäudes aus dem tragenden Holzgerüst, den Dachflächen und allen Schichten darauf, der das Haus nach oben gegen Regen, Schnee und Wind schützt."
 synonyme: [Bedachung]
 abgelehnte_benennungen: [Dachstuhl, Dachkonstruktion, Dachwerk, "roof"]
 oberbegriff: null

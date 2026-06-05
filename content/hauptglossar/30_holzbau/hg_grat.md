@@ -1,6 +1,7 @@
 ---
 id: grat
 benennung: Grat
+kurz: "Ein Grat ist die schräg ansteigende Aussenkante eines Daches, an der zwei Dachflächen an einer vorspringenden Ecke wie ein Dachrücken zusammenlaufen — etwa an einem Walmdach."
 synonyme: [Gratkante, Gratlinie, Walmkante]
 abgelehnte_benennungen: [Gratsparren, Walmgrat, Eckgrat, "hip", "hip ridge", "arris"]
 oberbegriff: dachkante

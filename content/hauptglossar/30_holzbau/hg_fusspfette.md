@@ -1,6 +1,7 @@
 ---
 id: fusspfette
 benennung: Fußpfette
+kurz: "Eine Fusspfette ist ein langer waagrechter Balken unten am Dachrand, auf dem die unteren Enden der Sparren aufliegen und der ihre Last in die Wand weitergibt."
 synonyme: [Mauerlatte, Schwellpfette, Traufpfette]
 abgelehnte_benennungen: [Fußbalken, "wall plate", "eaves purlin", Mauerbank, Mauerschwelle]
 oberbegriff: pfette

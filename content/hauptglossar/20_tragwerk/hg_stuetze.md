@@ -1,6 +1,7 @@
 ---
 id: stuetze
 benennung: Stütze
+kurz: "Eine Stütze ist ein senkrecht stehendes Bauteil, das Gewicht von oben aufnimmt und gerade nach unten weiterleitet — wie ein Pfosten oder ein Tischbein für ein Bauwerk."
 synonyme: [Holzstütze, Skelettstütze, "BSH-Stütze", Druckglied, column, post, Stütz-Bauteil]
 abgelehnte_benennungen: [Säule, Pfeiler, Pfosten, Ständer, Stiel, Steher, "wall stud", "load-bearing post"]
 oberbegriff: bauteil

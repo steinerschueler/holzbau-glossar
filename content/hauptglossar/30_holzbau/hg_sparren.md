@@ -1,6 +1,7 @@
 ---
 id: sparren
 benennung: Sparren
+kurz: "Ein Sparren ist einer der schrägen Balken, die nebeneinander von der Traufe bis zum First verlaufen, das Gerüst der Dachfläche bilden und das Gewicht von Dachdeckung, Schnee und Wind tragen."
 synonyme: [Dachsparren]
 abgelehnte_benennungen: [Dachbalken, "rafter", "common rafter", "Dachstange"]
 oberbegriff: bauteil

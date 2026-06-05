@@ -1,6 +1,7 @@
 ---
 id: koordinatensystem
 benennung: Koordinatensystem
+kurz: "Ein Koordinatensystem ist ein Bezugsraster mit einem festen Nullpunkt und festen Richtungen, mit dem sich jede Stelle im Raum durch Zahlen eindeutig benennen lässt — wie Strasse und Hausnummer für einen Ort."
 synonyme: ["Referenzsystem"]
 abgelehnte_benennungen:
   - Bezugssystem

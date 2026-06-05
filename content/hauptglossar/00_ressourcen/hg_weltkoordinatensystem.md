@@ -1,6 +1,7 @@
 ---
 id: weltkoordinatensystem
 benennung: Weltkoordinatensystem
+kurz: "Das Weltkoordinatensystem ist das eine grosse, für das ganze Bauwerk gemeinsame Bezugsraster mit festem Nullpunkt und festen Richtungen (Ost, Nord, oben), an dem sich jedes einzelne Bauteil ausrichtet — damit alle vom Gleichen reden."
 synonyme: ["Globales Koordinatensystem", "Welt-CRS", "Welt-Bezugssystem"]
 abgelehnte_benennungen: [Weltsystem, Globalsystem, "world coordinate system", "world frame", WCS]
 oberbegriff: koordinatensystem

@@ -1,6 +1,7 @@
 ---
 id: stirnseite
 benennung: Stirnseite
+kurz: "Eine Stirnseite ist die kurze Endfläche an einem der beiden Enden eines Balkens — die Fläche, an der man die Jahrringe und die Enden der Holzfasern sieht."
 synonyme: [Hirnholz, Hirnseite, Stirnholz, Kopfholz, Hirnschnittfläche]
 abgelehnte_benennungen: [Stirnfläche, "end grain", "endgrain", "end face", "end cut", Stirn]
 oberbegriff: bauteilflaeche

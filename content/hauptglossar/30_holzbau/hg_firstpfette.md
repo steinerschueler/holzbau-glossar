@@ -1,6 +1,7 @@
 ---
 id: firstpfette
 benennung: Firstpfette
+kurz: "Eine Firstpfette ist ein langer waagrechter Balken ganz oben am Dachfirst, auf dem die oberen Enden der Sparren aufliegen."
 synonyme: [Firstbalken, Firstträger]
 abgelehnte_benennungen: [First, "ridge purlin", "ridge beam", Firstbohle, Firstlatte]
 oberbegriff: pfette

@@ -1,6 +1,7 @@
 ---
 id: walm
 benennung: Walm
+kurz: "Ein Walm ist die schräg abgewalmte, dreieckige Dachfläche an der Schmalseite eines Hauses — statt einer senkrechten Giebelwand läuft das Dach dort schräg herunter — mitsamt den Hölzern, die diese Schräge bilden."
 synonyme: []
 abgelehnte_benennungen:
   [Walmdach, Walmflaeche, Schopf, Walmdach-Ende, Walmgebinde,

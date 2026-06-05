@@ -1,6 +1,7 @@
 ---
 id: toleranzen
 benennung: Toleranzen (numerische Klassifikationsschwellen)
+kurz: "Eine Toleranz ist ein kleiner erlaubter Spielraum, innerhalb dessen zwei Masse noch als gleich gelten — denn in der Praxis lässt sich nichts auf den hundertstel Millimeter genau treffen, und dieser winzige Unterschied soll nicht als Fehler zählen."
 synonyme: ["Epsilon-Schwellen", "Klassifikationstoleranzen", "numerische Toleranzen"]
 abgelehnte_benennungen: [Genauigkeit, Messunsicherheit, Fertigungstoleranz, "tolerance", "epsilon"]
 oberbegriff: null

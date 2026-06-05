@@ -1,6 +1,7 @@
 ---
 id: lastfall
 benennung: Lastfall
+kurz: "Ein Lastfall ist eine bestimmte Belastungssituation, die man durchrechnet — zum Beispiel «volle Schneelast und gleichzeitig Wind von Süden» —, um zu prüfen, ob die Konstruktion das aushält."
 synonyme: []
 abgelehnte_benennungen: [Belastungsfall, Lastannahme, Einwirkung, Einwirkungskombination, Lastkombination, Lastfallkombination, "load case", "action", "action combination", "combination of actions"]
 oberbegriff: null

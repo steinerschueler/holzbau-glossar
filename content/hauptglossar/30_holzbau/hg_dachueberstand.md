@@ -1,6 +1,7 @@
 ---
 id: dachueberstand
 benennung: Dachüberstand
+kurz: "Der Dachüberstand ist der Teil des Daches, der über die Aussenwände des Hauses hinausragt und so die Wände vor Regen und Sonne schützt."
 synonyme: [Dachvorsprung, Dachüberhang, Dachauskragung]
 abgelehnte_benennungen:
   - Vordach

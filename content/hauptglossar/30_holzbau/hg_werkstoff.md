@@ -1,6 +1,7 @@
 ---
 id: werkstoff
 benennung: Werkstoff
+kurz: "Ein Werkstoff ist das Material, aus dem ein Bauteil besteht — etwa Vollholz, eine verleimte Holzplatte oder Stahl —, jeweils mit eigenen Eigenschaften wie Faserrichtung und Festigkeit."
 synonyme: [Baustoff]
 abgelehnte_benennungen: [Material, Stoff, Substanz, Werkmaterial, "material", "structural material"]
 oberbegriff: null

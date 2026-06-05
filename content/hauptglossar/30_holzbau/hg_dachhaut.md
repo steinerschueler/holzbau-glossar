@@ -1,6 +1,7 @@
 ---
 id: dachhaut
 benennung: Dachhaut
+kurz: "Die Dachhaut ist die gedachte glatte Aussenhülle, die sich oben über die oberste Schicht des Dachs spannt — bei geneigten Dächern über die Ziegel, bei Flachdächern über die Abdichtung."
 synonyme: []
 abgelehnte_benennungen: [Dachdeckung, Dacheindeckung, Dachfläche, Dachschräge, Dachaufbau, "roof skin", "roof covering"]
 oberbegriff: null

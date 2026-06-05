@@ -1,6 +1,7 @@
 ---
 id: gratsparren
 benennung: Gratsparren
+kurz: "Ein Gratsparren ist der schräge Eckbalken, der genau auf der vorspringenden Gratlinie eines Dachs liegt — von der unteren Ecke schräg bis zum First hinauf — und die Last beider angrenzenden Dachflächen trägt."
 synonyme: [Grat-Sparren]
 abgelehnte_benennungen:
   [Walmsparren, Eckgrat, Eckgratbalken, Verschneidungssparren,

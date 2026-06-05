@@ -1,6 +1,7 @@
 ---
 id: dachschraege
 benennung: Dachschräge
+kurz: "Eine Dachschräge ist die schräge Innenfläche unter dem Dach, die man im ausgebauten Dachgeschoss als geneigte Wand-Decke über sich sieht."
 synonyme: [Dachuntersicht, "innere Dachuntersicht", "raumseitige Dachfläche"]
 abgelehnte_benennungen: [Dachneigung, Dachschrägung, Schräge, "sloped ceiling", "roof underside"]
 oberbegriff: ebene

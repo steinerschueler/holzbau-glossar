@@ -1,6 +1,7 @@
 ---
 id: strebe
 benennung: Strebe
+kurz: "Eine Strebe ist ein schräg eingebauter Balken in einer Wand, der zusammen mit den waagrechten und senkrechten Hölzern ein stabiles Dreieck bildet und so die Wand gegen seitliches Verschieben aussteift."
 synonyme: [Sturmband, Windsteb, Windstrebe, Schubband, Pfostenstrebe, Ständerstrebe, Biege]
 abgelehnte_benennungen: [Schräge, Diagonale, Verstrebung, brace, strut, tie, "diagonal brace", "wind brace", "let-in brace", "knee brace"]
 oberbegriff: bauteil

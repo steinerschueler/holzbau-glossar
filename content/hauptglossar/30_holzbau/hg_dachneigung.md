@@ -1,6 +1,7 @@
 ---
 id: dachneigung
 benennung: Dachneigung
+kurz: "Die Dachneigung ist der Winkel, um den eine Dachfläche gegenüber der Waagrechten geneigt ist — also wie steil oder flach das Dach ist."
 synonyme: [Dachneigungswinkel, Neigung, "Neigungswinkel der Dachfläche"]
 abgelehnte_benennungen: [Dachschräge, Dachschrägung, Dachpitch, Dachgefälle, "roof pitch", "roof slope", "roof angle"]
 oberbegriff: einheitsvektor

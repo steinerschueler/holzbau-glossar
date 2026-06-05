@@ -1,6 +1,7 @@
 ---
 id: produktkennzeichnung
 benennung: Produktkennzeichnung
+kurz: "Eine Produktkennzeichnung ist der Stempel oder das Etikett auf einem Bauprodukt — etwa auf einem Balken —, das wie der Aufdruck auf einer Lebensmittelverpackung verrät, woher das Stück kommt, was es kann und dass es geprüft ist."
 synonyme: ["Sortier-/CE-Kennzeichnung", "Material- und Chargenkennzeichnung", "Werks-Kennzeichnung"]
 abgelehnte_benennungen: [Materialkennung, Holzstempel, Sortierstempel, Chargennummer, "marking", "product label", "batch id"]
 oberbegriff: null

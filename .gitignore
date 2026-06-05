@@ -11,3 +11,4 @@ src/pilot/
 # content/ wird via ./sync.sh aus dem privaten zimmermann_app befüllt
 # und bewusst mit jeder inhaltlichen Welle gepusht. Nicht löschen,
 # nicht im Site-Repo manuell editieren — der Sync ist unidirektional.
+.cache/

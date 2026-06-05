@@ -1,6 +1,7 @@
 ---
 id: latte
 benennung: Latte
+kurz: "Eine Latte ist eine schmale Holzleiste, die quer über die Sparren genagelt wird und auf der die Dachziegel oder Schindeln aufliegen."
 synonyme: [Dachlatte, Traglatte, Ziegellatte]
 abgelehnte_benennungen: [Konterlatte, Schalung, Bretterlattung, Schalungsbrett, Lattung, Traglattung, Riegel, Solarlatte, Stahllatte, "batten", "lath", "roof batten", "tile batten"]
 oberbegriff: bauteil

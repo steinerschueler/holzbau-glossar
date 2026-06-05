@@ -29,3 +29,10 @@ content/**       -export-ignore
 src/methode/**   -export-ignore
 LICENSE          -export-ignore
 README.md        -export-ignore
+
+# Subglossar (didaktische Hülle) bewusst wieder AUSGENOMMEN: Begleitmaterial
+# der Webseite, nicht Teil des zitierbaren Werks — kein Download, keine API,
+# kein DOI-Archiv. Bleibt im Repo (für den Site-Build), fliegt aber aus
+# `git archive` (Zenodo-Snapshot, GitHub „Source code"-Downloads).
+content/subglossar/      export-ignore
+content/subglossar/**    export-ignore

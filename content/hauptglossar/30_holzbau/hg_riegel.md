@@ -1,6 +1,7 @@
 ---
 id: riegel
 benennung: Riegel
+kurz: "Ein Riegel ist ein waagrechter Querbalken, der zwischen zwei senkrechten Pfosten einer Holzwand eingespannt ist, das Wandfeld in kleinere Felder unterteilt und die Wand aussteift."
 synonyme: [Wandriegel, Querriegel, Querholz]
 abgelehnte_benennungen: [Brustriegel, Sturzriegel, Stockwerksriegel, Brüstungsriegel, Kopfriegel, Schwellenriegel, Fußriegel, Rähmriegel, Zwischenriegel, Druckriegel, Spannriegel, Sprengriegel, Binderriegel, Latte, Pfette, "nogging", "noggin", "cripple stud", "girt", "header", "rail"]
 oberbegriff: bauteil

@@ -1,6 +1,7 @@
 ---
 id: bleischnitt
 benennung: Bleischnitt
+kurz: "Ein Bleischnitt ist eine waagrecht liegende Schnittfläche am Holz, so eben wie eine ruhige Wasseroberfläche — benannt nach dem Bleilot, zu dessen herabhängender Schnur sie im rechten Winkel steht."
 synonyme: [Blei, "Bleischnitt-Fläche", "waagerechter Schnitt"]
 abgelehnte_benennungen: ["horizontaler Schnitt", "horizontal cut", "level cut", "seat cut"]
 oberbegriff: ebene

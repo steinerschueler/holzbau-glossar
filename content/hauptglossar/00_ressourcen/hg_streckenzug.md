@@ -1,6 +1,7 @@
 ---
 id: streckenzug
 benennung: Streckenzug
+kurz: "Ein Streckenzug ist eine Kette aus mehreren geraden Stücken, die Ende an Ende aneinanderhängen — wie ein Draht, den man an mehreren Stellen abgewinkelt hat, sodass er im Zickzack von Anfang bis Ende läuft."
 synonyme: [Polygonzug, Polylinie, "stückweise lineare Kurve", "gebrochener Linienzug"]
 abgelehnte_benennungen: [Linienzug, Kurvenzug, Pfad, "polyline", "linestring", "polygonal chain", "broken line"]
 oberbegriff: null

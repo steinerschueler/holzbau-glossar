@@ -1,6 +1,7 @@
 ---
 id: ebene
 benennung: Ebene
+kurz: "Eine Ebene ist eine vollkommen flache Fläche, die in alle Richtungen unendlich weitergeht."
 synonyme: [Hyperebene_in_R3, "affine Ebene"]
 abgelehnte_benennungen: [Fläche, Plane, "plane"]
 oberbegriff: null

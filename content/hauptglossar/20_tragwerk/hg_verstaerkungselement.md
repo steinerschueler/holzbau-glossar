@@ -1,6 +1,7 @@
 ---
 id: verstaerkungselement
 benennung: Verstärkungselement
+kurz: "Ein Verstärkungselement ist meist eine lange Schraube, die nicht zwei Hölzer verbindet, sondern in ein einzelnes Holz eingedreht wird, um es an einer gefährdeten Stelle gegen Aufreissen oder Quetschen zu kräftigen."
 synonyme: [Verstärkungsschraube, Verstärkungs-Vollgewindeschraube]
 abgelehnte_benennungen: [Verbindungsmittel, Bauteil, Verstärkung, "reinforcement screw", "reinforcement", "Bewehrung"]
 oberbegriff: element

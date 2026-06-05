@@ -1,6 +1,7 @@
 ---
 id: fussband
 benennung: Fussband
+kurz: "Ein Fussband ist eine kurze schräge Holzstrebe, die unten den Fuss eines stehenden Pfostens mit dem darunterliegenden waagrechten Balken verbindet und diese Ecke gegen seitliches Verschieben versteift."
 synonyme: []
 abgelehnte_benennungen: [Fußwinkelholz, Fusswinkelholz, Fußstrebe, Fussstrebe, "foot brace", "lower brace", "knee brace"]
 oberbegriff: bauteil

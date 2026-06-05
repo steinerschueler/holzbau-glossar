@@ -1,6 +1,7 @@
 ---
 id: haengesaeule
 benennung: Hängesäule
+kurz: "Eine Hängesäule ist ein senkrechtes Holz im Dachgerüst, das nicht von unten stützt, sondern einen darunterliegenden langen Balken in seiner Mitte von oben aufhängt, damit dieser nicht durchhängt."
 synonyme: [Hängepfosten, Königsstiel, "king post", "queen post"]
 abgelehnte_benennungen: [Säule, Stütze, Pfosten, Stiel, Hängestiel, "tie rod", Zugstab, "tension rod"]
 oberbegriff: bauteil

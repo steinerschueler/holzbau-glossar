@@ -1,6 +1,7 @@
 ---
 id: kerve
 benennung: Kerve
+kurz: "Eine Kerve ist ein dreieckiger Ausschnitt an der Unterseite eines Sparrens mit einer kleinen waagrechten Sitzfläche, mit der der Sparren sauber und kippsicher auf einem darunterliegenden Balken (der Pfette) aufliegt."
 synonyme: [Sparrenkerve, Sparrenkerbe, Klauenkerve, Klaue, Sattel, Auflagerkerve, Ferserl]
 abgelehnte_benennungen: [Kerbe, Aussparung, Auskerbung, Einkerbung, Ausklinkung, "birdsmouth", "bird's mouth", "rafter notch", "seat cut"]
 oberbegriff: bearbeitung

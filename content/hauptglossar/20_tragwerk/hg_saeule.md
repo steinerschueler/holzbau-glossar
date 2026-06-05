@@ -1,6 +1,7 @@
 ---
 id: saeule
 benennung: Säule
+kurz: "Eine Säule ist ein senkrecht stehender, tragender Pfeiler, der Gewicht von oben aufnimmt und nach unten weiterleitet — oft rund und kunstvoll gegliedert in Fuss, Schaft und Kopf."
 synonyme: [Säulenstütze, "freistehende Säule", "klassische Säule"]
 abgelehnte_benennungen: [Stütze, Pfeiler, Pilaster, column, pillar, "free-standing column"]
 oberbegriff: stuetze

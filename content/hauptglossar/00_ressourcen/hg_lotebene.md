@@ -1,6 +1,7 @@
 ---
 id: lotebene
 benennung: Lotebene
+kurz: "Eine Lotebene ist eine senkrecht stehende gedachte Fläche, die der Länge nach mitten durch ein Bauteil verläuft — wie eine lotrechte Glasscheibe, die einen liegenden Balken längs in zwei Hälften teilt."
 synonyme: ["Senkelebene durch die Bauteilachse", "Vertikalebene des Bauteils", "lotrechte Ebene durch die Bauteilachse"]
 abgelehnte_benennungen: ["vertikale Schnittebene", "Lotebene zur Bauteilachse", "vertical plane", "plumb plane", "Senkelebene"]
 oberbegriff: senkel

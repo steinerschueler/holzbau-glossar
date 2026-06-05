@@ -1,6 +1,7 @@
 ---
 id: konstruktionsdetail
 benennung: Konstruktionsdetail
+kurz: "Ein Konstruktionsdetail ist die vergrösserte Nahaufnahme einer einzelnen Stelle des Bauwerks — etwa eines Knotenpunkts, an dem mehrere Hölzer zusammentreffen —, die genau zeigt, wie dort alles ineinandergreift."
 synonyme: [Detail, Anschlussdetail, Knotendetail]
 abgelehnte_benennungen:
   - Knoten

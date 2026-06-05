@@ -1,6 +1,7 @@
 ---
 id: andreaskreuz
 benennung: Andreaskreuz
+kurz: "Ein Andreaskreuz sind zwei schräge Hölzer, die in einem Wandfeld über Kreuz gespannt sind — wie ein grosses X —, damit die Wand bei Wind nicht seitlich wegkippt."
 synonyme: [Kreuzstrebe, Strebenkreuz]
 abgelehnte_benennungen:
   [Creutzzug, Feuerbock, Malkreuz, Kreuzbock,

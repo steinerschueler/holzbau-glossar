@@ -1,6 +1,7 @@
 ---
 id: raehm
 benennung: Rähm
+kurz: "Ein Rähm ist der waagrechte Balken, der ganz oben auf einer Holzwand liegt, die Köpfe aller senkrechten Pfosten verbindet und die Last von Decke oder Dach sammelt und in die Wand weitergibt."
 synonyme: [Rahmholz, Rähmholz, Rähmbalken]
 abgelehnte_benennungen: [Wandpfette, Wandriegel, Mauerschwelle, Mauerbank, "top plate", "wall plate", "raising plate", "double top plate"]
 oberbegriff: bauteil

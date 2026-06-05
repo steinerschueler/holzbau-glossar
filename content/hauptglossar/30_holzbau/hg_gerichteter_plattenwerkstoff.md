@@ -1,6 +1,7 @@
 ---
 id: gerichteter_plattenwerkstoff
 benennung: Gerichteter Plattenwerkstoff
+kurz: "Ein gerichteter Plattenwerkstoff ist eine Holzplatte wie OSB, deren grobe Späne überwiegend in eine Richtung liegen, sodass sie in dieser Richtung etwas mehr aushält als quer dazu."
 synonyme: ["Plattenwerkstoff mit schwacher Vorzugsrichtung", "schwach orthotroper Plattenwerkstoff"]
 abgelehnte_benennungen: [OSB, "oriented strand board", Grobspanplatte, gerichteter_holzwerkstoff]
 oberbegriff: werkstoff

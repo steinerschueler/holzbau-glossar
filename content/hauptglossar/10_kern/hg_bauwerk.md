@@ -1,6 +1,7 @@
 ---
 id: bauwerk
 benennung: Bauwerk
+kurz: "Ein Bauwerk ist etwas, das Menschen fest an einem Ort errichtet haben — zum Beispiel ein Haus, eine Brücke oder ein Turm —, und das aus vielen einzelnen Bauteilen zu einem Ganzen zusammengefügt ist."
 synonyme: []
 abgelehnte_benennungen: [Gebäude, Bauobjekt, Bauanlage, "bauliche Anlage", Konstruktion, Ingenieurbauwerk, Hochbau, Tiefbau, "building", "construction works", "structure", "facility"]
 oberbegriff: null

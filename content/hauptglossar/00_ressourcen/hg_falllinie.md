@@ -1,6 +1,7 @@
 ---
 id: falllinie
 benennung: Falllinie
+kurz: "Die Falllinie einer schrägen Fläche ist die Richtung, in die ein Wassertropfen rollen würde — den steilsten Weg geradewegs bergab, so wie Regenwasser ein Dach hinunterläuft."
 synonyme: [Gefällelinie, "Linie des größten Gefälles", Steilrichtung]
 abgelehnte_benennungen: [Hangrichtung, Aspekt, Dachgefälle, Neigungsrichtung, "fall line", "line of steepest descent", "slope direction"]
 oberbegriff: einheitsvektor

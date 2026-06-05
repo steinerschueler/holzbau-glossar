@@ -76,7 +76,11 @@ def on_files(files, config):
         return files
 
     sg_by_id = _load_subglossar_index(content / "subglossar")
-    cluster_entries: dict[str, list[tuple[str, str]]] = {}
+    # Pro Cluster: (benennung, virtual_uri, kurz_satz). Der kurz-Satz speist
+    # die Cluster-Übersichtsseite.
+    cluster_entries: dict[str, list[tuple[str, str, str]]] = {}
+    # label → URI der generierten Cluster-Übersichtsseite (Section-Index).
+    cluster_index_uris: dict[str, str] = {}
     # Flache Sammlung für den A-Z-Index: (benennung, virtual_uri, cluster_kurz).
     az_entries: list[tuple[str, str, str]] = []
     # id → URL-Segment des Clusters, für die Querverweis-Verlinkung der
@@ -89,12 +93,13 @@ def on_files(files, config):
         cluster_path = content / "hauptglossar" / cluster_dir
         if not cluster_path.is_dir():
             continue
-        kurz = CLUSTER_KURZ[cluster_dir]
-        entries: list[tuple[str, str]] = []
+        cluster_kurz = CLUSTER_KURZ[cluster_dir]
+        entries: list[tuple[str, str, str]] = []
         for hg_file in sorted(cluster_path.glob("hg_*.md")):
             hg_id = hg_file.stem.removeprefix("hg_")
             hg_text = hg_file.read_text(encoding="utf-8")
             benennung = _extract_benennung(hg_text) or hg_id
+            kurz_satz = _extract_kurz(hg_text) or ""
             # Prosa-Auszug ins Frontmatter heben, damit das Jinja2-Head-
             # Template ihn als page.meta.prosa_excerpt für JSON-LD nutzen
             # kann. Modifikation greift nur in die virtuelle Site-Datei,
@@ -105,11 +110,19 @@ def on_files(files, config):
             merged = _merge_entry(hg_text, sg_by_id.get(hg_id), hg_id)
             virtual_uri = f"{CLUSTER_URL[cluster_dir]}/{hg_id}.md"
             files.append(File.generated(config, virtual_uri, content=merged))
-            entries.append((benennung, virtual_uri))
-            az_entries.append((benennung, virtual_uri, kurz))
+            entries.append((benennung, virtual_uri, kurz_satz))
+            az_entries.append((benennung, virtual_uri, cluster_kurz))
             id_cluster[hg_id] = CLUSTER_URL[cluster_dir]
             id_benennung[hg_id] = benennung
         cluster_entries[label] = entries
+
+        # Cluster-Übersichtsseite (Section-Index): Begriffsliste mit den
+        # laienverständlichen kurz-Sätzen. Klick auf den Cluster in der Nav
+        # landet hier (navigation.indexes), nicht beim ersten Begriff.
+        index_uri = f"{CLUSTER_URL[cluster_dir]}/index.md"
+        index_md = _build_cluster_index(label, entries)
+        files.append(File.generated(config, index_uri, content=index_md))
+        cluster_index_uris[label] = index_uri
 
     # A-Z-Index als eigene virtuelle Seite anlegen.
     if az_entries:
@@ -142,6 +155,7 @@ def on_files(files, config):
 
     # Stash for on_nav.
     config["_holzbau_cluster_entries"] = cluster_entries
+    config["_holzbau_cluster_index_uris"] = cluster_index_uris
     # Stash for on_page_content (Querverweis-Verlinkung).
     config["_holzbau_id_cluster"] = id_cluster
     config["_holzbau_id_benennung"] = id_benennung
@@ -168,7 +182,6 @@ def on_post_build(config):
     if not content.is_dir():
         return
 
-    sg_by_id = _load_subglossar_index(content / "subglossar")
     today = date.today().isoformat()
     site_url = (config.get("site_url") or "https://holzbau-glossar.ch").rstrip("/")
     site_author = config.get("site_author", "Eric Naville")
@@ -183,16 +196,21 @@ def on_post_build(config):
             hg_id = hg_file.stem.removeprefix("hg_")
             hg_text = hg_file.read_text(encoding="utf-8")
             benennung = _extract_benennung(hg_text) or hg_id
-            merged_md = _merge_for_download(hg_text, sg_by_id.get(hg_id))
+            # Download = NUR der Hauptglossar-Eintrag. Die didaktische Hülle
+            # (Subglossar) ist Begleitmaterial der Webseite und bewusst NICHT
+            # Teil des zitierbaren, herunterladbaren Werks (ebenso wenig API
+            # oder DOI-Archiv). Single Source of Truth des Downloads ist das
+            # hg_*.md mit intaktem Frontmatter — ein getreuer Zitations-Snapshot.
+            download_md = hg_text
 
             # In den Eintrags-Ordner schreiben (von MkDocs für index.html
             # bereits angelegt; mkdir defensiv für Robustheit).
             out_dir = site_dir / cluster_url / hg_id
             out_dir.mkdir(parents=True, exist_ok=True)
 
-            (out_dir / f"{hg_id}.md").write_text(merged_md, encoding="utf-8")
+            (out_dir / f"{hg_id}.md").write_text(download_md, encoding="utf-8")
             (out_dir / f"{hg_id}.txt").write_text(
-                _markdown_to_plain(merged_md), encoding="utf-8"
+                _markdown_to_plain(download_md), encoding="utf-8"
             )
             (out_dir / f"{hg_id}.bib").write_text(
                 _build_bibtex(
@@ -461,6 +479,7 @@ def on_nav(nav, config, files):
     der Nav stehen bleiben. Fallback: ans Ende anhängen, falls
     „Zitieren" umbenannt oder entfernt wird."""
     cluster_entries = config.pop("_holzbau_cluster_entries", {})
+    cluster_index_uris = config.pop("_holzbau_cluster_index_uris", {})
     az_uri = config.pop("_holzbau_az_uri", None)
     if not cluster_entries:
         return nav
@@ -475,7 +494,17 @@ def on_nav(nav, config, files):
 
     for label, entries in cluster_entries.items():
         section_children = []
-        for benennung, uri in entries:
+        # Cluster-Übersichtsseite als ERSTES Kind → mit dem Feature
+        # ``navigation.indexes`` macht Material den Section-Titel selbst
+        # klickbar und führt auf diese Übersicht (statt auf den ersten
+        # Begriff). Die Seite erscheint dann nicht zusätzlich als Kind.
+        index_uri = cluster_index_uris.get(label)
+        if index_uri:
+            index_file = files.get_file_from_path(index_uri)
+            if index_file is not None and index_file.page is not None:
+                index_file.page.title = label
+                section_children.append(index_file.page)
+        for benennung, uri, _kurz in entries:
             file = files.get_file_from_path(uri)
             if file is None:
                 continue
@@ -541,6 +570,7 @@ def _frontmatter_end(text: str) -> int:
 
 _GLOSSAR_REF_RE = re.compile(r"^glossar_ref:\s*(\S+)\s*$", re.MULTILINE)
 _BENENNUNG_RE = re.compile(r"^benennung:\s*(.+?)\s*$", re.MULTILINE)
+_KURZ_RE = re.compile(r"^kurz:\s*(.+?)\s*$", re.MULTILINE)
 
 
 def _extract_benennung(text: str) -> str | None:
@@ -556,6 +586,21 @@ def _extract_benennung(text: str) -> str | None:
     # Strip surrounding quotes if present.
     raw = match.group(1)
     return raw.strip("\"'")
+
+
+def _extract_kurz(text: str) -> str | None:
+    """Pull ``kurz:`` (laienverständlicher Ein-Satz-Anriss) aus dem
+    Frontmatter. Liefert ``None``, wenn das Feld fehlt oder leer ist."""
+    if not text.startswith("---"):
+        return None
+    end = _frontmatter_end(text)
+    if end == -1:
+        return None
+    match = _KURZ_RE.search(text[3:end])
+    if not match:
+        return None
+    raw = match.group(1).strip().strip("\"'").strip()
+    return raw or None
 
 
 def _load_subglossar_index(sg_dir: Path) -> dict[str, str]:
@@ -655,26 +700,83 @@ def _inject_prosa_excerpt(text: str, excerpt: str) -> str:
 # ---------------------------------------------------------------------------
 
 
+_STRIP_LEADING_H1 = re.compile(r"\A\s*#\s+[^\n]*\n")
+
+# Inline-SVG-Skizze: Öffnungs- und Schlusstag jeweils am Zeilenanfang (ggf.
+# eingerückt), non-greedy dazwischen. Die Zeilenanker (^…^, MULTILINE) sind
+# entscheidend: Die SVG-Doku-Kommentare enthalten Erwähnungen wie
+# „… des <svg>…</svg>-Blocks" oder „Öffnungstag <svg …>" — die stehen MID-LINE
+# (Text davor) und werden vom Anker NICHT als echtes Tag genommen. Ein
+# früherer Regex ohne Anker stoppte am Kommentar-</svg> und zerriss das SVG.
+_INLINE_SVG_RE = re.compile(
+    r"^[ \t]*<svg\b.*?^[ \t]*</svg>", re.MULTILINE | re.DOTALL | re.IGNORECASE
+)
+
+
+def _schuetze_inline_svg(text: str) -> str:
+    """Kapsele inline-SVG-Skizzen in einen ``<div class="skizze" markdown="0">``,
+    damit ``md_in_html`` sie ROH durchreicht statt sie als Markdown zu parsen.
+
+    Der Subglossar-Body wird in einen
+    ``<div class="subglossar-block" markdown="1">`` gewickelt (Akzent-Rand +
+    Collapsible-Grenze); ``markdown="1"`` parst den Inhalt rekursiv als
+    Markdown. ``<svg>`` ist für python-markdown kein block-level-Element →
+    die mehrzeilige, eingerückte SVG-Doku würde zu Code-Blöcken, Leerzeilen
+    brächen das Element, sichtbar bliebe nur der Karton-Hintergrund. Ein
+    umschliessender ``<div markdown="0">`` (block-level) nimmt das SVG von der
+    Markdown-Verarbeitung aus und reicht es UNVERÄNDERT durch — wichtig: das
+    erhält die case-sensitiven SVG-Attribute (``viewBox``,
+    ``preserveAspectRatio`` …). (Ein block-level-``<svg>`` über die
+    Markdown-Treeprocessor-Schiene würde sie kleinschreiben und so die
+    Skalierung zerstören.) Leerzeilen ringsum trennen den raw-HTML-Block ab.
+    Top-Level-SVG im Hauptglossar braucht das nicht (regulärer
+    HTML-Block-Pfad)."""
+    def _wrap(match: re.Match[str]) -> str:
+        return (
+            '\n\n<div class="skizze" markdown="0">\n'
+            + match.group(0)
+            + "\n</div>\n\n"
+        )
+
+    return _INLINE_SVG_RE.sub(_wrap, text)
+
+
+def _mit_titel(text: str, benennung: str, kurz: str | None = None) -> str:
+    """Setze die Benennung als H1-Seitentitel direkt nach dem Frontmatter,
+    optional gefolgt vom laienverständlichen ``kurz``-Satz.
+
+    Die Quell-Markdowns beginnen ihren Body mit ``## Prosa-Definition``
+    (kein H1); ohne diese Injektion hätte die Seite keinen sichtbaren
+    Titel. Der ``kurz``-Satz steht ZWISCHEN H1 und erstem H2 — also
+    sichtbar oberhalb des ausklappbaren Blocks (das Collapsible-JS wickelt
+    erst ab dem ersten H2). ``markdown="span"`` erlaubt Inline-Markup im
+    Satz, ``.kurz`` trägt das Lead-Styling."""
+    lead = f"\n# {benennung}\n"
+    if kurz:
+        lead += f'\n<p class="kurz" markdown="span">{kurz}</p>\n'
+    end = _frontmatter_end(text)
+    if end == -1:
+        return lead.lstrip("\n") + "\n" + text
+    nl = text.find("\n", end)  # Ende der schliessenden ``---``-Zeile
+    if nl == -1:
+        return text
+    return text[: nl + 1] + lead + text[nl + 1 :]
+
+
 def _merge_entry(hg_text: str, sg_text: str | None, hg_id: str) -> str:
     """Concatenate Hauptglossar content with (optional) Subglossar body,
     rewriting cross-links so MkDocs resolves them against the rendered
     site structure. Appends download buttons for the .md / .txt / .bib
     variants generated in ``on_post_build``."""
     merged_hg = _rewrite_cross_links(hg_text)
-    if sg_text:
-        sg_body = _rewrite_cross_links(_strip_frontmatter(sg_text).lstrip())
-        merged = (
-            merged_hg.rstrip()
-            + "\n\n"
-            + "## Didaktische Hülle (Subglossar)\n\n"
-            + sg_body
-        )
-    else:
-        merged = merged_hg
+    merged_hg = _mit_titel(
+        merged_hg, _extract_benennung(hg_text) or hg_id, _extract_kurz(hg_text)
+    )
 
-    # Inline-HTML (statt Markdown-Link-Syntax), damit MkDocs keine
-    # toten Cross-Link-Warnings für die per ``on_post_build`` erzeugten
-    # .md/.txt/.bib-Assets wirft.
+    # Der Download-Block schliesst den vollständigen Hauptglossar-Block ab
+    # (Prosa-Definition … Quelle herunterladen). Inline-HTML statt
+    # Markdown-Link-Syntax, damit MkDocs keine toten Cross-Link-Warnings
+    # für die per ``on_post_build`` erzeugten .md/.txt/.bib-Assets wirft.
     downloads = (
         "\n\n---\n\n"
         "## Quelle herunterladen\n\n"
@@ -684,7 +786,52 @@ def _merge_entry(hg_text: str, sg_text: str | None, hg_id: str) -> str:
         f'<a class="download-btn" href="{hg_id}.bib" download>BibTeX</a>'
         "</p>\n"
     )
-    return merged.rstrip() + downloads
+    hg_block = merged_hg.rstrip() + downloads
+
+    if not sg_text:
+        return hg_block.rstrip() + "\n"
+
+    # Das Subglossar als ZWEITER Block NACH dem kompletten Hauptglossar-
+    # Block (inkl. Quelle herunterladen), durch einen Trenner abgesetzt.
+    # Wie der HG-Block: ein beschrifteter Block, dessen Stufen-Kapitel
+    # (H2) vom Collapsible-JS zu sichtbar gestapelten, einzeln
+    # ausklappbaren Akkordeon-Sektionen gewickelt werden — KEIN
+    # umschliessendes Collapsible. ``markdown="1"`` lässt md_in_html den
+    # Block-Inhalt rendern; die Klasse ``subglossar-block`` ist Stopp-
+    # Grenze für das HG-Wrapping und Container für die SG-Kapitel.
+    sg_body = _rewrite_cross_links(_strip_frontmatter(sg_text).lstrip())
+    # Die führende SG-H1 („<Begriff> (Subglossar)") entfernen.
+    sg_body = _STRIP_LEADING_H1.sub("", sg_body, count=1).lstrip()
+    # Inline-SVG-Skizzen vor der Markdown-Verarbeitung des SG-Blocks schützen
+    # (sonst zerstört markdown="1" das SVG — siehe _schuetze_inline_svg).
+    sg_body = _schuetze_inline_svg(sg_body)
+    # Immer sichtbarer Hinweis ganz oben im Block (VOR dem ersten H2, damit
+    # ihn das Collapsible-JS nicht zur ausklappbaren Sektion wickelt): die
+    # didaktische Hülle ist Begleitmaterial, NICHT Teil des zitierbaren Werks
+    # — ausgenommen von Download, API und DOI-Archiv (steht aber unter CC BY 4.0).
+    hinweis = (
+        '<p class="subglossar-hinweis" markdown="span">'
+        "**Didaktische Hülle (Subglossar) — Begleitmaterial.** "
+        "Dieser orange markierte Abschnitt erläutert den Begriff didaktisch "
+        "und ist **nicht Teil des zitierbaren Werks**: bewusst ausgenommen "
+        "von [Download](#quelle-herunterladen), [API](../api.md) und "
+        "[DOI-Archiv](../zitieren.md) — zitierbar und maschinenlesbar ist allein "
+        "der Hauptglossar-Eintrag darüber. Der Inhalt steht dennoch unter "
+        "[CC BY 4.0](../datenschutz.md)."
+        "</p>"
+    )
+    # „Didaktische Hülle" als ERSTES H2-Kapitel des SG-Blocks (mit dem
+    # Einleitungstext als Inhalt) — so wird sie vom Collapsible-JS zur
+    # gleichen ausklappbaren Akkordeon-Sektion wie die übrigen Kapitel.
+    sg_block = (
+        "\n\n---\n\n"
+        '<div class="subglossar-block" markdown="1">\n\n'
+        + hinweis
+        + "\n\n## Didaktische Hülle (Subglossar)\n\n"
+        + sg_body
+        + "\n\n</div>\n"
+    )
+    return hg_block.rstrip() + sg_block
 
 
 # ---------------------------------------------------------------------------
@@ -702,21 +849,6 @@ def _merge_entry(hg_text: str, sg_text: str | None, hg_id: str) -> str:
 # um, die MkDocs gegen das jeweilige Ausgabe-Verzeichnis auflöst —
 # das vermeidet Hartcodierung der ``site_url`` und respektiert
 # ``use_directory_urls``.
-
-def _merge_for_download(hg_text: str, sg_text: str | None) -> str:
-    """Merged Markdown for direct download — HG with intact frontmatter,
-    SG body appended. Cross-links remain as in the source so the result
-    is a faithful citation snapshot."""
-    if not sg_text:
-        return hg_text
-    sg_body = _strip_frontmatter(sg_text).lstrip()
-    return (
-        hg_text.rstrip()
-        + "\n\n"
-        + "## Didaktische Hülle (Subglossar)\n\n"
-        + sg_body
-    )
-
 
 # Markdown → readable plain text. Conservative: keeps frontmatter,
 # strips headers/emphasis/inline code, collapses links to "text (url)".
@@ -801,6 +933,41 @@ def _build_az_index(entries: list[tuple[str, str, str]]) -> str:
         # gegen die virtuelle URI, ohne führenden Slash.
         lines.append(f"- [{benennung}]({uri}) · {kurz}")
 
+    lines.append("")
+    return "\n".join(lines)
+
+
+def _build_cluster_index(label: str, entries: list[tuple[str, str, str]]) -> str:
+    """Markdown der Cluster-Übersichtsseite (Section-Index). Listet die
+    Begriffe des Clusters alphabetisch, je mit dem laienverständlichen
+    ``kurz``-Satz als Beschreibung. Klick auf den Cluster in der Nav landet
+    hier (navigation.indexes), statt beim ersten Begriff.
+
+    ``entries`` sind ``(benennung, virtual_uri, kurz)``; ``virtual_uri`` ist
+    ``{cluster}/{id}.md``. Die Übersichtsseite liegt unter
+    ``{cluster}/index.md`` — der Link ist daher der blosse Dateiname
+    ``{id}.md`` (gleiche Ebene), den MkDocs gegen ``/{cluster}/{id}/``
+    auflöst."""
+    lines: list[str] = [
+        "---",
+        f"title: {label}",
+        f"description: Übersicht aller Begriffe im Bereich {label} — je mit "
+        "einer kurzen, einfachen Erklärung.",
+        "---",
+        "",
+        f"# {label}",
+        "",
+        f"Alle Begriffe im Bereich **{label}** auf einen Blick, je mit einer",
+        "kurzen, einfachen Erklärung. Für die vollständige Definition den",
+        "Begriff anklicken.",
+        "",
+    ]
+    for benennung, uri, kurz in sorted(entries, key=lambda e: _az_sort_key(e[0])):
+        rel = uri.rsplit("/", 1)[-1]  # "{id}.md", relativ zur index.md
+        if kurz:
+            lines.append(f"- [{benennung}]({rel}) — {kurz}")
+        else:
+            lines.append(f"- [{benennung}]({rel})")
     lines.append("")
     return "\n".join(lines)
 

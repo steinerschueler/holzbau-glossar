@@ -1,6 +1,7 @@
 ---
 id: vektor
 benennung: Vektor
+kurz: "Ein Vektor ist ein Pfeil, der eine Richtung und eine Länge angibt — er beschreibt eine Verschiebung im Raum: wohin und wie weit, ganz gleich, von wo aus man losgeht."
 synonyme: [Verschiebungsvektor, "freier Vektor"]
 abgelehnte_benennungen: [Pfeil, Richtung, "vector"]
 oberbegriff: null

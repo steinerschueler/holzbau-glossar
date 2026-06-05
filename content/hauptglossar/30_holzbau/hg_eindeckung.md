@@ -1,6 +1,7 @@
 ---
 id: eindeckung
 benennung: Eindeckung
+kurz: "Eine Eindeckung ist die oberste Schicht eines schrägen Dachs aus überlappenden Einzelteilen wie Ziegeln, Schindeln oder Blechen, die den Regen schuppenartig nach unten in die Rinne ableiten."
 synonyme: [Dacheindeckung, Dachdeckung, Bedachung]
 abgelehnte_benennungen: [Dachhaut, Dachabdichtung, Dachaufbau, "roof covering", "roofing", "roof skin"]
 oberbegriff: schicht

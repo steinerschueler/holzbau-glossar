@@ -1,6 +1,7 @@
 ---
 id: festigkeitsklasse
 benennung: Festigkeitsklasse
+kurz: "Die Festigkeitsklasse ist eine Art Gütestempel für Bauholz (zum Beispiel «C24»), der in Kurzform angibt, wie viel das Holz aushält und wie steif es ist — vergleichbar mit einer Belastbarkeits-Note."
 synonyme: ["Sortierklasse (im Sinne der Festigkeit)", "Strength class", "characteristic strength class"]
 abgelehnte_benennungen: [Güteklasse, Sortimentsklasse, Holzklasse, "stress class", "strength grade", Tragklasse]
 oberbegriff: null

@@ -1,6 +1,7 @@
 ---
 id: faserrichtungs_modus
 benennung: Faserrichtungs-Modus
+kurz: "Der Faserrichtungs-Modus sagt, wie geordnet die Holzfasern in einem Werkstoff liegen — alle in eine Richtung (wie beim Balken), kreuzweise geschichtet, schwach bevorzugt oder völlig durcheinander (wie bei der Spanplatte)."
 synonyme: ["Anisotropie-Modus", "Faserrichtungs-Klasse", "Werkstoff-Anisotropieklasse"]
 abgelehnte_benennungen: [Anisotropie, Orthotropie, "fiber mode", "grain mode", Faserklasse, Faserrichtungstyp]
 oberbegriff: null

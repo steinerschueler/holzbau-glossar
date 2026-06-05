@@ -1,6 +1,7 @@
 ---
 id: unterdach
 benennung: Unterdach
+kurz: "Ein Unterdach ist eine zweite, wasserführende Schutzschicht unter den Dachziegeln, die das Wasser, das bei Sturm oder Schneetreiben durch die Ziegel dringt, auffängt und sicher zur Traufe ableitet."
 synonyme: ["zweite wasserführende Ebene"]
 abgelehnte_benennungen: [Unterdeckung, Unterspannung, Unterdachbahn, Unterdeckbahn, Unterspannbahn, Dachpappe, "sub-roof", "sub-roof membrane", "secondary roofing layer", "underlay"]
 oberbegriff: schicht

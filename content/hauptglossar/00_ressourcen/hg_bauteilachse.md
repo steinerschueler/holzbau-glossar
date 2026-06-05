@@ -1,6 +1,7 @@
 ---
 id: bauteilachse
 benennung: Bauteilachse
+kurz: "Die Bauteilachse ist die gedachte Mittellinie, die der Länge nach durch ein stabförmiges Bauteil wie einen Balken läuft — sozusagen sein Rückgrat von einem Ende zum anderen."
 synonyme: ["Stabachse", "Bauteilhauptachse", "geometrische Längsachse", "Schwerlinie (Stabbauteil)"]
 abgelehnte_benennungen: [Mittellinie, Stablinie, "member axis", "centerline", "neutral axis"]
 oberbegriff: achse

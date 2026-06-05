@@ -1,6 +1,7 @@
 ---
 id: sparrenueberstand
 benennung: Sparrenüberstand
+kurz: "Der Sparrenüberstand ist das Stück des Sparrens, das unten am Dachrand über die Hauswand hinausragt und so das Vordach bildet, das die Fassade vor Regen schützt."
 synonyme: [Sparrenkopf]
 abgelehnte_benennungen: [Dachvorsprung, Vordach, "rafter overhang", "rafter tail", "eaves overhang", Dachschalbung]
 oberbegriff: strecke

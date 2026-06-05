@@ -1,6 +1,7 @@
 ---
 id: halbraum
 benennung: Halbraum
+kurz: "Ein Halbraum ist eine der beiden Hälften, in die eine unendlich grosse flache Wand den ganzen Raum teilt — alles, was auf der einen Seite dieser Wand liegt."
 synonyme: ["abgeschlossener Halbraum", "geschlossener Halbraum", "Halbraum (orientiert)"]
 abgelehnte_benennungen: [Halbebene, Seite, Raumhälfte, "halfspace", "half-space"]
 oberbegriff: null

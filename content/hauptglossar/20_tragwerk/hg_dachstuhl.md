@@ -1,6 +1,7 @@
 ---
 id: dachstuhl
 benennung: Dachstuhl
+kurz: "Ein Dachstuhl ist das vom Zimmermann von Hand gezimmerte Holzgerüst eines Dachs aus Sparren, Pfetten und Stützen, das Schnee, Wind und das eigene Gewicht aufnimmt und sicher in die Mauern ableitet."
 synonyme: [Dachwerk]
 abgelehnte_benennungen:
   - Dachgebälk

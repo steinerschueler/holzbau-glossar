@@ -1,6 +1,7 @@
 ---
 id: bausystem
 benennung: Bausystem
+kurz: "Ein Bausystem ist eine gedankliche Gruppe von Bauteilen, die zusammen dieselbe Aufgabe erfüllen — etwa «alles, was das Haus trägt» —, wobei ein einzelnes Teil gleichzeitig zu mehreren solchen Gruppen gehören darf."
 synonyme: [Bauteilsystem, "funktionales System", "Building System"]
 abgelehnte_benennungen: [Bauteilgruppe, System, Anlage, Baugruppe, Tragsystem, "system", "group", "assembly"]
 oberbegriff: null

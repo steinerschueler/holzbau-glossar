@@ -1,6 +1,7 @@
 ---
 id: zapfen
 benennung: Zapfen
+kurz: "Ein Zapfen ist ein rechteckiger Holzvorsprung, der am Ende eines Balkens stehen gelassen wird und wie ein Stecker in das passende Loch (das Zapfenloch) eines anderen Holzes gesteckt wird, sodass beide formschlüssig zusammenhalten."
 synonyme: [Holzzapfen, Kantzapfen, "tenon"]
 abgelehnte_benennungen: [Zapfenverbindung, Verzapfung, "mortise and tenon", "joint", Stift, Duebel, Holzduebel, Holznagel, Pinne, Stollen, "peg"]
 oberbegriff: bearbeitung

@@ -167,6 +167,76 @@ html .md-typeset details.glossar-section h4 { font-size: 1.2rem !important; }
 html .md-typeset details.glossar-section h5 { font-size: 1.15rem !important; }
 html .md-typeset details.glossar-section h6 { font-size: 1.0rem !important; }
 
+/* ──────────────────────────────────────────────────────────────────────
+ * Subglossar-Block — die didaktische Hülle als eigenständiger,
+ * beschrifteter Block NACH dem Hauptglossar (erzeugt in
+ * hooks/build_pages.py, _merge_entry). Seine Stufen-H2 werden vom
+ * Collapsible-JS zu denselben Akkordeon-Sektionen (.glossar-section) wie
+ * im Hauptglossar gewickelt — sichtbar übereinander gestapelt, nicht in
+ * eine einzige Box eingeschlossen. Linker Akzent + Titel-Banner
+ * gruppieren sie optisch als „didaktische Hülle". Die inneren Sektionen
+ * tragen die .glossar-section-Regeln oben (inkl. Font-Reset).
+ * ────────────────────────────────────────────────────────────────────── */
+
+.md-typeset .subglossar-block {
+  border-left: 3px solid var(--md-accent-fg-color);
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+
+/* Laienverständlicher Kurz-Satz (kurz-Feld), eingefügt von _mit_titel
+ * ZWISCHEN H1 und erstem H2 — also sichtbar oberhalb des ausklappbaren
+ * Blocks. Prominenter Lead: etwas grösser als der Body, gedämpfte Farbe,
+ * vom folgenden Block durch Abstand abgesetzt. */
+.md-typeset .kurz {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--md-default-fg-color--light);
+  margin: 0 0 1.4rem;
+}
+
+/* Inline-SVG-Skizzen (gekapselt in <div class="skizze"> von
+ * _schuetze_inline_svg). Die Quell-SVGs tragen nur eine viewBox, kein
+ * width/height — ohne CSS ist die Darstellungsgrösse browserabhängig
+ * unzuverlässig. width:100% + height:auto macht sie responsiv (Browser
+ * leitet die Höhe aus der viewBox-Aspect-Ratio ab); max-width hält sie auf
+ * Desktop nahe der nativen Breite und zentriert. Auf .skizze eingegrenzt,
+ * damit die 24×24-Theme-Icons (Nav/Header) unberührt bleiben. */
+.md-typeset .skizze {
+  margin: 1.2em 0;
+}
+.md-typeset .skizze svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+/* Immer sichtbarer Hinweis am Kopf des Subglossar-Blocks (erzeugt in
+ * _merge_entry, VOR dem ersten H2 — also nicht ins Akkordeon gewickelt):
+ * stellt klar, dass die didaktische Hülle Begleitmaterial ist, ausgenommen
+ * von Download / API / DOI. Dezenter getönter Kasten, kleinere Schrift. */
+.md-typeset .subglossar-hinweis {
+  font-size: 0.75rem;
+  line-height: 1.55;
+  margin: 0.2rem 0 1.1rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.2rem;
+  background: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+ * Entwurfs-Status-Marker in der Navigation ausblenden. Material rendert
+ * automatisch ein Status-Symbol aus dem Frontmatter-Feld ``status:``;
+ * da alle Einträge derzeit ``entwurf`` sind, klebt es als (i)-artiges
+ * Icon an jedem Begriff im Hamburger-Menü — reines Rauschen.
+ * ────────────────────────────────────────────────────────────────────── */
+.md-nav__link .md-status {
+  display: none;
+}
+
 /* Auf dem Smartphone den Lese-Body etwas verkleinern (1.0rem → 0.8rem).
  * Trifft den globalen Body (.md-typeset) und die separat gepinnten
  * Kapitel-Inhalts-Elemente. Abschnittsüberschriften (h3–h6, in rem) und

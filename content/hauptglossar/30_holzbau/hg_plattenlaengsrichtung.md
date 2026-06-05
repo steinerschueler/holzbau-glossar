@@ -1,6 +1,7 @@
 ---
 id: plattenlaengsrichtung
 benennung: Plattenlängsrichtung
+kurz: "Die Plattenlängsrichtung ist bei einer Holzplatte die Richtung, in der die Holzfasern der Deckschicht verlaufen — meist entlang der langen Plattenkante —, und in der die Platte am meisten Last tragen kann."
 synonyme: ["Strand-Längsrichtung", "Plattenlängsachse", "Decklagen-Strandrichtung", "OSB-Längsrichtung"]
 abgelehnte_benennungen: [Plattenlangseite, Plattenlangskante, Plattenrichtung, "panel longitudinal direction", "strand direction"]
 oberbegriff: einheitsvektor

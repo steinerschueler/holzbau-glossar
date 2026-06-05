@@ -1,6 +1,7 @@
 ---
 id: uuid
 benennung: UUID (Universally Unique Identifier)
+kurz: "Eine UUID ist eine Kennnummer, die jedes Bauteil im Hintergrund automatisch erhält und für immer behält — wie eine weltweit einmalige Seriennummer —, damit zwei gleich aussehende Stücke nie verwechselt werden."
 synonyme: ["GUID", "Universally Unique Identifier"]
 abgelehnte_benennungen: [ID, Identifikator, Schlüssel, Surrogatschlüssel, "globally unique identifier", "object id"]
 oberbegriff: null

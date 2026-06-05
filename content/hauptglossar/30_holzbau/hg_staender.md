@@ -1,6 +1,7 @@
 ---
 id: staender
 benennung: Ständer
+kurz: "Ein Ständer ist ein senkrechter tragender Pfosten in einer Holzwand, der zwischen der unteren Schwelle und dem oberen Rähm eingespannt ist und das Gewicht von Decke und Dach senkrecht nach unten weiterleitet."
 synonyme: [Steher, Rippe, Stiel, Pfosten, Wandständer, stud, "wall stud"]
 abgelehnte_benennungen: [Säule, Stab, Mauerständer, Wand-Pfeiler, column, post, "cripple stud", Bundpfosten, Stempel, Stelze]
 oberbegriff: bauteil

@@ -1,6 +1,7 @@
 ---
 id: axiales_holz
 benennung: Axiales Holz
+kurz: "Axiales Holz ist Bauholz, dessen Fasern alle in eine Richtung der Länge nach durchlaufen — wie bei einem Balken, einem Brett oder einem geleimten Träger —, weshalb es längs viel mehr aushält als quer."
 synonyme: [eindirektionales Holz, Stabholz, "Holzwerkstoff mit einer Faserrichtung"]
 abgelehnte_benennungen: [Einrichtungsholz, Richtholz, Linienholz, Vollholz, Schnittholz, Massivholz, "solid timber", "linear timber"]
 oberbegriff: werkstoff

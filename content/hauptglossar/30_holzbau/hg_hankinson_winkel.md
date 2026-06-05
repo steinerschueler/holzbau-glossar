@@ -1,6 +1,7 @@
 ---
 id: hankinson_winkel
 benennung: Hankinson-Winkel
+kurz: "Der Hankinson-Winkel ist der Winkel zwischen der Richtung, in der eine Kraft auf ein Holz drückt, und der Richtung der Holzfasern — denn längs der Faser ist Holz viel stärker als quer dazu, und dieser Winkel sagt, wie viel es an der Stelle aushält."
 synonyme: ["Faserwinkel α (im Sinne der Hankinson-Formel)", "Kraft-Faser-Winkel", "α-Winkel der Hankinson-Bemessung"]
 abgelehnte_benennungen: [Faserwinkel, "fibre angle", Lochleibungswinkel, "load-grain angle", Hankinson-Wert]
 oberbegriff: null

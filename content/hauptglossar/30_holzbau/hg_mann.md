@@ -1,6 +1,7 @@
 ---
 id: mann
 benennung: Mann
+kurz: "Ein Mann ist eine symmetrische Aussteifungs-Figur in einer Fachwerkwand: ein senkrechter Pfosten, an dessen Kopf und Fuss je zwei schräge Bänder ansetzen, sodass das Ganze wie eine Strichmännchen-Figur aussieht und die Wand versteift."
 synonyme: [Mannfigur, "Mann (Fachwerk)"]
 abgelehnte_benennungen:
   [Männchen, Strebenbündel, Baugruppe, Pfosten-Aussteifung,

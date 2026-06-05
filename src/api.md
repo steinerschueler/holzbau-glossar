@@ -13,6 +13,13 @@ ohne Anmeldung, ohne Token.
 
 Basis-URL: `https://holzbau-glossar.ch/api/v1/`.
 
+!!! note "Umfang: nur Hauptglossar"
+    Die API liefert ausschliesslich die **Hauptglossar**-Einträge
+    (Frontmatter, Markdown-Body, Beziehungen). Das **Subglossar** (die
+    didaktische Hülle) ist als Begleitmaterial bewusst ausgenommen — es
+    ist nur auf der Webseite verfügbar, nicht in der API, den Downloads
+    oder dem [DOI-Archiv](zitieren.md).
+
 ## Was ist eine API — und wozu?
 
 Eine **API** (Application Programming Interface) liefert Inhalte in

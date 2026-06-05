@@ -14,6 +14,14 @@ Lizenz-Text in Kurzform: **Du darfst die Inhalte frei verwenden,
 verändern und weitergeben, auch kommerziell, solange du die Quelle
 nennst.**
 
+!!! note "Subglossar (didaktische Hülle)"
+    Das Subglossar steht ebenfalls unter CC BY 4.0, ist aber **nur auf
+    der Webseite** verfügbar. Als didaktisches Begleitmaterial ist es
+    bewusst ausgenommen von den generierten Downloads (`.md`, `.txt`,
+    `.bib`), von der [JSON-API](api.md) und vom zitierbaren
+    [DOI-Archiv](zitieren.md). Zitierbares und maschinenlesbares Werk
+    ist allein das **Hauptglossar**.
+
 ## Was ist CC BY 4.0 — und wozu?
 
 **Creative Commons** ist eine Non-Profit-Organisation, die seit

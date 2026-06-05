@@ -11,6 +11,15 @@ Adresse dazu ist ein **DOI** — vergeben über
 [Zenodo](https://zenodo.org/) (CERN-Infrastruktur, Aufbewahrungs-
 Zusage ≥ 20 Jahre).
 
+!!! note "Was zitierbar ist — und was nicht"
+    Zitierbares Werk ist das **Hauptglossar**. Das **Subglossar** (die
+    didaktische Hülle, auf jeder Eintragsseite als orange markierter
+    Block unter dem Hauptglossar-Eintrag) ist Begleitmaterial der
+    Webseite und bewusst **nicht** Teil des DOI-Archivs, der Downloads
+    oder der [JSON-API](api.md). Es steht zwar unter CC BY 4.0, gehört
+    aber didaktisch — nicht normativ — zum Glossar und wird daher nicht
+    als zitierbare Version eingefroren.
+
 ## Was ist ein DOI — und wozu?
 
 Ein **DOI** (Digital Object Identifier) ist ein persistenter

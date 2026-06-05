@@ -1,6 +1,7 @@
 ---
 id: faserrichtung
 benennung: Faserrichtung
+kurz: "Die Faserrichtung gibt an, in welche Richtung die Holzfasern in einem Bauteil verlaufen — also die «Maserung der Länge nach» —, und in dieser Richtung ist das Holz am stärksten."
 synonyme: [Holzfaserrichtung, Faserlaengsachse, "lokale Materialachse (parallel)"]
 abgelehnte_benennungen: [Maserung, Wuchsrichtung, Faserung, "grain direction", "fibre direction"]
 oberbegriff: einheitsvektor

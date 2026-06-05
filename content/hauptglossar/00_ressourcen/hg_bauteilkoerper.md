@@ -1,6 +1,7 @@
 ---
 id: bauteilkoerper
 benennung: Bauteilkörper
+kurz: "Der Bauteilkörper ist die vollständige räumliche Form eines Bauteils, so wie es nach allen Sägeschnitten und Ausklinkungen tatsächlich an seinem Platz im Bauwerk dasteht — mit all seinen Ecken, Kanten und Flächen."
 synonyme: ["Bauteil-Volumen", "Bauteilgeometrie (Volumenanteil)", "Volumenkörper eines Bauteils", "Body", "Solid"]
 abgelehnte_benennungen: [Körper, Rohkörper, Rohling, Bauteilform, Stabkörper, Holzkörper, "Bauteil-Solid", Volumenkörper, "body representation", "solid model"]
 oberbegriff: polyeder
