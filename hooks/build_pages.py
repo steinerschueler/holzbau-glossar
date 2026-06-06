@@ -245,7 +245,198 @@ def on_page_markdown(markdown, page, config, files):
         markdown = markdown.replace(
             "{{WEBBKOLL_RESULT}}", _render_webbkoll_block(build_date)
         )
+    markdown = _normalize_list_code_fences(markdown)
     return markdown
+
+
+# ---------------------------------------------------------------------------
+# Listen-Code-Fence-Normalisierung (Render-Robustheit)
+# ---------------------------------------------------------------------------
+#
+# Die aus ``zimmermann_app`` gespiegelten Markdowns rücken Block-Inhalt in
+# Aufzählungspunkten teils mit nur 2 Leerzeichen ein (gültig in CommonMark).
+# Python-Markdown (MkDocs) verlangt jedoch 4 Leerzeichen für Block-Inhalt in
+# einem Listenpunkt. Bei zu geringer Einrückung *zerbricht* die Liste: ein
+# eingerückter Fenced-Code „entkommt" in ein ``<p>`` (ungültiges ``<div>``-in-
+# ``<p>``), nachfolgende Prosa und Folge-Bullets werden lazy in den Absatz
+# gezogen. Im Eintrag ``schnittgerade`` führte das clientseitig (Akkordeon-JS,
+# ``collapsible-sections.js``) zur sichtbar abgeschnittenen Sektion.
+#
+# Die Quelle bleibt unangetastet (Single Source of Truth); die Korrektur ist
+# eine reine Build-Transformation — wie ``_schuetze_inline_svg`` oder die
+# ``_frontmatter_end``-Robustheit. Sie arbeitet auf dem Markdown-BODY (das
+# Frontmatter ist hier von MkDocs bereits abgetrennt) und greift chirurgisch:
+# Nur Top-Level-Listen mit der Bruch-Signatur (unter-eingerückter Fence, dem
+# Prosa *im selben Item* folgt) werden in valide lose Listenform überführt —
+# Fence auf 4 Leerzeichen, Leerzeile nach der schliessenden Fence, Leerzeilen
+# zwischen den Bullets. Listen ohne diese Signatur bleiben Byte-identisch.
+
+_LISTE_FENCE = re.compile(r"^( *)(`{3,}|~{3,})(.*)$")
+_LISTE_BULLET = re.compile(r"^( {0,3})(?:[-*+]|\d{1,9}[.)])(\s+)(\S.*)?$")
+
+
+def _liste_close_re(fence: str) -> "re.Pattern[str]":
+    """Schliessende-Fence-Erkennung: gleiches Zeichen, mindestens gleiche
+    Länge, beliebig eingerückt."""
+    return re.compile(r"^ *" + re.escape(fence[0]) + "{" + str(len(fence)) + r",}\s*$")
+
+
+def _ist_listen_zeile(line: str) -> bool:
+    """Gehört die Zeile (vorläufig) noch zum Top-Level-Listenblock?"""
+    if line.strip() == "":
+        return True  # Leerzeile — lose Liste; abschliessende Blanks werden getrimmt
+    if line.startswith(" "):
+        return True  # eingerückte Fortsetzung / verschachtelt / Code
+    return bool(_LISTE_BULLET.match(line)) and len(line) - len(line.lstrip(" ")) < 4
+
+
+def _sammle_listenblock(lines: list, start: int) -> "tuple[list, int]":
+    """Ab einem Top-Level-Bullet bei ``start`` den gesamten Listenblock
+    einsammeln. Fenced-Code-Regionen werden respektiert, damit ihr Inhalt
+    nicht fälschlich als Listenende gelesen wird."""
+    i = start
+    block: list = []
+    in_fence = None
+    while i < len(lines):
+        line = lines[i]
+        if in_fence is not None:
+            block.append(line)
+            if in_fence.match(line):
+                in_fence = None
+            i += 1
+            continue
+        fm = _LISTE_FENCE.match(line)
+        if fm:
+            in_fence = _liste_close_re(fm.group(2))
+            block.append(line)
+            i += 1
+            continue
+        if _ist_listen_zeile(line):
+            block.append(line)
+            i += 1
+        else:
+            break
+    # Abschliessende Leerzeilen wieder aus dem Block herausnehmen.
+    while block and block[-1].strip() == "":
+        block.pop()
+        i -= 1
+    return block, i
+
+
+def _block_hat_bruch_fence(block: list) -> bool:
+    """True, wenn der Block einen unter-eingerückten (1–3 Leerzeichen)
+    Fenced-Code enthält, dem *im selben Item* eingerückte Prosa folgt — genau
+    die Signatur, die die Liste zerbrechen lässt. Eine Fence als letzter
+    Item-Inhalt (nächste Nicht-Leerzeile auf Spalte 0 oder selbst ein Bullet)
+    entkommt harmlos und wird nicht angefasst."""
+    in_fence = None
+    under = False
+    i = 0
+    while i < len(block):
+        line = block[i]
+        if in_fence is not None:
+            if in_fence.match(line):
+                in_fence = None
+                if under:
+                    j = i + 1
+                    while j < len(block) and block[j].strip() == "":
+                        j += 1
+                    if j < len(block):
+                        nxt = block[j]
+                        indent = len(nxt) - len(nxt.lstrip(" "))
+                        is_bullet = bool(_LISTE_BULLET.match(nxt)) and indent < 4
+                        if indent >= 1 and not is_bullet:
+                            return True
+                under = False
+            i += 1
+            continue
+        fm = _LISTE_FENCE.match(line)
+        if fm:
+            under = 1 <= len(fm.group(1)) < 4
+            in_fence = _liste_close_re(fm.group(2))
+        i += 1
+    return False
+
+
+def _loese_listenblock(block: list) -> list:
+    """Unter-eingerückte Fences auf 4 Leerzeichen anheben, die dem Fence im
+    selben Item folgende Prosa mit anheben (damit sie als Absatz IM Listenpunkt
+    bleibt statt die Liste zu zerteilen), nach jeder schliessenden Fence eine
+    Leerzeile setzen und die Top-Level-Bullets durch Leerzeilen trennen
+    (valide lose Liste, Code + Erläuterung im selben ``<li>``)."""
+    out: list = []
+    in_fence = None
+    delta = 0      # aktive Anhebung des laufenden Fenced-Blocks
+    trailing = 0   # aktive Anhebung der Folge-Prosa nach einer angehobenen Fence
+    for k, line in enumerate(block):
+        if in_fence is not None:
+            out.append((" " * delta + line) if line.strip() else line)
+            if in_fence.match(line):
+                in_fence = None
+                trailing = delta  # Folge-Prosa im selben Item mit anheben
+                if k + 1 < len(block) and block[k + 1].strip() != "":
+                    out.append("")
+                delta = 0
+            continue
+        fm = _LISTE_FENCE.match(line)
+        if fm:
+            indent = len(fm.group(1))
+            in_fence = _liste_close_re(fm.group(2))
+            delta = 4 - indent if 1 <= indent < 4 else 0
+            trailing = 0
+            if delta and out and out[-1].strip() != "":
+                out.append("")  # Leerzeile vor der öffnenden Fence
+            out.append(" " * delta + line)
+            continue
+        if _LISTE_BULLET.match(line) and len(line) - len(line.lstrip(" ")) < 4:
+            trailing = 0
+            if out and out[-1].strip() != "":
+                out.append("")  # Leerzeile vor jedem Top-Level-Bullet
+            out.append(line)
+            continue
+        if trailing and line.strip():
+            ind = len(line) - len(line.lstrip(" "))
+            out.append((" " * (4 - ind) + line) if 1 <= ind < 4 else line)
+            continue
+        out.append(line)
+    return out
+
+
+def _normalize_list_code_fences(md: str) -> str:
+    """Body-weite Normalisierung: jeden Top-Level-Listenblock mit Bruch-
+    Signatur in valide lose Form überführen. Idempotent; Blöcke ohne Signatur
+    und Nicht-Listen-Inhalt bleiben unverändert."""
+    if "```" not in md and "~~~" not in md:
+        return md
+    lines = md.split("\n")
+    out: list = []
+    i = 0
+    in_fence = None
+    while i < len(lines):
+        line = lines[i]
+        if in_fence is not None:  # Top-Level-Fence unangetastet überspringen
+            out.append(line)
+            if in_fence.match(line):
+                in_fence = None
+            i += 1
+            continue
+        fm = _LISTE_FENCE.match(line)
+        if fm and len(fm.group(1)) == 0:
+            in_fence = _liste_close_re(fm.group(2))
+            out.append(line)
+            i += 1
+            continue
+        bm = _LISTE_BULLET.match(line)
+        if bm and len(bm.group(1)) < 4:
+            block, j = _sammle_listenblock(lines, i)
+            if _block_hat_bruch_fence(block):
+                block = _loese_listenblock(block)
+            out.extend(block)
+            i = j
+            continue
+        out.append(line)
+        i += 1
+    return "\n".join(out)
 
 
 # Querverweis-Verlinkung: Inline-Code-Spans, die genau eine Eintrags-Datei
