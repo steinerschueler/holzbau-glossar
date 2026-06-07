@@ -437,6 +437,17 @@ html .md-typeset details.glossar-section h6 { font-size: 1.0rem !important; }
     min-height: 0;
     box-shadow: none;
   }
+  /* Material legt für sein Drill-Down-Layout `scroll-snap-type: y mandatory`
+   * auf die scrollbare Haupt-Navliste (`.md-nav__title ~ .md-nav__list`).
+   * Im Akkordeon-Umbau ist der Drill-Down ersetzt — das mandatory-Snapping
+   * macht das Scrollen dann unbrauchbar: die Liste rastet am nächsten
+   * Snap-Punkt ein und springt nach ganz oben bzw. unten, Einträge in der
+   * Mitte sind nicht mehr erreichbar (deutlich in Firefox). Snapping
+   * abschalten → freies Scrollen. Greift im Hamburger- wie im Pin-Modus. */
+  .md-nav--primary .md-nav__title ~ .md-nav__list,
+  .md-nav--primary .md-nav__list {
+    scroll-snap-type: none;
+  }
   /* Drill-Down-Kopf (Zurück-Pfeil) der Unter-Ebenen entfällt im Akkordeon;
    * der Drawer-Haupttitel (for=__drawer) bleibt unberührt. */
   .md-nav--primary .md-nav .md-nav__title {
