@@ -102,6 +102,7 @@ Sei
 - 𝓥𝓑 die Menge der Verbinder nach `verbinder`,
 - 𝓥𝓢 die Menge der Verstärkungselemente nach
   `verstaerkungselement`,
+
 - 𝓥_τ die Menge der Verbindungsarten
   ```
   𝓥_τ:= { Stoss, Anschluss, Knoten, Eckverbindung,
@@ -109,6 +110,7 @@ Sei
           KlebeVerbindung }
   ```
   (sealed enum; eigene Folge-Einträge bei Bedarf),
+
 - 𝓝 die Menge der Nachweisverfahren-Referenzen (eigener Folge-
   Eintrag `nachweisverfahren`; mindestens enthaltend: Johansen
   nach EC5 Kap. 8.2, Axialnachweis nach EC5:2022, Klebung nach
@@ -128,21 +130,27 @@ mit den Komponenten
 - **typ** ∈ 𝓥_τ: Verbindungsart,
 - **beteiligte_bauteile** ⊂ 𝓤 mit |beteiligte_bauteile| ≥ 2:
   UUIDs der durch die Verbindung verknüpften Bauteile,
+
 - **verbindungsmittel** ⊂ 𝓤 mit |verbindungsmittel| ≥ 1: UUIDs der
   Verbindungsmittel, die in der Verbindung wirken (ausnahmsweise
   |verbindungsmittel| = 0 für rein zimmermannsmäßige Verbindungen,
   in denen kein metallisches Verbindungsmittel beteiligt ist —
   z. B. Versatz, Blattung; siehe Wohldefiniertheit),
+
 - **verbinder** ⊂ 𝓤: UUIDs der Verbinder, die in der Verbindung
   wirken; optional, |verbinder| ≥ 0,
+
 - **verstaerkungen** ⊂ 𝓤: UUIDs der Verstärkungselemente, die in
   oder an der Verbindung wirken; optional, |verstaerkungen| ≥ 0,
+
 - **nachweisverfahren** ∈ 𝓝: Referenz auf das angewandte
   Bemessungsverfahren (Johansen, Axialnachweis, Klebung,
   zimmermannsmäßiger Versatz, …),
+
 - **position** ∈ ℝ³ ∪ {⊥}: optionaler geometrischer Knotenpunkt
   in W (typisch Schwerpunkt der Verbindung) zur Visualisierung
   und Inzidenz-Prüfung,
+
 - **bezeichnung** ∈ String ∪ {⊥}: freier Anzeigename.
 
 Es ist 𝓥 disjunkt zu 𝓔 (𝓥 ∩ 𝓔 = ∅): Verbindungen sind keine
@@ -185,11 +193,14 @@ verfahren markiert sein.
 (C6) **Nachweisverfahren-Konsistenz**:
 das Nachweisverfahren in `nachweisverfahren` ist mit dem Typ und
 der Verbindungsmittel-Klasse der Verbindung kompatibel:
+
 - typ ∈ {Stoss, Anschluss, Knoten, Eckverbindung} mit
   metallischen Verbindungsmitteln auf Abscheren →
   Johansen-Verfahren (EC5 Kap. 8.2).
+
 - Verstärkungs-Verbindung mit axialer Beanspruchung →
   Axialnachweis (EC5:2022).
+
 - typ = KlebeVerbindung → Klebung (EC5 Kap. 10).
 - typ = ZimmermannsmaessigerStoss/Anschluss →
   zimmermannsmäßiger Versatz/Zapfen (SIA 265 Anhang A,
@@ -211,17 +222,21 @@ zwingend, aber für UI-Lokalisierung und BCF-Verortung wichtig.
   (z. B. eine Schraubengruppe als eine
   `Verbindungsmittel`-Instanz mit `multiplizitaet > 1`),
   nachweisverfahren = Johansen.
+
 - **Eindeutigkeit der Identität**: Die Verbindung trägt eine
   eigene UUID, unabhängig von den UUIDs ihrer Bestandteile.
   Verschiedene Verbindungen können dieselben Bauteile
   involvieren (ein Bauteil ist typisch in mehreren Verbindungen
   Teilnehmer), aber jede Verbindung hat eine eindeutige UUID.
+
 - **Aggregat, kein Element**: 𝓥 ∩ 𝓔 = ∅. Verbindungen werden
   nicht als verbaute Einzelobjekte behandelt; sie sind
   Container/Beziehungen über mehreren Elementen.
+
 - **Foreign-Key-Regel**: alle Verweise (`beteiligte_bauteile`,
   `verbindungsmittel`, `verbinder`, `verstaerkungen`)
   referenzieren ausschließlich UUIDs (siehe `uuid`).
+
 - **Rein zimmermannsmäßige Verbindungen**: ein Versatz oder
   Schwalbenschwanz ohne metallisches Verbindungsmittel ist
   modellierbar mit |verbindungsmittel| = 0; in diesem Fall ist
@@ -229,23 +244,28 @@ zwingend, aber für UI-Lokalisierung und BCF-Verortung wichtig.
   SIA 265 Anhang A bzw. nach Lehrbuch (Mönck/Rug, Blass/Sandhaas).
   Die Konsistenzbedingung C2 ist dann trivial erfüllt
   (leere Quantifikation).
+
 - **Mehrfach-Bauteil-Verbindung**: Knotenverbindungen mit
   |beteiligte_bauteile| ≥ 3 sind häufig (z. B. Stiel- und
   Strebenanschluss am Rähm); die Definition deckt sie über die
   Mengenkardinalität ab.
+
 - **Selbst-Verbindung ausgeschlossen**: ein Bauteil verbindet
   sich nicht mit sich selbst. Falls in der Bauteil-UUID-Menge
   Duplikate auftreten würden, sind sie zu eliminieren.
+
 - **Mischungsverbot — Wohldefiniertheit**: C5 ist als
   hartabbruch-relevante Konsistenzbedingung formuliert
   (Bemessung würde sonst sinnlos werden). Implementierungs-
   seitig wird C5 in der Aggregat-Konstruktion geprüft; bei
   Verletzung liefert die Fabrikfunktion `Resultat.Fehler(
   Entartet.Mischungsverbot)`.
+
 - **Position-Wohldefiniertheit**: Die Berechnung des
   Verbindungs-Schwerpunkts (falls automatisch berechnet) ist
   invariant unter Permutation der beteiligten Elemente; die
   Wahl ist Modellierungs-Konvention, semantisch invariant.
+
 - **Nicht-Zirkularität**: Die Definition stützt sich auf
   `bauteil`, `verbindungsmittel`, `verbinder`,
   `verstaerkungselement`, `uuid`, `toleranzen`. Sie verweist
@@ -352,64 +372,84 @@ mehreren) Tragwerken.
   bzw. allgemeiner `aggregat` (oberste Aggregatklasse für
   Container über Elementen, analog `tragwerk`, `dach`,
   `dachaufbau`).
+
 - **Bestandteile (partitiv)**:
-  - **Bauteile** (`bauteil`): die durch die Verbindung
-    verknüpften Stäbe/Flächen, ≥ 2.
-  - **Verbindungsmittel** (`verbindungsmittel`): die
-    kraftübertragenden Stücke; ≥ 1 (Sonderfall 0 für
-    rein zimmermannsmäßige Verbindungen).
-  - **Verbinder** (`verbinder`, optional): das vermittelnde
-    Stück (Knotenblech, Balkenschuh, Sherpa).
-  - **Verstärkungselemente** (`verstaerkungselement`,
-    optional): Vollgewindeschrauben in Verstärkungsfunktion.
-  - **Nachweisverfahren** (`nachweisverfahren`, eigener
-    Eintrag folgt): das angewandte Bemessungsverfahren.
+    - **Bauteile** (`bauteil`): die durch die Verbindung
+      verknüpften Stäbe/Flächen, ≥ 2.
+
+    - **Verbindungsmittel** (`verbindungsmittel`): die
+      kraftübertragenden Stücke; ≥ 1 (Sonderfall 0 für
+      rein zimmermannsmäßige Verbindungen).
+
+    - **Verbinder** (`verbinder`, optional): das vermittelnde
+      Stück (Knotenblech, Balkenschuh, Sherpa).
+
+    - **Verstärkungselemente** (`verstaerkungselement`,
+      optional): Vollgewindeschrauben in Verstärkungsfunktion.
+
+    - **Nachweisverfahren** (`nachweisverfahren`, eigener
+      Eintrag folgt): das angewandte Bemessungsverfahren.
+
 - **Spezialisierungen nach Verbindungsart** (eigene Einträge
   folgen, im Body erläutert):
-  - **Stoss** (`stoss`): längstoßende Verbindung gleichartiger
-    Stäbe (Pfettenstoss, Sparrenstoss).
-  - **Anschluss** (`anschluss`): Aufeinanderstoß verschiedener
-    Stäbe (Sparren-Pfetten-Anschluss).
-  - **Knoten** (`knoten`): Mehrfach-Treffpunkt (Strebe-
-    Stiel-Rähm).
-  - **Eckverbindung** (`eckverbindung`): rechtwinklige
-    Verbindung zweier Stäbe (Pfette-Pfettenkopf,
-    Schwellenecke).
-  - **Zimmermannsmäßiger Stoss/Anschluss** (`versatz`, `zapfen`,
-    `blatt`, `schwalbenschwanz` — Folgearbeit).
-  - **Klebe-Verbindung** (`klebe_verbindung`): Sonderform
-    nach EC5 Kap. 10.
+
+    - **Stoss** (`stoss`): längstoßende Verbindung gleichartiger
+      Stäbe (Pfettenstoss, Sparrenstoss).
+
+    - **Anschluss** (`anschluss`): Aufeinanderstoß verschiedener
+      Stäbe (Sparren-Pfetten-Anschluss).
+
+    - **Knoten** (`knoten`): Mehrfach-Treffpunkt (Strebe-
+      Stiel-Rähm).
+
+    - **Eckverbindung** (`eckverbindung`): rechtwinklige
+      Verbindung zweier Stäbe (Pfette-Pfettenkopf,
+      Schwellenecke).
+
+    - **Zimmermannsmäßiger Stoss/Anschluss** (`versatz`, `zapfen`,
+      `blatt`, `schwalbenschwanz` — Folgearbeit).
+
+    - **Klebe-Verbindung** (`klebe_verbindung`): Sonderform
+      nach EC5 Kap. 10.
+
 - **Verwendung**:
-  - Bestandteil eines **Tragwerks** (`tragwerk`): in der
-    Tupel-Repräsentation (B, V, A, L) ist V die Menge der
-    Verbindungen.
+    - Bestandteil eines **Tragwerks** (`tragwerk`): in der
+      Tupel-Repräsentation (B, V, A, L) ist V die Menge der
+      Verbindungen.
+
 - **Abgrenzung**:
-  - **Verbindungsmittel** (`verbindungsmittel`): einzelnes
-    kraftübertragendes Element. Verbindung ist das Aggregat
-    darüber; ein Verbindungsmittel ist Bestandteil **einer**
-    Verbindung (typisch).
-  - **Verbinder** (`verbinder`): vermittelndes Bauteil zwischen
-    Stäben. Verbindung ist das Aggregat, das einen Verbinder
-    enthalten **kann** (indirekte Verbindung nach EC5 8.2.3).
-  - **Verstärkungselement** (`verstaerkungselement`):
-    Schraube in Verstärkungsfunktion. Verbindung ist das
-    Aggregat, das Verstärkungselemente enthalten kann
-    (typisch bei verstärkten Anschlüssen).
-  - **Bauteil** (`bauteil`): tragend/raumbildend.
-    Verbindung ist kein Bauteil, sondern Aggregat über
-    Bauteilen.
-  - **Element** (`element`): Verbindung ist **nicht** Subtyp
-    von Element. Verbindung ist Aggregat-Klasse, Element ist
-    Wurzel der Einzelobjekt-Hierarchie. Disjunkte Hierarchien.
-  - **Tragwerk** (`tragwerk`): übergeordnetes Aggregat aus
-    Bauteilen + Verbindungen + Auflagern + Lastfällen. Eine
-    Verbindung ist Bestandteil eines Tragwerks; sie ist nicht
-    selbst Tragwerk.
-  - **Konstruktionsdetail** (`konstruktionsdetail`, bereits
-    angelegt): plan- und werkstattorientierte Repräsentation
-    eines Knotenpunkts; eine Verbindung kann von einem oder
-    mehreren Konstruktionsdetails begleitet sein. Verschiedene
-    Repräsentations-Ebenen desselben Knotenpunkts.
+    - **Verbindungsmittel** (`verbindungsmittel`): einzelnes
+      kraftübertragendes Element. Verbindung ist das Aggregat
+      darüber; ein Verbindungsmittel ist Bestandteil **einer**
+      Verbindung (typisch).
+
+    - **Verbinder** (`verbinder`): vermittelndes Bauteil zwischen
+      Stäben. Verbindung ist das Aggregat, das einen Verbinder
+      enthalten **kann** (indirekte Verbindung nach EC5 8.2.3).
+
+    - **Verstärkungselement** (`verstaerkungselement`):
+      Schraube in Verstärkungsfunktion. Verbindung ist das
+      Aggregat, das Verstärkungselemente enthalten kann
+      (typisch bei verstärkten Anschlüssen).
+
+    - **Bauteil** (`bauteil`): tragend/raumbildend.
+      Verbindung ist kein Bauteil, sondern Aggregat über
+      Bauteilen.
+
+    - **Element** (`element`): Verbindung ist **nicht** Subtyp
+      von Element. Verbindung ist Aggregat-Klasse, Element ist
+      Wurzel der Einzelobjekt-Hierarchie. Disjunkte Hierarchien.
+
+    - **Tragwerk** (`tragwerk`): übergeordnetes Aggregat aus
+      Bauteilen + Verbindungen + Auflagern + Lastfällen. Eine
+      Verbindung ist Bestandteil eines Tragwerks; sie ist nicht
+      selbst Tragwerk.
+
+    - **Konstruktionsdetail** (`konstruktionsdetail`, bereits
+      angelegt): plan- und werkstattorientierte Repräsentation
+      eines Knotenpunkts; eine Verbindung kann von einem oder
+      mehreren Konstruktionsdetails begleitet sein. Verschiedene
+      Repräsentations-Ebenen desselben Knotenpunkts.
 
 ## Quellen
 
@@ -418,6 +458,7 @@ mehreren) Tragwerken.
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und
   Konstruktion von Holzbauten – Teil 1-1", Kapitel 8 und
   Kapitel 10.
+
 - SIA 265:2021, „Holzbau", Anhang A.
 - ÖNORM B 1995-1-1:2019.
 - DIN 1052:2008-12, Abschnitt 12.
@@ -429,6 +470,7 @@ mehreren) Tragwerken.
 - Blass, H. J.; Sandhaas, C.: *Ingenieurholzbau – Grundlagen
   der Bemessung.* KIT Scientific Publishing, Karlsruhe 2016,
   Kap. 8.
+
 - Holzbau-Handbuch, Reihe 2, Teil 1, Informationsdienst Holz.
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Auflage, Beuth, Berlin 2015, Kap. 7.
@@ -441,5 +483,6 @@ mehreren) Tragwerken.
 
 - Holzbau Deutschland, Merkblatt „Begriffe und Klassifizierungen
   für den Holzbau" (abgerufen 2026-05-08).
+
 - Wikipedia, Lemmata „Holzverbindung", „Anschluss (Holzbau)"
   (abgerufen 2026-05-08).

@@ -47,8 +47,10 @@ Sei
 
 - 𝒟 = { D₁, …, D_m } eine endliche Familie von Dachflächen
   D_i = (E_i, P_i, n_{a,i}) im Sinne von `dachflaeche`,
+
 - F(P_i) ⊂ E_i das von P_i berandete, abgeschlossene Flächenstück
   und ∂F(P_i) sein Rand (geschlossener Polygonzug),
+
 - s ⊂ ℝ³ eine Strecke (im Sinne von `strecke`) oder ein endlicher
   Streckenzug (Vereinigung endlich vieler Strecken mit gemeinsamen
   Endpunkten an den Knickstellen).
@@ -82,6 +84,7 @@ Gesamtlänge ℓ(s) > Toleranzen.LAENGE_EPS haben.
   Dachflächen einen gemeinsamen Streckenanteil besitzen — bei
   Sattel-, Walm-, Pult- und Mansarddächern ist dies konstruktiv
   garantiert.
+
 - **Eindeutigkeit der Klassifikation**: Die beiden Math-Bedingungen
   sind *nicht* exklusiv — eine Strecke kann das Rand-Prädikat (Bed. 1,
   im Polygonrand) und das Schnitt-Prädikat (Bed. 2, im Flächenschnitt)
@@ -95,6 +98,7 @@ Gesamtlänge ℓ(s) > Toleranzen.LAENGE_EPS haben.
   (Traufe, First, …) erfolgt durch zusätzliche geometrische Bedingungen
   (Lage zur Horizontalen, relative Höhe, Anschluss an Giebelwand) —
   siehe die jeweiligen Einträge.
+
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf die
   bereits definierten Begriffe `strecke`, `dachflaeche`, `polygon`
   und auf elementare Mengentheorie.
@@ -112,8 +116,10 @@ Dachkanten treten in der App an drei Stellen auf:
 
 - als Anschlusslinien für konstruktive Detailbauteile (Traufbohle,
   Firstpfette, Ortbrett, Gratsparren, Kehlsparren),
+
 - als Linien für die Bemaßung in Rissen (Trauflänge, Firstlänge,
   Ortganglänge),
+
 - als Trennlinien beim Stückeln der Dachhaut (Dachüberstand,
   Anschlussdetails).
 
@@ -123,20 +129,27 @@ Dachkanten treten in der App an drei Stellen auf:
   Strecken (Streckenzug). In der Domänen-Schicht wird die geknickte
   Variante als `Streckenzug` modelliert; eine einzelne Strecke ist
   ein Streckenzug der Länge 1.
+
 - **Teilbegriffe (Spezialisierungen)** — alle in Folgeeinträgen
   präzisiert:
-  - **Traufe** (`traufe`): untere, näherungsweise horizontale
-    Randkante.
-  - **First** (`first`): obere Schnittkante zweier nach oben
-    zusammenlaufender Dachflächen.
-  - **Ortgang** (`ortgang`): seitliche, geneigte Randkante an einer
-    Giebelwand.
-  - **Grat** (`grat`): geneigte konvexe Schnittkante zweier
-    Dachflächen an einem ausspringenden Eck (z. B. Walmdach-Ecke).
-  - **Kehle** (`kehle`): geneigte konkave Schnittkante zweier
-    Dachflächen an einem einspringenden Eck.
-  - **Pultkante** (`pultkante`): obere horizontale Randkante einer
-    Pultdachfläche, an der keine zweite Dachfläche anschließt.
+
+    - **Traufe** (`traufe`): untere, näherungsweise horizontale
+      Randkante.
+
+    - **First** (`first`): obere Schnittkante zweier nach oben
+      zusammenlaufender Dachflächen.
+
+    - **Ortgang** (`ortgang`): seitliche, geneigte Randkante an einer
+      Giebelwand.
+
+    - **Grat** (`grat`): geneigte konvexe Schnittkante zweier
+      Dachflächen an einem ausspringenden Eck (z. B. Walmdach-Ecke).
+
+    - **Kehle** (`kehle`): geneigte konkave Schnittkante zweier
+      Dachflächen an einem einspringenden Eck.
+
+    - **Pultkante** (`pultkante`): obere horizontale Randkante einer
+      Pultdachfläche, an der keine zweite Dachfläche anschließt.
 
 Die sechs Spezialisierungen sind als **disjunkte** Klassifikation
 angelegt: Eine Dachkante einer korrekt modellierten
@@ -145,27 +158,33 @@ werden können. Erste Trennstufe ist die **Zahl anliegender
 Dachflächen** (zwei ⇒ Schnittkante, genau eine ⇒ reine Randkante); die
 weitere Trennung erfolgt durch die in den einzelnen Einträgen
 formulierten Klassifikations-Bedingungen:
+
 - Schnittkante (First/Grat/Kehle, zwei anliegende Flächen) vs. reine
   Randkante (Traufe/Ortgang/Pultkante, eine anliegende Fläche);
+
 - innerhalb der Schnittkanten: horizontal (First) vs. geneigt
   (Grat, Kehle); innerhalb der geneigten Schnittkanten: konvex
   (Grat) vs. konkav (Kehle);
+
 - innerhalb der reinen Randkanten: horizontal mit niedrigster Höhe
   (Traufe), horizontal mit höchster Höhe (Pultkante), entlang der
   Falllinie (Ortgang).
 
 - **Bestandteile (partitiv)**: Anfangs- und Endpunkt der Strecke bzw.
   Stützpunkte des Streckenzugs.
+
 - **Abgrenzung**:
-  - **Dachfläche** (`dachflaeche`): zweidimensionales
-    Flächenstück; eine Dachkante ist ihre eindimensionale
-    Begrenzung.
-  - **Polygon** (`polygon`): die geschlossene Kontur ∂F(P_i) als
-    Ganzes; eine einzelne Dachkante ist im Allgemeinen ein echter
-    Teilstreckenzug eines solchen Polygonrandes.
-  - **Bauteilkante** (z. B. Sparrenoberkante): physische Kante eines
-    Holzbauteils, die nicht notwendig im Polygonrand einer
-    Dachfläche liegt.
+    - **Dachfläche** (`dachflaeche`): zweidimensionales
+      Flächenstück; eine Dachkante ist ihre eindimensionale
+      Begrenzung.
+
+    - **Polygon** (`polygon`): die geschlossene Kontur ∂F(P_i) als
+      Ganzes; eine einzelne Dachkante ist im Allgemeinen ein echter
+      Teilstreckenzug eines solchen Polygonrandes.
+
+    - **Bauteilkante** (z. B. Sparrenoberkante): physische Kante eines
+      Holzbauteils, die nicht notwendig im Polygonrand einer
+      Dachfläche liegt.
 
 ## Quellen
 
@@ -173,8 +192,10 @@ formulierten Klassifikations-Bedingungen:
 
 - SIA 232/1:2020, „Geneigte Dächer", Schweizerischer Ingenieur- und
   Architektenverein, Abschnitt 1.
+
 - DIN 1356-1:1995-02, „Bauzeichnungen – Teil 1: Arten, Inhalte und
   Grundregeln der Darstellung", Abschnitt 5.
+
 - DIN 18338:2019-09, „VOB Teil C: Dachdeckungs- und
   Dachabdichtungsarbeiten", Abschnitt 0.
 

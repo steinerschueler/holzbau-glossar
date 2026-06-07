@@ -271,6 +271,7 @@ ausgerichtet sind:
   der Sparren-Lotebene ein Bleischnitt-Ergebnis im Sinne von
   `bleischnitt`) und bildet eine flache Auflagefläche, typisch
   auf einer Pfette;
+
 - der **Senkel** ist welt-vertikal (lotrecht in der Welt; ein
   Senkel im Sinne von `senkel`) und schliesst die Kerve
   seitlich gegen das Gegenholz (typisch die Pfette) ab.
@@ -290,6 +291,7 @@ Sei
 - B ein Stab-Bauteil im Sinne von `bauteil` mit Stabgeometrie
   (`geometrie ∈ 𝒢_stab`), in der App typischerweise ein
   `sparren` oder ein Bauteil mit ähnlicher Stab-Charakteristik,
+
 - L_B = (O_B, e_hat_x^B, e_hat_y^B, e_hat_z^B) das Bauteil-Lokal-
   Koordinatensystem (`lokales_koordinatensystem`) mit Konvention
   ```
@@ -297,9 +299,11 @@ Sei
   e_hat_y^B  =  Bauteil-Querrichtung in der Trägerebene-Normale,
   e_hat_z^B  =  Bauteilhöhe nach oben (Sparren-Oberseite),
   ```
+
 - W = (O_W, e_hat_x^W, e_hat_y^W, e_hat_z^W = e_hat_z^welt) das Welt-Koordinaten-
   system, mit e_hat_z^welt antiparallel zur Erdanziehung (lotrecht
   nach oben),
+
 - h_B > 0 die Bauteilhöhe in lokaler z-Richtung (mm),
 - b_B > 0 die Bauteilbreite in lokaler y-Richtung (mm),
 - ℓ_B > 0 die Bauteillänge in lokaler x-Richtung (mm),
@@ -333,6 +337,7 @@ mit
   punkt ist der **Senkelausstiegspunkt** C, an dem der Senkel
   die Bauteil-Unterseite schneidet; in Bauteil-Lokal-Koordinaten
   hat C die Lage (x_0, 0, 0).
+
 - **t** ∈ ℝ⁺: **Kervtiefe** (in mm), 0 < t ≤ h_B − ε_L; gemessen
   als perpendikuläre Tiefe vom Niveau der Bauteil-Unterseite
   (lokales z = 0) zum Niveau der Sohle, in Bauteil-Lokal-
@@ -340,6 +345,7 @@ mit
   ist t der Bauteilhöhen-Bruchteil, auf den sich die
   Faustregel-Bandbreite 1/6 … 1/3 der Zimmermannspraxis
   bezieht.
+
 - **s** ∈ {−1, +1}: **Senkelseite**. s = −1 bezeichnet eine
   Kerve mit Senkel auf der fußwärtigen Seite des Sohlen-
   Ausschnitts (Sohle erstreckt sich von C in Richtung +e_hat_h);
@@ -521,6 +527,7 @@ in y-Richtung beschrieben.
   fußseitig) entsteht die Standardklauenkerve. Die Sohlenlänge
   folgt als w = t / sin θ aus der Einbau-Neigung und deckt bei
   üblicher Dachneigung den Pfettenbreiten-Bereich ab.
+
 - **Eindeutigkeit der Werkzeugkörper-Konstruktion**: Bei
   festgelegtem Parametertupel p_Kerve = (x_0, t, s) und Bauteil B
   mit bekannter `lokalePlatzierung` (und damit bekannter
@@ -528,63 +535,75 @@ in y-Richtung beschrieben.
   und die Eckpunkte (2)–(4) eindeutig bestimmt, das Kerv-Dreieck
   Δ_Kerve nach (10) ist als konvexe Hülle eindeutig festgelegt, und
   das Werkzeugvolumen K_Kerve(p_Kerve) nach (9) ist eindeutig.
+
 - **Eindeutigkeit von p_K**: P = (x_0 + t · tan θ, 0, t) im
   Bauteil-Lokal-System ist eine Funktion von x_0, t und der
   Einbau-Neigung θ und damit bei bekannter `lokalePlatzierung`
   eindeutig (12); die Auswertung ist bauteil-relativ (verlangt θ).
+
 - **Geometrische Nicht-Degeneriertheit (harte Invarianten,
   Validierungsfehler bei Verletzung)**:
-  1. **Tiefenpositivität**: t > ε_L. Eine Kerve mit Tiefe 0
-     ist keine Kerve, sondern eine Anriss-Markierung.
-  2. **Tiefenbeschränkung am Bauteil**: t ≤ h_B − ε_L. Eine
-     Kerve mit Tiefe ≥ Bauteilhöhe würde das Bauteil
-     durchtrennen und wäre eine andere Bearbeitung (z. B. ein
-     Anschnitt).
-  3. **Konstruierbarkeit (Neigungs-Bedingung, bauteil-relativ)**:
-     θ > ε_W (Dachneigung über der Flach-/Geneigt-Schwelle), das
-     Bauteil ist hinreichend geneigt. Die
-     abgeleitete Sohlenlänge w = t / sin θ ist dann endlich und
-     positiv; für θ → 0 läuft w → ∞ (die welt-horizontale Sohle
-     wird parallel zur Bauteil-Unterseite und trifft sie nicht
-     mehr), und der flach liegende Sparren kann die Kerve
-     geometrisch nicht tragen. Die Invariante verlangt θ aus der
-     `lokalePlatzierung` und wird daher bauteil-relativ beim
-     Anhängen geprüft.
-  4. **Position innerhalb des Bauteils**: x_0 ≥ 0 + ε_L (der
-     Senkelausstieg C liegt innerhalb des Bauteils). Zusätzlich
-     muss der Sohlenausstieg A innerhalb des Bauteils liegen; aus
-     (4) mit der abgeleiteten Sohlenlänge w = t / sin θ folgt für
-     s = −1 (Sohle nach +e_hat_h) die lokale x-Koordinate des
-     Sohlenausstiegs x_A = x_0 + t · tan θ + w · cos θ =
-     x_0 + t / (sin θ · cos θ), also die Bedingung
-     x_0 + t / (sin θ · cos θ) ≤ ℓ_B − ε_L; für s = +1 die an C
-     gespiegelte Bedingung (firstwärtige Senkelseite, nur an nicht
-     einseitig steigender Bauteilgeometrie konstruierbar, siehe
-     `quellenkonflikt` 2). Eine Kerve, die über die
-     Bauteilenden hinausragt, ist im Bauteil wirkungslos und
-     damit als Modellzustand sinnleer; die App lehnt das
-     Anhängen einer solchen Kerve an das Bauteil als
-     Validierungsfehler `KervePositionAusserhalbBauteil` ab.
-     Diese Invariante ist **bauteil-relativ** (verlangt Zugriff
-     auf ℓ_B und die Einbau-Neigung θ) und wird daher nicht im
-     `Kerve.aus(...)`-Companion, sondern erst beim Anhängen an
-     das Bauteil (`Bauteil.Stab.mitBearbeitung(b)`) erzwungen.
-  5. **Senkelseiten-Diskretheit**: s ∈ {−1, +1}; im Datentyp
-     durch das Enum `SenkelSeite` strukturell garantiert.
+
+    1. **Tiefenpositivität**: t > ε_L. Eine Kerve mit Tiefe 0
+       ist keine Kerve, sondern eine Anriss-Markierung.
+
+    2. **Tiefenbeschränkung am Bauteil**: t ≤ h_B − ε_L. Eine
+       Kerve mit Tiefe ≥ Bauteilhöhe würde das Bauteil
+       durchtrennen und wäre eine andere Bearbeitung (z. B. ein
+       Anschnitt).
+
+    3. **Konstruierbarkeit (Neigungs-Bedingung, bauteil-relativ)**:
+       θ > ε_W (Dachneigung über der Flach-/Geneigt-Schwelle), das
+       Bauteil ist hinreichend geneigt. Die
+       abgeleitete Sohlenlänge w = t / sin θ ist dann endlich und
+       positiv; für θ → 0 läuft w → ∞ (die welt-horizontale Sohle
+       wird parallel zur Bauteil-Unterseite und trifft sie nicht
+       mehr), und der flach liegende Sparren kann die Kerve
+       geometrisch nicht tragen. Die Invariante verlangt θ aus der
+       `lokalePlatzierung` und wird daher bauteil-relativ beim
+       Anhängen geprüft.
+
+    4. **Position innerhalb des Bauteils**: x_0 ≥ 0 + ε_L (der
+       Senkelausstieg C liegt innerhalb des Bauteils). Zusätzlich
+       muss der Sohlenausstieg A innerhalb des Bauteils liegen; aus
+       (4) mit der abgeleiteten Sohlenlänge w = t / sin θ folgt für
+       s = −1 (Sohle nach +e_hat_h) die lokale x-Koordinate des
+       Sohlenausstiegs x_A = x_0 + t · tan θ + w · cos θ =
+       x_0 + t / (sin θ · cos θ), also die Bedingung
+       x_0 + t / (sin θ · cos θ) ≤ ℓ_B − ε_L; für s = +1 die an C
+       gespiegelte Bedingung (firstwärtige Senkelseite, nur an nicht
+       einseitig steigender Bauteilgeometrie konstruierbar, siehe
+       `quellenkonflikt` 2). Eine Kerve, die über die
+       Bauteilenden hinausragt, ist im Bauteil wirkungslos und
+       damit als Modellzustand sinnleer; die App lehnt das
+       Anhängen einer solchen Kerve an das Bauteil als
+       Validierungsfehler `KervePositionAusserhalbBauteil` ab.
+       Diese Invariante ist **bauteil-relativ** (verlangt Zugriff
+       auf ℓ_B und die Einbau-Neigung θ) und wird daher nicht im
+       `Kerve.aus(...)`-Companion, sondern erst beim Anhängen an
+       das Bauteil (`Bauteil.Stab.mitBearbeitung(b)`) erzwungen.
+
+    5. **Senkelseiten-Diskretheit**: s ∈ {−1, +1}; im Datentyp
+       durch das Enum `SenkelSeite` strukturell garantiert.
+
 - **Plausibilität (weiche Invarianten, Warnung; kein
   Validierungsfehler — siehe `quellenkonflikt`-Block):**
-  1. **Faustregel ⅓-Höhe**: t ≤ h_B ·
-     `Toleranzen.KERVTIEFE_FAUSTREGEL_DRITTEL` (Standard 1/3,
-     projekt- oder normspezifisch überschreibbar). Verletzung →
-     `Warnung.KerveZuTief` mit Hinweis auf EC5 6.5
-     Schubnachweis.
-  2. **Plausible Sohlenlänge**: die abgeleitete Sohlenlänge
-     w = t / sin θ liegt typisch zwischen 60 mm und 240 mm
-     (Pfettenbreitenbereich); außerhalb dieses Bereichs warnt die
-     App auf eine möglicherweise unpassende Tiefen-/Neigungs-
-     Kombination, ohne die Kerve abzulehnen.
+
+    1. **Faustregel ⅓-Höhe**: t ≤ h_B ·
+       `Toleranzen.KERVTIEFE_FAUSTREGEL_DRITTEL` (Standard 1/3,
+       projekt- oder normspezifisch überschreibbar). Verletzung →
+       `Warnung.KerveZuTief` mit Hinweis auf EC5 6.5
+       Schubnachweis.
+
+    2. **Plausible Sohlenlänge**: die abgeleitete Sohlenlänge
+       w = t / sin θ liegt typisch zwischen 60 mm und 240 mm
+       (Pfettenbreitenbereich); außerhalb dieses Bereichs warnt die
+       App auf eine möglicherweise unpassende Tiefen-/Neigungs-
+       Kombination, ohne die Kerve abzulehnen.
+
 - **Subtraktivität (geerbt von `bearbeitung`)**: G_B'(F) ⊆
   G_B^lokal nach (11); siehe `bearbeitung`.
+
 - **Zuordnungs-Eindeutigkeit**: Die Kerve ist über die partitive
   Komposition genau einem Bauteil zugeordnet. Dass eine Kerve
   mit einem zweiten Bauteil (typischerweise einer Pfette) eine
@@ -592,6 +611,7 @@ in y-Richtung beschrieben.
   geometrische Voraussetzung der Kervgeometrie selbst, sondern
   ergibt sich erst im Tragwerks-Kontext (siehe `tragwerk`,
   `verbindung`, Folgearbeit).
+
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
   bereits definierte Begriffe (`bearbeitung`, `bauteil`,
   `sparren`, `pfette`, `polyeder`, `lokales_koordinatensystem`,
@@ -600,6 +620,7 @@ in y-Richtung beschrieben.
   vor und verweist nicht auf konkrete Kerven-Spezialisierungen
   (Versatzkerve, Doppelkerve, Stuhlkerve, Walmkerve, Wiener
   Kastl), sondern definiert die Klauenkerve als Standardfall.
+
 - **Verträglichkeit mit der 90°-Bedingung der Kerve (Dietrichs-
   Abgrenzung):** Aus Σ_S welt-horizontal und Σ_N welt-vertikal
   folgt ⟨e_hat_h, e_hat_v⟩ = 0, also Σ_S ⊥ Σ_N. Eine Bearbeitung mit
@@ -613,132 +634,156 @@ in y-Richtung beschrieben.
 - **Oberbegriff**: `bearbeitung`. Strukturell ist die Kerve eine
   konkrete subtraktive Bearbeitung mit dem typspezifischen
   Parametertupel p_Kerve = (x_0, t, s).
-- **Bestandteile (partitiv)** (geerbt von `bearbeitung`):
-  - **UUID** (`uuid`): technische Identität, Pflicht.
-  - **Typ**: konstant `Kerve`.
-  - **Parameter** (typspezifisch): x_0, t, s; die Sohlenlänge
-    w = t / sin θ ist bauteil-relativ abgeleitet, kein Feld.
-  - **Lokale Platzierung**: SE(3); Identität im Standardfall.
-  - **Bezeichnung**: optional.
-  - **Keine Backref auf das Bauteil**: das zugehörige Bauteil
-    (typisch ein `sparren`) ist über die partitive Komposition
-    bestimmt (Kerve ist Element der Bearbeitungs-Liste des
-    Sparrens), nicht über ein Feld am Kerven-Objekt.
-- **Verwendung**:
-  - Bestandteil eines **Sparrens** (`sparren`): die Kerve
-    erscheint als Bearbeitung in der Liste der Sparren-
-    Bearbeitungen; geometrisch sitzt sie typischerweise an der
-    Sparren-Unterseite an einer Position entlang der Sparren-
-    achse, an der eine Pfette quert.
-  - **Auflagerung auf einer Pfette** (`pfette`): die Sohle
-    bildet die formschlüssige Auflagefläche, der Senkel liegt
-    an einer Talkante oder Bergkante der Pfette an. Die
-    geometrische Beziehung Kerve ↔ Pfette ist nicht in der
-    Kerve selbst geführt (die Kerve „kennt" die Pfette nicht),
-    sondern wird über das Tragwerks-Aggregat hergestellt
-    (`hg_auflager.md`). Bemessungstechnisch führt die Kerv-Sohle
-    die Vertikallast als **Pressung quer zur Pfettenfaser** in
-    das Pfettenholz ein (EC5 6.1.5 / SIA 265 §5.1.6); ergänzend
-    Querzug- und Schubnachweis am ausgeklinkten Sparrenholz
-    (EC5 6.5). Beide Nachweise sind Aufgabe der Bemessungs-
-    Schicht und berühren die Kerv-Geometrie selbst nicht.
 
-    **Drei-Schichten-Trennung** (siehe `hg_auflager.md`
-    Quellenkonflikt-Block): die **Kerve** ist die Bearbeitung am
-    Bauteil; die **Auflagefläche** ist die geometrische
-    Polygon-Manifestation (die Kerv-Sohle als Bleischnitt-Fläche);
-    das **Auflager** ist das tragwerksseitige Aggregat mit
-    Wertigkeit und Lagerreaktion. Das Synonym „Auflagerkerve"
-    bezieht sich zimmermannssprachlich auf die Bauteil-Bearbeitung
-    (also auf die Kerve dieses Eintrags), nicht auf das
-    Tragwerks-Aggregat.
-  - **Gegenholz-Neutralität**: die Kervgeometrie ist
-    **gegenholz-neutral** — sie beschreibt ausschliesslich den
-    dreieckigen Ausschnitt am Sparren und macht keine Aussage
-    über das Material oder die Geometrie des Auflagers. Die
-    `voraussetzungen`-Listung von `pfette` benennt das im
-    Holzbau häufigste, aber nicht das einzige Gegenholz. Über
-    die hölzerne Pfette hinaus wird dieselbe Kervgeometrie in
-    der Praxis auch zur Auflagerung auf **Stahlträgern**,
-    **Betonträgern** und **Mauerwerkskanten** eingesetzt
-    (oldenburg-zimmerei.com, in `quellen_sekundär` bereits
-    zitiert). Die jeweilige Auflagerpressungs-Bemessung folgt
-    dann der für das Gegenholz einschlägigen Norm (für Holz:
-    EC5 6.1.5 / SIA 265 §5.1.6; für Stahl, Beton, Mauerwerk:
-    die jeweiligen Material-Eurocodes), berührt die Kerv-
-    Geometrie selbst aber nicht.
+- **Bestandteile (partitiv)** (geerbt von `bearbeitung`):
+    - **UUID** (`uuid`): technische Identität, Pflicht.
+    - **Typ**: konstant `Kerve`.
+    - **Parameter** (typspezifisch): x_0, t, s; die Sohlenlänge
+      w = t / sin θ ist bauteil-relativ abgeleitet, kein Feld.
+
+    - **Lokale Platzierung**: SE(3); Identität im Standardfall.
+    - **Bezeichnung**: optional.
+    - **Keine Backref auf das Bauteil**: das zugehörige Bauteil
+      (typisch ein `sparren`) ist über die partitive Komposition
+      bestimmt (Kerve ist Element der Bearbeitungs-Liste des
+      Sparrens), nicht über ein Feld am Kerven-Objekt.
+
+- **Verwendung**:
+    - Bestandteil eines **Sparrens** (`sparren`): die Kerve
+      erscheint als Bearbeitung in der Liste der Sparren-
+      Bearbeitungen; geometrisch sitzt sie typischerweise an der
+      Sparren-Unterseite an einer Position entlang der Sparren-
+      achse, an der eine Pfette quert.
+
+    - **Auflagerung auf einer Pfette** (`pfette`): die Sohle
+      bildet die formschlüssige Auflagefläche, der Senkel liegt
+      an einer Talkante oder Bergkante der Pfette an. Die
+      geometrische Beziehung Kerve ↔ Pfette ist nicht in der
+      Kerve selbst geführt (die Kerve „kennt" die Pfette nicht),
+      sondern wird über das Tragwerks-Aggregat hergestellt
+      (`hg_auflager.md`). Bemessungstechnisch führt die Kerv-Sohle
+      die Vertikallast als **Pressung quer zur Pfettenfaser** in
+      das Pfettenholz ein (EC5 6.1.5 / SIA 265 §5.1.6); ergänzend
+      Querzug- und Schubnachweis am ausgeklinkten Sparrenholz
+      (EC5 6.5). Beide Nachweise sind Aufgabe der Bemessungs-
+      Schicht und berühren die Kerv-Geometrie selbst nicht.
+
+      **Drei-Schichten-Trennung** (siehe `hg_auflager.md`
+      Quellenkonflikt-Block): die **Kerve** ist die Bearbeitung am
+      Bauteil; die **Auflagefläche** ist die geometrische
+      Polygon-Manifestation (die Kerv-Sohle als Bleischnitt-Fläche);
+      das **Auflager** ist das tragwerksseitige Aggregat mit
+      Wertigkeit und Lagerreaktion. Das Synonym „Auflagerkerve"
+      bezieht sich zimmermannssprachlich auf die Bauteil-Bearbeitung
+      (also auf die Kerve dieses Eintrags), nicht auf das
+      Tragwerks-Aggregat.
+
+    - **Gegenholz-Neutralität**: die Kervgeometrie ist
+      **gegenholz-neutral** — sie beschreibt ausschliesslich den
+      dreieckigen Ausschnitt am Sparren und macht keine Aussage
+      über das Material oder die Geometrie des Auflagers. Die
+      `voraussetzungen`-Listung von `pfette` benennt das im
+      Holzbau häufigste, aber nicht das einzige Gegenholz. Über
+      die hölzerne Pfette hinaus wird dieselbe Kervgeometrie in
+      der Praxis auch zur Auflagerung auf **Stahlträgern**,
+      **Betonträgern** und **Mauerwerkskanten** eingesetzt
+      (oldenburg-zimmerei.com, in `quellen_sekundär` bereits
+      zitiert). Die jeweilige Auflagerpressungs-Bemessung folgt
+      dann der für das Gegenholz einschlägigen Norm (für Holz:
+      EC5 6.1.5 / SIA 265 §5.1.6; für Stahl, Beton, Mauerwerk:
+      die jeweiligen Material-Eurocodes), berührt die Kerv-
+      Geometrie selbst aber nicht.
+
 - **Spezialisierungen** (Folgearbeit, eigene Glossareinträge):
-  - **Doppelkerve**: zwei Kerven am selben Sparren über
-    derselben Pfette; aktuell als zwei `Kerve`-Instanzen mit
-    eigenen UUIDs in derselben Bearbeitungs-Liste modelliert,
-    nicht als eigener Subtyp.
-  - **Versatzkerve**: Kerve + Stirnschrägung; aktuell als
-    Kombination `Kerve` + `Versatz` modelliert.
-  - **Stuhlkerve** (`stuhlkerve`, Folgearbeit): Kerve am
-    Stuhlsäulen-Pfetten-Anschluss (BTLx StepJointNotch).
-    Eigener Bearbeitungstyp.
-  - **Walmkerve / Herzkerve** (`walmkerve`, Folgearbeit): Kerve
-    am Gratsparren / Kehlsparren (BTLx HipValleyRafterNotch).
-    Eigener Bearbeitungstyp wegen asymmetrischer Geometrie
-    durch die Gratlinien-Schmiege.
-  - **Wiener Kastl** (`wiener_kastl`, Folgearbeit): Sparren-
-    dach-Variante für kleine Spannweiten mit kastenförmiger
-    statt dreieckiger Geometrie. Eigener Bearbeitungstyp.
+    - **Doppelkerve**: zwei Kerven am selben Sparren über
+      derselben Pfette; aktuell als zwei `Kerve`-Instanzen mit
+      eigenen UUIDs in derselben Bearbeitungs-Liste modelliert,
+      nicht als eigener Subtyp.
+
+    - **Versatzkerve**: Kerve + Stirnschrägung; aktuell als
+      Kombination `Kerve` + `Versatz` modelliert.
+
+    - **Stuhlkerve** (`stuhlkerve`, Folgearbeit): Kerve am
+      Stuhlsäulen-Pfetten-Anschluss (BTLx StepJointNotch).
+      Eigener Bearbeitungstyp.
+
+    - **Walmkerve / Herzkerve** (`walmkerve`, Folgearbeit): Kerve
+      am Gratsparren / Kehlsparren (BTLx HipValleyRafterNotch).
+      Eigener Bearbeitungstyp wegen asymmetrischer Geometrie
+      durch die Gratlinien-Schmiege.
+
+    - **Wiener Kastl** (`wiener_kastl`, Folgearbeit): Sparren-
+      dach-Variante für kleine Spannweiten mit kastenförmiger
+      statt dreieckiger Geometrie. Eigener Bearbeitungstyp.
+
 - **Abgrenzung**:
-  - **Versatz** (`versatz`, Folgearbeit): rein geneigte
-    Stirnflächen-Subtraktion am Sparrenfuß (Stirnversatz,
-    Fersenversatz, doppelter Versatz). Anders als die Kerve
-    hat der Versatz keine welt-horizontale Sohle, sondern eine
-    geneigte Hauptfläche, die den Sparren formschlüssig gegen
-    Abrutschen sichert. Versatz und Kerve werden in der
-    zimmermannsmäßigen Praxis häufig **kombiniert** (Versatz-
-    kerve), bleiben in dieser App aber zwei separate
-    Bearbeitungstypen. Im **Sparrendach** und **Kehlbalkendach**
-    sind Versätze die Standard-Sparren-zu-Balken-Verbindung
-    statt der Kerve.
-  - **V-Schnitt** (Dietrichs-Terminologie; ggf. Folgearbeit als
-    eigene `Bearbeitung`): zweiflächige Subtraktion mit
-    beliebigem Winkel < 90° zwischen den Flächen; die Kerve ist
-    der Sonderfall mit Welt-aligned Schnitten und damit
-    genau 90° zwischen Sohle und Senkel.
-  - **Zapfenloch** (`zapfenloch`, Folgearbeit): rechteckige
-    Subtraktion zur Aufnahme eines Zapfens; im Gegensatz zur
-    Kerve nicht prismatisch entlang einer Bauteilquerachse,
-    sondern als Sackloch in einer Bauteilfläche.
-  - **Schlitz** (`schlitz`, Folgearbeit): längliche Subtraktion
-    zur Aufnahme eines Schlitzblechs; im Gegensatz zur Kerve
-    durchgehend in einer Bauteilrichtung mit kleiner Breite und
-    großer Tiefe.
-  - **Bohrung** (`bohrung`, Folgearbeit): zylindrische
-    Subtraktion; rotationssymmetrisch um eine Bohrachse, im
-    Gegensatz zur prismatisch geradlinigen Kerve.
-  - **Blatt** (`blatt`, Folgearbeit): halbe Holzdicke abtragend
-    am Bauteilende oder im Bauteilfeld; andere Topologie als
-    die Kerve.
-  - **Kamm** (`kamm`, Folgearbeit): einseitige Materialwegnahme
-    am übergreifenden Holz, häufig am Kreuzungspunkt zweier
-    Stäbe; ähnlich, aber typisch flacher und mit einseitigem
-    Bezug zum Gegenholz.
-  - **Anschnitt** (`anschnitt`, Folgearbeit): planare Stirn-
-    oder Schrägfläche am Bauteilende; entfernt das Bauteilende,
-    nicht ein Stück aus dem Bauteilfeld.
-  - **Bearbeitung** (`bearbeitung`): generischer Oberbegriff;
-    Kerve ist eine von mehreren Bearbeitungs-Subtypen.
-  - **Sparren** (`sparren`): Bauteil, an dem die Kerve sitzt;
-    nicht die Kerve selbst.
-  - **Pfette** (`pfette`): Bauteil, auf dem die Kerve typisch
-    aufliegt; nicht die Kerve selbst.
-  - **Senkel** (`senkel`): geometrisches Element (lotrechte
-    Linie/Ebene in der Welt); die Senkel-Schnittfläche der
-    Kerve ist eine Instantiierung von `senkel`.
-  - **Bleischnitt** (`bleischnitt`): geometrisches Element
-    (welt-horizontale Schnittfläche); die Sohle der Kerve ist
-    eine Instantiierung von `bleischnitt`.
-  - **Querschnitt** (`querschnitt`): die Querschnittsfläche
-    eines Bauteils im ungeschwächten Zustand; die Kerve führt
-    eine lokale Querschnittsschwächung herbei, die im
-    Bemessungsschnitt am Kervort durch t und w · cos θ = t · cot θ
-    erfasst wird.
+    - **Versatz** (`versatz`, Folgearbeit): rein geneigte
+      Stirnflächen-Subtraktion am Sparrenfuß (Stirnversatz,
+      Fersenversatz, doppelter Versatz). Anders als die Kerve
+      hat der Versatz keine welt-horizontale Sohle, sondern eine
+      geneigte Hauptfläche, die den Sparren formschlüssig gegen
+      Abrutschen sichert. Versatz und Kerve werden in der
+      zimmermannsmäßigen Praxis häufig **kombiniert** (Versatz-
+      kerve), bleiben in dieser App aber zwei separate
+      Bearbeitungstypen. Im **Sparrendach** und **Kehlbalkendach**
+      sind Versätze die Standard-Sparren-zu-Balken-Verbindung
+      statt der Kerve.
+
+    - **V-Schnitt** (Dietrichs-Terminologie; ggf. Folgearbeit als
+      eigene `Bearbeitung`): zweiflächige Subtraktion mit
+      beliebigem Winkel < 90° zwischen den Flächen; die Kerve ist
+      der Sonderfall mit Welt-aligned Schnitten und damit
+      genau 90° zwischen Sohle und Senkel.
+
+    - **Zapfenloch** (`zapfenloch`, Folgearbeit): rechteckige
+      Subtraktion zur Aufnahme eines Zapfens; im Gegensatz zur
+      Kerve nicht prismatisch entlang einer Bauteilquerachse,
+      sondern als Sackloch in einer Bauteilfläche.
+
+    - **Schlitz** (`schlitz`, Folgearbeit): längliche Subtraktion
+      zur Aufnahme eines Schlitzblechs; im Gegensatz zur Kerve
+      durchgehend in einer Bauteilrichtung mit kleiner Breite und
+      großer Tiefe.
+
+    - **Bohrung** (`bohrung`, Folgearbeit): zylindrische
+      Subtraktion; rotationssymmetrisch um eine Bohrachse, im
+      Gegensatz zur prismatisch geradlinigen Kerve.
+
+    - **Blatt** (`blatt`, Folgearbeit): halbe Holzdicke abtragend
+      am Bauteilende oder im Bauteilfeld; andere Topologie als
+      die Kerve.
+
+    - **Kamm** (`kamm`, Folgearbeit): einseitige Materialwegnahme
+      am übergreifenden Holz, häufig am Kreuzungspunkt zweier
+      Stäbe; ähnlich, aber typisch flacher und mit einseitigem
+      Bezug zum Gegenholz.
+
+    - **Anschnitt** (`anschnitt`, Folgearbeit): planare Stirn-
+      oder Schrägfläche am Bauteilende; entfernt das Bauteilende,
+      nicht ein Stück aus dem Bauteilfeld.
+
+    - **Bearbeitung** (`bearbeitung`): generischer Oberbegriff;
+      Kerve ist eine von mehreren Bearbeitungs-Subtypen.
+
+    - **Sparren** (`sparren`): Bauteil, an dem die Kerve sitzt;
+      nicht die Kerve selbst.
+
+    - **Pfette** (`pfette`): Bauteil, auf dem die Kerve typisch
+      aufliegt; nicht die Kerve selbst.
+
+    - **Senkel** (`senkel`): geometrisches Element (lotrechte
+      Linie/Ebene in der Welt); die Senkel-Schnittfläche der
+      Kerve ist eine Instantiierung von `senkel`.
+
+    - **Bleischnitt** (`bleischnitt`): geometrisches Element
+      (welt-horizontale Schnittfläche); die Sohle der Kerve ist
+      eine Instantiierung von `bleischnitt`.
+
+    - **Querschnitt** (`querschnitt`): die Querschnittsfläche
+      eines Bauteils im ungeschwächten Zustand; die Kerve führt
+      eine lokale Querschnittsschwächung herbei, die im
+      Bemessungsschnitt am Kervort durch t und w · cos θ = t · cot θ
+      erfasst wird.
 
 ## Quellen
 
@@ -747,18 +792,22 @@ in y-Richtung beschrieben.
 - Wikipedia, Lemma „Sparren" (DE), Abschnitt zur Kerve
   (abgerufen 2026-05-13). Online:
   de.wikipedia.org/wiki/Sparren.
+
 - design2machine: *BTLx interface description*, Version 2.1,
   16.11.2023, Abschnitt „BirdsMouth" (S. 24–28). Online:
   www.design2machine.com/btlx.
+
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und
   Konstruktion von Holzbauten – Teil 1-1", Abschnitt 5.2,
   Abschnitt 6.1.5 (Druckspannung quer zur Faser) und
   Abschnitt 6.5 (Querzug-/Schubnachweis am ausgeklinkten
   Bauteil).
+
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
   Architektenverein, Zürich, Abschnitt 5 (Konstruktive
   Durchbildung) und §5.1.6 (Auflagerpressung, Druck quer zur
   Faser).
+
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken", Abschnitt 12.
 
@@ -768,19 +817,24 @@ in y-Richtung beschrieben.
   16. Auflage, Beuth, Berlin 2015, Kap. 11.
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.*
   DVA, 7. Auflage 2007.
+
 - Natterer, J.; Herzog, T.; Volz, M.: *Holzbau-Atlas.*
   4. Auflage, Birkhäuser, Basel 2003.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich,
   aktuelle Auflage.
+
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*
   Lignum, Zürich, aktuelle Auflage.
+
 - Eurotec: *Anfängerlehrbuch Teil 3.3 — Holzverbindungen*,
   Kapitel Sparren-Pfetten-Anschluss.
+
 - Eißing, T.; Furrer, B.; King, S.; Knapp, U.; Krämer, A.;
   Lohrum, B.; Marstaller, T.; Mohn, C.; Pantli, H.; Reicke, D.:
   *Vorindustrieller Holzbau in Südwestdeutschland und der
   deutschsprachigen Schweiz. Terminologie und Systematik.*
   Eßlingen 2012, S. 38, 57 (historische Trennung Klaue / Kerve).
+
 - International Code Council: *International Residential Code*
   (IRC), Section R802.7.1 „Notching of rafters at supports"
   (USA-Vergleichsregel D/4).
@@ -790,28 +844,37 @@ in y-Richtung beschrieben.
 - zimmerer-treff.com: „Sparrenverbindungen — Die Sparrenkerbe
   (Kerve, Ferserl)" (abgerufen 2026-05-13). Quelle für Wiener
   Kastl als Sparrendach-Variante.
+
 - energie-experten.org: „Dachsparren-Ratgeber" (abgerufen
   2026-05-13). Bestätigt die Wikipedia-Definition (zweiflächiger
   Einschnitt, Dreiecksquerschnitt).
+
 - oldenburg-zimmerei.com: „Kerve" (abgerufen 2026-05-13).
   Quelle für Anwendungen über Pfetten hinaus (Stahlträger,
   Betonträger, Mauerwerkskanten).
+
 - baubeaver.de: „Pfetten — der Zimmerer erklärt" und
   „Dachsparren — 6 Fakten" (abgerufen 2026-05-13).
+
 - Dietrichs Holzbau Software Support-Blog: „V-Schnitt vs.
   Kerve", 18.05.2016 (abgerufen 2026-05-13). Quelle für die
   90°-Bedingung als Abgrenzung zum V-Schnitt.
+
 - Cadwork Informatik: Dokumentation „Bearbeitung am Bauteil /
   Klaue".
+
 - Sema-Soft Forum: „Sparren an Fußpfette mit einer Klaue
   anschließen" (abgerufen 2026-05-13). Quelle für die
   pragmatische Trennung Klaue (Fußpfette) ↔ Kerve (Mittel-
   pfette, First) in CAD-Software.
+
 - woodworker.de: Forum-Threads „Kerventiefe", „Dachsparren
   Kerven richtig ausmessen" und „(Pultdach) Kerve in Sparren
   ab welchem Winkel" (abgerufen 2026-05-13).
+
 - woodworking.de: Forum-Thread „Sparren/Fetten-Verbindung"
   (abgerufen 2026-05-13). Quelle für die 1/6-Faustregel (D.
   Stuermer) speziell für die Klaue in engerer Lesart.
+
 - deutscher-bauzeiger.de: „Sparrenkerben — Kerventiefe —
   Ferserl" (abgerufen 2026-05-13).

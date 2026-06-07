@@ -212,6 +212,7 @@ Sei
 - 𝓛 die (sammelbegrifflich geführte) Menge der Lastfälle nach
   EN 1990 / EN 1991 bzw. SIA 260 / SIA 261 (eigener Eintrag
   `lastfall` folgt; im aktuellen Glossarstand Forward-Verweis),
+
 - 𝓟_W ⊂ ℝ³ die Menge der Punkte in W,
 - 𝓢_W die Menge der Strecken in W nach `hg_strecke.md`.
 
@@ -234,6 +235,7 @@ mit
 - **uuid_m** ∈ 𝒰: Identität des Stabes innerhalb des Systems,
 - **traegerstrecke** ∈ 𝓢_W: die gerichtete Strecke des Stabes
   in W (Anfang und Ende ∈ K),
+
 - **basisbauteil** ∈ 𝒰: UUID des Bauteils b ∈ 𝓑, dessen
   Bauteilachse die Trägerstrecke geometrisch definiert.
 
@@ -273,14 +275,18 @@ mit den Komponenten
 - **basistragwerk** ∈ 𝒰: UUID des zugehörigen Tragwerks
   T ∈ 𝒯 (Pflicht; entspricht der physisch-analytischen Brücke
   `IfcRelAssignsToProduct`),
+
 - **K** ⊂ 𝓟_W, K endlich, K ≠ ∅: die Knotenmenge,
 - **M** endliche Menge von Stäben (m = (uuid_m, traeger, basisbauteil)),
 - **F** endliche Menge von Flächenelementen (Default: ∅;
   Folgearbeit),
+
 - **A** ⊂ 𝓐, A ⊆ T.A: die aus dem Basistragwerk übernommene
   Auflager-Menge,
+
 - **L** ⊂ 𝓛, L ⊆ T.L: die aus dem Basistragwerk übernommene
   Lastfall-Menge,
+
 - **theorie** ∈ 𝓣ʜ: die Berechnungs-Theorie-Annahme,
 - **bezeichnung** ∈ String ∪ {⊥}: freier Anzeigename.
 
@@ -341,12 +347,15 @@ n:= a + s + z − 6 · k,
 ```
 
 mit
+
 - `a` = Σ der Auflagerwertigkeiten (Anzahl gesperrter
   Freiheitsgrade über alle Auflager in A),
+
 - `s` = |M| (Anzahl der Stäbe),
 - `z` = Anzahl der Zwischenreaktionen / Nebenbedingungen
   (Gelenke, Gleitsteine etc.; im aktuellen Stand 0, weil
   Stabgelenke nicht modelliert sind),
+
 - `k` = |K| (Anzahl der Knoten).
 
 Im ebenen Fall (Sonderfall der Projektion auf eine Ebene)
@@ -380,14 +389,17 @@ G_W(S):= K ∪ ⋃_{m ∈ M} traegerstrecke(m) ∪ ⋃_{f ∈ F} flaeche(f)
 - **Existenz**: für jedes konkrete Tragwerk T ∈ 𝒯 lässt sich
   ein statisches System konstruieren. Die kanonische
   Konstruktion ist:
-  1. Knotenmenge K:= { p_a, p_e | für jede Bauteilachse von
-     T.B } modulo `LAENGE_EPS`-Identität (Knoten-Kontraktion).
-  2. Stab-Menge M:= { (uuid_m, bauteilachse(b).strecke, b.uuid) |
-     b ∈ T.B } für stabförmige Bauteile (geometrie ∈ 𝒢_stab in
-     `hg_bauteil.md`-Lesart).
-  3. F:= ∅ (Default; Folgearbeit für Flächenbauteile).
-  4. A:= T.A; L:= T.L.
-  5. theorie:= linear_erster_ordnung (Default).
+
+    1. Knotenmenge K:= { p_a, p_e | für jede Bauteilachse von
+       T.B } modulo `LAENGE_EPS`-Identität (Knoten-Kontraktion).
+
+    2. Stab-Menge M:= { (uuid_m, bauteilachse(b).strecke, b.uuid) |
+       b ∈ T.B } für stabförmige Bauteile (geometrie ∈ 𝒢_stab in
+       `hg_bauteil.md`-Lesart).
+
+    3. F:= ∅ (Default; Folgearbeit für Flächenbauteile).
+    4. A:= T.A; L:= T.L.
+    5. theorie:= linear_erster_ordnung (Default).
 
 - **Eindeutigkeit der Identität**: die UUID des statischen
   Systems ist unabhängig von der UUID seines Basistragwerks
@@ -497,6 +509,7 @@ symmetrisch, ohne Mittelpfette):
 - z = 0 (keine Zwischengelenke),
 - a = 4 (zwei Festlager an den Traufen, je 2 gesperrte
   Translationen im ebenen Fall),
+
 - ebene Abzählformel: n = 4 + 2 + 0 − 3·3 = −3.
 
 Der Sparrenpaar **ohne** Zugglied ist also dreifach kinematisch
@@ -517,10 +530,12 @@ nicht aus der Geometrie ableitbar ist, sondern eine
 - **I. Ordnung** (linear, kleine Verformungen am unverformten
   System): Standard für Gebrauchstauglichkeits-Nachweise
   schlanker, stabiler Holz-Tragwerke.
+
 - **II. Ordnung** (geometrisch nichtlinear, Gleichgewicht am
   verformten System): erforderlich bei Stabilitätsnachweis
   druckbeanspruchter schlanker Stäbe (Knicken), bei
   weicheren Tragwerken (Pendelstützen, schmale Hochbauten).
+
 - **III. Ordnung** (vollständig nichtlinear, geometrisch und
   materiell): in der Holzbau-Praxis selten; bei
   Brand-Bemessung, Erdbeben, plastischen Reserven.
@@ -567,67 +582,82 @@ die Bemessungs-Information ist dort nicht abbildbar.
   auf das Tragwerk, kein Subtyp eines fachlichen Trägerbegriffs.
   Siehe Frontmatter `quellenkonflikt` für die Begründung der
   Wahl gegen `oberbegriff: tragwerk`.
+
 - **Bestandteile (partitiv)**:
-  - **Knoten** (`knoten`, Folgearbeit, sealed-Klasse `Element`-
-    intern im statischen System): Punkte in W mit eigener
-    Identität innerhalb des Systems.
-  - **Stab** (`stab`, Folgearbeit): 1D-Element mit gerichteter
-    Trägerstrecke, Endknoten-Inzidenz und Bauteil-UUID-Referenz.
-  - **Flächenelement** (`flaechenelement`, Folgearbeit; Default
-    ∅): 2D-Element mit Bezugsfläche.
-  - **Auflager-Auswahl** (Teilmenge von T.A).
-  - **Lastfall-Auswahl** (Teilmenge von T.L; `lastfall` als
-    eigener Eintrag folgt).
-  - **Berechnungs-Theorie-Annahme**.
+    - **Knoten** (`knoten`, Folgearbeit, sealed-Klasse `Element`-
+      intern im statischen System): Punkte in W mit eigener
+      Identität innerhalb des Systems.
+
+    - **Stab** (`stab`, Folgearbeit): 1D-Element mit gerichteter
+      Trägerstrecke, Endknoten-Inzidenz und Bauteil-UUID-Referenz.
+
+    - **Flächenelement** (`flaechenelement`, Folgearbeit; Default
+      ∅): 2D-Element mit Bezugsfläche.
+
+    - **Auflager-Auswahl** (Teilmenge von T.A).
+    - **Lastfall-Auswahl** (Teilmenge von T.L; `lastfall` als
+      eigener Eintrag folgt).
+
+    - **Berechnungs-Theorie-Annahme**.
 - **Spezialisierungen nach Theorie** (Folgearbeit, falls
   benötigt; im aktuellen Stand im `theorie`-Feld aufgelöst):
   lineares statisches System, geometrisch nichtlineares
   statisches System (Theorie II. Ordnung) etc.
+
 - **Verwendung**:
-  - Abgeleitet aus einem **Tragwerk** (`tragwerk`) via
-    `Tragwerk.statischesSystem()`. Das Feld `basistragwerk`
-    trägt die UUID des Tragwerks.
-  - Eingangsgrösse für die **Bemessungs-Schicht** (Folgearbeit):
-    Tragsicherheits- und Gebrauchstauglichkeits-Nachweise nach
-    EN 1995-1-1 / SIA 265 setzen das statische System voraus.
+    - Abgeleitet aus einem **Tragwerk** (`tragwerk`) via
+      `Tragwerk.statischesSystem()`. Das Feld `basistragwerk`
+      trägt die UUID des Tragwerks.
+
+    - Eingangsgrösse für die **Bemessungs-Schicht** (Folgearbeit):
+      Tragsicherheits- und Gebrauchstauglichkeits-Nachweise nach
+      EN 1995-1-1 / SIA 265 setzen das statische System voraus.
+
 - **Abgrenzung**:
-  - **Tragwerk** (`tragwerk`): bauteilbezogene Realität.
-    Statisches System ist die idealisierte Modellierung
-    desselben physischen Substrats; beide sind getrennte
-    Aggregate mit eigener UUID. Die Brücke ist das Feld
-    `basistragwerk`.
-  - **Bauteil** (`bauteil`): Tragwerks-Substanz im W;
-    Stäbe im statischen System sind **Idealisierungen** der
-    Bauteile, nicht die Bauteile selbst. Der Bezug ist über
-    die UUID-Referenz `stab.basisbauteil` explizit.
-  - **Bauteilachse** (`bauteilachse`): geometrische Hauptachse
-    eines Stabbauteils; die Trägerstrecke eines Stabes im
-    statischen System ist die Bauteilachsen-Strecke des
-    zugehörigen Bauteils. Die Bauteilachse lebt am Bauteil,
-    der Stab im statischen System.
-  - **Auflager** (`auflager`): Aggregat mit Manifestation und
-    Wertigkeit. Statisches System übernimmt Auflager
-    unverändert aus dem Basistragwerk (A ⊆ T.A); keine
-    zusätzliche Idealisierung.
-  - **Verbindung** (`verbindung`): Aggregat auf der Anschluss-
-    Bemessungs-Seite. Verbindungen sind **nicht** Bestandteil
-    des statischen Systems; ihre Federsteifigkeiten gehen
-    gegebenenfalls als Gelenkfreiheiten oder Federgelenke in
-    die Stab-Modellierung ein (Folgearbeit).
-  - **Lastfall** (`lastfall`, Folgearbeit): konzeptuelle
-    Einwirkung. Statisches System trägt eine ausgewählte
-    Lastfall-Menge L ⊆ T.L.
-  - **FE-Modell** (`fe_modell`, Korpus-Begriff dauerhaft ohne
-    eigenen Eintrag, HG §6 (D)): numerische Diskretisierung
-    des statischen Systems. Statisches System ist analytisch
-    und kontinuierlich; FE-Modell ist diskret und numerisch.
-  - **Knoten** (`knoten`, Folgearbeit) und **Stab** (`stab`,
-    Folgearbeit): partitive Bestandteile des statischen
-    Systems mit eigenen Folge-Glossareinträgen, sobald die
-    sealed-Klasse `Element` (statisches-System-intern, nicht
-    zu verwechseln mit der ontologischen `element`-
-    Basisklasse aus `hg_bauteil.md`) im Code implementiert
-    wird.
+    - **Tragwerk** (`tragwerk`): bauteilbezogene Realität.
+      Statisches System ist die idealisierte Modellierung
+      desselben physischen Substrats; beide sind getrennte
+      Aggregate mit eigener UUID. Die Brücke ist das Feld
+      `basistragwerk`.
+
+    - **Bauteil** (`bauteil`): Tragwerks-Substanz im W;
+      Stäbe im statischen System sind **Idealisierungen** der
+      Bauteile, nicht die Bauteile selbst. Der Bezug ist über
+      die UUID-Referenz `stab.basisbauteil` explizit.
+
+    - **Bauteilachse** (`bauteilachse`): geometrische Hauptachse
+      eines Stabbauteils; die Trägerstrecke eines Stabes im
+      statischen System ist die Bauteilachsen-Strecke des
+      zugehörigen Bauteils. Die Bauteilachse lebt am Bauteil,
+      der Stab im statischen System.
+
+    - **Auflager** (`auflager`): Aggregat mit Manifestation und
+      Wertigkeit. Statisches System übernimmt Auflager
+      unverändert aus dem Basistragwerk (A ⊆ T.A); keine
+      zusätzliche Idealisierung.
+
+    - **Verbindung** (`verbindung`): Aggregat auf der Anschluss-
+      Bemessungs-Seite. Verbindungen sind **nicht** Bestandteil
+      des statischen Systems; ihre Federsteifigkeiten gehen
+      gegebenenfalls als Gelenkfreiheiten oder Federgelenke in
+      die Stab-Modellierung ein (Folgearbeit).
+
+    - **Lastfall** (`lastfall`, Folgearbeit): konzeptuelle
+      Einwirkung. Statisches System trägt eine ausgewählte
+      Lastfall-Menge L ⊆ T.L.
+
+    - **FE-Modell** (`fe_modell`, Korpus-Begriff dauerhaft ohne
+      eigenen Eintrag, HG §6 (D)): numerische Diskretisierung
+      des statischen Systems. Statisches System ist analytisch
+      und kontinuierlich; FE-Modell ist diskret und numerisch.
+
+    - **Knoten** (`knoten`, Folgearbeit) und **Stab** (`stab`,
+      Folgearbeit): partitive Bestandteile des statischen
+      Systems mit eigenen Folge-Glossareinträgen, sobald die
+      sealed-Klasse `Element` (statisches-System-intern, nicht
+      zu verwechseln mit der ontologischen `element`-
+      Basisklasse aus `hg_bauteil.md`) im Code implementiert
+      wird.
 
 ## Quellen
 
@@ -641,14 +671,19 @@ die Bemessungs-Information ist dort nicht abbildbar.
   `IfcStructuralConnection`, `IfcStructuralAction`,
   `IfcStructuralReaction`, `IfcStructuralLoadGroup`,
   `IfcStructuralResultGroup`, `IfcRelAssignsToProduct`.
+
 - DIN EN 1990:2010-12, „Eurocode: Grundlagen der
   Tragwerksplanung", Abschnitt 1.5.1.7.
+
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und
   Konstruktion von Holzbauten – Teil 1-1", Abschnitt 5.
+
 - SIA 260:2013, „Grundlagen der Projektierung von Tragwerken",
   Schweizerischer Ingenieur- und Architektenverein, Zürich.
+
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
   Architektenverein, Zürich.
+
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken", Abschnitt 5.
 
@@ -658,8 +693,10 @@ die Bemessungs-Information ist dort nicht abbildbar.
   *Tragwerke 1 / Tragwerke 2.* Springer (VDI-Buch),
   Berlin/Heidelberg, Kapitel „Das Tragwerksmodell der Statik
   der Tragwerke".
+
 - Petersen, Chr.: *Statik und Stabilität der Baukonstruktionen.*
   Vieweg, Braunschweig.
+
 - Schneider, K.-J.; Albert, A.: *Bautabellen für Ingenieure.*
   26. Aufl., Bundesanzeiger Verlag, Köln 2024.
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
@@ -667,6 +704,7 @@ die Bemessungs-Information ist dort nicht abbildbar.
 - Blass, H. J.; Sandhaas, C.: *Ingenieurholzbau – Grundlagen
   der Bemessung.* KIT Scientific Publishing, Karlsruhe 2016,
   Kap. 5.
+
 - Natterer, J.; Herzog, T.; Volz, M.: *Holzbau-Atlas.*
   4. Aufl., Birkhäuser, Basel 2003.
 - buildingSMART, IFC-4.3.2-Dokumentation Structural-Analysis-
@@ -678,12 +716,16 @@ die Bemessungs-Information ist dort nicht abbildbar.
 - Wikipedia, Lemma „Baustatik" (abgerufen 2026-05-14).
 - Wikipedia, Lemma „Stabwerk (Technische Mechanik)" (abgerufen
   2026-05-14).
+
 - Wikipedia, Lemma „Stab (Statik)" (abgerufen 2026-05-14).
 - Wikipedia, Lemma „Lager (Statik)" (abgerufen 2026-05-14).
 - Wikipedia, Lemma „Statische Bestimmtheit" (abgerufen
   2026-05-14).
+
 - D.I.E.-Statik, „Statisches System / Modell-Allgemeines"
   (abgerufen 2026-05-14).
+
 - ingenieurkurse.de, „Tragwerksmodell", „Statische
   Bestimmtheit (Abzählformel)" (Sekundärrezeption).
+
 - Recherche-Bericht: [intern].

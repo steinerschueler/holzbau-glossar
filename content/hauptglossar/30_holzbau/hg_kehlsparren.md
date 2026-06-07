@@ -215,22 +215,28 @@ Sei
 
 - B ein Bauteil im Sinne von `bauteil` mit Stabgeometrie
   (`geometrie ∈ 𝒢_stab`),
+
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
   d_hat_K:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+
 - 𝒟 = {D_1, …, D_m} eine Dachflächenfamilie im Sinne von
   `dachflaeche`,
+
 - D_i = (E_i, P_i, n_{a,i}) und D_j = (E_j, P_j, n_{a,j}) zwei
   verschiedene Dachflächen aus 𝒟 mit i ≠ j,
+
 - s_{ij} ⊂ ℝ³ eine **Kehlstrecke** im Sinne von `hg_kehle.md`,
   also eine Schnittstrecke s_{ij} = F(P_i) ∩ F(P_j), die die
   Kehle-Bedingungen aus `hg_kehle.md` erfüllt (geneigt, **konkav**,
   beide äußeren Normalen in oberer Halbkugel; die Konkavität ist dort
   positions-basiert über die Querlage der Flächenstücke charakterisiert,
   nicht mehr über ein Spatprodukt-Vorzeichen),
+
 - t_hat:= (b_{ij} − a_{ij}) / ‖b_{ij} − a_{ij}‖ ∈ S² die Tangente
   von s_{ij} mit s_{ij} = [a_{ij}, b_{ij}] und (Vorzeichenkonvention
   aus `hg_kehle.md`) ⟨t_hat, e_z⟩ > 0 (bergauf orientiert),
+
 - e_z:= (0, 0, 1)ᵀ die vertikale Achse,
 - ε_W:= Toleranzen.WINKEL_EPS die Winkeltoleranz,
 - ε_K:= Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz,
@@ -376,42 +382,49 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `kehle`, `dachflaeche`.
 - **Asymmetrie zum Oberbegriff `sparren` — explizite Auflösung:**
   In `hg_sparren.md` lauten die zentralen geometrischen
   Bedingungen:
-  - Bed. 2: beide Endpunkte der Bauteilachse liegen in der
-    Trägerebene **einer** zugeordneten Dachfläche;
-  - Bed. 3: die Bauteilachsenrichtung ist kollinear zur
-    **Falllinie** dieser einen Dachfläche.
 
-  Für den Kehlsparren sind beide Bedingungen strukturell verletzt
-  — exakt parallel zum Gratsparren (siehe `hg_gratsparren.md`,
-  Wohldefiniertheits-Block):
-  - Die Bauteilachse liegt auf der Schnittgeraden **zweier**
-    Trägerebenen E_i und E_j; sie liegt also in der gemeinsamen
-    Schnittgeraden beider, aber sie verläuft **nicht entlang einer
-    Falllinie**, denn die Schnittgerade zweier nicht-paralleler,
-    geneigter Ebenen ist nicht die Falllinie einer der beiden
-    (außer in entarteten Sonderfällen). Diese strukturelle
-    Asymmetrie ist Vorzeichen-unabhängig und betrifft Gratsparren
-    und Kehlsparren gleichermaßen.
-  - Genau diese Asymmetrie ist in `hg_sparren.md` Sektion
-    „Wohldefiniertheit / Mehrfachzuordnung" antizipiert: „bei
-    Verschneidungs-Sparren (Gratsparren, Kehlsparren), die auf zwei
-    Dachflächen liegen, ist die Falllinien-Kollinearitätsbedingung
-    nicht zu beiden Dachflächen gleichzeitig erfüllbar, weshalb
-    diese Sonderformen eigene Begriffsdefinitionen erhalten".
+    - Bed. 2: beide Endpunkte der Bauteilachse liegen in der
+      Trägerebene **einer** zugeordneten Dachfläche;
 
-  Die hiesige Definition löst die Asymmetrie auf, indem sie:
-  - Bed. 2 von `hg_sparren.md` durch eine **Endpunkt-Inzidenz auf
-    einer Kehlstrecke s_{ij}** (Bed. 2 hier) ersetzt;
-  - Bed. 3 von `hg_sparren.md` durch eine **Kehllinien-Kollinearität
-    zur Tangente t_hat** (Bed. 3 hier) ersetzt;
-  - Bed. 4 von `hg_sparren.md` als **bergauf-Orientierung relativ
-    zu t_hat** statt zu e_hat_fall übernimmt (Bed. 4 hier).
+    - Bed. 3: die Bauteilachsenrichtung ist kollinear zur
+      **Falllinie** dieser einen Dachfläche.
 
-  Die geerbte konstruktive Rolle des Oberbegriffs `sparren`
-  (Stab-Bauteil eines Dachtragwerks, geneigt, lastabtragend,
-  Bauteilachse bergauf orientiert) bleibt damit unverletzt; nur
-  die geometrische Lage-Bedingung wird von der Falllinie einer
-  Einzelfläche auf die Kehllinie der Verschneidung umgehängt.
+    Für den Kehlsparren sind beide Bedingungen strukturell verletzt
+    — exakt parallel zum Gratsparren (siehe `hg_gratsparren.md`,
+    Wohldefiniertheits-Block):
+
+    - Die Bauteilachse liegt auf der Schnittgeraden **zweier**
+      Trägerebenen E_i und E_j; sie liegt also in der gemeinsamen
+      Schnittgeraden beider, aber sie verläuft **nicht entlang einer
+      Falllinie**, denn die Schnittgerade zweier nicht-paralleler,
+      geneigter Ebenen ist nicht die Falllinie einer der beiden
+      (außer in entarteten Sonderfällen). Diese strukturelle
+      Asymmetrie ist Vorzeichen-unabhängig und betrifft Gratsparren
+      und Kehlsparren gleichermaßen.
+
+    - Genau diese Asymmetrie ist in `hg_sparren.md` Sektion
+      „Wohldefiniertheit / Mehrfachzuordnung" antizipiert: „bei
+      Verschneidungs-Sparren (Gratsparren, Kehlsparren), die auf zwei
+      Dachflächen liegen, ist die Falllinien-Kollinearitätsbedingung
+      nicht zu beiden Dachflächen gleichzeitig erfüllbar, weshalb
+      diese Sonderformen eigene Begriffsdefinitionen erhalten".
+
+    Die hiesige Definition löst die Asymmetrie auf, indem sie:
+
+    - Bed. 2 von `hg_sparren.md` durch eine **Endpunkt-Inzidenz auf
+      einer Kehlstrecke s_{ij}** (Bed. 2 hier) ersetzt;
+
+    - Bed. 3 von `hg_sparren.md` durch eine **Kehllinien-Kollinearität
+      zur Tangente t_hat** (Bed. 3 hier) ersetzt;
+
+    - Bed. 4 von `hg_sparren.md` als **bergauf-Orientierung relativ
+      zu t_hat** statt zu e_hat_fall übernimmt (Bed. 4 hier).
+
+    Die geerbte konstruktive Rolle des Oberbegriffs `sparren`
+    (Stab-Bauteil eines Dachtragwerks, geneigt, lastabtragend,
+    Bauteilachse bergauf orientiert) bleibt damit unverletzt; nur
+    die geometrische Lage-Bedingung wird von der Falllinie einer
+    Einzelfläche auf die Kehllinie der Verschneidung umgehängt.
 
 - **Konsistenz mit `hg_kehle.md`**: Aus Bed. 3 und Bed. 4 folgt
   d_hat_K = +t_hat (modulo Toleranzen), wobei t_hat die nach `hg_kehle.md`
@@ -447,16 +460,18 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `kehle`, `dachflaeche`.
 - **Mehrfachzuordnung — gegenseitige Disjunktheit der
   Sparren-Spezialisierungen**: Ein Bauteil B kann nicht
   gleichzeitig
-  - Sparren einer einzelnen Dachfläche im Sinne von `hg_sparren.md`
-    und Kehlsparren einer Kehlstrecke s_{ij} sein (die
-    Falllinien-Kollinearität aus `hg_sparren.md` Bed. 3 ist mit
-    der Kehllinien-Kollinearität aus Bed. 3 hier nicht gleichzeitig
-    erfüllbar);
-  - Gratsparren einer Gratstrecke und Kehlsparren einer Kehlstrecke
-    sein (die Konvexitäts- und Konkavitäts-Bedingungen der
-    zugeordneten Schnittstrecken aus `hg_grat.md` Bed. 3 und
-    `hg_kehle.md` sind disjunkt: die äußeren Normalen kippen nach
-    außen bzw. nach innen).
+
+    - Sparren einer einzelnen Dachfläche im Sinne von `hg_sparren.md`
+      und Kehlsparren einer Kehlstrecke s_{ij} sein (die
+      Falllinien-Kollinearität aus `hg_sparren.md` Bed. 3 ist mit
+      der Kehllinien-Kollinearität aus Bed. 3 hier nicht gleichzeitig
+      erfüllbar);
+
+    - Gratsparren einer Gratstrecke und Kehlsparren einer Kehlstrecke
+      sein (die Konvexitäts- und Konkavitäts-Bedingungen der
+      zugeordneten Schnittstrecken aus `hg_grat.md` Bed. 3 und
+      `hg_kehle.md` sind disjunkt: die äußeren Normalen kippen nach
+      außen bzw. nach innen).
 
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
   bereits definierte Begriffe (`bauteil`, `bauteilachse`,
@@ -468,21 +483,23 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `kehle`, `dachflaeche`.
 
 - **Auflagerung (qualitativ, nicht Bestandteil der Definition)**:
   Ein Kehlsparren wird im Tragwerk typischerweise gestützt durch
-  - eine **durchlaufende Fußpfette** der höheren Hauptdachfläche
-    plus seitlich anschließende Pfette am Kehlsparrenfuß (am
-    Trauf-Innen-Eckpunkt); anders als der Gratsparren liegt der
-    Fuß **nicht** an einem Eck-Pfettenstoß zweier endender
-    Fußpfetten, sondern an einer durchlaufenden Pfette;
-  - einen **Firstpfetten-Knoten** oder einen
-    **Verschneidungs-Knoten** unter dem First am
-    Kehlsparrenfirstpunkt.
 
-  Die Auflagerung ist Eigenschaft des Tragwerks (siehe
-  `hg_tragwerk.md`), nicht des Kehlsparrens selbst. Die
-  zugehörigen Bearbeitungen (Kerve am Fuß, Firstanschnitt,
-  Backenschnitte, Abkehlung, Hexenschnitt) sind partitive
-  Bestandteile des Kehlsparrens, nicht Bestandteile der
-  Definition.
+    - eine **durchlaufende Fußpfette** der höheren Hauptdachfläche
+      plus seitlich anschließende Pfette am Kehlsparrenfuß (am
+      Trauf-Innen-Eckpunkt); anders als der Gratsparren liegt der
+      Fuß **nicht** an einem Eck-Pfettenstoß zweier endender
+      Fußpfetten, sondern an einer durchlaufenden Pfette;
+
+    - einen **Firstpfetten-Knoten** oder einen
+      **Verschneidungs-Knoten** unter dem First am
+      Kehlsparrenfirstpunkt.
+
+    Die Auflagerung ist Eigenschaft des Tragwerks (siehe
+    `hg_tragwerk.md`), nicht des Kehlsparrens selbst. Die
+    zugehörigen Bearbeitungen (Kerve am Fuß, Firstanschnitt,
+    Backenschnitte, Abkehlung, Hexenschnitt) sind partitive
+    Bestandteile des Kehlsparrens, nicht Bestandteile der
+    Definition.
 
 ## Erläuterung (nicht normativ)
 
@@ -533,6 +550,7 @@ Kehlsparren trägt daher
 
 - die **gesamte Niederschlagslast** beider anliegender Dachflächen-
   Anteile, konzentriert entlang seiner Längsachse;
+
 - zusätzlich **Schneeansammlungs-Last** durch Sackung des Schnees
   in der Kehlrinne (besonders relevant in der Schweiz und im
   Voralpenraum; einschlägige Bemessungs-Lastfälle nach SIA 261 bzw.
@@ -558,10 +576,12 @@ beiden Trägerebenen liegt), ist die Standard-Werkstück-Lösung
   der Mitte des Kehlsparrens **vertikal weggeschnitten** (V-förmige
   Nut nach unten), so dass die beiden Dachflächen-Trägerebenen bis
   zur Mitte des Kehlsparrens „durchlaufen" können.
+
 - **Absenkung** (englisch *dropping the valley*): Der Kehlsparren
   wird als Ganzes um einen kleinen Betrag vertikal abgesenkt; die
   Schifter setzen mit ihrer Schmiege bündig auf der **Oberkante**
   des Kehlsparrens an. Alternative Lösung mit einfacherem Abbund.
+
 - **Anhebung** mit Oberkante in der Kehllinie (CAD-Standard
   Dietrich's): Der Kehlsparren wird so positioniert, dass seine
   Oberkante exakt auf der geometrischen Kehllinie liegt; die
@@ -582,6 +602,7 @@ umgekehrt** zur Gratsparren-Situation:
 - Am **Gratsparren** laufen die Gratschifter **von der Fußpfette
   (unten) schräg aufwärts zum Gratsparren** und werden von unten
   angesetzt.
+
 - Am **Kehlsparren** laufen die Kehlschifter **von der Firstpfette
   (oben) schräg abwärts zum Kehlsparren** und werden von oben
   angesetzt (Wikipedia „Schiftung": „Der Kehlschifter beginnt am
@@ -628,11 +649,14 @@ Lastfall-Ebene sind im Software-Pendant strukturell präsent.
 
 - **Kerve am Fuß** auf der Fußpfetten-Trauf-Innenecke
   (Bleischnitt nach `hg_kerve.md`).
+
 - **Firstanschnitt** als oberer Endschnitt am Firstend-Punkt der
   Kehllinie.
+
 - **Backenschnitte / Backenschmiege** an den seitlichen
   Anschluss-Flächen für die Schifter — mit **umgekehrter
   Schmiegen-Richtung** als beim Gratsparren (Schifter von oben).
+
 - **Abkehlung** der Oberkante (Folgearbeit `hg_abkehlung.md`).
 - **Hexenschnitt** am Fuß zur beidseitigen planaren Anlage von
   Traufbohle und Stirnbrett — geometrisch gespiegelt zum
@@ -650,17 +674,21 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
 - **Verschneidung Sattel × Sattel (T-Anbau)**: zwei Kehlsparren
   beidseits des Anbaus; jeder endet am Firstend-Punkt der
   niedrigeren Firstlinie auf der höheren Hauptdachfläche.
+
 - **Verschneidung Dachgaube × Hauptdach**: zwei Kehlsparren von
   den seitlichen Trauf-Innenecken der Gaube aufwärts zum
   Hauptdach.
+
 - **Verschneidung Walm × Sattel ungleich**: Walm-Gratsparren
   trifft Kehlsparren-Endpunkt am kombinierten
   Verschneidungs-Knoten.
+
 - **Verlängerung über den Trauf-Innenecken-Punkt hinaus** (CAD-
   Konstruktions-Detail, Dietrich's): zur Aufnahme einer
   Traufbohle kann der Kehlsparren über den Trauf-Innen-Eckpunkt
   hinausgeführt werden; die Definition bleibt unverändert
   anwendbar.
+
 - **Alternative Konstruktion Kehlbohle**: statt eines Kehlsparrens
   kann eine flache Bohlen-Unterlage (Kehlbohle) eingebaut werden,
   über die die Schifter durchlaufen und an der Kehllinie
@@ -679,115 +707,137 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
   antizipiert und in `hg_gratsparren.md` parallel ausgeführt.
 
 - **Geschwister-Begriffe** (andere Sparren-Spezialisierungen):
-  - `gratsparren`: mathematisch exakt symmetrisches Gegenstück auf
-    einer konvexen Gratstrecke statt einer konkaven Kehlstrecke;
-    konstruktive Asymmetrien siehe Erläuterungs-Block.
-  - `schifter` / `schiftsparren` (Folgearbeit): verkürzte Sparren,
-    die am Kehlsparren mit Schmiege ansetzen (topologisch
-    komplementär, nicht synonym; Schifter laufen am Kehlsparren
-    von oben nach unten — Topologie-Inversion gegenüber dem
-    Gratsparren).
+    - `gratsparren`: mathematisch exakt symmetrisches Gegenstück auf
+      einer konvexen Gratstrecke statt einer konkaven Kehlstrecke;
+      konstruktive Asymmetrien siehe Erläuterungs-Block.
+
+    - `schifter` / `schiftsparren` (Folgearbeit): verkürzte Sparren,
+      die am Kehlsparren mit Schmiege ansetzen (topologisch
+      komplementär, nicht synonym; Schifter laufen am Kehlsparren
+      von oben nach unten — Topologie-Inversion gegenüber dem
+      Gratsparren).
 
 - **Bestandteile (partitiv)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`, vom Bauteil geerbt)
-    mit Kehlsparrenfuß als Anfangs- und Kehlsparrenfirstpunkt als
-    Endpunkt;
-  - **Querschnitt** (vom Bauteil geerbt; rechteckig, typisch
-    mindestens wie Gratsparren des gleichen Daches);
-  - **Werkstoff** (vom Bauteil geerbt; Vollholz oder BSH);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_K);
-  - **Abkehlung** (partitive Bearbeitung, Folgearbeit
-    `hg_abkehlung.md`);
-  - **Kerven** am Fuß (siehe `hg_kerve.md`).
+    - **Bauteilachse** (`bauteilachse.Gerade`, vom Bauteil geerbt)
+      mit Kehlsparrenfuß als Anfangs- und Kehlsparrenfirstpunkt als
+      Endpunkt;
+
+    - **Querschnitt** (vom Bauteil geerbt; rechteckig, typisch
+      mindestens wie Gratsparren des gleichen Daches);
+
+    - **Werkstoff** (vom Bauteil geerbt; Vollholz oder BSH);
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_K);
+    - **Abkehlung** (partitive Bearbeitung, Folgearbeit
+      `hg_abkehlung.md`);
+
+    - **Kerven** am Fuß (siehe `hg_kerve.md`).
 
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Kehle** (`kehle`): geometrische Schnittkante zweier
-    Dachflächen, auf der die Bauteilachse des Kehlsparrens liegt;
-    das ist die konstitutive Beziehung.
-  - **Dachfläche** (`dachflaeche`): der Kehlsparren ist genau zwei
-    Dachflächen gleichzeitig zugeordnet (D_i und D_j); seine
-    Bauteilachse liegt auf E_i ∩ E_j.
-  - **Firstpfette** (`firstpfette`): das obere Auflager des
-    Kehlsparrens (Firstend-Punkt der Kehllinie) liegt
-    typischerweise an einem Firstpfetten-Knoten der höheren
-    Hauptdachfläche.
-  - **Fußpfette** (`fusspfette`): das untere Auflager des
-    Kehlsparrens liegt am Trauf-Innen-Eckpunkt auf einer
-    **durchlaufenden** Fußpfette der höheren Hauptdachfläche
-    (Asymmetrie zum Gratsparren, dessen Fuß an einem
-    Eck-Pfettenstoß zweier endender Fußpfetten liegt).
-  - **Schifter** (`schifter`, Folgearbeit): seitliche Anschluss-
-    Sparren, die mit doppelter Schmiege am Kehlsparren ansetzen.
-    Anders als am Gratsparren laufen die Schifter am Kehlsparren
-    **von oben** (Firstpfette) **abwärts** an.
+    - **Kehle** (`kehle`): geometrische Schnittkante zweier
+      Dachflächen, auf der die Bauteilachse des Kehlsparrens liegt;
+      das ist die konstitutive Beziehung.
+
+    - **Dachfläche** (`dachflaeche`): der Kehlsparren ist genau zwei
+      Dachflächen gleichzeitig zugeordnet (D_i und D_j); seine
+      Bauteilachse liegt auf E_i ∩ E_j.
+
+    - **Firstpfette** (`firstpfette`): das obere Auflager des
+      Kehlsparrens (Firstend-Punkt der Kehllinie) liegt
+      typischerweise an einem Firstpfetten-Knoten der höheren
+      Hauptdachfläche.
+
+    - **Fußpfette** (`fusspfette`): das untere Auflager des
+      Kehlsparrens liegt am Trauf-Innen-Eckpunkt auf einer
+      **durchlaufenden** Fußpfette der höheren Hauptdachfläche
+      (Asymmetrie zum Gratsparren, dessen Fuß an einem
+      Eck-Pfettenstoß zweier endender Fußpfetten liegt).
+
+    - **Schifter** (`schifter`, Folgearbeit): seitliche Anschluss-
+      Sparren, die mit doppelter Schmiege am Kehlsparren ansetzen.
+      Anders als am Gratsparren laufen die Schifter am Kehlsparren
+      **von oben** (Firstpfette) **abwärts** an.
 
 - **Abgrenzung**:
-  - **Sparren** (`sparren`): der allgemeine Sparrenbegriff verlangt
-    Falllinien-Kollinearität in einer einzelnen Dachfläche
-    (`hg_sparren.md` Bed. 3); der Kehlsparren erfüllt diese
-    Bedingung gerade nicht, sondern verlangt stattdessen
-    Kehllinien-Kollinearität. Die Asymmetrie ist in
-    `hg_sparren.md` Sektion „Mehrfachzuordnung" antizipiert und
-    oben im Wohldefiniertheits-Block ausgeführt.
-  - **Gratsparren** (`gratsparren`): mathematisch exakt
-    symmetrisches Geschwister auf einer **konvexen** Gratstrecke
-    (`hg_grat.md` Bed. 3, Normalen nach außen) statt einer
-    konkaven Kehlstrecke (`hg_kehle.md`, Normalen nach innen).
-    Konstruktiv asymmetrisch in Wasserführung,
-    Oberkanten-Bearbeitung (Abgratung vs. Abkehlung) und
-    Schifter-Topologie — siehe Erläuterungs-Block.
-  - **Schifter** (`schifter`, Folgearbeit): die Schifter setzen am
-    Kehlsparren an; sie sind topologisch komplementär, **kein
-    Synonym**. „Verschneidungssparren" wird regional mehrdeutig
-    sowohl für Kehlsparren als auch für Schiftsparren verwendet
-    und ist daher als Hauptbenennung ungeeignet.
-  - **Kehle** (`kehle`): die geometrische Kante; der Kehlsparren
-    ist das Bauteil entlang dieser Kante. Die Kehle ist eine
-    Dachkante (partitive Geometrie der Dachflächenfamilie), der
-    Kehlsparren ein Bauteil mit Bauteilachse auf dieser Kante.
-  - **Kehlbohle** (Folgearbeit `hg_kehlbohle.md`): alternative
-    Konstruktion einer Verschneidung als flache Bohlen-Unterlage
-    statt eines tragenden Kehlsparrens; kein Synonym, sondern
-    andere Lastabtragungs-Topologie.
-  - **Kehlblech** (Folgearbeit `hg_kehlblech.md` / `hg_kehlrinne`):
-    wasserführende Blechabdeckung über dem Kehlsparren oder über
-    der Kehlbohle; Eindeckungsbauteil, keine Begriffsüberschneidung
-    mit dem Kehlsparren.
-  - **Kehlbalken** (Folgearbeit `hg_kehlbalken.md`):
-    **Verwechslungsfalle**, kein Synonym. Der Kehlbalken ist der
-    **horizontale Querriegel** im Kehlbalkendach, der zwei
-    gegenüberliegende Sparren als Zugband oder Druckriegel
-    überspannt — ein vollständig anderer Bauteilbegriff. Beide
-    Begriffe stehen weder in einer Spezialisierungs- noch in einer
-    Synonymie-Beziehung; die gemeinsame Wortwurzel „Kehl-" ist
-    rein lexikalisch.
-  - **Dachfläche** (`dachflaeche`): zweidimensionales geometrisches
-    Bauteil; der Kehlsparren liegt nicht in einer einzelnen
-    Dachfläche, sondern auf der Schnittgeraden zweier
-    Dachflächen.
-  - **Dachseite** (`dachseite`): orientierungs-annotierte
-    Dachfläche; nicht selbst Träger des Kehlsparrens, sondern
-    Sicht auf die Dachfläche.
-  - **Firstpfette** (`firstpfette`): horizontaler Längsträger am
-    First; der Kehlsparren stößt am Firstend-Punkt typisch an
-    einen Firstpfetten-Knoten, ist aber kein Pfettenbauteil.
-  - **Fußpfette** (`fusspfette`): horizontaler Längsträger an der
-    Traufe; der Kehlsparren stößt am Trauf-Innen-Eckpunkt typisch
-    an eine durchlaufende Fußpfette (nicht an einen Eck-Stoß wie
-    beim Gratsparren).
-  - **Kerve** (`kerve`): partitive Bearbeitung am Kehlsparren-Fuß
-    auf der Fußpfetten-Stoßstelle; nicht selbst Sparren.
-  - **Abkehlung** (Folgearbeit `hg_abkehlung.md`): partitive
-    Bearbeitung der oberen Längskante des Kehlsparrens; nicht
-    Bestandteil der Definition. Begrifflich eigenständig
-    gegenüber der **Abgratung** (Bearbeitung am Gratsparren) —
-    Wikipedia „Kehlsparren": „die Abgratung heißt hier Kehlung".
-  - **Verschneidungssparren** (Folgearbeit
-    `hg_verschneidungssparren.md`): regional unscharfer
-    Oberbegriff für Grat- und Kehlsparren bzw. Schiftsparren; in
-    der Schweiz und Süddeutschland selten und mehrdeutig.
-  - **Schiftsparren** (`schiftsparren`, Folgearbeit): Synonym zu
-    Schifter; siehe oben.
+    - **Sparren** (`sparren`): der allgemeine Sparrenbegriff verlangt
+      Falllinien-Kollinearität in einer einzelnen Dachfläche
+      (`hg_sparren.md` Bed. 3); der Kehlsparren erfüllt diese
+      Bedingung gerade nicht, sondern verlangt stattdessen
+      Kehllinien-Kollinearität. Die Asymmetrie ist in
+      `hg_sparren.md` Sektion „Mehrfachzuordnung" antizipiert und
+      oben im Wohldefiniertheits-Block ausgeführt.
+
+    - **Gratsparren** (`gratsparren`): mathematisch exakt
+      symmetrisches Geschwister auf einer **konvexen** Gratstrecke
+      (`hg_grat.md` Bed. 3, Normalen nach außen) statt einer
+      konkaven Kehlstrecke (`hg_kehle.md`, Normalen nach innen).
+      Konstruktiv asymmetrisch in Wasserführung,
+      Oberkanten-Bearbeitung (Abgratung vs. Abkehlung) und
+      Schifter-Topologie — siehe Erläuterungs-Block.
+
+    - **Schifter** (`schifter`, Folgearbeit): die Schifter setzen am
+      Kehlsparren an; sie sind topologisch komplementär, **kein
+      Synonym**. „Verschneidungssparren" wird regional mehrdeutig
+      sowohl für Kehlsparren als auch für Schiftsparren verwendet
+      und ist daher als Hauptbenennung ungeeignet.
+
+    - **Kehle** (`kehle`): die geometrische Kante; der Kehlsparren
+      ist das Bauteil entlang dieser Kante. Die Kehle ist eine
+      Dachkante (partitive Geometrie der Dachflächenfamilie), der
+      Kehlsparren ein Bauteil mit Bauteilachse auf dieser Kante.
+
+    - **Kehlbohle** (Folgearbeit `hg_kehlbohle.md`): alternative
+      Konstruktion einer Verschneidung als flache Bohlen-Unterlage
+      statt eines tragenden Kehlsparrens; kein Synonym, sondern
+      andere Lastabtragungs-Topologie.
+
+    - **Kehlblech** (Folgearbeit `hg_kehlblech.md` / `hg_kehlrinne`):
+      wasserführende Blechabdeckung über dem Kehlsparren oder über
+      der Kehlbohle; Eindeckungsbauteil, keine Begriffsüberschneidung
+      mit dem Kehlsparren.
+
+    - **Kehlbalken** (Folgearbeit `hg_kehlbalken.md`):
+      **Verwechslungsfalle**, kein Synonym. Der Kehlbalken ist der
+      **horizontale Querriegel** im Kehlbalkendach, der zwei
+      gegenüberliegende Sparren als Zugband oder Druckriegel
+      überspannt — ein vollständig anderer Bauteilbegriff. Beide
+      Begriffe stehen weder in einer Spezialisierungs- noch in einer
+      Synonymie-Beziehung; die gemeinsame Wortwurzel „Kehl-" ist
+      rein lexikalisch.
+
+    - **Dachfläche** (`dachflaeche`): zweidimensionales geometrisches
+      Bauteil; der Kehlsparren liegt nicht in einer einzelnen
+      Dachfläche, sondern auf der Schnittgeraden zweier
+      Dachflächen.
+
+    - **Dachseite** (`dachseite`): orientierungs-annotierte
+      Dachfläche; nicht selbst Träger des Kehlsparrens, sondern
+      Sicht auf die Dachfläche.
+
+    - **Firstpfette** (`firstpfette`): horizontaler Längsträger am
+      First; der Kehlsparren stößt am Firstend-Punkt typisch an
+      einen Firstpfetten-Knoten, ist aber kein Pfettenbauteil.
+
+    - **Fußpfette** (`fusspfette`): horizontaler Längsträger an der
+      Traufe; der Kehlsparren stößt am Trauf-Innen-Eckpunkt typisch
+      an eine durchlaufende Fußpfette (nicht an einen Eck-Stoß wie
+      beim Gratsparren).
+
+    - **Kerve** (`kerve`): partitive Bearbeitung am Kehlsparren-Fuß
+      auf der Fußpfetten-Stoßstelle; nicht selbst Sparren.
+
+    - **Abkehlung** (Folgearbeit `hg_abkehlung.md`): partitive
+      Bearbeitung der oberen Längskante des Kehlsparrens; nicht
+      Bestandteil der Definition. Begrifflich eigenständig
+      gegenüber der **Abgratung** (Bearbeitung am Gratsparren) —
+      Wikipedia „Kehlsparren": „die Abgratung heißt hier Kehlung".
+
+    - **Verschneidungssparren** (Folgearbeit
+      `hg_verschneidungssparren.md`): regional unscharfer
+      Oberbegriff für Grat- und Kehlsparren bzw. Schiftsparren; in
+      der Schweiz und Süddeutschland selten und mehrdeutig.
+
+    - **Schiftsparren** (`schiftsparren`, Folgearbeit): Synonym zu
+      Schifter; siehe oben.
 
 ## Quellen
 
@@ -795,14 +845,19 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
 
 - SIA 232/1:2020, „Geneigte Dächer", Schweizerischer Ingenieur- und
   Architektenverein, Zürich, Abschnitt 1.
+
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
   Architektenverein, Zürich, Abschnitt 4 und 5.
+
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
   von Holzbauten – Teil 1-1: Allgemeines", Abschnitt 5 und 6.
+
 - DIN 1356-1:1995-02, „Bauzeichnungen – Teil 1: Arten, Inhalte und
   Grundregeln der Darstellung", Abschnitt 5.
+
 - DIN 18338:2019-09, „VOB Teil C: Dachdeckungs- und
   Dachabdichtungsarbeiten", Abschnitt 0.
+
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken", Abschnitt 8 und 12.
 
@@ -810,12 +865,15 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
 
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich, aktuelle
   Auflage.
+
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*
   Lignum, Zürich, aktuelle Auflage.
+
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Auflage, Beuth Verlag, Berlin 2015.
 - Natterer, J.; Herzog, T.; Volz, M.: *Holzbau-Atlas.* 4. Auflage,
   Birkhäuser, Basel 2003.
+
 - Krämer, V.: *Grundwissen des Zimmerers.* Bruderverlag, Köln 2006.
 - Koepf, H.; Binding, G.: *Bildwörterbuch der Architektur.*
   4. Auflage, Kröner, Stuttgart 2005, Eintrag „Kehlsparren".
@@ -827,18 +885,24 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
 - Wikipedia, Lemmata „Kehlsparren", „Schifter", „Schiftung",
   „Hexenschnitt", „Walmdach", „Dachausmittlung" (abgerufen
   2026-05-14).
+
 - zimmerer-treff.com: „Austragung von Kehlsparren";
   „Rechnerischer Abbund Kehlsparren".
+
 - polybau.ch (Schweiz): „Austragung Kehlsparren / rechnerischer
   Abbund" (paralleler URL-Pfad zu zimmerer-treff.com).
+
 - Greifswalder Zimmerer: „Rechnerischer Abbund Kehlsparren".
 - Bund Deutscher Zimmermeister, Handbuch „Anleitung Kehl-/
   Gratsparrengrafik" und „Kehlbohlengrafik" (zimmerer.de).
+
 - zimmererzentrum.de DigiBAU „Austragung Kehlsparren gleiche
   Dachneigung mit Hexenschnitt".
+
 - zimmerin.de „Dachausmittlung".
 - Zimmerer-Bayern Gesellenprüfung 2019 (Kehlsparren als
   Prüfungsthema).
+
 - baubeaver.de: „Kehlsparren".
 - dachdecker.com: „Kehlsparren".
 - Bemessungssoftware: Frilo DGK „Grat- und Kehlsparren"; pbs.de
@@ -847,6 +911,7 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
   Harzer-Statik „Kehlsparren"; Dietrich's „Dachbauteile /
   Kehlsparren" und Support-Blog „Verlängerung eines Kehlsparrens
   über den Kehltraufpunkt hinaus".
+
 - Angelsächsische Valley-Rafter-Literatur: carpentrycompendium.com
   „Valley Rafters" („The top of the unbacked valley rafter rises
   slightly above the geometric intersection and must be cut off.");
@@ -859,12 +924,16 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
 
 - Lignum HBT (aktuelle Auflage), spezifische Begriffsbelegung
   „Kehlsparren"; online nicht volltext-indiziert.
+
 - Lignatec „Geneigte Dächer in Holzbauweise", spezifische
   Begriffsbelegung „Kehlsparren"; online nicht volltext-indiziert.
+
 - SIA 261:2020 Lastfall „Schneeanhäufung in Kehlen" — Existenz
   vermutet, spezifische Stelle nicht direkt zitiert.
+
 - Direkte Volltextstellen Mönck/Rug, Natterer Holzbau-Atlas,
   Blass/Sandhaas, Gerner, Krämer für „Kehlsparren" — nur über
   Inhaltsverzeichnis bestätigt.
+
 - Koepf/Binding-Eintragstext „Kehlsparren": Pendant zum (wörtlich
   zitierten) Gratsparren-Eintrag vermutet, nicht direkt zitierbar.

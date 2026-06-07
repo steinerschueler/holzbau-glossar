@@ -210,12 +210,15 @@ Sei
 - D = (E, P, n_a) eine Dachfläche im Sinne von `dachflaeche` mit
   Trägerebene E, Umrisspolygon P und nach außen gerichteter
   Einheits-Normalen n_a ∈ S²,
+
 - α(D) = arccos(⟨n_a, e_z⟩) ∈ [0, π/2) die Dachneigung von D im Sinne
   von `dachneigung`,
+
 - A = (𝒟, 𝒮, H) ein Dachaufbau im Sinne von `dachaufbau` mit
   Trägerflächen-Familie 𝒟 = { D₁, …, D_m }, geordneter Schichtfolge
   𝒮 = (S₁, …, S_k) von innen nach außen und abgeleiteter Dachhaut
   H im Sinne von `dachhaut`,
+
 - F:= ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich des Aufbaus,
 - h_max ∈ ℝ_{≥0} ∪ { +∞ } (in mm) die zulässige Wasserdruck-Höhe der
   Abdichtungs-Bauart als frei wählbare Tupel-Komponente.
@@ -226,6 +229,7 @@ Dachaufbaus A genau dann, wenn:
 1. **Außenposition:** S_k ist die nach außen weisende, am höchsten
    gelegene Schicht des Aufbaus; die obere Hüllfläche der Außenseite
    von S_k ist die Dachhaut H = H(A) im Sinne von `dachhaut`.
+
 2. **Durchgehende Trägerschicht:** Die Realisierung von S_k über dem
    Trägerbereich F ist eine **flächig zusammenhängende, einfach
    überdeckende** Punktmenge M_k ⊂ ℝ³, die für jeden Punkt q ∈ F die
@@ -234,11 +238,13 @@ Dachaufbaus A genau dann, wenn:
    Überlappungs-Hierarchie aus diskreten Einzelelementen wie bei der
    Eindeckung; die Schicht ist topologisch eine Mannigfaltigkeit über
    F, ggf. unterteilt in Bahnen mit werksgeprüften Nähten N ⊂ M_k.)
+
 3. **Wasserdichtheit gegen Druckwasser h:** Für jede Wasserdruck-Höhe
    h ≤ h_max(S_k) hält S_k einer stehenden Wassersäule der Höhe h
    stand, ohne dass Wasser durch S_k in die darunterliegende Schicht
    S_{k−1} eindringt. Die Wasserdichtheit ist Eigenschaft der Schicht
    selbst, **nicht** Funktion der Dachneigung α(D_i).
+
 4. **Neigungs-Unabhängigkeit der Funktion:** Die Funktion „wasserdicht"
    ist erfüllt für jede zulässige Dachneigung α(D_i) ∈ [0, α_obergrenze]
    mit α_obergrenze norm- bzw. produktspezifisch (typisch:
@@ -263,14 +269,17 @@ spezifischen Druckwasser-Schwelle und μ als dem Material-System
   `S_k.funktion = ABDICHTUNG` und vorgegebener Druckwasser-Schwelle
   h_max ∈ ℝ_{≥0} ∪ { +∞ } existiert genau eine Dachabdichtung als
   äußerste Schicht des Aufbaus.
+
 - **Eindeutigkeit.** S_k ist als letztes Element der geordneten Liste
   𝒮 eindeutig bestimmt; die Wahl des Material-Systems μ und der
   Schwelle h_max ist Modellierungsentscheidung der Domänen-Schicht,
   die obigen Bedingungen sind invariant unter unterschiedlichen
   Realisierungen.
+
 - **Trägerbezug.** Die Dachabdichtung ist über demselben Trägerbereich
   F = ⋃_i F(P_i) definiert wie der zugrunde liegende Aufbau A; sie hat
   keine eigenständige geometrische Erstreckung jenseits des Aufbaus.
+
 - **Konsistenz mit `dachhaut`.** Die Dachhaut H ist die obere Hüllfläche
   der äußeren Punktmenge der Dachabdichtung; sie wird in `dachhaut` als
   Funktion der Punktwolke der äußersten Schicht konstruiert. Hier ist
@@ -278,15 +287,18 @@ spezifischen Druckwasser-Schwelle und μ als dem Material-System
   Eindeckung ist M_k topologisch eine Mannigfaltigkeit (ohne
   Überlappungs-Diskontinuität); die Konstruktion ist konsistent und
   führt zu der Dachhaut des umfassenden Aufbaus.
+
 - **Konsistenz mit `dachneigung`.** Im Gegensatz zur Eindeckung
   (Bedingung α ≥ α_min(S_k) > 0) gibt es **keine** untere
   material-spezifische Mindestneigung; die Abdichtung funktioniert
   auch bei α = 0 (Flachdach). Eine obere Schranke α_obergrenze
   existiert nur in der Praxis (verarbeitungs- und ablauftechnisch),
   nicht in der Definition.
+
 - **Grenzfall α = 0 (Flachdach).** Bedingung 4 ist für α = 0 explizit
   erfüllt; die Dachabdichtung ist gerade die zentrale Schicht des
   Flachdaches.
+
 - **Abgrenzungs-Konsistenz mit `eindeckung`.** Die Eindeckung erfordert
   Bedingung 3 ihrer Definition (schuppige Struktur mit Überlappungs-
   relation ≻) und Bedingung 4 (Regensicherheit über Neigung, **nicht**
@@ -296,6 +308,7 @@ spezifischen Druckwasser-Schwelle und μ als dem Material-System
   Druckwasser, **nicht** über Neigung). Eine Schicht S_k kann höchstens
   eine der beiden Definitionen erfüllen; Eindeckung und Dachabdichtung
   sind im Glossar exklusiv.
+
 - **Nicht-Zirkularität.** Die Definition verwendet die Primitive
   Punkt, Vektor, Halbgerade, Punktmenge sowie die bereits definierten
   Begriffe `dachflaeche`, `dachneigung`, `dachaufbau`, `dachhaut`. Sie
@@ -331,19 +344,25 @@ stoffsystematisch belegt:
   Lagigkeit zwei Lagen, in Sondersituationen drei Lagen. Bituminöse
   Bahnen sind nicht naturwurzelfest; bei Begrünung Wurzelschutz
   separat erforderlich.
+
 - **Kunststoff-/Elastomerabdichtung** (Stoffnorm DIN EN 13956) mit
   Untergruppen:
-  - **PVC-P** (weichmacherhaltiges PVC) — mechanisch befestigt oder
-    vollflächig verklebt.
-  - **FPO / TPO** (flexibles bzw. thermoplastisches Polyolefin) —
-    weichmacherfrei, heiß verschweißt.
-  - **EPDM** (Ethylen-Propylen-Dien-Kautschuk) — Elastomer,
-    großformatige Bahnen, geklebt oder mechanisch befestigt.
-  - **ECB** (Ethylencopolymerisat-Bitumen) — Polymer-modifizierte
-    Bitumen-Hybride.
 
-  Bauart überwiegend einlagig; oft FLL-/EN-13948-wurzelfest in
-  Werks-Spezifikation.
+    - **PVC-P** (weichmacherhaltiges PVC) — mechanisch befestigt oder
+      vollflächig verklebt.
+
+    - **FPO / TPO** (flexibles bzw. thermoplastisches Polyolefin) —
+      weichmacherfrei, heiß verschweißt.
+
+    - **EPDM** (Ethylen-Propylen-Dien-Kautschuk) — Elastomer,
+      großformatige Bahnen, geklebt oder mechanisch befestigt.
+
+    - **ECB** (Ethylencopolymerisat-Bitumen) — Polymer-modifizierte
+      Bitumen-Hybride.
+
+    Bauart überwiegend einlagig; oft FLL-/EN-13948-wurzelfest in
+    Werks-Spezifikation.
+
 - **Flüssigkunststoffabdichtung** — flüssig aufgetragenes Harzsystem
   PMMA (Polymethylmethacrylat), PUR (Polyurethan) oder UP
   (ungesättigte Polyester) mit Verstärkungs-Vlies. Im Geltungsbereich
@@ -414,79 +433,93 @@ Damp-Proof-Course-Membranen bezogen).
 - **Oberbegriff:** `schicht` (gemeinsamer Sammelbegriff für die
   einzelnen Schichten des Dachaufbaus, im selben R-Schritt
   angelegt).
+
 - **Bestandteil von:** `dachaufbau` (als äußerste Schicht S_k einer
   geordneten Schichtfolge mit `funktion = ABDICHTUNG`); `dach`
   (mittelbar über den Dachaufbau).
+
 - **Spezialisierungen (sealed, trigger-basiert):**
-  - **Bitumenabdichtung** (Stoffnorm DIN EN 13707).
-  - **Kunststoffabdichtung** mit Subgruppen PVC-P, FPO/TPO, EPDM, ECB
-    (Stoffnorm DIN EN 13956).
-  - **Flüssigkunststoffabdichtung** mit Harzsystemen PMMA, PUR, UP
-    (ETA auf Basis ETAG 005).
+    - **Bitumenabdichtung** (Stoffnorm DIN EN 13707).
+    - **Kunststoffabdichtung** mit Subgruppen PVC-P, FPO/TPO, EPDM, ECB
+      (Stoffnorm DIN EN 13956).
+
+    - **Flüssigkunststoffabdichtung** mit Harzsystemen PMMA, PUR, UP
+      (ETA auf Basis ETAG 005).
+
 - **Abgrenzung:**
-  - **`schicht`** (Forward-Verweis A — gemeinsamer Oberbegriff, parallel
-    entstehend): generischer Schicht-Wrapper im `dachaufbau`; die
-    Dachabdichtung ist die spezielle Schicht mit
-    `funktion = ABDICHTUNG`.
-  - **`eindeckung`:** die schuppige, regensichere äußerste Schicht des
-    **geneigten** Daches. Eindeckung wird gewählt, wenn α ≥ α_min(S_k)
-    eines Eindeckungs-Materials und die Schicht aus diskreten
-    Einzelelementen mit Überlappungs-Relation aufgebaut ist;
-    Dachabdichtung wird gewählt, wenn die Schicht eine durchgehende
-    Mannigfaltigkeit ist und Wasserdichtheit gegen Druckwasser leistet.
-    Die beiden Definitionen sind exklusiv.
-  - **`unterdach`:** die **zweite** wasserführende Ebene unterhalb der
-    Eindeckung am geneigten Dach. Bauteilrechtlich getrennt: das
-    Unterdach steht **unter** einer Eindeckung, die Dachabdichtung ist
-    **selbst** äußerste Schicht. Funktions-Äquivalenz besteht zur
-    CH-Klasse „ausserordentlich beanspruchtes Unterdach" (wasserdicht,
-    verschweißte Bahnen), die der Material-Anforderung einer
-    Dachabdichtung gleichkommt; die App führt beide Begriffe dennoch
-    getrennt.
-  - **`dachhaut`:** die geometrische, fiktive Hüllfläche **über** der
-    Dachabdichtung. Die Dachhaut ist Geometrie (kein materielles
-    Bauteil); die Dachabdichtung ist Material. Die Dachhaut wird aus
-    der äußeren Punktmenge der Dachabdichtung konstruiert.
-  - **`dachaufbau`:** die gesamte geordnete Schichtfolge oberhalb des
-    Tragwerks. Die Dachabdichtung ist nur die äußerste Schicht dieses
-    Aufbaus, nicht der Aufbau selbst.
-  - **`dachflaeche`:** die geometrische, dickenlose Bezugsebene **unter**
-    dem Dachaufbau. Die Dachabdichtung liegt über der Dachfläche im
-    Halbraum der äußeren Normalen.
-  - **`bauwerksabdichtung`** (Forward-Verweis A — eigene Begriffsfamilie,
-    Trigger: erste erdberührte Schicht-Modellierung): die wasserdichte
-    Schicht an **erdberührten** Bauteilen (Keller, Tiefgarage,
-    Nassraum) nach DIN 18533 (DE), SIA 270 (CH). Bauteilrechtlich von
-    der Dachabdichtung getrennt: andere Norm, anderer Lastfall
-    (Erddruck, drückendes Wasser, Bodenfeuchte). Die Produktnorm
-    DIN EN 13967 (Sperrbahnen gegen Bodenfeuchte/Wasser) gehört
-    hierher, **nicht** zur Dachabdichtung.
-  - **`dampfsperre`** (Forward-Verweis A — Trigger: detaillierte
-    Schichtfolge im Dachaufbau): eine **andere** Schicht im selben
-    Dachaufbau, die innenseitig vor der Dämmung liegt und den
-    Wasserdampf-Transport aus dem Raumklima in die Dämmung begrenzt
-    (Sd-Wert-gesteuert). Sie ist **keine** Abdichtung im Sinne der
-    Wasserdichtheit gegen flüssiges Wasser; die Produktnorm DIN EN
-    13970 (Bitumen-Dampfsperrbahnen) ist gerade nicht
-    Dachabdichtungs-Norm. Die Dampfsperre liegt im Aufbau unter der
-    Dämmung und unter der Dachabdichtung.
-  - **`dachbegruenung`** (Forward-Verweis A — Trigger: erstes Tool
-    für genutzte Flachdächer): die Schichtfolge Schutzlage / Drainage
-    / Filtervlies / Substrat / Vegetation oberhalb der Dachabdichtung
-    (FLL-Richtlinie 2018, DIN EN 13948). Sie ist **kein** Material-
-    Subtyp der Dachabdichtung, sondern Folge-Schicht. Die
-    Wurzelfestigkeit der unterliegenden Abdichtung ist Eigenschaft
-    (Boolean) am Bitumen-/Kunststoff-Subtyp.
-  - **`flachdach`** (Forward-Verweis A — Trigger: eigenständige
-    Flachdach-Modellierung): die **Dachform** mit α ≈ 0 (typisch < 5°
-    Neigung). Die Dachabdichtung ist Schicht im Dachaufbau eines
-    Flachdaches, aber auch eines genutzten geneigten Daches (Balkon,
-    Loggia, Laubengang); die beiden Begriffe sind orthogonal.
-  - **`bekiesung`** (Forward-Verweis A — Trigger: erste Aufbau-
-    Schicht-Modellierung oberhalb der Abdichtung): die Kiesschüttung
-    als Auflast oberhalb einer Dachabdichtung (Windsogsicherung,
-    mechanischer Schutz, UV-Schutz bei Bitumenabdichtungen). Sie ist
-    Folge-Schicht, kein Abdichtungs-Bestandteil.
+    - **`schicht`** (Forward-Verweis A — gemeinsamer Oberbegriff, parallel
+      entstehend): generischer Schicht-Wrapper im `dachaufbau`; die
+      Dachabdichtung ist die spezielle Schicht mit
+      `funktion = ABDICHTUNG`.
+
+    - **`eindeckung`:** die schuppige, regensichere äußerste Schicht des
+      **geneigten** Daches. Eindeckung wird gewählt, wenn α ≥ α_min(S_k)
+      eines Eindeckungs-Materials und die Schicht aus diskreten
+      Einzelelementen mit Überlappungs-Relation aufgebaut ist;
+      Dachabdichtung wird gewählt, wenn die Schicht eine durchgehende
+      Mannigfaltigkeit ist und Wasserdichtheit gegen Druckwasser leistet.
+      Die beiden Definitionen sind exklusiv.
+
+    - **`unterdach`:** die **zweite** wasserführende Ebene unterhalb der
+      Eindeckung am geneigten Dach. Bauteilrechtlich getrennt: das
+      Unterdach steht **unter** einer Eindeckung, die Dachabdichtung ist
+      **selbst** äußerste Schicht. Funktions-Äquivalenz besteht zur
+      CH-Klasse „ausserordentlich beanspruchtes Unterdach" (wasserdicht,
+      verschweißte Bahnen), die der Material-Anforderung einer
+      Dachabdichtung gleichkommt; die App führt beide Begriffe dennoch
+      getrennt.
+
+    - **`dachhaut`:** die geometrische, fiktive Hüllfläche **über** der
+      Dachabdichtung. Die Dachhaut ist Geometrie (kein materielles
+      Bauteil); die Dachabdichtung ist Material. Die Dachhaut wird aus
+      der äußeren Punktmenge der Dachabdichtung konstruiert.
+
+    - **`dachaufbau`:** die gesamte geordnete Schichtfolge oberhalb des
+      Tragwerks. Die Dachabdichtung ist nur die äußerste Schicht dieses
+      Aufbaus, nicht der Aufbau selbst.
+
+    - **`dachflaeche`:** die geometrische, dickenlose Bezugsebene **unter**
+      dem Dachaufbau. Die Dachabdichtung liegt über der Dachfläche im
+      Halbraum der äußeren Normalen.
+
+    - **`bauwerksabdichtung`** (Forward-Verweis A — eigene Begriffsfamilie,
+      Trigger: erste erdberührte Schicht-Modellierung): die wasserdichte
+      Schicht an **erdberührten** Bauteilen (Keller, Tiefgarage,
+      Nassraum) nach DIN 18533 (DE), SIA 270 (CH). Bauteilrechtlich von
+      der Dachabdichtung getrennt: andere Norm, anderer Lastfall
+      (Erddruck, drückendes Wasser, Bodenfeuchte). Die Produktnorm
+      DIN EN 13967 (Sperrbahnen gegen Bodenfeuchte/Wasser) gehört
+      hierher, **nicht** zur Dachabdichtung.
+
+    - **`dampfsperre`** (Forward-Verweis A — Trigger: detaillierte
+      Schichtfolge im Dachaufbau): eine **andere** Schicht im selben
+      Dachaufbau, die innenseitig vor der Dämmung liegt und den
+      Wasserdampf-Transport aus dem Raumklima in die Dämmung begrenzt
+      (Sd-Wert-gesteuert). Sie ist **keine** Abdichtung im Sinne der
+      Wasserdichtheit gegen flüssiges Wasser; die Produktnorm DIN EN
+      13970 (Bitumen-Dampfsperrbahnen) ist gerade nicht
+      Dachabdichtungs-Norm. Die Dampfsperre liegt im Aufbau unter der
+      Dämmung und unter der Dachabdichtung.
+
+    - **`dachbegruenung`** (Forward-Verweis A — Trigger: erstes Tool
+      für genutzte Flachdächer): die Schichtfolge Schutzlage / Drainage
+      / Filtervlies / Substrat / Vegetation oberhalb der Dachabdichtung
+      (FLL-Richtlinie 2018, DIN EN 13948). Sie ist **kein** Material-
+      Subtyp der Dachabdichtung, sondern Folge-Schicht. Die
+      Wurzelfestigkeit der unterliegenden Abdichtung ist Eigenschaft
+      (Boolean) am Bitumen-/Kunststoff-Subtyp.
+
+    - **`flachdach`** (Forward-Verweis A — Trigger: eigenständige
+      Flachdach-Modellierung): die **Dachform** mit α ≈ 0 (typisch < 5°
+      Neigung). Die Dachabdichtung ist Schicht im Dachaufbau eines
+      Flachdaches, aber auch eines genutzten geneigten Daches (Balkon,
+      Loggia, Laubengang); die beiden Begriffe sind orthogonal.
+
+    - **`bekiesung`** (Forward-Verweis A — Trigger: erste Aufbau-
+      Schicht-Modellierung oberhalb der Abdichtung): die Kiesschüttung
+      als Auflast oberhalb einer Dachabdichtung (Windsogsicherung,
+      mechanischer Schutz, UV-Schutz bei Bitumenabdichtungen). Sie ist
+      Folge-Schicht, kein Abdichtungs-Bestandteil.
 
 ## Quellen
 
@@ -494,30 +527,40 @@ Damp-Proof-Course-Membranen bezogen).
 
 - DIN 18336:2023-09 „VOB Teil C: Allgemeine Technische
   Vertragsbedingungen für Bauleistungen – Abdichtungsarbeiten".
+
 - DIN 18531-1:2025-08 „Abdichtung von Dächern sowie von Balkonen,
   Loggien und Laubengängen – Teil 1: Nicht genutzte und genutzte
   Dächer – Anforderungen, Planungs- und Ausführungsgrundsätze".
+
 - DIN 18531-2:2025-08 „… Teil 2: Stoffe".
 - DIN 18531-3:2025-08 „… Teil 3: Auswahl, Ausführung, Details".
 - DIN 18531-4:2025-08 „… Teil 4: Instandhaltung".
 - DIN 18531-5:2025-08 „… Teil 5: Abdichtungen für Balkone, Loggien
   und Laubengänge".
+
 - SIA 271:2021 „Abdichtungen von Hochbauten", Schweizerischer
   Ingenieur- und Architektenverein, Zürich.
+
 - ÖNORM B 3691:2019-05-01 „Planung und Ausführung von
   Dachabdichtungen", Austrian Standards International, Wien.
+
 - DIN EN 13707:2013-08 „Abdichtungsbahnen – Bitumen-
   Dachabdichtungsbahnen mit Trägereinlage".
+
 - DIN EN 13956:2013-02 „Abdichtungsbahnen – Kunststoff- und
   Elastomer-Dachabdichtungsbahnen".
+
 - ETAG 005 „Flüssig aufzubringende Dachabdichtungen", EOTA.
 - DIN EN 13948:2007-12 „Abdichtungsbahnen – Bitumen-, Kunststoff-
   und Elastomerbahnen für Dachabdichtungen – Bestimmung des
   Widerstandes gegen Durchwurzelung".
+
 - FLL-Dachbegrünungsrichtlinie 2018, Forschungsgesellschaft
   Landschaftsentwicklung Landschaftsbau e.V., Bonn.
+
 - ISO 6707-1:2020 „Buildings and civil engineering works –
   Vocabulary – Part 1: General terms".
+
 - buildingSMART IFC 4.3.2 (ISO 16739-1:2024), `IfcCovering` mit
   `IfcCoveringTypeEnum.ROOFING`.
 
@@ -525,20 +568,26 @@ Damp-Proof-Course-Membranen bezogen).
 
 - Lignum (Hrsg.): *Lignatec — Flachdächer in Holzbauweise.*
   Lignum, Zürich, aktuelle Auflage.
+
 - Gebäudehülle Schweiz, Technische Kommission Flachdach, Merkblätter
   zur SIA 271:2021.
+
 - suissetec, Wegleitung zur Norm SIA 271 „Abdichtungen von
   Hochbauten".
+
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Auflage, Beuth Verlag 2015, Kap. „Flachdach / Abdichtung".
 - BauNetz Wissen: „Dachabdichtungsnorm DIN 18531",
   „FLL-Prüfverfahren Wurzelfestigkeit", „Flüssigkunststoff im
   Detail".
+
 - Holzbau Deutschland, Merkblatt „Begriffe und Klassifizierungen
   für den Holzbau".
+
 - Bauder AG, Triflex GmbH, Sika Schweiz AG, Soprema GmbH:
   Produktdokumentationen Bitumen-, Kunststoff- und Flüssigabdichtungs-
   systeme.
+
 - ZinCo GmbH, Bundesverband GebäudeGrün (BuGG), Fachvereinigung
   Bauwerksbegrünung (FBB): Aufbaurichtlinien Dachbegrünung über
   Abdichtung.
@@ -547,7 +596,9 @@ Damp-Proof-Course-Membranen bezogen).
 
 - Recherche-Bericht
   [intern].
+
 - magazin-quartier.de, dach-sachverstaendiger.de, derdichtebau.de:
   zum K1/K2-/Einwirkungsklassen-Wegfall in DIN 18531:2025-08.
+
 - Wikipedia, Lemmata „Dachabdichtung", „Flachdach", „Bitumenbahn",
   „Kunststoffbahn", „Flüssigkunststoff" (abgerufen 2026-05-14).

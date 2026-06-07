@@ -76,8 +76,10 @@ Sei
 - D = (E, P, n_a) ∈ 𝒟 eine geneigte Dachfläche im Sinne von
   `dachflaeche` mit Trägerebene E, Umrisspolygon P = (v₁, …, v_k),
   äußerer Normale n_a und Dachneigung α ∈ (0, π/2),
+
 - (e₁, …, e_k) die zyklische Folge der Polygonrandkanten
   e_i:= [v_i, v_{i+1}], v_{k+1}:= v_1,
+
 - e_z = (0, 0, 1)ᵀ die vertikale Achse,
 - ε_W:= Toleranzen.WINKEL_EPS die Winkeltoleranz,
 - ε_L:= Toleranzen.LAENGE_EPS die Längentoleranz,
@@ -125,6 +127,7 @@ Familie 𝒟 genau dann, wenn
    Pultkante — die Kante ist die Traufe. Diese Teilbedingung sichert
    die Disjunktheit zur Traufe **definitorisch**, nicht erst über die
    Auswertungsreihenfolge,
+
 4. **Keine zweite Dachfläche**: p erfüllt nicht (∗), d. h. es gibt
    keine andere Dachfläche D_j ∈ 𝒟 (j ≠ i), in deren Polygonbereich
    F(P_j) p ganz enthalten wäre. Anders ausgedrückt: p ist
@@ -143,12 +146,14 @@ besteht sie aus genau einer Strecke.
   Pultdach (m = 1) trivial erfüllt; bei einem Pultdach an einer
   Brandwand bleibt sie erfüllt, weil die Wand keine Dachfläche
   ist (siehe Quellenkonflikt zur Wandanschlusskante).
+
 - **Eindeutigkeit**: Bei einer geneigten Dachfläche mit eindeutiger
   oberer Polygonseite (Regelfall im Holzbau) ist die Pultkante als
   Strecke oder zusammenhängender Streckenzug eindeutig bestimmt.
   Bei Sonderformen mit mehreren gleichhohen oberen Randkanten
   liefert die Definition mehrere gleichberechtigte Strecken — das
   ist gewollt.
+
 - **Disjunktheit zu Traufe**: Traufe ist die Polygonrandkante mit
   **niedrigster** mittlerer Höhe in H(D); Pultkante diejenige mit
   **höchster** — und nach Bedingung 3 nur dann, wenn sich Minimum und
@@ -161,13 +166,17 @@ besteht sie aus genau einer Strecke.
   Auswertungsreihenfolge. Eine vorgelagerte Schnittkanten-Prüfung
   (First/Grat/Kehle) bleibt als Optimierung sinnvoll, ist für die
   Korrektheit der Klassifikation aber nicht mehr nötig.
+
 - **Disjunktheit zu First**: First ist Schnittkante zweier
   Dachflächen; Bedingung 4 schließt das aus.
+
 - **Disjunktheit zu Ortgang**: Ortgang verläuft entlang der
   Falllinie und ist nicht horizontal; Bedingung 2 schließt das aus.
+
 - **Konsistenz mit `dachkante`**: Eine Pultkante ist nach Bedingung 1
   eine Randkante der Dachfläche D, also eine Dachkante (Fall
   „Randkante").
+
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
   `strecke`, `dachflaeche`, `polygon`, `vektor`, `toleranzen` und
   den Oberbegriff `dachkante`.
@@ -186,6 +195,7 @@ Dachhaut).
 
 Bei einem klassischen Pultdach mit rechteckigem Grundriss hat die
 einzige Dachfläche genau vier Polygonrandkanten:
+
 - eine Traufe (untere horizontale Kante),
 - eine Pultkante (obere horizontale Kante),
 - zwei Ortgänge (seitliche, geneigte Kanten entlang der Falllinie).
@@ -200,29 +210,37 @@ werden.
 - **Oberbegriff**: `dachkante`, Spezialfall „Randkante" mit
   zusätzlichen Lagebedingungen (näherungsweise horizontal, höchste
   mittlere Höhe, keine Schnittkante mit einer zweiten Dachfläche).
+
 - **Geschwister-Begriffe** (andere Spezialisierungen von
   `dachkante`): `traufe`, `first`, `ortgang`, `grat`, `kehle`.
+
 - **Bestandteile (partitiv)**: Anfangspunkt und Endpunkt der
   Pultlinien-Strecke bzw. die Stützpunkte des Streckenzugs.
+
 - **Abgrenzung**:
-  - **Traufe** (`traufe`): untere horizontale Randkante; gleiches
-    Schema, aber Minimum statt Maximum der mittleren Höhe.
-  - **First** (`first`): obere horizontale Schnittkante zweier
-    Dachflächen; Bedingung 4 (keine zweite Dachfläche) schließt
-    diese Klassifikation aus.
-  - **Ortgang** (`ortgang`): seitliche, geneigte Randkante entlang
-    der Falllinie; nicht horizontal.
-  - **Grat** (`grat`) / **Kehle** (`kehle`): geneigte Schnittkanten
-    zweier Dachflächen.
-  - **Wandanschlusskante** (eigener Eintrag folgt bei Bedarf): jene
-    Kante, an der eine Dachfläche an eine aufgehende Wand stößt;
-    kann mit der Pultkante geometrisch zusammenfallen, ist aber eine
-    von der Wand-Klassifikation ausgehende, davon **unabhängige**
-    Eigenschaft. Eine Kante kann zugleich Pultkante und
-    Wandanschlusskante sein.
-  - **Attika** / **Attikakante**: aufgehende Mauerkrone an einem
-    Flachdachrand; betrifft nicht das Pultdach und ist hier nicht
-    definiert.
+    - **Traufe** (`traufe`): untere horizontale Randkante; gleiches
+      Schema, aber Minimum statt Maximum der mittleren Höhe.
+
+    - **First** (`first`): obere horizontale Schnittkante zweier
+      Dachflächen; Bedingung 4 (keine zweite Dachfläche) schließt
+      diese Klassifikation aus.
+
+    - **Ortgang** (`ortgang`): seitliche, geneigte Randkante entlang
+      der Falllinie; nicht horizontal.
+
+    - **Grat** (`grat`) / **Kehle** (`kehle`): geneigte Schnittkanten
+      zweier Dachflächen.
+
+    - **Wandanschlusskante** (eigener Eintrag folgt bei Bedarf): jene
+      Kante, an der eine Dachfläche an eine aufgehende Wand stößt;
+      kann mit der Pultkante geometrisch zusammenfallen, ist aber eine
+      von der Wand-Klassifikation ausgehende, davon **unabhängige**
+      Eigenschaft. Eine Kante kann zugleich Pultkante und
+      Wandanschlusskante sein.
+
+    - **Attika** / **Attikakante**: aufgehende Mauerkrone an einem
+      Flachdachrand; betrifft nicht das Pultdach und ist hier nicht
+      definiert.
 
 ## Quellen
 
@@ -230,6 +248,7 @@ werden.
 
 - SIA 232/1:2020, „Geneigte Dächer", Schweizerischer Ingenieur- und
   Architektenverein, Abschnitt 1.
+
 - DIN 1356-1:1995-02, „Bauzeichnungen – Teil 1: Arten, Inhalte und
   Grundregeln der Darstellung", Abschnitt 5.
 

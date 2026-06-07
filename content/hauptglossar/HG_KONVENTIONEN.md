@@ -396,6 +396,7 @@ in ihrer Verbindlichkeit gegenüber dem Glossar-Bestand:
 | `synonyme:` | freie Strings; keine Glossareintrag-Pflicht. |
 | `abgelehnte_benennungen:` | freie Strings; keine Glossareintrag-Pflicht. |
 | `oberbegriff:` | existierender Glossareintrag oder `null`. |
+| `kurz:` | freier Text (ein Satz); kein Glossarbezug. Laienverständlicher Anriss — siehe Abschnitt 12. |
 
 Begründung: das Glossar wird inkrementell aufgebaut; viele
 Abgrenzungs-Beziehungen sind aber **kontextklärend** und sollen
@@ -999,3 +1000,46 @@ Der erste Bestand-Audit zu dieser Konvention wurde am 2026-05-29
 durchgeführt; betroffener Hauptkandidat war `n̂` im Geometrie-
 Cluster (Falllinie und Normalen-Vektoren). Details in der
 zugehörigen `STAND_HAUPTGLOSSAR.md`-Welle.
+
+## 12. Laienverständlicher Kurz-Satz (`kurz:`)
+
+Jeder Hauptglossar-Eintrag trägt im Frontmatter ein Feld `kurz:` —
+**genau einen** laienverständlichen Satz, der knapp und anschaulich
+sagt, *was der Begriff bedeutet*, auch für jemanden ohne Bau- oder
+Mathematik-Wissen. Der Satz ist die didaktische Eingangstür zum
+Eintrag; die fachliche Definition bleibt der Prosa- und der
+mathematischen Definition vorbehalten.
+
+**Verwendung.** Die Webseite (`holzbau-glossar.ch`) rendert `kurz:`
+an zwei Stellen: als Lead-Satz zwischen dem Titel und dem
+ausklappbaren Block des Eintrags, und als Beschreibung in der
+Cluster-Übersichtsseite. Das Feld ist build-neutral für den Code
+(`GlossarTerm`-Codegen liest nur `id:` und `benennung:`).
+
+**Stil.**
+
+- **Ein Satz.** Anschaulich, bildhaft, mit einem konkreten Beispiel
+  oder einer Alltags-Analogie (etwa „wie eine weltweit einmalige
+  Seriennummer", „so flach wie eine ruhige Wasseroberfläche").
+- **Kein Fachjargon, keine Formeln, keine Symbole.** Begriffe wie
+  „atomare Einheit" oder „Weltkoordinatensystem" gehören nicht hinein.
+- **Nicht zirkulär** — der Begriff darf sich nicht mit sich selbst
+  erklären (nicht „ein Bauteil ist ein Teil eines Baus").
+- **Fachlich konsistent** mit der Prosa-Definition; eine Vereinfachung,
+  kein Widerspruch. Der Satz braucht keine eigene Quelle (er
+  paraphrasiert die bereits belegte Definition).
+- **Schweizer Schreibweise** (ss statt ß).
+
+**Mehrdeutige Begriffe.** Hat ein Begriff eine zweite, deutlich
+andere Holzbau-Bedeutung, wird im selben Feld ein zweiter Satz
+angehängt, eingeleitet mit `Alternativ: …`. Beispiele: `achse`
+(geometrische Bezugslinie vs. Bauplan-Achsraster „Achse A"),
+`element` (Bau-Einzelteil vs. Elementbau-Baugruppe), `lage`
+(Schicht im Mehrlagenholz vs. räumliche Lage eines Bauteils). Nur
+einsetzen, wenn die zweite Bedeutung wirklich geläufig ist —
+Synonyme (z. B. Säule/Stütze) rechtfertigen keinen Alternativ-Satz.
+
+**Erarbeitung.** Die Kurz-Sätze wurden 2026-06-05 clusterweise über
+fünf unabhängige Subagenten-Durchläufe je Begriff erzeugt und
+anschliessend zu einem Satz synthetisiert (Stil-Anker: `bauteil`,
+abgenommen durch den Anweiser).

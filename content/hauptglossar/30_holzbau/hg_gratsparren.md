@@ -128,20 +128,26 @@ Sei
 
 - B ein Bauteil im Sinne von `bauteil` mit Stabgeometrie
   (`geometrie ∈ 𝒢_stab`),
+
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
   d_hat_G:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+
 - 𝒟 = {D_1, …, D_m} eine Dachflächenfamilie im Sinne von
   `dachflaeche`,
+
 - D_i = (E_i, P_i, n_{a,i}) und D_j = (E_j, P_j, n_{a,j}) zwei
   verschiedene Dachflächen aus 𝒟 mit i ≠ j,
+
 - g_{ij} ⊂ ℝ³ eine **Gratstrecke** im Sinne von `hg_grat.md`,
   also eine Schnittstrecke s_{ij} = F(P_i) ∩ F(P_j), die die
   Grat-Bedingungen (1)–(4) aus `hg_grat.md` erfüllt
   (geneigt, konvex, beide äußeren Normalen in oberer Halbkugel),
+
 - t_hat:= (b_{ij} − a_{ij}) / ‖b_{ij} − a_{ij}‖ ∈ S² die Tangente
   von g_{ij} mit g_{ij} = [a_{ij}, b_{ij}] und (Vorzeichenkonvention
   aus `hg_grat.md`) ⟨t_hat, e_z⟩ > 0 (bergauf orientiert),
+
 - e_z:= (0, 0, 1)ᵀ die vertikale Achse,
 - ε_W:= Toleranzen.WINKEL_EPS die Winkeltoleranz,
 - ε_K:= Toleranzen.KOLLINEAR_EPS die Kollinearitätstoleranz,
@@ -278,41 +284,48 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `grat`, `dachflaeche`.
 
 - **Asymmetrie zum Oberbegriff `sparren` — explizite Auflösung:**
   In `hg_sparren.md` lauten die zentralen geometrischen Bedingungen:
-  - Bed. 2: beide Endpunkte der Bauteilachse liegen in der
-    Trägerebene **einer** zugeordneten Dachfläche;
-  - Bed. 3: die Bauteilachsenrichtung ist kollinear zur **Falllinie**
-    dieser einen Dachfläche.
 
-  Für den Gratsparren sind beide Bedingungen strukturell verletzt:
-  - Die Bauteilachse liegt auf der Schnittgeraden **zweier**
-    Trägerebenen E_i und E_j; sie liegt also in der gemeinsamen
-    Schnittgeraden beider, aber sie verläuft **nicht entlang einer
-    Falllinie**, denn die Schnittgerade zweier nicht-paralleler,
-    geneigter Ebenen ist nicht die Falllinie einer der beiden
-    (außer im entarteten Fall ⟨n_hat_{a,i}, e_z⟩ = ⟨n_hat_{a,j}, e_z⟩ und
-    Spiegel-Symmetrie, in dem die Schnittgerade in einer
-    Vertikalebene liegt, aber auch dann ist ihre Richtung nicht die
-    Falllinien-Richtung einer der beiden Einzelflächen).
-  - Genau diese Asymmetrie ist in `hg_sparren.md` Sektion
-    „Wohldefiniertheit / Mehrfachzuordnung" antizipiert: „bei
-    Verschneidungs-Sparren (Gratsparren, Kehlsparren), die auf zwei
-    Dachflächen liegen, ist die Falllinien-Kollinearitätsbedingung
-    nicht zu beiden Dachflächen gleichzeitig erfüllbar, weshalb
-    diese Sonderformen eigene Begriffsdefinitionen erhalten".
+    - Bed. 2: beide Endpunkte der Bauteilachse liegen in der
+      Trägerebene **einer** zugeordneten Dachfläche;
 
-  Die hiesige Definition löst die Asymmetrie auf, indem sie:
-  - Bed. 2 von `hg_sparren.md` durch eine **Endpunkt-Inzidenz auf
-    einer Gratstrecke g_{ij}** (Bed. 2 hier) ersetzt;
-  - Bed. 3 von `hg_sparren.md` durch eine **Gratlinien-Kollinearität
-    zur Tangente t_hat** (Bed. 3 hier) ersetzt;
-  - Bed. 4 von `hg_sparren.md` als **bergauf-Orientierung relativ zu
-    t_hat** statt zu e_hat_fall übernimmt (Bed. 4 hier).
+    - Bed. 3: die Bauteilachsenrichtung ist kollinear zur **Falllinie**
+      dieser einen Dachfläche.
 
-  Die geerbte konstruktive Rolle des Oberbegriffs `sparren` (Stab-
-  Bauteil eines Dachtragwerks, geneigt, lastabtragend, Bauteilachse
-  bergauf orientiert) bleibt damit unverletzt; nur die geometrische
-  Lage-Bedingung wird von der Falllinie einer Einzelfläche auf die
-  Gratlinie der Verschneidung umgehängt.
+    Für den Gratsparren sind beide Bedingungen strukturell verletzt:
+
+    - Die Bauteilachse liegt auf der Schnittgeraden **zweier**
+      Trägerebenen E_i und E_j; sie liegt also in der gemeinsamen
+      Schnittgeraden beider, aber sie verläuft **nicht entlang einer
+      Falllinie**, denn die Schnittgerade zweier nicht-paralleler,
+      geneigter Ebenen ist nicht die Falllinie einer der beiden
+      (außer im entarteten Fall ⟨n_hat_{a,i}, e_z⟩ = ⟨n_hat_{a,j}, e_z⟩ und
+      Spiegel-Symmetrie, in dem die Schnittgerade in einer
+      Vertikalebene liegt, aber auch dann ist ihre Richtung nicht die
+      Falllinien-Richtung einer der beiden Einzelflächen).
+
+    - Genau diese Asymmetrie ist in `hg_sparren.md` Sektion
+      „Wohldefiniertheit / Mehrfachzuordnung" antizipiert: „bei
+      Verschneidungs-Sparren (Gratsparren, Kehlsparren), die auf zwei
+      Dachflächen liegen, ist die Falllinien-Kollinearitätsbedingung
+      nicht zu beiden Dachflächen gleichzeitig erfüllbar, weshalb
+      diese Sonderformen eigene Begriffsdefinitionen erhalten".
+
+    Die hiesige Definition löst die Asymmetrie auf, indem sie:
+
+    - Bed. 2 von `hg_sparren.md` durch eine **Endpunkt-Inzidenz auf
+      einer Gratstrecke g_{ij}** (Bed. 2 hier) ersetzt;
+
+    - Bed. 3 von `hg_sparren.md` durch eine **Gratlinien-Kollinearität
+      zur Tangente t_hat** (Bed. 3 hier) ersetzt;
+
+    - Bed. 4 von `hg_sparren.md` als **bergauf-Orientierung relativ zu
+      t_hat** statt zu e_hat_fall übernimmt (Bed. 4 hier).
+
+    Die geerbte konstruktive Rolle des Oberbegriffs `sparren` (Stab-
+    Bauteil eines Dachtragwerks, geneigt, lastabtragend, Bauteilachse
+    bergauf orientiert) bleibt damit unverletzt; nur die geometrische
+    Lage-Bedingung wird von der Falllinie einer Einzelfläche auf die
+    Gratlinie der Verschneidung umgehängt.
 
 - **Konsistenz mit `hg_grat.md`**: Aus Bed. 3 und Bed. 4 folgt
   d_hat_G = +t_hat (modulo Toleranzen), wobei t_hat die nach `hg_grat.md`
@@ -353,16 +366,18 @@ Begriffe `bauteil`, `bauteilachse`, `sparren`, `grat`, `dachflaeche`.
 
 - **Auflagerung (qualitativ, nicht Bestandteil der Definition)**:
   Ein Gratsparren wird im Tragwerk typischerweise gestützt durch
-  - einen **Eck-Pfettenstoß zweier Fußpfetten** am Gratsparrenfuß
-    (gemeinsamer Endpunkt zweier Trauflinien an der Walm-Ecke);
-  - einen **Firstpfetten-Endpunkt** oder eine **Walm-Spitze** /
-    einen zentralen Stahlknoten am Gratsparrenfirstpunkt.
 
-  Die Auflagerung ist Eigenschaft des Tragwerks (siehe
-  `hg_tragwerk.md`), nicht des Gratsparrens selbst. Die
-  zugehörigen Bearbeitungen (Kerve am Fuß, Firstanschnitt,
-  Backenschnitte, Abgratung) sind partitive Bestandteile des
-  Gratsparrens, nicht Bestandteile der Definition.
+    - einen **Eck-Pfettenstoß zweier Fußpfetten** am Gratsparrenfuß
+      (gemeinsamer Endpunkt zweier Trauflinien an der Walm-Ecke);
+
+    - einen **Firstpfetten-Endpunkt** oder eine **Walm-Spitze** /
+      einen zentralen Stahlknoten am Gratsparrenfirstpunkt.
+
+    Die Auflagerung ist Eigenschaft des Tragwerks (siehe
+    `hg_tragwerk.md`), nicht des Gratsparrens selbst. Die
+    zugehörigen Bearbeitungen (Kerve am Fuß, Firstanschnitt,
+    Backenschnitte, Abgratung) sind partitive Bestandteile des
+    Gratsparrens, nicht Bestandteile der Definition.
 
 ## Erläuterung (nicht normativ)
 
@@ -453,12 +468,16 @@ nicht im Definitionsbereich dieses Glossars.
 - **Kerve am Fuß** auf der Eck-Pfettenstoßstelle (zwei
   aufeinanderfolgende Schnitte, einer pro Fußpfette — siehe
   `hg_kerve.md` für die geometrische Definition der Kerve).
+
 - **Firstanschnitt** als oberer Endschnitt am Firstend-Punkt der
   Firstlinie.
+
 - **Backenschnitte / Backenschmiege** an den seitlichen
   Anschluss-Flächen für die Schifter.
+
 - **Abgratung** der Oberkante (siehe Folgearbeit
   `hg_abgratung.md`).
+
 - **Hexenschnitt** an der Gratsparren-Unterseite am Fuß zur
   beidseitigen planaren Anlage von Traufbohle und Stirnbrett
   (regional, Berufsschul-Standardstoff).
@@ -472,8 +491,10 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
 - **Vollwalm-Pyramide**: kein First; vier Gratsparren laufen an
   einer zentralen Spitze zusammen (konstruktiv häufig zentraler
   Stahlknoten oder Holzknoten).
+
 - **Krüppelwalm**: Gratsparren endet nicht am Firstend-Punkt,
   sondern auf einer Mittel- oder Kehlbohle unterhalb des Firsts.
+
 - **Ungleichgeneigte Walme**: anliegende Dachflächen mit
   unterschiedlicher Neigung; die Grundrissprojektion der
   Gratlinie ist dann keine Winkelhalbierende.
@@ -488,88 +509,107 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
   `hg_sparren.md` Sektion „Mehrfachzuordnung" explizit antizipiert.
 
 - **Geschwister-Begriffe** (andere Sparren-Spezialisierungen):
-  - `kehlsparren` (Folgearbeit): analog zum Gratsparren, aber auf
-    einer konkaven Kehlstrecke statt auf einer konvexen
-    Gratstrecke;
-  - `schifter` / `schiftsparren` (Folgearbeit): verkürzte Sparren,
-    die am Gratsparren oder Kehlsparren mit Schmiege ansetzen
-    (topologisch komplementär, nicht synonym).
+    - `kehlsparren` (Folgearbeit): analog zum Gratsparren, aber auf
+      einer konkaven Kehlstrecke statt auf einer konvexen
+      Gratstrecke;
+
+    - `schifter` / `schiftsparren` (Folgearbeit): verkürzte Sparren,
+      die am Gratsparren oder Kehlsparren mit Schmiege ansetzen
+      (topologisch komplementär, nicht synonym).
 
 - **Bestandteile (partitiv)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`, vom Bauteil geerbt)
-    mit Gratsparrenfuß als Anfangs- und Gratsparrenfirstpunkt als
-    Endpunkt;
-  - **Querschnitt** (vom Bauteil geerbt; rechteckig, typisch
-    1.5× Sparrenhöhe);
-  - **Werkstoff** (vom Bauteil geerbt; Vollholz oder BSH);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_G);
-  - **Abgratung** (partitive Bearbeitung, Folgearbeit
-    `hg_abgratung.md`);
-  - **Kerven** am Fuß (siehe `hg_kerve.md`).
+    - **Bauteilachse** (`bauteilachse.Gerade`, vom Bauteil geerbt)
+      mit Gratsparrenfuß als Anfangs- und Gratsparrenfirstpunkt als
+      Endpunkt;
+
+    - **Querschnitt** (vom Bauteil geerbt; rechteckig, typisch
+      1.5× Sparrenhöhe);
+
+    - **Werkstoff** (vom Bauteil geerbt; Vollholz oder BSH);
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_G);
+    - **Abgratung** (partitive Bearbeitung, Folgearbeit
+      `hg_abgratung.md`);
+
+    - **Kerven** am Fuß (siehe `hg_kerve.md`).
 
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Grat** (`grat`): geometrische Schnittkante zweier Dachflächen,
-    auf der die Bauteilachse des Gratsparrens liegt; das ist die
-    konstitutive Beziehung.
-  - **Dachfläche** (`dachflaeche`): der Gratsparren ist genau zwei
-    Dachflächen gleichzeitig zugeordnet (D_i und D_j); seine
-    Bauteilachse liegt auf E_i ∩ E_j.
-  - **Firstpfette** (`firstpfette`): das obere Auflager des
-    Gratsparrens (Firstend-Punkt der Firstlinie) liegt
-    typischerweise am Firstpfetten-Endpunkt.
-  - **Fußpfette** (`fusspfette`): das untere Auflager des
-    Gratsparrens liegt am Eck-Pfettenstoß zweier Fußpfetten an
-    der Walm-Ecke.
-  - **Schifter** (`schifter`, Folgearbeit): seitliche Anschluss-
-    Sparren, die mit doppelter Schmiege an der Flanke des
-    Gratsparrens anschlagen.
+    - **Grat** (`grat`): geometrische Schnittkante zweier Dachflächen,
+      auf der die Bauteilachse des Gratsparrens liegt; das ist die
+      konstitutive Beziehung.
+
+    - **Dachfläche** (`dachflaeche`): der Gratsparren ist genau zwei
+      Dachflächen gleichzeitig zugeordnet (D_i und D_j); seine
+      Bauteilachse liegt auf E_i ∩ E_j.
+
+    - **Firstpfette** (`firstpfette`): das obere Auflager des
+      Gratsparrens (Firstend-Punkt der Firstlinie) liegt
+      typischerweise am Firstpfetten-Endpunkt.
+
+    - **Fußpfette** (`fusspfette`): das untere Auflager des
+      Gratsparrens liegt am Eck-Pfettenstoß zweier Fußpfetten an
+      der Walm-Ecke.
+
+    - **Schifter** (`schifter`, Folgearbeit): seitliche Anschluss-
+      Sparren, die mit doppelter Schmiege an der Flanke des
+      Gratsparrens anschlagen.
 
 - **Abgrenzung**:
-  - **Sparren** (`sparren`): der allgemeine Sparrenbegriff verlangt
-    Falllinien-Kollinearität in einer einzelnen Dachfläche
-    (`hg_sparren.md` Bed. 3); der Gratsparren erfüllt diese
-    Bedingung gerade nicht, sondern verlangt stattdessen
-    Gratlinien-Kollinearität. Die Asymmetrie ist in
-    `hg_sparren.md` Sektion „Mehrfachzuordnung" antizipiert und
-    oben im Wohldefiniertheits-Block ausgeführt.
-  - **Kehlsparren** (`kehlsparren`, Folgearbeit): analog zum
-    Gratsparren, aber auf einer **konkaven** Kehlstrecke (siehe
-    `hg_kehle.md` / `hg_kehlsparren.md`) statt einer konvexen
-    Gratstrecke; statisch und konstruktiv verschieden
-    (Wasserführung, Schneeansammlung, keine Abgratung).
-  - **Schifter** (`schifter`, Folgearbeit): die Schifter setzen am
-    Gratsparren an; sie sind topologisch komplementär, **kein
-    Synonym**. „Verschneidungssparren" wird regional mehrdeutig
-    sowohl für Gratsparren als auch für Schiftsparren verwendet
-    und ist daher als Hauptbenennung ungeeignet.
-  - **Grat** (`grat`): die geometrische Kante; der Gratsparren ist
-    das Bauteil entlang dieser Kante. Der Grat ist eine
-    Dachkante (partitive Geometrie der Dachflächenfamilie), der
-    Gratsparren ein Bauteil mit Bauteilachse auf dieser Kante.
-  - **Dachfläche** (`dachflaeche`): zweidimensionales geometrisches
-    Bauteil; der Gratsparren liegt nicht in einer einzelnen
-    Dachfläche, sondern auf der Schnittgeraden zweier
-    Dachflächen.
-  - **Dachseite** (`dachseite`): orientierungs-annotierte
-    Dachfläche; nicht selbst Träger des Gratsparrens, sondern
-    Sicht auf die Dachfläche.
-  - **Firstpfette** (`firstpfette`): horizontaler Längsträger am
-    First; der Gratsparren stößt am Firstend-Punkt typisch an die
-    Firstpfette, ist aber kein Pfettenbauteil.
-  - **Fußpfette** (`fusspfette`): horizontaler Längsträger an der
-    Traufe; der Gratsparren stößt am Walm-Trauf-Eckpunkt typisch
-    an einen Eck-Stoß zweier Fußpfetten.
-  - **Kerve** (`kerve`): partitive Bearbeitung am Gratsparren-Fuß
-    auf der Fußpfetten-Stoßstelle; nicht selbst Sparren.
-  - **Abgratung** (Folgearbeit `hg_abgratung.md`): partitive
-    Bearbeitung der oberen Längskante des Gratsparrens; nicht
-    Bestandteil der Definition.
-  - **Verschneidungssparren** (Folgearbeit
-    `hg_verschneidungssparren.md`): regional unscharfer
-    Oberbegriff für Grat- und Kehlsparren bzw. Schiftsparren; in
-    der Schweiz und Süddeutschland selten und mehrdeutig.
-  - **Schiftsparren** (`schiftsparren`, Folgearbeit): Synonym zu
-    Schifter; siehe oben.
+    - **Sparren** (`sparren`): der allgemeine Sparrenbegriff verlangt
+      Falllinien-Kollinearität in einer einzelnen Dachfläche
+      (`hg_sparren.md` Bed. 3); der Gratsparren erfüllt diese
+      Bedingung gerade nicht, sondern verlangt stattdessen
+      Gratlinien-Kollinearität. Die Asymmetrie ist in
+      `hg_sparren.md` Sektion „Mehrfachzuordnung" antizipiert und
+      oben im Wohldefiniertheits-Block ausgeführt.
+
+    - **Kehlsparren** (`kehlsparren`, Folgearbeit): analog zum
+      Gratsparren, aber auf einer **konkaven** Kehlstrecke (siehe
+      `hg_kehle.md` / `hg_kehlsparren.md`) statt einer konvexen
+      Gratstrecke; statisch und konstruktiv verschieden
+      (Wasserführung, Schneeansammlung, keine Abgratung).
+
+    - **Schifter** (`schifter`, Folgearbeit): die Schifter setzen am
+      Gratsparren an; sie sind topologisch komplementär, **kein
+      Synonym**. „Verschneidungssparren" wird regional mehrdeutig
+      sowohl für Gratsparren als auch für Schiftsparren verwendet
+      und ist daher als Hauptbenennung ungeeignet.
+
+    - **Grat** (`grat`): die geometrische Kante; der Gratsparren ist
+      das Bauteil entlang dieser Kante. Der Grat ist eine
+      Dachkante (partitive Geometrie der Dachflächenfamilie), der
+      Gratsparren ein Bauteil mit Bauteilachse auf dieser Kante.
+
+    - **Dachfläche** (`dachflaeche`): zweidimensionales geometrisches
+      Bauteil; der Gratsparren liegt nicht in einer einzelnen
+      Dachfläche, sondern auf der Schnittgeraden zweier
+      Dachflächen.
+
+    - **Dachseite** (`dachseite`): orientierungs-annotierte
+      Dachfläche; nicht selbst Träger des Gratsparrens, sondern
+      Sicht auf die Dachfläche.
+
+    - **Firstpfette** (`firstpfette`): horizontaler Längsträger am
+      First; der Gratsparren stößt am Firstend-Punkt typisch an die
+      Firstpfette, ist aber kein Pfettenbauteil.
+
+    - **Fußpfette** (`fusspfette`): horizontaler Längsträger an der
+      Traufe; der Gratsparren stößt am Walm-Trauf-Eckpunkt typisch
+      an einen Eck-Stoß zweier Fußpfetten.
+
+    - **Kerve** (`kerve`): partitive Bearbeitung am Gratsparren-Fuß
+      auf der Fußpfetten-Stoßstelle; nicht selbst Sparren.
+
+    - **Abgratung** (Folgearbeit `hg_abgratung.md`): partitive
+      Bearbeitung der oberen Längskante des Gratsparrens; nicht
+      Bestandteil der Definition.
+
+    - **Verschneidungssparren** (Folgearbeit
+      `hg_verschneidungssparren.md`): regional unscharfer
+      Oberbegriff für Grat- und Kehlsparren bzw. Schiftsparren; in
+      der Schweiz und Süddeutschland selten und mehrdeutig.
+
+    - **Schiftsparren** (`schiftsparren`, Folgearbeit): Synonym zu
+      Schifter; siehe oben.
 
 ## Quellen
 
@@ -577,12 +617,16 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
 
 - SIA 232/1:2020, „Geneigte Dächer", Schweizerischer Ingenieur- und
   Architektenverein, Zürich, Abschnitt 1.
+
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
   Architektenverein, Zürich, Abschnitt 4 und 5.
+
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
   von Holzbauten – Teil 1-1: Allgemeines", Abschnitt 5 und 6.
+
 - DIN 1356-1:1995-02, „Bauzeichnungen – Teil 1: Arten, Inhalte und
   Grundregeln der Darstellung", Abschnitt 5.
+
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken", Abschnitt 8 und 12.
 
@@ -590,12 +634,15 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
 
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich, aktuelle
   Auflage.
+
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*
   Lignum, Zürich, aktuelle Auflage.
+
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Auflage, Beuth Verlag, Berlin 2015.
 - Natterer, J.; Herzog, T.; Volz, M.: *Holzbau-Atlas.* 4. Auflage,
   Birkhäuser, Basel 2003.
+
 - Krämer, V.: *Grundwissen des Zimmerers.* Bruderverlag, Köln 2006.
 - Koepf, H.; Binding, G.: *Bildwörterbuch der Architektur.*
   4. Auflage, Kröner, Stuttgart 2005, Eintrag „Gratsparren".
@@ -606,20 +653,25 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
 
 - Wikipedia, Lemmata „Gratsparren", „Walmdach", „Schifter",
   „Schiftung", „Dachausmittlung" (abgerufen 2026-05-14).
+
 - BauNetz Wissen Glossar „Gratsparren"
   (`baunetzwissen.de/glossar/g/gratsparren-3000593`).
+
 - zimmerer-treff.com: „Austragung von Schifter und Gratsparren";
   „Rechnerischer Abbund von Schifter und Gratsparren";
   „Krüppelwalmgratsparren".
+
 - polybau.ch: „Austragung Schifter/Gratsparren" (Schweiz).
 - Bund Deutscher Zimmermeister, Handbuch „Anleitung Kehl-/
   Gratsparrengrafik" (zimmerer.de).
+
 - Greifswalder Zimmerer: „Gratgrundverschiebung berechnen".
 - baubeaver.de: „Gratsparren" / „Walmdach-Workshop".
 - dachdecker.com: „Gratsparren".
 - Bemessungssoftware: Frilo DGK „Grat- und Kehlsparren"; pbs.de
   062J „Holzbau Grat- und Kehlsparren – EC5"; Harzer-Statik
   „Gratsparren".
+
 - Angelsächsische Hip-Rafter-Literatur: sbebuilders.blogspot.com;
   raftertools.net; jlconline.com (für die Reduktions-Formel und
   „backing angle" / „dropping the hip" als konstruktive
@@ -629,5 +681,6 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
 
 - Lignum HBT (aktuelle Auflage), spezifische Begriffsbelegung
   „Gratsparren"; online nicht volltext-indiziert.
+
 - Lignatec „Geneigte Dächer in Holzbauweise", spezifische
   Begriffsbelegung „Gratsparren"; online nicht volltext-indiziert.

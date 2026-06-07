@@ -135,25 +135,30 @@ Sei
 
 - B ein Bauteil im Sinne von `bauteil` mit Stabgeometrie
   (`geometrie ∈ 𝒢_stab`),
+
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
   d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+
 - E_W eine Wandebene (Ebene im Sinne von `ebene`) mit Stützpunkt
   p_W und Normalenvektor n_hat_W ∈ S², wobei n_hat_W horizontal liegt
   (|⟨n_hat_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
   HG_KONVENTIONEN.md §1, d. h. lotrecht),
+
 - P ein lotrechtes Anker-Bauteil (Ständer im Sinne von
   `hg_staender.md` oder Pfosten als Synonym; siehe
   Quellenkonflikt-Block dort) mit Bauteilachse
   a(P) = (p_a^P, p_e^P), z-Extrema z_min^P:= min(p_a^P.z,
   p_e^P.z) und z_max^P:= max(p_a^P.z, p_e^P.z), Pfosten-Kopf-
   Punkt p_K^P:= arg max{p.z: p ∈ a(P)},
+
 - H ein horizontales Anker-Bauteil (Rähm im Sinne von `hg_raehm.md`,
   Pfette im Sinne von `hg_pfette.md`, oder Unterzug als
   Forward-Verweis) mit Bauteilachse a(H) = (p_a^H, p_e^H) und
   ‖d_hat_H − ⟨d_hat_H, e_z⟩ e_z‖ > 1 − ε_K (horizontal:
   |⟨d_hat_H, e_z⟩| ≤ ε_K), wobei H **über** P liegt im Sinne
   ‖p_K^P.z − z_min^H‖ ≤ ε_L (mit z_min^H = min(p_a^H.z, p_e^H.z)),
+
 - e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
 - ε_K:= Toleranzen.KOLLINEAR_EPS,
   ε_L:= Toleranzen.LAENGE_EPS,
@@ -218,10 +223,12 @@ Wesentliche abgeleitete Größen:
 
 - **Kopfbandlänge**: L_K:= ‖p_e − p_a‖ (in mm), zwischen
   Pfosten-Kopf-Anker und Längsholz-Anker.
+
 - **Kopfbandneigung gegen Horizontale**: β_K:= π/2 − α(B),
   Default-Wert im Korpus ~45°, Praxis-Range 35–55°.
   Die Definition fixiert β_K **nicht** auf 45° (Korpus-Konsens
   ist „typisch", keine Norm-Festlegung).
+
 - **Wandebenen-Achsenrichtung**: t_hat_W:= projektiere d_hat in die
   Wandebene, dient als Default-Faserrichtung am Bauteil.
 
@@ -234,20 +241,24 @@ Wesentliche abgeleitete Größen:
   horizontalen Längsholz sind alle Bedingungen 1–6 konstruktiv
   erfüllbar; jedes klassische Fachwerk-Kopfband und jedes
   Riegelbau-Eckaussteifungs-Kopfband ist Standardbeispiel.
+
 - **Eindeutigkeit des Pfosten-Endpunkts**: Bedingungen 4 und 5
   zusammen legen p_P als denjenigen Endpunkt fest, der auf der
   Pfosten-Bauteilachse liegt **und** dessen z-Koordinate am
   Pfosten-Kopf liegt. Der zweite Endpunkt p_H ist damit
   eindeutig der Längsholz-Endpunkt.
+
 - **Eindeutigkeit der Wandebene**: E_W ist aus Pfosten-Achse
   a(P) und Längsholz-Achse a(H) bestimmbar (eine lotrechte
   plus eine horizontale Achse spannen E_W eindeutig auf, sofern
   H und P nicht in derselben Geraden liegen, was bei
   konstruktiv gewolltem Kopfband ausgeschlossen ist).
+
 - **Konsistenz mit `hg_bauteil.md`**: Alle Bedingungen aus
   `bauteil` (eindeutige Identität, Geometrie, Werkstoff, Lage in
   W) sind erfüllt; die Bauteilrolle „Kopfband" ergänzt die
   Lage-Constraints 1–6.
+
 - **Abgrenzung zur Strebe**: Bedingung 5 (Pfosten-Endpunkt am
   Pfosten-Kopf) ist die strukturelle Trennlinie. Eine Strebe mit
   Pfosten-Anker erfüllt komplementär `p_P.z ≤ z_max^P − ε_L · 3`
@@ -255,6 +266,7 @@ Wesentliche abgeleitete Größen:
   Anker exakt in z = z_max^P − ε_L · 3 mit Toleranz-Übergang)
   sind durch die Toleranz-Konstante in beiden Definitionen
   konsistent ausgeschlossen.
+
 - **Faktor 3 in der Pfosten-Kopf-Toleranz**: Der Schwellwert
   `ε_L · 3` ist bewusst weiter gefasst als die reine Geometrie-
   Toleranz `LAENGE_EPS = ε_L`. Begründung: die „Pfosten-Kopf"-
@@ -267,9 +279,11 @@ Wesentliche abgeleitete Größen:
   Trigger im `domain`-Modul. Die Trennlinie zur Strebe bleibt
   trotzdem konsistent, weil beide Definitionen denselben Faktor
   verwenden.
+
 - **Abgrenzung zum Fußband**: symmetrisch, durch die komplementäre
   Bedingung `|p_P.z − z_min^P| ≤ ε_L · 3` im künftigen
   `hg_fussband.md` (Folgearbeit-Trigger).
+
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
   bereits definierte Begriffe (`bauteil`, `bauteilachse`,
   `strecke`, `einheitsvektor`, `ebene`, `weltkoordinatensystem`,
@@ -297,6 +311,7 @@ Das Kopfband leistet zwei konstruktive Aufgaben gleichzeitig:
    **Biege-Steifigkeit** in der Wandebene. Knicksicherung des
    Pfostens am Kopf, **Längsaussteifung** des Längsholzes in
    Träger-Richtung (BauNetz-Snippet, snippet-basiert).
+
 2. **Spannweiten-Verkürzung**: das darüberliegende Längsholz
    ist nicht mehr nur an den Pfosten-Köpfen, sondern zusätzlich
    am Kopfband-Anschluss unterstützt. Die effektive Spannweite
@@ -335,6 +350,7 @@ Anschlüsse:
   Längsholz-Unterseite). Bei einfacheren Konstruktionen Versatz
   oder stumpfer Stoß mit Nagelung. Im modernen Holzbau Stahl-
   Holz-Verbinder oder verdeckte Verbinder (Knapp, Sherpa).
+
 - **Unterer Anschluss am Pfosten/Ständer-Kopf**: ebenfalls
   Zapfen, in einer **Klaue** am Pfostenkopf oder als seitlich
   eingelassener Zapfen. In der Praxis ist die Pfosten-Kopf-
@@ -347,10 +363,12 @@ Anschlüsse:
 - **Einseitig** (klassisch im Bundsystem, an Bundständern):
   Kopfband nur auf einer Seite des Pfostens, in Richtung einer
   Wand-Achse.
+
 - **Beidseitig**: an Zwischenständern fachgerecht zwei Kopfbänder
   je Pfosten-Kopf, je eines pro Wandrichtung, um asymmetrische
   Versteifung gegen wechselnde Windrichtungen zu vermeiden
   (Wikipedia/Kopfband).
+
 - **An Eckständern**: zwei Kopfbänder, je eines pro angeschlossener
   Wandebene.
 
@@ -367,43 +385,53 @@ Wand-Inzidenz im Wand-Aggregat (Folgearbeit).
   45°-Winkel-Sub-Lesart"; die App folgt der TTH-Linie und führt
   Strebe und Kopfband als getrennte Geschwister (siehe
   Quellenkonflikt-Block (1)).
+
 - **Fußband** (`fussband`, Forward-Verweis, Folgearbeit):
   symmetrisches Gegenstück zum Kopfband am Pfosten-**Fuß**;
   zwischen Pfosten-Fuß und horizontalem Längsholz unterhalb
   (Schwelle oder unterer Riegel). TTH ID in der „Band (Bauteil)"-
   Sub-Facette neben Kopfband geführt. **Bewusst in Welle 10
   nicht angelegt**, Folgearbeit-Trigger.
+
 - **Knagge** (`knagge`, Forward-Verweis, Folgearbeit):
   **dreieckiges Vollholz** mit oft geschwungener Unterseite,
   das einen Deckenbalken oder eine Pfette **konsolenartig** vom
   Pfosten/Ständer aus stützt. Konstruktive Trennlinie zum
   Kopfband (Wikipedia/Knagge):
-  - Knagge ist **kompakter Block** (Dreieck-Vollholz), **kein
-    Stab-Bauteil** — das Kopfband ist Stab-Bauteil mit zwei
-    Auflagerpunkten.
-  - Knagge **ragt aus dem Wandgefüge heraus**, sitzt nicht im
-    Gefach — das Kopfband ist im Gefach.
 
-  Damit ist Knagge **kein Kopfband-Subtyp**; eigener Eintrag
-  `hg_knagge.md` als Folgearbeit-Trigger (Bauteilrolle).
+    - Knagge ist **kompakter Block** (Dreieck-Vollholz), **kein
+      Stab-Bauteil** — das Kopfband ist Stab-Bauteil mit zwei
+      Auflagerpunkten.
+
+    - Knagge **ragt aus dem Wandgefüge heraus**, sitzt nicht im
+      Gefach — das Kopfband ist im Gefach.
+
+    Damit ist Knagge **kein Kopfband-Subtyp**; eigener Eintrag
+    `hg_knagge.md` als Folgearbeit-Trigger (Bauteilrolle).
+
 - **Mann** / Halber Mann / Wilder Mann / Hessenmann (`mann`,
   Forward-Verweis, Aggregat-Folgearbeit): symmetrisches Bündel
   aus Kopfband + Fußband + Strebe an einem Pfosten. Aggregat,
   kein Bauteil-Subtyp. Folgearbeit bei historischer Fachwerk-
   Welle.
+
 - **Kniestrebe** (`kniestrebe`, Forward-Verweis, Folgearbeit):
   Haupt-Lesart im **Dachstuhl** (stehender/liegender Stuhl);
   Wand-Lesart selten und mit Strebe-Wurzel-Lesart abgedeckt.
   Folgearbeit-Trigger bei Dachstuhl-Welle.
+
 - **Andreaskreuz** (`andreaskreuz`, Forward-Verweis, Aggregat-
   Folgearbeit): Komposition zweier sich kreuzender **Streben**
   (nicht Kopfbänder); strukturell andere Aggregat-Klasse.
+
 - **Rähm**, **Pfette**, **Unterzug** (`raehm`, `pfette`,
   `unterzug`): horizontale Längshölzer als Längsholz-Anker
   des Kopfbands; selbst keine Kopfbänder.
+
 - **Ständer**, **Pfosten** (`staender`, `pfosten` als Synonym):
   lotrechtes Anker-Bauteil des Kopfbands am Pfosten-Kopf;
   selbst kein Kopfband.
+
 - **Zugband / Windrispenband** (`zugband`, `windrispenband`,
   Forward-Verweise, Folgearbeit): **Stahl**-Aussteifungs-
   elemente. Übernehmen im modernen Ingenieur-Holzbau die
@@ -434,13 +462,17 @@ in CH nicht existiert — es wird nur seltener spezifisch benannt.
   häufig **Kopfband** (Wand-Eck-Aussteifung), im Dachstuhl-
   Sprachgebrauch **Kniestrebe**. Im DE-Korpus uneindeutig,
   abgelehnt.
+
 - **`corner brace`**: Eck-Aussteifung allgemein; Anglizismus,
   abgelehnt.
+
 - **`head brace`**: enger US-Korpus-Begriff für Kopfband;
   Anglizismus, abgelehnt.
+
 - **„Kopfwinkel"**, **„Kopfwinkelholz"**: korpus-unsicher; teils
   synonym zum Kopfband, teils zur Knagge oder zum Sturzriegel
   (siehe Quellenkonflikt-Block (5)). Abgelehnt.
+
 - **„Knagge"** als Bauteilbenennung für ein Stab-Bauteil:
   abgelehnt — Knagge ist Vollholz-Konsole, kein Stab.
 
@@ -453,59 +485,76 @@ in CH nicht existiert — es wird nur seltener spezifisch benannt.
   Mitgliedschaft als Wand-Bauteil erfolgt über das
   `wand`-Aggregat (siehe `hg_wand.md`); eine Zwischenebene
   `wandbauteil` wird nicht angelegt (App-Drift).
+
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`), diagonal im
-    Sinne von Bedingung 3;
-  - **Querschnitt** (rechteckig, im historischen Fachwerk meist
-    schwächer als der Ständer, typisch 80/120 mm; im modernen
-    Holzbau seltener verwendet);
-  - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_Kopfband, also
-    axial entlang der diagonalen Bauteilachse).
+    - **Bauteilachse** (`bauteilachse.Gerade`), diagonal im
+      Sinne von Bedingung 3;
+
+    - **Querschnitt** (rechteckig, im historischen Fachwerk meist
+      schwächer als der Ständer, typisch 80/120 mm; im modernen
+      Holzbau seltener verwendet);
+
+    - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_Kopfband, also
+      axial entlang der diagonalen Bauteilachse).
+
 - **Positions-Annotation** (Merkmal am Kopfband, kein Subtyp;
   optional, in Welle 10 als Vorbereitung der Wand-Aggregat-
   Welle eingeführt):
-  - **Kopfbandposition** (`KopfbandPosition`-Enum): Wert aus
-    { ECK, BUND, ZWISCHEN, UNSPEZIFIZIERT }.
+
+    - **Kopfbandposition** (`KopfbandPosition`-Enum): Wert aus
+      { ECK, BUND, ZWISCHEN, UNSPEZIFIZIERT }.
+
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Ständer** / **Pfosten** (`staender`): lotrechtes
-    Anker-Bauteil mit Anker-Endpunkt **am Pfosten-Kopf**
-    (Bedingung 5). Inzidenz: das Kopfband ist Last-Verteiler
-    am Pfosten-Kopf-Eck, der Pfosten ist Last-Aufnehmer.
-  - **Rähm** (`raehm`): häufigstes Längsholz-Anker-Bauteil
-    im Wand-Kontext; das Kopfband verbindet Pfosten-Kopf mit
-    Rähm-Unterkante.
-  - **Pfette** (`pfette`): bei Dach-naher Verwendung
-    (Dachpfette als Längsholz über Pfosten/Ständer-Köpfen)
-    übernimmt die Pfette die Längsholz-Rolle. Im Dachstuhl-
-    Kontext ist „Kopfband" gelegentlich synonym mit
-    Pfetten-Eck-Aussteifung verwendet.
-  - **Unterzug** (`unterzug`, Forward-Verweis): horizontales
-    Tragwerk-Längsholz unter einer Geschossdecke; kann als
-    Kopfband-Anker dienen.
+    - **Ständer** / **Pfosten** (`staender`): lotrechtes
+      Anker-Bauteil mit Anker-Endpunkt **am Pfosten-Kopf**
+      (Bedingung 5). Inzidenz: das Kopfband ist Last-Verteiler
+      am Pfosten-Kopf-Eck, der Pfosten ist Last-Aufnehmer.
+
+    - **Rähm** (`raehm`): häufigstes Längsholz-Anker-Bauteil
+      im Wand-Kontext; das Kopfband verbindet Pfosten-Kopf mit
+      Rähm-Unterkante.
+
+    - **Pfette** (`pfette`): bei Dach-naher Verwendung
+      (Dachpfette als Längsholz über Pfosten/Ständer-Köpfen)
+      übernimmt die Pfette die Längsholz-Rolle. Im Dachstuhl-
+      Kontext ist „Kopfband" gelegentlich synonym mit
+      Pfetten-Eck-Aussteifung verwendet.
+
+    - **Unterzug** (`unterzug`, Forward-Verweis): horizontales
+      Tragwerk-Längsholz unter einer Geschossdecke; kann als
+      Kopfband-Anker dienen.
+
 - **Abgrenzung**:
-  - **Strebe** (`strebe`, Welle-10-Geschwister): diagonales
-    Stab-Bauteil ohne Pfosten-Kopf-Anker; die TTH-Linie führt
-    Strebe und Kopfband als Geschwister. Trennlinie:
-    Anker-Lage am Pfosten-Kopf (Bedingung 5).
-  - **Fußband** (`fussband`, Forward-Verweis, Folgearbeit):
-    symmetrisches Gegenstück am Pfosten-Fuß.
-  - **Knagge** (`knagge`, Forward-Verweis, Folgearbeit):
-    dreieckiges Vollholz als Konsole; kein Stab-Bauteil.
-  - **Mann** (`mann`, Forward-Verweis, Aggregat-Folgearbeit):
-    Bündel-Komposition aus Kopfband-/Fußband-/Strebe-Instanzen
-    an einem Pfosten.
-  - **Andreaskreuz** (`andreaskreuz`, Forward-Verweis,
-    Aggregat-Folgearbeit): Komposition zweier sich kreuzender
-    Streben (nicht Kopfbänder); strukturell andere Aggregat-
-    Klasse.
-  - **Kniestrebe** (`kniestrebe`, Forward-Verweis): Dachstuhl-
-    Bauteil; separate Bauteilrolle.
-  - **Zugband** (`zugband`, Forward-Verweis): Stahl-
-    Aussteifung; eigene Bauteilrolle.
-  - **Bauteil** (`bauteil`): das Kopfband ist eine
-    Spezialisierung von Bauteil mit zusätzlichen Lage-
-    Constraints.
+    - **Strebe** (`strebe`, Welle-10-Geschwister): diagonales
+      Stab-Bauteil ohne Pfosten-Kopf-Anker; die TTH-Linie führt
+      Strebe und Kopfband als Geschwister. Trennlinie:
+      Anker-Lage am Pfosten-Kopf (Bedingung 5).
+
+    - **Fußband** (`fussband`, Forward-Verweis, Folgearbeit):
+      symmetrisches Gegenstück am Pfosten-Fuß.
+
+    - **Knagge** (`knagge`, Forward-Verweis, Folgearbeit):
+      dreieckiges Vollholz als Konsole; kein Stab-Bauteil.
+
+    - **Mann** (`mann`, Forward-Verweis, Aggregat-Folgearbeit):
+      Bündel-Komposition aus Kopfband-/Fußband-/Strebe-Instanzen
+      an einem Pfosten.
+
+    - **Andreaskreuz** (`andreaskreuz`, Forward-Verweis,
+      Aggregat-Folgearbeit): Komposition zweier sich kreuzender
+      Streben (nicht Kopfbänder); strukturell andere Aggregat-
+      Klasse.
+
+    - **Kniestrebe** (`kniestrebe`, Forward-Verweis): Dachstuhl-
+      Bauteil; separate Bauteilrolle.
+
+    - **Zugband** (`zugband`, Forward-Verweis): Stahl-
+      Aussteifung; eigene Bauteilrolle.
+
+    - **Bauteil** (`bauteil`): das Kopfband ist eine
+      Spezialisierung von Bauteil mit zusätzlichen Lage-
+      Constraints.
 
 ## Quellen
 
@@ -514,18 +563,23 @@ in CH nicht existiert — es wird nur seltener spezifisch benannt.
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
   Architektenverein, Zürich, §1.1 Fachausdrücke
   [via: Lignum-Pressemitteilung 2021].
+
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
   von Holzbauten – Teil 1-1".
+
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken".
+
 - Thesaurus Traditioneller Holzbau (TTH), RWTH Aachen, Lemma
   „Kopfband" (Begriff-ID 832), Quelle Großmann 1987 S. 70;
   Synonyme Achselband, Bug; verwandte Terme Fußband, Knagge,
   Strebe, Kopfstrebe. Hierarchie-Facette 1922 „Fachwerk-Bauteile"
   Sub-Facette „Band (Bauteil)". thesaurus-traditioneller-
   holzbau.net. [direkt]
+
 - Wikipedia, Lemma „Kopfband", de.wikipedia.org/wiki/Kopfband
   (abgerufen 2026-05-15). [direkt]
+
 - BauNetz Wissen, Glossar-Holz, Lemma „Kopfband",
   baunetzwissen.de/glossar/k/kopfband-6629384 (abgerufen 2026-
   05-15, WebFetch 403; Snippet-Inhalte aus WebSearch).
@@ -535,25 +589,33 @@ in CH nicht existiert — es wird nur seltener spezifisch benannt.
 
 - Lignum: *Pressemitteilung 2021 — Anwendungshilfen für neue
   SIA-Norm Holzbau.* lignum.ch/auf_einen_klick/news/.
+
 - Lignum (Hrsg.): *Holzbautabellen HBT 1 (2024).* Lignum,
   Zürich. Begriffsregister „Kopfband".
+
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Auflage, Beuth, Berlin 2015.
 - Natterer, J.; Herzog, T.; Volz, M.: *Holzbau-Atlas.* 4. Auflage,
   Birkhäuser, Basel 2003.
+
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.*
   DVA, 7. Auflage 2007.
+
 - Großmann, R.: *Konstruktionen des deutschen Fachwerkbaus.*
   1987 (TTH-Primärquelle).
+
 - Wikipedia, Lemmata „Mann (Fachwerk)", „Knagge", „Strebe",
   „Steigband (Holzbau)" (abgerufen 2026-05-15).
+
 - Informationszentrum Umgebindehaus, HS Zittau/Görlitz:
   „Schäden an Kopfbändern und Knaggen",
   umgebindehaus.hszg.de/service/sanierungshandbuch.
+
 - bauredakteur.de: „Fachwerk – Begriffe und Konstruktion".
 - baubeaver.de: „Fachwerkhaus".
 - landschaftzukunftev.de: „Kopfband und Knagge – Unterschiedliche
   Bauweisen.pdf".
+
 - immoportal.com: Glossar „Kopfband".
 - fuhrberger.de: „Streben und Kopfwinkel".
 
@@ -561,10 +623,12 @@ in CH nicht existiert — es wird nur seltener spezifisch benannt.
 
 - fachwerk.de Forum „Was hält diese Strebe?" (Kopfband-
   Abgrenzung).
+
 - kulturdenkmalhaus.de Glossar Umgebindehaus.
 - holzbau.bilp.de.
 - Simpson Strong-Tie: „Aussteifung, Lochbänder",
   strongtie.de (Stahl-Pendants im modernen Ingenieur-Holzbau).
+
 - Stora Enso: *CLT Technische Broschüre.* storaenso.com.
 - DERIX: „Lexikon Aussteifung", derix.de.
 - Recherche-Bericht:

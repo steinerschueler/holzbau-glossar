@@ -203,6 +203,7 @@ Sei
 
 - B ein Stab-Bauteil im Sinne von `bauteil` (das **Trägerbauteil**)
   mit Stabgeometrie (`geometrie ∈ 𝒢_stab`),
+
 - L_B = (O_B, e_hat_x^B, e_hat_y^B, e_hat_z^B) das Bauteil-Lokal-
   Koordinatensystem (`lokales_koordinatensystem`) mit Konvention
   ```
@@ -210,12 +211,14 @@ Sei
   e_hat_y^B  =  Bauteil-Querrichtung,
   e_hat_z^B  =  Bauteilhöhe (auf der Druckstab-Seite nach oben),
   ```
+
 - h_B > 0 die Bauteilhöhe in lokaler z-Richtung (mm),
 - b_B > 0 die Bauteilbreite in lokaler y-Richtung (mm),
 - ℓ_B > 0 die Bauteillänge in lokaler x-Richtung (mm),
 - d_hat_S ∈ ℝ³ der Einheits-Richtungsvektor der **Druckstab-Achse**
   (`bauteilachse` des druckbeanspruchten Anschlussbauteils),
   bezogen auf das Bauteil-Lokal-System L_B,
+
 - β ∈ (0, π) der **Strebenanschlusswinkel** zwischen der
   Druckstab-Achse d_hat_S und der Trägerbauteil-Achse e_hat_x^B,
   gemessen als stumpfer Außenwinkel:
@@ -224,6 +227,7 @@ Sei
   ```
   d. h. β ∈ (π/2, π) bezeichnet die Öffnung zwischen Druckstab
   und Trägerbauteil auf der Druckstab-Seite,
+
 - ε_L:= Toleranzen.LAENGE_EPS,
 - ε_W:= Toleranzen.WINKEL_EPS.
 
@@ -249,9 +253,11 @@ mit der Bedeutung
 - **STIRN** (Stirnversatz, einfacher Versatz): genau eine
   geneigte Anschnittfläche, deren Tiefe zur Druckstab-Vorderseite
   hin am größten ist;
+
 - **FERSE** (Fersenversatz, hinterer Versatz): genau eine
   geneigte Anschnittfläche, deren Tiefe zur Druckstab-
   Innenseite (Ferse) hin am größten ist;
+
 - **DOPPELT** (doppelter Versatz, Stirn-Fersen-Versatz):
   zwei geneigte Anschnittflächen, eine vorne (Stirn) und eine
   hinten (Ferse).
@@ -271,26 +277,32 @@ mit
   Aufsetzpunkt** Q ∈ ℝ³ — der Schnittpunkt der Druckstab-Achse
   mit der Trägerbauteil-Oberseite (z = h_B im Lokalsystem); in
   Bauteil-Lokal-Koordinaten hat Q die Lage (x_0, 0, h_B).
+
 - **art** ∈ 𝒜: Konfigurations-Achse nach (1).
 - **β** ∈ (π/2, π): Strebenanschlusswinkel (rad), strukturell
   durch die Druckstab-Achse vorgegeben (kein freier Geometrie-
   Parameter im engeren Sinne, aber Pflichtfeld des Tupels, weil
   er die Anschnittwinkel bestimmt).
+
 - **t_S** ∈ ℝ⁺ ∪ {⊥}: **Versatztiefe Stirn** (mm); Pflicht für
   art ∈ {STIRN, DOPPELT}, ⊥ für art = FERSE.
+
 - **σ_S** ∈ (0, π/2) ∪ {⊥}: **Sohlenwinkel Stirn** (rad) der **zweiten**
   Stirn-Schnittfläche (Sohle, kein Hauptdruck) zur Faser. Der Ausschnitt-
   Apex-Innenwinkel ist `180° − δ_S − σ_S`; flach (σ_S < π/2 − δ_S) ⇒ stumpf.
   **Nicht normiert** — reine handwerkliche Freimachungs-Fläche (s.
   quellenkonflikt Konflikt 5). Pflicht für art ∈ {STIRN, DOPPELT}, ⊥ für
   art = FERSE.
+
 - **t_F** ∈ ℝ⁺ ∪ {⊥}: **Versatztiefe Ferse** (mm); Pflicht für
   art ∈ {FERSE, DOPPELT}, ⊥ für art = STIRN.
+
 - **b_K** ∈ ℝ⁺ ∪ {⊥}: **Versatzkamm-Breite** (mm) — Bemessungs-Kenngröße
   (Mindest-Steg zwischen den Scherfugen, EC5-Schubnachweis). **Ohne
   Geometrie-Wirkung** im Werkzeugkörper: der Versatzkamm ist eine **Spitze
   auf der Oberkante** (z = h_B), kein Plateau (s. Werkzeugkörper DOPPELT).
   Pflicht **nur** für art = DOPPELT, ⊥ sonst.
+
 - **l_v** ∈ ℝ⁺: **Vorholzlänge** (mm), Abstand von der vordersten
   Versatz-Stirnkante (am Stirn-Aufsetzpunkt Q für art ∈ {STIRN,
   DOPPELT}, bzw. an der Fersen-Ausstiegskante für art = FERSE)
@@ -378,6 +390,7 @@ zur Strebe** `δ = δ_F = β − π/2`, Sohle **∥ Strebe** `σ = α = π − �
 Damit ist der Apex `π − (β − π/2) − (π − β) = π/2` — ein **rechtwinkliger
 L-Ausschnitt** (90°). **Kein** Spiegel der Stirn (gleiche Seite, andere
 Neigungen). Aufsetzpunkt:
+
 - für **art = FERSE** (einfach): A_F:= Q;
 - für **art = DOPPELT**: A_F liegt firstseitig am **Gipfel** der Stirn-Sohle,
   `x_{A_F} = x_0 + t_S·(cot δ_S + cot σ_S)` (s. Werkzeugkörper DOPPELT).
@@ -401,10 +414,12 @@ z = h_B):
   δ = δ_S (Winkelhalbierende) und Sohlenwinkel σ = σ_S (frei). Fünf
   Halbräume (Innennormalen ins V): Oberseite z ≤ h_B, Druckfläche ν_hat_Druck,
   Sohle ν_hat_Sohle, zwei y-Deckel. Apex stumpf (π − δ_S − σ_S).
+
 - **art = FERSE**: Δ_Versatz = conv{ A_F, C_F, B_F }, **gleiche Seite** wie die
   Stirn (firstseitig), Druckfläche **rechtwinklig zur Strebe** (δ_F = β − π/2),
   Sohle **∥ Strebe** (σ = α = π − β) ⇒ rechtwinkliger L-Apex (90°). **Kein**
   Spiegel. A_F = Q.
+
 - **art = DOPPELT**: Der Werkzeugkörper ist die **nicht-konvexe Vereinigung**
   des **Stirn-V** (vorn, flach: δ_S, σ_S) und des **Fersen-V** (hinten, tief:
   δ_F, σ = α), **beide firstseitig** zur Strebe. Die Stirn-Sohle steigt
@@ -446,6 +461,7 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
   σ_S = π/12 (freie flache Sohle), t_S = h_B/6, t_F = ⊥,
   l_v = max(8·t_S, 200 mm), T_F = id_SE(3); daraus abgeleitet
   δ_S = β/2 = π/3.
+
 - **Eindeutigkeit der Werkzeugkörper-Konstruktion**: Bei
   festgelegtem Parametertupel p_Versatz und Bauteil B mit
   bekannter `lokalePlatzierung` sind die V-Eckpunkte A, C, B
@@ -456,79 +472,93 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
   ist unabhängig von der Wahl des typeigenen Bezugs-
   Koordinatensystems des Werkzeugkörpers (siehe `bearbeitung`,
   Wohldefiniertheit).
+
 - **Geometrische Nicht-Degeneriertheit (harte Invarianten,
   Validierungsfehler bei Verletzung)**:
-  1. **Strebenanschlusswinkel im stumpfen Bereich**:
-     β ∈ (π/2 + ε_W, π − ε_W). Bei β ≤ π/2 (Strebe rechtwinklig
-     oder steiler) ist ein Versatz im klassischen Sinn nicht
-     mehr definiert; bei β ≥ π (Druckstab und Trägerbauteil
-     antiparallel) ist die Geometrie entartet.
-  2. **Tiefenpositivität pro aktiver Anschnittfläche**:
-     für art ∈ {STIRN, DOPPELT} gilt t_S > ε_L; für art ∈
-     {FERSE, DOPPELT} gilt t_F > ε_L.
-  3. **Tiefenbeschränkung am Trägerbauteil**: für jede aktive
-     Anschnittfläche gilt t_i ≤ h_B − ε_L (i ∈ {S, F}). Ein
-     Versatz mit Tiefe ≥ Bauteilhöhe würde das Trägerbauteil
-     durchtrennen.
-  4. **Winkel-Wohlgeformtheit (offener Bereich (0, π/2))**: der
-     **freie** Stirn-Sohlenwinkel σ_S ∈ (ε_W, π/2 − ε_W). Die
-     **abgeleiteten** Druckflächen-Winkel δ_S = β/2 und δ_F = β − π/2
-     folgen aus β und liegen für β ∈ (π/2 + ε_W, π − ε_W) in (0, π/2). Bei
-     Winkel = 0 fällt die Fläche mit der Trägerbauteil-Oberseite
-     zusammen (waagrecht); bei = π/2 mit der Stirnfläche (lotrecht)
-     — in beiden Grenzfällen entartet das V. (σ_S ist nicht
-     normiert, aber zur Wohlgeformtheit des V beschränkt.)
-  5. **Vorholzlängen-Positivität**: l_v > ε_L.
-  6. **Position innerhalb des Trägerbauteils**: x_0 muss so
-     gewählt sein, dass sowohl der Stirn-/Fersen-Aufsetzpunkt
-     als auch alle Anschnittausstiege auf der Bauteil-Oberseite
-     im Intervall [ε_L, ℓ_B − ε_L] liegen, und dass die nach
-     der Vorholzlänge l_v geforderte Holzstrecke bis zum
-     Bauteilende vorhanden ist. Verletzung → Validierungsfehler
-     `VersatzPositionAusserhalbBauteil` (analog zur Kerve).
-  7. **Doppelter Versatz — Kammbreite-Positivität**: für
-     art = DOPPELT gilt b_K > ε_L. b_K ist eine **Bemessungs-
-     Kenngröße** (Mindeststeg zwischen den Scherfugen, EC5-Schub)
-     ohne Geometrie-Wirkung — der Versatzkamm ist im Werkzeugkörper
-     eine Spitze auf z = h_B (Stirn-Sohle ∩ Fersen-Druckfläche),
-     kein Plateau der Breite b_K.
+
+    1. **Strebenanschlusswinkel im stumpfen Bereich**:
+       β ∈ (π/2 + ε_W, π − ε_W). Bei β ≤ π/2 (Strebe rechtwinklig
+       oder steiler) ist ein Versatz im klassischen Sinn nicht
+       mehr definiert; bei β ≥ π (Druckstab und Trägerbauteil
+       antiparallel) ist die Geometrie entartet.
+
+    2. **Tiefenpositivität pro aktiver Anschnittfläche**:
+       für art ∈ {STIRN, DOPPELT} gilt t_S > ε_L; für art ∈
+       {FERSE, DOPPELT} gilt t_F > ε_L.
+
+    3. **Tiefenbeschränkung am Trägerbauteil**: für jede aktive
+       Anschnittfläche gilt t_i ≤ h_B − ε_L (i ∈ {S, F}). Ein
+       Versatz mit Tiefe ≥ Bauteilhöhe würde das Trägerbauteil
+       durchtrennen.
+
+    4. **Winkel-Wohlgeformtheit (offener Bereich (0, π/2))**: der
+       **freie** Stirn-Sohlenwinkel σ_S ∈ (ε_W, π/2 − ε_W). Die
+       **abgeleiteten** Druckflächen-Winkel δ_S = β/2 und δ_F = β − π/2
+       folgen aus β und liegen für β ∈ (π/2 + ε_W, π − ε_W) in (0, π/2). Bei
+       Winkel = 0 fällt die Fläche mit der Trägerbauteil-Oberseite
+       zusammen (waagrecht); bei = π/2 mit der Stirnfläche (lotrecht)
+       — in beiden Grenzfällen entartet das V. (σ_S ist nicht
+       normiert, aber zur Wohlgeformtheit des V beschränkt.)
+
+    5. **Vorholzlängen-Positivität**: l_v > ε_L.
+    6. **Position innerhalb des Trägerbauteils**: x_0 muss so
+       gewählt sein, dass sowohl der Stirn-/Fersen-Aufsetzpunkt
+       als auch alle Anschnittausstiege auf der Bauteil-Oberseite
+       im Intervall [ε_L, ℓ_B − ε_L] liegen, und dass die nach
+       der Vorholzlänge l_v geforderte Holzstrecke bis zum
+       Bauteilende vorhanden ist. Verletzung → Validierungsfehler
+       `VersatzPositionAusserhalbBauteil` (analog zur Kerve).
+
+    7. **Doppelter Versatz — Kammbreite-Positivität**: für
+       art = DOPPELT gilt b_K > ε_L. b_K ist eine **Bemessungs-
+       Kenngröße** (Mindeststeg zwischen den Scherfugen, EC5-Schub)
+       ohne Geometrie-Wirkung — der Versatzkamm ist im Werkzeugkörper
+       eine Spitze auf z = h_B (Stirn-Sohle ∩ Fersen-Druckfläche),
+       kein Plateau der Breite b_K.
+
 - **Plausibilität (weiche Invarianten, Warnung; kein
   Validierungsfehler — siehe quellenkonflikt-Block):**
-  1. **Tiefen-Faustregel NCI NA.12**: für jede aktive
-     Anschnittfläche gilt:
-     - α ≤ 50° (flacher Strebenanschluss, α:= π − β):
-       t_i ≤ h_B / 4,
-     - α ≥ 60° (steiler Strebenanschluss):
-       t_i ≤ h_B / 6,
-     - 50° < α < 60°: lineare Interpolation zwischen h_B/4
-       und h_B/6.
-     Verletzung → `Warnung.VersatzZuTief`. Die App-Konstanten
-     heißen `Toleranzen.VERSATZ_TIEFE_FLACH_VIERTEL` (Default
-     1.0/4.0) und `Toleranzen.VERSATZ_TIEFE_STEIL_SECHSTEL`
-     (Default 1.0/6.0).
-  2. **Vorholzlänge-Faustregel NCI NA.12**:
-     l_v ≥ max(8 · t_v, 200 mm), wobei t_v die maßgebende
-     Versatztiefe ist (für art ∈ {STIRN, FERSE}: t_v = t_S
-     bzw. t_F; für art = DOPPELT: t_v = max(t_S, t_F)).
-     Verletzung → `Warnung.VersatzVorholzZuKurz` mit Hinweis
-     auf EC 5 6.5 Schubnachweis.
-  3. **Druckflächen-Winkel zwingend aus β (keine Warnung)**:
-     δ_S = β/2 (Stirn, Winkelhalbierende) und δ_F = β − π/2 (Ferse,
-     ⊥ Strebe) sind nach EN 1995-1-1 **nicht frei wählbar**, sondern
-     aus β bestimmt (Recherche-Bericht
-     [intern]). Die
-     Winkelhalbierende ergibt gleichen Hankinson-Winkel (π − β)/2 in
-     Druckstab und Trägerbauteil (Hirnholz-auf-Hirnholz-Optimum;
-     Stufe-3-Theorie-Inhalt, folgt formal aus der Hankinson-
-     Formulierung, siehe `hankinson_winkel`). Da δ_S/δ_F nicht
-     abweichen können, entfällt die frühere Optimum-Warnung.
-  4. **Doppelter Versatz — Tiefendifferenz**: für art = DOPPELT
-     gilt die Praxisregel t_F ≥ t_S + 10 mm (Ferse mindestens
-     1 cm tiefer als Stirn, sonst Abscher-Gefahr in der
-     Versatzkamm-Sohle). Verletzung →
-     `Warnung.VersatzKammSohleZuFlach`.
+
+    1. **Tiefen-Faustregel NCI NA.12**: für jede aktive
+       Anschnittfläche gilt:
+
+        - α ≤ 50° (flacher Strebenanschluss, α:= π − β):
+          t_i ≤ h_B / 4,
+
+        - α ≥ 60° (steiler Strebenanschluss):
+          t_i ≤ h_B / 6,
+
+        - 50° < α < 60°: lineare Interpolation zwischen h_B/4
+          und h_B/6.
+        Verletzung → `Warnung.VersatzZuTief`. Die App-Konstanten
+        heißen `Toleranzen.VERSATZ_TIEFE_FLACH_VIERTEL` (Default
+        1.0/4.0) und `Toleranzen.VERSATZ_TIEFE_STEIL_SECHSTEL`
+        (Default 1.0/6.0).
+     2. **Vorholzlänge-Faustregel NCI NA.12**:
+        l_v ≥ max(8 · t_v, 200 mm), wobei t_v die maßgebende
+        Versatztiefe ist (für art ∈ {STIRN, FERSE}: t_v = t_S
+        bzw. t_F; für art = DOPPELT: t_v = max(t_S, t_F)).
+        Verletzung → `Warnung.VersatzVorholzZuKurz` mit Hinweis
+        auf EC 5 6.5 Schubnachweis.
+     3. **Druckflächen-Winkel zwingend aus β (keine Warnung)**:
+        δ_S = β/2 (Stirn, Winkelhalbierende) und δ_F = β − π/2 (Ferse,
+        ⊥ Strebe) sind nach EN 1995-1-1 **nicht frei wählbar**, sondern
+        aus β bestimmt (Recherche-Bericht
+        [intern]). Die
+        Winkelhalbierende ergibt gleichen Hankinson-Winkel (π − β)/2 in
+        Druckstab und Trägerbauteil (Hirnholz-auf-Hirnholz-Optimum;
+        Stufe-3-Theorie-Inhalt, folgt formal aus der Hankinson-
+        Formulierung, siehe `hankinson_winkel`). Da δ_S/δ_F nicht
+        abweichen können, entfällt die frühere Optimum-Warnung.
+     4. **Doppelter Versatz — Tiefendifferenz**: für art = DOPPELT
+        gilt die Praxisregel t_F ≥ t_S + 10 mm (Ferse mindestens
+        1 cm tiefer als Stirn, sonst Abscher-Gefahr in der
+        Versatzkamm-Sohle). Verletzung →
+        `Warnung.VersatzKammSohleZuFlach`.
+
 - **Subtraktivität (geerbt von `bearbeitung`)**: G_B'(F) ⊆
   G_B^lokal nach (9); siehe `bearbeitung`.
+
 - **Zuordnungs-Eindeutigkeit**: Der Versatz ist über die
   partitive Komposition genau einem Bauteil (dem Trägerbauteil)
   zugeordnet. Dass er mit einem zweiten Bauteil (dem Druckstab)
@@ -536,6 +566,7 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
   keine geometrische Voraussetzung der Versatz-Geometrie selbst,
   sondern ergibt sich erst im Tragwerks-Kontext (siehe
   `verbindung`, `tragwerk`).
+
 - **Lagesicherung gegen Abheben**: Der Versatz überträgt
   ausschließlich Druckkräfte längs der Druckstab-Achse. Eine
   Sicherung gegen Abheben (Bolzen, Klammer, Lasche, Klebung)
@@ -543,6 +574,7 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
   Bestandteil der Versatz-Geometrie selbst**; sie wird als
   separates `Verbindungsmittel` (`hg_verbindungsmittel.md`) am
   Verbindungs-Aggregat geführt.
+
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
   bereits definierte Begriffe (`bearbeitung`, `bauteil`,
   `uuid`, `lokales_koordinatensystem`, `polyeder`,
@@ -661,92 +693,110 @@ Dieser Glossareintrag definiert ausschließlich die
   eine konkrete subtraktive Bearbeitung mit dem typspezifischen
   Parametertupel p_Versatz und der diskreten Konfigurations-
   Achse `art`.
+
 - **Bestandteile (partitiv)** (geerbt von `bearbeitung`):
-  - **UUID** (`uuid`): technische Identität, Pflicht.
-  - **Typ**: konstant `Versatz`.
-  - **Parameter** (typspezifisch): x_0, art, β, t_S, σ_S, t_F,
-    b_K, l_v (mit Pflichtfeldern abhängig von `art`); die Druckflächen-
-    winkel δ_S = β/2, δ_F = β − π/2 sind aus β abgeleitet, kein Feld.
-  - **Lokale Platzierung**: SE(3); Identität im Standardfall.
-  - **Bezeichnung**: optional.
-  - **Keine Backref auf das Bauteil**: das Trägerbauteil ist
-    über die partitive Komposition bestimmt (Versatz ist Element
-    der Bearbeitungs-Liste eines Bauteils), nicht über ein Feld
-    am Versatz-Objekt.
+    - **UUID** (`uuid`): technische Identität, Pflicht.
+    - **Typ**: konstant `Versatz`.
+    - **Parameter** (typspezifisch): x_0, art, β, t_S, σ_S, t_F,
+      b_K, l_v (mit Pflichtfeldern abhängig von `art`); die Druckflächen-
+      winkel δ_S = β/2, δ_F = β − π/2 sind aus β abgeleitet, kein Feld.
+
+    - **Lokale Platzierung**: SE(3); Identität im Standardfall.
+    - **Bezeichnung**: optional.
+    - **Keine Backref auf das Bauteil**: das Trägerbauteil ist
+      über die partitive Komposition bestimmt (Versatz ist Element
+      der Bearbeitungs-Liste eines Bauteils), nicht über ein Feld
+      am Versatz-Objekt.
+
 - **Verwendung**:
-  - Bestandteil eines **Trägerbauteils** (typisch Schwelle,
-    Rähm, Bundbalken, `fusspfette`): der Versatz erscheint als
-    Bearbeitung in der Liste der Bauteil-Bearbeitungen;
-    geometrisch sitzt er typischerweise an der Oberseite des
-    Trägerbauteils an einer Position entlang der Bauteilachse,
-    an der ein Druckstab aufsetzt.
-  - **Druckkontakt mit einem Druckstab** (typisch `sparren`,
-    Strebe, Kopfband): die Anschnittfläche bildet die
-    formschlüssige Druckkontaktfläche. Die geometrische
-    Beziehung Versatz ↔ Druckstab ist nicht in der Versatz-
-    Bearbeitung selbst geführt (der Versatz „kennt" den
-    Druckstab nicht), sondern wird über das Verbindungs-Aggregat
-    hergestellt (`hg_verbindung.md`).
+    - Bestandteil eines **Trägerbauteils** (typisch Schwelle,
+      Rähm, Bundbalken, `fusspfette`): der Versatz erscheint als
+      Bearbeitung in der Liste der Bauteil-Bearbeitungen;
+      geometrisch sitzt er typischerweise an der Oberseite des
+      Trägerbauteils an einer Position entlang der Bauteilachse,
+      an der ein Druckstab aufsetzt.
+
+    - **Druckkontakt mit einem Druckstab** (typisch `sparren`,
+      Strebe, Kopfband): die Anschnittfläche bildet die
+      formschlüssige Druckkontaktfläche. Die geometrische
+      Beziehung Versatz ↔ Druckstab ist nicht in der Versatz-
+      Bearbeitung selbst geführt (der Versatz „kennt" den
+      Druckstab nicht), sondern wird über das Verbindungs-Aggregat
+      hergestellt (`hg_verbindung.md`).
+
 - **Spezialisierungen** (Geometrie-Varianten desselben Bemessungs-
   falls, **keine** eigenen Glossareinträge):
-  - **Stirnversatz** (`art = STIRN`).
-  - **Fersenversatz** (`art = FERSE`).
-  - **Doppelter Versatz** (`art = DOPPELT`).
+
+    - **Stirnversatz** (`art = STIRN`).
+    - **Fersenversatz** (`art = FERSE`).
+    - **Doppelter Versatz** (`art = DOPPELT`).
 - **Abgrenzung**:
-  - **Kerve** (`kerve`): Auflager-Bearbeitung mit
-    welt-horizontaler Sohle (Bleischnitt) und welt-vertikalem
-    Senkel; 90°-Bedingung welt-aligned. Der Versatz hat dagegen
-    eine **geneigte Anschnittfläche** bauteil-aligned am
-    Trägerbauteil. In der Praxis häufig kombiniert
-    (Versatzkerve), aber zwei separate Bearbeitungs-Klassen.
-  - **Bearbeitung** (`bearbeitung`): generischer Oberbegriff;
-    Versatz ist eine von mehreren Bearbeitungs-Subtypen.
-  - **Zapfen** (`zapfen`, Forward-Verweis): vorspringender
-    Zapfen am Druckstab-Ende, der in ein Zapfenloch des
-    Trägerbauteils einsetzt; **Längs-Verbindung** mit Sekundär-
-    Sicherung (Holznagel) für Quer- und Zugkräfte. Der Versatz
-    ist demgegenüber rein druckübertragend und ohne
-    Zapfen-Geometrie.
-  - **Zapfenloch** (`zapfenloch`, Forward-Verweis): rechteckige
-    Subtraktion zur Aufnahme eines Zapfens am Trägerbauteil;
-    geometrisch nicht keilförmig.
-  - **Blatt** (`blatt`, Forward-Verweis Kategorie A): halbe
-    Holzdicke beidseitig abgetragen, Hölzer greifen flach
-    übereinander; **Längs-Stoss** oder Eckverbindung. Der
-    Versatz hat keine halbierte Holzdicke, sondern eine
-    keilförmige Ausnehmung.
-  - **Kamm** (`kamm`, Forward-Verweis Kategorie A): einseitige
-    Materialwegnahme am übergreifenden Holz; **Quer-Sicherung**
-    kreuzend liegender Hölzer. Der Versatz ist eine geneigte
-    Druckkontaktfläche, kein Übergreifen.
-  - **Verbindung** (`verbindung`): Aggregat aus Bauteilen +
-    Verbindungsmitteln + Verbindern an einem Knotenpunkt. Eine
-    Verbindung enthält **keine** Versätze direkt; Versätze sind
-    Eigenschaften ihrer Bauteile, das Verbindungs-Aggregat
-    bündelt sie.
-  - **Anschnitt** (`anschnitt`, Forward-Verweis): planare
-    Stirn- oder Schrägfläche **am Bauteilende**; entfernt das
-    Bauteilende, nicht eine Ausnehmung im Bauteilfeld. Der
-    Versatz dagegen sitzt im Bauteilfeld als Ausnehmung; in
-    Sonderfällen (Versatz an Trägerbauteil-Ende) kann ein
-    Anschnitt mit dem Versatz zusammenfallen, modelliert wird
-    er dann typabhängig.
-  - **Schlitz** (`schlitz`, Forward-Verweis): längliche
-    Subtraktion mit kleiner Breite und großer Tiefe zur
-    Aufnahme eines Schlitzblechs; andere Topologie.
-  - **Bohrung** (`bohrung`, Forward-Verweis): zylindrische,
-    rotationssymmetrische Subtraktion; andere Topologie.
-  - **Sparren** (`sparren`): typischerweise das Druckstab-
-    Bauteil bei Sparren-zu-Bundbalken-Anschlüssen im
-    Sparrendach; nicht der Versatz selbst.
-  - **Fußpfette** (`fusspfette`): kann Trägerbauteil eines
-    Versatzes sein, wenn Streben oder Kopfbänder dagegen
-    drücken; nicht der Versatz selbst.
-  - **Querschnitt** (`querschnitt`): die Querschnittsfläche
-    eines Bauteils im ungeschwächten Zustand; der Versatz
-    führt eine lokale Querschnittsschwächung herbei, die im
-    Bemessungsschnitt am Versatzort durch die maßgebende
-    Tiefe t_v erfasst wird.
+    - **Kerve** (`kerve`): Auflager-Bearbeitung mit
+      welt-horizontaler Sohle (Bleischnitt) und welt-vertikalem
+      Senkel; 90°-Bedingung welt-aligned. Der Versatz hat dagegen
+      eine **geneigte Anschnittfläche** bauteil-aligned am
+      Trägerbauteil. In der Praxis häufig kombiniert
+      (Versatzkerve), aber zwei separate Bearbeitungs-Klassen.
+
+    - **Bearbeitung** (`bearbeitung`): generischer Oberbegriff;
+      Versatz ist eine von mehreren Bearbeitungs-Subtypen.
+
+    - **Zapfen** (`zapfen`, Forward-Verweis): vorspringender
+      Zapfen am Druckstab-Ende, der in ein Zapfenloch des
+      Trägerbauteils einsetzt; **Längs-Verbindung** mit Sekundär-
+      Sicherung (Holznagel) für Quer- und Zugkräfte. Der Versatz
+      ist demgegenüber rein druckübertragend und ohne
+      Zapfen-Geometrie.
+
+    - **Zapfenloch** (`zapfenloch`, Forward-Verweis): rechteckige
+      Subtraktion zur Aufnahme eines Zapfens am Trägerbauteil;
+      geometrisch nicht keilförmig.
+
+    - **Blatt** (`blatt`, Forward-Verweis Kategorie A): halbe
+      Holzdicke beidseitig abgetragen, Hölzer greifen flach
+      übereinander; **Längs-Stoss** oder Eckverbindung. Der
+      Versatz hat keine halbierte Holzdicke, sondern eine
+      keilförmige Ausnehmung.
+
+    - **Kamm** (`kamm`, Forward-Verweis Kategorie A): einseitige
+      Materialwegnahme am übergreifenden Holz; **Quer-Sicherung**
+      kreuzend liegender Hölzer. Der Versatz ist eine geneigte
+      Druckkontaktfläche, kein Übergreifen.
+
+    - **Verbindung** (`verbindung`): Aggregat aus Bauteilen +
+      Verbindungsmitteln + Verbindern an einem Knotenpunkt. Eine
+      Verbindung enthält **keine** Versätze direkt; Versätze sind
+      Eigenschaften ihrer Bauteile, das Verbindungs-Aggregat
+      bündelt sie.
+
+    - **Anschnitt** (`anschnitt`, Forward-Verweis): planare
+      Stirn- oder Schrägfläche **am Bauteilende**; entfernt das
+      Bauteilende, nicht eine Ausnehmung im Bauteilfeld. Der
+      Versatz dagegen sitzt im Bauteilfeld als Ausnehmung; in
+      Sonderfällen (Versatz an Trägerbauteil-Ende) kann ein
+      Anschnitt mit dem Versatz zusammenfallen, modelliert wird
+      er dann typabhängig.
+
+    - **Schlitz** (`schlitz`, Forward-Verweis): längliche
+      Subtraktion mit kleiner Breite und großer Tiefe zur
+      Aufnahme eines Schlitzblechs; andere Topologie.
+
+    - **Bohrung** (`bohrung`, Forward-Verweis): zylindrische,
+      rotationssymmetrische Subtraktion; andere Topologie.
+
+    - **Sparren** (`sparren`): typischerweise das Druckstab-
+      Bauteil bei Sparren-zu-Bundbalken-Anschlüssen im
+      Sparrendach; nicht der Versatz selbst.
+
+    - **Fußpfette** (`fusspfette`): kann Trägerbauteil eines
+      Versatzes sein, wenn Streben oder Kopfbänder dagegen
+      drücken; nicht der Versatz selbst.
+
+    - **Querschnitt** (`querschnitt`): die Querschnittsfläche
+      eines Bauteils im ungeschwächten Zustand; der Versatz
+      führt eine lokale Querschnittsschwächung herbei, die im
+      Bemessungsschnitt am Versatzort durch die maßgebende
+      Tiefe t_v erfasst wird.
 
 ## Quellen
 
@@ -758,13 +808,16 @@ Dieser Glossareintrag definiert ausschließlich die
   Sekundärbeschreibungen belegt; Volltext-Verifikation der
   Regelwerte aus dieser Recherche nicht möglich — DIN-Media-
   Paywall; siehe quellenkonflikt-Block).
+
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und
   Konstruktion von Holzbauten – Teil 1-1", Abschnitt 5.2,
   Abschnitt 6.1.5 und Abschnitt 6.5.
+
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
   Architektenverein, Zürich. Annex-Stelle für den Versatz
   bibliographisch belegt (Bestand `hg_verbindung.md` referenziert
   „Anhang A"), durch diese Recherche nicht volltext-verifiziert.
+
 - DIN 1052:2008-12 (zurückgezogen), „Entwurf, Berechnung und
   Bemessung von Holzbauwerken", Abschnitt zimmermannsmäßige
   Verbindungen.
@@ -776,19 +829,24 @@ Dieser Glossareintrag definiert ausschließlich die
 - Peter, M.; Scheer, C. (Hrsg.): *Holzbau-Taschenbuch.*
   Wiley-VCH, Berlin 2015, Kap. 19 „Einfacher Versatz" und
   Kap. 20 „Doppelter Versatz".
+
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.*
   DVA, 7. Auflage 2007, Glossar.
+
 - Natterer, J.; Herzog, T.; Volz, M.: *Holzbau-Atlas.*
   4. Auflage, Birkhäuser, Basel 2003.
 - Blass, H. J.; Sandhaas, C.: *Timber Engineering – Principles
   for Design.* KIT Scientific Publishing, Karlsruhe 2017,
   Kap. „Carpentry Joints".
+
 - Branco, J. M.; Descamps, T.: *Analysis and strengthening of
   carpentry joints — Single step joint: overview.* academia.edu
   (Korpus für engl. Pendant).
+
 - design2machine: *BTLx interface description*, Version 2.1,
   16.11.2023, Processings `StepJoint` und `StepJointNotch`
   (Parameter-Schemata nicht volltext-verifiziert).
+
 - baunetzwissen.de: „Zimmermannsmäßige Verbindungen" (abgerufen
   2026-05-14), mit Sekundärzitat zu DIN EN 1995-1-1/NA NCI NA.12.
 
@@ -797,13 +855,18 @@ Dieser Glossareintrag definiert ausschließlich die
 - Recherche-Bericht
   [intern] (Quellen-Lage,
   Auflösung der drei Subtypen, englisches Vergleichsmaterial).
+
 - baubeaver.de: „Die 5 wichtigsten Versatz-Arten",
   „Stirnversatz" (Korpus für DACH-Praxisterminologie).
+
 - statikweb.iivs.de: „Stirnversatz Formeln" (Korpus für
   Faustregeln).
+
 - harzerstatik.de: „Holzversatz 10.0 EC5-1-1" (Korpus für
   EC-5-Anwendungspraxis).
+
 - Wikipedia, Lemma *Birdsmouth joint* (Korpus für engl.
   Falsche-Freunde-Markierung).
+
 - Carolina Timberworks Glossary, „step-lapped rafter seat"
   (Korpus für engl. Falsche-Freunde-Markierung).

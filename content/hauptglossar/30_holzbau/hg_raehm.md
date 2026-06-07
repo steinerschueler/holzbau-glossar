@@ -120,16 +120,20 @@ Sei
 
 - B ein Bauteil im Sinne von `bauteil` mit Stabgeometrie
   (`geometrie ∈ 𝒢_stab`),
+
 - a(B) = Bauteilachse.Gerade(p_a, p_e) die Bauteilachse von B im
   geraden Fall (siehe `bauteilachse`), mit
   d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
+
 - e_z:= (0, 0, 1)ᵀ die vertikale Achse,
 - ε_K:= Toleranzen.KOLLINEAR_EPS,
   ε_L:= Toleranzen.LAENGE_EPS.
 
 Sei ferner W eine Holzwand mit
+
 - Wandflucht-Richtung d_hat_W ∈ S² (horizontale Längsrichtung der
   Wand, |⟨d_hat_W, e_z⟩| ≤ ε_K),
+
 - einer endlichen, nicht-leeren Menge von Wand-Senkrechtbauteilen
   (Pfosten/Ständer) S(W) = {S_1, …, S_n}, n ≥ 2, mit Pfosten-Kopf-
   Punkten K(S_i) ∈ ℝ³ am oberen Achsenende.
@@ -178,6 +182,7 @@ Wesentliche abgeleitete Größen:
 
 - **Rähmlänge**: L_R:= ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen den Rähm-Enden.
+
 - **Rähmrichtung**: d_hat ∈ S² mit |⟨d_hat, e_z⟩| ≤ ε_K und d_hat ‖ d_hat_W.
 - **Rähm-Höhenlage**: z_R:= (p_a.z + p_e.z) / 2; bei exakt
   horizontalem Rähm gilt p_a.z = p_e.z = z_R.
@@ -189,6 +194,7 @@ Wesentliche abgeleitete Größen:
   Tragkomponente sind die Bedingungen 1–5 konstruktiv erfüllbar;
   jede klassische Fachwerk-, Ständer- oder Holzrahmenbau-Wand
   ist Standardbeispiel.
+
 - **Eindeutigkeit**: Bedingung 5 stellt sicher, dass nur die
   oberste längs-parallele Komponente der Wand W als Rähm
   qualifiziert. Bei Konstruktionen mit „doppeltem Rähm" (US-
@@ -198,6 +204,7 @@ Wesentliche abgeleitete Größen:
   Verdoppelung und wird als zweite Rähmkomponente desselben
   Bauteils oder als eigene Untergruppe modelliert (Folgearbeit;
   in der DACH-Praxis ohne praktische Relevanz).
+
 - **Wand-Bindung**: Das Rähm ist definitorisch an **eine** Wand W
   gebunden (Bedingungen 3–5). Treffen mehrere Wände an einer
   Ecke aufeinander, hat jede Wand ihr eigenes Rähm; die
@@ -205,6 +212,7 @@ Wesentliche abgeleitete Größen:
   unterschieden und an der Ecke verbunden (Eckblatt,
   Verkämmung, Schwalbenschwanz-Zapfen klassisch; Stahlblech-
   Verbinder modern).
+
 - **Vorzeichenkonvention**: Die Bauteilachse eines Rähms ist
   gerichtet (`Bauteilachse.Gerade`), aber welcher Endpunkt p_a
   bzw. p_e ist, ist auf der Ebene des generischen Rähm-Begriffs
@@ -213,6 +221,7 @@ Wesentliche abgeleitete Größen:
   `hg_bauteilachse.md`: p_a am Bauteilanfang nach lokaler
   Bezeichnungskonvention; Konsumenten dürfen sich nicht auf
   eine geometrisch zwingende Orientierung verlassen.
+
 - **Forward-Bedingung über `wand`**: Die Bedingungen 3–5
   referenzieren eine Wand W und ihre Pfosten/Ständer S(W). Die
   Glossar-Einträge `wand`, `pfosten` und `staender` sind in
@@ -222,12 +231,14 @@ Wesentliche abgeleitete Größen:
   konsistent weitergeführt werden können (analog zur
   Forward-Konstruktion in `hg_fusspfette.md` über `traufe` und
   in `hg_pfette.md` über `dachkante`).
+
 - **Konsistenz mit `hg_pfette.md` und `hg_fusspfette.md`**: Das
   Rähm ist **nicht** Subtyp der Pfette; die Wand-Dach-Trennung
   ist scharf. Funktionale Überlagerung (das Rähm trägt zugleich
   die Sparrenfüße einer Traufseite) ändert nichts an der
   Bauteilrollen-Zuordnung — die Rolle folgt der konstruktiven
   Wand-Einbindung, nicht der Lastabtragung.
+
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
   bereits definierte Begriffe (`bauteil`, `bauteilachse`,
   `strecke`, `einheitsvektor`, `weltkoordinatensystem`,
@@ -246,10 +257,12 @@ Wand und Dach**. Es erfüllt drei Funktionen gleichzeitig:
 - **statisch**: sammelt die Vertikallasten der darüberliegenden
   Konstruktion (Decken-Auflager, Sparren- oder Fußpfetten-Lasten)
   und leitet sie in die Pfosten der Wand ab;
+
 - **konstruktiv (Aussteifung)**: wirkt als Druck-/Zuggurt der
   Wandscheibe in Längsrichtung; im Holzrahmen- und Holztafelbau
   besonders ausgeprägt durch die kraftschlüssige Verbindung mit
   der Beplankung (OSB, 3-Schicht-Platten);
+
 - **handwerklich (Anschluss)**: bildet die feste Linie, an die
   die Streben, Kopfbänder, Decken- und Sparrenanschlüsse angebunden
   werden.
@@ -274,12 +287,14 @@ Drei typische Tragwerks-Anschlüsse zwischen Wand und Dach:
    verbunden. Rähm und Fußpfette sind dann zwei getrennte
    Bauteile mit getrennten Bauteilrollen, die geometrisch nahe
    beieinander liegen.
+
 2. **Holzwand mit Sparrendach**: Die Sparrenfüße werden
    üblicherweise auf einem Deckenbalken (Zugglied) befestigt,
    der quer zur Traufrichtung verläuft und seinerseits auf
    dem Rähm aufliegt. Das Rähm trägt die Vertikallast der
    Sparren-Decken-Konstruktion, ist aber nicht selbst
    Sparrenfuß-Auflager.
+
 3. **Holzwand, traufseitiges Rähm trägt Sparrenfüße direkt**:
    Funktionale Überlagerung. Das Bauteil bleibt **Rähm**, weil
    es konstruktiv im Wandgefüge sitzt (Zapfen mit den Pfosten,
@@ -317,6 +332,7 @@ nur als Verortung:
   Eckverbindungen am Rähm: Eckblatt, Verkämmung, Schwalbenschwanz-
   Zapfen; Längsstöße als Hakenblatt-, Schräg-, Schwalbenschwanz-
   Stoß;
+
 - **modern (Holzrahmen-/Holztafelbau)**: Bolzen, Schrauben,
   Stahlblech-Verbinder; Sparrenpfettenanker bei Rähm-als-
   Sparrenfuß-Auflagerung; durchgehende Beplankung als
@@ -352,69 +368,86 @@ allgemeinen Rahmen-Wurzel — daher die zulässigen Synonyme
   mit der zusätzlichen Rolle „Rähm" und den oben formalisierten
   geometrischen Constraints. **Nicht** Subtyp von `pfette`, weil
   Pfette normfest als Dach-Längsträger definiert ist.
+
 - **Bestandteile (partitiv)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`, vom Bauteil geerbt);
-  - **Querschnitt** (rechteckig, üblicherweise gleich
-    Pfosten-/Ständer-Querschnitt oder querschnittsgleich zur
-    Schwelle);
-  - **Werkstoff** (Vollholz, KVH, gelegentlich BSH);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_Rähm).
+    - **Bauteilachse** (`bauteilachse.Gerade`, vom Bauteil geerbt);
+    - **Querschnitt** (rechteckig, üblicherweise gleich
+      Pfosten-/Ständer-Querschnitt oder querschnittsgleich zur
+      Schwelle);
+
+    - **Werkstoff** (Vollholz, KVH, gelegentlich BSH);
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_Rähm).
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Pfosten** / **Ständer** (`pfosten` / `staender`, eigene
-    Einträge folgen): Wand-Senkrechtbauteile, auf deren Köpfen das
-    Rähm liegt; Verbindung klassisch durch Zapfen.
-  - **Schwelle** (`schwelle`): horizontales
-    unteres Pendant am Wandfuß.
-  - **Riegel** (`riegel`): horizontale
-    Querhölzer zwischen den Pfosten, **nicht** zu verwechseln mit
-    dem Rähm.
-  - **Wand** (`wand`, eigener Eintrag folgt): aggregierender
-    Begriff (Schwelle + Pfosten + Rähm + Riegel + Streben +
-    Beplankung); das Rähm ist obere Längs-Begrenzung der Wand.
-  - **Fußpfette** (`fusspfette`): liegt **auf dem Rähm** bei der
-    Pfettendach-/Holzwand-Kombination; getrennte Bauteilrollen.
-  - **Sparren** (`sparren`): kann direkt auf dem Rähm aufliegen
-    (Sparrendach mit Holzwand: Sparrenfuß auf Deckenbalken auf
-    Rähm; oder Pfettendach mit Rähm als Fußpfetten-Auflager).
+    - **Pfosten** / **Ständer** (`pfosten` / `staender`, eigene
+      Einträge folgen): Wand-Senkrechtbauteile, auf deren Köpfen das
+      Rähm liegt; Verbindung klassisch durch Zapfen.
+
+    - **Schwelle** (`schwelle`): horizontales
+      unteres Pendant am Wandfuß.
+
+    - **Riegel** (`riegel`): horizontale
+      Querhölzer zwischen den Pfosten, **nicht** zu verwechseln mit
+      dem Rähm.
+
+    - **Wand** (`wand`, eigener Eintrag folgt): aggregierender
+      Begriff (Schwelle + Pfosten + Rähm + Riegel + Streben +
+      Beplankung); das Rähm ist obere Längs-Begrenzung der Wand.
+
+    - **Fußpfette** (`fusspfette`): liegt **auf dem Rähm** bei der
+      Pfettendach-/Holzwand-Kombination; getrennte Bauteilrollen.
+
+    - **Sparren** (`sparren`): kann direkt auf dem Rähm aufliegen
+      (Sparrendach mit Holzwand: Sparrenfuß auf Deckenbalken auf
+      Rähm; oder Pfettendach mit Rähm als Fußpfetten-Auflager).
+
 - **Abgrenzung**:
-  - **Pfette** (`pfette`): Dach-Längsträger; Wand-Dach-Trennung
-    zimmermannssprachlich scharf. Das Rähm ist Wand-Bauteil.
-    „Wandpfette" als Korpus-Synonym ist deshalb in
-    `abgelehnte_benennungen:` geführt.
-  - **Fußpfette** (`fusspfette`): Dach-Bauteil, unterste Pfette
-    am Sparrenfuß. Funktionale Überlagerung mit dem Rähm
-    möglich, aber Rollen-Trennung bleibt: das Bauteil im
-    Wandgefüge ist Rähm; das Bauteil im Dachtragwerk (auf
-    Mauerkrone, ohne Pfosten-Anbindung) ist Fußpfette
-    (siehe `quellenkonflikt:`-Block Punkt 3).
-  - **Schwelle** (`schwelle`): unteres
-    Längs-Pendant am Wandfuß; geometrisch symmetrisch zum Rähm,
-    aber an der gegenüberliegenden Wand-Längskante. Geschwister-
-    Bauteilrolle unter `bauteil`, nicht Spezialisierung.
-  - **Sparren** (`sparren`): geneigtes Bauteil entlang der
-    Falllinie einer Dachfläche; nicht horizontal, nicht Wand-
-    Bauteil.
-  - **Pfosten** (`pfosten`, eigener Eintrag folgt): Wand-
-    Senkrechtbauteil; vertikal, nicht horizontal. Das Rähm liegt
-    auf den Pfosten-Köpfen.
-  - **Ständer** (`staender`, eigener Eintrag folgt): Wand-
-    Senkrechtbauteil im Holzrahmen-/Holztafelbau (synonym zu
-    Pfosten in dieser Bauweise).
-  - **Riegel** (`riegel`): horizontales
-    **Querholz** zwischen Pfosten in der Wand (z. B. Brüstungs-
-    oder Sturzriegel); nicht der oberste Längsträger.
-    Mehrdeutigkeits-Risiko mit der abgelehnten Benennung
-    „Wandriegel" begründet die Abgrenzung.
-  - **Wand** (`wand`, eigener Eintrag folgt): aggregierender
-    Träger-Begriff; das Rähm ist Bestandteil einer Wand, nicht
-    selbst eine Wand.
-  - **Mauerlatte** (`mauerlatte`): Synonym der Fußpfette auf
-    Mauerwerk (siehe `hg_fusspfette.md`); **nicht** Rähm-Synonym.
-    Die Falsifikation ist im `quellenkonflikt:`-Block ausgeführt.
-  - **Traufe** (`traufe`): Dachkante am Sparrenfuß; bei einer
-    Holzwand mit Pfettendach liegt das Rähm parallel zur Traufe
-    und in deren Höhennähe, ist aber nicht identisch (Traufe ist
-    Dachgeometrie, Rähm ist Wand-Bauteil).
+    - **Pfette** (`pfette`): Dach-Längsträger; Wand-Dach-Trennung
+      zimmermannssprachlich scharf. Das Rähm ist Wand-Bauteil.
+      „Wandpfette" als Korpus-Synonym ist deshalb in
+      `abgelehnte_benennungen:` geführt.
+
+    - **Fußpfette** (`fusspfette`): Dach-Bauteil, unterste Pfette
+      am Sparrenfuß. Funktionale Überlagerung mit dem Rähm
+      möglich, aber Rollen-Trennung bleibt: das Bauteil im
+      Wandgefüge ist Rähm; das Bauteil im Dachtragwerk (auf
+      Mauerkrone, ohne Pfosten-Anbindung) ist Fußpfette
+      (siehe `quellenkonflikt:`-Block Punkt 3).
+
+    - **Schwelle** (`schwelle`): unteres
+      Längs-Pendant am Wandfuß; geometrisch symmetrisch zum Rähm,
+      aber an der gegenüberliegenden Wand-Längskante. Geschwister-
+      Bauteilrolle unter `bauteil`, nicht Spezialisierung.
+
+    - **Sparren** (`sparren`): geneigtes Bauteil entlang der
+      Falllinie einer Dachfläche; nicht horizontal, nicht Wand-
+      Bauteil.
+
+    - **Pfosten** (`pfosten`, eigener Eintrag folgt): Wand-
+      Senkrechtbauteil; vertikal, nicht horizontal. Das Rähm liegt
+      auf den Pfosten-Köpfen.
+
+    - **Ständer** (`staender`, eigener Eintrag folgt): Wand-
+      Senkrechtbauteil im Holzrahmen-/Holztafelbau (synonym zu
+      Pfosten in dieser Bauweise).
+
+    - **Riegel** (`riegel`): horizontales
+      **Querholz** zwischen Pfosten in der Wand (z. B. Brüstungs-
+      oder Sturzriegel); nicht der oberste Längsträger.
+      Mehrdeutigkeits-Risiko mit der abgelehnten Benennung
+      „Wandriegel" begründet die Abgrenzung.
+
+    - **Wand** (`wand`, eigener Eintrag folgt): aggregierender
+      Träger-Begriff; das Rähm ist Bestandteil einer Wand, nicht
+      selbst eine Wand.
+
+    - **Mauerlatte** (`mauerlatte`): Synonym der Fußpfette auf
+      Mauerwerk (siehe `hg_fusspfette.md`); **nicht** Rähm-Synonym.
+      Die Falsifikation ist im `quellenkonflikt:`-Block ausgeführt.
+
+    - **Traufe** (`traufe`): Dachkante am Sparrenfuß; bei einer
+      Holzwand mit Pfettendach liegt das Rähm parallel zur Traufe
+      und in deren Höhennähe, ist aber nicht identisch (Traufe ist
+      Dachgeometrie, Rähm ist Wand-Bauteil).
 
 ## Quellen
 
@@ -422,8 +455,10 @@ allgemeinen Rahmen-Wurzel — daher die zulässigen Synonyme
 
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
   Architektenverein, Zürich.
+
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
   von Holzbauten – Teil 1-1".
+
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken".
 
@@ -433,14 +468,19 @@ allgemeinen Rahmen-Wurzel — daher die zulässigen Synonyme
   16. Auflage, Beuth, Berlin 2015.
 - Natterer, J.; Herzog, T.; Volz, M.; Schweitzer, R.; Winter, W.:
   *Holzbau-Atlas.* 4. Auflage, Birkhäuser, Basel 2003.
+
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.*
   DVA, 7. Auflage 2007.
+
 - Krämer, F.: *Grundwissen des Zimmerers.* 2. Auflage,
   Bruderverlag, Karlsruhe 1988.
+
 - Koepf, H.; Binding, G.: *Bildwörterbuch der Architektur.* Kröner,
   Stuttgart, aktuelle Auflage.
+
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich, aktuelle
   Auflage.
+
 - Thesaurus Traditioneller Holzbau, Begriff-ID 866 „Rähm"
   (`thesaurus-traditioneller-holzbau.net`).
 
@@ -449,6 +489,7 @@ allgemeinen Rahmen-Wurzel — daher die zulässigen Synonyme
 - Deutsches Wörterbuch von Jacob und Wilhelm Grimm (DWB), Lemma
   „rahme", „rahm" (digital über `dwds.de/wb/dwb/rahme`,
   `dwds.de/wb/dwb/rahm`), abgerufen 2026-05-14.
+
 - DWDS, „Rähm" (`dwds.de/wb/Rähm`), abgerufen 2026-05-14 —
   allgemeinsprachliche Drift „Dachstuhl-Teil" siehe
   `quellenkonflikt:`-Block Punkt 1.
@@ -457,11 +498,15 @@ allgemeinen Rahmen-Wurzel — daher die zulässigen Synonyme
 
 - Wikipedia, Lemma „Rähm" (`de.wikipedia.org/wiki/Rähm`),
   abgerufen 2026-05-14 — Definition auf Krämer rückführbar.
+
 - Wikipedia, Lemma „Wall plate" (`en.wikipedia.org/wiki/Wall_plate`),
   abgerufen 2026-05-14 — englische Pendants.
+
 - BauNetz Wissen, „Fachwerkbauweise" und „Tafelbau/Rahmenbau"
   (`baunetzwissen.de`), abgerufen 2026-05-14.
+
 - Informationsdienst Holz, „Holzbausysteme — eine Übersicht"
   (`informationsdienst-holz.de`), abgerufen 2026-05-14.
+
 - Recherche-Bericht [intern] mit
   vollständigem Quellenapparat und Tier-Klassifikation.
