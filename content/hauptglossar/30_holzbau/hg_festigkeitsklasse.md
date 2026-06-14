@@ -21,7 +21,7 @@ quellen_primär:
   - "DIN EN 622-2:2004-08, 'Faserplatten – Anforderungen – Teil 2: Anforderungen an harte Platten' (HB)."
   - "DIN EN 622-3:2004-08, 'Faserplatten – Anforderungen – Teil 3: Anforderungen an mittelharte Platten' (MBH, MBL)."
   - "DIN EN 622-5:2010-01, 'Faserplatten – Anforderungen – Teil 5: Anforderungen an Platten nach dem Trockenverfahren (MDF)'."
-  - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Anhang A (Festigkeitsklassen-Tabellen, identisch zu EN 338 / EN 14080)."
+  - "SIA 265:2021 'Holzbau', §1.1.28 (Begriff 'Festigkeitsklasse') und §3.3.1.6 mit Tabelle 6/7 (Zuordnung sortierter Hölzer zu den Festigkeitsklassen nach SN EN 338 / SN EN 1912); charakteristische Druckfestigkeit und E-Moduln parallel zur Faser in Anhang B. Die Festigkeitsklassen selbst sind in SN EN 338 / SN EN 14080 definiert. [direkt]"
   - "DIN 4074-1:2012-06, 'Sortierung von Holz nach der Tragfähigkeit – Teil 1: Nadelschnittholz' (Sortierklassen S7, S10, S13 → Festigkeitsklassen C16, C24, C30 nach Zuordnungstabelle)."
 quellen_sekundär:
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 2 (Werkstoff Holz, Festigkeitsklassen)."

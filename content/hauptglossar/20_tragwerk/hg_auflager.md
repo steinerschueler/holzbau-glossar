@@ -15,7 +15,7 @@ quellen_primär:
   - "DIN EN 1990:2010-12 'Eurocode: Grundlagen der Tragwerksplanung', Abschnitt 1.5 (Begriffe): „Auflager“ als Stelle der Lagerreaktion vorausgesetzt; keine geschlossene Begriffs-Definition."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 (Druck rechtwinklig zur Faser, Auflagerpressung) und Abschnitt 6.5 (Schubnachweis am ausgeklinkten Auflager); Auflagerlänge ℓ als operationale Bemessungsgröße."
   - "SIA 260:2013 'Grundlagen der Projektierung von Tragwerken', Abschnitt 1 (Geltungsbereich) und Abschnitt 2 (Begriffe): „Auflager“ als Ort der Lagerreaktion vorausgesetzt."
-  - "SIA 265:2021 'Holzbau', Abschnitt 5 (Konstruktive Durchbildung) und Anhang B (Schub am ausgeklinkten Bereich): Auflagerausbildung im Holzbau."
+  - "SIA 265:2021 'Holzbau', §5 'Bauteile und Strukturen', §5.2.2 'Ausklinkungen' (Schubnachweis am ausgeklinkten Auflager, Figur 16); Auflagerpressung/Druck rechtwinklig zur Faser nach §4.2.2.3 bzw. Anhang C. [direkt]"
   - "DIN 1052:2008-12, Abschnitt 12 (Konstruktive Anforderungen): Auflagerpressung, Auflagerlänge."
 quellen_sekundär:
   - "Petersen, Chr.: Statik und Stabilität der Baukonstruktionen. Vieweg, Braunschweig (mehrfache Auflagen); Lehrbuch-Standard zur Klassifikation Loslager/Festlager/Einspannung im ebenen und räumlichen Fall."
@@ -525,7 +525,7 @@ zeigen, das zugleich Mitglied einer `Verbindung` ist).
   6.5.
 - SIA 260:2013, „Grundlagen der Projektierung von Tragwerken“,
   Schweizerischer Ingenieur- und Architektenverein, Zürich.
-- SIA 265:2021, „Holzbau“, Abschnitt 5 und Anhang B.
+- SIA 265:2021, „Holzbau“, §5.2.2 „Ausklinkungen“.
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken“, Abschnitt 12.
 

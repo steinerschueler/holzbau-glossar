@@ -11,7 +11,7 @@ abgrenzung_zu: [kopfband, fussband, knagge, andreaskreuz, mann, kniestrebe, stuh
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1 Fachausdrücke [via: Lignum-Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor']: Definitionsliste der Fachbegriffe enthalten, Volltext nicht direkt eingesehen."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Strebe' nicht als Fachausdruck (§1.1 / Anhang G geprüft) noch als Lemma; im Bemessungstext erscheint nur 'Druckstrebe' als Berechnungsgröße. Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 9 (Bauliche Einzelheiten, Wandscheiben): Strebe als diagonales Aussteifungs-Stab-Bauteil im Wandverband vorausgesetzt, nicht als Lemma definiert."
   - "DIN 1052:2008-12, Abschnitt 8 und 12 (Konstruktive Anforderungen): Strebe als Bestandteil aussteifender Wandverbände vorausgesetzt, nicht eigenständig definiert."
   - "Thesaurus Traditioneller Holzbau (TTH), RWTH Aachen, Lemma 'Strebe' (Begriff-ID 903), Deskriptor: 'in der Regel ständerstarkes Schrägholz zur Herstellung des Dreiecksverbandes'; Quelle Großmann 1987 S. 72. Sub-Begriffe Fachstrebe, Fußstrebe, Kopfstrebe, Langstrebe, Spannstrebe, Strebesäule, Ständerstrebe; verwandte Terme Biege, Pfostenstrebe, Schubband, Sturmband, Windsteb. [direkt]"
@@ -103,9 +103,13 @@ quellenkonflikt: |
   `[einsicht: snippet]` markiert.
 
   **(5) SIA-265.** SIA 265:2021 §1.1
-  „Fachausdrücke" enthält laut Lignum-Pressemitteilung 2021 eine
-  geschlossene Definitionsliste der Holzbau-Fachbegriffe. Der
-  Norm-Volltext ist **nicht direkt eingesehen** (SIA-Shop-Paywall).
+  „Fachausdrücke" (1.1.1–1.1.40) und das identische Anhang G
+  wurden am Volltext geprüft (2026-06-14): Die Liste definiert
+  ausschliesslich Werkstoffe, Sortierung, Feuchte,
+  Festigkeitsklasse, Verbindungsmittel, Versatz und Klebstoffe —
+  **keine** Zimmermanns-Bauteilrolle. „Strebe" ist dort **nicht** als
+  §1.1-Fachausdruck bzw. Anhang-G-Lemma geführt; SIA behandelt nur
+  generische Tragglieder.
 
   **(6) TTH-verwandte-Terme als Synonyme — eigene Festlegung.**
   Der TTH-Eintrag „Strebe" (Begriff-ID 903) listet `Biege`,
@@ -515,8 +519,10 @@ Teil dieses Eintrags; die Versatz-Bearbeitung ist eigene
 **Primär (normativ):**
 
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, §1.1 Fachausdrücke
-  [via: Lignum-Pressemitteilung 2021].
+  Architektenverein, Zürich, §1.1 Fachausdrücke / Anhang G
+  (Volltext direkt eingesehen, 2026-06-14): „Strebe" ist **nicht**
+  als Fachausdruck geführt; die Liste behandelt nur Werkstoffe,
+  Verbindungsmittel und generische Tragglieder (Negativ-Befund).
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
   von Holzbauten – Teil 1-1".
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von

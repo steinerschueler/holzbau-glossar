@@ -18,6 +18,7 @@ quellen_primär:
   - "ETA-06/0138 (KLH Massivholz), ETA-14/0349 (Stora Enso CLT), ETA-12/0281 (Hasslacher CLT), ETA-11/0210 (Binderholz CLT) — exemplarische europäische technische Bewertungen für Brettsperrholz."
   - "ÖNORM B 1995-1-1:2019, nationale Anwendungsbestimmungen zu EC 5, Abschnitt 9."
 quellen_sekundär:
+  - "SIA 265:2021 'Holzbau', §1.1.13 'Mehrlagige Massivholzplatte' und §1.1.14 'Brettsperrholz' — die CH-Leitnorm führt den kreuzweise geschichteten Werkstoff im Fachausdrücke-Verzeichnis, verweist für die Definition aber auf SN EN 16351 bzw. SN EN 12775; CH-Sekundär-/Bestätigungs-Anker. [direkt]"
   - "Blaß, H. J.; Flaig, M.: Stabförmige Bauteile aus Brettsperrholz. Karlsruher Berichte zum Ingenieurholzbau, Bd. 24, KIT Scientific Publishing, Karlsruhe 2012, DOI 10.5445/KSP/1000030362."
   - "Schickhofer, G.; Bogensperger, T.; Moosbrugger, T. (Hrsg.): BSPhandbuch — Holz-Massivbauweise in Brettsperrholz. 2. Aufl., Verlag der TU Graz 2010."
   - "ProHolz Austria: Brettsperrholz Bemessung Band I — Grundlagen für Statik und Konstruktion. ProHolz Austria, Wien 2014 (Definition Haupttragrichtung 0° = Decklamellen-Richtung mit höherer Steifigkeit)."

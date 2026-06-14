@@ -12,7 +12,7 @@ status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Abschnitt 1.5 (Begriffe), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 6 (Grenzzustände der Tragfähigkeit): Querschnitt als Bemessungs-Bezugsfläche für Schnittgrössen, Spannungs- und Stabilitätsnachweise."
-  - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung): Querschnittswerte (A, I, W) als Bemessungseingang."
+  - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §4 'Tragwerksanalyse und Bemessung': Querschnittswerte (A, I, W) als Bemessungseingang der Spannungsnachweise (§4.2). [direkt]"
   - "DIN EN 14081-1:2019-10, 'Holzbauwerke – Nach Festigkeit sortiertes Bauholz mit rechteckigem Querschnitt – Teil 1: Allgemeine Anforderungen': Querschnitt als geometrisches Klassifikationsmerkmal (rechteckig)."
   - "DIN 1052:2008-12, 'Entwurf, Berechnung und Bemessung von Holzbauwerken', Abschnitt 5 (Berechnungsverfahren) und Abschnitt 9 (Querschnittswerte)."
   - "ISO 16739-1:2024, 'Industry Foundation Classes (IFC)', Entitäten 'IfcProfileDef' und Subtypen 'IfcRectangleProfileDef', 'IfcCircleProfileDef', 'IfcIShapeProfileDef': normative Klasse 'Querschnittsprofil' und Subtyp-Hierarchie."

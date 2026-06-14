@@ -11,7 +11,7 @@ abgrenzung_zu: [staender, saeule, haengesaeule, stuhlsaeule, pfosten, pfeiler, w
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1 Fachausdrücke [via: Lignum-Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor']: Stütze als werkstoffneutrales tragendes Vertikalbauteil im Holzbau-Tragwerk; Definitionsliste der Fachbegriffe enthalten, Volltext nicht direkt eingesehen."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Stütze' nicht als §1.1-Fachausdruck (Anhang G geprüft); im Bemessungstext nur generisch ('Druckstäbe', §4.2.8 'Stabilität von Druckstäben (Knicken)'; 'Stütze-Riegel-Tragwerke' §5.8). Werkstoffneutraler, vorausgesetzter Tragwerks-Begriff. [direkt]"
   - "DIN 1045-1 'Tragwerke aus Beton, Stahlbeton und Spannbeton — Teil 1: Bemessung und Konstruktion', Beuth, Berlin [via: Wikipedia/Stütze (Bauteil)]: 'Stütze = stabförmiges Druckglied, dessen größte Abmessung im Querschnitt — im Unterschied zu einer Wand — das Vierfache der kleinsten Abmessung nicht übersteigt.' Werkstoffneutrale Geometrie-Definition (Wand-Abgrenzung 1:4-Querschnitts-Verhältnis); Volltext nicht direkt eingesehen."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 6 (Bemessung im Grenzzustand): Stütze als druckbeanspruchtes Stab-Bauteil vorausgesetzt, nicht eigenständig lemmatisiert."
   - "DIN 1052:2008-12, Abschnitt 8 (Konstruktive Anforderungen für Bauteile aus Vollholz, Brettschichtholz und Holzwerkstoffen): Stütze als druckbeanspruchtes Stab-Bauteil mit gegebenenfalls überlagerter Biegebeanspruchung vorausgesetzt."
@@ -120,9 +120,13 @@ quellenkonflikt: |
   Folgearbeit-Eintrag aufgenommen.
 
   **(5) SIA-265.** SIA 265:2021 §1.1
-  „Fachausdrücke" enthält laut Lignum-Pressemitteilung 2021 eine
-  geschlossene Definitionsliste der Holzbau-Fachbegriffe; der
-  Norm-Volltext ist **nicht direkt eingesehen** (SIA-Shop-Paywall).
+  „Fachausdrücke" (1.1.1–1.1.40) und das identische Anhang G wurden
+  am Volltext geprüft (2026-06-14): Die Liste definiert ausschliesslich
+  Werkstoffe, Sortierung, Feuchte, Festigkeitsklasse,
+  Verbindungsmittel, Versatz und Klebstoffe — **keine**
+  Zimmermanns-Bauteilrolle. „Stütze" ist dort **nicht** als
+  §1.1-Fachausdruck bzw. Anhang-G-Lemma geführt; SIA behandelt nur
+  generische Tragglieder.
 
   **(6) Säule als Subtyp (Forward-Verweis zu `hg_saeule.md`).** Welle
   13 legt `hg_saeule.md` als architektonisch-klassischen Subtyp der
@@ -305,7 +309,7 @@ Funktionen sind:
 Die Stütze trägt im Idealfall **reine Drucknormalkraft**; in der Praxis
 treten zusätzlich Biegemomente aus Lastexzentrizität und
 Anschlussmomenten auf. Die Bemessung erfolgt für Druck mit Biegung
-nach DIN EN 1995-1-1 Abschnitt 6.3 (bzw. SIA 265:2021 §5.3).
+nach DIN EN 1995-1-1 Abschnitt 6.3 (bzw. SIA 265 §4.2.8).
 
 ### Werkstoffe und Querschnitte
 
@@ -475,7 +479,10 @@ Quellenkonflikt-Punkt 4) — die Lemma-Wahl im Glossar bleibt aber bei
 **Primär (normativ):**
 
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, §1.1 Fachausdrücke.
+  Architektenverein, Zürich, §1.1 Fachausdrücke / Anhang G
+  (Volltext direkt eingesehen, 2026-06-14): „Stütze" ist **nicht**
+  als Fachausdruck geführt; die Liste behandelt nur Werkstoffe,
+  Verbindungsmittel und generische Tragglieder (Negativ-Befund).
 - DIN 1045-1, „Tragwerke aus Beton, Stahlbeton und Spannbeton —
   Teil 1: Bemessung und Konstruktion", Beuth, Berlin.
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion

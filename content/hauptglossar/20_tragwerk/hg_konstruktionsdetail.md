@@ -41,7 +41,7 @@ quellen_primär:
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) – Part 1: Data schema' (IFC 4.3.2.0): `IfcGroup` (Subtyp von `IfcObjectDefinition`) mit `IfcRelAggregates`/`IfcRelAssignsToGroup` als nicht-exklusiver Aggregations-Beziehung; `IfcElementAssembly` (Subtyp von `IfcElement`) als Element-Komposit-Pendant. Pendant für die App-Lesart II (Sach-Aggregat über Bauteilen, Verbindungen, Auflagern und Bearbeitungen mit eigener Identität)."
   - "DIN 1356-1:2024-04, 'Bauzeichnungen — Teil 1: Grundregeln der Darstellung' [einsicht: snippet, baunormenlexikon.de / DIN Media]. Trägt 'Detailzeichnung' als Zeichnungstyp/Maßstabsklasse (1:20, 1:10, 1:5, 1:1), nicht 'Konstruktionsdetail' als Sach-Begriff. Begrifflich nur Plan-Artefakt-Lesart (Lesart I)."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 1.5 (Begriffe). Der Begriff 'Konstruktionsdetail' ist nicht definiert; die EC5-Sicht auf einen Knoten ist die der Verbindung (Kap. 8 'Anschlüsse mit metallischen Verbindungsmitteln')."
-  - "SIA 265:2021 'Holzbau', Abschnitt 5 'Konstruktive Durchbildung'. Der Begriff 'Konstruktive Durchbildung' deckt das Themenfeld inhaltlich ab, ohne eine geschlossene Begriffs-Definition von 'Konstruktionsdetail' zu geben."
+  - "SIA 265:2021 'Holzbau', Kapitel 5 'Bauteile und Strukturen' (u. a. §5.2 Ausklinkungen/Einschnitte/Durchbrüche, §5.4 Scheiben). Eine geschlossene Definition von 'Konstruktionsdetail' gibt die Norm nicht; den Knoten sieht sie als Verbindung (Kapitel 6). [direkt]"
   - "DIN 1052:2008-12, Abschnitt 3 'Begriffe'. Kein definitorischer Eintrag zu 'Konstruktionsdetail'."
 quellen_sekundär:
   - "Holzbau-Handbuch, Reihe 1, Teil 7, Folge 2 'Anschlüsse im Hallenbau', Informationsdienst Holz. Verwendet 'Anschluss' und 'Detail' praktisch synonym als Sach-Gegenstand (Knoten mit beteiligten Bauteilen, Bearbeitungen, Verbindungsmitteln)."
@@ -112,7 +112,7 @@ quellenkonflikt: |
   unterschiedliche Sichten desselben Knotens:
 
   - **Verbindung** (`hg_verbindung.md`): die **Bemessungs-Sicht**
-    (EC5 Kap. 8, SIA 265 Anhang A) — Tupel aus beteiligten Bauteilen,
+    (EC5 Kap. 8, SIA 265 Kap. 6 „Verbindungen") — Tupel aus beteiligten Bauteilen,
     Verbindungsmitteln, Verbindern, Verstärkungen und
     Nachweisverfahren.
   - **Auflager** (`hg_auflager.md`): die **Tragwerks-Sicht** (EC5
@@ -627,7 +627,7 @@ Werkplan-Sicht bleibt orthogonal.
   Darstellung" (Detailzeichnung als Maßstabsklasse).
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
   von Holzbauten – Teil 1-1", Abschnitt 1.5 und Kapitel 8.
-- SIA 265:2021, „Holzbau", Abschnitt 5 „Konstruktive Durchbildung".
+- SIA 265:2021, „Holzbau", Kapitel 5 „Bauteile und Strukturen".
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken", Abschnitt 3.
 

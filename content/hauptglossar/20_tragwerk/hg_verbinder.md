@@ -14,7 +14,7 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 8.2.3 'Indirekte Verbindungen' (Verbindungselement zwischen zwei oder mehr Stäben, jeder Stab durch eigene Verbindungsmittel an das Verbindungselement angeschlossen)."
   - "DIN EN 1995-1-1:2010-12, Anhang A bzw. nationale Anhänge zu Verbindern (Balkenschuhe, Winkelverbinder)."
   - "EC5 Nationaler Anhang Deutschland (DIN EN 1995-1-1/NA), Verbindungselemente und Beschläge."
-  - "SIA 265:2021 'Holzbau', Anhang A 'Verbindungen und Verbindungsmittel', Beschläge und Verbindungselemente."
+  - "SIA 265:2021 'Holzbau', §8.6 'Blechformteile und Verbindungssysteme' (Beschläge; Randbedingungen der Systemanbieter verbindlich) und §6.7 'Nagelplattenverbindungen'. Einen 'Anhang A Verbindungen und Verbindungsmittel' gibt es nicht; Anhang A behandelt nur Stabdübel/Bolzen/Schrauben. [direkt]"
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) – Part 1: Data schema', Entität `IfcDiscreteAccessory` (Subtyp von `IfcElementComponent`); Predefined Types u. a. ANCHORPLATE, BRACKET, SHOE."
   - "design2machine: BTLx 2.x Specification (Stand 2024), Part-Element bzw. Reference für Beschläge."
   - "ETA-06/0106, 'Simpson Strong-Tie 3D-Verbinder' (BSD-, AKR-, AHL-Reihen)."
@@ -31,8 +31,8 @@ quellenkonflikt: |
   - **DIN EN 1995-1-1** spricht in 8.2.3 von „Verbindungselement"
     bzw. „indirekte Verbindung". Das deutsche „Verbinder" ist
     hier **synonym** mit dem Norm-Begriff „Verbindungselement".
-  - **SIA 265** verwendet „Beschlag" und „Verbindungselement"
-    weitgehend synonym.
+  - **SIA 265** spricht von „Blechformteilen und Verbindungssystemen"
+    (§8.6); „Beschlag" ist kein SIA-§1.1-Fachausdruck.
   - In der Schweizer Praxis und in cadwork ist „Verbinder" der
     eingeführte Sammelbegriff (Balkenschuh-Verbinder, Sherpa-
     Verbinder, Schlitzblech-Verbinder).
@@ -323,7 +323,7 @@ ist die „Verbinderliste" eine eigene Sicht.
   Konstruktion von Holzbauten", Abschnitt 8.2.3 sowie
   Verbinder-spezifische Abschnitte.
 - DIN EN 1995-1-1/NA, deutscher Nationaler Anhang.
-- SIA 265:2021, „Holzbau", Anhang A.
+- SIA 265:2021, „Holzbau", §8.6 „Blechformteile und Verbindungssysteme" und §6.7 Nagelplattenverbindungen.
 - ISO 16739-1:2024, IFC-Entität `IfcDiscreteAccessory`.
 - design2machine: *BTLx 2.x Specification* (Stand 2024).
 - ETA-06/0106 (Simpson Strong-Tie 3D-Verbinder).

@@ -13,7 +13,7 @@ subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen) und Abschnitt 2 (Konstruktive Anforderungen): Dachüberstand traufseitig zum Schutz von Wand und Sockelbereich."
   - "DIN 68800-2:2022-02, 'Holzschutz – Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau', Abschnitt 5 (Konstruktive Maßnahmen): Dachüberstand als bauliche Holzschutz-Maßnahme; ein ausreichender Dachüberstand wird als Schlüsselmaßnahme zum konstruktiven Holzschutz geführt."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 5 (Konstruktive Durchbildung): Sparrenfuß und Sparrenüberstand am Pfettendach."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Sparrenüberstand' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §5 'Bauteile und Strukturen' behandelt nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5); der Überstand ist Kragteil eines Trägers (§5.1). Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 und Abschnitt 6: Sparren als biegebeanspruchtes Bauteil; der Überstand ist Kragarm-Auskragung mit eigenem Bemessungsschnitt."
 quellen_sekundär:
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage, Abschnitt 'Dachüberstand und Sparrenfuß'."

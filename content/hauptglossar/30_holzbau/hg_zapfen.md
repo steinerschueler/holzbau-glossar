@@ -14,7 +14,7 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 (Druck rechtwinklig zur Faser): allgemeines Verfahren für den Querdrucknachweis. Der Wirkungsmechanismus der Zapfenverbindung beruht auf Querdruck an der Lochwandung des Gegenholzes und an der Zapfenwange; die einschlägige Nachweisstelle ist EC5 §6.1.5, nicht §8 (Letzteres betrifft ausschliesslich Anschlüsse mit metallischen Verbindungsmitteln)."
   - "DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland: regelt die in EC5 nicht direkt geführten zimmermannsmässigen Verbindungen (Versatz, Zapfen, Holznagel) durch Rückverweis auf DIN 1052."
   - "DIN 1052:2008-12, Abschnitt 15 (Zimmermannsmässige Verbindungen): geometrische und bemessungstechnische Anforderungen an Zapfen und Zapfenlöcher; Faustregeln zu Zapfenbreite und Zapfenlänge in Abhängigkeit der Bauteilabmessungen."
-  - "SIA 265:2021 'Holzbau', Anhang A: zimmermannsmässige Verbindungen einschliesslich Versatz und Zapfen; Schweizer Pendant zu DIN 1052 §15."
+  - "SIA 265:2021 'Holzbau' führt den 'Zapfen' nicht (kommt im Normtext nicht vor). Von den zimmermannsmässigen Verbindungen ist nur der Versatz erfasst (§1.1.39 Begriff, §6.9.2 Bemessung); andere zählt §4.6.2.6 ausdrücklich zu den 'hier nicht behandelten Verbindungsarten'. Anhang A betrifft Stabdübel/Bolzen/Schrauben. Negativ-Befund, Volltext direkt eingesehen. [direkt]"
   - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'List of Processings', Processings 'Tenon' und 'DovetailTenon' (S. 8 ff.): parametrische Spezifikation des Zapfens als materialabtragende Bearbeitung am Bauteilende mit den Parametern ReferencePlaneId, StartX/StartY, StartDepth, Angle, Inclination, Length, Width, Height (sowie ConeAngle für DovetailTenon). 'Tenon' und 'Mortise' sind in BTLx zwei eigenständige Processings an zwei verschiedenen Bauteilen."
 quellen_sekundär:
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 7 'Verbindungen', § Zapfenverbindungen (einfacher Zapfen, Brustzapfen, Doppelzapfen, Schwalbenschwanz-Zapfen)."
@@ -43,14 +43,16 @@ quellenkonflikt: |
     erfolgt.
   - **Normativer Anker**: EC5 Nationaler Anhang (DIN EN
     1995-1-1/NA) plus **DIN 1052:2008-12 §15** (Deutschland) bzw.
-    **SIA 265:2021 Anhang A** (Schweiz). Die fachlich-
+    **SIA 265:2021 §6.9.2** (Schweiz; nur Versatz, Zapfen wird
+    nicht geführt). Die fachlich-
     strukturellen Aussagen beider Normen sind inhaltlich
     vergleichbar (Querdrucknachweis, Faustregeln zur Geometrie);
     der konkrete Wortlaut weicht ab.
 
   Eigene Festlegung: Die Bemessungs-Stelle dieses Eintrags ist
   **EC5 §6.1.5 (Querdruck)** in Verbindung mit dem nationalen
-  Anhang und DIN 1052 §15 / SIA 265 Anhang A. Diese Festlegung
+  Anhang und DIN 1052 §15 / SIA 265 §6.9.2 (nur Versatz; Zapfen
+  wird nicht geführt). Diese Festlegung
   ist konsistent mit dem Schwester-Eintrag `hg_zapfenloch.md`
   und mit der Querverweis-Lage in `hg_bearbeitung.md` und
   `hg_kerve.md`.
@@ -63,8 +65,9 @@ quellenkonflikt: |
   Faustregel an: **Zapfenbreite ≈ 1/3 der Holzdicke des
   stärkeren Holzes**. Der normative Ursprung (DIN 1052 §15
   bzw. ältere DIN 1052:1988) ist in den zugänglichen Quellen
-  nur referenziert, nicht zitiert; SIA 265 Anhang A und der
-  EC5 NA sind im Volltext nicht eingesehen worden.
+  nur referenziert, nicht zitiert; der EC5 NA ist im Volltext
+  nicht eingesehen worden. SIA 265:2021 ist dagegen direkt
+  eingesehen und führt den Zapfen nicht (nur Versatz, §6.9.2).
 
   Eigene Festlegung analog zur Kerv-Tiefen-Konvention
   (`hg_kerve.md`, Konflikt 1): Die **Zapfenbreite ist ein
@@ -758,7 +761,7 @@ nicht im Glossar geführt.
   Holzbauwerken", Abschnitt 15 (Zimmermannsmässige
   Verbindungen).
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, Anhang A.
+  Architektenverein, Zürich, §6.9.2 Versatz (Zapfen nicht geführt).
 - design2machine: *BTLx interface description*, Version 2.1,
   16.11.2023, Processings `Tenon` und `DovetailTenon`.
 

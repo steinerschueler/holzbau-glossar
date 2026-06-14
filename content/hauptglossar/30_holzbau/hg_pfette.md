@@ -11,7 +11,7 @@ abgrenzung_zu: [sparren, kehlbalken, riegel, latte, konterlatte, binder, dachfla
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung) und Abschnitt 5 (Konstruktive Durchbildung), Pfette als horizontaler Längsträger des Dachtragwerks."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Pfette' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §4 'Tragwerksanalyse und Bemessung' und §5 'Bauteile und Strukturen' behandeln nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5). Vorausgesetzter Berufsbegriff. [direkt]"
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen)."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung), Pfetten als biegebeanspruchte Stab-Bauteile in horizontaler Lage."
   - "DIN 1052:2008-12, Abschnitt 8 und Abschnitt 12 (Konstruktive Anforderungen), Pfetten als Längsträger des Dachtragwerks."

@@ -11,7 +11,7 @@ abgrenzung_zu: [first, mittelpfette, fusspfette, sparren, kehlbalken, knagge]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Abschnitt 5 (Konstruktive Durchbildung), Pfetten am First."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Firstpfette' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §5 'Bauteile und Strukturen' behandelt nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5). Vorausgesetzter Berufsbegriff. [direkt]"
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen)."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 und 6, Firstpfette als Pfette mit Lage am First."
   - "DIN 1052:2008-12, Abschnitt 8 und 12, Firstpfette als Tragglied am First."

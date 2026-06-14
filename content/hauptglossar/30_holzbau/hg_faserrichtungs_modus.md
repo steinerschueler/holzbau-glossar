@@ -16,6 +16,7 @@ quellen_primär:
   - "DIN EN 16351:2021-08 (Brettsperrholz), DIN EN 14080:2013-09 (BSH), DIN EN 14081-1:2019-10 (Vollholz), DIN EN 14374:2005-02 (LVL), DIN EN 636:2015-06 (Sperrholz), DIN EN 300:2006-09 (OSB), DIN EN 312:2010-12 (Spanplatten), DIN EN 622-2/3/5 (Faserplatten)."
   - "DIN EN 12369-1:2001-04, 'Charakteristische Werte für die Berechnung und Bemessung von Holzbauwerken – Teil 1: OSB, Spanplatten und Faserplatten' (eine einzige Festigkeit pro Beanspruchungsart bei Spanplatte/Faserplatte; f_m,0 und f_m,90 bei OSB)."
 quellen_sekundär:
+  - "SIA 265:2021 'Holzbau', §1.1.11–1.1.20 (Holzwerkstoff-Taxonomie) — unterscheidet axial faserparallele (Vollholz/BSH §1.1.1–1.1.5), gerichtete (Furnierschichtholz §1.1.15, OSB §1.1.19), kreuzweise geschichtete (Massivholzplatte §1.1.13, Brettsperrholz §1.1.14, Furniersperrholz §1.1.16) und ungerichtete (Spanplatte §1.1.17/18, Faserplatte §1.1.20) Werkstoffe; CH-Sekundaer-Anker (Definitionen via SN EN). [direkt]"
   - "Niemz, P.; Sonderegger, W.: Physik des Holzes und der Holzwerkstoffe. Hanser, München 2017, Kap. 6 (Mechanische Eigenschaften, Orthotropie L/R/T) und Kap. 7 (Holzwerkstoffe)."
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 2 und 3."
   - "ProHolz Austria: Brettsperrholz Bemessung Band I — Grundlagen für Statik und Konstruktion. Wien 2014 (Definition Haupttragrichtung 0° als Decklamellen-Richtung mit höherer Steifigkeit)."

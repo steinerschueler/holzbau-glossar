@@ -11,7 +11,7 @@ abgrenzung_zu: [kopfband, strebe, knagge, schwelle, raehm, riegel, staender, pfo
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1 Fachausdrücke [via: Lignum-Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor']: Definitionsliste der Fachbegriffe enthalten, Volltext nicht direkt eingesehen."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Fussband' nicht als Fachausdruck (§1.1 / Anhang G geprüft) noch als Lemma; keine Erwähnung im Bemessungstext. Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 9 (Bauliche Einzelheiten, Wandscheiben): Fussband als diagonales Aussteifungs-Stab-Bauteil im Wandverband konstruktiv vorausgesetzt, nicht als Lemma definiert."
   - "DIN 1052:2008-12, Abschnitt 8 und 12 (Konstruktive Anforderungen): Fussband als Bestandteil aussteifender Wandverbände vorausgesetzt, nicht eigenständig definiert."
   - "Thesaurus Traditioneller Holzbau (TTH), RWTH Aachen, Hierarchie-Facette 1922 'Fachwerk-Bauteile', Unter-Facette 'Band (Bauteil)': Fußband neben Kopfband gleichrangig geführt; Quelle Großmann 1987. [direkt]"
@@ -164,9 +164,13 @@ quellenkonflikt: |
   trägt aber selbst keine Mann-Figur-spezifische Geometrie.
 
   **(7) SIA-265.** SIA 265:2021 §1.1
-  „Fachausdrücke" enthält laut Lignum-Pressemitteilung 2021
-  eine geschlossene Definitionsliste der Holzbau-Fachbegriffe. Der Norm-Volltext ist
-  **nicht direkt eingesehen** (SIA-Shop-Paywall).
+  „Fachausdrücke" (1.1.1–1.1.40) und das identische Anhang G
+  wurden am Volltext geprüft (2026-06-14): Die Liste definiert
+  ausschliesslich Werkstoffe, Sortierung, Feuchte,
+  Festigkeitsklasse, Verbindungsmittel, Versatz und Klebstoffe —
+  **keine** Zimmermanns-Bauteilrolle. „Fussband" ist dort **nicht** als §1.1-Fachausdruck
+  bzw. Anhang-G-Lemma geführt; SIA behandelt nur generische
+  Tragglieder.
 
   **(8) BauNetz-Wissen.** Aussagen aus BauNetz Wissen sind ausschliesslich
   aus WebSearch-Snippets rekonstruiert und mit
@@ -598,8 +602,10 @@ Simpson) angeschlossen.
 **Primär (normativ):**
 
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, §1.1 Fachausdrücke
-  [via: Lignum-Pressemitteilung 2021].
+  Architektenverein, Zürich, §1.1 Fachausdrücke / Anhang G
+  (Volltext direkt eingesehen, 2026-06-14): „Fussband" ist **nicht**
+  als Fachausdruck geführt; die Liste behandelt nur Werkstoffe,
+  Verbindungsmittel und generische Tragglieder (Negativ-Befund).
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
   von Holzbauten – Teil 1-1".
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von

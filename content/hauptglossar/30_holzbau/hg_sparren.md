@@ -11,7 +11,7 @@ abgrenzung_zu: [pfette, kehlbalken, gratsparren, kehlsparren, binder, latte, kon
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung) und Abschnitt 5 (Konstruktive Durchbildung), Sparren als geneigte stabförmige Tragglieder von Dachtragwerken."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Sparren' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §4 'Tragwerksanalyse und Bemessung' und §5 'Bauteile und Strukturen' behandeln nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5). Vorausgesetzter Berufsbegriff. [direkt]"
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen), Sparren als geneigtes Dach-Tragglied entlang der Falllinie."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 6 (Grenzzustände der Tragfähigkeit), Sparren (engl. rafter) als biegebeanspruchtes Stab-Bauteil."
   - "DIN 1052:2008-12, Abschnitt 8 und Abschnitt 12 (Konstruktive Anforderungen), Sparren als geneigtes Tragglied."

@@ -11,7 +11,7 @@ abgrenzung_zu: [pfette, fusspfette, schwelle, sparren, pfosten, staender, riegel
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 5 (Konstruktive Durchbildung), Wandscheiben und Holzrahmenbauweisen. Begriff vorausgesetzt, nicht als Lemma definiert."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Rähm' nicht als Fachausdruck (§1.1 / Anhang G geprüft) noch als Lemma; §5.4 'Scheiben' (Wandscheiben §5.4.2) behandelt das Wandtragwerk nur als generische Struktur. Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Bauliche Einzelheiten und Konstruktion), Wandscheiben (Diaphragmen) im Holzrahmen- und Holztafelbau. Begriff vorausgesetzt, nicht als Lemma definiert."
   - "DIN 1052:2008-12, Abschnitt 8 und 12 (Konstruktive Anforderungen), Wandbauteile im Holzrahmenbau."
 quellen_sekundär:

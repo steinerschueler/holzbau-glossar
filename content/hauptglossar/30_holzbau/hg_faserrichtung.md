@@ -11,7 +11,7 @@ abgrenzung_zu: [einheitsvektor, vektor, bauteilachse, faserneigung, faserrichtun
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 3 (Werkstoffe) und Abschnitt 4 (Bemessung), Festigkeiten parallel und senkrecht zur Faser."
+  - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §3 'Baustoffe' und §4 'Tragwerksanalyse und Bemessung': Festigkeiten parallel und rechtwinklig zur Faser. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1: Allgemeines', Abschnitt 2.3 (Grundvariablen) und Abschnitt 3 (Werkstoffeigenschaften), Festigkeitsangaben f_{c,0,k}, f_{c,90,k}, f_{t,0,k}, f_{t,90,k}, σ_{m,α,d} mit Faserwinkel α."
   - "DIN 4074-1:2012-06, 'Sortierung von Holz nach der Tragfähigkeit – Teil 1: Nadelschnittholz', Abschnitt 5 (Sortiermerkmale), Faserneigung als Sortierkriterium."
 quellen_sekundär:

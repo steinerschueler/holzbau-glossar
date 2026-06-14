@@ -14,7 +14,7 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitte 5.2 (Berücksichtigung von Querschnittsschwächungen) und 6.5 (Querzug- und Schubnachweise an ausgeklinkten Bauteilen): geneigte Endschnitte am Stab-Bauteil werden bemessungstechnisch als Querschnittsänderung erfasst; eine geschlossene geometrische Definition des Begriffs „Anschnitt“ wird nicht gegeben."
   - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'List of Processings', Einträge 'JackRafterCut' (Endanschnitt am Sparren mit Parametern Orientation, StartX, StartY, Angle, Inclination, ReferencePlane), 'LongitudinalCut' (längsläufiger Anschnitt mitten am Bauteil), 'DoubleCut' (Doppelanschnitt am selben Endpunkt) und 'TriangleCut' (dreieckiger Endabschnitt): die parametrische Industriestandard-Spezifikation des geneigten Stab-Endschnitts; abstrahiert die Welt-Ausrichtung der Anschnittebene in Inclination-Parameter."
   - "DIN 1052:2008-12, Abschnitt 12 (Konstruktive Anforderungen): Auflagerausbildung geneigter Stäbe mit Stirnschnittausbildung am Sparrenfuß und Sparrenfirstpunkt."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 5 (Konstruktive Durchbildung): Stirnausbildung am Stab-Bauteilende; geneigte Schnittflächen sind als Querschnittsänderung in der Bemessung zu berücksichtigen."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Anschnitt' nicht als Fachausdruck (nur 'Anschnittwinkel' bei Klebeflächen); geneigte Stirnflächen als Querschnittsänderung sind über §5.2 'Ausklinkungen, Einschnitte, Durchbrüche' zu erfassen. Vorausgesetzter Berufsbegriff. [direkt]"
 quellen_sekundär:
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke', § Sparrenfuß und Stirnausbildung am Sparrenkopf: Verwendung des Begriffs „Anschnitt“ für den geneigten Endschnitt eines Sparrens unter dem Anschnittwinkel α."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Senkelschnitt', 'Bleischnitt', 'Schmiege' (Anschnitt-Verwandte; „Anschnitt“ selbst nicht als eigenes Lemma)."
@@ -520,7 +520,7 @@ dieses Eintrags.
     **Kehlsparren** (`kehlsparren`, Folgearbeit): typische
     Trägerbauteile von Anschnitten (Trauf-, First- und
     Walmgrat-Stirnausbildung).
-  - **Bemessung** (EC5 5.2 / SIA 265 4.6): Anschnitt-Stirnseite
+  - **Bemessung** (EC5 5.2 / SIA 265 §5.2): Anschnitt-Stirnseite
     ist eine Querschnittsänderung am Stab-Bauteilende; die
     Bemessungs-Schicht zieht aus α_AS und der resultierenden
     Stirnflächenfläche die Auflagerbedingungen ab.
@@ -598,8 +598,7 @@ dieses Eintrags.
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken", Abschnitt 12 (Konstruktive Anforderungen).
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, Abschnitt 5 (Konstruktive
-  Durchbildung).
+  Architektenverein, Zürich, §5 „Bauteile und Strukturen".
 
 **Sekundär:**
 

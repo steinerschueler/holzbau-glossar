@@ -19,6 +19,7 @@ quellen_primär:
   - "DIN EN 12369-1:2001-04, 'Holzwerkstoffe – Charakteristische Werte für die Berechnung und Bemessung von Holzbauwerken – Teil 1: OSB, Spanplatten und Faserplatten'."
   - "DIN EN 13986:2015-06, 'Holzwerkstoffe zur Verwendung im Bauwesen – Eigenschaften, Bewertung der Konformität und Kennzeichnung'."
 quellen_sekundär:
+  - "SIA 265:2021 'Holzbau', §1.1.17/§1.1.18 'Spanplatte' und §1.1.20 'Faserplatte' — SIA fuehrt den ungerichteten Werkstoff, verweist fuer die Definition aber auf SN EN 312/309 bzw. SN EN 316/622; CH-Sekundaer-Anker. [direkt]"
   - "Niemz, P.; Sonderegger, W.: Physik des Holzes und der Holzwerkstoffe. Hanser, München 2017, Kap. 7 (Spanwerkstoffe, Faserplatten, MDF/HDF) und Kap. 8 (Holzwerkstoff-Eigenschaften)."
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 3."
   - "Forest Products Laboratory: Wood Handbook FPL-GTR-282, USDA 2021, Kap. 12 'Wood-Based Composite Materials'."

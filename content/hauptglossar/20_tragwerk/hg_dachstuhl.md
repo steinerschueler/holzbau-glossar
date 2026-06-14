@@ -44,7 +44,7 @@ abgrenzung_zu:
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Zürich, Abschnitt 1 und Abschnitt 5 (Konstruktive Durchbildung) — Begriff 'Dachtragwerk' normfest, 'Dachstuhl' nicht als eigener Eintrag geführt; vorausgesetzter Berufsbegriff."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt weder 'Dachstuhl' noch 'Dachtragwerk' als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §5 'Bauteile und Strukturen' behandelt nur generische Tragglieder. Vorausgesetzter Berufsbegriff. [direkt]"
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Zürich, Abschnitt 1 (Begriffe und geometrische Grundlagen) — 'Dachtragwerk' und 'Dachstuhl' werden im Schweizer Normsprachgebrauch zugunsten von 'Dachtragwerk' aufgelöst; 'Dachstuhl' ohne geschlossene Definition."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 1.5 (Begriffe) — 'Dachtragwerk' als vorausgesetzter Tragwerks-Begriff; 'Dachstuhl' nicht als eigener Eintrag geführt."
   - "DIN 1052:2008-12 'Entwurf, Berechnung und Bemessung von Holzbauwerken', Abschnitt 3 (Begriffe) und Abschnitt 11 ff. (Tragwerke) — 'Dachtragwerk' als vorausgesetzter Begriff; 'Dachstuhl' ohne geschlossene Definition."

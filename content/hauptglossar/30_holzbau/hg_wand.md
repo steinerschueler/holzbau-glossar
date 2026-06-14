@@ -29,7 +29,7 @@ quellen_primär:
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema' (IFC 4.3.2), Entität `IfcWall` mit `IfcWallStandardCase` und `PredefinedType` (MOVABLE, PARAPET, PARTITIONING, PLUMBINGWALL, SHEAR, SOLIDWALL, STANDARD, POLYGONAL, ELEMENTEDWALL): Wand als eigenständiges Element-Konzept; `IfcWallStandardCase.SHEAR` belegt die tragwerksrelevante Wandscheibe; die im Holzbau übliche `IfcElementAssembly`-Form (PredefinedType BRACED_FRAME oder RIGID_FRAME) bildet die Bauteilgruppen-Sicht für aus Holzbauteilen zusammengesetzte Wände."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 'Bauliche Einzelheiten' und insbesondere Abschnitt 9.2 'Aussteifende Wandscheiben': Wandscheibe als tragwerks-konstruktive Einheit aus Rippen (Ständer), Schwelle, Rähm und Beplankung oder diagonalen Aussteifungs-Bauteilen; Lasteinleitung über Schubverbund."
   - "DIN 1052:2008-12, Abschnitt 8 und Abschnitt 12 (Konstruktive Anforderungen): Wandkonstruktionen aus Holz mit Ständern zwischen Schwelle und Rähm vorausgesetzt; aussteifende Funktion über Diagonalen oder Beplankung."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1 Fachausdrücke und Abschnitt 5 (Konstruktive Durchbildung) [via: Lignum-Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor']: Wand-Konstruktion mit Schwelle, Ständer und Rähm vorausgesetzt; Volltext paywall-blockiert."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Wand' nicht als Fachausdruck (§1.1 / Anhang G geprüft) noch als Lemma; §5.4.2 'Wandscheiben' behandelt die Wand nur als aussteifende Struktur, nicht als raumabschliessendes Bauteil. Vorausgesetzter Berufsbegriff. [direkt]"
 quellen_sekundär:
   - "Lignum, 'Holz A–Z / Konstruktion', lignum.ch/holz_a_z/konstruktion/: Wand als 'Verbundkonstruktion mit Holzrahmen und Beplankungsmaterial' (Tafelbau-Lesart); Skelettbau-Wand als raumabschliessende Schicht-Konstruktion."
   - "Wikipedia, Lemma 'Fachwerkhaus' (de.wikipedia.org/wiki/Fachwerkhaus): Wand-Konstruktion aus Schwelle, Eckständern, Riegeln, Streben und Rähm; CH-Riegelhaus-Verbreitung Nordostschweiz (Thurgau, Zürcher Weinland); rote Balken und weisse Ausfachung."
@@ -662,8 +662,11 @@ CH-Berufskorpus zugeschnitten.
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken", Abschnitte 8 und 12.
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, §1.1 Fachausdrücke
-  [via: Lignum-Pressemitteilung 2021].
+  Architektenverein, Zürich, §1.1 Fachausdrücke / Anhang G
+  (Volltext direkt eingesehen, 2026-06-14): „Wand" ist **nicht**
+  als Fachausdruck geführt; §5.4.2 „Wandscheiben" behandelt die
+  Wand nur als aussteifende Struktur, nicht als
+  raumabschliessendes Bauteil (Negativ-Befund).
 
 **Sekundär:**
 

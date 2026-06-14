@@ -11,7 +11,7 @@ abgrenzung_zu: [strebe, fussband, knagge, raehm, pfette, firstpfette, mittelpfet
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1 Fachausdrücke [via: Lignum-Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor']: Definitionsliste der Fachbegriffe enthalten, Volltext nicht direkt eingesehen."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Kopfband' nicht als Fachausdruck (§1.1 / Anhang G geprüft) noch als Lemma; keine Erwähnung im Bemessungstext. Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung): Kopfband als aussteifendes Stab-Bauteil im Wandverband vorausgesetzt, nicht als Lemma definiert."
   - "DIN 1052:2008-12, Abschnitt 8 und 12 (Konstruktive Anforderungen): Kopfband als Bestandteil aussteifender Wandverbände vorausgesetzt, nicht eigenständig definiert."
   - "Thesaurus Traditioneller Holzbau (TTH), RWTH Aachen, Lemma 'Kopfband' (Begriff-ID 832), Deskriptor: 'Band zwischen Ständerkopf und Rähm oder einem anderen waagerecht aufliegenden Holz'; Quelle Großmann 1987 S. 70. Synonyme: Achselband, Bug. Verwandte Terme: Fußband, Knagge, Strebe, Kopfstrebe. [direkt]"
@@ -112,9 +112,13 @@ quellenkonflikt: |
   alleinstehende Bauteil-Benennung mehrdeutig.
 
   **(6) SIA-265.** SIA 265:2021 §1.1
-  „Fachausdrücke" enthält laut Lignum-Pressemitteilung 2021 eine
-  geschlossene Definitionsliste der Holzbau-Fachbegriffe. Der Norm-Volltext ist
-  **nicht direkt eingesehen** (SIA-Shop-Paywall).
+  „Fachausdrücke" (1.1.1–1.1.40) und das identische Anhang G
+  wurden am Volltext geprüft (2026-06-14): Die Liste definiert
+  ausschliesslich Werkstoffe, Sortierung, Feuchte,
+  Festigkeitsklasse, Verbindungsmittel, Versatz und Klebstoffe —
+  **keine** Zimmermanns-Bauteilrolle. Weder „Kopfband"
+  noch „Bug" sind dort als §1.1-Fachausdruck bzw. Anhang-G-Lemma
+  geführt; SIA behandelt nur generische Tragglieder.
 ---
 
 ## Prosa-Definition
@@ -561,8 +565,11 @@ in CH nicht existiert — es wird nur seltener spezifisch benannt.
 **Primär (normativ):**
 
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, §1.1 Fachausdrücke
-  [via: Lignum-Pressemitteilung 2021].
+  Architektenverein, Zürich, §1.1 Fachausdrücke / Anhang G
+  (Volltext direkt eingesehen, 2026-06-14): weder „Kopfband" noch
+  „Bug" sind als Fachausdruck geführt; die Liste behandelt nur
+  Werkstoffe, Verbindungsmittel und generische Tragglieder
+  (Negativ-Befund).
 
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
   von Holzbauten – Teil 1-1".

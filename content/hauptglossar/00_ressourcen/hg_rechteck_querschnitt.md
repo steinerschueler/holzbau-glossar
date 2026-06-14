@@ -15,7 +15,7 @@ quellen_primär:
   - "DIN EN 14080:2013-09, 'Holzbauwerke – Brettschichtholz und Balkenschichtholz – Anforderungen', Abschnitt 5 (Anforderungen): rechteckiger Querschnitt als Standardform."
   - "DIN EN 15497:2014-07, 'Keilgezinktes Vollholz für tragende Zwecke', Abschnitt 5: rechteckiger Querschnitt für KVH."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1 (Bemessung von Querschnitten unter einachsiger Beanspruchung): Querschnittswerte für rechteckige Querschnitte (A = b·h, I_y = b·h³/12, I_z = h·b³/12, W_y = b·h²/6, W_z = h·b²/6)."
-  - "SIA 265:2021, 'Holzbau', Anhang A (Querschnittswerte) und Anhang B (Standardquerschnitte für Bauholz und BSH)."
+  - "SIA 265:2021 'Holzbau' setzt rechteckige Querschnitte voraus (Festigkeitssortierung §3.3.1), enthält aber keine Tabelle mit Querschnittswerten (A, I, W) oder Standardquerschnitten — diese folgen aus den Produktnormen (SN EN 14080 u. a.). Anhang A betrifft Stabdübel/Bolzen/Schrauben, Anhang B die charakteristische Druckfestigkeit und E-Moduln parallel zur Faser. [direkt]"
   - "ISO 16739-1:2024 (IFC 4.3), Entität 'IfcRectangleProfileDef' (XDim = Breite, YDim = Höhe, Position als IfcAxis2Placement2D im Schwerpunkt)."
 quellen_sekundär:
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Standardquerschnitte Vollholz', 'Standardquerschnitte KVH', 'Standardquerschnitte BSH'."
@@ -27,9 +27,9 @@ quellenkonflikt: |
   Es besteht kein Konflikt in den Quellen. Sowohl DIN EN 14081-1
   (Bauholz) als auch DIN EN 14080 (BSH/BSc) und DIN EN 15497 (KVH)
   setzen den rechteckigen Querschnitt als Standardform voraus. SIA 265
-  und EC5 führen die Querschnittswerte (A, I, W) für rechteckige
-  Querschnitte mit den klassischen geschlossenen Formeln. Die App
-  übernimmt diese Festlegungen direkt.
+  und EC5 tabellieren die Querschnittswerte (A, I, W) nicht selbst;
+  sie folgen für rechteckige Querschnitte aus den klassischen
+  geschlossenen Formeln. Die App übernimmt diese Festlegungen direkt.
 
   Konvention zur Definition der lokalen 2D-Achsen (u_hat, v_hat) in der
   Querschnittsebene:

@@ -14,7 +14,7 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Kapitel 8 'Anschlüsse mit metallischen Verbindungsmitteln' (insb. 8.1 Allgemeines, 8.2 stiftförmige Verbindungsmittel auf Abscheren — Johansen-Theorie, 8.3 Nägel, 8.5 Bolzen, 8.6 Stabdübel, 8.7 Schrauben, 8.10 Nagelplatten); Gl. 8.17 für n_ef bei Schraubenreihen."
   - "DIN EN 14592:2022-09 'Holzbauwerke – Stiftförmige Verbindungsmittel – Anforderungen'."
   - "DIN EN 14545:2009-02 'Holzbauwerke – Verbinder – Anforderungen' (für nicht-stiftförmige Dübel besonderer Bauart)."
-  - "SIA 265:2021 'Holzbau', Anhang A 'Verbindungen und Verbindungsmittel'."
+  - "SIA 265:2021 'Holzbau', Kapitel 6 'Verbindungen' (§6.1 Grundlagen, §6.2 Stabdübel, §6.3 Bolzen, §6.4 Nägel) und Anhang A (normativ) 'Genauere Berechnung des Tragwiderstands von Verbindungen mit Stabdübeln, Bolzen und Schrauben'; Begriffe Stabdübel/Bolzen in §1.1.36/§1.1.37, Klebungen §6.11. [direkt]"
   - "ÖNORM B 1995-1-1:2019, nationale Anwendungsbestimmungen zum Eurocode 5, Kap. 8."
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) – Part 1: Data schema', Entität `IfcMechanicalFastener` (Subtyp von `IfcElementComponent`); Property Sets `Pset_FastenerCommon`, `Pset_MechanicalFastener`."
   - "design2machine: BTLx 2.x Specification (Stand 2024), Processing-Typen `Drilling`, `Lag-Screw` u. a. sowie Part-Element für selbständig geführte Verbindungsmittel."
@@ -30,7 +30,7 @@ quellen_sekundär:
 quellenkonflikt: |
   Die Begriffsabgrenzung „Verbindungsmittel" vs. „Verbinder" vs.
   „Verbindung" ist normativ einheitlich (EC5 Kap. 8, SIA 265
-  Anhang A): das Verbindungsmittel ist das einzelne kraftübertragende
+  Kap. 6): das Verbindungsmittel ist das einzelne kraftübertragende
   Stück (Schraube, Nagel, Bolzen), die Verbindung ist das Aggregat
   am Knotenpunkt, der Verbinder (im EC5: „Verbindungselement") ist
   das vermittelnde Bauteil dazwischen (Knotenblech, Balkenschuh).
@@ -58,7 +58,7 @@ quellenkonflikt: |
   fallbezogen.
 
   Klebungen sind in EC5 Kap. 8 nicht als „Verbindungsmittel im engeren
-  Sinn" geführt; sie werden in EC5 Kap. 10 / SIA 265 Anhang A separat
+  Sinn" geführt; sie werden in EC5 Kap. 10 / SIA 265 §6.11 separat
   behandelt. Im vorliegenden Glossar werden Klebungen als
   Verbindungsmittel-Subtyp (`klebung`, Folgearbeit) geführt, weil sie
   im App-Datenmodell dieselben Element-Eigenschaften (UUID,
@@ -291,7 +291,7 @@ Stückliste n × der Eintrag erzeugt; die UUID ist genau eine.
 | Schicht                | Norm                  | Bezugsobjekt          |
 |------------------------|-----------------------|-----------------------|
 | Querschnittsbemessung  | EC5 Kap. 6, SIA 265 §4 | Bauteil               |
-| Anschlussbemessung     | EC5 Kap. 8, SIA 265 Anhang A | Verbindungsmittel + Verbindung |
+| Anschlussbemessung     | EC5 Kap. 8, SIA 265 Kap. 6 | Verbindungsmittel + Verbindung |
 | Verstärkungs-Bemessung | EC5:2022 (Entwurf), ETA | Verstärkungselement |
 | Klebung                | EC5 Kap. 10           | Klebung als Verbindungsmittel-Subtyp |
 
@@ -355,7 +355,7 @@ Stückliste n × der Eintrag erzeugt; die UUID ist genau eine.
 - DIN EN 14592:2022-09, „Holzbauwerke – Stiftförmige
   Verbindungsmittel – Anforderungen".
 - DIN EN 14545:2009-02, „Holzbauwerke – Verbinder – Anforderungen".
-- SIA 265:2021, „Holzbau", Anhang A.
+- SIA 265:2021, „Holzbau", Kapitel 6 „Verbindungen" und Anhang A (genauere Berechnung).
 - ÖNORM B 1995-1-1:2019.
 - ISO 16739-1:2024, IFC-Entität `IfcMechanicalFastener`.
 - design2machine: *BTLx 2.x Specification* (Stand 2024).

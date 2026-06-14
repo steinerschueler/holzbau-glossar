@@ -15,6 +15,7 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Plattenwerkstoffe und Bauteile aus Plattenwerkstoffen) und Anhang B (γ-Verfahren): Bemessungsachsen 0° / 90° der Platte, mit 0° als Decklamellen-Richtung."
   - "ProHolz Austria: Brettsperrholz Bemessung Band I — Grundlagen für Statik und Konstruktion. Wien 2014, Kap. 2.3: 'Haupttragrichtung (0°): Richtung der Decklamellen mit höherer Steifigkeit der Platte.'"
 quellen_sekundär:
+  - "SIA 265:2021 'Holzbau', §1.1.13 'Mehrlagige Massivholzplatte' ('parallel verlaufende Decklagen') bzw. §1.1.14 'Brettsperrholz' — die Faserrichtung der Decklage als steifste Achse; CH-Sekundaer-Anker (Definition via SN EN 16351/12775). [direkt]"
   - "Schickhofer, G.; Bogensperger, T.; Moosbrugger, T. (Hrsg.): BSPhandbuch — Holz-Massivbauweise in Brettsperrholz. 2. Aufl., TU Graz 2010, Kap. 2 und 3 (Plattenkoordinatensystem, Haupttragrichtung als Decklagen-Faserrichtung)."
   - "Blaß, H. J.; Flaig, M.: Stabförmige Bauteile aus Brettsperrholz. Karlsruher Berichte zum Ingenieurholzbau, Bd. 24, KIT Scientific Publishing, Karlsruhe 2012."
   - "Niemz, P.; Sonderegger, W.: Physik des Holzes und der Holzwerkstoffe. Hanser, München 2017, Kap. 7 (Brettsperrholz, Lagenaufbauten)."

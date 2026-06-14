@@ -19,7 +19,7 @@ status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen): Kehle als geneigte konkave Schnittkante zweier Dachflächen mit besonderer Bedeutung für die Wasserführung; Kehlsparren als Tragglied entlang der Kehllinie wird vorausgesetzend verwendet."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung) und Abschnitt 5 (Konstruktive Durchbildung): geneigte stabförmige Tragglieder von Dachtragwerken; Kehlsparren als Sonderform mit konzentrierter Lastabtragung aus zwei Dachflächen-Anteilen und zusätzlicher Wasserführungs- und Schneeansammlungs-Last."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Kehlsparren' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §4 'Tragwerksanalyse und Bemessung' und §5 'Bauteile und Strukturen' behandeln nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5). Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 6 (Grenzzustände der Tragfähigkeit): biegebeanspruchte Stab-Bauteile in Verschneidungs-Dachkonstruktionen."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1: Arten, Inhalte und Grundregeln der Darstellung', Abschnitt 5 (Darstellung von Dächern): Kehlsparren als Zeichnungselement mit eigenem Liniensymbol in der Bauzeichnung von Verschneidungs-Dächern."
   - "DIN 18338:2019-09 'VOB Teil C: Dachdeckungs- und Dachabdichtungsarbeiten', Abschnitt 0 (Begriffe): Kehle als geneigte Schnittlinie zweier nach innen einspringender Dachflächen; das unter der Kehle liegende Tragglied ist Kehlsparren oder Kehlbohle."
@@ -847,7 +847,8 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
   Architektenverein, Zürich, Abschnitt 1.
 
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, Abschnitt 4 und 5.
+  Architektenverein, Zürich, §4 „Tragwerksanalyse und Bemessung"
+  und §5 „Bauteile und Strukturen".
 
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
   von Holzbauten – Teil 1-1: Allgemeines", Abschnitt 5 und 6.

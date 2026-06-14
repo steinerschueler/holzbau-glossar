@@ -11,7 +11,7 @@ abgrenzung_zu: [achse, gerade, faserrichtung, bauteil, falllinie, schwerlinie_qu
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung), Bezugsachsen für Querschnittswerte und Bauteillängen."
+  - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §4 'Tragwerksanalyse und Bemessung': Bezugsachsen für Querschnittswerte und Bauteillängen. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 6 (Grenzzustände der Tragfähigkeit), Stab- und Bauteilachsen als Bezug für Schnittgrößen."
   - "DIN 1052:2008-12, Abschnitt 5 (Berechnungsverfahren), Stabachsen als Bezugsachsen der Tragwerksberechnung."
   - "DIN 4074-1:2012-06, 'Sortierung von Holz nach der Tragfähigkeit – Teil 1: Nadelschnittholz', Abschnitt 5 (Sortiermerkmale), Faserneigung als Tangens des Winkels zwischen Faser und Bauteillängsachse."

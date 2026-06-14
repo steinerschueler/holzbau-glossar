@@ -29,7 +29,7 @@ subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen) und Abschnitt 2 (Konstruktive Anforderungen): Dachüberstand als Auskragung der Dachfläche über die Aussenwand-Fluchtlinie; bauliche Holzschutz-Funktion."
   - "DIN 68800-2:2022-02, 'Holzschutz – Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau', Abschnitt 5 (Konstruktive Maßnahmen): ausreichender Dachüberstand als Schlüsselmassnahme des konstruktiven Holzschutzes (qualitativ; ohne numerische Mindesttiefe)."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 5 (Konstruktive Durchbildung): Dachüberstand am Pfetten- und Sparrendach im Kontext Trauflösung und Holzschutz."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Dachüberstand' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §5 'Bauteile und Strukturen' behandelt nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5). Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN 18338:2019-09 'VOB Teil C: Dachdeckungs- und Dachabdichtungsarbeiten', Abschnitt 0 (Begriffe): Überstandsbereich an Traufe und Ortgang als Anschluss-Geometrie."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1', Abschnitt 5 (Darstellung von Dächern): Darstellung des Dachüberstands im Werkplan."
 quellen_sekundär:

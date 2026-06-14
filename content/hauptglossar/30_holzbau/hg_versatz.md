@@ -14,7 +14,7 @@ quellen_primär:
   - "DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland zum Eurocode 5, NCI NA.12 'Zimmermannsmäßige Verbindungen': Regelinhalte zum Versatz (Versatztiefe in Abhängigkeit vom Strebenanschlusswinkel, Mindest-Vorholzlänge, Anschnittwinkel, Lagesicherung gegen Abheben). Bibliographisch und über mehrere unabhängige Sekundärbeschreibungen bestätigt; Volltext-Verifikation der Regelwerte aus dieser Recherche nicht möglich (DIN-Media-Paywall), siehe quellenkonflikt-Block."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5.2 (Berücksichtigung von Querschnittsschwächungen) und Abschnitt 6.5 (Querzug- und Schubnachweise an ausgeklinkten Bauteilen): analoge Anwendung auf den Versatz; Vorholzlänge als Schub-Trag-Länge, Versatztiefe als Höhe der Ausklinkung."
   - "DIN EN 1995-1-1:2010-12, Abschnitt 6.1.5 'Druck unter einem Winkel zur Faser' (Hankinson): Druckspannungsnachweis in der Versatz-Anschnittfläche, ausgewertet am druckstabseitigen und am trägerbauteilseitigen Hankinson-Winkel."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, zimmermannsmäßige Verbindungen. Eine konkrete Annex-Stelle für den Versatz ist im Bestand-Eintrag `hg_verbindung.md` mit 'Anhang A' referenziert, durch diese Recherche aber nicht volltext-verifiziert; siehe quellenkonflikt-Block."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1.39 'Versatz' (Fachausdruck — auf Druck und Abscheren beanspruchte Holzverbindung, insbesondere im Fachwerkbau) und §6.9.2 'Versatz' (S. 81–82, unter 6.9 'Stösse'): Bemessung der Druckkraftübertragung — §6.9.2.1 (Gl. 114–116, Figur 44) Vorholzlänge, Einschnitttiefe t, Strebenhöhe, mit k_red = 0,6 (Vollholz/keilgezinktes Vollholz/Balkenschichtholz) bzw. 0,8 (Brettschichtholz) und a = 0,5·β (einfacher Versatz) / a = 0,75·β (doppelter Versatz), β = Winkel zwischen Druckkraft F_Ed und Faserrichtung; §6.9.2.2 Einschnitttiefen Tabelle 42 (einfacher Versatz t ≤ h/4 für β ≤ 50°, t ≤ h/6 für β ≥ 60°, linear interpoliert; doppelter Versatz t = t₁+t₂ mit t₁ ≤ t₂−10 mm); §6.9.2.3 Anschlussverformung 1–1,5 mm. Anhang G (Tabelle 51): viersprachiges Begriffsverzeichnis (FR embrèvement, IT giunto a dente). [direkt]"
   - "DIN 1052:2008-12 (zurückgezogen, ersetzt durch DIN EN 1995-1-1 + NA): führte Versatz unter zimmermannsmäßiger Verbindung gemeinsam mit Verblattung, Verzapfung, Verkämmung; historische Etablierung des Begriffs."
 quellen_sekundär:
   - "Colling, F.: Holzbau – Grundlagen, Bemessungshilfen. Springer Vieweg, Wiesbaden 2004 (1. Aufl.), Kap. 8.5 'Versätze'. Autoritative geometrische Definition der drei Versatzformen: Stirnversatz = Winkelhalbierende (Beanspruchungswinkel α_S = α_D = γ/2, Bild 8.14); **Fersenversatz/Rückversatz = Druckfläche rechtwinklig zur Strebe** (α_S = γ, α_D = 0, Beiwert k_V,γ, Bild 8.15); rechtwinkliger Versatz = lotrecht zum Gurt (α_S = 0, α_D = γ); doppelter Versatz = Stirn + Ferse (Bild 8.16, Tab. 8.4). Maßgebliche Quelle für die Benennung der ⊥-Strebe-Geometrie als Fersenversatz (s. quellenkonflikt Konflikt 6)."
@@ -28,16 +28,22 @@ quellen_sekundär:
   - "baunetzwissen.de: 'Zimmermannsmäßige Verbindungen' (abgerufen 2026-05-14), mit Sekundärzitat zu DIN EN 1995-1-1/NA NCI NA.12."
   - "Recherche-Bericht [intern] (Quellen-Lage und Auflösung der drei Subtypen)."
 quellenkonflikt: |
-  Es gibt **keine** im Volltext zugängliche normative Definition
-  des Versatzes mit geschlossener geometrischer Charakterisierung;
-  alle konsultierten Normen (DIN EN 1995-1-1 Hauptteil, SIA 265,
-  DIN 1052 historisch) setzen den Begriff voraus und behandeln nur
-  seine Bemessungsfolgen. Die geometrische Charakterisierung wird
-  hier aus dem Lehrbuch- und Sekundärquellen-Konsens
-  (Mönck/Rug Kap. 7, Holzbau-Taschenbuch Kap. 19/20,
-  Natterer/Herzog, Gerner, baunetzwissen.de) rekonstruiert und
-  durch die Recherche [intern]
-  belegt.
+  **SIA 265:2021 ist direkt im Volltext eingesehen** und liefert
+  den Versatz sowohl als Fachausdruck (§1.1.39: „auf Druck und
+  Abscheren beanspruchte Holzverbindung, insbesondere im
+  Fachwerkbau") als auch mit geschlossener Bemessung (§6.9.2).
+  Eine **geschlossene geometrische Charakterisierung der drei
+  Subtypen** (Stirn-/Fersen-/doppelter Versatz nach Lage der
+  Anschnittflächen) enthält sie jedoch nicht: §6.9.2 trennt nur
+  **einfachen** und **doppelten** Versatz über die Einschnitttiefe
+  (Tabelle 42), nicht Stirn- vs. Fersenversatz. DIN EN 1995-1-1
+  (Hauptteil) und DIN 1052 (historisch) setzen den Begriff voraus
+  und behandeln nur seine Bemessungsfolgen. Die geometrische
+  Charakterisierung der drei Subtypen wird daher weiterhin aus dem
+  Lehrbuch- und Sekundärquellen-Konsens (Mönck/Rug Kap. 7,
+  Holzbau-Taschenbuch Kap. 19/20, Natterer/Herzog, Gerner,
+  baunetzwissen.de) rekonstruiert und durch die Recherche
+  [intern] belegt.
 
   **Konflikt 1 — Normative Verankerung NCI NA.12 (DE) vs. SIA 265 Annex A (CH):**
 
@@ -51,12 +57,20 @@ quellenkonflikt: |
   Suchergebnisse **nicht im Volltext** verifizierbar (DIN-Media-
   Paywall).
 
-  Die schweizerische SIA 265:2021 behandelt zimmermannsmäßige
-  Verbindungen deutlich knapper. Der Bestand-Eintrag
-  `hg_verbindung.md` (Zeilen 17, 194, 526) referenziert
-  „SIA 265 Anhang A 'Verbindungen und Verbindungsmittel'"; diese
-  Annex-Bezeichnung ist im Bestand gesetzt, aber durch die hiesige
-  Recherche **nicht unabhängig volltext-verifiziert**.
+  Die schweizerische SIA 265:2021 regelt den Versatz **in §6.9.2**
+  (unter 6.9 „Stösse"), nicht in einem Anhang — und gibt dort genau
+  die in der Literatur kolportierten Einschnitttiefen-Regelwerte
+  (Tabelle 42: t ≤ h/4 für β ≤ 50°, t ≤ h/6 für β ≥ 60°, linear
+  interpoliert; β = Winkel zwischen Druckkraft und Faserrichtung)
+  als **direkt eingesehene normative Quelle** wieder. Die im Bestand
+  (`hg_verbindung.md`, alte Recherche) kursierende Bezeichnung
+  „SIA 265 Anhang A 'Verbindungen und Verbindungsmittel'" für den
+  Versatz ist damit **falsch**: Anhang A (normativ) von SIA 265:2021
+  trägt den Titel „Genauere Berechnung des Tragwiderstands von
+  Verbindungen mit Stabdübeln, Bolzen und Schrauben" und betrifft
+  den Versatz nicht. Zimmermannsmässige Verbindungen ausser dem
+  Versatz zählt die Norm ausdrücklich zu den „hier nicht
+  behandelten Verbindungsarten" (§4.6.2.6).
 
   **Eigene Festlegung:**
 
@@ -67,11 +81,12 @@ quellenkonflikt: |
     winkel α ≤ 50°, `t_v ≤ h/6` bei steilem α ≥ 60°, lineare
     Interpolation dazwischen; `l_v ≥ 8·t_v` und `l_v ≥ 200 mm`)
     werden als App-Plausibilitätsregeln eingesetzt.
-  - Die SIA-265-Annex-Bezeichnung wird vorläufig als „Anhang A"
-    übernommen, konsistent mit `hg_verbindung.md`. Bei der nächsten
-    Bearbeitung von `hg_verbindung.md` wird die Annex-Referenz
-    gegen den SIA-265-Volltext verifiziert (Trigger B in der
-    Recherche-Datei, siehe quellen_sekundär).
+  - Die SIA-265-Verankerung des Versatzes ist gegen den Volltext
+    verifiziert und auf **§6.9.2** (Bemessung) und **§1.1.39**
+    (Fachausdruck) korrigiert; die frühere „Anhang A"-Zuordnung
+    (Trigger B der Recherche) ist damit aufgelöst und falsifiziert.
+    Die gleichlautende Bezeichnung in `hg_verbindung.md` ist
+    stromaufwärts ebenso zu korrigieren.
 
   **Konflikt 2 — Drei Subtypen vs. einheitliche Bemessungs-Klasse:**
 
@@ -814,9 +829,9 @@ Dieser Glossareintrag definiert ausschließlich die
   Abschnitt 6.1.5 und Abschnitt 6.5.
 
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich. Annex-Stelle für den Versatz
-  bibliographisch belegt (Bestand `hg_verbindung.md` referenziert
-  „Anhang A"), durch diese Recherche nicht volltext-verifiziert.
+  Architektenverein, Zürich, §1.1.39 (Fachausdruck „Versatz") und
+  §6.9.2 „Versatz" (S. 81–82; Einschnitttiefen Tabelle 42); Anhang G
+  Begriffsverzeichnis. Volltext direkt eingesehen.
 
 - DIN 1052:2008-12 (zurückgezogen), „Entwurf, Berechnung und
   Bemessung von Holzbauwerken", Abschnitt zimmermannsmäßige

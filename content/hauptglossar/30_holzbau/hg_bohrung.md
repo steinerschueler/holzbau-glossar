@@ -16,7 +16,7 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 8.5 (Bolzen): Bohrloch im Holz darf den Bolzennenndurchmesser um bis zu 1 mm übersteigen (gewöhnliche Bolzen); beim Passbolzen ist das Bohrloch gleich dem Nenndurchmesser auszuführen. Im Stahlblech bis zu d + 2 mm."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 8.6 (Stabdübel): Bohrloch im Holz ist mit dem Nenndurchmesser des Stabdübels auszuführen (Passsitz); Bohrloch im Stahlblech ≤ d + 1 mm."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 8.7 (Schrauben): Vorbohrpflichten typabhängig; Holzschrauben in der Regel ab d ≥ 6 mm bei ρ_k ≤ 500 kg/m³, ab d ≥ 4 mm bei ρ_k > 500 kg/m³ vorzubohren. Vollgewindeschrauben mit ETA in den ETA-Grenzen vorbohrfrei."
-  - "SIA 265:2021 'Holzbau', Abschnitt 4.6 (Querschnittswerte) und Anhang A (Verbindungsmittel): Bohrungen als Querschnittsschwächung im Nettoquerschnitt; Vorbohr- und Passsitz-Regeln analog Eurocode 5."
+  - "SIA 265:2021 'Holzbau' definiert 'Bohrung' nicht als Fachausdruck; Querschnittsschwächungen behandelt §5.2 'Ausklinkungen, Einschnitte, Durchbrüche' (§5.2.3 Durchbrüche), Querschnittsverminderungen im Anschlussbereich §6.1.1.7, Vorbohren bei Nägeln §6.4. §4.6 ist die Bemessungssituation Erdbeben, nicht Querschnittswerte. [direkt]"
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) – Part 1: Data schema' (IFC 4.3.2), Entität 'IfcOpeningElement' (Spezialisierung von 'IfcFeatureElementSubtraction'), PredefinedType-Enum 'IfcOpeningElementTypeEnum' (Werte 'OPENING', 'RECESS', 'USERDEFINED', 'NOTDEFINED'); zylindrische Bohrungen werden über einen 'SweptSolid'-Body mit 'IfcExtrudedAreaSolid' und 'IfcCircleProfileDef' repräsentiert; Voiding-Beziehung über 'IfcRelVoidsElement'. Der frühere Subtyp 'IfcOpeningStandardCase' (IFC 4.0/4.1) ist in IFC 4.3 entfernt. [direkt]"
   - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'Drilling' (Parameter StartX, StartY, Angle, Inclination, DepthLimited, Depth, Diameter) und Abschnitt 'Pocket' (für grosse Sacklöcher und rechteckige Taschen)."
 quellen_sekundär:
@@ -357,7 +357,7 @@ Eindeutigkeit der Zuordnung).
   Definition vor.
 - **Plausibilität der Querschnittsschwächung** (weiche Invariante,
   nicht Bestandteil der Definition): Bohrungen reduzieren den
-  Nettoquerschnitt nach EC5 5.2 / SIA 265 4.6. Die App warnt,
+  Nettoquerschnitt nach EC5 5.2 / SIA 265 §5.2. Die App warnt,
   wenn der Bohrungsdurchmesser d ein bauteilabhängiges
   Plausibilitäts-Verhältnis überschreitet (Faustregel-Default
   in der Bemessungsschicht; nicht im Glossar normativ
@@ -554,8 +554,8 @@ führen, nicht hier.
   (Bolzen, Bohrlochtoleranzen), Abschnitt 8.6 (Stabdübel,
   Passsitz), Abschnitt 8.7 (Schrauben, Vorbohrpflicht).
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, Abschnitt 4.6 (Querschnittswerte)
-  und Anhang A (Verbindungsmittel).
+  Architektenverein, Zürich, §5.2 (Durchbrüche/Querschnittsschwächung)
+  und Kap. 6 (Verbindungsmittel-Bohrungen).
 - ISO 16739-1:2024, „Industry Foundation Classes (IFC) for data
   sharing in the construction and facility management industries
   — Part 1: Data schema" (IFC 4.3.2): `IfcOpeningElement`,

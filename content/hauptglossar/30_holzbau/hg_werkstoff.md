@@ -12,7 +12,7 @@ status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Abschnitt 1.5 (Begriffe), Abschnitt 3 (Werkstoffeigenschaften)."
-  - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 3 (Werkstoffe), Abschnitt 4 (Bemessung): Werkstoffeigenschaften als bemessungsrelevante Eingabegrößen."
+  - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §3 'Baustoffe' und §4 'Tragwerksanalyse und Bemessung': Werkstoffeigenschaften als bemessungsrelevante Eingabegrössen. [direkt]"
   - "DIN EN 13986:2015-06, 'Holzwerkstoffe zur Verwendung im Bauwesen – Eigenschaften, Bewertung der Konformität und Kennzeichnung'."
   - "ISO 16739-1:2024, 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema', Entitäten IfcMaterial, IfcMaterialDefinition, Property Sets Pset_MaterialWoodBasedBeam, Pset_MaterialWoodBasedPanel. [direkt]"
 quellen_sekundär:

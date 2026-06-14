@@ -12,7 +12,7 @@ status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 260:2013 'Grundlagen der Projektierung von Tragwerken', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Geltungsbereich) und Abschnitt 2.1 (Begriffe)."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 und Abschnitt 4 (Grundlagen der Bemessung von Tragwerken aus Holz)."
+  - "SIA 265:2021 'Holzbau', Kapitel 1 (Verständigung) und Kapitel 4 (Bemessung) — Grundlagen der Bemessung von Tragwerken aus Holz. [direkt]"
   - "DIN EN 1990:2010-12 'Eurocode: Grundlagen der Tragwerksplanung', Abschnitt 1.5 (Begriffe), insbesondere 1.5.1.1 'Tragwerk' (engl. structure) und 1.5.1.7 'Tragwerksanalyse'."
   - "DIN EN 1991-1-1:2010-12 'Eurocode 1: Einwirkungen auf Tragwerke – Teil 1-1: Wichten, Eigengewicht und Nutzlasten im Hochbau'."
   - "DIN EN 1995-1-1:2010-12 'Eurocode 5: Bemessung und Konstruktion von Holzbauten – Teil 1-1', Abschnitt 1.5 und Abschnitt 5 (Tragwerksberechnung)."
@@ -202,13 +202,13 @@ und den Konsistenzbedingungen
    die Einwirkungs-Bauteil-Inzidenz; tragwerk-Bed. 5 ergänzt die
    Pfad-Existenz vom inzidierten Bauteil zum Auflager. Auch diese
    Bedingung ist zugesichert, nicht formal überprüft.
-6. **Mischungsverbot pro Verbindung** (SIA 265 Anhang A,
-   formuliert in `verbindung`): Innerhalb einer einzelnen Verbindung
-   v ∈ V dürfen verschiedene Verbindungsmittel-Wirkungsmechanismen
-   nicht ohne Nachweis kombiniert werden (z. B. Nagelung +
-   Verleimung; Stabdübel + Versatz). Diese Konsistenzbedingung wirkt
-   pro Verbindung und ist im Glossareintrag `verbindung`
-   formalisiert; im Tragwerk gilt sie transitiv für alle v ∈ V.
+6. **Gemischte Verbindungsarten** (SIA 265 §6.1.1.4,
+   formuliert in `verbindung`): Gemischte Verbindungsarten sind nach
+   SIA 265 §6.1.1.4 zulässig — die Kräfteverteilung erfolgt dann
+   proportional zu den Anschlusssteifigkeiten (kein Mischungsverbot).
+   Diese Konsistenzbedingung wirkt pro Verbindung und ist im
+   Glossareintrag `verbindung` formalisiert; im Tragwerk gilt sie
+   transitiv für alle v ∈ V.
 
 Die **geometrische Punktmenge** des Tragwerks im
 Weltkoordinatensystem ist

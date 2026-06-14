@@ -11,7 +11,7 @@ abgrenzung_zu: [firstpfette, fusspfette, sparren, kehlbalken, knagge]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Abschnitt 5 (Konstruktive Durchbildung), Pfetten in Zwischenlage."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Mittelpfette' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §5 'Bauteile und Strukturen' behandelt nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5). Vorausgesetzter Berufsbegriff. [direkt]"
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen)."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung), Pfetten als Zwischenauflager der Sparren."
   - "DIN 1052:2008-12, Abschnitt 8 und 12, Mittelpfette als Zwischenauflager."

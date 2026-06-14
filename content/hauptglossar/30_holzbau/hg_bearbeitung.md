@@ -15,7 +15,7 @@ quellen_primär:
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema' (IFC 4.3.2), Entitäten 'IfcOpeningElement', 'IfcFeatureElementSubtraction' und Beziehung 'IfcRelVoidsElement': subtraktive Geometriemerkmale werden als eigene Entitätsklasse außerhalb der IfcElement-Hierarchie geführt; ihre Wirkung auf das Master-Element ist eine implizite Boole'sche Differenz auf der Body-Repräsentation. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5.2 (Berücksichtigung der Querschnittsschwächungen) und Abschnitt 6.5 (Querzug- und Schubnachweise an ausgeklinkten Bauteilen): Bearbeitungen reduzieren den tragenden Querschnitt; die geschwächte Stelle ist Bemessungsobjekt."
   - "DIN EN 14081-1:2019-10 'Holzbauwerke – Nach Festigkeit sortiertes Bauholz mit rechteckigem Querschnitt – Teil 1', Bezugsquerschnitt als ungeschwächter Vollquerschnitt; Bearbeitungen werden gegen diesen Bezug gemessen."
-  - "SIA 265:2021 'Holzbau', Abschnitt 4.6 (Querschnittswerte) und Abschnitt 5 (Konstruktive Durchbildung): Querschnittsschwächungen durch Bearbeitungen sind in der Bemessung gesondert zu erfassen."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §5 'Bauteile und Strukturen', insbesondere §5.2 'Ausklinkungen, Einschnitte, Durchbrüche': Querschnittsschwächungen durch Bearbeitungen sind in der Bemessung gesondert zu erfassen (reduzierter Querschnitt, Reduktionsfaktor k_red, §5.2.1.3). [direkt]"
 quellen_sekundär:
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 7 'Verbindungen' und Kap. 11 'Dachtragwerke', Versätze, Kerven, Zapfen als Bauteilbearbeitungen."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar (Versatz, Blattung, Zapfen, Kerve, Schlitz, Kamm)."
@@ -26,7 +26,7 @@ quellenkonflikt: |
   Es gibt keine Holzbau-Norm (SIA 265, SIA 232/1, DIN 1052,
   DIN EN 1995-1-1, DIN 68800), die einen geschlossenen
   Oberbegriff für „Bearbeitung am Bauteil" als Datenmodell-Wurzel
-  einführt. EC5 5.2 und SIA 265 4.6 setzen den Begriff voraus
+  einführt. EC5 5.2 und SIA 265 §5.2 setzen den Begriff voraus
   („Querschnittsschwächung", „ausgeklinkter Träger", „Versatz")
   und behandeln nur die Bemessungsfolgen.
 
@@ -273,7 +273,7 @@ verkleinert (subtraktive Festlegung).
   für „außerhalb" ist `Toleranzen.LAENGE_EPS`.
 - **Plausibilität der Querschnittsschwächung** (weiche Invariante,
   nicht Bestandteil der Definition): Bearbeitungen reduzieren den
-  tragenden Querschnitt nach EC5 5.2 / SIA 265 4.6. Die App
+  tragenden Querschnitt nach EC5 5.2 / SIA 265 §5.2. Die App
   warnt — typisiert pro Subtyp — wenn die verbleibende Holzhöhe
   bzw. -breite eine subtypspezifische Faustregel unterschreitet
   (z. B. bei `kerve`: Restholz ≥ ⅔ Sparrenhöhe). Diese
@@ -560,7 +560,7 @@ beider Klassen werden zentral in `hg_toleranzen.md` Sektion
 - DIN EN 14081-1:2019-10, „Holzbauwerke – Nach Festigkeit
   sortiertes Bauholz mit rechteckigem Querschnitt – Teil 1".
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, Abschnitt 4.6 und Abschnitt 5.
+  Architektenverein, Zürich, Abschnitt 5, insbesondere §5.2 'Ausklinkungen, Einschnitte, Durchbrüche'.
 
 **Sekundär:**
 

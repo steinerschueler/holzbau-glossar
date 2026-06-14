@@ -15,7 +15,7 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Aussteifende Scheiben, zusammengesetzte Bauteile) und Abschnitt 10 (Konstruktive Durchbildung) — Binder als vorausgesetzter Berufsbegriff für mehrteilig zusammengesetzte Tragglieder; keine geschlossene Begriffsdefinition."
   - "DIN EN 14080:2013-09 'Holzbauwerke – Brettschichtholz und Balkenschichtholz – Anforderungen' — Produktnorm für die werkstoffliche Grundlage des Brettschichtholz-Binders; keine Definition des Begriffs Binder selbst."
   - "DIN 1052:2008-12, Abschnitt 8 und 12 — Binder als vorausgesetzter Tragwerks-Begriff in Kontexten wie 'Binderabstand', 'Hauptbinder', 'Pfettenbinder'; keine geschlossene Begriffsdefinition."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 5 (Konstruktive Durchbildung) — Binder als vorausgesetzter Berufsbegriff; keine geschlossene Begriffsdefinition."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Binder' nicht als Fachausdruck (§1.1 / Anhang G geprüft) noch als Lemma; §5.3 'Zusammengesetzte Bauteile' (Fachwerkträger §5.3.6) behandelt mehrteilige Tragglieder generisch. Vorausgesetzter Berufsbegriff. [direkt]"
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen) — Binder als vorausgesetzter Tragwerks-Begriff im Kontext geneigter Dächer; keine geschlossene Begriffsdefinition."
 quellen_sekundär:
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Dachtragwerke' und 'Bindersysteme'."

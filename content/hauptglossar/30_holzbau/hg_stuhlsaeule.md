@@ -11,7 +11,7 @@ abgrenzung_zu: [stuetze, saeule, haengesaeule, staender, pfette, stuhlpfette, st
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1 Fachausdrücke [via: Lignum-Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor']: Stuhl-Konstruktion und Stuhlsäule als Standard-Dachtragwerks-Bauteilrolle in der CH-Holzbau-Norm. Volltext nicht direkt eingesehen."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Stuhlsäule' nicht als Fachausdruck (§1.1 / Anhang G geprüft) noch als Lemma; keine Stuhl-Bauteilrolle in §5. Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Bauliche Einzelheiten): Stuhl-Konstruktionen als Sonderform des Pfettendachs vorausgesetzt; Stuhlsäule nicht eigenständig lemmatisiert."
 quellen_sekundär:
   - "Lignum (Hrsg.): Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor', lignum.ch/auf_einen_klick/news/."

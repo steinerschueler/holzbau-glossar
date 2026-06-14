@@ -20,7 +20,7 @@ status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen): Grat als geneigte konvexe Schnittkante zweier Dachflächen am Walmdach; Gratsparren als Tragglied entlang der Gratlinie wird vorausgesetzend verwendet."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung) und Abschnitt 5 (Konstruktive Durchbildung): geneigte stabförmige Tragglieder von Dachtragwerken; Gratsparren als Sonderform mit eigener Lastabtragung aus zwei Dachflächen-Anteilen."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Gratsparren' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §4 'Tragwerksanalyse und Bemessung' und §5 'Bauteile und Strukturen' behandeln nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5). Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 6 (Grenzzustände der Tragfähigkeit): biegebeanspruchte Stab-Bauteile in Walmdach-Konstruktionen."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1: Arten, Inhalte und Grundregeln der Darstellung', Abschnitt 5 (Darstellung von Dächern): Gratsparren als Zeichnungselement in der Bauzeichnung des Walmdachs."
   - "DIN 1052:2008-12, Abschnitt 8 und Abschnitt 12 (Konstruktive Anforderungen): Tragglieder geneigter Dächer."
@@ -619,7 +619,8 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
   Architektenverein, Zürich, Abschnitt 1.
 
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, Abschnitt 4 und 5.
+  Architektenverein, Zürich, §4 „Tragwerksanalyse und Bemessung"
+  und §5 „Bauteile und Strukturen".
 
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
   von Holzbauten – Teil 1-1: Allgemeines", Abschnitt 5 und 6.

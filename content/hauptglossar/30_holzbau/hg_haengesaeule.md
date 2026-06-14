@@ -11,7 +11,7 @@ abgrenzung_zu: [stuetze, saeule, stuhlsaeule, staender, sparren, bundbalken, str
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1 Fachausdrücke [via: Lignum-Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor']: Hängewerk-Konstruktionen und Hängesäule als Sonderform des Holzbau-Tragwerks; Volltext nicht direkt eingesehen."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Hängesäule' nicht als Fachausdruck (§1.1 / Anhang G geprüft) noch als Lemma; zugbeanspruchte Tragglieder werden generisch in §4.2.1 'Zug' bemessen. Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung): zugbeanspruchte Holzbauteile vorausgesetzt; Hängesäule nicht eigenständig lemmatisiert."
 quellen_sekundär:
   - "Lignum (Hrsg.): Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor', lignum.ch/auf_einen_klick/news/."

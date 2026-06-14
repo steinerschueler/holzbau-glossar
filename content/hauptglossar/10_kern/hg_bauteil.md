@@ -11,7 +11,7 @@ abgrenzung_zu: [element, verbindungsmittel, verbinder, verstaerkungselement, ver
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Geltungsbereich) und Abschnitt 4 (Bemessung): „Bauteil“ als Bemessungsgegenstand vorausgesetzt."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1 'Geltungsbereich' und §4 'Tragwerksanalyse und Bemessung' — Bauteil als Bemessungsgegenstand vorausgesetzt. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 1.5 (Begriffe) und Abschnitt 5 (Tragwerksberechnung): „member“/„Bauteil“ als statisches Element."
   - "DIN 1052:2008-12, Abschnitt 3 (Begriffe), Bauteil als konstruktiv abgegrenzter Tragwerksbestandteil."
   - "DIN EN 14080:2013-09 'Holzbauwerke – Brettschichtholz und Balkenschichtholz', Abschnitt 3 (Begriffe)."

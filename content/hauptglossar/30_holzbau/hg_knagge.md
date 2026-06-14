@@ -11,7 +11,7 @@ abgrenzung_zu: [kopfband, fussband, strebe, bug, konsole, auflager, pfette, firs
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1 Fachausdrücke und Abschnitt 8 (Anschlüsse) [via: Lignum-Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor']: Knagge in Anschluss-Bemessungs-Kapiteln vermutet, Lemma-Status unklar. Volltext nicht direkt eingesehen."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Knagge' nicht als Fachausdruck (§1.1 / Anhang G geprüft) noch als Lemma; Anschlüsse werden in §6 'Verbindungen' bemessen, Ausführung in §8 — beide ohne 'Knagge'-Lemma. Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 und 8 (Tragwerksberechnung, Verbindungen): Knagge als nagelbar/verzapfter Holzklotz in Sparren-Pfetten-Anschlüssen konstruktiv vorausgesetzt, nicht als Lemma definiert."
   - "DIN 1052:2004-08, §12.5 'Sparrenauflager Pfette mit Knagge': Anschluss-Bemessung mit Tabelle 10 (Nagelabstände) und Mindestholzdicke t₁,req bemessungstechnisch geführt; Knagge konstruktiv vorausgesetzt, nicht als Lemma definiert. [via: die.de Sparren-Pfette-Knagge-Dokumentation, DIN-1052-§12.5-Inhalt im Volltext]"
   - "Wikipedia, Lemma 'Knagge' (de.wikipedia.org/wiki/Knagge), Wortlaut: 'dreieckiges Vollholz, mitunter mit geschwungener oder gerundeter Unterseite'; 'mit Ständer und Balkenkopf verzapftes Winkelholz senkrecht zur Wand'. [direkt]"
@@ -208,8 +208,15 @@ quellenkonflikt: |
   trennt Pfosten-Anker p_P und Auflager-Fläche A_A).
 
   **(8) SIA-265.** SIA 265:2021 §1.1
-  „Fachausdrücke" wurde nicht direkt eingesehen
-  (Paywall).
+  „Fachausdrücke" (1.1.1–1.1.40) und das identische Anhang G
+  wurden am Volltext geprüft (2026-06-14): Die Liste definiert
+  ausschliesslich Werkstoffe, Sortierung, Feuchte,
+  Festigkeitsklasse, Verbindungsmittel, Versatz und Klebstoffe —
+  **keine** Zimmermanns-Bauteilrolle. „Knagge" ist dort **nicht** als
+  §1.1-Fachausdruck bzw. Anhang-G-Lemma geführt; SIA behandelt nur
+  generische Tragglieder. (Hinweis: §8 ist „Ausführung", nicht
+  „Anschlüsse"; Verbindungen behandelt §6 — auch dort kein
+  Knaggen-Lemma.)
 
   **(9) Mann-Figur-Nicht-Mitgliedschaft.** Die Knagge ist
   **kein** Mitglied einer Mann-Figur — Mann-Figuren sind
@@ -658,8 +665,12 @@ Thurgauer und Appenzeller Riegelbauten).
 **Primär (normativ):**
 
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, §1.1 Fachausdrücke und §8
-  (Anschlüsse) [via: Lignum-Pressemitteilung 2021].
+  Architektenverein, Zürich, §1.1 Fachausdrücke / Anhang G, §6
+  (Verbindungen), §8 (Ausführung) (Volltext direkt eingesehen,
+  2026-06-14): „Knagge" ist **nicht** als Fachausdruck oder
+  Verbindungs-/Ausführungs-Lemma geführt; die Norm behandelt nur
+  Werkstoffe, Verbindungsmittel und generische Tragglieder
+  (Negativ-Befund).
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und
   Konstruktion von Holzbauten – Teil 1-1".
 - DIN 1052:2004-08, „Entwurf, Berechnung und Bemessung von

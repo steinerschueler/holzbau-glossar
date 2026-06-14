@@ -14,7 +14,6 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 'Druck rechtwinklig zur Faser' (Querdruck): die Lochwand des Zapfenlochs steht im Wirkungspfad des Zapfen-Druckschafts und wird gegen die charakteristische Druckfestigkeit f_{c,90,k} senkrecht zur Faser bemessen. Abschnitt 8 'Anschlüsse mit metallischen Verbindungsmitteln' regelt die zimmermannsmässige Zapfenverbindung **nicht direkt**; sie ist Gegenstand des Nationalen Anhangs (DIN EN 1995-1-1/NA) und der nationalen Holzbau-Norm DIN 1052."
   - "DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland zu Eurocode 5: regelt zimmermannsmässige Verbindungen (Versatz, Zapfen, Holznagel) als Ergänzung zum Hauptteil."
   - "DIN 1052:2008-12 'Entwurf, Berechnung und Bemessung von Holzbauwerken', Abschnitt 15 'Zimmermannsmässige Verbindungen': Bemessungsregeln für die Zapfenverbindung einschliesslich des Querdruck-Nachweises an der Lochwand und des Schub-Nachweises am verbleibenden Holz unterhalb des Zapfenlochs."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Zürich, Anhang A 'Zimmermannsmässige Verbindungen': Bemessung von Versatz, Zapfen und Blatt; Querdruck-Nachweis am Zapfenloch."
   - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'List of Processings', Processings 'Mortise', 'DovetailMortise', 'HouseMortise', 'JapaneseMortise' (S. 8 ff.): rechteckiges bzw. schwalbenschwanzförmiges Zapfenloch im Bauteilfeld oder am Bauteilende, parametrisch über ReferencePlane, Position (StartX, StartY, StartDepth), Orientation (Angle, Inclination), Geometrie (Width, Height, Depth) und ggf. ConeAngle (DovetailMortise) spezifiziert."
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema' (IFC 4.3.2): Entität 'IfcOpeningElement' mit Beziehung 'IfcRelVoidsElement' als generisches Pendant zum Zapfenloch im IFC-Modell. [direkt]"
 quellen_sekundär:
@@ -49,9 +48,18 @@ quellenkonflikt: |
     einsehbar; die Aussagen dieses Eintrags folgen dem Konsens
     der Sekundärliteratur (Mönck/Rug, Blass/Sandhaas,
     Natterer/Herzog).
-  - **SIA 265:2021 Anhang A** behandelt zimmermannsmässige
-    Verbindungen im Schweizer Normkorpus; ebenfalls nicht im
-    Volltext eingesehen.
+  - **SIA 265:2021 behandelt das Zapfenloch nicht** (Volltext
+    direkt eingesehen, Negativ-Befund): „Zapfen"/„Zapfenloch"
+    kommen im Normtext nicht vor — weder in den Fachausdrücken
+    (Kap. 1) noch im viersprachigen Begriffsverzeichnis (Anhang G).
+    Von den zimmermannsmässigen Verbindungen bemisst die Norm nur
+    den **Versatz** (§6.9.2); die übrigen zählt §4.6.2.6
+    ausdrücklich zu den „hier nicht behandelten Verbindungsarten".
+    Anhang A (normativ) trägt den Titel „Genauere Berechnung des
+    Tragwiderstands von Verbindungen mit Stabdübeln, Bolzen und
+    Schrauben" und betrifft das Zapfenloch nicht — die frühere
+    Zuordnung „SIA 265 Anhang A 'Zimmermannsmässige Verbindungen'"
+    ist damit falsifiziert.
   - **BTLx 2.1** (design2machine) spezifiziert das Zapfenloch
     parametrisch als CNC-Processing `Mortise` (sowie
     `DovetailMortise`, `HouseMortise`, `JapaneseMortise`) und
@@ -455,8 +463,10 @@ Auftrags-Vorbereitung naheliegenden Annahme — **nicht** EC5
 - **EC5 §6.1.5** für den Wirkungsmechanismus (Querdruck an
   der Lochwand),
 - **DIN EN 1995-1-1/NA** und **DIN 1052 §15** in Deutschland
-  bzw. **SIA 265 Anhang A** in der Schweiz für die
-  zimmermannsmässige Bemessung als Gesamtnachweis.
+  für die zimmermannsmässige Bemessung als Gesamtnachweis. Die
+  schweizerische SIA 265:2021 deckt das Zapfenloch **nicht** ab
+  (siehe quellenkonflikt-Block); sie bemisst von den
+  zimmermannsmässigen Verbindungen nur den Versatz (§6.9.2).
 
 ### Typologie
 
@@ -664,8 +674,9 @@ Fertigungs-Schicht.
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken", Abschnitt 15 „Zimmermannsmässige Verbindungen".
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, Anhang A „Zimmermannsmässige
-  Verbindungen".
+  Architektenverein, Zürich — Volltext direkt eingesehen:
+  behandelt das Zapfenloch nicht (Negativ-Befund, siehe
+  quellenkonflikt-Block).
 - design2machine: *BTLx interface description*, Version 2.1,
   16.11.2023, Processings `Mortise`, `DovetailMortise`,
   `HouseMortise`, `JapaneseMortise`.

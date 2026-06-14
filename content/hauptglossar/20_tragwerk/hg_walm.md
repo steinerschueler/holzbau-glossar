@@ -23,7 +23,7 @@ status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen): Walm und Walmdach als vorausgesetzte geometrische Begriffe; keine geschlossene Aggregat-Definition."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 5 (Konstruktive Durchbildung): Walmdach-Konstruktionen als vorausgesetzte Tragwerks-Familie; keine geschlossene Begriffsdefinition des Walms als Aggregat."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Walm' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §5 'Bauteile und Strukturen' behandelt nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5). Vorausgesetzte Tragwerks-Familie. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitte 5 (Tragwerksberechnung), 6 (Grenzzustände der Tragfähigkeit) und 10 (Konstruktive Durchbildung): Tragglieder von Walmdächern (Gratsparren, Schifter) vorausgesetzt; keine geschlossene Aggregat-Definition."
   - "DIN 1052:2008-12, Abschnitt 8 und Abschnitt 12 (Konstruktive Anforderungen): Tragglieder geneigter Dächer einschließlich Walmdach-Konstruktionen."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1: Arten, Inhalte und Grundregeln der Darstellung', Abschnitt 5 (Darstellung von Dächern): Walm als geometrisches Zeichnungselement des Walmdachs."
@@ -569,7 +569,7 @@ Gratlinien) und in der konstruktiven Funktion (Spannweiten-
 - SIA 232/1:2020, „Geneigte Dächer", Schweizerischer Ingenieur-
   und Architektenverein, Zürich, Abschnitt 1.
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, Abschnitt 5.
+  Architektenverein, Zürich, §5 „Bauteile und Strukturen".
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
   von Holzbauten – Teil 1-1: Allgemeines", Abschnitte 5, 6 und 10.
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von

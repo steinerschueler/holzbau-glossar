@@ -15,6 +15,7 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 und Anhang B: Plattenfestigkeiten f_m,90,k, E_90,mean als Werte in der zur Haupttragrichtung rechtwinkligen Plattenebenen-Richtung."
   - "ProHolz Austria: Brettsperrholz Bemessung Band I. Wien 2014, Kap. 2.3: 'Nebentragrichtung (90°): Richtung rechtwinklig zur Haupttragrichtung in der Plattenebene'."
 quellen_sekundär:
+  - "SIA 265:2021 'Holzbau', §1.1.13 'Mehrlagige Massivholzplatte' ('um 90° zur Faserrichtung der Decklagen versetzte Innenlage') bzw. §1.1.14 'Brettsperrholz' — die schwaechere Querachse; CH-Sekundaer-Anker (Definition via SN EN 16351/12775). [direkt]"
   - "Schickhofer, G.; Bogensperger, T.; Moosbrugger, T. (Hrsg.): BSPhandbuch — Holz-Massivbauweise in Brettsperrholz. 2. Aufl., TU Graz 2010, Kap. 2 (Plattenkoordinatensystem)."
   - "Blaß, H. J.; Flaig, M.: Stabförmige Bauteile aus Brettsperrholz. Karlsruher Berichte zum Ingenieurholzbau, Bd. 24, KIT Scientific Publishing, Karlsruhe 2012."
   - "Niemz, P.; Sonderegger, W.: Physik des Holzes und der Holzwerkstoffe. Hanser, München 2017, Kap. 7."

@@ -14,7 +14,7 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Kapitel 8 'Anschlüsse mit metallischen Verbindungsmitteln', insbesondere 8.1 (Allgemeines), 8.2 (Tragfähigkeit von stiftförmigen Verbindungsmitteln auf Abscheren) — Konzept der Verbindung als Aggregat."
   - "DIN EN 1995-1-1:2010-12, Kapitel 10 'Klebungen' — Klebung als Sonderform der Verbindung."
   - "DIN EN 1995-1-1:2010-12, Abschnitt 8.2.3 'Indirekte Verbindungen' — Verbindungen mit vermittelndem Verbinder."
-  - "SIA 265:2021 'Holzbau', Anhang A 'Verbindungen und Verbindungsmittel', insbesondere Mischungsverbot von verschiedenartigen Verbindungsmitteln in einer Verbindung."
+  - "SIA 265:2021 'Holzbau', §6.1 'Grundlagen' (Verbindungen): §6.1.1.3 Gruppenwirkung (Tragwiderstand vieler Verbindungsmittel in der Regel kleiner als die Summe der Einzelwiderstände); §6.1.1.4 bei gleichzeitiger Verwendung verschiedener Verbindungsarten Kräfteverteilung proportional zu den Anschlusssteifigkeiten (kein Mischungsverbot); §6.1.1.6/§6.1.1.7 Nachweise für Verbindung und Holzteile im Anschlussbereich (Querzug siehe Anhang D). Von den zimmermannsmässigen Verbindungen ist nur der Versatz bemessen (§6.9.2). [direkt]"
   - "ÖNORM B 1995-1-1:2019, nationale Anwendungsbestimmungen zum Eurocode 5, Kap. 8."
   - "DIN 1052:2008-12, Abschnitt 12 'Verbindungen'."
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) – Part 1: Data schema', Beziehungs-Entität `IfcRelConnectsElements` (Subtyp von `IfcRelConnects`); ergänzend `IfcGroup` mit `IfcRelAggregates`."
@@ -66,13 +66,19 @@ quellenkonflikt: |
   BTLx hat keine eigene Entität für Verbindungen; sie sind
   implizit über mehrere Parts und Processings gegeben.
 
-  Konstruktionsregel (SIA 265, Anhang A, mit Entsprechungen in
-  EC5): **Mischungsverbot** — an einer Verbindung dürfen keine
-  verschiedenartigen Verbindungsmittel kombiniert werden, weil
-  ihre Kraft-Verformungs-Charakteristiken unterschiedlich sind und
-  sich nicht ohne Weiteres addieren lassen. Diese Regel ist im
-  Glossar als Konsistenzbedingung formuliert; sie wird in der
-  Bemessungs-Schicht hart geprüft.
+  Konstruktionsregel (EC5 §8.1.3, mit Bezug zu SIA 265 §6.1.1.3/
+  §6.1.1.4): Die Tragfähigkeiten **verschiedenartiger**
+  Verbindungsmittel an einer Verbindung dürfen nicht ohne Weiteres
+  addiert werden, weil ihre Kraft-Verformungs-Charakteristiken
+  unterschiedlich sind. **SIA 265 spricht hier kein Mischungsverbot
+  aus:** §6.1.1.4 lässt die gleichzeitige Verwendung verschiedener
+  Verbindungsarten ausdrücklich zu und verteilt die Kräfte
+  proportional zu den Anschlusssteifigkeiten; §6.1.1.3 erfasst die
+  Gruppenwirkung. Das strengere „Mischungsverbot" (alle
+  Verbindungsmittel vom gleichen Typ) ist damit **nicht
+  normgestützt**; die als Konsistenzbedingung C5 formulierte, in
+  der Bemessungs-Schicht hart geprüfte Regel ist auf Domänen-Ebene
+  zu überprüfen (Anweiser-Entscheid, siehe C5).
 
   Der Oberbegriff `bauteil_aggregat` existiert im Glossar noch
   nicht; bis zu dessen Einführung wird `oberbegriff: null`
@@ -114,7 +120,7 @@ Sei
 - 𝓝 die Menge der Nachweisverfahren-Referenzen (eigener Folge-
   Eintrag `nachweisverfahren`; mindestens enthaltend: Johansen
   nach EC5 Kap. 8.2, Axialnachweis nach EC5:2022, Klebung nach
-  EC5 Kap. 10, zimmermannsmäßiger Versatz nach SIA 265 Anhang A).
+  EC5 Kap. 10, zimmermannsmäßiger Versatz nach SIA 265 §6.9.2).
 
 Dann ist eine **Verbindung** das Tupel
 
@@ -176,19 +182,22 @@ gilt verstaerkt(vs) ∈ beteiligte_bauteile. Jedes
 Verstärkungselement wirkt auf ein Bauteil, das zur Verbindung
 gehört.
 
-(C5) **Mischungsverbot** (SIA 265, Anhang A; entsprechende
-Anwendungsregel in EC5 Kap. 8):
-für jede Verbindung gilt: alle Verbindungsmittel in
+(C5) **Gleicher Verbindungsmittel-Typ** (EC5 §8.1.3; SIA 265
+§6.1.1.3/§6.1.1.4 — **kein** Mischungsverbot, s. u.):
+für jede Verbindung gilt zunächst: alle Verbindungsmittel in
 verbindungsmittel sind vom **gleichen Typ** (alle Nägel **oder**
-alle Schrauben **oder** alle Stabdübel etc.). Verschiedenartige
-Verbindungsmittel mit unterschiedlicher Kraft-Verformungs-
-Charakteristik dürfen ihre Tragfähigkeiten an einer Verbindung
-**nicht** addiert werden, weil die Verformungen, die zur
-Aktivierung jeder Tragfähigkeit notwendig sind, sich
-unterscheiden. Ausnahmen sind in EC5 punktuell geregelt
-(z. B. Schraube + Beilage); diese werden im Glossar nicht
-ausgeschlossen, müssen aber explizit als Sonder-Nachweis-
-verfahren markiert sein.
+alle Schrauben **oder** alle Stabdübel etc.). Hintergrund: die
+Tragfähigkeiten verschiedenartiger Verbindungsmittel dürfen wegen
+ihrer unterschiedlichen Kraft-Verformungs-Charakteristik **nicht**
+ohne Weiteres addiert werden (EC5 §8.1.3). **SIA 265 verbietet die
+Mischung jedoch nicht:** §6.1.1.4 lässt sie zu und verteilt die
+Kräfte proportional zu den Anschlusssteifigkeiten. Die strenge
+Fassung „alle vom gleichen Typ" als **hart geprüfte** Invariante
+ist damit stärker als die Normen verlangen und auf Domänen-Ebene
+zu überprüfen (Anweiser-Entscheid). Ausnahmen sind in EC5 punktuell
+geregelt (z. B. Schraube + Beilage); diese werden im Glossar nicht
+ausgeschlossen, müssen aber explizit als Sonder-Nachweisverfahren
+markiert sein.
 
 (C6) **Nachweisverfahren-Konsistenz**:
 das Nachweisverfahren in `nachweisverfahren` ist mit dem Typ und
@@ -203,8 +212,8 @@ der Verbindungsmittel-Klasse der Verbindung kompatibel:
 
 - typ = KlebeVerbindung → Klebung (EC5 Kap. 10).
 - typ = ZimmermannsmaessigerStoss/Anschluss →
-  zimmermannsmäßiger Versatz/Zapfen (SIA 265 Anhang A,
-  Lehrbuch-Verfahren).
+  zimmermannsmäßiger Versatz nach SIA 265 §6.9.2 (Zapfen nur
+  Lehrbuch-Verfahren — SIA 265 behandelt den Zapfen nicht).
 
 (C7) **Geometrische Verträglichkeit**:
 falls `position` ∈ ℝ³ gesetzt ist, soll die Position
@@ -241,7 +250,7 @@ zwingend, aber für UI-Lokalisierung und BCF-Verortung wichtig.
   Schwalbenschwanz ohne metallisches Verbindungsmittel ist
   modellierbar mit |verbindungsmittel| = 0; in diesem Fall ist
   `nachweisverfahren` der zimmermannsmäßige Versatznachweis nach
-  SIA 265 Anhang A bzw. nach Lehrbuch (Mönck/Rug, Blass/Sandhaas).
+  SIA 265 §6.9.2 (Versatz) bzw. nach Lehrbuch (Mönck/Rug, Blass/Sandhaas).
   Die Konsistenzbedingung C2 ist dann trivial erfüllt
   (leere Quantifikation).
 
@@ -322,13 +331,20 @@ Parts (Bauteile) und Processings (Bohrungen, Lag-Screws,
 Versätze) am selben Knotenpunkt — implizit, ohne explizites
 Verbindungs-Objekt.
 
-### Mischungsverbot
+### Gemischte Verbindungsmittel
 
-SIA 265, Anhang A, formuliert (mit Entsprechungen in EC5):
+EC5 §8.1.3 (nicht SIA 265 — s. u.) trägt den Grundsatz:
 
-> An einer Verbindung dürfen keine verschiedenartigen
-> Verbindungsmittel zur gemeinsamen Lastaufnahme kombiniert
-> werden.
+> Die Tragfähigkeiten verschiedenartiger Verbindungsmittel an
+> einer Verbindung dürfen nicht ohne Weiteres addiert werden.
+
+SIA 265 spricht **kein** Mischungsverbot aus: §6.1.1.4 lässt die
+gleichzeitige Verwendung verschiedener Verbindungsarten zu und
+verteilt die Kräfte proportional zu den Anschlusssteifigkeiten
+(§6.1.1.3 Gruppenwirkung). Die frühere Zuschreibung „SIA 265
+Anhang A — Mischungsverbot" war falsch: Anhang A betrifft die
+genauere Berechnung von Stabdübel-, Bolzen- und Schrauben-
+verbindungen.
 
 Begründung: Nägel, Schrauben, Bolzen und Stabdübel haben
 unterschiedliche **Kraft-Verformungs-Charakteristiken**
@@ -459,7 +475,8 @@ mehreren) Tragwerken.
   Konstruktion von Holzbauten – Teil 1-1", Kapitel 8 und
   Kapitel 10.
 
-- SIA 265:2021, „Holzbau", Anhang A.
+- SIA 265:2021, „Holzbau", §6.1 (Grundlagen der Verbindungen)
+  und §6.9.2 (Versatz). Volltext direkt eingesehen.
 - ÖNORM B 1995-1-1:2019.
 - DIN 1052:2008-12, Abschnitt 12.
 - ISO 16739-1:2024, IFC-Entitäten `IfcRelConnectsElements`,

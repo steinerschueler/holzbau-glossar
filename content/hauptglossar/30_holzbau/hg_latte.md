@@ -12,8 +12,8 @@ status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe) und Abschnitt 2 (Aufbau geneigter Dächer): Lattung als Bestandteil des Dachaufbaus, Auflage der Eindeckung."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung): Latten als biegebeanspruchte Sekundär-Stab-Bauteile."
-  - "SIA 265/2:2023 'Sortierung von Holz nach der Tragfähigkeit — Nadelschnittholz gemäss DIN 4074-1', Schweizerischer Ingenieur- und Architektenverein, Zürich."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §4 'Tragwerksanalyse und Bemessung': Latten als biegebeanspruchte Sekundär-Stab-Bauteile. [direkt]"
+  - "SIA 265/2:2023 'Sortierung von Holz nach der Tragfähigkeit — Nadelschnittholz gemäss DIN 4074-1', Schweizerischer Ingenieur- und Architektenverein, Zürich. [sekundär]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung): Latten als biegebeanspruchte Stab-Bauteile."
   - "DIN EN 14081-1:2019-10 'Holzbauwerke — Nach Festigkeit sortiertes Bauholz mit rechteckigem Querschnitt — Teil 1: Allgemeine Anforderungen', harmonisiertes CE-Regelwerk."
   - "DIN 4074-1 'Sortierung von Holz nach der Tragfähigkeit — Teil 1: Nadelschnittholz' (Sortierklassen S10/S13 für Dachlatten)."

@@ -23,7 +23,7 @@ subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 (Bauliche Einzelheiten, Wandscheiben): X-förmige Diagonalverbände als aussteifende Konfiguration konstruktiv vorausgesetzt; alle horizontalen Kräfte in der Ebene des Elements werden aufgenommen."
   - "DIN 1052:2008-12, Abschnitt 8 und 12 (Konstruktive Anforderungen): Diagonalverbände aus Holz für aussteifende Wandverbände vorausgesetzt."
-  - "SIA 265:2021 'Holzbau', §1.1 Fachausdrücke und Abschnitt 5 [via: Lignum-Pressemitteilung 2021]: aussteifende Diagonalverbände im Riegelbau vorausgesetzt; Volltext paywall-blockiert."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Andreaskreuz' nicht als Fachausdruck (§1.1 / Anhang G geprüft) noch als Lemma; aussteifende Diagonalverbände werden generisch unter §5.8 'Räumliche Stabilisierung und Verbände' behandelt. Vorausgesetzter Berufsbegriff. [direkt]"
   - "Thesaurus Traditioneller Holzbau (TTH), RWTH Aachen, Hierarchie-Facette 1922 'Fachwerk-Bauteile': Andreaskreuz als Konfiguration zweier sich kreuzender Streben in einem Gefach; Primärquelle Großmann 1987 (über TTH indirekt zitiert)."
 quellen_sekundär:
   - "Wikipedia, Lemma 'Andreaskreuz (Fachwerk)' (de.wikipedia.org/wiki/Andreaskreuz_(Fachwerk)): X-förmiges Bauteilelement aus diagonal angeordneten Hölzern, das als statisch wirksame Wandaussteifung und Schmuck dient; zwei sich kreuzende Hölzer in einem Gefach; früheste Belege 1452/1457; im 19. Jahrhundert geschosshohe Ausführung; abgelehnte Begriffe Feuerbock und Malkreuz historisch ungenau."
@@ -492,7 +492,10 @@ plus ein Andreaskreuz im Brüstungsfeld).
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken", Abschnitte 8 und 12.
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, §1.1 [via: Lignum-Pressemitteilung 2021].
+  Architektenverein, §1.1 Fachausdrücke / Anhang G (Volltext
+  direkt eingesehen, 2026-06-14): „Andreaskreuz" ist **nicht** als
+  Fachausdruck oder Lemma geführt; aussteifende Diagonalverbände
+  werden generisch unter §5.8 behandelt (Negativ-Befund).
 - Thesaurus Traditioneller Holzbau (TTH), RWTH Aachen,
   Hierarchie-Facette 1922 „Fachwerk-Bauteile".
 

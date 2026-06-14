@@ -13,7 +13,7 @@ subglossar_pendant: notwendig
 quellen_primär:
   - "Hankinson, R. L.: 'Investigation of Crushing Strength of Spruce at Varying Angles of Grain'. Air Service Information Circular Vol. III, No. 259, U.S. Air Service, 1921."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Gleichung (6.16) (Druck unter Winkel zur Faser σ_c,α,d) und Gleichungen (8.31), (8.32) (Lochleibungsfestigkeit f_h,α,k unter Winkel α zur Faser bei stiftförmigen Verbindungsmitteln)."
-  - "SIA 265:2021, 'Holzbau', Anhang A: Hankinson-Formel zur Bestimmung der charakteristischen Festigkeit unter Winkel zur Faser."
+  - "SIA 265:2021 'Holzbau', §4.2.2.3 (Druckbeanspruchung unter einem Winkel zur Faserrichtung) — Schweizer Bemessungsregel, Pendant zur Hankinson-Formel; SIA nennt sie nicht namentlich 'Hankinson'. [direkt]"
   - "Eurocode 5 — Anwendungsdokument: Erläuterungen zu Gleichung (6.16) und zur Definition des Faserwinkels α als Winkel zwischen Kraftrichtung und Faserrichtung."
 quellen_sekundär:
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 5 (Lochleibung), Kap. 6 (Druck unter Winkel)."
@@ -80,7 +80,7 @@ genau einen Winkel α ∈ [0°, 90°] als den Betrags-Winkel zwischen der
 Kraftrichtung und der Faserachse zuordnet, der als geometrische
 Eingangsgröße der Hankinson-Formel zur Bestimmung der charakteristischen
 Festigkeit f_α unter beliebigem Faserwinkel nach DIN EN 1995-1-1
-(Gl. 6.16, 8.31, 8.32) und SIA 265 (Anhang A) dient.
+(Gl. 6.16, 8.31, 8.32) und SIA 265 §4.2.2.3 dient.
 
 ## Mathematische Definition
 
@@ -286,7 +286,7 @@ ist hier nicht definiert; α-Anfragen liefern „nicht zutreffend".
   Vol. III, No. 259, U.S. Air Service, 1921.
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
   von Holzbauten – Teil 1-1", Gleichungen 6.16, 8.31, 8.32.
-- SIA 265:2021, „Holzbau", Anhang A.
+- SIA 265:2021, „Holzbau", §4.2.2.3 (Druck unter Winkel zur Faser).
 
 **Sekundär:**
 

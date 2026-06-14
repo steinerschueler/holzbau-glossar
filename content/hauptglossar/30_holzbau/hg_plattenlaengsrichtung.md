@@ -16,6 +16,7 @@ quellen_primär:
   - "DIN EN 12369-1:2001-04, 'Holzwerkstoffe – Charakteristische Werte für die Berechnung und Bemessung von Holzbauwerken – Teil 1: OSB, Spanplatten und Faserplatten', Tabelle 1 (OSB/2, OSB/3, OSB/4: f_m,0, f_m,90, E_m,0, E_m,90 mit Index 0 = Plattenlängsrichtung, Index 90 = Plattenquerrichtung)."
   - "DIN EN 13986:2015-06, 'Holzwerkstoffe zur Verwendung im Bauwesen', Abschnitt 5 (Plattenmaße: Länge × Breite × Dicke); standardisierte Plattenformate z. B. 2500 × 1250 mm, mit Plattenlängsrichtung parallel zur 2500-mm-Kante."
 quellen_sekundär:
+  - "SIA 265:2021 'Holzbau', §1.1.19 'OSB-Platte' — 'die Strands in den Aussenschichten sind parallel zur Plattenlaenge oder -breite ausgerichtet'; CH-Sekundaer-Anker (Definition via SN EN 300). [direkt]"
   - "Niemz, P.; Sonderegger, W.: Physik des Holzes und der Holzwerkstoffe. Hanser, München 2017, Kap. 7 (OSB, Strand-Orientierung)."
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 3 (OSB)."
   - "EGGER Holzwerkstoffe: Datenblatt EGGER OSB 4 TOP, EGGER OSB 3 (Plattenformate, Plattenlängsrichtung)."

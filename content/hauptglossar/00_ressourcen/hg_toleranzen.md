@@ -292,9 +292,11 @@ Alle elf Plausibilitäts-Konstanten teilen drei Eigenschaften:
    jeweiligen Wohldefiniertheits-Blöcke). Die Plausibilitäts-
    Konstanten sind ein Bemessungs- und Praxis-Filter, der über die
    Geometrie hinausgeht.
-2. **Quellen-Lage indirekt.** Die normativen Stützen NCI NA.12,
-   DIN 1052 § 15 und SIA 265 Anhang A sind in den Sandbox-
-   Recherchen nicht volltext-zugänglich; die Werte folgen dem
+2. **Quellen-Lage indirekt.** Die normativen Stützen NCI NA.12
+   und DIN 1052 § 15 sind in den Sandbox-Recherchen nicht
+   volltext-zugänglich; SIA 265 §8.7 ist direkt eingesehen,
+   formuliert aber nur allgemein die Festlegung der Masshaltigkeit
+   ohne Zahlenwerte. Die konkreten Toleranzwerte folgen dem
    Sekundärquellen-Konsens (Mönck/Rug, Holzbau-Taschenbuch,
    baunetzwissen.de) und sind in den jeweiligen Einträgen unter
    `quellenkonflikt:` dokumentiert. Eine Volltext-Verifikation gegen
@@ -380,9 +382,9 @@ auf die zuständigen Bearbeitungs-Einträge):**
   „Zimmermannsmäßige Verbindungen" (Stützung der
   `ZAPFENBREITE_FAUSTREGEL_DRITTEL`- und `ZAPFENLOCH_*`-
   Konstanten; Sekundärquellen-belegt).
-- SIA 265:2021, „Holzbau", Anhang A (Schweizer Pendant für die
-  zimmermannsmäßigen Faustregeln; Volltext-Verifikation
-  ausstehend).
+- SIA 265:2021, „Holzbau", §8.7 „Toleranzen" (Masshaltigkeit von
+  Bauteilen) und §8.9 Kontrolle der Abmessungen. Volltext direkt
+  eingesehen.
 - DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5
   (Querdruck) und Abschnitt 6.5 (Schubnachweis) als Bemessungs-
   Anker hinter den `ZAPFENLOCH_RESTHOLZ_*`- und `VERSATZ_VORHOLZ_*`-

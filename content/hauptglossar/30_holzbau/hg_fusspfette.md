@@ -11,7 +11,7 @@ abgrenzung_zu: [firstpfette, mittelpfette, sparren, schwelle, raehm, traufe, bez
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Abschnitt 5 (Konstruktive Durchbildung), Pfetten am Sparrenfuß / an der Traufe."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Fusspfette' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §5 'Bauteile und Strukturen' behandelt nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5). Vorausgesetzter Berufsbegriff. [direkt]"
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen), Traufseitige Pfette."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 und 6, Fußpfette als unterste Pfette des Dachtragwerks."
   - "DIN 1052:2008-12, Abschnitt 8 und 12, Fußpfette / Mauerlatte."

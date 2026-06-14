@@ -11,7 +11,7 @@ abgrenzung_zu: [pfette, latte, schwelle, raehm, pfosten, staender, strebe, kopfb
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 4 (Bemessung) und Abschnitt 5 (Konstruktive Durchbildung): Riegel als horizontales Bauteil des Wandtragwerks vorausgesetzt."
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Riegel' nicht als Fachausdruck (§1.1 / Anhang G geprüft) noch als Lemma; nur generisch in 'Stütze-Riegel-Tragwerke' (§5.8), kein Lemma. Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung): Riegel als biegebeanspruchtes Stab-Bauteil im Wandverband vorausgesetzt."
   - "DIN 1052:2008-12, Abschnitt 8 und 12 (Konstruktive Anforderungen): Riegel als Bestandteil des Wandtragwerks vorausgesetzt, nicht eigenständig definiert."
 quellen_sekundär:

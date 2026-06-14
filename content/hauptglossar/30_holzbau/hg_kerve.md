@@ -15,8 +15,8 @@ quellen_primär:
   - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'BirdsMouth' (S. 24–28): parametrische Spezifikation der Sparrenkerve mit den Parametern Orientation, StartX, StartY, StartDepth, Angle, Inclination1, Inclination2, Depth, Width, WidthCounterPart(Limited), HeightCounterPart(Limited), FaceLimitedFront, FaceLimitedBack, LeadAngle(Parallel), LeadInclination(Parallel), RafterNailHole. Default-Tiefe = 20 mm; Default-Breite = 0 mm (durchgehend); Default-Winkel = 90°. Diese Spec ist die geschlossene parametrische Industriestandard-Schnittstelle für CNC-Abbund, abstrahiert aber die welt-bezügliche Ausrichtung der Schnittflächen in ihre Inclination-Parameter."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5.2 (Berücksichtigung von Querschnittsschwächungen) und Abschnitt 6.5 (Querzug- und Schubnachweise an ausgeklinkten Bauteilen): die Kerve ist als Querschnittsschwächung im Sparrenfuß-/Auflagerbereich zu erfassen; Restholz und Versatzhöhe gehen in den Schubnachweis ein."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 (Druckspannung quer zur Faserrichtung, σ_c,90,d ≤ k_c,90 · f_c,90,d): die Kerv-Sohle führt die Vertikallast aus dem Sparren als Pressung quer zur Pfettenfaser in das Pfettenholz ein; dieser Auflagerpressungs-Nachweis am Pfettenholz ist neben dem Schubnachweis am ausgeklinkten Sparrenholz (6.5) die zweite primäre Bemessungsgröße an der Sparren-Pfetten-Kerve."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 5 (Konstruktive Durchbildung): Auflagerausbildung von Sparren auf Pfetten; Querschnittsschwächungen sind im Bemessungsschnitt zu berücksichtigen."
-  - "SIA 265:2021 'Holzbau', Abschnitt §5.1.6 (Auflagerpressung, Druck quer zur Faser): regelt den Nachweis der Pressung quer zur Pfettenfaser an der Kerv-Sohle; pendant zu EC5 6.1.5."
+  - "SIA 265:2021 'Holzbau', §5 'Bauteile und Strukturen', §5.2.2 'Ausklinkungen' (Schubnachweis am ausgeklinkten Querschnitt, Figur 16): die Kerve ist als Querschnittsschwächung im Auflagerbereich zu erfassen. [direkt]"
+  - "SIA 265:2021 'Holzbau', §4.2.2.3 (Druckbeanspruchung unter einem Winkel zur Faserrichtung) bzw. Anhang C (Tragsicherheitsnachweis Druck rechtwinklig zur Faserrichtung): regelt die Pressung quer zur Pfettenfaser an der Kerv-Sohle; pendant zu EC5 6.1.5. [direkt]"
   - "DIN 1052:2008-12, Abschnitt 12 (Konstruktive Anforderungen): Auflagerung geneigter Stäbe auf horizontalen Trägern."
 quellen_sekundär:
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke', § Sparrenanschluss an Pfetten (Klauenkerve, Versatzkerve, doppelte Kerve)."
@@ -663,7 +663,7 @@ in y-Richtung beschrieben.
       sondern wird über das Tragwerks-Aggregat hergestellt
       (`hg_auflager.md`). Bemessungstechnisch führt die Kerv-Sohle
       die Vertikallast als **Pressung quer zur Pfettenfaser** in
-      das Pfettenholz ein (EC5 6.1.5 / SIA 265 §5.1.6); ergänzend
+      das Pfettenholz ein (EC5 6.1.5 / SIA 265 §4.2.2.3 / Anhang C); ergänzend
       Querzug- und Schubnachweis am ausgeklinkten Sparrenholz
       (EC5 6.5). Beide Nachweise sind Aufgabe der Bemessungs-
       Schicht und berühren die Kerv-Geometrie selbst nicht.
@@ -690,7 +690,7 @@ in y-Richtung beschrieben.
       (oldenburg-zimmerei.com, in `quellen_sekundär` bereits
       zitiert). Die jeweilige Auflagerpressungs-Bemessung folgt
       dann der für das Gegenholz einschlägigen Norm (für Holz:
-      EC5 6.1.5 / SIA 265 §5.1.6; für Stahl, Beton, Mauerwerk:
+      EC5 6.1.5 / SIA 265 §4.2.2.3 / Anhang C; für Stahl, Beton, Mauerwerk:
       die jeweiligen Material-Eurocodes), berührt die Kerv-
       Geometrie selbst aber nicht.
 
@@ -804,9 +804,9 @@ in y-Richtung beschrieben.
   Bauteil).
 
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
-  Architektenverein, Zürich, Abschnitt 5 (Konstruktive
-  Durchbildung) und §5.1.6 (Auflagerpressung, Druck quer zur
-  Faser).
+  Architektenverein, Zürich, §5.2.2 „Ausklinkungen" und §4.2.2.3
+  (Druck unter Winkel zur Faserrichtung) bzw. Anhang C (Druck
+  rechtwinklig zur Faserrichtung).
 
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken", Abschnitt 12.

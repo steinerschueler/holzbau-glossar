@@ -16,6 +16,7 @@ quellen_primär:
   - "DIN EN 13986:2015-06, 'Holzwerkstoffe zur Verwendung im Bauwesen – Eigenschaften, Bewertung der Konformität und Kennzeichnung'."
   - "DIN EN 12369-1:2001-04, 'Holzwerkstoffe – Charakteristische Werte für die Berechnung und Bemessung von Holzbauwerken – Teil 1: OSB, Spanplatten und Faserplatten' (charakteristische Festigkeits- und Steifigkeitswerte)."
 quellen_sekundär:
+  - "SIA 265:2021 'Holzbau', §1.1.15 'Furnierschichtholz' und §1.1.19 'OSB-Platte' — SIA fuehrt den gerichteten Werkstoff (Strands/Furniere vorwiegend in einer Richtung), verweist fuer die Definition aber auf SN EN 14279 bzw. SN EN 300; CH-Sekundaer-Anker. [direkt]"
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 3 'Holzwerkstoffe', Abschnitt OSB."
   - "Niemz, P.; Sonderegger, W.: Physik des Holzes und der Holzwerkstoffe. Hanser, München 2017, Kap. 7 (Spanwerkstoffe und OSB)."
   - "EGGER Holzwerkstoffe: Datenblatt EGGER OSB 4 TOP, EGGER OSB 3."
