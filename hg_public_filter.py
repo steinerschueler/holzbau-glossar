@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Öffentlicher Hauptglossar-Filter für holzbau-glossar.
 
-Säubert die aus ``zimmermann_app`` gespiegelten Hauptglossar-Einträge
+Säubert die aus ``ens_holzbau`` gespiegelten Hauptglossar-Einträge
 (``content/hauptglossar/**/hg_*.md``) für die öffentliche Publikation
 (Website, JSON-API, Zenodo-DOI-Tarball). App-Implementierungs- und
 Autoren-Prozess-Bezüge sind für DOI-/API-Nutzer irrelevant.
 
-``content/`` ist dadurch der öffentliche Spiegel; ``zimmermann_app``
+``content/`` ist dadurch der öffentliche Spiegel; ``ens_holzbau``
 bleibt Single Source of Truth. Wird von ``sync.sh`` nach dem rsync
 aufgerufen. Idempotent — mehrfaches Anwenden ändert nichts mehr.
 

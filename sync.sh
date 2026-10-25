@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 # Synchronisiert Hauptglossar- und Subglossar-Quellen aus dem lokalen
-# zimmermann_app-Projekt in content/ — manuell vor jedem Site-Push.
-# Single-Source-of-Truth bleibt zimmermann_app; content/ ist Snapshot.
+# ens_holzbau-Projekt in content/ — manuell vor jedem Site-Push.
+# Single-Source-of-Truth bleibt ens_holzbau; content/ ist Snapshot.
 
 set -euo pipefail
 
-SOURCE="${1:-${ZIMMERMANN_APP:-../zimmermann_app}}"
+SOURCE="${1:-${ENS_HOLZBAU:-../../intern/ens_holzbau}}"
 TARGET="content"
 
 if [[ ! -d "$SOURCE/hauptglossar" || ! -d "$SOURCE/lerninhalt/subglossar" ]]; then
     echo "Fehler: $SOURCE enthält weder hauptglossar/ noch lerninhalt/subglossar/." >&2
-    echo "Aufruf:  ./sync.sh [pfad-zu-zimmermann_app]" >&2
-    echo "Default: ../zimmermann_app (oder Umgebungsvariable ZIMMERMANN_APP)" >&2
+    echo "Aufruf:  ./sync.sh [pfad-zu-ens_holzbau]" >&2
+    echo "Default: ../../intern/ens_holzbau (oder Umgebungsvariable ENS_HOLZBAU)" >&2
     exit 1
 fi
 
@@ -38,7 +38,7 @@ rsync -a --delete \
 # interne Projekt-TODOs (Folgearbeit) und Autoren-Prozess-Bezüge aus den
 # HG-Einträgen entfernen bzw. anonymisieren ("Eric" → "Anweiser"). content/
 # ist der öffentliche Spiegel (Website/API/DOI); Single Source of Truth
-# bleibt zimmermann_app. Idempotent; läuft nach jedem rsync, weil --delete
+# bleibt ens_holzbau. Idempotent; läuft nach jedem rsync, weil --delete
 # sonst die Vollfassung wiederherstellt. Nur hg_*.md (nicht Konventionen/SG).
 python3 "$(dirname "$0")/hg_public_filter.py" "$TARGET"
 

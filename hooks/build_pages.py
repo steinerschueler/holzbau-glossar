@@ -253,7 +253,7 @@ def on_page_markdown(markdown, page, config, files):
 # Listen-Code-Fence-Normalisierung (Render-Robustheit)
 # ---------------------------------------------------------------------------
 #
-# Die aus ``zimmermann_app`` gespiegelten Markdowns rücken Block-Inhalt in
+# Die aus ``ens_holzbau`` gespiegelten Markdowns rücken Block-Inhalt in
 # Aufzählungspunkten teils mit nur 2 Leerzeichen ein (gültig in CommonMark).
 # Python-Markdown (MkDocs) verlangt jedoch 4 Leerzeichen für Block-Inhalt in
 # einem Listenpunkt. Bei zu geringer Einrückung *zerbricht* die Liste: ein
