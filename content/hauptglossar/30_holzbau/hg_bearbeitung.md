@@ -385,7 +385,7 @@ App-internen Bearbeitungs-Subtypen auf BTLx-Processings ist
 | App-Subtyp        | Primäre BTLx-Entsprechung               | Sonderfälle                          |
 |-------------------|-----------------------------------------|--------------------------------------|
 | `kerve`           | `BirdsMouth`                            | `HipValleyRafterNotch` (Grat/Kehle), `StepJointNotch` (Stuhl) |
-| `bohrung`         | `Drilling`                              | `Pocket` nur für grosse Sacklöcher mit Fräser-Werkzeug → eigener Subtyp `aussparung` (Folgearbeit) |
+| `bohrung`         | `Drilling`                              | `Pocket` nur für große Sacklöcher mit Fräser-Werkzeug → eigener Subtyp `aussparung` (Folgearbeit) |
 | `versatz`         | `StepJoint`                             | `StepJointNotch` bei tiefen Versätzen |
 | `zapfen`          | `Tenon`                                 | `DovetailTenon` (Schwalbenschwanz)   |
 | `zapfenloch`      | `Mortise`                               | `DovetailMortise`, `HouseMortise`, `JapaneseMortise` |

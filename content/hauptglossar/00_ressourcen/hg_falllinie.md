@@ -11,7 +11,8 @@ abgrenzung_zu: [hoehenlinie, dachneigung, faserrichtung, gerade]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren), Eintrag zum Gradienten einer skalaren Funktion."
+  - "DIN EN ISO 80000-2:2023-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 18 (Skalare, Vektoren und Tensoren). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitt 17 (Scalars, vectors and tensors), Nr. 2-17.14: Zeichen ∇φ und grad φ für den Gradienten. Die Falllinie führt die Norm nicht. [direkt]"
   - "DIN EN ISO 19107:2019 'Geographic information – Spatial schema', Abschnitt 6 (Begriff der Steilrichtung / aspect bei TIN-Oberflächen)."
 quellen_sekundär:
   - "Bronstein, I. N.; Semendjajew, K. A.; Musiol, G.; Mühlig, H.: Taschenbuch der Mathematik. Kap. 6.2.4 'Gradient skalarer Felder' und Kap. 3.5 'Ebenen im Raum'."
@@ -263,8 +264,11 @@ aber bisher nicht als eigenständige Glossareinträge geführt.
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2: Mathematik",
-  Abschnitt 2.
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2: Mathematik",
+  Abschnitt 18.
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
 - DIN EN ISO 19107:2019, „Geographic information – Spatial schema",
   Abschnitt 6.
 

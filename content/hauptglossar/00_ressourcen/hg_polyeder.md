@@ -11,7 +11,6 @@ abgrenzung_zu: [polygon, halbraum, ebene, bauteil]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie), Bezeichnungen für Vielflache (Polyeder)."
   - "ISO 19107:2019 'Geographic information – Spatial schema', Abschnitt 6.4 'GM_Solid' (volumetrisches Geometrieobjekt mit polygonal berandeter Hülle, B-Rep-Modell)."
   - "DIN EN ISO 10303-42 'Industrieautomation – Produktmodelldaten – Teil 42: Geometrische und topologische Repräsentation' (B-Rep-Modell für volumetrische Festkörper)."
 quellen_sekundär:
@@ -345,8 +344,6 @@ erzeugt (z. B. für effiziente Inzidenz- und Schnitt-Tests).
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2:
-  Mathematik", Abschnitt 2.
 - ISO 19107:2019, „Geographic information – Spatial schema",
   Abschnitt 6.4 (GM_Solid).
 - DIN EN ISO 10303-42, „Industrieautomation – Produktmodelldaten –

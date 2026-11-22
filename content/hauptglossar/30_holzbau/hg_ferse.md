@@ -1,7 +1,7 @@
 ---
 id: ferse
 benennung: Ferse
-kurz: "Die Ferse ist die hintere, tiefste Stelle am schräg eingeschnittenen Fuss einer Holzstrebe, an der sie sich fest gegen das darunterliegende Holz abstützt — ähnlich der Ferse eines Fusses."
+kurz: "Die Ferse ist die hintere, tiefste Stelle am schräg eingeschnittenen Fuß einer Holzstrebe, an der sie sich fest gegen das darunterliegende Holz abstützt — ähnlich der Ferse eines Fußes."
 synonyme: [Brust]
 abgelehnte_benennungen: ["heel cut", "heel", "Ferserl", "plumb cut"]
 oberbegriff: versatz
@@ -105,7 +105,7 @@ Sei
   Bauteilachse, deren Richtung in der Lotebene Π_⊥(B) den
   Strebenanschlusswinkel β ∈ (π/2, π) gegen die Trägerbauteil-Achse
   einschließt (siehe `bauteilachse`, `versatz`),
-- T das liegende **Trägerbauteil** (Schwelle, Rähm, Bundbalken,
+- T das liegende **Trägerbauteil** (Schwelle, Einbinder, Bundbalken,
   Fußpfette) mit Oberseite auf der Lokal-Höhe z = h_B,
 - v:= V mit p_Versatz = (x_0, FERSE, β, ⊥, ⊥, t_F, ⊥, l_v) ein
   **Fersenversatz** nach `versatz` (Tupel (2) dort), mit Versatztiefe

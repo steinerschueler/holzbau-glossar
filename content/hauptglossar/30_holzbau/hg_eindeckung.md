@@ -22,6 +22,7 @@ quellen_primär:
   - "ZVDH-Fachregel Reetdach, Ausgabe 2025-03."
   - "ISO 6707-1:2020 'Buildings and civil engineering works — Vocabulary — Part 1: General terms'."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.8 „Dachdeckung“ (S. 167): Zweig-Diagramm mit dem Oberbegriff „Dachdeckung“ und der Zweiteilung „ableitend“ / „abdichtend“; ableitender Zweig mit dem Wortlaut „Die Materialien sollen Wasser ableiten und sind somit nur bis zu einer bestimmten Dachneigung zulässig“ und den Materialien Ziegel, Dachsteine, Platten, Schindeln, Stroh. Ebd. Ziegel-Systematik: „Dachziegel“ → Pressdachziegel (→ verfalzte Ziegel: Flachdachpfanne, Flachkremper, Kronenkremper, Reformpfanne, Falzziegel; → konische Kremper: Krempziegel; → Schalenziegel: Mönch-Nonne) und Strangdachziegel (→ Hohlpfanne, Biberschwanzziegel); am Biberschwanzziegel die „Deckungsart“ mit einfacher Deckung, Doppeldeckung, Kronendeckung. Ebd. Dreieck-Grafik „Dachdeckungsmaterialien entsprechend der Dachneigung“ mit den Bändern steil / flachgeneigt / flach. S. 168 (§3.8.1 „Baustoffbedarf und Daten für Dächer“): Tafel je Dachziegelart mit den Spalten Maße in cm, Ziegelbedarf je m² Dachfläche in Stück, Dachmaße je m² Dachfläche in kN/m², Regeldachneigung in ° und Lattenbedarf in m/m² (u. a. Flachdachziegel 42/26, 15 Stk., 0,55 kN/m², 22°, 3 m/m²; Hohlpfanne 35°; Mönch-Nonne 40°, 0,90 kN/m² einschl. Mörtel; Biberschwanz Einfachdeckung 40°, Doppel- und Kronendeckung 30°). Berufsschul-Mehrwert: gedruckte Regeldachneigungs-Werte je Eindeckungs-Material und die Deckungsart-Trias; kein eigenes Lemma „Eindeckung“."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Dachaufbau / Eindeckung'."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015."
@@ -87,6 +88,28 @@ quellenkonflikt: |
   als Sekundärträger der Norm-Inhalte (Tier Hoch). Die im
   Erläuterungsblock genannten Mindestneigungs-Richtwerte sind
   **Branchen-Orientierungswerte**, nicht Normwerte dieses Glossars.
+
+  **Berufsschul-Befund: „Dachdeckung" als Oberbegriff über
+  ableitend und abdichtend** (Bläsi/Ferdinand, *Tabellenbuch
+  Zimmerer*, 9. Aufl. 2021, S. 167; Volltext-Scan liegt Anweiser
+  vor, direkt eingesehen 2026-08-14). Das Berufsschul-
+  Standardwerk gliedert **unter dem Oberbegriff „Dachdeckung"**
+  in zwei Zweige — „ableitend" (Ziegel, Dachsteine, Platten,
+  Schindeln, Stroh; „nur bis zu einer bestimmten Dachneigung
+  zulässig") und „abdichtend" (Pappe, Folien, Blech;
+  „wasserundurchlässig … geschlossene wasser- und luftdichte
+  Dachhaut"). Es folgt damit **nicht** der harten
+  DIN-18338-/DIN-18336-Titeltrennung von 2019, sondern der
+  älteren, weiten Lesart von „Dachdeckung". Das ist ein
+  **Korpus-Befund, kein Norm-Befund**: die Quellen-Hierarchie
+  stellt VOB/C und SIA über das Lehrwerk, die Festlegung
+  dieses Eintrags (Eindeckung strikt = ableitende, schuppige,
+  regensichere Schicht des geneigten Daches) bleibt
+  unverändert. Der Befund erklärt aber, warum
+  Berufsschul-Absolventen „Dachdeckung" als Oberbegriff über
+  beide Bauleistungen verwenden, und stützt die Aufnahme von
+  „Dachdeckung" in `synonyme:` nur für die ableitende Lesart.
+  Der abdichtende Zweig ist bei `dachabdichtung` belegt.
 ---
 
 ## Prosa-Definition
@@ -370,6 +393,15 @@ Unterscheidung wird in der App über die `dachneigung` und den
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, Kap. 3.8 „Dachdeckung" (S. 167:
+  Zweiteilung ableitend/abdichtend, Dachziegel-Systematik,
+  Deckungsarten, Dreieck „Dachdeckungsmaterialien entsprechend
+  der Dachneigung") und §3.8.1 „Baustoffbedarf und Daten für
+  Dächer" (S. 168: Regeldachneigung, Dachmaße, Ziegel- und
+  Lattenbedarf je Dachziegelart). Volltext-Scan liegt Anweiser vor;
+  direkt eingesehen 2026-08-14.
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*
   Lignum, Zürich, aktuelle Auflage.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich,

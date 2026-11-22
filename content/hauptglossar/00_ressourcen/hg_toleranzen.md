@@ -1,7 +1,7 @@
 ---
 id: toleranzen
 benennung: Toleranzen (numerische Klassifikationsschwellen)
-kurz: "Eine Toleranz ist ein kleiner erlaubter Spielraum, innerhalb dessen zwei Masse noch als gleich gelten — denn in der Praxis lässt sich nichts auf den hundertstel Millimeter genau treffen, und dieser winzige Unterschied soll nicht als Fehler zählen."
+kurz: "Eine Toleranz ist ein kleiner erlaubter Spielraum, innerhalb dessen zwei Maße noch als gleich gelten — denn in der Praxis lässt sich nichts auf den hundertstel Millimeter genau treffen, und dieser winzige Unterschied soll nicht als Fehler zählen."
 synonyme: ["Epsilon-Schwellen", "Klassifikationstoleranzen", "numerische Toleranzen"]
 abgelehnte_benennungen: [Genauigkeit, Messunsicherheit, Fertigungstoleranz, "tolerance", "epsilon"]
 oberbegriff: null
@@ -295,7 +295,7 @@ Alle elf Plausibilitäts-Konstanten teilen drei Eigenschaften:
 2. **Quellen-Lage indirekt.** Die normativen Stützen NCI NA.12
    und DIN 1052 § 15 sind in den Sandbox-Recherchen nicht
    volltext-zugänglich; SIA 265 §8.7 ist direkt eingesehen,
-   formuliert aber nur allgemein die Festlegung der Masshaltigkeit
+   formuliert aber nur allgemein die Festlegung der Maßhaltigkeit
    ohne Zahlenwerte. Die konkreten Toleranzwerte folgen dem
    Sekundärquellen-Konsens (Mönck/Rug, Holzbau-Taschenbuch,
    baunetzwissen.de) und sind in den jeweiligen Einträgen unter
@@ -382,7 +382,7 @@ auf die zuständigen Bearbeitungs-Einträge):**
   „Zimmermannsmäßige Verbindungen" (Stützung der
   `ZAPFENBREITE_FAUSTREGEL_DRITTEL`- und `ZAPFENLOCH_*`-
   Konstanten; Sekundärquellen-belegt).
-- SIA 265:2021, „Holzbau", §8.7 „Toleranzen" (Masshaltigkeit von
+- SIA 265:2021, „Holzbau", §8.7 „Toleranzen" (Maßhaltigkeit von
   Bauteilen) und §8.9 Kontrolle der Abmessungen. Volltext direkt
   eingesehen.
 - DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5

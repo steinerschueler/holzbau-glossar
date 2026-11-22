@@ -1,13 +1,13 @@
 ---
 id: staender
 benennung: Ständer
-kurz: "Ein Ständer ist ein senkrechter tragender Pfosten in einer Holzwand, der zwischen der unteren Schwelle und dem oberen Rähm eingespannt ist und das Gewicht von Decke und Dach senkrecht nach unten weiterleitet."
+kurz: "Ein Ständer ist ein senkrechter tragender Pfosten in einer Holzwand, der zwischen der unteren Schwelle und dem oberen Einbinder eingespannt ist und das Gewicht von Decke und Dach senkrecht nach unten weiterleitet."
 synonyme: [Steher, Rippe, Stiel, Pfosten, Wandständer, stud, "wall stud"]
 abgelehnte_benennungen: [Säule, Stab, Mauerständer, Wand-Pfeiler, column, post, "cripple stud", Bundpfosten, Stempel, Stelze]
 oberbegriff: bauteil
 begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, ebene, weltkoordinatensystem, toleranzen]
-abgrenzung_zu: [stuetze, saeule, haengesaeule, stuhlsaeule, schwelle, raehm, riegel, strebe, kopfband, fussband, knagge, wand, mann, andreaskreuz, fundament, sparren, pfette, stockschwelle, bauteil]
+abgrenzung_zu: [stuetze, saeule, haengesaeule, stuhlsaeule, schwelle, einbinder, riegel, sturz, strebe, kopfband, fussband, knagge, wand, mann, andreaskreuz, fundament, sparren, pfette, stockschwelle, bauteil]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
@@ -22,6 +22,7 @@ quellen_sekundär:
   - "Natterer, J.; Herzog, T.; Volz, M.: Holzbau-Atlas. 4. Aufl., Birkhäuser, Basel 2003, Kap. 'Wandbau' und 'Fachwerk'."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Ständer', 'Bundständer', 'Eckständer'."
   - "Krämer, F.: Grundwissen des Zimmerers. 2. Aufl., Bruderverlag, Karlsruhe 1988."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5. Kap. 3.7.2 „Fachwerkwände“ (S. 161): die Wand-Senkrechthölzer heißen in der gedruckten Legende durchgängig **Pfosten** — „⑧ Eckpfosten“, „⑨ Fensterpfosten“, „⑩ Türpfosten“ (neben ① Längsschwelle, ② Querschwelle, ③ Rähm, ④ Wandbalken, ⑤ Längsschwelle, ⑥ Fensterriegel, ⑦ Riegel, ⑪ Deckenbalken); das Wort „Ständer“ kommt in dieser Legende nicht vor. Kap. 3.7.3 (S. 162) trägt dagegen den Kapitel-Titel „Holzständerwände“ für die moderne Wandbauweise. Kap. 3.9.3 „Einfach stehendes Pfettendach“ (S. 170), Legende „④ Pfosten, Stiel (senkrechte Lastabtragung)“ und „⑤ Schwelle“; Kap. 3.9.4 „Zweifach stehendes Pfettendach“ (S. 170, Bildbeschriftung „Pfosten, Stiel“); Kap. 3.9.5 „Dreifach stehendes Pfettendach“ (S. 171), Legende „⑦ Pfosten, Stiel“ und „⑧ Schwelle“; Kap. 3.9.7 „Lastabtragung der Dachkonstruktionen“ (S. 172): „Pfosten und darunter liegende Zwischenwände, d. h. vorwiegend in der Senkrechten“. Berufsschul-Kanon-Beleg für „Pfosten“ und „Stiel“ als gebräuchliche Benennungen des senkrecht lastabtragenden Holzes — siehe Quellenkonflikt-Punkt (1)/(3) und den dort dokumentierten Berufsschul-Befund zur Dachstuhl-Verwendung."
   - "Thesaurus Traditioneller Holzbau (TTH), RWTH Aachen, Lemma 'Bundpfosten' (Begriff-ID 1041): explizit als 'falsch verwendete Bezeichnung für Stuhlsäulen oder Bundständer' markiert, Verweisform → Bundständer (Quelle: Gerner 1997, S. 13). Hierarchie-Facette 1922 'Fachwerk-Bauteile' mit Eckständer, Bundständer, Wandständer, Dachständer, Firstständer, Innenständer."
   - "Wikipedia, Lemma 'Ständer': 'Die Begriffe Ständer, Steher, Stempel, Pfosten oder Stiel bezeichnen im Bauwesen einen senkrecht stehenden Balken, welcher der Lastabtragung dient. Anders als der Ständer wird ein Pfosten auch wie ein Pflock oder Pfahl in den Boden gerammt oder in eine Pfostengrube gestellt, zum Beispiel bei der Pfostenbauweise.'"
   - "Wikipedia, Lemma 'Ständerbauweise': historischer Übergang Pfostenbauweise (bis 12. Jh., erdgerammt) → Ständerbauweise (ab 13. Jh., auf Schwelle)."
@@ -87,13 +88,50 @@ quellenkonflikt: |
   „Stütze" wird **nicht** zum Synonym; sie steht in `abgrenzung_zu:`
   als eigene (Folgearbeit-)Bauteilrolle im Cluster `20_tragwerk/`
   (Geschwister-Rolle unter `bauteil`, nicht Oberbegriff des
-  Ständers — analog der Welle-8-Festlegung in `hg_raehm.md`
-  Quellenkonflikt-Block, dass Rähm Geschwister-Rolle der Pfette ist,
+  Ständers — analog der Welle-8-Festlegung in `hg_einbinder.md`
+  Quellenkonflikt-Block, dass Einbinder Geschwister-Rolle der Pfette ist,
   nicht Subtyp).
+
+  **Berufsschul-Befund zu (1) und (3)** (Bläsi/Ferdinand,
+  *Tabellenbuch Zimmerer*, 9. Aufl. 2021, Volltext-Scan liegt Anweiser
+  vor, direkt eingesehen 2026-08-14). Das DE-Berufsschul-Standardwerk
+  bestätigt die Synonym-Aufnahme von „Pfosten" und „Stiel", zieht
+  die Wurzel-Grenze aber **anders** als dieser Eintrag:
+
+  - In der Fachwerkwand (Kap. 3.7.2, S. 161) heißen die
+    Wand-Senkrechthölzer ausnahmslos **Pfosten** — Eckpfosten,
+    Fensterpfosten, Türpfosten; „Ständer" erscheint dort **nicht**.
+    Das ist ein gedruckter Beleg dafür, dass „Pfosten" im
+    DE-Ausbildungs-Korpus nicht nur Neben-, sondern Hauptform der
+    Wand-Vertikale sein kann.
+  - Zugleich trägt das unmittelbar folgende Kapitel 3.7.3 (S. 162)
+    den Titel **„Holzständerwände"**. Das Buch verwendet also
+    „Pfosten" für das **Bauteil** und „Ständer" für den
+    **Bauweisen-/Wandtyp-Namen** — eine Verteilung, die weder die
+    TTH-Linie (Punkt 2) noch die CH-Praxis (Punkt 3) spiegelt.
+  - Im Dachstuhl (Kap. 3.9.3 S. 170, 3.9.5 S. 171) heißt die
+    senkrechte Lastabtragung des stehenden Stuhls ebenfalls
+    **„Pfosten, Stiel"** — also mit genau denselben zwei Wörtern,
+    die dieser Eintrag als Ständer-Synonyme führt, obwohl er
+    dasselbe Bauteil unter `stuhlsaeule` **abgrenzt**.
+
+  Eigene Festlegung: Die Wurzel-Wahl „Ständer" bleibt **unverändert**
+  (TTH-Linie Punkt 2 und CH-Praxis Punkt 3 wiegen für dieses
+  Glossar schwerer als der DE-Berufsschul-Sprachgebrauch); die
+  Synonyme „Pfosten" und „Stiel" sind durch den Fund zusätzlich
+  gedruckt belegt. Offen bleibt eine **Homonymie-Warnung**: „Pfosten"
+  und „Stiel" bezeichnen im Berufsschul-Kanon auch die
+  Dachstuhl-Vertikale (`stuhlsaeule`, Forward-Verweis), die dieser
+  Eintrag gerade nicht deckt. Die Trennung ist im Glossar heute nur
+  über die Wand-Einbindungs-Bedingung (Wohldefiniertheit) gesichert,
+  nicht über die Benennung. Folgearbeit-Trigger: beim Anlegen von
+  `hg_stuhlsaeule.md` ist die Synonym-Kollision „Pfosten/Stiel"
+  zwischen `staender` und `stuhlsaeule` ausdrücklich zu entscheiden
+  (Kandidat: Disambiguations-Vermerk in beiden Einträgen).
 
   **(4) Welle-8-Sprache „Pfosten oder Ständer" — gedeckt, keine
   Korrektur erforderlich.** Die Welle-8-Einträge `hg_schwelle.md`,
-  `hg_raehm.md` und `hg_riegel.md` verwenden in Bedingungen und
+  `hg_einbinder.md` und `hg_riegel.md` verwenden in Bedingungen und
   Prosa die Wortpaar-Form „Pfosten oder Ständer" / „Pfosten /
   Ständer" und führen beide Wörter in `abgrenzung_zu:`. Das
   reflektiert die moderne Synonym-Praxis, steht aber sprachlich
@@ -104,14 +142,14 @@ quellenkonflikt: |
   automatisch gedeckt: „Pfosten" verweist auf denselben Begriff
   wie „Ständer". Der einzige Klein-Edit in Welle-8 ist die Aufnahme
   von `staender` zusätzlich zu `pfosten` in `hg_riegel.md`
-  `abgrenzung_zu:` (in `hg_schwelle.md` Z. 9 und `hg_raehm.md` Z. 9
+  `abgrenzung_zu:` (in `hg_schwelle.md` Z. 9 und `hg_einbinder.md` Z. 9
   stehen `staender` und `pfosten` bereits parallel; in
   `hg_riegel.md` Z. 9 fehlt `staender` und wird ergänzt).
 
   **(5) SIA-265.** SIA 265:2021 §1.1
   „Fachausdrücke" (1.1.1–1.1.40) und das identische Anhang G
   wurden am Volltext geprüft (2026-06-14): Die Liste definiert
-  ausschliesslich Werkstoffe, Sortierung, Feuchte,
+  ausschließlich Werkstoffe, Sortierung, Feuchte,
   Festigkeitsklasse, Verbindungsmittel, Versatz und Klebstoffe —
   **keine** Zimmermanns-Bauteilrolle. „Ständer" ist dort **nicht**
   als §1.1-Fachausdruck bzw. Anhang-G-Lemma geführt; SIA behandelt
@@ -120,7 +158,7 @@ quellenkonflikt: |
   **(6) `cripple stud` als false friend.** Das englische `cripple
   stud` bezeichnet einen **verkürzten Ständer** ober- oder
   unterhalb einer Wand-Öffnung (zwischen Brüstungsriegel und
-  Schwelle bzw. zwischen Sturzriegel und Rähm). In `hg_riegel.md`
+  Schwelle bzw. zwischen Sturzriegel und Einbinder). In `hg_riegel.md`
   Z. 89–92 ist das Wort als false friend zu „Riegel" markiert; im
   Ständer-Eintrag steht es korrekt als (verkürzter) Ständer-
   Subfall in der `StaenderPosition.STEMPEL`-Lage. Es wird in
@@ -134,7 +172,7 @@ quellenkonflikt: |
   hält fest: in seiner Berufspraxis trennen sich Pfosten und
   Ständer entlang des **Lastpfads** — Pfosten nimmt Last
   **direkt** auf (geschoss-übergreifend, von First/Pfette bis
-  Boden, grösserer Querschnitt, kann freistehend sein); Ständer
+  Boden, größerer Querschnitt, kann freistehend sein); Ständer
   **indirekt** (wand-intern zwischen Schwelle und Einbinder/
   Stockschwelle).
 
@@ -158,7 +196,7 @@ quellenkonflikt: |
 
   Anweisers inhaltliche Bauteilrollen-Intuition ist damit
   **konsistent** mit der CH-Praxis, nur die **Lemma-Wahl** weicht
-  ab: was Anweiser „Pfosten" nennt, heisst im publizierten CH-Korpus
+  ab: was Anweiser „Pfosten" nennt, heißt im publizierten CH-Korpus
   „Stütze" (modern) oder „Hochstud" (historisch).
 
   **Sub-Punkt — Strickbau-Kontext** (Bauatlas Appenzellerland): im Strickbau-CH-Korpus
@@ -195,12 +233,15 @@ quellenkonflikt: |
 
 Ein **Ständer** ist eine Bauteilrolle in einer Wand, dessen
 Bauteilachse lotrecht in der Wandebene verläuft und die zwischen
-der Schwelle am Wand-Unteren-Niveau (unterer Endpunkt) und dem
-Rähm am Wand-Oberen-Niveau (oberer Endpunkt) eingespannt ist,
-wobei das Bauteil den primären vertikalen Lastpfad der Holzwand
-zwischen Rähm und Schwelle bildet und über seine Vertikalachse
-die Lasten der Geschossdecke oder des Dachtragwerks in die
-Schwelle und damit in das mineralische Auflager einleitet.
+dem jeweils nächstgelegenen horizontalen Auflager-Bauteil der
+Wand unterhalb (unterer Endpunkt; im Regelfall die Schwelle bzw.
+Stockschwelle) und oberhalb (oberer Endpunkt; im Regelfall der
+Einbinder, beim Kurzständer auch ein Riegel) eingespannt ist, wobei
+das Bauteil einen vertikalen Lastpfad-Abschnitt der Holzwand
+bildet und über seine Vertikalachse die Lasten des oberen
+Auflager-Bauteils in das untere einleitet — beim Voll-Ständer
+also die Lasten der Geschossdecke oder des Dachtragwerks vom
+Einbinder in die Schwelle und damit in das Auflager der Wand.
 
 ## Mathematische Definition
 
@@ -217,14 +258,14 @@ Sei
   HG_KONVENTIONEN.md §1, d. h. lotrecht),
 - S eine Schwelle in derselben Wandebene mit Bauteilachse
   a(S) = (p_a^S, p_e^S) (vgl. `schwelle`),
-- R ein Rähm in derselben Wandebene mit Bauteilachse
-  a(R) = (p_a^R, p_e^R) (vgl. `raehm`),
+- R ein Einbinder in derselben Wandebene mit Bauteilachse
+  a(R) = (p_a^R, p_e^R) (vgl. `einbinder`),
 - e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
 - ε_K:= Toleranzen.KOLLINEAR_EPS,
   ε_L:= Toleranzen.LAENGE_EPS.
 
 Dann heißt B ein **Ständer** der Wand mit Wandebene E_W,
-Schwelle S und Rähm R genau dann, wenn die folgenden Bedingungen
+Schwelle S und Einbinder R genau dann, wenn die folgenden Bedingungen
 alle erfüllt sind:
 
 1. **Stabgeometrie**: B besitzt eine gerade Bauteilachse mit
@@ -245,76 +286,101 @@ alle erfüllt sind:
    ```
    p_a.z + ε_L < p_e.z,
    ```
-   d. h. die Bauteilachse ist vom Fuß (auf der Schwelle) zum
-   Kopf (am Rähm) gerichtet. Anders als bei Pfette, Riegel und
-   Rähm ist hier eine geometrisch zwingende Orientierung
-   gerechtfertigt, weil Fuß und Kopf des Ständers konstruktiv
-   asymmetrisch sind (Schwellen-Auflager unten, Rähm-Anschluss
-   oben).
+   d. h. die Bauteilachse ist vom Fuß (unteres Auflager) zum
+   Kopf (oberes Auflager) gerichtet. Anders als bei Pfette,
+   Riegel und Einbinder ist hier eine geometrisch zwingende
+   Orientierung gerechtfertigt, weil Fuß und Kopf des Ständers
+   konstruktiv asymmetrisch sind (Auflager unten,
+   Last-Eintrag oben).
 
 4. **Lage in der Wandebene**: Beide Endpunkte liegen in E_W,
    ```
    |⟨p_a − p_W, n_hat_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n_hat_W⟩| ≤ ε_L.
    ```
 
-5. **Anschluss an die Schwelle (Fuß)**: Der untere Endpunkt
-   p_a liegt auf der Schwellen-Bauteilachse a(S) bis auf
-   Toleranz:
+5. **Anschluss an das untere Auflager-Bauteil (Fuß)**: Es
+   existiert ein horizontales Wand-Bauteil U derselben Wandebene
+   E_W mit der Rolle `schwelle`, `stockschwelle`, `riegel` oder
+   `sturz`, das das **nächstgelegene** horizontale Wand-Bauteil
+   unterhalb von p_a ist, und der untere Endpunkt p_a liegt auf
+   dessen Bauteilachse a(U) bis auf Toleranz:
    ```
-   dist(p_a, a(S)) ≤ ε_L,
+   dist(p_a, a(U)) ≤ ε_L,
    ```
-   wobei dist(p, a) der Punkt-Geraden-Abstand zur Schwellen-
-   Achse ist.
+   wobei dist(p, a) der Punkt-Geraden-Abstand ist. Im Regelfall
+   (Voll-Ständer) ist U die Schwelle bzw. im Obergeschoss die
+   Stockschwelle; beim Kurzständer über einer Öffnung ist U der
+   Sturzriegel — oder der reine Sturz des Holzrahmenbaus, der
+   keine Riegel-Rolle trägt (Verallgemeinerung M-3, Welle 14 —
+   vorher band die Bedingung ausschließlich an die
+   Schwellen-Achse).
 
-6. **Anschluss an das Rähm (Kopf)**: Der obere Endpunkt p_e
-   liegt auf der Rähm-Bauteilachse a(R) bis auf Toleranz:
+6. **Anschluss an das obere Auflager-Bauteil (Kopf)**: Analog
+   existiert ein horizontales Wand-Bauteil O derselben Wandebene
+   mit der Rolle `einbinder`, `riegel` oder `sturz`, das das
+   nächstgelegene horizontale Wand-Bauteil oberhalb von p_e ist,
+   mit
    ```
-   dist(p_e, a(R)) ≤ ε_L.
+   dist(p_e, a(O)) ≤ ε_L.
    ```
+   Im Regelfall (Voll-Ständer) ist O der Einbinder; beim Kurzständer
+   unter einer Öffnung ist O der Brüstungsriegel; beim
+   verkürzten Leibungsständer, der das Sturz-Auflager trägt
+   („jack stud"/„trimmer"), ist O der Sturz.
 
 Wesentliche abgeleitete Größen:
 
 - **Ständerlänge**: L_S:= ‖p_e − p_a‖ (in mm), entlang der
-  Bauteilachse zwischen Schwellen-Anschluss und Rähm-Anschluss.
+  Bauteilachse zwischen Fuß- und Kopf-Anschluss.
   Bei exakt lotrechter Ständerachse gilt L_S = p_e.z − p_a.z.
 - **Ständerrichtung**: d_hat ∈ S² mit ‖d_hat × e_z‖ ≤ ε_K und
   d_hat · e_z > 0 (durch Bedingung 3 festgelegt). Damit ist
   d_hat ≈ +e_z.
-- **Geschosshöhe**: h_G:= p_e.z − p_a.z; bei lotrechtem
+- **Vertikale Spannlänge**: h_V:= p_e.z − p_a.z; bei lotrechtem
   Ständer identisch mit L_S, bei toleranzbehafteter Schiefstellung
-  bis auf KOLLINEAR_EPS‧L_S kleiner als L_S.
+  bis auf KOLLINEAR_EPS‧L_S kleiner als L_S. Nur beim
+  **Voll-Ständer** (U = Schwelle/Stockschwelle, O = Einbinder) ist h_V
+  zugleich die Geschosshöhe; beim Stempel/Kurzständer ist sie die
+  Feld- bzw. Öffnungshöhe.
 
 ## Wohldefiniertheit
 
 - **Existenz**: Für jedes Stabbauteil mit positiver Achsenlänge,
   lotrechter Achse, Lage in einer lotrechten Wandebene und
-  Anschluss an Schwelle und Rähm derselben Wand sind alle sechs
+  Anschluss an Schwelle und Einbinder derselben Wand sind alle sechs
   Bedingungen konstruktiv erfüllbar; jeder Ständer einer
   klassischen Riegel-/Fachwerk-Wand und jeder Ständer eines
   modernen Holzrahmenbau-Wandelements ist Standardbeispiel.
 - **Eindeutigkeit der Ständerrichtung**: Bedingungen 2 und 3
   zusammen fixieren d_hat vollständig: d_hat ist kollinear zu e_z
   (Bedingung 2) **und** positiv orientiert (Bedingung 3), also
-  d_hat = +e_z bis auf ε_K. Im Gegensatz zu Pfette, Riegel und Rähm
+  d_hat = +e_z bis auf ε_K. Im Gegensatz zu Pfette, Riegel und Einbinder
   ist hier auch das Vorzeichen geometrisch festgelegt.
 - **Eindeutigkeit der Wandebene**: Die Wandebene E_W ist aus
-  den Achsenlagen der Schwelle S und des Rähms R bestimmbar
-  (Ebene durch die beiden parallelen, vertikal versetzten
-  Achsen), sofern diese nicht kollinear sind. Bedingung 4 ist
-  dann automatisch erfüllt, wenn p_a auf der Schwellen-Achse
-  liegt (Bedingung 5) und p_e auf der Rähm-Achse (Bedingung 6).
+  den Achsenlagen der beiden Auflager-Bauteile U und O
+  bestimmbar (Ebene durch die beiden parallelen, vertikal
+  versetzten Achsen), sofern diese nicht kollinear sind.
+  Bedingung 4 ist dann automatisch erfüllt, wenn p_a auf der
+  U-Achse liegt (Bedingung 5) und p_e auf der O-Achse
+  (Bedingung 6).
 - **Konsistenz mit `hg_bauteil.md`**: Alle Bedingungen aus
   `bauteil` (eindeutige Identität, Geometrie, Werkstoff, Lage in
   W) sind erfüllt; die Bauteilrolle „Ständer" ergänzt die
   Lage-Constraints 1–6.
-- **Mindestens-Schwelle-und-Rähm-Bedingung**: Bedingungen 5 und 6
-  fordern die Existenz einer Schwelle und eines Rähms, deren
-  Achsen Anschluss-Auflager des Ständers sind. Diese Bedingung
-  schließt freistehende vertikale Hölzer (Skelettbau-Stützen
-  ohne Wand-Einbindung, erdgerammte Pfähle in der historischen
-  Pfostenbauweise) aus dem Ständer-Begriff aus; solche Bauteile
-  sind keine Ständer im Sinne dieses Eintrags und gehören zur
-  Folgearbeit-Rolle `stuetze`.
+- **Wand-Einbindungs-Bedingung** (verallgemeinerte Fassung der
+  früheren Mindestens-Schwelle-und-Einbinder-Bedingung, M-3/Welle 14):
+  Bedingungen 5 und 6 fordern die Existenz zweier **horizontaler
+  Wand-Bauteile derselben Wandebene** (mit den Rollen
+  Schwelle/Stockschwelle/Riegel unten und Einbinder/Riegel oben),
+  deren Achsen Anschluss-Auflager des Ständers sind. Diese
+  Bedingung schließt freistehende vertikale Hölzer
+  (Skelettbau-Stützen ohne Wand-Einbindung, erdgerammte Pfähle
+  der historischen Pfostenbauweise) unverändert aus dem
+  Ständer-Begriff aus; solche Bauteile gehören zur Rolle
+  `stuetze`. Der frühere Ausschluss der Stempel/Kurzständer ist
+  mit der Verallgemeinerung aufgehoben: ein Kurzständer zwischen
+  Brüstungs- und Sturzriegel ist jetzt ein Ständer im Sinne
+  dieses Eintrags (`StaenderPosition.STEMPEL`).
 - **Geschoss-Lesart**: Die Definition macht keine Aussage über
   das Geschoss. Ein Ständer im Erdgeschoss auf Grundschwelle
   und ein Ständer im Obergeschoss auf Stockschwelle
@@ -328,24 +394,29 @@ Wesentliche abgeleitete Größen:
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
   bereits definierte Begriffe (`bauteil`, `bauteilachse`,
   `strecke`, `einheitsvektor`, `ebene`, `weltkoordinatensystem`,
-  `toleranzen`) sowie auf die in derselben Welle 8/9 angelegten
-  Wand-Geschwister `schwelle` und `raehm`. Forward-Verweise
-  (`stuetze`, `saeule`, `haengesaeule`, `stuhlsaeule`,
-  `stockschwelle`) sind nach HG_KONVENTIONEN.md §6 zulässig.
-- **Stempel/Kurzständer als qualifizierender Folgearbeit-Trigger**:
-  Der Enum-Wert `StaenderPosition.STEMPEL` (kurzer Ständer zwischen
-  Brüstungs- und Sturzriegel oder als Geschoss-Stütze unter einem
-  Hängewerk) bezeichnet eine Lesart, die die Bedingungen 5 und 6
-  in ihrer aktuellen Form **nicht direkt erfüllt** — der untere
-  Endpunkt liegt nicht auf der Schwellen-Achse, der obere nicht
-  auf der Rähm-Achse, sondern jeweils auf einem Zwischen-Riegel.
-  Die Definition deckt den Stempel daher heute **nicht** ab; das
-  Enum-Wertfeld ist als Folgearbeit-Trigger geführt, der mit einer
-  Verallgemeinerung der Bedingungen 5/6 auf „nächstes horizontales
-  Auflager in der Wandebene" einhergeht. Diese Verallgemeinerung
-  ist Aufgabe des Wand-Aggregats oder der ersten konkreten
-  Stempel-Modellierung; bis dahin sind reine Brüstungs-/Sturz-
-  Kurzhölzer keine Ständer im Sinne dieses Eintrags.
+  `toleranzen`) sowie — in den Auflager-Rollenlisten der
+  Bedingungen 5/6 (M-3, Welle 14) — auf die angelegten
+  Wand-Geschwister `schwelle`, `stockschwelle`, `einbinder`,
+  `riegel` und `sturz`. Keiner dieser Einträge setzt seinerseits
+  den Ständer in seiner Definition voraus (`riegel` umschreibt
+  die Pfosten rein geometrisch; `sturz` verwendet nur Auflager-
+  Inzidenzen) — kein Zyklus. Die Rollen stehen als
+  Kontext-Bedingung im Tragwerks-Sinn, nicht in
+  `voraussetzungen:` (Muster `hg_schwelle.md`,
+  Pfosten-Auflagerbedingung).
+- **Stempel/Kurzständer — Verallgemeinerung M-3 umgesetzt
+  (Welle 14)**: Der Enum-Wert `StaenderPosition.STEMPEL` (kurzer
+  Ständer zwischen Brüstungs- und Sturzriegel oder als
+  Geschoss-Stütze unter einem Hängewerk) verlangte ursprünglich
+  eine Lockerung der Bedingungen 5 und 6, die den Fuß strikt an
+  die Schwellen- und den Kopf an die Einbinder-Achse banden. Mit der
+  Sturz-Anlage (`hg_sturz.md`, Welle 14) ist die als Folgearbeit
+  M-3 vorgemerkte **Verallgemeinerung auf das jeweils
+  nächstgelegene horizontale Auflager-Bauteil in der Wandebene**
+  in die Bedingungen 5/6 eingearbeitet; der Stempel ist damit ein
+  Ständer im Sinne dieses Eintrags. Der Ausschluss freistehender
+  Hölzer bleibt über die Wand-Einbindungs-Bedingung
+  (Wohldefiniertheit) erhalten.
 
 ## Erläuterung (nicht normativ)
 
@@ -353,8 +424,8 @@ Der Ständer ist im DACH-Holzbau das **vertikale, primär
 lastabtragende Stab-Bauteil einer Holzwand** und Pendant des
 horizontalen Quer-Bauteils Riegel. Das **tragende Grundgerüst
 einer Holzwand** im Riegelbau (CH) bzw. Fachwerkbau (DE/AT)
-besteht aus Schwelle (unten, durchlaufend), Rähm (oben,
-durchlaufend), Ständern (vertikal, zwischen Schwelle und Rähm
+besteht aus Schwelle (unten, durchlaufend), Einbinder (oben,
+durchlaufend), Ständern (vertikal, zwischen Schwelle und Einbinder
 eingespannt) und dazwischen gespannten Riegeln (horizontal-quer);
 diagonale **Streben** (`strebe`) und am Pfosten-Kopf eingebaute
 **Kopfbänder** (`kopfband`) können die Wand-Aussteifung verstärken.
@@ -364,8 +435,8 @@ diagonale **Streben** (`strebe`) und am Pfosten-Kopf eingebaute
 Der Ständer ist **der primäre vertikale Lastträger der Wand**.
 Seine Funktionen sind
 
-- **Aufnahme der Vertikallasten** der Geschossdecke (über das
-  Rähm) bzw. des Dachtragwerks (über das Rähm oder die
+- **Aufnahme der Vertikallasten** der Geschossdecke (über den
+  Einbinder) bzw. des Dachtragwerks (über den Einbinder oder die
   Fußpfette, je nach Konstruktion) und Weiterleitung in die
   Schwelle und damit in das mineralische Auflager,
 - **Knicksicherung** durch seitliche Stabilisierung über
@@ -422,13 +493,13 @@ Merkmals `StaenderPosition` am Ständer-Bauteil geführt, nicht als Subtyp-Hiera
 Im **klassischen Ständerbau** (13.–17. Jh., historische
 Bauweise) reicht ein Ständer von der Grundschwelle des
 Erdgeschosses durch das Geschossbalkenlager hindurch bis zum
-Dach-Rähm/Pfette — der Ständer ist **geschossdurchgehend**.
+Dach-Einbinder/Pfette — der Ständer ist **geschossdurchgehend**.
 Die Geschossdecke ist als Stichbalkenlage in den durchlaufenden
 Ständer eingezapft.
 
 Im **modernen Stockwerkbau / Holzrahmenbau / Holztafelbau**
 reicht der Ständer nur **geschossweise** von der Schwelle
-des jeweiligen Geschosses zum Rähm desselben Geschosses; der
+des jeweiligen Geschosses zum Einbinder desselben Geschosses; der
 Ständer des nächsthöheren Geschosses setzt auf der
 Stockschwelle des Obergeschosses auf, die ihrerseits auf der
 Geschossdecke liegt.
@@ -469,12 +540,12 @@ Ständer-Querschnitt ist im modernen Holzrahmenbau häufig
 **identisch** zum Riegel-Querschnitt. Faserrichtung axial
 entlang der Bauteilachse, Festigkeitsklasse typisch C24.
 
-### Anschluss an Schwelle und Rähm
+### Anschluss an Schwelle und Einbinder
 
 Klassisch wird der Ständer durch **Verzapfung** mit der
-Schwelle und dem Rähm verbunden: Zapfen am Ständer-Fuß in
+Schwelle und dem Einbinder verbunden: Zapfen am Ständer-Fuß in
 Zapfenloch in der Schwellen-Oberseite, Zapfen am Ständer-Kopf
-in Zapfenloch in der Rähm-Unterseite, jeweils gesichert mit
+in Zapfenloch in der Einbinder-Unterseite, jeweils gesichert mit
 Holznagel. Modern stumpfer Stoß, vernagelt oder verschraubt;
 in industrieller Vorfertigung Zapfenmaschine-Zapfen oder
 Stahlblech-Schuhe. Verdeckte Stahl-Holz-Verbinder (Knapp,
@@ -496,9 +567,9 @@ behandelt.
   `20_tragwerk/`): werkstoffneutrales tragendes Vertikalbauteil
   ohne Wand-Bindung; Skelettbau, Pfosten-Riegel-Fassade,
   Hallenbinder. Geschwister-Rolle des Ständers unter `bauteil`,
-  **nicht** Oberbegriff (analog Welle-8-Festlegung Rähm ≠
+  **nicht** Oberbegriff (analog Welle-8-Festlegung Einbinder ≠
   Subtyp der Pfette). Trennlinie: Ständer ist Bestandteil
-  einer Wandscheibe (Inzidenz mit Schwelle und Rähm derselben
+  einer Wandscheibe (Inzidenz mit Schwelle und Einbinder derselben
   Wand, Aufnahme von Riegeln, Beplankung); Stütze trägt
   punktuell-konzentriert in einem Tragwerks-Raster (typisch
   Skelettraster 3–8 m). Cross-Cutting-Bedarf: Folgearbeit-
@@ -561,19 +632,19 @@ behandelt.
     den Ständer-Fuß (Bedingung 5). Wechselseitige Inzidenz:
     der Ständer ist Last-Erzeuger, die Schwelle Last-Aufnehmer
     am Wand-Unteren-Niveau.
-  - **Rähm** (`raehm`): oberstes Wand-Längsholz; nimmt den
+  - **Einbinder** (`einbinder`): oberstes Wand-Längsholz; nimmt den
     Ständer-Kopf auf (Bedingung 6). Wechselseitige Inzidenz:
-    der Ständer ist Last-Aufnehmer von oben (Decke/Dach), das
-    Rähm verteilt die Decken-/Dachlasten auf die Ständer-
+    der Ständer ist Last-Aufnehmer von oben (Decke/Dach), der
+    Einbinder verteilt die Decken-/Dachlasten auf die Ständer-
     Köpfe.
   - **Riegel** (`riegel`): horizontales Quer-Bauteil zwischen
     je zwei Ständern (vgl. `hg_riegel.md` Bedingung 5). Der
     Ständer ist seitliches Auflager und Knicksicherung des
     Riegels; der Riegel ist seitliche Knicksicherung des
     Ständers.
-  - **Stockschwelle** (`stockschwelle`, Forward-Verweis):
-    im Mehrgeschoss-Holzbau die Schwelle des Obergeschosses
-    auf der darunterliegenden Geschossdecke; Auflager des
+  - **Stockschwelle** (`stockschwelle`, eigener Eintrag seit
+    Welle 15): im Stockwerkbau das unterste Längsholz der
+    Obergeschoss-Wand auf der Balkenlage; Auflager des
     Obergeschoss-Ständers (geschossweise Lesart).
   - **Fundament / Sockel / Bodenplatte** (`fundament`,
     Forward-Verweis): mineralisches Auflager der Schwelle und
@@ -595,7 +666,7 @@ behandelt.
   - **Schwelle** (`schwelle`): Welle-8-Geschwister; horizontales
     Wand-Unter-Bauteil. Wechselseitige Inzidenz mit dem
     Ständer-Fuß; nicht alternativ zum Ständer.
-  - **Rähm** (`raehm`): Welle-8-Geschwister; horizontales
+  - **Einbinder** (`einbinder`): Welle-8-Geschwister; horizontales
     Wand-Ober-Bauteil. Wechselseitige Inzidenz mit dem
     Ständer-Kopf; nicht alternativ zum Ständer.
   - **Riegel** (`riegel`): Welle-8-Geschwister; horizontales
@@ -607,15 +678,15 @@ behandelt.
     zur Wand. Faserrichtung schräg, nicht lotrecht.
   - **Pfette** (`pfette`): horizontaler Dach-Längsträger;
     gehört zum Dachtragwerk. Funktionale Überlagerung mit
-    dem Rähm möglich (traufseitiges Rähm trägt direkt
+    dem Einbinder möglich (traufseitiger Einbinder trägt direkt
     Sparrenfüße), aber Pfette und Ständer sind nicht
     austauschbar — Faserrichtung horizontal vs. lotrecht.
   - **Fundament** (`fundament`, Forward-Verweis):
     mineralisches Auflager unterhalb der Schwelle; nicht
     selbst Holz-Bauteil, kein Ständer.
-  - **Stockschwelle** (`stockschwelle`, Forward-Verweis):
-    Schwelle des Obergeschosses; Auflager des Obergeschoss-
-    Ständers, nicht selbst Ständer.
+  - **Stockschwelle** (`stockschwelle`, eigener Eintrag seit
+    Welle 15): unterstes Längsholz der Obergeschoss-Wand;
+    Auflager des Obergeschoss-Ständers, nicht selbst Ständer.
   - **Bauteil** (`bauteil`): der Ständer ist eine
     Spezialisierung von Bauteil mit zusätzlichen geometrischen
     Constraints; ein Bauteil ohne Bauteilrolle ist kein
@@ -651,6 +722,14 @@ behandelt.
   DVA, 7. Auflage 2007.
 - Krämer, F.: *Grundwissen des Zimmerers.* 2. Auflage,
   Bruderverlag, Karlsruhe 1988.
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, S. 161 (Kap. 3.7.2, Eck-/Fenster-/
+  Türpfosten), S. 162 (Kap. 3.7.3 „Holzständerwände"), S. 170
+  (Kap. 3.9.3/3.9.4, „Pfosten, Stiel"), S. 171 (Kap. 3.9.5,
+  „⑦ Pfosten, Stiel"), S. 172 (Kap. 3.9.7, Lastabtragung über
+  Pfosten). Volltext-Scan liegt Anweiser vor; direkt eingesehen
+  2026-08-14.
 - Thesaurus Traditioneller Holzbau (TTH), RWTH Aachen,
   Lemma „Bundpfosten" (Begriff-ID 1041, Verweisform →
   Bundständer), Hierarchie-Facette 1922 „Fachwerk-Bauteile".

@@ -7,7 +7,7 @@ abgelehnte_benennungen: [Kopfwinkel, Kopfwinkelholz, Knagge, "knee brace", "corn
 oberbegriff: bauteil
 begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, ebene, weltkoordinatensystem, toleranzen]
-abgrenzung_zu: [strebe, fussband, knagge, raehm, pfette, firstpfette, mittelpfette, fusspfette, unterzug, staender, pfosten, mann, andreaskreuz, kniestrebe, zugband, bauteil]
+abgrenzung_zu: [strebe, fussband, knagge, einbinder, pfette, firstpfette, mittelpfette, fusspfette, unterzug, staender, pfosten, stuhlsaeule, mann, andreaskreuz, kniestrebe, zugband, bauteil]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
@@ -19,6 +19,8 @@ quellen_primär:
   - "Wikipedia, Lemma 'Kopfband' (de.wikipedia.org/wiki/Kopfband), Wortlaut: 'Ein Kopfband (auch Bug oder Kopfbüge) ist eine Strebe, die vom Zimmerer zwischen einem horizontalen Holz […] und einem vertikal stehenden Holz […] eingesetzt wird, um eine Versteifung der Konstruktion zu erzielen.' [direkt]"
   - "BauNetz Wissen, Glossar-Holz, Lemma 'Kopfband' (baunetzwissen.de/glossar/k/kopfband-6629384): 45°-Default, Spannweiten-Verkürzung des darüberliegenden horizontalen Bauteils, Längsaussteifungs-Funktion in Träger-Richtung. [einsicht: snippet]"
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §9.2.1 (S. 159, Bild 9.5): gedruckter Beleg der Pfetten-Unterstützungs-Funktion samt zeitlicher Einordnung — 'Früher wurden die Pfetten oftmals durch zusätzliche Kopfbänder unterstützt, die — statisch gesehen — eine Reduzierung der Pfettenstützweite bringen'; Bildunterschrift kennzeichnet die Bauweise ausdrücklich als 'veraltet' (heute Durchlaufpfetten auf Querwänden)."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.9 „Dachkonstruktionen“: S. 170 (§3.9.3 „Einfach stehendes Pfettendach“) Legende ③ „Kopfband, Bug (Längsaussteifung)“ neben ④ „Pfosten, Stiel (senkrechte Lastabtragung)“; ebd. §3.9.4 „Zweifach stehendes Pfettendach“ Bauteil-Beschriftung „Bug, Kopfband“ am Diagonalholz zwischen Pfosten/Stiel und Mittelpfette. S. 171 („Zweifach stehendes Pfettendach ohne Längs- und Queraussteifung“): „Labile (instabile) Konstruktion. Es fehlen: Längsaussteifung: ① Büge, Kopfbänder“; ebd. §3.9.5 „Dreifach stehendes Pfettendach“ Legende ⑥ „Kopfband, Bug“. S. 172, Tafel §3.9.7 „Lastabtragung der Dachkonstruktionen“, Spalte Pfettendach: „Längsaussteifung durch: Pfetten, Kopfbänder (Büge)“ gegenüber „Queraussteifung durch: Streben, Querriegel, Zangenpaar“. S. 173, Tafel §3.9.8 „Vor- und Nachteile der Dachkonstruktionen“: Sparrendach-Vorteil „keine störenden Pfosten, Kopfbänder (Büge), Pfetten, Streben“, Pfettendach-Nachteil „Beim Ausbau störende Pfosten, Streben, Büge, Pfetten“. Berufsschul-Mehrwert: gedruckte Gleichsetzung Kopfband = Bug (mit Pluralform „Büge“) und die Funktions-Zuschreibung Längsaussteifung in Abgrenzung zur Queraussteifung; kein eigenes Lemma mit Definition."
   - "Lignum (Hrsg.): Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor', lignum.ch/auf_einen_klick/news/ — Hinweis auf SIA-265-Definitionsliste."
   - "Lignum (Hrsg.): Holzbautabellen HBT 1 (2024). Lignum, Zürich. Begriffsregister 'Kopfband' (Volltext nicht zugänglich, Verlags-Schaufenster). CH-Praxis-Verteilung in §H der Recherche dokumentiert."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 'Wandscheiben' und 'Knotenausbildung'."
@@ -35,9 +37,12 @@ quellen_sekundär:
   - "fuhrberger.de: 'Streben und Kopfwinkel'."
   - "Recherche-Bericht: [intern]."
 quellenkonflikt: |
-  Drei Punkte sind in der Recherche
+  Die Punkte (1)–(3) sind in der Recherche
   ([intern]) auflösungs-
-  bedürftig und werden hier ausdrücklich festgelegt.
+  bedürftig und werden hier ausdrücklich festgelegt; die Punkte
+  (4)–(8) sind in späteren Wellen ergänzt (Block-Signale,
+  Verifikations-Trigger, Berufsschul-Befunde). Punkt (8) ist mit
+  dem R-Schritt (Anweiser-Entscheid 2026-08-14) aufgelöst.
 
   **(1) Wikipedia subsumiert Kopfband unter Strebe; TTH nicht.**
   Wikipedia/Kopfband formuliert wörtlich: „Ein Kopfband (auch Bug
@@ -114,24 +119,74 @@ quellenkonflikt: |
   **(6) SIA-265.** SIA 265:2021 §1.1
   „Fachausdrücke" (1.1.1–1.1.40) und das identische Anhang G
   wurden am Volltext geprüft (2026-06-14): Die Liste definiert
-  ausschliesslich Werkstoffe, Sortierung, Feuchte,
+  ausschließlich Werkstoffe, Sortierung, Feuchte,
   Festigkeitsklasse, Verbindungsmittel, Versatz und Klebstoffe —
   **keine** Zimmermanns-Bauteilrolle. Weder „Kopfband"
   noch „Bug" sind dort als §1.1-Fachausdruck bzw. Anhang-G-Lemma
   geführt; SIA behandelt nur generische Tragglieder.
+
+  **(7) Berufsschul-Bestätigung der Bug-Synonymie** (Bläsi/
+  Ferdinand, *Tabellenbuch Zimmerer*, 9. Aufl. 2021;
+  Volltext-Scan liegt Anweiser vor, direkt eingesehen 2026-08-14).
+  Das Berufsschul-Standardwerk des Zimmererhandwerks setzt
+  „Kopfband" und „Bug" durchgängig gleich — S. 170 Legende ③
+  „Kopfband, Bug (Längsaussteifung)", S. 171 Legende ⑥
+  „Kopfband, Bug", S. 172 Lastabtragungs-Tafel
+  „Längsaussteifung durch: Pfetten, Kopfbänder (Büge)". Das
+  stützt Punkt (2) gedruckt und belegt zusätzlich die
+  Pluralform „Büge". Ein eigenes Lemma „Kopfband" mit
+  Definition führt das Werk **nicht**; alle Belege sind
+  Legenden- und Tafeleinträge (Negativ-Befund analog
+  `hg_kerve.md`).
+
+  **(8) Dach-Kontext des Berufsschul-Korpus — aufgelöst per
+  R-Schritt (Anweiser-Entscheid 2026-08-14).** Dasselbe Werk zeigt
+  das Kopfband **ausschließlich im Dachtragwerk** (stehender
+  Stuhl: Pfosten/Stiel → Pfette, in der Längsebene des
+  Dachstuhls), nicht in einer Wand. Die Prosa-Definition
+  dieses Eintrags band das Kopfband demgegenüber bis
+  einschließlich der Tabellenbuch-Welle T2 an eine Wand mit
+  Wandebene E_W. Die mathematische Definition trug den
+  Dach-Fall bereits inhaltlich (Pfette als zulässiger
+  Längsholz-Anker, Bedingung 4; Implementierungshinweis
+  „Pfette als Längsholz"), nannte die Bezugsebene aber
+  ebenfalls „Wandebene".
+
+  Auflösung (Anweiser-Entscheid 2026-08-14, R-Schritt): Der
+  Geltungsbereich wird — parallel und wortgleich zu
+  `hg_strebe.md` Quellenkonflikt-Punkt (7) — von der
+  Wand-Bindung auf eine **lotrechte Tragwerksebene E_T**
+  verallgemeinert, mit genau zwei benannten Kontexten: dem
+  **Wand-Kontext** (E_T = Wandebene einer Wand, siehe
+  `hg_wand.md`) und dem **Dachtragwerks-Kontext** (E_T =
+  Längsebene des stehenden Stuhls, parallel zur Firstrichtung
+  durch die Pfosten-/Stuhlsäulen-Reihe und die von ihr
+  getragene Pfette; siehe `hg_dachstuhl.md`). Das Kopfband ist
+  im Dachtragwerk das Bauteil der **Längsaussteifung**
+  („Längsaussteifung durch: Pfetten, Kopfbänder (Büge)",
+  Bläsi/Ferdinand S. 172, Tafel §3.9.7) — in Abgrenzung zur
+  Queraussteifung durch Streben. Die **Binderebene** ist für
+  das Kopfband **nicht** vorgesehen: das Kopfband der
+  Berufsschul-Belege liegt durchgängig in der Längsebene. Alle
+  bisherigen Wand-Bedingungen und alle sechs
+  Definitions-Bedingungen bleiben unverändert gültig; verändert
+  ist allein die Benennung und der zulässige Kontext der
+  Bezugsebene sowie die Aufnahme der Stuhlsäule bzw. des Stiels
+  in den Katalog der lotrechten Anker-Bauteile.
 ---
 
 ## Prosa-Definition
 
-Ein **Kopfband** ist eine Bauteilrolle in einer Wand, deren
-Bauteilachse als gerades Stab-Bauteil in der Wandebene
-**diagonal** zwischen dem **Kopf** eines lotrechten Bauteils
-(Pfosten/Ständer) und einem über diesem verlaufenden
-**horizontalen Längsholz** (Rähm, Pfette oder Unterzug)
-gespannt ist und die Pfosten-Längsholz-Verbindung gegen
-horizontale Lasten versteift sowie die Spannweite des
-darüberliegenden Längsholzes durch ein zusätzliches Auflager
-verkürzt.
+Ein **Kopfband** ist eine Bauteilrolle in einem Wand- oder
+Dachtragwerk, deren Bauteilachse als gerades Stab-Bauteil in einer
+lotrechten Tragwerksebene (Wandebene einer Wand; Längsebene eines
+Dachtragwerks) **diagonal** zwischen dem **Kopf** eines lotrechten
+Bauteils (Ständer, Pfosten; im Dachtragwerk Stuhlsäule bzw. Stiel)
+und einem über diesem verlaufenden **horizontalen Längsholz**
+(Einbinder, Pfette oder Unterzug) gespannt ist und die Verbindung
+dieser beiden Bauteile gegen horizontale Lasten versteift sowie
+die Spannweite des darüberliegenden Längsholzes durch ein
+zusätzliches Auflager verkürzt.
 
 ## Mathematische Definition
 
@@ -144,19 +199,31 @@ Sei
   geraden Fall (siehe `bauteilachse`), mit
   d_hat:= (p_e − p_a) / ‖p_e − p_a‖ ∈ S² ⊂ ℝ³,
 
-- E_W eine Wandebene (Ebene im Sinne von `ebene`) mit Stützpunkt
-  p_W und Normalenvektor n_hat_W ∈ S², wobei n_hat_W horizontal liegt
-  (|⟨n_hat_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
-  HG_KONVENTIONEN.md §1, d. h. lotrecht),
+- E_T eine **lotrechte Tragwerksebene** (Ebene im Sinne von `ebene`)
+  mit Stützpunkt p_T und Normalenvektor n_hat_T ∈ S², wobei n_hat_T
+  horizontal liegt (|⟨n_hat_T, e_z⟩| ≤ ε_K — die Ebene steht
+  senkrecht im Sinne von HG_KONVENTIONEN.md §1, d. h. lotrecht).
+  E_T ist entweder
+  - im **Wand-Kontext** die Wandebene E_W einer Wand (siehe
+    `hg_wand.md`), oder
+  - im **Dachtragwerks-Kontext** die **Längsebene** des stehenden
+    Stuhls: die Ebene parallel zur Firstrichtung durch die Reihe
+    der lotrechten Bauteile und die von ihnen getragene Pfette.
+    Die Längsebene ist hier lokal über ihre Lage zur Firstrichtung
+    definiert; `hg_dachstuhl.md` führt sie noch **nicht** als
+    eigenen Begriff (Forward-Kontext, Nachzug bei der
+    Dachstuhl-Welle),
 
 - P ein lotrechtes Anker-Bauteil (Ständer im Sinne von
-  `hg_staender.md` oder Pfosten als Synonym; siehe
-  Quellenkonflikt-Block dort) mit Bauteilachse
+  `hg_staender.md` oder Pfosten als Synonym — siehe
+  Quellenkonflikt-Block in `hg_staender.md`; im
+  Dachtragwerks-Kontext Stuhlsäule bzw. Stiel im Sinne von
+  `hg_stuhlsaeule.md`) mit Bauteilachse
   a(P) = (p_a^P, p_e^P), z-Extrema z_min^P:= min(p_a^P.z,
   p_e^P.z) und z_max^P:= max(p_a^P.z, p_e^P.z), Pfosten-Kopf-
   Punkt p_K^P:= arg max{p.z: p ∈ a(P)},
 
-- H ein horizontales Anker-Bauteil (Rähm im Sinne von `hg_raehm.md`,
+- H ein horizontales Anker-Bauteil (Einbinder im Sinne von `hg_einbinder.md`,
   Pfette im Sinne von `hg_pfette.md`, oder Unterzug als
   Forward-Verweis) mit Bauteilachse a(H) = (p_a^H, p_e^H) und
   ‖d_hat_H − ⟨d_hat_H, e_z⟩ e_z‖ > 1 − ε_K (horizontal:
@@ -168,16 +235,16 @@ Sei
   ε_L:= Toleranzen.LAENGE_EPS,
   ε_W:= Toleranzen.WINKEL_EPS.
 
-Dann heißt B ein **Kopfband** der Wand mit Wandebene E_W, Pfosten
-P und Längsholz H genau dann, wenn die folgenden Bedingungen
-alle erfüllt sind:
+Dann heißt B ein **Kopfband** des Tragwerks mit Tragwerksebene
+E_T, Pfosten P und Längsholz H genau dann, wenn die folgenden
+Bedingungen alle erfüllt sind:
 
 1. **Stabgeometrie**: B besitzt eine gerade Bauteilachse mit
    ‖p_e − p_a‖ > ε_L.
 
-2. **Lage in der Wandebene**: Beide Endpunkte liegen in E_W,
+2. **Lage in der Tragwerksebene**: Beide Endpunkte liegen in E_T,
    ```
-   |⟨p_a − p_W, n_hat_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n_hat_W⟩| ≤ ε_L.
+   |⟨p_a − p_T, n_hat_T⟩| ≤ ε_L  ∧  |⟨p_e − p_T, n_hat_T⟩| ≤ ε_L.
    ```
 
 3. **Echte Diagonale (weder lotrecht noch horizontal)**: Der
@@ -186,8 +253,9 @@ alle erfüllt sind:
    ```
    ε_W < α(B) < π/2 − ε_W,
    ```
-   d. h. d_hat ist weder kollinear zu e_z (kein Pfosten/Ständer)
-   noch rechtwinklig zu e_z (kein Riegel/Rähm).
+   d. h. d_hat ist weder kollinear zu e_z (kein Ständer, Pfosten
+   oder Stuhlsäule) noch rechtwinklig zu e_z (kein Riegel, Einbinder
+   oder Pfette).
 
 4. **Zwei-Anker-Bedingung Pfosten + Längsholz**: Genau eines
    der Endpunkte p_a, p_e liegt auf der Pfosten-Bauteilachse
@@ -233,18 +301,23 @@ Wesentliche abgeleitete Größen:
   Die Definition fixiert β_K **nicht** auf 45° (Korpus-Konsens
   ist „typisch", keine Norm-Festlegung).
 
-- **Wandebenen-Achsenrichtung**: t_hat_W:= projektiere d_hat in die
-  Wandebene, dient als Default-Faserrichtung am Bauteil.
+- **Tragwerksebenen-Achsenrichtung**: t_hat_T:= projektiere d_hat in
+  die Tragwerksebene E_T, dient als Default-Faserrichtung am
+  Bauteil.
 
 ## Wohldefiniertheit
 
 - **Existenz**: Für jedes Stabbauteil mit positiver Achsenlänge,
-  beiden Endpunkten in einer lotrechten Wandebene, echter
+  beiden Endpunkten in einer lotrechten Tragwerksebene, echter
   Diagonal-Neigung, einem Endpunkt am Kopf eines lotrechten
   Bauteils und dem anderen auf einem darüberliegenden
   horizontalen Längsholz sind alle Bedingungen 1–6 konstruktiv
-  erfüllbar; jedes klassische Fachwerk-Kopfband und jedes
-  Riegelbau-Eckaussteifungs-Kopfband ist Standardbeispiel.
+  erfüllbar. Standardbeispiele im **Wand-Kontext**: jedes
+  klassische Fachwerk-Kopfband, jedes Riegelbau-Eckaussteifungs-
+  Kopfband. Standardbeispiel im **Dachtragwerks-Kontext**: das
+  Kopfband (Bug) des stehenden Pfettendachs zwischen dem Kopf
+  eines Pfostens/Stiels und der darüberliegenden Pfette
+  (Bläsi/Ferdinand S. 170, Legende ③; S. 171, Legende ⑥).
 
 - **Eindeutigkeit des Pfosten-Endpunkts**: Bedingungen 4 und 5
   zusammen legen p_P als denjenigen Endpunkt fest, der auf der
@@ -252,11 +325,18 @@ Wesentliche abgeleitete Größen:
   Pfosten-Kopf liegt. Der zweite Endpunkt p_H ist damit
   eindeutig der Längsholz-Endpunkt.
 
-- **Eindeutigkeit der Wandebene**: E_W ist aus Pfosten-Achse
+- **Eindeutigkeit der Tragwerksebene**: E_T ist aus Pfosten-Achse
   a(P) und Längsholz-Achse a(H) bestimmbar (eine lotrechte
-  plus eine horizontale Achse spannen E_W eindeutig auf, sofern
+  plus eine horizontale Achse spannen E_T eindeutig auf, sofern
   H und P nicht in derselben Geraden liegen, was bei
-  konstruktiv gewolltem Kopfband ausgeschlossen ist).
+  konstruktiv gewolltem Kopfband ausgeschlossen ist). Das gilt
+  in beiden Kontexten gleichermaßen: im Wand-Kontext spannen
+  Ständer-Achse und Einbinder-Achse die Wandebene auf, im
+  Dachtragwerks-Kontext Stuhlsäulen-Achse und Pfetten-Achse die
+  Längsebene des Stuhls. Anders als bei der Strebe in der
+  Binderebene (siehe `hg_strebe.md`) liegt das Längsholz beim
+  Kopfband **in** E_T, weil Pfosten-Reihe und Pfette dieselbe
+  Ebene aufspannen.
 
 - **Konsistenz mit `hg_bauteil.md`**: Alle Bedingungen aus
   `bauteil` (eindeutige Identität, Geometrie, Werkstoff, Lage in
@@ -264,12 +344,19 @@ Wesentliche abgeleitete Größen:
   Lage-Constraints 1–6.
 
 - **Abgrenzung zur Strebe**: Bedingung 5 (Pfosten-Endpunkt am
+  Pfosten-Kopf) **zusammen mit** Bedingung 6 (Längsholz über dem
   Pfosten-Kopf) ist die strukturelle Trennlinie. Eine Strebe mit
   Pfosten-Anker erfüllt komplementär `p_P.z ≤ z_max^P − ε_L · 3`
   (siehe `hg_strebe.md` Bedingung 5). Die Grenzfälle (Pfosten-
   Anker exakt in z = z_max^P − ε_L · 3 mit Toleranz-Übergang)
   sind durch die Toleranz-Konstante in beiden Definitionen
-  konsistent ausgeschlossen.
+  konsistent ausgeschlossen. Der mit dem R-Schritt 2026-08-14
+  hinzugekommene Dachtragwerks-Kontext bringt einen weiteren
+  Trennfall: die **Hängewerk-Strebe** ankert zwar am Kopf der
+  Hängesäule (Bedingung 5 wäre erfüllt), ihr horizontaler Anker
+  liegt jedoch **unterhalb** dieses Kopfes, sodass Bedingung 6
+  verletzt ist — sie ist damit kein Kopfband (siehe
+  `hg_strebe.md` Bedingung 5, dritter Disjunkt).
 
 - **Faktor 3 in der Pfosten-Kopf-Toleranz**: Der Schwellwert
   `ε_L · 3` ist bewusst weiter gefasst als die reine Geometrie-
@@ -293,7 +380,13 @@ Wesentliche abgeleitete Größen:
   `strecke`, `einheitsvektor`, `ebene`, `weltkoordinatensystem`,
   `toleranzen`) sowie auf die in der Welle 8/9 angelegten
   Wand- und Dach-Längsholz-Geschwister (`staender`/`pfosten`,
-  `raehm`, `pfette`). Forward-Verweise (`strebe` als Welle-10-
+  `einbinder`, `pfette`) und — für den mit dem R-Schritt 2026-08-14
+  ergänzten Dachtragwerks-Kontext — auf `stuhlsaeule` und
+  `dachstuhl`. Die Tragwerksebene E_T bleibt ein **freier
+  Parameter** der Definition (eine Ebene im Sinne von `ebene`);
+  die Kontext-Begriffe erläutern nur, welche Ebenen in der Praxis
+  eingesetzt werden, und gehen nicht als Voraussetzungen in die
+  Definition ein. Forward-Verweise (`strebe` als Welle-10-
   Geschwister, `fussband`, `knagge`, `unterzug`, `mann`,
   `andreaskreuz`, `kniestrebe`, `zugband`) sind nach
   HG_KONVENTIONEN.md §6 zulässig.
@@ -302,18 +395,21 @@ Wesentliche abgeleitete Größen:
 
 Das Kopfband ist im DACH-Holzbau die **diagonale Eckaussteifung**
 zwischen einem Pfosten-Kopf und einem über diesem verlaufenden
-horizontalen Längsholz (Rähm, Pfette, Unterzug). Es ergänzt das
+horizontalen Längsholz (Einbinder, Pfette, Unterzug). Es ergänzt das
 rechtwinklige Pfosten-Längsholz-Eck durch ein **kleines, festes
 Dreieck**, das die Verbindung gegen Verdrehen aussteift und
 zugleich das Längsholz an einer zusätzlichen Stelle unterstützt.
+Dieselbe Bauteilrolle tritt in zwei Tragwerks-Kontexten auf: in
+der **Wandebene** einer Wand und in der **Längsebene** eines
+stehenden Dachstuhls.
 
 ### Funktion
 
 Das Kopfband leistet zwei konstruktive Aufgaben gleichzeitig:
 
 1. **Eckaussteifung**: die Pfosten-Längsholz-Verbindung gewinnt
-   **Biege-Steifigkeit** in der Wandebene. Knicksicherung des
-   Pfostens am Kopf, **Längsaussteifung** des Längsholzes in
+   **Biege-Steifigkeit** in der Tragwerksebene. Knicksicherung
+   des Pfostens am Kopf, **Längsaussteifung** des Längsholzes in
    Träger-Richtung (BauNetz-Snippet, snippet-basiert).
 
 2. **Spannweiten-Verkürzung**: das darüberliegende Längsholz
@@ -330,6 +426,43 @@ Wänden werden Kopfbänder **paarweise beidseitig** am Pfosten-
 Kopf angeordnet (Wikipedia/Kopfband: „Kopfbänder sollten bei
 Zwischenstielen immer von beiden Seiten angeordnet werden"),
 um die wechselnde Windrichtung abzudecken.
+
+### Kopfband im Dachtragwerk
+
+Der Berufsschul-Kanon des Zimmererhandwerks zeigt das Kopfband
+**ausschließlich im Dachtragwerk**, nicht in einer Wand
+(Bläsi/Ferdinand, *Tabellenbuch Zimmerer*, 9. Aufl. 2021,
+Kap. 3.9). Dieser Geltungsbereich ist mit dem R-Schritt
+2026-08-14 in die Definition aufgenommen (siehe
+Quellenkonflikt-Block (8)). Belegte Dach-Ausprägung:
+
+- **Kopfband (Bug) im stehenden Pfettendach** (S. 170,
+  §3.9.3 „Einfach stehendes Pfettendach", Legende ③ „Kopfband,
+  Bug (Längsaussteifung)" neben ④ „Pfosten, Stiel (senkrechte
+  Lastabtragung)"; §3.9.4 Beschriftung „Bug, Kopfband" am
+  Diagonalholz zwischen Pfosten/Stiel und Mittelpfette; S. 171,
+  §3.9.5 „Dreifach stehendes Pfettendach", Legende ⑥): das
+  Kopfband spannt in der **Längsebene** des Stuhls vom Kopf
+  eines Pfostens/Stiels zur darüberliegenden Pfette.
+
+Funktional trennt das Werk sauber: „**Längsaussteifung** durch:
+Pfetten, Kopfbänder (Büge)" gegenüber „**Queraussteifung**
+durch: Streben, Querriegel, Zangenpaar" (S. 172, Tafel §3.9.7).
+Das Kopfband ist damit im Dachtragwerk auf die **Längsebene**
+festgelegt; die Strebe übernimmt in der Tafel die
+**Queraussteifung** (Binderebene), ist definitorisch aber nicht
+auf diese beschränkt — `hg_strebe.md` lässt auch die Längsebene
+zu (etwa als Schrägaussteifung längs der Stuhl-Reihe, siehe
+`hg_stuhlsaeule.md`). Die Rollentrennung der TTH-Linie
+(Quellenkonflikt-Block (1)) findet hier gleichwohl eine zweite,
+statische Bestätigung. Fehlen die Kopfbänder,
+ist die Konstruktion „labil (instabil)" (S. 171).
+
+Der Dachstuhl-Kontext ist zugleich der Kontext, in dem die
+Bauweise **historisch geworden** ist: Colling (7. Aufl. 2021,
+§9.2.1, S. 159, Bild 9.5) bezeichnet die Pfetten-Unterstützung
+durch Kopfbänder ausdrücklich als „veraltet" (heute
+Durchlaufpfetten auf Querwänden).
 
 ### Geometrie und Größe
 
@@ -375,10 +508,18 @@ Anschlüsse:
 
 - **An Eckständern**: zwei Kopfbänder, je eines pro angeschlossener
   Wandebene.
+- **Am Pfosten/Stiel eines stehenden Stuhls** (Dachtragwerks-
+  Kontext): beidseitig in der **Längsebene** des Stuhls, je eines
+  in Firstrichtung nach vorn und nach hinten gegen dieselbe
+  Pfette (Bläsi/Ferdinand S. 170, §3.9.3/§3.9.4). Es gibt hier
+  nur **eine** Tragwerksebene je Pfostenreihe; die zweite
+  Richtung wird nicht durch ein Kopfband, sondern durch die
+  Queraussteifung in der Binderebene (Streben, Zangenpaare)
+  ausgesteift.
 
 Die Anordnung wird im Modell durch das `KopfbandPosition`-Merkmal
 abgebildet (siehe Implementierungs-Hinweis); die App führt die
-Wand-Inzidenz im Wand-Aggregat (Folgearbeit).
+Inzidenz im Wand- bzw. Dachtragwerks-Aggregat (Folgearbeit).
 
 ### Konstruktive Trennlinien zu verwandten Bauteilen
 
@@ -428,7 +569,7 @@ Wand-Inzidenz im Wand-Aggregat (Folgearbeit).
   Folgearbeit): Komposition zweier sich kreuzender **Streben**
   (nicht Kopfbänder); strukturell andere Aggregat-Klasse.
 
-- **Rähm**, **Pfette**, **Unterzug** (`raehm`, `pfette`,
+- **Einbinder**, **Pfette**, **Unterzug** (`einbinder`, `pfette`,
   `unterzug`): horizontale Längshölzer als Längsholz-Anker
   des Kopfbands; selbst keine Kopfbänder.
 
@@ -449,6 +590,7 @@ Wand-Inzidenz im Wand-Aggregat (Folgearbeit).
 
 | Bauweise | Kopfband typisch verwendet? |
 |---|---|
+| Pfettendach mit stehendem Stuhl (Berufsschul-Kanon DE) | **Regelbauteil** der Längsaussteifung; ohne Kopfbänder gilt die Konstruktion als labil (Bläsi/Ferdinand S. 170 f.) |
 | Fachwerkbau (DE/AT, historisch und in Sanierung) | breit, in vielen Geometrien (Bug, Kopfbüge, Mann-Figuren) |
 | Riegelbau (CH, traditionell) | Kopfband-Wort wenig im Korpus belegt; CH-Praxis verwendet teils „Strebe" als Sammelbegriff |
 | Holzrahmenbau (modern) | Beplankungs-Aussteifung dominant; Kopfband selten |
@@ -488,7 +630,9 @@ in CH nicht existiert — es wird nur seltener spezifisch benannt.
   Quellenkonflikt-Block (1)). Welle-12-Auflösung: die
   Mitgliedschaft als Wand-Bauteil erfolgt über das
   `wand`-Aggregat (siehe `hg_wand.md`); eine Zwischenebene
-  `wandbauteil` wird nicht angelegt (App-Drift).
+  `wandbauteil` wird nicht angelegt (App-Drift). Im
+  Dachtragwerks-Kontext (R-Schritt 2026-08-14) erfolgt die
+  Mitgliedschaft analog über das `dachstuhl`-Aggregat.
 
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
     - **Bauteilachse** (`bauteilachse.Gerade`), diagonal im
@@ -515,15 +659,21 @@ in CH nicht existiert — es wird nur seltener spezifisch benannt.
       (Bedingung 5). Inzidenz: das Kopfband ist Last-Verteiler
       am Pfosten-Kopf-Eck, der Pfosten ist Last-Aufnehmer.
 
-    - **Rähm** (`raehm`): häufigstes Längsholz-Anker-Bauteil
+    - **Einbinder** (`einbinder`): häufigstes Längsholz-Anker-Bauteil
       im Wand-Kontext; das Kopfband verbindet Pfosten-Kopf mit
-      Rähm-Unterkante.
+      Einbinder-Unterkante.
 
-    - **Pfette** (`pfette`): bei Dach-naher Verwendung
-      (Dachpfette als Längsholz über Pfosten/Ständer-Köpfen)
-      übernimmt die Pfette die Längsholz-Rolle. Im Dachstuhl-
-      Kontext ist „Kopfband" gelegentlich synonym mit
-      Pfetten-Eck-Aussteifung verwendet.
+    - **Pfette** (`pfette`, mit Sub-Rollen `firstpfette`,
+      `mittelpfette`, `fusspfette`): im **Dachtragwerks-Kontext**
+      das reguläre Längsholz-Anker-Bauteil (Pfette über den Köpfen
+      einer Pfosten-/Stuhlsäulen-Reihe). Diese Verwendung ist die
+      im Berufsschul-Kanon belegte Wurzel-Verwendung des Kopfbands
+      (Bläsi/Ferdinand S. 170 f.), nicht ein Randfall.
+
+    - **Stuhlsäule** (`stuhlsaeule`, berufssprachlich auch Pfosten
+      oder Stiel): lotrechtes Anker-Bauteil im Dachtragwerks-
+      Kontext; das Kopfband ankert an ihrem **Kopf**
+      (Bedingung 5).
 
     - **Unterzug** (`unterzug`, Forward-Verweis): horizontales
       Tragwerk-Längsholz unter einer Geschossdecke; kann als
@@ -531,9 +681,18 @@ in CH nicht existiert — es wird nur seltener spezifisch benannt.
 
 - **Abgrenzung**:
     - **Strebe** (`strebe`, Welle-10-Geschwister): diagonales
-      Stab-Bauteil ohne Pfosten-Kopf-Anker; die TTH-Linie führt
-      Strebe und Kopfband als Geschwister. Trennlinie:
-      Anker-Lage am Pfosten-Kopf (Bedingung 5).
+      Stab-Bauteil ohne Pfosten-Kopf-Anker bzw. mit tiefer
+      liegendem horizontalem Anker; die TTH-Linie führt Strebe
+      und Kopfband als Geschwister. Trennlinie: Anker-Lage am
+      Pfosten-Kopf (Bedingung 5) zusammen mit der
+      Aufwärts-Orientierung (Bedingung 6). Im Dachtragwerk
+      zusätzlich funktional akzentuiert: Kopfband =
+      Längsaussteifung (nur Längsebene); die Strebe trägt die
+      Queraussteifung (Binderebene), ist definitorisch aber
+      nicht auf diese beschränkt.
+
+    - **Stuhlsäule** (`stuhlsaeule`): lotrechtes Anker-Bauteil im
+      Dachtragwerk, selbst kein Kopfband.
 
     - **Fußband** (`fussband`, Forward-Verweis, Folgearbeit):
       symmetrisches Gegenstück am Pfosten-Fuß.
@@ -594,6 +753,18 @@ in CH nicht existiert — es wird nur seltener spezifisch benannt.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §9.2.1 (S. 159, Bild 9.5:
+  Kopfband-Unterstützung der Pfette, als veraltet
+  gekennzeichnet). Volltext-Scan liegt Anweiser vor; direkt
+  eingesehen 2026-08-14.
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, Kap. 3.9 „Dachkonstruktionen"
+  (S. 170 §3.9.3/§3.9.4, S. 171 §3.9.5, S. 172 Tafel §3.9.7,
+  S. 173 Tafel §3.9.8). Volltext-Scan liegt Anweiser vor; direkt
+  eingesehen 2026-08-14.
 - Lignum: *Pressemitteilung 2021 — Anwendungshilfen für neue
   SIA-Norm Holzbau.* lignum.ch/auf_einen_klick/news/.
 

@@ -1,7 +1,7 @@
 ---
 id: koordinatensystem
 benennung: Koordinatensystem
-kurz: "Ein Koordinatensystem ist ein Bezugsraster mit einem festen Nullpunkt und festen Richtungen, mit dem sich jede Stelle im Raum durch Zahlen eindeutig benennen lässt — wie Strasse und Hausnummer für einen Ort."
+kurz: "Ein Koordinatensystem ist ein Bezugsraster mit einem festen Nullpunkt und festen Richtungen, mit dem sich jede Stelle im Raum durch Zahlen eindeutig benennen lässt — wie Straße und Hausnummer für einen Ort."
 synonyme: ["Referenzsystem"]
 abgelehnte_benennungen:
   - Bezugssystem
@@ -19,8 +19,9 @@ status: entwurf
 subglossar_pendant: optional
 quellen_primär:
   - "ISO 19111:2019, 'Geographic information — Referencing by coordinates', Abschnitt 3.1.13 (Definition 'coordinate system': 'set of mathematical rules for specifying how coordinates are to be assigned to points') und Abschnitt 7 (Coordinate systems). Schärfste verfügbare Definitions-Quelle für den Oberbegriff. [einsicht: snippet, via OGC 18-005r4]"
-  - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren); ISO 80000-2:2019, Symbole für kartesische, polare, zylindrische und sphärische Koordinatensysteme (autoritativ für Symbolwahl, kein geschlossener Oberbegriff). [einsicht: vorschau-pdf]"
-  - "DIN EN ISO 80000-3:2020-12, 'Größen und Einheiten – Teil 3: Raum und Zeit', Abschnitt 3 (Raum), Koordinaten als Tripel reeller Zahlen mit zugeordneter Längeneinheit."
+  - "DIN EN ISO 80000-2:2023-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitte 17 (Koordinatensysteme) und 18 (Skalare, Vektoren und Tensoren). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitt 16 (Coordinate systems), Nr. 2-16.1 bis 2-16.3: Zeichen für kartesische, zylindrische und sphärische Koordinaten, Polarkoordinaten als Zylinderkoordinaten mit z = 0 (autoritativ für Symbolwahl, kein geschlossener Oberbegriff). [direkt]"
+  - "DIN EN ISO 80000-3:2026-06, 'Größen und Einheiten – Teil 3: Raum und Zeit', Abschnitt 3 (Begriffe), Tabelle 1, Koordinaten als Tripel reeller Zahlen mit zugeordneter Längeneinheit. [einsicht: vorschau-pdf, Inhaltsverz.]"
 quellen_sekundär:
   - "Bronstein, I. N. et al.: Taschenbuch der Mathematik. Kap. 3.5 'Analytische Geometrie des Raumes' und 'spezielle Koordinatensysteme/Transformationen'. Mindest-Bestandteile: Ursprung O; geordnete Familie ausgezeichneter Geraden (Achsen); Koordinaten-Zuordnungs-Regel."
   - "Berger, M.: Geometry I. Springer 1987, §2 'Affine spaces', §2.6 'Affine frames': Koordinatensystem als Frame (O, B) über einem affinen Raum; in der affinen Geometrie sind Frame und Koordinatensystem synonym."
@@ -38,7 +39,7 @@ quellenkonflikt: |
   als technischer Begriff nicht auf. Die einschlägigen Quellen sind
   geoinformatisch (ISO 19111, swisstopo), produktdatentechnisch
   (ISO 10303, ISO 16739/IFC), maschinenbau-tolerierungstechnisch
-  (ISO 5459) und allgemein-mathematisch (DIN ISO 80000-2, Bronstein,
+  (ISO 5459) und allgemein-mathematisch (DIN EN ISO 80000-2, Bronstein,
   affine Geometrie).
 
   Konflikt 1 — Abgrenzung Koordinatensystem ↔ Bezugssystem
@@ -58,7 +59,7 @@ quellenkonflikt: |
   |   of Math)            |                                      |                             |
 
   Geodäsie hat Bezugssystem ⊃ Koordinatensystem (Bezugssystem ist
-  das grössere Konzept); affine Geometrie hat sie als Synonyme;
+  das größere Konzept); affine Geometrie hat sie als Synonyme;
   Physik und ISO 5459 trennen sie auf einer dritten Achse
   (physikalisch/operativ vs. mathematisch).
 
@@ -76,7 +77,7 @@ quellenkonflikt: |
   Konflikt 2 — Stufe-a vs. Stufe-b der Definition:
   Eine engere Definition (Stufe a: rechtshändig, kartesisch,
   3-dimensional, in mm) deckt die beiden bestehenden Sub-Einträge
-  knapp ab, schliesst aber künftige Folge-Einträge `lv95`, `wgs84`
+  knapp ab, schließt aber künftige Folge-Einträge `lv95`, `wgs84`
   (geo-projiziert bzw. ellipsoidisch, in Metern) als
   Koordinatensysteme aus. App-Festlegung: Stufe b (allgemeines
   Tupel (O, B, n, η) über einem affinen Raum, ohne kartesische,
@@ -130,7 +131,7 @@ Dann ist ein **Koordinatensystem** auf 𝔸 das Tupel
 K:= (O, B, n, η).
 ```
 
-η heisst die durch (O, B) erzeugte Koordinatenabbildung.
+η heißt die durch (O, B) erzeugte Koordinatenabbildung.
 
 ### Optionale Spezialisierungen
 
@@ -141,7 +142,7 @@ Koordinatensystem tragen kann oder nicht:
 - **Orthogonalität**: für i ≠ j gilt ⟨b_i, b_j⟩ = 0
   (paarweise rechtwinklige Basis-Vektoren).
 - **Orthonormalität**: zusätzlich ‖b_i‖ = 1 für alle i.
-  Ein orthonormales System heisst **kartesisch**.
+  Ein orthonormales System heißt **kartesisch**.
 - **Rechtshändigkeit** (nur für n = 3 sinnvoll):
   b_1 × b_2 = b_3, gleichwertig det(b_1 | b_2 | b_3) = +1.
 - **Längeneinheit**: eine Festlegung, in welcher Einheit die
@@ -164,7 +165,7 @@ trägt, wird in seinem eigenen Glossareintrag normativ festgelegt
   Vektorräume.
 - **Eindeutigkeit von η bei gegebenem (O, B)**: Die
   Koordinatenabbildung η ist durch (O, B) eindeutig bestimmt, weil
-  jeder Punkt p ∈ 𝔸 sich gemäss dem affinen Raum-Axiom eindeutig
+  jeder Punkt p ∈ 𝔸 sich gemäß dem affinen Raum-Axiom eindeutig
   als p = O + v mit v ∈ V darstellen lässt und v in der Basis B
   eindeutig in Komponenten zerfällt.
 - **Bijektivität von η**: η ist bijektiv. Surjektivität folgt aus
@@ -279,11 +280,12 @@ Spezialisierungen `weltkoordinatensystem` (Ost/Nord/Zenit) und
 
 - ISO 19111:2019, „Geographic information — Referencing by
   coordinates", Abschnitt 3.1.13 und Abschnitt 7.
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2:
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2:
   Mathematik".
-- ISO 80000-2:2019, Symbole und Bezeichnungen für Koordinaten-
-  systeme.
-- DIN EN ISO 80000-3:2020-12, „Größen und Einheiten – Teil 3:
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
+- DIN EN ISO 80000-3:2026-06, „Größen und Einheiten – Teil 3:
   Raum und Zeit".
 
 **Sekundär:**

@@ -2,7 +2,7 @@
 id: verbindung
 benennung: Verbindung
 kurz: "Eine Verbindung ist die Stelle, an der mehrere Bauteile zusammentreffen und durch Nägel, Schrauben oder eingearbeitete Holzfügungen kraftschlüssig zusammenwirken — also der ganze «Knotenpunkt», nicht ein einzelnes Stück darin."
-synonyme: [Anschluss, Knoten, Stoss]
+synonyme: [Anschluss, Knoten, Stoß]
 abgelehnte_benennungen: [Verbindungsmittel, Verbinder, "joint", "connection", "node", "Holzverbindung"]
 oberbegriff: null
 begriffstyp: aggregat
@@ -14,11 +14,12 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Kapitel 8 'Anschlüsse mit metallischen Verbindungsmitteln', insbesondere 8.1 (Allgemeines), 8.2 (Tragfähigkeit von stiftförmigen Verbindungsmitteln auf Abscheren) — Konzept der Verbindung als Aggregat."
   - "DIN EN 1995-1-1:2010-12, Kapitel 10 'Klebungen' — Klebung als Sonderform der Verbindung."
   - "DIN EN 1995-1-1:2010-12, Abschnitt 8.2.3 'Indirekte Verbindungen' — Verbindungen mit vermittelndem Verbinder."
-  - "SIA 265:2021 'Holzbau', §6.1 'Grundlagen' (Verbindungen): §6.1.1.3 Gruppenwirkung (Tragwiderstand vieler Verbindungsmittel in der Regel kleiner als die Summe der Einzelwiderstände); §6.1.1.4 bei gleichzeitiger Verwendung verschiedener Verbindungsarten Kräfteverteilung proportional zu den Anschlusssteifigkeiten (kein Mischungsverbot); §6.1.1.6/§6.1.1.7 Nachweise für Verbindung und Holzteile im Anschlussbereich (Querzug siehe Anhang D). Von den zimmermannsmässigen Verbindungen ist nur der Versatz bemessen (§6.9.2). [direkt]"
+  - "SIA 265:2021 'Holzbau', §6.1 'Grundlagen' (Verbindungen): §6.1.1.3 Gruppenwirkung (Tragwiderstand vieler Verbindungsmittel in der Regel kleiner als die Summe der Einzelwiderstände); §6.1.1.4 bei gleichzeitiger Verwendung verschiedener Verbindungsarten Kräfteverteilung proportional zu den Anschlusssteifigkeiten (kein Mischungsverbot); §6.1.1.6/§6.1.1.7 Nachweise für Verbindung und Holzteile im Anschlussbereich (Querzug siehe Anhang D). Von den zimmermannsmäßigen Verbindungen ist nur der Versatz bemessen (§6.9.2). [direkt]"
   - "ÖNORM B 1995-1-1:2019, nationale Anwendungsbestimmungen zum Eurocode 5, Kap. 8."
   - "DIN 1052:2008-12, Abschnitt 12 'Verbindungen'."
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) – Part 1: Data schema', Beziehungs-Entität `IfcRelConnectsElements` (Subtyp von `IfcRelConnects`); ergänzend `IfcGroup` mit `IfcRelAggregates`."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §11.1/§11.2 (S. 175) und Kap. 12 (S. 198–223): Steifigkeits-Klassifikation der Verbindungen — 'Nur eine Leimverbindung kann in guter Näherung als starr angesehen werden, alle übrigen Verbindungen gelten als nachgiebig', darunter Kontaktanschlüsse ('zimmermannsmäßige Verbindungen') und Verbindungen mit mechanischen Verbindungsmitteln; Definition 'mechanische Verbindungen' über die Nachgiebigkeit (Auftreten von Relativverschiebungen, §11.2); Schnittigkeits-Systematik ein-/zwei-/mehrschnittiger Verbindungen je für Holz-Holz und Stahlblech-Holz (Kap. 12, S. 203–217) als Aggregat-Geometrie-Klassifikation."
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 8 'Verbindungen' — Verbindung als bemessungstechnische Einheit."
   - "Holzbau-Handbuch, Reihe 2 'Tragwerksplanung', Teil 1 'Verbindungen', mehrere Folgen, Informationsdienst Holz."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 7 'Verbindungen'."
@@ -32,7 +33,7 @@ quellenkonflikt: |
     Knotenpunkt.
   - **SIA 265** verwendet „Verbindung" für das Aggregat,
     „Anschluss" oft enger für die einseitige Lasteinleitung.
-  - In der zimmermannssprachlichen Tradition werden „Stoss"
+  - In der zimmermannssprachlichen Tradition werden „Stoß"
     (längstoßende Verbindung gleichartiger Stäbe), „Anschluss"
     (Aufeinanderstoß verschiedener Stäbe) und „Knoten" (Mehrfach-
     Treffpunkt) unterschiedliche Konnotationen tragen, ohne dass
@@ -44,9 +45,9 @@ quellenkonflikt: |
     Verbinder und Verstärkungselemente, die an einem konstruktiven
     Knotenpunkt kraftschlüssig zusammenwirken, plus das
     angewandte Bemessungsverfahren.
-  - **Anschluss**, **Knoten**, **Stoss** sind als Synonyme
+  - **Anschluss**, **Knoten**, **Stoß** sind als Synonyme
     geführt; eine feinere Differenzierung erfolgt über das
-    `typ`-Feld (`VerbindungsTyp`: Stoss, Anschluss, Knoten,
+    `typ`-Feld (`VerbindungsTyp`: Stoß, Anschluss, Knoten,
     Eckverbindung).
 
   Wichtige Setzung:
@@ -92,7 +93,7 @@ einem oder mehreren Verbindungsmitteln, optional einem oder
 mehreren Verbindern und optional einem oder mehreren
 Verstärkungselementen, die an einem konstruktiven Knotenpunkt
 kraftschlüssig zusammenwirken, das eine eigene technische
-Identität (UUID), eine Klassifikation nach Verbindungsart (Stoss,
+Identität (UUID), eine Klassifikation nach Verbindungsart (Stoß,
 Anschluss, Knoten, Eckverbindung) und ein zugewiesenes
 Nachweisverfahren nach DIN EN 1995-1-1 bzw. SIA 265 trägt und das
 selbst kein verbautes Einzelobjekt ist, sondern eine
@@ -111,7 +112,7 @@ Sei
 
 - 𝓥_τ die Menge der Verbindungsarten
   ```
-  𝓥_τ:= { Stoss, Anschluss, Knoten, Eckverbindung,
+  𝓥_τ:= { Stoß, Anschluss, Knoten, Eckverbindung,
           ZimmermannsmaessigerStoss, ZimmermannsmaessigerAnschluss,
           KlebeVerbindung }
   ```
@@ -203,7 +204,7 @@ markiert sein.
 das Nachweisverfahren in `nachweisverfahren` ist mit dem Typ und
 der Verbindungsmittel-Klasse der Verbindung kompatibel:
 
-- typ ∈ {Stoss, Anschluss, Knoten, Eckverbindung} mit
+- typ ∈ {Stoß, Anschluss, Knoten, Eckverbindung} mit
   metallischen Verbindungsmitteln auf Abscheren →
   Johansen-Verfahren (EC5 Kap. 8.2).
 
@@ -256,7 +257,7 @@ zwingend, aber für UI-Lokalisierung und BCF-Verortung wichtig.
 
 - **Mehrfach-Bauteil-Verbindung**: Knotenverbindungen mit
   |beteiligte_bauteile| ≥ 3 sind häufig (z. B. Stiel- und
-  Strebenanschluss am Rähm); die Definition deckt sie über die
+  Strebenanschluss am Einbinder); die Definition deckt sie über die
   Mengenkardinalität ab.
 
 - **Selbst-Verbindung ausgeschlossen**: ein Bauteil verbindet
@@ -409,20 +410,20 @@ mehreren) Tragwerken.
 - **Spezialisierungen nach Verbindungsart** (eigene Einträge
   folgen, im Body erläutert):
 
-    - **Stoss** (`stoss`): längstoßende Verbindung gleichartiger
-      Stäbe (Pfettenstoss, Sparrenstoss).
+    - **Stoß** (`stoss`): längstoßende Verbindung gleichartiger
+      Stäbe (Pfettenstoß, Sparrenstoß).
 
     - **Anschluss** (`anschluss`): Aufeinanderstoß verschiedener
       Stäbe (Sparren-Pfetten-Anschluss).
 
     - **Knoten** (`knoten`): Mehrfach-Treffpunkt (Strebe-
-      Stiel-Rähm).
+      Stiel-Einbinder).
 
     - **Eckverbindung** (`eckverbindung`): rechtwinklige
       Verbindung zweier Stäbe (Pfette-Pfettenkopf,
       Schwellenecke).
 
-    - **Zimmermannsmäßiger Stoss/Anschluss** (`versatz`, `zapfen`,
+    - **Zimmermannsmäßiger Stoß/Anschluss** (`versatz`, `zapfen`,
       `blatt`, `schwalbenschwanz` — Folgearbeit).
 
     - **Klebe-Verbindung** (`klebe_verbindung`): Sonderform
@@ -484,6 +485,12 @@ mehreren) Tragwerken.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §11.1/§11.2 (starr vs. nachgiebig,
+  mechanische Verbindungen) und Kap. 12
+  (Schnittigkeits-Systematik). Volltext-Scan liegt Anweiser vor;
+  direkt eingesehen 2026-08-14.
 - Blass, H. J.; Sandhaas, C.: *Ingenieurholzbau – Grundlagen
   der Bemessung.* KIT Scientific Publishing, Karlsruhe 2016,
   Kap. 8.

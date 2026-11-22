@@ -11,7 +11,8 @@ abgrenzung_zu: [gerade, halbgerade, kante, polygon]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, Abschnitt 2 (Geometrie), Bezeichnungen für Strecken."
+  - "DIN EN ISO 80000-2:2023-08, Abschnitt 9 (Elementare Geometrie). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitt 8 (Elementary geometry), Nr. 2-8.4: Zeichen für die Strecke von A nach B, beschrieben als Menge der Punkte zwischen A und B auf der Geraden AB; Nr. 2-8.6: Abstand d(A, B) als Länge der Strecke. [direkt]"
   - "DIN EN ISO 129-1:2022-02, 'Technische Produktdokumentation (TPD) — Angabe von Maßen und Toleranzen — Teil 1: Grundlagen', §3.2.4 (Begriff 'Längenmaß' / linear dimension; Bemaßungs-Sicht als ISO-129-1-Pendant zur didaktischen 'Maßstrecke'). [einsicht: vorschau-pdf, Inhaltsverz.]"
   - "DIN EN ISO 14405-1:2017-07, 'Geometrische Produktspezifikation (GPS) — Dimensionelle Tolerierung — Teil 1: Lineare Größenmaße' (Begriff 'Lineares Größenmaß'; Tolerierungs-Sicht: Abstand gegenüberliegender paralleler Geraden/Ebenen)."
 quellen_sekundär:
@@ -22,7 +23,7 @@ quellen_sekundär:
   - "ingenieurkurse.de, Baustatik 1+2, Lemma 'Stabtragwerke' — gleichlautende Idealisierungs-Aussage in der Hochschul-Lehre."
 quellenkonflikt: |
   Holzbau-Normen verwenden den Begriff Strecke, ohne ihn zu definieren
-  (z. B. „Stablänge", „Sparrenlänge"). DIN ISO 80000-2 listet das
+  (z. B. „Stablänge", „Sparrenlänge"). DIN EN ISO 80000-2 listet das
   Symbol für die Strecke AB, ohne die Strecke axiomatisch zu
   definieren. Eigene Festlegung: eine Strecke ist die abgeschlossene,
   konvexe Hülle zweier Punkte, äquivalent das Bild des Einheits-
@@ -124,7 +125,7 @@ Kante voraus.
 
 **Stab- und Bauteilachse als Idealisierung.** In der Tragwerks-
 Theorie wird ein Stabbauteil mit einer wesentlich größeren
-Dimension (Länge) gegenüber den beiden anderen (Querschnitts-
+Ausdehnung (Länge) gegenüber den beiden anderen (Querschnitts-
 abmessungen) auf seine Schwerlinie reduziert — eine Strecke vom
 Stab-Anfang zum Stab-Ende, genannt **Stab-** oder **Bauteilachse**.
 Dieser Reduktionsschritt ist der Übergang vom 3D-Volumen-Bauteil
@@ -159,8 +160,11 @@ Wirkung entfaltet.
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2:
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2:
   Mathematik".
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
 - DIN EN ISO 129-1:2022-02, „Technische Produktdokumentation (TPD)
   — Angabe von Maßen und Toleranzen — Teil 1: Grundlagen", §3.2.4
   („Längenmaß" / linear dimension).

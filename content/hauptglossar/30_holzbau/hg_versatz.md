@@ -11,14 +11,14 @@ abgrenzung_zu: [kerve, bearbeitung, zapfen, zapfenloch, blatt, kamm, verbindung,
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland zum Eurocode 5, NCI NA.12 'Zimmermannsmäßige Verbindungen': Regelinhalte zum Versatz (Versatztiefe in Abhängigkeit vom Strebenanschlusswinkel, Mindest-Vorholzlänge, Anschnittwinkel, Lagesicherung gegen Abheben). Bibliographisch und über mehrere unabhängige Sekundärbeschreibungen bestätigt; Volltext-Verifikation der Regelwerte aus dieser Recherche nicht möglich (DIN-Media-Paywall), siehe quellenkonflikt-Block."
+  - "DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland zum Eurocode 5, NCI NA.12 'Zimmermannsmäßige Verbindungen': Regelinhalte zum Versatz (Versatztiefe in Abhängigkeit vom Strebenanschlusswinkel, Mindest-Vorholzlänge, Anschnittwinkel, Lagesicherung gegen Abheben). NA-Volltext selbst nicht eingesehen; Regelinhalte im Lehrbuch-Volltext verifiziert — Colling führt die NA-Herkunft explizit ('Weil Versätze im EC 5 nicht geregelt sind, wurden im NA die Regelungen der DIN 1052:2008 übernommen', S. 133, Fußnote 'NA: 12.1'). [via: Colling, Holzbau, 7. Aufl. 2021, §8.5]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5.2 (Berücksichtigung von Querschnittsschwächungen) und Abschnitt 6.5 (Querzug- und Schubnachweise an ausgeklinkten Bauteilen): analoge Anwendung auf den Versatz; Vorholzlänge als Schub-Trag-Länge, Versatztiefe als Höhe der Ausklinkung."
-  - "DIN EN 1995-1-1:2010-12, Abschnitt 6.1.5 'Druck unter einem Winkel zur Faser' (Hankinson): Druckspannungsnachweis in der Versatz-Anschnittfläche, ausgewertet am druckstabseitigen und am trägerbauteilseitigen Hankinson-Winkel."
+  - "DIN EN 1995-1-1:2010-12, Abschnitt 6.2.2 'Druckbeanspruchung unter einem Winkel zur Faserrichtung' (Gl. (6.16), Hankinson-Typ): Druckspannungsnachweis in der Versatz-Anschnittfläche, ausgewertet am druckstabseitigen und am trägerbauteilseitigen Hankinson-Winkel. [via: Colling, Holzbau, 7. Aufl. 2021, §8.2]"
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §1.1.39 'Versatz' (Fachausdruck — auf Druck und Abscheren beanspruchte Holzverbindung, insbesondere im Fachwerkbau) und §6.9.2 'Versatz' (S. 81–82, unter 6.9 'Stösse'): Bemessung der Druckkraftübertragung — §6.9.2.1 (Gl. 114–116, Figur 44) Vorholzlänge, Einschnitttiefe t, Strebenhöhe, mit k_red = 0,6 (Vollholz/keilgezinktes Vollholz/Balkenschichtholz) bzw. 0,8 (Brettschichtholz) und a = 0,5·β (einfacher Versatz) / a = 0,75·β (doppelter Versatz), β = Winkel zwischen Druckkraft F_Ed und Faserrichtung; §6.9.2.2 Einschnitttiefen Tabelle 42 (einfacher Versatz t ≤ h/4 für β ≤ 50°, t ≤ h/6 für β ≥ 60°, linear interpoliert; doppelter Versatz t = t₁+t₂ mit t₁ ≤ t₂−10 mm); §6.9.2.3 Anschlussverformung 1–1,5 mm. Anhang G (Tabelle 51): viersprachiges Begriffsverzeichnis (FR embrèvement, IT giunto a dente). [direkt]"
   - "DIN 1052:2008-12 (zurückgezogen, ersetzt durch DIN EN 1995-1-1 + NA): führte Versatz unter zimmermannsmäßiger Verbindung gemeinsam mit Verblattung, Verzapfung, Verkämmung; historische Etablierung des Begriffs."
 quellen_sekundär:
   - "Colling, F.: Holzbau – Grundlagen, Bemessungshilfen. Springer Vieweg, Wiesbaden 2004 (1. Aufl.), Kap. 8.5 'Versätze'. Autoritative geometrische Definition der drei Versatzformen: Stirnversatz = Winkelhalbierende (Beanspruchungswinkel α_S = α_D = γ/2, Bild 8.14); **Fersenversatz/Rückversatz = Druckfläche rechtwinklig zur Strebe** (α_S = γ, α_D = 0, Beiwert k_V,γ, Bild 8.15); rechtwinkliger Versatz = lotrecht zum Gurt (α_S = 0, α_D = γ); doppelter Versatz = Stirn + Ferse (Bild 8.16, Tab. 8.4). Maßgebliche Quelle für die Benennung der ⊥-Strebe-Geometrie als Fersenversatz (s. quellenkonflikt Konflikt 6)."
-  - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 7 'Verbindungen', §§ Stirnversatz, Fersenversatz, doppelter Versatz."
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §8.5 'Versätze' (S. 133–144): Begriffe (γ Strebenwinkel, β Anschlusswinkel, t_V Versatztiefe, ℓ_V Vorholzlänge, Stirn-/Kerbfläche, Bild 8.12), Versatzformen Stirn-/Fersen-/doppelter Versatz (§8.5.1), Versatztiefen-Grenzwerte Tabelle 8-2, Vorholz-Nachweis und -Empfehlung (§8.5.2.3, §8.5.3.3), Lagesicherung (Bild 8.17), Exzentrizitäten (§8.5.4)."
   - "Peter, M.; Scheer, C. (Hrsg.): Holzbau-Taschenbuch. Wiley-VCH, Berlin 2015, Kap. 19 'Einfacher Versatz' und Kap. 20 'Doppelter Versatz'."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Versatz'."
   - "Natterer, J.; Herzog, T.; Volz, M.: Holzbau-Atlas. 4. Aufl., Birkhäuser, Basel 2003, Kap. 'Zimmermannsmäßige Verbindungen'."
@@ -52,10 +52,42 @@ quellenkonflikt: |
   Verbindungen", der den Versatz regelt; Existenz und fachlicher
   Umgriff sind durch mehrere unabhängige Sekundärquellen
   (Mönck/Rug, baunetzwissen.de, harzerstatik.de, statikweb.iivs.de)
-  bestätigt. Der Volltext der NA.12-Regelinhalte (Versatztiefen-
-  Begrenzung, Mindest-Vorholzlänge) ist über die zugänglichen
-  Suchergebnisse **nicht im Volltext** verifizierbar (DIN-Media-
-  Paywall).
+  bestätigt.
+
+  **Aufgelöst 2026-08-13 (Colling-Welle):** Die NA.12-Regelinhalte
+  sind jetzt im Lehrbuch-Volltext verifiziert — Colling, *Holzbau*,
+  7. Aufl. 2021, §8.5 (Volltext-Scan liegt Anweiser vor, direkt
+  eingesehen). Colling benennt die Herkunft ausdrücklich: „Weil
+  Versätze im EC 5 nicht geregelt sind, wurden im NA die Regelungen
+  der DIN 1052:2008 übernommen" (S. 133, Fußnote „NA: 12.1").
+  Verifizierte Regelwerte:
+
+  - **Versatztiefe** (Tabelle 8-2, S. 136), einseitiger Einschnitt:
+    `t_V ≤ h/4` für γ ≤ 50°; `t_V ≤ h/4 · (1 − (γ−50)/30)` für
+    50° < γ ≤ 60° (lineare Interpolation, bei γ = 60° = h/6);
+    `t_V ≤ h/6` für γ > 60°. Zweiseitiger Einschnitt: `t_V ≤ h/6`.
+  - **Vorholzlänge:** konstruktive Empfehlung `ℓ_V ≥ 20 cm`
+    unabhängig vom rechnerischen Erfordernis (§8.5.2.3, S. 137);
+    Schubnachweis im Vorholz mit `erf ℓ_V ≥ 10 · D_d/(b_S · f*_v,d)`
+    (Gl. 8.20). **Nuance zur App-Regel `l_v ≥ 8·t_v`:** Colling
+    führt `ℓ_V ≤ 8 · t_V` als **Obergrenze der anrechenbaren**
+    Vorholzlänge im Schubnachweis (Gl. 8.21 — konstante
+    Scherspannung wirkt nur über ca. 8·t_V), **nicht** als
+    Mindestregel. Die Mindest-Lesart `l_v ≥ 8·t_v` stammt aus der
+    älteren DIN-1052-Faustregel-Tradition; sie bleibt als
+    konservative App-Plausibilitätsregel stehen (sie stellt sicher,
+    dass die volle anrechenbare Schublänge vorhanden ist), ist aber
+    durch Colling nicht als Norm-Mindestwert gedeckt.
+  - **Anschnittwinkel:** Stirnversatz mit Stirnfläche in der
+    Winkelhalbierenden des Außenwinkels β → α_S = α_D = γ/2,
+    günstigste Kraftübertragung, ca. 70 % höhere übertragbare
+    Kräfte als Fersen-/rechtwinkliger Versatz (S. 134, 137).
+  - **Lagesicherung:** über Sondernägel, Bolzen oder beidseitig
+    aufgenagelte Laschen (Bild 8.17, S. 136).
+
+  Der NA-Volltext selbst bleibt nicht eingesehen (DIN-Media-
+  Paywall); der Beleg-Pfad ist jetzt aber Lehrbuch-Volltext statt
+  Suchergebnis-Snippets.
 
   Die schweizerische SIA 265:2021 regelt den Versatz **in §6.9.2**
   (unter 6.9 „Stösse"), nicht in einem Anhang — und gibt dort genau
@@ -68,7 +100,7 @@ quellenkonflikt: |
   Versatz ist damit **falsch**: Anhang A (normativ) von SIA 265:2021
   trägt den Titel „Genauere Berechnung des Tragwiderstands von
   Verbindungen mit Stabdübeln, Bolzen und Schrauben" und betrifft
-  den Versatz nicht. Zimmermannsmässige Verbindungen ausser dem
+  den Versatz nicht. Zimmermannsmäßige Verbindungen außer dem
   Versatz zählt die Norm ausdrücklich zu den „hier nicht
   behandelten Verbindungsarten" (§4.6.2.6).
 
@@ -202,7 +234,7 @@ quellenkonflikt: |
 
 Ein **Versatz** ist eine subtraktive Bearbeitung an einem
 Stab-Bauteil (dem Trägerbauteil, typischerweise einer Schwelle,
-einem Rähm, einem Bundbalken oder einer Fußpfette), die eine
+einem Einbinder, einem Bundbalken oder einer Fußpfette), die eine
 **keilförmige Ausnehmung** mit einer oder zwei ebenen, gegen die
 Bauteilachse des Trägerbauteils geneigten Anschnittflächen
 erzeugt, in die das druckbeanspruchte Anschlussbauteil (der
@@ -251,7 +283,7 @@ Der **Anschnitt der Anschnittfläche** wird in der Lotebene
 durch die Bauteilachse, die im allgemeinen Fall auch e_hat_y^B
 enthält, sofern das Trägerbauteil horizontal eingebaut ist)
 geführt. Im Folgenden wird das Trägerbauteil als horizontal
-liegend angenommen (Standardfall: Schwelle, Rähm, Bundbalken,
+liegend angenommen (Standardfall: Schwelle, Einbinder, Bundbalken,
 Fußpfette); die Verallgemeinerung auf geneigte Trägerbauteile
 ist trivial durch Anwendung der `lokalePlatzierung`.
 
@@ -470,7 +502,7 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
 
 - **Existenz**: Für jeden zimmermannsmäßig hergestellten
   Versatz (Stirn-, Fersen- oder doppelten Versatz) an einer
-  Schwelle, einem Rähm, einem Bundbalken oder einer Fußpfette
+  Schwelle, einem Einbinder, einem Bundbalken oder einer Fußpfette
   lässt sich das Tupel angeben. Mindestkonfiguration: art =
   STIRN, β = 2π/3 (120°, entspricht einer 60°-Strebe),
   σ_S = π/12 (freie flache Sohle), t_S = h_B/6, t_F = ⊥,
@@ -605,7 +637,7 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
 Der Versatz ist die klassische zimmermannsmäßige
 **Druck-Verbindung**: er überträgt Druckkräfte zwischen einem
 druckbeanspruchten Anschlussbauteil (Strebe, Kopfband, Sparren)
-und einem aufnehmenden Trägerbauteil (Schwelle, Rähm,
+und einem aufnehmenden Trägerbauteil (Schwelle, Einbinder,
 Bundbalken, Fußpfette). Anders als die **Kerve** — die eine
 **welt-horizontale Sohle** als Auflagefläche für
 quer einlaufende Lasten erzeugt — hat der Versatz eine
@@ -725,7 +757,7 @@ Dieser Glossareintrag definiert ausschließlich die
 
 - **Verwendung**:
     - Bestandteil eines **Trägerbauteils** (typisch Schwelle,
-      Rähm, Bundbalken, `fusspfette`): der Versatz erscheint als
+      Einbinder, Bundbalken, `fusspfette`): der Versatz erscheint als
       Bearbeitung in der Liste der Bauteil-Bearbeitungen;
       geometrisch sitzt er typischerweise an der Oberseite des
       Trägerbauteils an einer Position entlang der Bauteilachse,
@@ -769,7 +801,7 @@ Dieser Glossareintrag definiert ausschließlich die
 
     - **Blatt** (`blatt`, Forward-Verweis Kategorie A): halbe
       Holzdicke beidseitig abgetragen, Hölzer greifen flach
-      übereinander; **Längs-Stoss** oder Eckverbindung. Der
+      übereinander; **Längs-Stoß** oder Eckverbindung. Der
       Versatz hat keine halbierte Holzdicke, sondern eine
       keilförmige Ausnehmung.
 
@@ -819,14 +851,13 @@ Dieser Glossareintrag definiert ausschließlich die
 
 - DIN EN 1995-1-1/NA:2013-08, „Nationaler Anhang Deutschland
   zum Eurocode 5", NCI NA.12 „Zimmermannsmäßige Verbindungen"
-  (bibliographisch und über mehrere unabhängige
-  Sekundärbeschreibungen belegt; Volltext-Verifikation der
-  Regelwerte aus dieser Recherche nicht möglich — DIN-Media-
-  Paywall; siehe quellenkonflikt-Block).
+  (NA-Volltext nicht eingesehen; Regelinhalte im Lehrbuch-
+  Volltext verifiziert über Colling 2021 §8.5 — siehe
+  quellenkonflikt-Block).
 
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und
   Konstruktion von Holzbauten – Teil 1-1", Abschnitt 5.2,
-  Abschnitt 6.1.5 und Abschnitt 6.5.
+  Abschnitt 6.2.2 und Abschnitt 6.5.
 
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
   Architektenverein, Zürich, §1.1.39 (Fachausdruck „Versatz") und
@@ -839,6 +870,10 @@ Dieser Glossareintrag definiert ausschließlich die
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §8.5 „Versätze" (S. 133–144).
+  Volltext-Scan liegt Anweiser vor; direkt eingesehen 2026-08-13.
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Auflage, Beuth, Berlin 2015, Kap. 7.
 - Peter, M.; Scheer, C. (Hrsg.): *Holzbau-Taschenbuch.*

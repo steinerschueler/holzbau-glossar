@@ -27,8 +27,9 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitte 5 (Tragwerksberechnung), 6 (Grenzzustände der Tragfähigkeit) und 10 (Konstruktive Durchbildung): Tragglieder von Walmdächern (Gratsparren, Schifter) vorausgesetzt; keine geschlossene Aggregat-Definition."
   - "DIN 1052:2008-12, Abschnitt 8 und Abschnitt 12 (Konstruktive Anforderungen): Tragglieder geneigter Dächer einschließlich Walmdach-Konstruktionen."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1: Arten, Inhalte und Grundregeln der Darstellung', Abschnitt 5 (Darstellung von Dächern): Walm als geometrisches Zeichnungselement des Walmdachs."
-  - "DIN 18338:2019-09 'VOB Teil C: Dachdeckungs- und Dachabdichtungsarbeiten', Abschnitt 0 (Begriffe): Walmflaeche als geneigte Dachfläche am giebelseitigen Dachende."
+  - "DIN 18338:2019-09 'VOB Teil C: ATV Dachdeckungsarbeiten' (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336; die ATV führt keine Begriffs-Sektion — Abschnitt 0 sind Hinweise für das Aufstellen der Leistungsbeschreibung, die Dachkanten-Begriffe werden vorausgesetzt und nach Längenmaß abgerechnet), vorausgesetzte Lesart: Walmflaeche als geneigte Dachfläche am giebelseitigen Dachende."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, §1.13 'Rechnerischer Abbund' (S. 25–32), §10.16 'Dachverschneidung – Dachausmittlung' (S. 305–306) und §10.20 'Schiftung' (S. 317, 322) — Walm-Geometrie in der Abbund- und Ausmittlungs-Sicht. Die vier Grundfälle sind seitenweise getrennt: S. 25 'Gleichgeneigtes Walmdach bei rechtwinkliger Traufe' (α_D = α_W), S. 26 'Gleichgeneigtes Walmdach bei schiefwinkliger Traufe' (α_D = α_W), S. 28 'Walmdach bei rechtwinkliger Traufe und ungleicher Dachneigung; α_D ≠ α_W', S. 30/31 'Ungleichgeneigtes Walmdach bei schiefwinkliger Traufe … Dachneigung ungleich der Walmneigung α_D ≠ α_W'. Legende S. 28: 'α_D = Dachneigung', 'α_W = Neigung der Walmfläche', 'h_nD = Höhe des Sparrens in der Dachfläche', 'h_nW = Höhe des Sparrens in der Walmfläche', 'm = Länge des Mittelschifters'; Legende S. 31: 'α_D = Neigung der Dachfläche', 'α_W = Neigung der Walmfläche', 'c = Mittelschifter im Grund', 'm = Länge des Mittelschifters', 'h_s = Höhe des Schiftersparrens in der Walmfläche'; Abgratungswinkel, Abgratungsmaße und Kantenlängen werden 'zur Dachfläche und Walmfläche' getrennt geführt (S. 28 Formeln 7–10, S. 31 Formeln 15–20), die Gratsparren-Profilskizzen S. 28/30 tragen die Halbbreiten-Beschriftung 'Dach | b_g/2 | b_g/2 | Walm'. S. 306 'Walmdach mit unterschiedlichen Dachneigungen α_D ≠ α_W': siebenschrittige Konstruktion Dachverschneidung (Schritte 1–4: Antragen von g_D und α_D im Profil, von α_W im Walmprofil, Übertrag der Grundmaße g_D und g_W in den Grundriss zu P_1/P_2, Verbindung mit den Traufecken) und Dachausmittlung (Schritte 5–7: Übertrag der wahren Längen h_DF und h_WF, Konstruktionslinien rechtwinklig zur Firstlinie, wahre Größe der Dachfläche). S. 317 und 322 setzen das 'gleichgeneigte Walmdach' als Bezugsdach der Schiftungs-Modelle. NEGATIVBEFUND zur hier gewählten Lesart B: Das Buch verwendet 'Walm' an keiner Stelle als eigenständiges Substantiv für eine Bauteilgruppe; belegt sind ausschließlich 'Walmdach' (Lesart C), 'Walmfläche' / 'Walmseite' / 'Walmneigung' / 'Walmprofil' (Lesart A) sowie 'Walm' als Halbseiten-Beschriftung der Gratsparren-Profilskizze (S. 28, 30)."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Dachtragwerke' / Walmdach-Konstruktionen."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Abschnitt 'Walmdach / Grat- und Kehlsparren'."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015, Kap. 11 'Dachtragwerke', § Walmdach."
@@ -72,6 +73,52 @@ quellenkonflikt: |
   anderen Begriff gebunden sind und die hier festgelegte Lesart B
   nicht treffen. Detail-Befund siehe
   [intern] §§ 2 und 5.
+
+  **Berufsschul-Kanon stützt Lesart A und C, nicht Lesart B
+  (Tabellenbuch Zimmerer, 9. Aufl. 2021; Volltext-Scan liegt Anweiser
+  vor, direkt eingesehen 2026-08-14).** Ein Wortlaut-Sweep über den
+  Volltext des Standardwerks, mit Seitenbild-Verifikation der
+  einschlägigen Seiten (Abbund-Kapitel §1.13 S. 24–32,
+  Dachausmittlung §10.16 S. 305–314, Schiftung §10.20 S. 317–324),
+  ergibt: „Walm" tritt dort **nie** als eigenständiges
+  Substantiv für eine konstruktive Einheit auf. Belegt sind
+  „Walmdach" (Lesart C), „Walmfläche", „Walmseite", „Walmneigung",
+  „Walmprofil" (Lesart A) sowie „Walm" als bloße
+  Halbseiten-Beschriftung der Gratsparren-Profilskizze („Dach |
+  b_g/2 | b_g/2 | Walm", S. 28 und 30). Das ist ein **negativer
+  Befund zur Lesart B**: er widerspricht ihr nicht, bestätigt aber,
+  dass das Aggregat im Fachschrifttum nicht als eigener Wortbegriff
+  geführt wird und die hiesige Festlegung eine konsolidierende
+  Eigenwahl des Glossars bleibt (siehe folgenden Absatz).
+
+  **Benennung des Mittelsparrens — „Mittelschifter" im
+  Berufsschul-Kanon.** Der optionale Sparren in der Walmfläche
+  entlang ihrer Falllinie, den dieser Eintrag „Mittelsparren"
+  nennt, heißt im Tabellenbuch durchgängig **Mittelschifter**
+  (Legenden S. 25, 26 und 31: „c = Mittelschifter im Grund",
+  „m = Länge des Mittelschifters"; S. 28 nur „m = Länge des
+  Mittelschifters"; Dachausmittlung S. 309 stellt ihn dem Sparren
+  gegenüber: „Sparren S'_1 = im Grund / Sparren S_1 = in wahrer
+  Größe" und „Mittelschifter m'_1 = im Grund / Mittelschifter m_1 =
+  in wahrer Größe"). **Quellen-Check zur Dialekt-Hypothese
+  (2026-08-14, Anweiser-Rückfrage):** „Mittelschifter" ist keine
+  Regionalform, sondern die etablierte überregionale
+  Fachbezeichnung — auch das Wikipedia-Lemma „Schifter" führt ihn
+  („Der Mittelschifter liegt in der Mitte des Walms und ist damit
+  der längste Schifter am Walm"); „Mittelsparren" ist dagegen in
+  der Fachliteratur praktisch unbelegt (Web-Treffer fast nur
+  maschinell übersetzte Laien-Seiten) und bleibt eine
+  systematische Eigen-Benennung dieses Glossars. Der Befund ist
+  als Benennungs-Kandidat vermerkt und **nicht** in diesem Schritt
+  umgesetzt; die Entscheidung ist an die künftige Anlage von
+  `hg_schifter.md` gekoppelt (dann Schifter-Familie konsistent
+  benennen). Sachlicher Kern der Abwägung: „Mittelschifter" würde
+  den Mittelsparren terminologisch dem Schifter zuschlagen, obwohl
+  er nach der hier getroffenen Festlegung die gewöhnliche
+  Bauteilrolle `sparren` trägt (Falllinien-Kollinearität in der
+  Walmfläche, kein
+  Schmiegen-Anschluss an einen Gratsparren). Die Klärung gehört in
+  den Folgeeintrag `schifter` und ist dort mitzuentscheiden.
 
   **Keine Norm-Definition des Aggregats.** Weder SIA 232/1, SIA
   265, DIN EN 1995-1-1, DIN 1052, DIN 1356 noch DIN 18338 enthalten
@@ -549,7 +596,7 @@ Gratlinien) und in der konstruktiven Funktion (Spannweiten-
     Ortgang auf; beim Krüppelwalm gibt es im verbleibenden
     Restgiebel einen Ortgang-Abschnitt, der aber nicht zum
     Walm-Aggregat gehört.
-  - **Fusspfette** (`fusspfette`), **Firstpfette** (`firstpfette`):
+  - **Fußpfette** (`fusspfette`), **Firstpfette** (`firstpfette`):
     geometrische Auflager- und Anschlussreferenzen des Walms;
     die Pfetten verlaufen längs des Hauses und sind nicht
     Bestandteile des Walms (siehe Quellenkonflikt §2 der
@@ -577,11 +624,18 @@ Gratlinien) und in der konstruktiven Funktion (Spannweiten-
   Bemessungsregeln für den Hochbau", Abschnitte 8 und 12.
 - DIN 1356-1:1995-02, „Bauzeichnungen – Teil 1: Arten, Inhalte
   und Grundregeln der Darstellung", Abschnitt 5.
-- DIN 18338:2019-09, „VOB Teil C: Dachdeckungs- und
-  Dachabdichtungsarbeiten", Abschnitt 0.
+- DIN 18338:2019-09, „VOB Teil C: ATV Dachdeckungsarbeiten"
+  (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336),
+  Abschnitt 0 (Hinweise für das Aufstellen der Leistungsbeschreibung).
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, §1.13 „Rechnerischer Abbund" (S. 25–32),
+  §10.16 „Dachverschneidung – Dachausmittlung" (S. 305–306) und
+  §10.20 „Schiftung" (S. 317, 322). Volltext-Scan liegt Anweiser vor;
+  direkt eingesehen 2026-08-14.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich,
   aktuelle Auflage.
 - Lignum (Hrsg.): *Lignatec „Geneigte Dächer in Holzbauweise".*

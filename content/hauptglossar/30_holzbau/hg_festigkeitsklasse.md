@@ -22,8 +22,9 @@ quellen_primär:
   - "DIN EN 622-3:2004-08, 'Faserplatten – Anforderungen – Teil 3: Anforderungen an mittelharte Platten' (MBH, MBL)."
   - "DIN EN 622-5:2010-01, 'Faserplatten – Anforderungen – Teil 5: Anforderungen an Platten nach dem Trockenverfahren (MDF)'."
   - "SIA 265:2021 'Holzbau', §1.1.28 (Begriff 'Festigkeitsklasse') und §3.3.1.6 mit Tabelle 6/7 (Zuordnung sortierter Hölzer zu den Festigkeitsklassen nach SN EN 338 / SN EN 1912); charakteristische Druckfestigkeit und E-Moduln parallel zur Faser in Anhang B. Die Festigkeitsklassen selbst sind in SN EN 338 / SN EN 14080 definiert. [direkt]"
-  - "DIN 4074-1:2012-06, 'Sortierung von Holz nach der Tragfähigkeit – Teil 1: Nadelschnittholz' (Sortierklassen S7, S10, S13 → Festigkeitsklassen C16, C24, C30 nach Zuordnungstabelle)."
+  - "DIN 4074-1:2012-06, 'Sortierung von Holz nach der Tragfähigkeit – Teil 1: Nadelschnittholz' (Sortierklassen S7, S10, S13; Zuordnung zu den Festigkeitsklassen der DIN EN 338 nach DIN EN 1912, holzartabhängig: S7 → C18 Fi/Ki bzw. C16 Dou/Ta/Lä, S10 → C24, S13 → C30 Fi/Ta/Ki/Lä bzw. C35 Dou). [via: Colling §2.3.1, Tabelle 2-4]"
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §2.1.4 'Holzsortierung' (S. 21–23), §2.3.1 'Sortierklassen' mit Tabelle 2-4 (S. 26), §2.3.3 (S. 33–34) und §2.4 (S. 36–44): Zuordnung S7/S10/S13 → C-Klassen holzartabhängig nach DIN EN 1912 (Tabelle 2-4; Fußnote: maschinell nach EN 14081 sortiertes Holz darf direkt eingestuft werden); Warnung, von S 13 nur bei sichergestellt zuverlässiger visueller Sortierung Gebrauch zu machen; T-Klassen der Brettlamellen nach DIN EN 14080 ('T für tension', Zugfestigkeit als Hauptkriterium, T-Zahl = charakteristische Zugfestigkeit, z. B. T 21 → f_t,0,k = 21 N/mm²; beispielhafte Zuordnung Tabelle 2.5: S7 → T11, S10 → T14, S13 → T21); GL-Klassen homogen/kombiniert mit möglichen Querschnittsaufbauten (Tabelle 2.6), Kennzeichnungs-Zusatz 'ca' für combined asymmetric, ab GL 30c maschinell sortierte Bretter nötig; Platten-Verwendungsklassen SWP/1–3 (S. 37), OSB/2–4 (S. 38), Sperrholz-Bezeichnung nach Biegefestigkeit/E-Modul parallel und rechtwinklig zur Deckfurnier-Faserrichtung (z. B. F 20/10 E 40/20, S. 39), LVL/1–3 (S. 40), P4–P7 (S. 40), HB.LA-/MBH.LA-Klassen (nur HB.LA2/MBH.LA2 nach EC 5/NA tragend, S. 41–42), MDF nach EC 5/NA nicht für tragende Zwecke (S. 42)."
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 2 (Werkstoff Holz, Festigkeitsklassen)."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 3 (Sortierung und Klassifikation)."
   - "Niemz, P.; Sonderegger, W.: Physik des Holzes und der Holzwerkstoffe. Hanser, München 2017, Kap. 6 (Festigkeitsklassen, charakteristische Werte)."
@@ -201,11 +202,33 @@ Fettgedruckte Werte sind die im Holzbau dominanten Klassen.
 
 DIN 4074-1 unterscheidet **Sortierklassen** (S7, S10, S13) als
 visuelle bzw. maschinelle Sortiermerkmale; die Zuordnung zur
-**Festigkeitsklasse** (C16, C24, C30) erfolgt nach
-Zuordnungstabelle. Im Glossar wird ausschließlich die Festigkeits-
-klasse geführt; die Sortierklasse ist Eingabe der
-Produktkennzeichnung (siehe `produktkennzeichnung`), nicht des
-Werkstoffs als Bemessungseingabe.
+**Festigkeitsklasse** erfolgt nach DIN EN 1912 und ist
+**holzartabhängig**: S7 → C18 (Fichte/Kiefer) bzw. C16
+(Douglasie/Tanne/Lärche), S10 → C24, S13 → C30
+(Fichte/Tanne/Kiefer/Lärche) bzw. C35 (Douglasie); maschinell nach
+EN 14081 sortiertes Holz darf direkt in Festigkeitsklassen
+eingestuft werden (Colling, Tabelle 2-4 mit Fußnote). Im Glossar
+wird ausschließlich die Festigkeitsklasse geführt; die
+Sortierklasse ist Eingabe der Produktkennzeichnung (siehe
+`produktkennzeichnung`), nicht des Werkstoffs als
+Bemessungseingabe.
+
+### T-Klassen der Brettlamellen (Lamellen-Ebene, nicht Werkstoff-Ebene)
+
+Für **Brettlamellen von BSH** führt DIN EN 14080 eigene
+**T-Klassen** („T für tension"): weil BSH-Lamellen vorwiegend auf
+Zug und Druck beansprucht werden, „passen" die C-Klassen (Hochkant-
+Biegefestigkeit als Hauptkriterium) nicht; Hauptkriterium der
+T-Einstufung ist die Zugfestigkeit (neben E-Modul und Rohdichte),
+die T-Zahl entspricht der charakteristischen Zugfestigkeit
+(T 21 → f_t,0,k = 21 N/mm²). Beispielhafte Zuordnung visuell
+sortierter Bretter: S7 → T11, S10 → T14, S13 → T21 (Colling,
+Tabelle 2.5). Die T-Klasse klassifiziert die **Lamelle als
+Vorprodukt**, nicht den Werkstoff BSH — der fertige Träger trägt
+eine GL-Klasse, deren Eigenschaftsprofil mit unterschiedlichen
+T-Klassen-Kombinationen erreicht werden kann (Colling, Tabelle 2.6);
+sie ist deshalb in der Klassen-Systematik oben nicht als eigene
+Werkstoff-Festigkeitsklasse geführt.
 
 ### CLT-Klassifikation als Sonderfall
 
@@ -276,6 +299,13 @@ und optional über eine Bauteil-Klasse (ETA).
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §2.1.4, §2.3.1 (Tabelle 2-4:
+  Sortierklassen → Festigkeitsklassen nach DIN EN 1912), §2.3.3
+  (T-Klassen der Brettlamellen, GL-Querschnittsaufbauten) und §2.4
+  (Platten-Verwendungsklassen). Volltext-Scan liegt Anweiser vor;
+  direkt eingesehen 2026-08-14.
 - Blass, H. J.; Sandhaas, C.: *Ingenieurholzbau – Grundlagen der
   Bemessung.* KIT Scientific Publishing, Karlsruhe 2016.
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*

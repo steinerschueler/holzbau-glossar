@@ -1,7 +1,7 @@
 ---
 id: halbraum
 benennung: Halbraum
-kurz: "Ein Halbraum ist eine der beiden Hälften, in die eine unendlich grosse flache Wand den ganzen Raum teilt — alles, was auf der einen Seite dieser Wand liegt."
+kurz: "Ein Halbraum ist eine der beiden Hälften, in die eine unendlich große flache Wand den ganzen Raum teilt — alles, was auf der einen Seite dieser Wand liegt."
 synonyme: ["abgeschlossener Halbraum", "geschlossener Halbraum", "Halbraum (orientiert)"]
 abgelehnte_benennungen: [Halbebene, Seite, Raumhälfte, "halfspace", "half-space"]
 oberbegriff: null
@@ -11,17 +11,18 @@ abgrenzung_zu: [ebene, halbgerade, polyeder]
 status: entwurf
 subglossar_pendant: optional  # Begründung (Abweichung vom Normalfall notwendig): interner geometrischer Baustein (Bauteilkörper = Schnitt von Halbräumen), im Holzbau-Korpus nicht gebräuchlich, kein Praxis-Lehrwert bis Meister; Stoff liegt bei ebene und polyeder (beide notwendig) (HG_KONVENTIONEN §7).
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren), Hesse'sche Normalform."
+  - "DIN EN ISO 80000-2:2023-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 18 (Skalare, Vektoren und Tensoren). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitt 17 (Scalars, vectors and tensors), Nr. 2-17.6 und 2-17.11: Zeichen für Einheitsvektor und Skalarprodukt, mit denen die Definition geschrieben ist. Ebene, Hesse-Normalform und Halbraum führt die Norm nicht. [direkt]"
 quellen_sekundär:
   - "Bronstein, I. N. et al.: Taschenbuch der Mathematik. Kap. 3.5.2 'Ebenen im Raum', Hesse'sche Normalform und Halbräume."
   - "Fischer, G.: Lineare Algebra. 19. Aufl., Springer Spektrum 2020, Kap. 1 'Affine Geometrie'."
   - "Bär, C.: Elementargeometrie. Springer Spektrum, Kap. 5 'Ebenen und Halbräume'."
   - "Ziegler, G. M.: Lectures on Polytopes. Springer 1995, Kap. 0.6 (Halfspaces and Polytopes)."
 quellenkonflikt: |
-  Holzbau-Normen verwenden den Begriff Halbraum nicht. DIN ISO 80000-2
-  führt die Hesse-Normalform einer Ebene, aus der sich Halbräume
-  unmittelbar ergeben, jedoch nicht den Halbraum als eigenständigen
-  Begriff. Eigene Festlegung: ein Halbraum ist einer der beiden
+  Holzbau-Normen verwenden den Begriff Halbraum nicht. DIN EN ISO 80000-2
+  führt weder die Ebene noch die Hesse-Normalform noch den Halbraum,
+  nur die Zeichen für Vektor und Skalarprodukt (geprüft an
+  ISO 80000-2:2009). Eigene Festlegung: ein Halbraum ist einer der beiden
   abgeschlossenen oder offenen Teilräume von ℝ³, die durch eine Ebene
   abgegrenzt werden, mit einer Normalen, die per Konvention **in den
   Halbraum hinein** zeigt. Diese Festlegung ist konsistent mit
@@ -157,7 +158,10 @@ Vorzeichen umzukehren.
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2: Mathematik".
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2: Mathematik".
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
 
 **Sekundär:**
 

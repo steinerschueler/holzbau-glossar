@@ -1,13 +1,13 @@
 ---
-id: raehm
-benennung: Rähm
-kurz: "Ein Rähm ist der waagrechte Balken, der ganz oben auf einer Holzwand liegt, die Köpfe aller senkrechten Pfosten verbindet und die Last von Decke oder Dach sammelt und in die Wand weitergibt."
-synonyme: [Rahmholz, Rähmholz, Rähmbalken]
-abgelehnte_benennungen: [Wandpfette, Wandriegel, Mauerschwelle, Mauerbank, "top plate", "wall plate", "raising plate", "double top plate"]
+id: einbinder
+benennung: Einbinder
+kurz: "Ein Einbinder ist der waagrechte Balken, der ganz oben auf einer Holzwand liegt, die Köpfe aller senkrechten Pfosten verbindet und die Last von Decke oder Dach sammelt und in die Wand weitergibt."
+synonyme: [Kopfschwelle, Rähm, Rähmholz, Rahmholz, Rähmbalken]
+abgelehnte_benennungen: [Obholz, Wandpfette, Wandriegel, Mauerschwelle, Mauerbank, "top plate", "wall plate", "raising plate", "double top plate"]
 oberbegriff: bauteil
 begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, weltkoordinatensystem, toleranzen]
-abgrenzung_zu: [pfette, fusspfette, schwelle, sparren, pfosten, staender, riegel, strebe, kopfband, fussband, knagge, wand, mauerlatte, traufe]
+abgrenzung_zu: [pfette, fusspfette, schwelle, sparren, pfosten, staender, riegel, sturz, strebe, kopfband, fussband, knagge, wand, mauerlatte, traufe]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
@@ -19,20 +19,46 @@ quellen_sekundär:
   - "Natterer, J.; Herzog, T.; Volz, M.; Schweitzer, R.; Winter, W.: Holzbau-Atlas. 4. Aufl., Birkhäuser, Basel 2003, Kap. 'Wandbau'."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Rähm'."
   - "Krämer, F.: Grundwissen des Zimmerers. 2. Aufl., Bruderverlag, Karlsruhe 1988."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.7.2 „Fachwerkwände“ (S. 161): nummerierte Legende am axonometrischen Fachwerk-Eckmodell, gedruckter Wortlaut „③ Rähm“ — neben „① Längsschwelle“, „② Querschwelle“, „④ Wandbalken“, „⑤ Längsschwelle“, „⑥ Fensterriegel“, „⑦ Riegel“, „⑧ Eckpfosten“, „⑨ Fensterpfosten“, „⑩ Türpfosten“, „⑪ Deckenbalken“. Berufsschul-Kanon-Beleg für „Rähm“ als oberes Längsholz der **Wand** (Kap. 3.7 „Außenwände“), in derselben Legende getrennt geführt von den Schwellen (unten), vom Riegel (Querholz) und vom Deckenbalken."
   - "Koepf, H.; Binding, G.: Bildwörterbuch der Architektur. Kröner, Stuttgart, aktuelle Auflage, Lemma 'Rähm'."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage."
+  - "Kolb, J.; Kolb, H.; Müller, A.: Holzbau mit System. Tragkonstruktion und Schichtaufbau der Bauteile. 4. Aufl., Birkhäuser, Basel 2024, hg. mit Lignum – Holzwirtschaft Schweiz, ISBN 978-3-0356-2644-5, S. 140 (Fachwerkbau: Einbinder bzw. Wandpfetten als oberer Abschluss der Fachwerkwand und Auflager für Balken oder Sparren), S. 146 (Rahmenbau: „Kopfschwelle (Pfette, Einbinder, Rähm)“), S. 147 (Setzmaß aus „[Schwelle,] Einbinder und Balken“). „Einbinder“ auf acht Seiten, „Rähm“ nur S. 146."
+  - "Lignum – Holzwirtschaft Schweiz (lignum.ch), Auszug aus Holzbau mit System: „zulässige Querdruckspannung in Schwelle und Einbinder“, abgerufen 2026-11-14."
+  - "Manser, N. (2024): Arbeit zu aussteifenden Holzrahmenbau-Wänden mit Fensteröffnungen, ETH Zürich Research Collection: Kraft „auf den Einbinder aufgebracht“, abgerufen 2026-11-14."
+  - "BFH Berner Fachhochschule, Abschlussarbeiten 2022: „Einbinder … linear in die obere Beplankung übertragen“, abgerufen 2026-11-14."
+  - "CRB / Fermacell: Broschüre Brandmauern, „Randholz … mit dem Einbinder der unteren Wand im Werk vollflächig verleimt“, abgerufen 2026-11-14."
+  - "aramis.admin.ch (Forschungsdatenbank des Bundes), Eintrag vom 27.11.2025: „Fensterständer … mittels Zapfenverbindungen mit dem Einbinder und der Schwelle verbunden“, abgerufen 2026-11-14."
+  - "Kantonale Denkmalpflege Appenzell Ausserrhoden: Bauatlas Appenzellerland, Thema „Holzbau“ (appenzellerland.bauatlas.ch/thema/holzbau), Abschnitte Strickbau („Die mit einer Nute versehenen Strickbalken heissen Einbinder.“) und Bohlenständerbau („Mit den liegenden Schwellen oder Einbindern, den stehenden Pfosten …“), abgerufen 2026-11-14."
+  - "Zweisprachiger Zeitschriftenartikel „Holzrahmenbau“ (Zeitschrift und Jahr nicht ausgewiesen; Abbildungen aus „Der Holzrahmenbau“ des Bundesamts für Konjunkturfragen), PDF „ABR Holzrahmenbau.pdf“ auf jimcontent.com: „Kopfschwelle 60 x 120 mm zur Verbindung der Wandkonstruktion und als Aufleger für die Deckenkonstruktion“, frz. „pannes“; Legende „Kopfschwelle/Panne“, abgerufen 2026-11-14."
   - "Thesaurus Traditioneller Holzbau, Begriff-ID 866 'Rähm' (thesaurus-traditioneller-holzbau.net)."
   - "Deutsches Wörterbuch von Jacob und Wilhelm Grimm (DWB), Lemma 'rahme', 'rahm' (digital über DWDS), abgerufen 2026-05-14."
 quellenkonflikt: |
   Keine konsultierte Norm (SIA 265, EN 1995-1-1, DIN 1052) enthält
-  eine geschlossene Begriffsdefinition für „Rähm"; der Begriff wird
+  eine geschlossene Begriffsdefinition für dieses Bauteil; der Begriff wird
   in den Bemessungs-Normen vorausgesetzt und über seine konstruktive
   Rolle (oberster horizontaler Längsträger einer Holzwand)
   charakterisiert. Die Definition liegt in der Berufssprache und im
-  Lehrbuch-Korpus (Krämer, Mönck/Rug, Natterer/Herzog, Gerner) sowie
+  Lehrbuch-Korpus (Krämer, Mönck/Rug, Natterer/Herzog, Gerner; für
+  die Schweiz Kolb/Kolb/Müller) sowie
   im Bildwörterbuch der Architektur (Koepf/Binding) und im Thesaurus
   Traditioneller Holzbau. Die enzyklopädische Definition über die
   Wikipedia-Familie ist auf Krämer rückführbar.
+
+  Berufsschul-Bestätigung (Bläsi/Ferdinand, *Tabellenbuch
+  Zimmerer*, 9. Aufl. 2021, Volltext-Scan liegt Anweiser vor, direkt
+  eingesehen 2026-08-14): Das Standardwerk der Zimmerer-Ausbildung
+  **definiert** den Rähm zwar nicht, führt ihn aber als gedruckte
+  Bauteil-Benennung in der Legende des Kapitels 3.7.2
+  „Fachwerkwände“ (S. 161): „③ Rähm“, gemeinsam mit Längs- und
+  Querschwelle, Wandbalken, Fenster-/Riegel-Querhölzern, Eck-,
+  Fenster- und Türpfosten sowie Deckenbalken. Der Beleg ist für
+  Punkt 1 dieses Blocks einschlägig: Das Wort steht im
+  Berufsschul-Kanon im Kapitel **„Außenwände“** und nicht im
+  Dachkapitel 3.9 — die DWDS-Lesart „Rähm = Teil des Dachstuhls“
+  wird damit auch ausbildungsseitig nicht gestützt. Die
+  Legende belegt zusätzlich die in diesem Eintrag durchgehaltene
+  Trennung Rähm/Einbinder (oberes **Längs**-Holz) ↔ Riegel (**Quer**-Holz)
+  ↔ Schwelle (unteres Längsholz).
 
   Drei Quellenkonflikte sind ausdrücklich zu adressieren:
 
@@ -55,9 +81,17 @@ quellenkonflikt: |
   weil `hg_pfette.md` die Pfette normativ als horizontalen Längsträger
   des **Dachtragwerks** definiert; eine „Wandpfette" wäre eine
   in sich widersprüchliche Benennung. Die App-Konvention ist:
-  „Pfette" bleibt Dach-Bauteil, „Rähm" ist Wand-Bauteil. Diese
+  „Pfette" bleibt Dach-Bauteil, „Einbinder" ist Wand-Bauteil. Diese
   Trennung folgt Gerner und dem Thesaurus Traditioneller Holzbau,
   die Rähm und Pfette als getrennte Begriffsfelder führen.
+  Auch der Schweizer Gebrauch kennt die Pfetten-Benennung:
+  Kolb/Kolb/Müller (*Holzbau mit System*, 2024) führen Einbinder
+  bzw. Wandpfetten nebeneinander (S. 140) und schreiben
+  „Kopfschwelle (Pfette, Einbinder, Rähm)" (S. 146); der
+  zweisprachige Artikel „Holzrahmenbau" übersetzt die Kopfschwelle
+  französisch mit „panne" („Kopfschwelle/Panne"). Die Ablehnung bleibt aus
+  demselben Grund; der Schweizer Gebrauch ist hier dokumentiert,
+  nicht übernommen.
 
   **3. „Mauerlatte als Rähm-Ersatz" — falsifiziert.**
   Die Vermutung, in der Schweizer Praxis werde die „Mauerlatte"
@@ -66,37 +100,82 @@ quellenkonflikt: |
   ist im DACH-Holzbau-Korpus einhellig ein **Synonym für die
   Fußpfette** auf Mauerwerk (siehe `hg_fusspfette.md` Z. 4 und
   `FusspfetteAuflager.MAUERWERK`); sie ist Dach-Bauteil, nicht
-  Wand-Bauteil. Sie ersetzt das Rähm nicht, sondern tritt
-  **anstelle eines Rähms** dort auf, wo es keine Holzwand gibt
+  Wand-Bauteil. Sie ersetzt den Einbinder nicht, sondern tritt
+  **anstelle eines Einbinders** dort auf, wo es keine Holzwand gibt
   (Mauer- oder Stahlbeton-Außenwand mit Holz-Dachstuhl). Die
   Schweiz/DE-Asymmetrie liegt in der Bauweisen-Verteilung
-  (höherer Massivbau-Anteil in der CH-Wohnbau-Praxis), nicht im
-  Sprachgebrauch: im Schweizer Holzbau (Holzrahmenbau, Holztafelbau,
-  Anteile des Strickbaus) heißt das Wand-Obergurt-Bauteil
-  weiterhin „Rähm". Die korrigierte Lesart ist im Erläuterungsblock
-  ausgeführt.
+  (höherer Massivbau-Anteil in der CH-Wohnbau-Praxis) **und** im
+  Sprachgebrauch. **Korrektur 2026-11-14:** Die frühere Aussage
+  dieses Eintrags, auch im Schweizer Holzbau heiße das
+  Wand-Obergurt-Bauteil weiterhin „Rähm", ist widerlegt. Sie
+  stützte sich nur auf deutsche Lehrbücher, das Tabellenbuch
+  Zimmerer und SIA 265 (Begriff dort nicht als Lemma), ohne
+  Schweizer Beleg im Volltext. Das Schweizer Standardwerk
+  Kolb/Kolb/Müller, *Holzbau mit System* (4. Aufl. 2024, mit
+  Lignum), sagt „Einbinder": S. 140 Einbinder bzw. Wandpfetten
+  bilden „den oberen Abschluss der Fachwerkwand. Die Einbinder
+  bilden zudem die Auflager für die Balken oder Sparren"; S. 147
+  Setzmaß aus „[Schwelle,] Einbinder und Balken". „Einbinder"
+  steht auf acht Seiten, „Rähm" nur einmal als Klammer-Synonym
+  (S. 146). Ebenso heutige Schweizer Fach- und Forschungstexte
+  (Lignum, ETH Zürich, BFH, CRB/Fermacell, aramis.admin.ch), meist
+  im Paar „Schwelle und Einbinder", und für den historischen
+  Holzbau der Bauatlas Appenzellerland (Bohlenständerbau: „Mit den
+  liegenden Schwellen oder Einbindern, den stehenden Pfosten …";
+  die Lage im Wandgefüge geht aus dem Satz allein nicht hervor).
+  „Kopfschwelle" ist die ältere
+  Schweizer Benennung einer eigenen Lage: Kolb S. 146 „…
+  Kopfschwelle (Pfette, Einbinder, Rähm) wird heute in der Regel
+  mit dem oberen Abschluss des Rahmens kombiniert"; der Artikel
+  „Holzrahmenbau" (Abbildungen nach dem Bundesamt für
+  Konjunkturfragen) führt sie noch als eigenes Holz „als Aufleger
+  für die Deckenkonstruktion". „Rähm" ist die deutsche Benennung
+  (Tabellenbuch Zimmerer S. 161, Gerner). Entscheid Anweiser
+  2026-11-14: Benennung „Einbinder"; Synonyme „Kopfschwelle" (CH)
+  sowie „Rähm", „Rähmholz", „Rahmholz" (DE). „Obholz" ist
+  abgelehnt: im Zimmererhandwerk das Restholz über der Kerve
+  (Tabellenbuch Zimmerer S. 24, Tafel „Kervenverstichmaße am
+  Obholz"; `hg_kerve.md`), als Wandholz nirgends belegt. Nicht
+  erfasst ist die Strickbau-Lesart des Bauatlas („Die mit einer
+  Nute versehenen Strickbalken heissen Einbinder."), weil eine
+  Strickwand keine Pfosten hat (Implementierungshinweis, Edge Case
+  „Wand ohne Pfosten"). Einsicht: Kolb nur über Textausschnitte der
+  Suche im Buch (Google Books), die übrigen Fachtexte nur als
+  Textausschnitte der Google-Suche; Bauatlas und Artikel im
+  Volltext gelesen. Der Satzanfang „Die früher übliche
+  Kopfschwelle …" (Kolb S. 146) ist nicht geprüft. Beleg:
+  [intern]. Die
+  korrigierte Lesart ist im Erläuterungsblock ausgeführt.
 
   Eigene Festlegung in diesem Glossar (konsistent mit allen
   konsultierten Quellen):
 
-  - **Rähm** ist ein **Bauteil mit Bauteilrolle „Rähm"**, dessen
+  - **Einbinder** ist ein **Bauteil mit Bauteilrolle „Einbinder"**, dessen
     Bauteilachse näherungsweise horizontal verläuft, parallel zur
     Wandflucht liegt und das die obere Längs-Begrenzung einer
     hölzernen Wand bildet.
-  - Rähm ist **kein Subtyp** der Pfette (`hg_pfette.md`), sondern
+  - Einbinder ist **kein Subtyp** der Pfette (`hg_pfette.md`), sondern
     eine **Geschwister-Rolle** unter `bauteil`. Begründung: Pfette
-    ist normfest als Dach-Tragwerks-Bauteil definiert; das Rähm
+    ist normfest als Dach-Tragwerks-Bauteil definiert; der Einbinder
     gehört konstruktiv und sprachlich zum Wandtragwerk.
   - **Funktionale Überlagerung mit der Fußpfette** ist möglich
-    (traufseitiges Rähm trägt direkt die Sparrenfüße), löst die
+    (traufseitiger Einbinder trägt direkt die Sparrenfüße), löst die
     Rollen-Trennung aber nicht auf. App-Regel analog zur
-    Fußpfette/Rähm-Trennung in `hg_fusspfette.md` Z. 301–303:
+    Fußpfette/Einbinder-Trennung in `hg_fusspfette.md` Z. 301–303:
     **ein Bauteil — eine Rolle**. Wenn das Bauteil konstruktiv im
     Wandgefüge sitzt (Zapfenanschlüsse zu Pfosten/Ständern,
     Aufnahme von Streben/Kopfbändern, Bestandteil der
-    Wandscheibe), ist es Rähm; wenn es konstruktiv Teil des
+    Wandscheibe), ist es Einbinder; wenn es konstruktiv Teil des
     Dachs ist (auf Mauerkrone, eigene Sparrenfuß-Auflagerung,
     keine Pfosten-Anschlüsse), ist es Fußpfette.
+    **Präzisierung (Welle 14):** Die Doktrin trennt
+    **konkurrierende Gefüge-Lage-Rollen** (Einbinder vs. Fußpfette —
+    „zu welchem Gefüge gehört dieses Längsholz?"). Die
+    **funktional definierte** Rolle `sturz` steht orthogonal
+    dazu und ist als **Doppelrolle** zulässig: reicht eine
+    Wandöffnung bis unter den Einbinder, übernimmt dasselbe Bauteil
+    zusätzlich die Sturz-Rolle, ohne seine Einbinder-Rolle zu
+    verlieren (`hg_sturz.md`, Quellenkonflikt-Punkt 3).
 
   Die Forward-Verweise `pfosten`, `staender`, `wand`, `riegel`,
   `mauerlatte` in `abgrenzung_zu:` sind nach `HG_KONVENTIONEN.md`
@@ -106,8 +185,8 @@ quellenkonflikt: |
 
 ## Prosa-Definition
 
-Ein **Rähm** ist ein Bauteil einer hölzernen Wand mit der
-Bauteilrolle „Rähm", dessen Bauteilachse näherungsweise
+Ein **Einbinder** ist ein Bauteil einer hölzernen Wand mit der
+Bauteilrolle „Einbinder", dessen Bauteilachse näherungsweise
 horizontal entlang der Wandflucht verläuft und das die oberste
 Längs-Begrenzung dieser Wand bildet, indem es auf den
 Wand-Senkrechtbauteilen (Pfosten oder Ständern) aufliegt, deren
@@ -138,7 +217,7 @@ Sei ferner W eine Holzwand mit
   (Pfosten/Ständer) S(W) = {S_1, …, S_n}, n ≥ 2, mit Pfosten-Kopf-
   Punkten K(S_i) ∈ ℝ³ am oberen Achsenende.
 
-Dann heißt B ein **Rähm** der Wand W genau dann, wenn die folgenden
+Dann heißt B ein **Einbinder** der Wand W genau dann, wenn die folgenden
 Bedingungen erfüllt sind:
 
 1. **Stabgeometrie**: B besitzt eine gerade Bauteilachse mit
@@ -147,10 +226,10 @@ Bedingungen erfüllt sind:
 2. **Horizontalitätsbedingung**: Die Bauteilachsenrichtung ist
    horizontal,
    ```
-   ‖d_hat × e_z‖ ≤ ε_K,
+   |⟨d_hat, e_z⟩| ≤ ε_K,
    ```
-   d. h. d_hat steht rechtwinklig zur Welt-Lotachse. Sinus-Test gegen
-   e_z-Parallelität; nach `HG_KONVENTIONEN.md` Sektion 4 ist
+   d. h. d_hat steht rechtwinklig zur Welt-Lotachse. Kosinus-Test: der
+   Anteil von d_hat in Lotrichtung verschwindet; nach `HG_KONVENTIONEN.md` Sektion 4 ist
    `KOLLINEAR_EPS` die einschlägige Toleranz für Lot- und
    Parallelitäts-Prädikate.
 
@@ -174,18 +253,18 @@ Bedingungen erfüllt sind:
 5. **Eindeutigkeit als oberste Längskomponente**: Es existiert
    kein anderes Bauteil B′ ≠ B in der Wand W, das die
    Bedingungen 1–4 mit derselben Wand W erfüllt und dessen
-   mittlere Höhe z_{B′} > z_B + ε_L erfüllt; in Worten: das
-   Rähm ist die oberste längs-parallele Komponente der Wand W.
+   mittlere Höhe z_{B′} > z_B + ε_L erfüllt; in Worten: der
+   Einbinder ist die oberste längs-parallele Komponente der Wand W.
    z_B:= (p_a.z + p_e.z) / 2.
 
 Wesentliche abgeleitete Größen:
 
-- **Rähmlänge**: L_R:= ‖p_e − p_a‖ (in mm), entlang der
-  Bauteilachse zwischen den Rähm-Enden.
+- **Einbinderlänge**: L_R:= ‖p_e − p_a‖ (in mm), entlang der
+  Bauteilachse zwischen den Einbinder-Enden.
 
-- **Rähmrichtung**: d_hat ∈ S² mit |⟨d_hat, e_z⟩| ≤ ε_K und d_hat ‖ d_hat_W.
-- **Rähm-Höhenlage**: z_R:= (p_a.z + p_e.z) / 2; bei exakt
-  horizontalem Rähm gilt p_a.z = p_e.z = z_R.
+- **Einbinderrichtung**: d_hat ∈ S² mit |⟨d_hat, e_z⟩| ≤ ε_K und d_hat ‖ d_hat_W.
+- **Einbinder-Höhenlage**: z_R:= (p_a.z + p_e.z) / 2; bei exakt
+  horizontalem Einbinder gilt p_a.z = p_e.z = z_R.
 
 ## Wohldefiniertheit
 
@@ -196,26 +275,26 @@ Wesentliche abgeleitete Größen:
   ist Standardbeispiel.
 
 - **Eindeutigkeit**: Bedingung 5 stellt sicher, dass nur die
-  oberste längs-parallele Komponente der Wand W als Rähm
-  qualifiziert. Bei Konstruktionen mit „doppeltem Rähm" (US-
+  oberste längs-parallele Komponente der Wand W als Einbinder
+  qualifiziert. Bei Konstruktionen mit „doppeltem Einbinder" (US-
   Platform-Framing-Standard, in DACH-Tradition unüblich) tritt
-  Bedingung 5 in Kraft: die obere der beiden Lagen ist das Rähm
+  Bedingung 5 in Kraft: die obere der beiden Lagen ist der Einbinder
   im Sinne dieses Eintrags, die untere ist konstruktiv eine
-  Verdoppelung und wird als zweite Rähmkomponente desselben
+  Verdoppelung und wird als zweite Einbinderkomponente desselben
   Bauteils oder als eigene Untergruppe modelliert (Folgearbeit;
   in der DACH-Praxis ohne praktische Relevanz).
 
-- **Wand-Bindung**: Das Rähm ist definitorisch an **eine** Wand W
+- **Wand-Bindung**: Der Einbinder ist definitorisch an **eine** Wand W
   gebunden (Bedingungen 3–5). Treffen mehrere Wände an einer
-  Ecke aufeinander, hat jede Wand ihr eigenes Rähm; die
-  Rähm-Stücke sind durch ihre jeweilige Wandflucht-Zugehörigkeit
+  Ecke aufeinander, hat jede Wand ihren eigenen Einbinder; die
+  Einbinder-Stücke sind durch ihre jeweilige Wandflucht-Zugehörigkeit
   unterschieden und an der Ecke verbunden (Eckblatt,
   Verkämmung, Schwalbenschwanz-Zapfen klassisch; Stahlblech-
   Verbinder modern).
 
-- **Vorzeichenkonvention**: Die Bauteilachse eines Rähms ist
+- **Vorzeichenkonvention**: Die Bauteilachse eines Einbinders ist
   gerichtet (`Bauteilachse.Gerade`), aber welcher Endpunkt p_a
-  bzw. p_e ist, ist auf der Ebene des generischen Rähm-Begriffs
+  bzw. p_e ist, ist auf der Ebene des generischen Einbinder-Begriffs
   **nicht** durch eine geometrische Lage-Bedingung festgelegt
   (anders als beim Sparren). Empfehlung gemäß
   `hg_bauteilachse.md`: p_a am Bauteilanfang nach lokaler
@@ -232,9 +311,9 @@ Wesentliche abgeleitete Größen:
   Forward-Konstruktion in `hg_fusspfette.md` über `traufe` und
   in `hg_pfette.md` über `dachkante`).
 
-- **Konsistenz mit `hg_pfette.md` und `hg_fusspfette.md`**: Das
-  Rähm ist **nicht** Subtyp der Pfette; die Wand-Dach-Trennung
-  ist scharf. Funktionale Überlagerung (das Rähm trägt zugleich
+- **Konsistenz mit `hg_pfette.md` und `hg_fusspfette.md`**: Der
+  Einbinder ist **nicht** Subtyp der Pfette; die Wand-Dach-Trennung
+  ist scharf. Funktionale Überlagerung (der Einbinder trägt zugleich
   die Sparrenfüße einer Traufseite) ändert nichts an der
   Bauteilrollen-Zuordnung — die Rolle folgt der konstruktiven
   Wand-Einbindung, nicht der Lastabtragung.
@@ -250,9 +329,9 @@ Wesentliche abgeleitete Größen:
 
 ## Erläuterung (nicht normativ)
 
-Das Rähm ist der **horizontale Längsabschluss am Wandkopf** und
+Der Einbinder ist der **horizontale Längsabschluss am Wandkopf** und
 zugleich die **Schnittstelle zwischen Wand und Decke bzw.
-Wand und Dach**. Es erfüllt drei Funktionen gleichzeitig:
+Wand und Dach**. Er erfüllt drei Funktionen gleichzeitig:
 
 - **statisch**: sammelt die Vertikallasten der darüberliegenden
   Konstruktion (Decken-Auflager, Sparren- oder Fußpfetten-Lasten)
@@ -269,12 +348,12 @@ Wand und Dach**. Es erfüllt drei Funktionen gleichzeitig:
 
 ### Geschwister-Beziehung zur Schwelle
 
-Das Rähm hat in der hölzernen Wand ein **symmetrisches Gegenstück
+Der Einbinder hat in der hölzernen Wand ein **symmetrisches Gegenstück
 am Wand-Fuß**: die Schwelle (Fachwerkschwelle, Wandschwelle). In
-der traditionellen Wand sind Rähm und Schwelle querschnittsgleich
+der traditionellen Wand sind Einbinder und Schwelle querschnittsgleich
 und parallel; Pfosten/Ständer verbinden beide vertikal, Riegel
 treten als horizontale Querhölzer zwischen den Pfosten auf. Die
-Begriffspaar-Symmetrie Schwelle (unten) ↔ Rähm (oben) ist die
+Begriffspaar-Symmetrie Schwelle (unten) ↔ Einbinder (oben) ist die
 gleiche wie Fußpfette (unten) ↔ Firstpfette (oben) im
 Dachtragwerk, **bezieht sich aber auf die Wand, nicht auf das Dach**.
 
@@ -283,20 +362,20 @@ Dachtragwerk, **bezieht sich aber auf die Wand, nicht auf das Dach**.
 Drei typische Tragwerks-Anschlüsse zwischen Wand und Dach:
 
 1. **Holzwand mit Pfettendach**: Die Fußpfette liegt **auf dem
-   Rähm**, oft direkt aufgekämmt oder über Sparrenpfettenanker
-   verbunden. Rähm und Fußpfette sind dann zwei getrennte
+   Einbinder**, oft direkt aufgekämmt oder über Sparrenpfettenanker
+   verbunden. Einbinder und Fußpfette sind dann zwei getrennte
    Bauteile mit getrennten Bauteilrollen, die geometrisch nahe
    beieinander liegen.
 
 2. **Holzwand mit Sparrendach**: Die Sparrenfüße werden
    üblicherweise auf einem Deckenbalken (Zugglied) befestigt,
    der quer zur Traufrichtung verläuft und seinerseits auf
-   dem Rähm aufliegt. Das Rähm trägt die Vertikallast der
+   dem Einbinder aufliegt. Der Einbinder trägt die Vertikallast der
    Sparren-Decken-Konstruktion, ist aber nicht selbst
    Sparrenfuß-Auflager.
 
-3. **Holzwand, traufseitiges Rähm trägt Sparrenfüße direkt**:
-   Funktionale Überlagerung. Das Bauteil bleibt **Rähm**, weil
+3. **Holzwand, traufseitiger Einbinder trägt Sparrenfüße direkt**:
+   Funktionale Überlagerung. Das Bauteil bleibt **Einbinder**, weil
    es konstruktiv im Wandgefüge sitzt (Zapfen mit den Pfosten,
    Aufnahme der Streben/Kopfbänder). Die Sparrenfuß-Auflagerung
    ist eine zusätzliche Funktion, keine Rollen-Änderung
@@ -304,56 +383,66 @@ Drei typische Tragwerks-Anschlüsse zwischen Wand und Dach:
    `hg_fusspfette.md` Z. 301–303).
 
 Wenn keine Holzwand vorliegt (Massivbau-Außenwand aus Mauerwerk
-oder Stahlbeton), entfällt das Rähm konstruktiv; an seiner Stelle
+oder Stahlbeton), entfällt der Einbinder konstruktiv; an seiner Stelle
 liegt die Fußpfette direkt auf der Mauerkrone und heißt dann
-„Mauerlatte". **Die Mauerlatte ersetzt nicht das Rähm**, sondern
-sie tritt anstelle eines Rähms dort auf, wo es keine Holzwand
+„Mauerlatte". **Die Mauerlatte ersetzt nicht den Einbinder**, sondern
+sie tritt anstelle eines Einbinders dort auf, wo es keine Holzwand
 gibt. Die in der CH-Bauwelt häufige Konstellation „massive
-Außenwand mit Holz-Dachstuhl" enthält daher kein Rähm und keine
-Bezeichnungs-Drift.
+Außenwand mit Holz-Dachstuhl" enthält daher keinen Einbinder; die
+Mauerlatte ist kein anderer Name für ihn.
 
 ### Querschnitt und Werkstoff
 
-In der traditionellen Fachwerkwand ist das Rähm querschnittsgleich
+In der traditionellen Fachwerkwand ist der Einbinder querschnittsgleich
 zur Schwelle und liegt im Bereich der Pfosten-Querschnitte
 (typisch 120/140 mm bis 160/200 mm). Im modernen Holzrahmen- und
 Holztafelbau wird Standard-KVH oder Bauholz verwendet, oft gleich
 dem Ständer-Querschnitt (typisch 60/120 mm bis 80/200 mm). Die
 Faserrichtung verläuft parallel zur Bauteilachse.
 
-### Typische Verbindungen am Rähm
+### Typische Verbindungen am Einbinder
 
-Diese Verbindungen sind Geometrien an Rähm und benachbarten
+Diese Verbindungen sind Geometrien an Einbinder und benachbarten
 Bauteilen; sie werden in eigenen Glossareinträgen definiert. Hier
 nur als Verortung:
 
 - **klassisch (Fachwerk)**: Zapfen-Zapfenloch zwischen Pfosten-
-  Kopf (Zapfen) und Rähm-Unterseite (Zapfenloch);
-  Eckverbindungen am Rähm: Eckblatt, Verkämmung, Schwalbenschwanz-
+  Kopf (Zapfen) und Einbinder-Unterseite (Zapfenloch);
+  Eckverbindungen am Einbinder: Eckblatt, Verkämmung, Schwalbenschwanz-
   Zapfen; Längsstöße als Hakenblatt-, Schräg-, Schwalbenschwanz-
   Stoß;
 
 - **modern (Holzrahmen-/Holztafelbau)**: Bolzen, Schrauben,
-  Stahlblech-Verbinder; Sparrenpfettenanker bei Rähm-als-
+  Stahlblech-Verbinder; Sparrenpfettenanker bei Einbinder-als-
   Sparrenfuß-Auflagerung; durchgehende Beplankung als
   Schub-Verbinder der Wandscheibe.
 
 ### Schweizer und deutscher Sprachgebrauch
 
-Der Begriff „Rähm" ist im DACH-Holzbau-Korpus berufssprachlich
-einheitlich. Die Häufigkeit im Berufsalltag korreliert mit der
-**Bauweisen-Verteilung**: in Regionen mit hohem Holzrahmen- und
-Fachwerk-Anteil (Süd- und Mitteldeutschland, Sanierungsbestand)
-ist das Wort verbreitet; in der Schweiz, wo der Wohnbau über
-weite Strecken massiv (Mauerwerk, Stahlbeton) mit Holz-Dachstuhl
-ausgeführt wird, ist das Bauteil seltener gebraucht — nicht, weil
-es anders heißt, sondern weil häufig keine Holzwand vorliegt. Die
-Falsifikation „Mauerlatte ist Schweizer Rähm-Ersatz" ist im
+Im Schweizer Holzbau heißt das Bauteil heute „Einbinder", meist im
+Paar „Schwelle und Einbinder": so das Schweizer Standardwerk
+Kolb/Kolb/Müller, *Holzbau mit System* (4. Aufl. 2024, mit Lignum,
+S. 140, 146, 147), heutige Schweizer Fach- und Forschungstexte
+(Lignum, ETH Zürich, BFH, CRB, aramis.admin.ch) und für den
+historischen Holzbau der Ostschweiz der Bauatlas Appenzellerland.
+„Kopfschwelle" ist die ältere Schweizer Benennung einer eigenen
+Lage; sie wird nach Kolb (S. 146) „heute in der Regel mit dem
+oberen Abschluss des Rahmens kombiniert". „Rähm" ist die deutsche
+Benennung (Tabellenbuch Zimmerer S. 161, Gerner); bei Kolb
+erscheint es nur einmal, als Klammer-Synonym (S. 146). Die
+frühere Aussage dieses Eintrags, auch der Schweizer Holzbau sage
+„Rähm", ist widerlegt (`quellenkonflikt:`-Block, Punkt 3).
+Gemeinsam ist den Schweizer Belegen das waagrechte Wandholz, in
+das bzw. auf das die Decke einbindet. Unabhängig von der
+Benennung kommt das Bauteil in der Schweiz seltener vor, weil der
+Wohnbau über weite Strecken massiv (Mauerwerk, Stahlbeton) mit
+Holz-Dachstuhl ausgeführt wird und dann keine Holzwand vorliegt.
+Die Falsifikation „Mauerlatte ist Schweizer Rähm-Ersatz" ist im
 `quellenkonflikt:`-Block ausgeführt.
 
 ### Etymologie
 
-Der Begriff geht auf mhd. `ram(e)` f. „Stütze, Säule, Gestell,
+Das Wort „Rähm" geht auf mhd. `ram(e)` f. „Stütze, Säule, Gestell,
 Web- oder Stickrahmen" zurück (DWB, Lemma „rahme" / „rahm";
 DWDS-digitale Ausgabe). Die i-Umlaut-Form „Rähm" ist im modernen
 Deutsch fast nur in der bauhandwerklichen Fachsprache bewahrt; in
@@ -364,8 +453,8 @@ allgemeinen Rahmen-Wurzel — daher die zulässigen Synonyme
 
 ## Beziehungen
 
-- **Oberbegriff**: `bauteil`. Strukturell ist das Rähm ein Bauteil
-  mit der zusätzlichen Rolle „Rähm" und den oben formalisierten
+- **Oberbegriff**: `bauteil`. Strukturell ist der Einbinder ein Bauteil
+  mit der zusätzlichen Rolle „Einbinder" und den oben formalisierten
   geometrischen Constraints. **Nicht** Subtyp von `pfette`, weil
   Pfette normfest als Dach-Längsträger definiert ist.
 
@@ -376,45 +465,46 @@ allgemeinen Rahmen-Wurzel — daher die zulässigen Synonyme
       Schwelle);
 
     - **Werkstoff** (Vollholz, KVH, gelegentlich BSH);
-    - **Faserrichtung** (Annotation, Default ‖ d_hat_Rähm).
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_Einbinder).
 - **Verwendung / Beziehung zu anderen Bauteilen**:
     - **Pfosten** / **Ständer** (`pfosten` / `staender`, eigene
-      Einträge folgen): Wand-Senkrechtbauteile, auf deren Köpfen das
-      Rähm liegt; Verbindung klassisch durch Zapfen.
+      Einträge folgen): Wand-Senkrechtbauteile, auf deren Köpfen der
+      Einbinder liegt; Verbindung klassisch durch Zapfen.
 
     - **Schwelle** (`schwelle`): horizontales
       unteres Pendant am Wandfuß.
 
     - **Riegel** (`riegel`): horizontale
       Querhölzer zwischen den Pfosten, **nicht** zu verwechseln mit
-      dem Rähm.
+      dem Einbinder.
 
     - **Wand** (`wand`, eigener Eintrag folgt): aggregierender
-      Begriff (Schwelle + Pfosten + Rähm + Riegel + Streben +
-      Beplankung); das Rähm ist obere Längs-Begrenzung der Wand.
+      Begriff (Schwelle + Pfosten + Einbinder + Riegel + Streben +
+      Beplankung); der Einbinder ist obere Längs-Begrenzung der Wand.
 
-    - **Fußpfette** (`fusspfette`): liegt **auf dem Rähm** bei der
+    - **Fußpfette** (`fusspfette`): liegt **auf dem Einbinder** bei der
       Pfettendach-/Holzwand-Kombination; getrennte Bauteilrollen.
 
-    - **Sparren** (`sparren`): kann direkt auf dem Rähm aufliegen
+    - **Sparren** (`sparren`): kann direkt auf dem Einbinder aufliegen
       (Sparrendach mit Holzwand: Sparrenfuß auf Deckenbalken auf
-      Rähm; oder Pfettendach mit Rähm als Fußpfetten-Auflager).
+      Einbinder; oder Pfettendach mit Einbinder als Fußpfetten-Auflager).
 
 - **Abgrenzung**:
     - **Pfette** (`pfette`): Dach-Längsträger; Wand-Dach-Trennung
-      zimmermannssprachlich scharf. Das Rähm ist Wand-Bauteil.
+      zimmermannssprachlich scharf. Der Einbinder ist Wand-Bauteil.
       „Wandpfette" als Korpus-Synonym ist deshalb in
-      `abgelehnte_benennungen:` geführt.
+      `abgelehnte_benennungen:` geführt, obwohl auch Kolb (Schweiz)
+      sie verwendet (`quellenkonflikt:`-Block, Punkt 2).
 
     - **Fußpfette** (`fusspfette`): Dach-Bauteil, unterste Pfette
-      am Sparrenfuß. Funktionale Überlagerung mit dem Rähm
+      am Sparrenfuß. Funktionale Überlagerung mit dem Einbinder
       möglich, aber Rollen-Trennung bleibt: das Bauteil im
-      Wandgefüge ist Rähm; das Bauteil im Dachtragwerk (auf
+      Wandgefüge ist Einbinder; das Bauteil im Dachtragwerk (auf
       Mauerkrone, ohne Pfosten-Anbindung) ist Fußpfette
       (siehe `quellenkonflikt:`-Block Punkt 3).
 
     - **Schwelle** (`schwelle`): unteres
-      Längs-Pendant am Wandfuß; geometrisch symmetrisch zum Rähm,
+      Längs-Pendant am Wandfuß; geometrisch symmetrisch zum Einbinder,
       aber an der gegenüberliegenden Wand-Längskante. Geschwister-
       Bauteilrolle unter `bauteil`, nicht Spezialisierung.
 
@@ -423,7 +513,7 @@ allgemeinen Rahmen-Wurzel — daher die zulässigen Synonyme
       Bauteil.
 
     - **Pfosten** (`pfosten`, eigener Eintrag folgt): Wand-
-      Senkrechtbauteil; vertikal, nicht horizontal. Das Rähm liegt
+      Senkrechtbauteil; vertikal, nicht horizontal. Der Einbinder liegt
       auf den Pfosten-Köpfen.
 
     - **Ständer** (`staender`, eigener Eintrag folgt): Wand-
@@ -436,18 +526,25 @@ allgemeinen Rahmen-Wurzel — daher die zulässigen Synonyme
       Mehrdeutigkeits-Risiko mit der abgelehnten Benennung
       „Wandriegel" begründet die Abgrenzung.
 
+    - **Sturz** (`sturz`): funktional definierte Rolle
+      (Öffnungs-Überbrückung); kein Konkurrent der
+      Gefüge-Lage-Rolle Einbinder, sondern als **Doppelrolle**
+      zulässig — reicht eine Wandöffnung bis unter den Einbinder,
+      trägt dasselbe Bauteil zusätzlich die Sturz-Rolle
+      (`hg_sturz.md`, Quellenkonflikt-Punkt 3).
+
     - **Wand** (`wand`, eigener Eintrag folgt): aggregierender
-      Träger-Begriff; das Rähm ist Bestandteil einer Wand, nicht
+      Träger-Begriff; der Einbinder ist Bestandteil einer Wand, nicht
       selbst eine Wand.
 
     - **Mauerlatte** (`mauerlatte`): Synonym der Fußpfette auf
-      Mauerwerk (siehe `hg_fusspfette.md`); **nicht** Rähm-Synonym.
+      Mauerwerk (siehe `hg_fusspfette.md`); **nicht** Einbinder-Synonym.
       Die Falsifikation ist im `quellenkonflikt:`-Block ausgeführt.
 
     - **Traufe** (`traufe`): Dachkante am Sparrenfuß; bei einer
-      Holzwand mit Pfettendach liegt das Rähm parallel zur Traufe
+      Holzwand mit Pfettendach liegt der Einbinder parallel zur Traufe
       und in deren Höhennähe, ist aber nicht identisch (Traufe ist
-      Dachgeometrie, Rähm ist Wand-Bauteil).
+      Dachgeometrie, Einbinder ist Wand-Bauteil).
 
 ## Quellen
 
@@ -475,11 +572,42 @@ allgemeinen Rahmen-Wurzel — daher die zulässigen Synonyme
 - Krämer, F.: *Grundwissen des Zimmerers.* 2. Auflage,
   Bruderverlag, Karlsruhe 1988.
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, Kap. 3.7.2 „Fachwerkwände" (S. 161,
+  Legendenpunkt ③ Rähm). Volltext-Scan liegt Anweiser vor; direkt
+  eingesehen 2026-08-14. S. 24, Tafel „Kervenverstichmaße am
+  Obholz" (Obholz = Restholz über der Kerve; Grund der Ablehnung
+  von „Obholz").
+
 - Koepf, H.; Binding, G.: *Bildwörterbuch der Architektur.* Kröner,
   Stuttgart, aktuelle Auflage.
 
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich, aktuelle
   Auflage.
+
+- Kolb, J.; Kolb, H.; Müller, A.: *Holzbau mit System.
+  Tragkonstruktion und Schichtaufbau der Bauteile.* 4. Auflage,
+  Birkhäuser, Basel 2024, hg. mit Lignum – Holzwirtschaft Schweiz,
+  ISBN 978-3-0356-2644-5, S. 140, 146, 147. Eingesehen über die
+  Suche im Buch bei Google Books, nur Textausschnitte, 2026-11-14.
+
+- Schweizer Fach- und Forschungstexte mit „Einbinder", als
+  Textausschnitte der Google-Suche eingesehen 2026-11-14: Lignum
+  (`lignum.ch`, Auszug *Holzbau mit System*); Manser, N. (2024),
+  ETH Zürich Research Collection; BFH, Abschlussarbeiten 2022;
+  CRB / Fermacell, Broschüre Brandmauern; `aramis.admin.ch`,
+  Eintrag vom 27.11.2025.
+
+- Kantonale Denkmalpflege Appenzell Ausserrhoden: *Bauatlas
+  Appenzellerland*, Thema „Holzbau"
+  (`appenzellerland.bauatlas.ch/thema/holzbau`), Abschnitte
+  Strickbau und Bohlenständerbau; gelesen 2026-11-14.
+
+- Zweisprachiger Zeitschriftenartikel „Holzrahmenbau" (Zeitschrift
+  und Jahr nicht ausgewiesen; Abbildungen aus „Der Holzrahmenbau"
+  des Bundesamts für Konjunkturfragen), PDF „ABR
+  Holzrahmenbau.pdf"; gelesen 2026-11-14.
 
 - Thesaurus Traditioneller Holzbau, Begriff-ID 866 „Rähm"
   (`thesaurus-traditioneller-holzbau.net`).
@@ -510,3 +638,5 @@ allgemeinen Rahmen-Wurzel — daher die zulässigen Synonyme
 
 - Recherche-Bericht [intern] mit
   vollständigem Quellenapparat und Tier-Klassifikation.
+- Recherche-Bericht [intern]
+  zur Schweizer Benennung (Einbinder, Kopfschwelle, Obholz).

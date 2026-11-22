@@ -165,7 +165,7 @@ mit
   in W realisiert; Subtyp/Inhalt durch den zukünftigen Eintrag
   `standort` präzisiert).
 - **bezeichnung?** ∈ 𝒩: optionaler humanlesbarer Name des Bauwerks
-  (z. B. „Wohnhaus Beispielstrasse 12", „Brücke X").
+  (z. B. „Wohnhaus Beispielstraße 12", „Brücke X").
 
 und den Konsistenzbedingungen
 

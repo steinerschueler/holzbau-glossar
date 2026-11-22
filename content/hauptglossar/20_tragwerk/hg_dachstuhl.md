@@ -50,6 +50,8 @@ quellen_primär:
   - "DIN 1052:2008-12 'Entwurf, Berechnung und Bemessung von Holzbauwerken', Abschnitt 3 (Begriffe) und Abschnitt 11 ff. (Tragwerke) — 'Dachtragwerk' als vorausgesetzter Begriff; 'Dachstuhl' ohne geschlossene Definition."
   - "DIN EN 14250:2010-05 'Holzbauwerke – Produktanforderungen an vorgefertigte tragende Bauteile mit Nagelplattenverbindungen' — Anker für die Bauart-Abgrenzung: werks-vorgefertigte Nagelplattenbinder als nicht-zimmermannsmäßige Bauart eines Dachtragwerks; 'Dachstuhl' kommt nicht vor."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.9 'Dachkonstruktionen', S. 169–173: Berufsschul-Systematik der Dach-Bauarten. Oberste Gliederung dreiteilig — Sparrendach (Kap. 3.9.1, 'Lastabtragung ausschließlich über die Sparren in die Außenwände', S. 169), Kehlbalkendach (Kap. 3.9.2, S. 169), Pfettendach (Kap. 3.9.3–3.9.6, S. 170–172); tabellarischer Vergleich der drei Bauarten nach Lastabtragung, Quer- und Längsaussteifung (S. 172, Kap. 3.9.7) und nach Vor-/Nachteilen (S. 173, Kap. 3.9.8). Innerhalb des Pfettendachs fünfteilige Untergliederung: 'Man unterscheidet: 1. einfach stehend, 2. zweifach stehend, 3. dreifach stehend, 4. liegende Stühle, 5. Hängewerke' (S. 172) — die Stuhl- und Hängewerk-Bauarten sind dort **Varianten des Pfettendachs**, keine eigene oberste Bauart-Klasse. **Negativer Befund** (OCR-Volltext-Sweep über das gesamte Werk, 2026-08-14): weder 'Dachstuhl' noch 'Dachtragwerk' kommen im Werk vor; durchgängiger Oberbegriff des Berufsschul-Kanons ist 'Dachkonstruktion(en)' (Kapitelüberschrift S. 169, Sachwortverzeichnis-Lemma). Das Wort 'Stuhl' erscheint im gesamten Werk einzig in 'liegende Stühle' (S. 172)."
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, Kap. 9 'Hausdächer' (S. 156–172): statische Systematik der Hausdach-Tragwerke — Pfettendach (ein-/zwei-/dreistielig, 'abgestrebt'), Sparrendach (statisch bestimmter Dreigelenkrahmen, §9.3.2), Kehlbalkendach (einfach statisch unbestimmt, verschieblich/unverschieblich); Aussteifung in Gebäudelängsrichtung über Windrispen aus Holz, Windrispenbänder aus Stahl oder Dachscheiben aus Holzwerkstoffplatten (§9.4)."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Dachtragwerke und Aussteifung' — 'Dachtragwerk' als Normsprache; 'Dachstuhl' als berufssprachlicher Synonym-Begriff geführt."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise' — Schweizer Praxis-Referenz; 'Dachtragwerk' dominiert, 'Dachstuhl' historisch geführt."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke' — Klassifikation Sparrendach / Pfettendach / Kehlbalkendach / Binderdach; 'Dachstuhl' im Praxis-Kapitel zimmermannsmäßig konnotiert."
@@ -63,11 +65,11 @@ quellen_sekundär:
 quellenkonflikt: |
   **(1) Drei Korpus-Lesarten von „Dachstuhl".** Der Recherchebericht
   [intern] weist im DACH-Korpus drei
-  voneinander unterscheidbare, gleichermassen belegte Lesarten nach:
+  voneinander unterscheidbare, gleichermaßen belegte Lesarten nach:
 
   - **Lesart 1 — engste, zimmermannssprachliche Lesart (Stuhl als
     Stützkonstruktion).** „Dachstuhl im engeren Sinn" bezeichnet
-    ausschliesslich die unter dem Sparrenwerk eingezogene Stütz-
+    ausschließlich die unter dem Sparrenwerk eingezogene Stütz-
     konstruktion aus Stuhlsäulen, Stuhlpfetten, Schwellen, Streben/
     Kopfbändern und ggf. Spannriegeln; in dieser Lesart ist Dachstuhl
     ein **Teilaggregat** im Pfetten- oder Kehlbalkendach, nicht das
@@ -95,7 +97,7 @@ quellenkonflikt: |
   bei `tragwerk`, `bauteilgruppe` und `binder`.
 
   **(2) Eigene Festlegung der App: Lesart 2.** In diesem Glossar wird
-  **Dachstuhl** ausschliesslich in **Lesart 2** definiert: als
+  **Dachstuhl** ausschließlich in **Lesart 2** definiert: als
   **zimmermannsmäßig gefertigtes Dachtragwerk** im Sinne der Gerner-/
   Krämer-Linie. Die zwei anderen Lesarten werden wie folgt aufgelöst:
 
@@ -126,13 +128,13 @@ quellenkonflikt: |
   `bauteilgruppe` ↔ `bausystem` ↔ `tragwerk`.
 
   **(3) Bauart-Prädikat als konstitutives Merkmal.** Der Dachstuhl
-  trennt sich von einem allgemeinen Dachtragwerk **ausschliesslich
+  trennt sich von einem allgemeinen Dachtragwerk **ausschließlich
   entlang der Bauart**, nicht entlang der strukturellen Aggregat-
   Rolle. Das Tupel des Dachstuhls ist identisch zu dem des Tragwerks
   (uuid, B, V, A, L), erweitert um die zugesicherte Eigenschaft, dass
   **kein Bestandteil ein werks-vorgefertigter Binder** im Sinne von
   `hg_binder.md` ist. Die formale Verbindungstyp-Klassifikation
-  (zimmermannsmässig vs. mechanisch vs. werkseitig) ist im aktuellen
+  (zimmermannsmäßig vs. mechanisch vs. werkseitig) ist im aktuellen
   Glossarstand noch nicht angelegt; das Bauart-Prädikat wird daher
   als **zugesicherte, nicht formal überprüfte Bedingung** notiert
   (analog zur Stabilitäts- und Lastpfad-Zusicherung in
@@ -197,6 +199,40 @@ quellenkonflikt: |
   konkreten Tool, das einen Dachstuhl geometrisch oder bemessungs-
   technisch modelliert. Bis dahin ist die Code-Pendant-Linter-Befreiung
   konsistent mit den genannten Geschwister-Aggregaten.
+
+  **(9) Berufsschul-Befund: der Kanon meidet „Dachstuhl" ganz.**
+  Bläsi/Ferdinand, *Tabellenbuch Zimmerer*, 9. Aufl. 2021
+  (Volltext-Scan liegt Anweiser vor, direkt eingesehen 2026-08-14),
+  ist das deutschsprachige Berufsschul-Standardwerk des Gewerks.
+  OCR-Volltext-Sweep über das gesamte Werk (2026-08-14):
+  **weder „Dachstuhl" noch „Dachtragwerk" kommen darin vor.** Der
+  durchgängige Oberbegriff ist „Dachkonstruktion(en)"
+  (Kapitelüberschrift 3.9, S. 169; Sachwortverzeichnis-Lemma). Das
+  Wort „Stuhl" erscheint im ganzen Werk einzig in der Aufzählung
+  der Pfettendach-Varianten „4. liegende Stühle" (S. 172).
+
+  Der Befund berührt zwei Festlegungen dieses Eintrags:
+
+  - **`abgelehnte_benennungen: Dachkonstruktion`.** Die Ablehnung
+    ruht auf der Mehrdeutigkeit des Wortes im **breiten** Korpus
+    (Tragwerk vs. gesamtes Dach, siehe `hg_dach.md`). Das
+    Tabellenbuch verwendet es demgegenüber **eindeutig in der
+    Tragwerks-Lesart**: die Eindeckung ist getrennt in Kap. 3.8.1
+    („Baustoffbedarf und Daten für Dächer", Dachziegelarten mit
+    Regeldachneigung, S. 168) geführt, Kap. 3.9 zeigt
+    ausschließlich Tragwerke. Der Befund entkräftet die
+    Mehrdeutigkeits-Diagnose damit nicht, zeigt aber, dass es
+    Korpus-Register gibt, in denen „Dachkonstruktion" scharf ist.
+    Die Ablehnung bleibt bis zu einer ausdrücklichen Revision
+    bestehen.
+  - **Stuhl-Typologie (Lesart 1, Folgearbeit `stuhl`).** Das
+    Tabellenbuch ordnet „liegende Stühle" und „Hängewerke" als
+    **Varianten des Pfettendachs** ein („Man unterscheidet:
+    1. einfach stehend, 2. zweifach stehend, 3. dreifach stehend,
+    4. liegende Stühle, 5. Hängewerke", S. 172), nicht als eigene
+    oberste Bauart neben Sparren-, Kehlbalken- und Pfettendach.
+    Diese fünfteilige Untergliederung ist für den künftigen
+    `stuhl`-Eintrag die einzuordnende Berufsschul-Referenz.
 ---
 
 ## Prosa-Definition
@@ -237,7 +273,7 @@ mit den Komponenten
 
 - **uuid** ∈ 𝒰: technischer Surrogatschlüssel des Dachstuhls (Pflicht,
   persistent, RFC 9562 v7); externe Referenzen auf den Dachstuhl gehen
-  ausschliesslich auf diese UUID.
+  ausschließlich auf diese UUID.
 - **B** ⊂ 𝓑, B endlich, B ≠ ∅: die Menge der lastabtragenden Bauteile
   des Dachstuhls (Sparren, Pfetten, Stuhlsäulen, Bundbalken, Kehl-
   balken, Streben, Schwellen, Aussteifungen).
@@ -378,13 +414,13 @@ Glossareinträge folgen trigger-basiert; siehe Folgearbeiten):
 2. **Pfettendach** (`pfettendach`, Folgearbeit). Sparren liegen auf
    horizontalen Pfetten (First-, Mittel-, Fuß-/Schwellpfette) auf. Die
    Pfetten leiten die Sparrenlasten in Wände, Stützen oder
-   **Stuhlsäulen** ab. Geeignet für grössere Spannweiten,
+   **Stuhlsäulen** ab. Geeignet für größere Spannweiten,
    unsymmetrische Dächer, Gauben und Aufbauten. Trägt typischerweise
    eine Stuhl-Konstruktion (Achse 2).
 3. **Kehlbalkendach** (`kehlbalkendach`, Folgearbeit). Erweiterung
    des Sparrendachs um einen horizontalen **Kehlbalken** auf etwa
    halber Sparrenhöhe, der die Sparren gegeneinander aussteift und
-   die Knicklänge halbiert. Geeignet für grössere Dachneigungen und
+   die Knicklänge halbiert. Geeignet für größere Dachneigungen und
    Spannweiten (≤ ca. 12–14 m). Stuhl-Konstruktion möglich, nicht
    zwingend.
 
@@ -408,7 +444,7 @@ geläufigen Sub-Typen:
   - *Doppelter stehender Stuhl*: zwei parallele Längsreihen
     lotrechter Stuhlsäulen unter zwei Mittelpfetten.
 - **Liegender Stuhl** (`liegender_stuhl`, Folgearbeit). Stuhlsäulen
-  schräg geneigt, Fusspunkt nahe Aussenwand, Kopfpunkt unter der
+  schräg geneigt, Fußpunkt nahe Außenwand, Kopfpunkt unter der
   Pfette. Vorteil: stützenfreier Dachraum, geringeres Biegemoment im
   Deckenbalken (Last nahe Auflager). Historisch ab ca. 1400.
 - **Doppelter liegender Stuhl**. Erweiterung; zwei Lagen übereinander,
@@ -488,7 +524,7 @@ modelliert (Werkplan, Bemessung).
   `dachtragwerk` migriert.
 - **Bestandteile (partitiv)**: identisch zu `tragwerk`:
   - **Bauteile** (`bauteil`): Sparren, Pfetten, Stuhlsäulen,
-    Bundbalken, Kehlbalken, Streben, Schwellen, Rähme, Aussteifungen.
+    Bundbalken, Kehlbalken, Streben, Schwellen, Einbinder, Aussteifungen.
   - **Verbindungen** (`verbindung`): zimmermannsmäßig (Zapfen, Versatz,
     Blatt, Schwalbenschwanz) oder mechanisch (Bolzen, Stabdübel,
     Nagel, Schraube, Klammer). Werks-vorgefertigte Verbindungen
@@ -546,7 +582,7 @@ modelliert (Werkplan, Bemessung).
     sind. **Geschwister** des Dachstuhls unter dem (künftig
     angelegten) `dachtragwerk`-Oberbegriff, nicht Sub-Typ des
     Dachstuhls. „Binderdach" trifft Lesart 3 von „Dachstuhl"; in der
-    App-Sprache ist das ein Verstoss gegen die hier festgelegte
+    App-Sprache ist das ein Verstoß gegen die hier festgelegte
     Lesart 2.
   - **Sparrendach** / **Pfettendach** / **Kehlbalkendach**
     (Folgearbeiten): Sub-Typen des Dachstuhls entlang des statischen
@@ -579,6 +615,21 @@ modelliert (Werkplan, Bemessung).
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5. Kap. 3.9 „Dachkonstruktionen"
+  (S. 169–173): dreiteilige Bauart-Systematik Sparrendach /
+  Kehlbalkendach / Pfettendach mit Vergleichstafeln zu
+  Lastabtragung und Aussteifung (S. 172) sowie zu Vor- und
+  Nachteilen (S. 173); fünfteilige Untergliederung des
+  Pfettendachs einschließlich „liegende Stühle" und „Hängewerke"
+  (S. 172). Negativ-Befund: „Dachstuhl" und „Dachtragwerk" kommen
+  im Werk nicht vor (OCR-Volltext-Sweep über das gesamte Werk).
+  Volltext-Scan liegt Anweiser vor; direkt eingesehen 2026-08-14
+  (seitenweise am Scan-PNG verifiziert).
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, Kap. 9 „Hausdächer“ (S. 156–172, Tragwerks-Systematik). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-13.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich,
   aktuelle Auflage.
 - Lignum (Hrsg.): *Lignatec „Geneigte Dächer in Holzbauweise".*

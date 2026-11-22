@@ -256,7 +256,7 @@ Vertragsnormen).
 **Genauigkeit.** Die Genauigkeit ist ein **einseitiger Anspruch**
 („das Bauteil soll ±1 mm genau sein"); die Toleranz ist ein
 **beidseitiges Band** („zulässig ist ±2 mm"). Im DACH-
-Sprachgebrauch fliessen die beiden Wörter ineinander, normativ
+Sprachgebrauch fließen die beiden Wörter ineinander, normativ
 sind sie getrennt: Genauigkeit ist eine **Eigenschaft des
 Werkzeugs oder Verfahrens**, Toleranz eine **Eigenschaft der
 Vorgabe**.
@@ -304,7 +304,7 @@ Wertebereichen, **nicht jedoch gegenseitig harmonisiert**.
 
 | Land | Bezeichnung | Norm-Familie | Besonderheit |
 |---|---|---|---|
-| **Schweiz (CH)** | *Maßtoleranz* (mit `ss`), *Maßhaltigkeit* | **SIA 414/1** (Begriffe) + **SIA 414/2** „Maßtoleranzen im Hochbau" | **Kein** eigenständiges Norm-Pendant zu DIN 18203-3 für die Holzbau-Fertigung; SIA 414 deckt die Holz-spezifische Vorfertigung nicht ausreichend ab. Ergänzend trägt der Leitfaden **Holzbau Schweiz / VGQ „Maßtoleranzen im vorgefertigten Holzsystembau"** die schweizerische Konvention. |
+| **Schweiz (CH)** | *Masstoleranz* (mit `ss`), *Masshaltigkeit* | **SIA 414/1** (Begriffe) + **SIA 414/2** „Masstoleranzen im Hochbau" | **Kein** eigenständiges Norm-Pendant zu DIN 18203-3 für die Holzbau-Fertigung; SIA 414 deckt die Holz-spezifische Vorfertigung nicht ausreichend ab. Ergänzend trägt der Leitfaden **Holzbau Schweiz / VGQ „Maßtoleranzen im vorgefertigten Holzsystembau"** die schweizerische Konvention. |
 | **Deutschland (DE)** | *Maßtoleranz* (mit `ß`) | **DIN 18202** „Toleranzen im Hochbau — Bauwerke" (Montage am eingebauten Bauwerk) + **DIN 18203-3** „Bauteile aus Holz und Holzwerkstoffen" (Fertigung am gerade gefertigten Bauteil) | Klare **Trennung Fertigung ↔ Montage** als zwei eigene Normen. Ergänzend für die Materialebene: **DIN EN 14080** (BSH), Bezugsfeuchte 12 %. |
 | **Österreich (AT)** | *Maßtoleranz* | **ÖNORM B 2215** „Werkvertragsnorm für Holzbau-Meisterarbeiten" | Regelt Maßtoleranzen für Zimmermeister-Arbeiten als Vertragsgrundlage, mit eigenen Regeln für Bauholz, Dachlattung und Nut-und-Feder-Bretter; verweist im Übrigen auf die DIN-Familie. |
 

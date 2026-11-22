@@ -1,7 +1,7 @@
 ---
 id: konstruktionsdetail
 benennung: Konstruktionsdetail
-kurz: "Ein Konstruktionsdetail ist die vergrösserte Nahaufnahme einer einzelnen Stelle des Bauwerks — etwa eines Knotenpunkts, an dem mehrere Hölzer zusammentreffen —, die genau zeigt, wie dort alles ineinandergreift."
+kurz: "Ein Konstruktionsdetail ist die vergrößerte Nahaufnahme einer einzelnen Stelle des Bauwerks — etwa eines Knotenpunkts, an dem mehrere Hölzer zusammentreffen —, die genau zeigt, wie dort alles ineinandergreift."
 synonyme: [Detail, Anschlussdetail, Knotendetail]
 abgelehnte_benennungen:
   - Knoten
@@ -454,7 +454,7 @@ mit den im Korpus etablierten Werten:
 | Sparrenfußdetail | Fuß-Anschluss | Sparren + Fußpfette/Mauerlatte |
 | Mittelpfettendetail | Mittel-Auflager | Sparren + Mittelpfette |
 | Firstdetail | First-Anschluss | Sparren + Sparren bzw. Sparren + Firstpfette |
-| Pfettenstoßdetail | Längs-Stoss | Pfette + Pfette (gleiche Rolle) |
+| Pfettenstoßdetail | Längs-Stoß | Pfette + Pfette (gleiche Rolle) |
 | Traufdetail | Trauf-Anschluss | Sparren + Fußpfette + ggf. Aufschiebling + Traufgesims |
 | Ortgangdetail | Ortgang-Anschluss | Sparren + Ortgangbohle + ggf. Windrispe |
 | Sockeldetail | Sockel-Anschluss | Schwelle + Fundament |
@@ -565,7 +565,7 @@ Werkplan-Sicht bleibt orthogonal.
   - `mittelpfetten_detail` — Sparren-Mittelpfetten-Anschluss.
   - `firstdetail` — Sparren-Sparren- bzw. Sparren-Firstpfetten-
     Anschluss am First.
-  - `pfettenstoss_detail` — Längs-Stoss zweier Pfettenabschnitte.
+  - `pfettenstoss_detail` — Längs-Stoß zweier Pfettenabschnitte.
   - `traufdetail` — Trauf-Anschluss mit Sparrenfuß, Fußpfette,
     Aufschiebling, Traufgesims.
   - `ortgangdetail` — Dachrand quer zur Traufe.

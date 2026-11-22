@@ -25,6 +25,7 @@ quellen_primär:
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1: Arten, Inhalte und Grundregeln der Darstellung', Abschnitt 5 (Darstellung von Dächern): Gratsparren als Zeichnungselement in der Bauzeichnung des Walmdachs."
   - "DIN 1052:2008-12, Abschnitt 8 und Abschnitt 12 (Konstruktive Anforderungen): Tragglieder geneigter Dächer."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, §1.13 'Rechnerischer Abbund' (S. 25–32), §10.16 'Dachverschneidung – Dachausmittlung' (S. 305) und §10.20.2 (S. 322) — geschlossener Formelapparat der Gratsparren-Geometrie. S. 25 'Gleichgeneigtes Walmdach bei rechtwinkliger Traufe' (α_D = α_W): Gratgrundwinkel tan γ = tan α / √2 (Formel 1); Abgratungsmaß h_a = (b_g/2)·sin γ (Formel 2); Abgratungswinkel tan δ = sin γ = 2·h_a/b_g (Formel 3); Kantenlänge h_k = h_n·cos γ/cos α (Formel 4); Gratsparrenlänge g = k = √((b_D/2)² + s²) bzw. g = k = √(2·(b_D/2)² + h_D²) (Formeln 10/11); Legende: 'g = Länge des Gratsparrens', 'h_g = Höhe des Gratsparrens', 'b_g = Breite des Gratsparrens', 'h_k = Kantenlänge des Gratsparrens', 'h_g = h_a + h_k = Profilhöhe bei Senkelgleiche', 'v = Länge des Verfallgrates'; Kasten 'der Hexenschnitt': tan γ_u = √2/(2·tan α) oder tan γ_u = tan γ/tan α, Hexenwinkel ε = γ + γ_u. S. 26 'Gleichgeneigtes Walmdach bei schiefwinkliger Traufe': zwei getrennte Gratsparren g_1, g_2 mit Streichwinkeln im Grund β_{1,D}, β_{2,D}, tan γ_1 = tan α · sin β_{1,D} (Formel 10), β_{1,D} = (90° − ε)/2, β_{2,D} = (90° + ε)/2 (Formel 9); Rissarten Grund, Profil, Austragung. S. 28/30/31 (α_D ≠ α_W): Abgratungswinkel δ_{1,D}/δ_{1,W} und Abgratungsmaße h_{a1,D}/h_{a1,W} 'am Gratsparren g_1 zur Dachfläche und Walmfläche' sowie Kantenlängen h_{K1,D}/h_{K1,W} getrennt geführt; β_D/β_W = 'Streichwinkel des Grates im Grund' (S. 28) bzw. 'Ausstellwinkel im Grund' (S. 29, 31). S. 32 benennt γ ausdrücklich als 'Neigungswinkel des Gratsparrens' (tan γ = tan α_1 · sin β_D) und führt v = g − k mit 'v = Länge des Verfallgrats', 'g_g = Länge des Gratsparrens im Grund'. S. 305: 'Bei gleichgeneigten Dachflächen verlaufen die Gratsparren im Grundriss in der Winkelhalbierenden, auch wenn die Traufe an der Walmseite schräg verläuft. Der Gratsparren läuft im Grundriss bei einem Verfallgrat zum oberen Anfallspunkt ① …' sowie 'Grat- und Kehlsparren begrenzen jeweils zwei Dachflächen gemeinsam und können daher von der einen in die andere Dachfläche durch Umprojektion übertragen werden.' S. 322 §10.20.2 'Gratsparren mit Hexenschnitt am gleichgeneigten Walmdach (Modell)', M 1:10."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Dachtragwerke' / Walmdach-Konstruktionen."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage, Abschnitt 'Walmdach / Grat- und Kehlsparren'."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015, Kap. 11 'Dachtragwerke', § Walmdach."
@@ -103,6 +104,57 @@ quellenkonflikt: |
 
   **Ixe** bezeichnet im DACH-Korpus die **Kehle** (siehe
   `hg_kehle.md`), nicht den Grat; daher abgelehnt.
+
+  **Gedruckte Fassung der Reduktions-Formel — und ein offener
+  Widerspruch zur Prosa-Fassung von β_plan (Tabellenbuch Zimmerer,
+  9. Aufl. 2021; Volltext-Scan liegt Anweiser vor, direkt eingesehen
+  2026-08-14):** Der oben als abgeleiteter Satz (★) geführte
+  Zusammenhang steht im Berufsschul-Standardwerk als Abbund-Formel:
+  S. 26 (gleichgeneigtes Walmdach, schiefwinklige Traufe)
+  `tan γ_1 = tan α · sin β_1D`, S. 29 (ungleichgeneigtes Dach)
+  `tan γ = tan α_1 · sin β_1` mit `tan β_1 = b_D1 / b_D2`, S. 32
+  `tan γ = tan α_1 · sin β_D`, und im Sonderfall der rechtwinkligen
+  Traufe S. 25 `tan γ = tan α / √2`. Das Buch benennt β als
+  *Streichwinkel* bzw. *Ausstellwinkel im Grund*; aus
+  `tan β_1 = b_D1 / b_D2` (S. 29, Formel 2) folgt eindeutig, dass β
+  dort der Grundriss-Winkel zwischen Gratlinien-Projektion und
+  **Trauflinie** ist.
+
+  **Konflikt — aufgelöst per R-Schritt (Anweiser-Entscheid Variante (b),
+  2026-08-14):** Bis zu diesem R-Schritt schrieb der Eintrag
+  `tan(α_G) = tan(α)·cos(β_plan)` und beschrieb β_plan zugleich als
+  Winkel „zwischen der Grundrissprojektion der Gratlinie und der
+  Trauflinie" — in sich widersprüchlich, denn bei Messung gegen die
+  Trauflinie gehört der **Sinus**, bei Messung gegen die
+  Grundrissprojektion der **Falllinie** der Cosinus (beide Winkel
+  sind komplementär); der Herleitungs-Block verwendete faktisch die
+  Falllinien-Lesart. Im symmetrischen Fall (rechtwinklige Traufe,
+  gleichgeneigt) sind beide Winkel 45°, weshalb der Widerspruch
+  unentdeckt blieb, bis der Tabellenbuch-Abgleich die gedruckte
+  Konvention offenlegte. **Auflösung:** β_plan ist verbindlich der
+  Grundriss-Winkel gegen die **Trauflinie** (Berufssprache
+  „Streichwinkel"/„Ausstellwinkel im Grund"), und (★) lautet
+  `tan(α_G) = tan(α)·sin(β_plan)` — Formel, Herleitung und die
+  `planWinkel(d)`-Beschreibung sind entsprechend umgestellt;
+  parallel dasselbe in `hg_kehlsparren.md` (dortiges (★), „exakt
+  parallel"). (★★) `tan(α_G) = tan(α)/√2` war nie berührt
+  (sin 45° = cos 45° = 1/√2).
+
+  **Winkelhalbierenden-Aussage — Präzisierungs-Kandidat:** Der
+  Erläuterungs-Block dieses Eintrags („Walmdach-Grundrissprojektion")
+  bindet die Winkelhalbierenden-Eigenschaft der Gratlinien-Projektion
+  an gleichgeneigte Dachflächen **mit rechtwinklig zueinander
+  stehenden Traufen**. Das Tabellenbuch (S. 305) formuliert
+  allgemeiner: „Bei gleichgeneigten Dachflächen verlaufen die
+  Gratsparren im Grundriss in der Winkelhalbierenden, auch wenn die
+  Traufe an der Walmseite schräg verläuft." Das ist **kein
+  Widerspruch**, sondern eine schwächere Voraussetzung: die
+  Rechtwinkligkeit der Traufen ist hinreichend, aber nicht notwendig;
+  maßgebend ist allein die Gleichneigung der beiden anliegenden
+  Dachflächen. Die Erläuterungs-Formulierung ist als
+  R-Schritt-Kandidat zu präzisieren (Trigger: nächster
+  Kohärenz-Review dieses Clusters); die mathematische Definition
+  (Bed. 1–5) und (★) sind davon nicht berührt.
 
   **Lignum / SIA Schweiz:** Trotz mehrfacher Recherche keine direkten
   Lignum-Volltextbelege online verifizierbar (Lignum HBT und Lignatec
@@ -254,7 +306,7 @@ tan(α_G) = ⟨t_hat, e_z⟩ / ‖(t_hat_x, t_hat_y)‖ = sin(β_plan) · tan(α
 Im symmetrischen Spezialfall (gleichgeneigte Dachflächen mit
 horizontalen, rechtwinklig zueinander stehenden Traufen) ist die
 Grundrissprojektion der Gratlinie die Winkelhalbierende der beiden
-Traufkanten und damit β_plan = 45°, woraus folgt
+Traufkanten und damit β_plan = 45° (sin 45° = 1/√2), woraus folgt
 
 ```
 tan(α_G) = tan(α) / √2.                                          (★★)
@@ -633,6 +685,13 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, §1.13 „Rechnerischer Abbund" (S. 25–32),
+  §10.16 „Dachverschneidung – Dachausmittlung" (S. 305) und
+  §10.20.2 „Gratsparren mit Hexenschnitt am gleichgeneigten
+  Walmdach (Modell)" (S. 322). Volltext-Scan liegt Anweiser vor;
+  direkt eingesehen 2026-08-14.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich, aktuelle
   Auflage.
 

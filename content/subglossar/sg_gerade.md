@@ -135,7 +135,7 @@ Anrissmaß hängt.
 </svg>
 
 Die kräftige rote Strecke ist das, was am Bauteil tatsächlich
-materialisiert ist — Bleistift- oder Reissnadelspur über die
+materialisiert ist — Bleistift- oder Reißnadelspur über die
 Sparrenbreite. Die beidseitig gepunktete Fortsetzung ist die zugehörige
 **Trägergerade**: unbegrenzt nach oben und nach unten, ohne Anfang
 und Ende. Wo der Meister sagt, „die Anrisslinie geht über den Sparren
@@ -187,7 +187,7 @@ hervorgehoben ist, beidseitig gepunktet als unbegrenzter Träger
     - Pattern 5 Geraden-Verlängerung (beidseitig 80 px, gepunktet).
     - Pattern 6 Standard-Walmdach (Eckpunkte und Beschriftungs-Slots
       verbindlich).
-  STIL-KONVENTIONEN (Farben gemäss §6 Farbpalette)
+  STIL-KONVENTIONEN (Farben gemäß §6 Farbpalette)
     Karton                #f4f1ea  Hintergrund-Rechteck
     Hauptdach-Füllung     #e8c98a  hell-warmer Holz-Hue
     Walmfläche-Füllung    #c89a5a  dunkler-warmer Holz-Hue
@@ -248,7 +248,7 @@ hervorgehoben ist, beidseitig gepunktet als unbegrenzter Träger
       P_F-Marker        circle bei (370, 170)
       P_F-Label         (378, 166) start "P_F"
       P_F-Rolle         (378, 180) start "First-Walmecke"
-                        Nach rechts-oben in den Luftraum, ausserhalb
+                        Nach rechts-oben in den Luftraum, außerhalb
                         der Dach-Polygone.
       P_R-Marker        circle bei (170, 170)
       P_R-Label         (162, 166) end   "P_R"
@@ -393,7 +393,7 @@ Subtypen — eine Gerade ist eine Gerade —, sondern unterschiedliche
 
 | Rolle | Wo sie auftritt | Verhältnis zum Bauteil |
 |---|---|---|
-| **Trägergerade einer Achse** | Sparrenachse, Pfettenachse, Stuhlsäulenachse — die Bauteilhauptachse eines Stab-Bauteils | Das Bauteil selbst ist eine **Strecke** zwischen den Bauteil-Enden; ihre beidseitig unbegrenzte Verlängerung ist die Trägergerade. Wird bei der Schiftung gebraucht, wo Trauflinien-Gerade und Sparrenachsen-Gerade ihren Schnittpunkt am Sparrenfuss bekommen. |
+| **Trägergerade einer Achse** | Sparrenachse, Pfettenachse, Stuhlsäulenachse — die Bauteilhauptachse eines Stab-Bauteils | Das Bauteil selbst ist eine **Strecke** zwischen den Bauteil-Enden; ihre beidseitig unbegrenzte Verlängerung ist die Trägergerade. Wird bei der Schiftung gebraucht, wo Trauflinien-Gerade und Sparrenachsen-Gerade ihren Schnittpunkt am Sparrenfuß bekommen. |
 | **Wirkungslinie einer Kraft** | Statik — Linie, längs derer eine Kraft am starren Körper wirkt | **Einziger Korpus-Begriff mit expliziter Geraden-Definition.** Die Statik nutzt die Linienflüchtigkeit der Kraft am starren Körper: eine Kraft darf entlang ihrer Wirkungslinie verschoben werden, ohne dass sich ihre Wirkung am Tragwerk ändert. Damit ist die Wirkungslinie geometrisch eine Gerade, nicht eine Strecke. |
 | **Schnittgerade zweier Ebenen** | Grat-, Kehl- und Firstlinie als Schnitt benachbarter Dachflächen | Das Bauteil (Gratsparren, Kehlsparren, Firstpfette) ist die Strecke; die geometrische Schnittgerade läuft beidseitig unbegrenzt über die Bauteil-Enden hinaus. In der Dachausmittlung wird diese Geraden-Eigenschaft ausgenutzt, um Schmiegen und Anschlusswinkel an der Walmecke konstruktiv zu finden. |
 

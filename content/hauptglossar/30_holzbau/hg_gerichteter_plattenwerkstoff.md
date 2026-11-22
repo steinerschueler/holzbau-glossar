@@ -17,6 +17,7 @@ quellen_primär:
   - "DIN EN 12369-1:2001-04, 'Holzwerkstoffe – Charakteristische Werte für die Berechnung und Bemessung von Holzbauwerken – Teil 1: OSB, Spanplatten und Faserplatten' (charakteristische Festigkeits- und Steifigkeitswerte)."
 quellen_sekundär:
   - "SIA 265:2021 'Holzbau', §1.1.15 'Furnierschichtholz' und §1.1.19 'OSB-Platte' — SIA fuehrt den gerichteten Werkstoff (Strands/Furniere vorwiegend in einer Richtung), verweist fuer die Definition aber auf SN EN 14279 bzw. SN EN 300; CH-Sekundaer-Anker. [direkt]"
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §2.4.3 'OSB-Platten' (S. 37–38): OSB aus großflächigen Langspänen ('strands': ca. 75 mm lang, 35 mm breit, 0,6 mm dick), Herstellungsprozess dem der Spanplatten sehr ähnlich; 'Die Richtung der Deckschicht-Strands ist vorwiegend parallel zur Fertigungsrichtung ausgerichtet, während die Mittelschicht-Strands quer dazu ausgerichtet sind. Die OSB-Platte weist somit in Längs- und Querrichtung unterschiedliche Eigenschaften auf' — gedruckter Beleg der schwachen, herstellungsbedingten Vorzugsrichtung; Klassen für tragende Zwecke OSB/2 (NKL 1), OSB/3 (NKL 1–2), OSB/4 hochbelastbar (NKL 1–2) nach DIN EN 300; Mindestdicke tragend 8 mm, nur aussteifende Beplankung von Holztafeln 6 mm."
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 3 'Holzwerkstoffe', Abschnitt OSB."
   - "Niemz, P.; Sonderegger, W.: Physik des Holzes und der Holzwerkstoffe. Hanser, München 2017, Kap. 7 (Spanwerkstoffe und OSB)."
   - "EGGER Holzwerkstoffe: Datenblatt EGGER OSB 4 TOP, EGGER OSB 3."
@@ -267,6 +268,12 @@ Bemessungsrelevanz im UI kommunizieren.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §2.4.3 „OSB-Platten" (S. 37–38:
+  Strand-Geometrie, Deckschicht-/Mittelschicht-Orientierung,
+  OSB/2–4). Volltext-Scan liegt Anweiser vor; direkt eingesehen
+  2026-08-14.
 - Blass, H. J.; Sandhaas, C.: *Ingenieurholzbau – Grundlagen der
   Bemessung.* KIT Scientific Publishing, Karlsruhe 2016, Kap. 3.
 - Niemz, P.; Sonderegger, W.: *Physik des Holzes und der

@@ -68,7 +68,7 @@ quellenkonflikt: |
     Bauernhäusern.
   - **Doppeltes Hängewerk** (queen post): zwei Hängesäulen an
     den Drittelpunkten des Bundbalkens, verbunden durch einen
-    **Spannriegel** oben. Standard-Konstruktion für grössere
+    **Spannriegel** oben. Standard-Konstruktion für größere
     Spannweiten.
 
   Im englischen Sprachgebrauch sind „king post" und „queen post"
@@ -303,7 +303,7 @@ zentrale Zug-Element, das das gesamte konstruktive Prinzip des
 Hängewerks ermöglicht: einen großspannigen Bundbalken
 **aufzuhängen**, statt ihn nur als Biegeträger zu verwenden. Das
 Hängewerk löst damit eines der ältesten Bauprobleme: einen langen
-Holzbalken über eine grosse Spannweite zu verlegen, ohne dass er
+Holzbalken über eine große Spannweite zu verlegen, ohne dass er
 in der Mitte durchbiegt.
 
 ### Konstruktives Prinzip des Hängewerks
@@ -330,7 +330,7 @@ Das **doppelte Hängewerk** erweitert die Konstruktion um eine
 zweite Hängesäule und einen Spannriegel: die beiden Hängesäulen
 hängen den Bundbalken an den Drittelpunkten auf; der Spannriegel
 oben verbindet die beiden Hängesäulen-Köpfe als horizontales
-Zug- oder Druck-Element. Dies erlaubt grössere Spannweiten als
+Zug- oder Druck-Element. Dies erlaubt größere Spannweiten als
 das einfache Hängewerk.
 
 ### Englische Pendants
@@ -468,7 +468,7 @@ sind funktional invers.
     Bedingung 4 (Streben-Schnittpunkt vs. Stuhlpfetten-Anschluss).
   - **Ständer** (`staender`, Welle 9): Wand-Bauteilrolle.
     Geschwister-Rolle; Trennlinie über die Wand-Inzidenz
-    (Schwelle/Rähm) gegen die Hängewerk-Inzidenz (Bundbalken/
+    (Schwelle/Einbinder) gegen die Hängewerk-Inzidenz (Bundbalken/
     Streben-Schnittpunkt).
   - **Sparren** (`sparren`, Welle 8): geneigtes Dachflächen-
     Bauteil. Nicht im Hängewerk; gehört in die Sparrenebene des

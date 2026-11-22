@@ -18,6 +18,7 @@ quellen_primär:
   - "SIA 261:2020 + SIA 261/1:2020 'Einwirkungen auf Tragwerke' und 'Ergänzende Festlegungen': Schweizer Pendant zu EN 1991 mit eigenständigen Schnee- (§5), Wind- (§6), Temperatur- (§7) und Erdbeben-Festlegungen (§16); Schicht-1-Norm zur Festlegung der Einwirkungswerte."
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) — Part 1: Data schema' (IFC 4.3.2), Structural-Analysis-Domain: Entitäten-Familie `IfcStructuralLoad` (abstrakter Lastwert) mit Subtypen `IfcStructuralLoadSingleForce`, `IfcStructuralLoadLinearForce`, `IfcStructuralLoadPlanarForce`, `IfcStructuralLoadTemperature` etc.; `IfcStructuralAction` (Wirkung am Modell, abstrakt) mit `IfcStructuralPointAction`/`IfcStructuralCurveAction`/`IfcStructuralSurfaceAction`; `IfcStructuralLoadGroup` (Gruppierungs-Container) mit konkretem Subtyp `IfcStructuralLoadCase` und `IfcLoadGroupTypeEnum`-Werten `LOAD_GROUP` / `LOAD_CASE` / `LOAD_COMBINATION` / `USERDEFINED`."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, Kap. 3 'Grundlagen der Bemessung' (S. 46–55): EC5-seitige Lehrbuch-Rezeption der Begriffsfamilie — charakteristische Werte als Quantile (5 % für Festigkeiten/Rohdichten, Mittelwert für Steifigkeit bei Gebrauchstauglichkeit, 98 % für Einwirkungen; §3.1); Einwirkungs-Klassifikation direkt/indirekt, ortsfest/ortsveränderlich, ständig G / veränderlich Q (§3.3.1); Bemessungswerte über γ_G/γ_Q (beim Gebrauchstauglichkeits-Nachweis γ = 1,0; §3.3.3); Kombinationsbeiwerte ψ0/ψ1/ψ2 und Kombinationsregeln — Abminderung erst ab der zweiten veränderlichen Einwirkung, charakteristische vs. quasi-ständige Kombination (Gl. 3.7–3.9; §3.3.4); KLED-Klassen als Summe der Zeitspannen mit mindestens vollem charakteristischem Wert, bei Kombination gilt die kürzeste Dauer (g ständig, g+s mittel, g+w bzw. g+s+w kurz/sehr kurz; §3.3.5); Holz-Spezifikum der maßgebenden Lastkombination: wegen k_mod wird nicht zwingend die betragsgrößte Kombination maßgebend, sondern die mit max(q_d/k_mod) (§3.5, Bild 3.6)."
   - "Petersen, Chr.: Statik und Stabilität der Baukonstruktionen. Vieweg, Braunschweig (mehrfache Auflagen); Lehrbuch-Standard zur Begriffshierarchie Einwirkung → Lastfall → Lastkombination."
   - "Schneider, K.-J.; Albert, A.: Bautabellen für Ingenieure. 26. Aufl., Bundesanzeiger Verlag, Köln 2024; Tabellen-Klassifikation Einwirkungen G/Q/A/A_E und Kombinationsregeln."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 4 (Bemessungsgrundlagen)."
@@ -604,6 +605,13 @@ sitzt er aber als Element von L in einem Tragwerk.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, Kap. 3 „Grundlagen der Bemessung"
+  (S. 46–55: charakteristische Werte, Einwirkungen,
+  Kombinationsregeln, KLED, maßgebende Lastkombination via
+  max(q_d/k_mod)). Volltext-Scan liegt Anweiser vor; direkt
+  eingesehen 2026-08-14.
 - Petersen, Chr.: *Statik und Stabilität der Baukonstruktionen.*
   Vieweg, Braunschweig (mehrfache Auflagen).
 - Schneider, K.-J.; Albert, A.: *Bautabellen für Ingenieure.*

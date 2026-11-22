@@ -12,7 +12,8 @@ status: entwurf
 subglossar_pendant: notwendig  # Normalfall; Hinweis: das Bauteil-Bezugssystem ist über alle Stufen bis Meister praxisrelevant (wie sitzt das Werkstück im Raum, Welt↔Lokal-Bezug) (HG_KONVENTIONEN §7).
 quellen_primär:
   - "ISO 19111:2019, 'Geographic information — Referencing by coordinates', Abschnitt 7 (Coordinate systems): Begriff des kartesischen Koordinatensystems unabhängig vom Bezugsdatum; trägt die Trennung 'Koordinatensystem' vs. 'Bezugsdatum', die hier als Welt/Lokal-Trennung wieder auftaucht."
-  - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren): kartesisches Koordinatensystem, Rechtshändigkeit, orthonormale Basis."
+  - "DIN EN ISO 80000-2:2023-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitte 17 (Koordinatensysteme) und 18 (Skalare, Vektoren und Tensoren). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitt 16 (Coordinate systems), Nr. 2-16.1 mit Bildern 1 und 4: kartesische Koordinaten x, y, z, die Basisvektoren e_x, e_y, e_z bilden ein orthonormales Rechtssystem. [direkt]"
   - "EN ISO 5459:2011, 'Geometrische Produktspezifikation (GPS) – Bezüge und Bezugssysteme', Abschnitt 5: bauteilbezogene Bezugssysteme als rechtshändige kartesische Systeme, deren Achsen aus Bauteilmerkmalen (Achsen, Flächen, Punkten) abgeleitet werden."
   - "ISO 10303-42:2022, 'Industrial automation systems and integration — Product data representation and exchange — Part 42: Integrated generic resource: Geometric and topological representation', Entitäten 'axis2_placement_3d' und 'cartesian_transformation_operator_3d': normative Festlegung lokaler Platzierungen (Ursprung + zwei Richtungen → Rechtssystem) und ihrer Transformation in das übergeordnete System."
   - "ISO 16739-1:2024 (IFC 4.3), 'Industry Foundation Classes for data sharing in the construction and facility management industries', insbesondere 'IfcLocalPlacement', 'IfcAxis2Placement3D' und die Verschachtelungs-Semantik 'PlacementRelTo' (lokale Platzierung relativ zu einer übergeordneten Platzierung)."
@@ -28,7 +29,7 @@ quellenkonflikt: |
   Bauteilkoordinatensystem für die digitale Modellierung von
   Holzkonstruktionen festlegt. Die einschlägigen Quellen sind
   produktdaten- (ISO 10303, ISO 16739/IFC) und allgemein-
-  mathematisch (DIN ISO 80000-2, EN ISO 5459).
+  mathematisch (DIN EN ISO 80000-2, EN ISO 5459).
 
   Konflikt 1 — Konvention der starren Transformation:
   Es koexistieren zwei Schreibweisen für die Welt-zu-Lokal-Beziehung:
@@ -342,8 +343,11 @@ Datenstruktur implementiert.
 
 - ISO 19111:2019, „Geographic information — Referencing by
   coordinates".
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2:
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2:
   Mathematik".
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
 - EN ISO 5459:2011, „Geometrische Produktspezifikation (GPS) –
   Bezüge und Bezugssysteme".
 - ISO 10303-42:2022, „Industrial automation systems and integration

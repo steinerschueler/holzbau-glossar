@@ -11,9 +11,9 @@ abgrenzung_zu: [zapfen, kerve, bohrung, versatz, schlitz, blatt, kamm, anschnitt
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 'Druck rechtwinklig zur Faser' (Querdruck): die Lochwand des Zapfenlochs steht im Wirkungspfad des Zapfen-Druckschafts und wird gegen die charakteristische Druckfestigkeit f_{c,90,k} senkrecht zur Faser bemessen. Abschnitt 8 'Anschlüsse mit metallischen Verbindungsmitteln' regelt die zimmermannsmässige Zapfenverbindung **nicht direkt**; sie ist Gegenstand des Nationalen Anhangs (DIN EN 1995-1-1/NA) und der nationalen Holzbau-Norm DIN 1052."
-  - "DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland zu Eurocode 5: regelt zimmermannsmässige Verbindungen (Versatz, Zapfen, Holznagel) als Ergänzung zum Hauptteil."
-  - "DIN 1052:2008-12 'Entwurf, Berechnung und Bemessung von Holzbauwerken', Abschnitt 15 'Zimmermannsmässige Verbindungen': Bemessungsregeln für die Zapfenverbindung einschliesslich des Querdruck-Nachweises an der Lochwand und des Schub-Nachweises am verbleibenden Holz unterhalb des Zapfenlochs."
+  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 'Druck rechtwinklig zur Faser' (Querdruck): die Lochwand des Zapfenlochs steht im Wirkungspfad des Zapfen-Druckschafts und wird gegen die charakteristische Druckfestigkeit f_{c,90,k} senkrecht zur Faser bemessen. Abschnitt 8 'Anschlüsse mit metallischen Verbindungsmitteln' regelt die zimmermannsmäßige Zapfenverbindung **nicht direkt**; sie ist Gegenstand des Nationalen Anhangs (DIN EN 1995-1-1/NA) und der nationalen Holzbau-Norm DIN 1052."
+  - "DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland zu Eurocode 5: regelt zimmermannsmäßige Verbindungen (Versatz, Zapfen, Holznagel) als Ergänzung zum Hauptteil."
+  - "DIN 1052:2008-12 'Entwurf, Berechnung und Bemessung von Holzbauwerken', Abschnitt 15 'Zimmermannsmäßige Verbindungen': Bemessungsregeln für die Zapfenverbindung einschließlich des Querdruck-Nachweises an der Lochwand und des Schub-Nachweises am verbleibenden Holz unterhalb des Zapfenlochs."
   - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'List of Processings', Processings 'Mortise', 'DovetailMortise', 'HouseMortise', 'JapaneseMortise' (S. 8 ff.): rechteckiges bzw. schwalbenschwanzförmiges Zapfenloch im Bauteilfeld oder am Bauteilende, parametrisch über ReferencePlane, Position (StartX, StartY, StartDepth), Orientation (Angle, Inclination), Geometrie (Width, Height, Depth) und ggf. ConeAngle (DovetailMortise) spezifiziert."
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema' (IFC 4.3.2): Entität 'IfcOpeningElement' mit Beziehung 'IfcRelVoidsElement' als generisches Pendant zum Zapfenloch im IFC-Modell. [direkt]"
 quellen_sekundär:
@@ -24,7 +24,7 @@ quellen_sekundär:
   - "Krämer, F.: Grundwissen des Zimmerers. Bruderverlag, Karlsruhe (referenziert in der Recherche)."
   - "Lignum (Hrsg.): Holzbautabellen HBT1:2021 / HBT2, Lignum, Zürich, Kap. 'Zimmermannsmässige Verbindungen'."
   - "Claus, T.: Zapfenverbindungen im Holzbau – bruchmechanische Analyse und Vorschlag eines Berechnungsmodells. Bautechnik 97 (2020), Wiley."
-  - "Informationsdienst Holz: Tragverhalten zimmermannsmässiger Holzverbindungen (Reihen-Publikation)."
+  - "Informationsdienst Holz: Tragverhalten zimmermannsmäßiger Holzverbindungen (Reihen-Publikation)."
   - "Wikipedia, Lemma 'Zapfenverbindung' (de.wikipedia.org, abgerufen 2026-05-14): 'Bei einer Zapfenverbindung wird ein hervorstehender Holzteil, der Zapfen, in eine Aussparung, das Zapfenloch, eines zweiten Bauteils eingeführt. Das Zapfenloch ist üblicherweise 5 bis 10 mm tiefer als der Zapfen lang ist (Zapfenluft).'"
 quellenkonflikt: |
   Es existiert **keine geschlossene, im Sandbox-Korpus
@@ -42,7 +42,7 @@ quellenkonflikt: |
     Befund 2026-05-14, der die Auftrags-Hypothese §8 explizit
     falsifiziert).
   - **DIN EN 1995-1-1/NA** (Nationaler Anhang Deutschland) und
-    **DIN 1052:2008-12 §15** tragen die zimmermannsmässige
+    **DIN 1052:2008-12 §15** tragen die zimmermannsmäßige
     Verbindung (Versatz, Zapfen, Holznagel). Die DIN 1052-Stelle
     war im Sandbox-Recherche-Korpus nicht im Volltext
     einsehbar; die Aussagen dieses Eintrags folgen dem Konsens
@@ -52,7 +52,7 @@ quellenkonflikt: |
     direkt eingesehen, Negativ-Befund): „Zapfen"/„Zapfenloch"
     kommen im Normtext nicht vor — weder in den Fachausdrücken
     (Kap. 1) noch im viersprachigen Begriffsverzeichnis (Anhang G).
-    Von den zimmermannsmässigen Verbindungen bemisst die Norm nur
+    Von den zimmermannsmäßigen Verbindungen bemisst die Norm nur
     den **Versatz** (§6.9.2); die übrigen zählt §4.6.2.6
     ausdrücklich zu den „hier nicht behandelten Verbindungsarten".
     Anhang A (normativ) trägt den Titel „Genauere Berechnung des
@@ -77,7 +77,7 @@ quellenkonflikt: |
       flacher Anlagestufe.
 
   (2) Die **Bezugsfläche** der Aussparung ist eine Bauteil-
-      Aussenfläche (typisch eine Längsseite oder Stirnseite
+      Außenfläche (typisch eine Längsseite oder Stirnseite
       des aufnehmenden Bauteils); die Lochtiefe wird in deren
       Flächennormale gemessen. Damit ist das Zapfenloch im
       Gegensatz zur Kerve **nicht zwingend welt-aligned**,
@@ -119,7 +119,7 @@ quellenkonflikt: |
       auf jeder Seite des Lochs (also genügend Holz zu beiden
       Längsseiten) sowie **Restholz unter dem Loch ≥
       Lochtiefe**, beides als Warnung in der App, nicht als
-      harte Invariante. Die App-Konstanten heissen
+      harte Invariante. Die App-Konstanten heißen
       `Toleranzen.ZAPFENLOCH_RESTHOLZ_SEITLICH_MIN` und
       `Toleranzen.ZAPFENLOCH_RESTHOLZ_UNTEN_MIN`.
 
@@ -157,7 +157,7 @@ Ein **Zapfenloch** ist eine subtraktive Bearbeitung an einem
 Bauteil, die einen prismatischen, rechteckigen (oder
 schwalbenschwanzförmigen) Hohlraum aus dem Bauteilkörper
 entfernt; der Hohlraum ist durch eine ebene Bezugsfläche an der
-Bauteilaussenfläche (typisch eine Längsseite oder Stirnseite),
+Bauteilaußenfläche (typisch eine Längsseite oder Stirnseite),
 durch eine rechteckige Öffnungskontur in der Bezugsfläche und
 durch eine in Richtung der Flächennormalen gemessene Lochtiefe
 bestimmt und dient der formschlüssigen Aufnahme eines an einem
@@ -171,7 +171,7 @@ Sei
   Bauteilkörper G_B^lokal ⊂ ℝ³ im Bauteil-Lokal-System
   L_B = (O_B, e_hat_x^B, e_hat_y^B, e_hat_z^B),
 - 𝓕(B) die endliche Menge der **Bezugsflächen** von B (die
-  rechteckigen Aussenflächen des Bauteilkörpers — beim
+  rechteckigen Außenflächen des Bauteilkörpers — beim
   Quaderbauteil sechs Stück: vier Längsseiten und zwei
   Stirnseiten; siehe `laengsseite`, `stirnseite`),
 - für eine gewählte Bezugsfläche F ∈ 𝓕(B) der **Flächen-Ursprung**
@@ -194,7 +194,7 @@ mit
 
 - **F** ∈ 𝓕(B): **Bezugsfläche** am Bauteil, an der das
   Zapfenloch geöffnet ist. Bei einem als Quader idealisierten
-  Bauteil eine der sechs Aussenflächen; bei einem Stab-Bauteil
+  Bauteil eine der sechs Außenflächen; bei einem Stab-Bauteil
   typisch eine Längsseite (Loch im Bauteilfeld, z. B. an einer
   Pfette) oder eine Stirnseite (Loch am Bauteilende).
 - **(u_0, v_0)** ∈ ℝ²: **Lochmittelpunkt** in den
@@ -202,7 +202,7 @@ mit
   Ursprung O_F.
 - **b** ∈ ℝ⁺: **Lochbreite** in u-Richtung (mm), b > ε_L. Bei
   einem Zapfenloch am Bauteilfeld typisch das längere
-  Rechteckmass; entspricht der Zapfenbreite des
+  Rechteckmaß; entspricht der Zapfenbreite des
   einzuführenden Zapfens.
 - **h** ∈ ℝ⁺: **Lochhöhe** in v-Richtung (mm), h > ε_L.
   Entspricht der Zapfenhöhe.
@@ -287,7 +287,7 @@ zusätzlichen flachen Anlagestufe an der Bezugsfläche:
 K_ZL^Haus:=  K_ZL^Standard  ∪  □_F^{Haus} × [0, t_Haus],         (6)
 ```
 
-mit einem grösseren Rechteck □_F^{Haus} ⊃ □_F (Schultern der
+mit einem größeren Rechteck □_F^{Haus} ⊃ □_F (Schultern der
 Anlagestufe) und einer kleinen Stufentiefe t_Haus ≪ t (typisch
 5–20 mm). Die Haus-Variante wird in den meisten App-Kontexten
 durch ein eigenes Parameter-Subtupel mit (b_Haus, h_Haus,
@@ -323,7 +323,7 @@ gewählt wird).
 
 ## Wohldefiniertheit
 
-- **Existenz**: Für jede zimmermannsmässig gestemmte oder
+- **Existenz**: Für jede zimmermannsmäßig gestemmte oder
   gestochene Aussparung zur Aufnahme eines Zapfens lässt sich
   das Tupel (uuid, typ = Zapfenloch, p_ZL, id_SE(3), ⊥)
   angeben; mit Default-Werten variante = Standard,
@@ -422,13 +422,13 @@ gewählt wird).
 ### Zapfenverbindung als Gesamt-Konzept
 
 Das Zapfenloch ist die **Aussparungs-Hälfte** des klassischen
-zimmermannsmässigen Paares **Zapfen + Zapfenloch**. Die
+zimmermannsmäßigen Paares **Zapfen + Zapfenloch**. Die
 Zapfenverbindung (engl. *mortise and tenon joint*) ist eine
 der ältesten und im DACH-Holzbau am weitesten verbreiteten
 Holzverbindungen: ein hervorstehender Zapfen am einen Bauteil
 (typisch Stuhlsäule, Stiel, Strebe, Riegel-Endholz) wird in
 ein passgenau gestemmtes Zapfenloch am anderen Bauteil
-(typisch Pfette, Schwelle, Rähm, Hauptträger) eingeführt; die
+(typisch Pfette, Schwelle, Einbinder, Hauptträger) eingeführt; die
 Kraftübertragung erfolgt **primär durch Vollholz-Kontakt
 zwischen den anliegenden Brust- und Schulterflächen**, nicht
 durch den Zapfen selbst.
@@ -439,7 +439,7 @@ Die Zapfenverbindung übernimmt:
 
 - **Druck längs zur Faser des hervorstehenden Bauteils**:
   durch Vollholz-Kontakt zwischen der Brust am Anschlussbauteil
-  und der angrenzenden Aussenfläche des Trägerbauteils.
+  und der angrenzenden Außenfläche des Trägerbauteils.
   **Nicht** durch die Zapfenstirn — dort ist die **Zapfenluft**
   von 5–10 mm konstruktiv eingerechnet, damit Schwund und
   Quellung des Holzes nicht die Bauteile auseinanderdrücken.
@@ -463,10 +463,10 @@ Auftrags-Vorbereitung naheliegenden Annahme — **nicht** EC5
 - **EC5 §6.1.5** für den Wirkungsmechanismus (Querdruck an
   der Lochwand),
 - **DIN EN 1995-1-1/NA** und **DIN 1052 §15** in Deutschland
-  für die zimmermannsmässige Bemessung als Gesamtnachweis. Die
+  für die zimmermannsmäßige Bemessung als Gesamtnachweis. Die
   schweizerische SIA 265:2021 deckt das Zapfenloch **nicht** ab
   (siehe quellenkonflikt-Block); sie bemisst von den
-  zimmermannsmässigen Verbindungen nur den Versatz (§6.9.2).
+  zimmermannsmäßigen Verbindungen nur den Versatz (§6.9.2).
 
 ### Typologie
 
@@ -475,7 +475,7 @@ Varianten auf:
 
 - **Einfaches Zapfenloch** (Standard, BTLx `Mortise`): ein
   rechteckiger Hohlraum mit Lochtiefe < Bauteildicke
-  (Blindloch). Standardfall an Pfetten, Schwellen und Rähmen.
+  (Blindloch). Standardfall an Pfetten, Schwellen und Einbindern.
 - **Doppel-Zapfenloch**: zwei parallele Zapfenlöcher
   nebeneinander, zur Aufnahme zweier Zapfen am selben
   Anschlussbauteil; modelliert als zwei `Zapfenloch`-Instanzen
@@ -490,7 +490,7 @@ Varianten auf:
   Benennung ist im Glossar abgelehnt** (siehe
   `abgelehnte_benennungen:`): „Schlitz" ist im Glossar für
   Schlitzblech-Aufnahmen reserviert (längliche schmale
-  Subtraktionen mit geringer Breite und grosser Tiefe zur
+  Subtraktionen mit geringer Breite und großer Tiefe zur
   Aufnahme eines Stahlblechs, eigener Folgeeintrag
   `hg_schlitz.md`). Die berufssprachliche Doppelnutzung wird
   anerkannt, im Glossar aber zugunsten der scharfen Trennung
@@ -503,7 +503,7 @@ Varianten auf:
 - **Brustzapfen-Loch / Haus-Zapfenloch** (BTLx
   `HouseMortise`): rechteckiges Zapfenloch mit zusätzlicher
   flacher Anlagestufe (Haus, Schulter) an der Bezugsfläche;
-  schafft eine grössere Flächen-Anlage gegen die Brust des
+  schafft eine größere Flächen-Anlage gegen die Brust des
   Zapfens und ist druckfest auch quer zur Zapfenachse.
   Klassisch bei Balken-Wechseln und bei der Anschlusskette
   Stuhlsäule ↔ Schwelle.
@@ -556,7 +556,7 @@ eigenen IFC-Typ.
 Im Sprachgebrauch bezeichnet **„zapfenlochen"** oder
 **„stemmen"** die Tätigkeit (Herstellen des Zapfenlochs mit
 Stemmeisen, Hohleisen, Kettenfräse oder CNC). Dieser
-Glossareintrag definiert ausschliesslich die **Resultatslesart**:
+Glossareintrag definiert ausschließlich die **Resultatslesart**:
 die geometrische Aussparung am fertigen Bauteil. Die Tätigkeit
 und ihre Werkzeug-/Reihenfolge-Wahl sind Gegenstand der
 Fertigungs-Schicht.
@@ -574,7 +574,7 @@ Fertigungs-Schicht.
   - **Lokale Platzierung**: SE(3); im Standardfall die Identität.
   - **Bezeichnung**: optional.
   - **Keine Backref auf das Bauteil**: das zugehörige Bauteil
-    (typisch eine Pfette, Schwelle, ein Rähm oder ein
+    (typisch eine Pfette, Schwelle, ein Einbinder oder ein
     Hauptträger) ist über die partitive Komposition bestimmt,
     nicht über ein Feld am Zapfenloch-Objekt.
 - **Verwendung**:
@@ -620,7 +620,7 @@ Fertigungs-Schicht.
     Stift und ohne rechteckigen Hohlraum. Geometrisch klar
     getrennt.
   - **Schlitz** (`schlitz`, Forward-Verweis A): längliche
-    Subtraktion mit geringer Breite und grosser Tiefe zur
+    Subtraktion mit geringer Breite und großer Tiefe zur
     Aufnahme eines Schlitzblechs. Im DACH-Korpus
     überwiegend für Schlitzblech-Aufnahmen reserviert; die
     durchgehende Variante des Zapfenlochs ist
@@ -672,7 +672,7 @@ Fertigungs-Schicht.
 - DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland
   zu Eurocode 5.
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
-  Holzbauwerken", Abschnitt 15 „Zimmermannsmässige Verbindungen".
+  Holzbauwerken", Abschnitt 15 „Zimmermannsmäßige Verbindungen".
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
   Architektenverein, Zürich — Volltext direkt eingesehen:
   behandelt das Zapfenloch nicht (Negativ-Befund, siehe
@@ -703,7 +703,7 @@ Fertigungs-Schicht.
 - Claus, T.: *Zapfenverbindungen im Holzbau – bruchmechanische
   Analyse und Vorschlag eines Berechnungsmodells.* Bautechnik
   97 (2020), Wiley.
-- Informationsdienst Holz: *Tragverhalten zimmermannsmässiger
+- Informationsdienst Holz: *Tragverhalten zimmermannsmäßiger
   Holzverbindungen.*
 
 **Korpus (nicht autoritativ):**
@@ -712,12 +712,12 @@ Fertigungs-Schicht.
   abgerufen 2026-05-14).
 - Wikipedia, Lemma „Mortise and tenon" (en.wikipedia.org,
   abgerufen 2026-05-14).
-- baunetzwissen.de, „Zimmermannsmässige Verbindungen".
-- baubeaver.de, „Zimmermannsmässige Holzverbindungen".
+- baunetzwissen.de, „Zimmermannsmäßige Verbindungen".
+- baubeaver.de, „Zimmermannsmäßige Holzverbindungen".
 - bauredakteur.de, „Holzverbindungen — Zimmerer und Schreiner".
 - zimmerer-treff.com, „Zapfenverbindungen".
 - schreiner-seiten.de, „Schlitz und Zapfen".
 - Recherche-Bericht
   [intern] (interner Anker
-  für die Quellen-Synthese, einschliesslich Sandbox-blockierter
+  für die Quellen-Synthese, einschließlich Sandbox-blockierter
   Norm-Volltexte).

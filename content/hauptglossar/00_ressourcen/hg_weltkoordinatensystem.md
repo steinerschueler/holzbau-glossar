@@ -1,7 +1,7 @@
 ---
 id: weltkoordinatensystem
 benennung: Weltkoordinatensystem
-kurz: "Das Weltkoordinatensystem ist das eine grosse, für das ganze Bauwerk gemeinsame Bezugsraster mit festem Nullpunkt und festen Richtungen (Ost, Nord, oben), an dem sich jedes einzelne Bauteil ausrichtet — damit alle vom Gleichen reden."
+kurz: "Das Weltkoordinatensystem ist das eine große, für das ganze Bauwerk gemeinsame Bezugsraster mit festem Nullpunkt und festen Richtungen (Ost, Nord, oben), an dem sich jedes einzelne Bauteil ausrichtet — damit alle vom Gleichen reden."
 synonyme: ["Globales Koordinatensystem", "Welt-CRS", "Welt-Bezugssystem"]
 abgelehnte_benennungen: [Weltsystem, Globalsystem, "world coordinate system", "world frame", WCS]
 oberbegriff: koordinatensystem
@@ -12,8 +12,9 @@ status: entwurf
 subglossar_pendant: notwendig  # Normalfall; Hinweis: das globale z-oben-Rechtssystem ist Grundmodell jeder räumlichen Darstellung, bis Meister praxisrelevant (HG_KONVENTIONEN §7).
 quellen_primär:
   - "ISO 19111:2019, 'Geographic information — Referencing by coordinates', insbesondere Abschnitt 4 (Terms and definitions: coordinate reference system, coordinate system, datum) und Abschnitt 7 (Coordinate systems)."
-  - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren), insbesondere zum kartesischen Koordinatensystem und zur Rechtshändigkeit."
-  - "DIN EN ISO 80000-3:2020-12, 'Größen und Einheiten – Teil 3: Raum und Zeit', Abschnitt 3 (Raum), Definitionen für Länge, Koordinaten, kartesische Bezugssysteme."
+  - "DIN EN ISO 80000-2:2023-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitte 17 (Koordinatensysteme) und 18 (Skalare, Vektoren und Tensoren). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitt 16 (Coordinate systems), Nr. 2-16.1 mit Bildern 1, 4 und 5: kartesische Koordinaten x, y, z, die Basisvektoren e_x, e_y, e_z bilden ein orthonormales Rechtssystem; ein Linkssystem ist als Ausnahme ausdrücklich anzugeben. [direkt]"
+  - "DIN EN ISO 80000-3:2026-06, 'Größen und Einheiten – Teil 3: Raum und Zeit', Abschnitt 3 (Begriffe), Tabelle 1, Definitionen für Länge, Koordinaten, kartesische Bezugssysteme. [einsicht: vorschau-pdf, Inhaltsverz.]"
   - "swisstopo (Bundesamt für Landestopografie): 'Bezugsrahmen LV95 / Koordinaten in der amtlichen Vermessung', technische Spezifikation EPSG:2056 (CH1903+/LV95). Insbesondere die Festlegung E (Easting), N (Northing) und der Höhenbezug (LN02 bzw. LHN95)."
   - "EN ISO 5459:2011, 'Geometrische Produktspezifikation (GPS) – Bezüge und Bezugssysteme', Abschnitt 5 (Bezugssysteme): Konventionen für rechtshändige kartesische Bezugssysteme in technischen Zeichnungen."
 quellen_sekundär:
@@ -28,7 +29,7 @@ quellenkonflikt: |
   Welt-Koordinatensystem für die digitale Modellierung von
   Holzkonstruktionen festlegt. Die einschlägigen Quellen sind
   geoinformatisch (ISO 19111, swisstopo) und allgemein-mathematisch
-  (DIN ISO 80000-2, EN ISO 5459).
+  (DIN EN ISO 80000-2, EN ISO 5459).
 
   Konflikt 1 — Achsenzuordnung:
   EN ISO 5459 (technische Zeichnung, Bauteilebene) lässt die
@@ -40,8 +41,10 @@ quellenkonflikt: |
   aufgelöst, nicht durch interne Mischkonventionen.
 
   Konflikt 2 — Winkelkonvention:
-  In der Mathematik (DIN ISO 80000-2) werden ebene Winkel um die
-  z-Achse gegen den Uhrzeigersinn ab +x gemessen. In der Geodäsie
+  In der Mathematik werden ebene Winkel um die z-Achse gegen den
+  Uhrzeigersinn ab +x gemessen; DIN EN ISO 80000-2 legt mit den
+  Zylinderkoordinaten ρ, φ, z als Rechtssystem denselben Drehsinn fest
+  (geprüft an ISO 80000-2:2009, Nr. 2-16.2). In der Geodäsie
   und im Schweizer Vermessungswesen (swisstopo, ISO 19111) wird das
   Azimut von Nord aus im Uhrzeigersinn gemessen. Beide Konventionen
   sind in ihrem Kontext normativ. Eigene Festlegung dieses Glossars
@@ -311,9 +314,12 @@ Schichtentrennung.
 
 - ISO 19111:2019, „Geographic information — Referencing by
   coordinates".
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2:
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2:
   Mathematik".
-- DIN EN ISO 80000-3:2020-12, „Größen und Einheiten – Teil 3:
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
+- DIN EN ISO 80000-3:2026-06, „Größen und Einheiten – Teil 3:
   Raum und Zeit".
 - swisstopo (Bundesamt für Landestopografie): „Bezugsrahmen
   LV95 / Koordinaten in der amtlichen Vermessung", technische

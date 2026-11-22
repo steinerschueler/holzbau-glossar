@@ -12,10 +12,11 @@ status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
   - "Hankinson, R. L.: 'Investigation of Crushing Strength of Spruce at Varying Angles of Grain'. Air Service Information Circular Vol. III, No. 259, U.S. Air Service, 1921."
-  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Gleichung (6.16) (Druck unter Winkel zur Faser σ_c,α,d) und Gleichungen (8.31), (8.32) (Lochleibungsfestigkeit f_h,α,k unter Winkel α zur Faser bei stiftförmigen Verbindungsmitteln)."
+  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Abschnitt 6.2.2, Gleichung (6.16) (Druck unter Winkel zur Faser σ_c,α,d) und Gleichungen (8.31), (8.32) (Lochleibungsfestigkeit f_h,α,k unter Winkel α zur Faser bei stiftförmigen Verbindungsmitteln). [via: Colling, Holzbau, 7. Aufl. 2021, §8.2 (Gl. 8.7/8.8, Fußnote 'EC 5: 6.2.2') — deckt den 6.16-Teil; Lochleibungs-Gleichungen weiterhin via übrige Sekundärliteratur]"
   - "SIA 265:2021 'Holzbau', §4.2.2.3 (Druckbeanspruchung unter einem Winkel zur Faserrichtung) — Schweizer Bemessungsregel, Pendant zur Hankinson-Formel; SIA nennt sie nicht namentlich 'Hankinson'. [direkt]"
   - "Eurocode 5 — Anwendungsdokument: Erläuterungen zu Gleichung (6.16) und zur Definition des Faserwinkels α als Winkel zwischen Kraftrichtung und Faserrichtung."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §8.2 'Druck unter einem Winkel zur Faser' (S. 129–130): Nachweis σ_c,α,d ≤ f*_c,α,d (Gl. 8.7) mit f*_c,α,d = f_c,0,d / (f_c,0,d/(k_c,90 · f_c,90,d) · sin²α + cos²α) (Gl. 8.8, EC5-Gl.-(6.16)-Form); Hinweis, dass der EC 5 selbst keine Angabe enthält, wie σ_c,α,d zu berechnen ist, und dass f*_c,α,d wegen des eingerechneten k_c,90 nicht direkt mit anderen Festigkeiten vergleichbar ist; Tabelle 8-1 zur wirksamen Auflagerlänge unter Winkel (3,0·sin-α-Verlängerung). Zusätzlich §2.1.3.1 (S. 20–21): Hankinson-Familien-Näherung für den E-Modul unter Faserwinkel, E_α = E_0·E_90 / (E_0·sin³α + E_90·cos³α) (Gl. 2.5) — mit Potenz 3 statt der Festigkeits-Potenz 2; Bild 2.4 zeigt für Nadelholz C 24 den steilen Abfall von E_0 = 11 000 auf E_90 = 370 N/mm² schon bei kleinen Winkeln."
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 5 (Lochleibung), Kap. 6 (Druck unter Winkel)."
   - "Blaß, H. J.; Flaig, M.: Stabförmige Bauteile aus Brettsperrholz. Karlsruher Berichte zum Ingenieurholzbau, Bd. 24, KIT Scientific Publishing, Karlsruhe 2012, DOI 10.5445/KSP/1000030362, Kap. 4 (lagenweise Bemessung mit α_i je Lage)."
   - "Forest Products Laboratory: Wood Handbook FPL-GTR-282, USDA 2021, Kap. 5 (Mechanical Properties of Clear Wood, Hankinson-Formel)."
@@ -285,11 +286,18 @@ ist hier nicht definiert; α-Anfragen liefern „nicht zutreffend".
   at Varying Angles of Grain". Air Service Information Circular
   Vol. III, No. 259, U.S. Air Service, 1921.
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
-  von Holzbauten – Teil 1-1", Gleichungen 6.16, 8.31, 8.32.
+  von Holzbauten – Teil 1-1", Abschnitt 6.2.2 (Gleichung 6.16),
+  Gleichungen 8.31, 8.32.
 - SIA 265:2021, „Holzbau", §4.2.2.3 (Druck unter Winkel zur Faser).
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §8.2 „Druck unter einem Winkel zur
+  Faser" sowie §2.1.3.1 (E-Modul-Näherung Gl. 2.5 mit
+  sin³α/cos³α, Bild 2.4). Volltext-Scan liegt Anweiser vor; direkt
+  eingesehen 2026-08-13/14.
 - Blass, H. J.; Sandhaas, C.: *Ingenieurholzbau – Grundlagen der
   Bemessung.* KIT Scientific Publishing, Karlsruhe 2016.
 - Blaß, H. J.; Flaig, M.: *Stabförmige Bauteile aus

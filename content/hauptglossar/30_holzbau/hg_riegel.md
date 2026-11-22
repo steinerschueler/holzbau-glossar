@@ -7,7 +7,7 @@ abgelehnte_benennungen: [Brustriegel, Sturzriegel, Stockwerksriegel, Brüstungsr
 oberbegriff: bauteil
 begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, ebene, weltkoordinatensystem, toleranzen]
-abgrenzung_zu: [pfette, latte, schwelle, raehm, pfosten, staender, strebe, kopfband, fussband, knagge, wand, mann, andreaskreuz, sturz, kehlbalken, bauteil]
+abgrenzung_zu: [pfette, latte, schwelle, einbinder, pfosten, staender, strebe, kopfband, fussband, knagge, wand, mann, andreaskreuz, sturz, kehlbalken, bauteil]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
@@ -19,6 +19,7 @@ quellen_sekundär:
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 'Wandbau' und 'Fachwerk'."
   - "Natterer, J.; Herzog, T.; Volz, M.: Holzbau-Atlas. 4. Aufl., Birkhäuser, Basel 2003, Kap. 'Wandbauteile' und 'Fachwerkkonstruktionen'."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Riegel', 'Brustriegel', 'Sturzriegel'."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5. Kap. 3.7.2 „Fachwerkwände“ (S. 161): die Legende führt das nackte Simplex „⑦ Riegel“ **und** das öffnungsbezogene Kompositum „⑥ Fensterriegel“ am selben axonometrischen Wandmodell, neben ① Längsschwelle, ② Querschwelle, ③ Rähm, ④ Wandbalken, ⑤ Längsschwelle, ⑧ Eckpfosten, ⑨ Fensterpfosten, ⑩ Türpfosten, ⑪ Deckenbalken — gedruckter Berufsschul-Beleg für die Positions-Annotations-Lesart der Riegel-Komposita. Kap. 3.9.7 „Lastabtragung der Dachkonstruktionen“ (S. 172), Spalte „Pfettendach“: „Queraussteifung durch: Streben / **Querriegel** / Zangenpaar“ — Verwendung von „Querriegel“ im **Dachtragwerk**, siehe Quellenkonflikt-Block."
   - "Thesaurus traditioneller Holzbau (TTH), RWTH Aachen, Lemma 'Riegel (Fachwerk)' (begriff_id 971)."
   - "RDK Labor — Reallexikon zur Deutschen Kunstgeschichte, Lemma 'Fachwerk, Fachwerkbau'."
   - "DWDS — Etymologisches Wörterbuch des Deutschen, Lemma 'Riegel', dwds.de/wb/etymwb/Riegel."
@@ -65,9 +66,10 @@ quellenkonflikt: |
   - Der **Sturzriegel** trägt eine **funktionale Doppelnatur**: er ist
     geometrisch Riegel (horizontal zwischen zwei Pfosten) und
     funktional **Sturz** (lastüberbrückendes Bauteil über einer
-    Wand-Öffnung, vgl. den noch nicht angelegten Eintrag `sturz`).
-    Diese Doppelnatur ist im Erläuterungsblock thematisiert und
-    rechtfertigt keine eigene Bauteilrolle.
+    Wand-Öffnung). Seit Welle 14 trägt der eigene Eintrag
+    `hg_sturz.md` diese Funktion als **Doppelrolle** (funktional
+    definierte Bauteilrolle); die Riegel-Geometrie und die
+    Positions-Annotation `RiegelPosition.STURZ` bleiben unberührt.
   - Eine **zweite Lesart** des Wortes „Riegel" tritt im **Dachtragwerk
     historischer Bauformen** in den Komposita **Druckriegel**,
     **Spannriegel**, **Sprengriegel** und **Binderriegel** auf
@@ -86,8 +88,11 @@ quellenkonflikt: |
     `synonyme` mit Vorbehalt geführt: berufssprachlich umgangs-
     sprachlich verwendbar, aber als technische Hauptbenennung
     abzuraten.
-  - Englische Bezeichnungen sind nach CLAUDE.md-Architektur-Verbot
-    nicht als Synonyme aufzunehmen. **„cripple stud"** ist zusätzlich
+  - Englische Bezeichnungen sind nach dem CLAUDE.md-Architektur-
+    Verbot in den **Glossardefinitionen** unzulässig, als Synonyme
+    grundsätzlich erlaubt; dieser Eintrag lehnt sie als eigene
+    Eintrags-Linie dennoch ab (kein englisches Wort trägt die
+    Riegel-Lesart deckungsgleich). **„cripple stud"** ist zusätzlich
     ein **false friend**: das englische Wort bezeichnet einen
     **verkürzten Pfosten** (vertikal!) ober- oder unterhalb einer
     Öffnung, nicht den horizontalen Wand-Riegel. **„nogging"** (UK)
@@ -96,6 +101,39 @@ quellenkonflikt: |
     Spezialfälle ab und sind ebenfalls abgelehnt.
 
   Diese Festlegung ist konsistent mit allen konsultierten Quellen.
+
+  **Berufsschul-Befund** (Bläsi/Ferdinand, *Tabellenbuch Zimmerer*,
+  9. Aufl. 2021, Volltext-Scan liegt Anweiser vor, direkt eingesehen
+  2026-08-14). Zwei Funde, einer bestätigend, einer als offener
+  Drift-Punkt:
+
+  - **Bestätigend (S. 161, Kap. 3.7.2 „Fachwerkwände"):** Die
+    gedruckte Bauteil-Legende führt „⑦ Riegel" als nacktes Simplex
+    **neben** „⑥ Fensterriegel" am selben Wandmodell. Das ist genau
+    die Struktur, die dieser Eintrag setzt: eine Riegel-Rolle, dazu
+    öffnungs- bzw. lagebezogene Komposita als
+    **Positions-Annotationen**. „Fensterriegel" ist im Eintrag
+    heute weder in `synonyme:` noch in `abgelehnte_benennungen:`
+    geführt; es fällt semantisch zwischen die bereits gelisteten
+    Positionen `BRUST` (Brüstungsriegel unter der Öffnung) und
+    `STURZ` (Sturzriegel über der Öffnung) und benennt den
+    Öffnungs-Bezug ohne Höhenangabe. Aufnahme in die
+    Komposita-Liste ist Folgearbeit (Anweiser-Entscheid), kein
+    Definitions-Eingriff.
+  - **Offener Drift-Punkt (S. 172, Kap. 3.9.7):** Das Buch führt
+    „**Querriegel**" in der Spalte „Pfettendach" als Mittel der
+    **Queraussteifung des Dachtragwerks** (neben Streben und
+    Zangenpaar). Dieser Eintrag führt „Querriegel" dagegen in
+    `synonyme:` als Wortvariante des **Wand**-Riegels und lehnt
+    die Dach-Riegel-Lesart (Druck-/Spann-/Spreng-/Binderriegel)
+    ausdrücklich ab. Der Berufsschul-Fund zeigt, dass „Querriegel"
+    im DE-Ausbildungs-Korpus **auch** dachseitig besetzt ist.
+    Die Synonym-Liste bleibt hier **unverändert** (reine
+    Quellen-Aufwertung); die Kollision ist als Drift-Kandidat für
+    eine spätere ABW-/Folgewelle notiert — Auflösungs-Optionen:
+    Verschiebung von „Querriegel" nach
+    `abgelehnte_benennungen:` oder Disambiguations-Vermerk analog
+    zur Dach-Riegel-Passage der Erläuterung.
 ---
 
 ## Prosa-Definition
@@ -106,7 +144,11 @@ einer gemeinsamen Wandebene horizontal und rechtwinklig zu diesen
 verläuft und das die Wandebene aussteift, das Gefach in kleinere
 Ausfachungsfelder unterteilt und Lasten der Wandbekleidung,
 Öffnungs-Einfassungen oder Installationen aufnimmt, ohne primärer
-vertikaler Lastpfad der Wand zu sein.
+vertikaler Lastpfad der Wand zu sein; liegt der Riegel über einer
+Wand-Öffnung, kann dasselbe Bauteil zusätzlich die
+lastüberbrückende Bauteilrolle **Sturz** tragen (Doppelrolle,
+siehe `sturz`) — die Lastpfad-Freiheit gilt für die Riegelrolle,
+nicht für das Bauteil in dieser Doppelrolle.
 
 ## Mathematische Definition
 
@@ -122,7 +164,7 @@ Sei
   (|⟨n_hat_W, e_z⟩| ≤ ε_K — die Wand steht senkrecht im Sinne von
   HG_KONVENTIONEN.md §1, d. h. lotrecht),
 - P₁, P₂ zwei vertikal stehende Stab-Bauteile in E_W (vgl.
-  Forward-Verweis `pfosten`) mit Bauteilachsen entlang
+  `staender`, dort „Pfosten“ als Synonym) mit Bauteilachsen entlang
   Einheitsvektoren v_hat₁, v_hat₂ ∈ S², wobei
   |⟨v_hatᵢ, e_z⟩| ≥ 1 − ε_K  (Lotrechtheit, Sinus-Test gegen e_z),
 - e_z:= (0, 0, 1)ᵀ die vertikale Welt-Achse,
@@ -222,21 +264,21 @@ Wesentliche abgeleitete Größen:
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
   bereits definierte Begriffe (`bauteil`, `bauteilachse`,
   `strecke`, `einheitsvektor`, `ebene`, `weltkoordinatensystem`,
-  `toleranzen`). Der Begriff `pfosten` / `ständer` ist im
-  aktuellen Hauptglossar noch nicht eigenständig angelegt; er
-  steht als Forward-Verweis in `abgrenzung_zu` und wird in der
-  Definition durch die geometrische Umschreibung „vertikal
-  stehende Stab-Bauteile in einer gemeinsamen Wandebene"
-  ersetzt. Die formale Bedingung ist nicht auf den
+  `toleranzen`). Der Begriff `pfosten` / `ständer` (seit Welle 9
+  als `hg_staender.md` angelegt, „Pfosten" dort Synonym) wird in
+  der Definition bewusst durch die geometrische Umschreibung
+  „vertikal stehende Stab-Bauteile in einer gemeinsamen
+  Wandebene" ersetzt. Die formale Bedingung ist nicht auf den
   Glossareintrag `pfosten` angewiesen, sondern nur auf das
   geometrische Merkmal der Lotrechtheit (Sinus-Test gegen e_z).
 - **Sturzriegel-Doppelnatur (qualitativ, nicht Bestandteil der
   Definition)**: Wenn der Riegel über einer Wand-Öffnung liegt
-  und Lasten oberhalb der Öffnung überbrückt, übernimmt er
-  zusätzlich die Funktion eines Sturzes (vgl. Forward-Verweis
-  `sturz`). Die Riegel-Definition bleibt geometrisch erfüllt;
-  die Sturz-Funktion ist Eigenschaft der Tragwerks-Analyse,
-  nicht der Riegelrolle.
+  und Lasten oberhalb der Öffnung überbrückt, trägt dasselbe
+  Bauteil zusätzlich die Bauteilrolle **Sturz** (`hg_sturz.md`,
+  Doppelrolle). Die Riegel-Definition bleibt geometrisch
+  erfüllt; die Überbrückungs-Bedingungen (Öffnungs-Überspannung,
+  beidseitige Auflagerung, kein Zwischenauflager) werden im
+  Sturz-Eintrag geführt, nicht in der Riegelrolle.
 
 ## Erläuterung (nicht normativ)
 
@@ -244,7 +286,7 @@ Der Riegel ist im DACH-Holzbau das **horizontale Quer-Bauteil
 einer Wand** und Pendant der vertikalen Pfosten / Ständer. Das
 **tragende Grundgerüst einer Holzwand** im Riegelbau (CH) bzw.
 Fachwerkbau (DE/AT) besteht aus Schwelle (unten, durchlaufend),
-Rähm (oben, durchlaufend), Pfosten (vertikal) und dazwischen
+Einbinder (oben, durchlaufend), Pfosten (vertikal) und dazwischen
 gespannten Riegeln (horizontal-quer); diagonale Streben können
 die Aussteifung verstärken. Das Wandfeld, das zwei Pfosten und
 zwei Riegel umschließen, heißt im Fachwerk **Gefach** (regional
@@ -286,10 +328,10 @@ eigenständigen Bauteilrollen (siehe Quellenkonflikt-Block):
   Unterteilung.
 - **Stockwerksriegel**: oberster Riegel pro Stockwerk im
   geschosshohen Wandbau; im klassischen Stockwerkbau ersetzt
-  durch das Rähm.
+  durch den Einbinder.
 - **Schwellenriegel** / **Fußriegel**: unmittelbar über der
   Schwelle, konstruktive Doppelung der Schwellen-Ebene; selten.
-- **Kopfriegel** / **Rähmriegel**: unmittelbar unter dem Rähm,
+- **Kopfriegel** / **Rähmriegel**: unmittelbar unter dem Einbinder,
   Schnittstelle zur Geschossdecke; regional unterschiedlich
   verwendet.
 
@@ -304,17 +346,18 @@ Wand-Öffnung und trägt damit das Eigengewicht der über der
 Öffnung liegenden Riegel, Pfosten-Stummel, Ausmauerungen oder
 Beplankungen. In dieser Rolle fungiert er als **Sturz** im
 Hochbau-Sinn — Pendant des Stahl- oder Stahlbeton-Sturzes in
-massiven Wänden — und ist damit Schnittstelle zum Glossarbegriff
-`sturz` (Forward-Verweis; eigener Eintrag bei der ersten
-Wand-Öffnungs-Modellierung). Im traditionellen Fachwerk wird der
+massiven Wänden — und trägt die entsprechende Bauteilrolle
+`sturz` (eigener Eintrag `hg_sturz.md` seit Welle 14) in
+**Doppelrolle**. Im traditionellen Fachwerk wird der
 Sturzriegel durch zusätzliche Sturzstrebe oder Kopfwinkelhölzer
 entlastet.
 
-Die Doppelnatur rechtfertigt **keine eigene Bauteilrolle**: die
-Riegel-Geometrie bleibt unverändert; die Sturz-Funktion ist
-Eigenschaft der Tragwerks-Analyse und der Position relativ zu
-einer Öffnung in der Wand, nicht der Bauteilrolle „Riegel"
-selbst.
+Die Doppelnatur ändert an der Riegelrolle nichts: die
+Riegel-Geometrie bleibt unverändert; die lastüberbrückende
+Funktion wird von der funktional definierten Bauteilrolle
+`sturz` getragen, die dasselbe Bauteil zusätzlich annimmt
+(Doppelrollen-Festlegung in `hg_sturz.md`,
+Quellenkonflikt-Punkt 3).
 
 ### Querschnitt und Werkstoff
 
@@ -352,7 +395,7 @@ Glossareintrag wird erst bei Aufnahme historischer Dachformen in
 der App angelegt (Folgearbeit-Trigger: Hängewerk- bzw.
 Sprengwerk-Tool).
 
-### Riegel ≠ Pfette ≠ Latte ≠ Schwelle ≠ Rähm
+### Riegel ≠ Pfette ≠ Latte ≠ Schwelle ≠ Einbinder
 
 Aus zimmermannssprachlicher Sicht ist die saubere Trennung dieser
 fünf Begriffe wichtig:
@@ -363,15 +406,15 @@ fünf Begriffe wichtig:
   oder Höhenlinie; trägt Sparren.
 - **Latte**: kleines Sekundärbauteil quer auf dem Sparren als
   Auflage der Eindeckung.
-- **Schwelle** (Forward-Verweis): unterstes durchlaufendes
+- **Schwelle** (`schwelle`): unterstes durchlaufendes
   Wand-Längsholz; trägt die Pfosten und überträgt Vertikallasten
   auf das Fundament.
-- **Rähm** (Forward-Verweis): oberstes durchlaufendes Wand-
+- **Einbinder** (`einbinder`): oberstes durchlaufendes Wand-
   Längsholz; trägt die Geschossdecke bzw. das Dachtragwerk.
 
 Die geometrische Klasse „horizontaler Balken in einer Wandebene"
-ist Schwelle, Rähm und Riegel gemein; sie unterscheiden sich
-durch **Position und Funktion**: Schwelle und Rähm sind
+ist Schwelle, Einbinder und Riegel gemein; sie unterscheiden sich
+durch **Position und Funktion**: Schwelle und Einbinder sind
 **Wand-Längsbauteile** (durchlaufend über mehrere Pfosten),
 Riegel ist ein **Wand-Querbauteil** (zwischen jeweils zwei
 Pfosten eingespannt).
@@ -404,20 +447,17 @@ hier nur als Lesehilfe genannt.
   - **Riegelposition** (`riegelposition`, Folgearbeit): Wert
     aus { Brust, Sturz, Stockwerk, Zwischen, Sonstige }.
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Pfosten** / **Ständer** (Forward-Verweis, eigener Eintrag
-    folgt): vertikales Stab-Bauteil; Auflager und Endpunkt-
-    Anschluss des Riegels.
-  - **Schwelle** (Forward-Verweis, eigener Eintrag folgt):
-    unterstes Wand-Längsholz; trägt die Pfosten, an denen die
-    Riegel hängen.
-  - **Rähm** (Forward-Verweis, eigener Eintrag folgt): oberstes
+  - **Pfosten** / **Ständer** (`staender`): vertikales
+    Stab-Bauteil; Auflager und Endpunkt-Anschluss des Riegels.
+  - **Schwelle** (`schwelle`): unterstes Wand-Längsholz;
+    trägt die Pfosten, an denen die Riegel hängen.
+  - **Einbinder** (`einbinder`): oberstes
     Wand-Längsholz; bildet den oberen Wand-Abschluss, kann von
     der obersten Riegel-Ebene überlagert sein (Kopfriegel-
     Position).
-  - **Sturz** (Forward-Verweis, eigener Eintrag folgt): Sturzriegel
-    übernimmt funktional die Sturzfunktion über einer Wand-
-    Öffnung; eigener Eintrag bei der ersten Wand-Öffnungs-
-    Modellierung.
+  - **Sturz** (`sturz`): Sturzriegel übernimmt die
+    Sturzfunktion über einer Wand-Öffnung in Doppelrolle;
+    eigener Eintrag `hg_sturz.md` seit Welle 14.
 - **Abgrenzung**:
   - **Pfette** (`pfette`): horizontaler Längsträger des **Dach**-
     Tragwerks (parallel zu Traufe, First, Höhenlinie der
@@ -429,22 +469,23 @@ hier nur als Lesehilfe genannt.
     Sparren als Auflage der Eindeckung. Geometrisch sehr
     kleiner Querschnitt (24/48 bis 40/60 mm), nicht im
     Wandbau verortet.
-  - **Schwelle** (Forward-Verweis): unterstes **Längs**-Holz der
+  - **Schwelle** (`schwelle`): unterstes **Längs**-Holz der
     Wand, durchlaufend über mehrere Pfosten; nicht zwischen
     Pfosten eingespannt. Der Riegel ist **Quer**-Bauteil zwischen
     je zwei Pfosten.
-  - **Rähm** (Forward-Verweis): oberstes Längs-Holz der Wand,
+  - **Einbinder** (`einbinder`): oberstes Längs-Holz der Wand,
     durchlaufend über mehrere Pfosten; trägt die Geschossdecke
     bzw. das Dachtragwerk. Der Riegel hat keine vergleichbare
     primäre Lasttrag-Funktion.
-  - **Pfosten** / **Ständer** (Forward-Verweis): vertikales Stab-
+  - **Pfosten** / **Ständer** (`staender`): vertikales Stab-
     Bauteil im Wandbau; trägt Vertikallasten. Der Riegel ist
     horizontal und ist gerade nicht der Pfosten.
-  - **Sturz** (Forward-Verweis): tragendes Bauteil über einer
+  - **Sturz** (`sturz`): tragendes Bauteil über einer
     Wand-Öffnung. Im Holzbau **kann** ein Sturzriegel die
-    Sturzfunktion übernehmen (Doppelnatur, siehe Erläuterung);
-    der Sturz im allgemeinen Hochbau-Sinn ist werkstoffneutral
-    (Mauerwerk, Stahl, Stahlbeton, Holz) und kein Riegel.
+    Sturzfunktion übernehmen (Doppelrolle, siehe Erläuterung
+    und `hg_sturz.md`); der Sturz ist werkstoffneutral
+    definiert (ISO 16739-1) und als Rolle orthogonal zum
+    Riegel, nicht dessen Spezialisierung.
   - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken
     zwischen einem Sparrenpaar zur Dachaussteifung. Strukturell
     analog zum Wand-Riegel (Querbalken zwischen zwei vertikal
@@ -475,6 +516,12 @@ hier nur als Lesehilfe genannt.
   Birkhäuser, Basel 2003.
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.* DVA,
   7. Auflage 2007.
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, S. 161 (Kap. 3.7.2 „Fachwerkwände",
+  Legendenpunkte ⑥ Fensterriegel und ⑦ Riegel), S. 172
+  (Kap. 3.9.7, „Querriegel" als Queraussteifung im Pfettendach).
+  Volltext-Scan liegt Anweiser vor; direkt eingesehen 2026-08-14.
 - Thesaurus traditioneller Holzbau (TTH), RWTH Aachen, Lemma
   „Riegel (Fachwerk)" (begriff_id 971).
 - RDK Labor — Reallexikon zur Deutschen Kunstgeschichte, Lemma

@@ -1,7 +1,7 @@
 ---
 id: dachueberstand
 benennung: Dachüberstand
-kurz: "Der Dachüberstand ist der Teil des Daches, der über die Aussenwände des Hauses hinausragt und so die Wände vor Regen und Sonne schützt."
+kurz: "Der Dachüberstand ist der Teil des Daches, der über die Außenwände des Hauses hinausragt und so die Wände vor Regen und Sonne schützt."
 synonyme: [Dachvorsprung, Dachüberhang, Dachauskragung]
 abgelehnte_benennungen:
   - Vordach
@@ -27,10 +27,10 @@ abgrenzung_zu:
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen) und Abschnitt 2 (Konstruktive Anforderungen): Dachüberstand als Auskragung der Dachfläche über die Aussenwand-Fluchtlinie; bauliche Holzschutz-Funktion."
-  - "DIN 68800-2:2022-02, 'Holzschutz – Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau', Abschnitt 5 (Konstruktive Maßnahmen): ausreichender Dachüberstand als Schlüsselmassnahme des konstruktiven Holzschutzes (qualitativ; ohne numerische Mindesttiefe)."
+  - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen) und Abschnitt 2 (Konstruktive Anforderungen): Dachüberstand als Auskragung der Dachfläche über die Außenwand-Fluchtlinie; bauliche Holzschutz-Funktion."
+  - "DIN 68800-2:2022-02, 'Holzschutz – Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau', Abschnitt 5 (Konstruktive Maßnahmen): ausreichender Dachüberstand als Schlüsselmaßnahme des konstruktiven Holzschutzes (qualitativ; ohne numerische Mindesttiefe)."
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Dachüberstand' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §5 'Bauteile und Strukturen' behandelt nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5). Vorausgesetzter Berufsbegriff. [direkt]"
-  - "DIN 18338:2019-09 'VOB Teil C: Dachdeckungs- und Dachabdichtungsarbeiten', Abschnitt 0 (Begriffe): Überstandsbereich an Traufe und Ortgang als Anschluss-Geometrie."
+  - "DIN 18338:2019-09 'VOB Teil C: ATV Dachdeckungsarbeiten' (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336; die ATV führt keine Begriffs-Sektion — Abschnitt 0 sind Hinweise für das Aufstellen der Leistungsbeschreibung, die Dachkanten-Begriffe werden vorausgesetzt und nach Längenmaß abgerechnet), vorausgesetzte Lesart: Überstandsbereich an Traufe und Ortgang als Anschluss-Geometrie."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1', Abschnitt 5 (Darstellung von Dächern): Darstellung des Dachüberstands im Werkplan."
 quellen_sekundär:
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage, Kap. 'Dachüberstand und Trauflösung'."
@@ -50,12 +50,12 @@ quellenkonflikt: |
   alle drei Normen verwenden den Begriff vorausgesetzt und bedienen
   sich seiner über seine Funktion (baulicher Holzschutz,
   Anschluss-Geometrie am Polygonrand der Dachfläche). DIN 68800-2
-  führt qualitativ „ausreichender Dachüberstand" als Schlüsselmassnahme
+  führt qualitativ „ausreichender Dachüberstand" als Schlüsselmaßnahme
   des konstruktiven Holzschutzes, ohne eine numerische Mindesttiefe
   zu fixieren. Eigene Festlegung: Dachüberstand ist im Glossar als
   geometrisches Merkmal an der Dachfläche geführt — definiert als die
-  Teilfläche der Dachfläche, deren horizontale Projektion ausserhalb
-  der Aussenwand-Fluchtlinie des Bauwerks liegt. Diese Festlegung
+  Teilfläche der Dachfläche, deren horizontale Projektion außerhalb
+  der Außenwand-Fluchtlinie des Bauwerks liegt. Diese Festlegung
   ist mit allen konsultierten Normen kompatibel und entspricht der
   Konvention aus `hg_dachflaeche.md`, in der Begriffe der Dach-
   Geometrie nicht aus Normen übernommen, sondern konstruktiv aus
@@ -75,11 +75,11 @@ quellenkonflikt: |
   **(3) „Vordach" — harte Abgrenzung, kein Synonym.** „Vordach"
   bezeichnet im DACH-Holzbau-Korpus eine eigenständige Bauteilgruppe
   mit eigener Tragstruktur (Stützen, Konsolen, eigenständiger
-  Träger-Rahmen) vor der Aussenwand und ist **kein Subtyp des
+  Träger-Rahmen) vor der Außenwand und ist **kein Subtyp des
   Dachüberstands**. Belegt durch Gebäudehülle Schweiz, Merkblatt
   FD 08/12 „Vordächer in Holz", sowie durch konsistenten Korpus-
   Sprachgebrauch (Lignum, Zimmerei-Glossare). Die Schwelle zwischen
-  „grosszügigem Dachüberstand" und „Vordach" wird operationell durch
+  „großzügigem Dachüberstand" und „Vordach" wird operationell durch
   die Existenz einer eigenständigen Tragstruktur gezogen, nicht durch
   eine feste Längengrenze (vgl. `hg_sparrenueberstand.md`,
   Erläuterung „Typische Längen"). „Vordach" steht damit in
@@ -97,7 +97,7 @@ quellenkonflikt: |
 ## Prosa-Definition
 
 Ein **Dachüberstand** ist der Teilbereich einer Dachfläche, dessen
-Punkte in der horizontalen Projektion ausserhalb der Aussenwand-
+Punkte in der horizontalen Projektion außerhalb der Außenwand-
 Fluchtlinie des Bauwerks liegen und der damit die Auskragung der
 Dachfläche über die geschlossene Gebäudehülle hinaus bildet.
 
@@ -107,19 +107,19 @@ Sei
 
 - D = (E, P, n_a) eine Dachfläche im Sinne von `dachflaeche` mit
   Trägerebene E ⊂ ℝ³, Umrisspolygon P = (v₁, …, v_k) ⊂ E und nach
-  aussen weisender Einheits-Normale n_a ∈ S² mit ⟨n_a, e_z⟩ ≥ 0
+  außen weisender Einheits-Normale n_a ∈ S² mit ⟨n_a, e_z⟩ ≥ 0
   (siehe `hg_dachflaeche.md`),
 - F(D):= F(P) ⊂ E das von P berandete, abgeschlossene Flächenstück
   der Dachfläche,
 - B ein Bauwerk im Sinne von `bauwerk`,
 - π_xy: ℝ³ → ℝ²,  π_xy(x, y, z):= (x, y) die orthogonale Projektion
   auf die Welt-xy-Ebene,
-- A_B ⊂ ℝ² die **Aussenwand-Fluchtlinien-Hülle** des Bauwerks B in
+- A_B ⊂ ℝ² die **Außenwand-Fluchtlinien-Hülle** des Bauwerks B in
   der xy-Ebene; sie ist das einfache geschlossene Polygon (oder die
   endliche Vereinigung solcher Polygone) in der xy-Ebene, dessen Rand
-  die Projektion der aussenseitigen Aussenwand-Aussenflächen von B in
+  die Projektion der außenseitigen Außenwand-Außenflächen von B in
   Höhe der Dach-Anschlusslage darstellt (operationell: die untere
-  Berandung der Dachgeschoss-Aussenwände, projiziert auf die xy-Ebene),
+  Berandung der Dachgeschoss-Außenwände, projiziert auf die xy-Ebene),
 - ε_L:= Toleranzen.LAENGE_EPS die Längen-Toleranz.
 
 Dann ist der **Dachüberstand** der Dachfläche D bezüglich des Bauwerks B
@@ -132,7 +132,7 @@ die Teilmenge
 mit A_B^◦ als dem topologischen Inneren von A_B in der xy-Ebene
 (toleranzbewehrt: π_xy(x) ist genau dann nicht in A_B^◦, wenn der
 xy-Abstand von π_xy(x) zum Rand ∂A_B kleiner als ε_L ist oder
-π_xy(x) ausserhalb von A_B liegt).
+π_xy(x) außerhalb von A_B liegt).
 
 Die **Überstands-Länge** (horizontale Projektionstiefe) in einem
 Randpunkt p ∈ ∂F(D) ∩ Ü(D, B) ist
@@ -142,7 +142,7 @@ Randpunkt p ∈ ∂F(D) ∩ Ü(D, B) ist
 ```
 
 also der euklidische Abstand der xy-Projektion von p zum nächst-
-gelegenen Punkt der Aussenwand-Fluchtlinie. Ist ein Polygon-Rand-
+gelegenen Punkt der Außenwand-Fluchtlinie. Ist ein Polygon-Rand-
 Streifen von ∂F(D) lokal parallel zur entsprechenden Wand-Fluchtlinie,
 so ist ℓ_⊥ entlang dieses Streifens konstant; abweichend wird ℓ_⊥
 punktweise definiert.
@@ -150,9 +150,9 @@ punktweise definiert.
 ## Wohldefiniertheit
 
 - **Existenz von A_B**: Für jedes Bauwerk B mit einer geschlossenen,
-  erdberührten Aussenwand-Hülle (im Sinne von `hg_bauwerk.md`,
-  Aggregat-Voraussetzung) ist die xy-Projektion der aussenseitigen
-  Aussenwand-Aussenflächen ein nicht-leeres einfaches Polygon oder
+  erdberührten Außenwand-Hülle (im Sinne von `hg_bauwerk.md`,
+  Aggregat-Voraussetzung) ist die xy-Projektion der außenseitigen
+  Außenwand-Außenflächen ein nicht-leeres einfaches Polygon oder
   eine endliche Vereinigung solcher Polygone. Bei Sondertopologien
   (Innenhof, durchgesteckte Lichthöfe) ist A_B mehrfach
   zusammenhängend; die Definition (1) gilt unverändert, indem A_B^◦
@@ -161,7 +161,7 @@ punktweise definiert.
   festgelegtem Bauwerk B ist die Menge Ü(D, B) durch (1) punktweise
   eindeutig festgelegt; sie hängt nicht von der Wahl eines
   Repräsentanten des Bauwerks-Aggregats ab, solange die
-  Aussenwand-Fluchtlinien-Hülle dieselbe ist (Wohldefiniertheit
+  Außenwand-Fluchtlinien-Hülle dieselbe ist (Wohldefiniertheit
   unter Repräsentanten-Wahl).
 - **Unabhängigkeit von der Polygon-Parametrisierung**: F(D) ist
   durch P bis auf die Wahl des Anfangsindex und der Umlaufrichtung
@@ -181,7 +181,7 @@ punktweise definiert.
   - **Flachdach** (α(D) = 0): Definition (1) gilt unverändert; der
     Überstand ist dann ein in der xy-Ebene liegender Streifen
     konstanter Höhe.
-- **Toleranzwahl**: Der Punkt-Innen-/Aussen-Test gegen A_B^◦ ist
+- **Toleranzwahl**: Der Punkt-Innen-/Außen-Test gegen A_B^◦ ist
   über einen xy-Abstandstest zum Rand ∂A_B toleranzbewehrt; die
   Toleranz Toleranzen.LAENGE_EPS wird in mm-Einheiten ausgewertet.
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
@@ -264,9 +264,9 @@ abgeleiteter Sparren-Werkmaß.
 Der Dachüberstand erfüllt drei wesentliche Funktionen:
 
 1. **Konstruktiver Holzschutz** (DIN 68800-2; Lignum-Lignatec 35):
-   Der Überstand reduziert die direkte Bewitterung von Aussenwand,
+   Der Überstand reduziert die direkte Bewitterung von Außenwand,
    Sockelbereich und Fassadenanschlüssen; ein ausreichender
-   Überstand ist die wichtigste bauliche Schutzmassnahme. Holz im
+   Überstand ist die wichtigste bauliche Schutzmaßnahme. Holz im
    überdeckten Bereich kann der Gebrauchsklasse GK 1 (DIN 68800-1)
    zugeordnet werden, was den Anforderungs-Holzschutz reduziert.
 2. **Sommerlicher Wärmeschutz**: Bei steiler Sonneneinstrahlung
@@ -275,7 +275,7 @@ Der Dachüberstand erfüllt drei wesentliche Funktionen:
    den solaren Eintrag in die dachnahen Räume.
 3. **Architektonische Tradition**: Der Dachüberstand prägt das
    Erscheinungsbild des Bauwerks. Der Schweizer Alpenraum-
-   Holzbau kennt traditionell grosse Überstände (800 mm und mehr,
+   Holzbau kennt traditionell große Überstände (800 mm und mehr,
    bis 1500 mm), das norddeutsche Klinker- und Massivbau-Spektrum
    eher kleine Überstände; moderne flache Architektur tendiert zu
    Null- oder Minimal-Überständen, kompensiert durch erhöhten
@@ -290,15 +290,15 @@ und im Glossar nicht fixiert. Branchenübliche Orientierungswerte
 - **Minimum (Wirtschaftsbau, flache Architektur)**: ≈ 200–300 mm.
 - **Standardwohnbau DE**: ≈ 300–500 mm.
 - **Standardwohnbau CH (alpenraum-typisch)**: ≈ 400–800 mm.
-- **Grosszügig (Schweizer Holzhausarchitektur)**: bis ≈ 1500 mm.
+- **Großzügig (Schweizer Holzhausarchitektur)**: bis ≈ 1500 mm.
 - **Lauben, freistehende Vordächer auf Stützen**: jenseits
-  ≈ 2000 mm — ab dieser Grössenordnung ist die Bauart-
+  ≈ 2000 mm — ab dieser Größenordnung ist die Bauart-
   Klassifikation als **Vordach** (eigene Tragstruktur) statt als
   reiner Dachüberstand zu prüfen.
 
 Die Werte sind mit `hg_sparrenueberstand.md` (geneigte
 Bauteil-Überstandslänge) konsistent unter Berücksichtigung der
-Dachneigung gemäss Gleichung (3).
+Dachneigung gemäß Gleichung (3).
 
 ### CH/DE-Symmetrie der Benennung
 
@@ -326,12 +326,12 @@ nur eine Anwendungsschwelle der Abstandsflächen-Regelung.
 
 Ein **Vordach** ist eine eigenständige Bauteilgruppe mit eigener
 Tragstruktur (Stützen, Konsolen, eigenständiger Träger-Rahmen) vor
-der Aussenwand und ist im Sinne dieser App **kein Subtyp des
+der Außenwand und ist im Sinne dieser App **kein Subtyp des
 Dachüberstands**. Operationell wird die Trennung an der Existenz
 einer eigenständigen Tragstruktur gezogen, nicht an einer festen
 Längengrenze: Eine Sparrenauskragung von 2,5 m über ein konsolen-
 gestütztes Vordach hinaus ist Vordach, eine Sparrenauskragung von
-2,5 m ohne eigene Stützen ist (sehr grosszügiger) Dachüberstand
+2,5 m ohne eigene Stützen ist (sehr großzügiger) Dachüberstand
 mit entsprechend hoher Anforderung an Tragwerk und Sparrenüberstand.
 `vordach` ist eigene Bauteilgruppe (Folgearbeit, siehe
 `abgrenzung_zu:`); Beleg: Gebäudehülle Schweiz, Merkblatt FD 08/12
@@ -357,14 +357,14 @@ mit entsprechend hoher Anforderung an Tragwerk und Sparrenüberstand.
   deren geometrische Substanz.
 - **Verwendung**:
   - **Konstruktiver Holzschutz** (DIN 68800-2; Lignum-Lignatec 35):
-    Bemessungs-Grösse für die Schutzwirkung gegen direkte
+    Bemessungs-Größe für die Schutzwirkung gegen direkte
     Bewitterung.
   - **Bauwerks-Modellierung**: Eingangs-Parameter im Entwurf
-    (Vorgabe-Tiefe traufseitig / giebelseitig), Berechnungs-Grösse
+    (Vorgabe-Tiefe traufseitig / giebelseitig), Berechnungs-Größe
     für abgeleitete Bauteil-Überstände (Sparrenüberstand,
     Pfettenüberstand).
-  - **Werkplan-Bemassung**: horizontale Projektionstiefe als
-    explizit ausgewiesenes Mass (typisch in mm).
+  - **Werkplan-Bemaßung**: horizontale Projektionstiefe als
+    explizit ausgewiesenes Maß (typisch in mm).
 - **Abgrenzung**:
   - **Sparrenüberstand** (`sparrenueberstand`): konstruktive
     Realisierung des traufseitigen Dachüberstands am einzelnen
@@ -409,8 +409,8 @@ mit entsprechend hoher Anforderung an Tragwerk und Sparrenüberstand.
   Maßnahmen im Hochbau".
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
   Architektenverein, Zürich.
-- DIN 18338:2019-09, „VOB Teil C: Dachdeckungs- und
-  Dachabdichtungsarbeiten".
+- DIN 18338:2019-09, „VOB Teil C: ATV Dachdeckungsarbeiten"
+  (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336).
 - DIN 1356-1:1995-02, „Bauzeichnungen – Teil 1: Arten, Inhalte
   und Grundregeln der Darstellung".
 

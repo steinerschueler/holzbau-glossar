@@ -13,11 +13,12 @@ subglossar_pendant: notwendig
 quellen_primär:
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) – Part 1: Data schema', IFC 4.3, Structural Analysis Domain: `IfcStructuralConnection` (abstrakt) mit den konkreten Subtypen `IfcStructuralPointConnection`, `IfcStructuralCurveConnection`, `IfcStructuralSurfaceConnection`; Attribut `AppliedCondition` vom Typ `IfcBoundaryCondition` mit den Subtypen `IfcBoundaryNodeCondition`, `IfcBoundaryEdgeCondition`, `IfcBoundaryFaceCondition` (pro Freiheitsgrad fest/frei/federnd); zugehörige Reaktion `IfcStructuralReaction` mit `IfcStructuralLoadSingleForce` als Last-Tupel (ForceX/Y/Z, MomentX/Y/Z)."
   - "DIN EN 1990:2010-12 'Eurocode: Grundlagen der Tragwerksplanung', Abschnitt 1.5 (Begriffe): „Auflager“ als Stelle der Lagerreaktion vorausgesetzt; keine geschlossene Begriffs-Definition."
-  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 (Druck rechtwinklig zur Faser, Auflagerpressung) und Abschnitt 6.5 (Schubnachweis am ausgeklinkten Auflager); Auflagerlänge ℓ als operationale Bemessungsgröße."
+  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 (Druck rechtwinklig zur Faser, Auflagerpressung) und Abschnitt 6.5 (Schubnachweis am ausgeklinkten Auflager); Auflagerlänge ℓ als operationale Bemessungsgröße. [via: Colling, Holzbau, 7. Aufl. 2021, §8.1 (Fußnote 'EC 5: 6.1.5'; Nachweis Gl. 8.2, wirksame Auflagerfläche A_ef Gl. 8.1) und §8.6 (Fußnote 'EC 5: 6.5')]"
   - "SIA 260:2013 'Grundlagen der Projektierung von Tragwerken', Abschnitt 1 (Geltungsbereich) und Abschnitt 2 (Begriffe): „Auflager“ als Ort der Lagerreaktion vorausgesetzt."
   - "SIA 265:2021 'Holzbau', §5 'Bauteile und Strukturen', §5.2.2 'Ausklinkungen' (Schubnachweis am ausgeklinkten Auflager, Figur 16); Auflagerpressung/Druck rechtwinklig zur Faser nach §4.2.2.3 bzw. Anhang C. [direkt]"
   - "DIN 1052:2008-12, Abschnitt 12 (Konstruktive Anforderungen): Auflagerpressung, Auflagerlänge."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §8.1 'Druck rechtwinklig zur Faser' (S. 125–128): Unterscheidung Schwellendruck (Kraft wird durch das Bauteil hindurchgeleitet; EC5 'kontinuierliche Unterstützung/Lagerung') vs. Auflagerdruck (Kraft wird in Querkräfte und Biegemomente umgesetzt; EC5 'Einzelabstützung/Einzellagerung'), Bild 8.4; Einhängeeffekt und wirksame Auflagerfläche A_ef = b · (ℓ_A + ü₁ + ü₂) mit ü ≤ min(3 cm; ℓ_A; ℓ₁/2), Gl. 8.1/8.2; k_c,90-Differenzierung Vollholz/BSH über die Jahrringlage; Tabelle 8-1 (S. 130) wirksame Auflagerlänge bei geneigten Auflagern."
   - "Petersen, Chr.: Statik und Stabilität der Baukonstruktionen. Vieweg, Braunschweig (mehrfache Auflagen); Lehrbuch-Standard zur Klassifikation Loslager/Festlager/Einspannung im ebenen und räumlichen Fall."
   - "Schneider, K.-J.; Albert, A.: Bautabellen für Ingenieure. 26. Aufl., Bundesanzeiger Verlag, Köln 2024; Auflager-Klassifikation Punkt-/Linien-/Flächenauflager."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke', § Sparrenauflager auf Pfetten."
@@ -531,6 +532,11 @@ zeigen, das zugleich Mitglied einer `Verbindung` ist).
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §8.1 „Druck rechtwinklig zur Faser"
+  (Schwellendruck/Auflagerdruck, wirksame Auflagerfläche).
+  Volltext-Scan liegt Anweiser vor; direkt eingesehen 2026-08-13.
 - Petersen, Chr.: *Statik und Stabilität der Baukonstruktionen.*
   Vieweg, Braunschweig (Lehrbuch-Klassifikation Loslager /
   Festlager / Einspannung).

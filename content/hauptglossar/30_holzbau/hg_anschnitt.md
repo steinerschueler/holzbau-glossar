@@ -1,7 +1,7 @@
 ---
 id: anschnitt
 benennung: Anschnitt
-kurz: "Ein Anschnitt ist ein schräg statt gerade abgesägtes Balkenende, damit es sauber an ein anderes Bauteil anschliesst — ähnlich dem schrägen Anspitzen eines Bleistifts."
+kurz: "Ein Anschnitt ist ein schräg statt gerade abgesägtes Balkenende, damit es sauber an ein anderes Bauteil anschließt — ähnlich dem schrägen Anspitzen eines Bleistifts."
 synonyme: [Stirnanschnitt, "geneigter Endschnitt", Anschnittschnitt]
 abgelehnte_benennungen: [Schrägschnitt, Kappschnitt, "chamfer", "bevel", "miter cut", "end cut", "angle cut", "cut"]
 oberbegriff: bearbeitung
@@ -17,6 +17,7 @@ quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Anschnitt' nicht als Fachausdruck (nur 'Anschnittwinkel' bei Klebeflächen); geneigte Stirnflächen als Querschnittsänderung sind über §5.2 'Ausklinkungen, Einschnitte, Durchbrüche' zu erfassen. Vorausgesetzter Berufsbegriff. [direkt]"
 quellen_sekundär:
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke', § Sparrenfuß und Stirnausbildung am Sparrenkopf: Verwendung des Begriffs „Anschnitt“ für den geneigten Endschnitt eines Sparrens unter dem Anschnittwinkel α."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 1.13 „Rechnerischer Abbund“ (S. 24, Legende der Tafel „Kervenverstichmaße am Obholz“): das Werk bemaßt den Endschnitt am Sparren welt-bezogen und benennt die Maße „senkrechter Abschnitt“ a_s und „waagerechter Abschnitt“ a_w, verknüpft über a_s = s − a_w · tan α mit dem Senkelmaß s = h/cos α (h = Sparrenhöhe, α = Dachneigungswinkel) und mit der Achsen-Projektion l = a_s · sin α. Negativ-Befund: die Benennung „Anschnitt“ kommt im gesamten Werk nicht vor (kein Treffer im OCR-Volltext über alle 333 Seiten; Sachwortverzeichnis S. 325–331 ohne Lemma)."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Senkelschnitt', 'Bleischnitt', 'Schmiege' (Anschnitt-Verwandte; „Anschnitt“ selbst nicht als eigenes Lemma)."
   - "Natterer, J.; Herzog, T.; Volz, M.: Holzbau-Atlas. 4. Aufl., Birkhäuser, Basel 2003, Kap. 'Dachtragwerke', Stirnausbildung."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Sparrenanschlüsse' und 'Austragen': Stirnanschnitte am Sparrenfuß und Sparrenfirstpunkt."
@@ -39,6 +40,49 @@ quellenkonflikt: |
   sprachlichen Korpus). Vollständige Quellenlage und
   Falsifizier-Bereitschaft im Recherchebericht
   [intern].
+
+  **Berufsschul-Befund (Bläsi/Ferdinand, Tabellenbuch
+  Zimmerer, 9. Aufl. 2021):**
+
+  Volltext-Scan liegt Anweiser vor, direkt eingesehen 2026-08-14.
+  Das Berufsschul-Standardwerk des Zimmererhandwerks verwendet
+  die Benennung „Anschnitt“ **überhaupt nicht** — kein Treffer
+  im OCR-Volltext über alle 333 Seiten, kein Lemma im
+  Sachwortverzeichnis (S. 325–331). Der Negativ-Befund
+  verschärft die Lage des ersten Absatzes: die Lücke besteht
+  nicht nur normseitig, sondern auch im Ausbildungs-Kanon; die
+  geschlossene Festlegung dieses Eintrags bleibt eine
+  glossarseitige Setzung.
+
+  Statt „Anschnitt“ bemaßt das Werk den Sparren-Endschnitt
+  welt-bezogen mit „senkrechter Abschnitt“ a_s und
+  „waagerechter Abschnitt“ a_w (S. 24). Zwei Konsequenzen:
+
+  - **„Abschnitt“ wird hier nicht als Synonym aufgenommen.**
+    Die beiden Größen sind **Maße** (Längen am Endschnitt),
+    nicht die Bearbeitung; sie gehören begrifflich zur
+    Resultat-/Bemaßungs-Sicht, nicht zum Bearbeitungs-Subtyp
+    dieses Eintrags. Ob „Abschnitt“ in
+    `abgelehnte_benennungen` aufzunehmen ist oder einen
+    eigenen Maß-Eintrag verdient, ist offen und Anweiser
+    vorbehalten.
+  - **Bezugs-Pluralismus bestätigt.** Das Werk misst
+    ausschließlich welt-bezogen (lotrecht/waagerecht) und
+    nicht bauteilachsen-bezogen. Das stützt den unten im Block
+    „Eigene Festlegung — Bezug des Anschnittwinkels“
+    dokumentierten Befund mehrerer Praxis-Bezüge; die App-Wahl
+    (Bauteilachse, konsistent mit BTLx-`Inclination`) bleibt
+    davon unberührt, weil die welt-bezogenen Sichten hier als
+    abgeleitete Prädikate geführt werden.
+
+  Nicht als Anschnitt-Beleg herangezogen wird die Tafel
+  „Dachfirstmaße in Abhängigkeit vom Dachneigungswinkel“
+  (S. 32 unten). Sie gibt zwar die Verschneidungsmaße a und b
+  zweier am First zusammentreffender Sparren der Höhe h in
+  Abhängigkeit von α (Fälle α = 45°, α > 45°, α < 45°),
+  benennt dort aber weder eine Bearbeitung noch einen Schnitt;
+  sie ist deshalb unter `dachneigung` zitiert und ist ein
+  Kandidat für einen künftigen Verschneidungs-/First-Eintrag.
 
   **Drei-Trennung Kerve ↔ Stirnseite ↔ Anschnitt:**
 
@@ -213,7 +257,7 @@ Sei
   schnitt, α_AS → 0 für die tangentiale Lage) mit ε_W:=
   `Toleranzen.WINKEL_EPS`,
 - 𝓡 ⊂ ℝ³ ein abgeschlossener, beschränkter „Schnitt-Bereichs-
-  Polyeder" am Bauteil-Endpunkt, gross genug, dass er das gesamte
+  Polyeder" am Bauteil-Endpunkt, groß genug, dass er das gesamte
   Material des Bauteils auf der Außenseite der Anschnittebene
   umschließt (Bounding-Box des Bauteilkörpers am Endpunkt p_σ).
 
@@ -282,7 +326,7 @@ S_σ(B; F_AS):= (∂F_S, E_AS, n_hat_AS, p_σ)                          (7)
 mit
 
 - **Trägerebene** der Stirnseite ist die Anschnittebene E_AS,
-- **Aussennormale** der Stirnseite ist n_hat_AS (kanonisch aus
+- **Außennormale** der Stirnseite ist n_hat_AS (kanonisch aus
   Bauteil heraus, siehe (3)),
 - **Bezugspunkt** der Stirnseite ist p_σ,
 - **Berandung** ∂F_S ist das durch E_AS am bearbeiteten
@@ -319,7 +363,7 @@ geneigte (Anschnitt-)Stirnseite.
   G_B'(F_AS), weil die Differenz nur den Bauteil-internen
   Schnitt H_+(E_AS) ∩ G_B^lokal entfernt. Konkrete App-Konvention:
   𝓡 wird als minimale axenparallele Bounding-Box um G_B^lokal mit
-  einem `LAENGE_EPS`-grossen Sicherheitsabstand gewählt; diese
+  einem `LAENGE_EPS`-großen Sicherheitsabstand gewählt; diese
   Wahl ist semantisch invariant.
 - **Wohldefiniertheit der Wirkung**: Die Boole'sche Differenz
   (6) ist nach `hg_bearbeitung.md` Wohldefiniertheits-Block
@@ -339,7 +383,7 @@ geneigte (Anschnitt-)Stirnseite.
   E_AS folgt die Lage der Ebene. Damit ist E_AS eindeutig.
 - **Vorzeichen-Invarianz**: Die Hesse-Normalform von E_AS ist
   durch (3) ohne Vorzeichenmehrdeutigkeit festgelegt; in der
-  Code-Repräsentation wird die Aussennormale-Konvention durch
+  Code-Repräsentation wird die Außennormale-Konvention durch
   (3) erzwungen.
 - **Reihenfolge-Unabhängigkeit bei mehreren Bearbeitungen**:
   Wie in `hg_bearbeitung.md` (kommutative Vereinigung); zwei
@@ -360,7 +404,7 @@ geneigte (Anschnitt-)Stirnseite.
   schwierige Resultate (extrem schmale Anschnittfläche bei
   α_AS → 0 bzw. fast rechtwinkliger Endschnitt bei α_AS →
   π/2). Die App warnt — typisiert in der Bemessungs-/
-  Validierungs-Schicht — bei Werten ausserhalb eines
+  Validierungs-Schicht — bei Werten außerhalb eines
   praxisüblichen Korridors (z. B. α_AS ∈ [π/12, π/2 − π/180]).
   Diese Warnung ist **keine** Definitionsbedingung.
 - **Nicht-Zirkularität**: Die Definition stützt sich nur auf
@@ -604,6 +648,13 @@ dieses Eintrags.
 
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Auflage, Beuth, Berlin 2015, Kap. 11 „Dachtragwerke".
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, Kap. 1.13 „Rechnerischer Abbund"
+  (S. 24: „senkrechter Abschnitt" a_s, „waagerechter Abschnitt"
+  a_w; S. 32: Dachfirstmaße). Negativ-Befund zur Benennung
+  „Anschnitt" (kein Vorkommen im Werk). Volltext-Scan liegt
+  Anweiser vor; direkt eingesehen 2026-08-14.
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.*
   DVA, 7. Auflage 2007, Glossar.
 - Natterer, J.; Herzog, T.; Volz, M.: *Holzbau-Atlas.*

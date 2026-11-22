@@ -124,7 +124,7 @@ quellenkonflikt: |
   dokumentiert. „Stuhlbalken" wird gegebenenfalls als Synonym in
   `hg_stuhlschwelle.md` aufgenommen.
 
-  Eigene Festlegung: Der Fuss-Anschluss der Stuhlsäule (Bedingung
+  Eigene Festlegung: Der Fuß-Anschluss der Stuhlsäule (Bedingung
   5 in der mathematischen Definition) wird auf einen
   **horizontalen Balken** verwiesen (Stuhlschwelle, Geschoss-
   Deckenbalken, Bundbalken — je nach Konstruktion), ohne den
@@ -279,7 +279,7 @@ typischerweise:
 3. **Stuhlpfette** → **Stuhlsäule** (Druck-Element),
 4. **Stuhlsäule** → **Stuhlschwelle** oder direkt **Decken-
    balken** (horizontaler Auflagerbalken),
-5. **Stuhlschwelle / Deckenbalken** → **Aussenwände** oder
+5. **Stuhlschwelle / Deckenbalken** → **Außenwände** oder
    **innere tragende Wände** → **Fundament**.
 
 Die Stuhlsäule ist damit Bestandteil eines **lastpfad-bündelnden
@@ -299,10 +299,10 @@ Varianten:
   Dachneigungen.
 - **Doppelt stehend**: zwei Reihen lotrechter Stuhlsäulen pro
   Sparrengespärre (links und rechts der Mitte); tragen die zwei
-  Mittelpfetten. Standard-Konstruktion für grössere Spannweiten
+  Mittelpfetten. Standard-Konstruktion für größere Spannweiten
   und Dachneigungen über 30°.
 - **Mehrfach stehend**: Kombinationen aus First- und Mittel-
-  Stuhlsäulen für sehr grosse Spannweiten oder mehrgeschossige
+  Stuhlsäulen für sehr große Spannweiten oder mehrgeschossige
   Dachaufbauten.
 
 ### Liegender Stuhl
@@ -333,7 +333,7 @@ Stehender Stuhl, ETH Holzer/Steiger):
 |---|---|
 | **Stuhlsäule** | tragendes Druck-Element zur Pfettenauflagerung |
 | **Stuhlpfette** | trägt Sparren oder Kehlbalken am Stuhlsäulen-Kopf |
-| **Stuhlschwelle** | trägt Stuhlsäulen-Füsse, verteilt Last auf Deckenbalken |
+| **Stuhlschwelle** | trägt Stuhlsäulen-Füße, verteilt Last auf Deckenbalken |
 | **Kopfband** | Diagonal-Aussteifung Stuhlsäulen-Kopf ↔ Stuhlpfette |
 | **Fußband** | Diagonal-Aussteifung Stuhlsäulen-Fuß ↔ Stuhlschwelle |
 | **Spannriegel** | beim liegenden Stuhl: Querriegel zwischen den schrägen Stuhlsäulen oben |
@@ -347,7 +347,7 @@ noch nicht geführt; Folgearbeit-Trigger.
 
 Stuhlsäulen werden traditionell als **behauenes Vollholz** in
 Querschnitten 140/140 bis 240/240 mm ausgeführt; im modernen
-Holzbau auch als **BSH** (Brettschichtholz) für grosse Spannweiten
+Holzbau auch als **BSH** (Brettschichtholz) für große Spannweiten
 oder Sanierungs-Verstärkungen. Faserrichtung axial entlang der
 Bauteilachse, Festigkeitsklasse typisch C24 oder GL24h.
 
@@ -402,7 +402,7 @@ truss**".
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
   - **Bauteilachse** (`bauteilachse.Gerade`), aufstrebend
     (Bedingung 2);
-  - **Querschnitt** (rechteckig, typisch 140–240 mm Kantenmass);
+  - **Querschnitt** (rechteckig, typisch 140–240 mm Kantenmaß);
   - **Werkstoff** (Vollholz oder BSH, Festigkeitsklasse C24 oder
     GL24h);
   - **Faserrichtung** (Annotation, Default ‖ d_hat_Stuhlsäule).
@@ -448,7 +448,7 @@ truss**".
     Hängesäule Zug.
   - **Ständer** (`staender`, Welle 9): Wand-Bauteilrolle.
     Geschwister-Rolle; Trennlinie über die Wand-Inzidenz (Schwelle/
-    Rähm) gegen die Stuhl-Inzidenz (Stuhlpfette/Stuhlschwelle).
+    Einbinder) gegen die Stuhl-Inzidenz (Stuhlpfette/Stuhlschwelle).
   - **Pfette** (`pfette`, Welle 8): horizontaler Dach-Längsträger;
     liegt auf den Stuhlsäulen-Köpfen, ist nicht selbst Stuhlsäule.
     Die **Stuhlpfette** (`stuhlpfette`, Forward-Verweis) ist die

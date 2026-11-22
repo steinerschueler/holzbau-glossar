@@ -11,20 +11,20 @@ abgrenzung_zu: [zapfenloch, kerve, versatz, blatt, kamm, bohrung, schlitz, ansch
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 (Druck rechtwinklig zur Faser): allgemeines Verfahren für den Querdrucknachweis. Der Wirkungsmechanismus der Zapfenverbindung beruht auf Querdruck an der Lochwandung des Gegenholzes und an der Zapfenwange; die einschlägige Nachweisstelle ist EC5 §6.1.5, nicht §8 (Letzteres betrifft ausschliesslich Anschlüsse mit metallischen Verbindungsmitteln)."
-  - "DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland: regelt die in EC5 nicht direkt geführten zimmermannsmässigen Verbindungen (Versatz, Zapfen, Holznagel) durch Rückverweis auf DIN 1052."
-  - "DIN 1052:2008-12, Abschnitt 15 (Zimmermannsmässige Verbindungen): geometrische und bemessungstechnische Anforderungen an Zapfen und Zapfenlöcher; Faustregeln zu Zapfenbreite und Zapfenlänge in Abhängigkeit der Bauteilabmessungen."
-  - "SIA 265:2021 'Holzbau' führt den 'Zapfen' nicht (kommt im Normtext nicht vor). Von den zimmermannsmässigen Verbindungen ist nur der Versatz erfasst (§1.1.39 Begriff, §6.9.2 Bemessung); andere zählt §4.6.2.6 ausdrücklich zu den 'hier nicht behandelten Verbindungsarten'. Anhang A betrifft Stabdübel/Bolzen/Schrauben. Negativ-Befund, Volltext direkt eingesehen. [direkt]"
+  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 (Druck rechtwinklig zur Faser): allgemeines Verfahren für den Querdrucknachweis. Der Wirkungsmechanismus der Zapfenverbindung beruht auf Querdruck an der Lochwandung des Gegenholzes und an der Zapfenwange; die einschlägige Nachweisstelle ist EC5 §6.1.5, nicht §8 (Letzteres betrifft ausschließlich Anschlüsse mit metallischen Verbindungsmitteln)."
+  - "DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland: regelt die in EC5 nicht direkt geführten zimmermannsmäßigen Verbindungen (Versatz, Zapfen, Holznagel) durch Rückverweis auf DIN 1052."
+  - "DIN 1052:2008-12, Abschnitt 15 (Zimmermannsmäßige Verbindungen): geometrische und bemessungstechnische Anforderungen an Zapfen und Zapfenlöcher; Faustregeln zu Zapfenbreite und Zapfenlänge in Abhängigkeit der Bauteilabmessungen."
+  - "SIA 265:2021 'Holzbau' führt den 'Zapfen' nicht (kommt im Normtext nicht vor). Von den zimmermannsmäßigen Verbindungen ist nur der Versatz erfasst (§1.1.39 Begriff, §6.9.2 Bemessung); andere zählt §4.6.2.6 ausdrücklich zu den 'hier nicht behandelten Verbindungsarten'. Anhang A betrifft Stabdübel/Bolzen/Schrauben. Negativ-Befund, Volltext direkt eingesehen. [direkt]"
   - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'List of Processings', Processings 'Tenon' und 'DovetailTenon' (S. 8 ff.): parametrische Spezifikation des Zapfens als materialabtragende Bearbeitung am Bauteilende mit den Parametern ReferencePlaneId, StartX/StartY, StartDepth, Angle, Inclination, Length, Width, Height (sowie ConeAngle für DovetailTenon). 'Tenon' und 'Mortise' sind in BTLx zwei eigenständige Processings an zwei verschiedenen Bauteilen."
 quellen_sekundär:
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 7 'Verbindungen', § Zapfenverbindungen (einfacher Zapfen, Brustzapfen, Doppelzapfen, Schwalbenschwanz-Zapfen)."
-  - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 8 'Zimmermannsmässige Verbindungen'."
+  - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 8 'Zimmermannsmäßige Verbindungen'."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Zapfen', 'Schwalbenschwanz', 'Brustzapfen'."
   - "Natterer, J.; Herzog, T.; Volz, M.: Holzbau-Atlas. 4. Aufl., Birkhäuser, Basel 2003, Kap. 'Verbindungen und Anschlüsse', § Zapfenverbindungen."
   - "Krämer, F.: Grundwissen des Zimmerers. Bruderverlag, Karlsruhe, § Zapfenverbindung — Holznagel- und Keilsicherung."
   - "Claus, T.: Zapfenverbindungen im Holzbau – bruchmechanische Analyse und Vorschlag eines Berechnungsmodells. Bautechnik 97 (2020), Wiley."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Zimmermannsmässige Verbindungen'."
-  - "Informationsdienst Holz, 'Tragverhalten zimmermannsmässiger Holzverbindungen'."
+  - "Informationsdienst Holz, 'Tragverhalten zimmermannsmäßiger Holzverbindungen'."
   - "Wikipedia, Lemma 'Zapfenverbindung' (de.wikipedia.org, abgerufen 2026-05-14): Beschreibung der komplementären Geometrie Zapfen / Zapfenloch und der Zapfenluft (5–10 mm)."
   - "Wikipedia, Lemma 'Mortise and tenon' (en.wikipedia.org, abgerufen 2026-05-14): internationale Pendantbenennung."
 quellenkonflikt: |
@@ -34,7 +34,7 @@ quellenkonflikt: |
   Bemessungsstelle. Die Recherche
   ([intern], §E) zeigt: EC5 §8
   trägt den Titel „Anschlüsse mit metallischen Verbindungsmitteln"
-  und deckt zimmermannsmässige Verbindungen **nicht direkt** ab.
+  und deckt zimmermannsmäßige Verbindungen **nicht direkt** ab.
   Die einschlägigen Stellen sind stattdessen:
 
   - **Wirkungsmechanismus**: EC5 §6.1.5 (Druck rechtwinklig zur
@@ -76,9 +76,9 @@ quellenkonflikt: |
   Bauteildicke begrenzt. Die App führt eine **weiche
   Plausibilitätsprüfung** (Warnung, kein Validierungsfehler):
   Zapfenbreite ≈ 1/3 der Bauteildicke entspricht der
-  zimmermannsmässigen Praxis; Verletzung erzeugt eine Warnung,
+  zimmermannsmäßigen Praxis; Verletzung erzeugt eine Warnung,
   blockiert die Modellierung nicht. App-Konstante:
-  `Toleranzen.ZAPFENBREITE_FAUSTREGEL_DRITTEL` (defaultmässig
+  `Toleranzen.ZAPFENBREITE_FAUSTREGEL_DRITTEL` (defaultmäßig
   1.0/3.0).
 
   **Konflikt 3 — Zapfen als subtraktive oder additive Geometrie.**
@@ -87,7 +87,7 @@ quellenkonflikt: |
   **Form** des Bauteilkörpers nahe: er ist eine
   Hervorragung am Bauteilende, kein Loch. BTLx (`Tenon`) und
   die App-interne Bearbeitungs-Ontologie (`hg_bearbeitung.md`,
-  partitive Komposition, ausschliesslich subtraktiv) verlangen
+  partitive Komposition, ausschließlich subtraktiv) verlangen
   jedoch eine subtraktive Lesart.
 
   Eigene Festlegung: **Der Zapfen ist subtraktiv definiert** —
@@ -350,7 +350,7 @@ geneigt), W_z^- und W_z^+ bleiben achsparallele Quader.
 K_Zapfen ist damit eine **Vereinigung höchstens vier konvexer
 Polyeder** und ein abgeschlossener, beschränkter (im
 Allgemeinen **nicht-konvexer**) Polyeder im Sinne von
-`hg_polyeder.md`. Im **typischen zimmermannsmässigen Fall**
+`hg_polyeder.md`. Im **typischen zimmermannsmäßigen Fall**
 (achsmittiger Zapfen mit z_Z = h_Z/2 + h_R für gleiche obere
 und untere Restholz-Stärke, w_Z < b_B) ist K_Zapfen
 zusammenhängend, aber nicht-konvex; im **Sonderfall**
@@ -383,7 +383,7 @@ F_Zapfen:= (uuid, τ = Zapfen, p_Zapfen, T_F = identitaet,
 ```
 
 im Sinne von `hg_bearbeitung.md` Gleichung (Tupel-Definition),
-deren Werkzeugkörper K_Zapfen(p_Zapfen) gemäss (3) gegeben ist.
+deren Werkzeugkörper K_Zapfen(p_Zapfen) gemäß (3) gegeben ist.
 Die lokale Platzierung T_F = id_SE(3) ist Standard (Werkzeug-
 Bezugssystem ≡ Bauteil-Lokal), weil die Parameter (1) bereits
 direkt im Bauteil-Lokal-System ausgedrückt sind.
@@ -407,7 +407,7 @@ Anschauung.
 ## Wohldefiniertheit
 
 - **Existenz**: Für jedes Stab-Bauteil B mit hervorstehendem
-  Bauteilende und jeden zimmermannsmässig vorkommenden Zapfen
+  Bauteilende und jeden zimmermannsmäßig vorkommenden Zapfen
   (einfacher Zapfen, Doppelzapfen-Halb-Element, Schlitz und
   Zapfen, Schwalbenschwanz) lässt sich (1)–(5) angeben.
   Mindestkonfiguration (einfacher achsmittiger Kantzapfen):
@@ -505,7 +505,7 @@ Anschauung.
 ### Die Zapfenverbindung als Paar Zapfen ↔ Zapfenloch
 
 Der Zapfen ist nie ein für sich stehendes geometrisches
-Element; er existiert ausschliesslich als **eine Hälfte einer
+Element; er existiert ausschließlich als **eine Hälfte einer
 Zapfenverbindung**, also einer komplementären Zwei-Bauteile-
 Konstellation, in der der Zapfen am hervorstehenden Bauteil B₁
 in das **Zapfenloch** (`zapfenloch`) am aufnehmenden Bauteil
@@ -567,13 +567,13 @@ Daraus folgt die Charakterisierung des Zapfens als
 als Hauptdruckpfad in Achsrichtung. Diese Funktionalität ist
 die Begründung für die Zapfenluft und für die geometrische
 Faustregel w_Z ≈ b_B/3 (kleiner Zapfen = saubere
-Lasttrennung; grosser Zapfen würde die Schulter schwächen).
+Lasttrennung; großer Zapfen würde die Schulter schwächen).
 
 ### Zapfenluft und ihre ontologische Konsequenz
 
 Die Zapfenlänge ℓ_Z ist im verbauten Zustand stets **kleiner
 als die Tiefe des Zapfenlochs** (typisch um 5–10 mm). Diese
-Differenz heisst **Zapfenluft**. Konsequenzen:
+Differenz heißt **Zapfenluft**. Konsequenzen:
 
 - **Geometrische Konsistenz**: beim Zusammenfügen der beiden
   Bauteile B₁ und B₂ liegen ihre kontaktrelevanten Flächen
@@ -596,7 +596,7 @@ funktionale Varianten:
 | Variante                | Geometrie                                                                                   | App-Modellierung |
 |-------------------------|---------------------------------------------------------------------------------------------|------------------|
 | **Einfacher Zapfen**    | ein achsmittiger Kantzapfen, κ = 0; Standardfall.                                          | eine `Zapfen`-Instanz |
-| **Doppelzapfen**        | zwei parallele Zapfen nebeneinander; bei grosser Bauteildicke zur Vergrösserung der Schubfläche. | zwei `Zapfen`-Instanzen mit unterschiedlichen y_Z |
+| **Doppelzapfen**        | zwei parallele Zapfen nebeneinander; bei großer Bauteildicke zur Vergrößerung der Schubfläche. | zwei `Zapfen`-Instanzen mit unterschiedlichen y_Z |
 | **Schlitz und Zapfen** (*Gabelzapfen*) | Zapfen am hervorstehenden Bauteil + nach einer Seite offenes Zapfenloch am Gegenholz; Standard im Eck-/Kreuzanschluss.   | `Zapfen` + nach offener Seite parametrisiertes `zapfenloch` am Gegenholz |
 | **Schwalbenschwanz-Zapfen** | konische Geometrie κ > 0 (typ. Steigung 1:7 bei Nadelholz, 1:8 bei Laubholz); zugfest in einer Richtung; klassisch Nebenträger ↔ Hauptträger. | `Zapfen` mit κ > 0; Folgearbeit: ggf. eigener Subtyp |
 | **Brustzapfen**         | Zapfen mit zusätzlicher **Schulter** (flächiger Anschlag rechtwinklig zur Bauteilachse); druckfest, waagerecht/senkrecht unverschieblich; klassisch Balken-Wechsel. | `Zapfen` + zusätzliche `anschnitt`-Bearbeitung an der Schulterfläche |
@@ -660,7 +660,7 @@ Bestandteil der Zapfen-Definition.
 Im zimmermannssprachlichen Sprachgebrauch bezeichnen
 „Zapfen", „Verzapfung" und „Zapfen schlagen" sowohl die
 Tätigkeit (Abbund) als auch das geometrische Resultat. Dieser
-Glossareintrag definiert ausschliesslich die
+Glossareintrag definiert ausschließlich die
 **Resultatslesart**: das geometrische Merkmal am bearbeiteten
 Bauteil. Die Tätigkeit (Stemmen, Sägen, Fräsen, CNC-
 Programmierung) ist Gegenstand der Fertigungs-Schicht und
@@ -701,7 +701,7 @@ nicht im Glossar geführt.
     Keine Funktions- und keine Geometrie-Überschneidung.
   - **Versatz** (`versatz`, Forward-Verweis): flache, schräge
     Druckfläche quer zur Faser am Bauteilende; trägt Druck
-    schräg über eine grosse Druckfläche, **ohne**
+    schräg über eine große Druckfläche, **ohne**
     hervorstehenden Stift. Versatz und Zapfen sind beide
     am Bauteilende, aber topologisch verschieden:
     Versatz = Druckfläche, Zapfen = Stift.
@@ -723,7 +723,7 @@ nicht im Glossar geführt.
     in dieser App nicht als Sonderfall des Zapfens, sondern
     ggf. als eigene Bearbeitung modelliert.
   - **Schlitz** (`schlitz`, Forward-Verweis): längliche
-    Subtraktion mit geringer Breite und grosser Tiefe zur
+    Subtraktion mit geringer Breite und großer Tiefe zur
     Aufnahme eines Schlitzblechs oder einer Lasche. Im
     DACH-Korpus terminologisch doppeldeutig (auch
     „Schlitz und Zapfen"); dort meint „Schlitz" die nach
@@ -758,7 +758,7 @@ nicht im Glossar geführt.
   (Druck rechtwinklig zur Faser).
 - DIN EN 1995-1-1/NA:2013-08, Nationaler Anhang Deutschland.
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
-  Holzbauwerken", Abschnitt 15 (Zimmermannsmässige
+  Holzbauwerken", Abschnitt 15 (Zimmermannsmäßige
   Verbindungen).
 - SIA 265:2021, „Holzbau", Schweizerischer Ingenieur- und
   Architektenverein, Zürich, §6.9.2 Versatz (Zapfen nicht geführt).
@@ -782,15 +782,15 @@ nicht im Glossar geführt.
   Analyse und Vorschlag eines Berechnungsmodells.* Bautechnik
   97 (2020), Wiley.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich.
-- Informationsdienst Holz: *Tragverhalten zimmermannsmässiger
+- Informationsdienst Holz: *Tragverhalten zimmermannsmäßiger
   Holzverbindungen.*
 
 **Korpus (nicht autoritativ):**
 
 - Wikipedia, Lemma „Zapfenverbindung" (abgerufen 2026-05-14).
 - Wikipedia, Lemma „Mortise and tenon" (abgerufen 2026-05-14).
-- baunetzwissen.de, „Zimmermannsmässige Verbindungen".
-- baubeaver.de, „Über 34 zimmermannsmässige Holzverbindungen".
+- baunetzwissen.de, „Zimmermannsmäßige Verbindungen".
+- baubeaver.de, „Über 34 zimmermannsmäßige Holzverbindungen".
 - bauredakteur.de, „Holzverbindungen — so machen es Zimmerer
   und Schreiner".
 - zimmerer-treff.com, „Zapfenverbindungen".

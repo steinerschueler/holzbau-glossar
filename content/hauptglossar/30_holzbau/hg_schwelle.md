@@ -7,7 +7,7 @@ abgelehnte_benennungen: [Mauerschwelle, Sohlbank, Fußschwelle, Saumschwelle, St
 oberbegriff: bauteil
 begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, querschnitt, bezugsebene, weltkoordinatensystem, einheitsvektor, punkt, toleranzen]
-abgrenzung_zu: [raehm, fusspfette, pfette, pfosten, staender, riegel, strebe, kopfband, fussband, knagge, fundament, bauteil, stockschwelle, tuerschwelle, bahnschwelle, sohlbank_fenster]
+abgrenzung_zu: [einbinder, fusspfette, pfette, pfosten, staender, riegel, strebe, kopfband, fussband, knagge, fundament, bauteil, stockschwelle, tuerschwelle, bahnschwelle, sohlbank_fenster]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
@@ -17,16 +17,20 @@ quellen_primär:
   - "DIN 18533-1:2017-07 'Abdichtung von erdberührten Bauteilen', referenziert in DIN 68800-2 §5 für die 5-cm-Abminderung."
   - "EN 335:2013 / DIN 68800-1:2011-10, Gebrauchsklassen-Einordnung (GK 2 / GK 3.1 / GK 3.2) als Instanz-Eigenschaft am konkreten Schwellen-Einbau."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §8.5.4.1 'Exzentrizitäten in der Schwelle' (S. 142, Bild 8.22): Bemessungs-Beleg der Schwelle als Versatz-Widerlager — liegt die Auflagerung nicht im Schnittpunkt der Stabachsen, entsteht im Bereich des Versatz-Einschnittes in der Schwelle ein Zusatzmoment ΔM_d ≈ V_d·a − T_2,d·h_S/2 (Gl. 8.22); für die Schwelle ist dann ein kombinierter Zug+Biegung-Nachweis mit Netto-Querschnittsfläche und Netto-Widerstandsmoment im Versatz-Bereich zu führen (Gl. 8.23)."
   - "Lignum (Hrsg.): Lignatec 35/2023 'Holzschutz im Bauwesen', Empa/Lignum, Zürich 2023, Abschnitt Wandfuß / Spritzwasserzone."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 'Wandkonstruktionen' und 'Holzrahmenbau'."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Schwelle', 'Grundschwelle', 'Stockschwelle'."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5. Kap. 3.7.2 „Fachwerkwände“ (S. 161): die Legende unterscheidet die Wand-Schwellen **nach Richtung** — „① Längsschwelle“, „② Querschwelle“, „⑤ Längsschwelle“ (neben ③ Rähm, ④ Wandbalken, ⑥ Fensterriegel, ⑦ Riegel, ⑧ Eckpfosten, ⑨ Fensterpfosten, ⑩ Türpfosten, ⑪ Deckenbalken); gedruckter Berufsschul-Beleg für die Schwelle als unteres Längsholz des Fachwerk-Wandgefüges. Kap. 3.9.3 „Einfach stehendes Pfettendach“ (S. 170): „⑤ Schwelle“ (Längsholz des stehenden Stuhls auf der Geschossdecke, trägt die Pfosten) und „⑧ Fußpfette, Schwelle (Aufnahme der Dachlast und Weiterleitung in die Außenwände)“; Kap. 3.9.5 „Dreifach stehendes Pfettendach“ (S. 171): „⑧ Schwelle“. Beide Dach-Verwendungen sind **nicht** von der Grundschwellen-Lesart dieses Eintrags gedeckt — siehe Quellenkonflikt-Block, Berufsschul-Befund."
   - "Natterer, J.; Herzog, T.; Volz, M.: Holzbau-Atlas. 4. Aufl., Birkhäuser, Basel 2003, Kap. 'Wandsysteme'."
   - "Informationsdienst Holz: Reihe 5 Teil 2 Folge 2 'Holzschutz – Bauliche Maßnahmen', Wandfuß-Details."
   - "Holzfaser-Verband: Merkblatt 'Anschlüsse und Fugen – Details für Holzmassivbau'."
 quellenkonflikt: |
-  Drei Punkte sind in der Recherche
-  ([intern]) nicht
-  widerspruchsfrei und werden hier ausdrücklich aufgelöst.
+  Die folgenden Punkte sind in der Recherche
+  ([intern]) bzw. in späteren
+  Wellen nicht widerspruchsfrei aufgefallen und werden hier
+  ausdrücklich aufgelöst (Punkte 4/5: Welle 14; Punkt 6:
+  Tabellenbuch-Welle T2).
 
   **(1) Familien-Begriff vs. Grundschwellen-Lesart.** Im
   DACH-Fachwerk-Vokabular ist „Schwelle" Familien-Begriff über
@@ -47,8 +51,10 @@ quellenkonflikt: |
   Fußschwelle / Setzschwelle / Vorschwelle / Balkenschwelle, die
   die obergeschossige bzw. deckenbezogene Lage betreffen, sind
   in `abgelehnte_benennungen:` als **nicht** mit diesem Eintrag
-  zusammenfallend geführt; ein eigener `hg_stockschwelle.md`
-  folgt bei Mehrgeschoss-Bedarf (siehe Forward-Verweise).
+  zusammenfallend geführt; der eigene Eintrag `hg_stockschwelle.md`
+  ist seit Welle 15 angelegt (als Geschwister-Bauteilrolle, nicht
+  als Subtyp — Begründung dort, Quellenkonflikt Punkt 1; zur
+  Tier-Schichtung des Synonym-Felds siehe dort Punkt 4).
 
   Die Spezialisierungs-Synonym-Regel (HG_KONVENTIONEN §5) wirkt
   bei späterer Anlage von `hg_grundschwelle.md` ausdrücklich
@@ -102,6 +108,52 @@ quellenkonflikt: |
   stehen ausdrücklich in `abgrenzung_zu:` (Forward-Verweise),
   nicht in `abgelehnte_benennungen:`. Behandlung im
   Erläuterungs-Block „Andere Bedeutungen".
+
+  **(6) Berufsschul-Befund: Dachstuhl-„Schwelle" als
+  Verwendungs-Sonderfall** (Bläsi/Ferdinand, *Tabellenbuch
+  Zimmerer*, 9. Aufl. 2021, Volltext-Scan liegt Anweiser vor, direkt
+  eingesehen 2026-08-14). Das Standardwerk der
+  Zimmerer-Ausbildung verwendet „Schwelle" in **drei** Lagen, von
+  denen nur die erste von diesem Eintrag gedeckt ist:
+
+  - **Wand-Schwelle (gedeckt), S. 161, Kap. 3.7.2
+    „Fachwerkwände":** die Legende trennt „① Längsschwelle",
+    „② Querschwelle" und „⑤ Längsschwelle". Die Unterscheidung
+    ist rein **richtungsbezogen** (Schwelle in Gebäude-Längs-
+    vs. -Querrichtung), nicht geschoss- oder auflagerbezogen; sie
+    trägt daher keine eigenen geometrischen Constraints und ist
+    im Sinne dieses Glossars eine **Positions-Annotation** an
+    derselben Schwellen-Rolle (Muster `RiegelPosition` /
+    `StaenderPosition`), kein Subtyp. Der Fund bestätigt die
+    Grundschwellen-Lesart und den Familien-Charakter aus Punkt 1.
+  - **Stuhlschwelle (nicht gedeckt), S. 170 „⑤ Schwelle" und
+    S. 171 „⑧ Schwelle":** das Längsholz des stehenden Stuhls,
+    das **auf der Geschossdecke bzw. den Deckenbalken** liegt und
+    die Stuhl-Pfosten trägt. Bedingung „unmittelbar auf dem
+    **mineralischen** Auflager (Fundament, Sockel, Bodenplatte)"
+    der Prosa- und der mathematischen Definition ist hier
+    verletzt; das Bauteil gehört zum **Dachtragwerk**, nicht zum
+    Wandgefüge. Es ist damit **weder** Schwelle im Sinne dieses
+    Eintrags **noch** Stockschwelle (`hg_stockschwelle.md`, die
+    das unterste Längsholz einer *Obergeschoss-Wand* trägt).
+    Eigene Festlegung: keine Ausweitung der Definition; die
+    Dachstuhl-Lesart wird als **eigener Folgearbeit-Kandidat**
+    `stuhlschwelle` geführt (Geschwister-Bauteilrolle unter
+    `bauteil`, Cluster `30_holzbau/`). Trigger: erstes
+    Dachstuhl-Tool mit stehendem Stuhl — dann zusammen mit
+    `stuhlsaeule` (Forward-Verweis in `hg_staender.md`) anzulegen.
+  - **„Schwelle" als Fußpfetten-Zweitname (nicht gedeckt),
+    S. 170:** die Legende schreibt „⑧ **Fußpfette, Schwelle**
+    (Aufnahme der Dachlast und Weiterleitung in die Außenwände)"
+    und setzt damit beide Wörter für **dasselbe** traufseitige
+    Dach-Längsholz. Das kollidiert mit der App-Trennung
+    Schwelle (Wand, unten) ↔ Fußpfette (Dach, `hg_fusspfette.md`),
+    die dieser Eintrag über `abgrenzung_zu: fusspfette` und
+    `hg_einbinder.md` (Quellenkonflikt Punkt 3) durchhält. Die
+    Trennung bleibt **unverändert**; die Gleichsetzung ist als
+    berufssprachliche Drift dokumentiert und als Kandidat für
+    `abgelehnte_benennungen:` bei einer späteren ABW-Welle
+    notiert (heute nicht geändert — reine Quellen-Aufwertung).
 ---
 
 ## Prosa-Definition
@@ -207,11 +259,16 @@ Wesentliche abgeleitete Größen:
   über das Geschoss. Eine Schwelle im Erdgeschoss auf Fundament/
   Sockel und eine Schwelle im Obergeschoss auf der darunterliegenden
   Decke (im Fachwerk-Vokabular: Grundschwelle vs. Stockschwelle)
-  unterscheiden sich nur durch die Wahl der Auflagerebene E_⊥.
+  unterscheiden sich zunächst durch die Wahl der Auflagerebene E_⊥.
   Die Default-Lesart dieses Eintrags ist die Grundschwelle (E_⊥ =
-  Oberkante Sockel/Bodenplatte); für die obergeschossige Lesart
-  folgt ein eigener Eintrag `hg_stockschwelle.md` bei
-  Mehrgeschoss-Bedarf.
+  Oberkante Sockel/Bodenplatte); die moderne Tafelbau-Schwelle
+  auf der Geschossdecke bleibt bei diesem Eintrag
+  (GESCHOSSDECKE_HOLZ). Die **historische Fachwerk-Stockschwelle**
+  ist seit Welle 15 als eigener Geschwister-Eintrag
+  `hg_stockschwelle.md` angelegt, weil sie über die
+  E_⊥-Wahl hinaus abweicht (Verkämmung unter die Auflagerebene
+  bricht Bedingung 2; Vorkragung relativiert Bedingung 3 —
+  Details dort, Quellenkonflikt Punkt 1).
 - **Schwellen-Lesart ohne Bezugsebene**: Eine isolierte
   Schwelle ohne zugeordnete Auflagerebene ist im Sinne dieser
   Definition nicht qualifiziert; die Auflagernähe (Bedingung 2)
@@ -245,15 +302,15 @@ drei Funktionen gleichzeitig:
   Wandholz her und definiert die Höhenkote, oberhalb derer das
   Wandholz dauerhaft trocken bleiben soll.
 
-### Wand-oben-Pendant: Rähm
+### Wand-oben-Pendant: Einbinder
 
 Geometrisch und konstruktiv ist die Schwelle symmetrisch zum
-**Rähm** (`raehm`): das Rähm schließt die Wand
+**Einbinder** (`einbinder`): der Einbinder schließt die Wand
 oben ab, die Schwelle unten. Beide Bauteile haben üblicherweise
 denselben Querschnitt und denselben Werkstoff; sie unterscheiden
 sich nur durch Lage (oben/unten) und Funktion (Lasteinleitung in
 Decke/Dach vs. Lasteinleitung in Sockel/Fundament). Ein Bauteil
-kann **nicht gleichzeitig** Schwelle und Rähm sein, sondern ist
+kann **nicht gleichzeitig** Schwelle und Einbinder sein, sondern ist
 durch seine Wand-Vertikallage genau einer der beiden Rollen
 zugeordnet.
 
@@ -357,9 +414,9 @@ nicht weiter behandelt.
   - **Pfosten / Ständer** (`pfosten`, Forward-Verweis): stehen
     auf der Schwelle und übertragen ihre Vertikallasten in die
     Schwelle. Die Schwelle ist deren unteres Auflager.
-  - **Rähm** (`raehm`): geometrisches und
+  - **Einbinder** (`einbinder`): geometrisches und
     konstruktives Pendant der Schwelle am Wand-Oberen-Niveau.
-    Schwelle und Rähm schließen zusammen die Wand vertikal ab.
+    Schwelle und Einbinder schließen zusammen die Wand vertikal ab.
   - **Riegel** (zwischen zwei Pfosten in der Wandfläche, nicht
     durchlaufend): durch die Schwelle und ggf. Riegelreihen
     gehalten.
@@ -370,18 +427,18 @@ nicht weiter behandelt.
   - **Decke** (im Mehrgeschoss): bildet das Auflager für die
     Stockschwelle des darüberliegenden Geschosses.
 - **Abgrenzung**:
-  - **Rähm** (`raehm`): Welle-8-Geschwister;
+  - **Einbinder** (`einbinder`): Welle-8-Geschwister;
     Wand-oben-Pendant. Geometrisch ähnlich (horizontaler
     Längsträger derselben Wandfluchten), aber an der Wand-
     Oberkante statt -Unterkante; trägt das Geschoss/Dach über
     sich, nicht das Wandgerippe selbst. Funktionen-Wechsel
-    Schwelle ↔ Rähm ist nicht möglich am selben Bauteil; die
+    Schwelle ↔ Einbinder ist nicht möglich am selben Bauteil; die
     Wand-Vertikallage entscheidet eindeutig.
   - **Fußpfette** (`fusspfette`): Dach-Bauteil unten im
     Dachtragwerk, parallel zur Traufe, trägt die Sparrenfüße.
     Trotz formaler Ähnlichkeit (horizontaler Stab auf einer
     Auflagerung) gehört die Fußpfette zum Dachtragwerk, nicht
-    zur Wand. Im Tafelbau kann das oberste Rähm zugleich als
+    zur Wand. Im Tafelbau kann der oberste Einbinder zugleich als
     Fußpfette wirken, aber die Schwelle hat **kein** Pendant am
     Dach: die Dach-Unterkante ist Fußpfette und Sparrenfuß,
     nicht „Schwelle".
@@ -407,12 +464,13 @@ nicht weiter behandelt.
     ein konstruktiv spezialisierter Bauteil-Subtyp; die
     allgemeinen Bauteil-Eigenschaften (Identität, Geometrie,
     Werkstoff, Lage in W) bleiben erhalten.
-  - **Stockschwelle** (`stockschwelle`, Forward-Verweis): im
-    Fachwerk-Vokabular die unterste Schwelle eines
-    Obergeschosses, auf der Decke des Untergeschosses; bei
-    Mehrgeschoss-Bedarf eigener HG-Eintrag, geometrisch
-    Spezialisierung dieses Eintrags mit anderer
-    Auflagerebene E_⊥.
+  - **Stockschwelle** (`stockschwelle`): im Fachwerk-Vokabular
+    das unterste Längsholz einer Obergeschoss-Wand, auf der
+    Balkenlage des Untergeschosses; seit Welle 15 eigener
+    Geschwister-Eintrag `hg_stockschwelle.md` — **keine**
+    geometrische Spezialisierung dieses Eintrags, weil die
+    Verkämmung Bedingung 2 und die Vorkragung Bedingung 3
+    bricht (Begründung dort, Quellenkonflikt Punkt 1).
   - **Türschwelle** (`tuerschwelle`, Forward-Verweis):
     homonymes Tür-Bauteil, nicht Variante der Wand-Schwelle.
   - **Bahnschwelle** (`bahnschwelle`, Forward-Verweis,
@@ -438,12 +496,23 @@ nicht weiter behandelt.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §8.5.4.1 (S. 142: Zusatzmoment bei
+  exzentrischer Auflagerung im Versatz-Einschnitt der Schwelle).
+  Volltext-Scan liegt Anweiser vor; direkt eingesehen 2026-08-14.
 - Lignum (Hrsg.): *Lignatec 35/2023 – Holzschutz im Bauwesen.*
   Empa/Lignum, Zürich 2023.
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Auflage, Beuth, Berlin 2015.
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.*
   DVA, 7. Auflage 2007.
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, S. 161 (Kap. 3.7.2 „Fachwerkwände",
+  Längs- und Querschwelle), S. 170 (Kap. 3.9.3, „⑤ Schwelle" und
+  „⑧ Fußpfette, Schwelle"), S. 171 (Kap. 3.9.5, „⑧ Schwelle").
+  Volltext-Scan liegt Anweiser vor; direkt eingesehen 2026-08-14.
 - Natterer, J.; Herzog, T.; Volz, M.: *Holzbau-Atlas.* 4. Auflage,
   Birkhäuser, Basel 2003.
 - Informationsdienst Holz: *Reihe 5 Teil 2 Folge 2 – Holzschutz

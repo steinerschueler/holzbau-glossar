@@ -1,7 +1,7 @@
 ---
 id: haupttragrichtung
 benennung: Haupttragrichtung
-kurz: "Die Haupttragrichtung ist bei einer mehrlagig verleimten Holzplatte die Richtung, in der sie am steifsten und tragfähigsten ist — nämlich die Faserrichtung ihrer äusseren Deckschicht."
+kurz: "Die Haupttragrichtung ist bei einer mehrlagig verleimten Holzplatte die Richtung, in der sie am steifsten und tragfähigsten ist — nämlich die Faserrichtung ihrer äußeren Deckschicht."
 synonyme: ["Decklamellen-Richtung", "0°-Richtung (CLT)", "main load-bearing direction", "stronger axis of CLT"]
 abgelehnte_benennungen: [Tragrichtung, Hauptachse, Plattenlängsachse, "main bearing axis", "strong direction"]
 oberbegriff: einheitsvektor
@@ -16,6 +16,7 @@ quellen_primär:
   - "ProHolz Austria: Brettsperrholz Bemessung Band I — Grundlagen für Statik und Konstruktion. Wien 2014, Kap. 2.3: 'Haupttragrichtung (0°): Richtung der Decklamellen mit höherer Steifigkeit der Platte.'"
 quellen_sekundär:
   - "SIA 265:2021 'Holzbau', §1.1.13 'Mehrlagige Massivholzplatte' ('parallel verlaufende Decklagen') bzw. §1.1.14 'Brettsperrholz' — die Faserrichtung der Decklage als steifste Achse; CH-Sekundaer-Anker (Definition via SN EN 16351/12775). [direkt]"
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §2.4.4 (S. 39): gedruckter Beleg der Decklagen-Regel über CLT hinaus — die Bezeichnung von Sperrholzplatten richtet sich nach Biegefestigkeit und E-Modul 'jeweils parallel und rechtwinklig zur Faserrichtung der Deckfurniere' (Beispiel F 20/10 E 40/20: f_m,∥ = 20 N/mm², f_m,⊥ = 10 N/mm², E_∥ = 4000 N/mm², E_⊥ = 2000 N/mm²) — die Faserrichtung der äußeren Lage ist die ausgezeichnete stärkere Bemessungsachse."
   - "Schickhofer, G.; Bogensperger, T.; Moosbrugger, T. (Hrsg.): BSPhandbuch — Holz-Massivbauweise in Brettsperrholz. 2. Aufl., TU Graz 2010, Kap. 2 und 3 (Plattenkoordinatensystem, Haupttragrichtung als Decklagen-Faserrichtung)."
   - "Blaß, H. J.; Flaig, M.: Stabförmige Bauteile aus Brettsperrholz. Karlsruher Berichte zum Ingenieurholzbau, Bd. 24, KIT Scientific Publishing, Karlsruhe 2012."
   - "Niemz, P.; Sonderegger, W.: Physik des Holzes und der Holzwerkstoffe. Hanser, München 2017, Kap. 7 (Brettsperrholz, Lagenaufbauten)."
@@ -240,6 +241,11 @@ lagenweise Hankinson-Auswertung.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §2.4.4 (S. 39: Sperrholz-Bezeichnung
+  parallel/rechtwinklig zur Deckfurnier-Faserrichtung).
+  Volltext-Scan liegt Anweiser vor; direkt eingesehen 2026-08-14.
 - Schickhofer, G.; Bogensperger, T.; Moosbrugger, T. (Hrsg.):
   *BSPhandbuch.* 2. Aufl., TU Graz 2010.
 - Blaß, H. J.; Flaig, M.: *Stabförmige Bauteile aus

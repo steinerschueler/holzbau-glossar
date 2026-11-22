@@ -79,7 +79,7 @@ quellenkonflikt: |
   Oberbegriff ↔ Subtyp. Begründung (zusammengeführt aus Welle-9):
 
   - `staender` ist **Wand-Bauteilrolle** (eingebunden zwischen Schwelle
-    und Rähm; topologisches Merkmal Wand-Inzidenz). Holz-konnotiert.
+    und Einbinder; topologisches Merkmal Wand-Inzidenz). Holz-konnotiert.
   - `stuetze` ist **werkstoffneutrale Tragwerks-Bauteilrolle** ohne
     Wand-Bindung (Skelettbau, Pfosten-Riegel-Fassade, Hallenbinder,
     freistehende Stütze, Geschossstütze in einer Skelettbau-Decke).
@@ -87,8 +87,8 @@ quellenkonflikt: |
   Eine Subtyp-Hierarchie `staender ⊂ stuetze` würde implizieren, dass
   ein Stahl-Ständer existiert; Wikipedia/Stütze führt für nicht-Holz-
   Werkstoffe direkt „Stütze", nicht „Ständer". Die Trennung folgt der
-  Welle-8-Doktrin (Rähm vs. Pfette als Geschwister statt Subtyp,
-  `hg_raehm.md` Quellenkonflikt-Block).
+  Welle-8-Doktrin (Einbinder vs. Pfette als Geschwister statt Subtyp,
+  `hg_einbinder.md` Quellenkonflikt-Block).
 
   Eigene Festlegung: `oberbegriff: bauteil` (nicht `staender`); die
   beiden Rollen sind Geschwister.
@@ -98,7 +98,7 @@ quellenkonflikt: |
   in der Welle-9-Folgearbeit-Diskussion eine CH-berufssprachliche
   Lastpfad-Trennung formuliert: in seiner Praxis ist „Pfosten" das
   direkt-tragende, geschoss-übergreifende, oft freistehende vertikale
-  Holz mit grösserem Querschnitt — semantisch genau die hier
+  Holz mit größerem Querschnitt — semantisch genau die hier
   definierte Stütze. Das ist im publizierten CH-Korpus
   ([intern] §B.5, §C,
   §F) als Pfosten/Ständer-Lemmatrennung NICHT verankert; das
@@ -121,7 +121,7 @@ quellenkonflikt: |
 
   **(5) SIA-265.** SIA 265:2021 §1.1
   „Fachausdrücke" (1.1.1–1.1.40) und das identische Anhang G wurden
-  am Volltext geprüft (2026-06-14): Die Liste definiert ausschliesslich
+  am Volltext geprüft (2026-06-14): Die Liste definiert ausschließlich
   Werkstoffe, Sortierung, Feuchte, Festigkeitsklasse,
   Verbindungsmittel, Versatz und Klebstoffe — **keine**
   Zimmermanns-Bauteilrolle. „Stütze" ist dort **nicht** als
@@ -199,7 +199,7 @@ alle erfüllt sind:
    ```
    p_a.z + ε_L < p_e.z.
    ```
-   Anders als bei Pfette, Riegel und Rähm ist hier eine geometrisch
+   Anders als bei Pfette, Riegel und Einbinder ist hier eine geometrisch
    zwingende Orientierung gerechtfertigt, weil Fuß und Kopf der
    Stütze konstruktiv asymmetrisch sind (Stützenfuß auf Auflager,
    Stützenkopf an aufgehender Tragebene).
@@ -224,9 +224,9 @@ alle erfüllt sind:
 
 6. **Ausschluss der Wand-Inzidenz (Trennung zu `staender`)**: B ist
    **nicht** Mitglied einer Wand-Bauteilgruppe im Sinne von `hg_wand`
-   und insbesondere nicht zwischen einer Schwelle und einem Rähm
+   und insbesondere nicht zwischen einer Schwelle und einem Einbinder
    derselben Wandebene eingespannt. Ein Bauteil mit Wand-Inzidenz und
-   Schwellen-/Rähm-Anschluss qualifiziert als `staender`
+   Schwellen-/Einbinder-Anschluss qualifiziert als `staender`
    (Geschwister-Bauteilrolle), nicht als Stütze.
 
 Wesentliche abgeleitete Größen:
@@ -250,7 +250,7 @@ Wesentliche abgeleitete Größen:
 - **Disjunktheit zu `staender`**: Bedingung 6 grenzt die Stütze gegen
   den Ständer ab. Ein Bauteil, das sowohl Bedingungen 1–5 dieses
   Eintrags als auch Bedingungen 1–6 von `hg_staender.md` erfüllt
-  (lotrechtes Stab-Bauteil in einer Wand mit Schwellen- und Rähm-
+  (lotrechtes Stab-Bauteil in einer Wand mit Schwellen- und Einbinder-
   Anschluss), ist per Modell-Entscheidung als `staender` zu führen,
   nicht als `stuetze` — die Wand-Inzidenz hat Vorrang.
 - **Konsistenz mit `bauteil`**: Alle Bedingungen aus `bauteil`
@@ -265,7 +265,7 @@ Wesentliche abgeleitete Größen:
 - **Stuhlsäule und Hängesäule als Geschwister**: Bedingung 6 schließt
   Stuhlsäulen (im Dachstuhl) und Hängesäulen (im Hängewerk) nicht aus,
   weil diese konstruktiv nicht in einer Wand zwischen Schwelle und
-  Rähm liegen. Aus der App-Modellierungs-Perspektive sind Stuhlsäule
+  Einbinder liegen. Aus der App-Modellierungs-Perspektive sind Stuhlsäule
   und Hängesäule dennoch **eigene Bauteilrollen** unter `bauteil`,
   nicht Subtypen der Stütze (siehe `hg_stuhlsaeule.md` und
   `hg_haengesaeule.md`), weil ihre konstruktive Funktion (Druck-
@@ -346,7 +346,7 @@ Spezialisierung.
 Die Trennung zwischen Stütze und Ständer folgt der **Wand-Inzidenz**:
 
 - **Ständer** ist in eine Wandscheibe eingebunden (zwischen Schwelle
-  und Rähm derselben Wandebene); seine Aufgabe ist die Lastabtragung
+  und Einbinder derselben Wandebene); seine Aufgabe ist die Lastabtragung
   **innerhalb** der Wand und die Definition der Wand-Raster-Geometrie.
 - **Stütze** ist nicht wandgebunden; sie steht freistehend oder in
   einem Skelett-Raster und trägt **punktuell-konzentrierte** Lasten.
@@ -408,7 +408,7 @@ Quellenkonflikt-Punkt 4) — die Lemma-Wahl im Glossar bleibt aber bei
 - **Oberbegriff**: `bauteil`. Strukturell ist die Stütze ein Bauteil
   mit der zusätzlichen Rolle „Stütze" und den oben formalisierten
   geometrischen Constraints. Geschwister-Rolle zu `staender` (Wand-
-  Inzidenz), `pfette`, `riegel`, `schwelle`, `raehm`, `sparren` etc.
+  Inzidenz), `pfette`, `riegel`, `schwelle`, `einbinder`, `sparren` etc.
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
   - **Bauteilachse** (`bauteilachse.Gerade`), lotrecht im Sinne von
     Bedingung 2;
@@ -438,7 +438,7 @@ Quellenkonflikt-Punkt 4) — die Lemma-Wahl im Glossar bleibt aber bei
 - **Abgrenzung**:
   - **Ständer** (`staender`, Welle 9): Wand-Bauteilrolle.
     Geschwister-Rolle der Stütze, **nicht** Oberbegriff oder
-    Subtyp. Trennlinie: Wand-Inzidenz (Schwellen-/Rähm-Anschluss).
+    Subtyp. Trennlinie: Wand-Inzidenz (Schwellen-/Einbinder-Anschluss).
   - **Säule** (`saeule`, Welle 13): architektonisch-klassischer
     Subtyp der Stütze; direkter `oberbegriff`-Verweis.
   - **Hängesäule** (`haengesaeule`, Welle 13): Zugstab im
@@ -512,6 +512,6 @@ Quellenkonflikt-Punkt 4) — die Lemma-Wahl im Glossar bleibt aber bei
 
 - baunetzwissen.de „Stützen | Holz".
 - binderholz, Hasslacher, Hüttemann BSH-Hersteller.
-- SIHGA / Simpson Strong-Tie Stützenfuss-Verbinder.
+- SIHGA / Simpson Strong-Tie Stützenfuß-Verbinder.
 - Recherche-Bericht: [intern].
 - Recherche-Bericht: [intern].

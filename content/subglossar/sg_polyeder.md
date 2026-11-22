@@ -113,7 +113,7 @@ sondern markieren die Zerlegung der Volumenrechnung.
       verdeckt (T_Lh, T_Rh):
         circle r="4" fill="none" stroke="#c0392b" stroke-width="1.5"
                                  stroke-dasharray="2 2"
-  STIL-KONVENTIONEN (Farben gemäss §6 Farbpalette)
+  STIL-KONVENTIONEN (Farben gemäß §6 Farbpalette)
     Karton              #f4f1ea  Hintergrund-Rechteck
     Pyramide-Fill       #c89a5a  beide Pyramiden + Walm-rechts
     Prisma-Fill         #e8c98a  Prisma-Front

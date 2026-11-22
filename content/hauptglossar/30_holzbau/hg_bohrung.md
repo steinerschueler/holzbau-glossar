@@ -18,10 +18,10 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 8.7 (Schrauben): Vorbohrpflichten typabhängig; Holzschrauben in der Regel ab d ≥ 6 mm bei ρ_k ≤ 500 kg/m³, ab d ≥ 4 mm bei ρ_k > 500 kg/m³ vorzubohren. Vollgewindeschrauben mit ETA in den ETA-Grenzen vorbohrfrei."
   - "SIA 265:2021 'Holzbau' definiert 'Bohrung' nicht als Fachausdruck; Querschnittsschwächungen behandelt §5.2 'Ausklinkungen, Einschnitte, Durchbrüche' (§5.2.3 Durchbrüche), Querschnittsverminderungen im Anschlussbereich §6.1.1.7, Vorbohren bei Nägeln §6.4. §4.6 ist die Bemessungssituation Erdbeben, nicht Querschnittswerte. [direkt]"
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) – Part 1: Data schema' (IFC 4.3.2), Entität 'IfcOpeningElement' (Spezialisierung von 'IfcFeatureElementSubtraction'), PredefinedType-Enum 'IfcOpeningElementTypeEnum' (Werte 'OPENING', 'RECESS', 'USERDEFINED', 'NOTDEFINED'); zylindrische Bohrungen werden über einen 'SweptSolid'-Body mit 'IfcExtrudedAreaSolid' und 'IfcCircleProfileDef' repräsentiert; Voiding-Beziehung über 'IfcRelVoidsElement'. Der frühere Subtyp 'IfcOpeningStandardCase' (IFC 4.0/4.1) ist in IFC 4.3 entfernt. [direkt]"
-  - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'Drilling' (Parameter StartX, StartY, Angle, Inclination, DepthLimited, Depth, Diameter) und Abschnitt 'Pocket' (für grosse Sacklöcher und rechteckige Taschen)."
+  - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'Drilling' (Parameter StartX, StartY, Angle, Inclination, DepthLimited, Depth, Diameter) und Abschnitt 'Pocket' (für große Sacklöcher und rechteckige Taschen)."
 quellen_sekundär:
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 7 'Verbindungen': Bohrlochtoleranzen für Bolzen, Stabdübel, Passbolzen."
-  - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 8 'Verbindungen': Vorbohrung als Spaltvermeidungs-Massnahme bei stiftförmigen Verbindungsmitteln."
+  - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 8 'Verbindungen': Vorbohrung als Spaltvermeidungs-Maßnahme bei stiftförmigen Verbindungsmitteln."
   - "Holzbau-Handbuch, Reihe 2 'Tragwerksplanung', Teil 1 'Verbindungen', Folge 1 'Verbindungen mit stiftförmigen Verbindungsmitteln', Informationsdienst Holz, aktuelle Auflage: Vorbohr-Praxis und Bohrlochtoleranzen."
   - "ETA-11/0190, 'Würth ASSY plus VG, ASSY 3.0, ASSY 4.0': Vorbohrgrenzen für Vollgewindeschrauben in ETA-Bewertung."
   - "Z-9.1-519, 'Schrauben mit Vollgewinde als Verbindungsmittel und als Verstärkung von Holzbauteilen' (SPAX, DIBt): Vorbohr-Vorgaben."
@@ -49,7 +49,7 @@ quellenkonflikt: |
       Schneiddurchmesser, charakterisiert durch Nenndurchmesser,
       Tiefe und Achse.
 
-  (b) **Resultatszentrierte Glossarsicht** (gemäss `hg_bearbeitung`):
+  (b) **Resultatszentrierte Glossarsicht** (gemäß `hg_bearbeitung`):
       Eine Bohrung ist nicht die Werkzeugtätigkeit, sondern das
       geometrische Resultat am bearbeiteten Bauteil — der
       kreiszylindrische Materialabtrag.
@@ -71,16 +71,16 @@ quellenkonflikt: |
   Achse 1 — **Tiefen-Erstreckung** (im Frontmatter-Parametertupel
   `tiefenart`):
 
-  - **Durchgangsbohrung**: Werkzeugkörper durchstösst das Bauteil
+  - **Durchgangsbohrung**: Werkzeugkörper durchstößt das Bauteil
     vollständig; im Modell parametrisch durch die Marke
     `tiefenart = DURCHGANG`. IFC-Pendant: `IfcOpeningElementTypeEnum.OPENING`.
     BTLx-Pendant: `Drilling` mit `DepthLimited = false`.
   - **Sackbohrung** (Sackloch): Werkzeugkörper hat definierte
-    Tiefe kleiner als die Bauteildurchstossweite entlang der
+    Tiefe kleiner als die Bauteildurchstoßweite entlang der
     Achse; im Modell `tiefenart = SACKLOCH`, zusätzlich ist die
     Tiefe `t` gebunden. IFC-Pendant: `IfcOpeningElementTypeEnum.RECESS`.
     BTLx-Pendant: `Drilling` mit `DepthLimited = true` (kleine bis
-    mittlere Durchmesser) bzw. `Pocket` (grosse Durchmesser oder
+    mittlere Durchmesser) bzw. `Pocket` (große Durchmesser oder
     nicht-kreisförmige Sacklöcher; im Glossar dann **keine**
     Bohrung mehr, sondern eigener Subtyp `aussparung`).
 
@@ -163,9 +163,9 @@ deren Werkzeugkörper ein endlicher Kreiszylinder ist, der durch
 einen Startpunkt auf einer Bauteiloberfläche, eine
 Achsrichtung als Einheitsvektor im Bauteil-Lokal-System, einen
 Nenndurchmesser und eine Tiefen-Erstreckung — entweder
-**Durchgangsbohrung** (Werkzeugkörper durchstösst das Bauteil
+**Durchgangsbohrung** (Werkzeugkörper durchstößt das Bauteil
 vollständig) oder **Sackbohrung** (Werkzeugkörper hat
-festgelegte Tiefe kleiner als die Bauteildurchstossweite entlang
+festgelegte Tiefe kleiner als die Bauteildurchstoßweite entlang
 der Achse) — vollständig festgelegt ist und deren Wirkung auf
 das Bauteil die Boole'sche Differenz nach `bearbeitung` Gl. (1)
 mit diesem Kreiszylinder als Werkzeugkörper ist.
@@ -281,7 +281,7 @@ Eindeutigkeit der Zuordnung).
 
 ## Wohldefiniertheit
 
-- **Existenz**: Für jede zimmermannsmässig hergestellte Bohrung
+- **Existenz**: Für jede zimmermannsmäßig hergestellte Bohrung
   an einem Bauteil — Lüftungsbohrung an einem Sparren, Glued-in-
   Rod-Sackbohrung an einer Stütze, Durchgangsbohrung für eine
   Elektroinstallation an einem CLT-Element — lässt sich das
@@ -312,7 +312,7 @@ Eindeutigkeit der Zuordnung).
   Durchmessers abbilden. Die Wahl ist Modellierungskonvention;
   semantisch invariant.
 - **Wohldefiniertheit für α = DURCHGANG**: Das Supremum (6) ist
-  nicht das blosse Supremum eines beliebigen Strahls, sondern
+  nicht das bloße Supremum eines beliebigen Strahls, sondern
   beschränkt auf Eindringlängen, für die der Strahl noch innerhalb
   des Bauteilkörpers liegt. Für einen einfach zusammenhängenden,
   konvexen oder polyederförmigen G_B^lokal und einen p_S auf der
@@ -321,7 +321,7 @@ Eindeutigkeit der Zuordnung).
   Bauteilkörper (etwa nach vorangegangenen Bearbeitungen) ist (6)
   trotzdem wohldefiniert: t_max ist die letzte Eindringlänge mit
   p_S + λ · a_hat ∈ G_B^lokal, und die Boole'sche Differenz (7)
-  arbeitet stabil auch über mehrfach durchstossene Bereiche
+  arbeitet stabil auch über mehrfach durchstoßene Bereiche
   hinweg.
 - **Geometrische Nicht-Degeneriertheit (harte Invarianten,
   Validierungsfehler bei Verletzung)**:
@@ -362,13 +362,13 @@ Eindeutigkeit der Zuordnung).
   Plausibilitäts-Verhältnis überschreitet (Faustregel-Default
   in der Bemessungsschicht; nicht im Glossar normativ
   festgelegt). Diese Prüfung ist **keine** Definitionsbedingung;
-  eine grosse Bohrung bleibt eine Bohrung im Sinne dieses
+  eine große Bohrung bleibt eine Bohrung im Sinne dieses
   Glossars, sie ist bemessungstechnisch jedoch problematisch.
 
 ## Erläuterung (nicht normativ)
 
 Die Bohrung ist der häufigste subtraktive Bauteil-Merkmaltyp im
-Holzbau und gleichzeitig der mit der grössten konzeptuellen
+Holzbau und gleichzeitig der mit der größten konzeptuellen
 Schärfungsbedürftigkeit: sie kann **eigenständige
 Bauteilbearbeitung** sein (Lüftungsbohrung, Glued-in-Rod-
 Sackbohrung, Elektroinstallations-Durchführung), oder sie kann
@@ -401,7 +401,7 @@ Analog zu `hg_bearbeitung.md`: 'Bohrung' bezeichnet im
 zimmermannssprachlichen Sprachgebrauch sowohl die **Tätigkeit**
 (das Bohren, der Bohrvorgang) als auch das **Resultat** (das
 zylindrische Loch im fertigen Bauteil). Dieser Glossareintrag
-definiert ausschliesslich die **Resultatslesart**: das
+definiert ausschließlich die **Resultatslesart**: das
 geometrische Merkmal am bearbeiteten Bauteil. Die Tätigkeit
 (Werkzeugwahl, Vorschub, Bohrgeschwindigkeit, CNC-Programmierung)
 ist Gegenstand der Fertigungs-Schicht und nicht im Glossar
@@ -415,7 +415,7 @@ Processings; die Übersetzung erfolgt fallbezogen:
 | App-Bohrung | BTLx-Processing | Trigger |
 |---|---|---|
 | Standardfall (kleiner bis mittlerer Durchmesser, beliebige Tiefe) | `Drilling` | immer, sofern Werkzeugklasse 'Holzbau-Spiralbohrer' |
-| Grosse Sackbohrung (Werkzeugklasse Fräser) | `Pocket` mit kreisförmigem Profil | Durchmesser > Werkzeugschwelle; im Glossar dann eigener Subtyp `aussparung` (Folgearbeit) |
+| Große Sackbohrung (Werkzeugklasse Fräser) | `Pocket` mit kreisförmigem Profil | Durchmesser > Werkzeugschwelle; im Glossar dann eigener Subtyp `aussparung` (Folgearbeit) |
 
 Die Parameter des `Drilling`-Processings (`StartX`, `StartY`,
 `Angle`, `Inclination`, `DepthLimited`, `Depth`, `Diameter`)
@@ -508,7 +508,7 @@ führen, nicht hier.
     Dreiecksquerschnitt.
   - **Aussparung** (Forward-Verweis, Folgearbeit; Trigger: erste
     Bemessung einer Trägeröffnung nach EC5:2025 'Design of holes
-    in beams'): grosse, im Bauteilmittelbereich gelegene Öffnung
+    in beams'): große, im Bauteilmittelbereich gelegene Öffnung
     beliebiger Form (rechteckig, polygonal, kreisförmig). Eine
     Aussparung mit kreisförmigem Querschnitt unterscheidet sich
     von einer Bohrung durch die Werkzeugklasse (Fräser statt

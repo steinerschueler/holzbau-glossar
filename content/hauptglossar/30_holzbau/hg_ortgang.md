@@ -1,7 +1,7 @@
 ---
 id: ortgang
 benennung: Ortgang
-kurz: "Der Ortgang ist die schräge seitliche Dachkante am Giebel, die vom First hinunter zur Traufe verläuft und die Dachfläche am Hausende abschliesst."
+kurz: "Der Ortgang ist die schräge seitliche Dachkante am Giebel, die vom First hinunter zur Traufe verläuft und die Dachfläche am Hausende abschließt."
 synonyme: [Ortgangkante, Giebelkante, "seitliche Dachkante"]
 abgelehnte_benennungen: [Ortbrett, Windbrett, Ortgangbrett, Giebel, Giebelseite, "rake", "verge", "gable edge"]
 oberbegriff: dachkante
@@ -13,7 +13,7 @@ subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe): Ortgang als seitliche Begrenzungskante einer Dachfläche an einer Giebelwand."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1', Abschnitt 5 (Darstellung von Dächern): Ortgang als geneigte seitliche Dachkante."
-  - "DIN 18338:2019-09 'VOB Teil C: Dachdeckungs- und Dachabdichtungsarbeiten', Abschnitt 0 (Begriffe): Ortgang als seitliche, dem Giebel zugeordnete Dachkante."
+  - "DIN 18338:2019-09 'VOB Teil C: ATV Dachdeckungsarbeiten' (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336; die ATV führt keine Begriffs-Sektion — Abschnitt 0 sind Hinweise für das Aufstellen der Leistungsbeschreibung, die Dachkanten-Begriffe werden vorausgesetzt und nach Längenmaß abgerechnet), vorausgesetzte Lesart: Ortgang als seitliche, dem Giebel zugeordnete Dachkante."
 quellen_sekundär:
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015, Kap. Dachformen."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Ortgang'."
@@ -206,8 +206,9 @@ Gefälle abläuft.
   Architektenverein, Abschnitt 1.
 - DIN 1356-1:1995-02, „Bauzeichnungen – Teil 1: Arten, Inhalte und
   Grundregeln der Darstellung", Abschnitt 5.
-- DIN 18338:2019-09, „VOB Teil C: Dachdeckungs- und
-  Dachabdichtungsarbeiten", Abschnitt 0.
+- DIN 18338:2019-09, „VOB Teil C: ATV Dachdeckungsarbeiten"
+  (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336),
+  Abschnitt 0 (Hinweise für das Aufstellen der Leistungsbeschreibung).
 
 **Sekundär:**
 

@@ -11,8 +11,8 @@ abgrenzung_zu: [vektor, koordinatensystem]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren)."
-  - "ISO 80000-2:2019, Symbole und Bezeichnungen für Punkte und Vektoren im affinen Raum."
+  - "DIN EN ISO 80000-2:2023-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitte 9 (Elementare Geometrie) und 18 (Skalare, Vektoren und Tensoren). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitt 8 (Elementary geometry), Nr. 2-8.1 bis 2-8.6: Punkte A, B, C als Bezug für Gerade, Winkel, Strecke, Vektor und Abstand; Abschnitt 17 (Scalars, vectors and tensors), Nr. 2-17.8: Ortsvektor des Punktes mit den Koordinaten x, y, z. Ein eigener Eintrag zum Punkt fehlt. [direkt]"
 quellen_sekundär:
   - "Bronstein, I. N.; Semendjajew, K. A.; Musiol, G.; Mühlig, H.: Taschenbuch der Mathematik. 12. Aufl., Europa-Lehrmittel/Harri Deutsch, Edition Harri Deutsch 2024, Kap. 3.5 'Analytische Geometrie des Raumes'."
   - "Bär, C.: Elementare Differentialgeometrie. 2. Aufl., de Gruyter 2010, Kap. 1 'Affiner Raum'."
@@ -104,8 +104,10 @@ trägt; der präzise Fachname bleibt **Punkt**.
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2: Mathematik".
-- ISO 80000-2:2019, „Quantities and units – Part 2: Mathematics".
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2: Mathematik".
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
 
 **Sekundär:**
 

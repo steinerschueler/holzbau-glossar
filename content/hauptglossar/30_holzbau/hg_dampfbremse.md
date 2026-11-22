@@ -64,10 +64,10 @@ quellenkonflikt: |
   als Diffusionsschicht (Schutz vor Diffusion durch
   Dampfdruckgefälle). In der Holzbau-Praxis werden beide
   Funktionen häufig **auf derselben Bahn** realisiert (raumseitige
-  Bahn mit verklebten Stössen erfüllt beides). SIA 180:2014
+  Bahn mit verklebten Stößen erfüllt beides). SIA 180:2014
   erlaubt diese Doppelnutzung ausdrücklich. Die definitorische
   Trennung bleibt aber bestehen: eine lose verlegte Dampfbremse
-  ohne Stoss-Verklebung ist Dampfbremse, aber nicht Luftdichtheits-
+  ohne Stoß-Verklebung ist Dampfbremse, aber nicht Luftdichtheits-
   ebene; eine Holzwerkstoffplatte als luftdichte Schicht ist
   Luftdichtheitsebene, aber nur dann Dampfbremse, wenn ihr sd-Wert
   im diffusionshemmenden Bereich liegt. Im Glossar wird
@@ -130,7 +130,7 @@ quellenkonflikt: |
 
   **(9) Lokales Norm-Enum `DampfbremsenNorm`.** Die Norm-Aufzählung in
   der parametrischen Klassifikation
-  `klassifiziereNachSdWert(sd, norm)` heisst lokal `DampfbremsenNorm`,
+  `klassifiziereNachSdWert(sd, norm)` heißt lokal `DampfbremsenNorm`,
   nicht generisch `Norm`. Damit kollidiert sie nicht mit den lokalen
   Enums `UnterdachNorm` (`hg_unterdach.md`), `AbdichtungsNorm`
   (`hg_dachabdichtung.md`) und `WaermedaemmungsNorm`
@@ -155,7 +155,7 @@ Eine **Dampfbremse** ist eine raumseitige diffusionshemmende
 Funktionsschicht des wärmegedämmten Bauteils, deren wasserdampf-
 diffusionsäquivalente Luftschichtdicke (sd-Wert) im Bereich
 0,5 m ≤ sd ≤ 1500 m nach DIN 4108-3 liegt und die in dieser
-Lage den Wasserdampf-Diffusionsstrom von innen nach aussen so
+Lage den Wasserdampf-Diffusionsstrom von innen nach außen so
 weit reduziert, dass das Ausfallen von Tauwasser in der
 Wärmedämmung und an angrenzenden Holzbauteilen begrenzt bleibt.
 
@@ -165,15 +165,15 @@ Sei
 
 - A = (𝒟, 𝒮, H) ein **Dachaufbau** im Sinne von `dachaufbau` mit
   Dachflächen-Familie 𝒟 = { D₁, …, D_m }, geordneter Schichtfolge
-  𝒮 = (S₁, …, S_k) von innen nach aussen, und Dachhaut H,
+  𝒮 = (S₁, …, S_k) von innen nach außen, und Dachhaut H,
 - F:= ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich der Dachflächen,
 - ein Index j* ∈ { 1, …, k } so gewählt, dass die Schicht S_{j*}
   die Funktionsklasse `SchichtFunktion.DAMPFBREMSE` trägt,
 - d_{j*} ∈ ℝ_{>0} (in mm) die Dicke von S_{j*},
 - φ_bar ∈ [0, 1] die mittlere relative Feuchte im Querschnitt der
   Bahn (dimensionslos),
-- σ ∈ { **innen**, **aussen** } die Seite der Bahn,
-- s_d: [0, 1] × { innen, aussen } → ℝ_{>0} die sd-Wert-Funktion
+- σ ∈ { **innen**, **außen** } die Seite der Bahn,
+- s_d: [0, 1] × { innen, außen } → ℝ_{>0} die sd-Wert-Funktion
   der Bahn, Einheit m,
 - s_min, s_max ∈ ℝ_{>0} mit s_min ≤ s_max die zertifizierten
   Schranken der Bahn nach DIN EN 13984.
@@ -188,7 +188,7 @@ mit den Konsistenzbedingungen
 
 1. **Lage im Dachaufbau:** j* > 1 und j* ≤ k − 1; die
    Dampfbremse liegt **raumseitig** der Wärmedämmung im Aufbau
-   und ist nicht die äusserste Schicht.
+   und ist nicht die äußerste Schicht.
 2. **Funktionsklasse:** `S_{j*}.funktion = DAMPFBREMSE`.
 3. **Positive Dicke:** d_{j*} > Toleranzen.LAENGE_EPS.
 4. **Diffusionshemmende Schranken (DIN 4108-3):**
@@ -213,7 +213,7 @@ sealed-Hierarchie:
 - **Hygrobrid:** s_d hängt sowohl von φ_bar als auch von σ ab und
   ist im Allgemeinen weder symmetrisch in σ noch in φ_bar monoton
   in derselben Richtung. Charakterisierend ist eine asymmetrische
-  Bedingung der Form s_d(φ_bar, innen) ≠ s_d(φ_bar, aussen) für mindestens
+  Bedingung der Form s_d(φ_bar, innen) ≠ s_d(φ_bar, außen) für mindestens
   ein φ_bar ∈ [0, 1].
 
 Die **wasserdampf-diffusionsäquivalente Luftschichtdicke** in der
@@ -267,7 +267,7 @@ einzuordnen, mit produktspezifischen Schranken (s_min, s_max).
   mehrere Dampfbremsen-Instanzen, je Schicht eine.
 - **Konsistenz mit `dachaufbau`.** Die Dampfbremse ist eine
   Schicht S_{j*} **im** Dachaufbau; sie ist kein eigenständiges
-  Aggregat ausserhalb des Aufbaus und teilt mit ihm den
+  Aggregat außerhalb des Aufbaus und teilt mit ihm den
   Trägerbereich F.
 - **Konsistenz mit `dachhaut` und `unterdach`.** Die Dampfbremse
   liegt **raumseitig** der Wärmedämmung und damit weit unterhalb
@@ -322,7 +322,7 @@ Die App führt drei Subtypen als sealed-Klassen:
 | **Hygrobrid**     | asymmetrisch in σ         | SIGA Majrex 200                   | 0,8 m bis 35 m    |
 
 - **Konventionelle Dampfbremse:** konstanter sd-Wert. Wirkt im
-  Winter (Diffusion vom warmen Innenraum nach aussen) wie im
+  Winter (Diffusion vom warmen Innenraum nach außen) wie im
   Sommer (umgekehrtes Gefälle bei aufgeheiztem Dach). Begrenzt
   Rücktrocknung nach innen.
 - **Feuchteadaptive Dampfbremse (Klimamembran):** der sd-Wert
@@ -336,8 +336,8 @@ Die App führt drei Subtypen als sealed-Klassen:
   uneinheitlich gebraucht und im Glossar als Synonym geführt,
   ohne normative Bindung.
 - **Hygrobrid-Dampfbremse:** der sd-Wert hängt zusätzlich von
-  der **Seite** der Bahn ab (innen vs. aussen). Bei SIGA Majrex
-  200 ist sd_innen (raumseitig) deutlich höher als sd_aussen
+  der **Seite** der Bahn ab (innen vs. außen). Bei SIGA Majrex
+  200 ist sd_innen (raumseitig) deutlich höher als sd_außen
   (dämmungsseitig), so dass die Bahn Feuchte stärker aus der
   Dämmung in den Raum ablässt als umgekehrt. Strukturell ist
   Hygrobrid eine eigenständige Funktionsklasse, nicht eine
@@ -349,14 +349,14 @@ Die App führt drei Subtypen als sealed-Klassen:
 Die Dampfbremse ist die **Diffusionsschicht**; die
 **Luftdichtheitsebene** (DIN 4108-7, SIA 180) ist eine
 **funktional getrennte Schicht**, die den konvektiven Lufttausch
-durch Stoss- und Anschlussfugen verhindert. Die beiden Schichten
+durch Stoß- und Anschlussfugen verhindert. Die beiden Schichten
 werden in der Holzbau-Praxis **häufig auf derselben Bahn**
-realisiert (raumseitige Dampfbremse mit verklebten Stössen
+realisiert (raumseitige Dampfbremse mit verklebten Stößen
 erfüllt zugleich die Luftdichtheits-Anforderung); SIA 180
 erlaubt diese Doppelnutzung ausdrücklich. Funktional bleibt die
 Trennung streng:
 
-- Eine lose verlegte Dampfbremse ohne Stoss-Verklebung ist
+- Eine lose verlegte Dampfbremse ohne Stoß-Verklebung ist
   diffusionshemmend, aber nicht luftdicht — heute Ausführungs-
   Mangel.
 - Eine Holzwerkstoffplatte (z. B. OSB-Schalung) kann als
@@ -366,10 +366,10 @@ Trennung streng:
   modelliert.
 
 Quantitativ ist der konvektive Feuchteeintrag durch
-Undichtheiten typischerweise **10- bis 1000-mal grösser** als
+Undichtheiten typischerweise **10- bis 1000-mal größer** als
 der diffusive Eintrag bei intakter Dampfbremse; die
 Luftdichtheit ist deshalb in der Praxis die dominante
-Schutzgrösse, auch wenn die Dampfbremse die normative
+Schutzgröße, auch wenn die Dampfbremse die normative
 Aufmerksamkeit auf den Diffusionsstrom lenkt.
 
 ### Tauwassernachweis (Anwendung, nicht Begriff)
@@ -424,24 +424,24 @@ Bibliothek.
     fixierter Funktionsklasse.
   - **`dachaufbau`:** das Aggregat **aller** Schichten oberhalb
     des Tragwerks; die Dampfbremse ist **eine** Schicht darin.
-  - **`waermedaemmung`:** die wärmedämmende Schicht **aussen** der
+  - **`waermedaemmung`:** die wärmedämmende Schicht **außen** der
     Dampfbremse. Die Dampfbremse schützt sie vor diffundierendem
     Wasserdampf aus dem Innenraum; das verhindert den Tauwasser-
     Ausfall innerhalb der Wärmedämmung am kalten Ende (Glaser).
     Die Dampfbremse ist nicht selbst Wärmedämmung.
-  - **`unterdach`:** die zweite wasserführende Ebene **aussen**
+  - **`unterdach`:** die zweite wasserführende Ebene **außen**
     der Wärmedämmung. Liegt zwischen Wärmedämmung und Eindeckung,
     nicht zwischen Innenraum und Wärmedämmung. Funktional und
     geometrisch von der Dampfbremse getrennt.
-  - **`eindeckung`:** die äusserste Schicht des Dachaufbaus.
+  - **`eindeckung`:** die äußerste Schicht des Dachaufbaus.
     Die Dampfbremse ist die raumseitige Sicherungsschicht und
     liegt strikt **unter** der Eindeckung in der Schichtfolge.
-  - **`dachabdichtung`:** die wasserdichte äusserste Schicht eines
-    Flachdachs. Liegt aussen, nicht raumseitig; funktional disjunkt
+  - **`dachabdichtung`:** die wasserdichte äußerste Schicht eines
+    Flachdachs. Liegt außen, nicht raumseitig; funktional disjunkt
     von der Dampfbremse.
   - **`dampfsperre`** (Forward-Verweis A, Sub-Variante mit
     sd > 1500 m): die strikt diffusionsdichte Schicht
-    (Aluminium-Verbundbahn, Bitumen-Schweissbahn, dicke PE-
+    (Aluminium-Verbundbahn, Bitumen-Schweißbahn, dicke PE-
     Folie über 1500 m). Eigenständige Klasse nach DIN 4108-3;
     typische Anwendung in Schwimmbad-, Sauna-, Industrie- und
     Beton-Dachaufbauten. Im normalen Holzbau-Wohndach durch

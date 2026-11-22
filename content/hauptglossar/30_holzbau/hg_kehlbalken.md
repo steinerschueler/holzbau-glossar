@@ -16,6 +16,8 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 6 (Grenzzustände der Tragfähigkeit, Knicken) — Kehlbalken implizit als wechselbeanspruchter Stab (Druck/Zug) eines statisch unbestimmten Sparrentragwerks; keine geschlossene Begriffsdefinition."
   - "DIN 1052:2008-12, Abschnitt 8 und Abschnitt 12 (Konstruktive Anforderungen) — Kehlbalken als vorausgesetzter Tragwerks-Begriff."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.9.2 'Kehlbalkendach' (S. 169), Kap. 3.9.5 (S. 171), Kap. 3.9.7 (S. 172), Kap. 3.9.8 (S. 173): (a) **Höhenlage** — die Bemaßung des Kehlbalkendach-Schnitts teilt die Sparrenlänge in 'ca. 30 %' oberhalb und 'ca. 70 %' unterhalb des Kehlbalkens, bei 'max. 7 m' Sparrenlänge (S. 169); damit liegt ein deutschsprachiger Berufsschul-Beleg für die Anordnung im oberen Sparrendrittel vor. (b) **Knotenausbildung** — am Kehlbalken-Sparren-Knoten '② Versatz' plus 'Laschenpaar' (S. 169). (c) **Funktionszuschreibung** — 'Kehlbalken bildet mit Sparren zusätzliches unverschiebliches Dreieck und nimmt Druck durch Dachhaut auf' (S. 172, Lastabtragungs-Tafel); Vorteils-Tafel: 'Kehlbalken ist gleichzeitig Unterkonstruktion für die Decke', 'Kehlspeicher nutzbar', 'aber: Kopfhöhe beachten', 'größere Sparrenlänge (bis 6 m)' (S. 173). (d) **Berufssprache** — im Pfettendach heißt das Querholz auf Kehlniveau 'Kehlgebälk (einteilig, hier zweiteilig)' bzw. 'Zangenpaar als Kehlgebälk' (S. 171, Legende ⑤ bzw. ②); die zweiteilige Ausführung ist dort ein Zangenpaar in der Kehlgebälk-Rolle und wird gerade nicht 'Kehlbalken' genannt — Stützung der Ablehnung von 'Zange'/'Kehlzange' als Synonyme."
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §9.2.2/§9.3.3 (S. 161–167): führt den Kehlbalken durchgängig als 'Kehlriegel (Kr)' — gedruckter Beleg des Synonyms; Kehlbalkenlage in der Ebene der Mittelpfetten als oberer Raumabschluss und Tragebene für Spitzboden oder Dachstudio (S. 161); im Kehlbalkendach horizontale Unterstützung der Sparren, bei ausgebautem Dachgeschoss zusätzlich Deckenbalken (S. 166); Kehlbalkendächer einfach statisch unbestimmt, verschieblich vs. unverschieblich (Kehlriegel-Ebene als Scheibe/Verband an Giebel- und Zwischenwänden, Bilder 9.17–9.19)."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Dachtragwerke / Kehlbalkendach'."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Abschnitt zu Kehlbalken- und Sparrenanschlüssen."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke', § Kehlbalkendach."
@@ -56,6 +58,21 @@ quellenkonflikt: |
   - „im oberen Drittel der Sparrenhöhe" — englische collar-tie-Lehre
     (finehomebuilding.com, internachi.org), Praxisempfehlungen
     (Niedrig).
+  - „bei ca. 70 % der Sparrenlänge über dem Sparrenfuß, ca. 30 %
+    darüber" — Bläsi/Ferdinand, *Tabellenbuch Zimmerer*, 9. Aufl.
+    2021, Kap. 3.9.2, S. 169 (Berufsschul-Kanon, Hoch;
+    Volltext-Scan liegt Anweiser vor, direkt eingesehen 2026-08-14).
+    Die gedruckte Bemaßung des Kehlbalkendach-Schnitts wertet die
+    zuvor nur englischsprachig belegte „oberes-Drittel"-Lesart auf
+    ein deutschsprachiges Berufsschul-Standardwerk auf; die
+    Bandbreite der Faustregeln bleibt damit bestehen, ihre
+    Streuung ist jedoch nicht mehr sprachraum-korreliert.
+    Nebenbefund: dieselbe Seite nennt „max. 7 m" Sparrenlänge im
+    Kehlbalkendach, die Vor-/Nachteile-Tafel auf S. 173 dagegen
+    „größere Sparrenlänge (bis 6 m)" — eine werksinterne
+    Zahlen-Diskrepanz, die hier nur dokumentiert und nicht
+    aufgelöst wird, weil beide Werte Faustregeln zur Sparrenlänge
+    und nicht zur Kehlbalken-Höhenlage sind.
 
   Statisch optimal liegt der Kehlbalken in Sparrenmitte (Knicklänge
   maximal halbiert; Mönck/Rug 16. Aufl. Kap. 11); konstruktiv wird er
@@ -103,7 +120,7 @@ quellenkonflikt: |
   - Bundbalken **am Sparrenfuß** (Höhe ≈ Traufniveau),
     Kehlbalken oberhalb des Sparrenfußes.
   - Bundbalken **dauerhaft Zugband** (Aufnahme des
-    Horizontalschubs, schliesst das statische Sparrendreieck),
+    Horizontalschubs, schließt das statische Sparrendreieck),
     Kehlbalken **wechselbeanspruchter Riegel** (Druck bei
     symmetrischer Last, Zug bei Wind/asymmetrischer Last).
   - Bundbalken ist konstitutiv für den **Sparrenbinder**
@@ -186,7 +203,7 @@ Sei
 - E_paar die **Sparrenpaar-Ebene**, d. h. die durch die vier
   Punkte p^{(1)}_fuß, p^{(1)}_first, p^{(2)}_fuß, p^{(2)}_first
   aufgespannte Ebene (siehe `ebene`); die vier Punkte sind
-  voraussetzungsgemäss koplanar bis ε_L (geometrische
+  voraussetzungsgemäß koplanar bis ε_L (geometrische
   Konsistenz-Bedingung eines Sparrenpaars),
 - n_paar ∈ S² ein Einheitsnormalenvektor von E_paar,
 - e_z:= (0, 0, 1)ᵀ die Welt-Lotachse,
@@ -537,6 +554,19 @@ gehört höchstens zu einem Kehlbalkenbinder.
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5. Kap. 3.9.2 „Kehlbalkendach" (S. 169,
+  Höhenlage ca. 30 %/70 % der Sparrenlänge, max. 7 m; Versatz plus
+  Laschenpaar), Kap. 3.9.5 (S. 171, „Kehlgebälk (einteilig, hier
+  zweiteilig)" / „Zangenpaar als Kehlgebälk"), Kap. 3.9.7 (S. 172,
+  unverschiebliches Dreieck, Druck aus der Dachhaut), Kap. 3.9.8
+  (S. 173, Kehlbalken als Decken-Unterkonstruktion, Kehlspeicher).
+  Volltext-Scan liegt Anweiser vor; direkt eingesehen 2026-08-14
+  (seitenweise am Scan-PNG verifiziert).
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §9.2.2/§9.3.3 (S. 161–167, „Kehlriegel“). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-13.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich, aktuelle
   Auflage.
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*

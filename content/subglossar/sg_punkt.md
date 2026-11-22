@@ -26,10 +26,10 @@ gedachte Lage, eindeutig bestimmt durch ihre drei Koordinaten in
 der Welt.
 
 Im Holzbau-Korpus tritt der Punkt fast nie als nacktes Substantiv
-auf. Er lebt in **Rollen-Komposita**: Sparrenfusspunkt, Firstpunkt,
+auf. Er lebt in **Rollen-Komposita**: Sparrenfußpunkt, Firstpunkt,
 Knotenpunkt, Auflagerpunkt, Achspunkt, Lotpunkt, Bezugspunkt,
 Anrisspunkt. Das ist kein Zufall der Sprache, sondern Ausdruck der
-Sache — ein Punkt ist im Holzbau immer der Punkt von etwas: der Fuss
+Sache — ein Punkt ist im Holzbau immer der Punkt von etwas: der Fuß
 des Sparrens, der First eines Daches, der Knoten eines Stabwerks,
 das Auflager an einer Pfette.
 
@@ -45,7 +45,7 @@ benennt.
 
 Die folgende Skizze zeigt einen Ausschnitt aus einem Werkplan: links
 das Schnurgerüst am Bauplatz mit zwei Achspunkten am Schnittpunkt
-der Bauachsen, rechts darüber der Dachschnitt mit Sparrenfusspunkt
+der Bauachsen, rechts darüber der Dachschnitt mit Sparrenfußpunkt
 und Firstpunkt. Die beschrifteten Punkte sind dieselbe Sorte
 geometrisches Objekt — drei Koordinaten in der Welt — aber jeder
 trägt eine andere **Rolle** im Plan.
@@ -55,8 +55,8 @@ trägt eine andere **Rolle** im Plan.
   <desc>Zwei Ausschnitte nebeneinander: links das Schnurgerüst am
         Bauplatz mit zwei Achspunkten A_1 und A_2 als Schnittpunkten
         von Bauachsen, rechts ein Dachschnitt im Pfettendach mit
-        Sparrenfusspunkten F_l und F_r am Vordach-Ende, vier
-        Kerveckpunkten K an Fusspfetten und Firstpfette sowie einem
+        Sparrenfußpunkten F_l und F_r am Vordach-Ende, vier
+        Kerveckpunkten K an Fußpfetten und Firstpfette sowie einem
         Firstpunkt P_F an der Spitze der Sparrenköpfe.</desc>
   <rect width="100%" height="100%" fill="#f4f1ea"/>
   <!--
@@ -70,7 +70,7 @@ trägt eine andere **Rolle** im Plan.
       (A) Schnurgerüst am Bauplatz (Hochformat-Block links) mit zwei
           Achspunkten A_1, A_2 als Schnittpunkten von Bauachsen.
       (B) Dachschnitt im Pfettendach (Querformat-Block rechts) mit
-          Sparrenfusspunkten F_l und F_r, vier Kerveckpunkten K und
+          Sparrenfußpunkten F_l und F_r, vier Kerveckpunkten K und
           einem Firstpunkt P_F.
     Trennlinie x=160 (gestrichelt) trennt die zwei Ausschnitte.
   PATTERN-NUTZUNG (SG_KONVENTIONEN.md §6)
@@ -78,7 +78,7 @@ trägt eine andere **Rolle** im Plan.
       und <desc>).
     - Pattern 2 Welt-Pfeile-Inset (translate(640, 410)).
     - Pattern 3 Punkt-Markierung mit Label und Rolle.
-  STIL-KONVENTIONEN (Farben gemäss §6 Farbpalette)
+  STIL-KONVENTIONEN (Farben gemäß §6 Farbpalette)
     Karton                 #f4f1ea  Hintergrund-Rechteck
     Pfetten-Füllung        #d4a76a  warmer Holz-Hue
     Sparren-Füllung        #f5e6c8  hell-warmer Holz-Hue
@@ -114,12 +114,12 @@ trägt eine andere **Rolle** im Plan.
     (B) Dachschnitt (Pfettendach mit Klauen- und First-Kerve,
         x=170..710):
       Pfetten-Querschnitt 30×38 (gleich für alle drei Pfetten).
-      Sparren-Polygon mit V-förmiger Aussparung an Fusspfette UND
+      Sparren-Polygon mit V-förmiger Aussparung an Fußpfette UND
       an Firstpfette.
       Pfetten:
-        Fusspfette links     rect (305, 200) (Außenkante x=305,
+        Fußpfette links     rect (305, 200) (Außenkante x=305,
                                               Innenkante x=335)
-        Fusspfette rechts    rect (555, 200) (Innenkante x=555,
+        Fußpfette rechts    rect (555, 200) (Innenkante x=555,
                                               Außenkante x=585)
         Firstpfette          rect (430, 130). Zuerst gezeichnet im
                              Hintergrund; Sparren-Polygone überdecken
@@ -136,22 +136,22 @@ trägt eine andere **Rolle** im Plan.
                      First-Kerve
         (430, 130)   First-Kerveckpunkt (Sohle-Senkel-Eck)
         (430, 138)   Senkel-Ausstieg First-Kerve
-        (323, 200)   Sohle-Ausstieg Fusspfetten-Kerve
-        (305, 200)   Fusspfetten-Kerveckpunkt
-        (305, 210)   Senkel-Ausstieg Fusspfetten-Kerve
+        (323, 200)   Sohle-Ausstieg Fußpfetten-Kerve
+        (305, 200)   Fußpfetten-Kerveckpunkt
+        (305, 210)   Senkel-Ausstieg Fußpfetten-Kerve
         (216, 262)   Bleischnitt-Anfangspunkt an Sparrenunterkante
-        (205, 262)   Sparrenfusspunkt = Treffpunkt Senkelschnitt +
+        (205, 262)   Sparrenfußpunkt = Treffpunkt Senkelschnitt +
                      Bleischnitt am Vordach-Ende
       Rechts gespiegelt an x=445. Sparrenkopf-Stirn-Spalt 2 px
       (zwischen x=444 und x=446) ≈ 2 cm Praxis-Toleranz.
-      Klauenkerve auf Fusspfette: Senkel an Pfetten-Außenkante
+      Klauenkerve auf Fußpfette: Senkel an Pfetten-Außenkante
       (Vordach-Seite), Sohle horizontal nach innen über die
       Pfettenoberkante. Verschluckt etwa 60 % der Pfettenoberseite.
       First-Kerve auf Firstpfette: Senkel an Firstpfetten-Außenkante
       (zur Traufe hin), Sohle horizontal auf der Firstpfetten-
       Oberkante. Der Sparren liegt formschlüssig mit V-Aussparung
       oben auf der Firstpfette.
-      Sparrenfusspunkt = Schnittpunkt zweier welt-rechtwinkliger
+      Sparrenfußpunkt = Schnittpunkt zweier welt-rechtwinkliger
       Schnitte am Vordach-Ende:
         Senkelschnitt   welt-vertikal von Sparrenoberkante nach
                         unten, Länge 22 px (262 − 240)
@@ -159,10 +159,10 @@ trägt eine andere **Rolle** im Plan.
                         außen zum Vordach, Länge 11 px (216 − 205)
       Verhältnis ≈ 2:1 (klassische Holzbau-Proportion).
       Begriffsparallele zu sg_kerve.md / hg_kerve.md:
-        Sparrenfusspunkt am Vordach-Ende  ↔  Kerveckpunkt P bei Kerve
+        Sparrenfußpunkt am Vordach-Ende  ↔  Kerveckpunkt P bei Kerve
         Senkelschnitt + Bleischnitt        ↔  Senkel + Sohle
       Beide sind innere Ecken zweier welt-rechtwinkliger Schnitt-
-      flächen; Sparrenfusspunkt ist eine ausspringende Ecke der
+      flächen; Sparrenfußpunkt ist eine ausspringende Ecke der
       Sparrenkontur, der Kerveckpunkt eine einspringende Ecke im
       Sparreninneren.
     Bruchsymbol pro Sparren („Double Break"-Konvention,
@@ -194,11 +194,11 @@ trägt eine andere **Rolle** im Plan.
       F_l-Marker         circle r=4 bei (205, 262)
       F_l-Label          (205, 280) middle, bold 13 #c0392b
       F_l-Rolle          (205, 294) start, italic 11 #666
-                         „Sparrenfusspunkt"
+                         „Sparrenfußpunkt"
       F_r-Marker         circle r=4 bei (685, 262)
       F_r-Label          (685, 280) middle, bold 13 #c0392b
       F_r-Rolle          (685, 294) end, italic 11 #666
-                         „Sparrenfusspunkt"
+                         „Sparrenfußpunkt"
                          Asymmetrische Anchors (F_l start /
                          F_r end), beide Klarstellungen laufen
                          zur Bildmitte hin — mit middle-Anchor
@@ -207,10 +207,10 @@ trägt eine andere **Rolle** im Plan.
       K-Marker (4×)      circle r=4. Bezeichner „K" je diagonal
                          vom Marker, innerhalb des Sparren-
                          Polygons:
-                         Fusspfetten links  (305, 200) — Label (312, 195) start
+                         Fußpfetten links  (305, 200) — Label (312, 195) start
                          First links        (430, 130) — Label (420, 137) end
                          First rechts       (460, 130) — Label (470, 137) start
-                         Fusspfetten rechts (585, 200) — Label (578, 195) end
+                         Fußpfetten rechts (585, 200) — Label (578, 195) end
       P_F-Marker         circle r=4 bei (445, 102)
       P_F-Label          (445, 92) middle, bold 13 #c0392b
       P_F-Klarstellung   (445, 78) middle, italic 11 #666
@@ -229,7 +229,7 @@ trägt eine andere **Rolle** im Plan.
         leeren Zeile.
     (2) Öffnungstag <svg ...> auf einer einzigen Zeile.
     (3) Sparren-Polygon-Pfad: Sparrenunterkante ist an den zwei
-        Kerven (Fusspfetten-Kerve und First-Kerve) V-förmig
+        Kerven (Fußpfetten-Kerve und First-Kerve) V-förmig
         unterbrochen; der Pfad zickzackt durch die Kerveckpunkte
         an beiden Pfetten.
     (4) Polygon-Stirnen senkrecht zur Welt geschnitten (Werkplan-
@@ -266,15 +266,15 @@ trägt eine andere **Rolle** im Plan.
   <text x="80" y="360" text-anchor="middle" font-style="italic" font-size="12">Schnurgerüst</text>
   <text x="80" y="376" text-anchor="middle" font-style="italic" font-size="12">(Bauplatz)</text>
   <!-- ============ DACHSCHNITT (rechter Bereich, Symmetrieachse x=445) ============ -->
-  <!-- Fusspfette links: Außenkante x=305 (Vordach-Seite), Innenkante x=335 (weiter außen) -->
+  <!-- Fußpfette links: Außenkante x=305 (Vordach-Seite), Innenkante x=335 (weiter außen) -->
   <rect x="305" y="200" width="30" height="38" fill="#d4a76a" stroke="#6a4c2a" stroke-width="1.5"/>
-  <!-- Fusspfette rechts: gespiegelt an x=445 (Innenkante x=555, Außenkante x=585) -->
+  <!-- Fußpfette rechts: gespiegelt an x=445 (Innenkante x=555, Außenkante x=585) -->
   <rect x="555" y="200" width="30" height="38" fill="#d4a76a" stroke="#6a4c2a" stroke-width="1.5"/>
   <!-- Firstpfette im Hintergrund; Sparren-Polygone überdecken sie an den
        Auflage-Stellen, sichtbar im 2-px-Spalt zwischen den Sparrenkopf-
        Stirnen und an den Pfetten-Rändern. -->
   <rect x="430" y="130" width="30" height="38" fill="#d4a76a" stroke="#6a4c2a" stroke-width="1.5"/>
-  <!-- Sparren links: Polygon mit V-förmiger Aussparung an Fusspfette
+  <!-- Sparren links: Polygon mit V-förmiger Aussparung an Fußpfette
        und an Firstpfette. Eckpunkte siehe Haupt-Doku-Block Geometrie. -->
   <polygon points="205,240 444,102 444,130 430,130 430,138 323,200 305,200 305,210 216,262 205,262" fill="#f5e6c8" stroke="#6a4c2a" stroke-width="1.5"/>
   <!-- Sparren rechts: gespiegelt an x=445 -->
@@ -292,21 +292,21 @@ trägt eine andere **Rolle** im Plan.
   <polygon points="544,155 539,153 524,179 528,181" fill="white" stroke="none"/>
   <path d="M 544,155 Q 539,157 540,162 Q 541,167 536,168 Q 531,170 532,175 Q 533,180 528,181" stroke="#2c3e50" stroke-width="1.6" fill="none" stroke-linecap="round"/>
   <path d="M 539,153 Q 534,155 535,160 Q 536,164 532,166 Q 527,168 528,173 Q 528,177 524,179" stroke="#2c3e50" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-  <!-- Sparrenfusspunkte F_l, F_r am Vordach-Ende (Treffpunkt
+  <!-- Sparrenfußpunkte F_l, F_r am Vordach-Ende (Treffpunkt
        Senkelschnitt + Bleischnitt). Bezeichner direkt unter dem
-       Marker; Klarstellung "Sparrenfusspunkt" zur Bildmitte hin
+       Marker; Klarstellung "Sparrenfußpunkt" zur Bildmitte hin
        orientiert (F_l start, F_r end). -->
   <circle cx="205" cy="262" r="4" fill="#c0392b" stroke="#2c3e50" stroke-width="1"/>
   <text x="205" y="280" text-anchor="middle" fill="#c0392b" font-weight="bold">F_l</text>
-  <text x="205" y="294" font-style="italic" font-size="11" fill="#666">Sparrenfusspunkt</text>
-  <!-- Sparrenfusspunkt F_r = gespiegelt -->
+  <text x="205" y="294" font-style="italic" font-size="11" fill="#666">Sparrenfußpunkt</text>
+  <!-- Sparrenfußpunkt F_r = gespiegelt -->
   <circle cx="685" cy="262" r="4" fill="#c0392b" stroke="#2c3e50" stroke-width="1"/>
   <text x="685" y="280" text-anchor="middle" fill="#c0392b" font-weight="bold">F_r</text>
-  <text x="685" y="294" text-anchor="end" font-style="italic" font-size="11" fill="#666">Sparrenfusspunkt</text>
+  <text x="685" y="294" text-anchor="end" font-style="italic" font-size="11" fill="#666">Sparrenfußpunkt</text>
   <!-- Kerveckpunkte (4×, je zwei pro Sparren): Sohle-Senkel-Ecken
-       der Fusspfetten-Kerven und der First-Kerven. Bezeichner "K"
+       der Fußpfetten-Kerven und der First-Kerven. Bezeichner "K"
        innerhalb der Sparren-Polygone, je diagonal vom Marker. -->
-  <!-- Fusspfetten-Kerveckpunkt links -->
+  <!-- Fußpfetten-Kerveckpunkt links -->
   <circle cx="305" cy="200" r="4" fill="#c0392b" stroke="#2c3e50" stroke-width="1"/>
   <text x="312" y="195" fill="#c0392b" font-weight="bold">K</text>
   <!-- First-Kerveckpunkt links -->
@@ -315,7 +315,7 @@ trägt eine andere **Rolle** im Plan.
   <!-- First-Kerveckpunkt rechts -->
   <circle cx="460" cy="130" r="4" fill="#c0392b" stroke="#2c3e50" stroke-width="1"/>
   <text x="470" y="137" fill="#c0392b" font-weight="bold">K</text>
-  <!-- Fusspfetten-Kerveckpunkt rechts -->
+  <!-- Fußpfetten-Kerveckpunkt rechts -->
   <circle cx="585" cy="200" r="4" fill="#c0392b" stroke="#2c3e50" stroke-width="1"/>
   <text x="578" y="195" text-anchor="end" fill="#c0392b" font-weight="bold">K</text>
   <!-- Firstpunkt P_F an der Spitze der Sparrenköpfe -->
@@ -342,8 +342,8 @@ trägt eine andere **Rolle** im Plan.
 
 Fünf Punkte sind in der Skizze beschriftet: zwei Achspunkte
 **A_1**, **A_2** am Schnurgerüst (Nägel im Pfostenkopf, an denen die
-Bauachs-Schnüre fixiert sind), zwei Sparrenfusspunkte **F_l**, **F_r**
-am Anschluss der Sparren an die jeweilige Fusspfette, und der
+Bauachs-Schnüre fixiert sind), zwei Sparrenfußpunkte **F_l**, **F_r**
+am Anschluss der Sparren an die jeweilige Fußpfette, und der
 Firstpunkt **P_F** am gemeinsamen Treffpunkt der beiden Sparren am
 First. Jeder dieser Punkte ist als Drei-Koordinaten-Lage in der Welt
 beschreibbar, jeder trägt eine eigene **Rolle** in der Konstruktion.
@@ -356,14 +356,14 @@ anders.
 
 | Rollen-Kompositum | Wo der Punkt auftritt | Womit er erzeugt oder fixiert wird |
 |---|---|---|
-| **Sparrenfusspunkt** | unteres Sparrenende am Pfetten- oder Schwellholz-Anschluss; Lastabtragung nach unten | Werkplan-Bemaßung; in der Werkstatt durch Anriss am Sparren |
+| **Sparrenfußpunkt** | unteres Sparrenende am Pfetten- oder Schwellholz-Anschluss; Lastabtragung nach unten | Werkplan-Bemaßung; in der Werkstatt durch Anriss am Sparren |
 | **Firstpunkt** | oberes Sparrenende; Gelenk in der Statik des Sparrendachs | Werkplan; in der Aufrichte durch Zusammenführung der beiden Firstsparren |
 | **Knotenpunkt** | Stelle, an der mehrere Stäbe im Tragwerk zusammenstoßen; kraftschlüssige Verbindung | Werkplan, Statik-Modell; in der Ausführung durch Verbinder oder Versatz |
 | **Auflagerpunkt** | punktförmig idealisiertes Auflager; Eingangsgröße der Schnittkraft-Berechnung | Statik-Modell (Bemessung); in der Ausführung über die tatsächliche Auflagerfläche |
 | **Achspunkt** / **Achsenschnittpunkt** | Schnittpunkt zweier Bauachsen; Lage-Anker für die Übertragung Grundriss → Bauplatz | am Schnurgerüst durch Nagel im Pfostenkopf materialisiert; im Plan als Achsen-Kreuz |
-| **Lotpunkt** / **Lotfusspunkt** | Schnittpunkt eines Lotes mit der Bezugsebene | Senklot oder Senkel mit Schnur; Bodenmarkierung am Lotfuss |
+| **Lotpunkt** / **Lotfußpunkt** | Schnittpunkt eines Lotes mit der Bezugsebene | Senklot oder Senkel mit Schnur; Bodenmarkierung am Lotfuß |
 | **Bezugspunkt** | Punkt, auf den sich Maße oder Höhenkoten beziehen (Nullpunkt einer Bauachse, Bezugshöhe ±0.00) | Werkplan-Festlegung; am Bau über eine Höhenmarke (Nivellier-Festpunkt) |
-| **Anrisspunkt** / **Körnerpunkt** | punktförmiges Resultat des Anreissens; Schnittpunkt zweier Anriss-Linien | Bleistift-Kreuz, Reissnadel-Ritzkreuz oder Körner-Einstich |
+| **Anrisspunkt** / **Körnerpunkt** | punktförmiges Resultat des Anreißens; Schnittpunkt zweier Anriss-Linien | Bleistift-Kreuz, Reißnadel-Ritzkreuz oder Körner-Einstich |
 
 Eine Beobachtung zur Lese-Hilfe: der Werkplan kennt Punkte vor
 allem als **Schnittpunkte** (Achsen, Linien, Flächen treffen sich)
@@ -379,14 +379,14 @@ plus zwei Hilfsmittel für längere Distanzen:
 | Werkzeug | Mark-Art | Permanenz |
 |---|---|---|
 | **Bleistift / Zimmermannsstift** | Kreuz oder feine Spitze auf einer Anriss-Linie | gering — wischt ab, wird übertüncht |
-| **Reissnadel** | feine Ritzspur, geeignet für Hartholz, Sperrholz, Metall | mittel — bleibt erkennbar, lässt sich nicht ausradieren |
+| **Reißnadel** | feine Ritzspur, geeignet für Hartholz, Sperrholz, Metall | mittel — bleibt erkennbar, lässt sich nicht ausradieren |
 | **Körner + Hammer** | konische Vertiefung im Material („Körnung") | hoch — bleibt dauerhaft, dient als Bohr-Vorzentrierung |
 | **Schlagschnur** | gerade Linie zwischen zwei vorher gesetzten Endpunkten, mit Kreide oder Farbe | mittel — Linie, keine Punkte |
 | **Senkel** / Senklot | flüchtiger Lotpunkt am Boden unter dem Aufhängepunkt | flüchtig — übertragen, dann durch Bleistift-Kreuz oder Nagel fixiert |
 | **Schnurgerüst mit Nagel** | Achsenschnittpunkt am Bauplatz | hoch — bleibt bis zum Abbruch des Gerüsts stehen |
 
 Methodisch wichtig: die Berufssprache unterscheidet **Tätigkeit**
-und **Resultat** genau. **Anreissen** ist die Tätigkeit, der **Anriss**
+und **Resultat** genau. **Anreißen** ist die Tätigkeit, der **Anriss**
 ist die entstandene Linie, der **Anrisspunkt** das punktförmige
 Resultat — typischerweise der Schnittpunkt zweier Anriss-Linien
 oder der mit dem Körner verstärkte Endpunkt einer Anriss-Linie.
@@ -398,7 +398,7 @@ Eine zweite Beobachtung: die Schlagschnur **markiert keine Punkte**.
 Sie zieht eine gerade Linie zwischen zwei Endpunkten, die vorher mit
 einem der ersten drei Werkzeuge fixiert worden sind. Die Endpunkte
 einer Schlagschnur-Linie tragen dann ihren Rollennamen
-(Sparrenfusspunkt, Firstpunkt, Achspunkt) — nicht einen Werkzeug-Namen.
+(Sparrenfußpunkt, Firstpunkt, Achspunkt) — nicht einen Werkzeug-Namen.
 
 ## Was ein Punkt nicht ist — Stelle, Position, Marker
 

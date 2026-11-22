@@ -1,7 +1,7 @@
 ---
 id: andreaskreuz
 benennung: Andreaskreuz
-kurz: "Ein Andreaskreuz sind zwei schräge Hölzer, die in einem Wandfeld über Kreuz gespannt sind — wie ein grosses X —, damit die Wand bei Wind nicht seitlich wegkippt."
+kurz: "Ein Andreaskreuz sind zwei schräge Hölzer, die in einem Wandfeld über Kreuz gespannt sind — wie ein großes X —, damit die Wand bei Wind nicht seitlich wegkippt."
 synonyme: [Kreuzstrebe, Strebenkreuz]
 abgelehnte_benennungen:
   [Creutzzug, Feuerbock, Malkreuz, Kreuzbock,
@@ -15,7 +15,7 @@ voraussetzungen:
    polyeder, strecke, uuid, toleranzen]
 abgrenzung_zu:
   [bauteilgruppe, strebe, kopfband, fussband, knagge,
-   mann, wand, schwelle, raehm, staender, riegel,
+   mann, wand, schwelle, einbinder, staender, riegel,
    verbindung, gefach, fachwerk, riegelbau, brueckmauer,
    brueckschnurmauer, walm, binder]
 status: entwurf
@@ -47,7 +47,7 @@ quellenkonflikt: |
   - **Einfach-Gefach** (Default, am häufigsten belegt):
     zwei sich kreuzende Streben überspannen **ein
     gemeinsames Gefach** (Wand-Feld zwischen zwei
-    benachbarten Ständern oder zwischen Schwelle/Rähm und
+    benachbarten Ständern oder zwischen Schwelle/Einbinder und
     zwei Riegeln). Diese Variante ist seit den frühesten
     Belegen 1452/1457 in Mitteldeutschland und Sachsen
     dokumentiert.
@@ -59,7 +59,7 @@ quellenkonflikt: |
   die geschossübergreifende Ausführung ist als Edge Case
   im Implementierungs-Hinweis erfasst, hat aber keinen
   eigenen Glossar-Status (gleiche strukturelle
-  Komposition aus zwei Streben, lediglich Geometrie-Ausmass
+  Komposition aus zwei Streben, lediglich Geometrie-Ausmaß
   unterschiedlich).
 
   **(2) Statisch wirksam und dekorativ — Doppelfunktion.**
@@ -131,7 +131,7 @@ Ein **Andreaskreuz** ist eine Bauteilgruppe aus genau zwei
 sich kreuzenden Streben in einer gemeinsamen Wandebene, die in
 einem gemeinsamen Gefach zwischen denselben begrenzenden
 Holzbauteilen (zwei Ständern und gegebenenfalls Schwelle,
-Riegel oder Rähm) eingebaut sind und gemeinsam alle in der
+Riegel oder Einbinder) eingebaut sind und gemeinsam alle in der
 Wandebene wirkenden horizontalen Lasten als wechselseitiges
 Druck-Zug-Strebenpaar aufnehmen.
 
@@ -168,7 +168,7 @@ mit
   Normalenvektor n_hat_W ∈ S² horizontal (|⟨n_hat_W, e_z⟩| ≤ ε_K).
 - **kreuzungspunkt** ∈ ℝ³: der Schnittpunkt der beiden
   Streben-Bauteilachsen in der Wandebene; abgeleitete
-  Grösse (siehe Bedingung 4).
+  Größe (siehe Bedingung 4).
 - **lage** ∈ SE(3): die Starrkörpertransformation des
   lokalen Andreaskreuz-Koordinatensystems nach W.
 - **huelle** ∈ 𝒢_huelle: die geometrische Hülle.
@@ -227,7 +227,7 @@ und den Konsistenzbedingungen
 
 6. **Beide Streben überspannen dasselbe Gefach**: Es
    existiert ein Gefach G_g (zwischen denselben begrenzenden
-   Holzbauteilen — typisch zwei Ständer plus Schwelle/Rähm
+   Holzbauteilen — typisch zwei Ständer plus Schwelle/Einbinder
    oder zwei Ständer plus zwei Riegel —), in dessen Berandung
    beide Strecken L_1, L_2 ihre Endpunkte haben:
    ```
@@ -302,7 +302,7 @@ Setzung ist im Korpus belegt (Wikipedia/Andreaskreuz
 (Fachwerk)). Der Kreuzungspunkt der zwei Bauteilachsen ist
 typisch im geometrischen Zentrum des Gefachs (bei
 symmetrischer X-Form), aber nicht zwingend (asymmetrische
-Andreaskreuze, etwa bei Brüstungsfeldern mit ungleichmässiger
+Andreaskreuze, etwa bei Brüstungsfeldern mit ungleichmäßiger
 Ausfachung, sind belegt).
 
 Die Verbindung der zwei Streben am Kreuzungspunkt erfolgt
@@ -366,7 +366,7 @@ Vogtland, Niedersachsen, Mittelhessen.
 
 Im **CH-Riegelbau** ist das Andreaskreuz belegt, aber
 weniger prominent als in DE-Fachwerk. Wikipedia/Fachwerkhaus
-(CH-Sektion) erwähnt „rote Balken und weisse Ausfachung"
+(CH-Sektion) erwähnt „rote Balken und weiße Ausfachung"
 als CH-Riegelhaus-Charakteristikum, aber keine spezifische
 Andreaskreuz-Verbreitung. Im Erläuterungs-Block dieses
 Eintrags wird der DE-Schwerpunkt thematisiert; Anweiser als
@@ -381,11 +381,11 @@ geometrisch:
 
 - **Andreaskreuz**: zwei sich kreuzende Streben im
   **Gefach** (Wandfeld zwischen zwei Ständern und ggf.
-  Schwelle/Rähm/Riegel). Die Anker-Punkte liegen an den
+  Schwelle/Einbinder/Riegel). Die Anker-Punkte liegen an den
   Gefach-Ecken (Schnittpunkte der Rahmenhölzer).
 - **Mann-Figur** (`mann`): Bündel-Aussteifung am
   **Pfosten** (Ständer-Achse). Die Bauteile (Kopfband,
-  Fussband, optional Strebe) sind alle an einem
+  Fußband, optional Strebe) sind alle an einem
   gemeinsamen Pfosten als zentraler Achse verankert.
 
 Die Abgrenzung ist als
@@ -421,12 +421,12 @@ plus ein Andreaskreuz im Brüstungsfeld).
   - **Wandebene** (`ebene`): die gemeinsame lotrechte
     Trägerebene beider Streben.
   - **Kreuzungspunkt** (Punkt ∈ ℝ³): der Schnittpunkt
-    der zwei Bauteilachsen; abgeleitete Grösse.
+    der zwei Bauteilachsen; abgeleitete Größe.
   - **Gefach** (`gefach`, Forward-Verweis, Folgearbeit):
-    das umschliessende Wandfeld; geometrische Referenz,
+    das umschließende Wandfeld; geometrische Referenz,
     nicht Bestandteil.
   - **Begrenzende Bauteile**: zwei Ständer plus Schwelle/
-    Rähm oder Riegel; geometrische Referenz für die
+    Einbinder oder Riegel; geometrische Referenz für die
     Anker-Endpunkte der Streben, nicht Mitglieder des
     Andreaskreuz-Aggregats.
 - **Funktionale Sicht (über `funktion?`-Feld)**:
@@ -445,11 +445,11 @@ plus ein Andreaskreuz im Brüstungsfeld).
   - **Strebe** (`strebe`): Bauteilrolle der zwei
     Mitglieder; eine Einzel-Strebe ist nicht ein
     Andreaskreuz.
-  - **Kopfband** (`kopfband`), **Fussband** (`fussband`):
+  - **Kopfband** (`kopfband`), **Fußband** (`fussband`):
     diagonale Aussteifungs-Bauteile mit Pfosten-Kopf-
-    bzw. Pfosten-Fuss-Anker; **nicht** Bestandteile des
+    bzw. Pfosten-Fuß-Anker; **nicht** Bestandteile des
     Andreaskreuzes (das Andreaskreuz verwendet
-    ausschliesslich Streben, nicht Bänder).
+    ausschließlich Streben, nicht Bänder).
   - **Knagge** (`knagge`): Konsole; keine Diagonal-Stab-
     Bauteile, nicht Bestandteil.
   - **Mann** (`mann`): geschwisterliches Bündel-
@@ -460,8 +460,8 @@ plus ein Andreaskreuz im Brüstungsfeld).
     Wand enthält das Andreaskreuz als geschwisterliches
     Aggregat oder als verschachteltes Aggregat (Modell-
     Entscheidung).
-  - **Schwelle**, **Rähm**, **Ständer**, **Riegel**:
-    Bauteilrollen, die das umschliessende Gefach bilden;
+  - **Schwelle**, **Einbinder**, **Ständer**, **Riegel**:
+    Bauteilrollen, die das umschließende Gefach bilden;
     Anker-Bauteile für die Streben, nicht Bestandteile
     des Andreaskreuzes.
   - **Verbindung** (`verbindung`): das Andreaskreuz
@@ -470,7 +470,7 @@ plus ein Andreaskreuz im Brüstungsfeld).
     Rahmen-Anker an den vier Eckpunkten); es ist selbst
     keine Verbindung.
   - **Gefach** (`gefach`, Forward-Verweis): das
-    umschliessende Wand-Feld; geometrische Referenz,
+    umschließende Wand-Feld; geometrische Referenz,
     nicht Aggregat-Mitglied.
   - **Fachwerk**, **Riegelbau**: Bauweisen-
     Klassifikationen, in denen das Andreaskreuz primär

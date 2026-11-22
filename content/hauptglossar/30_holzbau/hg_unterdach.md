@@ -21,19 +21,19 @@ quellen_sekundär:
   - "Gebäudehülle Schweiz, Factsheet Technische Kommission Steildach 'Unterdach für ausserordentliche Beanspruchung'."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage."
   - "Polybau, Fachbuch 'Geneigte Dächer', Schweizer Berufsbildung Gebäudehülle."
-  - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion, 16. Aufl., Beuth Verlag 2015, Kap. 'Dachaufbau' / 'Zusatzmassnahmen zur Regensicherheit'."
+  - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion, 16. Aufl., Beuth Verlag 2015, Kap. 'Dachaufbau' / 'Zusatzmaßnahmen zur Regensicherheit'."
 quellenkonflikt: |
   **(1) Primär-Lesart: Schweiz (SIA 232/1).** Dieser Eintrag legt
   Unterdach in der Schweizer Lesart als eigenständiges, normiertes
   Bauteil mit drei Beanspruchungs-Klassen fest: **normal**,
-  **erhöht**, **ausserordentlich** beansprucht. Diese Strukturierung
+  **erhöht**, **außerordentlich** beansprucht. Diese Strukturierung
   folgt SIA 232/1:2011 (mit Korrigenda C1:2013) und der
   branchenüblichen Auslegung (Gebäudehülle Schweiz, suissetec,
   Lignum, Polybau).
 
   **(2) Falsifikation der Auftrags-Hypothese „erhöht regensicher".**
   Der ursprüngliche Auftrag nannte vier SIA-Klassen (normal /
-  erhöht / **erhöht regensicher** / ausserordentlich). Diese
+  erhöht / **erhöht regensicher** / außerordentlich). Diese
   vierte Klasse ist im SIA-232/1-Vokabular **nicht** geführt. Die
   Bezeichnung „erhöht regensicheres Unterdach" stammt aus
   **ÖNORM B 4119** (Österreich) und teilweise aus
@@ -57,13 +57,13 @@ quellenkonflikt: |
 
   Die CH-Klasse „ausserordentlich beanspruchtes Unterdach"
   entspricht in Funktion und Anforderung dem DE-Begriff „Unterdach"
-  im engen Sinn (wasserdichter Werkstoff, verschweisste oder
+  im engen Sinn (wasserdichter Werkstoff, verschweißte oder
   homogen verklebte Nähte). Die CH-Klasse „normal beansprucht"
   entspricht eher der DE-„Unterdeckung", und die CH-Klasse „erhöht
   beansprucht" liegt zwischen DE-„Unterdeckung" und DE-„Unterdach".
   Die beiden Strukturen sind **nicht parallel**; das Glossar wählt
   die CH-Strukturierung als Primär-Lesart und führt die DE-Begriffe
-  ausschliesslich als abgelehnte Benennungen bzw. Abgrenzungs-Ziele.
+  ausschließlich als abgelehnte Benennungen bzw. Abgrenzungs-Ziele.
 
   **(4) Material-Trennung Produkt vs. Bauteil.** Die Bahnen
   (Unterspannbahn, Unterdeckbahn, Unterdachbahn) sind **Produkte**
@@ -85,7 +85,7 @@ quellenkonflikt: |
   sind über mehrere unabhängige Sekundärquellen (pro clima Schweiz,
   Sager, Gebäudehülle Schweiz, Bauder) konsistent rekonstruiert.
   Das **numerische Schwellen-Kriterium „50 mm Stauwasserhöhe"**
-  zwischen Klasse erhöht und ausserordentlich ist gleichfalls aus
+  zwischen Klasse erhöht und außerordentlich ist gleichfalls aus
   mehreren Sekundärquellen belegt, jedoch **nicht aus dem
   SIA-Norm-Wortlaut zitiert**. Es gilt daher in diesem Glossar
   als **App-Konvention auf Basis Sekundärquellen-Konsens**, nicht
@@ -112,7 +112,7 @@ quellenkonflikt: |
   Dachaufbau, nicht eine Spezialisierung **des** Dachaufbaus).
   Bis zur Einführung eines `schicht`-Eintrags wird `oberbegriff:
   null` gesetzt (analog `dachaufbau`, `dachhaut`, `dach`); der
-  künftige Oberbegriff heisst einheitlich **`schicht`** (nicht
+  künftige Oberbegriff heißt einheitlich **`schicht`** (nicht
   `dachaufbau_schicht` und nicht `bauteilschicht`).
 
   **(7) „Dachpappe" als abgelehnte Benennung.** „Dachpappe" ist
@@ -130,7 +130,7 @@ quellenkonflikt: |
 
   **(8) Lokales Norm-Enum `UnterdachNorm`.** Die Norm-Aufzählung
   in der parametrischen Klassifikation
-  `klassifiziereNachStauwasser(h, norm)` heisst lokal
+  `klassifiziereNachStauwasser(h, norm)` heißt lokal
   `UnterdachNorm`, nicht generisch `Norm`. Damit kollidiert sie
   nicht mit den lokalen Enums `AbdichtungsNorm`
   (`hg_dachabdichtung.md`) und `WaermedaemmungsNorm`
@@ -149,8 +149,8 @@ quellenkonflikt: |
 Ein **Unterdach** ist eine wasserführende oder wasserdichte
 zweite Funktionsschicht des geneigten Dachaufbaus unterhalb der
 Eindeckung, die in einer von drei Beanspruchungs-Klassen
-(normal / erhöht / ausserordentlich nach SIA 232/1) Wasser,
-das die Eindeckung infiltriert, frei abfliessend oder gegen einen
+(normal / erhöht / außerordentlich nach SIA 232/1) Wasser,
+das die Eindeckung infiltriert, frei abfließend oder gegen einen
 definierten Stauwasserdruck zur Dachtraufe ableitet.
 
 ## Mathematische Definition
@@ -159,12 +159,12 @@ Sei
 
 - A = (𝒟, 𝒮, H) ein **Dachaufbau** im Sinne von `dachaufbau` mit
   Dachflächen-Familie 𝒟 = { D₁, …, D_m }, geordneter Schichtfolge
-  𝒮 = (S₁, …, S_k) von innen nach aussen, und Dachhaut H,
+  𝒮 = (S₁, …, S_k) von innen nach außen, und Dachhaut H,
 - F:= ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich der Dachflächen,
 - ein Index j* ∈ { 1, …, k } so gewählt, dass die Schicht S_{j*}
   die Funktionsklasse `SchichtFunktion.UNTERDACH` trägt,
 - d_{j*} ∈ ℝ_{>0} (in mm) die Dicke von S_{j*},
-- α_max ∈ { **normal**, **erhöht**, **ausserordentlich** } die
+- α_max ∈ { **normal**, **erhöht**, **außerordentlich** } die
   zulässige obere Beanspruchungs-Schranke nach SIA 232/1,
 - h_max ∈ ℝ_{≥0} ∪ { +∞ } (in mm) die zulässige Stauwasserhöhe
   des Unterdachs als **frei wählbare** Tupel-Komponente.
@@ -179,20 +179,20 @@ mit den Konsistenzbedingungen
 
 1. **Lage im Dachaufbau**: 1 < j* < k. Das Unterdach liegt
    konstruktiv zwischen der innen liegenden Wärmedämmung (ggf.
-   mit Schalung) und der aussen liegenden Konterlattung mit
+   mit Schalung) und der außen liegenden Konterlattung mit
    Eindeckung.
 2. **Funktionsklasse**: `S_{j*}.funktion = UNTERDACH`.
 3. **Positive Dicke**: d_{j*} > Toleranzen.LAENGE_EPS.
 4. **Klassen-Monotonie**: h_max ist monoton in α_max in dem
    Sinne, dass für je zwei Unterdach-Tupel U, U′ mit gleichem
    Trägeraufbau, aber α_max(U) ≤ α_max(U′) in der natürlichen
-   Ordnung normal < erhöht < ausserordentlich gilt:
+   Ordnung normal < erhöht < außerordentlich gilt:
    h_max(U) ≤ h_max(U′).
 5. **Träger-Konsistenz**: S_{j*} ist über F definiert (gleiche
    Träger-Dachflächen wie A).
 
 Die **Beanspruchungs-Klasse** des Unterdachs ist α_max ∈ { normal,
-erhöht, ausserordentlich }. Die Bedingung „Unterdach hält
+erhöht, außerordentlich }. Die Bedingung „Unterdach hält
 Stauwasserdruck der Höhe h aus" ist erfüllt genau dann, wenn
 h ≤ h_max.
 
@@ -246,10 +246,10 @@ materialisiert (siehe `quellenkonflikt:` Abschnitt 5).
   ebenfalls erfüllt.
 - **Konsistenz mit `dachaufbau`**: Das Unterdach ist eine
   Schicht S_{j*} **im** Dachaufbau; es ist kein eigenständiges
-  Aggregat ausserhalb des Dachaufbaus und teilt mit ihm den
+  Aggregat außerhalb des Dachaufbaus und teilt mit ihm den
   Trägerbereich F.
 - **Konsistenz mit `dachhaut`**: Das Unterdach liegt **unter** der
-  Dachhaut (j* < k); die Dachhaut wird aus der äussersten Schicht
+  Dachhaut (j* < k); die Dachhaut wird aus der äußersten Schicht
   S_k (Eindeckung) gebildet, nicht aus dem Unterdach.
 - **Nicht-Zirkularität**: Die Definition verwendet die Primitive
   Punkt, Strecke, Polygon, die bereits definierten Begriffe
@@ -263,7 +263,7 @@ materialisiert (siehe `quellenkonflikt:` Abschnitt 5).
 
 Das Unterdach ist im Schweizer Holzbau die **zweite wasserführende
 Ebene** des geneigten Daches: die erste ist die Eindeckung
-(Ziegel, Schindel, Blech), die das frei abfliessende Niederschlags-
+(Ziegel, Schindel, Blech), die das frei abfließende Niederschlags-
 wasser sicher zur Traufe leitet. Das Unterdach übernimmt das Wasser,
 das die erste Ebene aus Profil- oder Witterungsgründen nicht hält —
 Treibregen unter den Ziegelköpfen, Flugschnee, abgetautes
@@ -274,9 +274,9 @@ Schmelzwasser, Kondenswasser aus der Hinterlüftung. Es ist eine
 
 | Klasse | Schwelle | Anforderung an Bahn / Naht | Typische Anwendung |
 |---|---|---|---|
-| **Normal** | nur frei abfliessendes Wasser (h_max = 0) | Bahn-Nähte überlappt oder windsicher verklebt; Platten gestossen / gefalzt | Übliche Eindeckung bei genügender Dachneigung, bis ca. 800 m ü. M. |
-| **Erhöht** | Stauwasserdruck < 50 mm | Nähte wasserdicht verklebt oder verschweisst | Wärmegedämmte Dächer mit ausgebautem Dachgeschoss; Standardwahl im modernen Wohnungsbau |
-| **Ausserordentlich** | Stauwasser > 50 mm, hoher Druck | wasserdicht, verschweisste/homogen verklebte Bahnen oder Platten | Höhenlage > 800 m, flache Dachneigung (< 14°), Innen-Dachrinnen, grosse Gauben mit Gegengefälle |
+| **Normal** | nur frei abfließendes Wasser (h_max = 0) | Bahn-Nähte überlappt oder windsicher verklebt; Platten gestoßen / gefalzt | Übliche Eindeckung bei genügender Dachneigung, bis ca. 800 m ü. M. |
+| **Erhöht** | Stauwasserdruck < 50 mm | Nähte wasserdicht verklebt oder verschweißt | Wärmegedämmte Dächer mit ausgebautem Dachgeschoss; Standardwahl im modernen Wohnungsbau |
+| **Außerordentlich** | Stauwasser > 50 mm, hoher Druck | wasserdicht, verschweißte/homogen verklebte Bahnen oder Platten | Höhenlage > 800 m, flache Dachneigung (< 14°), Innen-Dachrinnen, große Gauben mit Gegengefälle |
 
 Die App führt die drei Klassen als sealed-Subtypen
 (`Unterdach.NormalBeansprucht`, `Unterdach.ErhoehtBeansprucht`,
@@ -313,7 +313,7 @@ Die Bahnen sind nach DIN EN 13859-1 normierte **Produkte**:
 - **Unterspannbahn** — frei zwischen Sparren spannbar, ohne
   Untergrund verwendbar.
 - **Unterdeckbahn** — auf flächiger Unterlage zu verlegen.
-- **Unterdachbahn** — verschweissbare oder homogen verklebbare
+- **Unterdachbahn** — verschweißbare oder homogen verklebbare
   Bahn höherer Beanspruchungs-Klasse; im CH-Sprachgebrauch
   metonymisch auch für das Bauteil verwendet, im Glossar aber
   nicht als Synonym geführt.
@@ -339,12 +339,12 @@ Sinne von SIA 232/1.
   konkreten h_max-Schwellen sind nicht hier verankert, sondern
   in `klassifiziereNachStauwasser(h_max, norm)` pro Norm
   belegt):
-  - **Normal beanspruchtes Unterdach** — frei abfliessendes
+  - **Normal beanspruchtes Unterdach** — frei abfließendes
     Wasser, kein Stauwasserdruck.
   - **Erhöht beanspruchtes Unterdach** — begrenzter
     Stauwasserdruck unterhalb einer norm-/konventions-
     abhängigen Schwelle.
-  - **Ausserordentlich beanspruchtes Unterdach** — wasserdicht
+  - **Außerordentlich beanspruchtes Unterdach** — wasserdicht
     unter erwartetem Stauwasserdruck.
 - **Verwendung**:
   - Funktions-Schicht im `dachaufbau` (`SchichtFunktion.UNTERDACH`).
@@ -357,13 +357,13 @@ Sinne von SIA 232/1.
     ist nicht Bestandteil der Dachhaut.
   - **`dachflaeche`**: die geometrische, dickenlose Bezugsebene
     unter dem Dachaufbau; das Unterdach liegt **über** ihr im
-    Halbraum der äusseren Normalen.
-  - **`eindeckung`** (Forward-Verweis A): die **äusserste**
+    Halbraum der äußeren Normalen.
+  - **`eindeckung`** (Forward-Verweis A): die **äußerste**
     materielle Schicht (erste wasserführende Ebene). Das
     Unterdach ist die **zweite** wasserführende Ebene **darunter**.
   - **`dachabdichtung`** (Forward-Verweis A): die wasserdichte
     Schicht eines Flachdaches als **alleinige** wasserführende
-    Ebene; in der Funktion einem ausserordentlich beanspruchten
+    Ebene; in der Funktion einem außerordentlich beanspruchten
     Unterdach ähnlich, aber bauteilrechtlich getrennt (SIA 271
     statt SIA 232/1, keine Eindeckung darüber).
   - **`unterspannung`** (Forward-Verweis D, DE-Pendant): die
@@ -382,13 +382,13 @@ Sinne von SIA 232/1.
     im Glossar streng getrennt.
   - **`dachschalung`** (Forward-Verweis A): die flächige
     Holz- oder Holzwerkstoff-Trägerschicht **unter** der
-    Unterdachbahn. Bei erhöht und ausserordentlich beanspruchten
+    Unterdachbahn. Bei erhöht und außerordentlich beanspruchten
     Unterdächern Standard-Untergrund; sie ist nicht selbst
     Unterdach, sondern dessen Tragschicht.
   - **`konterlattung`** (Forward-Verweis A): die Längshölzer
     **über** dem Unterdach (parallel zu den Sparren); schaffen
     die Hinterlüftungsebene zwischen Unterdach und Eindeckung.
-    Bei ausserordentlich beanspruchten Unterdächern mit
+    Bei außerordentlich beanspruchten Unterdächern mit
     Nagel-/Schraub-Dichtbändern auf der Dichtebene befestigt.
   - **`traglattung`** (Forward-Verweis A): die Querlatten
     **über** der Konterlattung; Auflager der Eindeckung. Keine

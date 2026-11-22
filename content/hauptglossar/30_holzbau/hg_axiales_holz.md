@@ -13,13 +13,14 @@ subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Abschnitt 3 (Werkstoffeigenschaften), Festigkeitswerte parallel und senkrecht zur Faser, Hankinson-Formel für f_α."
   - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §3 'Baustoffe'. [direkt]"
-  - "DIN 4074-1:2012-06, 'Sortierung von Holz nach der Tragfähigkeit – Teil 1: Nadelschnittholz' (Sortierklassen S7, S10, S13)."
-  - "DIN EN 14080:2013-09, 'Holzbauwerke – Brettschichtholz und Balkenschichtholz – Anforderungen' (Festigkeitsklassen GL20h … GL32c, BSH und BSc)."
+  - "DIN 4074-1:2012-06, 'Sortierung von Holz nach der Tragfähigkeit – Teil 1: Nadelschnittholz' (Sortierklassen S7, S10, S13). [via: Colling §2.3.1, Tabelle 2-3]"
+  - "DIN EN 14080:2013-09, 'Holzbauwerke – Brettschichtholz und Balkenschichtholz – Anforderungen' (Festigkeitsklassen GL20h … GL32c, BSH und BSc). [via: Colling §2.3.3/§2.3.4]"
   - "DIN EN 14081-1:2019-10, 'Holzbauwerke – Nach Festigkeit sortiertes Bauholz mit rechteckigem Querschnitt – Teil 1: Allgemeine Anforderungen'."
   - "DIN EN 14374:2005-02, 'Holzbauwerke – Furnierschichtholz für tragende Zwecke – Anforderungen' (LVL)."
   - "DIN EN 338:2016-07, 'Bauholz für tragende Zwecke – Festigkeitsklassen' (C14 … C50, D18 … D70)."
   - "DIN EN 15497:2014-07, 'Keilgezinktes Vollholz für tragende Zwecke – Leistungsanforderungen und Mindestanforderungen an die Herstellung' (KVH)."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §2.3 'Vollholzprodukte' (S. 25–35) und §2.4.5 'Furnierschichtholz (LVL)' (S. 39–40): Bauholz/VH nach DIN 4074-1 als Nadelschnittholz mit Schnittholzarten-Einteilung (Tabelle 2-3); KVH als z. T. keilgezinkte Kanthölzer (Sortierklasse S 10 → C 24, technisch getrocknet ω = 15 ± 3 %, Maßhaltigkeit ± 1 mm, DIN EN 15497 mit DIN 20000-7, nur NKL 1–2); BSH nach DIN EN 14080 aus mindestens zwei faserparallel verklebten, getrockneten Brettern/Brettlamellen aus Nadelholz (oder Pappelholz), Lamellendicke ≤ 45 mm (NKL 3: ≤ 35 mm), Lamellen-Einstufung in T-Klassen (S. 33); BASH nach DIN EN 14080 aus zwei bis maximal fünf Bohlen-Lamellen mit 45 mm < t ≤ 85 mm (b ≤ 280 mm, h ≤ 240 mm), 'Mittelding' zwischen KVH und BSH, nur NKL 1–2 (S. 35); LVL aus ca. 3 mm dicken Schälfurnieren, Faserverlauf generell parallel oder im Wesentlichen parallel mit Querläufern (um 90° versetzt)."
   - "Niemz, P.; Sonderegger, W.: Physik des Holzes und der Holzwerkstoffe. Hanser, München 2017, Kap. 3 und 6 (Anatomie und Anisotropie)."
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 2 und 3."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Vollholz, KVH, BSH, LVL'."
@@ -235,12 +236,15 @@ aufweisen.
     DIN 4074-1.
   - **Konstruktionsvollholz / KVH** (`kvh`): keilgezinkt,
     technisch getrocknet; DIN EN 15497.
-  - **Brettschichtholz / BSH** (`bsh`): mindestens drei parallel
-    verklebte Lamellen; DIN EN 14080. (Trotz „Schicht-Holz" gehört
+  - **Brettschichtholz / BSH** (`bsh`): mindestens zwei faserparallel
+    verklebte Bretter/Brettlamellen mit Lamellendicke ≤ 45 mm;
+    DIN EN 14080 (Colling §2.3.3, S. 29). (Trotz „Schicht-Holz" gehört
     BSH zu axiales_holz, nicht zu mehrlagenholz, weil alle Lamellen
     dieselbe Faserrichtung haben.)
   - **Balkenschichtholz / BSc** (`bsc` / `balkenschichtholz`):
-    zwei oder drei parallel verklebte Lamellen; DIN EN 14080.
+    zwei bis maximal fünf parallel verklebte Bohlen-Lamellen mit
+    45 mm < t ≤ 85 mm; DIN EN 14080 (Colling §2.3.4, S. 35; dort
+    unter der Abkürzung „BASH" geführt, Bauformen Duo-/Triobalken).
   - **Furnierschichtholz / LVL** (`lvl`): parallel verklebte
     Furniere; DIN EN 14374.
 - **Pflichtfelder über `werkstoff` hinaus**:
@@ -298,6 +302,12 @@ aufweisen.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §2.3 „Vollholzprodukte" (S. 25–35,
+  VH/KVH/BSH/BASH mit Norm- und Maß-Angaben) und §2.4.5
+  „Furnierschichtholz (LVL)" (S. 39–40). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-14.
 - Niemz, P.; Sonderegger, W.: *Physik des Holzes und der
   Holzwerkstoffe.* Hanser, München 2017.
 - Blass, H. J.; Sandhaas, C.: *Ingenieurholzbau – Grundlagen der

@@ -77,14 +77,14 @@ quellenkonflikt: |
     Bauteilende. Sie wird unter `oberbegriff: polygon` in der
     Berandungs-Lesart (siehe `hg_polygon.md`, Abschnitt „Zwei
     zulässige Lesarten") geführt und trägt zusätzlich Bauteilrolle
-    und Aussennormalen-Konvention. Eine Stirnseite ist genau dann
+    und Außennormalen-Konvention. Eine Stirnseite ist genau dann
     zugleich ein Querschnitt im Sinne von `hg_querschnitt.md`, wenn
     ihre Trägerebenen-Normale parallel zur Bauteilachsen-Tangente
     am Endpunkt liegt (Anschnittwinkel α_AS = π/2, prismatischer
     Standardfall); bei α_AS ≠ π/2 trifft das nicht zu.
   - Bei einem **Anschnitt** (geneigter Endschnitt) bleibt die
     entstehende geneigte Endfläche begrifflich eine Stirnseite des
-    Bauteils, weil die Faser auch dann (mit grösserer
+    Bauteils, weil die Faser auch dann (mit größerer
     Schnittwinkel-Komponente) durch die Fläche austritt; sie ist
     geometrisch ein Sonderfall der Stirnseite, kein eigener
     Begriff. Der zugehörige Bearbeitungs-Subtyp `anschnitt`
@@ -169,7 +169,7 @@ auf einer ausgezeichneten Trägerebene am Bauteilende, ist aber
 Querschnitt im Sinne von `hg_querschnitt.md`. Sie bleibt eine
 Stirnseite im Sinne dieses Eintrags, weil die geometrischen
 Konstitutionsbedingungen (ebene Endfläche auf einer Trägerebene
-am Bauteilendpunkt mit Bauteilberandung und Aussennormalen-
+am Bauteilendpunkt mit Bauteilberandung und Außennormalen-
 Konvention) erfüllt sind. Der zugehörige Begriff `anschnitt`
 (Folgearbeit) ist ein Bearbeitungs-Subtyp nach `bearbeitung`,
 dessen Resultat eine modifizierte Stirnseite ist.
@@ -295,7 +295,7 @@ Synonymen über die Synonyme-Liste des Glossareintrags.
 ### Stirnseite vs. Längsseite (Übersicht)
 
 Ein Stabbauteil mit Rechteckquerschnitt hat insgesamt sechs
-ebene Aussenflächen:
+ebene Außenflächen:
 
 - **2 Stirnseiten** (Bauteilanfang, Bauteilende), Faser tritt
   durch die Fläche aus,
@@ -328,7 +328,7 @@ geführt.
   Stirnseite ist ein ebenes Polygon auf einer ausgezeichneten
   Trägerebene am Bauteilende, das die Bauteilberandung an dieser
   Stelle bildet, zusammen mit Bauteilrolle (Endfläche eines Stab-
-  Bauteils) und Aussennormalen-Konvention. Im prismatischen
+  Bauteils) und Außennormalen-Konvention. Im prismatischen
   Standardfall (rechtwinkliger Endschnitt) ist die Stirnseite
   zusätzlich ein **Querschnitt** im Sinne von `hg_querschnitt.md`
   am Bauteilende; bei einer Anschnitt-Stirnseite (α_AS ≠ π/2)
@@ -349,7 +349,7 @@ geführt.
   - **Trägerebene** E (geerbt von `querschnitt`).
   - **Polygonberandung** ∂QS am Bauteilende (geerbt von
     `querschnitt`, konkret `polygon`).
-  - **Aussennormalen-Vektor** n_hat_S (per Konvention aus dem Bauteil
+  - **Außennormalen-Vektor** n_hat_S (per Konvention aus dem Bauteil
     heraus zeigend).
   - **Bauteil-Endpunkt-Position**: p_a (Anfangsstirnseite) bzw. p_e
     (Endstirnseite).
@@ -391,7 +391,7 @@ geführt.
   - **Polygon** (`polygon`): die Stirnseite hat eine polygonale
     Berandung, ist aber selbst nicht das Polygon; sie trägt
     zusätzlich die Bauteil-Bezugsrolle (Endfläche eines Stab-
-    Bauteils) und die Aussennormalen-Konvention.
+    Bauteils) und die Außennormalen-Konvention.
   - **Ebene** (`ebene`): die Trägerebene einer Stirnseite ist eine
     Ebene; die Stirnseite selbst ist eine **beschränkte** Teilmenge
     dieser Ebene mit Bauteilrolle.

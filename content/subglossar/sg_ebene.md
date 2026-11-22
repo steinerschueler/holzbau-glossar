@@ -284,7 +284,7 @@ ebener Bauteile:
 |---|---|---|
 | **Dachebene** | jede schräge oder horizontale Dachseite eines Daches | Trägerebene der Dachfläche; das Sparrenbündel liegt in dieser Ebene. Im Lehrlings-Vokabular die zugänglichste Ebenen-Rolle. |
 | **Wandebene** | vertikale Trägerebene einer Außen- oder Innenwand; Außenkante des Holzrahmenbaus | Bezugsfläche der Wandbeplankung; durch zwei Wandebenen lassen sich Gebäude-Längsachsen ablesen. |
-| **Bodenebene** / **Deckenebene** | horizontale Trägerebene eines Geschoss-Fussbodens oder einer Decken-Unterkante | Höhenreferenz innerhalb eines Geschosses; ablesbar am Schnurgerüst und am Aufmaß. |
+| **Bodenebene** / **Deckenebene** | horizontale Trägerebene eines Geschoss-Fußbodens oder einer Decken-Unterkante | Höhenreferenz innerhalb eines Geschosses; ablesbar am Schnurgerüst und am Aufmaß. |
 | **Schalungsebene** | bei Brettschalung die formgebende Ebene der Schal-Haut | Die Schalebene begrenzt eine Schalung; sie ist die Sicht-Ebene des fertigen Bauteils. |
 
 **Bezugs- und Hilfs-Ebenen** — ohne Bauteil-Identität, aber als
@@ -292,7 +292,7 @@ geometrische Referenz unentbehrlich:
 
 | Kompositum | Wo sie auftritt | Bezug |
 |---|---|---|
-| **Bezugsebene** | Höhenreferenz z = 0 für die Höhenmaße eines Bauwerks | An der Bezugsebene werden alle Höhenkoten gemessen. Im Werkplan typischerweise die Oberkante des fertigen Erdgeschoss-Fussbodens („± 0,00"). |
+| **Bezugsebene** | Höhenreferenz z = 0 für die Höhenmaße eines Bauwerks | An der Bezugsebene werden alle Höhenkoten gemessen. Im Werkplan typischerweise die Oberkante des fertigen Erdgeschoss-Fußbodens („± 0,00"). |
 | **Symmetrieebene** | konstruktive Spiegelebene eines symmetrischen Bauteils | Beim Satteldach die welt-vertikale Ebene durch den First; beide Dachflächen sind zueinander spiegelbildlich. |
 | **Mittelebene** | Symmetrieebene eines mehrschichtigen Plattenwerkstoffs | Bei Brettsperrholz die zur Mittelebene symmetrische Schicht-Anordnung; der Aufbau ist beidseits der Mittelebene spiegelbildlich. |
 | **Horizontalebene** / **waagrechte Ebene** | rechtwinklig zur Welt-Lotachse | Bezugsebene für jede Höhenmessung; die Wasserwaage gibt sie lokal an. |
@@ -301,10 +301,10 @@ geometrische Referenz unentbehrlich:
 
 **Anriss-Ebenen** — Werkstatt- und Übertragungs-Ebenen:
 
-Die traditionelle Zimmerei kennt mit dem **Reissboden** eine der
+Die traditionelle Zimmerei kennt mit dem **Reißboden** eine der
 wenigen Welt-Anschauungs-Realisierungen einer geometrischen
 Ebene: ein ebener Bretterboden, auf den ein Dachprofil mit der
-Schlagschnur im Maßstab 1:1 aufgeschnürt wird. Der Reissboden ist
+Schlagschnur im Maßstab 1:1 aufgeschnürt wird. Der Reißboden ist
 keine abstrakte Bezugsebene, sondern eine **materialisierte**
 Ebene als Anriss-Untergrund — ein Stück mathematischer Ebene,
 das man begehen kann. In der modernen Praxis ist er durch
@@ -333,7 +333,7 @@ sie liegen dann automatisch in einer horizontalen Bezugsebene.
 Geometrisch reichen drei nicht-kollineare Punkte, um genau eine
 Ebene festzulegen — vier Pfostenköpfe sind eine praktische
 Redundanz, keine geometrische Notwendigkeit. Auch der
-Reissboden ruht geometrisch auf drei Stützpunkten, auch wenn die
+Reißboden ruht geometrisch auf drei Stützpunkten, auch wenn die
 Praxis ihn vollflächig auflegt.
 
 **Ein Punkt plus zwei Vektoren** — der Achspunkt eines Bauteils
@@ -364,7 +364,7 @@ Die zentrale Werkzeug-Trias am Bau:
 | **Schlauchwaage** / **Nivelliergerät** / **Rotationslaser** | waagrechte Bezugsebene über größere Distanzen am Bauplatz (Meterriss am Schnurgerüst) |
 | **Senkel** / Senklot | zwei Senkel-Schnüre spannen eine welt-vertikale Ebene auf; der Senkelschnitt am Sparren realisiert eine lotrechte Schnittebene |
 | **Schmiege** / **Schiftlehre** | schräge Schnittebene unter einem eingestellten Winkel |
-| **Reissboden** | 1:1-Ebene als materialisierter Anriss-Untergrund — eines der wenigen Werkzeuge, in dem die Ebene selbst Werkzeug ist |
+| **Reißboden** | 1:1-Ebene als materialisierter Anriss-Untergrund — eines der wenigen Werkzeuge, in dem die Ebene selbst Werkzeug ist |
 | **Schnurgerüst** | drei oder vier Pfostenkopf-Punkte definieren eine waagrechte Bezugsebene am Bauplatz; die Bauachsen werden auf dieser Ebene aufgespannt |
 
 Methodisch wichtig: das Schnurgerüst wird mit einer Toleranz von

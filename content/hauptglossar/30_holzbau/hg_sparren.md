@@ -2,7 +2,7 @@
 id: sparren
 benennung: Sparren
 kurz: "Ein Sparren ist einer der schrägen Balken, die nebeneinander von der Traufe bis zum First verlaufen, das Gerüst der Dachfläche bilden und das Gewicht von Dachdeckung, Schnee und Wind tragen."
-synonyme: [Dachsparren]
+synonyme: [Dachsparren, Normalsparren]
 abgelehnte_benennungen: [Dachbalken, "rafter", "common rafter", "Dachstange"]
 oberbegriff: bauteil
 begriffstyp: bauteilrolle
@@ -17,6 +17,8 @@ quellen_primär:
   - "DIN 1052:2008-12, Abschnitt 8 und Abschnitt 12 (Konstruktive Anforderungen), Sparren als geneigtes Tragglied."
   - "DIN EN 14081-1:2019-10, 'Holzbauwerke – Nach Festigkeit sortiertes Bauholz mit rechteckigem Querschnitt – Teil 1: Allgemeine Anforderungen' (Querschnittsanforderungen für Sparren als Vollholz-Stabbauteil)."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §9.2/§9.3 (S. 159–166): Sparren liegen frei auf den Pfetten auf, tragen die Dacheindeckung und die Lasten aus Wind und Schnee, vornehmlich Biegung (§9.2.1); Bemessung näherungsweise für reine Biegung bei üblichen Dachneigungen α ≈ 15°–45° (§9.2.3); Kerve ('Sparrenklaue') am Sparrenauflager als Querschnittsschwächung, Biegenachweis mit W_n (S. 164, Bild 9.10); Gespärre = zwei sich im First gegeneinander abstützende Sparren, Normalkräfte (Knickgefahr) und Horizontalschub im Fußpunkt (§9.3.1); Kraglänge ℓ_k ≈ (0,33–0,44)·ℓ, ℓ_k ≤ 2,0 m (S. 163)."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, §1.13 'Rechnerischer Abbund' (S. 24–32) und §10.20 'Schiftung' (S. 317–324) — Abbund-Sicht des Sparrens (komplementär zu Colling: dort Bemessung, hier Werkgeometrie). S. 24: rechtwinkliges Grunddreieck Grundmaß b – Firsthöhe h – Sparrenlänge s am mit 'Normalsparren' beschrifteten Sparren, mit tan α = h/b, sin α = h/s, cos α = b/s und s = h/sin α = b/cos α; darunter 'Kervenverstichmaße am Obholz' mit t_K = b·sin α (Kerventiefe) und der Legende 's = Senkel, h = Sparrenhöhe, α = Dachneigungswinkel'. Berufssprachliche Benennung des Sparrens einer einzelnen Dachfläche ist durchgängig 'Normalsparren': Legenden S. 25 ('s = Länge des Normalsparrens', 'h_n = Höhe des Normalsparrens', 's_n = Senkel des Normalsparrens'), S. 28 ('h_nD = Höhe des Sparrens in der Dachfläche', 'h_nW = Höhe des Sparrens in der Walmfläche'), S. 29 ('s_1, s_2 = Sparrenlängen', 'h_n = Höhe des Normalsparrens'), S. 31 ('s = Sparrenlänge', 'h_n = Höhe des Normalsparrens', 'h_s = Höhe des Schiftersparrens in der Walmfläche'). S. 27 'Dach mit schrägem Giebelsparren': α = Neigung des Normalsparrens, β = Streichwinkel des Giebelsparrens im Grund, γ = Neigungswinkel des Giebelsparrens, tan γ = tan α · cos β. Die Schiftungs-Modelle S. 317, 318 und 322 beschriften den Normalsparren neben Kehl- bzw. Gratsparren in den Rissarten Profil, Austragung und Untersicht (Querschnitt 18/22 cm auf S. 317/318, 16/20 cm auf S. 322; Maßstab 1:10)."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Dachtragwerke / Sparren'."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Abschnitt 'Sparren und Sparrenanschlüsse'."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke', § Sparren."
@@ -77,6 +79,37 @@ quellenkonflikt: |
   durchgängig **Sparrenfirstpunkt** genannt; der Bezeichner
   „Sparrenkopf" bleibt damit für die traufseitige Lesart in
   `hg_sparrenueberstand.md` reserviert.
+
+  **Abbund-Berufssprache „Normalsparren" (Tabellenbuch Zimmerer,
+  9. Aufl. 2021; Volltext-Scan liegt Anweiser vor, direkt eingesehen
+  2026-08-14):** Das Berufsschul-Standardwerk benennt den Sparren
+  einer einzelnen Dachfläche im gesamten Abbund- und
+  Schiftungs-Kapitel **„Normalsparren"** (S. 24–32, 317, 318, 322)
+  — als Kontrastbenennung zu Gratsparren, Kehlsparren und
+  Schifter(sparren). Der Zusatz „Normal-" ist damit kein eigener
+  Begriff, sondern eine kontrastive Berufssprache-Markierung für
+  genau die hier definierte Bauteilrolle: „Sparren" ohne Zusatz
+  verlangt bereits die Falllinien-Kollinearität in einer einzelnen
+  Dachfläche (Bed. 3), und die Verschneidungs-Sparren tragen
+  eigene Einträge. **Als Synonym geführt** (Anweiser-Entscheid
+  2026-08-14): „Normalsparren" kann synonym gebraucht werden;
+  die Kontrast-Funktion gegenüber Grat-/Kehl-/Schiftersparren
+  bleibt in dieser Erläuterung dokumentiert.
+
+  **Symbol-Kollision beim Buchstaben `s`:** Das Tabellenbuch
+  verwendet `s` überwiegend für die **Länge des Normalsparrens**
+  (S. 24 Grunddreieck, S. 25, 29, 31) und `s_n` für den **Senkel**
+  des Normalsparrens (S. 25) — in der Kervenverstichmaß-Legende
+  auf S. 24 dagegen `s` selbst für den **Senkel**, also
+  buchintern mehrdeutig. Die Symbol-Tabelle dieses Eintrags
+  (Sektion „Sparrenlängen") belegt
+  `s` dagegen mit dem **axialen Kervenabstand** und führt die volle
+  Bauteilachsen-Länge als `L_S`. Beide Konventionen sind in sich
+  konsistent; bei Zitaten aus dem Tabellenbuch ist die Buch-Lesart
+  von `s` mitzunennen. Eine Vereinheitlichung ist nicht
+  beabsichtigt (die Buch-Notation ist zweidimensionale
+  Grunddreieck-Notation, die Glossar-Notation dreidimensionale
+  Bauteilachsen-Notation).
 
   Diese Festlegung ist konsistent mit allen konsultierten Quellen.
 ---
@@ -207,7 +240,7 @@ Wesentliche abgeleitete Größen:
   ist Eigenschaft des Tragwerks (siehe `hg_tragwerk.md`), nicht des
   Sparrens selbst. Die **Drei-Schichten-Trennung Kerve / Auflage-
   fläche / Auflager** (`hg_auflager.md` Quellenkonflikt-Block) gilt
-  am Sparrenfuß sinngemäss: die Kerve ist die Bearbeitung am
+  am Sparrenfuß sinngemäß: die Kerve ist die Bearbeitung am
   Sparrenpolyeder, die Kerv-Sohle ist die Auflagefläche, das
   Auflager-Aggregat trägt Wertigkeit und Lagerreaktion.
 
@@ -221,7 +254,7 @@ des Daches.
 ### Sparrenlängen
 
 In der Werkplan- und Abbund-Praxis treten am Sparren mehrere
-Längsmasse auf, die sich auf unterschiedliche Endpunkte der
+Längsmaße auf, die sich auf unterschiedliche Endpunkte der
 Bauteilachse beziehen. Die vorliegende Sektion fixiert die
 glossarweit verbindliche Symbol- und Endpunkt-Konvention. Sie ist
 so geschrieben, dass sie später leicht in einen eigenen
@@ -273,7 +306,7 @@ Der axiale Kervenabstand `s` zwischen Fußpfetten- und
 Firstpfettenkerve ist die axiale Distanz zwischen den beiden
 Kerveckpunkten der beiden Kerven (Projektion auf d_hat, siehe
 `hg_firstpfette.md`); bei Sparren ohne Firstpfettenkerve
-(reine Auflagerung am First, Sparren-an-Sparren-Stoss) ist `s`
+(reine Auflagerung am First, Sparren-an-Sparren-Stoß) ist `s`
 nicht definiert.
 
 #### Empfohlene Lesart
@@ -281,23 +314,23 @@ nicht definiert.
 - **„Sparrenlänge"** ohne weiteren Zusatz bezeichnet in dieser
   App und im Glossar die **volle Bauteilachsen-Länge L_S**
   zwischen Sparrenfußpunkt und Sparrenfirstpunkt; alle anderen
-  Sparren-Längsmasse werden mit qualifiziertem Bezeichner
+  Sparren-Längsmaße werden mit qualifiziertem Bezeichner
   („Sparrenüberstand", „Sparrenlänge ohne Überstand", „axialer
   Kervenabstand") geführt.
 - Im einfachsten Werkmodell (Sparren ohne Kerve, ohne Anschnitt,
   ohne Überstand) reduziert sich die Differenzierung; L_S bleibt
-  das einzige relevante Längsmass und p_K fällt mit p_a zusammen.
+  das einzige relevante Längsmaß und p_K fällt mit p_a zusammen.
 
 #### Folgearbeit (trigger-basiert)
 
 Bei Werkplan-Beschriftungs-Tools werden weitere Längen-Begriffe
 relevant, etwa:
 
-- **Sparrenlänge inklusive Anschnitt** (vom äussersten Punkt des
-  Sparrenfuß-Anschnitts bis zum äussersten Punkt des First-Anschnitts,
+- **Sparrenlänge inklusive Anschnitt** (vom äußersten Punkt des
+  Sparrenfuß-Anschnitts bis zum äußersten Punkt des First-Anschnitts,
   also die Roh-Bauteillänge vor Abbund); ergänzt die Tabelle um
   einen vierten Längs-Begriff.
-- **Abgewickelte Sparrenlänge** (für die Werkplan-Bemassung der
+- **Abgewickelte Sparrenlänge** (für die Werkplan-Bemaßung der
   Lattenraster-Längen entlang der Sparren-Oberseite, falls
   Lattung modelliert wird).
 
@@ -456,6 +489,14 @@ Verortung:
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §9.2/§9.3 (S. 159–166, Sparren/Gespärre). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-13.
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, §1.13 „Rechnerischer Abbund" (S. 24–32)
+  und §10.20 „Schiftung" (S. 317–324). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-14.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich, aktuelle
   Auflage.
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*

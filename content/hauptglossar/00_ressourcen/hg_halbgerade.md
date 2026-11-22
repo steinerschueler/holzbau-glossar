@@ -11,15 +11,17 @@ abgrenzung_zu: [gerade, strecke, vektor]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie)."
+  - "DIN EN ISO 80000-2:2023-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 9 (Elementare Geometrie). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitt 8 (Elementary geometry), Nr. 2-8.1 bis 2-8.6: Zeichen für parallele und rechtwinklige Geraden, Winkel, Strecke, Vektor und Abstand. Die Halbgerade führt die Norm nicht. [direkt]"
 quellen_sekundär:
   - "Bronstein, I. N. et al.: Taschenbuch der Mathematik. Kap. 3.5.1 'Geraden, Strahlen und Strecken im Raum'."
   - "Bär, C.: Elementargeometrie. Springer Spektrum, Kap. 4."
   - "Fischer, G.: Lineare Algebra. 19. Aufl., Springer Spektrum 2020."
 quellenkonflikt: |
-  Keine Holzbau-Norm definiert den Begriff Halbgerade. DIN ISO 80000-2
-  listet das Symbol für die Halbgerade, ohne sie axiomatisch zu
-  definieren. Eigene Festlegung: eine Halbgerade ist
+  Keine Holzbau-Norm definiert den Begriff Halbgerade. DIN EN ISO 80000-2
+  führt Zeichen für Gerade und Strecke, die Halbgerade aber nicht
+  (geprüft an ISO 80000-2:2009, Abschnitt 8). Eigene Festlegung: eine
+  Halbgerade ist
   { p₀ + t·v | t ∈ [0, ∞) } für Ursprung p₀ und Richtung v ≠ 0;
   sie ist abgeschlossen (enthält den Ursprungspunkt). Diese Festlegung
   ist konsistent mit Bronstein, Bär und Fischer.
@@ -120,7 +122,10 @@ Sie ist von der Strecke (zwei Endpunkte) und der Geraden
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2: Mathematik".
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2: Mathematik".
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
 
 **Sekundär:**
 

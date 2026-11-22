@@ -16,6 +16,7 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 1.5 (Begriffe), für 'Dachtragwerk' als statisch-konstruktive Teilkomponente."
   - "Musterbauordnung (MBO) 2002, § 32 (Dächer)."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §9.1 'Allgemeines' (S. 156–158): statische Zwei-Teilung der Hausdächer in Pfettendächer und Sparrendächer (Bild 9.2) — Pfettendach unter vertikalen Lasten nur vertikale Auflagerkräfte, Sparrendach erhebliche horizontale Auflagerreaktionen durch gegenseitiges Abstützen; in der Praxis haben sich Pfettendächer durchgesetzt, häufig Mischformen (Firstgelenk, S. 162); Dach = tragende Konstruktion plus Komponenten-Aufbau (Tabelle 9-1)."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015, Kap. 'Dachtragwerke'."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Dach' und 'Dachstuhl'."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Dachaufbau'."
@@ -245,6 +246,9 @@ Fachliteratur verbreitete Vermischung dieser drei Konzepte auf.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §9.1 „Allgemeines“ (S. 156–158). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-13.
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Auflage, Beuth Verlag 2015.
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.*

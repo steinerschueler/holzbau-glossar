@@ -16,9 +16,10 @@ quellen_primär:
   - "SIA 265/2:2023 'Sortierung von Holz nach der Tragfähigkeit — Nadelschnittholz gemäss DIN 4074-1', Schweizerischer Ingenieur- und Architektenverein, Zürich. [sekundär]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung): Latten als biegebeanspruchte Stab-Bauteile."
   - "DIN EN 14081-1:2019-10 'Holzbauwerke — Nach Festigkeit sortiertes Bauholz mit rechteckigem Querschnitt — Teil 1: Allgemeine Anforderungen', harmonisiertes CE-Regelwerk."
-  - "DIN 4074-1 'Sortierung von Holz nach der Tragfähigkeit — Teil 1: Nadelschnittholz' (Sortierklassen S10/S13 für Dachlatten)."
+  - "DIN 4074-1 'Sortierung von Holz nach der Tragfähigkeit — Teil 1: Nadelschnittholz' (Sortierklassen S10/S13 für Dachlatten; Schnittholzart-Einteilung: Latte = Dicke d ≤ 40 mm und Breite b < 80 mm, abgegrenzt gegen Brett, Bohle, Kantholz). [via: Colling §2.3.1, Tabelle 2-3]"
   - "DIN 4070-1:1958-01 'Nadelholz; Querschnittsmaße und statische Werte für Schnittholz, Vorratskantholz und Dachlatten' (Standardquerschnitte 24/48, 30/50, 40/60 mm)."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §2.3.1 'Bauholz (VH, NH)', Tabelle 2-3 'Schnittholzeinteilung nach DIN 4074-1' (S. 25): Latte als Schnittholzart mit Dicke d ≤ 40 mm und Breite b < 80 mm — gedruckte geometrische Norm-Abgrenzung gegen Brett (d ≤ 40 mm, b ≥ 80 mm), Bohle (d > 40 mm, b > 3·d) und Kantholz (b ≤ h ≤ 3·b, b > 40 mm)."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage, Kap. 'Lattung'."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke'."
@@ -420,6 +421,12 @@ außerhalb der Holzbau-Modellierung dieses Glossars.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §2.3.1, Tabelle 2-3
+  „Schnittholzeinteilung nach DIN 4074-1" (S. 25: Latte
+  d ≤ 40 mm, b < 80 mm). Volltext-Scan liegt Anweiser vor; direkt
+  eingesehen 2026-08-14.
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*
   Lignum, Zürich, aktuelle Auflage.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich, aktuelle

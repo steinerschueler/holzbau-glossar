@@ -11,7 +11,8 @@ abgrenzung_zu: [polygon, dachflaeche, gerade, halbraum]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, Abschnitt 2 (Geometrie), Symbole und Bezeichnungen für die Ebene und die Hesse-Normalform."
+  - "DIN EN ISO 80000-2:2023-08, Abschnitt 18 (Skalare, Vektoren und Tensoren). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitt 17 (Scalars, vectors and tensors), Nr. 2-17.4, 2-17.6 und 2-17.11: Zeichen für Betrag, Einheitsvektor und Skalarprodukt, mit denen die Ebenengleichung geschrieben ist. Die Ebene und die Hesse-Normalform führt die Norm nicht. [direkt]"
 quellen_sekundär:
   - "Bronstein, I. N. et al.: Taschenbuch der Mathematik. Kap. 3.5.2 'Ebenen im Raum', insbesondere Hesse'sche Normalform."
   - "Fischer, G.: Lineare Algebra. Kap. 1 'Affine Geometrie'."
@@ -19,13 +20,13 @@ quellen_sekundär:
   - "Hesse, L. O.: Vorlesungen aus der analytischen Geometrie der geraden Linie, des Punktes und des Kreises in der Ebene. Teubner, Leipzig 1865 (historische Quelle der Hesse'schen Normalform)."
 quellenkonflikt: |
   Holzbau-Normen verwenden den Begriff Ebene als gegeben (z. B.
-  „Dachebene", „Fußebene"). DIN ISO 80000-2 verzeichnet die Hesse-
-  Normalform, definiert die Ebene jedoch nicht axiomatisch. Eigene
+  „Dachebene", „Fußebene"). DIN EN ISO 80000-2 führt weder die Ebene
+  noch die Hesse-Normalform, nur die Zeichen für Vektor, Betrag und
+  Skalarprodukt (geprüft an ISO 80000-2:2009). Eigene
   Festlegung: eine Ebene ist die Punktmenge { x ∈ ℝ³ | ⟨n, x − p₀⟩ = 0 }
   für einen Stützpunkt p₀ und einen Nicht-Nullvektor n. Die Hesse-
   Normalform mit ‖n‖ = 1 ist eine kanonische Repräsentation. Diese
-  Festlegung ist konsistent mit Bronstein, Fischer, Bär und ISO
-  80000-2.
+  Festlegung ist konsistent mit Bronstein, Fischer und Bär.
 ---
 
 ## Prosa-Definition
@@ -91,7 +92,7 @@ Die Ebene ist das geometrische Primitiv für alle ebenen Bauteile
 und Bezugsflächen im Holzbau: Dachfläche, Fußebene (Dachfußebene
 auf Höhe der Wandkrone), Wandebene, Schnittebenen für Risse.
 
-Der **Reissboden** der traditionellen Zimmerei materialisiert eine
+Der **Reißboden** der traditionellen Zimmerei materialisiert eine
 1:1-Ebene als Anriss-Untergrund — eines der historischen Welt-
 Anschauungs-Objekte einer ebenen Fläche im Holzbau (Wikipedia
 „Aufschnüren", „Schiftung").
@@ -146,8 +147,11 @@ Anschauliche Lesarten:
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2: Mathematik",
-  Abschnitt 2.
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2: Mathematik",
+  Abschnitt 18.
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
 
 **Sekundär:**
 
@@ -169,6 +173,6 @@ Anschauliche Lesarten:
 - Wikipedia, Lemma „Fachbegriffe des Zimmererhandwerks" —
   Hinterlüftungsebene als analog konstruiertes Schicht-Kompositum
   (abgerufen 2026-05-14).
-- Wikipedia, Lemmata „Aufschnüren" und „Schiftung" — Reissboden
+- Wikipedia, Lemmata „Aufschnüren" und „Schiftung" — Reißboden
   als ebener Bretterboden, auf dem ein Dachprofil im Maßstab 1:1
   aufgeschnürt wird (abgerufen 2026-05-14).

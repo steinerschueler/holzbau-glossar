@@ -122,7 +122,7 @@ Sei
 - 𝒰 der UUID-Raum nach `uuid`,
 - 𝓛 die Menge der Lastfälle nach `lastfall` (Aggregat aus
   Bemessungssituation, Leiteinwirkung, Begleiteinwirkungen,
-  Einwirkungs-Anordnung; gemäss EN 1990/EN 1991 bzw. SIA 260/261).
+  Einwirkungs-Anordnung; gemäß EN 1990/EN 1991 bzw. SIA 260/261).
 
 Dann ist ein **Tragwerk** das Tupel
 
@@ -354,7 +354,7 @@ Auflager, Lastfälle) die Aggregat-Substanz tragen.
 - **Bestandteile (partitiv)**:
   - **Bauteile** (`bauteil`): die lastabtragenden Stab- und
     Flächenbauteile (Sparren, Pfetten, Binder, Kehlbalken,
-    Stützen, Streben, Schwellen, Rähme, Schalungen, BSP-Elemente).
+    Stützen, Streben, Schwellen, Einbinder, Schalungen, BSP-Elemente).
   - **Verbindungen** (`verbindungsmittel`, `anschluss`; eigene
     Einträge folgen): Nägel, Schrauben, Bolzen, Stabdübel,
     Klammern sowie zimmermannsmäßige Verbindungen (Zapfen,
@@ -364,7 +364,7 @@ Auflager, Lastfälle) die Aggregat-Substanz tragen.
     (Punkt/Linie/Fläche) und Wertigkeit (fest/beweglich/einspannend).
   - **Lastfälle** (`lastfall`, bereits angelegt): Aggregat aus
     Bemessungssituation, Leiteinwirkung, Begleiteinwirkungen,
-    Einwirkungs-Anordnung; gemäss EN 1990/EN 1991 bzw. SIA 260/261.
+    Einwirkungs-Anordnung; gemäß EN 1990/EN 1991 bzw. SIA 260/261.
 - **Spezialisierungen nach Anwendungsbereich** (eigene Einträge
   folgen):
   - **Dachtragwerk** (`dachtragwerk`): Tragwerk, das die

@@ -1,7 +1,7 @@
 ---
 id: grat
 benennung: Grat
-kurz: "Ein Grat ist die schräg ansteigende Aussenkante eines Daches, an der zwei Dachflächen an einer vorspringenden Ecke wie ein Dachrücken zusammenlaufen — etwa an einem Walmdach."
+kurz: "Ein Grat ist die schräg ansteigende Außenkante eines Daches, an der zwei Dachflächen an einer vorspringenden Ecke wie ein Dachrücken zusammenlaufen — etwa an einem Walmdach."
 synonyme: [Gratkante, Gratlinie, Walmkante]
 abgelehnte_benennungen: [Gratsparren, Walmgrat, Eckgrat, "hip", "hip ridge", "arris"]
 oberbegriff: dachkante
@@ -13,8 +13,11 @@ subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe): Grat als geneigte, ausspringende Schnittkante zweier Dachflächen am Walmdach."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1', Abschnitt 5 (Darstellung von Dächern): Grat als geneigte Dachkante an der Außenecke zweier zusammentreffender Dachflächen."
-  - "DIN 18338:2019-09 'VOB Teil C: Dachdeckungs- und Dachabdichtungsarbeiten', Abschnitt 0 (Begriffe): Grat als geneigte Schnittkante zweier nach außen geneigter Dachflächen."
+  - "DIN 18338:2019-09 'VOB Teil C: ATV Dachdeckungsarbeiten' (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336; die ATV führt keine Begriffs-Sektion — Abschnitt 0 sind Hinweise für das Aufstellen der Leistungsbeschreibung, die Dachkanten-Begriffe werden vorausgesetzt und nach Längenmaß abgerechnet), vorausgesetzte Lesart: Grat als geneigte Schnittkante zweier nach außen geneigter Dachflächen."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.9.9 'Dachteile und ihre Begriffe', S. 173: Positionstafel am axonometrischen Dachmodell führt den Grat an zwei Positionen (⑥, ⑬) als Kante des Dachkörpers; zusätzlich sind ② Verfallanfang, ③ Verfallgrat und ④ Verfallende als eigene Positionen ausgewiesen — der Verfallgrat ist im Berufsschul-Kanon eine benannte Sonderform der Gratlinie mit eigenen Endpunkt-Benennungen."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 1.13 'Rechnerischer Abbund', S. 25, 26, 28, 31, 32: Der Grat ist über einen eigenen Winkel- und Maßapparat erschlossen — Legende S. 25: 'γ = Gratgrundwinkel', 'δ = Abgratungswinkel', 'h_a = Abgratungsmaß', 'v = Länge des Verfallgrates'; Legende S. 28: 'β_D; β_W = Streichwinkel des Grates im Grund'; Legende S. 32: 'γ = Neigungswinkel des Gratsparrens', 'g_g = Länge des Gratsparrens im Grund', 'v = Länge des Verfallgrats'. Sätze über den Grundriss-Winkel der Gratlinie: tan γ = tan α / √2 beim gleichgeneigten Walmdach mit rechtwinkliger Traufe (S. 25, Formel 1) und tan γ₁ = tan α · sin β_1,D bei schiefwinkliger Traufe (S. 26, Formel 10); Verfallgrat-Länge v = g − k₁ (S. 25, Formel 11) bzw. v = g − k (S. 32, Formel 4). Hinweis: die Legenden-Benennung des Grundriss-Winkels β schwankt im Werk selbst — 'Streichwinkel im Grund' (S. 26), 'Streichwinkel des Grates im Grund' (S. 28), 'Ausstellwinkel im Grund' (S. 31), 'Streichwinkel in der Dachfläche und in der Walmfläche' (S. 32); zitierfähig ist deshalb nur die jeweils seitengenaue Form."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 10.16 'Dachverschneidung – Dachausmittlung', S. 305 und 312: Grundriss-Konstruktionsregel der Gratlinie — 'Bei gleichgeneigten Dachflächen verlaufen die Gratsparren im Grundriss in der Winkelhalbierenden, auch wenn die Traufe an der Walmseite schräg verläuft. Der Gratsparren läuft im Grundriss bei einem Verfallgrat zum oberen Anfallspunkt ① der Kehlsparren zum unteren Anfallspunkt ② des Verfallgrades.' (S. 305, Zeichensetzung wie gedruckt); Konstruktions-Aufgabe S. 312: 'Beim gleichgeneigten Dach (und dies auch bei schräg verlaufender Traufe) verlaufen die Gratsparren im Grundriss in der Winkelhalbierenden', 'Traufanfallspunkte TA II und TA III', 'P₃ mit TA II und P₄ mit TA III verbinden → Verfallgrate'. Damit sind Anfallspunkt-Terminologie (oberer/unterer Anfallspunkt, Traufanfallspunkt) und die Winkelhalbierenden-Regel seitengenau belegt."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015, Kap. Dachformen (Walmdach)."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Grat'."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage."
@@ -47,6 +50,28 @@ quellenkonflikt: |
   zugeordnet werden — siehe `hg_dachkante.md`. Grat ist disjunkt zu
   First (durch Neigungsbedingung) und disjunkt zu Kehle (durch
   Konvexitätsbedingung).
+
+  Bestätigung und Verschärfung durch das Tabellenbuch Zimmerer
+  (Bläsi/Ferdinand, 9. Aufl. 2021; Volltext-Scan liegt Anweiser vor,
+  direkt eingesehen 2026-08-14): Die Positionstafel „Dachteile und
+  ihre Begriffe" (S. 173) führt ⑥/⑬ **Grat** als Kante des
+  Dachkörpers und trennt sie vom Tragwerksbauteil, das im Abbund-
+  und Zeichenteil durchgehend „Gratsparren" heißt. Zugleich belegt
+  das Werk die im Quellenkonflikt beschriebene **Praxis-Drift**
+  (b): auf S. 305 und S. 312 wird die Grundriss-**Linie** des
+  Grats mit „die Gratsparren verlaufen im Grundriss in der
+  Winkelhalbierenden" benannt, also mit dem Bauteilnamen. Das
+  bestätigt die Festlegung dieses Eintrags, die geometrische
+  Lesart (a) unter „Grat" zu führen und den Bauteilnamen in
+  `abgelehnte_benennungen:` zu halten.
+
+  Nicht übernommene Buch-Begriffe (Folgewellen-Kandidaten, hier
+  bewusst nicht als Synonyme aufgenommen): **Verfallgrat** (mit
+  Verfallanfang und Verfallende, S. 173; „Länge des Verfallgrates"
+  v, S. 25/32) ist eine benannte Sonderform der Gratlinie, kein
+  Synonym von „Grat"; **Anfallspunkt** (oberer/unterer Anfallspunkt,
+  S. 305; Traufanfallspunkt, S. 312) bezeichnet einen Endpunkt der
+  Grat-/Kehllinie, nicht die Linie selbst.
 ---
 
 ## Prosa-Definition
@@ -251,11 +276,23 @@ Kehle gleichermaßen senkrecht nach oben.
   Architektenverein, Abschnitt 1.
 - DIN 1356-1:1995-02, „Bauzeichnungen – Teil 1: Arten, Inhalte und
   Grundregeln der Darstellung", Abschnitt 5.
-- DIN 18338:2019-09, „VOB Teil C: Dachdeckungs- und
-  Dachabdichtungsarbeiten", Abschnitt 0.
+- DIN 18338:2019-09, „VOB Teil C: ATV Dachdeckungsarbeiten"
+  (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336),
+  Abschnitt 0 (Hinweise für das Aufstellen der Leistungsbeschreibung).
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5. Kap. 1.13 „Rechnerischer Abbund"
+  (S. 25–32: Gratgrundwinkel γ, Abgratungswinkel δ, Abgratungsmaß
+  h_a, Streichwinkel des Grates im Grund β, Verfallgrat-Länge v),
+  Kap. 3.9.9 „Dachteile und ihre Begriffe" (S. 173), Kap. 10.16
+  „Dachverschneidung – Dachausmittlung" (S. 305, 312:
+  Winkelhalbierenden-Regel im Grundriss, oberer/unterer
+  Anfallspunkt, Traufanfallspunkt). Volltext-Scan liegt Anweiser vor;
+  direkt eingesehen 2026-08-14 (seitenweise am Scan-PNG
+  verifiziert).
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   15. Auflage, Beuth Verlag 2015.
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.* DVA,

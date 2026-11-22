@@ -1,7 +1,7 @@
 ---
 id: wand
 benennung: Wand
-kurz: "Eine Wand ist die zusammengehörige Holz-Baugruppe aus unterer Schwelle, oberem Rähm und den senkrechten Ständern dazwischen — ergänzt um aussteifende Schräghölzer —, die einen Raum abschliesst und das Gewicht von Decke und Dach trägt."
+kurz: "Eine Wand ist die zusammengehörige Holz-Baugruppe aus unterer Schwelle, oberem Einbinder und den senkrechten Ständern dazwischen — ergänzt um aussteifende Schräghölzer —, die einen Raum abschließt und das Gewicht von Decke und Dach trägt."
 synonyme: [Wandscheibe, Wandtafel, Wandelement]
 abgelehnte_benennungen:
   [Wandbauteil, Mauer, Bretterwand, Trennwand-Konstruktion,
@@ -11,13 +11,13 @@ abgelehnte_benennungen:
 oberbegriff: bauteilgruppe
 begriffstyp: aggregat
 voraussetzungen:
-  [bauteilgruppe, bauteil, schwelle, raehm, staender, riegel,
+  [bauteilgruppe, bauteil, schwelle, einbinder, staender, riegel,
    strebe, kopfband, fussband, knagge, verbindung, ebene,
    weltkoordinatensystem, lokales_koordinatensystem,
    polyeder, strecke, uuid, toleranzen]
 abgrenzung_zu:
   [bauteilgruppe, tragwerk, dach, decke, dachstuhl, binder,
-   walm, andreaskreuz, mann, schwelle, raehm, staender,
+   walm, andreaskreuz, mann, schwelle, einbinder, staender,
    riegel, strebe, kopfband, fussband, knagge, fachwerk,
    riegelbau, holzrahmenbau, holzskelettbau, holztafelbau,
    wandtafel, vorgefertigtes_wandelement, schicht, beplankung,
@@ -29,12 +29,13 @@ quellen_primär:
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema' (IFC 4.3.2), Entität `IfcWall` mit `IfcWallStandardCase` und `PredefinedType` (MOVABLE, PARAPET, PARTITIONING, PLUMBINGWALL, SHEAR, SOLIDWALL, STANDARD, POLYGONAL, ELEMENTEDWALL): Wand als eigenständiges Element-Konzept; `IfcWallStandardCase.SHEAR` belegt die tragwerksrelevante Wandscheibe; die im Holzbau übliche `IfcElementAssembly`-Form (PredefinedType BRACED_FRAME oder RIGID_FRAME) bildet die Bauteilgruppen-Sicht für aus Holzbauteilen zusammengesetzte Wände."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 'Bauliche Einzelheiten' und insbesondere Abschnitt 9.2 'Aussteifende Wandscheiben': Wandscheibe als tragwerks-konstruktive Einheit aus Rippen (Ständer), Schwelle, Rähm und Beplankung oder diagonalen Aussteifungs-Bauteilen; Lasteinleitung über Schubverbund."
   - "DIN 1052:2008-12, Abschnitt 8 und Abschnitt 12 (Konstruktive Anforderungen): Wandkonstruktionen aus Holz mit Ständern zwischen Schwelle und Rähm vorausgesetzt; aussteifende Funktion über Diagonalen oder Beplankung."
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Wand' nicht als Fachausdruck (§1.1 / Anhang G geprüft) noch als Lemma; §5.4.2 'Wandscheiben' behandelt die Wand nur als aussteifende Struktur, nicht als raumabschliessendes Bauteil. Vorausgesetzter Berufsbegriff. [direkt]"
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Wand' nicht als Fachausdruck (§1.1 / Anhang G geprüft) noch als Lemma; §5.4.2 'Wandscheiben' behandelt die Wand nur als aussteifende Struktur, nicht als raumabschließendes Bauteil. Vorausgesetzter Berufsbegriff. [direkt]"
 quellen_sekundär:
-  - "Lignum, 'Holz A–Z / Konstruktion', lignum.ch/holz_a_z/konstruktion/: Wand als 'Verbundkonstruktion mit Holzrahmen und Beplankungsmaterial' (Tafelbau-Lesart); Skelettbau-Wand als raumabschliessende Schicht-Konstruktion."
-  - "Wikipedia, Lemma 'Fachwerkhaus' (de.wikipedia.org/wiki/Fachwerkhaus): Wand-Konstruktion aus Schwelle, Eckständern, Riegeln, Streben und Rähm; CH-Riegelhaus-Verbreitung Nordostschweiz (Thurgau, Zürcher Weinland); rote Balken und weisse Ausfachung."
+  - "Lignum, 'Holz A–Z / Konstruktion', lignum.ch/holz_a_z/konstruktion/: Wand als 'Verbundkonstruktion mit Holzrahmen und Beplankungsmaterial' (Tafelbau-Lesart); Skelettbau-Wand als raumabschließende Schicht-Konstruktion."
+  - "Wikipedia, Lemma 'Fachwerkhaus' (de.wikipedia.org/wiki/Fachwerkhaus): Wand-Konstruktion aus Schwelle, Eckständern, Riegeln, Streben und Rähm; CH-Riegelhaus-Verbreitung Nordostschweiz (Thurgau, Zürcher Weinland); rote Balken und weiße Ausfachung."
   - "Lignum (Hrsg.): Holzbautabellen HBT 1 (2024). Lignum, Zürich. Begriffsregister (Volltext nicht zugänglich, Verlags-Schaufenster); Wand-Aussteifungs-Tabellen im Holzrahmenbau und Riegelbau."
   - "Lignum: Pressemitteilung 2021 'Anwendungshilfen für neue SIA-Norm Holzbau liegen vor', lignum.ch/auf_einen_klick/news/."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.7 „Außenwände“ (S. 160–162). Kap. 3.7.1 „Einschalige und zweischalige Außenwände“ (S. 160): Typentafel einschalig / zweischalig (mit Putzschicht, mit Luftschicht, mit Luftschicht und Dämmung, mit Kerndämmung) plus die Tafel „Aufgabe der einzelnen Schichten bzw. Teile“ mit ① Innenputz, ② **Tragwand** („Statisch ausreichende Tragfestigkeit, Wärmespeicherung, Schallschutz: biegesteife Schale, für tiefe Frequenzen“), ③ Dämmschicht, ④ Luftschicht, ⑤ **Vorsatzschale** („Witterungsschutz: Regen, Schnee, Wind … Schallschutz: biegeweiche Schale, für hohe Frequenzen“), ⑥ Außenputz; die dort gezeigte Ausführung ist mauerwerksbaulich (Mörtelschicht, Drahtanker, Klemmscheibe, Tropfscheibe; der Detailschnitt „Aufbau einer zweischaligen Wand mit Dämm- und Luftschicht“ auf S. 161 oben nennt Leichthochlochziegel und Vormauerziegel nach DIN 105 sowie Edelstahlanker ⌀ 3 mm), das Schichten-/Schalen-Modell selbst ist werkstoffneutral. Kap. 3.7.2 „Fachwerkwände“ (S. 161): nummerierte Bauteil-Legende der Fachwerkwand (① Längsschwelle, ② Querschwelle, ③ Rähm, ④ Wandbalken, ⑤ Längsschwelle, ⑥ Fensterriegel, ⑦ Riegel, ⑧ Eckpfosten, ⑨ Fensterpfosten, ⑩ Türpfosten, ⑪ Deckenbalken) — gedruckter Berufsschul-Beleg für die Wand als Komposition benannter Holz-Bauteilrollen. Kap. 3.7.3 „Holzständerwände“ (S. 162): vier Schalungsarten (horizontale/vertikale Nut-und-Feder-Schalung, Stulpschalung, Deckelschalung), Bemaßungshinweis „Aus schalltechnischen Gründen d_2 > d_1“."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 'Wandkonstruktionen', 'Wandscheiben' und 'Aussteifung'."
   - "Natterer, J.; Herzog, T.; Volz, M.: Holzbau-Atlas. 4. Aufl., Birkhäuser, Basel 2003, Kap. 'Wandbau', 'Fachwerk' und 'Holzrahmenbau'."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Wand', 'Wandgefüge', 'Wandständer'."
@@ -57,15 +58,15 @@ quellenkonflikt: |
     konstruktive Tragwerks-Einheit.
   - **Lesart B (Tragwerk / Holzbau)**: aussteifende oder
     lastabtragende Wandscheibe aus Holzbauteilen, die durch
-    ihre Komposition (Schwelle + Ständer + Rähm + optional
-    Riegel/Streben/Kopf-/Fussbänder) als konstruktive
+    ihre Komposition (Schwelle + Ständer + Einbinder + optional
+    Riegel/Streben/Kopf-/Fußbänder) als konstruktive
     Funktionseinheit definiert ist. DIN EN 1995-1-1 §9.2,
     Lignum „Holz A–Z / Konstruktion", Gerner 2007.
 
   **App-Wahl: Lesart B.** Dieser Eintrag belegt „Wand"
-  ausschliesslich mit der Tragwerks-/Holzbau-Lesart als
+  ausschließlich mit der Tragwerks-/Holzbau-Lesart als
   Bauteilgruppe aus konkreten Holz-Bauteilrollen. Lesart A
-  bleibt ausserhalb dieses Glossars; falls in einer späteren
+  bleibt außerhalb dieses Glossars; falls in einer späteren
   Tool-Linie (Raumplanung, Architektur-Sicht) benötigt, wird
   sie unter einer eigenen Bezeichnung `raumwand` im Cluster
   `40_architektur/` als Folgearbeit geführt (Trigger). Die
@@ -97,13 +98,56 @@ quellenkonflikt: |
     das Wand-Tragwerk).
 
   Eigene Festlegung: das Wand-Aggregat enthält **nur die
-  tragenden Holzbauteile** (Schwelle, Rähm, Ständer, Riegel,
-  Strebe, Kopfband, Fussband, Knagge). Beplankung, Dämmung
+  tragenden Holzbauteile** (Schwelle, Einbinder, Ständer, Riegel,
+  Strebe, Kopfband, Fußband, Knagge). Beplankung, Dämmung
   und Verkleidung werden als **eigene orthogonale Aggregat-
   Familie** (Schicht-Aggregate, Folgearbeit) geführt und
   einer Wand über das `bausystem`-Konzept (funktionale
   Sicht) oder über eine getrennte Schicht-Aggregat-Linie
   zugeordnet.
+
+  Berufsschul-Bestätigung zu (1) und (2) (Bläsi/Ferdinand,
+  *Tabellenbuch Zimmerer*, 9. Aufl. 2021, Volltext-Scan liegt
+  Anweiser vor, direkt eingesehen 2026-08-14): Das Standardwerk der
+  Zimmerer-Ausbildung führt in Kap. 3.7 „Außenwände“ **beide
+  Sichten getrennt nebeneinander** und stützt damit die
+  Orthogonalität dieses Eintrags.
+
+  - **Schichten-Sicht** (S. 160, Kap. 3.7.1): die Tafel
+    „Aufgabe der einzelnen Schichten bzw. Teile“ zerlegt die
+    Außenwand in Innenputz, **Tragwand**, Dämmschicht,
+    Luftschicht, **Vorsatzschale**, Außenputz und ordnet jeder
+    Schicht eigene Aufgaben zu; die Tragfunktion sitzt
+    ausdrücklich in **einer** Schicht („Tragwand: Statisch
+    ausreichende Tragfestigkeit … biegesteife Schale“), die
+    Witterungs- und Hochfrequenz-Schallfunktion in einer
+    anderen („Vorsatzschale … biegeweiche Schale“). Genau diese
+    Trennung ist der Grund, warum das Wand-Aggregat hier nur
+    die tragenden Holzbauteile führt und die Schichten in eine
+    eigene orthogonale Familie gehen. **Vorbehalt:** die auf
+    S. 160/161 gezeigte Ausführung ist mauerwerksbaulich
+    (Leichthochlochziegel, Vormauerziegel, Drahtanker); der
+    Beleg trägt das **Schichten-Modell**, nicht die
+    Holzbau-Wand als Bauteilgruppe. Der Detailschnitt auf
+    S. 161 oben („Aufbau einer zweischaligen Wand mit Dämm-
+    und Luftschicht") zeigt dieselbe Konstruktion bemaßt.
+  - **Bauteil-Sicht** (S. 161, Kap. 3.7.2 „Fachwerkwände“): die
+    nummerierte Legende zerlegt dieselbe Wand in **benannte
+    Holz-Bauteile** (Längs-/Querschwelle, Rähm, Wandbalken,
+    Fenster-/Riegel-Querhölzer, Eck-/Fenster-/Türpfosten,
+    Deckenbalken). Das ist die Lesart B dieses Eintrags —
+    Wand als Komposition von Bauteilrollen — im
+    Berufsschul-Kanon.
+  - **Bauweisen-Trennung** (S. 162, Kap. 3.7.3
+    „Holzständerwände“): das Buch führt die moderne
+    Ständerwand als eigenes Unterkapitel neben der
+    Fachwerkwand und behandelt dort ausschließlich die
+    **Beplankungs-/Schalungs-Ebene** (vier Schalungsarten,
+    „Aus schalltechnischen Gründen d_2 > d_1“) — also erneut die
+    Schicht-Sicht, nicht die Stab-Sicht. Das deckt sich mit
+    der hier gewählten Modellierung, die die
+    Tafelbau-Aussteifung über die Schicht-Aggregat-Familie
+    (Folgearbeit) und nicht über Diagonal-Bauteile abbildet.
 
   **(3) CH-Asymmetrie: Riegelbau vs. Tafelbau vs. Skelettbau.**
   Die CH-Praxis zeigt drei Wand-Konstruktions-Linien mit
@@ -112,7 +156,7 @@ quellenkonflikt: |
   - **Riegelbau** (CH-Pendant zum DE-Fachwerk, traditionell,
     Nordostschweiz): Wand aus Schwelle, Eckständern,
     Zwischen-/Bundständern, Riegeln und diagonalen
-    Aussteifungs-Bauteilen (Strebe, Kopf-/Fussband,
+    Aussteifungs-Bauteilen (Strebe, Kopf-/Fußband,
     Andreaskreuz). Diese **Riegelbau-CH-Lesart ist die
     Default-Modellierung** dieses Eintrags.
   - **Tafelbau** (Holzrahmenbau / Holztafelbau, modern):
@@ -120,12 +164,12 @@ quellenkonflikt: |
     Beplankungsmaterial" (Lignum). Aussteifung über
     Beplankung (Schicht-Aggregat), nicht über Diagonal-
     Bauteile. Die Wand-Bauteilgruppe besteht in dieser
-    Sub-Lesart aus Schwelle + Ständern + Rähm; Streben und
+    Sub-Lesart aus Schwelle + Ständern + Einbinder; Streben und
     Bänder können fehlen, weil die Beplankung die
     Aussteifungs-Funktion übernimmt.
   - **Skelettbau** (Holzskelettbau, modern): Tragskelett
-    und raumabschliessende Wände sind unabhängig (Lignum);
-    die Wand ist primär raumabschliessend, nicht
+    und raumabschließende Wände sind unabhängig (Lignum);
+    die Wand ist primär raumabschließend, nicht
     tragwerksrelevant. In dieser Lesart kollabiert das
     Wand-Aggregat zu einer Schicht-Konstruktion ohne
     Holz-Rahmen-Bauteile.
@@ -133,7 +177,7 @@ quellenkonflikt: |
   Die App-Modellierung wählt **Riegelbau-CH als Default**
   mit Tafelbau als zulässiger Sub-Lesart (alle
   Aussteifungs-Bauteile optional). Skelettbau-Wände liegen
-  ausserhalb des aktuellen Tool-Scopes und werden über
+  außerhalb des aktuellen Tool-Scopes und werden über
   Folgearbeit-Trigger (Schicht-Aggregat) abgedeckt.
   Lignum HBT 1 (2024) Volltext wäre für die CH-Praxis-
   Verifikation hilfreich; aktuell snippet-basiert.
@@ -199,12 +243,12 @@ quellenkonflikt: |
 ## Prosa-Definition
 
 Eine **Wand** ist eine Bauteilgruppe aus mindestens einer
-Schwelle, einem Rähm und mindestens zwei Ständern, ergänzt um
+Schwelle, einem Einbinder und mindestens zwei Ständern, ergänzt um
 eine möglicherweise leere Menge von Riegeln und diagonalen
-Aussteifungs-Bauteilen (Strebe, Kopfband, Fussband, Knagge),
+Aussteifungs-Bauteilen (Strebe, Kopfband, Fußband, Knagge),
 deren Bauteilachsen alle in einer gemeinsamen lotrechten
 Wandebene liegen und die zusammen eine konstruktive Funktions-
-einheit zur raumabschliessenden und lastabtragenden Wand-
+einheit zur raumabschließenden und lastabtragenden Wand-
 Konstruktion eines Holz-Tragwerks bilden.
 
 ## Mathematische Definition
@@ -213,8 +257,8 @@ Sei
 
 - W das Weltkoordinatensystem (siehe `weltkoordinatensystem`),
 - 𝓑 die Menge aller Bauteile im Sinne von `bauteil`,
-- 𝓢_Schw, 𝓢_Räh, 𝓢_Stä, 𝓢_Rie, 𝓢_Str, 𝓢_Kbd, 𝓢_Fbd, 𝓢_Kna ⊂ 𝓑
-  die Teilmengen mit den Bauteilrollen `schwelle`, `raehm`,
+- 𝓢_Schw, 𝓢_Einb, 𝓢_Stä, 𝓢_Rie, 𝓢_Str, 𝓢_Kbd, 𝓢_Fbd, 𝓢_Kna ⊂ 𝓑
+  die Teilmengen mit den Bauteilrollen `schwelle`, `einbinder`,
   `staender`, `riegel`, `strebe`, `kopfband`, `fussband`,
   `knagge`,
 - 𝒫 die Menge der Ebenen im Sinne von `ebene`,
@@ -228,7 +272,7 @@ Sei
 Dann ist eine **Wand** ein Tupel
 
 ```
-W:= (uuid, schwellen, raehm, staender, riegel, streben,
+W:= (uuid, schwellen, einbinder, staender, riegel, streben,
       kopfbaender, fussbaender, knaggen, wandebene,
       lage, huelle, funktion?, bezeichnung?)
 ```
@@ -237,15 +281,15 @@ mit
 
 - **uuid** ∈ 𝒰: technischer Surrogatschlüssel der Wand (Pflicht,
   persistent, RFC 9562 v7); externe Referenzen auf die Wand
-  gehen ausschliesslich auf diese UUID (Aggregat-Wurzel im
+  gehen ausschließlich auf diese UUID (Aggregat-Wurzel im
   Sinne von `bauteilgruppe`).
 - **schwellen** ⊂ 𝓢_Schw, |schwellen| ≥ 1: die endliche, nicht-
   leere Menge der Schwellen am unteren Wand-Rand. Im Regelfall
   |schwellen| = 1; bei mehrteiligem unterem Längsholz (z. B.
   Stockschwelle + Aufdoppelung) sind mehrere zulässig.
-- **raehm** ⊂ 𝓢_Räh, |raehm| ≥ 1: die endliche, nicht-leere
-  Menge der Rähm-Bauteile am oberen Wand-Rand. Im Regelfall
-  |raehm| = 1; bei Doppelrähm oder zweiteiligem oberem
+- **einbinder** ⊂ 𝓢_Einb, |einbinder| ≥ 1: die endliche, nicht-leere
+  Menge der Einbinder-Bauteile am oberen Wand-Rand. Im Regelfall
+  |einbinder| = 1; bei doppeltem Einbinder oder zweiteiligem oberem
   Längsholz mehrere.
 - **staender** ⊂ 𝓢_Stä, |staender| ≥ 2: die endliche Menge der
   lotrechten Ständer der Wand. Mindestens zwei (Eck-/Endständer
@@ -256,8 +300,8 @@ mit
   Aussteifungen.
 - **kopfbaender** ⊂ 𝓢_Kbd, |kopfbaender| ≥ 0: optionale Kopf-
   Diagonalbänder am Pfosten-Kopf.
-- **fussbaender** ⊂ 𝓢_Fbd, |fussbaender| ≥ 0: optionale Fuss-
-  Diagonalbänder am Pfosten-Fuss.
+- **fussbaender** ⊂ 𝓢_Fbd, |fussbaender| ≥ 0: optionale Fuß-
+  Diagonalbänder am Pfosten-Fuß.
 - **knaggen** ⊂ 𝓢_Kna, |knaggen| ≥ 0: optionale Knaggen am
   Wandgefüge.
 - **wandebene** ∈ 𝒫: die geometrische Bezugsebene der Wand
@@ -273,7 +317,7 @@ mit
   NICHT_TRAGEND); die Wandscheiben-Sub-Lesart entspricht dem
   Wert AUSSTEIFEND.
 - **bezeichnung?**: optionaler humanlesbarer Name (z. B.
-  „Aussenwand Süd", „Innenwand A–B").
+  „Außenwand Süd", „Innenwand A–B").
 
 und den Konsistenzbedingungen
 
@@ -281,13 +325,13 @@ und den Konsistenzbedingungen
    (uuid, bestandteile, lage, huelle, funktion?, bezeichnung?)
    mit
    ```
-   bestandteile:= schwellen ∪ raehm ∪ staender ∪ riegel ∪
+   bestandteile:= schwellen ∪ einbinder ∪ staender ∪ riegel ∪
                    streben ∪ kopfbaender ∪ fussbaender ∪ knaggen
    ```
    erfüllt alle Konsistenzbedingungen 1–4 von `bauteilgruppe`
    (exklusive Mitgliedschaft, kaskadische Lebenszyklus-Bindung,
    Hüllen-Inklusion, azyklische Verschachtelung). Insbesondere
-   |bestandteile| ≥ 4 (mindestens 1 Schwelle + 1 Rähm + 2 Ständer).
+   |bestandteile| ≥ 4 (mindestens 1 Schwelle + 1 Einbinder + 2 Ständer).
 
 2. **Wandebene lotrecht**: Der Normalenvektor n_hat_W der Wandebene
    ist horizontal,
@@ -302,8 +346,8 @@ und den Konsistenzbedingungen
    Die z-Koordinate aller Schwellen-Endpunkte liegt nahe dem
    unteren Wand-Rand z_min^W.
 
-4. **Rähm horizontal in der Wandebene am oberen Rand**: Für jedes
-   r ∈ raehm gilt analog zu (3), aber mit z-Koordinaten am
+4. **Einbinder horizontal in der Wandebene am oberen Rand**: Für jedes
+   r ∈ einbinder gilt analog zu (3), aber mit z-Koordinaten am
    oberen Wand-Rand z_max^W.
 
 5. **Ständer lotrecht in der Wandebene**: Für jeden Ständer
@@ -311,8 +355,8 @@ und den Konsistenzbedingungen
    Richtungsvektor d_hat_p ist kollinear zu e_z
    (||d_hat_p × e_z|| ≤ ε_K).
 
-6. **Ständer zwischen Schwelle und Rähm**: Für jeden Ständer
-   p ∈ staender existieren s ∈ schwellen und r ∈ raehm, sodass
+6. **Ständer zwischen Schwelle und Einbinder**: Für jeden Ständer
+   p ∈ staender existieren s ∈ schwellen und r ∈ einbinder, sodass
    ein Endpunkt von a(p) auf a(s) liegt (Punkt-Gerade-Abstand
    ≤ ε_L) und der andere Endpunkt auf a(r).
 
@@ -324,7 +368,7 @@ und den Konsistenzbedingungen
    b ∈ streben ∪ kopfbaender ∪ fussbaender liegen beide
    Endpunkte von a(b) in der Wandebene (Punkt-Ebene-Abstand
    ≤ ε_L). Die jeweiligen Anker-Bedingungen (Strebe, Kopfband,
-   Fussband) ihrer Bauteilrolle gegen die Bauteile dieser Wand
+   Fußband) ihrer Bauteilrolle gegen die Bauteile dieser Wand
    sind erfüllt (siehe `hg_strebe.md` Bedingung 5,
    `hg_kopfband.md` Bedingung 5, `hg_fussband.md` Bedingung 5).
    Knaggen werden ebenfalls in der Wandebene oder nahe daran
@@ -351,10 +395,10 @@ Punktmengen ist im Allgemeinen eine echte Teilmenge davon
 ## Wohldefiniertheit
 
 - **Existenz**: Für jedes Wandgefüge mit mindestens einer
-  Schwelle, einem Rähm und zwei Ständern in einer gemeinsamen
+  Schwelle, einem Einbinder und zwei Ständern in einer gemeinsamen
   lotrechten Wandebene lässt sich eine Wand als Tupel der
   angegebenen Form erfassen. Mindestkonfiguration:
-  |schwellen| = 1, |raehm| = 1, |staender| = 2, alle anderen
+  |schwellen| = 1, |einbinder| = 1, |staender| = 2, alle anderen
   Mengen leer; Wandebene aus den drei Bauteilachsen abgeleitet.
 - **Eindeutigkeit der Identität**: Bedingung 1 (Bauteilgruppen-
   Konformität) erbt die Aggregat-Wurzel-Auflösung von
@@ -388,10 +432,10 @@ Punktmengen ist im Allgemeinen eine echte Teilmenge davon
   und jedes Wand-Bauteil gehört zu höchstens einer Wand-
   Bauteilgruppe (Spezialisierung von Bauteilgruppen-
   Bedingung 1). Eck-Ständer, an denen zwei Wände aneinander-
-  stossen, werden in der Regel einer der beiden Wände
+  stoßen, werden in der Regel einer der beiden Wände
   zugeordnet (Modell-Entscheidung beim Aufbau).
 - **Nicht-Zirkularität**: die Definition verwendet
-  `bauteilgruppe`, `bauteil`, `schwelle`, `raehm`, `staender`,
+  `bauteilgruppe`, `bauteil`, `schwelle`, `einbinder`, `staender`,
   `riegel`, `strebe`, `kopfband`, `fussband`, `knagge`,
   `verbindung`, `ebene`, `strecke`, `polyeder`, `uuid`,
   `lokales_koordinatensystem`, `weltkoordinatensystem`,
@@ -415,24 +459,24 @@ eigener Aussteifungs-Konfiguration.
 ### Geometrische Erscheinung
 
 Die Default-Wand reicht von einer unteren Schwelle bis zu
-einem oberen Rähm, beidseitig von Eckständern begrenzt; Höhe
+einem oberen Einbinder, beidseitig von Eckständern begrenzt; Höhe
 typisch eine Geschosshöhe (2.4–3.0 m), Länge je nach
 Grundriss (1–10 m). Zwischen Eckständern stehen
 Zwischenständer (Achsabstand 60–120 cm im Holzrahmenbau;
 80–150 cm im historischen Fachwerk). Zwischen den Ständern
 können horizontale Riegel die Wand in Gefache untergliedern.
 Diagonal-Aussteifung erfolgt durch Streben, Kopfbänder,
-Fussbänder oder ihre Komposite (Andreaskreuz im Gefach,
+Fußbänder oder ihre Komposite (Andreaskreuz im Gefach,
 Mann-Figur am Pfosten).
 
 ### Bestandteile in der App-Modellierung
 
-Konstitutiv sind eine Schwelle, ein Rähm und mindestens zwei
+Konstitutiv sind eine Schwelle, ein Einbinder und mindestens zwei
 Ständer (zusammen mindestens vier Bauteile). Variabel sind
-Riegel (Anzahl ≥ 0), Streben, Kopf-/Fussbänder und Knaggen
+Riegel (Anzahl ≥ 0), Streben, Kopf-/Fußbänder und Knaggen
 (jeweils ≥ 0). Bauteilachsen aller Bestandteile liegen
 **ausnahmslos** in der gemeinsamen Wandebene (Toleranzband
-ε_L). Eine Wand mit Bauteilen ausserhalb der Wandebene ist
+ε_L). Eine Wand mit Bauteilen außerhalb der Wandebene ist
 kein Wand-Aggregat, sondern eine Wand-plus-Wand- oder Wand-
 plus-Riegel-Kombination.
 
@@ -442,7 +486,7 @@ Vier Aussteifungs-Typologien sind im DACH-Holzbau verbreitet:
 
 1. **Riegelbau / Fachwerk** (historisch, CH-Default): die
    Wand wird durch eingelassene **diagonale Holzbauteile**
-   (Strebe, Kopfband, Fussband) ausgesteift. Die Wand-
+   (Strebe, Kopfband, Fußband) ausgesteift. Die Wand-
    Bauteilgruppe enthält diese Bauteile. Mann-Figuren und
    Andreaskreuze sind eigene Aggregate, geschwisterlich
    unter `bauteilgruppe`, die ihre Bestandteile (Streben,
@@ -473,9 +517,9 @@ Vier Aussteifungs-Typologien sind im DACH-Holzbau verbreitet:
 
 4. **Holzskelettbau** (modern): die tragenden Stützen
    sind keine Ständer einer Wand, sondern eigenständige
-   Säulen des Tragskeletts; die raumabschliessenden
+   Säulen des Tragskeletts; die raumabschließenden
    Wände sind primär Schicht-Konstruktionen ohne
-   tragende Holzbauteile. Diese Lesart liegt ausserhalb
+   tragende Holzbauteile. Diese Lesart liegt außerhalb
    des Wand-Aggregats; die Holzskelett-Stützen werden
    über `staender` mit Bauteilrolle oder über Folgearbeit
    `stuetze` modelliert.
@@ -488,14 +532,14 @@ In der App-Modellierung ist die Wandscheibe **funktionale
 Sicht** auf das Wand-Aggregat (Wert AUSSTEIFEND im
 `funktion?`-Feld der Bauteilgruppe). Eine Wand kann
 aussteifend (Wandscheibe) oder nicht-aussteifend (rein
-raumabschliessend) wirken; die Aussteifungs-Funktion ist
+raumabschließend) wirken; die Aussteifungs-Funktion ist
 Ergebnis der Bauteil-Komposition und der Verbindungen,
 nicht eine separate Wand-Klasse.
 
 ### Verhältnis zu Mann-Figur und Andreaskreuz
 
 Die Wand-Bauteilgruppe enthält in der Riegelbau-Lesart
-einzelne Streben, Kopfbänder und Fussbänder. Wenn diese
+einzelne Streben, Kopfbänder und Fußbänder. Wenn diese
 einzelnen Bauteile in einer übergeordneten Bündel-
 Konfiguration auftreten — zwei kreuzende Streben im
 gleichen Gefach, vier Bänder am gleichen Pfosten — wird
@@ -508,7 +552,7 @@ Geschwister-Aggregat unter `bauteilgruppe` modelliert:
   sondern paralleles Aggregat.
 - **Mann** (`mann`) und Sub-Varianten (Halber, Wilder,
   Hessen, Schwäbisch): Bündel-Aussteifung am Pfosten aus
-  Kopf-/Fussbändern und optional einer zentralen Strebe.
+  Kopf-/Fußbändern und optional einer zentralen Strebe.
   Geschwister-Aggregat unter `bauteilgruppe`.
 
 Die exklusive Mitgliedschaft (Bauteilgruppen-Bedingung 1)
@@ -528,9 +572,9 @@ ist Modell-zeitlich.
 
 | Bauweise | Wand-Aussteifung typisch | Wand-Aggregat |
 |---|---|---|
-| Fachwerkbau (DE/AT, historisch) | Strebe + Kopf-/Fussband + Mann/Andreaskreuz | breit gefüllt |
-| Riegelbau (CH, traditionell) | Strebe + Kopf-/Fussband (Mann/Andreaskreuz seltener) | breit gefüllt |
-| Holzrahmenbau (modern) | Beplankung (Schicht-Aggregat) | nur Schwelle/Ständer/Rähm |
+| Fachwerkbau (DE/AT, historisch) | Strebe + Kopf-/Fußband + Mann/Andreaskreuz | breit gefüllt |
+| Riegelbau (CH, traditionell) | Strebe + Kopf-/Fußband (Mann/Andreaskreuz seltener) | breit gefüllt |
+| Holzrahmenbau (modern) | Beplankung (Schicht-Aggregat) | nur Schwelle/Ständer/Einbinder |
 | Holztafelbau (modern, vorgef.) | Beplankung werkseitig | als Wandtafel-Subtyp |
 | Holzskelettbau (modern) | tragendes Skelett unabhängig | Wand-Konzept entfällt |
 
@@ -547,17 +591,17 @@ CH-Berufskorpus zugeschnitten.
   kaskadische Lebenszyklus-Bindung, eigene Hülle, eigene
   Identität, konstruktive Funktionseinheit) und fügt
   wand-spezifische Merkmale hinzu: gemeinsame lotrechte
-  Wandebene, Schwelle-Ständer-Rähm-Grundstruktur, optionale
+  Wandebene, Schwelle-Ständer-Einbinder-Grundstruktur, optionale
   Aussteifungs-Bauteile.
 - **Bestandteile (partitiv)**:
   - **Schwelle** (`schwelle`, ≥ 1 Stück): unteres horizontales
     Längsholz; Auflagerung des Wandgefüges auf der Decke oder
     dem Fundament.
-  - **Rähm** (`raehm`, ≥ 1 Stück): oberes horizontales
+  - **Einbinder** (`einbinder`, ≥ 1 Stück): oberes horizontales
     Längsholz; trägt Geschossdecke, Sparren oder oberen
     Lastpfad.
   - **Ständer** (`staender`, ≥ 2 Stück): lotrechte
-    Stab-Bauteile zwischen Schwelle und Rähm. Eck-,
+    Stab-Bauteile zwischen Schwelle und Einbinder. Eck-,
     Bund-, Zwischenständer (siehe `StaenderPosition`-
     Annotation).
   - **Riegel** (`riegel`, ≥ 0): horizontale
@@ -566,21 +610,21 @@ CH-Berufskorpus zugeschnitten.
     Pfosten-Mittel- oder Doppel-Horizontal-Anker.
   - **Kopfband** (`kopfband`, ≥ 0): diagonale Aussteifung
     am Pfosten-Kopf.
-  - **Fussband** (`fussband`, ≥ 0): diagonale Aussteifung
-    am Pfosten-Fuss.
+  - **Fußband** (`fussband`, ≥ 0): diagonale Aussteifung
+    am Pfosten-Fuß.
   - **Knagge** (`knagge`, ≥ 0): dreieckiges Vollholz als
     Konsole am Wandgefüge.
 - **Geometrische Bezugsobjekte (nicht Mitglieder)**:
   - **Wandebene** (`ebene`): die lotrechte Bezugsebene; alle
     Bauteilachsen liegen in ihr.
   - **Wand-Eckpunkte**: geometrische Referenzpunkte am
-    Schnitt von Schwelle, Rähm und Eckständern.
+    Schnitt von Schwelle, Einbinder und Eckständern.
 - **Funktionale Sicht (über `funktion?`-Feld)**:
   - **AUSSTEIFEND** (Wandscheibe): tragwerks-aussteifende
     Wand, DIN EN 1995-1-1 §9.2.
   - **LASTTRAGEND_NICHT_AUSSTEIFEND**: trägt vertikale Lasten,
     aber nicht horizontale Aussteifung.
-  - **NICHT_TRAGEND**: rein raumabschliessend.
+  - **NICHT_TRAGEND**: rein raumabschließend.
 - **Spezialisierungen** (eigene Einträge folgen, trigger-basiert):
   - **Vorgefertigtes Wandelement** (`vorgefertigtes_wandelement`,
     Folgearbeit, in `hg_bauteilgruppe.md` Z. 268–286 bereits
@@ -592,16 +636,16 @@ CH-Berufskorpus zugeschnitten.
   - Bestandteil eines **Tragwerks** (`tragwerk`) — als
     Bauteilgruppe des Wandsystems.
   - Bestandteil eines **Bauwerks** (`bauwerk`) —
-    raumabschliessende und tragende Funktion.
+    raumabschließende und tragende Funktion.
   - Auflager-Träger für **Decken**, **Dachflächen**,
-    **Sparren** über das obere Rähm.
+    **Sparren** über den oberen Einbinder.
 - **Abgrenzung**:
   - **Bauteilgruppe** (`bauteilgruppe`): Oberbegriff.
   - **Tragwerk** (`tragwerk`): das übergeordnete Aggregat,
     in dem die Wand als Bauteilgruppe geführt wird.
   - **Dach** (`dach`), **Dachstuhl** (`dachstuhl`): andere
     Aggregat-Familie (geneigte Bauteilgruppe auf dem oberen
-    Rähm der Wand).
+    Einbinder der Wand).
   - **Decke** (Folgearbeit): horizontale Bauteilgruppe,
     geschwisterlich zur Wand.
   - **Binder** (`binder`): strukturparalleles Geschwister-
@@ -617,8 +661,8 @@ CH-Berufskorpus zugeschnitten.
   - **Mann** (`mann`) und Sub-Varianten: geschwisterliche
     Aggregate innerhalb derselben Wandebene — Bündelung der
     Aussteifungs-Bauteile am Pfosten.
-  - **Schwelle**, **Rähm**, **Ständer**, **Riegel**,
-    **Strebe**, **Kopfband**, **Fussband**, **Knagge**:
+  - **Schwelle**, **Einbinder**, **Ständer**, **Riegel**,
+    **Strebe**, **Kopfband**, **Fußband**, **Knagge**:
     Bauteilrollen der Wand; sind Bestandteile, nicht die
     Wand selbst.
   - **Wandtafel**, **Vorgefertigtes Wandelement**: Synonyme
@@ -641,10 +685,10 @@ CH-Berufskorpus zugeschnitten.
     Bauweise (Folgearbeit).
   - **Raumwand**, **Brandwand**, **Trennwand**:
     Architektur- bzw. brandschutztechnische Wand-Lesarten
-    (Folgearbeit, ausserhalb der Tragwerks-Lesart B).
+    (Folgearbeit, außerhalb der Tragwerks-Lesart B).
   - **Verbindung** (`verbindung`): die Wand enthält
     Verbindungen zwischen ihren Bestandteilen
-    (Schwelle-Ständer-Zapfen, Rähm-Ständer-Zapfen,
+    (Schwelle-Ständer-Zapfen, Einbinder-Ständer-Zapfen,
     Strebe-Pfosten-Zapfen); sie ist selbst keine
     Verbindung.
 
@@ -666,7 +710,7 @@ CH-Berufskorpus zugeschnitten.
   (Volltext direkt eingesehen, 2026-06-14): „Wand" ist **nicht**
   als Fachausdruck geführt; §5.4.2 „Wandscheiben" behandelt die
   Wand nur als aussteifende Struktur, nicht als
-  raumabschliessendes Bauteil (Negativ-Befund).
+  raumabschließendes Bauteil (Negativ-Befund).
 
 **Sekundär:**
 
@@ -676,6 +720,13 @@ CH-Berufskorpus zugeschnitten.
   Zürich.
 - Lignum: *Pressemitteilung 2021 — Anwendungshilfen für neue
   SIA-Norm Holzbau.*
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, Kap. 3.7 „Außenwände": S. 160
+  (3.7.1, Schichten-Aufgabentafel mit Tragwand und
+  Vorsatzschale), S. 161 (3.7.2 Fachwerkwände, Bauteil-Legende),
+  S. 162 (3.7.3 Holzständerwände, vier Schalungsarten).
+  Volltext-Scan liegt Anweiser vor; direkt eingesehen 2026-08-14.
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Aufl., Beuth, Berlin 2015.
 - Natterer, J.; Herzog, T.; Volz, M.: *Holzbau-Atlas.*

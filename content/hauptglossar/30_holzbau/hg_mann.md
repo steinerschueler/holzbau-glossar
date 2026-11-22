@@ -1,7 +1,7 @@
 ---
 id: mann
 benennung: Mann
-kurz: "Ein Mann ist eine symmetrische Aussteifungs-Figur in einer Fachwerkwand: ein senkrechter Pfosten, an dessen Kopf und Fuss je zwei schräge Bänder ansetzen, sodass das Ganze wie eine Strichmännchen-Figur aussieht und die Wand versteift."
+kurz: "Ein Mann ist eine symmetrische Aussteifungs-Figur in einer Fachwerkwand: ein senkrechter Pfosten, an dessen Kopf und Fuß je zwei schräge Bänder ansetzen, sodass das Ganze wie eine Strichmännchen-Figur aussieht und die Wand versteift."
 synonyme: [Mannfigur, "Mann (Fachwerk)"]
 abgelehnte_benennungen:
   [Männchen, Strebenbündel, Baugruppe, Pfosten-Aussteifung,
@@ -26,8 +26,8 @@ quellen_primär:
   - "DIN 1052:2008-12, Abschnitt 8 und 12: Pfosten-Aussteifung im Wandverband vorausgesetzt; Mann-Familie nicht als Lemma."
   - "Thesaurus Traditioneller Holzbau (TTH), RWTH Aachen, Hierarchie-Facette 1922 'Fachwerk-Bauteile': Mann-Figuren als Konfiguration mehrerer Bauteile am Pfosten; Primärquellen Großmann 1987, Gerner 1997."
 quellen_sekundär:
-  - "Wikipedia, Lemma 'Mann (Fachwerk)' (de.wikipedia.org/wiki/Mann_(Fachwerk)): Mann-Figur als Bündel-Aussteifung an einem Pfosten aus zwei Streben/Fussbändern von unten gegen den Ständer und diese kreuzenden Kopfbändern von oben; Verbreitungsraum alemannisch und fränkisch (oberdeutsch); historische Periode 1470–1550 (Übergang Mittelalter zu Neuzeit); regionale Sub-Varianten Halber Mann, Wilder Mann, Hessenmann, Schwäbisches Männle/Weible/Kindle; explizite Klarstellung: 'apotropäische Lesart des Wilden Mannes wissenschaftlich nicht haltbar'."
-  - "Wikipedia, Lemma 'Hessenmann': Hessenpark als Begriffs-Träger seit den 1980er Jahren; Stadtallendorf-Korpus; weiterentwickelte Aussteifung mit zum Dachwinkel verkürzten Kopfstreben und drei-viertel-geschosshöhen Fussstreben."
+  - "Wikipedia, Lemma 'Mann (Fachwerk)' (de.wikipedia.org/wiki/Mann_(Fachwerk)): Mann-Figur als Bündel-Aussteifung an einem Pfosten aus zwei Streben/Fußbändern von unten gegen den Ständer und diese kreuzenden Kopfbändern von oben; Verbreitungsraum alemannisch und fränkisch (oberdeutsch); historische Periode 1470–1550 (Übergang Mittelalter zu Neuzeit); regionale Sub-Varianten Halber Mann, Wilder Mann, Hessenmann, Schwäbisches Männle/Weible/Kindle; explizite Klarstellung: 'apotropäische Lesart des Wilden Mannes wissenschaftlich nicht haltbar'."
+  - "Wikipedia, Lemma 'Hessenmann': Hessenpark als Begriffs-Träger seit den 1980er Jahren; Stadtallendorf-Korpus; weiterentwickelte Aussteifung mit zum Dachwinkel verkürzten Kopfstreben und drei-viertel-geschosshöhen Fußstreben."
   - "Wikipedia, Lemma 'Wilder Mann (Fachwerk)': abstrakte Figur eines Menschen mit ausgestreckten Armen und gespreizten Beinen; vier Diagonalen; hessisch-fränkisch; 16. Jahrhundert."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Mann', 'Wilder Mann', 'Hessenmann', 'Schwäbisches Männle'."
   - "Großmann, R.: Konstruktionen des deutschen Fachwerkbaus. 1987 — TTH-Primärquelle der Mann-Familie."
@@ -66,7 +66,7 @@ quellenkonflikt: |
   Jahren über das Freilichtmuseum Hessenpark. Die
   **konstruktiv-geometrische Konfiguration** (zum Dachwinkel
   verkürzte Kopfstreben + drei-viertel-geschosshöhen
-  Fussstreben am Pfosten) ist historisch deutlich älter —
+  Fußstreben am Pfosten) ist historisch deutlich älter —
   in der Mann-Familie seit 1470–1550 (Stadtallendorf-Korpus,
   Mittelhessen). Der **Begriff** ist also begriffsfrisch,
   die **Konfiguration** ist historisch.
@@ -78,7 +78,7 @@ quellenkonflikt: |
 
   **(3) CH-Asymmetrie — kein eigenes CH-Lemma.**
   Wikipedia/Mann (Fachwerk) nennt „alemannisch und
-  fränkisch" als Verbreitungsraum; alemannisch schliesst die
+  fränkisch" als Verbreitungsraum; alemannisch schließt die
   Deutschschweiz formal ein, aber **kein einziger der
   konkreten Mann-Begriffe** (Mann, Halber Mann, Wilder Mann,
   Hessenmann, Schwäbisches Männle/Weible/Kindle) ist im
@@ -106,7 +106,7 @@ quellenkonflikt: |
     Streben im **Gefach**. Anker an den Gefach-Ecken
     (Schnittpunkte der Rahmenhölzer).
   - **Mann**: Bündel-Aussteifung am **Pfosten**.
-    Bauteile (Kopfband, Fussband, optional zentrale Strebe)
+    Bauteile (Kopfband, Fußband, optional zentrale Strebe)
     sind am gemeinsamen Pfosten als zentraler Achse
     verankert; die Konfiguration kann mehrere Gefache
     übergreifen (drei-viertel- bis voll-geschosshöhe).
@@ -153,7 +153,7 @@ quellenkonflikt: |
 
   Eigene Festlegung: **Option C**. Der Sammeleintrag
   führt die strukturelle Substanz (Bündel-Aussteifung am
-  Pfosten, Komposition aus Fussbändern + Kopfbändern +
+  Pfosten, Komposition aus Fußbändern + Kopfbändern +
   optional zentraler Strebe). Die geometrischen
   Unterschiede pro Variante werden im `erlaeuterung:`-
   Block prosaisch geführt; die App-`MannVariante`-Enum
@@ -167,8 +167,8 @@ quellenkonflikt: |
 
   Begründung: Konsistenz mit `hg_bauteilgruppe.md`
   Z. 116–120 (exklusive Mitgliedschaft; die Mann-
-  Bauteilgruppe weiss, welche Fussbänder zu ihr gehören —
-  das Fussband selbst muss das nicht zusätzlich
+  Bauteilgruppe weiß, welche Fußbänder zu ihr gehören —
+  das Fußband selbst muss das nicht zusätzlich
   annotieren) und mit
   (FK auf UUID; Beziehungen verlaufen über die Aggregat-
   Wurzel, nicht über Annotationen am Mitglied).
@@ -179,7 +179,7 @@ quellenkonflikt: |
 Ein **Mann** ist eine Bauteilgruppe aus genau einem Ständer
 oder Pfosten als zentraler vertikaler Achse, an dessen Kopf
 zwei symmetrisch gegenüberliegende Kopfbänder und an dessen
-Fuss zwei symmetrisch gegenüberliegende Fussbänder verankert
+Fuß zwei symmetrisch gegenüberliegende Fußbänder verankert
 sind, optional ergänzt um eine zentrale Strebe in der
 Pfostenachse, deren Bauteilachsen alle in einer gemeinsamen
 lotrechten Wandebene liegen und die zusammen ein Bündel-
@@ -223,7 +223,7 @@ mit
   Menge der Kopfbänder am Pfosten-Kopf. Im Default-Mann
   |kopfbaender| = 2 (symmetrisches Paar).
 - **fussbaender** ⊂ 𝓢_Fbd, |fussbaender| ∈ {0, 1, 2}: die
-  Menge der Fussbänder am Pfosten-Fuss. Im Default-Mann
+  Menge der Fußbänder am Pfosten-Fuß. Im Default-Mann
   |fussbaender| = 2 (symmetrisches Paar).
 - **zentrale_strebe?** ∈ 𝓢_Str ∪ {⊥}: optionale zentrale
   Strebe in der Pfostenachse (typisch im Wilden Mann);
@@ -272,9 +272,9 @@ und den Konsistenzbedingungen
    im Sinne von `hg_kopfband.md` Bedingung 5. Beide
    Endpunkte von a(k) liegen in der Wandebene.
 
-5. **Fussbänder am Pfosten-Fuss verankert**: Für jedes
+5. **Fußbänder am Pfosten-Fuß verankert**: Für jedes
    f ∈ fussbaender ist der Pfosten-Anker-Endpunkt von a(f)
-   am Pfosten-Fuss (|p_P^f.z − z_min^pfosten| ≤ 3 · ε_L)
+   am Pfosten-Fuß (|p_P^f.z − z_min^pfosten| ≤ 3 · ε_L)
    im Sinne von `hg_fussband.md` Bedingung 5. Beide
    Endpunkte von a(f) liegen in der Wandebene.
 
@@ -288,8 +288,8 @@ und den Konsistenzbedingungen
    `variante = HALB` gilt |kopfbaender| ∈ {0, 1}
    (asymmetrische Reduktion).
 
-7. **Symmetrie der Fussbänder am Default-Mann**: analog
-   zu Bedingung 6 für Fussbänder. |fussbaender| = 2 für
+7. **Symmetrie der Fußbänder am Default-Mann**: analog
+   zu Bedingung 6 für Fußbänder. |fussbaender| = 2 für
    die symmetrischen Varianten; |fussbaender| ∈ {0, 1}
    für `variante = HALB`.
 
@@ -297,7 +297,7 @@ und den Konsistenzbedingungen
    fussbaender| ≥ 1. Die Mann-Figur ist keine reine
    Pfosten-Konfiguration; sie hat mindestens ein
    diagonales Aussteifungs-Bauteil. Diese Bedingung
-   schliesst den Fall „nur Pfosten ohne Bänder" aus —
+   schließt den Fall „nur Pfosten ohne Bänder" aus —
    denn dann ist es kein Mann, sondern ein freier Ständer.
 
 9. **Zentrale Strebe nur bei `variante = WILD`**: Wenn
@@ -309,7 +309,7 @@ und den Konsistenzbedingungen
 10. **Bauteile in der Wandebene**: Alle Bauteile aus
     bestandteile haben ihre Bauteilachsen in der Wandebene
     (Punkt-Ebene-Abstand der Endpunkte ≤ ε_L). Erbt von
-    den Bauteilrollen-Constraints (Kopfband, Fussband,
+    den Bauteilrollen-Constraints (Kopfband, Fußband,
     Strebe).
 
 Die **geometrische Punktmenge** in W ist
@@ -321,8 +321,8 @@ G_W(M):= lage(G_lokal(huelle)) ⊂ ℝ³.
 ## Wohldefiniertheit
 
 - **Existenz**: Für jeden Pfosten mit mindestens einem
-  diagonalen Aussteifungs-Bauteil (Kopfband oder Fussband)
-  am Pfosten-Kopf oder Pfosten-Fuss in derselben
+  diagonalen Aussteifungs-Bauteil (Kopfband oder Fußband)
+  am Pfosten-Kopf oder Pfosten-Fuß in derselben
   lotrechten Wandebene lässt sich ein Mann-Aggregat
   konstruieren. Default-Mindestkonfiguration:
   pfosten, |kopfbaender| = 2, |fussbaender| = 2,
@@ -347,7 +347,7 @@ G_W(M):= lage(G_lokal(huelle)) ⊂ ℝ³.
   ergeben eine konsistente Klassifikation. Die
   Klassifikation ist **grob**; die geometrischen
   Fein-Unterschiede pro Sub-Variante (Hessenmann mit
-  drei-viertel-geschosshöhen Fussbändern,
+  drei-viertel-geschosshöhen Fußbändern,
   Schwäbisch-Trio mit unterschiedlichen Dimensionen)
   werden in den entsprechenden Sub-Einträgen (Folgearbeit)
   präzisiert.
@@ -371,7 +371,7 @@ Der Mann ist die ontologische Antwort auf die
 **Bündel-Aussteifung am Pfosten** im historischen
 DE-Fachwerkbau: ein Pfosten als zentrale vertikale Achse,
 an dem mehrere diagonale Aussteifungs-Bauteile
-(Kopfbänder, Fussbänder, optional zentrale Strebe)
+(Kopfbänder, Fußbänder, optional zentrale Strebe)
 verankert sind und gemeinsam ein wechselseitig zug- und
 druck-wirksames Aussteifungs-Bündel bilden.
 
@@ -386,10 +386,10 @@ präzisiert.
 
 | Variante | Komposition | Regionale Verortung | Historische Periode |
 |---|---|---|---|
-| **DEFAULT (Mann)** | 1 Pfosten + 2 Kopfbänder + 2 Fussbänder (symmetrische Vier-Element-Komposition) | alemannisch + fränkisch (oberdeutsch) | 1470–1550 (Übergang Mittelalter → Neuzeit) |
+| **DEFAULT (Mann)** | 1 Pfosten + 2 Kopfbänder + 2 Fußbänder (symmetrische Vier-Element-Komposition) | alemannisch + fränkisch (oberdeutsch) | 1470–1550 (Übergang Mittelalter → Neuzeit) |
 | **HALB (Halber Mann)** | 1 Pfosten + asymmetrische Halb-Konfiguration (nur ein Band-Paar oder nur ein einzelnes Band) | wie DEFAULT | wie DEFAULT |
-| **WILD (Wilder Mann)** | 1 Pfosten + 2 Kopfbänder + 2 Fussbänder + zentrale Strebe (vier Diagonalen plus Mittelachse — „Mensch mit ausgestreckten Armen und gespreizten Beinen") | hessisch, fränkisch | 16. Jahrhundert |
-| **HESSEN (Hessenmann)** | 1 Pfosten + 2 verkürzte Kopfbänder (zum Dachwinkel) + 2 drei-viertel-geschosshöhe Fussbänder; asymmetrische Bandlängen | Hessen, insbesondere Stadtallendorf-Korpus; Begriff via Hessenpark seit 1980er | historische Konfiguration älter, Begriffsfrische 1980er |
+| **WILD (Wilder Mann)** | 1 Pfosten + 2 Kopfbänder + 2 Fußbänder + zentrale Strebe (vier Diagonalen plus Mittelachse — „Mensch mit ausgestreckten Armen und gespreizten Beinen") | hessisch, fränkisch | 16. Jahrhundert |
+| **HESSEN (Hessenmann)** | 1 Pfosten + 2 verkürzte Kopfbänder (zum Dachwinkel) + 2 drei-viertel-geschosshöhe Fußbänder; asymmetrische Bandlängen | Hessen, insbesondere Stadtallendorf-Korpus; Begriff via Hessenpark seit 1980er | historische Konfiguration älter, Begriffsfrische 1980er |
 | **SCHWAEB (Schwäbisches Männle/Weible/Kindle)** | 1 Pfosten + Bandkonfiguration in regionaler schwäbischer Variante; drei Sub-Sub-Varianten in dieser Klassifikation gesammelt | Schwaben/Württemberg | historisch |
 
 Die feinere Differenzierung Männle/Weible/Kindle
@@ -400,7 +400,7 @@ Folgearbeit-Trigger unten).
 ### Geometrische Erscheinung
 
 Die Default-Mann-Figur sitzt typisch am **Pfostenkopf
-und Pfostenfuss** mit symmetrischen Bandpaaren; die
+und Pfostenfuß** mit symmetrischen Bandpaaren; die
 Konfiguration füllt die Pfostenachse über die volle
 Geschosshöhe (oder drei-viertel-geschosshöhe bei
 Hessenmann). Bandlängen 40–80 cm im historischen
@@ -412,7 +412,7 @@ Anker der Bänder am Pfosten:
 - **Kopfband-Pfosten-Anker**: Zapfen am Pfostenkopf, in
   einer Klaue oder seitlich eingelassener Zapfen
   (`hg_kopfband.md` Bedingung 5).
-- **Fussband-Pfosten-Anker**: Zapfen am Pfostenfuss,
+- **Fußband-Pfosten-Anker**: Zapfen am Pfostenfuß,
   analog Kopfband (`hg_fussband.md` Bedingung 5).
 - **Zentrale Strebe (nur Wilder Mann)**: Zapfen in der
   Pfosten-Mitte, oder Halb-Holz-Blattung an der
@@ -420,9 +420,9 @@ Anker der Bänder am Pfosten:
 
 Anker der Bänder am Längsholz:
 
-- **Kopfband-Längsholz-Anker**: am Rähm oder einem
+- **Kopfband-Längsholz-Anker**: am Einbinder oder einem
   oberen Riegel.
-- **Fussband-Längsholz-Anker**: an der Schwelle oder
+- **Fußband-Längsholz-Anker**: an der Schwelle oder
   einem unteren Riegel.
 
 ### Statische Funktion
@@ -431,7 +431,7 @@ Die Mann-Figur leistet eine **wechselseitige Aussteifung**
 am Pfosten:
 
 - Bei einer Windrichtung wirkt das eine Kopfband + das
-  diagonal gegenüberliegende Fussband als Druck-
+  diagonal gegenüberliegende Fußband als Druck-
   Diagonalen-Paar; die anderen beiden als Zug-Diagonalen-
   Paar.
 - Bei der entgegengesetzten Windrichtung kehrt sich die
@@ -505,13 +505,13 @@ plus Andreaskreuz im Brüstungsfeld).
 Die Mann-Bauteilgruppe ist ein **geschwisterliches
 Aggregat** zur Wand-Bauteilgruppe (`wand`): beide sind
 Spezialisierungen von `bauteilgruppe`. Die exklusive
-Mitgliedschaft bedeutet: ein bestimmtes Fussband ist
+Mitgliedschaft bedeutet: ein bestimmtes Fußband ist
 Mitglied **entweder** der Wand-Bauteilgruppe **oder**
 der Mann-Bauteilgruppe, nicht beider. Die App-
 Entscheidung folgt typisch der Schwester-Lesart: die
 Mann-Bauteilgruppe trägt ihre eigenen Bestandteile;
 die Wand-Bauteilgruppe trägt die übrigen Bauteile
-(andere Ständer, andere Bänder, Schwelle, Rähm,
+(andere Ständer, andere Bänder, Schwelle, Einbinder,
 Riegel). Eine alternative Modellierung (Mann als
 verschachteltes Aggregat der Wand) ist über
 Bauteilgruppen-Bedingung 4 (Verschachtelung erlaubt)
@@ -531,8 +531,8 @@ zulässig.
     zentrale vertikale Achse.
   - **Kopfband** (`kopfband`, 0–2 Stück): Diagonal-
     Aussteifung am Pfostenkopf.
-  - **Fussband** (`fussband`, 0–2 Stück): Diagonal-
-    Aussteifung am Pfostenfuss.
+  - **Fußband** (`fussband`, 0–2 Stück): Diagonal-
+    Aussteifung am Pfostenfuß.
   - **Zentrale Strebe** (`strebe`, 0–1 Stück): zentrales
     Diagonal-Bauteil in der Pfostenachse, nur bei
     Wilder-Mann-Variante.
@@ -577,7 +577,7 @@ zulässig.
     `schwaebisches_weible`, `schwaebisches_kindle`):
     Spezialisierungen als Folgearbeit.
   - **Strebe** (`strebe`), **Kopfband** (`kopfband`),
-    **Fussband** (`fussband`), **Knagge** (`knagge`):
+    **Fußband** (`fussband`), **Knagge** (`knagge`):
     Bauteilrollen; Mitglieder oder Nicht-Mitglieder der
     Mann-Bauteilgruppe.
   - **Ständer** (`staender`), **Pfosten** (synonym):

@@ -127,7 +127,7 @@ nicht ein eigener geometrischer Konstruktor.
   kann. Die beiden Prädikate sind zueinander disjunkt
   (Beweis: Annahme (1) ∧ Bleischnitt-Bedingung erzwingt
   ε_K ≥ 1 − ε_K, also ε_K ≥ 1/2, was die Toleranzwahl
-  ausschliesst).
+  ausschließt).
 - **Toleranzwahl `KOLLINEAR_EPS` (dimensionslos)**: Die
   Bedingung (1) testet ein Skalarprodukt zweier Einheitsvektoren,
   also einen Cosinus. Die einschlägige App-Toleranzkonstante
@@ -153,7 +153,7 @@ Schnur, an der das Gewicht hängt, wird im Schweizer Holzbau-
 Sprachgebrauch der **Senkel** genannt; sie verläuft per Schwerkraft
 strikt parallel zur Lotrichtung. Eine Schnittfläche, die in die
 gleiche Richtung wie der Senkel verläuft (also parallel zur
-Lotachse), heisst entsprechend **Senkelschnitt** oder kurz
+Lotachse), heißt entsprechend **Senkelschnitt** oder kurz
 **Senkel**. Der Begriff ist komplementär zum **Blei** (siehe
 `bleischnitt`): das Blei bezeichnet das Bleigewicht selbst und
 gibt dem Bleischnitt seinen Namen — die zur Schwerkraft
@@ -186,7 +186,7 @@ Sparrenachse. Bei einem geneigten Sparren steht die
 Sparrenachse selbst geneigt; ein Senkel-Stirnschnitt am
 Sparrenfuß ist deshalb **schräg** zur Sparrenachse (nicht
 rechtwinklig). Die zur Sparrenachse rechtwinklige Stirnfläche
-heisst dagegen **rechtwinkliger Anschnitt** und ist im
+heißt dagegen **rechtwinkliger Anschnitt** und ist im
 allgemeinen weder Senkel noch Bleischnitt.
 
 ### Toleranz in der Praxis

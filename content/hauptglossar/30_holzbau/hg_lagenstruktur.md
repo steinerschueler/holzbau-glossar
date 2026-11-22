@@ -15,6 +15,7 @@ quellen_primär:
   - "DIN EN 636:2015-06, 'Sperrholz – Anforderungen': mindestens 3 Furnierlagen, in der Regel ungerade Anzahl, symmetrischer Aufbau (zur Vermeidung von Schüsselung)."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 9 und Anhang B (γ-Verfahren mit Lagenstruktur als Eingabe der Bemessung)."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §2.4.4 (S. 38): gedruckter Beleg der Symmetrie-Regel für Sperrholz — 'aus mindestens drei aufeinander geleimten Holzlagen, die symmetrisch zur Mittelachse aufgebaut sein müssen, und deren Faserrichtung um 90° gegeneinander versetzt ist'; analog §2.4.2 (S. 37): Massivholzplatten aus drei oder fünf Lagen mit jeweils 90° versetzten Faserrichtungen."
   - "Schickhofer, G.; Bogensperger, T.; Moosbrugger, T. (Hrsg.): BSPhandbuch — Holz-Massivbauweise in Brettsperrholz. 2. Aufl., TU Graz 2010, Kap. 3 (Lagenaufbau, Symmetrie-Regel, Standardlayouts)."
   - "Blaß, H. J.; Flaig, M.: Stabförmige Bauteile aus Brettsperrholz. Karlsruher Berichte zum Ingenieurholzbau, Bd. 24, KIT Scientific Publishing, Karlsruhe 2012, DOI 10.5445/KSP/1000030362, Kap. 2 und 3."
   - "ProHolz Austria: Brettsperrholz Bemessung Band I. Wien 2014, Kap. 3 und 4 (Standard-CLT-Layouts 3-/5-/7-lagig, Symmetrie, Decklagen-Regel)."
@@ -276,6 +277,12 @@ ihren individuellen Faserrichtungen darstellen.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §2.4.2/§2.4.4 (S. 37–38:
+  Symmetrie-Regel und 90°-Kreuzung bei Massivholzplatten und
+  Sperrholz). Volltext-Scan liegt Anweiser vor; direkt eingesehen
+  2026-08-14.
 - Schickhofer, G.; Bogensperger, T.; Moosbrugger, T. (Hrsg.):
   *BSPhandbuch.* 2. Aufl., TU Graz 2010.
 - Blaß, H. J.; Flaig, M.: *Stabförmige Bauteile aus

@@ -218,7 +218,7 @@ Holzbau. An ihr werden gemessen:
   steigender Achsbezeichnung A → B → C).
 - **Stütze**: typischerweise lotrecht mit p_a unten (am Schwellen-
   oder Fundamentanschluss) und p_e oben (am Pfetten- oder
-  Rähmanschluss); d_hat ist die Welt-z-Achse.
+  Einbinderanschluss); d_hat ist die Welt-z-Achse.
 
 **Bauteilachse vs. Faserrichtung** (zur Auflösung der
 Querbeziehung in `hg_faserrichtung.md`): Im Idealfall — geradfaseriges,

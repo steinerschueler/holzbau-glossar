@@ -1,7 +1,7 @@
 ---
 id: kehlsparren
 benennung: Kehlsparren
-kurz: "Ein Kehlsparren ist der schräge Balken, der in der nach innen einspringenden Ecke liegt, wo zwei Dachflächen wie in einer Rinne zusammenstossen, und der die Last beider Dachseiten samt dem dort zusammenlaufenden Regen- und Schmelzwasser nach unten trägt."
+kurz: "Ein Kehlsparren ist der schräge Balken, der in der nach innen einspringenden Ecke liegt, wo zwei Dachflächen wie in einer Rinne zusammenstoßen, und der die Last beider Dachseiten samt dem dort zusammenlaufenden Regen- und Schmelzwasser nach unten trägt."
 synonyme: [Kehl-Sparren]
 abgelehnte_benennungen:
   [Verschneidungssparren, Walmsparren, Ixe, "valley rafter", "valley"]
@@ -22,9 +22,10 @@ quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Kehlsparren' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §4 'Tragwerksanalyse und Bemessung' und §5 'Bauteile und Strukturen' behandeln nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5). Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 6 (Grenzzustände der Tragfähigkeit): biegebeanspruchte Stab-Bauteile in Verschneidungs-Dachkonstruktionen."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1: Arten, Inhalte und Grundregeln der Darstellung', Abschnitt 5 (Darstellung von Dächern): Kehlsparren als Zeichnungselement mit eigenem Liniensymbol in der Bauzeichnung von Verschneidungs-Dächern."
-  - "DIN 18338:2019-09 'VOB Teil C: Dachdeckungs- und Dachabdichtungsarbeiten', Abschnitt 0 (Begriffe): Kehle als geneigte Schnittlinie zweier nach innen einspringender Dachflächen; das unter der Kehle liegende Tragglied ist Kehlsparren oder Kehlbohle."
+  - "DIN 18338:2019-09 'VOB Teil C: ATV Dachdeckungsarbeiten' (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336; die ATV führt keine Begriffs-Sektion — Abschnitt 0 sind Hinweise für das Aufstellen der Leistungsbeschreibung, die Dachkanten-Begriffe werden vorausgesetzt und nach Längenmaß abgerechnet), vorausgesetzte Lesart: Kehle als geneigte Schnittlinie zweier nach innen einspringender Dachflächen; das unter der Kehle liegende Tragglied ist Kehlsparren oder Kehlbohle."
   - "DIN 1052:2008-12, Abschnitt 8 und Abschnitt 12 (Konstruktive Anforderungen): Tragglieder geneigter Dächer."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, §1.13 'Rechnerischer Abbund' (S. 25, 29, 32), §10.16 'Dachverschneidung – Dachausmittlung' (S. 305) und §10.20.1 'Kehlsparren am gleichgeneigten Walmdach' (S. 317–318) — Abbund- und Schiftungs-Sicht des Kehlsparrens. S. 25 (gleichgeneigtes Walmdach, rechtwinklige Traufe, α_D = α_W): Legende 'k = Länge des Kehlsparrens', 'v = Länge des Verfallgrates'; Formeln 10/11 g = k = √((b_D/2)² + s²) bzw. g = k = √(2·(b_D/2)² + h_D²) und v = g − k_1 — am gleichgeneigten Walmdach sind Gratsparren- und Kehlsparrenlänge gleich. S. 29 'Ungleichgeneigtes Dach … Gratsparrenlänge und Kehlsparrenlänge; h_D1 = h_D2': g = k = √((b_D2/2)² + s_1²) = √((b_D1/2)² + s_2²) (Formel 6), g = k = √((b_D1/2)² + (b_D2/2)² + h_D²) = g_g/cos γ (Formel 7), mit tan γ = tan α_1 · sin β_1 = tan α_2 · sin β_2 (Formel 4). S. 32 'Dach mit verschiedenen Neigungsgraden α_D ≠ α_2': k = √((h_D2/tan α_1)² + s_2²) und v = g − k (Formel 4), Legende 'k = Länge des Kehlsparrens', 'v = Länge des Verfallgrats'. S. 305: 'Der Gratsparren läuft im Grundriss bei einem Verfallgrat zum oberen Anfallspunkt ① der Kehlsparren zum unteren Anfallspunkt ② des Verfallgrades.' sowie 'Grat- und Kehlsparren begrenzen jeweils zwei Dachflächen gemeinsam und können daher von der einen in die andere Dachfläche durch Umprojektion übertragen werden.' S. 317 §10.20.1 'Kehlsparren am gleichgeneigten Walmdach' (Modell-Zeichnung mit Maßlatte, Rissarten Profil/Austragung/Untersicht, Normalsparren 18/22 und Kehlsparren); S. 318 Bildunterschriften 'Kehlsparren mit Hexenschnitt und Rutschkerve am gleichgeneigten Walmdach mit Anbau (Modell)' und 'Kehlsparren am gleichgeneigten Walmdach mit Anbau (Modell)'."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Dachtragwerke' / Verschneidungen."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage, Abschnitt 'Verschneidungen / Grat- und Kehlsparren'."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015, Kap. 11 'Dachtragwerke', § Verschneidungen / Walmdach."
@@ -179,6 +180,63 @@ quellenkonflikt: |
   `abgelehnte_benennungen:` geführt, mit dem Vermerk, dass ein
   künftiger eigenständiger Eintrag `hg_kehlbohle.md` als
   Folgearbeit-Trigger absehbar ist.
+
+  **Abbund-Sicht des Berufsschul-Kanons (Tabellenbuch Zimmerer,
+  9. Aufl. 2021; Volltext-Scan liegt Anweiser vor, direkt eingesehen
+  2026-08-14):** Vier Befunde ergänzen die obige Quellenlage, ohne
+  sie zu verändern.
+
+  1. **Grat- und Kehlsparren als ein Formel-Paar.** Das Buch führt
+     Gratsparrenlänge und Kehlsparrenlänge durchgehend gemeinsam
+     („Abgratungsmaße am Profil sowie Gratsparrenlängen und
+     Kehlsparrenlängen", S. 25, 26, 29) und schreibt für das
+     gleichgeneigte Walmdach `g = k` (S. 25 Formeln 10/11; S. 29
+     Formeln 6/7). Das ist das gedruckte Pendant zur oben
+     bewiesenen Vorzeichen-Unabhängigkeit der Reduktions-Formel,
+     aber **nicht deckungsgleich damit**: Längengleichheit setzt
+     zusätzlich gleiche Grundrissprojektions-Länge voraus, die in
+     den dortigen symmetrischen Konfigurationen gegeben ist. Die
+     Neigungs-Identität α_G = α_K bleibt die allgemeinere Aussage.
+  2. **Berufssprache des Verschneidungs-Grundrisses.** Das Buch
+     benennt die Endpunkte der Verschneidung als **Anfallspunkte**
+     und die zwischen ihnen liegende Gratstrecke als
+     **Verfallgrat** mit eigener Länge `v = g − k` (S. 25, 32,
+     305). Dieses Begriffspaar hat in diesem Glossar noch kein
+     Pendant; es ist als Kandidaten-Paar für den Folgewellen-Plan
+     vermerkt und berührt die hiesige Definition nicht (der
+     Kehlsparren ist über die Kehlstrecke definiert, unabhängig
+     davon, ob deren oberer Endpunkt Anfallspunkt eines
+     Verfallgrats ist).
+  3. **Negativbefund „Abkehlung".** Der Begriff „Abkehlung" (und
+     die Variante „Kehlung") kommt im gesamten Buch nicht vor; die
+     Oberkanten-Bearbeitung am Kehlsparren erscheint dort nur als
+     Werkstück-Bild („Kehlsparren mit Hexenschnitt und
+     **Rutschkerve** am gleichgeneigten Walmdach mit Anbau", S. 318).
+     Der oben aus dem Korpus belegte Begriff „Abkehlung" bleibt
+     damit ohne Lehrbuch-Stütze aus dieser Quelle; „Rutschkerve"
+     ist ein zusätzlicher, bislang unbelegter Bearbeitungs-Begriff
+     und als Kandidat vermerkt.
+  4. **Winkel-Konvention von β_plan — Konflikt aufgelöst per
+     R-Schritt (Anweiser-Entscheid Variante (b), 2026-08-14).** Das
+     Buch schreibt die Reduktions-Formel als
+     `tan γ = tan α_1 · sin β_1` mit β als *Streichwinkel/
+     Ausstellwinkel im Grund*, also mit **Sinus** und β gegen die
+     Trauflinie gemessen (S. 26, 29, 32; eindeutig aus
+     `tan β_1 = b_D1 / b_D2`, S. 29 Formel 2). Der abgeleitete
+     Satz (★) dieses Eintrags schrieb bis zu diesem R-Schritt
+     `tan(α_K) = tan(α)·cos(β_plan)` bei gleichzeitiger
+     Trauflinien-Prosa — in sich widersprüchlich (die Winkel gegen
+     Trauflinie und Falllinien-Projektion sind komplementär); der
+     Herleitungs-Block verwendete faktisch die Falllinien-Lesart.
+     Im symmetrischen Fall (β = 45°) fallen beide Lesarten
+     zusammen, weshalb der Widerspruch unentdeckt blieb.
+     **Auflösung:** β_plan ist verbindlich der Grundriss-Winkel
+     gegen die **Trauflinie**, (★) lautet
+     `tan(α_K) = tan(α)·sin(β_plan)`; Formel, Herleitung und
+     `planWinkel(d)`-Beschreibung sind umgestellt, exakt parallel
+     zu `hg_gratsparren.md` (dort ausführlich dokumentiert).
+     (★★) `tan(α_K) = tan(α)/√2` war nie berührt
+     (sin 45° = cos 45° = 1/√2).
 
   **Lignum / SIA Schweiz:** Trotz mehrfacher Recherche keine
   direkten Lignum-Volltextbelege online verifizierbar (Lignum HBT
@@ -352,7 +410,8 @@ slope if both roof planes have the same pitch."
 Im symmetrischen Spezialfall (gleichgeneigte Dachflächen mit
 horizontalen, rechtwinklig zueinander stehenden Traufen) ist die
 Grundrissprojektion der Kehllinie die Winkelhalbierende der beiden
-Trauflinien-Polygon-Kanten und damit β_plan = 45°, woraus folgt
+Trauflinien-Polygon-Kanten und damit β_plan = 45°
+(sin 45° = 1/√2), woraus folgt
 
 ```
 tan(α_K) = tan(α) / √2.                                          (★★)
@@ -856,14 +915,21 @@ Bauteilen (siehe `hg_bauteilbearbeitung.md` / `hg_kerve.md` etc.),
 - DIN 1356-1:1995-02, „Bauzeichnungen – Teil 1: Arten, Inhalte und
   Grundregeln der Darstellung", Abschnitt 5.
 
-- DIN 18338:2019-09, „VOB Teil C: Dachdeckungs- und
-  Dachabdichtungsarbeiten", Abschnitt 0.
+- DIN 18338:2019-09, „VOB Teil C: ATV Dachdeckungsarbeiten"
+  (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336),
+  Abschnitt 0 (Hinweise für das Aufstellen der Leistungsbeschreibung).
 
 - DIN 1052:2008-12, „Entwurf, Berechnung und Bemessung von
   Holzbauwerken", Abschnitt 8 und 12.
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, §1.13 „Rechnerischer Abbund" (S. 25, 29,
+  32), §10.16 „Dachverschneidung – Dachausmittlung" (S. 305) und
+  §10.20.1 „Kehlsparren am gleichgeneigten Walmdach" (S. 317–318).
+  Volltext-Scan liegt Anweiser vor; direkt eingesehen 2026-08-14.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich, aktuelle
   Auflage.
 

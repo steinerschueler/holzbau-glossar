@@ -195,7 +195,7 @@ volle Vektor-Algebra (Komponentenzerlegung).
       #666    italic-Bezeichner klein
     Schriftgrößen: 13 Standard, 11 italic-klein
   GEOMETRIE
-    Sparrenachse 30 Grad: vom Sparrenfusspunkt F=(110, 280) zum
+    Sparrenachse 30 Grad: vom Sparrenfußpunkt F=(110, 280) zum
     Firstpunkt P_F=(610, 90). dx=500, dy=-190.
     Laenge: sqrt(500^2 + 190^2) ≈ 535. tan(alpha) = 190/500 = 0.38;
     alpha ≈ 20.8 Grad (etwas flacher als nominell 30, aber visuell
@@ -224,7 +224,7 @@ volle Vektor-Algebra (Komponentenzerlegung).
       F · e_a = 0*0.935 + 120*(-0.355) = -42.6.
       F_parallel = -42.6 * e_a = (-39.83, 15.13)
       Die Schub-Komponente zeigt bergab am Sparren (negativ in
-      Achsen-Richtung = vom First zum Sparrenfuss).
+      Achsen-Richtung = vom First zum Sparrenfuß).
       Endpunkt von P_M=(355,172) aus: (315.17, 187.13).
     Komponente F_normal = F - F_parallel:
       F_normal = (0, 120) - (-39.83, 15.13) = (39.83, 104.87)
@@ -234,10 +234,10 @@ volle Vektor-Algebra (Komponentenzerlegung).
       Pythagoras: 42.61^2 + 112.18^2 ≈ 14400 = 120^2. ✓
       Bild-Summe: (-39.83 + 39.83, 15.13 + 104.87) = (0, 120) = F. ✓
     EINHEITLICHE SKALIERUNG (Faktor 1.0): alle drei Pfeile sind
-    masstabsgetreu in derselben Laengen-Skala. F = 120 px,
+    maßstabsgetreu in derselben Laengen-Skala. F = 120 px,
     F_parallel = 42.61 px, F_normal = 112.18 px. Damit bilden die
     drei Pfeile geometrisch ein rechtwinkliges Parallelogramm mit
-    F als Diagonale — wie der Fliesstext es behauptet (sg_vektor-
+    F als Diagonale — wie der Fließtext es behauptet (sg_vektor-
     Review 2026-05-14, mittlerer Befund: keine unabhaengig
     skalierten Komponenten).
     Wichtige didaktische Anmerkung: F_parallel und F_normal sind
@@ -254,9 +254,9 @@ volle Vektor-Algebra (Komponentenzerlegung).
   <!-- Sparrenachse als duenne gestrichelte Mittellinie -->
   <line x1="110" y1="280" x2="610" y2="90" stroke="#999" stroke-width="0.8" stroke-dasharray="3 3"/>
   <text x="618" y="94" font-size="11" font-style="italic" fill="#666">Sparrenachse</text>
-  <!-- Sparrenfusspunkt und Firstpunkt als kleine schwarze Marker (Kontext) -->
+  <!-- Sparrenfußpunkt und Firstpunkt als kleine schwarze Marker (Kontext) -->
   <circle cx="110" cy="280" r="3" fill="#2c3e50"/>
-  <text x="100" y="300" text-anchor="end" font-size="11" font-style="italic" fill="#666">Sparrenfusspunkt</text>
+  <text x="100" y="300" text-anchor="end" font-size="11" font-style="italic" fill="#666">Sparrenfußpunkt</text>
   <circle cx="610" cy="90" r="3" fill="#2c3e50"/>
   <text x="622" y="88" font-size="11" font-style="italic" fill="#666">Firstpunkt</text>
   <!-- Angriffspunkt P_M an der Sparrenoberseite, Mitte -->
@@ -372,7 +372,7 @@ genauere fachliche Lesart läuft aber an anderer Stelle des
 Hauptglossars.
 
 **„Falllinie".** Die Falllinie auf einer geneigten Dachfläche ist die
-Richtung des grössten Gefälles — die Richtung, in die das Wasser
+Richtung des größten Gefälles — die Richtung, in die das Wasser
 abläuft. Sie trägt im Namen das Wort „Linie", ist aber geometrisch
 **weder Strecke noch Vektor im engeren Sinn**, sondern ein
 **Einheitsvektor** (Vektor mit Länge 1) in der Dachebene. Das

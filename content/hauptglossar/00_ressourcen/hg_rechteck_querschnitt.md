@@ -58,7 +58,7 @@ quellenkonflikt: |
   Die Konvention „b = Breite" und „h = Höhe" mit b ≤ h für
   hochkant verlegte Bauteile (Sparren, Pfetten, Stützen-Biegung um
   starke Achse) ist Industrie-Standard, aber **nicht erzwungen**: ein
-  flach verlegter Sparrenfussklotz darf b > h tragen. Die Klasse
+  flach verlegter Sparrenfußklotz darf b > h tragen. Die Klasse
   fordert nur b > 0 und h > 0; die Zuordnung zur „starken" oder
   „schwachen" Biegeachse erfolgt über die Querschnittseigenschaften
   (Folgearbeit), nicht über eine b-vs-h-Ordnungsrelation.
@@ -145,7 +145,7 @@ A:= 𝓛²(Q(RQ)) = b · h   (in mm²).
 
 - **Existenz**: Für b > 0 und h > 0 ist Q_lokal(b, h) eine
   nicht-leere, abgeschlossene, beschränkte, zusammenhängende, konvexe
-  Punktmenge in ℝ² mit positivem Lebesgue-Mass b·h > 0. Die Einbettung
+  Punktmenge in ℝ² mit positivem Lebesgue-Maß b·h > 0. Die Einbettung
   in ℝ³ über die affine Abbildung (u, v) ↦ z + u·u_hat + v·v_hat ist eine
   Isometrie und überträgt diese Eigenschaften.
 - **Eindeutigkeit der Punktmenge**: Q_lokal(b, h) ist durch (b, h)
@@ -186,7 +186,7 @@ A:= 𝓛²(Q(RQ)) = b · h   (in mm²).
 Der rechteckige Querschnitt ist im Holzbau der dominierende
 Querschnittstyp:
 
-- **Vollholz / KVH** (DIN EN 14081-1, DIN EN 15497): Standardgrössen
+- **Vollholz / KVH** (DIN EN 14081-1, DIN EN 15497): Standardgrößen
   nach Lignum HBT bzw. DIN 4070, z. B. 60×120, 80×160, 100×200,
   120×240, 140×240, 160×240 mm.
 - **Brettschichtholz / BSH** (DIN EN 14080): Standardbreiten 80, 100,

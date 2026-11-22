@@ -198,7 +198,7 @@ Objekt.
 - **`bauteilrolle`-Verschachtelung** (transitive Spezialisierung):
   zulässig. Eine Bauteilrolle darf eine andere Bauteilrolle als
   `oberbegriff:` haben, sofern die innere Spezialisierung eine
-  echte Sub-Sealed-Hierarchie der äusseren ist. Beispiel:
+  echte Sub-Sealed-Hierarchie der äußeren ist. Beispiel:
   `sparren` ist `bauteilrolle` mit `oberbegriff: bauteil`;
   `gratsparren` ist `bauteilrolle` mit `oberbegriff: sparren`.
   Im Code: `sealed class Sparren : Bauteil()` und
@@ -342,7 +342,7 @@ Die Regel schränkt die `abgelehnte_benennungen:`-Bindung auf
 die jeweilige Lesart ein und wirkt nicht auf die gesamte
 Spezialisierungs-Hierarchie.
 
-### 5a. `abgelehnte_benennungen:` bei gegenseitig ausschliessenden Bauteilrollen
+### 5a. `abgelehnte_benennungen:` bei gegenseitig ausschließenden Bauteilrollen
 
 `abgelehnte_benennungen:` ist nicht nur für orthografische
 Varianten oder echte Synonyme reserviert, sondern auch zulässig
@@ -355,8 +355,9 @@ Trennung.
 
 **Beispiel:** `hg_kopfband.md` und `hg_knagge.md` führen sich
 gegenseitig in `abgelehnte_benennungen:`. Beide Bauteile sind
-strukturell unterschiedlich (Kopfband = Stab im Wandgefach;
-Knagge = Volumen-Konsole aus dem Gefüge heraus), werden aber im
+strukturell unterschiedlich (Kopfband = Stab-Band in der Wand-
+bzw. Stuhl-Längsebene; Knagge = Volumen-Konsole aus dem Gefüge
+heraus), werden aber im
 Praxis-Korpus gelegentlich irrtümlich vertauscht (vgl. „Kopfwinkel-
 holz" als uneindeutiger Drift-Begriff in beiden Einträgen). Die
 Doppel-Listung in `abgelehnte_benennungen:` UND `abgrenzung_zu:`
@@ -432,7 +433,7 @@ wird.
 | Begriff | Forward-Verweis in | Trigger (Folgearbeit) |
 |---|---|---|
 | `kante` | `hg_strecke.md` | Polyeder-Topologie / B-Rep-Modell (Ecken, Kanten, Flächen am `polyeder`). |
-| `hoehenlinie` | `hg_falllinie.md`, `hg_bleischnitt.md` | Erstes Tool, das Höhenlinien einer Dachfläche bemasst (Vermassung, Werkplan). |
+| `hoehenlinie` | `hg_falllinie.md`, `hg_bleischnitt.md` | Erstes Tool, das Höhenlinien einer Dachfläche bemaßt (Vermassung, Werkplan). |
 | `lv95` | `hg_weltkoordinatensystem.md` | Erste Georeferenzierung der App-Daten gegen den Schweizer Bezugsrahmen LV95. |
 | `wgs84` | `hg_weltkoordinatensystem.md` | Erste Georeferenzierung der App-Daten gegen GNSS / WGS84. |
 | `faserneigung` | `hg_hankinson_winkel.md`, `hg_faserrichtung.md`, `hg_bauteilachse.md` | Erste Festigkeits- oder Sortier-Modellierung nach DIN 4074-1 (Faserneigung als Sortiermerkmal). |
@@ -445,6 +446,7 @@ wird.
 | `standort` | `hg_bauwerk.md` | Erste Georeferenzierung mit Site-Daten (IFC `IfcSite`-Pendant). |
 | `dachkoerper` | `hg_polyeder.md` | Erste Modellierung eines Dach-Hüllvolumens als zusammengesetztes Polyeder (Walmdach-Volumen als CSG-Vereinigung dreieckiges Prisma plus zwei rechteckige Pyramiden, Berufsschul-Korpus). |
 | `masstoleranz_din18202` | `hg_laengenmass.md`, `hg_lineares_groessenmass.md` | Erste Werkplan-Toleranz-Ausgabe nach DIN 18202 (Toleranzen im Hochbau) bzw. SIA 414 (Maßtoleranzen Bauwesen). |
+| `wandoeffnung` | `hg_sturz.md` | Erste Wand-Öffnungs-Entität im Tool (Tür/Fenster). Besonderheit: die Sturz-Definition setzt die Öffnung heute als reine Punktmenge voraus und ist beweisbar invariant gegen die spätere Konkretisierung (`hg_sturz.md`, Wohldefiniertheit „Repräsentanten-Unabhängigkeit"); bei Anlage migriert `wandoeffnung` dort von `abgrenzung_zu:` nach `voraussetzungen:`. Die übrigen Bauteil-Forward-Verweise der Wellen 14/15 (architrav, unterzug, dachstockschwelle, schwellenkranz, balkenlage, stichbalken) sind im Folgewellen-Plan (`docs/auftraege/hg_folgewellen_plan.md`) mit Triggern geführt. |
 
 **(B) Phantom ohne Substanz, ersatzlos gestrichen.** Der Begriff
 hat im DACH-Holzbau-Korpus keine eigenständige Verankerung und ist
@@ -854,7 +856,7 @@ Buchstaben stehen. Konkret verboten:
 | U+20D6 | COMBINING LEFT ARROW ABOVE | `v⃖` | `v_revvec` |
 
 **Math-Symbole vs. natürlich-sprachlicher Akzent.** Die Regel betrifft
-ausschliesslich akzentuierte Math-Symbole (Variablen, Vektoren,
+ausschließlich akzentuierte Math-Symbole (Variablen, Vektoren,
 Tensoren) in der „## Mathematische Definition"-Section und in
 Math-Code-Blöcken. Präkomponierte Akzent-Buchstaben, die als Math-
 Symbole verwendet werden — z. B. `ê` als Einheitsvektor, `ĥ` als
@@ -912,7 +914,7 @@ Programmier-Fonts oft nicht abgedeckt und fallen auf einen System-
 Default zurück — das bricht die Monospace-Spaltenbreite. Wikipedia-MoS-
 Mathematics warnt explizit. Empfehlung:
 
-- In **Prosa** (ausserhalb von Code-Blöcken): `ℝ` ok, da Render-Fallback
+- In **Prosa** (außerhalb von Code-Blöcken): `ℝ` ok, da Render-Fallback
   visuell harmlos.
 - In **Code-Blöcken** der Mathematischen Definition: `R³` statt `ℝ³`,
   `N` statt `ℕ` etc. Wenn die typografische Form aus didaktischen
@@ -977,7 +979,7 @@ Sollte das Glossar später auf einen Math-Renderer (MathJax/KaTeX)
 umgestellt werden, ist die Suffix-Form trivial automatisch in
 LaTeX-Notation übersetzbar: `n_hat → \hat{n}`, `v_vec → \vec{v}`,
 `x_bar → \bar{x}`, `x_dot → \dot{x}`, `A^T → A^T`. Die Konvention
-schliesst eine spätere LaTeX-Migration nicht aus, sondern bereitet sie
+schließt eine spätere LaTeX-Migration nicht aus, sondern bereitet sie
 strukturell vor.
 
 ### 11.4 Bestand-Audit-Methodik
@@ -1028,7 +1030,9 @@ Cluster-Übersichtsseite. Das Feld ist build-neutral für den Code
 - **Fachlich konsistent** mit der Prosa-Definition; eine Vereinfachung,
   kein Widerspruch. Der Satz braucht keine eigene Quelle (er
   paraphrasiert die bereits belegte Definition).
-- **Schweizer Schreibweise** (ss statt ß).
+- **Schreibweise mit ß** wie im ganzen Glossar und auf der Webseite (Entscheid vom
+  2026-11-14). Bis zum 2026-11-21 stand hier «ss statt ß».
+  Die Kurzsätze vom 2026-06-05 schrieben ss, sie sind am 2026-11-22 angeglichen.
 
 **Mehrdeutige Begriffe.** Hat ein Begriff eine zweite, deutlich
 andere Holzbau-Bedeutung, wird im selben Feld ein zweiter Satz
@@ -1041,5 +1045,101 @@ Synonyme (z. B. Säule/Stütze) rechtfertigen keinen Alternativ-Satz.
 
 **Erarbeitung.** Die Kurz-Sätze wurden 2026-06-05 clusterweise über
 fünf unabhängige Subagenten-Durchläufe je Begriff erzeugt und
-anschliessend zu einem Satz synthetisiert (Stil-Anker: `bauteil`,
+anschließend zu einem Satz synthetisiert (Stil-Anker: `bauteil`,
 abgenommen durch den Anweiser).
+
+## 13. Sprachregel: Raumachsen-Rollen — Ausdehnung / Lage / Verschiebung
+
+Jede Raumachse trägt drei begrifflich verschiedene **Rollen**, die im
+Glossar nicht vermischt werden: die **Ausdehnung** („wie groß?" — ein
+Skalar mit Einheit), die **Lage** („wo?" — ein Punkt bzw. seine
+Ortskoordinate) und die **Verschiebung** („wohin?" — ein Vektor).
+Mathematisch sind das drei Objekt-Typen **derselben Größenart Länge**,
+verbunden durch die affine Struktur (bereits normiert in
+`hg_vektor.md` / `hg_punkt.md` / `hg_koordinatensystem.md`):
+
+```
+Punkt − Punkt → Vektor        (Lage − Lage → Verschiebung)
+Punkt + Vektor → Punkt        (Lage + Verschiebung → Lage)
+‖Vektor‖ → Skalar             (Betrag der Verschiebung → Ausdehnung)
+```
+
+**„Bewegung" ist kein Rollen-Name** (kinematisch überladen: Bewegung
+ist Ortsänderung über der Zeit); die statische dritte Rolle heißt
+**Verschiebung**. Wo tatsächlich Bewegungs-/Richtungs-Vokabular über
+drei Achsen gebraucht wird, gelten die genormten Achs-Benennungen
+(Längs-/Quer-/Hochachse) bzw. die 6-Freiheitsgrade-Terminologie —
+**nicht** die englischen Wörter depth/elevation/breadth (als
+Bewegungs-Tripel falsifiziert; Herkunfts-Berichte unten).
+
+### Wort-Kollisionen der vier Grundwörter
+
+Das Deutsche deckt die feineren englischen Unterscheidungen mit nur
+**vier Grundwörtern** ab und disambiguiert per **Bezugs-Zusatz** —
+keine Neuprägungen:
+
+| Grundwort | ohne Zusatz (Normalfall) | Lage-Sinn (immer mit Zusatz) | englische Pendants |
+|---|---|---|---|
+| **Länge** | Ausdehnung (Bauteil-Länge) | „geographische Länge" (domänenfern, nur Standort) | length · longitude |
+| **Breite** | Ausdehnung (Querschnitts-Breite b) | „geographische Breite" | width, breadth · latitude |
+| **Höhe** | Ausdehnung (Querschnitts-, First-, lichte Höhe) | „Höhe über Meer (m ü. M.)", „Höhe über Grund", „Gelände-/Ortshöhe" | height · altitude, elevation |
+| **Tiefe** | Ausdehnung (Kerven-, Versatz-, Einschnitttiefe) | „Tiefe unter ⟨Bezug⟩" (Wassertiefe, Einbindetiefe) | depth (beide Sinne) |
+
+**Holzbau-lebendig** sind die Höhen- und die Tiefen-Kollision: die
+Schneelast (SIA 261 / EN 1991-1-3) hängt an der **Höhe über Meer**,
+nicht an einer Bauteil-Höhe — der Zusatz ist dort Pflicht (so bereits
+`hg_unterdach.md`: „800 m ü. M.", „Höhenlage"); die Kerventiefe ist
+eine **Ausdehnung**, keine Lage.
+
+### „Dimension" nur mit Zusatz
+
+„Dimension" trägt zwei unverwandte Bedeutungen und wird
+unqualifiziert vermieden:
+
+- **Größendimension** (VIM 1.7 / ISO 80000-1): dim Q = L^a·M^b·T^c·…
+  Länge, Breite, Höhe, Ortskoordinate und Verschiebung haben **alle
+  dieselbe** Größendimension L — VIM 1.7 Note 3 wörtlich: „In
+  deriving the dimension of a quantity, no account is taken of its
+  scalar, vector, or tensor character."
+- **Raumdimension**: Zahl der unabhängigen Achsen/Basisvektoren
+  (das n im Tupel von `hg_koordinatensystem.md`).
+
+Zulässig bleibt der unqualifizierte mathematische Gebrauch, wo der
+Kontext eindeutig die Raumdimension meint („affiner Raum der
+Dimension n", `hg_koordinatensystem.md`; Dimensions-Vergleich
+geometrischer Objekte, `hg_halbraum.md`; „geometrische Dimension
+d ∈ {0, 1, 2} der Manifestation", `hg_auflager.md`). Die
+umgangssprachliche Wendung „die drei Dimensionen eines Körpers
+(L × B × H)" meint Ausdehnungs-Richtungen und wird im Glossar als
+**Ausdehnung** formuliert.
+
+### Herkunft und Grundlage
+
+Doppel-Recherche 2026-07-04 mit VIM-Verifikation am BIPM-PDF
+(Wortlaute 1.2 / 1.7 inkl. Note 3 / 1.30 `[direkt]`; das französische
+VIM nennt 1.30 wörtlich « propriété qualitative »):
+`docs/recherche/2026-07-04_raumbegriffe_neun_aequivalente.md` (vier
+Grundwörter, Kollisions-Befunde, Falsifikation des Bewegungs-Tripels)
+und `docs/recherche/2026-07-04_qualitative_quantitative_groessen.md`
+(Größenart ↔ Zahlenwert als qualitativ/quantitativ-Achse; Skalar/
+Punkt/Vektor als Objekt-Typen; Kollisions-Check: HG-Bestand konform).
+Entscheid vom 2026-07-04: Rollen-Benennung übernommen; neue Einträge
+nur trigger-basiert.
+
+### Bestand-Audit (2026-07-04, §2-Methodik)
+
+grep über „Dimension" sowie Höhen-/Tiefen-Zusätze: Bestand
+**konform** — `koordinatensystem`/`halbraum`/`auflager` nutzen den
+mathematischen Raumdimension-Sinn, `unterdach` führt die Lage-Höhe
+korrekt mit „m ü. M."/„Höhenlage"; Norm-Titel („Dimensionelle
+Tolerierung", DIN EN ISO 14405-1) bleiben unberührt. **Eine**
+Angleichung: `hg_strecke.md`, Stabachsen-Idealisierung —
+„Dimension (Länge)" → „Ausdehnung (Länge)".
+
+### Trigger für künftige Einträge (Muster §6-(A))
+
+| Begriff | Trigger (Folgearbeit) |
+|---|---|
+| `laenge` (Größenart/Skalar) | Erster Eintrag oder Code, der die Größenart Länge normativ braucht (z. B. Werkplan-Maß-Ausgabe, Einheiten-Modell). |
+| `ortsvektor` / `ortskoordinate` | Erste Positions-API oder Georeferenzierung (schließt an die `lv95`/`wgs84`-Trigger in §6-(A) an). |
+| `dimension` (Klarstellungs-Eintrag) | Erste Eintrags-Formulierung, die „Dimension" außerhalb des eindeutigen Raumdimension-Kontexts braucht. |

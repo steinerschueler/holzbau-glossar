@@ -16,6 +16,7 @@ quellen_primär:
   - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Sparrenüberstand' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §5 'Bauteile und Strukturen' behandelt nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5); der Überstand ist Kragteil eines Trägers (§5.1). Vorausgesetzter Berufsbegriff. [direkt]"
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 und Abschnitt 6: Sparren als biegebeanspruchtes Bauteil; der Überstand ist Kragarm-Auskragung mit eigenem Bemessungsschnitt."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §9.2.3 (S. 163, Bild 9.9): Kraglänge des Sparrens über das Fußauflager ℓ_k ≈ (0,33–0,44)·ℓ mit ℓ_k ≤ 2,0 m; bei ℓ_k = 0,44·ℓ wird die Kragarm-Durchbiegung rechnerisch null, bei ℓ_k < 0,44·ℓ entfällt der Nachweis der Kragarm-Durchbiegung."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage, Abschnitt 'Dachüberstand und Sparrenfuß'."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Pfettendach' und 'Sparrenanschlüsse'."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke', § Sparrenüberstand."
@@ -35,7 +36,7 @@ quellenkonflikt: |
 
   - Wikipedia DE, Lemma „Sparren": „Das untere Ende eines Sparrens
     wird auch als Sparrenfuß bezeichnet"; ragt es über die
-    Aussenwandkante hinaus und ist von aussen sichtbar, „wird
+    Außenwandkante hinaus und ist von außen sichtbar, „wird
     dagegen von einem Sparrenkopf gesprochen".
   - Diverse Zimmerei-Fachglossare (zimmerei-neuss.de,
     zimmerer-treff.com, behmann-holzbau.de) folgen dieser Lesart:
@@ -60,13 +61,13 @@ quellenkonflikt: |
   Glossare, Wikipedia „Sparren" Abschnitt Flugsparren). Es ist
   damit ein **anderer Begriff** als der Sparrenüberstand
   (traufseitiger Sparren-Überstand). Im Walmdach-/Pultdach-
-  /Satteldach-Werkplan treten beide Begriffe regelmässig
+  /Satteldach-Werkplan treten beide Begriffe regelmäßig
   nebeneinander auf:
 
   - **Sparrenüberstand**: traufseitig, am Sparren, vom Bleischnitt
     der Fußpfetten-Kerve bis zum Sparrenfuß-Ende.
   - **Pfettenüberstand**: giebelseitig, an der Pfette, von der
-    Aussenkante der Giebelwand bis zum Pfetten-Ende.
+    Außenkante der Giebelwand bis zum Pfetten-Ende.
 
   Die beiden Begriffe sind disjunkt und werden in dieser App als
   getrennte Glossareinträge geführt; `pfettenueberstand` ist
@@ -166,7 +167,7 @@ des Punktes p_K, keine alternative Definition der Bezugsebene.
   einer Fußpfette ist der Kerveckpunkt p_K nach (1)
   konstruktiv festgelegt; die Strecke S_üb(B, K) nach (2) ist
   damit wohldefiniert. Existiert kein Sparrenüberstand
-  (Sparrenfuß auf der Aussenwandkante, kein Auskragen), kollabiert
+  (Sparrenfuß auf der Außenwandkante, kein Auskragen), kollabiert
   die Strecke auf einen Punkt mit Länge ℓ_üb = 0.
 - **Eindeutigkeit**: Bei festgelegtem Sparren B und festgelegter
   Fußpfetten-Kerve K sind p_K und p_a eindeutig bestimmt; folglich
@@ -213,12 +214,12 @@ Der Sparrenüberstand erfüllt drei wesentliche Funktionen am
 geneigten Dach:
 
 1. **Konstruktiver Holzschutz** (DIN 68800-2): Der Überstand
-   schützt die darunterliegende Aussenwand vor direktem
+   schützt die darunterliegende Außenwand vor direktem
    Niederschlag und reduziert die Bewitterung im Sockelbereich.
    Ein ausreichender Dachüberstand ist die wichtigste bauliche
-   Schutzmassnahme nach DIN 68800-2 und wird in der Holzschutz-
+   Schutzmaßnahme nach DIN 68800-2 und wird in der Holzschutz-
    Klasse GK 1 (überdachte Bauteile) sogar als ausreichende
-   Massnahme gegen direkte Bewitterung anerkannt.
+   Maßnahme gegen direkte Bewitterung anerkannt.
 2. **Sichtbare Trauflösung**: Der Sparrenüberstand prägt das
    architektonische Erscheinungsbild der Traufe; je nach
    Schnittwinkel der Sparrenfuß-Stirnseite (rechtwinklig zur
@@ -232,9 +233,9 @@ geneigten Dach:
 ### Typische Längen im Schweizer Wohnbau
 
 - **Sparrenüberstand minimal** (untergeordnete Wirtschaftsbauten,
-  Reduktion auf konstruktives Mindestmass): ≈ 200–300 mm.
+  Reduktion auf konstruktives Mindestmaß): ≈ 200–300 mm.
 - **Sparrenüberstand Standardwohnbau**: ≈ 400–600 mm.
-- **Sparrenüberstand grosszügig** (Schweizer Holzhausarchitektur,
+- **Sparrenüberstand großzügig** (Schweizer Holzhausarchitektur,
   alpenraum-typisch): ≈ 800–1500 mm und mehr.
 - **Sparrenüberstand bei Vordächern und Lauben**: bis 2500 mm,
   dann mit Stützen oder Konsolen unterstützt; jenseits dieses
@@ -251,8 +252,8 @@ des Bleischnitts der Fußpfetten-Kerve. Damit hat der gesamte
 Sparrenüberstand eine **negative Höhe gegen die Bezugsebene**:
 er ragt in den Bereich z < z₀(T_Sparren). Diese geometrische
 Eigenschaft ist nützlich für die Visualisierung (alles unterhalb
-der Bezugsebene ist Überstand) und für die Werkplan-Bemassung
-(Höhenmasse traufseitig sind negativ).
+der Bezugsebene ist Überstand) und für die Werkplan-Bemaßung
+(Höhenmaße traufseitig sind negativ).
 
 ### Geometrische Beziehung Sparrenüberstand ↔ Sparrenlänge
 
@@ -268,7 +269,7 @@ L_S = ℓ_üb + ℓ_K-S.                                                (6)
 Diese Zerlegung wird in Werkplan-Beschriftungen oft explizit
 geführt: „Sparrenlänge gesamt 5450 / davon Überstand 600 / davon
 Tragspannweite 4850". Die einzelnen Längen sind eigene Werkplan-
-Bemassungs-Begriffe (Folgearbeit Werkplan-Beschriftungs-Tool).
+Bemaßungs-Begriffe (Folgearbeit Werkplan-Beschriftungs-Tool).
 
 ### Sparrenüberstand vs. Pfettenüberstand
 
@@ -280,9 +281,9 @@ beschreiben unterschiedliche geometrische Auskragungen:
 
 | Begriff               | Bauteil    | Kantenrichtung | Über welche Wand    |
 |-----------------------|------------|----------------|---------------------|
-| Sparrenüberstand      | Sparren    | traufseitig    | Trauf-Aussenwand    |
-| Pfettenüberstand      | Pfette     | giebelseitig   | Giebel-Aussenwand   |
-| Flugsparren-Überstand | Flugsparren| giebelseitig   | Giebel-Aussenwand   |
+| Sparrenüberstand      | Sparren    | traufseitig    | Trauf-Außenwand    |
+| Pfettenüberstand      | Pfette     | giebelseitig   | Giebel-Außenwand   |
+| Flugsparren-Überstand | Flugsparren| giebelseitig   | Giebel-Außenwand   |
 
 `pfettenueberstand` und `flugsparren_ueberstand` sind eigene
 Glossarbegriffe (Folgearbeit, Trigger: erstes Tool mit Pfetten-
@@ -309,7 +310,7 @@ bzw. Flugsparren-Modellierung mit Giebelüberstand).
   - **Sparren-Tool**: Eingabeparameter und visualisiertes Element.
   - **Konstruktiver Holzschutz** (DIN 68800-2): Bemessung des
     Mindest-Überstands.
-  - **Werkplan-Bemassung**: explizite Längenangabe als Teil der
+  - **Werkplan-Bemaßung**: explizite Längenangabe als Teil der
     Sparrenlängen-Zerlegung (siehe Gleichung (6)).
   - **Trauflösung**: bestimmt zusammen mit der Stirnseiten-
     Anschnittart (Folgearbeit `anschnitt`) das architektonische
@@ -370,6 +371,9 @@ bzw. Flugsparren-Modellierung mit Giebelüberstand).
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §9.2.3 (S. 163, Kraglängen-Regel). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-13.
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*
   Lignum, Zürich, aktuelle Auflage.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich, aktuelle

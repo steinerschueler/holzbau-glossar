@@ -20,6 +20,7 @@ quellen_primär:
   - "DIN EN 13986:2015-06, 'Holzwerkstoffe zur Verwendung im Bauwesen – Eigenschaften, Bewertung der Konformität und Kennzeichnung'."
 quellen_sekundär:
   - "SIA 265:2021 'Holzbau', §1.1.17/§1.1.18 'Spanplatte' und §1.1.20 'Faserplatte' — SIA fuehrt den ungerichteten Werkstoff, verweist fuer die Definition aber auf SN EN 312/309 bzw. SN EN 316/622; CH-Sekundaer-Anker. [direkt]"
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §2.4.6–§2.4.10 (S. 40–44): Spanplatten aus kleinen Holzspänen 'vorzugsweise parallel zur Plattenebene' (keine Richtungs-Differenzierung in der Plattenebene — konsistent zur Modus-KEINE-Klassifikation), Klassen für tragende Zwecke P4–P7 mit NKL-Zuordnung, Mindestdicke tragend 8 mm; zementgebundene Spanplatten (ZSP, DIN EN 634-2, Portlandzement als Bindemittel, NKL 1–2, Mindestdicke 8 mm); Holzfaserplatten HB/MBH/MDF mit Klassen (nach EC 5/NA nur HB.LA2 und MBH.LA2 für tragende Zwecke vorgesehen; MDF nach EC 5/NA nicht für tragende Zwecke, nur aussteifend via abZ); Gips- und Gipsfaserplatten als 'über den NA als Holzwerkstoff zugelassene' Beplankungswerkstoffe (GKB/GKF bzw. GKBi/GKFi, Mindestdicken 12,5 mm bzw. 10 mm)."
   - "Niemz, P.; Sonderegger, W.: Physik des Holzes und der Holzwerkstoffe. Hanser, München 2017, Kap. 7 (Spanwerkstoffe, Faserplatten, MDF/HDF) und Kap. 8 (Holzwerkstoff-Eigenschaften)."
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 3."
   - "Forest Products Laboratory: Wood Handbook FPL-GTR-282, USDA 2021, Kap. 12 'Wood-Based Composite Materials'."
@@ -267,6 +268,12 @@ Diese harte Invariante folgt der Setzung im.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §2.4.6–§2.4.10 (S. 40–44: Spanplatten,
+  ZSP, Faserplatten, Gips-/Gipsfaserplatten mit Klassen und
+  NKL-Zuordnungen). Volltext-Scan liegt Anweiser vor; direkt
+  eingesehen 2026-08-14.
 - Niemz, P.; Sonderegger, W.: *Physik des Holzes und der
   Holzwerkstoffe.* Hanser, München 2017.
 - Blass, H. J.; Sandhaas, C.: *Ingenieurholzbau – Grundlagen der

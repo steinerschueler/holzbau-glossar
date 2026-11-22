@@ -12,10 +12,11 @@ status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Abschnitt 1.5 (Begriffe), Abschnitt 3 (Werkstoffeigenschaften)."
-  - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §3 'Baustoffe' und §4 'Tragwerksanalyse und Bemessung': Werkstoffeigenschaften als bemessungsrelevante Eingabegrössen. [direkt]"
+  - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §3 'Baustoffe' und §4 'Tragwerksanalyse und Bemessung': Werkstoffeigenschaften als bemessungsrelevante Eingabegrößen. [direkt]"
   - "DIN EN 13986:2015-06, 'Holzwerkstoffe zur Verwendung im Bauwesen – Eigenschaften, Bewertung der Konformität und Kennzeichnung'."
   - "ISO 16739-1:2024, 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema', Entitäten IfcMaterial, IfcMaterialDefinition, Property Sets Pset_MaterialWoodBasedBeam, Pset_MaterialWoodBasedPanel. [direkt]"
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, Kap. 2 'Baustoffeigenschaften' (S. 16–45): Lehrbuch-Systematik der Holzbau-Werkstoffe — Normen-Vierteilung §2.2 (S. 23–24: 'Deckelnormen' mit allgemeinen Leistungsanforderungen, z. B. DIN EN 13986 Holzwerkstoffe / DIN EN 14080 BSH+BASH / DIN EN 14081 Bauholz; nationale Anwendungsnormen der Reihe DIN 20000; Produktnormen mit Klassen und CE-Kennzeichnung; separate Normen mit Bemessungs-Rechenwerten, Übersicht Tabelle 2-2); Werkstoff-Zweiteilung in Vollholzprodukte §2.3 (Bauholz, BSH, BASH) und Holzwerkstoffe §2.4 ('durch Verpressen von unterschiedlich großen Holzteilen mit Klebstoffen oder mineralischen Bindemitteln hergestellt; Holzteile: Bretter, Stäbe, Furniere, Furnierstreifen, Späne und Fasern', S. 35); Rand-Detail: Gips- und Gipsfaserplatten wurden 'über den NA als Holzwerkstoff zugelassen', um Bemessung von Holztafel-Beplankungen zu ermöglichen (S. 43)."
   - "Niemz, P.; Sonderegger, W.: Physik des Holzes und der Holzwerkstoffe. Hanser, München 2017, Kap. 3 'Anatomischer Aufbau' und Kap. 6 'Mechanische Eigenschaften' (Orthotropie L/R/T, transversale Isotropie als Ingenieuransatz)."
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 2 'Werkstoff Holz' und Kap. 3 'Holzwerkstoffe'."
   - "Forest Products Laboratory (FPL): Wood Handbook — Wood as an Engineering Material. General Technical Report FPL-GTR-282, USDA, Madison WI 2021, Kap. 4 'Mechanical Properties of Wood' und Kap. 5 'Mechanical Properties of Clear Wood'."
@@ -372,6 +373,12 @@ Produktkennzeichnungen tragen.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, Kap. 2 „Baustoffeigenschaften"
+  (S. 16–45; Normen-Systematik §2.2, Vollholzprodukte §2.3,
+  Holzwerkstoffe §2.4). Volltext-Scan liegt Anweiser vor; direkt
+  eingesehen 2026-08-14.
 - Niemz, P.; Sonderegger, W.: *Physik des Holzes und der
   Holzwerkstoffe.* Hanser, München 2017.
 - Blass, H. J.; Sandhaas, C.: *Ingenieurholzbau – Grundlagen der

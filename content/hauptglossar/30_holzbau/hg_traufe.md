@@ -13,9 +13,12 @@ subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe): Traufe als untere, wasserabführende Begrenzungskante einer Dachfläche."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1', Abschnitt 5 (Darstellung von Dächern): Traufe als horizontale untere Dachkante."
-  - "DIN 18338:2019-09 'VOB Teil C: Dachdeckungs- und Dachabdichtungsarbeiten', Abschnitt 0 (Begriffe): Traufe als untere, dem Niederschlagsabfluss dienende Dachkante."
+  - "DIN 18338:2019-09 'VOB Teil C: ATV Dachdeckungsarbeiten' (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336; die ATV führt keine Begriffs-Sektion — Abschnitt 0 sind Hinweise für das Aufstellen der Leistungsbeschreibung, die Dachkanten-Begriffe werden vorausgesetzt und nach Längenmaß abgerechnet), vorausgesetzte Lesart: Traufe als untere, dem Niederschlagsabfluss dienende Dachkante."
   - "DIN EN 1991-1-3:2010-12 'Eurocode 1 – Schneelasten', Anhang A (Geometrische Bezugsgrößen): Trauflinie als horizontale Bezugslinie für Schneelastansätze."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.9.9 'Dachteile und ihre Begriffe', S. 173: Positionstafel am axonometrischen Dachmodell führt die Traufe an zwei Positionen (⑦, ⑧) als Kante des Dachkörpers, neben ① First, ⑥/⑬ Grat und ⑩/⑪ Kehle. Berufsschul-Kanon der Dachanatomie."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 1.13 'Rechnerischer Abbund', S. 25, 26, 28, 30, 31: Die Trauf-Geometrie ist das oberste Systematisierungs-Merkmal des Walmdach-Formelapparats — 'Gleichgeneigtes Walmdach bei rechtwinkliger Traufe' (S. 25), 'Gleichgeneigtes Walmdach bei schiefwinkliger Traufe' (S. 26), 'Walmdach bei rechtwinkliger Traufe und ungleicher Dachneigung' (S. 28), 'Ungleichgeneigtes Walmdach bei schiefwinkliger Traufe' (S. 30). Formelzeichen-Legende S. 31: 'd = Länge der schrägen Traufe'."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 10.16 'Dachverschneidung – Dachausmittlung', S. 305, 306, 307, 311, 312: Die Traufe ist Ausgangs-Randlinie der Grundriss-Konstruktion, ihre Ecken sind Konstruktions-Anfangspunkte der Grat- und Kehllinien — 'Verbindung der Punkte P₁ und P₂ mit den Traufecken' (S. 306, Schritt 4); 'Verbindung der Punkte P mit den zugehörigen Traufecken → Verlauf der Grat- und Kehlsparren' (S. 307, Schritt 5); 'auch wenn die Traufe an der Walmseite schräg verläuft' (S. 305); 'die waagerechten Abschnitte von der Traufe bis zur Firstlinie aus dem Grundriss entnommen' (S. 311). Die Höhenlage ist konstituierend: 'Traufe T₁ liegt auf + 60 cm Höhe. Alle übrigen Traufen liegen auf der Höhe ± 0,00' und 'Profil I so ergänzen, als wären alle Traufen auf gleicher Höhe' (S. 312, Aufgabenstellung und Schritt 5) — Praktiker-Pendant zur Höhenmittelwert-Bedingung z_bar der mathematischen Definition dieses Eintrags."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015, Kap. Dachformen."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Traufe'."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage."
@@ -35,6 +38,21 @@ quellenkonflikt: |
   (c) werden in `abgrenzung_zu` als eigenständige, hier nicht
   selbständig definierte Begriffe (`traufseite`, `traufbereich`)
   geführt; sie werden bei Bedarf in späteren Einträgen ergänzt.
+
+  Berufssprachliche Bestätigung der Festlegung (a) durch das
+  Tabellenbuch Zimmerer (Bläsi/Ferdinand, 9. Aufl. 2021;
+  Volltext-Scan liegt Anweiser vor, direkt eingesehen 2026-08-14): Das
+  Berufsschul-Standardwerk verwendet „Traufe" durchgehend in der
+  Lesart (a) — als Linie mit Höhenlage und als Rand des
+  Dachflächen-Umrisses (S. 173 Positionstafel; S. 25/26/30/31
+  Abbund-Systematik; S. 305–312 Dachausmittlung, dort samt
+  Ableitungen „Traufecke" und „Traufanfallspunkt"). Die Lesarten
+  (b) „Traufbereich" und (c) „Traufseite" kommen im gesamten
+  OCR-Volltext des Werks **nicht** vor (OCR-basierter
+  Negativ-Befund, Sweep 2026-08-14); wo eine Gebäude-/Dachseite
+  gemeint ist, schreibt das Werk „an der Walmseite" (S. 305), nicht
+  „Traufseite". Das stützt die Beschränkung dieses Eintrags auf die
+  geometrische Traufkante.
 ---
 
 ## Prosa-Definition
@@ -187,13 +205,23 @@ Polygonrandkante der ausgekragten Dachfläche.
   Architektenverein, Abschnitt 1.
 - DIN 1356-1:1995-02, „Bauzeichnungen – Teil 1: Arten, Inhalte und
   Grundregeln der Darstellung", Abschnitt 5.
-- DIN 18338:2019-09, „VOB Teil C: Dachdeckungs- und
-  Dachabdichtungsarbeiten", Abschnitt 0.
+- DIN 18338:2019-09, „VOB Teil C: ATV Dachdeckungsarbeiten"
+  (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336),
+  Abschnitt 0 (Hinweise für das Aufstellen der Leistungsbeschreibung).
 - DIN EN 1991-1-3:2010-12, „Eurocode 1: Einwirkungen auf Tragwerke –
   Teil 1-3: Schneelasten", Anhang A.
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5. Kap. 1.13 „Rechnerischer Abbund"
+  (S. 25–31, Trauf-Geometrie als Systematisierungs-Merkmal;
+  „d = Länge der schrägen Traufe", S. 31), Kap. 3.9.9 „Dachteile
+  und ihre Begriffe" (S. 173), Kap. 10.16 „Dachverschneidung –
+  Dachausmittlung" (S. 305–312, Traufecke, Traufanfallspunkt,
+  Höhenlage der Traufe). Volltext-Scan liegt Anweiser vor; direkt
+  eingesehen 2026-08-14 (seitenweise am Scan-PNG verifiziert).
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Auflage, Beuth Verlag 2015.
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.* DVA,

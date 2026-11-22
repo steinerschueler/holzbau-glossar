@@ -1,7 +1,7 @@
 ---
 id: waermedaemmung
 benennung: Wärmedämmung
-kurz: "Eine Wärmedämmung ist eine Schicht aus einem schlecht wärmeleitenden Material wie Mineralwolle oder Holzfaser, die in Wand oder Dach eingebaut wird, damit im Winter die Wärme nicht nach draussen entweicht."
+kurz: "Eine Wärmedämmung ist eine Schicht aus einem schlecht wärmeleitenden Material wie Mineralwolle oder Holzfaser, die in Wand oder Dach eingebaut wird, damit im Winter die Wärme nicht nach draußen entweicht."
 synonyme: [Dämmung, Dämmschicht, Wärmedämmschicht]
 abgelehnte_benennungen: [Isolierung, Wärmeisolierung, "thermal insulation", "insulation", "roof insulation"]
 oberbegriff: schicht
@@ -39,7 +39,7 @@ quellenkonflikt: |
   Berechnungs-Normen.** Weder DIN 4108-2:2013-02 noch DIN EN ISO
   6946:2018-03 noch SIA 180:2014 noch SIA 380/1:2016 noch das GEG 2024
   führen „Wärmedämmung" als eigenständig definierten Begriff ein. Alle
-  setzen den Begriff voraus und operieren mit den abgeleiteten Grössen
+  setzen den Begriff voraus und operieren mit den abgeleiteten Größen
   Wärmeleitfähigkeit λ (W/(m·K)), Wärmedurchlasswiderstand R = d/λ
   (m²·K/W) und Wärmedurchgangskoeffizient U = 1/(R_si + ΣR + R_se)
   (W/(m²·K)). Die einzige Norm im konsultierten Korpus, die einen
@@ -100,12 +100,12 @@ quellenkonflikt: |
   **(4) Mindestwärmeschutz vs. Energieeffizienz.** DIN 4108-2
   legt mit R ≥ 1,2 m²·K/W (entsprechend U ≈ 0,74 W/(m²·K)) den
   **Mindestwärmeschutz** als Schimmelschutz- und Tauwasser-Schwelle
-  fest, eine Grössenordnung über den GEG-Effizienz-Anforderungswerten.
+  fest, eine Größenordnung über den GEG-Effizienz-Anforderungswerten.
   Mindestwärmeschutz und Energieeffizienz sind unterschiedliche
   Anforderungs-Klassen; die Validierungsfunktion muss beide trennen
   (Parameter `massnahmenArt: NEUBAU / SANIERUNG / MINDESTSCHUTZ`).
 
-  **(5) Sommerhitzeschutz als Auswertungs-, nicht Definitionsgrösse.**
+  **(5) Sommerhitzeschutz als Auswertungs-, nicht Definitionsgröße.**
   Phasenverschiebung (typischer Zielwert ≥ 10 h, vorzugsweise 12 h)
   und Amplitudendämpfung (Zielwert 10 – 15) sind in der Bauphysik-
   Praxis etablierte Sommerhitzeschutz-Kennwerte des Aufbaus. DIN
@@ -119,7 +119,7 @@ quellenkonflikt: |
   der Begriffsdefinition der Wärmedämmung; analog zur Trennung
   Bauteil/Klassifikator in `hg_unterdach.md`. Eine Pruef-Funktion
   `pruefeSommerhitzeschutz(aufbau, klimazone, norm)` lebt
-  ausserhalb des Begriffs.
+  außerhalb des Begriffs.
 
   **(6) Material-Achse orthogonal zur Subtypen-Achse.** Die
   Produkt-Normen DIN EN 13162 (Mineralwolle), 13163 (EPS), 13164
@@ -134,7 +134,7 @@ quellenkonflikt: |
   und Holzfaser sind universell). Konsequenz: das `Material`-Feld
   ist ein **eigenes Tupel-Element**, **nicht** ein sealed-Subtyp
   von `Waermedaemmung`. Die sealed-Hierarchie strukturiert
-  ausschliesslich die geometrische Lage relativ zum Sparren.
+  ausschließlich die geometrische Lage relativ zum Sparren.
 
   **(7) Oberbegriff.** Der Oberbegriff `schicht` wird parallel zu
   diesem Eintrag angelegt (`hg_schicht.md`). Der `data class
@@ -153,14 +153,14 @@ quellenkonflikt: |
   Dämmung) und damit für den Holzbau-Begriff ungeeignet. Die
   englischen Pendants „thermal insulation" / „insulation" / „roof
   insulation" sind ebenfalls abgelehnt (kein Anglizismus in der
-  Hauptdefinition; sie erscheinen ausschliesslich als Mapping-
+  Hauptdefinition; sie erscheinen ausschließlich als Mapping-
   Ziele für DIN-EN-Norm-Bezug).
 
   **(9) Lokales Norm-Enum `WaermedaemmungsNorm`.** Die Norm-Aufzählung
   in den parametrischen Klassifikationen
   `klassifiziereNachUWert(uWert, norm)` und
   `pruefeWaermeschutzAnforderung(uWert, norm, bauteilArt, massnahmenArt)`
-  heisst lokal `WaermedaemmungsNorm`, nicht generisch `Norm`. Damit
+  heißt lokal `WaermedaemmungsNorm`, nicht generisch `Norm`. Damit
   kollidiert sie nicht mit den lokalen Enums `UnterdachNorm`
   (`hg_unterdach.md`) und `AbdichtungsNorm` (`hg_dachabdichtung.md`).
   Vier Werte (`SIA_232_1`, `DIN_4108_3`, `ZVDH_FACHREGEL`,
@@ -184,7 +184,7 @@ quellenkonflikt: |
 
 Eine **Wärmedämmung** ist eine Schicht eines Bauteilaufbaus, deren
 funktionale Rolle die Begrenzung des Wärmestroms durch das Bauteil
-ist, dadurch dass sie aus einem werkmässig oder an der
+ist, dadurch dass sie aus einem werkmäßig oder an der
 Verwendungsstelle hergestellten Stoff geringer Wärmeleitfähigkeit
 mit positiver Dicke besteht und im Aufbau zwischen zwei thermisch
 unterschiedlichen Halbräumen liegt.
@@ -195,22 +195,18 @@ Sei
 
 - A = (𝒟, 𝒮, H) ein **Dachaufbau** im Sinne von `dachaufbau` mit
   Dachflächen-Familie 𝒟 = { D₁, …, D_m }, geordneter Schichtfolge
-  𝒮 = (S₁, …, S_k) von innen nach aussen, und Dachhaut H,
-
+  𝒮 = (S₁, …, S_k) von innen nach außen, und Dachhaut H,
 - F:= ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich der Dachflächen,
 - ein Index j* ∈ { 1, …, k } so gewählt, dass die Schicht S_{j*}
   die Funktionsklasse `SchichtFunktion.WAERMEDAEMMUNG` trägt,
-
 - d_{j*} ∈ ℝ_{>0} (in mm) die Dicke von S_{j*},
 - m ∈ ℳ ein **Material** aus der Materialklasse
   ℳ:= { MINERALWOLLE, HOLZFASER, ZELLULOSE, PUR_PIR, EPS, XPS,
-  HANF, SCHAFWOLLE, FLACHS, SONSTIGE } gemäss den Produkt-Normen
+  HANF, SCHAFWOLLE, FLACHS, SONSTIGE } gemäß den Produkt-Normen
   DIN EN 13162–13171, EN 15101-1 sowie nationalen Zulassungen,
-
 - λ ∈ ℝ_{>0} (in W/(m·K)) der Bemessungswert der
   Wärmeleitfähigkeit (λ_B aus dem Nennwert λ_D der Produkt-Norm
   abgeleitet),
-
 - ρ ∈ ℝ_{>0} (in kg/m³) die Rohdichte,
 - c_p ∈ ℝ_{>0} (in J/(kg·K)) die spezifische Wärmekapazität,
 - σ ∈ Σ ein **konstruktiver Subtyp** aus der sealed-Familie
@@ -230,30 +226,24 @@ mit den Konsistenzbedingungen
 4. **Wärmeleitfähigkeits-Wertebereich (Plausibilität, nicht
    normativ erzwungen):** 0,015 ≤ λ ≤ 0,070 W/(m·K) deckt den
    gesamten Wertebereich der Produkt-Normen DIN EN 13162–13171
-   ab. Werte ausserhalb erzeugen eine Plausibilitäts-Warnung,
+   ab. Werte außerhalb erzeugen eine Plausibilitäts-Warnung,
    keinen harten Fehler — Begriffe (z. B. Vakuumdämmung,
    Aerogel) liegen unterhalb, ungewöhnliche Schüttungen
    oberhalb.
-
 5. **Träger-Konsistenz:** S_{j*} ist über F definiert (gleiche
    Träger-Dachflächen wie A).
-
 6. **Subtyp-Lage-Konsistenz:** σ ist mit der Lage des Index j*
    in der Schichtfolge 𝒮 verträglich, im Sinne der folgenden
    Schichtfolgen-Bedingung. Sei T ⊂ { 1, …, k } die Indexmenge
    der Tragwerksebene (Sparren-/Schalungs-Schicht). Dann:
-
-    - σ = ZWISCHENSPARREN ⇒ j* ∈ T (Wärmedämmung liegt in der
-      Tragwerksebene, im Sparrenfeld);
-
-    - σ = AUFSPARREN ⇒ j* > max T (Wärmedämmung liegt äusser-
-      halb / oberhalb der Tragwerksebene);
-
-    - σ = UNTERSPARREN ⇒ j* < min T (Wärmedämmung liegt innen
-      / raumseitig der Tragwerksebene);
-
-    - σ = SONSTIGE: keine Lagebedingung (Flachdach,
-      vollflächige Dämmung ohne Sparren-Bezug).
+   - σ = ZWISCHENSPARREN ⇒ j* ∈ T (Wärmedämmung liegt in der
+     Tragwerksebene, im Sparrenfeld);
+   - σ = AUFSPARREN ⇒ j* > max T (Wärmedämmung liegt außer-
+     halb / oberhalb der Tragwerksebene);
+   - σ = UNTERSPARREN ⇒ j* < min T (Wärmedämmung liegt innen
+     / raumseitig der Tragwerksebene);
+   - σ = SONSTIGE: keine Lagebedingung (Flachdach,
+     vollflächige Dämmung ohne Sparren-Bezug).
 
 Der **Wärmedurchlasswiderstand der Wärmedämmungs-Schicht** ist
 abgeleitet:
@@ -276,12 +266,10 @@ massnahmenArt)` materialisiert.
   Material m mit positiven Kennwerten (λ, ρ, c_p) und einen
   konstruktiven Subtyp σ, dessen Lage-Bedingung (6) erfüllt ist,
   ist W wohldefiniert.
-
 - **Eindeutigkeit der Material- und Subtyp-Komponenten:** m ∈ ℳ
   und σ ∈ Σ sind enum-wertig und damit per Konstruktion
   eindeutig. Die Kennwerte λ, ρ, c_p sind reelle Eingabeparameter;
   sie sind eindeutig pro Tupel-Instanz.
-
 - **Eindeutigkeit der Wärmedämmungs-Schicht im Aufbau:** Die
   Definition lässt offen, ob ein Dachaufbau **eine** oder
   **mehrere** Schichten der Funktionsklasse WAERMEDAEMMUNG
@@ -290,31 +278,26 @@ massnahmenArt)` materialisiert.
   zerfällt W in mehrere Wärmedämmungs-Instanzen, je
   Funktionsschicht eine. Die Lage-Bedingung (6) prüft jede
   Instanz separat.
-
 - **Orthogonalität Material ↔ Subtyp:** Jede Kombination (m, σ)
   ∈ ℳ × Σ ist konstruktiv zulässig. Eignungs-Profile
   (Druckfestigkeit für AUFSPARREN, Einblas-Form für ZELLULOSE in
   ZWISCHENSPARREN-Hohlräumen) sind **keine** Definitions-
   Bedingungen, sondern Plausibilitäts-Warnungen in der
   Validierungsfunktion `validierePlausibilitaet(): List<Hinweis>`.
-
 - **Konsistenz mit `dachaufbau`:** Die Wärmedämmung ist eine
   Schicht S_{j*} **im** Dachaufbau; sie ist kein eigenständiges
-  Aggregat ausserhalb des Aufbaus und teilt mit ihm den
+  Aggregat außerhalb des Aufbaus und teilt mit ihm den
   Trägerbereich F.
-
 - **Konsistenz mit `schicht`:** Die Wärmedämmung erbt die Schicht-
   Eigenschaften (Material-Identifikator, Dicke, Funktionsklasse)
   und spezialisiert sie um die Material-Achse, die thermo-
   physikalischen Kennwerte und die konstruktive Subtypisierung.
-
 - **Nicht-Zirkularität:** Die Definition verwendet die Primitive
   Punkt und ℝ_{>0} sowie die bereits definierten Begriffe
   `dachaufbau`, `schicht`, `toleranzen`. Die abgegrenzten Begriffe
   `sparren`, `unterdach`, `dampfbremse`, `dachhaut`, `schalldaemmung`,
   `brandschutzschicht` treten nur erläuternd auf, nicht
   definitorisch.
-
 - **Trivialität der Subtyp-Lage-Bedingung:** Die Bedingung (6) ist
   wohldefiniert, sobald die Tragwerksebene T des Aufbaus
   identifizierbar ist. Bei Aufbauten ohne Sparren-/Schalungs-
@@ -397,12 +380,12 @@ Die konkreten Werte sind normabhängig und im Wandel; sie werden
 nicht in die Begriffsdefinition, sondern in die Funktion
 `pruefeWaermeschutzAnforderung(...)` ausgelagert.
 
-### Sommerhitzeschutz — Auswertungs-, nicht Definitionsgrösse
+### Sommerhitzeschutz — Auswertungs-, nicht Definitionsgröße
 
 Im ausgebauten Dachgeschoss bestimmen die **Phasenverschiebung**
-(Zeit zwischen Aussenoberflächen-Temperaturmaximum und
+(Zeit zwischen Außenoberflächen-Temperaturmaximum und
 Innenoberflächen-Temperaturmaximum) und die **Amplitudendämpfung**
-(Verhältnis aussen/innen) das thermische Sommer-Verhalten. Beide
+(Verhältnis außen/innen) das thermische Sommer-Verhalten. Beide
 hängen von der volumetrischen Wärmekapazität ρ·c_p und der
 Schichtdicke ab; Holzfaser- und Zellulosedämmstoffe haben hier
 einen deutlichen Vorteil gegenüber Mineralwolle und Schaumstoffen.
@@ -429,87 +412,72 @@ unter der Dachabdichtung. Der konstruktive Subtyp ist hier
 
 - **Oberbegriff:** `schicht` (entsteht parallel zu diesem Eintrag,
   siehe `quellenkonflikt:` Abschnitt 7).
-
 - **Bestandteil von:** Eine Wärmedämmung ist eine Schicht S_{j*}
   eines `dachaufbau` (`SchichtFunktion.WAERMEDAEMMUNG`).
-
 - **Spezialisierungen (sealed-Hierarchie nach konstruktiver Lage):**
-    - **Zwischensparrendämmung** — in der Sparren-Tragebene, im
-      Sparrenfeld.
+  - **Zwischensparrendämmung** — in der Sparren-Tragebene, im
+    Sparrenfeld.
+  - **Aufsparrendämmung** — oberhalb der Sparren, durchgehende
+    Dämmebene.
+  - **Untersparrendämmung** — raumseitig unterhalb der Sparren.
+  - **Sonstige Wärmedämmung** — Flachdach, vollflächig ohne
+    Sparren-Bezug, oder konstruktive Sonderfälle.
 
-    - **Aufsparrendämmung** — oberhalb der Sparren, durchgehende
-      Dämmebene.
-
-    - **Untersparrendämmung** — raumseitig unterhalb der Sparren.
-    - **Sonstige Wärmedämmung** — Flachdach, vollflächig ohne
-      Sparren-Bezug, oder konstruktive Sonderfälle.
-
-    Die sealed-Hierarchie strukturiert ausschliesslich die
-    **konstruktive Lage**, nicht das Material; siehe
-    `quellenkonflikt:` Abschnitt 6.
-
+  Die sealed-Hierarchie strukturiert ausschließlich die
+  **konstruktive Lage**, nicht das Material; siehe
+  `quellenkonflikt:` Abschnitt 6.
 - **Material-Achse (orthogonal):** Material m ∈ ℳ als Tupel-
   Komponente. Eignungs-Profile (Druckfestigkeit, Einblas-Form)
   werden über Plausibilitäts-Warnungen geprüft, nicht über
   Subtyp-Constraints.
-
 - **Verwendung:**
-    - Funktions-Schicht im `dachaufbau`
-      (`SchichtFunktion.WAERMEDAEMMUNG`).
-
-    - Trägerschicht des U-Werts und des
-      Wärmedurchlasswiderstands R_W = d/λ nach DIN EN ISO 6946.
-
+  - Funktions-Schicht im `dachaufbau`
+    (`SchichtFunktion.WAERMEDAEMMUNG`).
+  - Trägerschicht des U-Werts und des
+    Wärmedurchlasswiderstands R_W = d/λ nach DIN EN ISO 6946.
 - **Abgrenzung:**
-    - **`schicht`** (Oberbegriff, parallel entstehend): Wärme-
-      dämmung ist eine Spezialisierung der allgemeinen Schicht
-      durch die Funktionsklasse `WAERMEDAEMMUNG` und die
-      zusätzlichen Material- und Subtyp-Tupelelemente.
-
-    - **`sparren`**: Tragwerks-Bauteil; bei Zwischensparrendämmung
-      bildet der Sparren in derselben Schichtebene wie die
-      Wärmedämmung eine **konstruktive Wärmebrücke** (siehe
-      `quellenkonflikt:` Abschnitt 2 und Bedingung (6)). Der
-      Sparren ist nicht Bestandteil der Wärmedämmung, aber
-      geometrisch in derselben Tragwerksebene wie eine
-      Zwischensparrendämmung.
-
-    - **`unterdach`**: liegt **äusserhalb** (über) der Wärmedämmung,
-      funktional getrennt (zweite wasserführende Ebene vs.
-      thermische Trennebene). Material teilweise gleich
-      (Holzfaser-Unterdachplatte vs. Holzfaser-Dämmplatte), Funktion
-      streng verschieden.
-
-    - **`dampfbremse`**: liegt **raumseitig** vor der Wärmedämmung;
-      verhindert Eintrag von Feuchte aus dem Innenraum in die
-      Dämmebene. Dampfbremse ist kein Wärmedämmstoff (λ irrelevant;
-      s_d-Wert ist die definierende Eigenschaft).
-
-    - **`dachaufbau`** (Aggregat-Träger): die Wärmedämmung ist
-      **eine** Schicht im Dachaufbau, nicht der Aufbau selbst.
-
-    - **`dachhaut`**: die geometrische Hüllfläche über der
-      äussersten Schicht; die Wärmedämmung liegt im Inneren des
-      Aufbaus, nicht an der Dachhaut.
-
-    - **`schalldaemmung`** (Forward-Verweis A, künftiger Eintrag):
-      funktional getrennt; Wärmedämmung minimiert Wärmestrom,
-      Schalldämmung minimiert Luft- oder Trittschall. Materiell
-      teilweise gleicher Stoff (Mineralwolle wirkt thermisch und
-      akustisch); im Modell trotzdem getrennte Funktionsklasse
-      (`SchichtFunktion.WAERMEDAEMMUNG` vs. künftig
-      `SchichtFunktion.SCHALLDAEMMUNG`). Trigger für die
-      Glossar-Anlage: erste Modellierung einer
-      Geschossdecken-Schallschutz-Anforderung nach SIA 181 oder
-      DIN 4109.
-
-    - **`brandschutzschicht`** (Forward-Verweis A, künftiger
-      Eintrag): funktional getrennt (Feuerwiderstand statt
-      Wärmestrom-Begrenzung); Materialwahl überlappt teilweise
-      (Mineralwolle hat A1-Brandklasse), die Funktion ist
-      unterschiedlich. Trigger für die Glossar-Anlage: erste
-      Modellierung eines Brandschutz-Nachweises nach SIA 232/1
-      Anhang oder DIN 4102 / EN 13501.
+  - **`schicht`** (Oberbegriff, parallel entstehend): Wärme-
+    dämmung ist eine Spezialisierung der allgemeinen Schicht
+    durch die Funktionsklasse `WAERMEDAEMMUNG` und die
+    zusätzlichen Material- und Subtyp-Tupelelemente.
+  - **`sparren`**: Tragwerks-Bauteil; bei Zwischensparrendämmung
+    bildet der Sparren in derselben Schichtebene wie die
+    Wärmedämmung eine **konstruktive Wärmebrücke** (siehe
+    `quellenkonflikt:` Abschnitt 2 und Bedingung (6)). Der
+    Sparren ist nicht Bestandteil der Wärmedämmung, aber
+    geometrisch in derselben Tragwerksebene wie eine
+    Zwischensparrendämmung.
+  - **`unterdach`**: liegt **außerhalb** (über) der Wärmedämmung,
+    funktional getrennt (zweite wasserführende Ebene vs.
+    thermische Trennebene). Material teilweise gleich
+    (Holzfaser-Unterdachplatte vs. Holzfaser-Dämmplatte), Funktion
+    streng verschieden.
+  - **`dampfbremse`**: liegt **raumseitig** vor der Wärmedämmung;
+    verhindert Eintrag von Feuchte aus dem Innenraum in die
+    Dämmebene. Dampfbremse ist kein Wärmedämmstoff (λ irrelevant;
+    s_d-Wert ist die definierende Eigenschaft).
+  - **`dachaufbau`** (Aggregat-Träger): die Wärmedämmung ist
+    **eine** Schicht im Dachaufbau, nicht der Aufbau selbst.
+  - **`dachhaut`**: die geometrische Hüllfläche über der
+    äußersten Schicht; die Wärmedämmung liegt im Inneren des
+    Aufbaus, nicht an der Dachhaut.
+  - **`schalldaemmung`** (Forward-Verweis A, künftiger Eintrag):
+    funktional getrennt; Wärmedämmung minimiert Wärmestrom,
+    Schalldämmung minimiert Luft- oder Trittschall. Materiell
+    teilweise gleicher Stoff (Mineralwolle wirkt thermisch und
+    akustisch); im Modell trotzdem getrennte Funktionsklasse
+    (`SchichtFunktion.WAERMEDAEMMUNG` vs. künftig
+    `SchichtFunktion.SCHALLDAEMMUNG`). Trigger für die
+    Glossar-Anlage: erste Modellierung einer
+    Geschossdecken-Schallschutz-Anforderung nach SIA 181 oder
+    DIN 4109.
+  - **`brandschutzschicht`** (Forward-Verweis A, künftiger
+    Eintrag): funktional getrennt (Feuerwiderstand statt
+    Wärmestrom-Begrenzung); Materialwahl überlappt teilweise
+    (Mineralwolle hat A1-Brandklasse), die Funktion ist
+    unterschiedlich. Trigger für die Glossar-Anlage: erste
+    Modellierung eines Brandschutz-Nachweises nach SIA 232/1
+    Anhang oder DIN 4102 / EN 13501.
 
 ## Quellen
 
@@ -518,24 +486,18 @@ unter der Dachabdichtung. Der konstruktive Subtyp ist hier
 - DIN EN ISO 9229:2020-06 „Wärmeschutz – Begriffe", deutsche
   Fassung. (Einzige Vokabular-Norm im Korpus; Volltext nicht
   zugänglich.)
-
 - DIN 4108-2:2013-02 „Wärmeschutz und Energie-Einsparung in
   Gebäuden – Teil 2: Mindestanforderungen an den Wärmeschutz",
   Abschnitt 5 und Abschnitt 8.
-
 - DIN EN ISO 6946:2018-03 „Bauteile – Wärmedurchlasswiderstand
   und Wärmedurchgangskoeffizient – Berechnungsverfahren".
-
 - SIA 180:2014 „Wärmeschutz, Feuchteschutz und Raumklima in
   Gebäuden", Schweizerischer Ingenieur- und Architektenverein.
-
 - SIA 380/1:2016 „Thermische Energie im Hochbau",
   Schweizerischer Ingenieur- und Architektenverein.
-
 - GEG 2024 (Gebäudeenergiegesetz), Anlage 7.
 - MuKEn 2014 (Mustervorschriften der Kantone im Energiebereich),
   Konferenz der kantonalen Energiedirektoren EnDK.
-
 - DIN EN 13162:2015-04 (Mineralwolle).
 - DIN EN 13163:2017-02 (EPS).
 - DIN EN 13164:2015-04 (XPS).
@@ -548,22 +510,18 @@ unter der Dachabdichtung. Der konstruktive Subtyp ist hier
 
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*
   Lignum, Zürich, aktuelle Auflage.
-
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Aufl., Beuth Verlag 2015.
 - Natterer, J.; Herzog, T.; Volz, M.: *Holzbau-Atlas.*
   4. Aufl., Birkhäuser 2003.
 - Informationsdienst Holz: *Wärmeschutz im Holzbau.* Holzbau
   Deutschland / DGfH.
-
 - Wegleitung zur Norm SIA 180, SIA.
 - Minergie Schweiz, Anforderungen Modul Dach/Wand
   (minergie.ch).
-
 - Passivhaus Institut Darmstadt, Kriterien.
 - KfW Bankengruppe, technische Mindestanforderungen
   Effizienzhaus 40 / 55 / 70.
-
 - Polybau, Fachbuch *Geneigte Dächer.* Schweizer Berufsbildung
   Gebäudehülle, Uzwil.
 
@@ -571,20 +529,16 @@ unter der Dachabdichtung. Der konstruktive Subtyp ist hier
 
 - baunormenlexikon.de zu DIN 4108-2, DIN EN ISO 6946, DIN EN
   13162–13171.
-
 - ift Rosenheim, Erläuterungen zu DIN 4108-2.
 - holzfaser.org, Verband Dämmstoffe aus nachwachsenden
   Rohstoffen.
-
 - baunetzwissen.de zu Wärmedämmstoffen.
 - energie-fachberater.de zu GEG-Anforderungen und
   Sparrendämmung.
-
 - gutex.de, GEG-Erklärungen.
 - sager.ch, MuKEn-Englischfassung.
 - co2online.de, ROCKWOOL, energie-experten.org zu
   Zwischensparrendämmung.
-
 - trockenbau-ausbau.de zu Sommerhitzeschutz.
 
 **Recherche-Bericht:** [intern].

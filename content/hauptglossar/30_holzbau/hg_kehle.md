@@ -13,8 +13,10 @@ subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe): Kehle als geneigte, einspringende Schnittkante zweier Dachflächen mit besonderer Bedeutung für die Wasserführung."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1', Abschnitt 5 (Darstellung von Dächern): Kehle als geneigte Dachkante an einer einspringenden Ecke zweier zusammentreffender Dachflächen."
-  - "DIN 18338:2019-09 'VOB Teil C: Dachdeckungs- und Dachabdichtungsarbeiten', Abschnitt 0 (Begriffe): Kehle als geneigte Schnittlinie zweier nach innen einspringender Dachflächen, in der das Niederschlagswasser konzentriert abläuft."
+  - "DIN 18338:2019-09 'VOB Teil C: ATV Dachdeckungsarbeiten' (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336; die ATV führt keine Begriffs-Sektion — Abschnitt 0 sind Hinweise für das Aufstellen der Leistungsbeschreibung, die Dachkanten-Begriffe werden vorausgesetzt und nach Längenmaß abgerechnet), vorausgesetzte Lesart: Kehle als geneigte Schnittlinie zweier nach innen einspringender Dachflächen, in der das Niederschlagswasser konzentriert abläuft."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.9.9 'Dachteile und ihre Begriffe', S. 173: Positionstafel am axonometrischen Dachmodell führt die Kehle an zwei Positionen (⑩, ⑪) als eigene Dachteil-Kante, neben ① First, ⑥/⑬ Grat und ⑦/⑧ Traufe. Einer von nur zwei Fundorten im Werk, an denen die Kehle als Linie (und nicht als Kehlsparren) benannt ist — Berufsschul-Kanon der Dachanatomie."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 8 'Vergabe- und Vertragsordnung für Bauleistungen (VOB)', S. 271, Block 'Dachdeckungs- und Dachabdichtungsarbeiten nach VOB, DIN 18338': Abrechnung nach Längenmaß (m) 'getrennt nach Bauart und Maßen für: Deckungen oder Abdichtungen von Firsten, Graten, Kehlen, Ortgängen und dgl.' — gegenüber Abrechnung nach Flächenmaß (m²) für 'Dachdeckungen, Dachabdichtungen …'. Die Aufmaß-Systematik weist die Kehle (wie First, Grat, Ortgang) als linienhaftes, nicht flächenhaftes Dachteil aus und stützt damit die Führung als Dachkante. Ausführungsseitig ferner: 'Kehlen sind als unterlegte Drei-Pfannen-Kehlen herzustellen' bzw. 'als untergelegte Metallkehlen'."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015, Kap. Dachformen (Verschneidungen, Gauben)."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Kehle'."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage."
@@ -53,6 +55,35 @@ quellenkonflikt: |
   zugeordnet werden — siehe `hg_dachkante.md`. Kehle ist disjunkt zu
   First (durch Neigungsbedingung) und disjunkt zu Grat (durch
   Konkavitätsbedingung mit umgekehrtem Vorzeichen).
+
+  Bestätigung und Negativ-Befund im Tabellenbuch Zimmerer
+  (Bläsi/Ferdinand, 9. Aufl. 2021; Volltext-Scan liegt Anweiser vor,
+  direkt eingesehen 2026-08-14, OCR-Sweep über alle 333 Seiten):
+  Das Berufsschul-Standardwerk kennt die Kehle als Dachteil-Kante
+  nur an **zwei** Stellen — in der Positionstafel „Dachteile und
+  ihre Begriffe" (S. 173, Positionen ⑩ und ⑪) und in der
+  VOB-Aufmaß-Systematik nach DIN 18338 (S. 271, „Firsten, Graten,
+  Kehlen, Ortgängen" unter Abrechnung nach Längenmaß). In den
+  gesamten Abbund- und Dachausmittlungs-Kapiteln (Kap. 1.13,
+  S. 24–33; Kap. 10.16/10.20, S. 305–324) wird die Kehle
+  **ausschließlich über das Bauteil `kehlsparren`** angesprochen
+  („Länge des Kehlsparrens k", Legenden S. 25/32; „Verlauf der
+  Grat- und Kehlsparren", S. 307; „First, Grat, Kehlsparren im
+  Grundriss", S. 305) — die geometrische Kehllinie selbst trägt
+  dort keinen eigenen Namen.
+
+  Zwei Folgerungen: (1) Der Negativ-Befund verschärft die im
+  Quellenkonflikt beschriebene Praxis-Drift (c) — im
+  Praktiker-Korpus verdrängt das Bauteil den Kantenbegriff
+  weitgehend, was die Aufnahme von „Kehlsparren" in
+  `abgelehnte_benennungen:` rechtfertigt. (2) Das Werk stützt keine
+  der regionalen Synonym-Varianten: weder „Kehllinie" noch
+  „Kehlkante" noch „Ixe" erscheinen im OCR-Volltext
+  (OCR-basierter Negativ-Befund, Sweep 2026-08-14; die
+  OCR-Zuverlässigkeit ist bei Fließtext hoch, bei
+  Bildbeschriftungen eingeschränkt). Das bestätigt „Kehle" als
+  Hauptbenennung, entwertet aber die anderweitig belegten
+  Synonyme nicht.
 ---
 
 ## Prosa-Definition
@@ -241,11 +272,23 @@ Aufrissdarstellung des Dachs gebräuchlich.
   Architektenverein, Abschnitt 1.
 - DIN 1356-1:1995-02, „Bauzeichnungen – Teil 1: Arten, Inhalte und
   Grundregeln der Darstellung", Abschnitt 5.
-- DIN 18338:2019-09, „VOB Teil C: Dachdeckungs- und
-  Dachabdichtungsarbeiten", Abschnitt 0.
+- DIN 18338:2019-09, „VOB Teil C: ATV Dachdeckungsarbeiten"
+  (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336),
+  Abschnitt 0 (Hinweise für das Aufstellen der Leistungsbeschreibung).
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5. Kap. 3.9.9 „Dachteile und ihre Begriffe"
+  (S. 173, Positionen ⑩/⑪ Kehle) und Kap. 8, S. 271
+  („Dachdeckungs- und Dachabdichtungsarbeiten nach VOB,
+  DIN 18338": Kehlen unter Abrechnung nach Längenmaß). Zugleich
+  Negativ-Befund für die Abbund- und Dachausmittlungs-Kapitel
+  (S. 24–33, 305–324), die die Kehle nur über den Kehlsparren
+  ansprechen — siehe `quellenkonflikt:`. Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-14 (seitenweise am Scan-PNG
+  verifiziert).
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   15. Auflage, Beuth Verlag 2015.
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.* DVA,

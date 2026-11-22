@@ -16,6 +16,8 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung), Pfetten als Zwischenauflager der Sparren."
   - "DIN 1052:2008-12, Abschnitt 8 und 12, Mittelpfette als Zwischenauflager."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.9.4/3.9.5/3.9.7 'Dachkonstruktionen', S. 170–172: Legende ② 'Mittelpfette' als mittlere der drei Pfettenreihen am dreifach stehenden Pfettendach, zwischen ① Firstpfette und ③ Fußpfette (S. 171, Kap. 3.9.5) — gedruckter Berufsschul-Beleg der Zwischenlage. Im zweifach stehenden Pfettendach ist die Mittelpfette die einzige Zwischenpfette und die bauartprägende Pfettenreihe; der Schnitt S. 170 (Kap. 3.9.4) beschriftet Firstbohle, Zangenpaar, Füllhölzer, Mittelpfette, zweiteiliges Kehlgebälk, Bug/Kopfband, Pfosten/Stiel, Strebe, Schwelle und Fußpfette, wobei das zweiteilige Kehlgebälk auf Höhe der Mittelpfetten liegt (Zeichnungsbefund zu Collings 'Kehlbalkenlage in der Ebene der Mittelpfetten', S. 161). Lastabtragungs-Tafel S. 172 (Kap. 3.9.7): Lastweg 'Fußpfetten – Mittelpfetten – Firstpfetten – auf darunter liegende Außenwände', ferner 'Pfosten und darunter liegende Zwischenwände'."
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §9.2.2/§9.2.3 (S. 160–165): bei Kniestock wird das feste Auflager in den Bereich der Mittelpfette gelegt; 'abgestrebte' Pfettendächer traditionell mit Zangen und Streben, modern über Auflagerung auf aussteifenden Querwänden (Bilder 9.7a/b); die Mittelpfette ist bei Horizontalkraft-Aufnahme auf Doppelbiegung zu bemessen (S. 165, Bild 9.13); Kehlbalkenlage liegt meist in der Ebene der Mittelpfetten (S. 161); beim Zweifeldsparren im Stützbereich max B = größte Kraft auf die Mittelpfette (S. 164, Bild 9.11)."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Pfettendach'."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise'."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke', § Pfettendach."
@@ -239,6 +241,19 @@ Typische Verbindung zwischen Sparren und Mittelpfette:
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5. Kap. 3.9.4/3.9.5/3.9.7
+  „Dachkonstruktionen" (S. 170–172): Legende ② Mittelpfette am
+  dreifach stehenden Pfettendach (S. 171), Mittelpfette als
+  bauartprägende Pfettenreihe des zweifach stehenden Pfettendachs
+  mit zweiteiligem Kehlgebälk auf gleicher Höhe (S. 170), Lastweg
+  in der Lastabtragungs-Tafel (S. 172). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-14 (seitenweise am Scan-PNG
+  verifiziert).
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §9.2.2/§9.2.3 (S. 160–165, abgestrebt/Doppelbiegung). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-13.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Aktuelle Auflage.
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*

@@ -14,7 +14,6 @@ quellen_primär:
   - "DIN 4074-1:2012-06, 'Sortierung von Holz nach der Tragfähigkeit – Teil 1: Nadelschnittholz', Abschnitt 5 (Sortiermerkmale): Sortierung an den Längsseiten (Brettseiten) durch visuelle Inspektion der Längsmaserung; an den Schmal- und Breitseiten."
   - "DIN EN 14081-1:2019-10, 'Holzbauwerke – Nach Festigkeit sortiertes Bauholz mit rechteckigem Querschnitt – Teil 1', Bezugnahme auf Schmal- und Breitseite eines rechteckigen Querschnitts."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6 und 8 (Bemessung): Lasteinleitung in Bauteile rechtwinklig oder parallel zur Faser an den Längsseiten."
-  - "DIN ISO 80000-2:2022-08, Abschnitt 2 (Geometrie): Polygon (siehe `hg_polygon.md`); eine Längsseite ist ein Polygon mit Bauteilrolle."
 quellen_sekundär:
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 2 'Holz als Werkstoff' und Kap. 4 'Stabbauteile'."
   - "Natterer, J.; Herzog, T.; Volz, M.: Holzbau-Atlas. 4. Aufl., Birkhäuser, Basel 2003, Kap. 'Werkstoff Holz' und 'Bauteile'."
@@ -27,7 +26,7 @@ quellenkonflikt: |
   einen geometrisch geschlossenen Oberbegriff „Längsseite"
   einzuführen. Die Sekundärliteratur (Mönck/Rug, Natterer/Herzog,
   Gerner) verwendet „Längsseite" oder „Brettseite" weitgehend
-  synonym für die zur Bauteilachse parallelen Aussenflächen eines
+  synonym für die zur Bauteilachse parallelen Außenflächen eines
   Stab-Bauteils.
 
   Anweiser hat die folgende Festlegung getroffen:
@@ -44,7 +43,7 @@ quellenkonflikt: |
   Eigene Festlegung in diesem Glossar:
 
   - **Längsseite** ist eine ebene, polygonal berandete
-    Aussenfläche eines Stabbauteils, deren Trägerebene **parallel
+    Außenfläche eines Stabbauteils, deren Trägerebene **parallel
     zur Bauteilachse** liegt und in der die Faserrichtung **in
     der Trägerebene** verläuft (im Standardfall axialer
     Faserrichtung).
@@ -70,7 +69,7 @@ quellenkonflikt: |
 
 ## Prosa-Definition
 
-Eine **Längsseite** ist eine ebene, polygonal berandete Aussenfläche
+Eine **Längsseite** ist eine ebene, polygonal berandete Außenfläche
 eines Stabbauteils, deren Trägerebene parallel zur Bauteilachse liegt
 und in deren Trägerebene die Faserrichtung des Bauteils im Standardfall
 axialer Faserrichtung verläuft.
@@ -101,14 +100,14 @@ gilt:
    Im prismatischen Fall (konstantes d_hat(s) = d_hat) reduziert sich (1)
    auf die einzelne Bedingung |⟨n_hat_F, d_hat⟩| ≤ ε_W.
 
-2. **Aussenflächen-Eigenschaft**: F ist eine zusammenhängende ebene
+2. **Außenflächen-Eigenschaft**: F ist eine zusammenhängende ebene
    Teilfläche der Bauteiloberfläche ∂G_B^lokal mit nicht-leerem
-   Inneren (positives Flächenmass).
+   Inneren (positives Flächenmaß).
 
 3. **Polygonale Berandung**: ∂F ist eine Polygonkurve in E_F (siehe
    `polygon`).
 
-4. **Aussennormalen-Konvention**: n_hat_F zeigt aus dem Bauteil heraus.
+4. **Außennormalen-Konvention**: n_hat_F zeigt aus dem Bauteil heraus.
 
 **Faserrichtungs-Bedingung** (zur Abgrenzung von der Stirnseite,
 siehe `stirnseite`): Sei f_hat ∈ S² die Faserrichtung des Bauteils
@@ -143,7 +142,7 @@ wesentlichen Komponente quer zur Trägerebene verläuft.
     Glossars ist (sondern eine Mantelfläche; siehe Folgearbeit
     `mantelflaeche` für rotationssymmetrische Stab-Bauteile).
   - **I-, T-, L-Profil-Querschnitt**: mehrere Längsseiten gemäß
-    der Anzahl ebener Aussen-Teilflächen des Profils.
+    der Anzahl ebener Außen-Teilflächen des Profils.
   - **Beliebig polygonaler Querschnitt mit k Eckpunkten**: k
     Längsseiten, je eine pro Polygonkante.
 - **Disjunktheit von Längsseite und Stirnseite**: Aus (1)
@@ -156,8 +155,8 @@ wesentlichen Komponente quer zur Trägerebene verläuft.
 - **Wohldefiniertheit der Trägerebene**: Die Trägerebene jeder
   Längsseite ist eine Ebene im Sinne von `ebene`; sie wird durch
   einen beliebigen Eckpunkt der Längsseiten-Polygonberandung und
-  die Aussennormale n_hat_F repräsentiert (Hesse-Normalform).
-- **Wohldefiniertheit der Aussennormale**: Da F Aussenfläche des
+  die Außennormale n_hat_F repräsentiert (Hesse-Normalform).
+- **Wohldefiniertheit der Außennormale**: Da F Außenfläche des
   Bauteilkörpers ist, gibt es eine eindeutige aus dem Bauteil heraus
   zeigende Normalenrichtung; die andere Wahl (in das Bauteil hinein)
   ist durch Bedingung 4 ausgeschlossen.
@@ -206,14 +205,14 @@ Längsseiten konventionell unterschieden:
 - **Breitseite** (auch: Brettseite): die beiden Längsseiten
   parallel zur Querschnitt-Längsachse (Querschnittshöhe). Bei
   einem Sparren 80/200 sind die Breitseiten 200 mm hoch.
-  Standardmässig die Sicht- und Auflagerseiten (Sparren-Oberseite
+  Standardmäßig die Sicht- und Auflagerseiten (Sparren-Oberseite
   trägt die Lattung; Sparren-Unterseite ist Untersicht;
   Pfetten-Oberseite trägt die Sparren).
 - **Schmalseite**: die beiden Längsseiten parallel zur
   Querschnitt-Querachse (Querschnittsbreite). Bei einem Sparren
   80/200 sind die Schmalseiten 80 mm breit. Konstruktiv treten
   Schmalseiten auf bei seitlichen Sparrenschalungen, bei der
-  Stossfuge zweier nebeneinanderliegender Sparren oder bei der
+  Stoßfuge zweier nebeneinanderliegender Sparren oder bei der
   Schmalseiten-Besichtigung für die Sortierung nach DIN 4074-1.
 
 Schmalseite und Breitseite werden als **eigene Folge-Einträge**
@@ -245,8 +244,8 @@ die Begriffe Längsseite und Mantelfläche sind disjunkt.
 - **Oberbegriff**: `polygon` (in Berandungs-Lesart, siehe
   `hg_polygon.md`, Abschnitt „Zwei zulässige Lesarten"). Die
   Längsseite ist ein ebenes Polygon auf der Bauteiloberfläche mit
-  zusätzlicher Bauteilrolle (Aussenfläche eines Stab-Bauteils,
-  Trägerebene parallel zur Bauteilachse) und Aussennormalen-
+  zusätzlicher Bauteilrolle (Außenfläche eines Stab-Bauteils,
+  Trägerebene parallel zur Bauteilachse) und Außennormalen-
   Konvention. Die Stirnseite (`stirnseite`) ist symmetrisch dazu
   unter demselben Oberbegriff `polygon` in Berandungs-Lesart
   geführt.
@@ -262,7 +261,7 @@ die Begriffe Längsseite und Mantelfläche sind disjunkt.
 - **Bestandteile (partitiv)** (geerbt von `polygon`):
   - **Polygonberandung** ∂F (geerbt von `polygon`).
   - **Trägerebene** E_F (geerbt von `polygon`).
-  - **Aussennormalen-Vektor** n_hat_F (per Konvention aus dem Bauteil
+  - **Außennormalen-Vektor** n_hat_F (per Konvention aus dem Bauteil
     heraus zeigend).
   - **Längsausdehnung** entlang der Bauteilachse: ‖p_e − p_a‖
     (= Bauteillänge L im prismatischen Fall).
@@ -281,7 +280,7 @@ die Begriffe Längsseite und Mantelfläche sind disjunkt.
 - **Abgrenzung**:
   - **Polygon** (`polygon`): allgemeines geometrisches Primitiv
     ohne Bauteilrolle. Die Längsseite ist ein Polygon mit
-    zugewiesener Bauteilrolle und Aussennormalen-Konvention.
+    zugewiesener Bauteilrolle und Außennormalen-Konvention.
   - **Ebene** (`ebene`): die Trägerebene einer Längsseite ist eine
     Ebene; die Längsseite ist eine **beschränkte** Teilmenge mit
     polygonaler Berandung und Bauteilrolle.
@@ -322,8 +321,6 @@ die Begriffe Längsseite und Mantelfläche sind disjunkt.
   sortiertes Bauholz mit rechteckigem Querschnitt – Teil 1".
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und Konstruktion
   von Holzbauten – Teil 1-1".
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2:
-  Mathematik", Abschnitt 2.
 
 **Sekundär:**
 

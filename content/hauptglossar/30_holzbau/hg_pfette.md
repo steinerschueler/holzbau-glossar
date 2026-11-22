@@ -7,7 +7,7 @@ abgelehnte_benennungen: [Längsbalken, Pfettenbalken, Pfettenträger, "purlin", 
 oberbegriff: bauteil
 begriffstyp: bauteilrolle
 voraussetzungen: [bauteil, bauteilachse, strecke, einheitsvektor, dachflaeche, dachkante, weltkoordinatensystem, toleranzen]
-abgrenzung_zu: [sparren, kehlbalken, riegel, latte, konterlatte, binder, dachflaeche, schwelle, raehm, knagge]
+abgrenzung_zu: [sparren, kehlbalken, riegel, latte, konterlatte, binder, dachflaeche, schwelle, einbinder, knagge]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
@@ -16,6 +16,8 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 (Tragwerksberechnung), Pfetten als biegebeanspruchte Stab-Bauteile in horizontaler Lage."
   - "DIN 1052:2008-12, Abschnitt 8 und Abschnitt 12 (Konstruktive Anforderungen), Pfetten als Längsträger des Dachtragwerks."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.9.3–3.9.8 'Dachkonstruktionen', S. 170–173: Berufsschul-Kanon der Pfetten-Dreiteilung und ihrer Funktionszuschreibungen. Die Legende des dreifach stehenden Pfettendachs führt ① Firstpfette, ② Mittelpfette, ③ Fußpfette als die drei Pfettenreihen einer Dachseite (S. 171, Kap. 3.9.5) — gedruckter Beleg der in diesem Eintrag als eigene Festlegung geführten Dreiteilung. Lastweg laut Lastabtragungs-Tafel (S. 172, Kap. 3.9.7): 'Fußpfetten – Mittelpfetten – Firstpfetten – auf darunter liegende Außenwände', ferner 'Pfosten und darunter liegende Zwischenwände, d. h. vorwiegend in der Senkrechten'. Zusätzlich zur Lastabtragung wird der Pfette dort eine Aussteifungsfunktion zugeschrieben: 'Längsaussteifung durch: Pfetten, Kopfbänder (Büge)' (S. 172); die Legende S. 170 (Kap. 3.9.3) markiert ① 'Firstpfette Längsaussteifung', ⑧ 'Fußpfette, Schwelle (Aufnahme der Dachlast und Weiterleitung in die Außenwände)'. Die Queraussteifung erfolgt dagegen 'durch Streben, Querriegel, Zangenpaar' (S. 172) — der Querriegel ist dort ein Aussteifungsholz und keine Pfette, was die Ablehnung von 'Riegel' als Pfetten-Benennung stützt. S. 173 (Kap. 3.9.8) nennt als Pfettendach-Nachteil 'Beim Ausbau störende Pfosten, Streben, Büge, Pfetten'."
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §9.2 'Pfettendächer' (S. 159–165): Pfetten als Unterzüge für die frei aufliegenden Sparren (Bild 9.4); heute meist aus Brettschichtholz, Durchlaufpfetten auf Querwänden; ein-/zwei-/dreistielige Pfettendächer mit Spannweiten bis ca. 8/12/16 m (Bilder 9.6a–c); 'strebenlose' Pfettendächer → Pfette einachsige Biegung, 'abgestrebte' → Mittelpfette Doppelbiegung (S. 165, Bilder 9.12/9.13); frühere Kopfband-Unterstützung der Pfetten als veraltet gekennzeichnet (Bild 9.5)."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Pfettendach' und 'Dachtragwerke'."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Abschnitt 'Pfetten und Pfettenanschlüsse'."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke', § Pfetten."
@@ -50,6 +52,22 @@ quellenkonflikt: |
     weil sie als Synonym für die generische Pfette unzulässig wären.
 
   Diese Festlegung ist konsistent mit allen konsultierten Quellen.
+
+  **Berufsschul-Befund (Bläsi/Ferdinand, Tabellenbuch Zimmerer,
+  9. Aufl. 2021; Volltext-Scan liegt Anweiser vor, direkt eingesehen
+  2026-08-14).** Der Berufsschul-Kanon schreibt der Pfette **zwei**
+  Rollen zu, von denen dieser Eintrag definitorisch nur die erste
+  führt: Lastsammlung und -weiterleitung (Lastweg 'Fußpfetten –
+  Mittelpfetten – Firstpfetten – auf darunter liegende Außenwände',
+  S. 172) **und Längsaussteifung** des Dachtragwerks
+  ('Längsaussteifung durch: Pfetten, Kopfbänder (Büge)', S. 172;
+  Legende ① 'Firstpfette Längsaussteifung', S. 170). Die
+  Aussteifungsrolle ist keine geometrische Eigenschaft der Pfette,
+  sondern eine Eigenschaft des Tragwerks, in dem sie steht; sie
+  bleibt deshalb aus der Definition heraus und ist hier nur als
+  Korpus-Befund vermerkt. Die Dreiteilung First-/Mittel-/Fußpfette
+  ist im selben Werk gedruckt belegt (Legende S. 171) und damit
+  nicht mehr allein eigene Festlegung dieses Glossars.
 ---
 
 ## Prosa-Definition
@@ -289,15 +307,15 @@ definiert. Hier nur als Verortung:
     Wandbau (Schwellholz auf dem Fundament). Trotz formaler
     Ähnlichkeit (horizontaler Stab) keine Pfette, da nicht im
     Dachtragwerk.
-  - **Rähm** (`raehm`): oberster horizontaler Längsträger einer
+  - **Einbinder** (`einbinder`): oberster horizontaler Längsträger einer
     Wand, oft Auflager für Sparrenfüße. In manchen Konstruktionen
-    übernimmt das Rähm die Funktion einer Fußpfette; die saubere
-    Trennung ist zimmermannssprachlich: Rähm gehört zur Wand,
+    übernimmt der Einbinder die Funktion einer Fußpfette; die saubere
+    Trennung ist zimmermannssprachlich: Einbinder gehört zur Wand,
     Fußpfette gehört zum Dachtragwerk. Die in CH verbreitete
     Bauweisen-Konstellation „Massivbau-Außenwand mit Holz-
-    Dachstuhl" ersetzt das Rähm nicht durch eine Mauerlatte
+    Dachstuhl" ersetzt den Einbinder nicht durch eine Mauerlatte
     (Mauerlatte ist ein Dach-Bauteil im Sinne der Fußpfette,
-    kein Wand-Bauteil im Sinne des Rähms); sie macht das Rähm
+    kein Wand-Bauteil im Sinne des Einbinders); sie macht den Einbinder
     konstruktiv überflüssig, weil keine Holzwand vorhanden ist.
   - **Binder** (`binder`, bereits angelegt): vorgefertigtes
     Trag-Aggregat (`oberbegriff: bauteilgruppe`); kann eine Pfette
@@ -321,6 +339,18 @@ definiert. Hier nur als Verortung:
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5. Kap. 3.9.3–3.9.8 „Dachkonstruktionen"
+  (S. 170–173): Pfetten-Dreiteilung First-/Mittel-/Fußpfette in der
+  Legende des dreifach stehenden Pfettendachs (S. 171), Lastweg und
+  Aussteifungs-Zuschreibung „Längsaussteifung durch: Pfetten,
+  Kopfbänder (Büge)" in der Lastabtragungs-Tafel (S. 172),
+  Pfettendach-Nachteile (S. 173). Volltext-Scan liegt Anweiser vor;
+  direkt eingesehen 2026-08-14 (seitenweise am Scan-PNG verifiziert).
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §9.2 „Pfettendächer“ (S. 159–165). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-13.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich, aktuelle
   Auflage.
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*

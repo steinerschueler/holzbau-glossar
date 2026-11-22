@@ -1,7 +1,7 @@
 ---
 id: verstaerkungselement
 benennung: Verstärkungselement
-kurz: "Ein Verstärkungselement ist meist eine lange Schraube, die nicht zwei Hölzer verbindet, sondern in ein einzelnes Holz eingedreht wird, um es an einer gefährdeten Stelle gegen Aufreissen oder Quetschen zu kräftigen."
+kurz: "Ein Verstärkungselement ist meist eine lange Schraube, die nicht zwei Hölzer verbindet, sondern in ein einzelnes Holz eingedreht wird, um es an einer gefährdeten Stelle gegen Aufreißen oder Quetschen zu kräftigen."
 synonyme: [Verstärkungsschraube, Verstärkungs-Vollgewindeschraube]
 abgelehnte_benennungen: [Verbindungsmittel, Bauteil, Verstärkung, "reinforcement screw", "reinforcement", "Bewehrung"]
 oberbegriff: element
@@ -19,6 +19,7 @@ quellen_primär:
   - "ETA-12/0373, 'Reisser-Schrauben — Schrauben für die Verwendung in Holzbauteilen', Verwendungsbereich Verstärkung."
   - "ISO 16739-1:2024, IFC-Entität `IfcMechanicalFastener` mit Property Set für Verstärkungsfunktion (Pset_FastenerCommon Reference + custom Pset)."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §16.2 (S. 287), §16.4 (S. 287 ff.) und §16.5 (S. 305 ff.): gedruckter Beleg der Klassen-Trennung — beschrieben werden 'Verwendungsmöglichkeiten von Vollgewindeschrauben als Querzug-/Querdruckverstärkung, als Verbindungs- und als Verstärkungselement' (wörtlich 'Verstärkungselement', S. 287); Vollgewindeschrauben als 'sehr wirtschaftliche Alternative zum Einkleben von Stahlstangen oder Aufkleben von Brettern oder Streifen aus Holzwerkstoffen', meist rechtwinklig zur Faserrichtung eingebracht; Einsatz-Katalog Tabelle 16-1 (Querzugverstärkung von Ausklinkungen, Schwalbenschwanz-/Zapfenverbindungen, Hauptträgern bei Nebenträger-Anschluss, Durchbrüchen, angehängten Lasten); Querdruckverstärkung §16.5 mit Tragfähigkeit R_c,90,d (Gl. 16.19) und Verankerungslängen-Regeln (Gl. 16.16/16.17, versenkt/nicht versenkt)."
   - "Dietsch, P. (TUM, Lehrstuhl für Holzbau): 'Eurocode 5:2022 — Einführung in den neuen Abschnitt Verstärkungen', Vortrag, Technische Universität München, 2023."
   - "Müller, A.; Heubuch, M.: 'Stabdübelverbindungen und eingeklebte Gewindestangen in Buchen-Brettschichtholz', 25. Internationales Holzbau-Forum (IHF), Innsbruck 2019."
   - "Sigrist, C.: 'Verbindungsmittelabstände bei eng gesetzten Verstärkungs- und Verbindungsschrauben', SIA-Holzbautag Biel, 2018."
@@ -377,6 +378,13 @@ werden müssen.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §16.2/§16.4/§16.5 (S. 287 ff.:
+  Vollgewindeschrauben als Querzug-/Querdruckverstärkung,
+  Verbindungs- und Verstärkungselement; Einsatz-Katalog
+  Tabelle 16-1). Volltext-Scan liegt Anweiser vor; direkt eingesehen
+  2026-08-14.
 - Dietsch, P. (TUM): „Eurocode 5:2022 — Einführung in den neuen
   Abschnitt Verstärkungen". TUM, 2023.
 - Müller, A.; Heubuch, M.: „Stabdübelverbindungen und

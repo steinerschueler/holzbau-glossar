@@ -1,7 +1,7 @@
 ---
 id: einheitsvektor
 benennung: Einheitsvektor
-kurz: "Ein Einheitsvektor ist ein Richtungspfeil von genau einer Einheit Länge, der nur eine Richtung angibt — wie der Zeiger eines Kompasses, der bloss zeigt wohin, nicht wie weit."
+kurz: "Ein Einheitsvektor ist ein Richtungspfeil von genau einer Einheit Länge, der nur eine Richtung angibt — wie der Zeiger eines Kompasses, der bloß zeigt wohin, nicht wie weit."
 synonyme: ["Normierter Vektor", "Vektor mit Norm 1", "Einheitsrichtungsvektor"]
 abgelehnte_benennungen: [Richtung, Richtungsvektor, Normalvektor, "unit vector", "direction"]
 oberbegriff: vektor
@@ -11,15 +11,15 @@ abgrenzung_zu: [vektor, faserrichtung, gerade]
 status: entwurf
 subglossar_pendant: optional  # Begründung (Abweichung vom Normalfall notwendig): normierte Sonderform des Vektors (Norm = 1), mathematische Feinheit ohne Praxisbegriff; didaktische Substanz liegt bei vektor und faserrichtung (HG_KONVENTIONEN §7).
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, Abschnitt 2 (Geometrie und Vektoren), Symbol 2-7.6 'Einheitsvektor'."
-  - "ISO 80000-2:2019, Abschnitt 2 'Vektoren und Tensoren', Eintrag zum normierten Vektor."
+  - "DIN EN ISO 80000-2:2023-08, Abschnitt 18 (Skalare, Vektoren und Tensoren). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitt 17 (Scalars, vectors and tensors), Nr. 2-17.6: Zeichen e_a für den Einheitsvektor in Richtung von a, mit e_a = a/|a| für a ≠ 0; Nr. 2-17.7: Einheitsvektoren in Richtung der kartesischen Koordinatenachsen. [direkt]"
 quellen_sekundär:
   - "Bronstein, I. N. et al.: Taschenbuch der Mathematik. Kap. 3.5.1.5 'Einheitsvektor', Kap. 4.1.2 'Norm und normierte Vektoren'."
   - "Fischer, G.: Lineare Algebra. 19. Aufl., Springer Spektrum 2020, Kap. 0.3 'Skalarprodukt und Norm'."
   - "Bär, C.: Elementare Differentialgeometrie. de Gruyter 2010, Kap. 1.1 (Sphäre S² als Menge der Einheitsvektoren)."
 quellenkonflikt: |
-  Keine Holzbau-Norm definiert den Einheitsvektor; DIN ISO 80000-2 führt
-  ihn als Vektor mit Norm 1 ein, gibt jedoch keine numerische Schwelle
+  Keine Holzbau-Norm definiert den Einheitsvektor; DIN EN ISO 80000-2 führt
+  ihn als Vektor a/|a| für a ≠ 0 ein, gibt jedoch keine numerische Schwelle
   für die Norm-Bedingung an. Eigene Festlegung: ein Einheitsvektor ist
   ein Vektor v ∈ ℝ³ mit | ‖v‖² − 1 | ≤ NORM_EPS (siehe `toleranzen`).
   Die exakte Bedingung ‖v‖ = 1 ist die mathematische Idealform; die
@@ -158,8 +158,10 @@ Eingang.
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2: Mathematik".
-- ISO 80000-2:2019.
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2: Mathematik".
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
 
 **Sekundär:**
 

@@ -136,7 +136,7 @@ Bleischnitt ist damit ein **Prädikat** (`istBleischnitt: Ebene
   beiden Prädikate sind zueinander disjunkt (Beweis: Annahme
   Bleischnitt-Bedingung ∧ Senkel-Bedingung erzwingt
   ε_K ≥ 1 − ε_K, also ε_K ≥ 1/2, was die Toleranzwahl
-  ausschliesst).
+  ausschließt).
 - **Toleranzwahl `KOLLINEAR_EPS` (dimensionslos)**: Die
   Bedingung (1) testet ein Skalarprodukt zweier
   Einheitsvektoren, also einen Cosinus. Die einschlägige
@@ -163,7 +163,7 @@ Schnur. Das Bleigewicht hängt per Schwerkraft strikt entlang
 der Lotrichtung; eine Fläche, **auf der das Blei zur Ruhe
 kommt**, steht entsprechend rechtwinklig zur Lotrichtung — sie
 ist „im Lot, also waagerecht". Eine Schnittfläche mit dieser
-Lage heisst deshalb **Bleischnitt** oder kurz **Blei**. Der
+Lage heißt deshalb **Bleischnitt** oder kurz **Blei**. Der
 Begriff ist komplementär zum **Senkel** (siehe `senkel`): der
 Senkel bezeichnet die Schnur, an der das Bleigewicht hängt, und
 gibt dem Senkelschnitt seinen Namen — die zur Schwerkraft

@@ -16,6 +16,8 @@ quellen_primär:
   - "DIN EN 1991-1-4:2010-12 'Eurocode 1 – Einwirkungen auf Tragwerke – Teil 1-4: Windlasten', Abschnitt 7.2: Druck- und Sogbeiwerte als Funktion der Dachneigung."
   - "DIN 1055-5:1975-06 (zurückgezogen, übergeleitet in DIN EN 1991-1-3) 'Lastannahmen für Bauten – Schneelasten', Abschnitt 4: Schneelast als Funktion der Dachneigung."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, Kap. 9 (S. 163, 165): übliche Dachneigungen bei Pfettendächern α ≈ 15°–45° (Näherung reine Biegebemessung der Sparren, §9.2.3); Sparrendächer werden bei Dachneigungen von etwa 30°–60° eingesetzt (§9.3.1)."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 1.13 „Rechnerischer Abbund“ (S. 24): α = Dachneigungswinkel im Grunddreieck aus Firsthöhe h, Grundmaß b und Sparrenlänge s, mit tan α = Firsthöhe/Grundmaß = h/b, sin α = h/s, cos α = b/s. Ebd. S. 28 („Walmdach bei rechtwinkliger Traufe und ungleicher Dachneigung; α_D ≠ α_W“): Legende α_D = Dachneigung, α_W = Neigung der Walmfläche. Ebd. S. 32 unten, Tafel „Dachfirstmaße in Abhängigkeit vom Dachneigungswinkel“: Fallunterscheidung α = 45° (a = h, b = 0), α > 45° (a = h/sin(180° − 2 · α), b = h/tan(180° − 2 · α)), α < 45° (a = h/sin(2 · α), b = h/tan(2 · α)). Ebd. Kap. 1.14 „Steigung – Neigung – Gefälle“ (S. 33): Steigungsverhältnis SV = Höhe/Länge = h/l, Steigung in Prozent S = h · 100/l, Umrechnungen tan α = S/100, S = 100 · tan α und SV = 1: (1/tan α); Fallunterscheidung h < l → α < 45° und S < 100 %, h = l → α = 45° und S = 100 %, h > l → α > 45° und S > 100 %. Ebd. Kap. 3.8 „Dachdeckung“ (S. 167), Dreieck-Grafik „Dachdeckungsmaterialien entsprechend der Dachneigung“: drei unbezifferte Bänder steil (Stroh, Schilf, Schindeln, Biberschwänze, Faserzementplatten), flachgeneigt (Mönch-Nonne, S.-Pfannen, Falzpfannen, Falzziegel, Wellfaserzement- und Wellkunststoffplatten, Falzblech) und flach (Dachpappe, Metallfolie, Gussasphalt, Kiesbelag, Gehbelag) — qualitative Neigungs-Bänder ohne Gradgrenzen. Ebd. §3.8.1 (S. 168): Tafel-Spalte „Regeldachneigung in °“ je Dachziegelart, Werte 22° bis 40° (Flachdachziegel/Flachkremper/Kronenkremper/Romanokremper/Krempziegel/Mönch-Pfanne 22°, Frankfurter 25…30°, Reformziegel/Falzziegel/Biberschwanz-Doppel- und -Kronendeckung 30°, Hohlpfanne 35°, Mönch-Nonne und Biberschwanz-Einfachdeckung 40°). Ebd. Tafel §3.9.8 (S. 173): Sparrendach-Nachteil „begrenzte Dachneigung: ideal 60°, minimal ca. 40°“, Pfettendach-Vorteil „geringe Dachneigungen (mind. 15° wegen Ziegel)“ — konstruktions- und materialabhängige Neigungsgrenzen."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage, Kap. 'Dachformen und Neigungen'."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Tab. 'Übliche Dachneigungen'."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015, Kap. 'Dachformen'."
@@ -37,6 +39,71 @@ quellenkonflikt: |
   und Mönck/Rug; sie sind im Glossar **nicht normativ**, sondern
   rein deskriptiv. Die formale Definition der Dachneigung ist
   konsistent mit allen konsultierten Normen.
+
+  Berufsschul-Bestätigung (Bläsi/Ferdinand, *Tabellenbuch
+  Zimmerer*, 9. Aufl. 2021, Volltext-Scan liegt Anweiser vor, direkt
+  eingesehen 2026-08-14): Das Berufsschul-Standardwerk des
+  Zimmererhandwerks stützt drei Festlegungen dieses Eintrags.
+
+  (a) **Prozent-Anzeige.** Kap. 1.14 „Steigung – Neigung –
+      Gefälle" (S. 33) führt die Steigung in Prozent als
+      S = Höhe · 100/Länge und die Umrechnung S = 100 · tan α;
+      die dortige Fallunterscheidung h = l → α = 45° → S = 100 %
+      belegt gedruckt, was die Erläuterung dieses Eintrags
+      festhält: 100 % Neigung entspricht 45°, nicht 90°. Das
+      Werk führt daneben das **Steigungsverhältnis**
+      SV = h/l = tan α (Schreibweise 1: x) als dritte
+      Anzeigeform. SV ist hier nicht als eigene Anzeigeform
+      aufgenommen (es ist der Tangens selbst, also
+      informationsgleich mit α_prozent/100); ein eigener
+      Eintrag `steigungsverhaeltnis` bleibt möglich.
+
+  (b) **Flächenbezug statt Dachbezug.** S. 28 („Walmdach bei
+      rechtwinkliger Traufe und ungleicher Dachneigung") trennt
+      α_D = Dachneigung von α_W = Neigung der Walmfläche und
+      rechnet mit beiden nebeneinander; S. 32 („Dach mit
+      verschiedenen Neigungsgraden") führt α_1, α_2 = Neigung
+      der Dachflächen. Das deckt sich mit der hier gewählten
+      Konstruktion, die Dachneigung als Merkmal **einer
+      einzelnen** `dachflaeche` und nicht des Dachs als Ganzes
+      zu führen.
+
+  (c) **Keine bezifferte Klassen-Einteilung.** Eine Einteilung
+      in flach / geneigt / steil **mit Gradgrenzen** enthält das
+      Werk nicht; der Negativ-Befund ergänzt die oben
+      festgehaltene Lage und stützt die eigene Festlegung, die
+      Faustbereiche rein deskriptiv und nicht normativ zu führen.
+
+      **Präzisierung (Tranche 2, S. 167 nachgeprüft):** die
+      Dreieck-Grafik „Dachdeckungsmaterialien entsprechend der
+      Dachneigung" in Kap. 3.8 „Dachdeckung" führt sehr wohl
+      **drei benannte Bänder** — „steil", „flachgeneigt",
+      „flach" —, ordnet ihnen aber **keine Winkel- oder
+      Prozentgrenzen** zu, sondern nur Deckungsmaterialien
+      (steil: Stroh, Schilf, Schindeln, Biberschwänze,
+      Faserzementplatten; flachgeneigt: Mönch-Nonne, S.-Pfannen,
+      Falzpfannen, Falzziegel, Wellfaserzement- und
+      Wellkunststoffplatten, Falzblech; flach: Dachpappe,
+      Metallfolie, Gussasphalt, Kiesbelag, Gehbelag). Der
+      ursprüngliche Wortlaut „enthält das Werk nicht" war
+      insofern zu absolut und ist hier korrigiert. Die
+      Festlegung dieses Eintrags bleibt unberührt: die Bänder
+      sind **material-getrieben und unbeziffert**, taugen also
+      nicht als normative Klassen-Grenzen. Bezifferte Grenzen
+      erscheinen im Werk nur material- bzw.
+      konstruktionsbezogen — als „Regeldachneigung" je
+      Dachziegelart (S. 168, 22°…40°) und als
+      Konstruktions-Grenzen (S. 173: Sparrendach „ideal 60°,
+      minimal ca. 40°"; Pfettendach „mind. 15° wegen Ziegel").
+      Die Regeldachneigung ist bei `eindeckung` als
+      material-spezifische Größe geführt, nicht hier.
+
+  Zitierhinweis zum Werk: der Buchstabe α trägt dort zwei
+  Rollen (Dachneigungswinkel ab S. 24; allgemeiner
+  Steigungswinkel S. 33), und h/b wechseln seitenweise die
+  Bedeutung (S. 24 oben: h = Firsthöhe, b = Grundmaß; S. 24
+  unten in der Kerven-Tafel: h = Sparrenhöhe, s = Senkel).
+  Einzelformeln sind deshalb nur mit Seitenkontext zu zitieren.
 
   „Dachschräge" ist im Sprachgebrauch häufig synonym für
   Dachneigung verwendet, im Glossar jedoch ein anderer Begriff
@@ -181,7 +248,7 @@ Branchenklassifikation zu verwenden.
 
 **Anzeigeformen in der Praxis**: Im Holzbau ist sowohl die Angabe
 in **Grad** (Dachdecker, Architektur, Bemessungsnormen) als auch in
-**Prozent** (Tiefbau, Strassenbau-nahe Konventionen, Schweizer
+**Prozent** (Tiefbau, Straßenbau-nahe Konventionen, Schweizer
 Bauplanung) verbreitet; Prozent ist dabei der Tangens · 100, nicht
 der Winkel selbst. 100 % Neigung entspricht 45°, nicht 90°. Die
 Domänen-Schicht hält den Winkel stets in **Radiant** vor und
@@ -239,6 +306,19 @@ gegenüber der Horizontalen ist exakt die Dachneigung α.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, Kap. 9 (S. 163, 165, übliche Dachneigungs-Bereiche). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-13.
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, Kap. 1.13 „Rechnerischer Abbund"
+  (S. 24, 28, 32), Kap. 1.14 „Steigung – Neigung – Gefälle"
+  (S. 33), Kap. 3.8 „Dachdeckung" (S. 167 Dreieck
+  „Dachdeckungsmaterialien entsprechend der Dachneigung";
+  S. 168 Tafel-Spalte „Regeldachneigung") und Tafel §3.9.8
+  (S. 173, konstruktionsabhängige Neigungsgrenzen).
+  Volltext-Scan liegt Anweiser vor; direkt eingesehen
+  2026-08-14.
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*
   Lignum, Zürich, aktuelle Auflage.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich,

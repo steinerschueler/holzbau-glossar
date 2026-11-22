@@ -13,9 +13,12 @@ subglossar_pendant: notwendig
 quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe): First als oberste, horizontale Schnittkante zweier nach oben zusammenlaufender Dachflächen."
   - "DIN 1356-1:1995-02 'Bauzeichnungen – Teil 1', Abschnitt 5 (Darstellung von Dächern): First als horizontale obere Dachkante."
-  - "DIN 18338:2019-09 'VOB Teil C: Dachdeckungs- und Dachabdichtungsarbeiten', Abschnitt 0 (Begriffe): First als oberste, dem Schließen der Dachdeckung dienende Dachkante."
+  - "DIN 18338:2019-09 'VOB Teil C: ATV Dachdeckungsarbeiten' (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336; die ATV führt keine Begriffs-Sektion — Abschnitt 0 sind Hinweise für das Aufstellen der Leistungsbeschreibung, die Dachkanten-Begriffe werden vorausgesetzt und nach Längenmaß abgerechnet), vorausgesetzte Lesart: First als oberste, dem Schließen der Dachdeckung dienende Dachkante."
   - "DIN EN 1991-1-3:2010-12 'Eurocode 1 – Schneelasten', Anhang A: First als horizontale Bezugslinie für Schneelastansätze auf Sattel- und Walmdächern."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.9.9 'Dachteile und ihre Begriffe', S. 173: Positionstafel am axonometrischen Dachmodell; die Positionslinie ① 'First' zeigt auf die oberste Schnittkante des Modells, daneben ② Verfallanfang, ③ Verfallgrat, ④ Verfallende, ⑤ Walm, ⑥/⑬ Grat, ⑦/⑧ Traufe, ⑨ Gaube, ⑩/⑪ Kehle, ⑫ Krüppelwalm, ⑭ Giebel. Berufsschul-Kanon der Dachanatomie: der First steht dort als Kante des Dachkörpers, nicht als Tragwerks- oder Eindeckungsbauteil.; ferner Kap. 3.9.6 (S. 172, Hängewerk-Legende ④ Firstpfette: 'Sparrenauflage, gerade Firstlinie') und Kap. 3.9.8 (S. 173: 'Firstpfette bewirkt geraden Firstverlauf' vs. Sparrendach 'oft ungerader Firstverlauf')"
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 1.13 'Rechnerischer Abbund', S. 24 und S. 32: Das Grunddreieck des Normalsparrens führt die 'Firsthöhe' h als eine der drei Grundgrößen (tan α = Firsthöhe/Grundmaß; h = b · tan α; h = s · sin α). S. 32 unten 'Dachfirstmaße in Abhängigkeit vom Dachneigungswinkel' mit Fallunterscheidung α = 45° (a = h, b = 0), α > 45° (a = h/sin(180 − 2·α), b = h/tan(180 − 2·α)) und α < 45° (a = h/sin(2·α), b = h/tan(2·α))."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 10.16 'Dachverschneidung – Dachausmittlung', S. 305, 306, 307, 311, 312: 'Dachverschneidung: Konstruktion des Verlaufs der Bauteile wie First, Grat, Kehlsparren im Grundriss' (S. 305). Die Firstlinie ist Ergebnis der Grundriss-Verschneidung: 'Schnitt der Grat- bzw. Kehlsparren → Länge der Firstlinien' und 'Eintragen der winkelrechten Konstruktionslinien an den Firstpunkten' (S. 307, Schritte 6 und 7); 'Konstruktionslinien von P₁ und P₂ senkrecht zur Firstlinie' (S. 306, Schritt 6 — 'senkrecht' dort im Sinne von 'rechtwinklig', vgl. HG_KONVENTIONEN §1); 'die waagerechten Abschnitte von der Traufe bis zur Firstlinie aus dem Grundriss entnommen' (S. 311); 'Antragen von Profil I → Firstverlauf in I' und 'Schnitt von Gratsparren 3 mit der Firstlinie von Baukörper II → P₃' (S. 312, Schritte 3 und 5). Zeichnerisch-geometrische Sicht, die in den Norm- und Bemessungsquellen dieses Eintrags fehlt."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015, Kap. Dachformen."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'First'."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage."
@@ -43,6 +46,22 @@ quellenkonflikt: |
   konvex (ausspringend). First und Grat teilen die Konvexität (nach
   oben zusammenlaufend); sie unterscheiden sich nur durch horizontal
   (First) vs. geneigt (Grat).
+
+  Berufssprachliche Bestätigung der Festlegung (a) durch das
+  Tabellenbuch Zimmerer (Bläsi/Ferdinand, 9. Aufl. 2021;
+  Volltext-Scan liegt Anweiser vor, direkt eingesehen 2026-08-14): Das
+  Berufsschul-Standardwerk trennt die drei Lesarten lexikalisch
+  sauber. Die Positionstafel „Dachteile und ihre Begriffe" (S. 173)
+  führt ① **First** als Kante des Dachkörpers; das Tragwerksbauteil
+  erscheint unter eigener Benennung als ④ **Firstpfette**
+  („Sparrenauflage, gerade Firstlinie", S. 172, Kap. 3.9.6) und in
+  der Pfettendach-Bilanz („Firstpfette bewirkt geraden Firstverlauf",
+  S. 173, Kap. 3.9.8). Im Abbund- und Zeichenteil ist der First
+  ausschließlich linienhaft-metrisch gefasst: als **Firsthöhe** h im
+  Grunddreieck (S. 24) und als **Firstlinie** der
+  Grundriss-Verschneidung (S. 305, 306, 307, 311, 312). Keine der
+  konsultierten Stellen verwendet „First" für Firstziegel oder
+  Firstabdeckung (Lesart (c)).
 ---
 
 ## Prosa-Definition
@@ -232,13 +251,24 @@ klassifiziert wird.
   Architektenverein, Abschnitt 1.
 - DIN 1356-1:1995-02, „Bauzeichnungen – Teil 1: Arten, Inhalte und
   Grundregeln der Darstellung", Abschnitt 5.
-- DIN 18338:2019-09, „VOB Teil C: Dachdeckungs- und
-  Dachabdichtungsarbeiten", Abschnitt 0.
+- DIN 18338:2019-09, „VOB Teil C: ATV Dachdeckungsarbeiten"
+  (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336),
+  Abschnitt 0 (Hinweise für das Aufstellen der Leistungsbeschreibung).
 - DIN EN 1991-1-3:2010-12, „Eurocode 1: Einwirkungen auf Tragwerke –
   Teil 1-3: Schneelasten", Anhang A.
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5. Kap. 1.13 „Rechnerischer Abbund" (S. 24
+  Firsthöhe im Grunddreieck; S. 32 „Dachfirstmaße in Abhängigkeit
+  vom Dachneigungswinkel"), Kap. 3.9.6/3.9.8/3.9.9 (S. 172–173
+  Firstpfette vs. Firstlinie/Firstverlauf; Positionstafel „Dachteile
+  und ihre Begriffe"), Kap. 10.16 „Dachverschneidung –
+  Dachausmittlung" (S. 305–312, Firstlinie als Ergebnis der
+  Grundriss-Verschneidung). Volltext-Scan liegt Anweiser vor; direkt
+  eingesehen 2026-08-14 (seitenweise am Scan-PNG verifiziert).
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   15. Auflage, Beuth Verlag 2015.
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.* DVA,

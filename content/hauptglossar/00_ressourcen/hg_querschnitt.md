@@ -11,7 +11,7 @@ abgrenzung_zu: [polygon, ebene, bauteilachse, bauteil, dachflaeche, polyeder]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Abschnitt 1.5 (Begriffe), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 6 (Grenzzustände der Tragfähigkeit): Querschnitt als Bemessungs-Bezugsfläche für Schnittgrössen, Spannungs- und Stabilitätsnachweise."
+  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1', Abschnitt 1.5 (Begriffe), Abschnitt 5 (Tragwerksberechnung) und Abschnitt 6 (Grenzzustände der Tragfähigkeit): Querschnitt als Bemessungs-Bezugsfläche für Schnittgrößen, Spannungs- und Stabilitätsnachweise."
   - "SIA 265:2021, 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, §4 'Tragwerksanalyse und Bemessung': Querschnittswerte (A, I, W) als Bemessungseingang der Spannungsnachweise (§4.2). [direkt]"
   - "DIN EN 14081-1:2019-10, 'Holzbauwerke – Nach Festigkeit sortiertes Bauholz mit rechteckigem Querschnitt – Teil 1: Allgemeine Anforderungen': Querschnitt als geometrisches Klassifikationsmerkmal (rechteckig)."
   - "DIN 1052:2008-12, 'Entwurf, Berechnung und Bemessung von Holzbauwerken', Abschnitt 5 (Berechnungsverfahren) und Abschnitt 9 (Querschnittswerte)."
@@ -25,7 +25,7 @@ quellen_sekundär:
 quellenkonflikt: |
   Weder DIN EN 1995-1-1 noch SIA 265 noch DIN 1052 enthalten eine
   geschlossene Begriffsdefinition für „Querschnitt"; alle Normen
-  verwenden den Begriff vorausgesetzt und behandeln ausschliesslich
+  verwenden den Begriff vorausgesetzt und behandeln ausschließlich
   seine Bemessungs-Eigenschaften (Querschnittsfläche A, Flächen-
   trägheitsmomente I_y, I_z, Widerstandsmomente W_y, W_z, Polartrag-
   heitsmoment I_p). DIN EN 14081-1 setzt einen rechteckigen Quer-
@@ -51,7 +51,7 @@ quellenkonflikt: |
     Punktmenge** in einer Ebene rechtwinklig zur Bauteilachse, zusammen
     mit ihrem **Flächenschwerpunkt** als ausgezeichnetem Punkt der
     Punktmenge. Der Flächenschwerpunkt ist Teil der Definition,
-    nicht eine abgeleitete Grösse, weil er die Verbindung zur
+    nicht eine abgeleitete Größe, weil er die Verbindung zur
     Bauteilachse trägt (siehe `hg_bauteilachse.md`: die Bauteilachse
     ist die Verbindungslinie der Querschnittsschwerpunkte).
   - Querschnitt wird vorerst **nur für Stabbauteile** geführt.
@@ -65,7 +65,7 @@ quellenkonflikt: |
     quantitative Attribute eines konkreten Querschnitts und werden
     in einem eigenen Folge-Eintrag `querschnittseigenschaften`
     geführt (Trigger: erste Bemessungs-Operation in der App).
-  - Subklassen ausser `rechteck_querschnitt` (Rund-, I-, T-, L-,
+  - Subklassen außer `rechteck_querschnitt` (Rund-, I-, T-, L-,
     beliebig-polygonal-Querschnitt) sind Folgearbeit (Trigger:
     erstes Bauteil mit nicht-rechteckigem Querschnitt).
   - Die in EN 14081-1 verwendete enge Lesart („Querschnitt = Rechteck")
@@ -90,7 +90,7 @@ Sei
 - E ⊂ ℝ³ eine **Ebene** (siehe `ebene`) mit Normalenvektor n_hat ∈ S²,
 - Q ⊂ E eine ebene, **beschränkte**, **zusammenhängende**,
   **abgeschlossene** Punktmenge mit nicht-leerem Inneren
-  (Lebesgue-Mass 𝓛²(Q) > 0),
+  (Lebesgue-Maß 𝓛²(Q) > 0),
 - z ∈ Q ⊂ E der **Flächenschwerpunkt** (Centroid) von Q, definiert
   als
 
@@ -98,7 +98,7 @@ Sei
 z:= (1 / 𝓛²(Q)) · ∫_Q x dx,
 ```
 
-wobei das Integral koordinatenweise über das ebene Lebesgue-Mass
+wobei das Integral koordinatenweise über das ebene Lebesgue-Maß
 in E genommen ist.
 
 Dann ist ein **Querschnitt** das Tupel
@@ -153,17 +153,17 @@ Flächenschwerpunkt liegt auf der Bauteilachse.
 ## Wohldefiniertheit
 
 - **Existenz**: Für jede ebene, beschränkte, zusammenhängende
-  Punktmenge Q ⊂ E mit positivem Flächenmass 𝓛²(Q) > 0 ist der
+  Punktmenge Q ⊂ E mit positivem Flächenmaß 𝓛²(Q) > 0 ist der
   Flächenschwerpunkt z als Lebesgue-Integral wohldefiniert
-  (klassisches Resultat der Mass- und Integrationstheorie;
+  (klassisches Resultat der Maß- und Integrationstheorie;
   Bronstein Kap. 4).
 - **Eindeutigkeit des Flächenschwerpunkts**: z ist als gewichtetes
   Mittel über Q eindeutig durch Q bestimmt, unabhängig von der
   Wahl der Parametrisierung von E.
 - **Lage des Flächenschwerpunkts**: Bei konvexen Querschnitten
-  (Rechteck, Rund, regelmässige Polygone) ist z ∈ Q garantiert.
+  (Rechteck, Rund, regelmäßige Polygone) ist z ∈ Q garantiert.
   Bei nicht-konvexen Querschnitten (z. B. L-Profil, U-Profil) kann
-  z ausserhalb von Q liegen; die Definition fordert nur z ∈ E,
+  z außerhalb von Q liegen; die Definition fordert nur z ∈ E,
   nicht z ∈ Q.
 - **Abstrakt, nicht instanziierbar**: Querschnitt selbst hat in der
   Domänen-Schicht keine Konstruktoren.
@@ -284,7 +284,7 @@ In der D8a-Implementierung trägt jedes Stabbauteil zunächst nur
     Bauteilachse.
 - **Eigenschaften (Folgearbeit)**:
   - **Querschnittseigenschaften** (`querschnittseigenschaften`):
-    A, I_y, I_z, W_y, W_z, I_p, A_v als abgeleitete Grössen.
+    A, I_y, I_z, W_y, W_z, I_p, A_v als abgeleitete Größen.
 - **Verwendung**:
   - **Bauteil** (`bauteil`): jedes **Stabbauteil** trägt genau
     einen Querschnitt als Pflichtfeld (D8a; siehe). Plattenbauteile und

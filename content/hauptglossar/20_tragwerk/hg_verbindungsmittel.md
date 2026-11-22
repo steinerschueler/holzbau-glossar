@@ -22,6 +22,7 @@ quellen_primär:
   - "Z-9.1-519, 'Schrauben mit Vollgewinde als Verbindungsmittel und als Verstärkung von Holzbauteilen' (SPAX, allgemeine bauaufsichtliche Zulassung, DIBt)."
   - "ETA-12/0373, 'Reisser-Schrauben — Schrauben für die Verwendung in Holzbauteilen'."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, Kap. 11 'Mechanische Verbindungen, Grundlagen' (S. 175–197) und §12.1 (S. 198–199): Kraft-Verschiebungs-Kurven typischer Verbindungsmittel (Bild 11.1: geleimte Verbindung, Einlass-/Einpressdübel, Stabdübel, Bolzen, Nagelplatte, Nagel); Verschiebungsmodul K_ser als Steigung der Last-Verschiebungskurve mit u_inst = F_d/K_ser (Gl. 11.1, Tabelle A-11.1) und Kriechansatz über k_def (Gl. 11.2); Mindestabstände als Spaltschutz beim Eintreiben ohne Vorbohren (§11.6, Bild 11.7) und Einbindungs-Regel e ≥ 0,7·h bei schrägem Kraftangriff (Bild 11.6); DIN EN 14592 als 'Deckelnorm' für stiftförmige Verbindungsmittel (§12.1.1); Johansen-Theorie (1949) als EC5-Bemessungsgrundlage für Nägel, Stabdübel, Bolzen, Schrauben und Klammern — Tragfähigkeit bestimmt von Lochleibungsfestigkeit (rohdichteabhängig) und Fließmoment des Stiftes (Stahlgüte); Begriffs-Systematik F_v,Ek/F_v,Rk/F_ax,Rk (Index E Einwirkung, R Widerstand, v Abscheren, ax Herausziehen; §12.1.3)."
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 8 'Verbindungen'."
   - "Holzbau-Handbuch, Reihe 2 'Tragwerksplanung', Teil 1 'Verbindungen', Folge 1 'Verbindungen mit stiftförmigen Verbindungsmitteln', Informationsdienst Holz, aktuelle Auflage."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 7 'Verbindungen'."
@@ -365,6 +366,12 @@ Stückliste n × der Eintrag erzeugt; die UUID ist genau eine.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, Kap. 11 (Verschiebungsmodul,
+  Mindestabstände) und §12.1 (DIN EN 14592 als Deckelnorm,
+  Johansen-Theorie, Begriffs-Systematik). Volltext-Scan liegt
+  Anweiser vor; direkt eingesehen 2026-08-14.
 - Blass, H. J.; Sandhaas, C.: *Ingenieurholzbau – Grundlagen der
   Bemessung.* KIT Scientific Publishing, Karlsruhe 2016, Kap. 8.
 - Holzbau-Handbuch, Reihe 2, Teil 1, Folge 1, Informationsdienst

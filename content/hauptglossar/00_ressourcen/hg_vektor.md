@@ -11,8 +11,8 @@ abgrenzung_zu: [punkt, einheitsvektor, faserrichtung]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, Abschnitt 2 (Geometrie und Vektoren), Symbole 2-7 ff."
-  - "ISO 80000-2:2019, Abschnitt 2 'Vektoren und Tensoren'."
+  - "DIN EN ISO 80000-2:2023-08, Abschnitt 18 (Skalare, Vektoren und Tensoren). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitt 17 (Scalars, vectors and tensors), Nr. 2-17.1 bis 2-17.5: Zeichen für Vektor, Summe, Vielfaches, Betrag und Nullvektor; Abschnitt 8 (Elementary geometry), Nr. 2-8.5: Vektor von A nach B; gleiche Vektoren verlangen gleiche Richtung und gleichen Abstand, nicht gleiche Punkte. [direkt]"
 quellen_sekundär:
   - "Bronstein, I. N. et al.: Taschenbuch der Mathematik. Kap. 3.5 'Vektoralgebra' und Kap. 4.1 'Lineare Algebra'."
   - "Fischer, G.: Lineare Algebra. 19. Aufl., Springer Spektrum 2020, Kap. 0 'Lineare Geometrie im n-dimensionalen reellen Raum'."
@@ -108,8 +108,10 @@ sind die zulässigen Mischoperationen.
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2: Mathematik".
-- ISO 80000-2:2019.
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2: Mathematik".
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
 
 **Sekundär:**
 

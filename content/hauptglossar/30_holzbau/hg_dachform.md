@@ -1,7 +1,7 @@
 ---
 id: dachform
 benennung: Dachform
-kurz: "Die Dachform beschreibt, wie ein Dach von aussen aussieht — wie viele Dachflächen es hat, wie sie zueinander stehen und wie steil sie sind, etwa als Satteldach, Walmdach oder Flachdach."
+kurz: "Die Dachform beschreibt, wie ein Dach von außen aussieht — wie viele Dachflächen es hat, wie sie zueinander stehen und wie steil sie sind, etwa als Satteldach, Walmdach oder Flachdach."
 synonyme: [Dachtyp, Dachgestalt]
 abgelehnte_benennungen: [Dachart, "roof shape", "roof type", "roof form"]
 oberbegriff: null
@@ -17,6 +17,8 @@ quellen_primär:
   - "DIN 1356-1:1995-02 /:2024-04 'Bauzeichnungen – Teil 1: Arten, Inhalte und Grundregeln der Darstellung': zeichnungstechnische Symbolik für die Darstellung der Dachform in Bauaufrissen (Volltext nicht verifiziert)."
   - "buildingSMART, IFC 4.3, IfcRoofTypeEnum: 14 PredefinedType-Werte (FLAT_ROOF, SHED_ROOF, GABLE_ROOF, HIP_ROOF, HIPPED_GABLE_ROOF, GAMBREL_ROOF, MANSARD_ROOF, BARREL_ROOF, RAINBOW_ROOF, BUTTERFLY_ROOF, PAVILION_ROOF, DOME_ROOF, FREEFORM, USERDEFINED, NOTDEFINED) als externes Pendant; https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcRoofTypeEnum.htm. [direkt]"
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.9.9 'Dachteile und ihre Begriffe', S. 173: Positionstafel am axonometrischen Modell eines zusammengesetzten Daches — ① First, ② Verfallanfang, ③ Verfallgrat, ④ Verfallende, ⑤ Walm, ⑥/⑬ Grat, ⑦/⑧ Traufe, ⑨ Gaube, ⑩/⑪ Kehle, ⑫ Krüppelwalm, ⑭ Giebel. Der Berufsschul-Kanon führt Walm, Krüppelwalm und Giebel als **Dachteile** (Bestandteile eines Dachkörpers), nicht als Werte einer Dachform-Klassifikation. **Negativer Befund** (OCR-Volltext-Sweep über das gesamte Werk einschließlich Sachwortverzeichnis, 2026-08-14): das Werk führt weder ein Kapitel noch ein Sachwort 'Dachform'/'Dachformen'; das Wort 'Dachform' erscheint im Volltext ein einziges Mal, als Einflussgröße der Schneelast. Die Dach-Systematik des Werks (Kap. 3.9 'Dachkonstruktionen', S. 169–173) verläuft ausschließlich entlang der **konstruktiven** Achse (Sparrendach / Kehlbalkendach / Pfettendach), nicht entlang der Form-Achse. Der Befund stützt sowohl die im Quellenkonflikt-Block festgehaltene Korpus-Lücke als auch die Trennung der drei Klassifikations-Achsen."
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §9.1.1 'Dachformen' (S. 156, Bild 9.1): Matrix der traditionellen Dachformen — Längsansicht (Giebeldach, Krüppelwalmdach, Walmdach, Zeltdach) kombiniert mit Giebelansicht (Satteldach, Mansarddach, Pultdach)."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015, Kap. 'Dachformen'."
   - "Natterer, J.; Herzog, T.; Volz, M.: Holzbau-Atlas. 4. Aufl., Birkhäuser, Basel 2003, Kap. 'Tragwerke und Dachformen'."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage, Kap. 'Dachformen und Neigungen'."
@@ -34,6 +36,16 @@ quellenkonflikt: |
   bekannt vorausgesetzt: einzelne Dachform-Namen (Pultdach,
   Satteldach, Tonnendach, Sheddach) treten als Eingang in
   Formbeiwerte auf, ohne dass die Formen selbst definiert wären.
+  Die Lücke reicht bis in den Berufsschul-Kanon: das *Tabellenbuch
+  Zimmerer* (Bläsi/Ferdinand, 9. Aufl. 2021; Volltext-Scan liegt
+  Anweiser vor, direkt eingesehen 2026-08-14) führt weder ein Kapitel
+  noch ein Sachwort „Dachform"/„Dachformen" (OCR-Volltext-Sweep
+  über das gesamte Werk einschließlich Sachwortverzeichnis); seine
+  Dach-Systematik in Kap. 3.9 „Dachkonstruktionen" (S. 169–173)
+  verläuft ausschließlich entlang der **konstruktiven** Achse
+  (Sparrendach / Kehlbalkendach / Pfettendach). Die Form-Begriffe
+  erscheinen dort nur als **Dachteile** eines zusammengesetzten
+  Dachkörpers (Walm, Krüppelwalm, Giebel; S. 173, Kap. 3.9.9).
   Eigene Festlegung dieses Glossars: Dachform ist ein
   klassifikatorisches **Merkmal des Daches**, abgeleitet aus der
   Topologie der Dachflächen-Familie 𝒟; ein endlicher Werte-Katalog
@@ -413,6 +425,19 @@ sind im Quellenkonflikt-Block beschrieben.
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5. Kap. 3.9.9 „Dachteile und ihre Begriffe"
+  (S. 173, Positionstafel mit Walm, Krüppelwalm, Giebel als
+  Dachteile), Kap. 3.9 „Dachkonstruktionen" (S. 169–173,
+  Systematik ausschließlich entlang der konstruktiven Achse).
+  Negativ-Befund: kein Kapitel und kein Sachwort „Dachform"
+  (OCR-Volltext-Sweep über das gesamte Werk). Volltext-Scan liegt
+  Anweiser vor; direkt eingesehen 2026-08-14 (seitenweise am Scan-PNG
+  verifiziert).
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §9.1.1 „Dachformen“ (S. 156, Bild 9.1). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-13.
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Auflage, Beuth Verlag 2015, Kap. „Dachformen".
 - Natterer, J.; Herzog, T.; Volz, M.: *Holzbau-Atlas.*
@@ -444,6 +469,10 @@ sind im Quellenkonflikt-Block beschrieben.
 SIA 265, DIN 1356-1, DIN 18531, DIN 18338, DIN EN 1991-1-3,
 DIN EN 1991-1-4, DIN EN 1995-1-1) führt einen geschlossenen
 Begriffseintrag „Dachform“; die Klassifikation existiert
-operativ als bekannt vorausgesetzte Aufzählung. Die hier gewählte
+operativ als bekannt vorausgesetzte Aufzählung. Auch der
+Berufsschul-Kanon führt sie nicht: das *Tabellenbuch Zimmerer*
+(Bläsi/Ferdinand, 9. Aufl. 2021) hat weder Kapitel noch Sachwort
+„Dachform“ und systematisiert das Dach ausschließlich nach der
+Konstruktion (OCR-Volltext-Sweep 2026-08-14). Die hier gewählte
 formale Definition über die Topologie der Dachflächen-Familie ist
 **eigene Festlegung**, konsistent mit allen konsultierten Quellen.

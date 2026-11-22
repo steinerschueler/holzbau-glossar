@@ -342,7 +342,7 @@ Aggregat-Oberbegriff (`bauteil_aggregat`, eigener Eintrag folgt).
     - **Kehlbalken** (`kehlbalken`)
     - **Riegel** (`riegel`)
     - **Schwelle** (`schwelle`)
-    - **Rähm** (`raehm`)
+    - **Einbinder** (`einbinder`)
     - **Pfosten** (Folgearbeit)
   - **Flächenbauteil** (`flaechenbauteil`): 2D-dominant,
     repräsentiert durch begrenzte Trägerfläche + Dicke + Material.

@@ -1,7 +1,7 @@
 ---
 id: dachhaut
 benennung: Dachhaut
-kurz: "Die Dachhaut ist die gedachte glatte Aussenhülle, die sich oben über die oberste Schicht des Dachs spannt — bei geneigten Dächern über die Ziegel, bei Flachdächern über die Abdichtung."
+kurz: "Die Dachhaut ist die gedachte glatte Außenhülle, die sich oben über die oberste Schicht des Dachs spannt — bei geneigten Dächern über die Ziegel, bei Flachdächern über die Abdichtung."
 synonyme: []
 abgelehnte_benennungen: [Dachdeckung, Dacheindeckung, Dachfläche, Dachschräge, Dachaufbau, "roof skin", "roof covering"]
 oberbegriff: null
@@ -15,8 +15,10 @@ quellen_primär:
   - "SIA 232/1:2020 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe) und Abschnitt 2 (Anforderungen an die Dachhaut als wetterabführende Außenschicht)."
   - "SIA 271:2007 'Abdichtungen von Hochbauten', Abschnitt 1 (Begriffe) — für Flachdach-Abdichtung als Dachhaut-Variante."
   - "DIN 18531-1:2017-07 'Abdichtung von Dächern sowie von Balkonen, Loggien und Laubengängen – Teil 1', Abschnitt 3 (Begriffe)."
-  - "DIN 18338:2019-09 'VOB Teil C: Dachdeckungs- und Dachabdichtungsarbeiten', Abschnitt 0 (Hinweise zum Leistungsbereich)."
+  - "DIN 18338:2019-09 'VOB Teil C: ATV Dachdeckungsarbeiten' (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336), Abschnitt 0 (Hinweise zum Leistungsbereich)."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §9.1.2 'Dachhaut' (S. 156–157, Tabelle 9-1): Komponenten eines Daches mit Funktionen — Dacheindeckung (Witterungsschutz), Lattung (trägt die Eindeckung), Konterlattung (Hinterlüftung der Dachhaut, Abstandshalter), Unterspannbahn (Winddichtigkeit, zweite wasserführende Schicht), Dämmung (auf/zwischen/unter den Sparren), Dampfbremse/-sperre (Kondensat, Luftdichtheit), Innenbekleidung (Raumabschluss); Wandel vom belüfteten Kaltdach zum nicht belüfteten Warmdach."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.8 „Dachdeckung“ (S. 167), abdichtender Zweig: „Die Materialien müssen wasserundurchlässig sein und bestehen aus einer geschlossenen wasser- und luftdichten Dachhaut.“ — gedruckter Berufsschul-Beleg der engen, materiellen Lesart (a), eingeschränkt auf den abdichtenden Zweig (Materialien Pappe, Folien, Blech). Ebd. S. 172, Tafel §3.9.7 „Lastabtragung der Dachkonstruktionen“, Spalte Kehlbalkendach: „Kehlbalken bildet mit Sparren zusätzliches unverschiebliches Dreieck und nimmt Druck durch Dachhaut auf“ — zweiter gedruckter Beleg, hier als lasteinleitende äußere Schicht am geneigten Dach."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth Verlag 2015."
   - "Gerner, M.: Fachwerk. DVA, 7. Aufl. 2007."
@@ -51,6 +53,27 @@ quellenkonflikt: |
   Daches. Ein Oberbegriff `hueltflaeche` / `flaeche` ist im Glossar
   noch nicht definiert; bis zu dessen Einführung wird
   `oberbegriff: null` gesetzt.
+
+  **Berufsschul-Befund zur Lesart-Frage** (Bläsi/Ferdinand,
+  *Tabellenbuch Zimmerer*, 9. Aufl. 2021; Volltext-Scan liegt Anweiser
+  vor, direkt eingesehen 2026-08-14). Das Berufsschul-Standardwerk
+  verwendet „Dachhaut" **materiell**, nicht als fiktive Hüllfläche:
+  S. 167 („Die Materialien müssen wasserundurchlässig sein und
+  bestehen aus einer geschlossenen wasser- und luftdichten
+  Dachhaut") und S. 172 („nimmt Druck durch Dachhaut auf"). Es
+  stützt damit die **enge Lesart (a)** gegen die weite Lesart (b)
+  — dieser Eintrag folgt derselben Extension —, geht aber in der
+  Ontologie einen anderen Weg als die hier getroffene Festlegung
+  (Dachhaut = geometrische Hüllfläche, kein materielles Bauteil).
+  Zusätzlich ist der Begriff dort **auf den abdichtenden Zweig
+  eingeschränkt**: die ableitende Ziegeldeckung wird auf S. 167
+  nicht „Dachhaut" genannt. Beides ist ein **Korpus-Befund, kein
+  Norm-Befund**; die Festlegung dieses Eintrags (normativ gestützt
+  auf MBO §32, DIN 18531-1, SIA 232/1 plus Dachdecker-
+  Sprachgebrauch) bleibt unverändert. Der Befund ist als
+  Didaktik-Hinweis relevant: das Subglossar-Pendant muss die
+  materielle Alltagslesart ausdrücklich gegen die geometrische
+  Glossar-Lesart abgrenzen.
 ---
 
 ## Prosa-Definition
@@ -227,11 +250,21 @@ liegende Material wechselt.
   Ingenieur- und Architektenverein, Abschnitt 1.
 - DIN 18531-1:2017-07, „Abdichtung von Dächern sowie von Balkonen,
   Loggien und Laubengängen – Teil 1", Abschnitt 3.
-- DIN 18338:2019-09, „VOB Teil C: Dachdeckungs- und
-  Dachabdichtungsarbeiten", Abschnitt 0.
+- DIN 18338:2019-09, „VOB Teil C: ATV Dachdeckungsarbeiten"
+  (Titel seit 2019 ohne Abdichtungs-Teil, dieser in DIN 18336),
+  Abschnitt 0 (Hinweise für das Aufstellen der Leistungsbeschreibung).
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §9.1.2 „Dachhaut“ (S. 156–157, Tabelle 9-1). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-13.
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, Kap. 3.8 „Dachdeckung" (S. 167,
+  abdichtender Zweig) und Tafel §3.9.7 (S. 172, Spalte
+  Kehlbalkendach). Volltext-Scan liegt Anweiser vor; direkt
+  eingesehen 2026-08-14.
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*
   Lignum, Zürich, aktuelle Auflage.
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*

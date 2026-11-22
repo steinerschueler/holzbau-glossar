@@ -1,7 +1,7 @@
 ---
 id: binder
 benennung: Binder
-kurz: "Ein Binder ist ein im Werk fertig zusammengebautes, meist dreieckiges Trag-Gerüst aus mehreren Hölzern, das in regelmässigen Abständen aufgestellt wird und allein eine ganze Dachbreite überspannt."
+kurz: "Ein Binder ist ein im Werk fertig zusammengebautes, meist dreieckiges Trag-Gerüst aus mehreren Hölzern, das in regelmäßigen Abständen aufgestellt wird und allein eine ganze Dachbreite überspannt."
 synonyme: [Dachbinder, Holzbinder]
 abgelehnte_benennungen: ["truss", "binder", "girder", "roof truss", "trussed rafter", "nail-plate truss", "glulam beam", Dachträger, Dachstuhlbinder, Bindebalken]
 oberbegriff: bauteilgruppe
@@ -123,7 +123,7 @@ lamellenförmigen Holzbauteilen und deren Verbindungen, deren
 Bestandteile zusammen ein statisches Dreieck oder ein parallelgurtiges
 Trag-Aggregat in einer im Tragwerk vorgesehenen Tragebene bilden, das
 zwischen zwei oder mehr Auflagern eine Spannweite überspannt und in
-regelmässigen Achsabständen als Primärtragglied eines Dachtragwerks
+regelmäßigen Achsabständen als Primärtragglied eines Dachtragwerks
 oder eines weitspannenden Deckentragwerks eingesetzt wird.
 
 ## Mathematische Definition
@@ -149,7 +149,7 @@ mit
 
 - **uuid** ∈ 𝒰: technischer Surrogatschlüssel des Binders (Pflicht,
   persistent, RFC 9562 v7); externe Referenzen auf den Binder gehen
-  ausschliesslich auf diese UUID (Aggregat-Wurzel im Sinne von
+  ausschließlich auf diese UUID (Aggregat-Wurzel im Sinne von
   `bauteilgruppe`).
 - **bestandteile** ⊂ 𝓑, |bestandteile| ≥ 2: die endliche Menge der
   Holzbauteile, die den Binder konstituieren (z. B. zwei Sparren und
@@ -187,11 +187,11 @@ und den Konsistenzbedingungen
    Mitgliedschaft, kaskadische Lebenszyklus-Bindung,
    Hüllen-Inklusion, azyklische Verschachtelung).
 2. **Verbindungs-Inzidenz**: jede Verbindung v ∈ verbindungen
-   referenziert ausschliesslich Bauteile aus bestandteile,
+   referenziert ausschließlich Bauteile aus bestandteile,
    ```
    ∀ v ∈ verbindungen: bauteile(v) ⊆ bestandteile
    ```
-   wobei bauteile(v) die Bauteilmenge der Verbindung v gemäss
+   wobei bauteile(v) die Bauteilmenge der Verbindung v gemäß
    `verbindung` bezeichnet.
 3. **Zusammenhang**: der ungerichtete Inzidenzgraph
    G(Bᵢ):= (bestandteile, E) mit
@@ -224,7 +224,7 @@ G_W(Bᵢ):= lage(G_lokal(huelle)) ⊂ ℝ³
 
 (transformierte Hülle); die alternative Repräsentation als Vereinigung
 der Bestandteils-Punktmengen ⋃_{b ∈ bestandteile} G_W(b) ist eine
-abgeleitete Grösse und im Allgemeinen eine echte Teilmenge von
+abgeleitete Größe und im Allgemeinen eine echte Teilmenge von
 G_W(Bᵢ) (siehe `bauteilgruppe` Bedingung 3).
 
 ## Wohldefiniertheit
@@ -262,7 +262,7 @@ G_W(Bᵢ) (siehe `bauteilgruppe` Bedingung 3).
 - **Konsistenz mit `verbindung`**: Jede Verbindung v ∈ verbindungen
   ist eine Verbindung im Sinne von `verbindung`; ihre eigenen
   Konsistenzbedingungen (insbesondere das Mischungsverbot
-  verschiedener Wirkungsmechanismen pro Verbindung gemäss SIA 265
+  verschiedener Wirkungsmechanismen pro Verbindung gemäß SIA 265
   Anhang A) gelten unverändert.
 - **Konsistenz mit `bauteil`**: Jedes b ∈ bestandteile ist ein
   Bauteil im Sinne von `bauteil` mit eigener Identität, Lage,
@@ -287,7 +287,7 @@ Der Binder ist das paradigmatische **werks-vorgefertigte
 Trag-Aggregat** im Holzbau. Sein Wesen liegt in drei Merkmalen, die
 ihn von einem einzelnen `bauteil` (z. B. Sparren, Pfette, BSH-Träger)
 und von einem nicht-exklusiv klassifizierten `bausystem` (z. B.
-Tragwerk, Aussteifungssystem) gleichermassen unterscheiden:
+Tragwerk, Aussteifungssystem) gleichermaßen unterscheiden:
 
 1. **Mehrteiligkeit mit eigener Identität**: ein Binder besteht aus
    mehreren Holzbauteilen, die zusammen ein Aggregat mit eigener
@@ -380,7 +380,7 @@ Timber-Framing-Terminologie ein **horizontales Quer-Bauteil zur
 Versteifung der Joists** („a timber joist at the bases of the beams
 to strengthen them") und ist somit ein einzelnes Bauteil — also nicht
 das mehrteilige deutsche „Binder"-Aggregat. Das deutsche „Binder"
-heisst im Englischen je nach Kontext „truss" (statisches Dreieck,
+heißt im Englischen je nach Kontext „truss" (statisches Dreieck,
 NPB), „girder" oder „roof girder" (Hauptträger im Hauptträger-
 Nebenträger-System) oder „glulam beam" (für den BSH-Binder, sofern
 nicht fachwerkartig). Im Glossar werden alle vier Anglizismen als
@@ -406,7 +406,7 @@ Oberbegriff trifft.
   - **Lokales Koordinatensystem** (`lokales_koordinatensystem`).
   - **Hülle** (`polyeder` oder Bounding-Volume).
 - **Spezialisierungen** (eigene Einträge folgen, trigger-basiert
-  gemäss Folgearbeit-Block):
+  gemäß Folgearbeit-Block):
   - `nagelplattenbinder` — Bauart-Achse, DIN-EN-14250-Anker.
   - `sparrenbinder` — statisches System.
   - `pfettenbinder` — statisches System.

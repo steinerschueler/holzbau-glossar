@@ -17,6 +17,7 @@ quellen_primär:
   - "DIN EN 13986:2015-06, 'Holzwerkstoffe zur Verwendung im Bauwesen', Abschnitt 5 (Plattenmaße: Länge × Breite × Dicke); standardisierte Plattenformate z. B. 2500 × 1250 mm, mit Plattenlängsrichtung parallel zur 2500-mm-Kante."
 quellen_sekundär:
   - "SIA 265:2021 'Holzbau', §1.1.19 'OSB-Platte' — 'die Strands in den Aussenschichten sind parallel zur Plattenlaenge oder -breite ausgerichtet'; CH-Sekundaer-Anker (Definition via SN EN 300). [direkt]"
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §2.4.3 (S. 37): herstellungsseitiger Beleg der Richtungs-Konvention — 'Die Richtung der Deckschicht-Strands ist vorwiegend parallel zur Fertigungsrichtung ausgerichtet, während die Mittelschicht-Strands quer dazu ausgerichtet sind'; die Plattenlängsrichtung fällt mit der Fertigungsrichtung der Endlos-Platte zusammen."
   - "Niemz, P.; Sonderegger, W.: Physik des Holzes und der Holzwerkstoffe. Hanser, München 2017, Kap. 7 (OSB, Strand-Orientierung)."
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau – Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 3 (OSB)."
   - "EGGER Holzwerkstoffe: Datenblatt EGGER OSB 4 TOP, EGGER OSB 3 (Plattenformate, Plattenlängsrichtung)."
@@ -256,6 +257,11 @@ parallel zur Schubbeanspruchung zu maximieren.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §2.4.3 (S. 37: Deckschicht-Strands
+  parallel zur Fertigungsrichtung). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-14.
 - Niemz, P.; Sonderegger, W.: *Physik des Holzes und der
   Holzwerkstoffe.* Hanser, München 2017.
 - Blass, H. J.; Sandhaas, C.: *Ingenieurholzbau – Grundlagen der

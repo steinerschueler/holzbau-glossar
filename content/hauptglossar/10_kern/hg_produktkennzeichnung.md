@@ -13,11 +13,12 @@ subglossar_pendant: notwendig
 quellen_primär:
   - "DIN 4074-1:2012-06, 'Sortierung von Holz nach der Tragfähigkeit — Teil 1: Nadelschnittholz'. Anforderungen an Sortier- und Werks-Kennzeichnung (Sortierklasse S 7 / S 10 / S 13, Holzart-Kurzzeichen, Hersteller-Code)."
   - "DIN EN 14080:2013-09, 'Holzbauwerke — Brettschichtholz und Balkenschichtholz — Anforderungen', insbesondere Anhang ZA (CE-Kennzeichnung): Hersteller-Identifikation, Festigkeitsklasse, Klebstofftyp, Produktionswoche, Notifikations-Stelle, WPK-Zertifikatnummer."
-  - "DIN EN 14081-1:2019-10, 'Holzbauwerke — Nach Festigkeit sortiertes Bauholz mit rechteckigem Querschnitt — Teil 1: Allgemeine Anforderungen'. CE-Kennzeichnung sortierten Vollholzes."
+  - "DIN EN 14081-1:2019-10, 'Holzbauwerke — Nach Festigkeit sortiertes Bauholz mit rechteckigem Querschnitt — Teil 1: Allgemeine Anforderungen'. CE-Kennzeichnung sortierten Vollholzes. [via: Colling §1.5, Bilder 1.3/1.4]"
   - "DIN EN 14374:2005-02, 'Holzbauwerke — Furnierschichtholz für tragende Zwecke — Anforderungen' (LVL, CE-Kennzeichnung)."
   - "Verordnung (EU) Nr. 305/2011 (Bauproduktenverordnung, CPR), Artikel 8–11 (CE-Kennzeichnung), Artikel 4 (Leistungserklärung DoP)."
   - "ISO 16739-1:2024, 'Industry Foundation Classes (IFC) — Part 1: Data schema', Material-Resource und Property Sets `Pset_MaterialWoodBasedBeam`, `Pset_MaterialWoodBasedPanel`."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §1.5 'Kennzeichnung' (S. 11–13) und §1.6 'Leistungserklärung der Hersteller' (S. 14): Zwei-Zeichen-Systematik Ü-Zeichen (Bauprodukte im Anwendungsbereich der Landesbauordnungen; Angaben Hersteller, technische Regel, ggf. Zertifizierungsstelle; wird mit Einführung europäischer Produktnormen durch das CE-Zeichen ersetzt) vs. CE-Zeichen (Bauproduktengesetz/EU-Bauproduktenverordnung; Inhalt je Technischer Spezifikation); Bild 1.3 (S. 13): vollständiges CE-Etikett für Vollholz nach DIN EN 14081-1 (CE-Symbol, Kennnummer der notifizierten WPK-Zertifizierungsstelle, Hersteller-Name/-Anschrift, zwei Jahresziffern der Erstanbringung, Referenznummer der Leistungserklärung, Nummer der Europäischen Norm, eindeutiger Kenncode des Produkttyps, Beschreibung, Verwendungszweck, Leistungs-Stufen/-Klassen wie Holzart, Festigkeitsklasse, Brandverhalten, biologische Dauerhaftigkeit); Bild 1.4 (S. 13): reduzierte CE-Stempel-Kennzeichnung am Produkt (Herstellerkennung, Codenummer des Begleitdokuments, 'Trocken sortiert' sofern zutreffend, Kenn-Nummer der notifizierten Stelle, Buchstabe 'M' bei maschineller Sortierung, Festigkeitsklasse oder Sortierklasse + Sortiernorm); §1.6: Leistungserklärungs-Pflicht bei harmonisierter technischer Spezifikation (DIN-EN-Norm oder EAD), Muster-Leistungserklärung Vollholz C24 (Bild 1.5, S. 14: Kenncode des Produkttyps, Verwendungszweck, Hersteller, System zur Bewertung der Leistungsbeständigkeit 2+, harmonisierte Produktnorm, notifizierte Stelle, erklärte Leistungen 'C24 nach EN 338', Dauerhaftigkeitsklasse nach DIN EN 350-2, Brandverhalten D-s2, d0)."
   - "Mönck, W.; Rug, W.: Holzbau — Bemessung und Konstruktion. 16. Auflage, Beuth, Berlin 2015, Kap. 3 (Werkstoff Holz, Sortierung, Klassifikation)."
   - "Blass, H. J.; Sandhaas, C.: Ingenieurholzbau — Grundlagen der Bemessung. KIT Scientific Publishing, Karlsruhe 2016, Kap. 2 (Holz als Werkstoff)."
   - "Holzbau Deutschland — Informationsdienst Holz: Holzbau-Handbuch, Reihe 1 (Werkstoff Holz), Teil 1."
@@ -333,6 +334,14 @@ Produktkennzeichnung geführt.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §1.5 „Kennzeichnung" (S. 11–13:
+  Ü-Zeichen vs. CE-Zeichen, CE-Etikett und CE-Stempel für
+  Vollholz nach DIN EN 14081-1, Bilder 1.3/1.4) und §1.6
+  „Leistungserklärung der Hersteller" (S. 14, Muster-DoP
+  Bild 1.5). Volltext-Scan liegt Anweiser vor; direkt eingesehen
+  2026-08-14.
 - Mönck, W.; Rug, W.: *Holzbau — Bemessung und Konstruktion.*
   16. Auflage, Beuth, Berlin 2015.
 - Blass, H. J.; Sandhaas, C.: *Ingenieurholzbau — Grundlagen

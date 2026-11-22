@@ -11,14 +11,14 @@ abgrenzung_zu: [gerade, strecke, halbgerade, vektor, faserrichtung]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren), Bezeichnungen für Achsen, Symmetrieachsen und Koordinatenachsen."
-  - "ISO 80000-2:2019, Abschnitt 2 'Mathematics – Geometry', Eintrag 'axis'."
+  - "DIN EN ISO 80000-2:2023-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitte 17 (Koordinatensysteme) und 18 (Skalare, Vektoren und Tensoren). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitte 16 (Coordinate systems) und 17 (Scalars, vectors and tensors): Koordinatenachsen als vorausgesetzter Begriff (Nr. 2-17.7, Bilder 4 und 5). Ein eigener Eintrag zur Achse fehlt, Symmetrieachsen nennt die Norm nicht. [direkt]"
 quellen_sekundär:
   - "Bronstein, I. N. et al.: Taschenbuch der Mathematik. Kap. 3.5.1 'Geraden im Raum' und Kap. 3.6 'Symmetrien' (Symmetrie- und Drehachsen)."
   - "Bär, C.: Elementargeometrie. Springer Spektrum, Kap. 4 (Geraden und Achsen)."
   - "Fischer, G.: Lineare Algebra. 19. Aufl., Springer Spektrum 2020, Kap. 4 (Eigenwerte, Drehachsen)."
 quellenkonflikt: |
-  Weder DIN ISO 80000-2 noch die Holzbau-Normen (SIA 265, EN 1995-1-1,
+  Weder DIN EN ISO 80000-2 noch die Holzbau-Normen (SIA 265, EN 1995-1-1,
   DIN 1052) liefern eine geschlossene Definition des Begriffs „Achse".
   In allen konsultierten Quellen wird „Achse" vorausgesetzt und durch
   ihre Rolle qualifiziert: Symmetrieachse, Drehachse, Bezugsachse,
@@ -201,9 +201,11 @@ sie wäre eine Spezialisierung „Bauwerksachse" oder
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2:
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2:
   Mathematik".
-- ISO 80000-2:2019, „Quantities and units – Part 2: Mathematics".
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
 
 **Sekundär:**
 

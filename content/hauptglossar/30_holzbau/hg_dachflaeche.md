@@ -14,6 +14,9 @@ quellen_primär:
   - "DIN 18531-1:2017-07, Abschnitt 3 (Begriffe): Dachfläche als geometrische Bezugsfläche der Abdichtung."
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen)."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 10.16 'Dachverschneidung – Dachausmittlung', S. 305, 306, 307, 311: Die Dachfläche ist das Zielobjekt der Dachausmittlung — 'Dachausmittlung: wahre Größe der Dachflächen. Beachte: Grat- und Kehlsparren begrenzen jeweils zwei Dachflächen gemeinsam und können daher von der einen in die andere Dachfläche durch Umprojektion übertragen werden.' (S. 305); 'Verbindung der Schnittpunkte → wahre Größe der Dachfläche' (S. 306, Schritt 7); 'Firstlinien von Anbau 2 und 3 erzeugen Durchstoßpunkte in der Dachfläche 1. Wahre Längen in der Dachfläche können im Profil bei s₁ abgegriffen werden.' (S. 307, Schritt 9); 'Die zugehörige, wahre Höhe der Dachfläche kann dann an der schrägen Linie aus dem Profil entnommen werden.' (S. 311). Zeichnerisch-geometrische Sicht: die Dachfläche erscheint im Grundriss verkürzt und erst in der Ausmittlung in wahrer Größe; die Aussage 'begrenzen jeweils zwei Dachflächen gemeinsam' ist das berufssprachliche Pendant zur Schnittstrecken-Bedingung von `first`, `grat` und `kehle`."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 1.13 'Rechnerischer Abbund', S. 28, 30, 31, 32: Die Formelzeichen-Legenden führen die Dachfläche als eigene, gegen die Walmfläche abgesetzte ebene Teilfläche mit eigenem Neigungswinkel — 'α_D = Dachneigung / α_W = Neigung der Walmfläche; α_D ≠ α_W' (S. 28), 'α_D = Neigung der Dachfläche / α_W = Neigung der Walmfläche' (S. 31), 'α₁; α₂ = Neigung der Dachflächen' (S. 32); ferner 'h_nD = Höhe des Sparrens in der Dachfläche / h_nW = Höhe des Sparrens in der Walmfläche' (S. 28) und 'ω_1,D; ω_2,D; ω_1,W; ω_2,W = wahre Größe der Winkel β_1,D, β_2,D, β_1,W, β_2,W in der Dachfläche' (S. 31; Überschrift S. 30: 'Abgratungsmaße, Gratsparrenlängen sowie Winkel ω in der Dachfläche'). Die Dachfläche ist damit im Praktiker-Apparat Bezugsebene für Winkel- und Längenmessung, nicht Materialschicht."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.7.5 'Flachdach', S. 166: Belegt komplementär die abgelehnte Benennung 'Dachhaut' als materielle Schicht — in den Schichtaufbau-Legenden steht 'Dachhaut' als oberste Lage über Dämmschicht, Dampfsperre, Stahlbeton und Putz; Unterscheidungsmerkmal Normaldach/Umkehrdach ist 'Dämmschicht unter der Dachhaut' bzw. 'Dämmschicht auf der Dachhaut'. Stützt die Festlegung dieses Eintrags, Geometrie (Dachfläche) und Material (Dachhaut) zu trennen."
   - "Mönck, W.: Schäden an Holzkonstruktionen. 4. Aufl., Verlag Bauwesen 2000, Kap. Dachtragwerke."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Dach'."
   - "Wikipedia, Lemma 'Dach' und 'Dachhaut' (abgerufen 2026-05-07) — als Korpusbeleg, nicht als Autorität."
@@ -28,6 +31,20 @@ quellenkonflikt: |
   heißt Dachhaut (eigener Eintrag). Diese Festlegung ist konsistent mit
   allen konsultierten Quellen und löst die in Fachglossaren vorhandene
   Vermischung Geometrie ↔ Material auf.
+
+  Bestätigung durch das Tabellenbuch Zimmerer (Bläsi/Ferdinand,
+  9. Aufl. 2021; Volltext-Scan liegt Anweiser vor, direkt eingesehen
+  2026-08-14): Auch das Berufsschul-Standardwerk gibt keine
+  geschlossene Definition, trennt die beiden Lesarten aber im
+  Sprachgebrauch konsequent. „Dachfläche" steht dort durchgehend
+  geometrisch — als Bezugsebene für Neigungswinkel (α_D gegenüber
+  α_W, S. 28/31/32), als Träger von Winkeln in wahrer Größe (ω,
+  S. 30/31) und als Zielobjekt der Dachausmittlung („wahre Größe
+  der Dachflächen", S. 305–311). „Dachhaut" steht ausschließlich
+  materiell — als oberste Schicht im Dachaufbau (S. 166) und als
+  lastabtragende Schale („nimmt Druck durch Dachhaut auf", S. 172,
+  Kap. 3.9.7). Die Trennung dieses Eintrags ist damit im
+  Praktiker-Korpus gedeckt und nicht bloß eigene Setzung.
 ---
 
 ## Prosa-Definition
@@ -152,6 +169,17 @@ Dachfläche bei einspringendem oder ausspringendem Eck).
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5. Kap. 1.13 „Rechnerischer Abbund"
+  (S. 28–32: Dachfläche vs. Walmfläche, Neigungswinkel α_D/α_W,
+  Winkel ω in wahrer Größe), Kap. 3.7.5/3.9.7 (S. 166, 172:
+  „Dachhaut" als materielle Schicht — Abgrenzungs-Beleg),
+  Kap. 10.16 „Dachverschneidung – Dachausmittlung" (S. 305–311:
+  wahre Größe der Dachflächen; gemeinsame Begrenzung zweier
+  Dachflächen durch Grat- und Kehlsparren). Volltext-Scan liegt
+  Anweiser vor; direkt eingesehen 2026-08-14 (seitenweise am Scan-PNG
+  verifiziert).
 - Mönck, W.: *Schäden an Holzkonstruktionen.* 4. Auflage, Verlag
   Bauwesen, Berlin 2000.
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.* DVA,

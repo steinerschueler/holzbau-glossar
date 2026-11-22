@@ -1,21 +1,23 @@
 ---
 id: fusspfette
 benennung: Fußpfette
-kurz: "Eine Fusspfette ist ein langer waagrechter Balken unten am Dachrand, auf dem die unteren Enden der Sparren aufliegen und der ihre Last in die Wand weitergibt."
-synonyme: [Mauerlatte, Schwellpfette, Traufpfette]
+kurz: "Eine Fußpfette ist ein langer waagrechter Balken unten am Dachrand, auf dem die unteren Enden der Sparren aufliegen und der ihre Last in die Wand weitergibt."
+synonyme: [Schwellpfette, Traufpfette, Mauerlatte]
 abgelehnte_benennungen: [Fußbalken, "wall plate", "eaves purlin", Mauerbank, Mauerschwelle]
 oberbegriff: pfette
 begriffstyp: bauteilrolle
 voraussetzungen: [pfette, bauteilachse, traufe, dachkante, firstpfette, kerve, bezugsebene, toleranzen]
-abgrenzung_zu: [firstpfette, mittelpfette, sparren, schwelle, raehm, traufe, bezugsebene, knagge]
+abgrenzung_zu: [firstpfette, mittelpfette, sparren, schwelle, einbinder, traufe, bezugsebene, knagge]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Fusspfette' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §5 'Bauteile und Strukturen' behandelt nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5). Vorausgesetzter Berufsbegriff. [direkt]"
+  - "SIA 265:2021 'Holzbau', Schweizerischer Ingenieur- und Architektenverein, führt 'Fußpfette' nicht als Fachausdruck (§1.1 / Anhang G) noch als Lemma; §5 'Bauteile und Strukturen' behandelt nur generische Tragglieder (Träger §5.1, Scheiben §5.4, Platten §5.5). Vorausgesetzter Berufsbegriff. [direkt]"
   - "SIA 232/1:2020 'Geneigte Dächer', Abschnitt 1 (Begriffe und geometrische Grundlagen), Traufseitige Pfette."
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 und 6, Fußpfette als unterste Pfette des Dachtragwerks."
   - "DIN 1052:2008-12, Abschnitt 8 und 12, Fußpfette / Mauerlatte."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.9.3–3.9.6 'Dachkonstruktionen', S. 170–172: gedruckte Funktionszuschreibung der Fußpfette im Berufsschul-Kanon — ⑤ 'Fußpfette (Sparrenauflage, Weiterleitung der Lasten in die Außenwände)' (S. 172, Hängewerk-Legende) und ⑧ 'Fußpfette, Schwelle (Aufnahme der Dachlast und Weiterleitung in die Außenwände)' (S. 170, einfach stehendes Pfettendach); ③ Fußpfette am dreifach stehenden Pfettendach (S. 171). Die Doppelbenennung 'Fußpfette, Schwelle' stützt Collings Wortgebrauch 'Schwelle (Fußpfette)'; dieselbe Legende führt jedoch ⑤ 'Schwelle' zugleich als Auflagerholz unter Pfosten/Stiel (S. 170), und der Schnitt des zweifach stehenden Pfettendachs beschriftet 'Fußpfette' und 'Schwelle' als zwei verschiedene Hölzer (S. 170) — 'Schwelle' ist im Berufsschul-Kanon polysem und taugt nicht als unqualifiziertes Synonym der Fußpfette. Negativer Befund (OCR-Volltext-Sweep über das gesamte Werk, 2026-08-14): 'Mauerlatte' kommt im Werk nicht vor; der deutsche Berufsschul-Kanon benennt das Bauteil durchgängig 'Fußpfette'."
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §9.2.2 (S. 160) und Beispiel 9-1 (S. 171): am Sparrenfußpunkt wird bei ein- und mehrstieligen Pfettendächern ohne Kniestock das feste (zweiwertige) Auflager 'an der Schwelle (Fußpfette)' ausgebildet — es nimmt die horizontalen Kräfte (z. B. Wind) auf, die übrigen Auflager (First- und Mittelpfette) gelten als horizontal verschieblich; Beispiel 9-1 führt die Fußpfette als 'Schwelle C 24'. Collings 'Schwelle'-Wortgebrauch meint hier das Dach-Fußpunkt-Element, nicht die Wand-Schwelle."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Pfettendach' und 'Mauerlatte'."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise'."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke', § Pfettendach."
@@ -56,7 +58,12 @@ quellenkonflikt: |
     (Mauerwerk, Holzunterkonstruktion, Stahlbeton) ist.
   - **Mauerlatte** wird als **eingeschränktes Synonym** geführt
     und gilt streng nur, wenn die Fußpfette unmittelbar auf
-    Mauerwerk oder Stahlbeton aufliegt. Im weiteren Sinne wird
+    Mauerwerk oder Stahlbeton aufliegt. **Synonym-Ranking
+    (R-Schritt, Anweiser-Entscheid 2026-08-14):** „Mauerlatte" steht
+    seit dem Tabellenbuch-Negativ-Befund (0 Treffer im
+    DE-Berufsschul-Standardwerk, siehe unten) am **Ende** der
+    `synonyme:`-Liste — die Annahme, sie sei die dominante
+    DE-Benennung, ist geschwächt. Im weiteren Sinne wird
     der Begriff jedoch in der Praxis synonym verwendet; die
     Domänen-Schicht erlaubt deshalb beide Begriffe als
     Bezeichner desselben Bauteils und annotiert die
@@ -71,6 +78,32 @@ quellenkonflikt: |
   Quellen und löst die Mehrdeutigkeit pragmatisch: ein
   geometrischer Hauptbegriff, drei kontextabhängige
   Bezeichnungs-Synonyme.
+
+  **Berufsschul-Befund (Bläsi/Ferdinand, Tabellenbuch Zimmerer,
+  9. Aufl. 2021; Volltext-Scan liegt Anweiser vor, direkt eingesehen
+  2026-08-14).** Zwei Beobachtungen, die die obige Synonym-Arbitrage
+  betreffen:
+
+  - **„Schwelle" ist im Berufsschul-Kanon polysem.** Die Legende des
+    einfach stehenden Pfettendachs führt ⑧ „Fußpfette, Schwelle" als
+    Doppelbenennung **desselben** Bauteils und zugleich ⑤ „Schwelle"
+    als das Auflagerholz unter Pfosten/Stiel (S. 170); der Schnitt
+    des zweifach stehenden Pfettendachs beschriftet „Fußpfette" und
+    „Schwelle" als **zwei verschiedene** Hölzer (S. 170). Der
+    Wortgebrauch bestätigt damit Collings „Schwelle (Fußpfette)"
+    als berufssprachlich real, belegt aber zugleich, warum
+    „Schwelle" hier **nicht** als Synonym geführt wird: die
+    Benennung ist ohne Kontext nicht eindeutig. Die Trennung
+    Fußpfette ↔ `schwelle` (siehe `abgrenzung_zu`) bleibt bestehen.
+  - **„Mauerlatte" fehlt im Werk vollständig** (OCR-Volltext-Sweep
+    über das gesamte Werk, 2026-08-14 — kein Treffer). Das
+    deutschsprachige Berufsschul-Standardwerk benennt das Bauteil
+    ausschließlich „Fußpfette" (bzw. „Fußpfette, Schwelle"). Der
+    Befund schwächt die Annahme, „Mauerlatte" sei die dominante
+    DE-Benennung; er stützt die hier getroffene Wahl von
+    „Fußpfette" als Hauptbenennung und lässt „Mauerlatte" als
+    eingeschränktes, auf die mineralische Auflagerung bezogenes
+    Synonym unberührt.
 ---
 
 ## Prosa-Definition
@@ -126,7 +159,7 @@ Wesentliche abgeleitete Größen:
   Trauf-Höhe zusammenfällt; Δz < 0 möglich, wenn die Fußpfette
   unter der Traufkante liegt (z. B. eingelassene Mauerlatte).
 - **Auflagerart**: Annotation, ob die Fußpfette auf Mauerwerk /
-  Stahlbeton (dann „Mauerlatte"), auf Holzkonstruktion (Rähm,
+  Stahlbeton (dann „Mauerlatte"), auf Holzkonstruktion (Einbinder,
   Stuhlschwelle) oder freitragend (zwischen Stützen) aufgelagert
   ist.
 
@@ -194,9 +227,9 @@ variiert mit ihnen:
   Sehr häufig im **Massivbau-Dachstuhl** (gemauerte Außenwand,
   Holz-Dachstuhl).
 - **Auflagerung auf Holzkonstruktion**: Fußpfette auf einer
-  hölzernen Wand (Ständerwand, Riegelwand mit Rähm-
+  hölzernen Wand (Ständerwand, Riegelwand mit Einbinder-
   Obergurt) oder auf einer Stuhlkonstruktion. In manchen
-  Bauweisen übernimmt das **Rähm** der Wand direkt die
+  Bauweisen übernimmt der **Einbinder** der Wand direkt die
   Funktion der Fußpfette.
 - **Freitragende Auflagerung zwischen Stützen**: die Fußpfette
   überspannt zwischen Stützen (z. B. bei aufgeständerten
@@ -273,9 +306,9 @@ Fachliteratur vor.
     Auflager der Fußpfette als „Mauerlatte". Mauer und
     Fußpfette sind durch Mauerlatten-Anker oder Schwerlast-
     dübel kraftschlüssig verbunden.
-  - **Wand / Rähm**: bei Holzwänden übernimmt das Rähm
+  - **Wand / Einbinder**: bei Holzwänden übernimmt der Einbinder
     teilweise die Auflagerfunktion; die Fußpfette liegt auf
-    dem Rähm.
+    dem Einbinder.
   - **Stuhlsäule** / **Stuhlschwelle**: bei aufgeständerten
     Pfettendächern Auflagerung der Fußpfette auf einer
     Stuhlkonstruktion.
@@ -294,11 +327,11 @@ Fachliteratur vor.
     Die Bezeichnung „Schwellpfette" steht trotz des
     Bestandteils „Schwelle" für eine Pfette, nicht für eine
     Schwelle.
-  - **Rähm** (`raehm`): oberster horizontaler Längsträger einer Wand. In manchen
-    Konstruktionen übernimmt das Rähm die Funktion einer
+  - **Einbinder** (`einbinder`): oberster horizontaler Längsträger einer Wand. In manchen
+    Konstruktionen übernimmt der Einbinder die Funktion einer
     Fußpfette; saubere Trennung zimmermannssprachlich:
-    Rähm gehört zur Wand, Fußpfette gehört zum Dachtragwerk.
-    Ein Bauteil kann nicht gleichzeitig Rähm und Fußpfette
+    Einbinder gehört zur Wand, Fußpfette gehört zum Dachtragwerk.
+    Ein Bauteil kann nicht gleichzeitig Einbinder und Fußpfette
     sein, sondern wird je nach konstruktiver Funktion
     der einen oder anderen Rolle zugeordnet.
   - **Traufe** (`traufe`): die geometrische Dachkante am
@@ -317,6 +350,18 @@ Fachliteratur vor.
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5. Kap. 3.9.3–3.9.6 „Dachkonstruktionen"
+  (S. 170–172): Legende ⑤ „Fußpfette (Sparrenauflage, Weiterleitung
+  der Lasten in die Außenwände)" (S. 172), Legende ⑧ „Fußpfette,
+  Schwelle" (S. 170), Legende ③ Fußpfette am dreifach stehenden
+  Pfettendach (S. 171); Negativ-Befund „Mauerlatte" (OCR-Sweep über
+  das gesamte Werk, kein Treffer). Volltext-Scan liegt Anweiser vor;
+  direkt eingesehen 2026-08-14 (seitenweise am Scan-PNG verifiziert).
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §9.2.2 (S. 160, zweiwertiges Auflager „Schwelle (Fußpfette)“). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-13.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Aktuelle Auflage.
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*

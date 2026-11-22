@@ -40,7 +40,7 @@ weniger direktem Werkstatt-Bezug als beim Punkt.
 ## Werkplan-Skizze: eine Strecke wird zur Sparrenlänge
 
 Die folgende Skizze zeigt einen Sparren im Werkplan-Schnitt, dessen
-Achse vom **Sparrenfusspunkt** am Vordach zum **Firstpunkt** am
+Achse vom **Sparrenfußpunkt** am Vordach zum **Firstpunkt** am
 Sparrenkopf läuft. Daneben ist die Bemaßung „Sparrenlänge"
 eingetragen — eine Maßlinie mit zwei Maßpfeilen und der Maßzahl
 zwischen Maßhilfslinien, die von den beiden Bauteil-Punkten
@@ -60,7 +60,7 @@ geometrischen Strecke zwischen zwei Punkten am Bauteil.
   ZWECK
     Eine Strecke zwischen zwei benannten Bauteil-Punkten wird als
     Sparrenlaenge bemaßt. Sichtbar werden: die zwei Endpunkte
-    (Sparrenfusspunkt F, Firstpunkt P_F), die geometrische Strecke
+    (Sparrenfußpunkt F, Firstpunkt P_F), die geometrische Strecke
     als Sparren-Mittellinie (gestrichelt) und die Bemaßung
     (Maßlinie mit Maßpfeilen und Maßzahl, Maßhilfslinien).
   GLOBALE STRUKTUR
@@ -83,7 +83,7 @@ geometrischen Strecke zwischen zwei Punkten am Bauteil.
       Rolle:      font-style=italic, font-size=11, Farbe #666
   GEOMETRIE-PARAMETER
     Dachneigung alpha = 30 Grad. tan(alpha) ca. 0.577.
-    Sparrenachse vom Sparrenfusspunkt F=(120, 340) zum
+    Sparrenachse vom Sparrenfußpunkt F=(120, 340) zum
     Firstpunkt P_F=(560, 86). dx=440, dy=-254, Laenge ca. 508 px.
     Sparrenachse als gestrichelte Linie (stroke-dasharray 6 3).
     Sparren-Polygon (Achsen-rechtwinklige Stirnen, Hoehe 28 px):
@@ -97,8 +97,8 @@ geometrischen Strecke zwischen zwei Punkten am Bauteil.
     Firstpfette (Hintergrund-Auflager):
       rect (540, 86) bis (590, 124). Sparren liegt darauf auf,
       Firstpunkt P_F=(560, 86) liegt an der Sparrenachsen-Endkante.
-    Fusspfette (knapp angedeutet am Sparrenfusspunkt-Niveau):
-      rect (104, 340) bis (154, 378). Sparrenfusspunkt F=(120, 340)
+    Fußpfette (knapp angedeutet am Sparrenfußpunkt-Niveau):
+      rect (104, 340) bis (154, 378). Sparrenfußpunkt F=(120, 340)
       sitzt am Pfettenoberkanten-Niveau.
     Bemaßung "Sparrenlaenge" (parallel zur Sparrenachse, achsen-
     parallel versetzt um 38 px senkrecht zur Achse, sparrenoberseitig):
@@ -133,20 +133,20 @@ geometrischen Strecke zwischen zwei Punkten am Bauteil.
   ====================================================================
   -->
   <!-- ============ AUFLAGER (zuerst, damit Sparren oben liegt) ============ -->
-  <!-- Fusspfette am Sparrenfusspunkt (Querschnitt im Profil) -->
+  <!-- Fußpfette am Sparrenfußpunkt (Querschnitt im Profil) -->
   <rect x="104" y="340" width="50" height="38" fill="#d4a76a" stroke="#6a4c2a" stroke-width="1.5"/>
   <!-- Firstpfette am Firstpunkt (Querschnitt im Profil) -->
   <rect x="540" y="86" width="50" height="38" fill="#d4a76a" stroke="#6a4c2a" stroke-width="1.5"/>
   <!-- ============ SPARREN (Profil-Polygon, Stirnen rechtwinklig zur Achse) ============ -->
   <polygon points="113,327 553,73 567,99 127,353" fill="#f5e6c8" stroke="#6a4c2a" stroke-width="1.5"/>
-  <!-- Sparrenachse als gestrichelte Mittellinie (vom Sparrenfusspunkt zum Firstpunkt) -->
+  <!-- Sparrenachse als gestrichelte Mittellinie (vom Sparrenfußpunkt zum Firstpunkt) -->
   <line x1="120" y1="340" x2="560" y2="86" stroke="#2c3e50" stroke-width="1" stroke-dasharray="6 3"/>
   <text x="370" y="225" text-anchor="middle" font-style="italic" font-size="11" fill="#666">Sparrenachse</text>
   <!-- ============ BAUTEIL-PUNKTE (rote Punkte, sg_punkt-Konvention) ============ -->
-  <!-- Sparrenfusspunkt F (am Vordach-Ende, auf Fusspfetten-Oberkante) -->
+  <!-- Sparrenfußpunkt F (am Vordach-Ende, auf Fußpfetten-Oberkante) -->
   <circle cx="120" cy="340" r="4" fill="#c0392b" stroke="#2c3e50" stroke-width="1"/>
   <text x="116" y="372" text-anchor="end" fill="#c0392b" font-weight="bold">F</text>
-  <text x="116" y="386" text-anchor="end" font-style="italic" font-size="11" fill="#666">Sparrenfusspunkt</text>
+  <text x="116" y="386" text-anchor="end" font-style="italic" font-size="11" fill="#666">Sparrenfußpunkt</text>
   <!-- Firstpunkt P_F (am Sparrenkopf, an Firstpfetten-Oberkante) -->
   <circle cx="560" cy="86" r="4" fill="#c0392b" stroke="#2c3e50" stroke-width="1"/>
   <text x="572" y="82" fill="#c0392b" font-weight="bold">P_F</text>
@@ -205,10 +205,10 @@ geläufigen Komposita:
 
 | Kompositum | Was die Strecke verbindet | In welchem Plan oder welcher Berechnung |
 |---|---|---|
-| **Sparrenlänge** | Sparrenfusspunkt am Vordach mit Firstpunkt am Sparrenkopf | Werkplan (Bemaßung); Materiallisten-Position |
+| **Sparrenlänge** | Sparrenfußpunkt am Vordach mit Firstpunkt am Sparrenkopf | Werkplan (Bemaßung); Materiallisten-Position |
 | **Stablänge** | Stab-Anfang mit Stab-Ende eines Tragwerks-Stabs | Statik-Modell; Werkplan bei Stabwerken |
 | **Pfettenlänge** | Pfetten-Anfang mit Pfetten-Ende längs der Bauachse | Werkplan; Materialliste der Pfetten |
-| **Sparrenüberstand** | Sparrenfusspunkt mit Vordach-Außenkante | Werkplan, Vordach-Detail |
+| **Sparrenüberstand** | Sparrenfußpunkt mit Vordach-Außenkante | Werkplan, Vordach-Detail |
 | **Auflagertiefe** | Auflager-Anfangskante mit Auflager-Endkante am Pfetten-Auflager | Werkplan; Tragfähigkeits-Plausibilität |
 | **Spannweite** (Stützweite) | Auflagerpunkt zu Auflagerpunkt eines Trägers | Statik-Bemessung (EC5, SIA 265) |
 | **Knicklänge** | rechnerischer Anfang mit rechnerischem Ende des Stab-Knickbereichs | Druckstab-Bemessung |
@@ -236,23 +236,23 @@ didaktisch entscheidend.
 | Werkzeug oder Mittel | Was es mit der Strecke tut | Resultat |
 |---|---|---|
 | **Schlagschnur** | markiert eine gerade Strecke zwischen zwei vorher gesetzten Endpunkten am Holz oder am Bauplatz | sichtbare Kreide- oder Farb-Linie längs der Strecke |
-| **Reissnadel / Bleistift / Reissleiste** | markiert eine Anriss-Linie zwischen zwei Anrisspunkten am Holz | präzise gerissene Linie auf dem Werkstück |
+| **Reißnadel / Bleistift / Reißleiste** | markiert eine Anriss-Linie zwischen zwei Anrisspunkten am Holz | präzise gerissene Linie auf dem Werkstück |
 | **Schmiege** | führt das Werkzeug längs der Anrisslinie unter eingestelltem Winkel — z. B. an einer Walmkerve oder einem Versatz | schräg gerissene Linie unter eingestelltem Winkel |
-| **Reissboden mit Aufschnüren** | überträgt 1:1 ein Profil als aufgeschnürte Linien zwischen Profil-Eckpunkten auf den Bretterboden | aufgeschnürte Linien zwischen Profil-Eckpunkten |
+| **Reißboden mit Aufschnüren** | überträgt 1:1 ein Profil als aufgeschnürte Linien zwischen Profil-Eckpunkten auf den Bretterboden | aufgeschnürte Linien zwischen Profil-Eckpunkten |
 | **Schnurgerüst** | spannt eine gerade Strecke zwischen zwei Pfostenkopf-Nägeln am Bauplatz | gespannte Schnur als materialisierte Bauachs-Strecke |
 | **Maßband / Zollstock / Lasermessgerät** | misst die Distanz zwischen zwei Punkten | Längen-Wert in mm — die Strecke selbst wird nicht markiert |
 
 Die Trennung **Tätigkeit ↔ Resultat** ist im Werkstattkorpus genauso
-streng wie beim Punkt: **Anreissen** ist die Tätigkeit, der
+streng wie beim Punkt: **Anreißen** ist die Tätigkeit, der
 **Anriss** das Resultat als sichtbare Linie auf dem Holz;
 **Aufschnüren** ist die Tätigkeit, die **aufgeschnürte Linie** das
-Resultat auf dem Reissboden. Die Schlagschnur und die
+Resultat auf dem Reißboden. Die Schlagschnur und die
 Werkstatt-Werkzeuge **markieren** eine Strecke, indem sie sie als
 Linie sichtbar machen; Maßband, Zollstock und Lasermessgerät
 **messen** eine Strecke, indem sie ihre Länge als Zahl liefern, ohne
 am Material etwas zu hinterlassen.
 
-Eine zweite Beobachtung: die Schlagschnur-Linie auf dem Reissboden,
+Eine zweite Beobachtung: die Schlagschnur-Linie auf dem Reißboden,
 der Anriss am Sparren, die gespannte Schnur am Schnurgerüst — sie
 alle bekommen ihren Namen **nicht vom Werkzeug**, sondern von dem,
 **was sie repräsentieren** (Bauachs-Schnur, Sparren-Mittellinie,
@@ -297,7 +297,7 @@ Polygon-Innenwinkel. **Alle Kanten sind Strecken, nicht alle
 Strecken sind Kanten.** Die Bauteilachse, die als Schwerlinie eines
 Stabbauteils gedacht ist, ist eine Strecke, aber keine Kante; die
 Maßlinie auf dem Werkplan ist eine Strecke, aber keine Kante; die
-Schlagschnur-Linie am Reissboden ist eine Strecke, aber keine
+Schlagschnur-Linie am Reißboden ist eine Strecke, aber keine
 Kante. „Kante" ist also ein abgeleiteter Rollen-Begriff, kein
 fundamentaler.
 

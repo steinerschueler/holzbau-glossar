@@ -15,6 +15,7 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), 'Bemessung und Konstruktion von Holzbauten – Teil 1-1: Allgemeines', Abschnitt 2.3 (Grundvariablen) und Abschnitt 3 (Werkstoffeigenschaften), Festigkeitsangaben f_{c,0,k}, f_{c,90,k}, f_{t,0,k}, f_{t,90,k}, σ_{m,α,d} mit Faserwinkel α."
   - "DIN 4074-1:2012-06, 'Sortierung von Holz nach der Tragfähigkeit – Teil 1: Nadelschnittholz', Abschnitt 5 (Sortiermerkmale), Faserneigung als Sortierkriterium."
 quellen_sekundär:
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §2.1.1 (S. 16), §2.1.2.4 (S. 19–20) und §2.1.3.1 (S. 20–21): 'Bedingt durch die stamm-parallelen, längsorientierten Fasern ist Holz ein anisotroper und inhomogener Werkstoff, dessen Eigenschaften sehr stark von der Faserrichtung abhängig sind' (S. 16, mit Bild 2.1 Aufbau des Holzes); Schwind-/Quellverformung längs zur Faser vernachlässigbar (Rechenwert 0,01 %/%), tangential etwa doppelt so groß wie radial (Tabelle 2-1, z. B. Fichte 0,32/0,16, NA-Rechenwert 0,25); E-Modul-Abfall mit dem Winkel α zwischen Kraft- und Faserrichtung nach der Näherung E_α = E_0·E_90 / (E_0·sin³α + E_90·cos³α) (Gl. 2.5 — Potenz 3, E-Modul-Variante der Hankinson-Familie), Bild 2.4 für Nadelholz C 24: Abfall von 11 000 auf 370 N/mm²."
   - "Wagenführ, R.: Holzatlas. 6. Aufl., Fachbuchverlag Leipzig 2007, Kap. 2 'Bau und Eigenschaften des Holzes'."
   - "Niemz, P.; Sonderegger, W.: Holzphysik. Hanser, München 2017, Kap. 3 'Anatomischer Aufbau' und Kap. 6 'Mechanische Eigenschaften' (Anisotropie längs/radial/tangential)."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 1 'Werkstoff Holz'."
@@ -282,6 +283,13 @@ Faserrichtung längs des Stabes). Sie kann aber **abweichen**:
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §2.1.1 (Anisotropie durch
+  stamm-parallele Fasern), §2.1.2.4 (richtungsabhängiges
+  Schwinden/Quellen), §2.1.3.1 (E-Modul-Winkelabhängigkeit
+  Gl. 2.5). Volltext-Scan liegt Anweiser vor; direkt eingesehen
+  2026-08-14.
 - Wagenführ, R.: *Holzatlas.* 6. Auflage, Fachbuchverlag Leipzig 2007.
 - Niemz, P.; Sonderegger, W.: *Holzphysik – Eigenschaften, Prüfung
   und Kennwerte.* Hanser, München 2017.

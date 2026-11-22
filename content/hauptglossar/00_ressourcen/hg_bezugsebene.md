@@ -12,11 +12,10 @@ status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
   - "DIN 18202:2019-07, 'Toleranzen im Hochbau – Bauwerke', Abschnitt 4 (Begriffe) und Abschnitt 6 (Verfahren zur Prüfung): vor der Bauausführung sind geeignete Bezugspunkte festzulegen, gegen die der Ist-Zustand des Bauwerks geprüft wird; eine Bezugsfläche dient als Vergleichsfläche für Ebenheits- und Höhenmessungen."
-  - "SIA 414/1:2010, 'Massgenauigkeit im Bauwesen – Grenzwerte', Abschnitt 'Bezugssystem' und Abschnitt 'Höhenmasse': Höhenmasse werden gegen vereinbarte Bezugsebenen (Höhenbezug) gemessen."
+  - "SIA 414/1:2010, 'Massgenauigkeit im Bauwesen – Grenzwerte', Abschnitt 'Bezugssystem' und Abschnitt 'Höhenmasse': Höhenmaße werden gegen vereinbarte Bezugsebenen (Höhenbezug) gemessen."
   - "ISO 16739-1:2024 'Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries — Part 1: Data schema', Entitäten 'IfcGeometricRepresentationContext' und 'IfcLocalPlacement': Bezugskontext einer geometrischen Repräsentation, der unter anderem die Höhenreferenz (z = 0) der enthaltenen Geometrie festlegt."
-  - "DIN ISO 80000-2:2022-08, Abschnitt 2 (Geometrie): Ebene als affiner Unterraum (siehe `hg_ebene.md`); eine Bezugsebene ist eine Ebene mit zugewiesener Bezugsrolle."
 quellen_sekundär:
-  - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage, Bezugskoten und Höhenmasse."
+  - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise', Lignum, Zürich, aktuelle Auflage, Bezugskoten und Höhenmaße."
   - "SIA 232/1:2020, 'Geneigte Dächer', Schweizerischer Ingenieur- und Architektenverein, Abschnitt 1 (Begriffe und geometrische Grundlagen): Höhenbezug für Dachgeometrie."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke', Werkplan-Höhenbezüge."
 quellenkonflikt: |
@@ -38,7 +37,7 @@ quellenkonflikt: |
     der zusätzlichen Rolle, in einem konkreten Modellierungs- oder
     Visualisierungs-Kontext (in dieser App: einem konkreten Tool)
     als Höhenreferenz z = 0 für die im Tool modellierten Bauteile
-    und deren Höhenmasse zu dienen.
+    und deren Höhenmaße zu dienen.
   - Die Bezugsebene ist **tool-spezifisch**, nicht global. Jedes
     Tool der App (Sparren-Tool, Wandschichtaufbau, Walmdach-Tool,
     …) wählt seine eigene Bezugsebene; konkrete Werte (welche
@@ -66,7 +65,7 @@ quellenkonflikt: |
 Eine **Bezugsebene** ist eine im Welt-Koordinatensystem festgelegte
 Ebene, die in einem konkreten Modellierungs- oder Visualisierungs-
 Kontext (Tool) als Höhenreferenz z = 0 für die enthaltenen Bauteile
-und deren Höhenmasse dient.
+und deren Höhenmaße dient.
 
 ## Mathematische Definition
 
@@ -90,7 +89,7 @@ in Hesse-Normalform (siehe `ebene`) repräsentiert durch das Paar
 (n_hat, d) = (e_hat_z, z₀(T)). Die Bezugsebene ist horizontal in W
 (Normalenvektor e_hat_z) und liegt auf der Höhe z₀(T).
 
-Wesentliche abgeleitete Grössen für ein Bauteil B mit
+Wesentliche abgeleitete Größen für ein Bauteil B mit
 Welt-Geometrie G_W(B) ⊂ ℝ³:
 
 - **Höhe gegen Bezugsebene** eines Punktes p ∈ G_W(B):
@@ -171,7 +170,7 @@ Komponente z(p_K); die Bezugsebene selbst bleibt eine Ebene.
 ### Zweck
 
 Die Bezugsebene löst ein praktisches Problem der Modellierung: für
-jedes Tool muss klar sein, von welchem Niveau aus Höhenmasse
+jedes Tool muss klar sein, von welchem Niveau aus Höhenmaße
 gemessen werden. Im **Sparren-Tool** etwa ist die Sparrenlage
 durch die Höhe des Bleischnitts (Schnittpunkt der Pfettenoberkante
 mit der Sparrenunterkante an der Auflagerung) bestimmt; in einem
@@ -217,8 +216,8 @@ Bauteile dürfen den Bereich z < z₀(T) (also unterhalb der
 Bezugsebene) belegen. Im Sparren-Tool ragt der **Sparrenüberstand**
 unterhalb des Bleischnitts in den Bereich h_E < 0 (siehe
 `sparrenueberstand`, `bleischnitt`); im Walmdach-Tool ragen
-Sparrenfüsse je nach Modellierung unterhalb der Wandkrone hinaus.
-Die Bezugsebene trennt nicht „Bauteil-Innenraum" von „Aussenraum",
+Sparrenfüße je nach Modellierung unterhalb der Wandkrone hinaus.
+Die Bezugsebene trennt nicht „Bauteil-Innenraum" von „Außenraum",
 sondern dient nur als Höhennullpunkt.
 
 ### Bezugsebene vs. Trägerebene einer Dachfläche
@@ -260,8 +259,8 @@ eine ganze Ebene fest).
 - **Verwendung**:
   - In jedem **Tool** der App (Sparren-Tool, Wandschichtaufbau,
     Walmdach-Tool, Stützen-Tool, …) als Höhenreferenz für Bauteil-
-    Höhenmasse und Visualisierung.
-  - Beim **Werkplan-Export** als Höhenbezug für Bemassungstexte
+    Höhenmaße und Visualisierung.
+  - Beim **Werkplan-Export** als Höhenbezug für Bemaßungstexte
     („+2.50 ab OK Fußpfette", „−0.05 ab OK Rohboden").
   - Beim **IFC-Export** als Höhenkomponente des
     `IfcGeometricRepresentationContext` der Tool-Repräsentation.
@@ -303,8 +302,6 @@ eine ganze Ebene fest).
   sharing in the construction and facility management industries
   — Part 1: Data schema" (Entitäten
   `IfcGeometricRepresentationContext`, `IfcLocalPlacement`).
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2:
-  Mathematik", Abschnitt 2.
 
 **Sekundär:**
 

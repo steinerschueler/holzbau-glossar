@@ -1,7 +1,7 @@
 ---
 id: schnittgerade
 benennung: Schnittgerade
-kurz: "Eine Schnittgerade ist die gerade Linie, die entsteht, wo zwei flache Flächen aufeinandertreffen — wie die Kante, an der zwei Dachflächen am First zusammenstossen."
+kurz: "Eine Schnittgerade ist die gerade Linie, die entsteht, wo zwei flache Flächen aufeinandertreffen — wie die Kante, an der zwei Dachflächen am First zusammenstoßen."
 synonyme: ["Schnittlinie zweier Ebenen", "Verschneidungsgerade", "Schnittachse zweier Ebenen"]
 abgelehnte_benennungen: [Schnittkante, Verschneidung, Schnitt, "intersection line", "line of intersection"]
 oberbegriff: gerade
@@ -11,7 +11,8 @@ abgrenzung_zu: [gerade, strecke, schnittpunkt, verschneidung, halbgerade]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren), Symbole und Bezeichnungen für die Schnittmenge geometrischer Objekte."
+  - "DIN EN ISO 80000-2:2023-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 18 (Skalare, Vektoren und Tensoren). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitt 5 (Sets), Nr. 2-5.10: Zeichen ∩ für die Schnittmenge; Abschnitt 17 (Scalars, vectors and tensors), Nr. 2-17.12: Zeichen × für das Vektorprodukt. Die Schnittgerade führt die Norm nicht. [direkt]"
 quellen_sekundär:
   - "Bronstein, I. N.; Semendjajew, K. A.; Musiol, G.; Mühlig, H.: Taschenbuch der Mathematik. Edition Harri Deutsch, aktuelle Auflage, Kap. 3.5.2 'Ebenen im Raum', Abschnitt 'Schnittgerade zweier Ebenen'."
   - "Bär, C.: Elementargeometrie. Springer Spektrum, Kap. 5 'Ebenen im dreidimensionalen Raum'."
@@ -22,7 +23,7 @@ quellenkonflikt: |
   DIN EN 1995-1-1, SIA 265, SIA 232/1) verwenden den Begriff
   „Schnittgerade" oder „Schnittlinie" als gegeben, ohne ihn
   axiomatisch zu definieren; sie verweisen auf die elementare
-  analytische Geometrie. DIN ISO 80000-2 verzeichnet das Symbol
+  analytische Geometrie. DIN EN ISO 80000-2 verzeichnet das Symbol
   ∩ für die Schnittmenge, definiert die Schnittgerade jedoch nicht
   formal. Eigene Festlegung: die Schnittgerade zweier Ebenen E₁ und
   E₂ ist die Punktmenge E₁ ∩ E₂, sofern die beiden Ebenennormalen
@@ -236,8 +237,11 @@ geometrisch der Lotfußpunkt vom Ursprung auf die Schnittgerade.
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2:
-  Mathematik", Abschnitt 2.
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2:
+  Mathematik", Abschnitt 18.
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
 
 **Sekundär:**
 

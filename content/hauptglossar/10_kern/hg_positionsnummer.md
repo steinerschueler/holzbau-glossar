@@ -1,7 +1,7 @@
 ---
 id: positionsnummer
 benennung: Positionsnummer
-kurz: "Eine Positionsnummer ist die kurze Nummer, mit der ein Bauteil auf dem Plan und am Stück selbst markiert ist — ähnlich der Teilenummer in einer Möbel-Bauanleitung —, damit jeder weiss, welches Stück wohin gehört."
+kurz: "Eine Positionsnummer ist die kurze Nummer, mit der ein Bauteil auf dem Plan und am Stück selbst markiert ist — ähnlich der Teilenummer in einer Möbel-Bauanleitung —, damit jeder weiß, welches Stück wohin gehört."
 synonyme: ["Pos-Nr.", "Werkplan-Position", "Positionskennung"]
 abgelehnte_benennungen: [Bauteilnummer, Stücknummer, Nummer, "part number", "tag", "position number", "item number"]
 oberbegriff: null
@@ -21,7 +21,7 @@ quellen_sekundär:
   - "cadwork informatik AG: cadwork lexocad / cadwork 3D Anwenderdokumentation, Konzept der gemeinsamen Pos-Nr. für identische Teile (Stücklistenbildung)."
   - "Date, C. J.: An Introduction to Database Systems. 8. Auflage, Addison-Wesley 2003, Kap. 9 (Surrogate vs. Natural Keys)."
   - "Ambler, S. W.; Sadalage, P. J.: Refactoring Databases. Addison-Wesley 2006, Kap. 6 (Identity)."
-  - "OpenBOM Blog: 'Why intelligent part numbers are a bad idea' (2019, regelmässig aktualisiert)."
+  - "OpenBOM Blog: 'Why intelligent part numbers are a bad idea' (2019, regelmäßig aktualisiert)."
   - "Arena Solutions: 'Smart vs. Non-Smart Part Numbering — A PLM Best Practice'."
   - "BuyPLM / Javelin Tech: PLM-Whitepapers zu Part-Number-Strategien."
   - "dbt Labs: 'Surrogate keys vs. natural keys', dbt Documentation (2023)."
@@ -180,7 +180,8 @@ teilweise:
 | `D`    | Strebe / Diagonale                       |                                          |
 | `KB`   | Kopfband                                 |                                          |
 | `Schw` | Schwelle                                 |                                          |
-| `Rä`   | Rähm                                     |                                          |
+| `Rä`   | Einbinder (DE: Rähm)                     | deutscher Usus                           |
+| `EB`   | Einbinder                                | Vorschlag Anweiser 2026-11-14, ohne Beleg; groß wie `UZ` (zusammengesetztes Wort) |
 | `W`    | Wechsel                                  |                                          |
 | `UZ`   | Unterzug                                 |                                          |
 | `KH`   | Kehlbalken                               |                                          |

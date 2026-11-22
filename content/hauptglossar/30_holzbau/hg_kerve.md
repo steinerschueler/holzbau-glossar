@@ -2,7 +2,7 @@
 id: kerve
 benennung: Kerve
 kurz: "Eine Kerve ist ein dreieckiger Ausschnitt an der Unterseite eines Sparrens mit einer kleinen waagrechten Sitzfläche, mit der der Sparren sauber und kippsicher auf einem darunterliegenden Balken (der Pfette) aufliegt."
-synonyme: [Sparrenkerve, Sparrenkerbe, Klauenkerve, Klaue, Sattel, Auflagerkerve, Ferserl]
+synonyme: [Sparrenkerve, Sparrenkerbe, Klauenkerve, Klaue, Sparrenklaue, Sattel, Auflagerkerve, Ferserl]
 abgelehnte_benennungen: [Kerbe, Aussparung, Auskerbung, Einkerbung, Ausklinkung, "birdsmouth", "bird's mouth", "rafter notch", "seat cut"]
 oberbegriff: bearbeitung
 begriffstyp: partitiv
@@ -13,13 +13,14 @@ subglossar_pendant: notwendig
 quellen_primär:
   - "Wikipedia, Lemma 'Sparren', Abschnitt 'Begriffe rund um den Sparren / Kerve' (abgerufen 2026-05-13): 'Die Kerve … ist ein zweiflächiger Einschnitt (mit Dreiecksquerschnitt) an der Unterseite hölzerner Sparren, meist um eine waagerechte Fläche zum Auflagern auf eine Pfette zu schaffen.' Sowie: 'Im Pfettendach wird die Dachlast mit einem v-förmigen Ausschnitt wie Kerve, Kerbe oder Sattel auf die Pfetten übertragen.' Dies ist die einzige in der Recherche aufgefundene Quelle mit einer präzisen geometrischen Beschreibung (zwei Flächen, Dreiecksquerschnitt, an der Unterseite)."
   - "design2machine: 'BTLx interface description', Version 2.1, 16.11.2023, Abschnitt 'BirdsMouth' (S. 24–28): parametrische Spezifikation der Sparrenkerve mit den Parametern Orientation, StartX, StartY, StartDepth, Angle, Inclination1, Inclination2, Depth, Width, WidthCounterPart(Limited), HeightCounterPart(Limited), FaceLimitedFront, FaceLimitedBack, LeadAngle(Parallel), LeadInclination(Parallel), RafterNailHole. Default-Tiefe = 20 mm; Default-Breite = 0 mm (durchgehend); Default-Winkel = 90°. Diese Spec ist die geschlossene parametrische Industriestandard-Schnittstelle für CNC-Abbund, abstrahiert aber die welt-bezügliche Ausrichtung der Schnittflächen in ihre Inclination-Parameter."
-  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5.2 (Berücksichtigung von Querschnittsschwächungen) und Abschnitt 6.5 (Querzug- und Schubnachweise an ausgeklinkten Bauteilen): die Kerve ist als Querschnittsschwächung im Sparrenfuß-/Auflagerbereich zu erfassen; Restholz und Versatzhöhe gehen in den Schubnachweis ein."
-  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 (Druckspannung quer zur Faserrichtung, σ_c,90,d ≤ k_c,90 · f_c,90,d): die Kerv-Sohle führt die Vertikallast aus dem Sparren als Pressung quer zur Pfettenfaser in das Pfettenholz ein; dieser Auflagerpressungs-Nachweis am Pfettenholz ist neben dem Schubnachweis am ausgeklinkten Sparrenholz (6.5) die zweite primäre Bemessungsgröße an der Sparren-Pfetten-Kerve."
+  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5.2 (Berücksichtigung von Querschnittsschwächungen) und Abschnitt 6.5 (Querzug- und Schubnachweise an ausgeklinkten Bauteilen): die Kerve ist als Querschnittsschwächung im Sparrenfuß-/Auflagerbereich zu erfassen; Restholz und Versatzhöhe gehen in den Schubnachweis ein. [via: Colling, Holzbau, 7. Aufl. 2021, §8.6 (Fußnote 'EC 5: 6.5'; Schubnachweis am Restquerschnitt Gl. 8.26 mit Beiwert k_v Gl. 8.27)]"
+  - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 6.1.5 (Druckspannung quer zur Faserrichtung, σ_c,90,d ≤ k_c,90 · f_c,90,d): die Kerv-Sohle führt die Vertikallast aus dem Sparren als Pressung quer zur Pfettenfaser in das Pfettenholz ein; dieser Auflagerpressungs-Nachweis am Pfettenholz ist neben dem Schubnachweis am ausgeklinkten Sparrenholz (6.5) die zweite primäre Bemessungsgröße an der Sparren-Pfetten-Kerve. [via: Colling, Holzbau, 7. Aufl. 2021, §8.1 (Fußnote 'EC 5: 6.1.5'; Nachweis Gl. 8.2) und §8.4 (Sparrenauflager: Pfetten-Nachweis Gl. 8.12a, Sparren-Nachweis Gl. 8.12b)]"
   - "SIA 265:2021 'Holzbau', §5 'Bauteile und Strukturen', §5.2.2 'Ausklinkungen' (Schubnachweis am ausgeklinkten Querschnitt, Figur 16): die Kerve ist als Querschnittsschwächung im Auflagerbereich zu erfassen. [direkt]"
   - "SIA 265:2021 'Holzbau', §4.2.2.3 (Druckbeanspruchung unter einem Winkel zur Faserrichtung) bzw. Anhang C (Tragsicherheitsnachweis Druck rechtwinklig zur Faserrichtung): regelt die Pressung quer zur Pfettenfaser an der Kerv-Sohle; pendant zu EC5 6.1.5. [direkt]"
   - "DIN 1052:2008-12, Abschnitt 12 (Konstruktive Anforderungen): Auflagerung geneigter Stäbe auf horizontalen Trägern."
 quellen_sekundär:
-  - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke', § Sparrenanschluss an Pfetten (Klauenkerve, Versatzkerve, doppelte Kerve)."
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §8.4 'Sparrenauflager' (S. 132–133): 'werden Sparren im Bereich der Auflagerung meist mit einer Kerve (sogenannte Sparrenklaue) ausgeführt' (Bild 8.11); beide Nachweise Gl. 8.12a (Pfette, Querdruck) und Gl. 8.12b (Sparren, Druck unter Winkel α = 90° − γ). §8.6 'Ausklinkungen' (S. 144–149): Schubnachweis am Restquerschnitt (Resthöhe h_ef) mit Beiwert k_v."
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 1.13 „Rechnerischer Abbund“, Tafel „Kervenverstichmaße am Obholz“ (S. 24): berufssprachlicher Formelapparat der Sparrenkerve mit den Legenden-Größen o_s = senkrechtes Obholz, o_w = waagerechtes Obholz, o_r = rechtwinkliges Obholz, k_v = Kervenverstichmaß, t_k = Kerventiefe, s = Senkel, h = Sparrenhöhe, α = Dachneigungswinkel, β = 90° − α; darin u. a. t_K = b · sin α, t_K = a · sin β, a = (h − o_r)/sin β, b = (h − o_r)/sin α, c = h/sin α, s = h/cos α. Ebd. S. 31 unten: zwei Kerven-Skizzen am geneigten Sparren mit den gedruckten Formeln t_K = b · sin α bzw. t_K > b · sin α und der Legende „t_K = Tiefe der Kerve“. Ebd. S. 318: Bildunterschrift „Kehlsparren mit Hexenschnitt und Rutschkerve am gleichgeneigten Walmdach mit Anbau (Modell)“ — gedruckter Beleg für die Kerven-Sonderform Rutschkerve am Kehlsparren. Sachwortverzeichnis (S. 327) führt „Kervenverstichmaß 24“ und „Kervenverstichmaße am Obholz 24“, jedoch kein eigenes Lemma „Kerve“."
   - "Gerner, M.: Fachwerk – Instandsetzung, Sanierung, Neubau. DVA, 7. Aufl. 2007, Glossar 'Kerve' / 'Klaue'."
   - "Natterer, J.; Herzog, T.; Volz, M.: Holzbau-Atlas. 4. Aufl., Birkhäuser, Basel 2003, Kap. 'Dachtragwerke / Sparrenanschluss'."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Sparrenanschlüsse'."
@@ -38,6 +39,86 @@ quellenkonflikt: |
   konsultierten Normen setzen den Begriff der Kerve voraus und
   behandeln nur ihre Bemessungsfolgen (Querschnittsschwächung,
   Schub- und Querzug-Nachweis am ausgeklinkten Bereich).
+
+  Lehrbuch-Bestätigung (Colling, *Holzbau*, 7. Aufl. 2021,
+  Volltext-Scan liegt Anweiser vor, direkt eingesehen 2026-08-13):
+  Auch das EC5-Standard-Lehrbuch führt die Kerve nur
+  bemessungsseitig — §8.4 „Sparrenauflager" setzt sie als bekannt
+  voraus („werden Sparren im Bereich der Auflagerung meist mit
+  einer Kerve (sogenannte ‚Sparrenklaue') ausgeführt", S. 132)
+  und liefert die beiden Nachweise (Pfetten-Querdruck Gl. 8.12a
+  mit ℓ_ef,P = b_Sp + 2·3,0 cm; Sparren-Schrägdruck Gl. 8.12b mit
+  α = 90° − γ). Das stützt die EC5-6.1.5/6.5-Zeilen im
+  Frontmatter jetzt auf Lehrbuch-Volltext statt auf
+  Sekundär-Snippets; „Sparrenklaue" ist als gedrucktes Synonym
+  aufgenommen.
+
+  Berufsschul-Bestätigung (Bläsi/Ferdinand, *Tabellenbuch
+  Zimmerer*, 9. Aufl. 2021, Volltext-Scan liegt Anweiser vor, direkt
+  eingesehen 2026-08-14): Auch das Berufsschul-Standardwerk des
+  Zimmererhandwerks **definiert die Kerve nicht**, sondern führt
+  sie ausschließlich als Abbund-Maßaufgabe (Kap. 1.13, S. 24
+  und S. 31). Das Sachwortverzeichnis (S. 325–331) kennt kein
+  Lemma „Kerve", sondern nur „Kervenverstichmaß" und
+  „Kervenverstichmaße am Obholz" (beide S. 24). Der Befund
+  stützt die Aussage dieses Blocks, dass die geschlossene
+  Geometrie-Definition glossarseitig zu leisten ist — die Lücke
+  besteht nicht nur normseitig, sondern auch in der
+  Ausbildungsliteratur.
+
+  Inhaltlich liefert das Werk drei Ergänzungen:
+
+  (i) **Maß-Symbolik der Kerve (S. 24).** Aus den beiden
+      gedruckten Beziehungen t_K = b · sin α und
+      b = (h − o_r)/sin α folgt b = t_K/sin α, aus
+      t_K = a · sin β mit β = 90° − α folgt a = t_K/cos α. In
+      den Symbolen dieses Eintrags (Kerv-Dreieck A-P-C,
+      Gleichungen (2)–(4), Einbau-Neigung θ = α) heißt das:
+      t_K entspricht der Kervtiefe t, b entspricht der
+      welt-horizontalen Sohlenlänge w, a entspricht der
+      welt-vertikalen Senkellänge |PC|. Die Relationen
+      t = w · sin θ und |PC| = t/cos θ sind aus (2)–(4)
+      ableitbar und decken sich mit dem gedruckten Formelsatz;
+      insbesondere bestätigt a = t_K/cos α die im Anschluss an
+      (8) festgehaltene Aussage, dass |PC| nur für θ = 0 mit t
+      zusammenfällt. Das Buch schreibt die Kerventiefe damit
+      **rechtwinklig zur Sparrenkante** und nicht lotrecht —
+      dieselbe Messkonvention wie t in (1).
+
+  (ii) **Obholz als Restholz-Benennung.** Das Werk benennt das
+      über der Kerve verbleibende Holz „Obholz" und
+      unterscheidet drei Messrichtungen: o_s (senkrechtes),
+      o_w (waagerechtes) und o_r (rechtwinkliges Obholz). Aus
+      den gedruckten Formeln folgt h − o_r = t_K, das
+      rechtwinklige Obholz o_r ist also genau das Restholz
+      h_B − t dieses Eintrags (Implementierungshinweis,
+      `restholz(b)`). „Obholz" und „Kervenverstichmaß" werden
+      hier **nicht** als Synonyme der Kerve geführt (es sind
+      Maße, nicht die Bearbeitung); sie sind Kandidaten für
+      eigene Maß-Einträge.
+
+  (iii) **Keine Faustregel zur Kerventiefe.** Auf keiner der
+      drei Kerven-Seiten (24, 31, 318) nennt das Werk eine
+      Obergrenze der Kerventiefe als Bruchteil der
+      Sparrenhöhe. Der Negativ-Befund ergänzt Konflikt 1: die
+      ⅓-/¼-/⅙-Faustregeln stammen aus Praxisliteratur und
+      Bauordnung (IRC), nicht aus dem Berufsschul-Kanon.
+
+  Zur S.-31-Skizzen-Deutung (Anweiser am physischen Buch,
+  2026-08-14): Beide Skizzen zeigen das **obere Sparrenende auf
+  der Firstpfette**. In der rechten Variante (t_K > b · sin α)
+  ist der welt-vertikale Senkelschnitt der Kerve größer und der
+  Bleischnitt (Sohle) kürzer als links; zusätzlich kann der
+  Sparrensenkel-Endabschnitt mehr Material genommen haben — etwa
+  bei schmaler Firstpfette, damit sich die Sparren der beiden
+  Dachflächen nicht in den Weg kommen. Die didaktische
+  Aussage-Intention des Bildes bleibt auch nach Einsicht am
+  physischen Buch offen; die Skizze wird deshalb über die
+  zitierten Formeln hinaus **nicht** als Definitions-Beleg
+  ausgedeutet. Festzuhalten ist: Die Firstpfetten-Kerve am
+  oberen Sparrenende ist ein gedrucktes Beispiel dafür, dass die
+  Kerve nicht auf den Sparrenfuß beschränkt ist (vgl. Konflikt 2,
+  Senkelseiten-Diskussion an Mittel- und Firstpfetten).
 
   Die geometrische Charakterisierung der Kerve wird hier aus
   drei sich ergänzenden Quellen rekonstruiert:
@@ -123,7 +204,7 @@ quellenkonflikt: |
   die Lage des Senkels innerhalb der Kerve **nicht** fest:
   beide Varianten — Senkel am firstwärtigen Ende der Sohle
   oder am fußwärtigen Ende — sind „zweiflächige Einschnitte mit
-  Dreiecksquerschnitt" im Sinne von (a). Die zimmermannsmässig
+  Dreiecksquerschnitt" im Sinne von (a). Die zimmermannsmäßig
   übliche Anordnung hängt von der Funktion ab:
 
   - Senkel am fußwärtigen Ende der Sohle (Senkel-Talseite): der
@@ -181,7 +262,7 @@ quellenkonflikt: |
 
   **Konflikt 4 — Spezialisierungen (Subtypen):**
 
-  In der zimmermannsmässigen Praxis koexistieren mehrere
+  In der zimmermannsmäßigen Praxis koexistieren mehrere
   Kervtypen mit unterschiedlicher Geometrie und Anwendung:
 
   - **Klauenkerve / Standardkerve**: einfache Kerve im Sinne
@@ -218,7 +299,7 @@ quellenkonflikt: |
     (Folgearbeit, eigener Glossareintrag `wiener_kastl`).
 
   Eigene Festlegung: die App-Klasse `Kerve` modelliert
-  ausschliesslich die Klauenkerve / Standardkerve. Doppel-
+  ausschließlich die Klauenkerve / Standardkerve. Doppel-
   kerven und einfache Kerven sind Modellierungs-Idiome aus
   `Kerve` plus `lokalePlatzierung`; Versatzkerven sind
   Kombinationen `Kerve` + `Versatz`. Stuhlkerve, Walmkerve und
@@ -273,7 +354,7 @@ ausgerichtet sind:
   auf einer Pfette;
 
 - der **Senkel** ist welt-vertikal (lotrecht in der Welt; ein
-  Senkel im Sinne von `senkel`) und schliesst die Kerve
+  Senkel im Sinne von `senkel`) und schließt die Kerve
   seitlich gegen das Gegenholz (typisch die Pfette) ab.
 
 Sohle und Senkel treffen sich in einem **Kerveckpunkt** P im
@@ -474,7 +555,7 @@ G_B'(F):=  G_B^lokal  \  K_Kerve(p_Kerve).                     (11)
 ### Kerveckpunkt p_K als Anker
 
 Der **Kerveckpunkt** P (Eckpunkt im Sparreninneren, an dem
-Sohle und Senkel zusammenstossen) ist der zentrale geometrische
+Sohle und Senkel zusammenstoßen) ist der zentrale geometrische
 Anker der Kerve und wird in nachgelagerten Sparren-Pipeline-
 Begriffen als **p_K** referenziert:
 
@@ -491,7 +572,7 @@ zusammen.) p_K dient als gemeinsamer Anker für
 `bezugsebene` (Ursprung des Sparren-Werkzeug-Bezugssystems),
 `fusspfette` (Übergang Bauteilkörper → Sparrenüberstand) und
 `sparrenueberstand` (Beginn der Überstandslänge ab der
-Fusspfetten-Kerve).
+Fußpfetten-Kerve).
 
 Damit ist eine **Kerve** (als Subtyp von `bearbeitung`) das
 Tupel
@@ -624,7 +705,7 @@ in y-Richtung beschrieben.
 - **Verträglichkeit mit der 90°-Bedingung der Kerve (Dietrichs-
   Abgrenzung):** Aus Σ_S welt-horizontal und Σ_N welt-vertikal
   folgt ⟨e_hat_h, e_hat_v⟩ = 0, also Σ_S ⊥ Σ_N. Eine Bearbeitung mit
-  zwei Schnittflächen unter einem anderen Winkel ist gemäss
+  zwei Schnittflächen unter einem anderen Winkel ist gemäß
   Dietrichs Support-Blog ein V-Schnitt, keine Kerve; die App
   bildet einen V-Schnitt als eigene Bearbeitung
   (Folgearbeit) ab und nicht als Sonderfall von `Kerve`.
@@ -679,7 +760,7 @@ in y-Richtung beschrieben.
       Tragwerks-Aggregat.
 
     - **Gegenholz-Neutralität**: die Kervgeometrie ist
-      **gegenholz-neutral** — sie beschreibt ausschliesslich den
+      **gegenholz-neutral** — sie beschreibt ausschließlich den
       dreieckigen Ausschnitt am Sparren und macht keine Aussage
       über das Material oder die Geometrie des Auflagers. Die
       `voraussetzungen`-Listung von `pfette` benennt das im
@@ -813,6 +894,18 @@ in y-Richtung beschrieben.
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §8.4 „Sparrenauflager" und §8.6
+  „Ausklinkungen". Volltext-Scan liegt Anweiser vor; direkt
+  eingesehen 2026-08-13.
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5, Kap. 1.13 „Rechnerischer Abbund"
+  (S. 24 Tafel „Kervenverstichmaße am Obholz", S. 31 unten
+  Kerventiefe t_K), S. 318 (Rutschkerve am Kehlsparren),
+  Sachwortverzeichnis S. 327. Volltext-Scan liegt Anweiser vor;
+  direkt eingesehen 2026-08-14.
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
   16. Auflage, Beuth, Berlin 2015, Kap. 11.
 - Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.*

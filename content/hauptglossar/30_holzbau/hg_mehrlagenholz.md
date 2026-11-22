@@ -19,6 +19,7 @@ quellen_primär:
   - "ÖNORM B 1995-1-1:2019, nationale Anwendungsbestimmungen zu EC 5, Abschnitt 9."
 quellen_sekundär:
   - "SIA 265:2021 'Holzbau', §1.1.13 'Mehrlagige Massivholzplatte' und §1.1.14 'Brettsperrholz' — die CH-Leitnorm führt den kreuzweise geschichteten Werkstoff im Fachausdrücke-Verzeichnis, verweist für die Definition aber auf SN EN 16351 bzw. SN EN 12775; CH-Sekundär-/Bestätigungs-Anker. [direkt]"
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, §2.4.1/§2.4.2/§2.4.4 (S. 36–39): Brettsperrholz (BSPH) 'besteht aus vorwiegend kreuzweise miteinander verklebten Brettlagen', zunehmend für vorgefertigte Wände und Decken; nach EC 5/NA abZ-pflichtig, nur NKL 1–2 (zur Drucklegung 2021 führt Colling EN 16351 noch als 'in Bearbeitung'); Massivholzplatten (SWP, 'Mehrschichtplatten') aus drei oder fünf verleimten Brett-/Stäbchenlagen aus Nadelholz, Holzfasern benachbarter Lagen um jeweils 90° versetzt, Klassen SWP/1–3, Dicken 12–80 mm (S. 37); Sperrholz (BFu, Bau-Furnierplatten) 'aus mindestens drei aufeinander geleimten Holzlagen, die symmetrisch zur Mittelachse aufgebaut sein müssen, und deren Faserrichtung um 90° gegeneinander versetzt ist' (S. 38), als tragendes Bauteil mind. 6 mm dick und mind. 5 Lagen (nur aussteifend: 3 Lagen, S. 39)."
   - "Blaß, H. J.; Flaig, M.: Stabförmige Bauteile aus Brettsperrholz. Karlsruher Berichte zum Ingenieurholzbau, Bd. 24, KIT Scientific Publishing, Karlsruhe 2012, DOI 10.5445/KSP/1000030362."
   - "Schickhofer, G.; Bogensperger, T.; Moosbrugger, T. (Hrsg.): BSPhandbuch — Holz-Massivbauweise in Brettsperrholz. 2. Aufl., Verlag der TU Graz 2010."
   - "ProHolz Austria: Brettsperrholz Bemessung Band I — Grundlagen für Statik und Konstruktion. ProHolz Austria, Wien 2014 (Definition Haupttragrichtung 0° = Decklamellen-Richtung mit höherer Steifigkeit)."
@@ -299,6 +300,12 @@ konstitutive Merkmal des Mehrlagenholzes ist die
 
 **Sekundär:**
 
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.*
+  7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, §2.4.1 „Brettsperrholz", §2.4.2
+  „Massivholzplatten (SWP)", §2.4.4 „Sperrholz (BFu)"
+  (S. 36–39). Volltext-Scan liegt Anweiser vor; direkt eingesehen
+  2026-08-14.
 - Blaß, H. J.; Flaig, M.: *Stabförmige Bauteile aus Brettsperrholz.*
   Karlsruher Berichte zum Ingenieurholzbau, Bd. 24, KIT
   Scientific Publishing, Karlsruhe 2012, DOI

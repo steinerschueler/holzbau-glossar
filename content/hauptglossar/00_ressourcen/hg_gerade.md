@@ -11,8 +11,8 @@ abgrenzung_zu: [strecke, halbgerade, ebene, vektor]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie und Vektoren), Symbole für Geraden im Raum."
-  - "ISO 80000-2:2019, Abschnitt 2 'Mathematics – Geometry'."
+  - "DIN EN ISO 80000-2:2023-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitte 9 (Elementare Geometrie) und 18 (Skalare, Vektoren und Tensoren). [einsicht: vorschau-pdf, Inhaltsverz.]"
+  - "ISO 80000-2:2009 (erste Ausgabe, englisch), Abschnitt 8 (Elementary geometry), Nr. 2-8.1 und 2-8.2: Gerade durch zwei Punkte A und B, Zeichen ∥ und ⊥ für parallele und rechtwinklige Geraden. Ein Eintrag, der die Gerade selbst festlegt, fehlt. [direkt]"
 quellen_sekundär:
   - "Bronstein, I. N. et al.: Taschenbuch der Mathematik. Kap. 3.5.1 'Geraden im Raum'."
   - "Fischer, G.: Lineare Algebra. 19. Aufl., Springer Spektrum 2020, Kap. 0/1 'Affine Geometrie'."
@@ -20,7 +20,7 @@ quellen_sekundär:
 quellenkonflikt: |
   Holzbau-Normen (DIN 1052, DIN EN 1995-1-1, SIA 265) verwenden den
   Begriff Gerade als gegeben (z. B. „Sparrenachse", „Wirkungslinie"),
-  ohne ihn axiomatisch zu definieren. DIN ISO 80000-2 nennt Symbole
+  ohne ihn axiomatisch zu definieren. DIN EN ISO 80000-2 nennt Symbole
   für Geraden, definiert sie jedoch nicht formal. Eigene Festlegung:
   eine Gerade ist die Punktmenge { p₀ + t·v | t ∈ ℝ } für einen
   Stützpunkt p₀ und einen Nicht-Nullvektor v (Richtungsvektor). Diese
@@ -154,8 +154,10 @@ zusammen mit einem Stützpunkt p₀ definiert er eine.
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2: Mathematik".
-- ISO 80000-2:2019, „Quantities and units – Part 2: Mathematics".
+- DIN EN ISO 80000-2:2023-08, „Größen und Einheiten – Teil 2: Mathematik".
+- ISO 80000-2:2009, „Quantities and units – Part 2: Mathematical signs
+  and symbols to be used in the natural sciences and technology"
+  (erste Ausgabe; Volltext eingesehen am 2026-11-21).
 
 **Sekundär:**
 

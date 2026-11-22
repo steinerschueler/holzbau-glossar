@@ -1,7 +1,7 @@
 ---
 id: bauteilflaeche
 benennung: Bauteilfläche
-kurz: "Eine Bauteilfläche ist eine der ebenen Aussenseiten eines Bauteils — etwa die Oberseite, eine Längsseite oder ein Stirnende eines Balkens —, die einen eindeutigen Namen hat, damit man genau sagen kann, wo etwas anliegt oder bearbeitet wird."
+kurz: "Eine Bauteilfläche ist eine der ebenen Außenseiten eines Bauteils — etwa die Oberseite, eine Längsseite oder ein Stirnende eines Balkens —, die einen eindeutigen Namen hat, damit man genau sagen kann, wo etwas anliegt oder bearbeitet wird."
 synonyme: ["Bauteilseite", "Bezugsseite"]
 abgelehnte_benennungen: ["Flächenrolle", "Fläche", "face", "component face"]
 oberbegriff: null
@@ -12,7 +12,7 @@ status: entwurf
 subglossar_pendant: optional
 quellen_primär:
   - "ISO 16739-1:2024 (IFC 4.3.2), buildingSMART, Entitäten `IfcFace` (8.20.3.7), `IfcFaceBound` (8.20.3.8), `IfcFaceSurface` (8.20.3.10), `IfcConnectionSurfaceGeometry` (8.7.3.9) — topologisches Pendant zur einzelnen Bauteilfläche; semantische Klassifikation (Längsseite/Stirnseite) trägt das Schema nicht. [einsicht: snippet]"
-  - "design2machine, BTLx Schema 2.3.1 (2025-07-08) bzw. BTL V10 — Reference Sides RS1–RS6 als indizierte Adressierung der sechs ausgezeichneten Aussenflächen eines prismatischen Stab-Bauteils; RS1–RS4 für Längsflächen, RS5/RS6 für Stirnflächen, `ReferencePlaneID`-Attribut an jedem Bearbeitungs-Element. [einsicht: snippet]"
+  - "design2machine, BTLx Schema 2.3.1 (2025-07-08) bzw. BTL V10 — Reference Sides RS1–RS6 als indizierte Adressierung der sechs ausgezeichneten Außenflächen eines prismatischen Stab-Bauteils; RS1–RS4 für Längsflächen, RS5/RS6 für Stirnflächen, `ReferencePlaneID`-Attribut an jedem Bearbeitungs-Element. [einsicht: snippet]"
 quellen_sekundär:
   - "Tekla/Trimble: 'Timber NC – BTL', Knowledgebase (`support.tekla.com/article/timber-nc-btl`) — Reference-Side-Konvention für Holzbau-Maschinen-Übergabe."
   - "Dietrich's: 'Timber Coordinate Systems', `docs.dietrichs.com` — Reference Sides als 'bridge between component geometry, machining operations and CNC programming'."
@@ -27,12 +27,12 @@ quellenkonflikt: |
   etablierter Single-Word-Fachbegriff, **falsifiziert**: weder in den
   konsultierten Normen (DIN 4074-1, DIN EN 14081-1, DIN EN 14080,
   DIN EN 1995-1-1, DIN 1052, DIN 68800-2, DIN EN 350,
-  DIN ISO 80000-2, SIA 260, SIA 265, SIA 232/1, ISO 16739-1) noch in
+  DIN EN ISO 80000-2, SIA 260, SIA 265, SIA 232/1, ISO 16739-1) noch in
   der einschlägigen Lehrbuchliteratur (Natterer/Herzog, Mönck/Rug,
   Blass/Sandhaas, Gerner, Lignum HBT) noch in den durchsuchten
   Berufsglossaren tritt „Bauteilfläche" als geschlossener Sammel-
   Oberbegriff für Längsseite, Stirnseite und vergleichbare
-  ausgezeichnete Aussenflächen eines Bauteils auf. Die Normen
+  ausgezeichnete Außenflächen eines Bauteils auf. Die Normen
   verwenden spezialisierte Bezeichnungen (Schmalseite, Breitseite,
   Hirnseite, Stirnseite, Längsseite) **ohne** Sammel-Oberbegriff. Die
   Recherche-Empfehlung lautete entsprechend: Eintrag erst beim
@@ -45,14 +45,14 @@ quellenkonflikt: |
   - Die CAD/CAM-Praxis (BTL/BTLx Reference Sides RS1–RS6 seit 2006
     cadwork/SEMA-Standard; Hundegger BVN/BVX; Dietrich's Timber
     Coordinate Systems) trägt das Konzept einer indexierten,
-    semantisch addressierbaren Aussenflächen-Familie eines Bauteils
+    semantisch addressierbaren Außenflächen-Familie eines Bauteils
     durchgehend. Sie liefert den **technologischen Anker** anstelle
     eines normativen.
   - IFC 4.3 trägt das Konzept **topologisch** über `IfcFace` /
     `IfcFaceBound` / `IfcFaceSurface` und die Verbindungs-Sicht
     `IfcConnectionSurfaceGeometry`, ohne eine semantische
     Klassifikation der einzelnen Bauteilfläche zu persistieren.
-    Die App schliesst diese Klassifikations-Lücke explizit durch den
+    Die App schließt diese Klassifikations-Lücke explizit durch den
     `bauteilflaeche`-Begriff.
 
   **Verhältnis zu den Spezialisierungs-Einträgen.** Die bestehenden
@@ -64,11 +64,11 @@ quellenkonflikt: |
 
   - **Bauteilfläche** ist eine **Facette des Bauteilpolyeders** im
     Sinne von `polyeder` (B-Rep-Modell), die zugleich eine
-    Bauteilrolle (Aussenfläche eines bestimmten Bauteils mit
-    Aussennormalen-Konvention und Adressierungs-Identität) trägt. Die
+    Bauteilrolle (Außenfläche eines bestimmten Bauteils mit
+    Außennormalen-Konvention und Adressierungs-Identität) trägt. Die
     Bauteilfläche bündelt damit drei Bestandteile: ein Polygon in
     Berandungs-Lesart, die Trägerebene des Polygons und die
-    Bauteilrolle (Aussennormale, Bauteil-Referenz, Adressierungs-
+    Bauteilrolle (Außennormale, Bauteil-Referenz, Adressierungs-
     Index).
   - **Die App führt die Rolle, nicht das Polyeder.** Geometrisch ist
     eine Bauteilfläche eine bereits am Bauteilpolyeder vorhandene
@@ -88,8 +88,8 @@ quellenkonflikt: |
     Holzbau nicht anschlussfähig), „Fläche" (zu allgemein —
     konkurriert mit Dachfläche/Wandfläche), „face" / „component face"
     (englische Lehnwörter; in deutscher Glossarsprache abgelehnt).
-  - **Bauteilfläche ist ausschliesslich auf Aussenflächen mit ebener
-    Trägerebene beschränkt.** Nicht-ebene Aussenflächen
+  - **Bauteilfläche ist ausschließlich auf Außenflächen mit ebener
+    Trägerebene beschränkt.** Nicht-ebene Außenflächen
     (Mantelfläche einer Rundholzstütze, gekrümmter Bogenträger-Mantel)
     werden in eigenen Folge-Einträgen erfasst (`mantelflaeche`,
     Folgearbeit).
@@ -107,9 +107,9 @@ quellenkonflikt: |
 ## Prosa-Definition
 
 Eine **Bauteilfläche** ist eine ebene, polygonal berandete
-Aussenfläche eines Bauteils, die als Facette des Bauteilpolyeders
+Außenfläche eines Bauteils, die als Facette des Bauteilpolyeders
 auf einer eindeutig bestimmten Trägerebene liegt, mit aus dem
-Bauteil heraus zeigender Aussennormale orientiert ist und eine im
+Bauteil heraus zeigender Außennormale orientiert ist und eine im
 Kontext des zugehörigen Bauteils eindeutige Adressierungs-Identität
 trägt.
 
@@ -129,11 +129,11 @@ Sei
   eindeutig bestimmte aus P(B) heraus zeigende Einheitsnormale der
   Facette F_l,
 - I_B eine endliche Indexmenge zur Adressierung der ausgezeichneten
-  Aussenflächen von B (zum Beispiel `I_B ⊆ {RS1, …, RS6}` im
+  Außenflächen von B (zum Beispiel `I_B ⊆ {RS1, …, RS6}` im
   prismatischen BTLx-Fall),
 - ρ: I_B → F_B eine **Rollen-Zuordnung**, die jedem
   Adressierungs-Index ι ∈ I_B genau eine Facette ρ(ι) ∈ F_B
-  zuordnet, mit ρ injektiv (jede ausgezeichnete Aussenfläche trägt
+  zuordnet, mit ρ injektiv (jede ausgezeichnete Außenfläche trägt
   genau einen Index).
 
 Eine **Bauteilfläche** von B ist ein Tupel
@@ -150,7 +150,7 @@ Die Tupel-Bestandteile sind:
 2. **Trägerebene** E_l (Ebene im Sinne von `ebene`, durch einen
    beliebigen Eckpunkt von F_l und n_hat_l in Hesse-Normalform
    eindeutig bestimmt).
-3. **Aussennormale** n_hat_l (aus P(B) heraus zeigend, Mannigfaltigkeits-
+3. **Außennormale** n_hat_l (aus P(B) heraus zeigend, Mannigfaltigkeits-
    Orientierung der Hülle ∂P(B); siehe `polyeder`, Bedingung 4).
 4. **Bauteil-Referenz** B (UUID des zugehörigen Bauteils).
 5. **Adressierungs-Index** ι ∈ I_B (Rolle der Bauteilfläche im
@@ -183,13 +183,13 @@ mit |𝓑𝓕(B)| = |I_B|. Die Abbildung ι ↦ BF(B, ι) ist injektiv.
 - **Eindeutigkeit.** Bei festgelegtem Bauteilpolyeder P(B) und
   festgelegter Rollen-Zuordnung ρ ist BF(B, ι) für jeden Index
   ι ∈ I_B eindeutig durch die Facette ρ(ι), ihre Trägerebene, ihre
-  Aussennormale und das zugehörige Bauteil bestimmt. Die
+  Außennormale und das zugehörige Bauteil bestimmt. Die
   Trägerebene ist nach `ebene` (modulo Vorzeichen); die kanonische
-  Vorzeichenwahl ist „Aussennormale" und damit eindeutig.
+  Vorzeichenwahl ist „Außennormale" und damit eindeutig.
 
-- **Wohldefiniertheit der Aussennormale.** Da P(B) per `polyeder`-
+- **Wohldefiniertheit der Außennormale.** Da P(B) per `polyeder`-
   Bedingung 4 eine geschlossene, orientierbare 2-Mannigfaltigkeits-
-  Hülle besitzt, ist die Aussen-Orientierung jeder Facette eindeutig
+  Hülle besitzt, ist die Außen-Orientierung jeder Facette eindeutig
   bestimmt; n_hat_l ist damit ohne weitere Wahl festgelegt.
 
 - **Repräsentanten-Unabhängigkeit der Trägerebene.** Die Trägerebene
@@ -212,13 +212,13 @@ mit |𝓑𝓕(B)| = |I_B|. Die Abbildung ι ↦ BF(B, ι) ist injektiv.
   benannt, aber nicht in der Definition vorausgesetzt.
 
 - **Eliminierbarkeit.** Jede Verwendung von „Bauteilfläche" lässt
-  sich durch das Tupel (Facette, Trägerebene, Aussennormale,
+  sich durch das Tupel (Facette, Trägerebene, Außennormale,
   Bauteil-Referenz, Adressierungs-Index) ersetzen.
 
 - **Grenzfälle.**
   - **Bauteil mit Rundquerschnitt** (Rundholzstütze, Bogenträger):
     die Mantelfläche ist nicht eben und folglich keine
-    Polyeder-Facette im strengen Sinne. Solche Aussenflächen werden
+    Polyeder-Facette im strengen Sinne. Solche Außenflächen werden
     in eigenen Folge-Einträgen erfasst (`mantelflaeche`, Folgearbeit);
     der Bauteilflächen-Begriff bleibt auf ebene Facetten beschränkt.
     In der App-Praxis werden gekrümmte Mantelflächen typisch
@@ -257,7 +257,7 @@ Schichten:
 1. **Topologische Schicht**: eine Facette des Bauteilpolyeders (im
    IFC-Vokabular: ein `IfcFace` mit `IfcFaceBound`).
 2. **Geometrische Schicht**: das Polygon in Berandungs-Lesart und
-   seine Trägerebene mit Aussennormale.
+   seine Trägerebene mit Außennormale.
 3. **Rollen-Schicht**: die Bauteil-Identifikation (UUID), der
    Adressierungs-Index ι (zum Beispiel BTLx RS1–RS6) und – über die
    konkrete Spezialisierung – die semantische Klassifikation
@@ -279,7 +279,7 @@ verschiedenen, kompatiblen Varianten technisch vorhanden:
 | Solid-Modeling-Literatur    | Face-with-Role-Pattern (Hoffmann, Mäntylä)    |
 
 Die App führt die **Rolle**, nicht das Polyeder: der Polyeder-Begriff
-trägt die Topologie und die Aussennormalen-Orientierung; die
+trägt die Topologie und die Außennormalen-Orientierung; die
 Bauteilfläche fügt die semantische Klassifikation und die
 Adressierungs-Identität als separate Schicht hinzu.
 
@@ -295,14 +295,14 @@ Bauteilart und Bezugsrichtung:
 | `schmalseite` (Folgearbeit) | Rechteck-Stab     | Längsseite parallel zur Querschnittsbreite        |
 | `breitseite` (Folgearbeit)  | Rechteck-Stab     | Längsseite parallel zur Querschnittshöhe          |
 | `mantelflaeche` (Folgearbeit) | Rundholz-Stab    | nicht-eben; durch Tessellierung als Familie ebener Bauteilflächen darstellbar |
-| `plattenflaeche` (Folgearbeit) | Plattenbauteil  | grosse Aussenfläche der Platte (Ober-/Unterseite) |
-| `plattenkante` (Folgearbeit)   | Plattenbauteil  | schmale Aussenfläche der Platte (Stirn-Entsprechung) |
+| `plattenflaeche` (Folgearbeit) | Plattenbauteil  | große Außenfläche der Platte (Ober-/Unterseite) |
+| `plattenkante` (Folgearbeit)   | Plattenbauteil  | schmale Außenfläche der Platte (Stirn-Entsprechung) |
 | `plattenschmalseite` /         |                   |                                                   |
 | `plattenbreitseite` (Folgearbeit) | Plattenbauteil | Plattenkanten-Familie nach Faserrichtungs-Modus  |
 | `dachseite`          | Dachbauteil-Gruppen-Sicht | Dachfläche unter Orientierungs-Annotation (Wetter-, Sonnen-, Trauf-, Giebelseite) |
 
 Die Familie ist nicht abgeschlossen: weitere Bauteilarten (Hohlkasten-
-Aussenflächen, Brettstapel-Schnittflächen, gekrümmte Träger) ziehen
+Außenflächen, Brettstapel-Schnittflächen, gekrümmte Träger) ziehen
 weitere Spezialisierungen nach sich, sobald sie in der App
 modelliert werden.
 
@@ -323,12 +323,12 @@ im Folgearbeit-Block vorgemerkt.
 Plattenwerkstoffe mit Faserrichtungs-Modi STRUKTURIERT, SCHWACH
 oder KEINE tragen eine eigene Bauteilflächen-Familie:
 
-- **Plattenflächen** (Ober-/Unterseite): die beiden grossen
-  Aussenflächen einer Platte; geometrisch parallel und in der App
+- **Plattenflächen** (Ober-/Unterseite): die beiden großen
+  Außenflächen einer Platte; geometrisch parallel und in der App
   ggf. ohne ausgezeichnete Ober-/Unterseiten-Unterscheidung (Modus
   KEINE oder SCHWACH ohne Annotation).
 - **Plattenkanten** (Stirn-Entsprechung): die vier (im Rechteck-
-  Standardfall) schmalen Aussenflächen. Bei gerichtetem
+  Standardfall) schmalen Außenflächen. Bei gerichtetem
   Plattenwerkstoff (LVL, CLT mit Hauptrichtung) zerfallen sie weiter
   in **Plattenschmalseite** und **Plattenbreitseite** je nach Bezug
   zur Plattenlängsrichtung. Bei isotropem Plattenwerkstoff
@@ -366,12 +366,12 @@ Definition selbst bleibt einheitlich.
   Gleichung (1)):
   - Polygon-Berandung F_l in Berandungs-Lesart (geerbt von `polygon`).
   - Trägerebene E_l (geerbt von `ebene`).
-  - Aussennormalen-Vektor n_hat_l (Mannigfaltigkeits-Orientierung des
+  - Außennormalen-Vektor n_hat_l (Mannigfaltigkeits-Orientierung des
     Bauteilpolyeders).
   - Bauteil-Referenz B (UUID).
   - Adressierungs-Index ι ∈ I_B (zum Beispiel BTLx RS1–RS6).
 - **Verwendung**:
-  - **Sammel-Iteration** über die Aussenflächen eines Bauteils im
+  - **Sammel-Iteration** über die Außenflächen eines Bauteils im
     Renderer und im Werkplan-Modul.
   - **BTLx-Export** (Folgearbeit Phase 4): jede Bearbeitung
     referenziert eine Bauteilfläche über ihren Adressierungs-Index
@@ -379,7 +379,7 @@ Definition selbst bleibt einheitlich.
   - **Verbindungs-Modellierung** (`verbindung`, `verbindungsmittel`):
     Verbindungs-Aufstandsflächen und Verbindungsmittel-
     Eindringungspunkte werden Bauteilflächen zugeordnet.
-  - **3D-Visualisierung**: einheitliche Aussennormalen-Behandlung
+  - **3D-Visualisierung**: einheitliche Außennormalen-Behandlung
     aller Bauteilflächen eines Bauteils für Backface-Culling und
     Materialzuweisung im Renderer.
   - **IFC-Export** (Folgearbeit Phase 4): jede Bauteilfläche wird
@@ -389,7 +389,7 @@ Definition selbst bleibt einheitlich.
     persistiert.
 - **Abgrenzung**:
   - **`polygon`**: geometrisches Primitiv ohne Bauteilrolle und
-    ohne Aussennormalen-Konvention. Eine Bauteilfläche enthält ein
+    ohne Außennormalen-Konvention. Eine Bauteilfläche enthält ein
     Polygon (in Berandungs-Lesart) als topologische Substanz, ist
     aber selbst kein Polygon.
   - **`ebene`**: die Trägerebene einer Bauteilfläche ist eine Ebene
@@ -405,7 +405,7 @@ Definition selbst bleibt einheitlich.
     Definition; siehe `hg_querschnitt.md`) — es sei denn am
     Bauteilende, wo der Querschnitt mit der prismatisch-
     rechtwinkligen Stirnseite zusammenfällt. Eine Bauteilfläche ist
-    grundsätzlich eine **Aussenfläche** und damit Bestandteil der
+    grundsätzlich eine **Außenfläche** und damit Bestandteil der
     Bauteilhülle, kein Inneren-Schnitt.
   - **`bauteil`**: ein Bauteil hat eine Familie von Bauteilflächen;
     es ist aber selbst keine Bauteilfläche, sondern das übergeordnete
@@ -453,7 +453,7 @@ Definition selbst bleibt einheitlich.
 
 - DIN 4074-1:2012-06, DIN EN 14081-1:2019-10, DIN EN 14080:2013-09,
   DIN EN 1995-1-1:2010-12, DIN 1052:2008-12, DIN 68800-2:2022-02,
-  DIN EN 350:2016-12, DIN ISO 80000-2:2022-08, SIA 260:2013,
+  DIN EN 350:2016-12, DIN EN ISO 80000-2:2023-08, SIA 260:2013,
   SIA 265:2021, SIA 232/1:2020 — keine dieser Normen führt
   „Bauteilfläche" als geschlossenen Sammelbegriff.
 - Mönck/Rug (2015), Natterer/Herzog/Volz (2003),

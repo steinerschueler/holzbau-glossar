@@ -272,9 +272,9 @@ Berufsalltag jeweils ein eigenes Vokabular tragen:
 | **Schnurgerüst-Polygon** | Schnurgerüst, Bauachsen, Achspunkte; in der Vermessung: Polygonzug, Polygonpunkt | Bauplatz, Vermessungs-Phase vor dem Aufbau | Zimmermann (Bauplatz), Meister (Vermessungs-Schnittstelle) |
 
 Daneben gibt es weitere, weniger zentrale Polygon-Auftrittsorte:
-der **Reissboden** der traditionellen Zimmerei trägt eine
+der **Reißboden** der traditionellen Zimmerei trägt eine
 aufgeschnürte Polygon-Kontur als 1:1-Anriss eines Bauteils (siehe
-`sg_ebene.md` zum Reissboden als materialisierter Ebene); die
+`sg_ebene.md` zum Reißboden als materialisierter Ebene); die
 **Schiftung** bringt Polygone als Schnittfiguren der Dachflächen
 mit Hilfsebenen hervor (im Korpus „Abgratung", „Auskehlung",
 „Schnittfigur" — nicht „Polygon"); die **Auflagerfläche** unter

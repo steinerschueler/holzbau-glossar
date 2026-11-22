@@ -11,7 +11,6 @@ abgrenzung_zu: [strecke, polygon, gerade, kurve]
 status: entwurf
 subglossar_pendant: optional  # Begründung (Abweichung vom Normalfall notwendig): geometrische Zwischenstufe zwischen strecke und polygon, als Begriff nicht praxisgebräuchlich; didaktische Substanz liegt bei strecke und polygon (beide notwendig) (HG_KONVENTIONEN §7).
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, 'Größen und Einheiten – Teil 2: Mathematik', Abschnitt 2 (Geometrie), Eintrag 'Streckenzug / gebrochene Linie'."
   - "DIN EN ISO 19107:2019 'Geographic information – Spatial schema', Abschnitt 6.4.7 'GM_LineString' (geordnete Folge von Strecken zwischen aufeinanderfolgenden Stützpunkten)."
 quellen_sekundär:
   - "Bronstein, I. N.; Semendjajew, K. A.; Musiol, G.; Mühlig, H.: Taschenbuch der Mathematik. Kap. 3.1.5 'Vielecke' (Streckenzug als Verallgemeinerung des Polygonrands) und Kap. 3.5 'Geraden und Strecken im Raum'."
@@ -21,9 +20,9 @@ quellen_sekundär:
 quellenkonflikt: |
   Holzbau-Normen (SIA 232/1, DIN 1356) verwenden den Begriff
   „Streckenzug" implizit (z. B. „polygonal begrenzt", „gebrochene
-  Trauflinie"), ohne ihn axiomatisch zu definieren. DIN ISO 80000-2
-  führt den Begriff als „gebrochene Linie" ein, gibt jedoch keine
-  formale Definition. Die Geomatik (ISO 19107) definiert
+  Trauflinie"), ohne ihn axiomatisch zu definieren. DIN EN ISO 80000-2
+  führt nur die Strecke, nicht den Streckenzug (geprüft an
+  ISO 80000-2:2009, Abschnitt 8). Die Geomatik (ISO 19107) definiert
   GM_LineString als geordnete Folge von Stützpunkten mit linearer
   Interpolation; das ist äquivalent zur hier gewählten Festlegung.
   In der Computational Geometry (de Berg, Preparata/Shamos) ist die
@@ -38,8 +37,8 @@ quellenkonflikt: |
   s_i:= [p_{i−1}, p_i]. Geschlossenheit (p_n = p_0) ist eine
   Eigenschaft, kein Subtyp. Selbstüberschneidungen sind zulässig,
   außer wo durch einen verwendenden Begriff (z. B. `polygon`)
-  ausgeschlossen. Diese Festlegung ist konsistent mit DIN ISO 80000-2,
-  ISO 19107 und der Computational-Geometry-Tradition.
+  ausgeschlossen. Diese Festlegung ist konsistent mit ISO 19107 und
+  der Computational-Geometry-Tradition.
 
   Die im Sprachgebrauch gleichbedeutend verwendeten Begriffe
   „Polygonzug" und „Polylinie" werden als Synonyme geführt; in der
@@ -232,8 +231,6 @@ verwendet; beide sind im Glossar Synonyme.
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2: Mathematik",
-  Abschnitt 2.
 - DIN EN ISO 19107:2019, „Geographic information – Spatial schema",
   Abschnitt 6.4.7 (GM_LineString).
 

@@ -48,7 +48,7 @@ gleichzeitig drei Aufgaben am Sparren-Pfetten-Anschluss:
   Pfette nur eine Linienauflage haben — geometrisch instabil,
   baupraktisch unbrauchbar.
 - **Lagesicherung.** Der Senkel liegt seitlich an der Pfetten-Kante
-  an (firstseitig oder fussseitig, je nach Werkplan) und verhindert,
+  an (firstseitig oder fußseitig, je nach Werkplan) und verhindert,
   dass der Sparren längs zu seiner eigenen Achse verrutscht.
 - **Kraftübertragung.** Die vertikalen Lasten (Eigengewicht, Schnee,
   Wind-vertikal) gehen über die Sohle in die Pfette ab; abhebende
@@ -56,7 +56,7 @@ gleichzeitig drei Aufgaben am Sparren-Pfetten-Anschluss:
   Verbinder) gehalten.
 
 Die Kerve ist damit der **Standard-Sparren-Pfetten-Anschluss im
-Pfettendach** der DACH-Region — von der Fusspfette über die
+Pfettendach** der DACH-Region — von der Fußpfette über die
 Mittelpfette bis zur Firstpfette. Die Kervgeometrie selbst ist
 **gegenholz-neutral**: sie beschreibt nur den Ausschnitt am
 Sparren, nicht das, worauf er aufliegt. Auflager kann eine hölzerne
@@ -89,10 +89,10 @@ e_hat_v-Richtung; auf welcher Seite des Sohlen-Ausschnitts der Senkel
 sitzt — fuss- oder firstwärts — hängt von der Sparrenlage ab, nicht
 von einer freien Wahl (siehe Abschnitt „Senkelseite" weiter unten).
 
-## Werkplan-Skizze: Klauenkerve am Sparrenfuss auf der Fusspfette
+## Werkplan-Skizze: Klauenkerve am Sparrenfuß auf der Fußpfette
 
 Die folgende Skizze zeigt einen Sparren im Profil-Schnitt (Lotebene),
-der über eine Klauenkerve auf einer Fusspfette aufliegt. Die zwei
+der über eine Klauenkerve auf einer Fußpfette aufliegt. Die zwei
 Schnittflächen sind beschriftet, die drei Eckpunkte der
 Kerve-Geometrie sind als rote Punkte markiert. Welt-Pfeile **e_hat_h**
 und **e_hat_v** unten rechts orientieren den Schnitt; sie zeigen, dass
@@ -100,10 +100,10 @@ die Sohle parallel zu **e_hat_h** und der Senkel parallel zu **e_hat_v**
 liegt — unabhängig von der Dachneigung des Sparrens.
 
 <svg viewBox="0 0 480 370" xmlns="http://www.w3.org/2000/svg" role="img" font-family="sans-serif" font-size="13">
-  <title>Klauenkerve am Sparrenfuss auf einer Fusspfette — Profil-Schnitt in der Lotebene</title>
-  <desc>Profil-Schnitt durch eine Klauenkerve am Sparrenfuss. Sichtbar
+  <title>Klauenkerve am Sparrenfuß auf einer Fußpfette — Profil-Schnitt in der Lotebene</title>
+  <desc>Profil-Schnitt durch eine Klauenkerve am Sparrenfuß. Sichtbar
         sind das Sparren-Polygon mit V-förmiger Aussparung an der
-        Unterkante, die Fusspfette als Querschnitt-Rechteck und die
+        Unterkante, die Fußpfette als Querschnitt-Rechteck und die
         zwei welt-ausgerichteten Kervflächen: Sohle (welt-horizontal)
         und Senkel (welt-vertikal). Die drei Kerv-Eckpunkte P
         (Kerveckpunkt im Sparreninneren), A (Sohle-Ausstieg) und C
@@ -111,15 +111,15 @@ liegt — unabhängig von der Dachneigung des Sparrens.
   <rect width="100%" height="100%" fill="#f4f1ea"/>
   <!--
   ====================================================================
-  SVG-DOKUMENTATION: sg_kerve — Klauenkerve am Sparrenfuss
+  SVG-DOKUMENTATION: sg_kerve — Klauenkerve am Sparrenfuß
   ====================================================================
   ZWECK
     Pflicht-Skizze zur Kerve. Profil-Schnitt (Lotebene) durch eine
-    Klauenkerve am Sparrenfuss auf einer Fusspfette. Detail-Ausschnitt
-    auf den Sparrenfuss + Pfette + Kerve; der Sparrenkopf liegt
+    Klauenkerve am Sparrenfuß auf einer Fußpfette. Detail-Ausschnitt
+    auf den Sparrenfuß + Pfette + Kerve; der Sparrenkopf liegt
     außerhalb der viewBox und wird vom Renderer geclippt. Sichtbar:
       - Sparren-Polygon mit V-förmiger Aussparung an der Unterkante
-      - Fusspfette als Querschnitt-Rechteck
+      - Fußpfette als Querschnitt-Rechteck
       - Sohle (welt-horizontal) und Senkel (welt-vertikal) rot
         hervorgehoben (stroke-width 2)
       - Kerveckpunkt P, Sohle-Ausstieg A, Senkel-Ausstieg C
@@ -128,7 +128,7 @@ liegt — unabhängig von der Dachneigung des Sparrens.
       und <desc>).
     - Pattern 2 Welt-Pfeile-Inset (translate(400, 340)).
     - Pattern 3 Punkt-Markierung mit Label und Rolle.
-  STIL-KONVENTIONEN (Farben gemäss §6 Farbpalette)
+  STIL-KONVENTIONEN (Farben gemäß §6 Farbpalette)
     Karton                #f4f1ea  Hintergrund-Rechteck
     Pfetten-Füllung       #d4a76a  warmer Holz-Hue
     Sparren-Füllung       #f5e6c8  hell-warmer Holz-Hue
@@ -158,7 +158,7 @@ liegt — unabhängig von der Dachneigung des Sparrens.
     87 px senkrecht zur Achse). Polygon-Stirnen Senkelschnitt
     (welt-vertikal); Sparrenkopf-Stirn nicht eingezeichnet, das
     Polygon endet am rechten viewBox-Rand bei x=480.
-    Fusspfette (Querschnitt 70 × 70):
+    Fußpfette (Querschnitt 70 × 70):
       rect (220, 280) bis (290, 350)
       Außenkante x=220 (Vordach-Seite), Innenkante x=290.
     Klauenkerve (Senkel an Pfetten-Außenkante, Sohle nach innen
@@ -217,11 +217,11 @@ liegt — unabhängig von der Dachneigung des Sparrens.
       "Sparrenachse"   (370, 187) italic 11 #666
                        Über der Mittellinie, parallel zur Achse.
     Pfetten-Beschriftung (italic 12 #666):
-      "Fusspfette (Querschnitt)" (255, 365) middle, unter der
+      "Fußpfette (Querschnitt)" (255, 365) middle, unter der
                        Pfetten-Unterkante.
     Titel-Zeilen (oben zentriert, middle anchor):
       Z. 1             (240, 30) italic 12
-                       "Klauenkerve am Sparrenfuss auf Fusspfette
+                       "Klauenkerve am Sparrenfuß auf Fußpfette
                        (Profil-Schnitt, Lotebene)"
       Z. 2             (240, 44) italic 11 #666
                        "Sohle = Bleischnitt (welt-horizontal),
@@ -250,9 +250,9 @@ liegt — unabhängig von der Dachneigung des Sparrens.
         dem Bild").
   ====================================================================
   -->
-  <!-- ============ AUFLAGER: Fusspfette als Querschnitt ============ -->
+  <!-- ============ AUFLAGER: Fußpfette als Querschnitt ============ -->
   <rect x="220" y="280" width="70" height="70" fill="#d4a76a" stroke="#6a4c2a" stroke-width="1.5"/>
-  <text x="255" y="365" text-anchor="middle" font-style="italic" font-size="12" fill="#666">Fusspfette (Querschnitt)</text>
+  <text x="255" y="365" text-anchor="middle" font-style="italic" font-size="12" fill="#666">Fußpfette (Querschnitt)</text>
   <!-- ============ SPARREN: Polygon mit V-förmiger Klauenkerve ============ -->
   <polygon points="95,252 480,102 480,195 262,280 220,280 220,296 95,345" fill="#f5e6c8" stroke="#6a4c2a" stroke-width="1.5"/>
   <!-- Sparrenachse als gestrichelte Mittellinie -->
@@ -292,7 +292,7 @@ liegt — unabhängig von der Dachneigung des Sparrens.
   <!-- Senkel als rote dickere Linie -->
   <line x1="220" y1="280" x2="220" y2="296" stroke="#c0392b" stroke-width="2"/>
   <!-- ============ BESCHRIFTUNG GESAMT (oben zentriert) ============ -->
-  <text x="240" y="30" text-anchor="middle" font-style="italic" font-size="12">Klauenkerve am Sparrenfuss auf Fusspfette (Profil-Schnitt, Lotebene)</text>
+  <text x="240" y="30" text-anchor="middle" font-style="italic" font-size="12">Klauenkerve am Sparrenfuß auf Fußpfette (Profil-Schnitt, Lotebene)</text>
   <text x="240" y="44" text-anchor="middle" font-style="italic" font-size="11" fill="#666">Sohle = Bleischnitt (welt-horizontal), Senkel = Senkelschnitt (welt-vertikal)</text>
   <text x="240" y="58" text-anchor="middle" font-style="italic" font-size="11" fill="#666">Kerveckpunkt P im Sparreninneren</text>
   <!-- ============ WELT-PFEILE-INSET (Pattern 2) ============ -->
@@ -319,11 +319,11 @@ zusätzlicher Parameter.
 
 Zweitens: der **Kerveckpunkt P** ist eine **einspringende** Ecke im
 Sparren-Polygon — er liegt im Sparrenholz, nicht an seinem äußeren
-Umriss. Damit unterscheidet er sich vom Sparrenfusspunkt am
+Umriss. Damit unterscheidet er sich vom Sparrenfußpunkt am
 Vordach-Ende, der eine **ausspringende** Ecke der Sparrenkontur ist
 (siehe `sg_punkt.md`). Beide Ecken entstehen geometrisch aus dem
 Zusammentreffen einer welt-horizontalen und einer welt-vertikalen
-Schnittfläche; beim Sparrenfuss sind das Bleischnitt und
+Schnittfläche; beim Sparrenfuß sind das Bleischnitt und
 Senkelschnitt der Sparrenstirn, bei der Kerve sind es Sohle und
 Senkel.
 
@@ -338,15 +338,15 @@ Spannungen).
 
 ## Kerven-Subtypen am Sparren
 
-Die Klauenkerve am Sparrenfuss ist der häufigste Vertreter einer
+Die Klauenkerve am Sparrenfuß ist der häufigste Vertreter einer
 ganzen kleinen Familie von Kerv-Bearbeitungen entlang der
 Sparrenachse. Die Position auf dem Sparren bestimmt den Subtyp und
 seinen Konstruktions-Kontext.
 
 | Position am Sparren | Pfette | Klassischer Kerv-Name | Konstruktiver Kontext |
 |---|---|---|---|
-| **Sparrenfuss** (unteres Sparrenende, Vordach-Übergang) | Fusspfette | Klauenkerve, Standardkerve | häufigste Kerve, primärer Lehrstoff im 2. Lehrjahr |
-| **Sparren-Mitte** (zwischen Sparrenfuss und Sparrenkopf) | Mittelpfette | Mittelpfetten-Kerve, ggf. Doppelkerve | bei mehrgeschossigen Dächern und großen Spannweiten |
+| **Sparrenfuß** (unteres Sparrenende, Vordach-Übergang) | Fußpfette | Klauenkerve, Standardkerve | häufigste Kerve, primärer Lehrstoff im 2. Lehrjahr |
+| **Sparren-Mitte** (zwischen Sparrenfuß und Sparrenkopf) | Mittelpfette | Mittelpfetten-Kerve, ggf. Doppelkerve | bei mehrgeschossigen Dächern und großen Spannweiten |
 | **Sparrenkopf** (oberes Sparrenende am First) | Firstpfette | First-Kerve | bei Pfettendächern mit Firstpfette; im Sparrendach ersetzt durch Überblattung / Firstzange |
 
 Eine **Doppelkerve** liegt vor, wenn zwei Kerven an demselben
@@ -356,7 +356,7 @@ Sparren nicht über eine Pfettenecke einfach hinwegläuft, sondern
 formschlüssig in die Pfette eingebunden ist.
 
 Eine **Versatzkerve** kombiniert die Kerve mit einer zusätzlichen
-schrägen Stirn (Anschnitt Richtung Sparrenfuss) und stellt damit
+schrägen Stirn (Anschnitt Richtung Sparrenfuß) und stellt damit
 eine Mischform zwischen Kerve und Versatz dar — sie ist nicht der
 Versatz, sondern eine Variante der Kerve mit zusätzlicher
 Funktions-Fläche.
@@ -441,13 +441,13 @@ zusammenfassen:
 2. **Dachneigung an der Schmiege einstellen** (Stell-Schmiege oder
    Schmiege am Zimmermannswinkel mit Neigungsskala).
 3. **Position des Kervmittelpunkts** entlang der Sparrenachse
-   abmessen — Maßband, gemessen vom Sparrenende, gemäss Werkplan-
+   abmessen — Maßband, gemessen vom Sparrenende, gemäß Werkplan-
    Bemaßung.
-4. **Sohle anreissen** als waagerechte Linie an der Sparren-
+4. **Sohle anreißen** als waagerechte Linie an der Sparren-
    Unterseite, mit der Schmiege auf Dachneigung eingestellt; die
    Sohlenlänge entspricht in der Regel der Pfettenbreite.
-5. **Senkelseite festlegen** (firstseitig oder fussseitig, gemäss
-   Werkplan) und **Senkel anreissen** — rechtwinklig zur Sohle, mit
+5. **Senkelseite festlegen** (firstseitig oder fußseitig, gemäß
+   Werkplan) und **Senkel anreißen** — rechtwinklig zur Sohle, mit
    Zimmermannswinkel oder Schmiege.
 6. **Kerventiefe markieren** mit dem Streichmaß, eingestellt auf
    das im Werkplan vorgegebene Maß (innerhalb der Faustregel-
@@ -461,10 +461,10 @@ Die Werkzeug-Trias des Anrisses ist kompakt:
 
 | Werkzeug | Funktion am Kerv-Anriss |
 |---|---|
-| **Schmiege** (Stell- oder Winkelschmiege) | Dachneigungs-Winkel an der Sparren-Unterseite anlegen; Sohle und Senkel unter dem korrekten Winkel zur Sparrenkante anreissen |
+| **Schmiege** (Stell- oder Winkelschmiege) | Dachneigungs-Winkel an der Sparren-Unterseite anlegen; Sohle und Senkel unter dem korrekten Winkel zur Sparrenkante anreißen |
 | **Zimmermannswinkel** (mit Neigungsskala / „Alphawinkel") | rechtwinklige Beziehung Sohle ↔ Senkel; in kompakter Form die ganze Anriss-Sequenz mit eingebauter Neigungsskala |
 | **Streichmaß** | Kerventiefe parallel zur Sparren-Unterseite ankörnen |
-| **Reissnadel oder Bleistift** | Anriss-Linien sichtbar machen |
+| **Reißnadel oder Bleistift** | Anriss-Linien sichtbar machen |
 | **Handsäge / Stichsäge / Kreissäge** | Schnitt entlang der Anriss-Linien |
 | **Stechbeitel** | Eckpunkt sauber ausstoßen — Säge erreicht ihn nicht |
 | **Kervenfräsmaschine** (CNC-Abbund) | industrielle Vorfertigung; ersetzt die Handwerkzeug-Sequenz in der Abbund-Halle |
@@ -473,10 +473,10 @@ Methodisch wichtig: die Berufssprache unterscheidet auch hier
 **Tätigkeit** und **Resultat**. Das **Kerben** ist die Tätigkeit
 (beziehungsweise der Werkstattvorgang über die ganze Sequenz
 hinweg), die **Kerve** das fertige Resultat — die welt-ausgerichtete
-V-Aussparung am Sparrenholz. Das **Anreissen** ist die Tätigkeit,
+V-Aussparung am Sparrenholz. Das **Anreißen** ist die Tätigkeit,
 der **Anriss** die sichtbare Linie auf dem Holz; das **Ankörnen**
 mit dem Streichmaß erzeugt die **Körnung** als feine Ritzspur. Die
-Reihenfolge **anreissen → sägen → stechen** ist nicht umkehrbar:
+Reihenfolge **anreißen → sägen → stechen** ist nicht umkehrbar:
 wer ohne Anriss sägt, sägt am falschen Maß.
 
 ## Was eine Kerve nicht ist — Versatz, V-Schnitt, Falz, Zapfenloch
@@ -653,7 +653,7 @@ finden:
 Verwandte Subglossar-Einträge (Folgearbeit oder Pilot-Querverweis):
 
 - `lerninhalt/subglossar/sg_punkt.md` — der Kerveckpunkt als
-  einspringende Polygon-Ecke, in Parallele zum Sparrenfusspunkt
+  einspringende Polygon-Ecke, in Parallele zum Sparrenfußpunkt
   als ausspringender Polygon-Ecke.
 - `lerninhalt/subglossar/sg_strecke.md` — die Sohlenlänge und die
   Kerventiefe als bemaßbare Strecken am Werkplan.

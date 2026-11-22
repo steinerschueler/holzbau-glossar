@@ -11,7 +11,6 @@ abgrenzung_zu: [streckenzug, dachflaeche, polyeder, stirnseite, laengsseite]
 status: entwurf
 subglossar_pendant: notwendig
 quellen_primär:
-  - "DIN ISO 80000-2:2022-08, Abschnitt 2 (Geometrie), Bezeichnungen für Vielecke."
   - "ISO 19107:2019 'Geographic information – Spatial schema', Abschnitt 6.4 'GM_Polygon' (geometrische Definition eines einfachen ebenen Polygons mit Innenbereich)."
 quellen_sekundär:
   - "Bronstein, I. N. et al.: Taschenbuch der Mathematik. Kap. 3.1.5 'Vielecke' und Kap. 3.5 'Polygone im Raum'."
@@ -201,11 +200,11 @@ beschränkte Flächenstück F(P). Die Wahl zwischen Punktmengen- und
 Berandungs-Lesart ist **Kontext-Frage**, keine Strukturfrage des
 Begriffs: in Operationen über Flächeninhalt und Lage von Punkten
 liegt die Punktmengen-Lesart nahe; in der Bauteilflächen-
-Modellierung mit Trägerebene und Aussennormalen-Konvention liegt
+Modellierung mit Trägerebene und Außennormalen-Konvention liegt
 die Berandungs-Lesart näher. Die Implementierung führt beide
 Lesarten über denselben Datentyp (`KonvexesPolygon` mit
 Eckenfolge in einer Trägerebene); die zusätzliche semantische
-Schicht (Bauteilrolle, Aussennormalen-Konvention) trägt der
+Schicht (Bauteilrolle, Außennormalen-Konvention) trägt der
 verwendende Begriff.
 
 ## Beziehungen
@@ -244,9 +243,9 @@ verwendende Begriff.
   - **Stirnseite** (`stirnseite`) und **Längsseite** (`laengsseite`):
     Bauteilflächen, die geometrisch über die Berandungs-Lesart des
     Polygons modelliert werden (Randpolygon auf einer Trägerebene
-    mit Bauteilrolle und Aussennormalen-Konvention). Das Polygon
+    mit Bauteilrolle und Außennormalen-Konvention). Das Polygon
     trägt die geometrische Substanz; die Bauteilfläche fügt die
-    Bauteilrolle und die Aussennormalen-Konvention hinzu.
+    Bauteilrolle und die Außennormalen-Konvention hinzu.
   - **Selbstüberschneidende Vielecke** (z. B. Pentagramm):
     werden in diesem Glossar **nicht** als Polygon zugelassen.
     Die `KonvexesPolygon`-Implementierung schließt sie für die
@@ -261,8 +260,6 @@ verwendende Begriff.
 
 **Primär (normativ):**
 
-- DIN ISO 80000-2:2022-08, „Größen und Einheiten – Teil 2: Mathematik",
-  Abschnitt 2.
 - ISO 19107:2019, „Geographic information – Spatial schema",
   Abschnitt 6.4 (GM_Polygon).
 

@@ -16,6 +16,8 @@ quellen_primär:
   - "DIN EN 1995-1-1:2010-12 (Eurocode 5), Abschnitt 5 und 6, Firstpfette als Pfette mit Lage am First."
   - "DIN 1052:2008-12, Abschnitt 8 und 12, Firstpfette als Tragglied am First."
 quellen_sekundär:
+  - "Bläsi, W.; Ferdinand, S.: Tabellenbuch Zimmerer. 9. Aufl., Bildungsverlag EINS (Westermann Gruppe), Köln 2021, ISBN 978-3-427-02144-5, Kap. 3.9.3–3.9.8 'Dachkonstruktionen', S. 170–173: gedruckte Funktionszuschreibung der Firstpfette im Berufsschul-Kanon. Legende des Pfettendachs mit einfachem Hängewerk: ④ 'Firstpfette (Sparrenauflage, gerade Firstlinie)' (S. 172, Kap. 3.9.6); Vorteils-Tafel: 'Firstpfette bewirkt geraden Firstverlauf' (S. 173, Kap. 3.9.8), im Gegensatz zum Sparrendach-Nachteil 'oft ungerader Firstverlauf' (ebd.). Legende ① 'Firstpfette Längsaussteifung' am einfach stehenden Pfettendach (S. 170, Kap. 3.9.3) und ① Firstpfette am dreifach stehenden Pfettendach (S. 171, Kap. 3.9.5). Firstbohle als eigenes Element: der Schnitt des zweifach stehenden Pfettendachs (S. 170, Kap. 3.9.4) trägt am First eine 'Firstbohle' und keine Firstpfette — gedruckter Beleg der Nicht-Synonymie von Firstpfette und Firstbohle, parallel zu Colling S. 170."
+  - "Colling, F.: Holzbau – Grundlagen und Bemessung nach EC 5. 7. Aufl., Springer Vieweg, Wiesbaden 2021, ISBN 978-3-658-34446-7, S. 162 und S. 170: Firstgelenk-Ausbildungen — Verbindung der Gegensparren über seitliche Laschen, eine Richtpfette oder eine Überblattung mit Bolzen (S. 162); Krafteinleitung der Windrispenbänder 'über die Firstpfette, Firstbohle oder ein Längsholz' (S. 170) — Colling führt die Firstbohle als eigenes Element neben der Firstpfette und stützt damit die Nicht-Synonymie der abgelehnten Benennung."
   - "Lignum (Hrsg.): Holzbautabellen HBT, Lignum, Zürich, aktuelle Auflage, Kap. 'Pfettendach'."
   - "Lignum (Hrsg.): Lignatec 'Geneigte Dächer in Holzbauweise'."
   - "Mönck, W.; Rug, W.: Holzbau – Bemessung und Konstruktion. 16. Aufl., Beuth, Berlin 2015, Kap. 11 'Dachtragwerke'."
@@ -44,6 +46,32 @@ quellenkonflikt: |
   **Kehlbalkendachs** sowie von Misch- und Bindersystemen.
 
   Diese Festlegung ist konsistent mit allen konsultierten Quellen.
+
+  **Berufsschul-Befund (Bläsi/Ferdinand, Tabellenbuch Zimmerer,
+  9. Aufl. 2021; Volltext-Scan liegt Anweiser vor, direkt eingesehen
+  2026-08-14).** Zwei Punkte:
+
+  - Die gedruckte Funktionszuschreibung ④ 'Firstpfette
+    (Sparrenauflage, gerade Firstlinie)' (S. 172) und der
+    Vorteils-Eintrag 'Firstpfette bewirkt geraden Firstverlauf'
+    (S. 173) benennen als Zweck der Firstpfette nicht nur die
+    Sparrenauflage, sondern ausdrücklich die **Geradheit der
+    Firstlinie** — Gegenstück zum Sparrendach-Nachteil 'oft
+    ungerader Firstverlauf' (S. 173). Diese Funktion ist eine
+    Eigenschaft des Tragwerks und geht nicht in die geometrische
+    Definition ein.
+  - **Nicht jedes Pfettendach hat eine Firstpfette.** Der Schnitt
+    des zweifach stehenden Pfettendachs (S. 170) führt am First
+    eine **Firstbohle** mit Zangenpaar und Firstzangenpaar, aber
+    keine Firstpfette; die Pfettenreihen sind dort Fußpfette und
+    Mittelpfette. Der Befund bestätigt die Nicht-Synonymie
+    Firstpfette ↔ Firstbohle (siehe `abgelehnte_benennungen`) und
+    war Anlass eines R-Schritts (Anweiser-Entscheid 2026-08-14):
+    die Existenz einer Firstpfette folgt aus der Bauart
+    'Pfettendach' allein nicht, sondern nur aus einer Bauart mit
+    Firstpfettenreihe (einfach und dreifach stehendes
+    Pfettendach, Hängewerk); der Existenz-Punkt im
+    Wohldefiniertheits-Block ist entsprechend gefasst.
 ---
 
 ## Prosa-Definition
@@ -105,9 +133,15 @@ Wesentliche abgeleitete Größen:
 
 ## Wohldefiniertheit
 
-- **Existenz**: In jedem Pfettendach mit First gibt es eine
-  Firstpfette als oberste Längspfette; die Bedingungen 1–3 sind
-  konstruktiv erfüllbar.
+- **Existenz**: In jedem Pfettendach mit **Firstpfettenreihe**
+  (einfach und dreifach stehendes Pfettendach, Pfettendach mit
+  Hängewerk) gibt es eine Firstpfette als oberste Längspfette;
+  die Bedingungen 1–3 sind konstruktiv erfüllbar. Ein
+  Existenz-Satz für das Pfettendach schlechthin gilt **nicht**:
+  das zweifach stehende Pfettendach führt am First eine
+  Firstbohle mit Firstzangenpaar statt einer Firstpfette
+  (Tabellenbuch S. 170; Quellenkonflikt-Hinweis oben; R-Schritt
+  per Anweiser-Entscheid 2026-08-14).
 - **Eindeutigkeit**: Bedingung 3 stellt sicher, dass nur die
   oberste First-parallele Pfette als Firstpfette qualifiziert.
   Bei symmetrischen Doppelfirstkonstruktionen (z. B. zwei
@@ -215,7 +249,7 @@ Symbol-Tabelle in `hg_sparren.md` (Sparren-Pipeline-Begriffe).
 
 Lesart: `s` misst direkt entlang der Bauteilachse, also entlang
 derjenigen Richtung, in der das Werkzeug am Sparren verfährt;
-dies ist die in BTLx und in der Werkplan-Bemassung erwartete
+dies ist die in BTLx und in der Werkplan-Bemaßung erwartete
 Lesart der „Kervenposition" am Sparren.
 
 #### Spezialfall: z-Differenz / sin(α)
@@ -238,7 +272,7 @@ Fall, kein eigenständiger Definitionsterm — und genau die in der
 Werkplan-Praxis genutzte Form (Recherche-Bericht
 [intern], Abschnitt D).
 Bei geneigten Pfetten, ungleichen Kervtiefen oder einer Bauteilachse
-ausserhalb der Trägerebene weicht die z-Differenz der Kerveckpunkte
+außerhalb der Trägerebene weicht die z-Differenz der Kerveckpunkte
 von der Differenz der Pfettenhöhen ab; dann liefert (s.1) das
 geometrisch korrekte Ergebnis, (s.3)/(s.4) hingegen nur eine
 Näherung. Die **kanonische Form ist (s.1)**; (s.3)/(s.4) wird als
@@ -300,6 +334,18 @@ Verbindungen:
 
 **Sekundär:**
 
+- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+  Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
+  ISBN 978-3-427-02144-5. Kap. 3.9.3–3.9.8 „Dachkonstruktionen"
+  (S. 170–173): Legende ④ „Firstpfette (Sparrenauflage, gerade
+  Firstlinie)" (S. 172), Vorteils-Tafel „Firstpfette bewirkt geraden
+  Firstverlauf" (S. 173), Legende ① „Firstpfette Längsaussteifung"
+  (S. 170), Firstbohle statt Firstpfette am zweifach stehenden
+  Pfettendach (S. 170). Volltext-Scan liegt Anweiser vor; direkt
+  eingesehen 2026-08-14 (seitenweise am Scan-PNG verifiziert).
+- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+  ISBN 978-3-658-34446-7, S. 162/170 (Firstgelenk; Firstpfette vs. Firstbohle). Volltext-Scan liegt Anweiser
+  vor; direkt eingesehen 2026-08-13.
 - Lignum (Hrsg.): *Holzbautabellen HBT.* Aktuelle Auflage.
 - Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*
 - Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
