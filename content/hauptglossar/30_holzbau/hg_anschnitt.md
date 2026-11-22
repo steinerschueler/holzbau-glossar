@@ -239,7 +239,7 @@ Sei
 - σ ∈ {ANFANG, ENDE} die **Anschnittseite** (analog zu
   `Endposition` in `hg_stirnseite.md`); setze
 
-  ```
+  ```text
   p_σ:= { p_a, falls σ = ANFANG;
            p_e, falls σ = ENDE }                                  (1a)
   d_hat_σ:= { −d_hat(0), falls σ = ANFANG;
@@ -263,14 +263,14 @@ Sei
 
 Die **Anschnittebene** zerlegt ℝ³ in zwei abgeschlossene Halbräume
 
-```
+```text
 H_+(E_AS):= { x ∈ ℝ³ | ⟨n_hat_AS, x − p_σ⟩ ≥ 0 },                    (2a)
 H_−(E_AS):= { x ∈ ℝ³ | ⟨n_hat_AS, x − p_σ⟩ ≤ 0 }.                    (2b)
 ```
 
 Per Konvention zeigt n_hat_AS **aus dem Bauteil heraus**:
 
-```
+```text
 ⟨n_hat_AS, d_hat_σ⟩ > 0.                                                  (3)
 ```
 
@@ -281,7 +281,7 @@ auf der Bauteilseite.
 Der **Werkzeugkörper** der Anschnitt-Bearbeitung ist die Begrenzung
 des Außenseiten-Halbraums auf den Schnitt-Bereichs-Polyeder 𝓡:
 
-```
+```text
 K_Anschnitt(p_τ):= H_+(E_AS) ∩ 𝓡 ⊂ ℝ³.                          (4)
 ```
 
@@ -292,7 +292,7 @@ beschränkter Mengen ist konvex, abgeschlossen, beschränkt).
 Damit ist eine **Anschnitt-Bearbeitung** im Sinne von
 `hg_bearbeitung.md` das Tupel
 
-```
+```text
 F_AS:= (uuid, Anschnitt, p_τ = (σ, E_AS), T_F, bezeichnung?),    (5)
 ```
 
@@ -309,7 +309,7 @@ mit
 Die **Wirkung** des Anschnitts auf das Bauteil ist die Boole'sche
 Differenz nach `hg_bearbeitung.md` (1):
 
-```
+```text
 G_B'(F_AS) = G_B^lokal \ T_F(K_Anschnitt(p_τ)).                 (6)
 ```
 
@@ -319,7 +319,7 @@ das auf der Außenseite der Anschnittebene liegt.
 Das **Resultat** des Anschnitts ist eine geneigte **Stirnseite**
 nach `hg_stirnseite.md` an der Anschnittseite σ:
 
-```
+```text
 S_σ(B; F_AS):= (∂F_S, E_AS, n_hat_AS, p_σ)                          (7)
 ```
 
@@ -334,7 +334,7 @@ mit
 
 Es gilt nach Konstruktion
 
-```
+```text
 |⟨n_hat_AS, d_hat_σ⟩| = sin(α_AS) < 1 − ε_W,                             (8)
 ```
 
@@ -470,9 +470,9 @@ Geometriebeschreibungen:
   zusätzliche Bezugsrolle (Anfallfläche an Grat-/Kehlachse).
   Drei Sub-Spezialisierungen aus dem Korpus (Lueger 1904,
   Wikipedia/Schiftung):
-  - **Fußschmiege** (am Schifter-Fußpunkt),
-  - **Lotschmiege / Senkelschmiege** (lotrechte Anfallfläche),
-  - **Backenschmiege** (auf der Sparren-Seitenfläche).
+    - **Fußschmiege** (am Schifter-Fußpunkt),
+    - **Lotschmiege / Senkelschmiege** (lotrechte Anfallfläche),
+    - **Backenschmiege** (auf der Sparren-Seitenfläche).
 - **Hexenschnitt** (Folgearbeit `hexenschnitt`): **Doppelanschnitt**
   am Traufendpunkt eines Grat- oder Kehlsparrens, zur
   fluchtgerechten Verlängerung der Sparren-Traufschnitte über
@@ -524,89 +524,89 @@ dieses Eintrags.
   Bezeichnung, und insbesondere die partitive Komposition
   unter dem Bauteil (kein eigenständiger Lebenszyklus).
 - **Spezialisierungen** (Folgearbeit, eigene Glossareinträge):
-  - **Schmiege** (`schmiege`, Folgearbeit): Anschnitt-
+    - **Schmiege** (`schmiege`, Folgearbeit): Anschnitt-
     Spezialisierung an Schifter-Grat-/Kehl-Verschneidung,
     mit zusätzlicher Bezugsrolle (Anfallfläche an
     Grat-/Kehlachse). Drei Sub-Spezialisierungen aus dem
     Korpus: Fußschmiege, Lotschmiege/Senkelschmiege,
     Backenschmiege. Trigger: erstes Walmdach-Tool mit
     Schiftern.
-  - **Hexenschnitt** (`hexenschnitt`, Folgearbeit):
+    - **Hexenschnitt** (`hexenschnitt`, Folgearbeit):
     Doppelanschnitt am Traufendpunkt eines Grat- oder
     Kehlsparrens. Trigger: Walmdach-Tool mit Dachkasten-Detail.
-  - **Längsanschnitt** (`laengsanschnitt`, Folgearbeit):
+    - **Längsanschnitt** (`laengsanschnitt`, Folgearbeit):
     Anschnitt mitten am Bauteil in Bauteil-Längsrichtung
     (BTLx `LongitudinalCut`). Trigger: erstes Tool mit
     Sparrenverbreiterung oder Längsverjüngung.
-  - **Doppelanschnitt allgemein** (Folgearbeit, ggf. Subtyp
+    - **Doppelanschnitt allgemein** (Folgearbeit, ggf. Subtyp
     von `schmiege` oder `hexenschnitt`): zwei Anschnittebenen
     am selben Endpunkt (BTLx `DoubleCut`).
 - **Bestandteile (partitiv)**:
-  - **UUID** (`uuid`, geerbt von `bearbeitung`): technische
+    - **UUID** (`uuid`, geerbt von `bearbeitung`): technische
     Identität, Pflicht.
-  - **Anschnittseite** σ ∈ {ANFANG, ENDE}: Pflicht.
-  - **Anschnittebene** E_AS (`ebene`): Pflicht; bestimmt durch
+    - **Anschnittseite** σ ∈ {ANFANG, ENDE}: Pflicht.
+    - **Anschnittebene** E_AS (`ebene`): Pflicht; bestimmt durch
     Inzidenz mit p_σ und Einheitsnormaler n_hat_AS unter (3).
-  - **Lokale Platzierung** T_F ∈ SE(3) (geerbt von
+    - **Lokale Platzierung** T_F ∈ SE(3) (geerbt von
     `bearbeitung`): Pflicht; in der Standard-Konvention
     Identität in SE(3).
-  - **Bezeichnung**: optional.
-  - **Abgeleitete Eigenschaften** (Funktionen, keine Felder):
+    - **Bezeichnung**: optional.
+    - **Abgeleitete Eigenschaften** (Funktionen, keine Felder):
     Anschnittwinkel α_AS = arcsin|⟨n_hat_AS, d_hat_σ⟩|; Lot-Lage der
     Anschnittebene (Senkel/Bleischnitt/geneigt); resultierende
     Stirnseite nach (7).
 - **Verwendung**:
-  - **Stirnseite** (`stirnseite`): das geometrische Resultat
+    - **Stirnseite** (`stirnseite`): das geometrische Resultat
     eines Anschnitts ist eine geneigte Stirnseite mit
     α_AS ≠ π/2 (siehe `hg_stirnseite.md` (4)). Die Stirnseite
     ist die Resultat-Sicht; der Anschnitt ist die Bearbeitung.
-  - **Sparren** (`sparren`), **Gratsparren** (`gratsparren`),
+    - **Sparren** (`sparren`), **Gratsparren** (`gratsparren`),
     **Kehlsparren** (`kehlsparren`, Folgearbeit): typische
     Trägerbauteile von Anschnitten (Trauf-, First- und
     Walmgrat-Stirnausbildung).
-  - **Bemessung** (EC5 5.2 / SIA 265 §5.2): Anschnitt-Stirnseite
+    - **Bemessung** (EC5 5.2 / SIA 265 §5.2): Anschnitt-Stirnseite
     ist eine Querschnittsänderung am Stab-Bauteilende; die
     Bemessungs-Schicht zieht aus α_AS und der resultierenden
     Stirnflächenfläche die Auflagerbedingungen ab.
 - **Abgrenzung**:
-  - **Kerve** (`kerve`): Bearbeitung an der Längsseite des
+    - **Kerve** (`kerve`): Bearbeitung an der Längsseite des
     Sparrens, zweiflächig (Sohle + Senkel), Dreiecksquerschnitt;
     schwächt den Längsquerschnitt, erzeugt **keine** Stirnseite.
     Anschnitt liegt am Bauteilende, ist einflächig (eine
     Anschnittebene) und erzeugt eine Stirnseite. Eine Kerve
     nahe dem Bauteilende ist **keine** Anschnitt-Bearbeitung,
     sondern eine Kerve im Sinne von `hg_kerve.md`.
-  - **Stirnseite** (`stirnseite`): die geometrische Endfläche
+    - **Stirnseite** (`stirnseite`): die geometrische Endfläche
     am Bauteilendpunkt (Bauteilfläche, `begriffstyp:
     generisch`). Eine Stirnseite ist das **Resultat** eines
     Anschnitts, **nicht** der Anschnitt selbst. Der Anschnitt
     ist die Bearbeitung mit eigener UUID, Anschnittseite und
     Anschnittebene; die Stirnseite ist die abgeleitete
     Resultat-Sicht ohne eigene UUID.
-  - **Bearbeitung** (`bearbeitung`): Oberbegriff. Der Anschnitt
+    - **Bearbeitung** (`bearbeitung`): Oberbegriff. Der Anschnitt
     ist ein Bearbeitungs-Subtyp neben Kerve, Bohrung, Versatz,
     Zapfenloch, Schlitz, Blatt, Kamm und Fase.
-  - **Senkel** (`senkel`): Lage-Prädikat über Ebenen (parallel
+    - **Senkel** (`senkel`): Lage-Prädikat über Ebenen (parallel
     zur Welt-Lotachse). Eine Anschnittebene **kann** ein Senkel
     sein (Senkelschnitt am Sparrenfuß), muss aber nicht. Senkel
     ist eine Klassifikation der Anschnittebene, keine
     Bearbeitung.
-  - **Bleischnitt** (`bleischnitt`): Lage-Prädikat über Ebenen
+    - **Bleischnitt** (`bleischnitt`): Lage-Prädikat über Ebenen
     (rechtwinklig zur Welt-Lotachse). Eine Anschnittebene
     **kann** ein Bleischnitt sein (Bleischnitt am Sparrenfuß),
     muss aber nicht. Bleischnitt ist eine Klassifikation der
     Anschnittebene, keine Bearbeitung.
-  - **Schmiege** (`schmiege`, Folgearbeit): Anschnitt-
+    - **Schmiege** (`schmiege`, Folgearbeit): Anschnitt-
     Spezialisierung an einer Schifter-Grat-/Kehl-Verschneidung
     mit zusätzlicher Bezugsrolle. Schmiege ist ein engerer
     Begriff als Anschnitt (jede Schmiege ist ein Anschnitt;
     nicht jeder Anschnitt ist eine Schmiege).
-  - **Hexenschnitt** (`hexenschnitt`, Folgearbeit):
+    - **Hexenschnitt** (`hexenschnitt`, Folgearbeit):
     Doppelanschnitt am Traufendpunkt von Grat-/Kehlsparren.
     Hexenschnitt ist ein **Verbund** zweier Anschnitt-
     Instanzen, keine einzelne Anschnitt-Bearbeitung im Sinne
     dieses Eintrags.
-  - **Versatz** (`versatz`, Folgearbeit): stirnseitige
+    - **Versatz** (`versatz`, Folgearbeit): stirnseitige
     Materialwegnahme zur Lastübertragung (Stirnversatz,
     Fersenversatz) am Sparren- oder Strebenfuß, mit
     zusätzlicher Versatztiefe-Geometrie und Lastübertragungs-
@@ -614,15 +614,15 @@ dieses Eintrags.
     kann eine Anschnitt-ähnliche Schnittfläche enthalten, ist
     aber eine eigenständige Bearbeitung mit Versatz-Tiefe als
     Zusatzparameter.
-  - **Fase** (`fase`, Folgearbeit): kleinflächige Kanten-
+    - **Fase** (`fase`, Folgearbeit): kleinflächige Kanten-
     Abschrägung an einer Bauteilkante, keine Endschnittebene.
     Eine Fase ist nicht Anschnitt.
-  - **Querschnitt** (`querschnitt`): Schnittfigur an einer
+    - **Querschnitt** (`querschnitt`): Schnittfigur an einer
     Stelle s ∈ [0, L] **rechtwinklig** zur Bauteilachse.
     Anschnitt-Stirnseiten sind im Sinne von `hg_querschnitt.md`
     **kein** Querschnitt (siehe `hg_stirnseite.md`,
     Wohldefiniertheits-Block).
-  - **Bauteilachse** (`bauteilachse`): Bezugsachse, gegen die
+    - **Bauteilachse** (`bauteilachse`): Bezugsachse, gegen die
     der Anschnittwinkel α_AS gemessen wird. Anschnitt ist nicht
     die Bauteilachse, sondern eine Bearbeitung am Endpunkt der
     Achse.

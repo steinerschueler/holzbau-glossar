@@ -146,7 +146,7 @@ Sei
 - für jeden Typ τ ∈ 𝓣 eine endliche, typspezifische Parametermenge
   Π_τ ⊂ ℝⁿ_τ × ℬ^m_τ (Längen in mm, Winkel in Radiant, Boolesche
   Optionen) sowie eine **Werkzeugkörper-Funktion**
-  ```
+  ```text
   K_τ: Π_τ → 𝓟,    p_τ ↦ K_τ(p_τ),
   ```
   die jedem zulässigen Parametertupel p_τ einen abgeschlossenen,
@@ -155,7 +155,7 @@ Sei
 
 Dann ist eine **Bearbeitung** das Tupel
 
-```
+```text
 F:= (uuid, typ, parameter, lokale_platzierung, bezeichnung?)
 ```
 
@@ -186,7 +186,7 @@ Entität `IfcRelVoidsElement`, nicht als Backref am
 Die **Wirkung** der Bearbeitung F auf das Bauteil B ist die
 Boole'sche Differenz
 
-```
+```text
 G_B'(F):= G_B^lokal \ T_F(K_τ(p_τ)) ⊂ ℝ³,                    (1)
 ```
 
@@ -195,7 +195,7 @@ Lokal-System ist und T_F(K_τ(p_τ)) der ins Bauteil-Lokal-System
 überführte Werkzeugkörper. Bei mehreren Bearbeitungen
 F_1, …, F_n eines Bauteils B ist die endgültige Bauteilgeometrie
 
-```
+```text
 G_B^bearbeitet:= G_B^lokal \ ⋃_{i=1}^{n} T_{F_i}(K_{τ_i}(p_{τ_i})).  (2)
 ```
 
@@ -203,13 +203,13 @@ Die **Welt-Geometrie** des bearbeiteten Bauteils ergibt sich durch
 Anwendung der Bauteil-Lokal-Platzierung T_{L_B→W} ∈ SE(3) (siehe
 `lokales_koordinatensystem`):
 
-```
+```text
 G_W^bearbeitet(B):= T_{L_B→W}(G_B^bearbeitet).               (3)
 ```
 
 Es gilt strukturell
 
-```
+```text
 G_B^bearbeitet ⊆ G_B^lokal,                                     (4)
 ```
 
@@ -306,13 +306,13 @@ In der App-Ontologie gibt es
 vier Element-Subklassen, die alle **additiv** mit einem Bauteil
 verbunden werden:
 
-| Klasse                  | Wirkung am Bauteil                          | UUID-Hierarchie       |
-|-------------------------|---------------------------------------------|-----------------------|
-| `bauteil`               | ist selbst Tragglied                        | eigene Element-UUID   |
-| `verbindungsmittel`     | überträgt Kräfte zwischen ≥ 2 Bauteilen     | eigene Element-UUID   |
-| `verbinder`             | vermittelt zwischen Bauteilen               | eigene Element-UUID   |
-| `verstaerkungselement`  | verstärkt Bauteil axial                     | eigene Element-UUID   |
-| **`bearbeitung`**       | **entfernt Material aus genau einem Bauteil** | eigene UUID, FK auf 1 Bauteil |
+| Klasse | Wirkung am Bauteil | UUID-Hierarchie |
+| --- | --- | --- |
+| `bauteil` | ist selbst Tragglied | eigene Element-UUID |
+| `verbindungsmittel` | überträgt Kräfte zwischen ≥ 2 Bauteilen | eigene Element-UUID |
+| `verbinder` | vermittelt zwischen Bauteilen | eigene Element-UUID |
+| `verstaerkungselement` | verstärkt Bauteil axial | eigene Element-UUID |
+| **`bearbeitung`** | **entfernt Material aus genau einem Bauteil** | eigene UUID, FK auf 1 Bauteil |
 
 Bearbeitung ist **kein eigenständiges Aggregat** parallel zu
 Element, Verbindung, Tragwerk oder Bauteil-Aggregat, sondern ein
@@ -352,7 +352,7 @@ Komposition** (das Bauteil besitzt seine Bearbeitungen; eine
 freistehende Bearbeitung existiert nicht; Löschung des Bauteils
 kaskadiert auf alle seine Bearbeitungen):
 
-```
+```text
 Bauteil  1 ── 0..n ──► Bearbeitung   (FK: bauteil_uuid)
 ```
 
@@ -382,18 +382,18 @@ ca. 35 echte materialabtragende Operationen. Die Übersetzung der
 App-internen Bearbeitungs-Subtypen auf BTLx-Processings ist
 **eine Übersetzungsschicht**, keine Schemaübernahme:
 
-| App-Subtyp        | Primäre BTLx-Entsprechung               | Sonderfälle                          |
-|-------------------|-----------------------------------------|--------------------------------------|
-| `kerve`           | `BirdsMouth`                            | `HipValleyRafterNotch` (Grat/Kehle), `StepJointNotch` (Stuhl) |
-| `bohrung`         | `Drilling`                              | `Pocket` nur für große Sacklöcher mit Fräser-Werkzeug → eigener Subtyp `aussparung` (Folgearbeit) |
-| `versatz`         | `StepJoint`                             | `StepJointNotch` bei tiefen Versätzen |
-| `zapfen`          | `Tenon`                                 | `DovetailTenon` (Schwalbenschwanz)   |
-| `zapfenloch`      | `Mortise`                               | `DovetailMortise`, `HouseMortise`, `JapaneseMortise` |
-| `schlitz`         | `Slot`                                  |                                      |
-| `blatt`           | `Lap`                                   | `LogHouseHalfLap`                    |
-| `kamm`            | `House`                                 |                                      |
-| `anschnitt`       | `JackRafterCut`, `LongitudinalCut`, `DoubleCut`, `TriangleCut` | typabhängig (1:n)  |
-| `fase`            | `Chamfer`                               |                                      |
+| App-Subtyp | Primäre BTLx-Entsprechung | Sonderfälle |
+| --- | --- | --- |
+| `kerve` | `BirdsMouth` | `HipValleyRafterNotch` (Grat/Kehle), `StepJointNotch` (Stuhl) |
+| `bohrung` | `Drilling` | `Pocket` nur für große Sacklöcher mit Fräser-Werkzeug → eigener Subtyp `aussparung` (Folgearbeit) |
+| `versatz` | `StepJoint` | `StepJointNotch` bei tiefen Versätzen |
+| `zapfen` | `Tenon` | `DovetailTenon` (Schwalbenschwanz) |
+| `zapfenloch` | `Mortise` | `DovetailMortise`, `HouseMortise`, `JapaneseMortise` |
+| `schlitz` | `Slot` | |
+| `blatt` | `Lap` | `LogHouseHalfLap` |
+| `kamm` | `House` | |
+| `anschnitt` | `JackRafterCut`, `LongitudinalCut`, `DoubleCut`, `TriangleCut` | typabhängig (1:n) |
+| `fase` | `Chamfer` | |
 
 **IFC 4.3** modelliert subtraktive Features einheitlich als
 `IfcOpeningElement` (Spezialisierung von
@@ -458,89 +458,89 @@ beider Klassen werden zentral in `hg_toleranzen.md` Sektion
   Verbindungsmittel-Folgegeometrie, Bemessungs-Nachweisen und
   BTLx-Export), aber an dessen Lebenszyklus gekoppelt.
 - **Subtypen** (`sealed`, eigene Glossareinträge — Status pro Eintrag):
-  - **Kerve** (`kerve`): zweiflächige Auskerbung am Sparren für
+    - **Kerve** (`kerve`): zweiflächige Auskerbung am Sparren für
     die Auflagerung auf einer Pfette. **Phase 2, parallel zu
     diesem Eintrag definiert.**
-  - **Bohrung** (`bohrung`, Folgearbeit): zylindrische Subtraktion;
+    - **Bohrung** (`bohrung`, Folgearbeit): zylindrische Subtraktion;
     Trigger: Sparren-Schraubenanschluss erforderlich.
-  - **Versatz** (`versatz`, Folgearbeit): Stirn-, Fersen- oder
+    - **Versatz** (`versatz`, Folgearbeit): Stirn-, Fersen- oder
     doppelter Versatz am Sparrenfuß / Strebenfuß; Trigger:
     Sparrenfuß auf liegendem Stuhl.
-  - **Zapfenloch** (`zapfenloch`, Folgearbeit): rechteckige
+    - **Zapfenloch** (`zapfenloch`, Folgearbeit): rechteckige
     Subtraktion zur Aufnahme eines Zapfens; Trigger: Stuhlsäulen-
     Pfetten-Anschluss.
-  - **Schlitz** (`schlitz`, Folgearbeit): längliche Subtraktion zur
+    - **Schlitz** (`schlitz`, Folgearbeit): längliche Subtraktion zur
     Aufnahme eines Schlitzblechs oder einer Lasche; Trigger:
     Schlitzblech-Verbinder.
-  - **Blatt** (`blatt`, Folgearbeit): halbe Holzdicke abtragend
+    - **Blatt** (`blatt`, Folgearbeit): halbe Holzdicke abtragend
     (Halbblatt, Schwalbenschwanz-Blatt, Hakenblatt); Trigger:
     Pfettenstoß.
-  - **Kamm** (`kamm`, Folgearbeit): einseitige Materialwegnahme
+    - **Kamm** (`kamm`, Folgearbeit): einseitige Materialwegnahme
     am übergreifenden Holz; Trigger: Sparren-Mittelpfette.
-  - **Anschnitt** (`anschnitt`, Folgearbeit): planare Stirn- oder
+    - **Anschnitt** (`anschnitt`, Folgearbeit): planare Stirn- oder
     Schrägfläche am Bauteilende; Trigger: First-Anschluss zweier
     Sparren.
-  - **Fase** (`fase`, Folgearbeit): kleinflächige
+    - **Fase** (`fase`, Folgearbeit): kleinflächige
     Kantenabschrägung; Trigger: Sichtholz-Optik.
 - **Bestandteile (partitiv) einer Bearbeitung**:
-  - **UUID** (`uuid`): technische Identität, Pflicht.
-  - **Typ**: Bearbeitungstyp aus 𝓣, Pflicht.
-  - **Parameter**: typspezifisches Parametertupel, Pflicht.
-  - **Lokale Platzierung** (`lokales_koordinatensystem`): SE(3),
+    - **UUID** (`uuid`): technische Identität, Pflicht.
+    - **Typ**: Bearbeitungstyp aus 𝓣, Pflicht.
+    - **Parameter**: typspezifisches Parametertupel, Pflicht.
+    - **Lokale Platzierung** (`lokales_koordinatensystem`): SE(3),
     Pflicht.
-  - **Bezeichnung**: freier Anzeigename, optional.
-  - **Keine Backref auf das Bauteil**: das zugehörige Bauteil
+    - **Bezeichnung**: freier Anzeigename, optional.
+    - **Keine Backref auf das Bauteil**: das zugehörige Bauteil
     ist über die partitive Komposition (Container-Beziehung)
     bestimmt, nicht über ein Feld am Bearbeitungs-Objekt.
     Auflösung Bearbeitung-UUID → Bauteil ist Repository-/Index-
     Aufgabe.
 - **Verwendung**:
-  - Bestandteil eines **Bauteils** (`bauteil`): das Bauteil führt
+    - Bestandteil eines **Bauteils** (`bauteil`): das Bauteil führt
     eine geordnete oder ungeordnete Liste von Bearbeitungs-UUIDs
     (partitive Komposition; das Bauteil ist Eigentümer). Bei
     Löschung des Bauteils werden alle zugehörigen Bearbeitungen
     kaskadierend gelöscht.
-  - Bezugnahme aus **Tragwerk** / **Verbindung** / **Bauteil-
+    - Bezugnahme aus **Tragwerk** / **Verbindung** / **Bauteil-
     Aggregat**: Bearbeitungen erscheinen dort indirekt über das
     zugehörige Bauteil; eigene FK aus Aggregaten auf
     Bearbeitungen sind nicht vorgesehen (die Bearbeitung
     „gehört" dem Bauteil, nicht dem Aggregat).
 - **Abgrenzung**:
-  - **Verbindungsmittel** (`verbindungsmittel`): überträgt
+    - **Verbindungsmittel** (`verbindungsmittel`): überträgt
     Kräfte zwischen ≥ 2 Bauteilen, **additiv** angefügt
     (Schraube, Nagel, Bolzen, Stabdübel, Klammer, Holzdübel,
     Klebung). Eine Bohrung als Konsequenz eines Verbindungs-
     mittels wird **nicht** als eigene Bearbeitung modelliert;
     die Bohrung ergibt sich abgeleitet im BTLx-Export aus dem
     Verbindungsmittel (siehe `hg_verbindungsmittel.md`, Edge Case).
-  - **Verbinder** (`verbinder`): vermittelt zwischen Bauteilen
+    - **Verbinder** (`verbinder`): vermittelt zwischen Bauteilen
     (Balkenschuh, Winkel, Knotenblech, Schlitzblech), **additiv**
     angeschraubt/genagelt. Ein durch einen Verbinder verursachter
     Schlitz oder eine Bohrung ist eine **eigene Bearbeitung am
     Bauteil**, weil sie unabhängig vom Verbinder geometrisch
     realisiert wird und ohne Verbinder geometrisch fortbesteht.
-  - **Verstärkungselement** (`verstaerkungselement`): axial
+    - **Verstärkungselement** (`verstaerkungselement`): axial
     eingedrehte Schraube (Querzug-/Querdruck-/Schubverstärkung),
     **additiv**. Die zugehörige Vorbohrung ist eine abgeleitete
     Konsequenz, keine eigenständige Bearbeitung.
-  - **Element** (`element`): abstrakter Oberbegriff der vier
+    - **Element** (`element`): abstrakter Oberbegriff der vier
     additiven Element-Subklassen. Bearbeitung ist **keine**
     Element-Subklasse (siehe Erläuterung).
-  - **Verbindung** (`verbindung`): Aggregat aus Bauteilen +
+    - **Verbindung** (`verbindung`): Aggregat aus Bauteilen +
     Verbindungsmitteln (+ Verbindern + Verstärkungen) an einem
     Knotenpunkt. Eine Verbindung enthält **keine** Bearbeitungen
     direkt; Bearbeitungen sind Eigenschaften ihrer Bauteile.
-  - **Bauteil** (`bauteil`): das Tragobjekt, auf das die
+    - **Bauteil** (`bauteil`): das Tragobjekt, auf das die
     Bearbeitung wirkt. Bearbeitung ist kein Bauteil, sondern
     ein Merkmal davon.
-  - **Querschnitt** (`querschnitt`): die Querschnittsfläche eines
+    - **Querschnitt** (`querschnitt`): die Querschnittsfläche eines
     Bauteils im ungeschwächten Zustand. Eine Bearbeitung
     schwächt den Querschnitt lokal; der Bezugs-Querschnitt
     bleibt unverändert.
-  - **Polyeder** (`polyeder`): die geometrische Repräsentation
+    - **Polyeder** (`polyeder`): die geometrische Repräsentation
     des Werkzeugkörpers K_τ(p_τ). Polyeder ist Repräsentations-
     baustein, keine Bearbeitung.
-  - **Lokales Koordinatensystem**
+    - **Lokales Koordinatensystem**
     (`lokales_koordinatensystem`): Bezugssystem für die
     Platzierung der Bearbeitung relativ zum Bauteil. Keine
     Bearbeitung an sich.

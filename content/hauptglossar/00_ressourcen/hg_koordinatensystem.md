@@ -121,13 +121,13 @@ Sei
 - B = (b_1, …, b_n) eine geordnete **Basis** von V (linear
   unabhängige n-elementige Familie aus V, die V erzeugt),
 - η: 𝔸 → ℝⁿ die **Koordinatenabbildung**
-  ```
+  ```text
   η(p) = (x_1, …, x_n)  ⇔  p = O + x_1·b_1 + … + x_n·b_n.
   ```
 
 Dann ist ein **Koordinatensystem** auf 𝔸 das Tupel
 
-```
+```text
 K:= (O, B, n, η).
 ```
 
@@ -233,43 +233,43 @@ Spezialisierungen `weltkoordinatensystem` (Ost/Nord/Zenit) und
   der Wurzel-Begriff für die Familie aller Bezugs-Festlegungen über
   einem affinen Raum.
 - **Spezialisierungen (im Glossar verankert)**:
-  - **Weltkoordinatensystem** (`hg_weltkoordinatensystem.md`):
+    - **Weltkoordinatensystem** (`hg_weltkoordinatensystem.md`):
     eindeutige rechtshändige kartesische 3-dimensionale
     Spezialisierung mit fester geographischer Einbettung
     (e_x = Ost, e_y = Nord, e_z = Zenit), Längen in mm, Winkel um
     e_z in Radiant ab +x gegen den Uhrzeigersinn.
-  - **Lokales Koordinatensystem**
+    - **Lokales Koordinatensystem**
     (`hg_lokales_koordinatensystem.md`): bauteileigene
     rechtshändige kartesische 3-dimensionale Spezialisierung, die
     durch eine starre Transformation T ∈ SE(3) auf das
     Weltkoordinatensystem bezogen ist.
 - **Spezialisierungen (Folgearbeit, Forward-Verweise)**:
-  - **LV95** (`lv95.md`, geplant): kartesisch projizierte
+    - **LV95** (`lv95.md`, geplant): kartesisch projizierte
     2-dimensionale Spezialisierung des Schweizer
     Landeskoordinatensystems, Längen in Metern.
-  - **WGS84** (`wgs84.md`, geplant): ellipsoidische
+    - **WGS84** (`wgs84.md`, geplant): ellipsoidische
     Spezialisierung; Koordinaten sind geographische Länge,
     geographische Breite und ellipsoidische Höhe.
 - **Abgrenzung**:
-  - **Bezugssystem** (Korpus-Begriff ohne eigenen Eintrag):
+    - **Bezugssystem** (Korpus-Begriff ohne eigenen Eintrag):
     deutschsprachiger Begriff mit drei inkompatiblen Lesarten
     (geodätisch, physikalisch, maschinenbau-tolerierungstechnisch);
     in der App nicht als Synonym verwendet, weil die
     Mehrdeutigkeit nicht durch eine einzelne Quelle aufgelöst
     werden kann (siehe `quellenkonflikt:` Konflikt 1).
-  - **Weltkoordinatensystem** / **Lokales Koordinatensystem**:
+    - **Weltkoordinatensystem** / **Lokales Koordinatensystem**:
     konkrete kartesische Spezialisierungen des Oberbegriffs in
     der App-Domäne; sie tragen die App-internen Festlegungen
     (rechtshändig, kartesisch, mm, Radiant), die der Oberbegriff
     bewusst offen lässt.
-  - **Punkt** (`hg_punkt.md`): Element des affinen Raumes 𝔸; ein
+    - **Punkt** (`hg_punkt.md`): Element des affinen Raumes 𝔸; ein
     Koordinatensystem ordnet einem Punkt sein Koordinatentupel zu,
     ist aber selbst kein Punkt.
-  - **Vektor** (`hg_vektor.md`): Element des zugehörigen
+    - **Vektor** (`hg_vektor.md`): Element des zugehörigen
     Vektorraumes V; die Basis B eines Koordinatensystems besteht
     aus Vektoren, das Koordinatensystem selbst ist aber kein
     Vektor.
-  - **Achse** (`hg_achse.md`): ausgezeichnete Gerade durch den
+    - **Achse** (`hg_achse.md`): ausgezeichnete Gerade durch den
     Ursprung mit ausgezeichneter Richtung. Eine Achse eines
     Koordinatensystems wird durch (O, b_i) festgelegt; ein
     Koordinatensystem hat n Achsen, ist aber selbst keine Achse.

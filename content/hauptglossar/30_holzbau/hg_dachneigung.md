@@ -130,7 +130,7 @@ Sei
 
 Dann ist die **Dachneigung** der Dachfläche D der Winkel
 
-```
+```text
 α(D):= arccos(⟨n_a, e_z⟩) ∈ [0, π/2].
 ```
 
@@ -151,7 +151,7 @@ Konvention) und nicht in der Dachneigungs-Definition selbst.
 
 Mit dieser Konvention gilt
 
-```
+```text
 α(D) = arccos(⟨−e_hat_fall, e_xy⟩) = arcsin(|(e_hat_fall)_z|),
 ```
 
@@ -159,21 +159,21 @@ wobei e_xy = e_hat_fall − ⟨e_hat_fall, e_z⟩ · e_z, normiert, die
 horizontale Projektion der Falllinie ist (definiert für
 α < π/2). Der Steigungs-Tangens
 
-```
+```text
 tan(α(D)) = |(e_hat_fall)_z| / ‖e_hat_fall − ⟨e_hat_fall, e_z⟩ · e_z‖
 ```
 
 ist der „Höhenunterschied pro horizontalem Abstand" entlang der
 Falllinie und entspricht der in Prozent angegebenen Holzbau-Praxis:
 
-```
+```text
 Neigung in Prozent:= 100 · tan(α(D)).
 ```
 
 **Anzeigeformen** (intern Radiant, ausschließlich am API-Rand
 konvertiert):
 
-```
+```text
 α_grad:= α · 180 / π                 (Grad, Hauptanzeige)
 α_prozent:= 100 · tan(α)                (Prozent, Holzbau-Praxis)
 ```
@@ -271,24 +271,24 @@ gegenüber der Horizontalen ist exakt die Dachneigung α.
   (`dachflaeche`), alle dachlast-relevanten Begriffe
   (Schneelast, Windlast, Niederschlagsabfluss).
 - **Abgrenzung**:
-  - **`dachflaeche`**: zweidimensionales geometrisches Flächenstück;
+    - **`dachflaeche`**: zweidimensionales geometrisches Flächenstück;
     die Dachneigung ist eine ihrer skalaren Eigenschaften, kein
     eigenständiges Bauteil.
-  - **`dachschraege`** (eigener Eintrag): die innen sichtbare
+    - **`dachschraege`** (eigener Eintrag): die innen sichtbare
     Untersicht der Dachkonstruktion. Geometrisch eine **Fläche**,
     nicht ein Winkel. Die häufige sprachliche Verwendung von
     „Dachschräge" für „Dachneigung" wird hier als
     `abgelehnte_benennung` geführt, weil im Glossar trennscharf.
-  - **`dachseite`** (eigener Eintrag): eine Dachfläche unter
+    - **`dachseite`** (eigener Eintrag): eine Dachfläche unter
     zusätzlicher Orientierungs-/Lage-Annotation (z. B.
     Wetterseite). Dachseite ist eine Fläche, kein Winkel.
-  - **„Neigungswinkel"** (allgemein): in der allgemeinen Geometrie
+    - **„Neigungswinkel"** (allgemein): in der allgemeinen Geometrie
     der Winkel zwischen einer Geraden oder Ebene und einer
     Bezugsebene. Dachneigung ist die Anwendung dieses Begriffs auf
     die spezifische Bezugsebene = Horizontalebene und das
     spezifische Objekt = Dachfläche. Im Glossar wird der
     allgemeine Neigungswinkel nicht eigenständig geführt.
-  - **„Dachgefälle"**: in einigen Quellen synonym verwendet, in
+    - **„Dachgefälle"**: in einigen Quellen synonym verwendet, in
     der Schweiz aber stärker mit Flachdach-/Abdichtungspraxis
     konnotiert. Hier abgelehnt zugunsten von „Dachneigung".
 

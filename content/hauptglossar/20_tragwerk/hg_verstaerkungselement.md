@@ -109,7 +109,7 @@ Sei
 - 𝓥𝓜 die Menge der Verbindungsmittel nach `verbindungsmittel`,
 - 𝓑 die Menge der Bauteile nach `bauteil`,
 - 𝓥𝓢_τ die Menge der Verstärkungstypen
-  ```
+  ```text
   𝓥𝓢_τ:= { Querzugverstaerkung,
             Querdruckverstaerkung,
             Schubverstaerkung,
@@ -124,7 +124,7 @@ Sei
 
 Dann ist ein **Verstärkungselement** das Tupel
 
-```
+```text
 VS:= (uuid, geometrie, lokale_platzierung, werkstoff,
        basis_verbindungsmittel, verstaerkt,
        verstaerkungstyp, winkel_zur_faser, eta_zulassung,
@@ -256,7 +256,7 @@ Z-9.1-519):
    F_ax,Rk): aus dem charakteristischen Ausziehparameter f_ax,k
    (ETA-Wert), Nenndurchmesser d, effektiver Eindrehlänge ℓ_ef
    und Faserwinkel-Korrektur. Formel typischerweise
-   ```
+   ```text
    F_ax,Rk = π · d · ℓ_ef · f_ax,k · (90° / α + 1)^(-1)
    ```
    bzw. analog nach ETA. Wert wird aus ETA übernommen.
@@ -298,10 +298,10 @@ führt die Tragfähigkeits-Nachweise.
 
 ### IFC- und BTLx-Mapping
 
-| Element                | IFC                                                   | BTLx                                  |
-|------------------------|-------------------------------------------------------|---------------------------------------|
-| Verbindungsmittel      | IfcMechanicalFastener                                 | Processing oder eigenes Part          |
-| **Verstärkungselement**| **IfcMechanicalFastener** + Custom-Pset `IsReinforcement` | **wie VM, plus Funktionsattribut**    |
+| Element | IFC | BTLx |
+| --- | --- | --- |
+| Verbindungsmittel | IfcMechanicalFastener | Processing oder eigenes Part |
+| **Verstärkungselement** | **IfcMechanicalFastener** + Custom-Pset `IsReinforcement` | **wie VM, plus Funktionsattribut** |
 
 Die IFC-Klasse ist dieselbe wie für Verbindungsmittel
 (`IfcMechanicalFastener`); die Verstärkungs-Funktion wird durch
@@ -326,39 +326,39 @@ werden müssen.
 
 - **Oberbegriff**: `element`.
 - **Spezialisierungen** (eigene Einträge folgen):
-  - **Querzugverstärkung** (`querzugverstaerkung`).
-  - **Querdruckverstärkung** (`querdruckverstaerkung`).
-  - **Schubverstärkung** (`schubverstaerkung`).
-  - **Auflagerverstärkung** (`auflagerverstaerkung`).
-  - **Ausklinkungsverstärkung** (`ausklinkungsverstaerkung`).
-  - **Durchbruchverstärkung** (`durchbruchverstaerkung`).
+    - **Querzugverstärkung** (`querzugverstaerkung`).
+    - **Querdruckverstärkung** (`querdruckverstaerkung`).
+    - **Schubverstärkung** (`schubverstaerkung`).
+    - **Auflagerverstärkung** (`auflagerverstaerkung`).
+    - **Ausklinkungsverstärkung** (`ausklinkungsverstaerkung`).
+    - **Durchbruchverstärkung** (`durchbruchverstaerkung`).
 - **Bestandteile (partitiv)**: alles geerbt von `element` plus
   basis_verbindungsmittel, verstaerkt, verstaerkungstyp,
   winkel_zur_faser, eta_zulassung.
 - **Verwendung**:
-  - Bestandteil einer **Verbindung** (`verbindung`):
+    - Bestandteil einer **Verbindung** (`verbindung`):
     Verstärkungen werden in der Verbindungs-Aggregat-Klasse
     optional als eigene Liste geführt.
-  - Bestandteil eines **Tragwerks** (`tragwerk`): erweitert die
+    - Bestandteil eines **Tragwerks** (`tragwerk`): erweitert die
     Element-Menge.
 - **Abgrenzung**:
-  - **Verbindungsmittel** (`verbindungsmittel`): selbe physische
+    - **Verbindungsmittel** (`verbindungsmittel`): selbe physische
     Objektklasse, andere **Funktion** und andere **Bemessung**.
     Die ontologische Trennung folgt EC5:2022 und der ETA-
     Bemessungspraxis. Funktion bestimmt die Klasse, nicht das
     Material.
-  - **Bauteil** (`bauteil`): Verstärkungselemente sind keine
+    - **Bauteil** (`bauteil`): Verstärkungselemente sind keine
     Bauteile (auch nicht „kleine Bauteile"); sie sind Element-
     Subklassen mit eigener Bemessungslogik. Die Trennung folgt
     EC5:2022.
-  - **Verbinder** (`verbinder`): vermittelndes Stück Stahl/Holz,
+    - **Verbinder** (`verbinder`): vermittelndes Stück Stahl/Holz,
     nicht eine Funktionsrolle eines Verbindungsmittels.
     Verstärkungselement ist hingegen ein Verbindungsmittel-
     Objekt in funktionaler Verstärkungsrolle.
-  - **Verbindung** (`verbindung`): Aggregat-Klasse;
+    - **Verbindung** (`verbindung`): Aggregat-Klasse;
     Verstärkungselemente können Bestandteil einer Verbindung
     sein, sind aber nicht selbst Verbindung.
-  - **Element** (`element`): abstrakter Oberbegriff;
+    - **Element** (`element`): abstrakter Oberbegriff;
     Verstärkungselement ist eine konkrete Subklasse.
 
 ## Quellen

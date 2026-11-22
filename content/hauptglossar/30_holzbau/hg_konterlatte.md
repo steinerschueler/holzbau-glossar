@@ -147,13 +147,13 @@ genau dann, wenn die folgenden Bedingungen erfüllt sind:
 
 3. **Lage in der parallel-versetzten Ebene**: Beide Endpunkte der
    Bauteilachse liegen in E_K(h_K), d. h.
-   ```
+   ```text
    |⟨n_a, p_a − p₀⟩ − h_K| ≤ ε_L  und  |⟨n_a, p_e − p₀⟩ − h_K| ≤ ε_L.
    ```
 
 4. **Falllinien-Kollinearität**: Die Bauteilachsenrichtung ist
    kollinear zur Falllinie der Trägerebene,
-   ```
+   ```text
    |⟨d_hat, e_hat_fall(E)⟩| ≥ 1 − ε_W,
    ```
    d. h. der Winkel zwischen d_hat und e_hat_fall ist 0 oder π (modulo
@@ -164,7 +164,7 @@ genau dann, wenn die folgenden Bedingungen erfüllt sind:
 5. **Vorzeichenkonvention (Konterlatte von Traufe zu First)**:
    Die Bauteilachse ist so gerichtet, dass d_hat **entgegen** e_hat_fall
    verläuft, also nach oben:
-   ```
+   ```text
    ⟨d_hat, e_hat_fall(E)⟩ ≤ −1 + ε_W,
    ```
    äquivalent ⟨d_hat, e_z⟩ ≥ 0. p_a ist damit der traufseitige
@@ -282,7 +282,7 @@ der Traglatte. Normative Mindestwerte (nicht Bestandteil der
 Bauteilrolle-Definition, sondern Anforderung an den Dachaufbau):
 
 | Quelle | Mindesthöhe |
-|---|---|
+| --- | --- |
 | DIN 4108-3 | ≥ 20 mm bei Dachneigung ≥ 5°, ≥ 50 mm bei < 5° |
 | ZVDH-Fachregel | ≥ 30 mm bis 8 m Sparren, ≥ 40 mm bis 12 m, ≥ 60 mm > 12 m |
 | SIA 232/1 Wegleitung | ≥ 60 mm empfohlen für wärmegedämmte Dächer |
@@ -370,71 +370,71 @@ geführt — strukturparallel zur `latte` / `traglattung`-Asymmetrie.
   formalisierten geometrischen Constraints. Strukturparallel zu
   `sparren` und `pfette`.
 - **Bestandteile (partitiv)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`, vom Bauteil geerbt);
-  - **Querschnitt** (rechteckig, Standard b/h ∈ {24/48, 30/50,
+    - **Bauteilachse** (`bauteilachse.Gerade`, vom Bauteil geerbt);
+    - **Querschnitt** (rechteckig, Standard b/h ∈ {24/48, 30/50,
     40/60 mm});
-  - **Werkstoff** (Vollholz Nadelholz, S 10 / S 13 nach
+    - **Werkstoff** (Vollholz Nadelholz, S 10 / S 13 nach
     DIN 4074-1);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_Konterlatte).
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_Konterlatte).
 - **Verwendung / Beziehung zu anderen Bauteilen und Schichten**:
-  - **Sparren** (`sparren`): Auflage der Konterlatte; die
+    - **Sparren** (`sparren`): Auflage der Konterlatte; die
     Konterlatte liegt im Standardfall genau über einer
     Sparren-Bauteilachse, parallel-versetzt um h_K in äußerer
     Normalen-Richtung. Befestigung mittig auf jeden Sparren.
-  - **Latte** (`latte`, parallel entstehender Eintrag): liegt
+    - **Latte** (`latte`, parallel entstehender Eintrag): liegt
     **auf** der Konterlatte, **rechtwinklig** zur Konterlatten-
     Achse. Schicht-Asymmetrie spiegelbildlich zur Konterlatten-
     Asymmetrie zum Sparren.
-  - **Dachfläche** (`dachflaeche`): zugeordnete geometrische
+    - **Dachfläche** (`dachflaeche`): zugeordnete geometrische
     Fläche; die Konterlatten-Bauteilachse ist parallel zur
     Trägerebene und kollinear zu e_hat_fall.
-  - **Dachaufbau** (`dachaufbau`): die Konterlatten bilden die
+    - **Dachaufbau** (`dachaufbau`): die Konterlatten bilden die
     Schicht `SchichtFunktion.KONTERLATTUNG` im Schicht-Aggregat.
 - **Abgrenzung**:
-  - **Latte** (`latte`, parallel entstehender Eintrag):
+    - **Latte** (`latte`, parallel entstehender Eintrag):
     Bauteilrolle der Schicht **über** der Konterlattung,
     **rechtwinklig** zum Sparren (kollinear zu einer Höhenlinie
     der Trägerebene). Die Konterlatte ist **parallel** zum Sparren
     (kollinear zur Falllinie). Die Asymmetrie ist die definierende
     Schicht-Asymmetrie des hinterlüfteten Dachaufbaus.
-  - **Sparren** (`sparren`): Hauptträger des Dachtragwerks; liegt
+    - **Sparren** (`sparren`): Hauptträger des Dachtragwerks; liegt
     **in** der Trägerebene der Dachfläche (h_K = 0). Die
     Konterlatte ist parallel-versetzt (h_K > 0) und nicht
     lastabtragend für die Dachflächenlasten in der Trägerebene.
-  - **Pfette** (`pfette`): horizontaler Längsträger entlang einer
+    - **Pfette** (`pfette`): horizontaler Längsträger entlang einer
     Höhenlinie/Dachkante; die Konterlatte ist geneigt entlang der
     Falllinie und hat einen deutlich kleineren Querschnitt.
-  - **Bauteil** (`bauteil`): die Konterlatte ist eine
+    - **Bauteil** (`bauteil`): die Konterlatte ist eine
     Spezialisierung mit zusätzlichen rollenspezifischen Lage-
     Constraints.
-  - **Dachaufbau** (`dachaufbau`): das Schicht-Aggregat, in dem
+    - **Dachaufbau** (`dachaufbau`): das Schicht-Aggregat, in dem
     die Konterlattung als eine von mehreren Schichten geführt ist;
     die Konterlatte ist Element der Schicht, nicht das Aggregat
     selbst.
-  - **Dachfläche** (`dachflaeche`): zweidimensionales
+    - **Dachfläche** (`dachflaeche`): zweidimensionales
     geometrisches Bauteil; die Konterlatte ist ein Stab-Bauteil
     mit Achse parallel-versetzt zur Trägerebene der Dachfläche.
-  - **Dachhaut** (`dachhaut`): Hüllfläche der außenliegenden
+    - **Dachhaut** (`dachhaut`): Hüllfläche der außenliegenden
     Eindeckungsschicht; die Konterlatte ist Vollholz-Bauteil
     unter dieser Hülle.
-  - **Unterdach** (Forward-Verweis): bahnen- oder schalungsförmige
+    - **Unterdach** (Forward-Verweis): bahnen- oder schalungsförmige
     Schicht **unter** der Konterlattung, deren Aufgabe die
     sekundäre Wasserführung ist. Die Konterlatte liegt **auf**
     dem Unterdach (Penetrationen durch Bahnen sind abzudichten,
     siehe SIA 232/1). Trigger der Anlage: erste Modellierung der
     Unterdach-Schicht als eigenständiges Bauteil mit Bahn-
     Geometrie.
-  - **Eindeckung** (Forward-Verweis): Schicht **über** der
+    - **Eindeckung** (Forward-Verweis): Schicht **über** der
     Traglattung (Ziegel, Schiefer, Blech, …); die Konterlatte
     ist nicht Bestandteil dieser Schicht. Trigger der Anlage:
     erste Modellierung der Eindeckung als eigenständige
     Schicht-Gruppe mit Einzelelement-Geometrie.
-  - **Traglattung** (Schicht-Begriff, kein eigener HG-Eintrag —
+    - **Traglattung** (Schicht-Begriff, kein eigener HG-Eintrag —
     siehe `hg_dachaufbau.md` `SchichtFunktion.TRAGLATTUNG`):
     Schicht **über** der Konterlattung; die einzelne Traglatte
     (`latte`) hat einen eigenen HG-Eintrag, die Schicht selbst
     nicht.
-  - **Konterlattung** (Schicht-Begriff, kein eigener HG-Eintrag —
+    - **Konterlattung** (Schicht-Begriff, kein eigener HG-Eintrag —
     siehe `hg_dachaufbau.md` `SchichtFunktion.KONTERLATTUNG`):
     Schicht-/Plural-Lesart dieses Bauteils; die Konterlatte ist
     ein einzelnes Element dieser Schicht.

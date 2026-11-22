@@ -130,7 +130,7 @@ Bedingungen alle erfüllt sind:
 
 2. **Strikte Lotrechtheit**: Die Bauteilachse ist exakt lotrecht (im
    Toleranz-Rahmen):
-   ```
+   ```text
    ‖d_hat × e_z‖ ≤ ε_K,
    ```
    geerbt von `stuetze` Bedingung 2; bei der Säule ohne mögliche
@@ -238,7 +238,7 @@ Die fünf klassischen Säulenordnungen (Vitruv, vier Bücher zum
 griechisch-römischen Bau-Kanon) sind:
 
 | Ordnung | Schaft:Durchmesser | Kapitell-Merkmal | Herkunft |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Toskanisch** | ≈ 1:7 | schlicht, ohne Schmuck | etruskisch/römisch |
 | **Dorisch** | ≈ 1:6 (griechisch) bis 1:7 (römisch) | Echinus mit Abakus | griechisch |
 | **Ionisch** | ≈ 1:8 bis 1:9 | Volutenkapitell | griechisch (Kleinasien) |
@@ -300,51 +300,51 @@ geführt.
   und ergänzt sie um Architektur-Zusicherung und freistehenden
   Charakter.
 - **Bestandteile (partitiv, geerbt von `bauteil` und `stuetze`)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`), lotrecht;
-  - **Querschnitt** (rund, polygonal, oder rechteckig; q_max ≤
+    - **Bauteilachse** (`bauteilachse.Gerade`), lotrecht;
+    - **Querschnitt** (rund, polygonal, oder rechteckig; q_max ≤
     4·q_min);
-  - **Werkstoff** (Holz, Stein, Mauerwerk, Beton, Stahl,
+    - **Werkstoff** (Holz, Stein, Mauerwerk, Beton, Stahl,
     Aluminium);
-  - **Faserrichtung** (bei Holzsäulen axial).
+    - **Faserrichtung** (bei Holzsäulen axial).
 - **Architektonische Bestandteile (zugesichert, nicht im aktuellen
   Glossar formal geführt; Folgearbeit-Trigger)**:
-  - **Basis** (`basis`, Forward-Verweis, kein eigener Eintrag):
+    - **Basis** (`basis`, Forward-Verweis, kein eigener Eintrag):
     Sockel-Element am Stützenfuß.
-  - **Schaft** (`schaft`, Forward-Verweis, kein eigener Eintrag):
+    - **Schaft** (`schaft`, Forward-Verweis, kein eigener Eintrag):
     tragender Stab mit Entasis.
-  - **Kapitell** (`kapitell`, Forward-Verweis, kein eigener
+    - **Kapitell** (`kapitell`, Forward-Verweis, kein eigener
     Eintrag): Bekrönungs-Element am Stützenkopf.
 - **Spezialisierungen**:
-  - Im aktuellen Glossar keine. Die fünf klassischen
+    - Im aktuellen Glossar keine. Die fünf klassischen
     Säulenordnungen (Dorisch, Ionisch, Korinthisch, Toskanisch,
     Komposit) sind als optionales Merkmal `ordnung:`, nicht als
     Subtyp-Hierarchie geführt.
 - **Abgrenzung**:
-  - **Stütze** (`stuetze`): Oberbegriff. Jede Säule ist eine
+    - **Stütze** (`stuetze`): Oberbegriff. Jede Säule ist eine
     Stütze; nicht jede Stütze ist eine Säule (Architektur-
     Zusicherung und freistehender Charakter fehlen).
-  - **Ständer** (`staender`): Wand-Bauteilrolle. Keine Säule kann
+    - **Ständer** (`staender`): Wand-Bauteilrolle. Keine Säule kann
     Ständer sein (Bedingung 6 von `stuetze` schließt Wand-Inzidenz
     aus, wird in `saeule` geerbt).
-  - **Hängesäule** (`haengesaeule`): Zug-Element im Hängewerk;
+    - **Hängesäule** (`haengesaeule`): Zug-Element im Hängewerk;
     nicht freistehend, holz-spezifisch. Wortstamm-Verwandtschaft
     nur formal.
-  - **Stuhlsäule** (`stuhlsaeule`): Druck-Element im Dachstuhl;
+    - **Stuhlsäule** (`stuhlsaeule`): Druck-Element im Dachstuhl;
     nicht freistehend, holz-spezifisch. Wortstamm-Verwandtschaft
     nur formal.
-  - **Pfeiler** (`pfeiler`, Forward-Verweis, kein eigener Eintrag):
+    - **Pfeiler** (`pfeiler`, Forward-Verweis, kein eigener Eintrag):
     freistehendes Mauerwerks-/Stein-Vertikalbauteil. Trennung
     durch Werkstoff und Querschnitts-Form.
-  - **Pilaster** (`pilaster`, Forward-Verweis, kein eigener
+    - **Pilaster** (`pilaster`, Forward-Verweis, kein eigener
     Eintrag): wand-angelagerte flache Säule; im Holzbau nicht
     relevant.
-  - **Kapitell** (`kapitell`, Forward-Verweis, kein eigener
+    - **Kapitell** (`kapitell`, Forward-Verweis, kein eigener
     Eintrag): partitiver Bestandteil der Säule am Stützenkopf.
-  - **Basis** (`basis`, Forward-Verweis, kein eigener Eintrag):
+    - **Basis** (`basis`, Forward-Verweis, kein eigener Eintrag):
     partitiver Bestandteil der Säule am Stützenfuß.
-  - **Schaft** (`schaft`, Forward-Verweis, kein eigener Eintrag):
+    - **Schaft** (`schaft`, Forward-Verweis, kein eigener Eintrag):
     partitiver Bestandteil der Säule.
-  - **Bauteil** (`bauteil`): über `stuetze` mittelbarer
+    - **Bauteil** (`bauteil`): über `stuetze` mittelbarer
     Oberbegriff.
 
 ## Quellen

@@ -70,7 +70,7 @@ quellenkonflikt: |
   Stahl-Zugstab im modernen Hallenbau-Hängewerk ist Sonder-/Drift-
   Lesart, dokumentiert in `hg_haengesaeule.md`).
 
-  Eigene Festlegung: `stuetze` liegt in `hauptglossar/20_tragwerk/`.
+  Eigene Festlegung: `stuetze` liegt in `glossary/20_tragwerk/`.
 
   **(3) Geschwister-Rolle zu `staender`, nicht Oberbegriff.** Welle-9-
   Empfehlung (`hg_staender.md` Quellenkonflikt-Punkt 3 und 7,
@@ -187,7 +187,7 @@ alle erfüllt sind:
 
 2. **Lotrechtheit der Stützenachse**: Die Bauteilachsenrichtung ist
    kollinear zur Welt-Lotachse,
-   ```
+   ```text
    ‖d_hat × e_z‖ ≤ ε_K,
    ```
    d. h. d_hat steht parallel zu e_z (Sinus-Test gegen e_z-Parallelität;
@@ -196,7 +196,7 @@ alle erfüllt sind:
 
 3. **Vorzeichenkonvention Fuß → Kopf**: Der untere Endpunkt p_a liegt
    höhenmäßig unterhalb des oberen Endpunktes p_e,
-   ```
+   ```text
    p_a.z + ε_L < p_e.z.
    ```
    Anders als bei Pfette, Riegel und Einbinder ist hier eine geometrisch
@@ -206,7 +206,7 @@ alle erfüllt sind:
 
 4. **Stützen-Querschnitts-Bedingung (DIN 1045-1)**: Das Verhältnis von
    größter zu kleinster Querschnitts-Abmessung übersteigt 4 nicht:
-   ```
+   ```text
    q_max ≤ 4 · q_min.
    ```
    Diese Bedingung grenzt die Stütze geometrisch gegen die Wand ab.
@@ -410,69 +410,69 @@ Quellenkonflikt-Punkt 4) — die Lemma-Wahl im Glossar bleibt aber bei
   geometrischen Constraints. Geschwister-Rolle zu `staender` (Wand-
   Inzidenz), `pfette`, `riegel`, `schwelle`, `einbinder`, `sparren` etc.
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`), lotrecht im Sinne von
+    - **Bauteilachse** (`bauteilachse.Gerade`), lotrecht im Sinne von
     Bedingung 2;
-  - **Querschnitt** (rechteckig, rund mit Entasis bei Säule, oder
+    - **Querschnitt** (rechteckig, rund mit Entasis bei Säule, oder
     Profil bei Stahl), q_max ≤ 4·q_min;
-  - **Werkstoff** (Vollholz, BSH, BSP, LVL, Stahl, Stahlbeton,
+    - **Werkstoff** (Vollholz, BSH, BSP, LVL, Stahl, Stahlbeton,
     Mauerwerk);
-  - **Faserrichtung** (Annotation bei Holz-Stützen, Default
+    - **Faserrichtung** (Annotation bei Holz-Stützen, Default
     ‖ d_hat_Stütze).
 - **Spezialisierungen** (eigene Einträge folgen trigger-basiert):
-  - `saeule` (Welle 13, Cluster `20_tragwerk/`): architektonisch-
+    - `saeule` (Welle 13, Cluster `20_tragwerk/`): architektonisch-
     klassischer Subtyp mit Säulenordnung (Basis-Schaft-Kapitell).
-  - `hg_holzstuetze.md` (Folgearbeit): holz-spezifische
+    - `hg_holzstuetze.md` (Folgearbeit): holz-spezifische
     Spezialisierung mit CH-spezifischen Bemessungsregeln nach
     SIA 265:2021 §5; im Cluster `30_holzbau/` analog
     `gerichteter_plattenwerkstoff`.
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Pfette / Träger / Unterzug**: liegen auf den Stützenköpfen
+    - **Pfette / Träger / Unterzug**: liegen auf den Stützenköpfen
     auf; die Stütze leitet die Pfetten-/Träger-Last in die Gründung.
-  - **Riegel** (im Skelettbau): horizontales Querbauteil zwischen
+    - **Riegel** (im Skelettbau): horizontales Querbauteil zwischen
     zwei Stützen, bildet mit den Stützen eine Pfosten-Riegel-
     Konstruktion (Skelettrahmen).
-  - **Auflager** (`auflager`): die Stütze ist über den Stützenfuß
+    - **Auflager** (`auflager`): die Stütze ist über den Stützenfuß
     mit einem Auflager verbunden.
-  - **Binder** (`binder`): in Hallenbinder-Konstruktionen tragen
+    - **Binder** (`binder`): in Hallenbinder-Konstruktionen tragen
     Stützen die werks-vorgefertigten Binder.
 - **Abgrenzung**:
-  - **Ständer** (`staender`, Welle 9): Wand-Bauteilrolle.
+    - **Ständer** (`staender`, Welle 9): Wand-Bauteilrolle.
     Geschwister-Rolle der Stütze, **nicht** Oberbegriff oder
     Subtyp. Trennlinie: Wand-Inzidenz (Schwellen-/Einbinder-Anschluss).
-  - **Säule** (`saeule`, Welle 13): architektonisch-klassischer
+    - **Säule** (`saeule`, Welle 13): architektonisch-klassischer
     Subtyp der Stütze; direkter `oberbegriff`-Verweis.
-  - **Hängesäule** (`haengesaeule`, Welle 13): Zugstab im
+    - **Hängesäule** (`haengesaeule`, Welle 13): Zugstab im
     Hängewerk-Dachtragwerk; Geschwister-Bauteilrolle, nicht
     Subtyp der Stütze (Zug-Charakter, holz-exklusiv).
-  - **Stuhlsäule** (`stuhlsaeule`, Welle 13): Druck-Element im
+    - **Stuhlsäule** (`stuhlsaeule`, Welle 13): Druck-Element im
     Dachstuhl (stehender oder liegender Stuhl); Geschwister-
     Bauteilrolle, nicht Subtyp der Stütze (holz-exklusiv, mit
     spezifischem Stuhlpfetten-Anschluss).
-  - **Pfosten** (Forward-Verweis, kein eigener Eintrag): in
+    - **Pfosten** (Forward-Verweis, kein eigener Eintrag): in
     `hg_staender.md` Synonym; in Anweisers CH-Berufspraxis für die
     Stütze verwendet. Drift-Disambiguation, siehe Quellenkonflikt
     Punkt 4.
-  - **Pfeiler** (Forward-Verweis, kein eigener Eintrag):
+    - **Pfeiler** (Forward-Verweis, kein eigener Eintrag):
     Mauerwerks-/Stein-Bauteil. Werkstoff-Trennung gegen die
     Holz-Stütze; im Holzbau nicht etabliert.
-  - **Wand** (`wand`, Welle 12): orthogonale Bauteilgruppe.
+    - **Wand** (`wand`, Welle 12): orthogonale Bauteilgruppe.
     Eine Stütze ist gerade **nicht** Mitglied einer Wand-
     Bauteilgruppe (Bedingung 6); ein wandgebundenes Vertikal-
     bauteil ist `staender`, nicht `stuetze`.
-  - **Dachstuhl** (`dachstuhl`, Welle 12): Aggregat. Eine Stütze
+    - **Dachstuhl** (`dachstuhl`, Welle 12): Aggregat. Eine Stütze
     in einem Dachstuhl ist konstitutiv eine Stuhlsäule (am
     Stuhlpfetten-Anschluss) oder eine Hängesäule (im Hängewerk),
     nicht eine allgemeine Stütze.
-  - **Binder** (`binder`, Welle 12): werks-vorgefertigte
+    - **Binder** (`binder`, Welle 12): werks-vorgefertigte
     Bauteilgruppe. Stützen tragen Binder, sind aber nicht selbst
     Binder.
-  - **Skelettbau** (`skelettbau`, Forward-Verweis): Bauweise,
+    - **Skelettbau** (`skelettbau`, Forward-Verweis): Bauweise,
     die Stützen als zentrales Vertikalbauteil verwendet.
-  - **Fundament** (`fundament`, Forward-Verweis): mineralisches
+    - **Fundament** (`fundament`, Forward-Verweis): mineralisches
     Auflager unter dem Stützenfuß.
-  - **Hochstud** (Forward-Verweis, kein eigener Eintrag): CH-
+    - **Hochstud** (Forward-Verweis, kein eigener Eintrag): CH-
     historische Sub-Lesart einer geschoss-übergreifenden Stütze.
-  - **Bauteil** (`bauteil`): Oberbegriff. Stütze ist Spezialisierung.
+    - **Bauteil** (`bauteil`): Oberbegriff. Stütze ist Spezialisierung.
 
 ## Quellen
 

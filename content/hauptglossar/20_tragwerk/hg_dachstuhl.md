@@ -265,7 +265,7 @@ Sei
 
 Dann ist ein **Dachstuhl** das Tupel
 
-```
+```text
 D:= (uuid, B, V, A, L)
 ```
 
@@ -295,7 +295,7 @@ und den Konsistenzbedingungen
 
 2. **Bauart-Prädikat — Ausschluss werks-vorgefertigter Binder.** In
    einem Modell mit Binder-Menge 𝒢ᴮᴹ gilt
-   ```
+   ```text
    ∀ Bᵢ ∈ 𝒢ᴮᴹ: Bᵢ.bestandteile ∩ B = ∅.
    ```
    Kein Bauteil des Dachstuhls ist zugleich Bestandteil eines Binders.
@@ -318,7 +318,7 @@ und den Konsistenzbedingungen
 Die **geometrische Punktmenge** des Dachstuhls im Weltkoordinaten-
 system ist
 
-```
+```text
 G_W(D):= ⋃_{b ∈ B} G_W(b) ⊂ ℝ³
 ```
 
@@ -439,9 +439,9 @@ geläufigen Sub-Typen:
 
 - **Stehender Stuhl** (`stehender_stuhl`, Folgearbeit). Lotrechte
   Stuhlsäulen unter den Pfetten.
-  - *Einfach stehender Stuhl*: eine Längsreihe lotrechter Stuhl-
+    - *Einfach stehender Stuhl*: eine Längsreihe lotrechter Stuhl-
     säulen unter der Firstpfette.
-  - *Doppelter stehender Stuhl*: zwei parallele Längsreihen
+    - *Doppelter stehender Stuhl*: zwei parallele Längsreihen
     lotrechter Stuhlsäulen unter zwei Mittelpfetten.
 - **Liegender Stuhl** (`liegender_stuhl`, Folgearbeit). Stuhlsäulen
   schräg geneigt, Fußpunkt nahe Außenwand, Kopfpunkt unter der
@@ -523,78 +523,78 @@ modelliert (Werkplan, Bemessung).
   Zwischenstufe mit-eingeführt und `oberbegriff:` von `tragwerk` auf
   `dachtragwerk` migriert.
 - **Bestandteile (partitiv)**: identisch zu `tragwerk`:
-  - **Bauteile** (`bauteil`): Sparren, Pfetten, Stuhlsäulen,
+    - **Bauteile** (`bauteil`): Sparren, Pfetten, Stuhlsäulen,
     Bundbalken, Kehlbalken, Streben, Schwellen, Einbinder, Aussteifungen.
-  - **Verbindungen** (`verbindung`): zimmermannsmäßig (Zapfen, Versatz,
+    - **Verbindungen** (`verbindung`): zimmermannsmäßig (Zapfen, Versatz,
     Blatt, Schwalbenschwanz) oder mechanisch (Bolzen, Stabdübel,
     Nagel, Schraube, Klammer). Werks-vorgefertigte Verbindungen
     (Nagelplatten, Werks-Verleimung) ausgeschlossen.
-  - **Auflager** (`auflager`).
-  - **Lastfälle** (`lastfall`).
+    - **Auflager** (`auflager`).
+    - **Lastfälle** (`lastfall`).
 - **Spezialisierungen nach statischem System** (eigene Einträge
   folgen, trigger-basiert):
-  - `sparrendach` — Sparrendach in zimmermannsmäßiger Bauart.
-  - `pfettendach` — Pfettendach in zimmermannsmäßiger Bauart;
+    - `sparrendach` — Sparrendach in zimmermannsmäßiger Bauart.
+    - `pfettendach` — Pfettendach in zimmermannsmäßiger Bauart;
     enthält typischerweise eine Stuhl-Konstruktion.
-  - `kehlbalkendach` — Kehlbalkendach in zimmermannsmäßiger Bauart;
+    - `kehlbalkendach` — Kehlbalkendach in zimmermannsmäßiger Bauart;
     Stuhl-Konstruktion optional.
 - **Sub-Aggregate (innerhalb des Dachstuhls)**:
-  - `stuhl` (Folgearbeit): Stütz-Bauteilgruppe (Lesart 1 von
+    - `stuhl` (Folgearbeit): Stütz-Bauteilgruppe (Lesart 1 von
     „Dachstuhl"), kommt in Pfetten- und Kehlbalken-Dachstühlen vor.
-  - Sub-Typen: `stehender_stuhl`, `liegender_stuhl`,
+    - Sub-Typen: `stehender_stuhl`, `liegender_stuhl`,
     `doppelter_liegender_stuhl` (Folgearbeiten unter `stuhl`).
-  - Weitere Bauteilgruppen (`bauteilgruppe`): Auswechslungen, Gauben,
+    - Weitere Bauteilgruppen (`bauteilgruppe`): Auswechslungen, Gauben,
     Walm-Bauteilgruppen. Zulässig **innerhalb** des Dachstuhls,
     solange sie keine Binder sind.
 - **Verwendung**:
-  - Bestandteil eines **Daches** (`dach`): der Dachstuhl ist die
+    - Bestandteil eines **Daches** (`dach`): der Dachstuhl ist die
     T-Komponente des Dach-Tripels (T, 𝒟, A_aufbau), sofern das Dach
     zimmermannsmäßig gefertigt ist.
-  - Bestandteil eines **Bauwerks** (`bauwerk`): folgt der
+    - Bestandteil eines **Bauwerks** (`bauwerk`): folgt der
     `tragwerk` ⊂ `bauwerk.tragwerke`-Relation aus `hg_bauwerk.md`.
 - **Abgrenzung**:
-  - **Tragwerk** (`tragwerk`): Oberbegriff. Jeder Dachstuhl ist ein
+    - **Tragwerk** (`tragwerk`): Oberbegriff. Jeder Dachstuhl ist ein
     Tragwerk; nicht jedes Tragwerk ist ein Dachstuhl (Wand-, Decken-,
     Boden-, Brückentragwerke sind keine Dachstühle; Binderdächer sind
     Dachtragwerke, aber keine Dachstühle).
-  - **Dachtragwerk** (`dachtragwerk`, Folgearbeit): die fachlich
+    - **Dachtragwerk** (`dachtragwerk`, Folgearbeit): die fachlich
     saubere Zwischenstufe „Tragwerk im Anwendungsbereich Dach,
     bauartunabhängig". Dachstuhl ist die Bauart-Spezialisierung
     „zimmermannsmäßig, ohne werks-vorgefertigte Binder".
-  - **Dach** (`dach`): das Aggregat aus Tragwerk, Dachflächen und
+    - **Dach** (`dach`): das Aggregat aus Tragwerk, Dachflächen und
     Dachaufbau. Der Dachstuhl ist Bestandteil eines Daches, nicht
     das Dach selbst.
-  - **Bauwerk** (`bauwerk`): das übergeordnete Aggregat; ein Bauwerk
+    - **Bauwerk** (`bauwerk`): das übergeordnete Aggregat; ein Bauwerk
     kann mehrere Tragwerke (und damit potenziell mehrere Dachstühle,
     etwa Haupt- und Vordach-Dachstuhl) umfassen.
-  - **Bauteilgruppe** (`bauteilgruppe`): orthogonale Aggregat-
+    - **Bauteilgruppe** (`bauteilgruppe`): orthogonale Aggregat-
     Ontologie mit exklusiver Bestandteils-Mitgliedschaft und
     kaskadischer Lebenszyklus-Bindung. Der Dachstuhl ist **keine**
     Bauteilgruppe (er hat nicht-exklusive Mitgliedschaft seiner
     Bauteile, geerbt von `bausystem` über `tragwerk`); er enthält
     aber Bauteilgruppen als Sub-Aggregate (`stuhl`, Auswechslungen,
     Gauben).
-  - **Binder** (`binder`): das werks-vorgefertigte Bauteilgruppen-
+    - **Binder** (`binder`): das werks-vorgefertigte Bauteilgruppen-
     Aggregat, das vom Bauart-Prädikat des Dachstuhls **ausgeschlossen**
     ist. Bauteile eines Binders sind nicht Bauteile eines Dachstuhls.
-  - **Binderdach** (`binderdach`, Folgearbeit): das Dachtragwerks-
+    - **Binderdach** (`binderdach`, Folgearbeit): das Dachtragwerks-
     System, in dem werks-vorgefertigte Binder die Primärtragglieder
     sind. **Geschwister** des Dachstuhls unter dem (künftig
     angelegten) `dachtragwerk`-Oberbegriff, nicht Sub-Typ des
     Dachstuhls. „Binderdach" trifft Lesart 3 von „Dachstuhl"; in der
     App-Sprache ist das ein Verstoß gegen die hier festgelegte
     Lesart 2.
-  - **Sparrendach** / **Pfettendach** / **Kehlbalkendach**
+    - **Sparrendach** / **Pfettendach** / **Kehlbalkendach**
     (Folgearbeiten): Sub-Typen des Dachstuhls entlang des statischen
     Systems.
-  - **Stuhl** (`stuhl`, Folgearbeit): die Stütz-Bauteilgruppe
+    - **Stuhl** (`stuhl`, Folgearbeit): die Stütz-Bauteilgruppe
     innerhalb eines Pfetten- oder Kehlbalken-Dachstuhls (Lesart 1).
     Der Stuhl ist im Dachstuhl, aber er ist nicht der Dachstuhl.
-  - **Bausystem** (`bausystem`): mittelbarer Oberbegriff über
+    - **Bausystem** (`bausystem`): mittelbarer Oberbegriff über
     `tragwerk`. Der Dachstuhl erbt die Bausystem-Eigenschaften
     (nicht-exklusive Mitgliedschaft, keine kaskadische Löschung)
     transitiv über `tragwerk`.
-  - **Dachkonstruktion**: im Korpus mehrdeutig zwischen Tragwerk und
+    - **Dachkonstruktion**: im Korpus mehrdeutig zwischen Tragwerk und
     gesamtem Dach (siehe `hg_dach.md`-Quellenkonflikt). In der App-
     Sprache abgelehnt; weder Synonym noch eigener Eintrag.
 

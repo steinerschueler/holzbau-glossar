@@ -153,7 +153,7 @@ Sei
 
 Dann ist ein **Andreaskreuz** ein Tupel
 
-```
+```text
 A:= (uuid, streben, wandebene, kreuzungspunkt,
       lage, huelle, funktion?, bezeichnung?)
 ```
@@ -203,7 +203,7 @@ und den Konsistenzbedingungen
    die abgeschlossene Strecke (innere Punktmenge der
    Bauteilachse). Es existiert ein Punkt
    k = kreuzungspunkt ∈ ℝ³ mit
-   ```
+   ```text
    k ∈ relative_interior(L_1) ∩ relative_interior(L_2),
    ```
    d. h. die zwei Strecken schneiden sich strikt im Inneren
@@ -214,12 +214,12 @@ und den Konsistenzbedingungen
 5. **Streben nicht parallel** (X-Form, nicht II-Form): Die
    Richtungsvektoren d_hat_1, d_hat_2 der beiden Bauteilachsen
    erfüllen
-   ```
+   ```text
    |⟨d_hat_1, d_hat_2⟩| ≤ 1 − ε_K,
    ```
    d. h. die zwei Streben sind echt nicht-parallel; der
    Kreuzungswinkel
-   ```
+   ```text
    γ:= arccos(|⟨d_hat_1, d_hat_2⟩|) ∈ (ε_W, π/2]
    ```
    ist positiv. Default-Wert im Korpus γ ≈ π/2 (rechtwinkliges
@@ -230,7 +230,7 @@ und den Konsistenzbedingungen
    Holzbauteilen — typisch zwei Ständer plus Schwelle/Einbinder
    oder zwei Ständer plus zwei Riegel —), in dessen Berandung
    beide Strecken L_1, L_2 ihre Endpunkte haben:
-   ```
+   ```text
    ∀ i ∈ {1, 2}: {p_a^{i}, p_e^{i}} ⊂ ∂G_g
    ```
    (bis auf Toleranz ε_L). Die Endpunkte liegen typisch
@@ -242,7 +242,7 @@ und den Konsistenzbedingungen
 
 Die **geometrische Punktmenge** des Andreaskreuzes in W ist
 
-```
+```text
 G_W(A):= lage(G_lokal(huelle)) ⊂ ℝ³.
 ```
 
@@ -415,70 +415,70 @@ plus ein Andreaskreuz im Brüstungsfeld).
   Streben als Pflicht-Bestandteile, ihre wechselseitige
   Kreuzungsbedingung in einer gemeinsamen Wandebene.
 - **Bestandteile (partitiv)**:
-  - **Strebe** (`strebe`, genau 2 Stück): die zwei sich
+    - **Strebe** (`strebe`, genau 2 Stück): die zwei sich
     kreuzenden Diagonal-Stab-Bauteile.
 - **Geometrische Bezugsobjekte (nicht Mitglieder)**:
-  - **Wandebene** (`ebene`): die gemeinsame lotrechte
+    - **Wandebene** (`ebene`): die gemeinsame lotrechte
     Trägerebene beider Streben.
-  - **Kreuzungspunkt** (Punkt ∈ ℝ³): der Schnittpunkt
+    - **Kreuzungspunkt** (Punkt ∈ ℝ³): der Schnittpunkt
     der zwei Bauteilachsen; abgeleitete Größe.
-  - **Gefach** (`gefach`, Forward-Verweis, Folgearbeit):
+    - **Gefach** (`gefach`, Forward-Verweis, Folgearbeit):
     das umschließende Wandfeld; geometrische Referenz,
     nicht Bestandteil.
-  - **Begrenzende Bauteile**: zwei Ständer plus Schwelle/
+    - **Begrenzende Bauteile**: zwei Ständer plus Schwelle/
     Einbinder oder Riegel; geometrische Referenz für die
     Anker-Endpunkte der Streben, nicht Mitglieder des
     Andreaskreuz-Aggregats.
 - **Funktionale Sicht (über `funktion?`-Feld)**:
-  - **AUSSTEIFEND**: tragwerks-aussteifende Konfiguration.
-  - **DEKORATIV**: rein ornamentale Konfiguration ohne
+    - **AUSSTEIFEND**: tragwerks-aussteifende Konfiguration.
+    - **DEKORATIV**: rein ornamentale Konfiguration ohne
     statische Wirkung.
 - **Verwendung**:
-  - Bestandteil einer **Wand** (`wand`) — als
+    - Bestandteil einer **Wand** (`wand`) — als
     geschwisterliches Aggregat innerhalb derselben
     Wandebene; die Wand-Bauteilgruppe enthält die zwei
     Streben **nicht** zusätzlich, weil exklusive
     Mitgliedschaft gilt (siehe `hg_wand.md` Erläuterungs-
     Block).
 - **Abgrenzung**:
-  - **Bauteilgruppe** (`bauteilgruppe`): Oberbegriff.
-  - **Strebe** (`strebe`): Bauteilrolle der zwei
+    - **Bauteilgruppe** (`bauteilgruppe`): Oberbegriff.
+    - **Strebe** (`strebe`): Bauteilrolle der zwei
     Mitglieder; eine Einzel-Strebe ist nicht ein
     Andreaskreuz.
-  - **Kopfband** (`kopfband`), **Fußband** (`fussband`):
+    - **Kopfband** (`kopfband`), **Fußband** (`fussband`):
     diagonale Aussteifungs-Bauteile mit Pfosten-Kopf-
     bzw. Pfosten-Fuß-Anker; **nicht** Bestandteile des
     Andreaskreuzes (das Andreaskreuz verwendet
     ausschließlich Streben, nicht Bänder).
-  - **Knagge** (`knagge`): Konsole; keine Diagonal-Stab-
+    - **Knagge** (`knagge`): Konsole; keine Diagonal-Stab-
     Bauteile, nicht Bestandteil.
-  - **Mann** (`mann`): geschwisterliches Bündel-
+    - **Mann** (`mann`): geschwisterliches Bündel-
     Aussteifungs-Aggregat am Pfosten (nicht am Gefach);
     siehe Erläuterungs-Block.
-  - **Wand** (`wand`): das übergeordnete Wand-Aggregat,
+    - **Wand** (`wand`): das übergeordnete Wand-Aggregat,
     in dessen Wandebene das Andreaskreuz liegt; die
     Wand enthält das Andreaskreuz als geschwisterliches
     Aggregat oder als verschachteltes Aggregat (Modell-
     Entscheidung).
-  - **Schwelle**, **Einbinder**, **Ständer**, **Riegel**:
+    - **Schwelle**, **Einbinder**, **Ständer**, **Riegel**:
     Bauteilrollen, die das umschließende Gefach bilden;
     Anker-Bauteile für die Streben, nicht Bestandteile
     des Andreaskreuzes.
-  - **Verbindung** (`verbindung`): das Andreaskreuz
+    - **Verbindung** (`verbindung`): das Andreaskreuz
     enthält Verbindungen zwischen seinen Bestandteilen
     (Strebe-Strebe-Blattung am Kreuzungspunkt, Strebe-
     Rahmen-Anker an den vier Eckpunkten); es ist selbst
     keine Verbindung.
-  - **Gefach** (`gefach`, Forward-Verweis): das
+    - **Gefach** (`gefach`, Forward-Verweis): das
     umschließende Wand-Feld; geometrische Referenz,
     nicht Aggregat-Mitglied.
-  - **Fachwerk**, **Riegelbau**: Bauweisen-
+    - **Fachwerk**, **Riegelbau**: Bauweisen-
     Klassifikationen, in denen das Andreaskreuz primär
     auftritt.
-  - **Brueckmauer** / **Brueckschnurmauer** (Folgearbeit-
+    - **Brueckmauer** / **Brueckschnurmauer** (Folgearbeit-
     Trigger im historischen Korpus): regionale
     Sub-Lesarten von Fachwerk-Brüstungsfeldern.
-  - **Walm** (`walm`), **Binder** (`binder`):
+    - **Walm** (`walm`), **Binder** (`binder`):
     strukturparallele Geschwister-Aggregate unter
     `bauteilgruppe`, mit anderer geometrischer
     Konfiguration.

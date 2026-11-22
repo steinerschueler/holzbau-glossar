@@ -79,7 +79,7 @@ Sei
 
 Dann gilt **`E ist Senkel`** genau dann, wenn
 
-```
+```text
 | ⟨ n_hat, e_hat_z ⟩ | ≤ ε_K.                                            (1)
 ```
 
@@ -95,7 +95,7 @@ Dann gilt **`E ist Senkel`** genau dann, wenn
 Die zugehörige **Senkelmenge** ist die Klasse aller Ebenen, die
 (1) erfüllen:
 
-```
+```text
 𝒮:= { E ⊂ ℝ³ | E Ebene, |⟨n_hat_E, e_hat_z⟩| ≤ ε_K }.                  (2)
 ```
 
@@ -208,41 +208,41 @@ Zimmermannstoleranz; sie filtert nur numerische Restfehler.
   (Sparrenfuß-Stirnseite, Kervsenkel, Senkelriss) sind keine
   eigenen Begriffe, sondern Anwendungen.
 - **Bestandteile (partitiv)**:
-  - **Trägerebene** (geerbt von `ebene`): die Punktmenge im
+    - **Trägerebene** (geerbt von `ebene`): die Punktmenge im
     Welt-Koordinatensystem.
-  - **Senkel-Eigenschaft**: das Lage-Merkmal nach (1). Es ist
+    - **Senkel-Eigenschaft**: das Lage-Merkmal nach (1). Es ist
     keine zusätzliche Information, sondern eine ableitbare
     Eigenschaft der Ebene.
 - **Verwendung**:
-  - Klassifikation von **Sparren-Stirnseiten** am Werkplan
+    - Klassifikation von **Sparren-Stirnseiten** am Werkplan
     (Senkel vs. Bleischnitt vs. rechtwinkliger Anschnitt).
-  - Klassifikation des **Kervsenkels** in `hg_kerve.md` (die
+    - Klassifikation des **Kervsenkels** in `hg_kerve.md` (die
     welt-vertikale Schnittfläche der Standardklauenkerve).
-  - **Werkplan-Beschriftung** als Hinweis auf die Schnittart
+    - **Werkplan-Beschriftung** als Hinweis auf die Schnittart
     (Senkelschnitt-Notation in der traditionellen Schweizer
     Werkplan-Konvention).
 - **Abgrenzung**:
-  - **Ebene** (`ebene`): allgemeines geometrisches Primitiv
+    - **Ebene** (`ebene`): allgemeines geometrisches Primitiv
     ohne Lage-Merkmal. Senkel ist eine Ebene mit
     Lage-Klassifikation.
-  - **Bleischnitt** (`bleischnitt`): Schwester-Begriff. Während
+    - **Bleischnitt** (`bleischnitt`): Schwester-Begriff. Während
     der Senkel parallel zur Welt-Lotachse verläuft (Normale
     rechtwinklig zur Lotachse), verläuft der Bleischnitt
     rechtwinklig zur Welt-Lotachse (Normale parallel zur
     Lotachse). Senkel und Bleischnitt sind die beiden
     ausgezeichneten Lot-Lage-Klassen einer Ebene; sie sind
     geometrisch komplementär und zueinander disjunkt.
-  - **Bezugsebene** (`bezugsebene`): tool-eigene Höhenreferenz.
+    - **Bezugsebene** (`bezugsebene`): tool-eigene Höhenreferenz.
     Eine Bezugsebene ist im Standardfall ein Bleischnitt
     (horizontal); ein Senkel als Bezugsebene wäre ein
     Sonderfall (z. B. eine vertikale Achsen-Bezugsebene).
-  - **Dachfläche** (`dachflaeche`): geneigte Berandungsfläche
+    - **Dachfläche** (`dachflaeche`): geneigte Berandungsfläche
     eines Daches. Eine Dachfläche ist im Regelfall **weder**
     Senkel noch Bleischnitt (sie ist um die Dachneigung
     geneigt); im Grenzfall Dachneigung = 90° wäre sie ein
     Senkel, im Grenzfall Dachneigung = 0° ein Bleischnitt
     (Flachdach).
-  - **Welt-Koordinatensystem** (`weltkoordinatensystem`): legt
+    - **Welt-Koordinatensystem** (`weltkoordinatensystem`): legt
     die Lotachsen-Richtung e_hat_z fest, gegen die Senkel und
     Bleischnitt gemessen werden. Ohne Welt-Koordinatensystem
     sind Senkel und Bleischnitt nicht definiert.

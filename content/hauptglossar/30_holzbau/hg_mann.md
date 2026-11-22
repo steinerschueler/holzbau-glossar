@@ -207,7 +207,7 @@ Sei
 
 Dann ist ein **Mann** ein Tupel
 
-```
+```text
 M:= (uuid, pfosten, kopfbaender, fussbaender,
       zentrale_strebe?, wandebene, variante,
       lage, huelle, bezeichnung?)
@@ -242,7 +242,7 @@ und den Konsistenzbedingungen
 
 1. **Bauteilgruppen-Konformität**: das implizite Bauteilgruppen-
    Tupel `(uuid, bestandteile, lage, huelle, bezeichnung?)` mit
-   ```
+   ```text
    bestandteile:= {pfosten} ∪ kopfbaender ∪ fussbaender ∪
                    (zentrale_strebe ∈ 𝓢_Str ? {zentrale_strebe}: ∅)
    ```
@@ -314,7 +314,7 @@ und den Konsistenzbedingungen
 
 Die **geometrische Punktmenge** in W ist
 
-```
+```text
 G_W(M):= lage(G_lokal(huelle)) ⊂ ℝ³.
 ```
 
@@ -385,7 +385,7 @@ Unterschiede werden in Folgearbeit-Sub-Einträgen
 präzisiert.
 
 | Variante | Komposition | Regionale Verortung | Historische Periode |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **DEFAULT (Mann)** | 1 Pfosten + 2 Kopfbänder + 2 Fußbänder (symmetrische Vier-Element-Komposition) | alemannisch + fränkisch (oberdeutsch) | 1470–1550 (Übergang Mittelalter → Neuzeit) |
 | **HALB (Halber Mann)** | 1 Pfosten + asymmetrische Halb-Konfiguration (nur ein Band-Paar oder nur ein einzelnes Band) | wie DEFAULT | wie DEFAULT |
 | **WILD (Wilder Mann)** | 1 Pfosten + 2 Kopfbänder + 2 Fußbänder + zentrale Strebe (vier Diagonalen plus Mittelachse — „Mensch mit ausgestreckten Armen und gespreizten Beinen") | hessisch, fränkisch | 16. Jahrhundert |
@@ -527,74 +527,74 @@ zulässig.
   zentrale Achse, symmetrische oder asymmetrische
   Bandpaar-Konfiguration, Varianten-Klassifikation.
 - **Bestandteile (partitiv)**:
-  - **Pfosten / Ständer** (`staender`, genau 1 Stück):
+    - **Pfosten / Ständer** (`staender`, genau 1 Stück):
     zentrale vertikale Achse.
-  - **Kopfband** (`kopfband`, 0–2 Stück): Diagonal-
+    - **Kopfband** (`kopfband`, 0–2 Stück): Diagonal-
     Aussteifung am Pfostenkopf.
-  - **Fußband** (`fussband`, 0–2 Stück): Diagonal-
+    - **Fußband** (`fussband`, 0–2 Stück): Diagonal-
     Aussteifung am Pfostenfuß.
-  - **Zentrale Strebe** (`strebe`, 0–1 Stück): zentrales
+    - **Zentrale Strebe** (`strebe`, 0–1 Stück): zentrales
     Diagonal-Bauteil in der Pfostenachse, nur bei
     Wilder-Mann-Variante.
 - **Geometrische Bezugsobjekte (nicht Mitglieder)**:
-  - **Wandebene** (`ebene`): die gemeinsame lotrechte
+    - **Wandebene** (`ebene`): die gemeinsame lotrechte
     Trägerebene.
-  - **Pfostenachse**: die zentrale vertikale Achse, an
+    - **Pfostenachse**: die zentrale vertikale Achse, an
     der alle Bauteile verankert sind.
 - **Varianten-Klassifikation (über `variante`-Feld,
   `MannVariante`-Enum)**:
-  - **DEFAULT (Mann)**: symmetrische Vier-Element-
+    - **DEFAULT (Mann)**: symmetrische Vier-Element-
     Komposition.
-  - **HALB (Halber Mann)**: asymmetrische Halb-
+    - **HALB (Halber Mann)**: asymmetrische Halb-
     Konfiguration.
-  - **WILD (Wilder Mann)**: erweiterte Konfiguration mit
+    - **WILD (Wilder Mann)**: erweiterte Konfiguration mit
     zentraler Strebe.
-  - **HESSEN (Hessenmann)**: asymmetrische Bandlängen
+    - **HESSEN (Hessenmann)**: asymmetrische Bandlängen
     (Hessenpark-Korpus).
-  - **SCHWAEB (Schwäbisches Männle/Weible/Kindle)**:
+    - **SCHWAEB (Schwäbisches Männle/Weible/Kindle)**:
     schwäbische Sub-Familie als Sammel-Kategorie.
 - **Verwendung**:
-  - Geschwister-Aggregat einer **Wand** (`wand`) — siehe
+    - Geschwister-Aggregat einer **Wand** (`wand`) — siehe
     Erläuterung „Verhältnis Mann ↔ Wand".
 - **Spezialisierungen** (eigene Einträge folgen, trigger-
   basiert):
-  - **Halber Mann** (`halber_mann`): asymmetrische
+    - **Halber Mann** (`halber_mann`): asymmetrische
     Halb-Konfiguration.
-  - **Wilder Mann** (`wilder_mann`): vier Diagonalen
+    - **Wilder Mann** (`wilder_mann`): vier Diagonalen
     plus zentrale Strebe.
-  - **Hessenmann** (`hessenmann`): Hessenpark-Korpus.
-  - **Schwäbisches Männle** (`schwaebisches_maennle`),
+    - **Hessenmann** (`hessenmann`): Hessenpark-Korpus.
+    - **Schwäbisches Männle** (`schwaebisches_maennle`),
     **Schwäbisches Weible** (`schwaebisches_weible`),
     **Schwäbisches Kindle** (`schwaebisches_kindle`):
     schwäbische Sub-Varianten.
 - **Abgrenzung**:
-  - **Bauteilgruppe** (`bauteilgruppe`): Oberbegriff.
-  - **Andreaskreuz** (`andreaskreuz`): geschwisterliches
+    - **Bauteilgruppe** (`bauteilgruppe`): Oberbegriff.
+    - **Andreaskreuz** (`andreaskreuz`): geschwisterliches
     Aussteifungs-Aggregat im Gefach, nicht am Pfosten
     (siehe Erläuterung).
-  - **Sub-Mann-Varianten** (`halber_mann`, `wilder_mann`,
+    - **Sub-Mann-Varianten** (`halber_mann`, `wilder_mann`,
     `hessenmann`, `schwaebisches_maennle`,
     `schwaebisches_weible`, `schwaebisches_kindle`):
     Spezialisierungen als Folgearbeit.
-  - **Strebe** (`strebe`), **Kopfband** (`kopfband`),
+    - **Strebe** (`strebe`), **Kopfband** (`kopfband`),
     **Fußband** (`fussband`), **Knagge** (`knagge`):
     Bauteilrollen; Mitglieder oder Nicht-Mitglieder der
     Mann-Bauteilgruppe.
-  - **Ständer** (`staender`), **Pfosten** (synonym):
+    - **Ständer** (`staender`), **Pfosten** (synonym):
     Bauteilrolle des zentralen Mitglieds.
-  - **Wand** (`wand`): geschwisterliches Aggregat, in
+    - **Wand** (`wand`): geschwisterliches Aggregat, in
     dessen Wandebene der Mann liegt; siehe Erläuterung.
-  - **Fachwerk**, **Riegelbau**: Bauweisen-
+    - **Fachwerk**, **Riegelbau**: Bauweisen-
     Klassifikationen, in denen Mann-Figuren primär
     auftreten.
-  - **Verbindung** (`verbindung`): der Mann enthält
+    - **Verbindung** (`verbindung`): der Mann enthält
     Verbindungen zwischen Pfosten und Bändern
     (Zapfen-Anker); er ist selbst keine Verbindung.
-  - **Gefach** (`gefach`, Forward-Verweis): die Mann-
+    - **Gefach** (`gefach`, Forward-Verweis): die Mann-
     Konfiguration kann mehrere Gefache übergreifen
     (drei-viertel- bis voll-geschosshöhe); geometrische
     Referenz, nicht Aggregat-Mitglied.
-  - **Walm** (`walm`), **Binder** (`binder`):
+    - **Walm** (`walm`), **Binder** (`binder`):
     strukturparallele Geschwister-Aggregate unter
     `bauteilgruppe`, mit anderer geometrischer
     Konfiguration.

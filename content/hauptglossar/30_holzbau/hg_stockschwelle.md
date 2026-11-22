@@ -209,7 +209,7 @@ Dann heißt B eine **Stockschwelle** bezüglich E_⊥ genau dann, wenn
 die folgenden Bedingungen alle erfüllt sind:
 
 1. **Horizontalität der Bauteilachse**:
-   ```
+   ```text
    |d_hat_B · e_hat_z| ≤ ε_K.
    ```
    Sinus-Test gegen e_z-Parallelität (Form identisch zu
@@ -219,7 +219,7 @@ die folgenden Bedingungen alle erfüllt sind:
 2. **Verkämmte Auflagernähe**: Die Unterkante des Querschnitts
    liegt höchstens um die Kammtiefe unter, höchstens um ε_L über
    der Auflagerebene,
-   ```
+   ```text
    −t_K − ε_L ≤ z_B − h_B/2 − z_E ≤ ε_L.
    ```
    In Worten: die Stockschwelle sitzt auf der Balkenlagen-
@@ -330,7 +330,7 @@ Stockwerk als in sich geschlossenes Wandmodul auf der Balkenlage
 des darunterliegenden Geschosses aufgerichtet wird. Der
 Regelaufbau an der Geschossfuge lautet von unten nach oben:
 
-```
+```text
 Ständer (UG) → Einbinder (UG) → Balkenlage → Stockschwelle (OG) → Ständer (OG)
 ```
 
@@ -446,36 +446,36 @@ Stock", „Stockwerkeigentum").
   `einheitsvektor`, `ebene`, `bezugsebene`, `querschnitt`,
   `staender`, `einbinder`, `weltkoordinatensystem`, `toleranzen`.
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Ständer** (`staender`): die Ständer des Obergeschosses
+    - **Ständer** (`staender`): die Ständer des Obergeschosses
     stehen auf der Stockschwelle (eingezapft); Bedingung 4.
-  - **Einbinder** (`einbinder`): oberer Wandabschluss des Untergeschosses;
+    - **Einbinder** (`einbinder`): oberer Wandabschluss des Untergeschosses;
     durch die Balkenlage von der Stockschwelle getrennt
     (Drei-Lagen-Stapel).
-  - **Deckenbalken / Balkenlage / Stichbalken** (Forward A): das
+    - **Deckenbalken / Balkenlage / Stichbalken** (Forward A): das
     Auflager der Stockschwelle; bei Vorkragung kragen die Balken
     bzw. Stichbalken aus. Trigger: erste
     Geschossdecken-Modellierung.
-  - **Knagge** (`knagge`) / **Kopfband** (`kopfband`):
+    - **Knagge** (`knagge`) / **Kopfband** (`kopfband`):
     Unterstützung auskragender Balkenköpfe unter der vorkragenden
     Stockschwelle.
-  - **Wand** (`wand`): die Stockschwelle ist unterstes Längsholz
+    - **Wand** (`wand`): die Stockschwelle ist unterstes Längsholz
     des Wand-Aggregats der Obergeschoss-Wand.
 - **Abgrenzung**:
-  - **Schwelle** (`schwelle`): Grundschwellen-Lesart auf
+    - **Schwelle** (`schwelle`): Grundschwellen-Lesart auf
     mineralischem Auflager; verletzt bei Verkämmung deren
     Bedingung 2, bei Vorkragung deren Bedingung 3. Die moderne
     Tafelbau-Schwelle auf der Geschossdecke bleibt bei `schwelle`
     (Auflagertyp GESCHOSSDECKE_HOLZ), siehe Quellenkonflikt
     Punkt 5.
-  - **Einbinder** (`einbinder`): oberer statt unterer Wandabschluss; „ein
+    - **Einbinder** (`einbinder`): oberer statt unterer Wandabschluss; „ein
     Bauteil — eine Rolle".
-  - **Riegel** (`riegel`): horizontales Zwischen-Querholz der
+    - **Riegel** (`riegel`): horizontales Zwischen-Querholz der
     Wand, nicht unterste Längslage.
-  - **Dachstockschwelle** (Forward A): Dachgerüst-Pendant am
+    - **Dachstockschwelle** (Forward A): Dachgerüst-Pendant am
     Kniestock/Dachstock.
-  - **Schwellenkranz** (Forward A): Aggregat mehrerer Schwellen,
+    - **Schwellenkranz** (Forward A): Aggregat mehrerer Schwellen,
     kein Einzelbauteil.
-  - **Türschwelle / Bahnschwelle**: Homonyme anderer
+    - **Türschwelle / Bahnschwelle**: Homonyme anderer
     Bauteildomänen (vgl. `hg_schwelle.md` Quellenkonflikt
     Punkt 5).
 

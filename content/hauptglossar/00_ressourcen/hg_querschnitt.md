@@ -94,7 +94,7 @@ Sei
 - z ∈ Q ⊂ E der **Flächenschwerpunkt** (Centroid) von Q, definiert
   als
 
-```
+```text
 z:= (1 / 𝓛²(Q)) · ∫_Q x dx,
 ```
 
@@ -103,7 +103,7 @@ in E genommen ist.
 
 Dann ist ein **Querschnitt** das Tupel
 
-```
+```text
 QS:= (form, ebene, flaechenschwerpunkt)
 ```
 
@@ -119,7 +119,7 @@ Der Querschnitt ist **abstrakt**: Querschnitt selbst ist nicht
 instanziierbar, sondern bezeichnet die Vereinigung der konkreten
 Subklassen-Mengen
 
-```
+```text
 𝓠𝓢:= 𝓡𝓠 ⊎ ⟨weitere Subklassen, Folgearbeit⟩
 ```
 
@@ -140,7 +140,7 @@ zur Höhenkante beim Rechteck-Querschnitt).
 A(B) (siehe `bauteilachse`) und Querschnitt QS(s) an der Stelle s
 gelten die Beziehungen
 
-```
+```text
 flaechenschwerpunkt(QS(s)) = z(s) ∈ A(B),
 normale(ebene(QS(s)))      = ±d_hat(s),
 ```
@@ -213,7 +213,7 @@ des Querschnitts selbst, sondern aus ihm berechnet.
 Im Holzbau dominieren wenige Querschnittsformen:
 
 | Subklasse | Anwendung | Anteil im Holzbau |
-|-----------|-----------|-------------------|
+| ----------- | ----------- | ------------------- |
 | Rechteck | Sparren, Pfette, Stütze, Strebe (Vollholz, KVH, BSH) | > 95 % |
 | Rund | Rundholzstütze, Rundholzbinder | < 3 % |
 | I-Profil | Steg-Träger (TJI, OSB-Steg), seltener BSH-I-Profile | < 2 % |
@@ -258,67 +258,67 @@ In der D8a-Implementierung trägt jedes Stabbauteil zunächst nur
 - **Oberbegriff**: keiner. Querschnitt ist die Wurzel der
   Querschnitts-Hierarchie.
 - **Subklassen** (eigene Einträge):
-  - **Rechteck-Querschnitt** (`rechteck_querschnitt`): rechteckige
+    - **Rechteck-Querschnitt** (`rechteck_querschnitt`): rechteckige
     Schnittfigur mit Breite b und Höhe h. Standardfall im Holzbau.
-  - **Rund-Querschnitt** (`rund_querschnitt`, Folgearbeit): kreis-
+    - **Rund-Querschnitt** (`rund_querschnitt`, Folgearbeit): kreis-
     förmige Schnittfigur mit Durchmesser d. Trigger: erste
     Rundholz-Stütze.
-  - **I-Profil-Querschnitt** (`i_profil_querschnitt`, Folgearbeit):
+    - **I-Profil-Querschnitt** (`i_profil_querschnitt`, Folgearbeit):
     I-förmige Schnittfigur (TJI, OSB-Steg-Träger). Trigger: erstes
     I-Profil-Bauteil.
-  - **T-Profil-Querschnitt** (`t_profil_querschnitt`, Folgearbeit):
+    - **T-Profil-Querschnitt** (`t_profil_querschnitt`, Folgearbeit):
     T-förmige Schnittfigur (Schalungsträger). Trigger: erste
     Schalung mit T-Träger.
-  - **Beliebig-polygonaler Querschnitt**
+    - **Beliebig-polygonaler Querschnitt**
     (`polygonaler_querschnitt`, Folgearbeit): beliebige polygonale
     Schnittfigur als Polygon (siehe `polygon`). Trigger: erstes
     abgebundenes Sonderbauteil mit nicht-standardisiertem
     Querschnitt.
 - **Bestandteile (partitiv) eines Querschnitts**:
-  - **Form-Diskriminator** (`form`): Aufzählungstyp; bestimmt die
+    - **Form-Diskriminator** (`form`): Aufzählungstyp; bestimmt die
     Subklasse.
-  - **Ebene** (`ebene`): die Trägerebene des Querschnitts; ihre
+    - **Ebene** (`ebene`): die Trägerebene des Querschnitts; ihre
     Normale stimmt bis auf Vorzeichen mit der Bauteilachsen-
     Tangente überein.
-  - **Flächenschwerpunkt** (Punkt in der Ebene): liegt auf der
+    - **Flächenschwerpunkt** (Punkt in der Ebene): liegt auf der
     Bauteilachse.
 - **Eigenschaften (Folgearbeit)**:
-  - **Querschnittseigenschaften** (`querschnittseigenschaften`):
+    - **Querschnittseigenschaften** (`querschnittseigenschaften`):
     A, I_y, I_z, W_y, W_z, I_p, A_v als abgeleitete Größen.
 - **Verwendung**:
-  - **Bauteil** (`bauteil`): jedes **Stabbauteil** trägt genau
+    - **Bauteil** (`bauteil`): jedes **Stabbauteil** trägt genau
     einen Querschnitt als Pflichtfeld (D8a; siehe). Plattenbauteile und
     Volumenbauteile tragen keinen Querschnitt im Sinne dieses
     Eintrags.
-  - **Bauteilachse** (`bauteilachse`): die Verbindungslinie der
+    - **Bauteilachse** (`bauteilachse`): die Verbindungslinie der
     Querschnittsschwerpunkte; ist ohne Querschnitt nicht
     konstruierbar (siehe Hinweis im Wohldefiniertheits-Abschnitt
     von `hg_bauteilachse.md`).
-  - **Sparren**, **Pfette**, **Stütze**, **Strebe** (eigene
+    - **Sparren**, **Pfette**, **Stütze**, **Strebe** (eigene
     Einträge): tragen typisch einen Rechteck-Querschnitt.
 - **Abgrenzung**:
-  - **Polygon** (`polygon`): Polygon ist eine ebene, polygonal
+    - **Polygon** (`polygon`): Polygon ist eine ebene, polygonal
     berandete Punktmenge; Querschnitt ist eine ebene Punktmenge mit
     Flächenschwerpunkt und Bauteilrolle. Ein polygonaler Querschnitt
     enthält ein Polygon als Berandung, ist aber nicht damit
     identisch.
-  - **Ebene** (`ebene`): die Trägerebene eines Querschnitts ist eine
+    - **Ebene** (`ebene`): die Trägerebene eines Querschnitts ist eine
     Ebene; der Querschnitt selbst ist eine **beschränkte** Teilmenge
     dieser Ebene mit Flächenschwerpunkt.
-  - **Bauteilachse** (`bauteilachse`): geometrische 1D-Längsachse;
+    - **Bauteilachse** (`bauteilachse`): geometrische 1D-Längsachse;
     Querschnitt ist die dazu duale 2D-Schnittfigur. Bauteilachse
     sammelt Querschnittsschwerpunkte; Querschnitt sitzt auf einem
     Punkt der Bauteilachse.
-  - **Bauteil** (`bauteil`): Querschnitt ist Eigenschaft eines
+    - **Bauteil** (`bauteil`): Querschnitt ist Eigenschaft eines
     Stabbauteils, nicht das Bauteil selbst. Querschnitt trägt keine
     Lage in W (lokal in der Querschnittsebene definiert);
     Bauteil trägt Lage in W plus einen Querschnitt.
-  - **Dachfläche** (`dachflaeche`): Dachfläche ist eine ebene,
+    - **Dachfläche** (`dachflaeche`): Dachfläche ist eine ebene,
     polygonal berandete Punktmenge in W mit Bezug zum Dach;
     Querschnitt ist eine ebene, beschränkte Punktmenge mit Bezug
     zur Bauteilachse. Beide sind „ebene Punktmenge", haben aber
     verschiedene Rollen.
-  - **Polyeder** (`polyeder`): Polyeder ist die volle 3D-Geometrie
+    - **Polyeder** (`polyeder`): Polyeder ist die volle 3D-Geometrie
     eines Bauteils; Querschnitt ist die 2D-Schnittfigur. Bei
     prismatischen Stabbauteilen ist der Polyeder die Extrusion des
     Querschnitts entlang der Bauteilachse.

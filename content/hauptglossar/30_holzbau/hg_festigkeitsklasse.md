@@ -102,13 +102,13 @@ Sei
 Dann ist die **Festigkeitsklasse** ein abhängiger Aufzählungstyp
 über der Subklasse:
 
-```
+```text
 𝓕𝓚:= ⊎_{s ∈ 𝓢} 𝓕𝓚_s
 ```
 
 mit den werkstoff-spezifischen Klassenmengen
 
-```
+```text
 𝓕𝓚_axiales_holz_C:= { C14, C16, C18, C20, C22, C24, C27, C30,
                          C35, C40, C45, C50 }              (DIN EN 338)
 𝓕𝓚_axiales_holz_D:= { D18, D24, D27, D30, D35, D40, D50,
@@ -122,11 +122,11 @@ mit den werkstoff-spezifischen Klassenmengen
                        jeder Lage (typisch C24) plus
                        Hersteller-Bauteilklasse via ETA    (DIN EN 16351)
 𝓕𝓚_gerichteter_plattenwerkstoff
-:= { OSB/1, OSB/2, OSB/3, OSB/4 }      (DIN EN 300)
+                    := { OSB/1, OSB/2, OSB/3, OSB/4 }      (DIN EN 300)
 𝓕𝓚_isotroper_plattenwerkstoff_P
-:= { P1, P2, P3, P4, P5, P6, P7 }      (DIN EN 312, Spanplatten)
+                    := { P1, P2, P3, P4, P5, P6, P7 }      (DIN EN 312, Spanplatten)
 𝓕𝓚_isotroper_plattenwerkstoff_F
-:= { HB, MBH, MBL, MDF, HDF }          (DIN EN 622-2/3/5, Faserplatten)
+                    := { HB, MBH, MBL, MDF, HDF }          (DIN EN 622-2/3/5, Faserplatten)
 𝓕𝓚_werkstoff_stahl:= { 4.6, 5.6, 8.8, 10.9, A2-70, A4-70, … }
                                                             (DIN EN ISO 898-1, EN 10088;
                                                              siehe `werkstoff_stahl`)
@@ -134,13 +134,13 @@ mit den werkstoff-spezifischen Klassenmengen
 
 Die Zuordnungsfunktion
 
-```
+```text
 festigkeitsklasse: 𝓦 → 𝓕𝓚,  w ↦ festigkeitsklasse(w)
 ```
 
 erfüllt die **Konsistenzbedingung**
 
-```
+```text
 ∀ w ∈ 𝓦:  festigkeitsklasse(w) ∈ 𝓕𝓚_subklasse(w),
 ```
 
@@ -180,21 +180,21 @@ werkstoff-konsistenten Klassenmenge entnommen.
 
 ### Übersicht der Klassen je Subklasse
 
-| Subklasse                          | Klassenfolge (Beispiele)                  | Norm                |
-|------------------------------------|---------------------------------------------|---------------------|
-| Vollholz / KVH (Nadel)             | C14, C16, C20, **C24**, C30, C35, C40       | EN 338, EN 14081-1  |
-| Vollholz Laub                      | D18, D24, D30, D40, D60                     | EN 338              |
-| BSH homogen                        | GL20h, GL22h, **GL24h**, GL28h, GL32h       | EN 14080            |
-| BSH kombiniert                     | GL20c, GL24c, **GL28c**, GL32c              | EN 14080            |
-| LVL (z. B. Kerto-S, BauBuche)      | ETA-Klassen je Hersteller                    | EN 14374, ETA       |
-| CLT / BSP                          | Lagen-Klassen (typ. C24) + Hersteller-Bauteilklasse via ETA | EN 16351            |
-| OSB                                | OSB/1, OSB/2, **OSB/3**, OSB/4              | EN 300              |
-| Spanplatte                         | P1, P2, P3, **P4**, P5, P6, P7              | EN 312              |
-| MDF / HDF                          | MDF (Standard), MDF.HLS, HDF                | EN 622-5            |
-| Harte Faserplatte                  | HB, HB.H, HB.E                              | EN 622-2            |
-| Mittelharte Faserplatte            | MBH, MBL                                    | EN 622-3            |
-| Stahl (Schrauben/Bolzen)           | 4.6, 5.6, **8.8**, 10.9                     | ISO 898-1           |
-| Stahl (nichtrostend)               | A2-70, A4-70                                | EN 10088            |
+| Subklasse | Klassenfolge (Beispiele) | Norm |
+| --- | --- | --- |
+| Vollholz / KVH (Nadel) | C14, C16, C20, **C24**, C30, C35, C40 | EN 338, EN 14081-1 |
+| Vollholz Laub | D18, D24, D30, D40, D60 | EN 338 |
+| BSH homogen | GL20h, GL22h, **GL24h**, GL28h, GL32h | EN 14080 |
+| BSH kombiniert | GL20c, GL24c, **GL28c**, GL32c | EN 14080 |
+| LVL (z. B. Kerto-S, BauBuche) | ETA-Klassen je Hersteller | EN 14374, ETA |
+| CLT / BSP | Lagen-Klassen (typ. C24) + Hersteller-Bauteilklasse via ETA | EN 16351 |
+| OSB | OSB/1, OSB/2, **OSB/3**, OSB/4 | EN 300 |
+| Spanplatte | P1, P2, P3, **P4**, P5, P6, P7 | EN 312 |
+| MDF / HDF | MDF (Standard), MDF.HLS, HDF | EN 622-5 |
+| Harte Faserplatte | HB, HB.H, HB.E | EN 622-2 |
+| Mittelharte Faserplatte | MBH, MBL | EN 622-3 |
+| Stahl (Schrauben/Bolzen) | 4.6, 5.6, **8.8**, 10.9 | ISO 898-1 |
+| Stahl (nichtrostend) | A2-70, A4-70 | EN 10088 |
 
 Fettgedruckte Werte sind die im Holzbau dominanten Klassen.
 
@@ -245,35 +245,35 @@ und optional über eine Bauteil-Klasse (ETA).
 - **Oberbegriff**: keiner. Festigkeitsklasse ist ein
   Aufzählungstyp über die Werkstoff-Subklasse.
 - **Verwendung**:
-  - **Werkstoff** (`werkstoff`): trägt die Festigkeitsklasse als
+    - **Werkstoff** (`werkstoff`): trägt die Festigkeitsklasse als
     Pflichtfeld.
-  - **Axiales Holz** (`axiales_holz`): C-Klassen / D-Klassen / GL-
+    - **Axiales Holz** (`axiales_holz`): C-Klassen / D-Klassen / GL-
     Klassen / LVL-ETA.
-  - **Mehrlagenholz** (`mehrlagenholz`): über Lagen-Klassen plus
+    - **Mehrlagenholz** (`mehrlagenholz`): über Lagen-Klassen plus
     optionale Bauteil-Klasse.
-  - **Gerichteter Plattenwerkstoff**
+    - **Gerichteter Plattenwerkstoff**
     (`gerichteter_plattenwerkstoff`): OSB-Typ.
-  - **Isotroper Plattenwerkstoff**
+    - **Isotroper Plattenwerkstoff**
     (`isotroper_plattenwerkstoff`): P-/MDF-/HDF-/HB-/MBH-/MBL-Typ.
-  - **Werkstoff-Stahl** (`werkstoff_stahl`): Stahlgüte als
+    - **Werkstoff-Stahl** (`werkstoff_stahl`): Stahlgüte als
     Festigkeitsklasse.
-  - **Lage** (`lage`): jede Lage eines Mehrlagenholzes trägt eine
+    - **Lage** (`lage`): jede Lage eines Mehrlagenholzes trägt eine
     eigene Festigkeitsklasse.
 - **Abgrenzung**:
-  - **`werkstoff`**: die Werkstoff-Subklasse ist die *Klassen*-
+    - **`werkstoff`**: die Werkstoff-Subklasse ist die *Klassen*-
     Wahl (was für ein Werkstoff); die Festigkeitsklasse ist die
     *Bemessungs*-Wahl (welche charakteristischen Werte).
-  - **`produktkennzeichnung`**: identifiziert die Charge eines
+    - **`produktkennzeichnung`**: identifiziert die Charge eines
     konkreten gelieferten Produkts; Festigkeitsklasse ist Teil der
     Produktkennzeichnung, aber als Bemessungseingabe eigenständig
     geführt.
-  - **`faserrichtungs_modus`**: orthogonal zur Festigkeitsklasse —
+    - **`faserrichtungs_modus`**: orthogonal zur Festigkeitsklasse —
     der Modus klassifiziert die Anisotropie, die Festigkeitsklasse
     die quantitativen Werte.
-  - **„Sortierklasse"** (DIN 4074-1, S7/S10/S13): Sortiermerkmal,
+    - **„Sortierklasse"** (DIN 4074-1, S7/S10/S13): Sortiermerkmal,
     nicht Festigkeitsklasse. Zuordnung erfolgt über die Norm-
     Zuordnungstabelle.
-  - **„Güteklasse"** (umgangssprachlich): unscharf; im Glossar
+    - **„Güteklasse"** (umgangssprachlich): unscharf; im Glossar
     ausgeschlossen.
 
 ## Quellen

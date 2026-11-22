@@ -266,13 +266,13 @@ Sei
 Für jedes Bauteil b ∈ 𝓑 ist die **Oberkantenhöhe** die abgeleitete
 Größe
 
-```
+```text
 z_OK(b):= max { ⟨e_z, p⟩ | p ∈ G_W(b) }        (in mm)          (1)
 ```
 
 Dann ist eine **Balkenlage** ein Tupel
 
-```
+```text
 L:= (uuid, deckenbalken, wechsel, z_L, platzierung, huelle,
       funktion?, bezeichnung?)
 ```
@@ -289,7 +289,7 @@ mit
   deckenbalken(L) und wechsel(L) (so in `deckenbalken`).
 - **z_L** ∈ ℝ: die Höhe der Bezugsebene in mm. Die **Bezugsebene**
   der Balkenlage ist
-  ```
+  ```text
   E_L:= { x ∈ R³ | ⟨e_z, x⟩ = z_L }                              (2)
   ```
   in Hesse-Normalform (e_z, z_L) nach `ebene`. Sie hat die Form von
@@ -308,7 +308,7 @@ und den Konsistenzbedingungen 1 bis 4 und der Zuordnungsprüfung Z1
 bis Z3 (hart):
 
 1. **Bauteilgruppen-Konformität und Rollen.** Mit
-   ```
+   ```text
    bestandteile:= deckenbalken ∪ wechsel
    ```
    erfüllt das Tupel (uuid, bestandteile, platzierung, huelle,
@@ -320,18 +320,18 @@ bis Z3 (hart):
 
 2. **Gemeinsame waagrechte Bezugsebene.** Für alle
    b ∈ bestandteile gilt
-   ```
+   ```text
    (2a)  |⟨d_hat_b, e_z⟩| ≤ ε_K          (Bauteilachse waagrecht)
    (2b)  |z_OK(b) − z_L| ≤ ε_L           (Oberkante in E_L)
    ```
 
 3. **Regelmäßige Balkenlage.** Alle Deckenbalken sind parallel:
-   ```
+   ```text
    ‖d_hat_b × d_hat_c‖ ≤ ε_K     für alle b, c ∈ deckenbalken
    ```
 
 4. **Wechsel rechtwinklig zu den Deckenbalken.**
-   ```
+   ```text
    |⟨d_hat_q, d_hat_b⟩| ≤ ε_K    für alle q ∈ wechsel, b ∈ deckenbalken
    ```
 
@@ -346,7 +346,7 @@ die Bezugsebene:
   Oberkantenebene E:= E_L.
 - **Z2. Wechsel in der Stablage der Deckenbalken.** Für ein
   b_0 ∈ deckenbalken sei
-  ```
+  ```text
   Λ_L:= (S_Λ, a_hat_Λ, E_Λ):= (deckenbalken, d_hat_b0, E_L)     (3)
   ```
   die **Stablage der Balkenlage** im Sinne von `wechsel`. Jedes
@@ -361,7 +361,7 @@ die Bezugsebene:
 
 **Gleichsetzung der Ebenen.** Nach Z1 und Z2 gilt
 
-```
+```text
 E = E_L = E_Λ                                                     (4)
 ```
 
@@ -372,7 +372,7 @@ eine einzige Ebene.
 
 Weiche Bedingung (Warnung, kein Fehler):
 
-5. **Achsabstand.** Jedes b ∈ deckenbalken wird nach der weichen
+1. **Achsabstand.** Jedes b ∈ deckenbalken wird nach der weichen
    Regel 6 von `deckenbalken` geprüft: Achsabstand zum nächsten
    parallelen Deckenbalken dieser Balkenlage, Warnung über
    `DECKENBALKEN_ACHSABSTAND_MAX_MM`. Definition des Achsabstands und
@@ -494,7 +494,7 @@ Fußboden aufliegen. Die Unterkanten dürfen verspringen.
 Im Stockwerkbau liegt die Balkenlage zwischen den Wänden zweier
 Geschosse:
 
-```
+```text
 Einbinder (UG) → Balkenlage → Stockschwelle (OG)
 ```
 
@@ -507,7 +507,7 @@ verkürzte Balken, auf einem Wechsel.
 ### Was zur Balkenlage gehört und was nicht
 
 | Holz | Glied? | Begründung |
-|---|---|---|
+| --- | --- | --- |
 | Deckenbalken | ja | Rolle `deckenbalken` |
 | Stichbalken an einer Öffnung | ja, als Deckenbalken | Volmer 2.6.25 (2): „Balken einer Balkenlage, der aufgrund einer Deckenöffnung kürzer ist" |
 | Nachbarbalken am Wechsel | ja, als Deckenbalken | bleibt direktes Glied (Quellenkonflikt Punkt 6) |
@@ -555,52 +555,52 @@ Folgearbeit `holzbalkendecke`).
   Funktionseinheit) und dazu die gemeinsame waagrechte Bezugsebene,
   parallele Deckenbalken und rechtwinklige Wechsel.
 - **Bestandteile (partitiv)**:
-  - **Deckenbalken** (`deckenbalken`, mindestens 2), einschließlich
+    - **Deckenbalken** (`deckenbalken`, mindestens 2), einschließlich
     Stichbalken und Nachbarbalken an Wechseln.
-  - **Wechsel** (`wechsel`, 0 oder mehr).
+    - **Wechsel** (`wechsel`, 0 oder mehr).
 - **Geometrisches Bezugsobjekt (kein Glied)**: die Bezugsebene E_L
   (`ebene`, `bezugsebene`).
 - **Verwendung**:
-  - Auflagerebene der Stockschwelle (`stockschwelle`).
-  - Tragender Teil einer Holzbalkendecke (Folgearbeit
+    - Auflagerebene der Stockschwelle (`stockschwelle`).
+    - Tragender Teil einer Holzbalkendecke (Folgearbeit
     `holzbalkendecke`).
-  - Möglicher Teil eines Tragwerks bzw. künftigen Deckentragwerks
+    - Möglicher Teil eines Tragwerks bzw. künftigen Deckentragwerks
     als nicht exklusive Sicht (`tragwerk`, `bausystem`).
 - **Spezialisierungen** (Folgearbeit): `kehlbalkenlage`
   (Quellenkonflikt Punkt 3).
 - **Verschachtelte Gruppen** (Folgearbeit): `auswechslung`
   (Quellenkonflikt Punkt 6).
 - **Abgrenzung**:
-  - **Bauteilgruppe** (`bauteilgruppe`): Oberbegriff.
-  - **Deckenbalken** (`deckenbalken`), **Wechsel** (`wechsel`):
+    - **Bauteilgruppe** (`bauteilgruppe`): Oberbegriff.
+    - **Deckenbalken** (`deckenbalken`), **Wechsel** (`wechsel`):
     Bauteilrollen der Glieder, nicht die Balkenlage selbst.
-  - **Stichbalken** (`stichbalken`, Folgearbeit): verkürzter
+    - **Stichbalken** (`stichbalken`, Folgearbeit): verkürzter
     Deckenbalken; in Bedeutung 1 (Vorkragung) quer zu den
     Hauptbalken (Quellenkonflikt Punkt 4).
-  - **Auswechslung** (`auswechslung`, Folgearbeit): Bauteilgruppe
+    - **Auswechslung** (`auswechslung`, Folgearbeit): Bauteilgruppe
     aus Wechseln und Stichbalken innerhalb der Balkenlage.
-  - **Randbalken** (`randbalken`, Folgearbeit): umlaufender Rand
+    - **Randbalken** (`randbalken`, Folgearbeit): umlaufender Rand
     der Deckenscheibe (Kolb S. 121). Längs der Spannrichtung ein
     Deckenbalken in Lage RAND und damit Glied; quer dazu
     Auflagerbalken, kein Glied (Quellenkonflikt Punkt 9).
-  - **Unterzug** (`unterzug`, Folgearbeit): Auflager unter der
+    - **Unterzug** (`unterzug`, Folgearbeit): Auflager unter der
     Balkenlage, kein Glied.
-  - **Kehlbalken** (`kehlbalken`), **Kehlbalkenlage**
+    - **Kehlbalken** (`kehlbalken`), **Kehlbalkenlage**
     (`kehlbalkenlage`, Folgearbeit): eigene Rolle, Kehlbalkenlage
     nach diesem Eintrag keine Balkenlage.
-  - **Holzbalkendecke** (`holzbalkendecke`, Folgearbeit): das
+    - **Holzbalkendecke** (`holzbalkendecke`, Folgearbeit): das
     Bauteil mit allen Schichten.
-  - **Tragwerk** (`tragwerk`), **Deckentragwerk**
+    - **Tragwerk** (`tragwerk`), **Deckentragwerk**
     (`deckentragwerk`, Folgearbeit in `hg_tragwerk.md`), **Bausystem**
     (`bausystem`): nicht exklusive Sichten; eine Balkenlage kann
     zugleich darin Mitglied sein.
-  - **Wand** (`wand`): Geschwister-Bauteilgruppe mit lotrechter
+    - **Wand** (`wand`): Geschwister-Bauteilgruppe mit lotrechter
     Wandebene.
-  - **Einbinder** (`einbinder`): oberes Wandholz, Auflager der
+    - **Einbinder** (`einbinder`): oberes Wandholz, Auflager der
     Deckenbalken, kein Glied.
-  - **Stockschwelle** (`stockschwelle`): unteres Wandholz des
+    - **Stockschwelle** (`stockschwelle`): unteres Wandholz des
     oberen Geschosses, liegt auf E_L, kein Glied.
-  - **Lage** (`lage`): Brett- oder Furnierlage im Mehrlagenholz,
+    - **Lage** (`lage`): Brett- oder Furnierlage im Mehrlagenholz,
     Homonym.
 
 ## Quellen

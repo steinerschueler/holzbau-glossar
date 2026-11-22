@@ -91,7 +91,7 @@ Sei
 Definiere die **gemeinsame Schnittstrecke** der beiden Dachflächen
 als
 
-```
+```text
 s_{ij}:= F(P_i) ∩ F(P_j).
 ```
 
@@ -100,7 +100,7 @@ abgeschlossen und konvex-polygonal in ihren Ebenen sind, ist s_{ij}
 ein abgeschlossenes (möglicherweise leeres oder einpunktiges)
 Streckenstück auf g_{ij}. Sein Richtungs-Einheitsvektor sei
 
-```
+```text
 e_hat_{ij}:= (Endpunkt − Anfangspunkt) / ‖Endpunkt − Anfangspunkt‖,
           falls ℓ(s_{ij}) > ε_L; andernfalls undefiniert.
 ```
@@ -108,7 +108,7 @@ e_hat_{ij}:= (Endpunkt − Anfangspunkt) / ‖Endpunkt − Anfangspunkt‖,
 Eine Schnittstrecke s_{ij} heißt **näherungsweise horizontal**,
 wenn
 
-```
+```text
 |⟨e_hat_{ij}, e_z⟩| ≤ ε_W.
 ```
 
@@ -124,7 +124,7 @@ weg) und eine waagrechte Kehle/Rinne (V, Flächen steigen von der Kante
 weg) besitzen dasselbe Normalenpaar und unterscheiden sich nur in der
 Querlage ihrer Flächenstücke. Sei
 
-```
+```text
 w:= (e_hat_{ij} × e_z) / ‖e_hat_{ij} × e_z‖   ∈ S²
 ```
 
@@ -134,7 +134,7 @@ innerer Punkt (Flächenschwerpunkt) von F(P_i) und m ∈ s_{ij} ein
 Kantenpunkt; die **signierte Querlage** ist τ_i:= ⟨c_i − m, w⟩ (mit
 τ_i · τ_j < 0). Dann ist s_{ij} ein **First** genau dann, wenn
 
-```
+```text
 1.  ℓ(s_{ij}) > ε_L  und  |⟨e_hat_{ij}, e_z⟩| ≤ ε_W   (horizontal)
 2.  ⟨n_hat_{a,i}, w⟩ · sign(τ_i) > ε_W   und
     ⟨n_hat_{a,j}, w⟩ · sign(τ_j) > ε_W              (zusammenlaufend)
@@ -221,26 +221,26 @@ klassifiziert wird.
   Firstlinien-Strecke bzw. die Stützpunkte des Streckenzugs bei
   geknickter Firstlinie.
 - **Abgrenzung**:
-  - **Traufe** (`traufe`): untere, näherungsweise horizontale
+    - **Traufe** (`traufe`): untere, näherungsweise horizontale
     Randkante; ebenfalls horizontal, aber Polygonrandkante einer
     einzelnen Dachfläche statt zusammenlaufende Schnittkante zweier
     Flächen (und liegt unten statt oben).
-  - **Ortgang** (`ortgang`): seitliche, geneigte Randkante; nicht
+    - **Ortgang** (`ortgang`): seitliche, geneigte Randkante; nicht
     näherungsweise horizontal.
-  - **Grat** (eigener Eintrag folgt): geneigte konvexe
+    - **Grat** (eigener Eintrag folgt): geneigte konvexe
     Schnittkante zweier Dachflächen; First-ähnlich als Schnittkante,
     aber nicht horizontal.
-  - **Kehle** (eigener Eintrag folgt): geneigte konkave
+    - **Kehle** (eigener Eintrag folgt): geneigte konkave
     Schnittkante zweier Dachflächen; einspringend statt
     ausspringend.
-  - **Pultkante** (eigener Eintrag folgt): obere Polygonrandkante
+    - **Pultkante** (eigener Eintrag folgt): obere Polygonrandkante
     einer Pultdachfläche; ebenfalls oberste, aber Randkante statt
     Schnittkante (nur eine Dachfläche beteiligt).
-  - **Firstpfette**: Tragwerksbalken unter dem First; Bauteil, nicht
+    - **Firstpfette**: Tragwerksbalken unter dem First; Bauteil, nicht
     Kante. Hier nicht definiert.
-  - **Firstziegel / Firstabdeckung**: Eindeckungselemente auf dem
+    - **Firstziegel / Firstabdeckung**: Eindeckungselemente auf dem
     First; Materialbauteile, nicht Kante. Hier nicht definiert.
-  - **Dachhöhe**: vertikaler Abstand zwischen Trauf- und
+    - **Dachhöhe**: vertikaler Abstand zwischen Trauf- und
     Firsthöhe; ein Maß, keine Kante.
 
 ## Quellen

@@ -249,7 +249,7 @@ Sei
   g(A) der geometrische Träger der Manifestation von A (Punkt,
   Strecke oder Polygon),
 - für A ∈ Auf(B) das **Achsintervall**
-  ```
+  ```text
   π(A):= { ⟨x − p_a, d_hat⟩ | x ∈ g(A) } = [π_min(A), π_max(A)] ⊂ R,
   ```
   also die Lage der Auflagerstelle entlang der Bauteilachse,
@@ -259,7 +259,7 @@ Dann heißt B ein **Deckenbalken** bezüglich E genau dann, wenn die
 Bedingungen 1 bis 3 gelten:
 
 1. **Waagrecht.**
-   ```
+   ```text
    |⟨d_hat, e_z⟩| ≤ ε_K.
    ```
    Lage-Prädikat gegen die Lotachse; nach `HG_KONVENTIONEN.md` §4
@@ -267,7 +267,7 @@ Bedingungen 1 bis 3 gelten:
    Winkels zwischen Achse und Waagrechter).
 
 2. **Mindestens zwei getrennte Auflager.**
-   ```
+   ```text
    ∃ A_1, A_2 ∈ Auf(B):  π_max(A_1) + ε_L < π_min(A_2).
    ```
    Zwei Auflager liegen an verschiedenen Stellen der Achse. Wo sie
@@ -278,7 +278,7 @@ Bedingungen 1 bis 3 gelten:
    `laengsseite` mit Außennormale n_hat_O, die lotrecht nach oben
    zeigt (O liegt waagrecht) und in E liegt, und kein Punkt von B
    liegt über E:
-   ```
+   ```text
    ‖n_hat_O × e_z‖ ≤ ε_K,   ⟨n_hat_O, e_z⟩ > 0,
    |⟨e_z, v⟩ − z_E| ≤ ε_L   für jeden Eckpunkt v von O,
    max { ⟨e_z, p⟩ | p ∈ G_W(B) } ≤ z_E + ε_L.
@@ -304,11 +304,11 @@ Bezugsebene E_L von L (`balkenlage`, Z1).
 Die Werte stehen mit Quelle nur in der Tabelle „Werte“ im
 Implementierungshinweis; hier steht nur der Name.
 
-4. **Auflagerlänge.** Für jedes Auflager A ∈ Auf(B), dessen
+1. **Auflagerlänge.** Für jedes Auflager A ∈ Auf(B), dessen
    Manifestation eine Strecke oder ein Polygon ist (Dimension
    d ≥ 1), dessen Lagerungsart nicht `indirekt` ist und dessen
    Stützungs-Gegenüber kein Glied von L ist, gilt
-   ```
+   ```text
    ℓ(A):= π_max(A) − π_min(A) ≥ DECKENBALKEN_AUFLAGERLAENGE_MIN_MM.
    ```
    Sonst Warnung `AuflagerZuKurz`. Ausgenommen sind damit das
@@ -317,20 +317,20 @@ Implementierungshinweis; hier steht nur der Name.
    Auflagerlänge ℓ_A nach EC 5 6.1.5, die `hg_auflager.md` als
    `auflagerlaenge()` führt.
 
-5. **Wandabstand des Streichbalkens.** Ist position(B) = STREICH
+2. **Wandabstand des Streichbalkens.** Ist position(B) = STREICH
    (siehe unten) und ist die Wand zur Wandfläche E_Wand keine
    Holzwand im Sinne von `wand`, so gilt
-   ```
+   ```text
    δ(B, E_Wand) ≥ STREICHBALKEN_WANDABSTAND_MIN_MM.
    ```
    Sonst Warnung `StreichbalkenZuNahAnWand`. Kennt das Modell die
    Wand nicht, entfällt die Prüfung. Der Wert ist vorläufig und
    offen (Quellenkonflikt, Punkt 10).
 
-6. **Achsabstand.** Für zwei parallele Deckenbalken
+3. **Achsabstand.** Für zwei parallele Deckenbalken
    B, B′ ∈ deckenbalken(L), kurz B′ ∥ B (‖d_hat × d_hat_B′‖ ≤ ε_K),
    sei
-   ```
+   ```text
    P_h(v):= v − ⟨v, e_z⟩ · e_z                 (waagrechte Projektion),
    u:= P_h(p_a(B′) − p_a(B)),
    e(B, B′):= ‖u − ⟨u, d_hat⟩ · d_hat‖           (Achsabstand, Mitte zu Mitte),
@@ -340,7 +340,7 @@ Implementierungshinweis; hier steht nur der Name.
    gleich ausgerichtete Stücke auf derselben Achse (e = 0, etwa zwei
    Stichbalken beidseits einer Öffnung) zählen nicht. Gibt es keinen
    solchen Nachbarn, entfällt die Prüfung. Sonst gilt
-   ```
+   ```text
    e_N(B) ≤ DECKENBALKEN_ACHSABSTAND_MAX_MM.
    ```
    Sonst Warnung `AchsabstandZuGross`. Eine untere Schwelle gibt es
@@ -359,7 +359,7 @@ seine Wechsel feststehen. Dazu sei für eine lotrechte Wandfläche
 E_Wand = { x | ⟨n_hat_Wand, x⟩ = c_Wand } (|⟨n_hat_Wand, e_z⟩| ≤ ε_K)
 der lichte Abstand
 
-```
+```text
 δ(B, E_Wand):= min { |⟨n_hat_Wand, p⟩ − c_Wand| | p ∈ G_W(B) }.
 ```
 
@@ -383,7 +383,7 @@ Prädikate:
 
 Dann ist
 
-```
+```text
 position(B):=  STICH        falls st(B),
                 AM_WECHSEL   sonst, falls aw(B),
                 RAND         sonst, falls ra(B),
@@ -392,7 +392,7 @@ position(B):=  STICH        falls st(B),
 ```
 
 | Wert | Benennung in den Quellen | Bedeutung |
-|---|---|---|
+| --- | --- | --- |
 | NORMAL | Deckenbalken, Tram; Normalbalken (CH, Lernkarten der Zeichnerlehre) | durchlaufender Deckenbalken ohne besondere Lage |
 | STICH | Stichbalken (HPT S. 7; mb-news; Volmer 2.6.25, Bedeutung 2); Sticher (CH, Lernkarten der Zeichnerlehre) | an einer Öffnung verkürzt, mit einem Ende auf einem Wechsel |
 | AM_WECHSEL | „Wechselbalken“ nur bei mb-news (DE), kein Schweizer Name; US „trimmer“ | durchlaufender Nachbarbalken, an dem ein Wechsel befestigt ist |
@@ -443,17 +443,17 @@ position(B):=  STICH        falls st(B),
   folgt also fast aus 3. Sie bleibt eigene Bedingung, damit ein
   schief liegendes Bauteil eine eigene Fehlermeldung erhält.
 - **Grenzfälle.**
-  - Neigung 0° ist der Normalfall. Ein Balken mit Gefälle (etwa im
+    - Neigung 0° ist der Normalfall. Ein Balken mit Gefälle (etwa im
     Flachdach) verletzt 1 und ist kein Deckenbalken.
-  - Die Unterseite hat die Außennormale −e_z; ⟨n_hat_O, e_z⟩ > 0
+    - Die Unterseite hat die Außennormale −e_z; ⟨n_hat_O, e_z⟩ > 0
     schließt sie als O aus. Ein um die Achse verdrehter Querschnitt
     hat keine waagrechte Längsseite und verletzt 3.
-  - Zwei Balken auf derselben Achse, über einem Unterzug gestoßen,
+    - Zwei Balken auf derselben Achse, über einem Unterzug gestoßen,
     sind zwei Deckenbalken mit je eigenen Auflagern; ein
     Durchlaufträger über dem Unterzug ist einer mit drei Auflagern.
-  - Ein reiner Kragträger mit nur einem eingespannten Auflager
+    - Ein reiner Kragträger mit nur einem eingespannten Auflager
     verletzt 2 und ist nicht erfasst.
-  - Ein Balken, der auf ganzer Länge auf einer parallelen Wand
+    - Ein Balken, der auf ganzer Länge auf einer parallelen Wand
     liegt (Lage RAND), erfüllt 2 nur, wenn er mit mindestens zwei
     Auflagern modelliert ist, etwa an den Querwänden; ein einziges
     durchgehendes Linienauflager genügt nicht.
@@ -512,7 +512,7 @@ Bemessung meist gar nicht (Colling S. 78, OCR).
 ### Worauf der Deckenbalken liegt
 
 | Auflager | Beleg |
-|---|---|
+| --- | --- |
 | Einbinder (`einbinder`) der Wand darunter | Kolb S. 140: „Die Einbinder bilden zudem die Auflager für die Balken oder Sparren“; Tabellenbuch S. 161 (Fachwerk, Lesart aus der Zeichnung) |
 | Mauerwerk, Betonkranz, Ringanker | HPT S. 6–7 (Rastbrett auf der Ziegelmauer); Esselborn S. 194: Balkenköpfe „dürfen nicht fest eingemauert werden“ |
 | Unterzug (`unterzug`, Folgearbeit) | Volmer 2.6.21: verringert die Spannweite, liegt unter der Balkenlage |
@@ -633,49 +633,49 @@ Gebrauch der Wechsel selbst; das Wort ist darum nicht geführt.
   des Obergeschosses (`stockschwelle`), in Lage AM_WECHSEL einen
   Wechsel.
 - **Abgrenzung:**
-  - **Balkenlage** (`balkenlage`): die Bauteilgruppe aus
+    - **Balkenlage** (`balkenlage`): die Bauteilgruppe aus
     Deckenbalken und Wechseln in einer waagrechten Bezugsebene; der
     Deckenbalken ist ihr Glied, nicht sie selbst.
-  - **Wechsel** (`wechsel`): Querholz an Öffnungen in Decke und
+    - **Wechsel** (`wechsel`): Querholz an Öffnungen in Decke und
     Dach. Er erfüllt die Bedingungen 1 bis 3 ebenfalls; getrennt
     werden beide in der Balkenlage, wo er rechtwinklig zu den
     Deckenbalken liegt (`balkenlage`, Zuordnungsprüfung;
     Wohldefiniertheit, Rollen-Disjunktheit). „Wechselbalken“ ist in
     der Schweiz Synonym des Wechsels und hier als Rollenname
     abgelehnt (Quellenkonflikt, Punkt 6).
-  - **Auswechslung** (`auswechslung`, Folgearbeit): die
+    - **Auswechslung** (`auswechslung`, Folgearbeit): die
     Bauteilgruppe aus Wechseln und Stichbalken um eine Öffnung
     innerhalb der Balkenlage. Der Deckenbalken in Lage STICH gehört
     dazu, der Nachbarbalken in Lage AM_WECHSEL bleibt direktes Glied
     der Balkenlage (`balkenlage`, Quellenkonflikt Punkt 6).
-  - **Stichbalken** (`stichbalken`): Die Öffnungs-Lesart ist die
+    - **Stichbalken** (`stichbalken`): Die Öffnungs-Lesart ist die
     Lage STICH; die Vorkragungs-Lesart nach Volmer 2.6.25 (1) ist
     nur teilweise erfasst. Ein eigener Eintrag ist Folgearbeit.
-  - **Randbalken** (`randbalken`, Folgearbeit): umlaufender Rand
+    - **Randbalken** (`randbalken`, Folgearbeit): umlaufender Rand
     der Deckenscheibe (Kolb S. 121). Längs der Spannrichtung
     (Randgurt) ist er ein Deckenbalken in der Lage RAND; quer dazu
     (Auflagerbalken) ist er kein Deckenbalken (Quellenkonflikt,
     Punkt 10).
-  - **Unterzug** (`unterzug`): Auflager der Deckenbalken unter der
+    - **Unterzug** (`unterzug`): Auflager der Deckenbalken unter der
     Balkenlage, nicht ihr Glied (Volmer 2.6.21).
-  - **Überzug** (`ueberzug`): liegt über der Decke (Volmer 2.6.22),
+    - **Überzug** (`ueberzug`): liegt über der Decke (Volmer 2.6.22),
     die Deckenbalken hängen an ihm.
-  - **Kehlbalken** (`kehlbalken`): verbindet die zwei Sparren eines
+    - **Kehlbalken** (`kehlbalken`): verbindet die zwei Sparren eines
     Paars; trägt er zugleich eine Decke, bleibt er Kehlbalken.
-  - **Bundbalken** (`bundbalken`, Folgearbeit): Zugband am
+    - **Bundbalken** (`bundbalken`, Folgearbeit): Zugband am
     Sparrenfuß; das Tabellenbuch und Colling nennen dieses Holz
     Deckenbalken (Quellenkonflikt, Punkt 11).
-  - **Sparren** (`sparren`): liegt in der Falllinie einer
+    - **Sparren** (`sparren`): liegt in der Falllinie einer
     Dachfläche und trägt die Dachhaut, nicht eine Decke.
-  - **Pfette** (`pfette`): waagrechter Längsträger des Dachs, der
+    - **Pfette** (`pfette`): waagrechter Längsträger des Dachs, der
     Sparren trägt; kein Glied einer Balkenlage.
-  - **Einbinder** (`einbinder`): oberes Wandholz, Auflager der
+    - **Einbinder** (`einbinder`): oberes Wandholz, Auflager der
     Deckenbalken (Kolb S. 140).
-  - **Schwelle** (`schwelle`): unteres Wandholz auf dem
+    - **Schwelle** (`schwelle`): unteres Wandholz auf dem
     mineralischen Auflager; nicht Auflager des Deckenbalkens.
-  - **Stockschwelle** (`stockschwelle`): liegt auf der Balkenlage,
+    - **Stockschwelle** (`stockschwelle`): liegt auf der Balkenlage,
     oft mit den Deckenbalken verkämmt.
-  - **Holzbalkendecke** (`holzbalkendecke`, Folgearbeit): die
+    - **Holzbalkendecke** (`holzbalkendecke`, Folgearbeit): die
     Decke mit allen Schichten; der Deckenbalken ist ein Teil ihres
     Tragwerks.
 

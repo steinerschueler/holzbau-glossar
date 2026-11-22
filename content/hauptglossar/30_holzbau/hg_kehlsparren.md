@@ -311,7 +311,7 @@ erfüllt sind:
    auf der Kehllinie der Kehlstrecke s_{ij} im Sinne der
    Punkt-Gerade-Inzidenz; konkret existieren Skalare
    s_a, s_e ∈ ℝ mit
-   ```
+   ```text
    p_a = a_{ij} + s_a · (b_{ij} − a_{ij}),
    p_e = a_{ij} + s_e · (b_{ij} − a_{ij}),
    ```
@@ -322,7 +322,7 @@ erfüllt sind:
 3. **Kehllinien-Kollinearität** (Ersatz für die
    Falllinien-Kollinearität aus `hg_sparren.md` Bed. 3): Die
    Bauteilachsenrichtung ist kollinear zur Kehllinien-Tangente,
-   ```
+   ```text
    ‖d_hat_K × t_hat‖ ≤ ε_K,
    ```
    d. h. der Winkel zwischen d_hat_K und t_hat ist 0 oder π (modulo der
@@ -332,7 +332,7 @@ erfüllt sind:
 4. **Vorzeichenkonvention** (Kehlsparrenrichtung von Trauf-Innenecke
    zu Firstend-Punkt): Die Bauteilachse ist so gerichtet, dass d_hat_K
    in dieselbe Halbkugel wie t_hat weist, also bergauf:
-   ```
+   ```text
    ⟨d_hat_K, t_hat⟩ ≥ +1 − ε_W,
    ```
    äquivalent ⟨d_hat_K, e_z⟩ > 0. p_a ist damit der **Kehlsparrenfuß**
@@ -354,7 +354,7 @@ Wesentliche abgeleitete Größen:
 - **Kehlsparrenneigung** (= Kehlneigung der zugeordneten
   Kehlstrecke, siehe `hg_kehle.md`, abgeleitete Operation
   `kehlneigung()`):
-  ```
+  ```text
   α_K:= arcsin(|⟨t_hat, e_z⟩|) = arcsin(⟨d_hat_K, e_z⟩).
   ```
   Wertebereich α_K ∈ (0, π/2) bei nicht-entarteten Verschneidungs-
@@ -370,7 +370,7 @@ Dachneigung α und einem Plan-Winkel β_plan zwischen der
 Grundrissprojektion der Kehllinie und der Trauflinie einer der beiden
 Dachflächen gilt
 
-```
+```text
 tan(α_K) = tan(α) · sin(β_plan).                                  (★)
 ```
 
@@ -383,7 +383,7 @@ und der Trauflinie von D_i; da die Falllinie e_hat_fall(E_i) im
 Grundriss **rechtwinklig** zur Traufe steht, ist die Komponente der
 Kehlrichtung in Falllinien-Richtung gerade der Sinus dieses Winkels:
 
-```
+```text
 sin(β_plan) = |⟨e_hat_t, π_xy(e_hat_fall(E_i)) / ‖π_xy(e_hat_fall(E_i))‖⟩|.
 ```
 
@@ -394,7 +394,7 @@ je horizontale Einheit entlang der Falllinie, siehe `hg_falllinie.md`).
 Die Kehlsparrenneigung ist der Höhenzuwachs je horizontale Einheit
 **entlang der Kehllinie**, also
 
-```
+```text
 tan(α_K) = ⟨t_hat, e_z⟩ / ‖(t_hat_x, t_hat_y)‖ = sin(β_plan) · tan(α). ∎
 ```
 
@@ -413,7 +413,7 @@ Grundrissprojektion der Kehllinie die Winkelhalbierende der beiden
 Trauflinien-Polygon-Kanten und damit β_plan = 45°
 (sin 45° = 1/√2), woraus folgt
 
-```
+```text
 tan(α_K) = tan(α) / √2.                                          (★★)
 ```
 
@@ -579,7 +579,7 @@ Vorzeichen der Verschneidung ab, sondern nur von den
 Ebenenparametern. Im symmetrischen Fall (gleichgeneigte anliegende
 Dachflächen, rechtwinklige Trauf-Innenecke) gilt
 
-```
+```text
 tan(α_K) = tan(α) / √2.
 ```
 

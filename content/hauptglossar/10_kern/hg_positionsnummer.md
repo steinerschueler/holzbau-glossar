@@ -99,13 +99,13 @@ Sei
 
 Eine **Positionsnummer** ist ein Tripel
 
-```
+```text
 P:= (projekt, kategorie, kennung) ∈ 𝓟 × 𝓚 × 𝓢
 ```
 
 mit der Eindeutigkeitsbedingung
 
-```
+```text
 ∀ E₁, E₂ ∈ 𝓔:
    E₁ ≠ E₂  ∧  P(E₁), P(E₂) ≠ ⊥
    ∧  projekt(E₁) = projekt(E₂)
@@ -119,7 +119,7 @@ P(E) die Positionsnummer von E (oder ⊥, falls nicht gesetzt).
 Die Positionsnummer ist **mutable**: sie darf jederzeit über eine
 Aktualisierungsoperation
 
-```
+```text
 neuvergabe: 𝓔 × 𝓢 → 𝓔,    neuvergabe(E, k'):= E mit kennung:= k'
 ```
 
@@ -171,21 +171,21 @@ Holzbau-Handbuch, Krämer, cadwork-Vorlagen). Die Liste ist
 **deskriptiv**, nicht normativ; die Quellen widersprechen sich
 teilweise:
 
-| Kürzel | Bauteilrolle                            | Anmerkung                                |
-|--------|------------------------------------------|------------------------------------------|
-| `S`    | Sparren (häufig) ODER Stütze (teilweise) | **Mehrdeutig** — Konflikt der Quellen    |
-| `St`   | Stütze                                   | weniger mehrdeutig als `S` für Stütze    |
-| `P`    | Pfette                                   | First-, Mittel-, Fußpfette ggf. `Pf`, `MP`, `FP` |
-| `R`    | Riegel                                   |                                          |
-| `D`    | Strebe / Diagonale                       |                                          |
-| `KB`   | Kopfband                                 |                                          |
-| `Schw` | Schwelle                                 |                                          |
-| `Rä`   | Einbinder (DE: Rähm)                     | deutscher Usus                           |
-| `EB`   | Einbinder                                | Vorschlag Anweiser 2026-11-14, ohne Beleg; groß wie `UZ` (zusammengesetztes Wort) |
-| `W`    | Wechsel                                  |                                          |
-| `UZ`   | Unterzug                                 |                                          |
-| `KH`   | Kehlbalken                               |                                          |
-| `BB`   | Bundbalken                               |                                          |
+| Kürzel | Bauteilrolle | Anmerkung |
+| --- | --- | --- |
+| `S` | Sparren (häufig) ODER Stütze (teilweise) | **Mehrdeutig** — Konflikt der Quellen |
+| `St` | Stütze | weniger mehrdeutig als `S` für Stütze |
+| `P` | Pfette | First-, Mittel-, Fußpfette ggf. `Pf`, `MP`, `FP` |
+| `R` | Riegel | |
+| `D` | Strebe / Diagonale | |
+| `KB` | Kopfband | |
+| `Schw` | Schwelle | |
+| `Rä` | Einbinder (DE: Rähm) | deutscher Usus |
+| `EB` | Einbinder | Vorschlag Anweiser 2026-11-14, ohne Beleg; groß wie `UZ` (zusammengesetztes Wort) |
+| `W` | Wechsel | |
+| `UZ` | Unterzug | |
+| `KH` | Kehlbalken | |
+| `BB` | Bundbalken | |
 
 Empfehlung der App: `St` für Stütze, `S` für Sparren — die
 weniger mehrdeutige Variante. Projektspezifische Abweichungen
@@ -227,9 +227,9 @@ Beziehung, **nicht** in den Identifikator.
   `bauteil`, `verbindungsmittel`, `verbinder`,
   `verstaerkungselement`).
 - **Abgrenzung**:
-  - **UUID** (`uuid`): technisch, persistent, semantik-frei.
+    - **UUID** (`uuid`): technisch, persistent, semantik-frei.
     Trägt Foreign Keys. Andere Spur, anderer Zweck.
-  - **Produktkennzeichnung** (`produktkennzeichnung`):
+    - **Produktkennzeichnung** (`produktkennzeichnung`):
     normativ kodifizierte Charge-/Produkt-Identifikation. Die
     Positionsnummer identifiziert die **Einbauposition**, die
     Produktkennzeichnung die **Charge** — strikt getrennt zu
@@ -239,18 +239,18 @@ Beziehung, **nicht** in den Identifikator.
     Identifikator-Spuren (UUID, Positionsnummer,
     Produktkennzeichnung) sind eine Modellierungs-Sicht aus; die Produktkennzeichnungs-
     Spur ist indirekt über den Werkstoff erreichbar.
-  - **Bezeichnung**: freier Anzeigename ohne Strukturanspruch
+    - **Bezeichnung**: freier Anzeigename ohne Strukturanspruch
     (kein Eindeutigkeits-Constraint).
-  - **Abbundzeichen** (historisch, römische Ziffern mit
+    - **Abbundzeichen** (historisch, römische Ziffern mit
     Beizeichen für Wand/Geschoss; vgl. Gerner 1992,
     Krämer 2018): nicht genormt, im modernen CNC-Abbund
     praktisch durch CAD-IDs ersetzt. Wird nicht als
     Positionsnummer geführt; eigener historischer Eintrag
     `abbundzeichen` (Folgearbeit) möglich.
-  - **IFC `IfcElement.Tag`**: IFC-Persistenz-Slot der
+    - **IFC `IfcElement.Tag`**: IFC-Persistenz-Slot der
     Positionsnummer (IFC-Norm benennt „position number"
     wörtlich). Kein eigener Glossar-Begriff.
-  - **BTLx `Part/@SingleMemberNumber`**: BTLx-Persistenz-Slot
+    - **BTLx `Part/@SingleMemberNumber`**: BTLx-Persistenz-Slot
     der Positionsnummer für identische Teile. Kein eigener
     Glossar-Begriff.
 

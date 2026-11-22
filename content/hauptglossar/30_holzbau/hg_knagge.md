@@ -426,88 +426,88 @@ Bauteil T genau dann, wenn die folgenden Bedingungen alle
 erfüllt sind:
 
 1. **Volumen-Geometrie mit zwei ausgezeichneten Flächen**: der
-   Knagge-Körper trägt zwei nicht-koplanare Anker-Flächen
-   A_S und A_A,
-   ```
-   ‖n_hat_S × n_hat_A‖ > ε_K,
-   ```
-   d. h. die beiden Normalenvektoren sind nicht kollinear.
-   (Eine Knagge mit koplanarer Stütz-Anker- und Auflager-
-   Fläche wäre keine Konsole, sondern ein gewöhnlicher
-   Balken-Abschnitt.)
+    Knagge-Körper trägt zwei nicht-koplanare Anker-Flächen
+    A_S und A_A,
+    ```text
+    ‖n_hat_S × n_hat_A‖ > ε_K,
+    ```
+    d. h. die beiden Normalenvektoren sind nicht kollinear.
+    (Eine Knagge mit koplanarer Stütz-Anker- und Auflager-
+    Fläche wäre keine Konsole, sondern ein gewöhnlicher
+    Balken-Abschnitt.)
 
 2. **Stütz-Anker-Inzidenz am stützenden Bauteil**: die
-   Stütz-Anker-Fläche A_S liegt mit Toleranz ε_L bündig am
-   stützenden Bauteil S an. Maßgeblich für die Form der
-   Anlage-Bedingung ist die **Geometrie-Klasse von S**, nicht
-   die der Knagge:
+    Stütz-Anker-Fläche A_S liegt mit Toleranz ε_L bündig am
+    stützenden Bauteil S an. Maßgeblich für die Form der
+    Anlage-Bedingung ist die **Geometrie-Klasse von S**, nicht
+    die der Knagge:
 
-   **(2a) Stab-Modell** — S ist ein Stab-Bauteil mit
-   Bauteilachse a(S) (Ständer, Pfosten, geneigte Stütze,
-   Pfette, Schwelle): der Stütz-Anker-Stützpunkt q_S liegt
-   bis auf ε_L auf a(S) und die Normale n_hat_S steht
-   orthogonal zu a(S):
-   ```
-   dist(q_S, a(S)) ≤ ε_L  ∧  |⟨n_hat_S, d_hat(S)⟩| ≤ ε_K.
-   ```
+    **(2a) Stab-Modell** — S ist ein Stab-Bauteil mit
+    Bauteilachse a(S) (Ständer, Pfosten, geneigte Stütze,
+    Pfette, Schwelle): der Stütz-Anker-Stützpunkt q_S liegt
+    bis auf ε_L auf a(S) und die Normale n_hat_S steht
+    orthogonal zu a(S):
+    ```text
+    dist(q_S, a(S)) ≤ ε_L  ∧  |⟨n_hat_S, d_hat(S)⟩| ≤ ε_K.
+    ```
 
-   **(2b) Massiv-Modell** — S ist ein Bauteil ohne
-   Bauteilachse, insbesondere ein mineralisch-massives
-   Bauteil (Mauerwerk-Außenwand, Stahlbetondecke, Sockel):
-   der Stütz-Anker liegt flächenbündig und gegenläufig an der
-   Kontaktfläche F_S mit Trägerebene E_S und Außennormale
-   n_hat_E an:
-   ```
-   dist(q_S, E_S) ≤ ε_L  ∧  ⟨n_hat_S, n_hat_E⟩ ≤ −1 + ε_K.
-   ```
+    **(2b) Massiv-Modell** — S ist ein Bauteil ohne
+    Bauteilachse, insbesondere ein mineralisch-massives
+    Bauteil (Mauerwerk-Außenwand, Stahlbetondecke, Sockel):
+    der Stütz-Anker liegt flächenbündig und gegenläufig an der
+    Kontaktfläche F_S mit Trägerebene E_S und Außennormale
+    n_hat_E an:
+    ```text
+    dist(q_S, E_S) ≤ ε_L  ∧  ⟨n_hat_S, n_hat_E⟩ ≤ −1 + ε_K.
+    ```
 
-   Weitere Kontaktflächen zwischen Knagge und stützendem
-   Bauteil sind zulässig (etwa die zusätzliche Lagerfuge auf
-   der Deckenoberseite bei einer Sparrenfuß-Knagge);
-   ausgezeichnet ist genau die eine Fläche A_S, über die der
-   Lastpfad in das stützende Bauteil geführt wird.
+    Weitere Kontaktflächen zwischen Knagge und stützendem
+    Bauteil sind zulässig (etwa die zusätzliche Lagerfuge auf
+    der Deckenoberseite bei einer Sparrenfuß-Knagge);
+    ausgezeichnet ist genau die eine Fläche A_S, über die der
+    Lastpfad in das stützende Bauteil geführt wird.
 
 3. **Auflager-Fläche horizontal oder schwach geneigt**: die
-   Auflager-Fläche A_A trägt einen Balken, d. h. ihre Normale
-   n_hat_A zeigt überwiegend nach oben:
-   ```
-   ⟨n_hat_A, e_z⟩ ≥ cos(π/4) − ε_K,
-   ```
-   d. h. die Auflager-Fläche neigt sich um höchstens 45°
-   gegen die Horizontale. Dieser Schwellwert ist konservativ
-   und deckt sowohl horizontale Auflager (Deckenbalken-
-   Konsole) als auch leicht geneigte Auflager (Sparren-
-   Pfetten-Knagge auf einer geneigten Pfette) ab.
+    Auflager-Fläche A_A trägt einen Balken, d. h. ihre Normale
+    n_hat_A zeigt überwiegend nach oben:
+    ```text
+    ⟨n_hat_A, e_z⟩ ≥ cos(π/4) − ε_K,
+    ```
+    d. h. die Auflager-Fläche neigt sich um höchstens 45°
+    gegen die Horizontale. Dieser Schwellwert ist konservativ
+    und deckt sowohl horizontale Auflager (Deckenbalken-
+    Konsole) als auch leicht geneigte Auflager (Sparren-
+    Pfetten-Knagge auf einer geneigten Pfette) ab.
 
 4. **Auflager-Inzidenz mit dem getragenen Bauteil**: die
-   Auflager-Fläche A_A trägt einen Punkt q_T der Bauteilachse
-   a(T) des getragenen Bauteils mit Toleranz ε_L:
-   ```
-   ∃ q_T ∈ a(T):  dist(q_T, A_A) ≤ ε_L.
-   ```
-   Insbesondere muss a(T) die Knagge **berühren**, nicht
-   schneiden (Auflager-Beziehung, kein Anker).
+    Auflager-Fläche A_A trägt einen Punkt q_T der Bauteilachse
+    a(T) des getragenen Bauteils mit Toleranz ε_L:
+    ```text
+    ∃ q_T ∈ a(T):  dist(q_T, A_A) ≤ ε_L.
+    ```
+    Insbesondere muss a(T) die Knagge **berühren**, nicht
+    schneiden (Auflager-Beziehung, kein Anker).
 
 5. **Räumliche Trennung A_S ↔ A_A**: die beiden Anker-Flächen
-   liegen an verschiedenen Seiten des Knagge-Körpers,
-   ```
-   dist(q_S, q_A) ≥ ε_L,
-   ```
-   d. h. Stütz-Anker- und Auflager-Stützpunkt fallen nicht
-   zusammen.
+    liegen an verschiedenen Seiten des Knagge-Körpers,
+    ```text
+    dist(q_S, q_A) ≥ ε_L,
+    ```
+    d. h. Stütz-Anker- und Auflager-Stützpunkt fallen nicht
+    zusammen.
 
 6. **Kompaktheit**: der Knagge-Körper-Durchmesser
-   diam(B.koerper):= max{‖p − q‖: p, q ∈ B.koerper} bleibt
-   in der Praxis-Range
-   ```
-   ε_L < diam(B.koerper) < L_max,
-   ```
-   wobei L_max ein konservativer Praxis-Höchstwert ist
-   (Default 800 mm, vgl. historische Fachwerk-Knaggen 40–80 cm
-   sowie moderne Pfetten-Knaggen typisch 130/130/75 mm bis
-   200/200/120 mm). Größere dreieckige Holzblöcke werden
-   konstruktiv als Strebe-Sub-Lesart oder als
-   Verstärkungselement geführt, nicht als Knagge.
+    diam(B.koerper):= max{‖p − q‖: p, q ∈ B.koerper} bleibt
+    in der Praxis-Range
+    ```text
+    ε_L < diam(B.koerper) < L_max,
+    ```
+    wobei L_max ein konservativer Praxis-Höchstwert ist
+    (Default 800 mm, vgl. historische Fachwerk-Knaggen 40–80 cm
+    sowie moderne Pfetten-Knaggen typisch 130/130/75 mm bis
+    200/200/120 mm). Größere dreieckige Holzblöcke werden
+    konstruktiv als Strebe-Sub-Lesart oder als
+    Verstärkungselement geführt, nicht als Knagge.
 
 **Bemerkung (Befestigungsart nicht geometrie-konstitutiv).**
 Die Bedingungen 1–6 legen ausschließlich Kontakt-Geometrie
@@ -726,14 +726,14 @@ sondern als `erlaeuterung:`-Hinweise:
   Decke bzw. stirnseitig an einer Wand- oder Deckenkante.
   Drei Ausführungsarten sind gedruckt belegt und
   **gleichrangig**:
-  - **Verzapfung mit Stufenfalz** (historisches Fachwerk,
+    - **Verzapfung mit Stufenfalz** (historisches Fachwerk,
     Wikipedia/Knagge-Fachwerk: „Verstecktes Zapfenloch an
     der Oberseite, Stufenfalz an der Unterseite");
-  - **Nagelung** (moderne Anschlusspraxis, DIN 1052 §12.5
+    - **Nagelung** (moderne Anschlusspraxis, DIN 1052 §12.5
     Tabelle 10; Colling §8.3: Kontaktaufnahme der
     Horizontalkomponente und Weiterleitung über Nägel an die
     Schwelle);
-  - **Stirnkontakt mit Bolzen** (Anschluss ans
+    - **Stirnkontakt mit Bolzen** (Anschluss ans
     Massivbauwerk, Bläsi/Ferdinand S. 169: Knagge auf der
     Stahlbetondecke, mit dem Sparren verbolzt).
 
@@ -768,7 +768,7 @@ sondern als `erlaeuterung:`-Hinweise:
 ### CH/DE-Asymmetrie und Bauweisen-Verteilung
 
 | Bauweise | Knagge typisch verwendet? |
-|---|---|
+| --- | --- |
 | Fachwerkbau (DE/AT, historisch, Kragetagen-Region) | breit, oft geschwungen mit Fassadenschmuck-Funktion |
 | Riegelbau (CH, traditionell) | als Fachwerk-Konsole selten (Kragetagen in CH unüblich); als Pfetten-Konsole im Dachstuhl belegt |
 | Holzrahmenbau (modern) | im Wand selten; im Dachstuhl-Anschluss als Pfetten-Kippsicherung belegt |
@@ -867,15 +867,15 @@ Thurgauer und Appenzeller Riegelbauten).
   Geometrie und der zusätzlichen Rolle „Knagge" plus den
   Konsolen-Constraints 1–6.
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
-  - **Bauteilkörper** (Volumen-Polyeder, kein Stab mit
+    - **Bauteilkörper** (Volumen-Polyeder, kein Stab mit
     Achse): konvexer dreieckiger Block;
-  - **Stütz-Anker-Fläche** A_S (ausgezeichneter Face des
+    - **Stütz-Anker-Fläche** A_S (ausgezeichneter Face des
     Polyeders);
-  - **Auflager-Fläche** A_A (ausgezeichneter Face des
+    - **Auflager-Fläche** A_A (ausgezeichneter Face des
     Polyeders, nicht koplanar zu A_S);
-  - **Werkstoff** (Vollholz, Festigkeitsklasse C24/C30
+    - **Werkstoff** (Vollholz, Festigkeitsklasse C24/C30
     bzw. Eiche bei Sanierung);
-  - **Faserrichtung** (Annotation, Default ‖ a(S) im
+    - **Faserrichtung** (Annotation, Default ‖ a(S) im
     Stab-Fall (2a), also parallel zur stützenden
     Pfosten-Achse — damit die Knagge parallel zur Faser des
     Pfostens stehen kann; Korpus-Konvention nach Mönck/Rug.
@@ -884,48 +884,48 @@ Thurgauer und Appenzeller Riegelbauten).
     explizit annotiert).
 - **Lesart-Annotation** (Merkmal an der Knagge, Hauptlesart-
   Trennung):
-  - **Knagge-Lesart** (`KnaggeLesart`-Enum): Wert aus
+    - **Knagge-Lesart** (`KnaggeLesart`-Enum): Wert aus
     { FACHWERK_KONSOLE, DACHSTUHL_KIPPSICHERUNG,
     UNSPEZIFIZIERT } (siehe Implementierungs-Hinweis).
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Stützendes Bauteil**, zwei Fälle: hölzernes
+    - **Stützendes Bauteil**, zwei Fälle: hölzernes
     Stab-Bauteil (Ständer/Pfosten/geneigte Stütze/Pfette/
     Schwelle) nach (2a) oder mineralisch-massives Bauteil
     (Mauerwerk-Außenwand, Stahlbetondecke, Sockel) nach (2b);
     trägt in beiden Fällen den Stütz-Anker A_S.
-  - **Getragenes Bauteil** (Deckenbalken, Pfette, Sparren):
+    - **Getragenes Bauteil** (Deckenbalken, Pfette, Sparren):
     liegt auf der Auflager-Fläche A_A.
-  - **Verbindungsmittel** der Stütz-Anker-Sicherung
+    - **Verbindungsmittel** der Stütz-Anker-Sicherung
     (Verzapfung als Holz-Holz-Verbindung, Nägel, Bolzen,
     Stabdübel, Schrauben): eigenes Element **neben** der
     Knagge, nicht Bestandteil der Bauteilrolle
     (Quellenkonflikt-Block (10a)).
 - **Abgrenzung**:
-  - **Kopfband** (`kopfband`, Welle-10-Geschwister): Stab-
+    - **Kopfband** (`kopfband`, Welle-10-Geschwister): Stab-
     Bauteil mit Bauteilachse; nicht Knagge.
-  - **Fußband** (`fussband`, Welle-11-Geschwister):
+    - **Fußband** (`fussband`, Welle-11-Geschwister):
     Stab-Bauteil mit Bauteilachse; nicht Knagge.
-  - **Strebe** (`strebe`, Welle-10-Geschwister): Stab-Bauteil.
-  - **Bug** / **Kopfbüge** / **Achselband**: Synonyme zu
+    - **Strebe** (`strebe`, Welle-10-Geschwister): Stab-Bauteil.
+    - **Bug** / **Kopfbüge** / **Achselband**: Synonyme zu
     Kopfband, kein eigener Eintrag; in
     `abgelehnte_benennungen:` aufgenommen.
-  - **Konsole** (`konsole`, Forward-Verweis): material-
+    - **Konsole** (`konsole`, Forward-Verweis): material-
     übergreifender Oberbegriff.
-  - **Auflager** (`auflager`, Forward-Verweis): generische
+    - **Auflager** (`auflager`, Forward-Verweis): generische
     Auflager-Beziehung, die die Knagge realisiert.
-  - **Pfette** und Sub-Lesarten (`pfette`, `firstpfette`,
+    - **Pfette** und Sub-Lesarten (`pfette`, `firstpfette`,
     `mittelpfette`, `fusspfette`): getragenes Bauteil.
-  - **Unterzug** / **Deckenbalken** (Forward-Verweise):
+    - **Unterzug** / **Deckenbalken** (Forward-Verweise):
     getragenes Bauteil in historischer Kragetage.
-  - **Ständer** / **Pfosten** / **Einbinder** / **Schwelle**:
+    - **Ständer** / **Pfosten** / **Einbinder** / **Schwelle**:
     stützende oder benachbarte Bauteile.
-  - **Aufschiebling** (`aufschiebling`, Forward-Verweis):
+    - **Aufschiebling** (`aufschiebling`, Forward-Verweis):
     verwandtes Volumen-Bauteil.
-  - **Verbindungsmittel** (`verbindungsmittel`, Forward-
+    - **Verbindungsmittel** (`verbindungsmittel`, Forward-
     Verweis): Stahl-„Knaggen" gehören dort hin, nicht hier.
-  - **Mann** / **Andreaskreuz** (Forward-Verweise):
+    - **Mann** / **Andreaskreuz** (Forward-Verweise):
     Stab-Aggregate ohne Knagge-Mitgliedschaft.
-  - **Bauteil** (`bauteil`): die Knagge ist eine
+    - **Bauteil** (`bauteil`): die Knagge ist eine
     Spezialisierung mit Volumen-Geometrie und Konsolen-
     Constraints.
 

@@ -102,13 +102,13 @@ Sei
 
 Sei ℓ(s_{ij}) > ε_L. Dann existiert ein Einheits-Tangentenvektor
 
-```
+```text
 t_hat:= (b − a) / ‖b − a‖    mit  s_{ij} = [a, b].
 ```
 
 Eine Schnittstrecke s_{ij} heißt **geneigt**, wenn
 
-```
+```text
 |⟨t_hat, e_z⟩| > ε_W                                            (1)
 ```
 
@@ -128,7 +128,7 @@ das jeweilige Flächenstück liegt (Gegenbeispiel in der Erläuterung).
 Die Konvexität wird darum über die **Lage der Flächenstücke relativ
 zur Kante** bestimmt. Sei
 
-```
+```text
 w:= (t_hat × e_z) / ‖t_hat × e_z‖   ∈ S²
 ```
 
@@ -138,7 +138,7 @@ die zur Kantentangente orthogonale **horizontale** Querachse
 c_i ein innerer Punkt (Flächenschwerpunkt) von F(P_i) und m ∈ s_{ij}
 ein Kantenpunkt. Die **signierte Querlage** des Flächenstücks D_i ist
 
-```
+```text
 τ_i:= ⟨ c_i − m, w ⟩.
 ```
 
@@ -148,7 +148,7 @@ s_{ij} heißt **konvex** (ausspringend, Grat), wenn sich **beide**
 äußeren Normalen horizontal zur Querseite ihres **eigenen**
 Flächenstücks neigen:
 
-```
+```text
 ⟨ n_hat_{a,i}, w ⟩ · sign(τ_i) > ε_W   und
 ⟨ n_hat_{a,j}, w ⟩ · sign(τ_j) > ε_W.                                 (2)
 ```
@@ -250,21 +250,21 @@ Kehle gleichermaßen senkrecht nach oben.
   Eckpunkt zweier Trauflinien (Walmdach-Trauf-Eckpunkt) und der
   obere Endpunkt zugleich Eckpunkt der Firstlinie.
 - **Abgrenzung**:
-  - **First** (`first`): horizontale Schnittkante zweier nach oben
+    - **First** (`first`): horizontale Schnittkante zweier nach oben
     zusammenlaufender Dachflächen. Grat ist im Gegensatz dazu
     geneigt (Bedingung (1)).
-  - **Kehle** (`kehle`): geneigte konkave Schnittkante. Grat ist
+    - **Kehle** (`kehle`): geneigte konkave Schnittkante. Grat ist
     konvex; Vorzeichen in (2) umgekehrt zur Kehle.
-  - **Ortgang** (`ortgang`): geneigte Randkante einer einzelnen
+    - **Ortgang** (`ortgang`): geneigte Randkante einer einzelnen
     Dachfläche entlang ihrer Falllinie. Grat ist Schnittkante
     zweier Dachflächen, kein Polygonrand einer einzelnen Fläche.
-  - **Traufe** (`traufe`): horizontale, untere Randkante. Grat ist
+    - **Traufe** (`traufe`): horizontale, untere Randkante. Grat ist
     geneigt und Schnittkante.
-  - **Pultkante** (`pultkante`): obere Randkante einer einzelnen
+    - **Pultkante** (`pultkante`): obere Randkante einer einzelnen
     Pultdachfläche. Grat ist Schnittkante zweier Dachflächen.
-  - **Gratsparren** (`gratsparren`, bereits angelegt):
+    - **Gratsparren** (`gratsparren`, bereits angelegt):
     Tragwerksbalken entlang der Gratlinie; Bauteil, nicht Kante.
-  - **Walmfläche**: jene Dachfläche eines Walmdachs, deren
+    - **Walmfläche**: jene Dachfläche eines Walmdachs, deren
     Trapezform an drei Seiten von Graten und einer Traufe
     begrenzt wird; Fläche, nicht Kante.
 

@@ -214,7 +214,7 @@ Sei
 
 Dann ist ein **Lastfall** das Tupel
 
-```
+```text
 ℓ:= (uuid, bemessungssituation, leiteinwirkung, begleiteinwirkungen,
       einwirkungs_anordnung, inzidenz, bezeichnung)
 ```
@@ -238,7 +238,7 @@ mit den Komponenten
 
 Die Gesamt-Einwirkungsmenge des Lastfalls ist
 
-```
+```text
 E(ℓ):= {leiteinwirkung} ∪ begleiteinwirkungen.
 ```
 
@@ -281,7 +281,7 @@ gewählten Bemessungssituation kompatibel im Sinne der
 EN-1990-/SIA-260-Klassifikation:
 
 | Bemessungssituation | zulässige Kategorien (typisch) |
-|---|---|
+| --- | --- |
 | persistent | G, Q |
 | transient | G, Q (mit transient-spezifischen ψ-Werten) |
 | accidental | G, Q, **mindestens ein** A |
@@ -355,7 +355,7 @@ Schicht 3 (Lastfall, dieser Eintrag) angelegt, die übrigen drei
 folgen als Folgearbeit (siehe `HG_KONVENTIONEN.md` §6.A).
 
 | Schicht | Begriff | Inhalt | Eigener App-Glossareintrag |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1 | **Einwirkung** (`einwirkung`, Folgeeintrag) | Ursache mechanischer Beanspruchung am Tragwerk: Kraft, aufgezwungene Verformung, indirekte Einwirkung. Klassifiziert nach zeitlicher Veränderlichkeit (G ständig, Q veränderlich, A außergewöhnlich, A_E Erdbeben). | folgt |
 | 2 | **Bemessungssituation** (`bemessungssituation`, Folgeeintrag) | Zustand des Tragwerks im Zeitraum eines Nachweises: persistent, transient, accidental, seismic (EN 1990 §3.2). Trägt die Gesamtheit der zu berücksichtigenden Einwirkungen für einen Lebenszustand. | folgt |
 | 3 | **Lastfall** (dieser Eintrag) | Physikalisch verträgliche Anordnung gleichzeitig wirkender Einwirkungen für einen bestimmten rechnerischen Nachweis. Pro Bemessungssituation existieren mehrere Lastfälle. | **angelegt** |
@@ -375,7 +375,7 @@ Die Einwirkungen — die Bestandteile eines Lastfalls — werden nach
 EN 1990 §4.1.1 bzw. SIA 260 §4 in vier Kategorien klassifiziert:
 
 | Kategorie | Symbol | Charakteristik | Beispiele im Holzbau-Hochbau |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Ständig | **G** | über die gesamte Nutzungsdauer mit vernachlässigbarer Veränderung | Eigengewicht tragender Bauteile, Eigengewicht nichttragender Bauteile, Auflasten durch Bodenaufbau, Vorspannung P |
 | Veränderlich | **Q** | zeitlich oder örtlich variabel, nicht ständig | Nutzlast Wohnen / Büro / Lager, Schneelast, Windlast (Druck/Sog), Verkehrslast, Temperatur-Einwirkungen |
 | Außergewöhnlich | **A** | kurze Dauer, niedrige Eintretens-Wahrscheinlichkeit, große Schäden | Anprall, Explosion, außergewöhnliche Brandlasten |
@@ -462,7 +462,7 @@ und Projektbasis als eigene Schichten abbildet.
 ### IFC-Mapping (Hauptlinien)
 
 | App-Konzept | IFC 4.3 Pendant |
-|---|---|
+| --- | --- |
 | Einwirkung (Schicht 1) als physikalische Ursache | `IfcStructuralAction` (abstrakt) mit Subtypen `IfcStructuralPointAction` / `IfcStructuralCurveAction` / `IfcStructuralSurfaceAction`; trägt einen `IfcStructuralLoad` über das Attribut `AppliedLoad` |
 | Lastwert | `IfcStructuralLoad`-Subtyp (`IfcStructuralLoadSingleForce` / `IfcStructuralLoadLinearForce` / `IfcStructuralLoadPlanarForce` / `IfcStructuralLoadTemperature` etc.) |
 | Bemessungssituation (Schicht 2) | im IFC-Schema implizit; ggf. über `IfcLoadGroupTypeEnum` + Properties auf der enthaltenden `IfcStructuralLoadGroup` |
@@ -512,13 +512,13 @@ sitzt er aber als Element von L in einem Tragwerk.
   sondern Nachbar-Begriff.
 
 - **Bestandteile (partitiv)**:
-  - **Leiteinwirkung** (Element von 𝓔; eigener Eintrag
+    - **Leiteinwirkung** (Element von 𝓔; eigener Eintrag
     `einwirkung` folgt).
-  - **Begleiteinwirkungen** (endliche Menge in 𝓔).
-  - **Einwirkungs-Anordnung** (geometrische Verteilung pro
+    - **Begleiteinwirkungen** (endliche Menge in 𝓔).
+    - **Einwirkungs-Anordnung** (geometrische Verteilung pro
     Einwirkung im W-System).
-  - **Inzidenz** (Zuordnung Einwirkung ↔ Bauteil-UUIDs).
-  - **Bemessungssituations-Zuordnung** (Klassifikations-Wert
+    - **Inzidenz** (Zuordnung Einwirkung ↔ Bauteil-UUIDs).
+    - **Bemessungssituations-Zuordnung** (Klassifikations-Wert
     aus 𝓢; eigener Eintrag `bemessungssituation` folgt).
 
 - **Spezialisierungen nach Bemessungssituation** (Folgearbeit,
@@ -528,50 +528,50 @@ sitzt er aber als Element von L in einem Tragwerk.
   Komponente aufgelöst, nicht als Subtyp-Hierarchie.
 
 - **Verwendung**:
-  - Bestandteil eines **Tragwerks** (`tragwerk`): in der
+    - Bestandteil eines **Tragwerks** (`tragwerk`): in der
     Tupel-Repräsentation (B, V, A, L) ist L die Menge der
     Lastfälle.
-  - Eingang einer **Lastkombination** (`lastkombination`,
+    - Eingang einer **Lastkombination** (`lastkombination`,
     Folgeeintrag): die Lastkombination überlagert mehrere
     Lastfälle mit γ- und ψ-Faktoren zum Bemessungswert E_d.
 
 - **Abgrenzung**:
-  - **Einwirkung** (`einwirkung`, Folgeeintrag): Schicht-1-
+    - **Einwirkung** (`einwirkung`, Folgeeintrag): Schicht-1-
     Begriff; eine Einwirkung ist Bestandteil eines Lastfalls,
     nicht selbst ein Lastfall. Die Einwirkung ist nicht
     Oberbegriff des Lastfalls und ausdrücklich nicht Synonym.
-  - **Bemessungssituation** (`bemessungssituation`,
+    - **Bemessungssituation** (`bemessungssituation`,
     Folgeeintrag): Schicht-2-Begriff; ein Klassifikationswert,
     der den Lastfall einem Tragwerks-Lebenszustand zuordnet.
     Mehrere Lastfälle pro Bemessungssituation; ein Lastfall
     gehört zu genau einer Bemessungssituation.
-  - **Lastkombination** / **Einwirkungskombination**
+    - **Lastkombination** / **Einwirkungskombination**
     (`lastkombination`, Folgeeintrag): Schicht-4-Begriff;
     rechnerische Überlagerung mehrerer Lastfälle. Eine
     Lastkombination ist eine Operation über der Menge der
     Lastfälle, nicht selbst ein Lastfall.
-  - **Gefährdungsbild** (Korpus-Begriff, kein eigener Eintrag
+    - **Gefährdungsbild** (Korpus-Begriff, kein eigener Eintrag
     geplant; Kategorie (D) nach `HG_KONVENTIONEN.md` §6):
     Schweizer Spezifikum aus SIA 260 §4; eine Risiko-Szenarien-
     Beschreibung, die der Bemessungssituation vorgelagert ist.
     Ohne Pendant in EN 1990.
-  - **Lastannahme** (Korpus-Begriff): synonym mit
+    - **Lastannahme** (Korpus-Begriff): synonym mit
     Einwirkung (Schicht 1), nicht mit Lastfall (Schicht 3); in
     `abgelehnte_benennungen` geführt.
-  - **Tragwerk** (`tragwerk`): das übergeordnete Aggregat, in
+    - **Tragwerk** (`tragwerk`): das übergeordnete Aggregat, in
     dessen L-Komponente der Lastfall Element ist. Lastfall ist
     Bestandteil eines Tragwerks; er ist nicht selbst Tragwerk.
-  - **Auflager** (`auflager`): Lastpfad-Ende. Auflager und
+    - **Auflager** (`auflager`): Lastpfad-Ende. Auflager und
     Lastfall sind beide Bestandteile des Tragwerks-Tupels
     (Komponenten A und L), aber unterschiedliche Aggregate
     mit unterschiedlicher Substanz: Auflager trägt
     geometrische Manifestation + Wertigkeit pro Freiheitsgrad,
     Lastfall trägt Einwirkungs-Anordnung + Bauteil-Inzidenz.
-  - **Bauteil** (`bauteil`): das Trägerobjekt der Einwirkungs-
+    - **Bauteil** (`bauteil`): das Trägerobjekt der Einwirkungs-
     Inzidenz. Bauteile werden im Lastfall ausschließlich über
     UUID referenziert (Foreign-Key-Regel); ein Lastfall ist
     kein Bauteil und enthält kein Bauteil partitiv.
-  - **Statisches System** (`statisches_system`, Folgeeintrag):
+    - **Statisches System** (`statisches_system`, Folgeeintrag):
     die bemessungstechnische Idealisierung des Tragwerks mit
     reduzierten Stab-Einwirkungen. Der Lastfall ist die
     nachweisbezogene Eingangs-Anordnung am bauteilbezogenen

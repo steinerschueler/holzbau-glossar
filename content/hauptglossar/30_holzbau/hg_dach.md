@@ -89,7 +89,7 @@ Sei
 
 Dann ist ein **Dach** das Tripel
 
-```
+```text
 Dach:= (T, 𝒟, A)
 ```
 
@@ -113,7 +113,7 @@ mit den Konsistenzbedingungen
 Der **geometrische Anteil** des Daches ist die durch 𝒟 erzeugte
 Punktmenge
 
-```
+```text
 G(Dach):= ⋃_{i=1..m} F(P_i) ⊂ ℝ³,
 ```
 
@@ -186,12 +186,12 @@ Fachliteratur verbreitete Vermischung dieser drei Konzepte auf.
   Bauteilen bestehen). Eintrag wird angelegt, sobald weitere
   Aggregate (Wandaufbau, Deckenaufbau) hinzukommen.
 - **Bestandteile (partitiv)**:
-  - **Tragwerk** (`tragwerk`, eigener Eintrag folgt): Sparren,
+    - **Tragwerk** (`tragwerk`, eigener Eintrag folgt): Sparren,
     Pfetten, Binder, Kehlbalken, Aussteifungen,
     Verbindungsmittel.
-  - **Dachflächen** (`dachflaeche`): geometrische Bezugsebenen.
-  - **Dachaufbau** (`dachaufbau`): materielle Schichtfolge.
-  - **Dachhaut** (`dachhaut`, abgeleitet): obere Hüllfläche
+    - **Dachflächen** (`dachflaeche`): geometrische Bezugsebenen.
+    - **Dachaufbau** (`dachaufbau`): materielle Schichtfolge.
+    - **Dachhaut** (`dachhaut`, abgeleitet): obere Hüllfläche
     des Dachaufbaus.
 - **Spezialisierungen nach Dachform**: siehe `hg_dachform.md` für
   den vollständigen Werte-Katalog (zwölf Formen plus Freiform:
@@ -200,32 +200,32 @@ Fachliteratur verbreitete Vermischung dieser drei Konzepte auf.
   Eigene HG-Einträge für die einzelnen Werte folgen trigger-basiert
   je nach erstem Tool-Bedarf.
 - **Abgrenzung**:
-  - **Dachfläche** (`dachflaeche`): rein geometrischer
+    - **Dachfläche** (`dachflaeche`): rein geometrischer
     Bestandteil eines Daches, kein Aggregat. Ein Dach hat eine
     oder mehrere Dachflächen; eine Dachfläche ist nicht das Dach.
-  - **Dachaufbau** (`dachaufbau`): die materielle Schichtfolge
+    - **Dachaufbau** (`dachaufbau`): die materielle Schichtfolge
     oberhalb des Tragwerks. Bestandteil eines Daches, nicht das
     Dach selbst.
-  - **Dachhaut** (`dachhaut`): die geometrische Hüllfläche
+    - **Dachhaut** (`dachhaut`): die geometrische Hüllfläche
     **über** dem Dachaufbau. Aus dem Dachaufbau abgeleitet, nicht
     eigenständiges Bauteil.
-  - **Dachstuhl** (umgangssprachlich): in der
+    - **Dachstuhl** (umgangssprachlich): in der
     zimmermannssprachlichen Tradition meist nur das **Tragwerk**.
     Wegen der schwankenden Verwendung in Fachglossaren
     ausdrücklich **nicht** als Synonym geführt; eigener Eintrag
     `dachstuhl` (= Tragwerk) folgt.
-  - **Tragwerk** (Dachtragwerk): Bestandteil des Daches, nicht
+    - **Tragwerk** (Dachtragwerk): Bestandteil des Daches, nicht
     das Dach selbst. Eigener Eintrag folgt.
-  - **Dachform** (Sattel-, Walm-, Pultdach …): ein
+    - **Dachform** (Sattel-, Walm-, Pultdach …): ein
     Klassifikationsmerkmal eines Daches, kein eigenständiges
     Bauteil. Wird als Aufzählungs-Typ modelliert.
-  - **Dachkonstruktion**: in DIN/SIA uneinheitlich verwendet,
+    - **Dachkonstruktion**: in DIN/SIA uneinheitlich verwendet,
     mal synonym zu Tragwerk, mal synonym zum hier definierten
     Dach. Wegen Mehrdeutigkeit kein Synonym.
-  - **Bedachung**: zulässiges Synonym im Sinne „das Dach als
+    - **Bedachung**: zulässiges Synonym im Sinne „das Dach als
     Gesamtheit". In Fachsprache eher nordwestdeutsch; in der
     Schweiz selten.
-  - **Gebäudehülle**: das gesamte raumabschließende
+    - **Gebäudehülle**: das gesamte raumabschließende
     Hüllaggregat (Dach + Außenwände + Bodenplatte).
     Übergeordneter Aggregatbegriff, nicht Synonym.
 
@@ -246,16 +246,16 @@ Fachliteratur verbreitete Vermischung dieser drei Konzepte auf.
 
 **Sekundär:**
 
-- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+- Colling, F.: _Holzbau – Grundlagen und Bemessung nach EC 5._ 7. Auflage, Springer Vieweg, Wiesbaden 2021,
   ISBN 978-3-658-34446-7, §9.1 „Allgemeines“ (S. 156–158). Volltext-Scan liegt Anweiser
   vor; direkt eingesehen 2026-08-13.
-- Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
+- Mönck, W.; Rug, W.: _Holzbau – Bemessung und Konstruktion._
   16. Auflage, Beuth Verlag 2015.
-- Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.*
+- Gerner, M.: _Fachwerk – Instandsetzung, Sanierung, Neubau._
   DVA, 7. Auflage 2007.
-- Lignum (Hrsg.): *Holzbautabellen HBT.* Lignum, Zürich, aktuelle
+- Lignum (Hrsg.): _Holzbautabellen HBT._ Lignum, Zürich, aktuelle
   Auflage.
-- NIhK: *Glossary of Prehistoric and Historic Timber Buildings.*
+- NIhK: _Glossary of Prehistoric and Historic Timber Buildings._
 
 **Korpus (nicht autoritativ):**
 

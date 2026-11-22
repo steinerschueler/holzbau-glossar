@@ -58,7 +58,7 @@ Sei
   (Konvention der App: x = Ost, y = Nord, z = oben),
 - n_hat_h ∈ S² ∩ {z = 0} die horizontale Projektion der äußeren
   Normalen,
-  ```
+  ```text
   n_hat_h:= normiere(n_a − ⟨n_a, e_z⟩ · e_z)
   ```
   (definiert nur, falls ‖n_a − ⟨n_a, e_z⟩ · e_z‖ > Toleranzen.NORM_EPS,
@@ -69,7 +69,7 @@ Dann ist die **Orientierung** der Dachseite zu D der Winkel
 e_z (geographische Konvention: 0° = Norden, 90° = Osten,
 180° = Süden, 270° = Westen):
 
-```
+```text
 ψ(D):= atan2(⟨n_hat_h, e_E⟩, ⟨n_hat_h, e_N⟩)  mod 2π,
 ```
 
@@ -77,7 +77,7 @@ mit e_E = (1, 0, 0)ᵀ.
 
 Eine **Dachseite** ist das Tupel
 
-```
+```text
 DS(D):= (D, ψ(D))
 ```
 
@@ -157,24 +157,24 @@ Geometrie + Orientierungsmerkmal.
 - **Oberbegriff**: `dachflaeche`. Eine Dachseite ist eine
   Dachfläche mit zusätzlicher Orientierungs-Annotation.
 - **Verwandte Begriffe**:
-  - **Wetterseite**, **Sonnenseite**, **Nord-/Süd-/Ost-/Westseite**:
+    - **Wetterseite**, **Sonnenseite**, **Nord-/Süd-/Ost-/Westseite**:
     spezifische Werte der Orientierungs-Annotation. Sie werden
     nicht als eigenständige Glossareinträge geführt, sondern als
     abgeleitete Klassifikationen über ψ.
-  - **Traufseite**, **Giebelseite**: Eigenschaften der **Wand**,
+    - **Traufseite**, **Giebelseite**: Eigenschaften der **Wand**,
     nicht der Dachfläche. Sie betreffen die Lage der
     Anschlusswand zur Trauflinie bzw. zum Ortgang. Eigene
     Glossareinträge in Folgearbeit.
 - **Abgrenzung**:
-  - **Dachfläche** (`dachflaeche`): rein geometrischer Begriff
+    - **Dachfläche** (`dachflaeche`): rein geometrischer Begriff
     ohne Orientierungs-Annotation. Eine Dachseite ist genau eine
     Dachfläche, aber zusätzlich orientierungs-annotiert.
-  - **Dachschräge** (`dachschraege`): innenseitige, raumseitige
+    - **Dachschräge** (`dachschraege`): innenseitige, raumseitige
     Bezugsfläche; Dachseite ist außenseitig.
-  - **Dachneigung** (`dachneigung`): Winkelmerkmal; Dachseite ist
+    - **Dachneigung** (`dachneigung`): Winkelmerkmal; Dachseite ist
     Lagemerkmal. Beide sind Merkmale derselben Dachfläche, aber
     verschiedene.
-  - **Dachhälfte**: nicht synonym; bei einem Satteldach gibt es
+    - **Dachhälfte**: nicht synonym; bei einem Satteldach gibt es
     zwei Dachseiten und gleichzeitig zwei Dachhälften, bei einem
     Walmdach gibt es jedoch vier Dachseiten und nur zwei
     geometrische „Hälften". „Dachhälfte" ist hier abgelehnt.

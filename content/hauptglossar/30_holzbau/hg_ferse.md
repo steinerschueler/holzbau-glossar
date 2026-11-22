@@ -118,7 +118,7 @@ Sei
 
 Dann ist die **Ferse** von v die ausgezeichnete Lage
 
-```
+```text
 Ferse(v):=  (A_F, ê_innen)                                       (1)
 ```
 
@@ -197,7 +197,7 @@ der mehreren Bedeutungen, die im Praxis-Korpus an „Ferse"/„heel" hängen.
 Sie sitzen in **disjunkten Bearbeitungstypen**:
 
 | Begriff | Gehört zu | Geometrie | Verweis |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Ferse / Fersenversatz** | `versatz` (`art = FERSE`) | Druckfläche **rechtwinklig zur Strebe**, δ_F = β − π/2 — **geneigt**, **kein** Lotschnitt | `hg_versatz.md` |
 | **„Brust(versatz)"** | `versatz` (`art = FERSE`) | **Synonym** der Ferse (HG-arbitriert, Konflikt 6) | `hg_versatz.md` |
 | **engl. „heel cut" / „plumb cut"** | `kerve` (Birdsmouth) | der **lotrechte** Schnitt = **Senkel** (welt-vertikal) — heißt im DACH **nie** „Ferse" | `hg_senkel.md`, `hg_kerve.md` |
@@ -240,25 +240,25 @@ oder nur eine Auslauf-Ecke (Stirnversatz), hängt vom Verbindungstyp ab.
   Eintrag (im Versatz als Lage geführt, `hg_versatz.md`); der Forward-
   Verweis bezeichnet die Lage, nicht die Bauteilfläche.
 - **Abgrenzung**:
-  - **Versatz** (`versatz`): trägt die **Geometrie** des Fersen-
+    - **Versatz** (`versatz`): trägt die **Geometrie** des Fersen-
     Ausschnitts (δ_F = β − π/2, Sohle ∥ Strebe, V-Werkzeugkörper); die
     Ferse ist die **Lage**, an der diese Geometrie sitzt — keine eigene
     geometrische Substanz.
-  - **Stirnseite** (`stirnseite`): eine **Bauteilfläche** (Hirnholz,
+    - **Stirnseite** (`stirnseite`): eine **Bauteilfläche** (Hirnholz,
     `generisch`) mit Trägerebene, Berandung und Außennormale. Die Ferse
     ist **keine** solche Fläche, sondern eine Lage innerhalb einer
     Bearbeitung. Die Stirnseite-Analogie zur Ferse ist widerlegt (kein
     Beleg für eine eigenständige „Fersenfläche").
-  - **Kerve** (`kerve`): andere Bearbeitung (Auflager-Einschnitt am
+    - **Kerve** (`kerve`): andere Bearbeitung (Auflager-Einschnitt am
     Sparren auf der Pfette). Das österr. „Ferserl" meint die ganze Kerve,
     nicht die Ferse; der lotrechte Kerv-Schnitt heißt Senkel.
-  - **Senkel** (`senkel`): der **lotrechte** Schnitt am Fuß eines
+    - **Senkel** (`senkel`): der **lotrechte** Schnitt am Fuß eines
     geneigten Holzes (welt-vertikal). Das engl. `heel cut`/`plumb cut`
     ist Senkel, **nicht** Ferse — die Quelle der „Ferse=senkrecht"-
     Verwechslung (Konflikt B).
-  - **Bleischnitt** (`bleischnitt`): der **waagerechte** Schnitt
+    - **Bleischnitt** (`bleischnitt`): der **waagerechte** Schnitt
     (welt-horizontal); engl. `seat cut`. Weder Ferse noch Senkel.
-  - **Anschnitt** (`anschnitt`): allgemeine schräge Endausbildung;
+    - **Anschnitt** (`anschnitt`): allgemeine schräge Endausbildung;
     die Fersen-Druckfläche ist ein spezieller Anschnitt am Versatz, die
     Ferse selbst aber eine Lage, kein Anschnitt.
 

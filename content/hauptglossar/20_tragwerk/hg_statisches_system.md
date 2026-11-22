@@ -226,7 +226,7 @@ kontrahiert (siehe Wohldefiniertheit, Knoten-Kontraktion).
 
 Ein **Stab** des statischen Systems ist das Tripel
 
-```
+```text
 m:= (uuid_m, traegerstrecke, basisbauteil)
 ```
 
@@ -251,7 +251,7 @@ Komponente mit Default-Wert ∅ geführt.
 Sei 𝓣ʜ die Menge der **Berechnungs-Theorie-Annahmen** des
 statischen Systems:
 
-```
+```text
 𝓣ʜ:= { linear_erster_ordnung,
         geometrisch_nichtlinear_zweiter_ordnung,
         materiell_nichtlinear,
@@ -264,7 +264,7 @@ Die App-Default-Wahl ist `linear_erster_ordnung`.
 
 Dann ist ein **Statisches System** das Tupel
 
-```
+```text
 S:= (uuid, basistragwerk, K, M, F, A, L, theorie, bezeichnung)
 ```
 
@@ -299,7 +299,7 @@ ist im allgemeinen Fall eine zulässige Diskretisierung der
 Bauteilachse (Polygonzug-Approximation gekrümmter
 Bauteilachsen). Formal:
 
-```
+```text
 ∀ m ∈ M: ∃ b ∈ T.B: b.uuid = m.basisbauteil
                     ∧ traegerstrecke(m) ≈ bauteilachse(b),
 ```
@@ -337,11 +337,12 @@ Knoten (ohne Inzidenz) sind unzulässig.
 trägt eine ableitbare Eigenschaft `istStabil(): Boolean`. Die
 Abzählformel im räumlichen Fall ist
 
-```
+```text
 n:= a + s + z − 6 · k,
 ```
 
 mit
+
 - `a` = Σ der Auflagerwertigkeiten (Anzahl gesperrter
   Freiheitsgrade über alle Auflager in A),
 - `s` = |M| (Anzahl der Stäbe),
@@ -371,7 +372,7 @@ Schicht).
 
 Die geometrische Punktmenge des statischen Systems in W ist
 
-```
+```text
 G_W(S):= K ∪ ⋃_{m ∈ M} traegerstrecke(m) ∪ ⋃_{f ∈ F} flaeche(f)
                 ⊂ ℝ³.
 ```
@@ -459,7 +460,7 @@ Das App-Modell trennt am selben physischen Holzbauwerk **zwei
 Aggregate** mit eigener UUID und unterschiedlicher Lesart:
 
 | Aspekt | Tragwerk (`hg_tragwerk.md`) | Statisches System (dieser Eintrag) |
-|---|---|---|
+| --- | --- | --- |
 | Lesart | bauteilbezogene Realität | bemessungstechnische Idealisierung |
 | Geometrische Träger | Bauteil-Polyeder in W | Knoten als Punkte + Stäbe als Strecken in W |
 | Bauteil-Bezug | direkt (B ⊂ 𝓑) | indirekt über `basisbauteil`-UUID je Stab |
@@ -479,7 +480,7 @@ getrennte UUIDs mit expliziter Brücke.
 ### Bestandteile
 
 | Bestandteil | App-Symbol | Lehrbuch-Sprache | IFC-4.3-Pendant |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Knoten | K | Stab-Verbindungs-Punkte, Lasteinleitungs- und Lager-Orte | implizit über Stab-Endpunkte und `IfcStructuralPointConnection` |
 | Stab | M | 1D-Idealisierung; Achse = Schwerlinie der Querschnitte | `IfcStructuralCurveMember` |
 | Flächenelement (Folgearbeit) | F | 2D-Idealisierung mit Bezugsfläche | `IfcStructuralSurfaceMember` |
@@ -544,7 +545,7 @@ HG §6 (D)).
 ### IFC-Mapping
 
 | Aspekt | IFC-4.3-Pendant |
-|---|---|
+| --- | --- |
 | Statisches System als Aggregat | `IfcStructuralAnalysisModel` mit GlobalId |
 | Knoten (Punkt-Auflager-Inzidenz) | `IfcStructuralPointConnection` mit `AppliedCondition` |
 | Stab | `IfcStructuralCurveMember` |
@@ -569,60 +570,60 @@ die Bemessungs-Information ist dort nicht abbildbar.
   Siehe Frontmatter `quellenkonflikt` für die Begründung der
   Wahl gegen `oberbegriff: tragwerk`.
 - **Bestandteile (partitiv)**:
-  - **Knoten** (`knoten`, Folgearbeit, sealed-Klasse `Element`-
+    - **Knoten** (`knoten`, Folgearbeit, sealed-Klasse `Element`-
     intern im statischen System): Punkte in W mit eigener
     Identität innerhalb des Systems.
-  - **Stab** (`stab`, Folgearbeit): 1D-Element mit gerichteter
+    - **Stab** (`stab`, Folgearbeit): 1D-Element mit gerichteter
     Trägerstrecke, Endknoten-Inzidenz und Bauteil-UUID-Referenz.
-  - **Flächenelement** (`flaechenelement`, Folgearbeit; Default
+    - **Flächenelement** (`flaechenelement`, Folgearbeit; Default
     ∅): 2D-Element mit Bezugsfläche.
-  - **Auflager-Auswahl** (Teilmenge von T.A).
-  - **Lastfall-Auswahl** (Teilmenge von T.L; `lastfall` als
+    - **Auflager-Auswahl** (Teilmenge von T.A).
+    - **Lastfall-Auswahl** (Teilmenge von T.L; `lastfall` als
     eigener Eintrag folgt).
-  - **Berechnungs-Theorie-Annahme**.
+    - **Berechnungs-Theorie-Annahme**.
 - **Spezialisierungen nach Theorie** (Folgearbeit, falls
   benötigt; im aktuellen Stand im `theorie`-Feld aufgelöst):
   lineares statisches System, geometrisch nichtlineares
   statisches System (Theorie II. Ordnung) etc.
 - **Verwendung**:
-  - Abgeleitet aus einem **Tragwerk** (`tragwerk`) via
+    - Abgeleitet aus einem **Tragwerk** (`tragwerk`) via
     `Tragwerk.statischesSystem()`. Das Feld `basistragwerk`
     trägt die UUID des Tragwerks.
-  - Eingangsgröße für die **Bemessungs-Schicht** (Folgearbeit):
+    - Eingangsgröße für die **Bemessungs-Schicht** (Folgearbeit):
     Tragsicherheits- und Gebrauchstauglichkeits-Nachweise nach
     EN 1995-1-1 / SIA 265 setzen das statische System voraus.
 - **Abgrenzung**:
-  - **Tragwerk** (`tragwerk`): bauteilbezogene Realität.
+    - **Tragwerk** (`tragwerk`): bauteilbezogene Realität.
     Statisches System ist die idealisierte Modellierung
     desselben physischen Substrats; beide sind getrennte
     Aggregate mit eigener UUID. Die Brücke ist das Feld
     `basistragwerk`.
-  - **Bauteil** (`bauteil`): Tragwerks-Substanz im W;
+    - **Bauteil** (`bauteil`): Tragwerks-Substanz im W;
     Stäbe im statischen System sind **Idealisierungen** der
     Bauteile, nicht die Bauteile selbst. Der Bezug ist über
     die UUID-Referenz `stab.basisbauteil` explizit.
-  - **Bauteilachse** (`bauteilachse`): geometrische Hauptachse
+    - **Bauteilachse** (`bauteilachse`): geometrische Hauptachse
     eines Stabbauteils; die Trägerstrecke eines Stabes im
     statischen System ist die Bauteilachsen-Strecke des
     zugehörigen Bauteils. Die Bauteilachse lebt am Bauteil,
     der Stab im statischen System.
-  - **Auflager** (`auflager`): Aggregat mit Manifestation und
+    - **Auflager** (`auflager`): Aggregat mit Manifestation und
     Wertigkeit. Statisches System übernimmt Auflager
     unverändert aus dem Basistragwerk (A ⊆ T.A); keine
     zusätzliche Idealisierung.
-  - **Verbindung** (`verbindung`): Aggregat auf der Anschluss-
+    - **Verbindung** (`verbindung`): Aggregat auf der Anschluss-
     Bemessungs-Seite. Verbindungen sind **nicht** Bestandteil
     des statischen Systems; ihre Federsteifigkeiten gehen
     gegebenenfalls als Gelenkfreiheiten oder Federgelenke in
     die Stab-Modellierung ein (Folgearbeit).
-  - **Lastfall** (`lastfall`, Folgearbeit): konzeptuelle
+    - **Lastfall** (`lastfall`, Folgearbeit): konzeptuelle
     Einwirkung. Statisches System trägt eine ausgewählte
     Lastfall-Menge L ⊆ T.L.
-  - **FE-Modell** (`fe_modell`, Korpus-Begriff dauerhaft ohne
+    - **FE-Modell** (`fe_modell`, Korpus-Begriff dauerhaft ohne
     eigenen Eintrag, HG §6 (D)): numerische Diskretisierung
     des statischen Systems. Statisches System ist analytisch
     und kontinuierlich; FE-Modell ist diskret und numerisch.
-  - **Knoten** (`knoten`, Folgearbeit) und **Stab** (`stab`,
+    - **Knoten** (`knoten`, Folgearbeit) und **Stab** (`stab`,
     Folgearbeit): partitive Bestandteile des statischen
     Systems mit eigenen Folge-Glossareinträgen, sobald die
     sealed-Klasse `Element` (statisches-System-intern, nicht

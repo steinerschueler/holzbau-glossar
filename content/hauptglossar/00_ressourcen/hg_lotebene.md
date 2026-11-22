@@ -137,7 +137,7 @@ Sei
 
 **Voraussetzung (nicht-vertikale Bauteilachse):**
 
-```
+```text
 | ⟨ d_hat_B, e_hat_z^welt ⟩ |  ≤  1 − ε_K.                                (V)
 ```
 
@@ -148,7 +148,7 @@ welt-vertikaler Bauteilachse.
 Dann gilt **`E ist Lotebene von B`** genau dann, wenn beide
 Bedingungen erfüllt sind:
 
-```
+```text
 (L1)  E ist Senkel:        | ⟨ n_hat, e_hat_z^welt ⟩ |  ≤  ε_K.
 (L2)  A_B ⊂ E:             dist(p_a, E)  ≤  ε_L  ∧  dist(p_e, E)  ≤  ε_L.
 ```
@@ -160,20 +160,20 @@ Punkt-Ebenen-Abstand (siehe `ebene`).
 Voraussetzung (V) ist die **Lotebene** Π_⊥(B) eindeutig festgelegt
 durch
 
-```
+```text
 Π_⊥(B):=  { O_B  +  s · e_hat_z^welt  +  t · d_hat_B  |  s, t ∈ ℝ }    (1)
 ```
 
 mit Stützpunkt O_B ∈ A_B und aufspannenden Richtungen e_hat_z^welt
 und d_hat_B. Äquivalente Hesse-Repräsentation: Normaleneinheitsvektor
 
-```
+```text
 n_hat_Π:=  (e_hat_z^welt × d_hat_B) / ‖e_hat_z^welt × d_hat_B‖                    (2)
 ```
 
 und Stützabstand d_Π:= ⟨n_hat_Π, O_B⟩, also
 
-```
+```text
 Π_⊥(B)  =  { q ∈ ℝ³ |  ⟨n_hat_Π, q⟩  =  d_Π }.                        (3)
 ```
 
@@ -312,7 +312,7 @@ Die drei Lot-bezogenen Ebenen-Klassen des Glossars stehen in
 folgender struktureller Beziehung:
 
 | Begriff | Bedingung an die Ebene |
-|---|---|
+| --- | --- |
 | `senkel` | Normalenvektor rechtwinklig zur Welt-Lotachse: \|⟨n_hat, e_hat_z^welt⟩\| ≤ ε_K |
 | `bleischnitt` | Normalenvektor parallel zur Welt-Lotachse: \|⟨n_hat, e_hat_z^welt⟩\| ≥ 1 − ε_K |
 | `lotebene` eines Bauteils B | ist Senkel **und** enthält die Bauteilachse A_B |
@@ -364,41 +364,41 @@ Stabbauteile mit deutlich geneigter Achse (Sparren) gedacht.
   Sparren-Aufrissebene) sind keine eigenen Begriffe, sondern
   Verwendungen.
 - **Bestandteile**:
-  - **Trägerebene** (geerbt von `senkel` und letztlich `ebene`):
+    - **Trägerebene** (geerbt von `senkel` und letztlich `ebene`):
     die Punktmenge im Welt-Koordinatensystem.
-  - **Bauteilachsen-Inzidenz** (zusätzlich gegenüber `senkel`):
+    - **Bauteilachsen-Inzidenz** (zusätzlich gegenüber `senkel`):
     die enthaltene Bauteilachse A_B als Identifikations-Anker.
 - **Verwendung**:
-  - **Kerv-Geometrie** in `hg_kerve.md`: Π_⊥(B) als Bezugsebene
+    - **Kerv-Geometrie** in `hg_kerve.md`: Π_⊥(B) als Bezugsebene
     für die Kerv-Eckpunkte und die welt-aligned Hilfsrichtungen
     e_hat_h, e_hat_v.
-  - **Werkplan-Aufriss** eines Sparrens (Folgearbeit).
-  - **Falllinien-Konstruktion** an Dachflächen (Folgearbeit).
+    - **Werkplan-Aufriss** eines Sparrens (Folgearbeit).
+    - **Falllinien-Konstruktion** an Dachflächen (Folgearbeit).
 - **Abgrenzung**:
-  - **Senkel** (`senkel`): Oberbegriff. Jede Lotebene ist ein
+    - **Senkel** (`senkel`): Oberbegriff. Jede Lotebene ist ein
     Senkel, aber nicht jeder Senkel ist eine Lotebene — der
     Senkel-Begriff trägt keine Achsen-Inzidenz-Bedingung.
-  - **Bleischnitt** (`bleischnitt`): geometrisch komplementäre
+    - **Bleischnitt** (`bleischnitt`): geometrisch komplementäre
     Lot-Lage-Klasse (Ebene rechtwinklig zur Welt-Lotachse).
     Eine Lotebene ist unter Voraussetzung (V) niemals ein
     Bleischnitt.
-  - **Ebene** (`ebene`): allgemeines geometrisches Primitiv
+    - **Ebene** (`ebene`): allgemeines geometrisches Primitiv
     ohne Lot- oder Achsen-Bezug. Lotebene ist eine
     Spezialisierung mit zwei Lage-Bedingungen.
-  - **Bauteilachse** (`bauteilachse`): die Trägerachse der
+    - **Bauteilachse** (`bauteilachse`): die Trägerachse der
     Inzidenz-Bedingung. Die Bauteilachse ist eine eindimensionale
     Punktmenge in ℝ³, die Lotebene eine zweidimensionale; die
     Lotebene enthält die Bauteilachse als Untermenge.
-  - **Bezugsebene** (`bezugsebene`): tool-eigene Höhenreferenz
+    - **Bezugsebene** (`bezugsebene`): tool-eigene Höhenreferenz
     mit zusätzlicher Bezugsrolle. Eine Bezugsebene im Standardfall
     ist ein Bleischnitt (horizontal), eine Lotebene ist es nicht;
     die beiden Begriffe sind orthogonale Spezialisierungen.
-  - **Dachfläche** (`dachflaeche`): geneigte Berandungsfläche.
+    - **Dachfläche** (`dachflaeche`): geneigte Berandungsfläche.
     Eine Dachfläche ist im Regelfall weder Senkel noch
     Lotebene; nur im Grenzfall Dachneigung = 90° wäre sie ein
     Senkel (aber im allgemeinen keine Lotebene eines bestimmten
     Sparrens).
-  - **Welt-Koordinatensystem** (`weltkoordinatensystem`): legt
+    - **Welt-Koordinatensystem** (`weltkoordinatensystem`): legt
     die Welt-Lotachse e_hat_z^welt fest, gegen die die Senkel-
     Bedingung (L1) formuliert ist. Ohne Welt-Koordinatensystem
     ist die Lotebene nicht definiert.
@@ -441,10 +441,10 @@ Stabbauteile mit deutlich geneigter Achse (Sparren) gedacht.
 
 **Korpus (nicht autoritativ, intern):**
 
-- `hauptglossar/hg_kerve.md` (L287–L288, L357 ff.) — bestehende
+- `glossary/hg_kerve.md` (L287–L288, L357 ff.) — bestehende
   App-interne Verwendung der Lotebene als „welt-vertikale Ebene,
   die die Bauteilachse enthält"; dieser Eintrag verankert den
   bestehenden Wortgebrauch normativ.
-- `hauptglossar/hg_senkel.md`, `hauptglossar/hg_bleischnitt.md` —
+- `glossary/hg_senkel.md`, `glossary/hg_bleischnitt.md` —
   Geschwister-Begriffe zum Lot-Lage-Schema; Lotebene als
   Spezialisierung des Senkels.

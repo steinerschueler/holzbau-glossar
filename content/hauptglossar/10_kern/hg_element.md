@@ -91,7 +91,7 @@ Sei
 
 Dann ist ein **Element** das Tupel
 
-```
+```text
 E:= (uuid, geometrie, lokale_platzierung, werkstoff,
       positionsnummer?, produktkennzeichnung?, bezeichnung?)
 ```
@@ -120,7 +120,7 @@ Das Element ist **abstrakt**: Element selbst ist nicht
 instanziierbar, sondern bezeichnet die Vereinigung der vier
 konkreten Subklassen-Mengen
 
-```
+```text
 𝓔:= 𝓑 ⊎ 𝓥𝓜 ⊎ 𝓥𝓑 ⊎ 𝓥𝓢
 ```
 
@@ -135,7 +135,7 @@ mit
 Die geometrische Punktmenge eines Elements im
 Weltkoordinatensystem ist
 
-```
+```text
 G_W(E):= { lokale_platzierung(p) | p ∈ G_lokal(geometrie) } ⊂ ℝ³.
 ```
 
@@ -212,11 +212,11 @@ andere Hierarchie-Ebene.
 drei verschiedene Identifikatoren mit unterschiedlichen Zwecken
 und Semantiken:
 
-| Spur                  | Zweck                              | Mutabilität | Eindeutigkeit            | Foreign-Key-Ziel |
-|-----------------------|------------------------------------|-------------|--------------------------|------------------|
-| `uuid`                | technische Identität               | unveränderlich | global (RFC 9562)     | **immer**        |
-| `positionsnummer`     | Werkplan-/Baustellenkommunikation  | mutable     | (projekt, kategorie)     | **nie**          |
-| `produktkennzeichnung`| Charge/Lieferung (CE, DIN 4074)    | von Charge ererbt | je Norm festgelegt | **nie**          |
+| Spur | Zweck | Mutabilität | Eindeutigkeit | Foreign-Key-Ziel |
+| --- | --- | --- | --- | --- |
+| `uuid` | technische Identität | unveränderlich | global (RFC 9562) | **immer** |
+| `positionsnummer` | Werkplan-/Baustellenkommunikation | mutable | (projekt, kategorie) | **nie** |
+| `produktkennzeichnung` | Charge/Lieferung (CE, DIN 4074) | von Charge ererbt | je Norm festgelegt | **nie** |
 
 Foreign Keys aus Verbindungen, Aggregaten, BCF-Issues u. ä.
 referenzieren ausschließlich die UUID. Renumbering der
@@ -227,52 +227,52 @@ Positionsnummer oder Materialwechsel bricht keine Beziehung.
 - **Oberbegriff**: keiner. Element ist die Wurzel der App-Ontologie
   für verbaute Einzelobjekte.
 - **Subklassen** (vier Geschwister unter dieser Basisklasse):
-  - **Bauteil** (`bauteil`): tragend/raumbildend, Querschnitts-
+    - **Bauteil** (`bauteil`): tragend/raumbildend, Querschnitts-
     bemessung. Bestehender Eintrag; Umstellung auf
     `oberbegriff: element` erfolgt im Update-Task #16.
-  - **Verbindungsmittel** (`verbindungsmittel`): Nagel, Schraube,
+    - **Verbindungsmittel** (`verbindungsmittel`): Nagel, Schraube,
     Bolzen, Stabdübel, Klammer, Klebung. **Eintrag angelegt.**
-  - **Verbinder** (`verbinder`, Synonym `verbindungselement`):
+    - **Verbinder** (`verbinder`, Synonym `verbindungselement`):
     Balkenschuh, Winkel, Knotenblech, Schlitzblech, Sherpa-
     Verbinder, Holzlasche. **Eintrag angelegt.**
-  - **Verstärkungselement** (`verstaerkungselement`):
+    - **Verstärkungselement** (`verstaerkungselement`):
     Vollgewindeschraube als Querzug-/Querdruck-/Schubverstärkung
     nach EC5:2022 / ETA. **Eintrag angelegt.**
 - **Bestandteile (partitiv) eines Elements**:
-  - **UUID** (`uuid`): technische Identität, Pflicht.
-  - **Geometrie** (`geometrie`, eigener Eintrag folgt):
+    - **UUID** (`uuid`): technische Identität, Pflicht.
+    - **Geometrie** (`geometrie`, eigener Eintrag folgt):
     geometrische Repräsentation, Pflicht.
-  - **Lokale Platzierung** (SE(3)-Transformation gegenüber W):
+    - **Lokale Platzierung** (SE(3)-Transformation gegenüber W):
     Pflicht. Eigener Eintrag `lokales_koordinatensystem` /
     `lage` folgt.
-  - **Werkstoff** (`werkstoff`): Materialklasse, Pflicht.
+    - **Werkstoff** (`werkstoff`): Materialklasse, Pflicht.
     Abstrakte Wurzel mit vier konkreten Subklassen
     (`axiales_holz`, `mehrlagenholz`,
     `gerichteter_plattenwerkstoff`, `isotroper_plattenwerkstoff`)
     nach Faserrichtungs-Modus.
-  - **Positionsnummer** (`positionsnummer`): humanlesbarer
+    - **Positionsnummer** (`positionsnummer`): humanlesbarer
     Geschäftsschlüssel, optional.
-  - **Produktkennzeichnung** (`produktkennzeichnung`):
+    - **Produktkennzeichnung** (`produktkennzeichnung`):
     normativ kodifizierte Charge-Identifikation, optional.
-  - **Bezeichnung**: freier Anzeigename, optional.
+    - **Bezeichnung**: freier Anzeigename, optional.
 - **Abgrenzung**:
-  - **Verbindung** (`verbindung`, eigener Eintrag folgt):
-    Aggregat aus Bauteilen + Verbindungsmitteln (+ Verbindern
-    + Verstärkungen) an einem Knotenpunkt. **Kein Element**,
+    - **Verbindung** (`verbindung`, eigener Eintrag folgt):
+    Aggregat aus Bauteilen + Verbindungsmitteln (+ Verbindern +
+    Verstärkungen) an einem Knotenpunkt. **Kein Element**,
     sondern Container.
-  - **Tragwerk** (`tragwerk`): Aggregat lastabtragender
+    - **Tragwerk** (`tragwerk`): Aggregat lastabtragender
     Bauteile mit Verbindungen, Auflagern, Lastfällen.
     **Kein Element**.
-  - **Dach** (`dach`), **Dachaufbau** (`dachaufbau`): Aggregate
+    - **Dach** (`dach`), **Dachaufbau** (`dachaufbau`): Aggregate
     auf Bauwerksebene. **Keine Elemente**.
-  - **Bauteilaggregat** (`bauteil_aggregat`, eigener Eintrag
+    - **Bauteilaggregat** (`bauteil_aggregat`, eigener Eintrag
     folgt): allgemeiner Aggregat-Oberbegriff.
-  - **Werkstoff** (`werkstoff`): Stoffeigenschaft, **kein Element**.
+    - **Werkstoff** (`werkstoff`): Stoffeigenschaft, **kein Element**.
     Abstrakte Werkstoff-Hierarchie mit vier konkreten Subklassen
     nach Faserrichtungs-Modus.
-  - **Geometrie** (`geometrie`, eigener Eintrag folgt):
+    - **Geometrie** (`geometrie`, eigener Eintrag folgt):
     Repräsentationsbaustein, **kein Element**.
-  - **Lokales Koordinatensystem**
+    - **Lokales Koordinatensystem**
     (`lokales_koordinatensystem`, eigener Eintrag folgt):
     Bezugssystem, **kein Element**.
 

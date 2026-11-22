@@ -106,7 +106,7 @@ Sei
   [intern]). Im
   Bauteil-Lokal-System gilt p_K^lokal = (x₀ + t · tan θ, 0, t) mit
   der Einbau-Neigung θ. In W ist
-  ```
+  ```text
   p_K:= T_{L_B → W}(p_K^lokal)                                    (1)
   ```
   mit T_{L_B → W} der Bauteil-Lokal-zu-Welt-Transformation (siehe
@@ -122,13 +122,13 @@ des Kerveckpunkts auf die Bauteilachse A(B) (die **axiale
 Kervposition**; p_K selbst liegt um die Kervtiefe t neben der
 Achse). Dann ist der **Sparrenüberstand** die Strecke
 
-```
+```text
 S_üb(B, K):= [p_a, p_K^A] ⊂ A(B),                                 (2)
 ```
 
 mit Länge (axiale Distanz, Projektion auf d_hat)
 
-```
+```text
 ℓ_üb(B, K):= ⟨p_K − p_a, d_hat⟩   (in mm).                        (3)
 ```
 
@@ -136,7 +136,7 @@ mit Länge (axiale Distanz, Projektion auf d_hat)
 **vorhanden** (positiv), wenn der Sparrenfuß p_a tatsächlich
 unterhalb des Kerveckpunkts p_K liegt, also
 
-```
+```text
 ⟨e_hat_z, p_a⟩ < ⟨e_hat_z, p_K⟩ − ε_L,                                     (4)
 ```
 
@@ -150,7 +150,7 @@ E_bez(T) per Konvention die horizontale Ebene durch p_K (siehe
 Punkt p_K der Fußpfettenkerve"); ihre abgeleitete skalare z-Höhe
 ist
 
-```
+```text
 z₀(T_Sparren):= ⟨e_hat_z, p_K⟩.                                       (5)
 ```
 
@@ -262,7 +262,7 @@ Erläuterung Sparrenlänge), ℓ_üb der Sparrenüberstand und ℓ_K-S
 die Strecke von der axialen Kervposition p_K^A bis zum
 Sparren-First-Endpunkt p_e. Es gilt die einfache Zerlegung:
 
-```
+```text
 L_S = ℓ_üb + ℓ_K-S.                                                (6)
 ```
 
@@ -279,11 +279,11 @@ Mittelpfette und Fußpfette giebelseitig über die Giebelwand
 hinaus — das ist der **Pfettenüberstand**. Beide Begriffe
 beschreiben unterschiedliche geometrische Auskragungen:
 
-| Begriff               | Bauteil    | Kantenrichtung | Über welche Wand    |
-|-----------------------|------------|----------------|---------------------|
-| Sparrenüberstand      | Sparren    | traufseitig    | Trauf-Außenwand    |
-| Pfettenüberstand      | Pfette     | giebelseitig   | Giebel-Außenwand   |
-| Flugsparren-Überstand | Flugsparren| giebelseitig   | Giebel-Außenwand   |
+| Begriff | Bauteil | Kantenrichtung | Über welche Wand |
+| --- | --- | --- | --- |
+| Sparrenüberstand | Sparren | traufseitig | Trauf-Außenwand |
+| Pfettenüberstand | Pfette | giebelseitig | Giebel-Außenwand |
+| Flugsparren-Überstand | Flugsparren | giebelseitig | Giebel-Außenwand |
 
 `pfettenueberstand` und `flugsparren_ueberstand` sind eigene
 Glossarbegriffe (Folgearbeit, Trigger: erstes Tool mit Pfetten-
@@ -298,60 +298,60 @@ bzw. Flugsparren-Modellierung mit Giebelüberstand).
   vorgesehen; konkrete Überstandslängen sind Tool-Parameter, keine
   Begriffe.
 - **Bestandteile (partitiv)**:
-  - **Axiale Kervposition** p_K^A (Strecken-Anfangspunkt, oben):
+    - **Axiale Kervposition** p_K^A (Strecken-Anfangspunkt, oben):
     Lot-Projektion des Kerveckpunkts p_K der Fußpfettenkerve auf die
     Bauteilachse (der Kerveckpunkt selbst liegt um die Kervtiefe t
     neben der Achse, siehe (1)–(3)).
-  - **Sparrenfußpunkt** p_a (Strecken-Endpunkt, unten):
+    - **Sparrenfußpunkt** p_a (Strecken-Endpunkt, unten):
     geerbt aus dem Sparren als Anfangspunkt der Bauteilachse
     (siehe `hg_sparren.md`, Vorzeichenkonvention).
-  - **Länge** ℓ_üb: skalare Strecken-Länge in mm.
+    - **Länge** ℓ_üb: skalare Strecken-Länge in mm.
 - **Verwendung**:
-  - **Sparren-Tool**: Eingabeparameter und visualisiertes Element.
-  - **Konstruktiver Holzschutz** (DIN 68800-2): Bemessung des
+    - **Sparren-Tool**: Eingabeparameter und visualisiertes Element.
+    - **Konstruktiver Holzschutz** (DIN 68800-2): Bemessung des
     Mindest-Überstands.
-  - **Werkplan-Bemaßung**: explizite Längenangabe als Teil der
+    - **Werkplan-Bemaßung**: explizite Längenangabe als Teil der
     Sparrenlängen-Zerlegung (siehe Gleichung (6)).
-  - **Trauflösung**: bestimmt zusammen mit der Stirnseiten-
+    - **Trauflösung**: bestimmt zusammen mit der Stirnseiten-
     Anschnittart (Folgearbeit `anschnitt`) das architektonische
     Trauf-Erscheinungsbild.
 - **Abgrenzung**:
-  - **Sparren** (`sparren`): Bauteil. Der Sparrenüberstand ist
+    - **Sparren** (`sparren`): Bauteil. Der Sparrenüberstand ist
     nicht der Sparren, sondern ein abgegrenztes geometrisches
     Teilstück der Sparrenbauteilachse. Auf den begrifflichen
     Konflikt um die Lesart von „Sparrenkopf" wird im
     quellenkonflikt-Block hingewiesen.
-  - **Fußpfette** (`fusspfette`): Bauteil, auf dem der Sparren
+    - **Fußpfette** (`fusspfette`): Bauteil, auf dem der Sparren
     aufliegt. Die Fußpfetten-Kerve auf dem Sparren bildet den
     geometrischen Anker (Kerveckpunkt p_K) für die
     Definition des Sparrenüberstands; die Fußpfette selbst ist
     aber kein Bestandteil des Überstands.
-  - **Kerve** (`kerve`): Bearbeitung am Sparren. Die Kerve
+    - **Kerve** (`kerve`): Bearbeitung am Sparren. Die Kerve
     bestimmt den Kerveckpunkt p_K und damit den oberen
     Endpunkt der Sparrenüberstands-Strecke; die Kerve selbst
     gehört aber nicht zum Überstand.
-  - **Traufe** (`traufe`): horizontale Dachkante an der unteren
+    - **Traufe** (`traufe`): horizontale Dachkante an der unteren
     Berandung der Dachfläche. Die Sparrenüberstand liegt entlang
     der Sparrenachse (geneigt), nicht entlang der Traufe
     (horizontal); die Sparrenfuß-Endpunkte aller parallel
     angeordneten Sparrenüberstände bilden zusammen die
     **Sparren-Untersicht-Kante** unterhalb der Traufe (eigene
     Folgearbeit-Bezeichnung).
-  - **Dachfläche** (`dachflaeche`): zweidimensionale ebene
+    - **Dachfläche** (`dachflaeche`): zweidimensionale ebene
     Berandungsfläche. Der Sparrenüberstand ist eindimensional
     (Strecke) und liegt zwar in der Trägerebene der zugehörigen
     Dachfläche, ist aber nicht selbst Dachfläche.
-  - **Ortgang** (`ortgang`): seitliche, giebelseitige Dachkante.
+    - **Ortgang** (`ortgang`): seitliche, giebelseitige Dachkante.
     Sparrenüberstand ist traufseitig, Ortgang ist giebelseitig;
     die beiden Begriffe sind disjunkt.
-  - **Pfettenüberstand** (`pfettenueberstand`, Folgearbeit):
+    - **Pfettenüberstand** (`pfettenueberstand`, Folgearbeit):
     giebelseitiges Hinausragen der Pfette über die Giebelwand;
     bezieht sich auf ein **anderes Bauteil** (Pfette, nicht
     Sparren) und ragt in eine **andere Richtung** (giebelseitig,
     nicht traufseitig). Sparrenüberstand und Pfettenüberstand
     sind disjunkte Begriffe (siehe quellenkonflikt-Block,
     Konflikt 2).
-  - **Bezugsebene** (`bezugsebene`): tool-eigene Höhenreferenz.
+    - **Bezugsebene** (`bezugsebene`): tool-eigene Höhenreferenz.
     Der Sparrenüberstand liegt im Sparren-Tool im Bereich
     z < z₀(T_Sparren) (siehe Erläuterung); diese Beziehung ist
     abgeleitet, nicht definitorisch.

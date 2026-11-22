@@ -9,7 +9,7 @@ status: entwurf
 
 # Strecke (Subglossar)
 
-Brücke vom normativen Hauptglossar (`hauptglossar/00_ressourcen/hg_strecke.md`) zu
+Brücke vom normativen Hauptglossar (`glossary/00_ressourcen/hg_strecke.md`) zu
 den stufenweisen Theorie-Inhalten. Hier liegt die didaktische
 Aufbereitung: das auffallend selten gebrauchte nackte Wort „Strecke"
 in seiner Verankerung über Längen-Komposita, die Werkplan-Bemaßung
@@ -204,7 +204,7 @@ folgende Tabelle sammelt die im Werkplan- und Bemessungs-Korpus
 geläufigen Komposita:
 
 | Kompositum | Was die Strecke verbindet | In welchem Plan oder welcher Berechnung |
-|---|---|---|
+| --- | --- | --- |
 | **Sparrenlänge** | Sparrenfußpunkt am Vordach mit Firstpunkt am Sparrenkopf | Werkplan (Bemaßung); Materiallisten-Position |
 | **Stablänge** | Stab-Anfang mit Stab-Ende eines Tragwerks-Stabs | Statik-Modell; Werkplan bei Stabwerken |
 | **Pfettenlänge** | Pfetten-Anfang mit Pfetten-Ende längs der Bauachse | Werkplan; Materialliste der Pfetten |
@@ -234,7 +234,7 @@ Stelle ist die Trennung zwischen **Markieren** und **Messen**
 didaktisch entscheidend.
 
 | Werkzeug oder Mittel | Was es mit der Strecke tut | Resultat |
-|---|---|---|
+| --- | --- | --- |
 | **Schlagschnur** | markiert eine gerade Strecke zwischen zwei vorher gesetzten Endpunkten am Holz oder am Bauplatz | sichtbare Kreide- oder Farb-Linie längs der Strecke |
 | **Reißnadel / Bleistift / Reißleiste** | markiert eine Anriss-Linie zwischen zwei Anrisspunkten am Holz | präzise gerissene Linie auf dem Werkstück |
 | **Schmiege** | führt das Werkzeug längs der Anrisslinie unter eingestelltem Winkel — z. B. an einer Walmkerve oder einem Versatz | schräg gerissene Linie unter eingestelltem Winkel |
@@ -307,20 +307,20 @@ Diese Subglossar-Datei stützt sich auf die folgenden Hauptglossar-
 Begriffe; bei Detailfragen ist dort die normative Definition zu
 finden:
 
-- `hauptglossar/00_ressourcen/hg_strecke.md` — das normative Hauptglossar zur
+- `glossary/00_ressourcen/hg_strecke.md` — das normative Hauptglossar zur
   Strecke, mit mathematischer Definition als abgeschlossene konvexe
   Hülle zweier Punkte, Wohldefiniertheit, Implementierungshinweis
   und Quellenliste.
-- `hauptglossar/00_ressourcen/hg_punkt.md` — Endpunkte einer Strecke; die Strecke
+- `glossary/00_ressourcen/hg_punkt.md` — Endpunkte einer Strecke; die Strecke
   hängt fundamental am Punkt.
-- `hauptglossar/00_ressourcen/hg_vektor.md` — die ortsfreie Schwester-Figur:
+- `glossary/00_ressourcen/hg_vektor.md` — die ortsfreie Schwester-Figur:
   Richtung und Länge ohne Lage. Eine Strecke ist die ortsgebundene
   Realisierung eines Vektors zwischen zwei festen Punkten.
-- `hauptglossar/00_ressourcen/hg_gerade.md`, `hauptglossar/00_ressourcen/hg_halbgerade.md` — die
+- `glossary/00_ressourcen/hg_gerade.md`, `glossary/00_ressourcen/hg_halbgerade.md` — die
   unbegrenzten Geschwister-Figuren.
-- `hauptglossar/00_ressourcen/hg_polygon.md` — Strecken als Polygon-Kanten
+- `glossary/00_ressourcen/hg_polygon.md` — Strecken als Polygon-Kanten
   zusammengesetzt.
-- `hauptglossar/00_ressourcen/hg_koordinatensystem.md` — das Bezugssystem, in dem
+- `glossary/00_ressourcen/hg_koordinatensystem.md` — das Bezugssystem, in dem
   die Endpunkte einer Strecke durch ihre Koordinaten dargestellt
   werden.
 

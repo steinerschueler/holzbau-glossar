@@ -64,7 +64,7 @@ Sei
 
 Die zu der Stützpunktfolge gehörenden **Teilstrecken** sind
 
-```
+```text
 s_i:= [p_{i−1}, p_i]    für i = 1, …, n.
 ```
 
@@ -84,7 +84,7 @@ Streckenzug von einer beliebigen Streckenmenge unterscheidet.
 Der Streckenzug selbst ist die Vereinigung seiner Teilstrecken als
 Punktmenge in ℝ³:
 
-```
+```text
 |L|:= ⋃_{i=1}^{n} s_i ⊂ ℝ³,
 ```
 
@@ -94,7 +94,7 @@ strukturelle Information. In implementierungsnaher Form ist L = (p_0,
 
 **Klassifikation nach Schließung**:
 
-```
+```text
 L heißt geschlossen:⇔  ‖p_n − p_0‖ ≤ ε_L
 L heißt offen:⇔  L ist nicht geschlossen.
 ```
@@ -104,7 +104,7 @@ Beide Varianten sind gültig.
 **Klassifikation nach Selbstschnitt** (optional, je nach
 verwendendem Kontext):
 
-```
+```text
 L heißt einfach:⇔  für alle i, j ∈ {1, …, n} mit i ≠ j gilt
                        s_i ∩ s_j = ∅, außer für benachbarte Indizes
                        j = i+1 (gemeinsamer Eckpunkt p_i) und im
@@ -198,32 +198,32 @@ verwendet; beide sind im Glossar Synonyme.
   Einheitsintervalls in ℝ³**, also eine spezielle stetige Kurve.
   Im Glossar primitiv geführt analog zu `strecke` und `polygon`.
 - **Teilbegriffe (Spezialisierungen / Rollen)**:
-  - **Strecke** (`strecke`): Streckenzug mit n = 1.
-  - **Polygonrand**: ebener, einfacher, geschlossener Streckenzug.
-  - **Polylinie/Polygonzug**: Synonyme.
-  - **Dachkante** (`dachkante`): Streckenzug in der Rolle einer
+    - **Strecke** (`strecke`): Streckenzug mit n = 1.
+    - **Polygonrand**: ebener, einfacher, geschlossener Streckenzug.
+    - **Polylinie/Polygonzug**: Synonyme.
+    - **Dachkante** (`dachkante`): Streckenzug in der Rolle einer
     Begrenzungs- oder Schnittlinie der Dachgeometrie.
 - **Bestandteile (partitiv)**:
-  - Stützpunkte p_0, …, p_n;
-  - Teilstrecken s_1, …, s_n;
-  - Anfangspunkt p_0 und Endpunkt p_n als ausgezeichnete Stützpunkte.
+    - Stützpunkte p_0, …, p_n;
+    - Teilstrecken s_1, …, s_n;
+    - Anfangspunkt p_0 und Endpunkt p_n als ausgezeichnete Stützpunkte.
 - **Abgrenzung**:
-  - **Strecke** (`strecke`): einzelne Strecke (n = 1). Jede Strecke
+    - **Strecke** (`strecke`): einzelne Strecke (n = 1). Jede Strecke
     ist ein (trivialer) Streckenzug, aber nicht jeder Streckenzug
     ist eine Strecke.
-  - **Polygon** (`polygon`): geschlossener, einfacher, ebener
+    - **Polygon** (`polygon`): geschlossener, einfacher, ebener
     Streckenzug zusammen mit dem von ihm berandeten Flächenstück.
     Ein Polygon ist also „mehr" als sein Polygonrand-Streckenzug,
     weil es auch das Innere umfasst; und es fordert zusätzlich
     Ebenheit und Einfachheit.
-  - **Gerade** (`gerade`): unbegrenzte Punktmenge, kein
+    - **Gerade** (`gerade`): unbegrenzte Punktmenge, kein
     Streckenzug.
-  - **Kurve / Pfad**: allgemeiner Begriff einer stetigen Abbildung
+    - **Kurve / Pfad**: allgemeiner Begriff einer stetigen Abbildung
     [0, 1] → ℝ³; ein Streckenzug ist die stückweise lineare,
     endliche Spezialisierung.
-  - **Polylinie** vs. **Streckenzug**: identisch; beides sind
+    - **Polylinie** vs. **Streckenzug**: identisch; beides sind
     Bezeichnungen für denselben Begriff.
-  - **Selbstüberschneidende Streckenzüge**: zulässig in der
+    - **Selbstüberschneidende Streckenzüge**: zulässig in der
     allgemeinen Definition; werden erst dort ausgeschlossen, wo
     Einfachheit verlangt wird (z. B. `polygon`).
 

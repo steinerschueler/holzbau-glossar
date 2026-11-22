@@ -81,7 +81,7 @@ Dann heißt P eine **Mittelpfette** genau dann, wenn die folgenden
 Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
 
 1. **Parallelität zur Firstrichtung**: d_hat_P ist kollinear mit d_hat_F,
-   ```
+   ```text
    ‖d_hat_P × d_hat_F‖ ≤ ε_K.
    ```
    Sinus-Test gegen Kollinearität; nach `_KONVENTIONEN.md`
@@ -92,14 +92,14 @@ Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
    Bauteilachse liegt in der Trägerebene E der zugeordneten
    Dachfläche oder unmittelbar darunter (Höhenversatz ≤
    Pfettenhöhe). Formal:
-   ```
+   ```text
    max(|⟨n_a, p_a − p₀⟩|, |⟨n_a, p_e − p₀⟩|) ≤ h_Pfette + ε_L,
    ```
    wobei p₀ ∈ E ein Stützpunkt und h_Pfette die Pfettenhöhe ist.
 
 3. **Zwischenlage**: Die mittlere Pfettenhöhe liegt strikt
    zwischen Fußpfetten- und Firstpfettenniveau,
-   ```
+   ```text
    z_Fuß + ε_L < z_P < z_First − ε_L.
    ```
 
@@ -206,23 +206,23 @@ Typische Verbindung zwischen Sparren und Mittelpfette:
 - **Bestandteile (partitiv)**: geerbt von `pfette`
   (Bauteilachse, Querschnitt, Werkstoff, Faserrichtung).
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Sparren** (`sparren`): liegt in einem Zwischenpunkt seiner
+    - **Sparren** (`sparren`): liegt in einem Zwischenpunkt seiner
     Bauteilachse auf der Mittelpfette auf; wird so in zwei
     statisch entkoppelte Spannweiten-Abschnitte unterteilt.
-  - **Firstpfette** (`firstpfette`) und **Fußpfette**
+    - **Firstpfette** (`firstpfette`) und **Fußpfette**
     (`fusspfette`): die zwei „Extrempfetten", zwischen denen die
     Mittelpfette liegt.
-  - **Stuhlsäule** (`stuhlsaeule`, eigener Eintrag folgt):
+    - **Stuhlsäule** (`stuhlsaeule`, eigener Eintrag folgt):
     Stütze, die die Mittelpfette an Zwischenpunkten trägt
     (typisch im liegenden / stehenden Stuhl).
-  - **Dachfläche** (`dachflaeche`): zugeordnete Fläche; die
+    - **Dachfläche** (`dachflaeche`): zugeordnete Fläche; die
     Mittelpfette liegt in oder unmittelbar unter der Trägerebene.
 - **Abgrenzung**:
-  - **Firstpfette** (`firstpfette`): am Firstniveau (oben).
-  - **Fußpfette** (`fusspfette`): am Sparrenfuß (unten).
-  - **Sparren** (`sparren`): geneigtes Bauteil, das **auf** der
+    - **Firstpfette** (`firstpfette`): am Firstniveau (oben).
+    - **Fußpfette** (`fusspfette`): am Sparrenfuß (unten).
+    - **Sparren** (`sparren`): geneigtes Bauteil, das **auf** der
     Mittelpfette aufliegt; nicht selbst Pfette.
-  - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken
+    - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken
     **zwischen** einem Sparrenpaar; verbindet zwei Sparren
     statt mehrere Sparren zu tragen. Optisch im Schnitt einer
     Dachseite ähnlich gelegen, aber konstruktiv und statisch

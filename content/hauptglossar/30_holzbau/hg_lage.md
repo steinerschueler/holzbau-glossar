@@ -83,7 +83,7 @@ Sei
 
 Dann ist eine **Lage** das Tupel
 
-```
+```text
 ℓ:= (dicke, faserrichtung, festigkeitsklasse, position) ∈
      ℝ⁺ × S² × 𝓕𝓚_AH × ℕ₀
 ```
@@ -99,7 +99,7 @@ mit
 **Konsistenzbedingungen** mit der umgebenden Lagenstruktur
 (siehe `lagenstruktur`, formale Aussage dort):
 
-```
+```text
 0 ≤ position ≤ |L| − 1
 ∠(faserrichtung, h_hat) ∈ {0, π/2}     (im Standardlayout)
 oder Lagenstruktur ist als „abweichender Lagenaufbau" markiert,
@@ -115,7 +115,7 @@ Reihenfolge entlang der Plattendicken-Achse e_hat_d gestapelt sind und
 das Bauteil seinen Bezugspunkt p₀ in der Bauteilmitte hat, ist die
 Mittenebene der Lage ℓ_i auf Höhe
 
-```
+```text
 z_i:= −d/2 + Σ_{j=0}^{i−1} ℓ_j.dicke + ℓ_i.dicke / 2
 ```
 
@@ -162,12 +162,12 @@ Brettsperrholz hat 3, 5 oder 7 Lagen mit ungerader Anzahl
 hat den Lagenaufbau:
 
 | position | dicke | faserrichtung | festigkeitsklasse |
-|----------|-------|---------------|-------------------|
-| 0        | 30 mm | 0° (= h_hat)      | C24               |
-| 1        | 30 mm | 90°           | C24               |
-| 2        | 30 mm | 0° (= h_hat)      | C24               |
-| 3        | 30 mm | 90°           | C24               |
-| 4        | 30 mm | 0° (= h_hat)      | C24               |
+| --- | --- | --- | --- |
+| 0 | 30 mm | 0° (= h_hat) | C24 |
+| 1 | 30 mm | 90° | C24 |
+| 2 | 30 mm | 0° (= h_hat) | C24 |
+| 3 | 30 mm | 90° | C24 |
+| 4 | 30 mm | 0° (= h_hat) | C24 |
 
 Die Decklagen (position 0 und 4) haben dieselbe Faserrichtung;
 die Symmetrie ist in `lagenstruktur` als Klassen-Invariante
@@ -210,30 +210,30 @@ geführt, weil:
 
 - **Oberbegriff**: keiner. Lage ist ein eigenständiges Aggregat.
 - **Bestandteile**:
-  - **Lagendicke** (`dicke`): Länge in mm, > 0.
-  - **Lagenfaserrichtung** (`faserrichtung`): Einheitsvektor.
-  - **Lagenfestigkeitsklasse** (`festigkeitsklasse`):
+    - **Lagendicke** (`dicke`): Länge in mm, > 0.
+    - **Lagenfaserrichtung** (`faserrichtung`): Einheitsvektor.
+    - **Lagenfestigkeitsklasse** (`festigkeitsklasse`):
     `AxialesHolzFestigkeitsklasse` (typ. C24).
-  - **Lagenposition** (`position`): 0-basierte Lagennummer von
+    - **Lagenposition** (`position`): 0-basierte Lagennummer von
     außen.
 - **Verwendung**:
-  - **Lagenstruktur** (`lagenstruktur`): geordnete Liste von
+    - **Lagenstruktur** (`lagenstruktur`): geordnete Liste von
     Lagen mit n ≥ 3.
-  - **Mehrlagenholz** (`mehrlagenholz`): trägt eine Lagenstruktur
+    - **Mehrlagenholz** (`mehrlagenholz`): trägt eine Lagenstruktur
     aus Lagen.
 - **Abgrenzung**:
-  - **`lagenstruktur`**: das **Aggregat aller Lagen** eines
+    - **`lagenstruktur`**: das **Aggregat aller Lagen** eines
     Mehrlagenholzes; eine einzelne Lage ist Bestandteil der
     Lagenstruktur, nicht synonym dazu.
-  - **`mehrlagenholz`**: der Werkstoff selbst; eine Lage ist
+    - **`mehrlagenholz`**: der Werkstoff selbst; eine Lage ist
     Werkstoff-internes Aggregat, kein eigenständiger Werkstoff.
-  - **`faserrichtung`**: ist Einheitsvektor in der Rolle „Material-
+    - **`faserrichtung`**: ist Einheitsvektor in der Rolle „Material-
     hauptachse parallel zum Faserverlauf"; eine Lage trägt eine
     Faserrichtung als Feld, ist aber nicht selbst eine
     Faserrichtung.
-  - **`festigkeitsklasse`**: ist Aufzählungswert; eine Lage trägt
+    - **`festigkeitsklasse`**: ist Aufzählungswert; eine Lage trägt
     eine Festigkeitsklasse als Feld.
-  - **„Brettlamelle"** (in BSH): bei BSH (`axiales_holz`) sind
+    - **„Brettlamelle"** (in BSH): bei BSH (`axiales_holz`) sind
     alle Lamellen parallel; sie werden nicht als Lagen geführt,
     weil keine STRUKTURIERTE Anisotropie vorliegt. Lage im Sinne
     dieses Glossars ist nur bei Modus STRUKTURIERT

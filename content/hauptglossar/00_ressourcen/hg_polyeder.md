@@ -100,7 +100,7 @@ Das Tupel P = (V, E, F, ι_F, ι_E) heißt **Polyeder** in B-Rep
 5. **Beschränktheit und Regularität**: Die durch ∂P berandete
    Punktmenge
 
-   ```
+   ```text
    |P|:= ∂P ∪ Inneres(∂P) ⊂ ℝ³
    ```
 
@@ -115,14 +115,14 @@ topologische Struktur.
 **Euler-Formel**: Für ein einfach zusammenhängendes Polyeder
 (Geschlecht g = 0, z. B. Quader, Sparren-Polyeder, Tetraeder) gilt
 
-```
+```text
 |V| − |E| + |F| = 2.
 ```
 
 Allgemein gilt für ein zusammenhängendes Polyeder vom Geschlecht
 g (Anzahl der „Henkel"):
 
-```
+```text
 |V| − |E| + |F| = 2 − 2g.
 ```
 
@@ -132,7 +132,7 @@ heißt **konvex**, wenn für alle x, y ∈ |P| die Verbindungsstrecke
 von Weyl-Minkowski** äquivalent als endlicher Schnitt
 geschlossener Halbräume schreiben:
 
-```
+```text
 |P| = ⋂_{i=1}^{k} H_bar_i,    H_bar_i = H_bar(p_i, n_i),
 ```
 
@@ -141,7 +141,7 @@ n_i ∈ ℝ³ \ {0} (Halbraum-Konvention nach `halbraum`). Diese
 **H-Repräsentation** ist für konvexe Polyeder gleichwertig zur
 **V-Repräsentation** als konvexe Hülle der Eckpunkte:
 
-```
+```text
 |P| = conv(V) = { Σ_{i=1}^{n} λ_i v_i | λ_i ≥ 0, Σ λ_i = 1 }.
 ```
 
@@ -149,7 +149,7 @@ n_i ∈ ℝ³ \ {0} (Halbraum-Konvention nach `halbraum`). Diese
 **Constructive Solid Geometry** als Boolesche Kombination
 einfacherer Polyeder (insbesondere Halbraum-Schnitte) gebildet:
 
-```
+```text
 |P| = (P_1 ∪ P_2 ∪ … ∪ P_r) \ (Q_1 ∪ … ∪ Q_s),
 ```
 
@@ -251,7 +251,7 @@ und **zwei rechteckige Pyramiden** an den Walmenden. Mit
 Firstlänge f, Traufbreite b, Traufflucht l und Dachhöhe h ergibt
 sich die kompakte Volumenformel
 
-```
+```text
 V = (1/6) · b · h · (2·l + f).
 ```
 
@@ -291,47 +291,47 @@ erzeugt (z. B. für effiziente Inzidenz- und Schnitt-Tests).
   Teilkörper von ℝ³ mit polygonal stückweise linearem Rand. Im
   Glossar als Primitiv geführt.
 - **Spezialisierungen / Rollen**:
-  - **Konvexes Polyeder** (`polyeder_konvex`, in Folgearbeit):
+    - **Konvexes Polyeder** (`polyeder_konvex`, in Folgearbeit):
     Polyeder mit der Konvexitätseigenschaft; H-Rep verfügbar.
-  - **Quader** (`quader`, in Folgearbeit): konvexes Polyeder mit
+    - **Quader** (`quader`, in Folgearbeit): konvexes Polyeder mit
     sechs rechteckigen, paarweise parallelen Seitenflächen.
-  - **Prisma** (`prisma`, in Folgearbeit): konvexes Polyeder, das
+    - **Prisma** (`prisma`, in Folgearbeit): konvexes Polyeder, das
     durch Translation eines Polygons entlang einer Achse entsteht.
-  - **Bauteilkörper** (`bauteilkoerper`, in Folgearbeit): Polyeder
+    - **Bauteilkörper** (`bauteilkoerper`, in Folgearbeit): Polyeder
     in der Rolle „Volumen eines konkreten Bauteils im
     Welt-Koordinatensystem".
-  - **Dachkörper** (`dachkoerper`, in Folgearbeit): Polyeder in
+    - **Dachkörper** (`dachkoerper`, in Folgearbeit): Polyeder in
     der Rolle „Hüllvolumen eines Daches" (Walmdach-Volumen,
     Satteldach-Volumen, allgemeines Dach-Hüllvolumen), typischerweise
     als CSG-Vereinigung konvexer Bausteine (Prismen, Pyramiden)
     konstruiert.
 - **Bestandteile (partitiv)**:
-  - **Eckpunkte** (V): die nulldimensionalen Bestandteile des Randes.
-  - **Kanten** (E): die eindimensionalen Bestandteile des Randes,
+    - **Eckpunkte** (V): die nulldimensionalen Bestandteile des Randes.
+    - **Kanten** (E): die eindimensionalen Bestandteile des Randes,
     jede eine Strecke zwischen zwei Eckpunkten.
-  - **Begrenzungsflächen** (F): die zweidimensionalen Bestandteile
+    - **Begrenzungsflächen** (F): die zweidimensionalen Bestandteile
     des Randes, jede ein Polygon (siehe `polygon`).
-  - **Inneres**: int(|P|), die offene Volumenmenge.
-  - **Rand**: ∂P = ⋃ F_l, eine geschlossene PL-2-Mannigfaltigkeit.
+    - **Inneres**: int(|P|), die offene Volumenmenge.
+    - **Rand**: ∂P = ⋃ F_l, eine geschlossene PL-2-Mannigfaltigkeit.
 - **Abgrenzung**:
-  - **Polygon** (`polygon`): zweidimensional; ein Polygon ist die
+    - **Polygon** (`polygon`): zweidimensional; ein Polygon ist die
     Begrenzungsfläche eines Polyeders, nicht das Polyeder selbst.
     Ein Polyeder hat |F| ≥ 4 Polygonflächen.
-  - **Halbraum** (`halbraum`): unbeschränkt; ein Polyeder ist
+    - **Halbraum** (`halbraum`): unbeschränkt; ein Polyeder ist
     beschränkt. Ein konvexes Polyeder ist ein **endlicher Schnitt**
     geschlossener Halbräume; ein einzelner Halbraum ist kein
     Polyeder. Diese Beziehung löst die in `hg_halbraum.md`
     angedeutete Vorwärtsreferenz auf: Halbräume sind die
     atomaren Bausteine konvexer Polyeder.
-  - **Ebene** (`ebene`): zweidimensional, unbeschränkt; jede
+    - **Ebene** (`ebene`): zweidimensional, unbeschränkt; jede
     Begrenzungsfläche eines Polyeders liegt in einer Ebene
     (Trägerebene des Flächenpolygons).
-  - **Bauteil** (`bauteil`): allgemeiner Begriff aus der Holzbau-
+    - **Bauteil** (`bauteil`): allgemeiner Begriff aus der Holzbau-
     Domäne; ein Bauteil ist mehr als nur seine Geometrie (Identität,
     Lage, Werkstoff, Annotationen). Ein Polyeder kann **als
     Geometrie eines Bauteils** dienen (Variante `Bauteilgeometrie.Volumen`
     in `hg_bauteil.md`), ist aber selbst kein Bauteil.
-  - **Selbstüberschneidende Polyeder** (z. B. nicht-mannigfaltige
+    - **Selbstüberschneidende Polyeder** (z. B. nicht-mannigfaltige
     Hüllen, Sterne): werden in diesem Glossar **nicht** als
     Polyeder zugelassen. In der `KonvexerPolyeder`-Implementierung
     sind solche Eingaben strukturell ausgeschlossen (Halbraum-Schnitt
@@ -351,16 +351,16 @@ erzeugt (z. B. für effiziente Inzidenz- und Schnitt-Tests).
 
 **Sekundär:**
 
-- Ziegler, G. M.: *Lectures on Polytopes.* Springer, New York 1995.
+- Ziegler, G. M.: _Lectures on Polytopes._ Springer, New York 1995.
 - de Berg, M.; Cheong, O.; van Kreveld, M.; Overmars, M.:
-  *Computational Geometry – Algorithms and Applications.*
+  _Computational Geometry – Algorithms and Applications._
   3. Aufl., Springer 2008.
-- Hoffmann, C. M.: *Geometric and Solid Modeling – An Introduction.*
+- Hoffmann, C. M.: _Geometric and Solid Modeling – An Introduction._
   Morgan Kaufmann, San Mateo 1989.
-- Mäntylä, M.: *An Introduction to Solid Modeling.* Computer
+- Mäntylä, M.: _An Introduction to Solid Modeling._ Computer
   Science Press, Rockville 1988.
 - Bronstein, I. N.; Semendjajew, K. A.; Musiol, G.; Mühlig, H.:
-  *Taschenbuch der Mathematik.* Edition Harri Deutsch, aktuelle
+  _Taschenbuch der Mathematik._ Edition Harri Deutsch, aktuelle
   Auflage, Kap. 3.5.4.
 
 **Korpus (nicht autoritativ):**

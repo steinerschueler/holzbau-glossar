@@ -56,21 +56,20 @@ Sei
 Dann heißen zwei Größen a, b ∈ X **bezüglich der Toleranz ε gleich**
 genau dann, wenn
 
-```
+```text
 gleich_ε(a, b):⇔ d(a, b) ≤ ε.
 ```
 
 Eine Toleranz ist die Festlegung des Paares (d, ε). Im vorliegenden
 Glossar werden fünf solche Paare normativ benannt:
 
-| Bezeichner       | Abweichung d                                          | Einheit | empfohlener Default |
-|------------------|-------------------------------------------------------|---------|---------------------|
-| `LAENGE_EPS`     | d(a, b) = |a − b|, a, b Längen oder Koordinaten       | mm      | 1·10⁻³ mm           |
-| `WINKEL_EPS`     | d(α, β) = |α − β|, α, β Winkel                        | rad     | 1·10⁻⁹ rad          |
-| `NORM_EPS`       | d(v, 0) = | ‖v‖² − s |, mit s ∈ {0, 1} (Null- bzw.    |         |                     |
-|                  | Einheitsvektor-Test)                                  | mm² bzw. dimensionslos | 1·10⁻¹² |
-| `FLAECHE_EPS`    | d(F, 0) = |F|, F Flächeninhalt                        | mm²     | 1·10⁻⁶ mm²          |
-| `KOLLINEAR_EPS`  | d(u, v) = ‖u_hat × v_hat‖ = |sin∠(u, v)|, u_hat, v_hat normiert     | dimensionslos | 1·10⁻⁹       |
+| Bezeichner | Abweichung d | Einheit | empfohlener Default |
+| ------------------ | ------------------------------------------------------- | --------- | --------------------- |
+| `LAENGE_EPS` | d(a, b) = \|a − b\|, a, b Längen oder Koordinaten | mm | 1·10⁻³ mm |
+| `WINKEL_EPS` | d(α, β) = \|α − β\|, α, β Winkel | rad | 1·10⁻⁹ rad |
+| `NORM_EPS` | d(v, 0) = \| ‖v‖² − s \|, mit s ∈ {0, 1} (Null- bzw. Einheitsvektor-Test) | mm² bzw. dimensionslos | 1·10⁻¹² |
+| `FLAECHE_EPS` | d(F, 0) = \|F\|, F Flächeninhalt | mm² | 1·10⁻⁶ mm² |
+| `KOLLINEAR_EPS` | d(u, v) = ‖u_hat × v_hat‖ = \|sin∠(u, v)\|, u_hat, v_hat normiert | dimensionslos | 1·10⁻⁹ |
 
 Die konkreten Zahlenwerte sind **empfohlene Default-Werte** dieses
 Eintrags.
@@ -151,10 +150,10 @@ Abweichung.
   „fein"). Damit ist LAENGE_EPS für jeden konstruktiven Vergleich
   numerisch sicher und fachlich unsichtbar.
 - **Verwendung**:
-  - `Punkt.gleich(q, eps = LAENGE_EPS)`: ‖p − q‖ ≤ eps.
-  - `Punkt.istInEbene(E)`: |⟨n, p − p₀⟩| ≤ LAENGE_EPS bei normiertem n.
-  - `Strecke.istEntartet`: Länge ≤ LAENGE_EPS ⇒ `Entartet.PunktStrecke`.
-  - `Polygon`: aufeinanderfolgende Eckpunkte mit Abstand ≤ LAENGE_EPS
+    - `Punkt.gleich(q, eps = LAENGE_EPS)`: ‖p − q‖ ≤ eps.
+    - `Punkt.istInEbene(E)`: |⟨n, p − p₀⟩| ≤ LAENGE_EPS bei normiertem n.
+    - `Strecke.istEntartet`: Länge ≤ LAENGE_EPS ⇒ `Entartet.PunktStrecke`.
+    - `Polygon`: aufeinanderfolgende Eckpunkte mit Abstand ≤ LAENGE_EPS
     werden als doppelter Eckpunkt klassifiziert ⇒
     `Entartet.DoppelterEckpunkt`.
 
@@ -171,11 +170,11 @@ Abweichung.
   unter jeder im Holzbau praktisch unterscheidbaren Winkelabweichung
   (typische Anrissgenauigkeit ≈ 0,1° = 1,7·10⁻³ rad).
 - **Verwendung**:
-  - Test auf Rechtwinkligkeit, Parallelität bei explizit berechneten
+    - Test auf Rechtwinkligkeit, Parallelität bei explizit berechneten
     Winkeln statt über Skalarprodukt.
-  - Klassifikation Flach- vs. Geneigtdach am Rand
+    - Klassifikation Flach- vs. Geneigtdach am Rand
     (Dachneigung α: Flachdach genau dann, wenn α ≤ WINKEL_EPS).
-  - Toleranz auf die Bedingung n_a · e_z ≥ −WINKEL_EPS in
+    - Toleranz auf die Bedingung n_a · e_z ≥ −WINKEL_EPS in
     `Dachflaeche.init` (kleine numerische Unterschreitung wird als
     0 toleriert, siehe `dachflaeche`).
 
@@ -192,9 +191,9 @@ Abweichung.
   relevanten Größe. Die Verwendung des Quadrats vermeidet eine
   Quadratwurzel im heißen Pfad und ist numerisch günstiger.
 - **Verwendung**:
-  - `Vektor.istNull`: ‖v‖² ≤ NORM_EPS ⇒ `Entartet.Nullvektor`.
-  - `Vektor.istEinheit`: | ‖v‖² − 1 | ≤ NORM_EPS.
-  - Eingangsprüfung von Normalenvektoren in `Ebene` und
+    - `Vektor.istNull`: ‖v‖² ≤ NORM_EPS ⇒ `Entartet.Nullvektor`.
+    - `Vektor.istEinheit`: | ‖v‖² − 1 | ≤ NORM_EPS.
+    - Eingangsprüfung von Normalenvektoren in `Ebene` und
     `Dachflaeche`.
 
 ### Flächen-Toleranz `FLAECHE_EPS`
@@ -209,9 +208,9 @@ Abweichung.
   FLAECHE_EPS genau jene Polygone als entartet, deren Eckpunkte
   innerhalb der Längen-Toleranz kollabieren.
 - **Verwendung**:
-  - `Polygon.istEntartet`: |Flächeninhalt| ≤ FLAECHE_EPS ⇒
+    - `Polygon.istEntartet`: |Flächeninhalt| ≤ FLAECHE_EPS ⇒
     `Entartet.NullFlaeche`.
-  - Bedingung in `Dachflaeche.init`:
+    - Bedingung in `Dachflaeche.init`:
     Flächeninhalt(F(P)) > FLAECHE_EPS (siehe `dachflaeche`).
 
 ### Kollinearitäts-Toleranz `KOLLINEAR_EPS`
@@ -227,11 +226,11 @@ Abweichung.
   schlecht konditioniert ist (Auslöschung), während sin in der Nähe
   von 0 gut konditioniert ist.
 - **Verwendung**:
-  - Drei Punkte p, q, r kollinear genau dann, wenn
+    - Drei Punkte p, q, r kollinear genau dann, wenn
     ‖(q − p)/‖q − p‖ × (r − p)/‖r − p‖‖ ≤ KOLLINEAR_EPS.
-  - Zwei Geraden parallel genau dann, wenn ihre Richtungsvektoren
+    - Zwei Geraden parallel genau dann, wenn ihre Richtungsvektoren
     den Kollinearitätstest erfüllen.
-  - Drei Eckpunkte eines Polygons kollinear ⇒ überzähliger Eckpunkt
+    - Drei Eckpunkte eines Polygons kollinear ⇒ überzähliger Eckpunkt
     (`Entartet.KollinearerEckpunkt`).
 
 ## Bearbeitungs-Plausibilitäts-Konstanten
@@ -246,7 +245,7 @@ deshalb in einer eigenen Sektion verortet.
 ### Abgrenzung weiche Constraints vs. harte Invarianten
 
 | Eigenschaft | EPS-Konstanten | Plausibilitäts-Konstanten |
-|---|---|---|
+| --- | --- | --- |
 | Rolle im Validierungs-Verhalten | Bestandteil **harter Invarianten** (`Resultat.Fehler(*Ungueltig.*)`) | Auslöser **weicher Warnungen** (`Warnung.*`) |
 | Wirkung bei Verletzung | Modellierung wird abgelehnt | Modellierung wird zugelassen, Warnung angezeigt |
 | Quellen-Charakter | numerisch hergeleitet aus IEEE 754 + Bauteil-Größenordnung | berufssprachliche Faustregel oder normative Bemessungs-Faustregel (NCI NA.12, DIN 1052 §15, DACH-Praxis) |
@@ -269,7 +268,7 @@ Eintrag, hier wird der **Wert**, die **normative Stütze** und die
 **Klassifikation** verbucht.
 
 | Konstante | Default | Einheit | Bauteil-/Bearbeitungs-Kontext | Normative Stütze | Klassifikation |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | `KERVTIEFE_FAUSTREGEL_DRITTEL` | `1.0/3.0` | dimensionslos (Bruchteil von h_B) | `kerve` — Kervtiefe t ≤ ⅓ der Sparrenhöhe h_B | DACH-Berufssprache („⅓-Faustregel"); EC 5 § 6.5 Schubnachweis als Bemessungs-Anker; IRC R802.7.1 lokale Lesart ¼; konservative Klauen-Lesart ⅙ | weich (Warnung `KerveZuTief`) |
 | `VERSATZ_TIEFE_FLACH_VIERTEL` | `1.0/4.0` | dimensionslos (Bruchteil von h_B) | `versatz` — Versatztiefe t_i ≤ ¼·h_B bei flachem Strebenanschluss α ≤ 50° | DIN EN 1995-1-1/NA:2013-08 NCI NA.12 (Sekundärquellen-belegt; Volltext-Verifikation ausstehend, siehe `hg_versatz.md` Quellenkonflikt 1) | weich (Warnung `VersatzZuTief`) |
 | `VERSATZ_TIEFE_STEIL_SECHSTEL` | `1.0/6.0` | dimensionslos (Bruchteil von h_B) | `versatz` — Versatztiefe t_i ≤ ⅙·h_B bei steilem Strebenanschluss α ≥ 60°; zwischen 50° und 60° lineare Interpolation | DIN EN 1995-1-1/NA:2013-08 NCI NA.12 (s. o.) | weich (Warnung `VersatzZuTief`) |
@@ -323,20 +322,20 @@ Alle elf Plausibilitäts-Konstanten teilen drei Eigenschaften:
   Toleranzen (z. B. eine Volumen-Toleranz) werden bei Bedarf in
   diesem Eintrag ergänzt.
 - **Abgrenzung**:
-  - **Maßtoleranz im Holzbau (DIN 18202, SIA 414)**: handwerkliche
+    - **Maßtoleranz im Holzbau (DIN 18202, SIA 414)**: handwerkliche
     Grenzabweichungen zwischen Soll- und Ist-Maß eines gefertigten
     Bauteils, typischerweise ±1 mm bis ±5 mm. Diese Toleranzen sind
     fachliche Eigenschaften der Ausführung, nicht numerische Schwellen
     eines Vergleichs. Sie sind in der App separat als Bauteilattribut
     zu führen (eigene Glossareinträge `masstoleranz_din18202`,
     `masstoleranz_sia414`).
-  - **Messunsicherheit (JCGM 100, GUM)**: statistische Streuung eines
+    - **Messunsicherheit (JCGM 100, GUM)**: statistische Streuung eines
     Messwerts um den wahren Wert. Bezieht sich auf reale Messung,
     nicht auf rechnerische Klassifikation.
-  - **Fertigungstoleranz**: Synonym zu Maßtoleranz im
+    - **Fertigungstoleranz**: Synonym zu Maßtoleranz im
     fertigungstechnischen Kontext, nicht synonym zur Toleranz dieses
     Eintrags.
-  - **Maschinenepsilon (`Double.ulp`, ≈ 2,22·10⁻¹⁶)**: untere
+    - **Maschinenepsilon (`Double.ulp`, ≈ 2,22·10⁻¹⁶)**: untere
     Schranke der relativen Rundung in IEEE 754 binary64.
     Maschinenepsilon ist eine **Eigenschaft der Arithmetik**, nicht
     eine Toleranz im Sinne dieses Eintrags. Toleranzen werden so

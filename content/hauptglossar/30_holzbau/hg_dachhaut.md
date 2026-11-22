@@ -102,7 +102,7 @@ Sei
 
 Für jeden Punkt q ∈ F(P_i) sei
 
-```
+```text
 ρ_i(q):= sup { t ∈ ℝ | ∃ x ∈ M: x = q + t · n_{a,i}, t ≥ 0 }
 ```
 
@@ -114,7 +114,7 @@ zuständigen Indizes genommen.
 
 Dann ist die **Dachhaut** des Daches die Bildmenge
 
-```
+```text
 H:= { q + ρ(q) · n_{a(q)} | q ∈ F }   ⊂ ℝ³,
 ```
 
@@ -123,7 +123,7 @@ Dachfläche bezeichnet.
 
 Äquivalent (parametrisch über jede Dachfläche):
 
-```
+```text
 H_i:= { q + ρ_i(q) · n_{a,i} | q ∈ F(P_i) },
 H:= ⋃_{i=1..m} H_i.
 ```
@@ -205,37 +205,37 @@ liegende Material wechselt.
   Computational Geometry). Eintrag wird angelegt, sobald weitere
   Hüllflächen-Begriffe (Wandhülle, Geländehülle) hinzukommen.
 - **Verwendung**:
-  - Geometrisches Außen-Merkmal eines `dach`.
-  - Außenschicht-Repräsentant des `dachaufbau` (die Dachhaut ist
+    - Geometrisches Außen-Merkmal eines `dach`.
+    - Außenschicht-Repräsentant des `dachaufbau` (die Dachhaut ist
     die obere Hüllfläche der äußersten Schicht des Dachaufbaus).
 - **Abgrenzung**:
-  - **Dachfläche** (`dachflaeche`): rein geometrische,
+    - **Dachfläche** (`dachflaeche`): rein geometrische,
     zweidimensionale Bezugsebene, dickenlos. Die Dachhaut liegt
     **über** der Dachfläche im Halbraum der äußeren Normalen, im
     allgemeinen mit Abstand > 0. Bei leerer Eindeckung fallen
     beide zusammen.
-  - **Dach** (`dach`): das Bauteil-Aggregat aus Tragwerk,
+    - **Dach** (`dach`): das Bauteil-Aggregat aus Tragwerk,
     Dachflächen und Dachaufbau. Die Dachhaut ist eine abgeleitete
     geometrische Größe des Daches, kein eigenständiges Bauteil.
-  - **Dachaufbau** (`dachaufbau`): die materielle Schichtfolge
+    - **Dachaufbau** (`dachaufbau`): die materielle Schichtfolge
     zwischen Tragwerk und Dachhaut (Dampfbremse, Dämmung,
     Unterdach, Konterlattung, Traglattung, Eindeckung). Im
     Sprachgebrauch oft fälschlich „Dachhaut" genannt — siehe
     Quellenkonflikt. In diesem Glossar streng getrennt: Dachhaut
     ist Geometrie, Dachaufbau ist Materialfolge.
-  - **Eindeckung** (`eindeckung`, bereits angelegt): die
+    - **Eindeckung** (`eindeckung`, bereits angelegt): die
     äußerste **materielle** Schicht eines geneigten Daches
     (Ziegel, Schindeln, Blech). Die Dachhaut ist die Hüllfläche
     **über** der Eindeckung; Dachhaut und Eindeckung sind nicht
     identisch, aber die Hüllfläche wird aus der Eindeckungs-
     Oberseitenpunktwolke konstruiert.
-  - **Dachabdichtung** (eigener Eintrag folgt, falls relevant):
+    - **Dachabdichtung** (eigener Eintrag folgt, falls relevant):
     die wassertragende Schicht eines Flachdaches (Bitumenbahn,
     Folie, Flüssigkunststoff). Bei Flachdächern wird die Dachhaut
     aus der Abdichtungs-Oberseitenpunktwolke konstruiert.
     Begrifflich abzugrenzen, weil bei Flachdächern „Dachhaut" und
     „Abdichtung" im Alltagssprachgebrauch oft vertauscht werden.
-  - **Unterdach** (`unterdach`, bereits angelegt): die
+    - **Unterdach** (`unterdach`, bereits angelegt): die
     zweite, unter der Eindeckung liegende wasserführende Ebene.
     Nicht Bestandteil der Dachhaut, sondern des Dachaufbaus.
 
@@ -256,20 +256,20 @@ liegende Material wechselt.
 
 **Sekundär:**
 
-- Colling, F.: *Holzbau – Grundlagen und Bemessung nach EC 5.* 7. Auflage, Springer Vieweg, Wiesbaden 2021,
+- Colling, F.: _Holzbau – Grundlagen und Bemessung nach EC 5._ 7. Auflage, Springer Vieweg, Wiesbaden 2021,
   ISBN 978-3-658-34446-7, §9.1.2 „Dachhaut“ (S. 156–157, Tabelle 9-1). Volltext-Scan liegt Anweiser
   vor; direkt eingesehen 2026-08-13.
-- Bläsi, W.; Ferdinand, S.: *Tabellenbuch Zimmerer.* 9. Auflage,
+- Bläsi, W.; Ferdinand, S.: _Tabellenbuch Zimmerer._ 9. Auflage,
   Bildungsverlag EINS (Westermann Gruppe), Köln 2021,
   ISBN 978-3-427-02144-5, Kap. 3.8 „Dachdeckung" (S. 167,
   abdichtender Zweig) und Tafel §3.9.7 (S. 172, Spalte
   Kehlbalkendach). Volltext-Scan liegt Anweiser vor; direkt
   eingesehen 2026-08-14.
-- Lignum (Hrsg.): *Lignatec — Geneigte Dächer in Holzbauweise.*
+- Lignum (Hrsg.): _Lignatec — Geneigte Dächer in Holzbauweise._
   Lignum, Zürich, aktuelle Auflage.
-- Mönck, W.; Rug, W.: *Holzbau – Bemessung und Konstruktion.*
+- Mönck, W.; Rug, W.: _Holzbau – Bemessung und Konstruktion._
   15. Auflage, Beuth Verlag 2015.
-- Gerner, M.: *Fachwerk – Instandsetzung, Sanierung, Neubau.*
+- Gerner, M.: _Fachwerk – Instandsetzung, Sanierung, Neubau._
   DVA, 7. Auflage 2007.
 
 **Korpus (nicht autoritativ):**

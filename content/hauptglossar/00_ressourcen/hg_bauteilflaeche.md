@@ -138,7 +138,7 @@ Sei
 
 Eine **Bauteilfläche** von B ist ein Tupel
 
-```
+```text
 BF(B, ι):= (F_l, E_l, n_hat_l, B, ι)                                    (1)
             mit F_l:= ρ(ι),   ι ∈ I_B,   l ∈ {1, …, k}.
 ```
@@ -159,7 +159,7 @@ Die Tupel-Bestandteile sind:
 
 Die **Menge aller Bauteilflächen** von B ist
 
-```
+```text
 𝓑𝓕(B):= { BF(B, ι) | ι ∈ I_B } ⊆ F_B × ℰ × S² × {B} × I_B,         (2)
 ```
 
@@ -216,7 +216,7 @@ mit |𝓑𝓕(B)| = |I_B|. Die Abbildung ι ↦ BF(B, ι) ist injektiv.
   Bauteil-Referenz, Adressierungs-Index) ersetzen.
 
 - **Grenzfälle.**
-  - **Bauteil mit Rundquerschnitt** (Rundholzstütze, Bogenträger):
+    - **Bauteil mit Rundquerschnitt** (Rundholzstütze, Bogenträger):
     die Mantelfläche ist nicht eben und folglich keine
     Polyeder-Facette im strengen Sinne. Solche Außenflächen werden
     in eigenen Folge-Einträgen erfasst (`mantelflaeche`, Folgearbeit);
@@ -225,12 +225,12 @@ mit |𝓑𝓕(B)| = |I_B|. Die Abbildung ι ↦ BF(B, ι) ist injektiv.
     durch polygonale Approximation (Tessellierung) in eine endliche
     Familie ebener Facetten zerlegt, jede davon eine Bauteilfläche
     im Sinne dieses Eintrags.
-  - **Bauteilfläche mit Bearbeitung** (Kerve, Versatz, Schlitz): die
+    - **Bauteilfläche mit Bearbeitung** (Kerve, Versatz, Schlitz): die
     Polygon-Berandung wird durch die Bearbeitung modifiziert; die
     bearbeitete Polygonkette ist die neue Bauteilflächen-Berandung
     (siehe `bearbeitung`, Folgearbeit). Der Adressierungs-Index ι
     ändert sich nicht.
-  - **Plattenbauteile mit Faserrichtungs-Modus SCHWACH / KEINE**
+    - **Plattenbauteile mit Faserrichtungs-Modus SCHWACH / KEINE**
     (OSB, Spanplatte, siehe):
     die Bauteilflächen-Geometrie ist unberührt; die semantische
     Spezialisierungs-Familie ist eine andere (Plattenfläche /
@@ -269,14 +269,14 @@ Fachbegriff etabliert** (siehe `quellenkonflikt:`-Block), in der
 CAD/CAM-Werkzeugkette und in der IFC-Schicht jedoch in
 verschiedenen, kompatiblen Varianten technisch vorhanden:
 
-| Werkzeug / Standard         | Pendant zur Bauteilfläche                     |
-|-----------------------------|------------------------------------------------|
-| BTL / BTLx                  | Reference Side RS1–RS4 (Längs), RS5/RS6 (Stirn) |
-| Hundegger BVN/BVX           | Längsseiten 1–4, „Front"/„Rear" (Stirn)       |
-| Dietrich's, cadwork intern  | Reference Sides als Adressierung von Bearbeitungen |
-| IFC 4.3 (topologisch)       | `IfcFace` + `IfcFaceBound` (+ ggf. `IfcFaceSurface`) |
-| IFC 4.3 (relational)        | `IfcConnectionSurfaceGeometry` als Verbindungs-Sicht |
-| Solid-Modeling-Literatur    | Face-with-Role-Pattern (Hoffmann, Mäntylä)    |
+| Werkzeug / Standard | Pendant zur Bauteilfläche |
+| --- | --- |
+| BTL / BTLx | Reference Side RS1–RS4 (Längs), RS5/RS6 (Stirn) |
+| Hundegger BVN/BVX | Längsseiten 1–4, „Front"/„Rear" (Stirn) |
+| Dietrich's, cadwork intern | Reference Sides als Adressierung von Bearbeitungen |
+| IFC 4.3 (topologisch) | `IfcFace` + `IfcFaceBound` (+ ggf. `IfcFaceSurface`) |
+| IFC 4.3 (relational) | `IfcConnectionSurfaceGeometry` als Verbindungs-Sicht |
+| Solid-Modeling-Literatur | Face-with-Role-Pattern (Hoffmann, Mäntylä) |
 
 Die App führt die **Rolle**, nicht das Polyeder: der Polyeder-Begriff
 trägt die Topologie und die Außennormalen-Orientierung; die
@@ -288,18 +288,18 @@ Adressierungs-Identität als separate Schicht hinzu.
 Die Spezialisierungen der Bauteilfläche unterscheiden sich nach
 Bauteilart und Bezugsrichtung:
 
-| Spezialisierung      | Bauteilart                | Lage zur Bauteilachse / Bauteilrolle             |
-|----------------------|---------------------------|---------------------------------------------------|
-| `laengsseite`        | Stabbauteil               | Trägerebene parallel zur Bauteilachse             |
-| `stirnseite`         | Stabbauteil               | Trägerebene rechtwinklig (oder geneigt) zur Bauteilachse, an Bauteilende |
-| `schmalseite` (Folgearbeit) | Rechteck-Stab     | Längsseite parallel zur Querschnittsbreite        |
-| `breitseite` (Folgearbeit)  | Rechteck-Stab     | Längsseite parallel zur Querschnittshöhe          |
-| `mantelflaeche` (Folgearbeit) | Rundholz-Stab    | nicht-eben; durch Tessellierung als Familie ebener Bauteilflächen darstellbar |
-| `plattenflaeche` (Folgearbeit) | Plattenbauteil  | große Außenfläche der Platte (Ober-/Unterseite) |
-| `plattenkante` (Folgearbeit)   | Plattenbauteil  | schmale Außenfläche der Platte (Stirn-Entsprechung) |
-| `plattenschmalseite` /         |                   |                                                   |
-| `plattenbreitseite` (Folgearbeit) | Plattenbauteil | Plattenkanten-Familie nach Faserrichtungs-Modus  |
-| `dachseite`          | Dachbauteil-Gruppen-Sicht | Dachfläche unter Orientierungs-Annotation (Wetter-, Sonnen-, Trauf-, Giebelseite) |
+| Spezialisierung | Bauteilart | Lage zur Bauteilachse / Bauteilrolle |
+| --- | --- | --- |
+| `laengsseite` | Stabbauteil | Trägerebene parallel zur Bauteilachse |
+| `stirnseite` | Stabbauteil | Trägerebene rechtwinklig (oder geneigt) zur Bauteilachse, an Bauteilende |
+| `schmalseite` (Folgearbeit) | Rechteck-Stab | Längsseite parallel zur Querschnittsbreite |
+| `breitseite` (Folgearbeit) | Rechteck-Stab | Längsseite parallel zur Querschnittshöhe |
+| `mantelflaeche` (Folgearbeit) | Rundholz-Stab | nicht-eben; durch Tessellierung als Familie ebener Bauteilflächen darstellbar |
+| `plattenflaeche` (Folgearbeit) | Plattenbauteil | große Außenfläche der Platte (Ober-/Unterseite) |
+| `plattenkante` (Folgearbeit) | Plattenbauteil | schmale Außenfläche der Platte (Stirn-Entsprechung) |
+| `plattenschmalseite` / | | |
+| `plattenbreitseite` (Folgearbeit) | Plattenbauteil | Plattenkanten-Familie nach Faserrichtungs-Modus |
+| `dachseite` | Dachbauteil-Gruppen-Sicht | Dachfläche unter Orientierungs-Annotation (Wetter-, Sonnen-, Trauf-, Giebelseite) |
 
 Die Familie ist nicht abgeschlossen: weitere Bauteilarten (Hohlkasten-
 Außenflächen, Brettstapel-Schnittflächen, gekrümmte Träger) ziehen
@@ -350,56 +350,56 @@ Definition selbst bleibt einheitlich.
   `bauteil` (als Träger der Rollen-Identität) — stehen in
   `voraussetzungen:`, nicht in `oberbegriff:`.
 - **Spezialisierungen**:
-  - **`laengsseite`** (bereits angelegt; `oberbegriff: bauteilflaeche`).
-  - **`stirnseite`** (bereits angelegt; `oberbegriff: bauteilflaeche`).
-  - **`dachseite`** (bereits angelegt; aktuell `oberbegriff:
+    - **`laengsseite`** (bereits angelegt; `oberbegriff: bauteilflaeche`).
+    - **`stirnseite`** (bereits angelegt; `oberbegriff: bauteilflaeche`).
+    - **`dachseite`** (bereits angelegt; aktuell `oberbegriff:
     dachflaeche` mit `begriffstyp: merkmal`; mögliche zusätzliche
     Sicht als Spezialisierung von `bauteilflaeche`, siehe
     Folgearbeit-Block).
-  - **`schmalseite`** / **`breitseite`** (Folgearbeit, Längsseiten-
+    - **`schmalseite`** / **`breitseite`** (Folgearbeit, Längsseiten-
     Spezialisierungen bei Rechteck-Querschnitt).
-  - **`mantelflaeche`** (Folgearbeit, rotationssymmetrische
+    - **`mantelflaeche`** (Folgearbeit, rotationssymmetrische
     Stab-Bauteile).
-  - **`plattenflaeche`** / **`plattenkante`** (Folgearbeit,
+    - **`plattenflaeche`** / **`plattenkante`** (Folgearbeit,
     Plattenbauteile).
 - **Bestandteile (partitiv)** (im Sinne der Tupel-Bestandteile von
   Gleichung (1)):
-  - Polygon-Berandung F_l in Berandungs-Lesart (geerbt von `polygon`).
-  - Trägerebene E_l (geerbt von `ebene`).
-  - Außennormalen-Vektor n_hat_l (Mannigfaltigkeits-Orientierung des
+    - Polygon-Berandung F_l in Berandungs-Lesart (geerbt von `polygon`).
+    - Trägerebene E_l (geerbt von `ebene`).
+    - Außennormalen-Vektor n_hat_l (Mannigfaltigkeits-Orientierung des
     Bauteilpolyeders).
-  - Bauteil-Referenz B (UUID).
-  - Adressierungs-Index ι ∈ I_B (zum Beispiel BTLx RS1–RS6).
+    - Bauteil-Referenz B (UUID).
+    - Adressierungs-Index ι ∈ I_B (zum Beispiel BTLx RS1–RS6).
 - **Verwendung**:
-  - **Sammel-Iteration** über die Außenflächen eines Bauteils im
+    - **Sammel-Iteration** über die Außenflächen eines Bauteils im
     Renderer und im Werkplan-Modul.
-  - **BTLx-Export** (Folgearbeit Phase 4): jede Bearbeitung
+    - **BTLx-Export** (Folgearbeit Phase 4): jede Bearbeitung
     referenziert eine Bauteilfläche über ihren Adressierungs-Index
     (`ReferencePlaneID` im BTLx-Schema).
-  - **Verbindungs-Modellierung** (`verbindung`, `verbindungsmittel`):
+    - **Verbindungs-Modellierung** (`verbindung`, `verbindungsmittel`):
     Verbindungs-Aufstandsflächen und Verbindungsmittel-
     Eindringungspunkte werden Bauteilflächen zugeordnet.
-  - **3D-Visualisierung**: einheitliche Außennormalen-Behandlung
+    - **3D-Visualisierung**: einheitliche Außennormalen-Behandlung
     aller Bauteilflächen eines Bauteils für Backface-Culling und
     Materialzuweisung im Renderer.
-  - **IFC-Export** (Folgearbeit Phase 4): jede Bauteilfläche wird
+    - **IFC-Export** (Folgearbeit Phase 4): jede Bauteilfläche wird
     auf eine Kombination aus `IfcFace` / `IfcFaceBound` /
     `IfcFaceSurface` abgebildet; die Rollen-Klassifikation wird über
     `IfcPropertySet` (kein normativer Standard, App-Konvention)
     persistiert.
 - **Abgrenzung**:
-  - **`polygon`**: geometrisches Primitiv ohne Bauteilrolle und
+    - **`polygon`**: geometrisches Primitiv ohne Bauteilrolle und
     ohne Außennormalen-Konvention. Eine Bauteilfläche enthält ein
     Polygon (in Berandungs-Lesart) als topologische Substanz, ist
     aber selbst kein Polygon.
-  - **`ebene`**: die Trägerebene einer Bauteilfläche ist eine Ebene
+    - **`ebene`**: die Trägerebene einer Bauteilfläche ist eine Ebene
     im Sinne von `ebene`; die Bauteilfläche selbst ist eine
     **beschränkte** Teilmenge dieser Ebene mit Bauteilrolle.
-  - **`polyeder`**: der Bauteilkörper als Ganzes ist ein Polyeder;
+    - **`polyeder`**: der Bauteilkörper als Ganzes ist ein Polyeder;
     eine Bauteilfläche ist eine **einzelne Facette** dieses
     Polyeders zusammen mit ihrer Bauteilrolle. Das Polyeder bündelt
     alle Bauteilflächen eines Bauteils zur geschlossenen Hülle.
-  - **`querschnitt`**: Schnittfigur eines Stab-Bauteils mit einer
+    - **`querschnitt`**: Schnittfigur eines Stab-Bauteils mit einer
     Ebene rechtwinklig zur Bauteilachse an einer beliebigen Stelle.
     Ein Querschnitt liegt im **Inneren** des Bauteilkörpers (per
     Definition; siehe `hg_querschnitt.md`) — es sei denn am
@@ -407,10 +407,10 @@ Definition selbst bleibt einheitlich.
     rechtwinkligen Stirnseite zusammenfällt. Eine Bauteilfläche ist
     grundsätzlich eine **Außenfläche** und damit Bestandteil der
     Bauteilhülle, kein Inneren-Schnitt.
-  - **`bauteil`**: ein Bauteil hat eine Familie von Bauteilflächen;
+    - **`bauteil`**: ein Bauteil hat eine Familie von Bauteilflächen;
     es ist aber selbst keine Bauteilfläche, sondern das übergeordnete
     Element mit Identität, Geometrie und Werkstoff.
-  - **`laengsseite`**, **`stirnseite`**, **`dachseite`** als bereits
+    - **`laengsseite`**, **`stirnseite`**, **`dachseite`** als bereits
     existierende Spezialisierungen sind im Spezialisierungs-Block
     geführt; die Abgrenzung gegen den Sammelbegriff besteht in der
     Spezialisierungs-Beziehung (Bauteilfläche-Sein impliziert eine

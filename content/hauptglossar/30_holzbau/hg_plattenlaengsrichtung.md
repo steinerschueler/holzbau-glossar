@@ -81,25 +81,25 @@ Sei
 Dann ist die **Plattenlängsrichtung** des Plattenbauteils B eine
 Annotation
 
-```
+```text
 plattenlaengsrichtung(B):= e_hat_l ∈ S²,
 ```
 
 mit der Orthogonalitäts-Invariante zur Plattendicken-Achse
 
-```
+```text
 ⟨e_hat_l, e_hat_d⟩ = 0     (mathematische Idealform)
 ```
 
 bzw. in der Domänen-Schicht prüfbar
 
-```
+```text
 | ⟨e_hat_l, e_hat_d⟩ | ≤ Toleranzen.WINKEL_EPS     (numerische Form).
 ```
 
 **Default-Konvention** (prüfbare Konstruktionsregel):
 
-```
+```text
 Wenn plattenlaengsrichtung am Werkstoff nicht explizit gesetzt,
 gilt für ein Plattenbauteil B mit Werkstoff-Modus SCHWACH:
   plattenlaengsrichtung(B):= bauteil_lokale_x_achse(B),
@@ -111,7 +111,7 @@ längeren Plattenformat-Kante (z. B. 2500-mm-Richtung bei Format
 
 **Plattenquerrichtung** (abgeleitet, redundant):
 
-```
+```text
 e_hat_q:= e_hat_d × e_hat_l ∈ S²,
 ```
 
@@ -121,7 +121,7 @@ Plattenebene rechtwinklige Richtung.
 
 **Faserwinkel zur Kraft** (für Hankinson-Auswertung bei OSB):
 
-```
+```text
 α(F_hat, e_hat_l):= arccos(| ⟨F_hat, e_hat_l⟩ |) ∈ [0, π/2]
 ```
 
@@ -187,12 +187,12 @@ als `mehrlagenholz` (Modus STRUKTURIERT).
 
 OSB-Standardformate (DIN EN 13986):
 
-| Format         | Längere Kante | Plattenlängsrichtung |
-|----------------|----------------|----------------------|
-| 2500 × 1250 mm | 2500 mm        | parallel zu 2500 mm  |
-| 2440 × 1220 mm | 2440 mm        | parallel zu 2440 mm  |
-| 2500 × 675 mm  | 2500 mm        | parallel zu 2500 mm  |
-| 5000 × 2500 mm | 5000 mm        | parallel zu 5000 mm  |
+| Format | Längere Kante | Plattenlängsrichtung |
+| --- | --- | --- |
+| 2500 × 1250 mm | 2500 mm | parallel zu 2500 mm |
+| 2440 × 1220 mm | 2440 mm | parallel zu 2440 mm |
+| 2500 × 675 mm | 2500 mm | parallel zu 2500 mm |
+| 5000 × 2500 mm | 5000 mm | parallel zu 5000 mm |
 
 Hersteller-Datenblätter (EGGER, Kronospan) bestätigen diese
 Konvention. Die App nimmt diese Konvention als Default
@@ -214,32 +214,32 @@ parallel zur Schubbeanspruchung zu maximieren.
   Plattenlängsrichtung ein Einheitsvektor; das OSB-Spezifikum ist
   die semantische Rolle „Strand-Längsrichtung der Decklagen".
 - **Verwendung**:
-  - **Gerichteter Plattenwerkstoff**
+    - **Gerichteter Plattenwerkstoff**
     (`gerichteter_plattenwerkstoff`): Pflichtfeld; einziges
     Plattenebene-Richtungsfeld.
-  - **Bauteil** (`bauteil`): Plattenlängsrichtung wird per Default
+    - **Bauteil** (`bauteil`): Plattenlängsrichtung wird per Default
     aus der lokalen x-Achse abgeleitet.
-  - **Hankinson-Winkel** (`hankinson_winkel`): bei OSB als
+    - **Hankinson-Winkel** (`hankinson_winkel`): bei OSB als
     Faser-Bezugsachse für α (abgeschwächt anwendbar; EC5 nutzt
     primär die diskreten f_m,0 / f_m,90).
 - **Abgrenzung**:
-  - **`einheitsvektor`** (allgemein): trägt keine semantische
+    - **`einheitsvektor`** (allgemein): trägt keine semantische
     Rolle.
-  - **`faserrichtung`**: Faserrichtung im engeren Sinn ist die
+    - **`faserrichtung`**: Faserrichtung im engeren Sinn ist die
     L-Richtung der Holzfaser; bei OSB ist die makroskopische
     „Faserrichtung" eine **gemittelte Strand-Richtung**, daher der
     eigenständige Begriff Plattenlängsrichtung. Strukturell ist
     sie ein Einheitsvektor in der Plattenebene wie `faserrichtung`,
     aber die Bemessungsformeln (f_m,0, f_m,90) sind diskret und
     nicht Hankinson-interpolationsfähig im strengen Sinn.
-  - **`haupttragrichtung`**: bei Mehrlagenholz Pflichtfeld; bei
+    - **`haupttragrichtung`**: bei Mehrlagenholz Pflichtfeld; bei
     OSB nicht verwendet, weil OSB keine Lagen-Mechanik hat. Die
     beiden Begriffe sind disjunkt und werden durch den Werkstoff-
     Modus auseinandergehalten.
-  - **`plattendicken_achse`**: rechtwinklig zur Plattenebene;
+    - **`plattendicken_achse`**: rechtwinklig zur Plattenebene;
     Plattenlängsrichtung liegt **in** der Plattenebene
     (rechtwinklig zur Plattendicken-Achse).
-  - **`bauteilachse`**: geometrische Längsachse eines Stabbauteils;
+    - **`bauteilachse`**: geometrische Längsachse eines Stabbauteils;
     bei Plattenbauteilen nicht direkt anwendbar. Die lokale x-Achse
     eines Plattenbauteils ist die Default-Plattenlängsrichtung.
 

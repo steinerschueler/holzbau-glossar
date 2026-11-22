@@ -273,7 +273,7 @@ alle erfüllt sind:
 
 2. **Lotrechtheit der Ständerachse**: Die Bauteilachsenrichtung
    ist kollinear zur Welt-Lotachse,
-   ```
+   ```text
    ‖d_hat × e_z‖ ≤ ε_K,
    ```
    d. h. d_hat steht parallel zu e_z. Sinus-Test gegen
@@ -283,7 +283,7 @@ alle erfüllt sind:
 
 3. **Vorzeichenkonvention Fuß → Kopf**: Der untere Endpunkt p_a
    liegt höhenmäßig unterhalb des oberen Endpunktes p_e,
-   ```
+   ```text
    p_a.z + ε_L < p_e.z,
    ```
    d. h. die Bauteilachse ist vom Fuß (unteres Auflager) zum
@@ -294,7 +294,7 @@ alle erfüllt sind:
    Last-Eintrag oben).
 
 4. **Lage in der Wandebene**: Beide Endpunkte liegen in E_W,
-   ```
+   ```text
    |⟨p_a − p_W, n_hat_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n_hat_W⟩| ≤ ε_L.
    ```
 
@@ -304,7 +304,7 @@ alle erfüllt sind:
    `sturz`, das das **nächstgelegene** horizontale Wand-Bauteil
    unterhalb von p_a ist, und der untere Endpunkt p_a liegt auf
    dessen Bauteilachse a(U) bis auf Toleranz:
-   ```
+   ```text
    dist(p_a, a(U)) ≤ ε_L,
    ```
    wobei dist(p, a) der Punkt-Geraden-Abstand ist. Im Regelfall
@@ -320,7 +320,7 @@ alle erfüllt sind:
    mit der Rolle `einbinder`, `riegel` oder `sturz`, das das
    nächstgelegene horizontale Wand-Bauteil oberhalb von p_e ist,
    mit
-   ```
+   ```text
    dist(p_e, a(O)) ≤ ε_L.
    ```
    Im Regelfall (Voll-Ständer) ist O der Einbinder; beim Kurzständer
@@ -513,7 +513,7 @@ Mehrgeschoss-Modellierung.
 ### Bauweisen-Abhängigkeit der Benennung
 
 | Bauweise | Häufigste Bezeichnung |
-|---|---|
+| --- | --- |
 | Fachwerkbau (DE/AT, historisch) | Ständer, regional auch Pfosten oder Stiel |
 | Riegelbau (CH, traditionell) | Ständer |
 | Ständerbauweise (geschossdurchgehend, historisch) | Ständer |
@@ -616,78 +616,78 @@ behandelt.
   `wandbauteil` wurde verworfen (App-Drift, kein
   DACH-Korpus-Begriff).
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`), lotrecht im
+    - **Bauteilachse** (`bauteilachse.Gerade`), lotrecht im
     Sinne von Bedingung 2;
-  - **Querschnitt** (rechteckig, oft gleich Riegelquerschnitt
+    - **Querschnitt** (rechteckig, oft gleich Riegelquerschnitt
     im modernen Holzrahmenbau);
-  - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_Ständer, also
+    - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_Ständer, also
     axial entlang der lotrechten Bauteilachse).
 - **Positions-Annotation** (Merkmal am Ständer, kein Subtyp):
-  - **Ständerposition** (`StaenderPosition`-Enum): Wert aus
+    - **Ständerposition** (`StaenderPosition`-Enum): Wert aus
     { ECK, BUND, ZWISCHEN, INNEN, LEIBUNG, STEMPEL,
     UNSPEZIFIZIERT }.
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Schwelle** (`schwelle`): unterstes Wand-Längsholz; trägt
+    - **Schwelle** (`schwelle`): unterstes Wand-Längsholz; trägt
     den Ständer-Fuß (Bedingung 5). Wechselseitige Inzidenz:
     der Ständer ist Last-Erzeuger, die Schwelle Last-Aufnehmer
     am Wand-Unteren-Niveau.
-  - **Einbinder** (`einbinder`): oberstes Wand-Längsholz; nimmt den
+    - **Einbinder** (`einbinder`): oberstes Wand-Längsholz; nimmt den
     Ständer-Kopf auf (Bedingung 6). Wechselseitige Inzidenz:
     der Ständer ist Last-Aufnehmer von oben (Decke/Dach), der
     Einbinder verteilt die Decken-/Dachlasten auf die Ständer-
     Köpfe.
-  - **Riegel** (`riegel`): horizontales Quer-Bauteil zwischen
+    - **Riegel** (`riegel`): horizontales Quer-Bauteil zwischen
     je zwei Ständern (vgl. `hg_riegel.md` Bedingung 5). Der
     Ständer ist seitliches Auflager und Knicksicherung des
     Riegels; der Riegel ist seitliche Knicksicherung des
     Ständers.
-  - **Stockschwelle** (`stockschwelle`, eigener Eintrag seit
+    - **Stockschwelle** (`stockschwelle`, eigener Eintrag seit
     Welle 15): im Stockwerkbau das unterste Längsholz der
     Obergeschoss-Wand auf der Balkenlage; Auflager des
     Obergeschoss-Ständers (geschossweise Lesart).
-  - **Fundament / Sockel / Bodenplatte** (`fundament`,
+    - **Fundament / Sockel / Bodenplatte** (`fundament`,
     Forward-Verweis): mineralisches Auflager der Schwelle und
     damit indirekt des Ständers.
 - **Abgrenzung**:
-  - **Stütze** (`stuetze`, Forward-Verweis, Cluster
+    - **Stütze** (`stuetze`, Forward-Verweis, Cluster
     `20_tragwerk/`): werkstoffneutrales tragendes Vertikal-
     bauteil ohne Wand-Bindung; Geschwister-Rolle des Ständers
     unter `bauteil`, **nicht** Oberbegriff. Siehe Erläuterung.
-  - **Säule** (`saeule`, Forward-Verweis, Klasse D): Stütze
+    - **Säule** (`saeule`, Forward-Verweis, Klasse D): Stütze
     mit gleichbleibendem Querschnitt. Im aktuellen Glossar
     nicht eigenständig geführt.
-  - **Hängesäule** (`haengesaeule`, Forward-Verweis): Zugstab
+    - **Hängesäule** (`haengesaeule`, Forward-Verweis): Zugstab
     im Hängewerk-Dachtragwerk; eigene Bauteilrolle bei
     Hängewerk-Tool. False friend zum englischen `king post`.
-  - **Stuhlsäule** (`stuhlsaeule`, Forward-Verweis):
+    - **Stuhlsäule** (`stuhlsaeule`, Forward-Verweis):
     Vertikalholz im Dachstuhl; eigene Bauteilrolle bei
     Dachstuhl-Tool.
-  - **Schwelle** (`schwelle`): Welle-8-Geschwister; horizontales
+    - **Schwelle** (`schwelle`): Welle-8-Geschwister; horizontales
     Wand-Unter-Bauteil. Wechselseitige Inzidenz mit dem
     Ständer-Fuß; nicht alternativ zum Ständer.
-  - **Einbinder** (`einbinder`): Welle-8-Geschwister; horizontales
+    - **Einbinder** (`einbinder`): Welle-8-Geschwister; horizontales
     Wand-Ober-Bauteil. Wechselseitige Inzidenz mit dem
     Ständer-Kopf; nicht alternativ zum Ständer.
-  - **Riegel** (`riegel`): Welle-8-Geschwister; horizontales
+    - **Riegel** (`riegel`): Welle-8-Geschwister; horizontales
     Wand-Quer-Bauteil zwischen je zwei Ständern.
     Komplementär (vertikal ↔ horizontal-quer in derselben
     Wandebene), nicht alternativ.
-  - **Sparren** (`sparren`): Dach-Bauteil entlang der
+    - **Sparren** (`sparren`): Dach-Bauteil entlang der
     Falllinie einer Dachfläche; gehört zum Dachtragwerk, nicht
     zur Wand. Faserrichtung schräg, nicht lotrecht.
-  - **Pfette** (`pfette`): horizontaler Dach-Längsträger;
+    - **Pfette** (`pfette`): horizontaler Dach-Längsträger;
     gehört zum Dachtragwerk. Funktionale Überlagerung mit
     dem Einbinder möglich (traufseitiger Einbinder trägt direkt
     Sparrenfüße), aber Pfette und Ständer sind nicht
     austauschbar — Faserrichtung horizontal vs. lotrecht.
-  - **Fundament** (`fundament`, Forward-Verweis):
+    - **Fundament** (`fundament`, Forward-Verweis):
     mineralisches Auflager unterhalb der Schwelle; nicht
     selbst Holz-Bauteil, kein Ständer.
-  - **Stockschwelle** (`stockschwelle`, eigener Eintrag seit
+    - **Stockschwelle** (`stockschwelle`, eigener Eintrag seit
     Welle 15): unterstes Längsholz der Obergeschoss-Wand;
     Auflager des Obergeschoss-Ständers, nicht selbst Ständer.
-  - **Bauteil** (`bauteil`): der Ständer ist eine
+    - **Bauteil** (`bauteil`): der Ständer ist eine
     Spezialisierung von Bauteil mit zusätzlichen geometrischen
     Constraints; ein Bauteil ohne Bauteilrolle ist kein
     Ständer.

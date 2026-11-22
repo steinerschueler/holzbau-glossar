@@ -9,7 +9,7 @@ status: entwurf
 
 # Gerade (Subglossar)
 
-Brücke vom normativen Hauptglossar (`hauptglossar/00_ressourcen/hg_gerade.md`) zu
+Brücke vom normativen Hauptglossar (`glossary/00_ressourcen/hg_gerade.md`) zu
 den stufenweisen Theorie-Inhalten. Hier liegt die didaktische
 Aufbereitung: berufssprachliche Verankerung über die Rollen, in
 denen Geraden im Holzbau tatsächlich auftreten, Pflicht-Skizze der
@@ -392,7 +392,7 @@ Subtypen — eine Gerade ist eine Gerade —, sondern unterschiedliche
 **Funktionen** im Werk- oder Tragwerksplan.
 
 | Rolle | Wo sie auftritt | Verhältnis zum Bauteil |
-|---|---|---|
+| --- | --- | --- |
 | **Trägergerade einer Achse** | Sparrenachse, Pfettenachse, Stuhlsäulenachse — die Bauteilhauptachse eines Stab-Bauteils | Das Bauteil selbst ist eine **Strecke** zwischen den Bauteil-Enden; ihre beidseitig unbegrenzte Verlängerung ist die Trägergerade. Wird bei der Schiftung gebraucht, wo Trauflinien-Gerade und Sparrenachsen-Gerade ihren Schnittpunkt am Sparrenfuß bekommen. |
 | **Wirkungslinie einer Kraft** | Statik — Linie, längs derer eine Kraft am starren Körper wirkt | **Einziger Korpus-Begriff mit expliziter Geraden-Definition.** Die Statik nutzt die Linienflüchtigkeit der Kraft am starren Körper: eine Kraft darf entlang ihrer Wirkungslinie verschoben werden, ohne dass sich ihre Wirkung am Tragwerk ändert. Damit ist die Wirkungslinie geometrisch eine Gerade, nicht eine Strecke. |
 | **Schnittgerade zweier Ebenen** | Grat-, Kehl- und Firstlinie als Schnitt benachbarter Dachflächen | Das Bauteil (Gratsparren, Kehlsparren, Firstpfette) ist die Strecke; die geometrische Schnittgerade läuft beidseitig unbegrenzt über die Bauteil-Enden hinaus. In der Dachausmittlung wird diese Geraden-Eigenschaft ausgenutzt, um Schmiegen und Anschlusswinkel an der Walmecke konstruktiv zu finden. |
@@ -456,25 +456,25 @@ Diese Subglossar-Datei stützt sich auf die folgenden Hauptglossar-
 Begriffe; bei Detailfragen ist dort die normative Definition zu
 finden:
 
-- `hauptglossar/00_ressourcen/hg_gerade.md` — das normative Hauptglossar zur
+- `glossary/00_ressourcen/hg_gerade.md` — das normative Hauptglossar zur
   Geraden, mit mathematischer Definition als eindimensionaler
   affiner Unterraum, Wohldefiniertheit, Implementierungshinweis
   und Quellenliste.
-- `hauptglossar/00_ressourcen/hg_strecke.md` — der endliche Ausschnitt einer
+- `glossary/00_ressourcen/hg_strecke.md` — der endliche Ausschnitt einer
   Geraden mit zwei Endpunkten; die im Bauteil tatsächlich
   materialisierte Form.
-- `hauptglossar/00_ressourcen/hg_halbgerade.md` — der einseitig begrenzte
+- `glossary/00_ressourcen/hg_halbgerade.md` — der einseitig begrenzte
   Ausschnitt; im Holzbau am Rand didaktisch.
-- `hauptglossar/00_ressourcen/hg_achse.md` — die Gerade mit Rolle; spezialisierte
+- `glossary/00_ressourcen/hg_achse.md` — die Gerade mit Rolle; spezialisierte
   Verwendung als Bauteil-, Symmetrie-, Bezugsachse.
-- `hauptglossar/00_ressourcen/hg_schnittgerade.md` — die Schnittgerade zweier
+- `glossary/00_ressourcen/hg_schnittgerade.md` — die Schnittgerade zweier
   Ebenen, geometrische Grundlage von Grat, Kehle und First.
-- `hauptglossar/00_ressourcen/hg_bauteilachse.md` — die Bauteilhauptachse als
+- `glossary/00_ressourcen/hg_bauteilachse.md` — die Bauteilhauptachse als
   konstruktive Spezialisierung der Achse.
-- `hauptglossar/00_ressourcen/hg_falllinie.md` — der gleichnamige „Linien"-Begriff,
+- `glossary/00_ressourcen/hg_falllinie.md` — der gleichnamige „Linien"-Begriff,
   der trotz Wortbestandteil **keine** Gerade ist, sondern ein
   Einheitsvektor.
-- `hauptglossar/00_ressourcen/hg_punkt.md`, `hauptglossar/00_ressourcen/hg_vektor.md` — die
+- `glossary/00_ressourcen/hg_punkt.md`, `glossary/00_ressourcen/hg_vektor.md` — die
   begrifflichen Voraussetzungen der Geraden.
 
 Verwandte Subglossar-Einträge (Folgearbeit): `sg_strecke`,

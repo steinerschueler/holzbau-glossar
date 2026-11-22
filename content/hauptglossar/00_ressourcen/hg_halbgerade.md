@@ -46,7 +46,7 @@ Sei
 Dann ist die durch (p₀, v) definierte **Halbgerade** h ⊂ ℝ³ die
 Menge
 
-```
+```text
 h(p₀, v):= { p₀ + t · v ∈ ℝ³ | t ∈ [0, ∞) }.
 ```
 
@@ -108,13 +108,13 @@ Sie ist von der Strecke (zwei Endpunkte) und der Geraden
 - **Bestandteile (partitiv)**: Ursprungspunkt p₀; offenes Inneres
   { p₀ + t·v | t > 0 }; offenes Ende (kein Endpunkt) bei t → ∞.
 - **Abgrenzung**:
-  - **Gerade** (`gerade`): unbegrenzt in beide Richtungen,
+    - **Gerade** (`gerade`): unbegrenzt in beide Richtungen,
     ungerichtet. Eine Halbgerade ist eine echte Teilmenge ihrer
     Trägergerade.
-  - **Strecke** (`strecke`): beidseitig begrenzt, endliche Länge.
+    - **Strecke** (`strecke`): beidseitig begrenzt, endliche Länge.
     Eine Strecke [a, b] ist die Schnittmenge h(a, b−a) ∩ h(b, a−b)
     der beiden komplementären Halbgeraden mit Ursprung a bzw. b.
-  - **Vektor** (`vektor`): ortsfreie Verschiebung; eine Halbgerade
+    - **Vektor** (`vektor`): ortsfreie Verschiebung; eine Halbgerade
     ist die ortsgebundene Realisierung einer „Richtung ab einem
     Punkt".
 

@@ -71,7 +71,7 @@ Sei
 
 Dann ist die **Bauteilachse** von B die Punktmenge
 
-```
+```text
 A(B):= { z(s) ∈ ℝ³ | s ∈ [0, L] }
 ```
 
@@ -81,7 +81,7 @@ zusammen mit ihrer natürlichen Parametrisierung s ↦ z(s).
 Wenn alle Querschnittsschwerpunkte z(s) auf einer gemeinsamen Geraden
 g ⊂ ℝ³ liegen, ist die Bauteilachse die Strecke
 
-```
+```text
 A(B) = [z(0), z(L)] ⊂ g,
 ```
 
@@ -111,7 +111,7 @@ Empfohlene Konventionen für Spezialisierungen:
   Sparrenfirstpunkt; d_hat zeigt **entgegen** der Falllinie der
   getragenen Dachfläche, also **bergauf von der Traufe zum
   Sparrenfirstpunkt**. Formal:
-  ```
+  ```text
   ⟨d_hat, e_hat_fall⟩ < 0    (d_hat und e_hat_fall sind antiparallel im prismatischen
                        Idealfall).
   ```
@@ -245,45 +245,45 @@ sortierung verwendet.
   durch den Bezug zu einem konkreten Bauteilkörper konkretisiert
   wird.
 - **Spezialisierungen (eigene Einträge folgen)**:
-  - **Sparrenachse** (`sparrenachse`, in Folgearbeit): Bauteilachse
+    - **Sparrenachse** (`sparrenachse`, in Folgearbeit): Bauteilachse
     eines Sparrens mit konkretisierter Vorzeichenkonvention
     (Traufe → First).
-  - **Pfettenachse** (`pfettenachse`, in Folgearbeit): Bauteilachse
+    - **Pfettenachse** (`pfettenachse`, in Folgearbeit): Bauteilachse
     einer Pfette.
-  - **Stützenachse** (`stuetzenachse`, in Folgearbeit): Bauteilachse
+    - **Stützenachse** (`stuetzenachse`, in Folgearbeit): Bauteilachse
     einer Stütze (lotrecht, Vorzeichenkonvention von unten nach
     oben).
 - **Bestandteile (partitiv) — gerader Fall**:
-  - Anfangspunkt p_a (Schwerpunkt des Anfangsquerschnitts);
-  - Endpunkt p_e (Schwerpunkt des Endquerschnitts);
-  - Trägergerade g (unbegrenzte Verlängerung der Achsstrecke);
-  - Richtungs-Einheitsvektor d_hat.
+    - Anfangspunkt p_a (Schwerpunkt des Anfangsquerschnitts);
+    - Endpunkt p_e (Schwerpunkt des Endquerschnitts);
+    - Trägergerade g (unbegrenzte Verlängerung der Achsstrecke);
+    - Richtungs-Einheitsvektor d_hat.
 - **Bestandteile (partitiv) — gekrümmter Fall**:
-  - geordnete Folge von Stützpunkten z(s_i) als
+    - geordnete Folge von Stützpunkten z(s_i) als
     Streckenzug-Repräsentation;
-  - Anfangs- und Endpunkt;
-  - lokale Tangentenrichtung an jeder Stelle.
+    - Anfangs- und Endpunkt;
+    - lokale Tangentenrichtung an jeder Stelle.
 - **Abgrenzung**:
-  - **`achse`**: allgemeiner Oberbegriff (Gerade in einer Rolle);
+    - **`achse`**: allgemeiner Oberbegriff (Gerade in einer Rolle);
     `bauteilachse` ist die Spezialisierung mit Rolle
     „Bauteilhauptachse" und Bezug auf einen konkreten Bauteilkörper.
-  - **`gerade`**: die Trägergerade einer geraden Bauteilachse ist
+    - **`gerade`**: die Trägergerade einer geraden Bauteilachse ist
     eine Gerade; die Bauteilachse selbst ist die endliche Strecke
     auf dieser Geraden, qualifiziert durch die Bauteilrolle.
-  - **`strecke`**: die Bauteilachse eines geraden Bauteils ist als
+    - **`strecke`**: die Bauteilachse eines geraden Bauteils ist als
     Punktmenge eine Strecke; sie ist aber zusätzlich annotiert als
     Achse mit Bauteilrolle. Die Strecke selbst ist achs-frei.
-  - **`faserrichtung`**: materialbezogene Hauptachse
+    - **`faserrichtung`**: materialbezogene Hauptachse
     (Einheitsvektor in S², ortsfrei). Die Bauteilachse ist
     geometrisch (Strecke in ℝ³, ortsgebunden). Die beiden können
     übereinstimmen (geradfaseriges prismatisches Bauteil), müssen
     aber nicht (Drehwuchs, Verzug, schräggesägt, keilgezinkt). Der
     Winkel zwischen ihnen ist die **Faserneigung** nach DIN 4074-1.
-  - **Schwerlinie eines Querschnitts**: die Schwerlinie eines
+    - **Schwerlinie eines Querschnitts**: die Schwerlinie eines
     einzelnen Querschnitts K(s) ist ein Punkt z(s) ∈ K(s) (der
     Flächenschwerpunkt); die Bauteilachse ist der **geometrische
     Ort** dieser Punkte über die Bauteillänge.
-  - **Neutrale Faser** (Statik): die neutrale Faser ist die Linie
+    - **Neutrale Faser** (Statik): die neutrale Faser ist die Linie
     durch das Bauteil, an der die Biegespannung null ist. Bei
     homogenen prismatischen Bauteilen mit symmetrischem Querschnitt
     fällt die neutrale Faser mit der Bauteilachse zusammen, im

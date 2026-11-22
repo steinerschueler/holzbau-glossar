@@ -9,7 +9,7 @@ status: entwurf
 
 # Vektor (Subglossar)
 
-Brücke vom normativen Hauptglossar (`hauptglossar/00_ressourcen/hg_vektor.md`) zu
+Brücke vom normativen Hauptglossar (`glossary/00_ressourcen/hg_vektor.md`) zu
 den stufenweisen Theorie-Inhalten. Hier liegt die didaktische
 Aufbereitung: der Vektor lebt im DACH-Holzbau **nur in
 Rollen-Komposita** — Kraftvektor, Richtungsvektor, Normalenvektor —,
@@ -147,7 +147,7 @@ ein Vektor ist ein Vektor —, sondern unterschiedliche **Funktionen**
 im Tragwerksplan oder im CAD-Modell.
 
 | Rolle | Wo sie auftritt | Was sie trägt |
-|---|---|---|
+| --- | --- | --- |
 | **Kraftvektor** | Tragwerksstatik: Lasten (Eigengewicht, Schnee, Wind), Auflagerreaktionen, Stab-Schnittkräfte (Normalkraft, Querkraft) | Betrag in kN, Richtung im Raum, Angriffspunkt am Bauteil. Am starren Körper darf der Kraftvektor entlang seiner **Wirkungslinie** verschoben werden, ohne dass sich die Wirkung am Tragwerk ändert — er ist dort linienflüchtig. |
 | **Richtungsvektor** an Bauteilachse / Sparrenachse | CAD-Datenmodell (Cadwork, SEMA): das Bauteil wird intern durch einen Achs-Punkt plus Richtungsvektor (oder durch zwei Endpunkte, deren Differenz den Richtungsvektor liefert) beschrieben | reine Richtungs- und Längen-Information der Bauteilachse. Im Werkstatt-Gespräch heißt die Information **Achse** oder **Schmiege** (für die Winkel-Seite bei der Schiftung), nicht „Richtungsvektor". |
 | **Normalenvektor** an Dachfläche | Dachebene mit ausgezeichnetem, rechtwinklig auf der Fläche stehendem Einheitsvektor; Hintergrund für Schiftung und Dachausmittlung | rechtwinklige Richtung der Dachfläche. Im Werkstatt-Korpus wird die Information nicht als Normalenvektor benannt — sie lebt implizit in den Schmiegen, Auszugs-Maßen und der Schiftungs-Tafel. |
@@ -407,27 +407,27 @@ Diese Subglossar-Datei stützt sich auf die folgenden Hauptglossar-
 Begriffe; bei Detailfragen ist dort die normative Definition zu
 finden:
 
-- `hauptglossar/00_ressourcen/hg_vektor.md` — das normative
+- `glossary/00_ressourcen/hg_vektor.md` — das normative
   Hauptglossar zum Vektor, mit mathematischer Definition als Element
   des Vektorraums ℝ³, Wohldefiniertheit, Implementierungshinweis und
   Quellenliste.
-- `hauptglossar/00_ressourcen/hg_punkt.md` — die ortsgebundene
+- `glossary/00_ressourcen/hg_punkt.md` — die ortsgebundene
   Schwester-Figur: Lage ohne Richtung. „Punkt + Vektor → Punkt" und
   „Punkt − Punkt → Vektor" sind die zulässigen Mischoperationen.
-- `hauptglossar/00_ressourcen/hg_strecke.md` — der ortsgebundene
+- `glossary/00_ressourcen/hg_strecke.md` — der ortsgebundene
   Geschwister-Begriff: konkrete Verbindung zweier Punkte am Bauteil.
   Ein Vektor ist die ortsfreie Differenz dieser zwei Punkte.
-- `hauptglossar/00_ressourcen/hg_einheitsvektor.md` — der Vektor mit
+- `glossary/00_ressourcen/hg_einheitsvektor.md` — der Vektor mit
   Länge 1; reine Richtungs-Information. Faserrichtung, Falllinie und
   Dachflächen-Normale sind Einheitsvektoren.
-- `hauptglossar/00_ressourcen/hg_falllinie.md` — der gleichnamige
+- `glossary/00_ressourcen/hg_falllinie.md` — der gleichnamige
   „Linien"-Begriff, der trotz Wortbestandteil **kein** allgemeiner
   Vektor ist, sondern ein Einheitsvektor in der Dachebene.
-- `hauptglossar/00_ressourcen/hg_koordinatensystem.md` — das
+- `glossary/00_ressourcen/hg_koordinatensystem.md` — das
   Bezugssystem, in dem die Komponenten eines Vektors als Zahlentripel
   dargestellt werden; bei Basiswechsel ändern sich die Zahlen, der
   Vektor bleibt derselbe.
-- `hauptglossar/00_ressourcen/hg_ebene.md` — Trägerbegriff der
+- `glossary/00_ressourcen/hg_ebene.md` — Trägerbegriff der
   Dachfläche; die rechtwinklig auf der Ebene stehende Richtung ist
   der Normalenvektor.
 

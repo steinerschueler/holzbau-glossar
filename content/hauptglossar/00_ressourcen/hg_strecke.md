@@ -62,7 +62,7 @@ Sei
 Dann ist die **Strecke** [a, b] definiert als die abgeschlossene
 konvexe Hülle von {a, b}:
 
-```
+```text
 [a, b]:= { (1 − t)·a + t·b ∈ ℝ³ | t ∈ [0, 1] }
        = { a + t·(b − a) | t ∈ [0, 1] }.
 ```
@@ -138,21 +138,21 @@ Wirkung entfaltet.
 - **Oberbegriff**: kompakte konvexe Hülle zweier Punkte (formal),
   bzw. eindimensionales Linienstück mit endlichen Endpunkten.
 - **Teilbegriffe (Spezialisierungen)**:
-  - **gerade Kante** (eines Polygons oder Bauteils): rollenbezogene
+    - **gerade Kante** (eines Polygons oder Bauteils): rollenbezogene
     Spezialisierung; eigene Einträge. (Eine gekrümmte Bauteilkante
     ist keine Strecke.)
-  - **Achse** (eines Stabbauteils): rollenbezogene Spezialisierung;
+    - **Achse** (eines Stabbauteils): rollenbezogene Spezialisierung;
     eigener Eintrag.
 - **Bestandteile (partitiv)**:
-  - Anfangspunkt a, Endpunkt b, innere Punkte (a, b) (offenes Inneres).
+    - Anfangspunkt a, Endpunkt b, innere Punkte (a, b) (offenes Inneres).
 - **Abgrenzung**:
-  - **Gerade**: { a + t·r | t ∈ ℝ }, unbegrenzt in beide Richtungen.
-  - **Halbgerade (Strahl)**: { a + t·r | t ∈ [0, ∞) }, einseitig
+    - **Gerade**: { a + t·r | t ∈ ℝ }, unbegrenzt in beide Richtungen.
+    - **Halbgerade (Strahl)**: { a + t·r | t ∈ [0, ∞) }, einseitig
     begrenzt.
-  - **Polygon**: aus mehreren Strecken (Kanten) zusammengesetzt;
+    - **Polygon**: aus mehreren Strecken (Kanten) zusammengesetzt;
     ein Polygon mit zwei Eckpunkten ist degeneriert und wird in
     diesem Glossar nicht als Polygon, sondern als Strecke geführt.
-  - **Vektor**: ortsfrei, beschreibt nur Richtung und Länge; eine
+    - **Vektor**: ortsfrei, beschreibt nur Richtung und Länge; eine
     Strecke ist die ortsgebundene Realisierung eines Vektors
     zwischen zwei festen Punkten.
 
@@ -193,4 +193,4 @@ Wirkung entfaltet.
   Lehr-Korpus.
 - DACH-Holzbau-Lehr-Korpus, deskriptive Verwendung des Wortes
   „Maßstrecke" als didaktischer Begriff ohne Norm-Definition
-  (siehe Drift-Befund D10 in `hauptglossar/ABWEICHUNGEN.md`).
+  (siehe Drift-Befund D10 in `glossary/ABWEICHUNGEN.md`).

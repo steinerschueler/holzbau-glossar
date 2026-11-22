@@ -97,13 +97,13 @@ Sei
 
 Dann ist der **Faserrichtungs-Modus** der Aufzählungstyp
 
-```
+```text
 𝓜𝓜:= { HART, STRUKTURIERT, SCHWACH, KEINE }
 ```
 
 mit der Zuordnungsfunktion
 
-```
+```text
 faserrichtungs_modus: 𝓦 → 𝓜𝓜,
                      w ↦ faserrichtungs_modus(w),
 ```
@@ -116,17 +116,17 @@ Disjunktheit ist auf der Modus-Ebene definiert.
 Werkstoff; Plattendicken-Achse und Stahl-spezifische Felder werden
 subklassen-spezifisch geführt, siehe Subklassen-Einträge):
 
-| Modus         | Pflicht-Faserrichtungs-Annotation                                      |
-|---------------|-------------------------------------------------------------------------|
-| HART          | `faserrichtung ∈ S²`                                                    |
-| STRUKTURIERT  | `lagenstruktur` mit n ≥ 3, `haupttragrichtung ∈ S²`                     |
-| SCHWACH       | `plattenlaengsrichtung ∈ S²`                                            |
-| KEINE         | keine (weder Faserrichtung noch Plattenlängsrichtung noch Lagenstruktur) |
+| Modus | Pflicht-Faserrichtungs-Annotation |
+| --- | --- |
+| HART | `faserrichtung ∈ S²` |
+| STRUKTURIERT | `lagenstruktur` mit n ≥ 3, `haupttragrichtung ∈ S²` |
+| SCHWACH | `plattenlaengsrichtung ∈ S²` |
+| KEINE | keine (weder Faserrichtung noch Plattenlängsrichtung noch Lagenstruktur) |
 
 **Modus-Subklassen-Zuordnung** (extensional festgelegt durch die
 Werkstoff-Hierarchie):
 
-```
+```text
 faserrichtungs_modus(w) = HART          ⇔  w ∈ 𝓐𝓗  (axiales_holz)
 faserrichtungs_modus(w) = STRUKTURIERT  ⇔  w ∈ 𝓜𝓛  (mehrlagenholz)
 faserrichtungs_modus(w) = SCHWACH       ⇔  w ∈ 𝓖𝓟  (gerichteter_plattenwerkstoff)
@@ -153,17 +153,17 @@ ungenügend zur Unterscheidung von `isotroper_plattenwerkstoff` und
   Lagenstruktur vs. effektive Plattenrichtung vs. Isotropie in
   Plattenebene) genau einer der vier Modi ableiten.
 - **Eindeutigkeit**: Die vier Modi sind paarweise disjunkt:
-  - HART hat genau eine Faserrichtung; STRUKTURIERT hat
+    - HART hat genau eine Faserrichtung; STRUKTURIERT hat
     mindestens drei mit lagenweise wechselnder Orientierung
     (DIN EN 16351 fordert n ≥ 3); SCHWACH hat eine
     Plattenlängsrichtung ohne Lagen-Mechanik; KEINE hat keine
     bemessungsrelevante Faserrichtung (entweder Isotropie in der
     Plattenebene wie bei Spanplatte/MDF/HDF oder 3D-Isotropie wie
     bei Stahl).
-  - BSH (zwei oder mehr Lamellen, alle parallel) ist HART, nicht
+    - BSH (zwei oder mehr Lamellen, alle parallel) ist HART, nicht
     STRUKTURIERT, weil das Kriterium „lagenweise wechselnde
     Faserrichtung" nicht erfüllt ist.
-  - OSB (Strands schichtweise gekreuzt) ist SCHWACH, nicht
+    - OSB (Strands schichtweise gekreuzt) ist SCHWACH, nicht
     STRUKTURIERT, weil EC5/EN 12369-1 keine Einzellagen-Mechanik
     verwendet, sondern nur f_m,0 und f_m,90 in der Plattenebene
     führt.
@@ -207,12 +207,12 @@ Pflichtfelder unterscheiden.
 Die Hankinson-Formel f_α = (f_0 · f_90) / (f_0 · sin²α + f_90 · cos²α)
 ist je Modus unterschiedlich anwendbar:
 
-| Modus          | Hankinson-Anwendung                                                  |
-|----------------|----------------------------------------------------------------------|
-| HART           | direkt anwendbar mit α = ∠(Kraft, faserrichtung).                    |
-| STRUKTURIERT   | je Lage ℓᵢ separat anwendbar mit α_i = ∠(Kraft, ℓᵢ.faserrichtung).  |
-| SCHWACH        | abgeschwächt anwendbar mit α = ∠(Kraft, plattenlaengsrichtung); EC5 / EN 12369-1 spezifizieren f_m,0 und f_m,90 als diskrete Werte. |
-| KEINE          | nicht anwendbar. Bei `isotroper_plattenwerkstoff` gilt in der Plattenebene eine einzige Festigkeit pro Beanspruchungsart (EC5 / EN 12369-1); bei `werkstoff_stahl` ist die Hankinson-Formel begrifflich nicht zutreffend (3D-Isotropie, Bemessung nach EC3 / Johansen-Theorie). |
+| Modus | Hankinson-Anwendung |
+| --- | --- |
+| HART | direkt anwendbar mit α = ∠(Kraft, faserrichtung). |
+| STRUKTURIERT | je Lage ℓᵢ separat anwendbar mit α_i = ∠(Kraft, ℓᵢ.faserrichtung). |
+| SCHWACH | abgeschwächt anwendbar mit α = ∠(Kraft, plattenlaengsrichtung); EC5 / EN 12369-1 spezifizieren f_m,0 und f_m,90 als diskrete Werte. |
+| KEINE | nicht anwendbar. Bei `isotroper_plattenwerkstoff` gilt in der Plattenebene eine einzige Festigkeit pro Beanspruchungsart (EC5 / EN 12369-1); bei `werkstoff_stahl` ist die Hankinson-Formel begrifflich nicht zutreffend (3D-Isotropie, Bemessung nach EC3 / Johansen-Theorie). |
 
 Die Schnittwinkel-Visualisierung dieser App (Kernfunktion) muss den
 Modus berücksichtigen: bei STRUKTURIERT ist α nicht skalar, sondern
@@ -250,36 +250,36 @@ Werkstoff, weil:
 - **Oberbegriff**: keiner. Der Faserrichtungs-Modus ist ein
   Aufzählungstyp ohne Hierarchie.
 - **Partielle Diskriminanten-Funktion** für die Werkstoff-Hierarchie:
-  - `axiales_holz` (Modus HART, injektiv)
-  - `mehrlagenholz` (Modus STRUKTURIERT, injektiv)
-  - `gerichteter_plattenwerkstoff` (Modus SCHWACH, injektiv)
-  - `isotroper_plattenwerkstoff` (Modus KEINE, gemeinsam mit
+    - `axiales_holz` (Modus HART, injektiv)
+    - `mehrlagenholz` (Modus STRUKTURIERT, injektiv)
+    - `gerichteter_plattenwerkstoff` (Modus SCHWACH, injektiv)
+    - `isotroper_plattenwerkstoff` (Modus KEINE, gemeinsam mit
     `werkstoff_stahl`)
-  - `werkstoff_stahl` (Modus KEINE, gemeinsam mit
+    - `werkstoff_stahl` (Modus KEINE, gemeinsam mit
     `isotroper_plattenwerkstoff`)
 - **Verwendung**:
-  - **Werkstoff** (`werkstoff`): trägt den Faserrichtungs-Modus als
+    - **Werkstoff** (`werkstoff`): trägt den Faserrichtungs-Modus als
     Pflichtfeld der abstrakten Klasse.
-  - **Werkstoff Stahl** (`werkstoff_stahl`): trägt Modus KEINE im
+    - **Werkstoff Stahl** (`werkstoff_stahl`): trägt Modus KEINE im
     Sinne von 3D-Isotropie — semantisch eine Erweiterung der bei
     `isotroper_plattenwerkstoff` vorliegenden in-Plattenebene-
     Isotropie. Die beiden Subklassen werden durch ihre
     sealed-Identität und ihr Pflichtfeld-Profil (mit/ohne
     `plattendicken_achse`) unterschieden.
-  - **Hankinson-Winkel** (`hankinson_winkel`): die Anwendbarkeit
+    - **Hankinson-Winkel** (`hankinson_winkel`): die Anwendbarkeit
     der Hankinson-Formel hängt vom Modus ab (siehe Tabelle in der
     Erläuterung).
 - **Abgrenzung**:
-  - **`faserrichtung`**: ein Einheitsvektor in der Rolle „Material-
+    - **`faserrichtung`**: ein Einheitsvektor in der Rolle „Material-
     hauptachse parallel zum Faserverlauf"; nur bei Modus HART als
     skalares Pflichtfeld am Werkstoff. Der Modus ist eine
     Klassifikation, die Faserrichtung ein konkreter geometrischer
     Vektor.
-  - **`festigkeitsklasse`**: bemessungsrelevante Werte (E-Modul,
+    - **`festigkeitsklasse`**: bemessungsrelevante Werte (E-Modul,
     Festigkeiten) werkstoffspezifisch; orthogonal zum Modus (z. B.
     haben sowohl C24-Vollholz als auch GL24h-BSH den Modus HART, aber
     unterschiedliche Festigkeitsklassen).
-  - **„Anisotropie"** (umgangssprachlich): physikalischer Oberbegriff;
+    - **„Anisotropie"** (umgangssprachlich): physikalischer Oberbegriff;
     der Faserrichtungs-Modus ist eine konkrete, vierwertige
     Diskretisierung der Anisotropie-Klasse, kein Kontinuum.
 

@@ -84,7 +84,7 @@ Sei
 
 Dann ist ein **isotroper Plattenwerkstoff** das Tupel
 
-```
+```text
 IP:= (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse)
 ```
 
@@ -106,7 +106,7 @@ eine disjunkte Teilmenge der Werkstoff-Menge mit
 **Validierungsregel** (harte Invariante): Eine Faserrichtungs-
 Annotation an einem Bauteil B mit Werkstoff IP ist nicht zulässig:
 
-```
+```text
 ∀ B mit werkstoff(B) ∈ 𝓘𝓟: faserrichtung(B) = ⊥.
 ```
 
@@ -147,7 +147,7 @@ korrekte Modellierung. Setzen einer Faserrichtung führt zu
 ### Subklassen-Spektrum
 
 | Subklasse | Norm | Rohdichte [kg/m³] | typ. Anwendung |
-|-----------|------|-------------------|----------------|
+| ----------- | ------ | ------------------- | ---------------- |
 | Spanplatte P4 | DIN EN 312 | 600–700 | tragend, Trockenbereich |
 | Spanplatte P5 | DIN EN 312 | 600–700 | tragend, Feuchtbereich |
 | Spanplatte P6 | DIN EN 312 | 650–750 | hochbelastet, Trockenbereich |
@@ -179,7 +179,7 @@ einzige Biegefestigkeit f_m** in der Plattenebene, ohne Index 0/90.
 Vergleiche:
 
 | Klasse | f_m,k [N/mm²] |
-|--------|---------------|
+| -------- | --------------- |
 | Spanplatte P4, 12 mm | 14,2 |
 | Spanplatte P5, 12 mm | 14,2 |
 | MDF, 12 mm | 22 |
@@ -212,38 +212,38 @@ Diese harte Invariante folgt der Setzung im.
 
 - **Oberbegriff**: `werkstoff`.
 - **Subklassen** (eigene Einträge folgen):
-  - **Spanplatte** (`spanplatte`): DIN EN 312.
+    - **Spanplatte** (`spanplatte`): DIN EN 312.
     Sub-Sub-Subklassen nach Klasse:
-    - `spanplatte_p4`, `spanplatte_p5`, `spanplatte_p6`,
+        - `spanplatte_p4`, `spanplatte_p5`, `spanplatte_p6`,
       `spanplatte_p7`.
-    - Alternative: einheitlich `spanplatte` mit Typ-Attribut.
-  - **MDF** (`mdf`): DIN EN 622-5.
-  - **HDF** (`hdf`): DIN EN 622-5 (hochdichte MDF).
-  - **Harte Faserplatte / HB** (`harte_faserplatte`):
+        - Alternative: einheitlich `spanplatte` mit Typ-Attribut.
+    - **MDF** (`mdf`): DIN EN 622-5.
+    - **HDF** (`hdf`): DIN EN 622-5 (hochdichte MDF).
+    - **Harte Faserplatte / HB** (`harte_faserplatte`):
     DIN EN 622-2.
-  - **Mittelharte Faserplatte / MBH/MBL**
+    - **Mittelharte Faserplatte / MBH/MBL**
     (`mittelharte_faserplatte`): DIN EN 622-3.
 - **Pflichtfelder über `werkstoff` hinaus**:
-  - **Plattendicken-Achse** (`plattendicken_achse`, eigener Folge-
+    - **Plattendicken-Achse** (`plattendicken_achse`, eigener Folge-
     Eintrag): rechtwinklig zur Plattenebene. Einzige geometrische
     Vektor-Eigenschaft.
 - **Verwendung**:
-  - **Bauteil** (`bauteil`): trägt einen Werkstoff der Subklasse
+    - **Bauteil** (`bauteil`): trägt einen Werkstoff der Subklasse
     `isotroper_plattenwerkstoff`, wenn Flächenbauteil aus
     Spanplatte / MDF / HDF / Faserplatte.
-  - **Plattenwerkstoff** (`plattenwerkstoff`, Folgearbeit):
+    - **Plattenwerkstoff** (`plattenwerkstoff`, Folgearbeit):
     Spezialisierung von Flächenbauteil mit Werkstoff aus den drei
     Plattenwerkstoff-Klassen.
 - **Abgrenzung**:
-  - **`axiales_holz`**: eine ausgeprägte Faserrichtung entlang
+    - **`axiales_holz`**: eine ausgeprägte Faserrichtung entlang
     einer Bauteilachse (Stab-/Stützenwerkstoff).
-  - **`mehrlagenholz`**: Lagenstruktur mit pro-Lage-Mechanik
+    - **`mehrlagenholz`**: Lagenstruktur mit pro-Lage-Mechanik
     (BSP, Sperrholz, Multiplex).
-  - **`gerichteter_plattenwerkstoff`**: schwache, aber
+    - **`gerichteter_plattenwerkstoff`**: schwache, aber
     bemessungsrelevante Vorzugsrichtung in der Plattenebene
     (OSB). Isotroper Plattenwerkstoff hat **keine** solche
     Richtung.
-  - **`faserrichtung`** (im Sinne des Klasse-A-Glossarbegriffs):
+    - **`faserrichtung`** (im Sinne des Klasse-A-Glossarbegriffs):
     Einheitsvektor-Annotation an einem Bauteil mit Werkstoff
     `axiales_holz`. Bei isotropem Plattenwerkstoff ist die
     Faserrichtungs-Annotation **harte Invariante: nicht zulässig**.

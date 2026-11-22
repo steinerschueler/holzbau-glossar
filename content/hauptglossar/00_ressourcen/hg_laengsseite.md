@@ -94,7 +94,7 @@ gilt:
 
 1. **Bauteilachsen-Parallelität der Trägerebene**: Die
    Bauteilachsen-Tangente d_hat(s) liegt in der Trägerebene E_F:
-   ```
+   ```text
    |⟨n_hat_F, d_hat(s)⟩| ≤ ε_W   für alle s ∈ [0, L].                     (1)
    ```
    Im prismatischen Fall (konstantes d_hat(s) = d_hat) reduziert sich (1)
@@ -114,7 +114,7 @@ siehe `stirnseite`): Sei f_hat ∈ S² die Faserrichtung des Bauteils
 (siehe `faserrichtung`, Modus HART). Im Standardfall axialer
 Faserrichtung (f_hat ∥ d_hat) gilt
 
-```
+```text
 |⟨n_hat_F, f_hat⟩| ≤ ε_W,                                                  (2)
 ```
 
@@ -135,15 +135,15 @@ wesentlichen Komponente quer zur Trägerebene verläuft.
   Querschnitts-Kantenrichtungen, gesweept entlang der
   Bauteilachse.
 - **Anzahl bei Standard-Querschnitten**:
-  - **Rechteckquerschnitt**: vier Längsseiten (zwei Breitseiten
-    + zwei Schmalseiten).
-  - **Rundquerschnitt**: eine zylindrische Mantelfläche, die nicht
+    - **Rechteckquerschnitt**: vier Längsseiten (zwei Breitseiten +
+    zwei Schmalseiten).
+    - **Rundquerschnitt**: eine zylindrische Mantelfläche, die nicht
     eben ist und damit **keine Längsseite** im Sinne dieses
     Glossars ist (sondern eine Mantelfläche; siehe Folgearbeit
     `mantelflaeche` für rotationssymmetrische Stab-Bauteile).
-  - **I-, T-, L-Profil-Querschnitt**: mehrere Längsseiten gemäß
+    - **I-, T-, L-Profil-Querschnitt**: mehrere Längsseiten gemäß
     der Anzahl ebener Außen-Teilflächen des Profils.
-  - **Beliebig polygonaler Querschnitt mit k Eckpunkten**: k
+    - **Beliebig polygonaler Querschnitt mit k Eckpunkten**: k
     Längsseiten, je eine pro Polygonkante.
 - **Disjunktheit von Längsseite und Stirnseite**: Aus (1)
   folgt |⟨n_hat_F, d_hat⟩| ≤ ε_W, während für die Stirnseite per
@@ -222,14 +222,14 @@ Sortierung, Visualisierung der Sicht-Untersicht).
 
 ### Längsseite vs. Stirnseite
 
-| Eigenschaft                | Längsseite                         | Stirnseite                          |
-|----------------------------|------------------------------------|-------------------------------------|
-| Trägerebene zur Bauteilachse | parallel                          | rechtwinklig (im Standardfall)      |
-| Faserrichtung               | in der Trägerebene                | quer zur Trägerebene (Faser tritt aus) |
-| Anzahl bei Rechteck-Stab    | 4 (Oberseite, Unterseite, 2 Schmalseiten) | 2 (Anfang, Ende)             |
-| Lasteinleitung              | rechtwinklig zur Faser (hoch tragfähig) | parallel zur Faser (gering tragfähig) |
-| Bewitterungs-Anfälligkeit   | gering                            | hoch (Hirnholz)                     |
-| Sichtfläche im Werkplan     | dominante Sichtfläche             | begleitende Sichtkante              |
+| Eigenschaft | Längsseite | Stirnseite |
+| --- | --- | --- |
+| Trägerebene zur Bauteilachse | parallel | rechtwinklig (im Standardfall) |
+| Faserrichtung | in der Trägerebene | quer zur Trägerebene (Faser tritt aus) |
+| Anzahl bei Rechteck-Stab | 4 (Oberseite, Unterseite, 2 Schmalseiten) | 2 (Anfang, Ende) |
+| Lasteinleitung | rechtwinklig zur Faser (hoch tragfähig) | parallel zur Faser (gering tragfähig) |
+| Bewitterungs-Anfälligkeit | gering | hoch (Hirnholz) |
+| Sichtfläche im Werkplan | dominante Sichtfläche | begleitende Sichtkante |
 
 ### Abgrenzung zu Mantelflächen rotationssymmetrischer Stäbe
 
@@ -250,60 +250,60 @@ die Begriffe Längsseite und Mantelfläche sind disjunkt.
   unter demselben Oberbegriff `polygon` in Berandungs-Lesart
   geführt.
 - **Spezialisierungen** (Folgearbeit):
-  - **Schmalseite** (`schmalseite`, Folgearbeit): Längsseite eines
+    - **Schmalseite** (`schmalseite`, Folgearbeit): Längsseite eines
     Bauteils mit rechteckigem Querschnitt parallel zur
     Querschnitts-Querachse (Querschnittsbreite). Trigger: erstes
     Tool mit expliziter Schmal-/Breit-Unterscheidung.
-  - **Breitseite** (`breitseite`, Folgearbeit): Längsseite eines
+    - **Breitseite** (`breitseite`, Folgearbeit): Längsseite eines
     Bauteils mit rechteckigem Querschnitt parallel zur
     Querschnitts-Längsachse (Querschnittshöhe). Trigger:
     siehe Schmalseite.
 - **Bestandteile (partitiv)** (geerbt von `polygon`):
-  - **Polygonberandung** ∂F (geerbt von `polygon`).
-  - **Trägerebene** E_F (geerbt von `polygon`).
-  - **Außennormalen-Vektor** n_hat_F (per Konvention aus dem Bauteil
+    - **Polygonberandung** ∂F (geerbt von `polygon`).
+    - **Trägerebene** E_F (geerbt von `polygon`).
+    - **Außennormalen-Vektor** n_hat_F (per Konvention aus dem Bauteil
     heraus zeigend).
-  - **Längsausdehnung** entlang der Bauteilachse: ‖p_e − p_a‖
+    - **Längsausdehnung** entlang der Bauteilachse: ‖p_e − p_a‖
     (= Bauteillänge L im prismatischen Fall).
 - **Verwendung**:
-  - **Auflagerung**: Längsseite trägt Druckkräfte rechtwinklig zur
+    - **Auflagerung**: Längsseite trägt Druckkräfte rechtwinklig zur
     Faser ein.
-  - **Verbindungen** (`verbindungsmittel`): Schrauben, Stabdübel,
+    - **Verbindungen** (`verbindungsmittel`): Schrauben, Stabdübel,
     Bolzen werden bevorzugt durch Längsseiten geführt.
-  - **Bearbeitungen** (`bearbeitung`): Kerven, Versätze, Schlitze,
+    - **Bearbeitungen** (`bearbeitung`): Kerven, Versätze, Schlitze,
     Bohrungen liegen typisch an einer Längsseite.
-  - **Faserneigungs-Sortierung** (DIN 4074-1): die Sortier-
+    - **Faserneigungs-Sortierung** (DIN 4074-1): die Sortier-
     Inspektion erfolgt an Schmal- und Breitseite.
-  - **3D-Visualisierung**: Längsseiten erhalten typisch eine
+    - **3D-Visualisierung**: Längsseiten erhalten typisch eine
     Längsmaserungs-Texturierung, die sich von der Hirnholz-
     Texturierung der Stirnseiten unterscheidet.
 - **Abgrenzung**:
-  - **Polygon** (`polygon`): allgemeines geometrisches Primitiv
+    - **Polygon** (`polygon`): allgemeines geometrisches Primitiv
     ohne Bauteilrolle. Die Längsseite ist ein Polygon mit
     zugewiesener Bauteilrolle und Außennormalen-Konvention.
-  - **Ebene** (`ebene`): die Trägerebene einer Längsseite ist eine
+    - **Ebene** (`ebene`): die Trägerebene einer Längsseite ist eine
     Ebene; die Längsseite ist eine **beschränkte** Teilmenge mit
     polygonaler Berandung und Bauteilrolle.
-  - **Stirnseite** (`stirnseite`): zur Bauteilachse rechtwinklige
+    - **Stirnseite** (`stirnseite`): zur Bauteilachse rechtwinklige
     Endfläche; Faser tritt durch die Trägerebene aus. Längsseite
     und Stirnseite sind disjunkte Bauteilflächen-Kategorien
     (siehe Wohldefiniertheits-Abschnitt).
-  - **Bauteilachse** (`bauteilachse`): die Bauteilachse liegt in
+    - **Bauteilachse** (`bauteilachse`): die Bauteilachse liegt in
     der Trägerebene jeder Längsseite (im prismatischen Fall sogar
     auf gleicher Höhe wie die Längsseite, parallel verschoben um
     die halbe Querschnittsdimension); sie ist aber nicht selbst
     die Längsseite.
-  - **Faserrichtung** (`faserrichtung`): bei axialer Faserrichtung
+    - **Faserrichtung** (`faserrichtung`): bei axialer Faserrichtung
     liegt die Faser in der Trägerebene jeder Längsseite (Bedingung
     (2)); bei Drehwuchs oder Plattenwerkstoff-Modi gilt das nicht
     universell. Die Faserrichtung ist Bauteil-Annotation, die
     Längsseite eine Bauteilfläche.
-  - **Querschnitt** (`querschnitt`): die Längsseiten eines
+    - **Querschnitt** (`querschnitt`): die Längsseiten eines
     prismatischen Bauteils sind die Spuren der Querschnittskanten
     entlang der Bauteilachse (Sweep des Querschnitts). Die
     Längsseite hat den Querschnitt als implizite Erzeugende, ist
     aber nicht selbst der Querschnitt.
-  - **Bauteilfläche** (`bauteilflaeche`, Folgearbeit): Längsseite
+    - **Bauteilfläche** (`bauteilflaeche`, Folgearbeit): Längsseite
     und Stirnseite sind die beiden disjunkten Bauteilflächen-
     Kategorien an einem Stabbauteil. Beide sind symmetrisch unter
     `polygon` (Berandungs-Lesart) geführt, ohne gemeinsamen

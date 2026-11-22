@@ -111,7 +111,7 @@ Sei
   `verstaerkungselement`,
 
 - 𝓥_τ die Menge der Verbindungsarten
-  ```
+  ```text
   𝓥_τ:= { Stoß, Anschluss, Knoten, Eckverbindung,
           ZimmermannsmaessigerStoss, ZimmermannsmaessigerAnschluss,
           KlebeVerbindung }
@@ -125,7 +125,7 @@ Sei
 
 Dann ist eine **Verbindung** das Tupel
 
-```
+```text
 V:= (uuid, typ, beteiligte_bauteile, verbindungsmittel,
       verbinder, verstaerkungen, nachweisverfahren,
       position?, bezeichnung?)
@@ -312,13 +312,13 @@ beim Aufrichten einzeln auf den Bock gelegt wird.
 
 ### IFC- und BTLx-Mapping
 
-| Element/Aggregat       | IFC                                                   | BTLx                                  |
-|------------------------|-------------------------------------------------------|---------------------------------------|
-| Bauteil                | IfcBeam / IfcColumn / IfcMember / IfcPlate            | Part mit @GUID                        |
-| Verbindungsmittel      | IfcMechanicalFastener                                 | Processing oder eigenes Part          |
-| Verbinder              | IfcDiscreteAccessory                                  | eigenes Part oder Reference           |
-| Verstärkungselement    | IfcMechanicalFastener + Pset für Funktion             | wie VM + Funktionsattribut            |
-| **Verbindung**         | **IfcRelConnectsElements** (Beziehung) bzw. `IfcGroup` mit `IfcRelAggregates` | **implizit über mehrere Parts/Processings** |
+| Element/Aggregat | IFC | BTLx |
+| --- | --- | --- |
+| Bauteil | IfcBeam / IfcColumn / IfcMember / IfcPlate | Part mit @GUID |
+| Verbindungsmittel | IfcMechanicalFastener | Processing oder eigenes Part |
+| Verbinder | IfcDiscreteAccessory | eigenes Part oder Reference |
+| Verstärkungselement | IfcMechanicalFastener + Pset für Funktion | wie VM + Funktionsattribut |
+| **Verbindung** | **IfcRelConnectsElements** (Beziehung) bzw. `IfcGroup` mit `IfcRelAggregates` | **implizit über mehrere Parts/Processings** |
 
 Die IFC-Repräsentation einer Verbindung ist **kein Element**,
 sondern eine **Beziehung** (`IfcRelConnectsElements` — Subtyp von

@@ -133,7 +133,7 @@ Dann heißt P eine **Fußpfette** genau dann, wenn die folgenden
 Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
 
 1. **Parallelität zur Traufe**: d_hat_P ist kollinear mit d_hat_T,
-   ```
+   ```text
    ‖d_hat_P × d_hat_T‖ ≤ ε_K.
    ```
    Sinus-Test gegen Kollinearität; nach `_KONVENTIONEN.md`
@@ -142,7 +142,7 @@ Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
 
 2. **Traufnähe**: Die mittlere Höhe der Pfettenachse liegt
    innerhalb δ_z der Traufhöhe,
-   ```
+   ```text
    |z_P − z_T| ≤ δ_z.
    ```
 
@@ -297,29 +297,29 @@ Fachliteratur vor.
 - **Bestandteile (partitiv)**: geerbt von `pfette`
   (Bauteilachse, Querschnitt, Werkstoff, Faserrichtung).
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Traufe** (`traufe`): die Dachkante, parallel zu der die
+    - **Traufe** (`traufe`): die Dachkante, parallel zu der die
     Fußpfette liegt.
-  - **Sparren** (`sparren`): liegt mit dem Sparrenfuß auf der
+    - **Sparren** (`sparren`): liegt mit dem Sparrenfuß auf der
     Fußpfette auf (Pfettendach) bzw. ist mit ihr durch Versatz
     oder Anschlag verbunden.
-  - **Mauerwerk / Stahlbeton-Ringbalken**: traditionelles
+    - **Mauerwerk / Stahlbeton-Ringbalken**: traditionelles
     Auflager der Fußpfette als „Mauerlatte". Mauer und
     Fußpfette sind durch Mauerlatten-Anker oder Schwerlast-
     dübel kraftschlüssig verbunden.
-  - **Wand / Einbinder**: bei Holzwänden übernimmt der Einbinder
+    - **Wand / Einbinder**: bei Holzwänden übernimmt der Einbinder
     teilweise die Auflagerfunktion; die Fußpfette liegt auf
     dem Einbinder.
-  - **Stuhlsäule** / **Stuhlschwelle**: bei aufgeständerten
+    - **Stuhlsäule** / **Stuhlschwelle**: bei aufgeständerten
     Pfettendächern Auflagerung der Fußpfette auf einer
     Stuhlkonstruktion.
 - **Abgrenzung**:
-  - **Firstpfette** (`firstpfette`): am Firstniveau (oben).
+    - **Firstpfette** (`firstpfette`): am Firstniveau (oben).
     Fußpfette liegt am gegenüberliegenden Ende des Dachs (unten).
-  - **Mittelpfette** (`mittelpfette`): zwischen Fuß- und
+    - **Mittelpfette** (`mittelpfette`): zwischen Fuß- und
     Firstpfette.
-  - **Sparren** (`sparren`): geneigtes Bauteil, das **auf** der
+    - **Sparren** (`sparren`): geneigtes Bauteil, das **auf** der
     Fußpfette aufliegt; nicht selbst Pfette.
-  - **Schwelle** (`schwelle`): horizontales unteres Auflagerholz
+    - **Schwelle** (`schwelle`): horizontales unteres Auflagerholz
     im **Wandbau**
     (zwischen Fundament und Wand-Ständern); trotz formaler
     Ähnlichkeit (horizontaler Stab am Boden) keine Pfette,
@@ -327,14 +327,14 @@ Fachliteratur vor.
     Die Bezeichnung „Schwellpfette" steht trotz des
     Bestandteils „Schwelle" für eine Pfette, nicht für eine
     Schwelle.
-  - **Einbinder** (`einbinder`): oberster horizontaler Längsträger einer Wand. In manchen
+    - **Einbinder** (`einbinder`): oberster horizontaler Längsträger einer Wand. In manchen
     Konstruktionen übernimmt der Einbinder die Funktion einer
     Fußpfette; saubere Trennung zimmermannssprachlich:
     Einbinder gehört zur Wand, Fußpfette gehört zum Dachtragwerk.
     Ein Bauteil kann nicht gleichzeitig Einbinder und Fußpfette
     sein, sondern wird je nach konstruktiver Funktion
     der einen oder anderen Rolle zugeordnet.
-  - **Traufe** (`traufe`): die geometrische Dachkante am
+    - **Traufe** (`traufe`): die geometrische Dachkante am
     Sparrenfuß; die Fußpfette liegt parallel zur Traufe und in
     deren Höhe, ist aber nicht identisch mit der Traufe (die
     Traufe ist Geometrie, die Fußpfette ist Bauteil).

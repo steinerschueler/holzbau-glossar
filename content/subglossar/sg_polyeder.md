@@ -9,7 +9,7 @@ status: entwurf
 
 # Polyeder (Subglossar)
 
-Brücke vom normativen Hauptglossar (`hauptglossar/00_ressourcen/hg_polyeder.md`) zu
+Brücke vom normativen Hauptglossar (`glossary/00_ressourcen/hg_polyeder.md`) zu
 den stufenweisen Theorie-Inhalten. Hier liegt die didaktische
 Aufbereitung: die berufssprachliche Beobachtung, dass das Wort
 „Polyeder" im DACH-Holzbau-Korpus praktisch unsichtbar bleibt, während
@@ -293,7 +293,7 @@ Hilfs-Geometrie auf, immer als Geometrie-Beschreibung, nie als
 eigenständiges Bauteil:
 
 | Rolle | Maßstab | Beispiel |
-|---|---|---|
+| --- | --- | --- |
 | **Bauteil-Geometrie** | Bauteil-Skala | Sparren als Quader; Sparren mit Klauenkerve als nicht-konvexer Polyeder; CLT-Platte als flacher Quader (Plattenformat × Dicke); BSH-Träger als Quader im Rohzustand |
 | **Dachkörper** | Gebäude-Skala | Walmdach als Prisma plus zwei Pyramiden; Satteldach als reines Prisma mit dreieckiger Stirn; Stuttgarter Dach mit Pyramidenstumpf-Krone |
 | **Gebäude-Hüllvolumen** | Stadtmaßstab | das Polyeder, das ein Gebäude inklusive Erkern, Gauben und Anbauten umschließt — in der 3D-Stadtmodellierung explizit als Polyeder behandelt |
@@ -301,7 +301,7 @@ eigenständiges Bauteil:
 
 Die wichtigste praktische Unterscheidung ist die zwischen
 **Bauteil-Geometrie** und **Bauteil-Identität**. Ein Bauteil im Sinne
-von `hauptglossar/10_kern/hg_bauteil.md` trägt eine UUID, eine Positionsnummer,
+von `glossary/10_kern/hg_bauteil.md` trägt eine UUID, eine Positionsnummer,
 einen Werkstoff und eine Lage; das Polyeder ist nur seine
 **Geometrie-Hülle**. In den 3D-CAD-Systemen des Holzbaus (Cadwork,
 Sema, Dietrichs) wird diese Trennung sauber abgebildet: das
@@ -324,7 +324,7 @@ relevant wird.
 
 Die kompakte **Volumen-Formel** der Berufsschul-Mathematik lautet
 
-```
+```text
 V = (1/6) · b · h · (2·l + f)
 ```
 
@@ -346,13 +346,13 @@ f = l ergibt ein **Satteldach** (reines Prisma, keine Pyramiden). Die
 Zerlegung trägt also die ganze Familie zwischen Zelt- und Satteldach
 in einer einzigen Formel.
 
-Der HG-Eintrag `hauptglossar/00_ressourcen/hg_polyeder.md` listet im Erläuterungs-
+Der HG-Eintrag `glossary/00_ressourcen/hg_polyeder.md` listet im Erläuterungs-
 Block „Walmverschneidungen, Kehlausarbeitungen, Anschnitt-Polygone"
 als Beispiele für Polyeder-Schnitt-Operationen. Die hier geschilderte
 **Volumen-Lesart des Walmdach-Körpers selbst** (das Dach als Prisma
 plus zwei Pyramiden) ist im aktuellen HG-Stand noch nicht
 explizit als CSG-Vereinigung notiert; sie ist in
-`hauptglossar/ABWEICHUNGEN.md` als ergänzungswürdiger Hinweis am HG
+`glossary/ABWEICHUNGEN.md` als ergänzungswürdiger Hinweis am HG
 eingetragen.
 
 ## Polyeder-Typen im Holzbau
@@ -361,7 +361,7 @@ Der Holzbau arbeitet praktisch mit einer kleinen, klar umrissenen
 Familie von Polyeder-Typen:
 
 | Typ | Was ihn auszeichnet | Holzbau-Beispiel |
-|---|---|---|
+| --- | --- | --- |
 | **Quader** | rechteckiges Prisma, sechs Flächen, alle Winkel 90° | unbearbeiteter Sparren, unbearbeitete Pfette, BSH-Träger im Rohzustand, CLT-Platte, OSB- und Spanplatte (Plattenformat × Dicke) |
 | **Prisma** | konstanter polygonaler Querschnitt entlang einer geraden Achse, Stirnflächen orthogonal zur Achse | dreieckiger Prismen-Mittelbereich des Walmdachs; gerader Bauteil-Abschnitt mit konstantem Querschnitt; Cadwork nennt die Konstruktion **„Extrusion"** |
 | **Schiefprisma** | konstanter Querschnitt, Stirnflächen aber **nicht** orthogonal zur Achse — die Stirnfläche ist mit einem Winkel angeschnitten | Sparren mit **Senkelschnitt** am Sparrenkopf am First; Sparren mit **Bleischnitt** am Sparrenfuß an der Traufe; gerade Strebe mit schrägem Anschnitt |
@@ -467,30 +467,30 @@ Diese Subglossar-Datei stützt sich auf die folgenden Hauptglossar-
 Begriffe; bei Detailfragen ist dort die normative Definition zu
 finden:
 
-- `hauptglossar/00_ressourcen/hg_polyeder.md` — das normative Hauptglossar zum
+- `glossary/00_ressourcen/hg_polyeder.md` — das normative Hauptglossar zum
   Polyeder, mit B-Rep-Definition (Eckpunkte, Kanten, Flächen,
   Inzidenz-Bedingungen 1–5), Euler-Polyederformel, Hauptsatz von
   Weyl-Minkowski (V-Rep ↔ H-Rep im konvexen Fall), CSG-Block,
   Implementierungshinweis und Quellenliste.
-- `hauptglossar/00_ressourcen/hg_polygon.md` — die berandete, eben liegende
+- `glossary/00_ressourcen/hg_polygon.md` — die berandete, eben liegende
   2D-Figur; die Begrenzungsflächen eines Polyeders sind Polygone.
-- `hauptglossar/00_ressourcen/hg_ebene.md` — die Trägerebene jeder Polyeder-
+- `glossary/00_ressourcen/hg_ebene.md` — die Trägerebene jeder Polyeder-
   Begrenzungsfläche.
-- `hauptglossar/00_ressourcen/hg_halbraum.md` — der Halbraum als Bauelement der
+- `glossary/00_ressourcen/hg_halbraum.md` — der Halbraum als Bauelement der
   H-Rep konvexer Polyeder.
-- `hauptglossar/10_kern/hg_bauteil.md` — das identitätstragende Bauteil
+- `glossary/10_kern/hg_bauteil.md` — das identitätstragende Bauteil
   gegenüber der reinen Geometrie-Hülle des Polyeders.
-- `hauptglossar/00_ressourcen/hg_punkt.md`, `hauptglossar/00_ressourcen/hg_vektor.md` — die
+- `glossary/00_ressourcen/hg_punkt.md`, `glossary/00_ressourcen/hg_vektor.md` — die
   begrifflichen Voraussetzungen.
 
 Verwandte Subglossar-Einträge:
 
-- `lerninhalt/subglossar/sg_ebene.md` — Walmdach in der **Flächen-
+- `learning/subglossary/sg_ebene.md` — Walmdach in der **Flächen-
   Lesart** (drei Dachebenen, Schnittgeraden als Walmgrat und First);
   Komplementär-Skizze G.1 zu der hier dargestellten Volumen-Lesart.
-- `lerninhalt/subglossar/sg_polygon.md` — die 2D-Berandungs-Geschwister-
+- `learning/subglossary/sg_polygon.md` — die 2D-Berandungs-Geschwister-
   Figur; gemeinsame Negativ-Abgrenzung Polyeder ↔ Polygon.
-- `lerninhalt/subglossar/sg_kerve.md` — die zimmermannsmäßige
+- `learning/subglossary/sg_kerve.md` — die zimmermannsmäßige
   Bearbeitung, die einen konvexen Sparrenquader in einen
   nicht-konvexen Bauteilkörper überführt.
 

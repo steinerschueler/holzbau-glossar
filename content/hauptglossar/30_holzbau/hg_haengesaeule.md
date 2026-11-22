@@ -207,7 +207,7 @@ erfüllt sind:
 
 2. **Aufstrebende Bauteilachse**: Der untere Endpunkt p_a liegt
    höhenmäßig unterhalb des oberen Endpunktes p_e,
-   ```
+   ```text
    p_a.z + ε_L < p_e.z.
    ```
    Im einfachen Hängewerk ist die Hängesäule typisch lotrecht
@@ -217,7 +217,7 @@ erfüllt sind:
 3. **Bundbalken-Anker am unteren Endpunkt**: Der untere Endpunkt
    p_a liegt auf der Bundbalken-Bauteilachse a(BK) bis auf
    Toleranz,
-   ```
+   ```text
    dist(p_a, a(BK)) ≤ ε_L.
    ```
    Im einfachen Hängewerk liegt p_a am Bundbalken-Mittelpunkt
@@ -227,7 +227,7 @@ erfüllt sind:
 4. **Streben-Schnittpunkt-Anker am oberen Endpunkt**: Der obere
    Endpunkt p_e liegt am Schnittpunkt der beiden Streben-
    Bauteilachsen,
-   ```
+   ```text
    ‖p_e − s‖ ≤ ε_L  mit  s = a(S₁) ∩ a(S₂).
    ```
    Im doppelten Hängewerk ist p_e Endpunkt eines Spannriegels,
@@ -390,7 +390,7 @@ Die Hängesäule ist Teil einer engen Bauteil-Familie (Wikipedia/
 Hängewerk):
 
 | Bauteil | Funktion |
-|---|---|
+| --- | --- |
 | **Hängesäule** | tragendes Zug-Element zur Bundbalken-Aufhängung |
 | **Bundbalken** | horizontaler Hauptbalken (Zug, da am Mittelpunkt aufgehängt) |
 | **Strebe** | schräges Druck-Element vom Bundbalken-Ende zum Streben-Schnittpunkt |
@@ -428,82 +428,82 @@ sind funktional invers.
   Geschwister-Rolle zu `stuetze`, `stuhlsaeule`, `staender`,
   `sparren`, `pfette`.
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`), aufstrebend
+    - **Bauteilachse** (`bauteilachse.Gerade`), aufstrebend
     (Bedingung 2);
-  - **Querschnitt** (rechteckig, im historischen Holz-Hängewerk
+    - **Querschnitt** (rechteckig, im historischen Holz-Hängewerk
     typisch 140–200 mm Kantenmaß; im modernen Stahl-Hängewerk
     Rundstab oder Profilstab);
-  - **Werkstoff** (Vollholz, BSH oder Stahl);
-  - **Faserrichtung** (bei Holz axial entlang der Bauteilachse).
+    - **Werkstoff** (Vollholz, BSH oder Stahl);
+    - **Faserrichtung** (bei Holz axial entlang der Bauteilachse).
 - **Topologische Inzidenz**:
-  - **Bundbalken** (`bundbalken`, Forward-Verweis):
+    - **Bundbalken** (`bundbalken`, Forward-Verweis):
     Auflager-/Anker-Anschluss am unteren Endpunkt (Bedingung 3).
-  - **Strebe** (`strebe`, Welle 10): zwei Streben treffen sich am
+    - **Strebe** (`strebe`, Welle 10): zwei Streben treffen sich am
     oberen Endpunkt der Hängesäule (Bedingung 4).
-  - **Spannriegel** (`spannriegel`, Forward-Verweis): beim
+    - **Spannriegel** (`spannriegel`, Forward-Verweis): beim
     doppelten Hängewerk Querholz zwischen den beiden Hängesäulen-
     Köpfen.
 - **Verwendung**:
-  - Mitglied eines **Hängewerks** (`haengewerk`, Folgearbeit-
+    - Mitglied eines **Hängewerks** (`haengewerk`, Folgearbeit-
     Trigger). Konstitutiv für das Hängewerk-Aggregat.
-  - Mitglied eines **Dachtragwerks** (`dachtragwerk`,
+    - Mitglied eines **Dachtragwerks** (`dachtragwerk`,
     Forward-Verweis Welle 12) oder eines **Dachstuhls**
     (`dachstuhl`, Welle 12), wenn das Hängewerk Teil eines
     Dachtragwerks ist.
-  - Mitglied eines **Deckentragwerks** (z. B. historische
+    - Mitglied eines **Deckentragwerks** (z. B. historische
     Holzbrücken-Decken-Tragwerke mit Hängewerk).
 - **Abgrenzung**:
-  - **Stütze** (`stuetze`, Welle 13): werkstoffneutrale Tragwerks-
+    - **Stütze** (`stuetze`, Welle 13): werkstoffneutrale Tragwerks-
     Bauteilrolle mit Druck-Lastpfad. Geschwister-Rolle der
     Hängesäule, nicht Oberbegriff. Trennlinie: Druck vs. Zug
     (Lastpfad), allgemeines Tragwerk vs. Hängewerk-Topologie.
-  - **Säule** (`saeule`, Welle 13): architektonisch-klassischer
+    - **Säule** (`saeule`, Welle 13): architektonisch-klassischer
     Stütz-Subtyp mit freistehendem Charakter. Keine Hängesäule
     ist eine Säule — sie ist in das Hängewerk eingebunden
     (Bedingung 3 von `hg_saeule.md` verletzt) und Zug-Element
     statt Druck.
-  - **Stuhlsäule** (`stuhlsaeule`, Welle 13): Druck-Element im
+    - **Stuhlsäule** (`stuhlsaeule`, Welle 13): Druck-Element im
     Dachstuhl. Geschwister-Bauteilrolle mit invertiertem
     Lastpfad. Trennlinie über Bedingung 5 (Zug vs. Druck) und
     Bedingung 4 (Streben-Schnittpunkt vs. Stuhlpfetten-Anschluss).
-  - **Ständer** (`staender`, Welle 9): Wand-Bauteilrolle.
+    - **Ständer** (`staender`, Welle 9): Wand-Bauteilrolle.
     Geschwister-Rolle; Trennlinie über die Wand-Inzidenz
     (Schwelle/Einbinder) gegen die Hängewerk-Inzidenz (Bundbalken/
     Streben-Schnittpunkt).
-  - **Sparren** (`sparren`, Welle 8): geneigtes Dachflächen-
+    - **Sparren** (`sparren`, Welle 8): geneigtes Dachflächen-
     Bauteil. Nicht im Hängewerk; gehört in die Sparrenebene des
     Dachtragwerks.
-  - **Bundbalken** (`bundbalken`, Forward-Verweis): horizontaler
+    - **Bundbalken** (`bundbalken`, Forward-Verweis): horizontaler
     Hauptbalken des Hängewerks. Konstitutives Auflager-Element
     der Hängesäule.
-  - **Strebe** (`strebe`, Welle 10): schräges Druck-Element des
+    - **Strebe** (`strebe`, Welle 10): schräges Druck-Element des
     Hängewerks. Trifft am oberen Endpunkt der Hängesäule.
-  - **Kopfband** (`kopfband`, Welle 10): Diagonal-Aussteifung
+    - **Kopfband** (`kopfband`, Welle 10): Diagonal-Aussteifung
     Pfosten-Kopf ↔ Längsholz. Im Hängewerk nicht direkter
     Bestandteil; das funktionale Pendant am Hängesäulen-Kopf
     ist die Strebe (die zugleich tragend und aussteifend wirkt).
-  - **Spannriegel** (`spannriegel`, Forward-Verweis): Querholz
+    - **Spannriegel** (`spannriegel`, Forward-Verweis): Querholz
     im doppelten Hängewerk. Im einfachen Hängewerk nicht
     vorhanden.
-  - **Hängewerk** (`haengewerk`, Folgearbeit-Trigger): Aggregat /
+    - **Hängewerk** (`haengewerk`, Folgearbeit-Trigger): Aggregat /
     Bauteilgruppe, deren konstitutives Mitglied die Hängesäule
     ist.
-  - **Sprengwerk** (`sprengwerk`, Folgearbeit-Trigger): inverses
+    - **Sprengwerk** (`sprengwerk`, Folgearbeit-Trigger): inverses
     Hängewerk. Im Sprengwerk gibt es keine Hängesäule, sondern
     eine Sprengsäule (Druck-Element).
-  - **Dachtragwerk** (`dachtragwerk`, Welle-12-Folgearbeit aus
+    - **Dachtragwerk** (`dachtragwerk`, Welle-12-Folgearbeit aus
     `hg_dachstuhl.md`): SIA-265-Linie-Oberbegriff. Hängewerk ist
     eine spezielle Dachtragwerks-Variante.
-  - **Dachstuhl** (`dachstuhl`, Welle 12): das zimmermannsmäßige
+    - **Dachstuhl** (`dachstuhl`, Welle 12): das zimmermannsmäßige
     Dachtragwerk. Klassisches Hängewerk fügt sich in den
     Dachstuhl ein (historische Kirchen-Dachstühle).
-  - **Verbindungsmittel** (`verbindungsmittel`, Welle 12): bei
+    - **Verbindungsmittel** (`verbindungsmittel`, Welle 12): bei
     Werkstoff-Drift Fall B (Stahl-Zugstab als Anschluss in eine
     Holz-Hängesäule); siehe Quellenkonflikt-Punkt 3.
-  - **Verstärkungselement** (`verstaerkungselement`, Welle 12):
+    - **Verstärkungselement** (`verstaerkungselement`, Welle 12):
     bei Werkstoff-Drift Fall C (Stahl-Zugstab als nachträgliche
     Verstärkung einer historischen Holz-Hängesäule).
-  - **Bauteil** (`bauteil`): Oberbegriff.
+    - **Bauteil** (`bauteil`): Oberbegriff.
 
 ## Quellen
 

@@ -103,7 +103,7 @@ Sei
 - 𝓦 die Menge der Werkstoffe (typisch Stahl S235 oder verzinkter
   Stahl, Edelstahl A2/A4; Hartholz für Holzlaschen),
 - 𝓥𝓑_τ die Menge der Verbinder-Typen
-  ```
+  ```text
   𝓥𝓑_τ:= { Balkenschuh, Winkelverbinder, Knotenblech,
             Schlitzblech, SherpaVerbinder, KnappVerbinder,
             PitzlVerbinder, Holzlasche, Zugband, Druckband,
@@ -115,7 +115,7 @@ Sei
 
 Dann ist ein **Verbinder** das Tupel
 
-```
+```text
 VB:= (uuid, geometrie, lokale_platzierung, werkstoff,
        typ, befestigt_durch,
        eta_zulassung?, stahlguete?,
@@ -155,7 +155,7 @@ Die durch einen Verbinder vermittelte Menge der **mittelbar
 verbundenen Bauteile** ergibt sich (transitiv) aus den
 Verbindungsmitteln:
 
-```
+```text
 verbundene_bauteile(VB):= ⋃_{vm ∈ befestigt_durch} verbindet(vm).
 ```
 
@@ -219,16 +219,16 @@ Spaltbruchgefahr).
 
 ### Typische Verbinder-Bauarten
 
-| Typ                  | Funktion                                | Beispiele |
-|----------------------|-----------------------------------------|-----------|
-| **Balkenschuh**      | hängender Trägeranschluss an Hauptträger | Simpson BSI, Rothoblaas WHT, BMF, Knapp K |
-| **Winkelverbinder**  | rechtwinkliger Anschluss zweier Stäbe   | Simpson AKR, BMF AB, Rothoblaas ALUMINI |
-| **Knotenblech**      | mehrteiliger Knoten mit Stabdübeln/Bolzen | Schlitzblech-Knoten in BSH-Trägern |
-| **Schlitzblech**     | eingeschlitztes Stahlblech mit Stabdübeln | EC5 8.6, BSH-Stützenfuß |
-| **Sherpa-Verbinder** | aluminiumgegossener Schwalbenschwanz    | Z-9.1-447 |
-| **Knapp-Verbinder**  | Holz-Holz-Verbinder mit gehärteten Klauen | RICON, MEGANT |
-| **Holzlasche**       | beidseitig anliegendes Holzbrett        | klassischer zimmermannsmäßiger Stoß |
-| **Zugband**          | Stahlband, das Zugkräfte zwischen Bauteilen weiterleitet | Sturmanker, Holz-Beton-Verbund |
+| Typ | Funktion | Beispiele |
+| --- | --- | --- |
+| **Balkenschuh** | hängender Trägeranschluss an Hauptträger | Simpson BSI, Rothoblaas WHT, BMF, Knapp K |
+| **Winkelverbinder** | rechtwinkliger Anschluss zweier Stäbe | Simpson AKR, BMF AB, Rothoblaas ALUMINI |
+| **Knotenblech** | mehrteiliger Knoten mit Stabdübeln/Bolzen | Schlitzblech-Knoten in BSH-Trägern |
+| **Schlitzblech** | eingeschlitztes Stahlblech mit Stabdübeln | EC5 8.6, BSH-Stützenfuß |
+| **Sherpa-Verbinder** | aluminiumgegossener Schwalbenschwanz | Z-9.1-447 |
+| **Knapp-Verbinder** | Holz-Holz-Verbinder mit gehärteten Klauen | RICON, MEGANT |
+| **Holzlasche** | beidseitig anliegendes Holzbrett | klassischer zimmermannsmäßiger Stoß |
+| **Zugband** | Stahlband, das Zugkräfte zwischen Bauteilen weiterleitet | Sturmanker, Holz-Beton-Verbund |
 
 ### Verbinder vs. Verbindungsmittel — die EC5-Trennung
 
@@ -274,34 +274,34 @@ ist die „Verbinderliste" eine eigene Sicht.
 
 - **Oberbegriff**: `element`.
 - **Spezialisierungen** (eigene Einträge folgen):
-  - **Balkenschuh** (`balkenschuh`): hängender Trägeranschluss.
-  - **Winkelverbinder** (`winkelverbinder`): rechtwinkliger
+    - **Balkenschuh** (`balkenschuh`): hängender Trägeranschluss.
+    - **Winkelverbinder** (`winkelverbinder`): rechtwinkliger
     Anschluss.
-  - **Knotenblech** (`knotenblech`): mehrteiliger Knoten.
-  - **Schlitzblech** (`schlitzblech`): eingeschlitztes Stahlblech.
-  - **Sherpa-Verbinder** (`sherpa_verbinder`): Aluguss-Verbinder.
-  - **Holzlasche** (`holzlasche`): zimmermannsmäßiger Holzverbinder.
-  - **Zugband** (`zugband`): Stahlband zur Zugkraft-Übertragung.
+    - **Knotenblech** (`knotenblech`): mehrteiliger Knoten.
+    - **Schlitzblech** (`schlitzblech`): eingeschlitztes Stahlblech.
+    - **Sherpa-Verbinder** (`sherpa_verbinder`): Aluguss-Verbinder.
+    - **Holzlasche** (`holzlasche`): zimmermannsmäßiger Holzverbinder.
+    - **Zugband** (`zugband`): Stahlband zur Zugkraft-Übertragung.
 - **Bestandteile (partitiv)**: alles geerbt von `element` plus
   typ, befestigt_durch.
 - **Verwendung**:
-  - Bestandteil einer **Verbindung** (`verbindung`): der Verbinder
+    - Bestandteil einer **Verbindung** (`verbindung`): der Verbinder
     ist Aggregatbestandteil neben Bauteilen, Verbindungsmitteln
     und ggf. Verstärkungselementen.
-  - Bestandteil eines **Tragwerks** (`tragwerk`): erweitert die
+    - Bestandteil eines **Tragwerks** (`tragwerk`): erweitert die
     Element-Menge.
 - **Abgrenzung**:
-  - **Verbindungsmittel** (`verbindungsmittel`): das einzelne
+    - **Verbindungsmittel** (`verbindungsmittel`): das einzelne
     kraftübertragende Stück (Nagel, Schraube, Bolzen, Stabdübel).
     Verbindungsmittel sind das, **womit** der Verbinder befestigt
     wird; der Verbinder ist das, **was** befestigt wird. Anders
     formuliert: Verbindungsmittel gehen **durch** den Verbinder
     in das Bauteil.
-  - **Verstärkungselement** (`verstaerkungselement`): ein
+    - **Verstärkungselement** (`verstaerkungselement`): ein
     Verbindungsmittel in Verstärkungsfunktion mit eigener axialer
     Bemessung. Verbinder hingegen ist ein **eigenes Stück Stahl/
     Holz**, nicht eine Funktionsrolle eines Verbindungsmittels.
-  - **Bauteil** (`bauteil`): tragend/raumbildend mit Querschnitts-
+    - **Bauteil** (`bauteil`): tragend/raumbildend mit Querschnitts-
     bemessung nach EC5 Kap. 6. **Sonderfall**: wenn ein Knotenblech
     selbst als druck- oder zugbeanspruchtes Tragglied (z. B. als
     Diagonale) ausgelegt ist und nicht primär Holzstäbe vermittelt,
@@ -309,10 +309,10 @@ ist die „Verbinderliste" eine eigene Sicht.
     nicht als Verbinder. Die Klassifikations-Frage ist
     funktional zu entscheiden: vermittelnd zwischen Holzstäben →
     Verbinder; primär tragend ohne vermittelnde Funktion → Bauteil.
-  - **Verbindung** (`verbindung`): Aggregat-Klasse, die einen
+    - **Verbindung** (`verbindung`): Aggregat-Klasse, die einen
     Verbinder enthalten kann. Der Verbinder ist Bestandteil der
     Verbindung, nicht selbst die Verbindung.
-  - **Element** (`element`): abstrakter Oberbegriff;
+    - **Element** (`element`): abstrakter Oberbegriff;
     Verbinder ist eine konkrete Subklasse.
 
 ## Quellen

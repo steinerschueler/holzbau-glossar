@@ -93,7 +93,7 @@ Sei
 
 Dann ist der **Hankinson-Winkel** α definiert als die Funktion
 
-```
+```text
 α: (ℝ³ \ {0}) × S² → [0, π/2],
 α(F, f_hat):= arccos(|⟨F, f_hat⟩| / ‖F‖).
 ```
@@ -105,7 +105,7 @@ physikalisch ungerichtet; siehe `faserrichtung` Wohldefiniertheit).
 **Spezialisierung mit normiertem Kraftvektor**: Für F_hat:= F / ‖F‖
 ∈ S² vereinfacht sich die Formel zu
 
-```
+```text
 α(F_hat, f_hat) = arccos(|⟨F_hat, f_hat⟩|).
 ```
 
@@ -114,7 +114,7 @@ Werkstoff w ∈ 𝓜𝓛 (Mehrlagenholz, siehe `mehrlagenholz`) und
 Lagenstruktur L = (ℓ₀, …, ℓ_{n−1}) (siehe `lagenstruktur`). Dann
 ist der Hankinson-Winkel **pro Lage**
 
-```
+```text
 α_i(F):= α(F, ℓ_i.faserrichtung)     für i ∈ {0, …, n−1},
 ```
 
@@ -123,17 +123,17 @@ Mehrlagenholz **nicht**.
 
 **Werkstoff-Modus-spezifische Bezugsachse**:
 
-| Modus          | Bezugsachse für α                                             |
-|----------------|----------------------------------------------------------------|
-| HART           | f_hat = Werkstoff-Faserrichtung (siehe `axiales_holz`)            |
-| STRUKTURIERT   | (f_hat_0, …, f_hat_{n−1}) = lagenweise Faserrichtungen (siehe `lage`) |
-| SCHWACH        | f_hat = Plattenlängsrichtung (siehe `plattenlaengsrichtung`)      |
-| KEINE          | nicht definiert (kein α-Begriff in der Plattenebene)           |
+| Modus | Bezugsachse für α |
+| --- | --- |
+| HART | f_hat = Werkstoff-Faserrichtung (siehe `axiales_holz`) |
+| STRUKTURIERT | (f_hat_0, …, f_hat_{n−1}) = lagenweise Faserrichtungen (siehe `lage`) |
+| SCHWACH | f_hat = Plattenlängsrichtung (siehe `plattenlaengsrichtung`) |
+| KEINE | nicht definiert (kein α-Begriff in der Plattenebene) |
 
 **Hankinson-Formel** (nicht definitorisch, nur Erläuterung; siehe
 unten): Die charakteristische Festigkeit unter Faserwinkel α ist
 
-```
+```text
 f_α = (f_0 · f_90) / (f_0 · sin²α + f_90 · cos²α),
 ```
 
@@ -183,31 +183,31 @@ Die Hankinson-Formel (Hankinson 1921) interpoliert die
 charakteristische Festigkeit von Holz unter beliebigem Faserwinkel
 α zwischen den beiden Grenzwerten:
 
-```
+```text
 f_α = (f_0 · f_90) / (f_0 · sin²α + f_90 · cos²α)
 ```
 
 mit f_0 = Festigkeit parallel zur Faser (α = 0°),
 f_90 = Festigkeit rechtwinklig zur Faser (α = 90°).
 
-| α     | sin²α | cos²α | f_α                      |
-|-------|-------|-------|---------------------------|
-| 0°    | 0     | 1     | f_0                       |
-| 30°   | 0,25  | 0,75  | f_0·f_90 / (0,25 f_0 + 0,75 f_90) |
-| 45°   | 0,5   | 0,5   | 2 · f_0 · f_90 / (f_0 + f_90)     |
-| 60°   | 0,75  | 0,25  | f_0·f_90 / (0,75 f_0 + 0,25 f_90) |
-| 90°   | 1     | 0     | f_90                      |
+| α | sin²α | cos²α | f_α |
+| --- | --- | --- | --- |
+| 0° | 0 | 1 | f_0 |
+| 30° | 0,25 | 0,75 | f_0·f_90 / (0,25 f_0 + 0,75 f_90) |
+| 45° | 0,5 | 0,5 | 2 · f_0 · f_90 / (f_0 + f_90) |
+| 60° | 0,75 | 0,25 | f_0·f_90 / (0,75 f_0 + 0,25 f_90) |
+| 90° | 1 | 0 | f_90 |
 
 Für Fichte-Vollholz C24: f_c,0,k ≈ 21 N/mm², f_c,90,k ≈ 2,5 N/mm²;
 f_c,45 ≈ 4,5 N/mm² (Faktor 5 zur Faser-parallelen Festigkeit).
 
 ### Anwendung in EC5
 
-| EC5-Stelle           | Bemessungssituation                                                |
-|----------------------|---------------------------------------------------------------------|
-| Gl. 6.16             | Druck schräg zur Faser σ_c,α,d                                      |
-| Gl. 8.31             | Lochleibungsfestigkeit f_h,α,k bei Bolzen, Stabdübel (D ≤ 30 mm)   |
-| Gl. 8.32             | Lochleibungsfestigkeit Sonderfall (Nadelholz mit D > 8 mm)         |
+| EC5-Stelle | Bemessungssituation |
+| --- | --- |
+| Gl. 6.16 | Druck schräg zur Faser σ_c,α,d |
+| Gl. 8.31 | Lochleibungsfestigkeit f_h,α,k bei Bolzen, Stabdübel (D ≤ 30 mm) |
+| Gl. 8.32 | Lochleibungsfestigkeit Sonderfall (Nadelholz mit D > 8 mm) |
 
 Bei Schraubenverbindungen mit Vollgewindeschrauben (DIN EN 14592)
 geht α ebenfalls in die Lochleibungs- und Ausziehfestigkeiten ein.
@@ -249,32 +249,32 @@ ist hier nicht definiert; α-Anfragen liefern „nicht zutreffend".
 - **Oberbegriff**: keiner. Hankinson-Winkel ist eine Operation
   (Funktion).
 - **Eingaben**:
-  - `Vektor` (Kraftvektor F ∈ ℝ³ \\ {0}).
-  - `Einheitsvektor` (Faserachse f_hat ∈ S²) bzw. `Faserrichtung`.
-  - Bei Mehrlagenholz: `Lagenstruktur` zur lagenweisen Auswertung.
+    - `Vektor` (Kraftvektor F ∈ ℝ³ \\ {0}).
+    - `Einheitsvektor` (Faserachse f_hat ∈ S²) bzw. `Faserrichtung`.
+    - Bei Mehrlagenholz: `Lagenstruktur` zur lagenweisen Auswertung.
 - **Ausgabe**:
-  - Bei `axiales_holz` und `gerichteter_plattenwerkstoff`: skalarer
+    - Bei `axiales_holz` und `gerichteter_plattenwerkstoff`: skalarer
     Winkel α ∈ [0, π/2] (Radiant; Anzeige in Grad).
-  - Bei `mehrlagenholz`: Tupel (α_0, …, α_{n−1}) ∈ [0, π/2]^n.
-  - Bei `isotroper_plattenwerkstoff`: nicht zutreffend.
+    - Bei `mehrlagenholz`: Tupel (α_0, …, α_{n−1}) ∈ [0, π/2]^n.
+    - Bei `isotroper_plattenwerkstoff`: nicht zutreffend.
 - **Verwendung**:
-  - **Hankinson-Formel f_α** (Bemessungs-Schicht): Eingangsgröße.
-  - **Schnittwinkel-Visualisierung** (Kernfunktion der App):
+    - **Hankinson-Formel f_α** (Bemessungs-Schicht): Eingangsgröße.
+    - **Schnittwinkel-Visualisierung** (Kernfunktion der App):
     Anzeige des Faserwinkels bei einem Schnitt.
-  - **Lochleibungsfestigkeit f_h,α,k** (EN 1995-1-1 Gl. 8.31, 8.32):
+    - **Lochleibungsfestigkeit f_h,α,k** (EN 1995-1-1 Gl. 8.31, 8.32):
     bei stiftförmigen Verbindungsmitteln.
 - **Abgrenzung**:
-  - **`faserrichtung`**: Einheitsvektor in der Rolle „Material-
+    - **`faserrichtung`**: Einheitsvektor in der Rolle „Material-
     hauptachse"; Eingabe der α-Operation, nicht synonym dazu.
-  - **`faserneigung`** (DIN 4074-1): Tangens des Winkels zwischen
+    - **`faserneigung`** (DIN 4074-1): Tangens des Winkels zwischen
     Faser und Bauteillängsachse; Sortier-Merkmal für die
     Festigkeitsklassen-Zuordnung. Hankinson-Winkel ist Winkel
     zwischen Kraft und Faser, Faserneigung ist Winkel zwischen
     Faser und Bauteilachse — beides Winkel, aber an
     unterschiedlichen Geometrieobjekten.
-  - **`plattenlaengsrichtung`**: bei OSB (Modus SCHWACH)
+    - **`plattenlaengsrichtung`**: bei OSB (Modus SCHWACH)
     Bezugsachse für α statt Faserrichtung.
-  - **`haupttragrichtung`**: bei Mehrlagenholz **nicht** Bezugsachse
+    - **`haupttragrichtung`**: bei Mehrlagenholz **nicht** Bezugsachse
     für α (das wäre eine Mittelung); pro Lage wird
     ℓ_i.faserrichtung verwendet.
 

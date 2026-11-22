@@ -102,28 +102,28 @@ Sei
 - ℘𝒦 der Produktkennzeichnungs-Raum nach `produktkennzeichnung`,
 - 𝒲 die Menge der zulässigen Werkstoffe nach `werkstoff`, gegliedert
   nach Werkstoff-Subklasse:
-  - `axiales_holz` (Vollholz, KVH, BSH, BSH-Lamellen, LVL/FSH …),
-  - `mehrlagenholz` (Brettsperrholz/CLT/BSP, Sperrholz, Multiplex …),
-  - `gerichteter_plattenwerkstoff` (OSB),
-  - `isotroper_plattenwerkstoff` (Spanplatte P4–P7, MDF, HDF,
+    - `axiales_holz` (Vollholz, KVH, BSH, BSH-Lamellen, LVL/FSH …),
+    - `mehrlagenholz` (Brettsperrholz/CLT/BSP, Sperrholz, Multiplex …),
+    - `gerichteter_plattenwerkstoff` (OSB),
+    - `isotroper_plattenwerkstoff` (Spanplatte P4–P7, MDF, HDF,
     Faserplatte),
-  - `werkstoff_stahl` (typisch nicht für Holzbau-Bauteile, Ausnahme
+    - `werkstoff_stahl` (typisch nicht für Holzbau-Bauteile, Ausnahme
     z. B. Stahltragglieder in Mischsystemen);
-  - 𝒲:= axiales_holz ∪ mehrlagenholz ∪ gerichteter_plattenwerkstoff
+    - 𝒲:= axiales_holz ∪ mehrlagenholz ∪ gerichteter_plattenwerkstoff
     ∪ isotroper_plattenwerkstoff ∪ werkstoff_stahl,
 - 𝒢 die Menge der zulässigen Geometrie-Repräsentationen, gegliedert
   nach Dominanzdimension:
-  - 𝒢_stab: Achse + Querschnitt (1D-dominant; Repräsentation
+    - 𝒢_stab: Achse + Querschnitt (1D-dominant; Repräsentation
     siehe `bauteilachse`, eigener Eintrag folgt),
-  - 𝒢_flaeche: begrenzte Trägerfläche + Dicke (2D-dominant;
+    - 𝒢_flaeche: begrenzte Trägerfläche + Dicke (2D-dominant;
     Repräsentation über `ebene`, `polygon` und einen Dickenwert),
-  - 𝒢_volumen: Polyeder (3D, allgemein; Repräsentation siehe
+    - 𝒢_volumen: Polyeder (3D, allgemein; Repräsentation siehe
     `polyeder`, eigener Eintrag folgt),
-  - 𝒢:= 𝒢_stab ∪ 𝒢_flaeche ∪ 𝒢_volumen.
+    - 𝒢:= 𝒢_stab ∪ 𝒢_flaeche ∪ 𝒢_volumen.
 
 Dann ist ein **Bauteil** ein Tupel
 
-```
+```text
 B:= (uuid, positionsnummer?, produktkennzeichnung?,
       lage, geometrie, werkstoff, annotationen)
 ```
@@ -154,7 +154,7 @@ und den bauteil-spezifischen Pflicht- und Optionalfeldern
 
 Die Punktmenge des Bauteils im Weltkoordinatensystem ist
 
-```
+```text
 G_W(B):= { lage(p) | p ∈ G_lokal(geometrie) } ⊂ ℝ³,
 ```
 
@@ -167,12 +167,12 @@ Polyeder selbst).
 Die Annotationen 𝒜 sind ein Tupel, **dessen Pflichtfeld-Profil von
 der Werkstoff-Subklasse bestimmt wird**:
 
-| Werkstoff-Subklasse              | Modus         | Pflicht-Annotationen                                  |
-|----------------------------------|---------------|-------------------------------------------------------|
-| `axiales_holz`                   | HART          | `faserrichtung` ∈ S² (Default-Konvention: lokale x-Achse) |
-| `mehrlagenholz`                  | STRUKTURIERT  | `lagenstruktur` + `haupttragrichtung` ∈ S²           |
-| `gerichteter_plattenwerkstoff`   | SCHWACH       | `plattenlaengsrichtung` ∈ S² (Default: lokale Plattenlängskante) + `plattendicken_achse` |
-| `isotroper_plattenwerkstoff`     | KEINE         | nur `plattendicken_achse` (in Plattenebene undefiniert) |
+| Werkstoff-Subklasse | Modus | Pflicht-Annotationen |
+| --- | --- | --- |
+| `axiales_holz` | HART | `faserrichtung` ∈ S² (Default-Konvention: lokale x-Achse) |
+| `mehrlagenholz` | STRUKTURIERT | `lagenstruktur` + `haupttragrichtung` ∈ S² |
+| `gerichteter_plattenwerkstoff` | SCHWACH | `plattenlaengsrichtung` ∈ S² (Default: lokale Plattenlängskante) + `plattendicken_achse` |
+| `isotroper_plattenwerkstoff` | KEINE | nur `plattendicken_achse` (in Plattenebene undefiniert) |
 
 In jedem Modus zusätzlich optional:
 
@@ -212,18 +212,18 @@ ebenfalls unzulässig.
   Die Wahl des lokalen Systems ist Modellierungskonvention; semantisch invariant.
 - **Konsistenz Werkstoff ↔ Annotationen** (werkstoffklassen-
   spezifische Pflichtfelder, siehe `faserrichtungs_modus`):
-  - Bei `werkstoff` ∈ axiales_holz: `faserrichtung` ∈ S² ist Pflicht
+    - Bei `werkstoff` ∈ axiales_holz: `faserrichtung` ∈ S² ist Pflicht
     (Norm-Invariante geerbt von `einheitsvektor`); ihre Bedeutung
     ist die idealisierte lokale Längsachse des Faserverlaufs (siehe
     `faserrichtung`).
-  - Bei `werkstoff` ∈ mehrlagenholz: `lagenstruktur` (Liste von
+    - Bei `werkstoff` ∈ mehrlagenholz: `lagenstruktur` (Liste von
     `lage`-Objekten ≥ 3 mit Symmetrie-Invariante) und
     `haupttragrichtung` ∈ S² sind Pflicht; eine einzelne globale
     `faserrichtung` ist unzulässig.
-  - Bei `werkstoff` ∈ gerichteter_plattenwerkstoff:
+    - Bei `werkstoff` ∈ gerichteter_plattenwerkstoff:
     `plattenlaengsrichtung` ∈ S² (Default: lokale Plattenlängskante)
     und `plattendicken_achse` sind Pflicht.
-  - Bei `werkstoff` ∈ isotroper_plattenwerkstoff: nur
+    - Bei `werkstoff` ∈ isotroper_plattenwerkstoff: nur
     `plattendicken_achse` ist Pflicht; in der Plattenebene ist keine
     Faserrichtung definiert.
   Wenn `vorzugsseite` gesetzt ist, muss die zugrunde liegende
@@ -328,87 +328,87 @@ Aggregat-Oberbegriff (`bauteil_aggregat`, eigener Eintrag folgt).
   Kompositionen aus Bauteilen (Dach, Wand, Decke).
 - **Spezialisierungen nach Geometriedominanz** (eigene Einträge
   folgen):
-  - **Stabbauteil** (`stabbauteil`): 1D-dominant, repräsentiert
+    - **Stabbauteil** (`stabbauteil`): 1D-dominant, repräsentiert
     durch Achse + Querschnitt + Material. Untertypen:
-    - **Sparren** (`sparren`), inkl. Spezialisierungen
+        - **Sparren** (`sparren`), inkl. Spezialisierungen
       **Gratsparren** (`gratsparren`), **Kehlsparren** (`kehlsparren`)
-    - **Pfette** (`pfette`), inkl. Spezialisierungen
+        - **Pfette** (`pfette`), inkl. Spezialisierungen
       **Fußpfette** (`fusspfette`), **Mittelpfette** (`mittelpfette`),
       **Firstpfette** (`firstpfette`)
-    - **Latte** (`latte`)
-    - **Konterlatte** (`konterlatte`)
-    - **Stütze** (`stuetze`)
-    - **Strebe** (`strebe`)
-    - **Kehlbalken** (`kehlbalken`)
-    - **Riegel** (`riegel`)
-    - **Schwelle** (`schwelle`)
-    - **Einbinder** (`einbinder`)
-    - **Pfosten** (Folgearbeit)
-  - **Flächenbauteil** (`flaechenbauteil`): 2D-dominant,
+        - **Latte** (`latte`)
+        - **Konterlatte** (`konterlatte`)
+        - **Stütze** (`stuetze`)
+        - **Strebe** (`strebe`)
+        - **Kehlbalken** (`kehlbalken`)
+        - **Riegel** (`riegel`)
+        - **Schwelle** (`schwelle`)
+        - **Einbinder** (`einbinder`)
+        - **Pfosten** (Folgearbeit)
+    - **Flächenbauteil** (`flaechenbauteil`): 2D-dominant,
     repräsentiert durch begrenzte Trägerfläche + Dicke + Material.
     Untertypen:
-    - **Schalung** (`schalung`)
-    - **Plattenwerkstoff** (`plattenwerkstoff`)
-    - **Brettsperrholz-Element** (`brettsperrholz_element`)
-  - **Volumenbauteil** (`volumenbauteil`): 3D-allgemein,
+        - **Schalung** (`schalung`)
+        - **Plattenwerkstoff** (`plattenwerkstoff`)
+        - **Brettsperrholz-Element** (`brettsperrholz_element`)
+    - **Volumenbauteil** (`volumenbauteil`): 3D-allgemein,
     repräsentiert durch Polyeder + Material. Untertypen:
     Massivholzelemente, zusammengesetzte BSP-Bauteile
     (Folgearbeit).
 - **Annotationen** (eigene Einträge; werkstoffabhängig pflichtig
   oder optional, siehe `faserrichtungs_modus`):
-  - **Faserrichtung** (`faserrichtung`, Pflicht bei
+    - **Faserrichtung** (`faserrichtung`, Pflicht bei
     `axiales_holz`): einzelne lokale Längsachse des
     Holzfaserverlaufs.
-  - **Lagenstruktur** (`lagenstruktur`, Pflicht bei
+    - **Lagenstruktur** (`lagenstruktur`, Pflicht bei
     `mehrlagenholz`): Liste von `lage`-Objekten ≥ 3 mit
     Symmetrie-Invariante.
-  - **Haupttragrichtung** (`haupttragrichtung`, Pflicht bei
+    - **Haupttragrichtung** (`haupttragrichtung`, Pflicht bei
     `mehrlagenholz`): Vektor in Plattenebene mit höherer
     Decklagen-Steifigkeit.
-  - **Plattenlängsrichtung** (`plattenlaengsrichtung`, Pflicht bei
+    - **Plattenlängsrichtung** (`plattenlaengsrichtung`, Pflicht bei
     `gerichteter_plattenwerkstoff`): schwache Vorzugsrichtung der
     Decklagen-Strands.
-  - **Plattendickenachse** (`plattendicken_achse`, Pflicht bei
+    - **Plattendickenachse** (`plattendicken_achse`, Pflicht bei
     allen Plattenwerkstoffen): rechtwinklig zur Plattenebene.
-  - **Vorzugsseite** (`vorzugsseite`, optional, eigener Eintrag
+    - **Vorzugsseite** (`vorzugsseite`, optional, eigener Eintrag
     folgt): Ober-/Unterseiten-Markierung bei seitenanisotropen
     Flächenbauteilen.
-  - **Festigkeitsklasse** (`festigkeitsklasse`, optional):
+    - **Festigkeitsklasse** (`festigkeitsklasse`, optional):
     Werkstoff-Klassifikation nach EN 14081-1, EN 14080.
-  - **Bauteilachse** (`bauteilachse`, eigener Eintrag folgt):
+    - **Bauteilachse** (`bauteilachse`, eigener Eintrag folgt):
     geometrische Hauptachse stabförmiger Bauteile.
 - **Bestandteile (partitiv) eines Bauteils** (rein geometrisch):
-  - **Geometrie** (Achse, Trägerfläche oder Polyeder)
-  - **Lage** in W (SE(3)-Transformation)
+    - **Geometrie** (Achse, Trägerfläche oder Polyeder)
+    - **Lage** in W (SE(3)-Transformation)
 - **Abgrenzung**:
-  - **Verbindungsmittel** (Nagel, Schraube, Bolzen, Stabdübel,
+    - **Verbindungsmittel** (Nagel, Schraube, Bolzen, Stabdübel,
     Klammer, Holzdübel; eigene Kategorie, eigener Eintrag folgt):
     sind keine Bauteile dieser App, sondern Verbindungselemente
     zwischen Bauteilen. Geometrie und Funktion sind beschreibbar,
     aber die Bauteilrolle (Tragglied im Sinne der Bemessung) wird
     ihnen nicht zugewiesen.
-  - **Bauteil-Aggregat** (`bauteil_aggregat`, eigener Eintrag
+    - **Bauteil-Aggregat** (`bauteil_aggregat`, eigener Eintrag
     folgt): Komposition mehrerer Bauteile zu einer übergeordneten
     Einheit (Dach, Wand, Decke). Ein Aggregat ist kein Bauteil,
     sondern eine Stufe darüber.
-  - **Bauwerk** (Gebäude als Ganzes): die übergeordnete Einheit,
+    - **Bauwerk** (Gebäude als Ganzes): die übergeordnete Einheit,
     aus Bauteilaggregaten und Bauteilen zusammengesetzt; Bauteil
     ist Bestandteil eines Bauwerks.
-  - **Konstruktionsdetail** (Anschlussdetail, Knoten): kann
+    - **Konstruktionsdetail** (Anschlussdetail, Knoten): kann
     mehrere Bauteile mitsamt Verbindungsmitteln umfassen und ist
     eine modellhafte Repräsentation der lokalen Verbindungs-
     geometrie, kein eigenes Bauteil. Eigener Eintrag folgt.
-  - **Werkstoff** (`werkstoff`): die Stoffeigenschaft eines Bauteils,
+    - **Werkstoff** (`werkstoff`): die Stoffeigenschaft eines Bauteils,
     nicht das Bauteil selbst. Eigene Begriffshierarchie mit den
     Subklassen `axiales_holz`, `mehrlagenholz`,
     `gerichteter_plattenwerkstoff`, `isotroper_plattenwerkstoff`
     sowie `werkstoff_stahl`. Konkrete Werkstoffe (Vollholz, BSH,
     BSP, LVL, OSB, Spanplatte, MDF, Sperrholz) ordnen sich diesen
     Subklassen zu; eigene Folge-Einträge.
-  - **Verbindungsmittel** (`verbindungsmittel`), **Verbinder**
+    - **Verbindungsmittel** (`verbindungsmittel`), **Verbinder**
     (`verbinder`), **Verstärkungselement** (`verstaerkungselement`):
     Geschwister-Element-Subklassen, keine Bauteile (siehe oben).
-  - **Verbindung** (`verbindung`): Aggregat-Klasse über Bauteilen +
+    - **Verbindung** (`verbindung`): Aggregat-Klasse über Bauteilen +
     Verbindungsmitteln + Verbindern + Verstärkungen an einem
     Knotenpunkt; keine Element-Subklasse, sondern eigene
     Aggregat-Hierarchie.

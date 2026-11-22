@@ -125,7 +125,7 @@ Sei
 Dann ist der **Dachüberstand** der Dachfläche D bezüglich des Bauwerks B
 die Teilmenge
 
-```
+```text
 Ü(D, B):= { x ∈ F(D) | π_xy(x) ∉ A_B^◦ }                          (1)
 ```
 
@@ -137,7 +137,7 @@ xy-Abstand von π_xy(x) zum Rand ∂A_B kleiner als ε_L ist oder
 Die **Überstands-Länge** (horizontale Projektionstiefe) in einem
 Randpunkt p ∈ ∂F(D) ∩ Ü(D, B) ist
 
-```
+```text
 ℓ_⊥(p; D, B):= inf_{q ∈ ∂A_B}  ‖π_xy(p) − q‖₂   (in mm),         (2)
 ```
 
@@ -168,17 +168,17 @@ punktweise definiert.
   bestimmt; F(D) selbst ist als Punktmenge invariant, also auch
   Ü(D, B) nach (1).
 - **Grenzfälle**:
-  - **Bündige Dachfläche** (kein Überstand): F(D) ⊂ π_xy⁻¹(A_B);
+    - **Bündige Dachfläche** (kein Überstand): F(D) ⊂ π_xy⁻¹(A_B);
     dann ist Ü(D, B) = ∅ (toleranzbewehrt: Ü(D, B) hat einen
     Flächeninhalt ≤ Toleranzen.FLAECHE_EPS).
-  - **Vollständig auskragende Dachfläche** (kein Auflagerbereich
+    - **Vollständig auskragende Dachfläche** (kein Auflagerbereich
     über A_B): F(D) ∩ π_xy⁻¹(A_B^◦) = ∅; dann ist Ü(D, B) = F(D).
     Dieser Grenzfall kommt bei freistehenden Pultdach-Vordächern
     vor; ob die Konstruktion noch als „Dach mit Überstand" oder
     bereits als Vordach klassifiziert wird, ist eine
     Tragwerks-Frage, keine geometrische (siehe Erläuterung und
     `vordach`, Folgearbeit).
-  - **Flachdach** (α(D) = 0): Definition (1) gilt unverändert; der
+    - **Flachdach** (α(D) = 0): Definition (1) gilt unverändert; der
     Überstand ist dann ein in der xy-Ebene liegender Streifen
     konstanter Höhe.
 - **Toleranzwahl**: Der Punkt-Innen-/Außen-Test gegen A_B^◦ ist
@@ -198,10 +198,10 @@ Der Dachüberstand zerfällt entlang des Polygonrands ∂F(D) der
 Dachfläche in zwei geometrisch unterschiedene Sichten, die jeweils
 einer Klasse von Dachkanten zugeordnet sind:
 
-| Subtyp                | Lage am Polygonrand    | Zugehörige Dachkante  | Synonym im Korpus         |
-|-----------------------|------------------------|-----------------------|---------------------------|
-| **Traufüberstand**    | traufseitig            | `traufe`              | „traufseitiger Dachüberstand", „Dachüberhang" |
-| **Ortgangüberstand**  | giebelseitig           | `ortgang`             | „giebelseitiger Dachüberstand", „Giebelüberstand" |
+| Subtyp | Lage am Polygonrand | Zugehörige Dachkante | Synonym im Korpus |
+| --- | --- | --- | --- |
+| **Traufüberstand** | traufseitig | `traufe` | „traufseitiger Dachüberstand", „Dachüberhang" |
+| **Ortgangüberstand** | giebelseitig | `ortgang` | „giebelseitiger Dachüberstand", „Giebelüberstand" |
 
 Beide Subtypen sind eigenständige Glossarbegriffe (`traufueberstand`,
 `ortgangueberstand`, Folgearbeit). Die zwei Achsen sind orthogonal:
@@ -248,7 +248,7 @@ Sparrenauskragung sind die horizontale Überstands-Tiefe ℓ_⊥
 Sparrenüberstands-Länge ℓ_üb (siehe `hg_sparrenueberstand.md`,
 Gleichung (3)) durch die Dachneigung α gekoppelt:
 
-```
+```text
 ℓ_⊥,traufseitig  =  ℓ_üb · cos α.                                  (3)
 ```
 
@@ -348,53 +348,53 @@ mit entsprechend hoher Anforderung an Tragwerk und Sparrenüberstand.
   Sicht an einer konkreten Dachfläche definiert; ohne Trägerfläche
   hat er keine Bedeutung.
 - **Spezialisierungen** (Folgearbeit, Forward-Verweise):
-  - `traufueberstand` — traufseitiger Subtyp, Streifen entlang der
+    - `traufueberstand` — traufseitiger Subtyp, Streifen entlang der
     Traufe.
-  - `ortgangueberstand` — giebelseitiger Subtyp, Streifen entlang
+    - `ortgangueberstand` — giebelseitiger Subtyp, Streifen entlang
     des Ortgangs.
 - **Bestandteile**: keine eigenen partitiven Bestandteile; der
   Dachüberstand ist als Teilmenge der Dachfläche definiert und erbt
   deren geometrische Substanz.
 - **Verwendung**:
-  - **Konstruktiver Holzschutz** (DIN 68800-2; Lignum-Lignatec 35):
+    - **Konstruktiver Holzschutz** (DIN 68800-2; Lignum-Lignatec 35):
     Bemessungs-Größe für die Schutzwirkung gegen direkte
     Bewitterung.
-  - **Bauwerks-Modellierung**: Eingangs-Parameter im Entwurf
+    - **Bauwerks-Modellierung**: Eingangs-Parameter im Entwurf
     (Vorgabe-Tiefe traufseitig / giebelseitig), Berechnungs-Größe
     für abgeleitete Bauteil-Überstände (Sparrenüberstand,
     Pfettenüberstand).
-  - **Werkplan-Bemaßung**: horizontale Projektionstiefe als
+    - **Werkplan-Bemaßung**: horizontale Projektionstiefe als
     explizit ausgewiesenes Maß (typisch in mm).
 - **Abgrenzung**:
-  - **Sparrenüberstand** (`sparrenueberstand`): konstruktive
+    - **Sparrenüberstand** (`sparrenueberstand`): konstruktive
     Realisierung des traufseitigen Dachüberstands am einzelnen
     Sparren — eindimensionale Strecke entlang der Bauteilachse,
     nicht zweidimensionale Streifen-Fläche. Geometrische Kopplung
     über Gleichung (3).
-  - **Pfettenüberstand** (`pfettenueberstand`, Forward-Verweis,
+    - **Pfettenüberstand** (`pfettenueberstand`, Forward-Verweis,
     Folgearbeit): konstruktive Realisierung des giebelseitigen
     Dachüberstands an der Pfette — eindimensionale Strecke entlang
     der Pfetten-Bauteilachse.
-  - **Traufüberstand** (`traufueberstand`, Forward-Verweis,
+    - **Traufüberstand** (`traufueberstand`, Forward-Verweis,
     Folgearbeit): geometrischer Subtyp des Dachüberstands
     traufseitig.
-  - **Ortgangüberstand** (`ortgangueberstand`, Forward-Verweis,
+    - **Ortgangüberstand** (`ortgangueberstand`, Forward-Verweis,
     Folgearbeit): geometrischer Subtyp des Dachüberstands
     giebelseitig.
-  - **Vordach** (`vordach`, Forward-Verweis, Folgearbeit): eigene
+    - **Vordach** (`vordach`, Forward-Verweis, Folgearbeit): eigene
     Bauteilgruppe mit eigener Tragstruktur; nicht Subtyp des
     Dachüberstands. Siehe Erläuterung und `quellenkonflikt` (3).
-  - **Traufe** (`traufe`): Dachkante (Linie am Polygonrand der
+    - **Traufe** (`traufe`): Dachkante (Linie am Polygonrand der
     Dachfläche), nicht Fläche. Der Traufüberstand-Streifen liegt
     entlang der Traufe; die Traufe selbst ist sein
     `dachflaeche`-seitiger Linien-Anteil.
-  - **Ortgang** (`ortgang`): Dachkante entlang der Falllinie an der
+    - **Ortgang** (`ortgang`): Dachkante entlang der Falllinie an der
     Giebelseite; der Ortgangüberstand-Streifen liegt entlang des
     Ortgangs.
-  - **Dachfläche** (`dachflaeche`): vollständige Trägerfläche; der
+    - **Dachfläche** (`dachflaeche`): vollständige Trägerfläche; der
     Dachüberstand ist ein Teilbereich dieser Fläche und nicht mit
     ihr identisch.
-  - **Dachneigung** (`dachneigung`): Winkel-Merkmal der Dachfläche;
+    - **Dachneigung** (`dachneigung`): Winkel-Merkmal der Dachfläche;
     bestimmt zusammen mit der horizontalen Projektionstiefe die
     geneigte Bauteil-Überstandslänge (Gleichung (3)), ist aber
     selbst kein Überstand.

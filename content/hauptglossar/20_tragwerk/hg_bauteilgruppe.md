@@ -84,7 +84,7 @@ Sei
 
 Dann ist eine **Bauteilgruppe** ein Tupel
 
-```
+```text
 G:= (uuid, bestandteile, lage, huelle, funktion?, bezeichnung?)
 ```
 
@@ -114,7 +114,7 @@ und den Konsistenzbedingungen
 
 1. **Exklusive Mitgliedschaft** (zentrale Aggregat-Eigenschaft):
    In einem Modell mit Bauteilgruppen-Menge 𝒢ᴹ gilt
-   ```
+   ```text
    ∀ G₁, G₂ ∈ 𝒢ᴹ: G₁ ≠ G₂ ⇒ G₁.bestandteile ∩ G₂.bestandteile = ∅
    ```
    Ein Bauteil gehört zu **höchstens einer** Bauteilgruppe pro
@@ -125,7 +125,7 @@ und den Konsistenzbedingungen
    Es entstehen keine „freistehenden ehemaligen Gruppen-Bestandteile".
 3. **Hüllen-Inklusion** (geometrische Konsistenz): Die geometrische
    Punktmenge der Bestandteile ist in der Hülle enthalten,
-   ```
+   ```text
    ⋃_{b ∈ bestandteile} G_W(b) ⊆ G_W(G)
    ```
    wobei G_W(b) die Bauteil-Punktmenge in W (siehe `bauteil`) und
@@ -142,7 +142,7 @@ und den Konsistenzbedingungen
 
 Die **geometrische Punktmenge** der Bauteilgruppe in W ist
 
-```
+```text
 G_W(G):= lage(G_lokal(huelle)) ⊂ ℝ³
 ```
 
@@ -261,51 +261,51 @@ ihren Bestandteilen.
   (exklusiv vs. nicht-exklusiv, eigene Geometrie vs. optional, eigene
   Identität als Whole vs. als Sicht) zu groß sind.
 - **Bestandteile (partitiv)**:
-  - **Bauteile** (`bauteil`): die exklusiven Bestandteile der Gruppe.
-  - **Lokales Koordinatensystem** (`lokales_koordinatensystem`): die
+    - **Bauteile** (`bauteil`): die exklusiven Bestandteile der Gruppe.
+    - **Lokales Koordinatensystem** (`lokales_koordinatensystem`): die
     Bezugssystem-Festlegung der Gruppe.
-  - **Hülle** (`polyeder` oder Bounding-Volume): die geometrische
+    - **Hülle** (`polyeder` oder Bounding-Volume): die geometrische
     Aggregat-Eigenschaft der Gruppe.
 - **Spezialisierungen** (eigene Einträge folgen, trigger-basiert):
-  - **Binder** (`binder`, bereits angelegt): werks-vorgefertigtes
+    - **Binder** (`binder`, bereits angelegt): werks-vorgefertigtes
     Trag-Aggregat (Sparrenbinder, Pfettenbinder, Nagelplattenbinder,
     BSH-Binder, Fachwerk-/Vollwandbinder).
-  - **Lukarne** / **Gaube** (`lukarne`, `gaube`): Dachaufbau für
+    - **Lukarne** / **Gaube** (`lukarne`, `gaube`): Dachaufbau für
     Tageslicht und Stehhöhe.
-  - **Walm** (`walm`, bereits angelegt): walmförmiger Abschluss
+    - **Walm** (`walm`, bereits angelegt): walmförmiger Abschluss
     eines Daches als Aggregat aus Gratsparren, Schiftern und
     optionalem Mittelsparren in der Walmfläche.
-  - **Auswechslung** (`auswechslung`): Aggregat aus Wechselbalken
+    - **Auswechslung** (`auswechslung`): Aggregat aus Wechselbalken
     und auszuwechselnden Bauteilen um eine Öffnung
     (Kamin, Treppenloch, Dachfenster).
-  - **Erker** (`erker`): vorspringende Bauteilgruppe mit eigener
+    - **Erker** (`erker`): vorspringende Bauteilgruppe mit eigener
     Geometrie.
-  - **Drempel-Aufbau** (`drempel_aufbau`): Aggregat aus Drempelwand-
+    - **Drempel-Aufbau** (`drempel_aufbau`): Aggregat aus Drempelwand-
     Bauteilen über einer Geschossdecke.
-  - **Vorgefertigtes Wandelement / Deckenelement**: Aggregat aus
+    - **Vorgefertigtes Wandelement / Deckenelement**: Aggregat aus
     Rahmen, Beplankung und Dämmlagen, das als Liefereinheit
     verbaut wird.
 - **Verwendung**:
-  - Bestandteil eines **Bauwerks**.
-  - Möglicher Bestandteil eines übergeordneten Aggregats
+    - Bestandteil eines **Bauwerks**.
+    - Möglicher Bestandteil eines übergeordneten Aggregats
     (Verschachtelung erlaubt, siehe Bedingung 4).
 - **Abgrenzung**:
-  - **Bauteil** (`bauteil`): einzelner Bestandteil; eine
+    - **Bauteil** (`bauteil`): einzelner Bestandteil; eine
     Bauteilgruppe ist eine Komposition aus mehreren Bauteilen, kein
     einzelnes Bauteil. Eine Bauteilgruppe ist insbesondere **nicht**
     selbst ein Element-Subtyp (siehe `element`); sie hat eine eigene
     Aggregat-Hierarchie.
-  - **Bausystem** (`bausystem`): funktionale, nicht-exklusive
+    - **Bausystem** (`bausystem`): funktionale, nicht-exklusive
     Gruppierung; siehe oben und `hg_bausystem.md`.
-  - **Verbindung** (`verbindung`): lokales Knoten-Aggregat mit
+    - **Verbindung** (`verbindung`): lokales Knoten-Aggregat mit
     Fokus auf Kraftübertragung; siehe oben.
-  - **Tragwerk** (`tragwerk`): nicht-exklusives Bausystem über
+    - **Tragwerk** (`tragwerk`): nicht-exklusives Bausystem über
     lastabtragenden Bauteilen, kein partitives Aggregat. Ein Bauteil
     kann gleichzeitig Bestandteil einer Auswechslung
     (Bauteilgruppe) und Mitglied des Tragwerks (Bausystem) sein.
-  - **Bearbeitung** (`bearbeitung`): subtraktiv am Bauteil selbst,
+    - **Bearbeitung** (`bearbeitung`): subtraktiv am Bauteil selbst,
     keine Komposition mehrerer Bauteile.
-  - **Dach** (`dach`), **Dachaufbau** (`dachaufbau`): bestehende
+    - **Dach** (`dach`), **Dachaufbau** (`dachaufbau`): bestehende
     Aggregat-Begriffe mit eigener spezifischer Semantik
     (Tripel- bzw. Schichtaufbau-Struktur). Bauteilgruppe ist der
     generischere Oberbegriff für aus mehreren Bauteilen bestehende
@@ -313,10 +313,10 @@ ihren Bestandteilen.
     `dachaufbau` künftig formal als Bauteilgruppen-Spezialisierungen
     eingeordnet werden, ist eine offene Designfrage und nicht
     Gegenstand dieses Eintrags.
-  - **Konstruktionsdetail** (`konstruktionsdetail`, bereits angelegt):
+    - **Konstruktionsdetail** (`konstruktionsdetail`, bereits angelegt):
     lokale Modellierungseinheit eines Anschlusses; nicht-exklusive
     Mitgliedschaft (vs. partitive Bauteilgruppe-Mitgliedschaft).
-  - **Element** (`element`): Bauteilgruppen sind keine
+    - **Element** (`element`): Bauteilgruppen sind keine
     Element-Subtypen; Element-Subtypen sind ausschließlich
     Bauteil, Verbindungsmittel, Verbinder und Verstärkungselement.
 

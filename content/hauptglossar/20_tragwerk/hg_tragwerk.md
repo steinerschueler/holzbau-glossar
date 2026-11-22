@@ -111,8 +111,8 @@ Sei
 - W das Weltkoordinatensystem (siehe `weltkoordinatensystem`),
 - 𝓑 die Menge aller Bauteile im Sinne von `bauteil`,
 - 𝓥 die Menge der **Verbindungen** im Sinne von `verbindung`
-  (Aggregate aus Bauteilen + Verbindungsmitteln + ggf. Verbindern
-  + ggf. Verstärkungselementen + Nachweisverfahren an einem
+  (Aggregate aus Bauteilen + Verbindungsmitteln + ggf. Verbindern +
+  ggf. Verstärkungselementen + Nachweisverfahren an einem
   Knotenpunkt); 𝓥 ist ausdrücklich **nicht** die Menge der einzelnen
   Verbindungsmittel — diese sind individuelle Element-Instanzen,
   die als Bestandteile in den Verbindungen geführt werden,
@@ -126,7 +126,7 @@ Sei
 
 Dann ist ein **Tragwerk** das Tupel
 
-```
+```text
 T:= (uuid, B, V, A, L)
 ```
 
@@ -155,7 +155,7 @@ element-Instanzen sind nicht in B enthalten, sondern werden
 Aggregatbestandteile transitiv erfasst. Wer die Gesamt-Element-
 Menge des Tragwerks benötigt, bildet
 
-```
+```text
 E(T):= B ∪ ⋃_{v ∈ V} elemente(v)
 ```
 
@@ -213,7 +213,7 @@ und den Konsistenzbedingungen
 Die **geometrische Punktmenge** des Tragwerks im
 Weltkoordinatensystem ist
 
-```
+```text
 G_W(T):= ⋃_{b ∈ B} G_W(b) ⊂ ℝ³
 ```
 
@@ -352,91 +352,91 @@ Auflager, Lastfälle) die Aggregat-Substanz tragen.
   Sammelbegriff `bauteil_aggregat` ist nicht mehr geplant; siehe
   Quellenkonflikt-Block.
 - **Bestandteile (partitiv)**:
-  - **Bauteile** (`bauteil`): die lastabtragenden Stab- und
+    - **Bauteile** (`bauteil`): die lastabtragenden Stab- und
     Flächenbauteile (Sparren, Pfetten, Binder, Kehlbalken,
     Stützen, Streben, Schwellen, Einbinder, Schalungen, BSP-Elemente).
-  - **Verbindungen** (`verbindungsmittel`, `anschluss`; eigene
+    - **Verbindungen** (`verbindungsmittel`, `anschluss`; eigene
     Einträge folgen): Nägel, Schrauben, Bolzen, Stabdübel,
     Klammern sowie zimmermannsmäßige Verbindungen (Zapfen,
     Versatz, Blatt, Schwalbenschwanz).
-  - **Auflager** (`auflager`, bereits angelegt): Aggregate aus
+    - **Auflager** (`auflager`, bereits angelegt): Aggregate aus
     Auflagefläche (Polygon am Bauteilpolyeder), Manifestations-Typ
     (Punkt/Linie/Fläche) und Wertigkeit (fest/beweglich/einspannend).
-  - **Lastfälle** (`lastfall`, bereits angelegt): Aggregat aus
+    - **Lastfälle** (`lastfall`, bereits angelegt): Aggregat aus
     Bemessungssituation, Leiteinwirkung, Begleiteinwirkungen,
     Einwirkungs-Anordnung; gemäß EN 1990/EN 1991 bzw. SIA 260/261.
 - **Spezialisierungen nach Anwendungsbereich** (eigene Einträge
   folgen):
-  - **Dachtragwerk** (`dachtragwerk`): Tragwerk, das die
+    - **Dachtragwerk** (`dachtragwerk`): Tragwerk, das die
     Dachflächen eines Daches trägt. Im Anwendungsschwerpunkt der
     App.
-  - **Wandtragwerk** (`wandtragwerk`, Folgearbeit): Tragwerk einer
+    - **Wandtragwerk** (`wandtragwerk`, Folgearbeit): Tragwerk einer
     Wand (Pfostenwand, Ständerwand, Riegelwerk, BSP-Wand).
-  - **Deckentragwerk** (`deckentragwerk`, Folgearbeit): Tragwerk
+    - **Deckentragwerk** (`deckentragwerk`, Folgearbeit): Tragwerk
     einer Decke (Balkenlage, BSP-Decke, Holz-Beton-Verbunddecke).
-  - **Bodentragwerk** (`bodentragwerk`, Folgearbeit): Tragwerk
+    - **Bodentragwerk** (`bodentragwerk`, Folgearbeit): Tragwerk
     einer Bodenkonstruktion (Schwellen, Lagerhölzer auf Fundament).
 - **Konstruktive Subtypen** (eigene Einträge folgen, im Body
   erläutert; verortet **unter `dachstuhl`** bzw. unter dem
   künftigen `binderdach`-Aggregat, nicht direkt unter `tragwerk`):
-  - **Sparrendach** (`sparrendach`) — Dachstuhl-Bauart
-  - **Pfettendach** (`pfettendach`) — Dachstuhl-Bauart
-  - **Kehlbalkendach** (`kehlbalkendach`) — Dachstuhl-Bauart
-  - **Binderdach** (`binderdach`) — Geschwister-Aggregat zum
+    - **Sparrendach** (`sparrendach`) — Dachstuhl-Bauart
+    - **Pfettendach** (`pfettendach`) — Dachstuhl-Bauart
+    - **Kehlbalkendach** (`kehlbalkendach`) — Dachstuhl-Bauart
+    - **Binderdach** (`binderdach`) — Geschwister-Aggregat zum
     Dachstuhl unter dem künftigen `dachtragwerk`
 - **Verwendung**:
-  - Bestandteil eines **Dachs** (`dach`, partitive Beziehung): das
+    - Bestandteil eines **Dachs** (`dach`, partitive Beziehung): das
     Tragwerk ist die T-Komponente des Dach-Tripels (T, 𝒟, A).
-  - Bestandteil eines **Bauwerks** (`bauwerk`): jedes Tragwerk
+    - Bestandteil eines **Bauwerks** (`bauwerk`): jedes Tragwerk
     gehört modellseitig genau einem Bauwerk an. Die Mitgliedschaft
     ist über `bauwerk.tragwerke ⊂ 𝒯` (identitätstragende Menge mit
     `tragwerk.uuid` als Primärschlüssel) ausgedrückt; analog zur
     `IfcRelAggregates`-Beziehung zwischen `IfcFacility` und
     Tragwerks-Pendants in IFC 4.3.
 - **Abgrenzung**:
-  - **Bauteil** (`bauteil`): einzelner Bestandteil; das Tragwerk
+    - **Bauteil** (`bauteil`): einzelner Bestandteil; das Tragwerk
     ist eine Komposition mehrerer Bauteile, kein einzelnes Bauteil.
-  - **Bauteilgruppe** (`bauteilgruppe`): orthogonale
+    - **Bauteilgruppe** (`bauteilgruppe`): orthogonale
     Aggregat-Ontologie, partitive (exklusive) Komposition mit
     kaskadischer Lebenszyklus-Bindung. Tragwerk ist *keine*
     Bauteilgruppe — Bauteile dürfen gleichzeitig
     Tragwerksmitglied und Mitglied weiterer Sichten (z. B.
     Dachfläche, Aussteifungssystem, Lieferlos) sein.
-  - **Bausystem** (`bausystem`): jetzt der Oberbegriff von
+    - **Bausystem** (`bausystem`): jetzt der Oberbegriff von
     Tragwerk; alle Bausystem-Eigenschaften (nicht-exklusive
     Mitgliedschaft, keine kaskadische Löschung, funktionale
     Klassifikation) gelten auch für Tragwerk. Verweis statt
     Abgrenzung — siehe „Oberbegriff" oben.
-  - **Bauwerk** (Gebäude, Brücke, Halle als Ganzes): die
+    - **Bauwerk** (Gebäude, Brücke, Halle als Ganzes): die
     übergeordnete Einheit; ein Bauwerk kann **mehrere** Tragwerke
     umfassen (z. B. Hauptbau-Tragwerk und unabhängiges
     Vordach-Tragwerk).
-  - **Dach** (`dach`): das Aggregat aus Tragwerk, Dachflächen und
+    - **Dach** (`dach`): das Aggregat aus Tragwerk, Dachflächen und
     Dachaufbau. Das Tragwerk ist Bestandteil eines Daches, nicht
     selbst das Dach.
-  - **Dachstuhl**: in der zimmermannssprachlichen Tradition meist
+    - **Dachstuhl**: in der zimmermannssprachlichen Tradition meist
     nur das (zimmermannsmäßig gefertigte) Dachtragwerk, ohne
     Pfettenwände, Nagelbinder, BSH-Binder. Verwendung schwankt
     zwischen CH/DE/AT (siehe Quellenkonflikt). Wegen
     Mehrdeutigkeit **nicht** als Synonym geführt; eigener Eintrag
     `dachstuhl` (= enger gefasstes zimmermannsmäßiges Dachtragwerk)
     folgt.
-  - **Konstruktionsdetail** (`konstruktionsdetail`, bereits angelegt):
+    - **Konstruktionsdetail** (`konstruktionsdetail`, bereits angelegt):
     lokale, oft mehrere Bauteile mitsamt Verbindungsmitteln
     umfassende Modellierungseinheit (z. B. Sparrenfuß-Anschluss an
     Fußpfette). Ein Detail beschreibt einen lokalen Ausschnitt des
     Tragwerks, ist aber selbst kein Tragwerk.
-  - **Verbindungsmittel** (`verbindungsmittel`, eigener Eintrag
+    - **Verbindungsmittel** (`verbindungsmittel`, eigener Eintrag
     folgt): Nägel, Schrauben, Bolzen, Stabdübel — Bestandteil der
     Verbindungs-Menge V eines Tragwerks, aber nicht selbst
     Tragwerk.
-  - **Auflager** (`auflager`, bereits angelegt): Aggregat aus
+    - **Auflager** (`auflager`, bereits angelegt): Aggregat aus
     Auflagefläche, Manifestation und Wertigkeit; Bestandteil der
     Auflager-Menge A eines Tragwerks, aber nicht selbst Tragwerk.
-  - **Lastfall** (`lastfall`, bereits angelegt): Aggregat aus
+    - **Lastfall** (`lastfall`, bereits angelegt): Aggregat aus
     Bemessungssituation und Einwirkungen; Bestandteil der
     Lastfall-Menge L, aber nicht selbst Tragwerk.
-  - **Statisches System** (`statisches_system`, bereits angelegt):
+    - **Statisches System** (`statisches_system`, bereits angelegt):
     die idealisierte Modellierung des Tragwerks für die
     Bemessung (Punkt-Stab-Modell mit Knoten, Stabachsen,
     Gelenkfreiheiten, Auflagerklassen). Tragwerk ist die

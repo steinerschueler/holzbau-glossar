@@ -131,7 +131,7 @@ Sei
   `werkstoff`,
 - d ∈ ℝ mit d > `Toleranzen.LAENGE_EPS` eine konstante Dicke (in mm),
 - 𝓕 die diskrete Funktionsklassen-Menge
-  ```
+  ```text
   𝓕:= { Dampfbremse, Wärmedämmung, Schalung, Unterdach,
          Konterlattung, Traglattung, Eindeckung, Abdichtung,
          Trennlage, Luftdichtheitsebene, Installationsebene,
@@ -146,7 +146,7 @@ Sei
 
 Dann ist eine **Schicht** das Tupel
 
-```
+```text
 S:= (M, d, f, π)
 ```
 
@@ -169,9 +169,11 @@ Bestandteil von S. Sie folgt aus Trägerbauteil und Index in der
 Schichtfolge des Träger-Aggregats — siehe Wohldefiniertheit.
 
 Die **abgeleitete Geometrie** einer Schicht ist
-```
+
+```text
 G(S, F, i, A):= { p + t · n_hat(p): p ∈ F, t ∈ [t_i, t_i + d] }
 ```
+
 mit
 
 - F dem von einem Träger-Aggregat A geerbten Trägerbereich
@@ -265,7 +267,7 @@ das eine `Schicht`-Instanz mit passender Funktionsklasse als
 Komposition hält — siehe Spalte „Funktionsschicht-Aggregat".
 
 | Funktionsklasse | Norm-Verankerung | Funktionsschicht-Aggregat |
-|---|---|---|
+| --- | --- | --- |
 | `DAMPFBREMSE` | DIN 4108-3, SIA 180 | `Dampfbremse` (`hg_dampfbremse.md`) — eigene sealed-Hierarchie, hält `schicht: Schicht`. |
 | `WAERMEDAEMMUNG` | DIN 4108-3, SIA 180 | `Waermedaemmung` (`hg_waermedaemmung.md`) — eigene sealed-Hierarchie, hält `schicht: Schicht`. |
 | `SCHALUNG` | SIA 232/1, ZVDH | (kein Aggregat; nur Schicht-Wert mit dieser Funktion) |
@@ -321,13 +323,13 @@ den Funktions-Subtyp-Einträgen verankert, nicht hier.
   sind sie **keine** sealed-Subtypen von `Schicht`, sondern eigene
   sealed-Klassen mit einer `schicht: Schicht`-Komponente
   (Komposition, siehe Quellenkonflikt 5):
-  - `eindeckung` (`hg_eindeckung.md`) — sealed pro Material.
-  - `unterdach` (`hg_unterdach.md`) — sealed pro Beanspruchungs-
+    - `eindeckung` (`hg_eindeckung.md`) — sealed pro Material.
+    - `unterdach` (`hg_unterdach.md`) — sealed pro Beanspruchungs-
     Klasse.
-  - `dampfbremse` (`hg_dampfbremse.md`) — sealed pro sd-Wert-Profil.
-  - `waermedaemmung` (`hg_waermedaemmung.md`) — sealed pro Lage
+    - `dampfbremse` (`hg_dampfbremse.md`) — sealed pro sd-Wert-Profil.
+    - `waermedaemmung` (`hg_waermedaemmung.md`) — sealed pro Lage
     (Zwischensparren / Aufsparren / Untersparren / Sonstige).
-  - `dachabdichtung` (`hg_dachabdichtung.md`) — sealed pro Material.
+    - `dachabdichtung` (`hg_dachabdichtung.md`) — sealed pro Material.
 
   Für die übrigen Funktionsklassen (`SCHALUNG`, `KONTERLATTUNG`,
   `TRAGLATTUNG`, `TRENNLAGE`, `LUFTDICHTHEITSEBENE`,
@@ -337,53 +339,53 @@ den Funktions-Subtyp-Einträgen verankert, nicht hier.
   am Schicht-Tupel getragen.
 
 - **Verwendung**:
-  - Bestandteil eines `dachaufbau` (geordnete Schichtfolge 𝒮).
-  - Analog Bestandteil künftiger Wand-, Decken-, Bodenaufbauten.
+    - Bestandteil eines `dachaufbau` (geordnete Schichtfolge 𝒮).
+    - Analog Bestandteil künftiger Wand-, Decken-, Bodenaufbauten.
 
 - **Abgrenzung**:
-  - **`bauteil`**: einzelnes konstruktives Element mit eigener
+    - **`bauteil`**: einzelnes konstruktives Element mit eigener
     Identität (UUID), eigener Lage in W und eigener Geometrie.
     Schicht hat keines davon. Die einzelnen Platten/Bretter/Bahnen
     *unter* einer Schicht sind Bauteile; die Schicht selbst nicht.
-  - **`dachaufbau`**: Träger-Aggregat über einer geordneten
+    - **`dachaufbau`**: Träger-Aggregat über einer geordneten
     Schicht-Liste; eigene UUID, eigener Lebenszyklus, eigene
     Konsistenz über der Komposition. Die Schicht ist Bestandteil
     eines Dachaufbaus, nicht selbst der Aufbau.
-  - **`dachhaut`**: geometrische Hüllfläche über der äußersten
+    - **`dachhaut`**: geometrische Hüllfläche über der äußersten
     Schicht eines Dachaufbaus; keine Material- oder Dickenangabe.
     Die Schicht ist materiell und mit Dicke; die Dachhaut ist
     geometrisch und dickenlos.
-  - **`lage`** (Lamelle in `lagenstruktur`): geometrisch identische
+    - **`lage`** (Lamelle in `lagenstruktur`): geometrisch identische
     Struktur (gestapelte Wertschichten mit Dicke), aber auf einer
     anderen Ebene angesiedelt — eine Lage ist eine Lamelle
     *innerhalb* eines Mehrlagenholzes (BSP/CLT, Brettsperrholz,
     Furnierschichtholz), die Schicht ist ein Bestandteil
     *zwischen* Bauteilen eines Aufbaus. Eine Lamelle gehört zu
     einem Werkstoff, eine Schicht zu einem Aufbau.
-  - **`lagenstruktur`**: Aggregat von `lage`-Lamellen *innerhalb*
+    - **`lagenstruktur`**: Aggregat von `lage`-Lamellen *innerhalb*
     eines einzelnen Holzbauteils. Eine Lagenstruktur ist Eigenschaft
     eines Werkstoffs, eine Schichtfolge ist Eigenschaft eines
     Aufbaus. Die Begriffe sind strukturell parallel, aber auf
     unterschiedlichen Ebenen.
-  - **`ebene`**: geometrisches Primitiv (Punkt + Normalenvektor).
+    - **`ebene`**: geometrisches Primitiv (Punkt + Normalenvektor).
     Trotz Praxis-Sprache („luftdichte Ebene", „Installationsebene")
     ist `Schicht` kein Spezialfall von `ebene` — eine Schicht hat
     Dicke, eine Ebene nicht.
-  - **`eindeckung`**: speziell die äußerste, regensicher schuppige
+    - **`eindeckung`**: speziell die äußerste, regensicher schuppige
     Schicht eines geneigten Daches. Eigenständiger HG-Eintrag mit
     `oberbegriff: schicht`; im Code als sealed-Klasse mit
     `schicht: Schicht`-Komponente realisiert (Komposition).
-  - **`unterdach`**: speziell die zweite wasserführende Schicht
+    - **`unterdach`**: speziell die zweite wasserführende Schicht
     eines geneigten Daches (CH: drei Beanspruchungs-Klassen).
     Eigenständiger HG-Eintrag mit `oberbegriff: schicht`; Code:
     Komposition.
-  - **`dachabdichtung`**: wasserdichte Membran-Schicht eines
+    - **`dachabdichtung`**: wasserdichte Membran-Schicht eines
     Flachdaches. Eigenständiger HG-Eintrag mit
     `oberbegriff: schicht`; Code: Komposition.
-  - **`dampfbremse`**: dampfdiffusionshemmende Schicht.
+    - **`dampfbremse`**: dampfdiffusionshemmende Schicht.
     Eigenständiger HG-Eintrag mit `oberbegriff: schicht`; Code:
     Komposition.
-  - **`waermedaemmung`**: wärmeleitfähigkeitsarme Schicht.
+    - **`waermedaemmung`**: wärmeleitfähigkeitsarme Schicht.
     Eigenständiger HG-Eintrag mit `oberbegriff: schicht`; Code:
     Komposition.
 
@@ -409,7 +411,7 @@ den Funktions-Subtyp-Einträgen verankert, nicht hier.
   Abschnitt 5.
 - ISO 16739-1:2024 / IFC 4.3, Entities `IfcMaterialLayer`,
   `IfcMaterialLayerSet`, `IfcMaterialLayerSetUsage`. Online:
-  https://ifc43-docs.standards.buildingsmart.org/.
+  <https://ifc43-docs.standards.buildingsmart.org/>.
 
 **Sekundär:**
 

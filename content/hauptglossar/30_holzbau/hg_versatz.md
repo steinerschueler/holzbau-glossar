@@ -253,7 +253,7 @@ Sei
 
 - L_B = (O_B, e_hat_x^B, e_hat_y^B, e_hat_z^B) das Bauteil-Lokal-
   Koordinatensystem (`lokales_koordinatensystem`) mit Konvention
-  ```
+  ```text
   e_hat_x^B  =  Bauteilachse (Längsrichtung),
   e_hat_y^B  =  Bauteil-Querrichtung,
   e_hat_z^B  =  Bauteilhöhe (auf der Druckstab-Seite nach oben),
@@ -269,7 +269,7 @@ Sei
 - β ∈ (0, π) der **Strebenanschlusswinkel** zwischen der
   Druckstab-Achse d_hat_S und der Trägerbauteil-Achse e_hat_x^B,
   gemessen als stumpfer Außenwinkel:
-  ```
+  ```text
   β:=  π − arccos(|⟨d_hat_S, e_hat_x^B⟩|),
   ```
   d. h. β ∈ (π/2, π) bezeichnet die Öffnung zwischen Druckstab
@@ -291,7 +291,7 @@ ist trivial durch Anwendung der `lokalePlatzierung`.
 
 Der Versatz trägt eine diskrete **Art-Klassifikation**
 
-```
+```text
 art  ∈  𝒜:=  { STIRN, FERSE, DOPPELT }                          (1)
 ```
 
@@ -313,7 +313,7 @@ mit der Bedeutung
 
 Die **Parameter** eines Versatzes sind das Tupel
 
-```
+```text
 p_Versatz:=  (x_0, art, β, t_S?, σ_S?, t_F?, b_K?, l_v)              (2)
 ```
 
@@ -360,7 +360,7 @@ Druckflächen-Winkel sind nach DACH-Konsens und EN 1995-1-1 **nicht frei**,
 sondern durch den Strebenanschlusswinkel β festgelegt (Recherche-Bericht
 [intern]):
 
-```
+```text
 δ_S      =  β / 2          Stirn-Druckfläche = Winkelhalbierende
 δ_F      =  β − π/2        Ferse-Druckfläche = rechtwinklig zur Strebe
 σ_Ferse  =  α  =  π − β    Ferse-Sohle = parallel zur Strebe
@@ -379,7 +379,7 @@ Im horizontalen Standardfall ist Π_⊥(B) die x-z-Ebene des
 Bauteil-Lokalsystems. Der Druckstab-Aufsetzpunkt Q liegt nach
 Konvention bei
 
-```
+```text
 Q:=  (x_0, 0, h_B)         in Bauteil-Lokal-Koordinaten.       (3)
 ```
 
@@ -398,7 +398,7 @@ Querzug am Gurt).
 
 In der Lotebene mit Aufsetzpunkt A = (x_A, 0, h_B):
 
-```
+```text
 A  =  (x_A, 0, h_B)                       Druckfläche ∩ Oberseite (fußseitig)
 C  =  (x_A + t·cot δ, 0, h_B − t)          Apex (Druckfläche ∩ Sohle)        (4)
 B  =  (x_A + t·(cot δ + cot σ), 0, h_B)    Sohle ∩ Oberseite (firstseitig)
@@ -407,14 +407,14 @@ B  =  (x_A + t·(cot δ + cot σ), 0, h_B)    Sohle ∩ Oberseite (firstseitig)
 mit der vertikalen Tiefe t (z-Abfall = t). Die nach innen (ins V) weisenden
 Flächennormalen sind
 
-```
+```text
 ν_hat_Druck  =  sin δ · e_hat_x^B  +  cos δ · e_hat_z^B,                     (5)
 ν_hat_Sohle  =  − sin σ · e_hat_x^B  +  cos σ · e_hat_z^B.
 ```
 
 Der **Apex-Innenwinkel** (Öffnung des Ausschnitts) ist
 
-```
+```text
 ∠(A, C, B)  =  π − δ − σ.                                            (6)
 ```
 
@@ -422,7 +422,7 @@ Der Anschnittquerschnitt ist der Durchschnitt dreier Halbräume in der
 Lotebene (über [y_min, y_max] extrudiert kommen die zwei y-Deckel hinzu →
 fünf Halbräume des prismatischen Werkzeugkörpers):
 
-```
+```text
 Δ  =  { z ≤ h_B }  ∩  { ⟨P − A, ν_hat_Druck⟩ ≥ 0 }
                     ∩  { ⟨P − C, ν_hat_Sohle⟩ ≥ 0 }.                 (7)
 ```
@@ -449,7 +449,7 @@ Volumen, das den Anschnittquerschnitt in der Lotebene Π_⊥(B)
 über die Bauteilbreite b_B (oder einen Teil davon, je nach
 `lokalePlatzierung`) entlang e_hat_y^B extrudiert:
 
-```
+```text
 K_Versatz(p_Versatz):=  Δ_Versatz(art)  ×  [y_min, y_max]      (8)
 ```
 
@@ -481,14 +481,14 @@ z = h_B):
 Die **Wirkung** des Versatzes auf das Trägerbauteil ist die
 Boole'sche Differenz nach `bearbeitung`:
 
-```
+```text
 G_B'(F):=  G_B^lokal  \  K_Versatz(p_Versatz).                 (9)
 ```
 
 Damit ist ein **Versatz** (als Subtyp von `bearbeitung`) das
 Tupel
 
-```
+```text
 F:=  (uuid, typ = Versatz, parameter = p_Versatz,
        lokale_platzierung = T_F, bezeichnung?)                  (10)
 ```
@@ -581,13 +581,13 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
         heißen `Toleranzen.VERSATZ_TIEFE_FLACH_VIERTEL` (Default
         1.0/4.0) und `Toleranzen.VERSATZ_TIEFE_STEIL_SECHSTEL`
         (Default 1.0/6.0).
-     2. **Vorholzlänge-Faustregel NCI NA.12**:
+    2. **Vorholzlänge-Faustregel NCI NA.12**:
         l_v ≥ max(8 · t_v, 200 mm), wobei t_v die maßgebende
         Versatztiefe ist (für art ∈ {STIRN, FERSE}: t_v = t_S
         bzw. t_F; für art = DOPPELT: t_v = max(t_S, t_F)).
         Verletzung → `Warnung.VersatzVorholzZuKurz` mit Hinweis
         auf EC 5 6.5 Schubnachweis.
-     3. **Druckflächen-Winkel zwingend aus β (keine Warnung)**:
+    3. **Druckflächen-Winkel zwingend aus β (keine Warnung)**:
         δ_S = β/2 (Stirn, Winkelhalbierende) und δ_F = β − π/2 (Ferse,
         ⊥ Strebe) sind nach EN 1995-1-1 **nicht frei wählbar**, sondern
         aus β bestimmt (Recherche-Bericht
@@ -597,7 +597,7 @@ ist Element der Bearbeitungs-Liste genau eines Bauteils.
         Stufe-3-Theorie-Inhalt, folgt formal aus der Hankinson-
         Formulierung, siehe `hankinson_winkel`). Da δ_S/δ_F nicht
         abweichen können, entfällt die frühere Optimum-Warnung.
-     4. **Doppelter Versatz — Tiefendifferenz**: für art = DOPPELT
+    4. **Doppelter Versatz — Tiefendifferenz**: für art = DOPPELT
         gilt die Praxisregel t_F ≥ t_S + 10 mm (Ferse mindestens
         1 cm tiefer als Stirn, sonst Abscher-Gefahr in der
         Versatzkamm-Sohle). Verletzung →

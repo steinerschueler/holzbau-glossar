@@ -119,7 +119,7 @@ mit der Konvention ⟨t_hat, e_z⟩ > 0 (Tangente nach oben orientiert; vgl.
 
 Eine Schnittstrecke s_{ij} heißt **geneigt**, wenn
 
-```
+```text
 |⟨t_hat, e_z⟩| > ε_W                                            (1)
 ```
 
@@ -134,7 +134,7 @@ das jeweilige Flächenstück liegt (Gegenbeispiel in der Erläuterung zu
 Flächenstücke relativ zur Kante** bestimmt — wie in `hg_grat.md`, mit
 umgekehrtem Vorzeichen. Sei
 
-```
+```text
 w:= (t_hat × e_z) / ‖t_hat × e_z‖   ∈ S²
 ```
 
@@ -147,7 +147,7 @@ Eine geneigte Schnittstrecke s_{ij} heißt **konkav** (einspringend,
 Kehle), wenn sich **beide** äußeren Normalen horizontal zur
 **Gegenseite** ihres eigenen Flächenstücks neigen:
 
-```
+```text
 ⟨ n_hat_{a,i}, w ⟩ · sign(τ_i) < −ε_W   und
 ⟨ n_hat_{a,j}, w ⟩ · sign(τ_j) < −ε_W.                                 (2)
 ```
@@ -245,23 +245,23 @@ Aufrissdarstellung des Dachs gebräuchlich.
   Eckpunkt zweier Trauflinien (Trauf-Innenecke) und der obere
   Endpunkt zugleich Eckpunkt einer Firstlinie oder eines Grats.
 - **Abgrenzung**:
-  - **First** (`first`): horizontale Schnittkante zweier nach oben
+    - **First** (`first`): horizontale Schnittkante zweier nach oben
     zusammenlaufender Dachflächen. Kehle ist im Gegensatz dazu
     geneigt (Bedingung (1)).
-  - **Grat** (`grat`): geneigte konvexe Schnittkante. Kehle ist
+    - **Grat** (`grat`): geneigte konvexe Schnittkante. Kehle ist
     konkav; Vorzeichen in (2) umgekehrt zum Grat.
-  - **Ortgang** (`ortgang`): geneigte Randkante einer einzelnen
+    - **Ortgang** (`ortgang`): geneigte Randkante einer einzelnen
     Dachfläche entlang ihrer Falllinie. Kehle ist Schnittkante
     zweier Dachflächen.
-  - **Traufe** (`traufe`): horizontale, untere Randkante.
-  - **Pultkante** (`pultkante`): obere Randkante einer einzelnen
+    - **Traufe** (`traufe`): horizontale, untere Randkante.
+    - **Pultkante** (`pultkante`): obere Randkante einer einzelnen
     Pultdachfläche.
-  - **Kehlblech / Kehlrinne**: Eindeckungs-Bauteil zur
+    - **Kehlblech / Kehlrinne**: Eindeckungs-Bauteil zur
     Wasserführung in der Kehle; nicht die Kante selbst. Hier nicht
     definiert.
-  - **Kehlbohle**: Holz-Bauteil als Unterlage des Kehlblechs;
+    - **Kehlbohle**: Holz-Bauteil als Unterlage des Kehlblechs;
     Bauteil, nicht Kante. Hier nicht definiert.
-  - **Kehlsparren** (`kehlsparren`, bereits angelegt):
+    - **Kehlsparren** (`kehlsparren`, bereits angelegt):
     Tragwerksbalken unter der Kehlkante; Bauteil, nicht Kante.
 
 ## Quellen

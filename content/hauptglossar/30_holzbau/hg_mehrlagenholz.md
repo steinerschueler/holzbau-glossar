@@ -86,7 +86,7 @@ L = (ℓ₁, …, ℓₙ) mit n ≥ 3.
 
 Dann ist ein **Mehrlagenholz** das Tupel
 
-```
+```text
 ML:= (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse,
        lagenstruktur, haupttragrichtung, nebentragrichtung)
 ```
@@ -154,9 +154,9 @@ einzelne „Faserrichtung des Bauteils" gibt es bei Mehrlagenholz
   bis auf das durch das Kreuzprodukt vorgegebene Vorzeichen
   (Rechte-Hand-Regel mit dem Welt-Rechtssystem konsistent).
 - **Lagenstruktur-Invarianten**:
-  - n = |L| ≥ 3 (sonst ist es Brettschichtholz oder Sperrholz mit
+    - n = |L| ≥ 3 (sonst ist es Brettschichtholz oder Sperrholz mit
     weniger als 3 Lagen, fällt nicht in diese Klasse).
-  - Klassische CLT-Symmetrie ist optional, aber Standard.
+    - Klassische CLT-Symmetrie ist optional, aber Standard.
 - **Plattendicken-Achse Pflicht**: STRUKTURIERT ist Plattenwerkstoff;
   `plattendicken_achse ∈ S²` ist Pflicht (Klassen-Invariante).
 - **Norm-Invarianten**: h_hat, n_hat, plattendicken_achse, ℓᵢ.faserrichtung
@@ -172,7 +172,7 @@ einzelne „Faserrichtung des Bauteils" gibt es bei Mehrlagenholz
 ### Subklassen-Spektrum
 
 | Subklasse | Norm | typ. Lagenanzahl | typ. Lagenstärke |
-|-----------|------|------------------|------------------|
+| ----------- | ------ | ------------------ | ------------------ |
 | Brettsperrholz / CLT / BSP / X-LAM | DIN EN 16351 | 3, 5, 7 (ungerade) | 20–40 mm pro Lage |
 | Furniersperrholz | DIN EN 636 | 3, 5, 7 (ungerade) | ca. 1–4 mm pro Furnier |
 | Multiplex | DIN EN 636 (Untergruppe) | ≥ 5 | ca. 1–2 mm pro Furnier |
@@ -220,7 +220,7 @@ gilt die Bemessungstheorie nach Blaß/Flaig 2012 (KIT, DOI
 Standard-CLT-Layouts haben eine ungerade Lagenanzahl mit
 identischer Faserrichtung in der ersten und letzten Lage:
 
-```
+```text
 3-lagig:   0° / 90° / 0°
 5-lagig:   0° / 90° / 0° / 90° / 0°
 7-lagig:   0° / 90° / 0° / 90° / 0° / 90° / 0°
@@ -243,41 +243,41 @@ konstitutive Merkmal des Mehrlagenholzes ist die
 
 - **Oberbegriff**: `werkstoff`.
 - **Subklassen** (eigene Einträge folgen):
-  - **Brettsperrholz / CLT / BSP / X-LAM** (`brettsperrholz` /
+    - **Brettsperrholz / CLT / BSP / X-LAM** (`brettsperrholz` /
     `clt` / `bsp`): DIN EN 16351, ETAs der Hersteller (KLH,
     Stora Enso, Hasslacher, Binderholz).
-  - **Furniersperrholz** (`sperrholz`): DIN EN 636, mehrlagig
+    - **Furniersperrholz** (`sperrholz`): DIN EN 636, mehrlagig
     aus dünnen Furnieren.
-  - **Multiplex** (`multiplex`): DIN EN 636 Untergruppe,
+    - **Multiplex** (`multiplex`): DIN EN 636 Untergruppe,
     typisch ≥ 5 Furnierlagen.
 - **Pflichtfelder über `werkstoff` hinaus**:
-  - **Lagenstruktur** (`lagenstruktur`, eigener Folge-Eintrag):
+    - **Lagenstruktur** (`lagenstruktur`, eigener Folge-Eintrag):
     geordnete Liste von Lage-Objekten, n ≥ 3.
-  - **Haupttragrichtung** (`haupttragrichtung`, eigener Folge-
+    - **Haupttragrichtung** (`haupttragrichtung`, eigener Folge-
     Eintrag): Decklage-Richtung mit höherer Steifigkeit.
-  - **Nebentragrichtung** (`nebentragrichtung`, eigener Folge-
+    - **Nebentragrichtung** (`nebentragrichtung`, eigener Folge-
     Eintrag): 90° zur Haupttragrichtung in Plattenebene;
     abgeleitet, redundant.
-  - **Plattendicken-Achse** (`plattendicken_achse`, eigener Folge-
+    - **Plattendicken-Achse** (`plattendicken_achse`, eigener Folge-
     Eintrag): rechtwinklig zur Plattenebene.
 - **Verwendung**:
-  - **Bauteil** (`bauteil`): trägt einen Werkstoff der Subklasse
+    - **Bauteil** (`bauteil`): trägt einen Werkstoff der Subklasse
     `mehrlagenholz`, wenn Flächen-/Volumenbauteil aus BSP/Sperrholz/
     Multiplex.
-  - **Brettsperrholz-Element** (`brettsperrholz_element`,
+    - **Brettsperrholz-Element** (`brettsperrholz_element`,
     Folgearbeit): Spezialisierung von Flächenbauteil mit Werkstoff
     Brettsperrholz.
 - **Abgrenzung**:
-  - **`axiales_holz`**: eine einzige, dominante Faserrichtung
+    - **`axiales_holz`**: eine einzige, dominante Faserrichtung
     (Vollholz, KVH, BSH, BSc, LVL). Mehrlagenholz hat **mehrere**
     Faserrichtungen pro Lage.
-  - **`gerichteter_plattenwerkstoff`**: schwache Vorzugsrichtung
+    - **`gerichteter_plattenwerkstoff`**: schwache Vorzugsrichtung
     in der Plattenebene (OSB), ohne Lagen-Mechanik. OSB hat
     trotz Strand-Schichtung keine bemessungsrelevante
     Einzellagen-Mechanik.
-  - **`isotroper_plattenwerkstoff`**: keine Vorzugsrichtung in
+    - **`isotroper_plattenwerkstoff`**: keine Vorzugsrichtung in
     Plattenebene (Spanplatte, MDF, HDF).
-  - **`faserrichtung`** (im Sinne des Klasse-A-Glossarbegriffs):
+    - **`faserrichtung`** (im Sinne des Klasse-A-Glossarbegriffs):
     Einheitsvektor-Annotation an einem Bauteil mit Werkstoff
     `axiales_holz`. Bei Mehrlagenholz wird die geometrische
     Annotation pro Lage geführt, nicht als globale Bauteil-

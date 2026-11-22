@@ -46,13 +46,13 @@ Sei
 
 Dann ist die durch (p₀, v) definierte **Gerade** g ⊂ ℝ³ die Menge
 
-```
+```text
 g(p₀, v):= { p₀ + t · v ∈ ℝ³ | t ∈ ℝ }.
 ```
 
 Die Abbildung
 
-```
+```text
 γ: ℝ → ℝ³,   γ(t):= p₀ + t · v
 ```
 
@@ -87,7 +87,7 @@ Identitätsrelation der Geraden als Punktmengen: Zwei Datentyp-
 Repräsentanten (p₀, v) und (p₀', v') beschreiben **dieselbe Gerade**
 genau dann, wenn
 
-```
+```text
 v × v' = 0   (Kollinearität)   und   (p₀' − p₀) × v = 0   (Inzidenz),
 ```
 
@@ -126,27 +126,27 @@ zusammen mit einem Stützpunkt p₀ definiert er eine.
 - **Oberbegriff**: eindimensionaler affiner Unterraum von ℝ³ (formal).
   Im Glossar Primitiv.
 - **Teilbegriffe / Rollen**:
-  - **Achse** eines Stabbauteils: eine Gerade in spezialisierter Rolle
+    - **Achse** eines Stabbauteils: eine Gerade in spezialisierter Rolle
     (wenn unbegrenzt gemeint) bzw. eine Strecke (wenn auf das
     Bauteil eingeschränkt). Eigener Eintrag in Folgearbeit.
-  - **Schnittgerade** zweier Ebenen: rollenbezogene Verwendung;
+    - **Schnittgerade** zweier Ebenen: rollenbezogene Verwendung;
     eigener Eintrag.
 - **Bestandteile (partitiv)**: jede Gerade enthält überabzählbar viele
   Punkte; eine Gerade hat keine eigenen ausgezeichneten Bestandteile
   (Anfangs- oder Endpunkt existieren nicht).
 - **Abgrenzung**:
-  - **Strecke** (`strecke`): endlicher Ausschnitt einer Geraden mit
+    - **Strecke** (`strecke`): endlicher Ausschnitt einer Geraden mit
     zwei Endpunkten. Formal: zu jeder Strecke [a, b] mit a ≠ b
     existiert eine eindeutige Trägergerade g(a, b − a), aber nicht
     umgekehrt — auf einer Geraden liegen unendlich viele Strecken.
-  - **Halbgerade** (`halbgerade`): einseitig begrenzter Ausschnitt
+    - **Halbgerade** (`halbgerade`): einseitig begrenzter Ausschnitt
     einer Geraden { p₀ + t·v | t ∈ [0, ∞) }. Eine Gerade lässt sich
     durch jeden ihrer Punkte in genau zwei Halbgeraden zerlegen,
     deren Schnitt der Trennpunkt ist.
-  - **Ebene** (`ebene`): zweidimensionaler affiner Unterraum; höhere
+    - **Ebene** (`ebene`): zweidimensionaler affiner Unterraum; höhere
     Dimension. Eine Gerade liegt entweder vollständig in einer Ebene
     oder schneidet sie in höchstens einem Punkt.
-  - **Vektor** (`vektor`): ortsfreie gerichtete Verschiebung. Der
+    - **Vektor** (`vektor`): ortsfreie gerichtete Verschiebung. Der
     Richtungsvektor v einer Geraden ist ein Vektor, die Gerade selbst
     ist es nicht.
 

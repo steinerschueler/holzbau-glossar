@@ -102,7 +102,7 @@ Bedingungen erfüllt sind:
 
 2. **Horizontalitätsbedingung**: Die Bauteilachsenrichtung ist
    horizontal,
-   ```
+   ```text
    |⟨d_hat, e_z⟩| ≤ ε_K,
    ```
    d. h. die Bauteilachse steht rechtwinklig zur Welt-Lotachse.
@@ -117,7 +117,7 @@ Bedingungen erfüllt sind:
    mindestens eine Dachkante k (im Sinne von `dachkante`) der
    zugeordneten Dachfläche bzw. des Dachtragwerks, deren
    Richtungs-Einheitsvektor d_hat_k mit d_hat kollinear ist:
-   ```
+   ```text
    |⟨d_hat, d_hat_k⟩| ≥ 1 − ε_W.
    ```
    In der Regel ist k eine Traufe, ein First oder eine
@@ -264,50 +264,50 @@ definiert. Hier nur als Verortung:
   Bauteil mit der zusätzlichen Rolle „Pfette" und den oben
   formalisierten geometrischen Constraints.
 - **Bestandteile (partitiv)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`, vom Bauteil geerbt);
-  - **Querschnitt** (rechteckig, hochkant im Regelfall);
-  - **Werkstoff** (Vollholz oder BSH);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_Pfette).
+    - **Bauteilachse** (`bauteilachse.Gerade`, vom Bauteil geerbt);
+    - **Querschnitt** (rechteckig, hochkant im Regelfall);
+    - **Werkstoff** (Vollholz oder BSH);
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_Pfette).
 - **Spezialisierungen** (eigene Glossareinträge):
-  - **Firstpfette** (`firstpfette`): Pfette am First.
-  - **Mittelpfette** (`mittelpfette`): Pfette zwischen Fuß- und
+    - **Firstpfette** (`firstpfette`): Pfette am First.
+    - **Mittelpfette** (`mittelpfette`): Pfette zwischen Fuß- und
     Firstpfette (Synonym: Zwischenpfette).
-  - **Fußpfette** (`fusspfette`): Pfette am Sparrenfuß /
+    - **Fußpfette** (`fusspfette`): Pfette am Sparrenfuß /
     traufseitig (Synonyme: Mauerlatte, regional Schwellpfette).
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Sparren** (`sparren`): liegt **auf** der Pfette; die Pfette
+    - **Sparren** (`sparren`): liegt **auf** der Pfette; die Pfette
     ist Auflager des Sparrens.
-  - **Binder** (`binder`, eigener Eintrag folgt): kann statt
+    - **Binder** (`binder`, eigener Eintrag folgt): kann statt
     Sparren auf einer Pfette aufliegen; in Mischformen (z. B.
     Hauptbinder + Pfette + Sparren) Bestandteil mehrstufiger
     Tragsysteme.
-  - **Stuhlsäule** (`stuhlsaeule`, eigener Eintrag folgt):
+    - **Stuhlsäule** (`stuhlsaeule`, eigener Eintrag folgt):
     Stütze, die eine Pfette an Zwischenpunkten unterstützt
     (typisch im liegenden / stehenden Stuhl).
-  - **Wand** / **Mauerwerk**: Auflager für Fußpfette (Mauerlatte)
+    - **Wand** / **Mauerwerk**: Auflager für Fußpfette (Mauerlatte)
     und Giebelwand-Auflagerung beliebiger Pfetten.
-  - **Dachkante** (`dachkante`): die Pfettenachse ist parallel zu
+    - **Dachkante** (`dachkante`): die Pfettenachse ist parallel zu
     einer Dachkante (Traufe, First, Höhenlinie).
 - **Abgrenzung**:
-  - **Sparren** (`sparren`): geneigtes Stab-Bauteil entlang der
+    - **Sparren** (`sparren`): geneigtes Stab-Bauteil entlang der
     Falllinie. Pfette ist horizontal entlang einer Höhenlinie.
     Sparren und Pfette sind orthogonal zueinander angeordnet
     (innerhalb der Trägerebene der Dachfläche).
-  - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken
+    - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken
     **zwischen** einem Sparrenpaar zur Aussteifung; verbindet
     zwei Sparren statt mehrere Sparren zu tragen. Kein
     Längsträger, sondern Querstab.
-  - **Riegel**: horizontales Bauteil im Wandbau; nicht
+    - **Riegel**: horizontales Bauteil im Wandbau; nicht
     Dachtragwerk.
-  - **Latte / Konterlatte**: deutlich kleinerer Querschnitt;
+    - **Latte / Konterlatte**: deutlich kleinerer Querschnitt;
     Sekundärbauteil zur Eindeckungs-Auflage. Die Latte liegt
     quer zum Sparren und parallel zur Pfette, ist aber
     funktional und dimensional kein Hauptträger.
-  - **Schwelle** (`schwelle`): horizontales unteres Auflager im
+    - **Schwelle** (`schwelle`): horizontales unteres Auflager im
     Wandbau (Schwellholz auf dem Fundament). Trotz formaler
     Ähnlichkeit (horizontaler Stab) keine Pfette, da nicht im
     Dachtragwerk.
-  - **Einbinder** (`einbinder`): oberster horizontaler Längsträger einer
+    - **Einbinder** (`einbinder`): oberster horizontaler Längsträger einer
     Wand, oft Auflager für Sparrenfüße. In manchen Konstruktionen
     übernimmt der Einbinder die Funktion einer Fußpfette; die saubere
     Trennung ist zimmermannssprachlich: Einbinder gehört zur Wand,
@@ -317,7 +317,7 @@ definiert. Hier nur als Verortung:
     (Mauerlatte ist ein Dach-Bauteil im Sinne der Fußpfette,
     kein Wand-Bauteil im Sinne des Einbinders); sie macht den Einbinder
     konstruktiv überflüssig, weil keine Holzwand vorhanden ist.
-  - **Binder** (`binder`, bereits angelegt): vorgefertigtes
+    - **Binder** (`binder`, bereits angelegt): vorgefertigtes
     Trag-Aggregat (`oberbegriff: bauteilgruppe`); kann eine Pfette
     ablösen oder ergänzen, ist aber selbst kein Längsträger.
     Eine Pfette kann **Bestandteil höchstens einer Bauteilgruppe**

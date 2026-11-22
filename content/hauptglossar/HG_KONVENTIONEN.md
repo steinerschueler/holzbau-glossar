@@ -5,12 +5,12 @@ Meta-Datei. Kein Glossarbegriff (kein YAML-Frontmatter, kein
 die für alle **Hauptglossar**-Einträge gelten.
 
 **Datei-Ablage:** Seit 2026-05-14 liegen die Einträge in vier
-Cluster-Unterordnern: `hauptglossar/<cluster>/hg_<id>.md`. Die
+Cluster-Unterordnern: `glossary/<cluster>/hg_<id>.md`. Die
 verbindliche Cluster-Liste, Mapping-Regeln und das NPK-Anker-Mapping
 stehen in §9.
 
-**Pendant-Datei:** `lerninhalt/subglossar/SG_KONVENTIONEN.md` —
-Konvention für das **Subglossar** (`lerninhalt/subglossar/sg_<id>.md`).
+**Pendant-Datei:** `learning/subglossary/SG_KONVENTIONEN.md` —
+Konvention für das **Subglossar** (`learning/subglossary/sg_<id>.md`).
 Die beiden Dateien sind eng aufeinander bezogen; eine Übersichtstabelle
 der Korrespondenz steht am Anfang von `SG_KONVENTIONEN.md`. Bei
 Konflikt: für **HG-Belange** gilt dieses Dokument, für **SG-Belange**
@@ -20,7 +20,7 @@ das SG-Dokument.
 Konsolidierungs-Etappen werden in **`STAND_HAUPTGLOSSAR.md`**
 (gleichem Verzeichnis) geführt. `STAND_AKTUELL.md` im Projekt-Root
 behält nur einen kurzen Verweis-Block mit dem aktuellen HG-Stichwort.
-Pendant für das Subglossar: `lerninhalt/subglossar/SUBGLOSSAR_STAND.md`.
+Pendant für das Subglossar: `learning/subglossary/SUBGLOSSAR_STAND.md`.
 
 ## 1. Sprachregel: senkrecht / rechtwinklig / orthogonal
 
@@ -46,7 +46,7 @@ Welt-Koordinatensystem (z-Achse vertikal nach oben) und von
 Bauteil-Lokalsystemen die Rede ist.
 
 | Aussage | Bedeutung | Empfohlener Wortlaut |
-|---|---|---|
+| --- | --- | --- |
 | Faserrichtung im 90°-Winkel zur Last | relational | „rechtwinklig zur Faser" |
 | Plattendicken-Achse im 90°-Winkel zur Plattenebene | relational | „rechtwinklig zur Plattenebene" |
 | Wand steht in Schwerkraftrichtung | absolut | „die Wand steht senkrecht" |
@@ -96,7 +96,7 @@ strukturellen Rolle im Begriffssystem zu und ist orthogonal zum
 `oberbegriff:` (der eine fachliche Spezialisierungs-Linie ausdrückt).
 
 | Wert | Bedeutung | Strukturmerkmal | Beispiele |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `primitiv` | Unzerlegbares Konzept ohne weitere innere Struktur. | Atomar (Tupel von Skalaren oder identisch mit einem Vorbegriff); keine eigenen Subtypen. | `punkt`, `vektor`, `gerade` |
 | `generisch` | Eigenständiges Konzept mit interner Struktur und ggf. eigenen Spezialisierungen, aber ohne partitive Eigentümerschaft an einem Trägerbegriff. | `data class` oder `sealed` mit Subtypen; Invarianten an den eigenen Feldern. | `ebene`, `polygon`, `polyeder`, `werkstoff` |
 | `aggregat` | Komposition aus mehreren eigenständigen Begriffen mit eigener Identität (UUID). Mitglieder sind selbst vollwertige Begriffe; das Aggregat bündelt sie und führt eigene Konsistenzbedingungen über der Komposition. | Tupel aus mehreren Begriffsmengen plus Inzidenzbedingungen; eigene UUID. | `bauteilgruppe`, `verbindung`, `tragwerk`, `dach` |
@@ -131,8 +131,8 @@ Aggregat hat eine eigene UUID, weil es als Ganzes adressierbar
 sein muss (z. B. für Persistenz, Bemessungs-Nachweis,
 Lifecycle-Operationen). Beispiele: `verbindung` (Bauteile +
 Verbindungsmittel + Verbinder an einem Knoten), `tragwerk`
-(Bauteile + Verbindungen + Auflager + Lastfälle), `dach` (Tragwerk
-+ Dachflächen + Dachaufbau).
+(Bauteile + Verbindungen + Auflager + Lastfälle), `dach` (Tragwerk +
+Dachflächen + Dachaufbau).
 
 **`partitiv`** ist die Kategorie für Bestandteile mit Lebenszyklus-
 Kopplung an einen Trägerbegriff. Der `partitiv`-Eintrag hat zwar
@@ -177,25 +177,25 @@ Objekt.
 
 ### Differenzierungs-Hilfen
 
-- **`primitiv` vs. `generisch`**: ein `primitiv`-Eintrag erlaubt
++ **`primitiv` vs. `generisch`**: ein `primitiv`-Eintrag erlaubt
   keine eigenen Subtypen und trägt keine Invarianten jenseits der
   Tupel-Wohlgeformtheit; sobald ein Eintrag sealed-Hierarchie hat
   oder konstruktive Felder mit Invarianten, ist er `generisch`.
-- **`aggregat` vs. `partitiv`**: das Aggregat hat eigene Identität
++ **`aggregat` vs. `partitiv`**: das Aggregat hat eigene Identität
   und existiert unabhängig vom „Eigentümer" (es hat keinen); der
   partitive Eintrag ist gerade nicht eigentümerlos, sondern
   Lebenszyklus-gekoppelt.
-- **`aggregat` vs. `relation`**: beide bündeln mehrere Begriffe,
++ **`aggregat` vs. `relation`**: beide bündeln mehrere Begriffe,
   aber das Aggregat hat eigene partitive Bestandteile und
   Konsistenz über deren Komposition; die Relation ist eine reine
   Mitgliedschafts-Beziehung mit nicht-exklusiver, lifecycle-
   unabhängiger Mitgliedschaft.
-- **`bauteilrolle` vs. `merkmal`**: die Rolle ist ein eigener
++ **`bauteilrolle` vs. `merkmal`**: die Rolle ist ein eigener
   Bauteil-Subtyp im Code; das Merkmal ist ein annotierter Wert.
   Wenn der Eintrag eine sealed-class-Hierarchie unter Bauteil
   begründet, ist er Rolle; wenn er einen Wertebereich oder eine
   Annotation an einem Bauteil beschreibt, ist er Merkmal.
-- **`bauteilrolle`-Verschachtelung** (transitive Spezialisierung):
++ **`bauteilrolle`-Verschachtelung** (transitive Spezialisierung):
   zulässig. Eine Bauteilrolle darf eine andere Bauteilrolle als
   `oberbegriff:` haben, sofern die innere Spezialisierung eine
   echte Sub-Sealed-Hierarchie der äußeren ist. Beispiel:
@@ -204,7 +204,7 @@ Objekt.
   Im Code: `sealed class Sparren : Bauteil()` und
   `class Gratsparren : Sparren()`. Die Pendant-Pflicht aus dieser
   Sektion gilt für jede Rolle in der Kette einzeln.
-- **`hilfsbegriff` vs. `merkmal`**: ein Merkmal ist ein **Wert
++ **`hilfsbegriff` vs. `merkmal`**: ein Merkmal ist ein **Wert
   an einem fachlichen Trägerbegriff** (Faserrichtung an einem
   Bauteil, Dachneigung an einer Dachfläche). Ein Hilfsbegriff
   ist eine **infrastrukturelle Festlegung der Domänen-Schicht
@@ -212,7 +212,7 @@ Objekt.
   vorausgesetzt, ist aber keine Eigenschaft eines konkreten
   Holzbau-Konzepts, sondern Voraussetzung für die geometrische
   Modellierung als solche.
-- **`merkmal` als Spezialisierung eines `generisch`-Oberbegriffs**:
++ **`merkmal` als Spezialisierung eines `generisch`-Oberbegriffs**:
   zulässig, wenn der spezialisierte Eintrag eine **abgeleitete
   Sicht** auf den Oberbegriff trägt, ohne eigene Identität und
   ohne eigene Subtyp-Hierarchie zu begründen. Beispiel:
@@ -235,7 +235,7 @@ folgenden `begriffstyp:`-Werte ein Code-Pendant in der Domänen-
 Schicht hat — Klasse mit Annotation `@GlossarBegriff(GlossarTerm.X)`:
 
 | `begriffstyp:` | Pendant-pflichtig | Begründung |
-|---|---|---|
+| --- | --- | --- |
 | `primitiv` | ja | unzerlegbares Konzept; im Code als data class / value class realisiert |
 | `generisch` | ja | eigenständiges Konzept mit interner Struktur; im Code als data class / sealed class |
 | `aggregat` | ja | Komposition mit eigener UUID; im Code als data class |
@@ -261,11 +261,11 @@ zentrale Anwendungs-Regel; bei Konflikt zwischen Tabelle und
 Einzeleintrag wird der Eintrag korrigiert.
 
 | Konstante | Einheit | Anwendung | Beispiele |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `LAENGE_EPS` | mm | Längen-, Abstands- und Koordinatenvergleich; Punkt-Identität; Ebenen-Enthaltensein eines Punktes; Strecken-Entartung; doppelter Polygon-Eckpunkt. | `Punkt.gleich`, `Punkt.istInEbene`, `Strecke.istEntartet`, Sparrenlängen-Vergleich, Bauteil-Endpunkt-Identität |
 | `WINKEL_EPS` | rad | Winkel-Vergleich, wenn der Winkel **explizit** berechnet ist (`acos`, `atan2`); Klassifikation Flach- vs. Geneigtdach am Rand; Dachneigungs-Wertebereich; Hankinson-Winkel; Faser-zu-Last-Winkel. | `hankinson_winkel`, `dachflaeche.init` (Toleranz auf `n_a · e_z ≥ −WINKEL_EPS`), Dachneigungs-Klassifikation |
-| `KOLLINEAR_EPS` | dimensionslos | Kollinearitäts- und Parallelitäts-Tests zwischen Vektoren über das normierte Kreuzprodukt `‖û × v̂‖ = |sin∠(û, v̂)|`; alle Lot- und Lage-Prädikate, die als Parallelitäts-Test gegen eine ausgezeichnete Welt-Richtung (z. B. `e_z`) formuliert sind. | `senkel.istSenkel`, `bleischnitt.istBleischnitt`, `pfette.istHorizontal`, Falllinien-Kollinearität des Sparrens, drei Punkte kollinear |
-| `NORM_EPS` | mm² bzw. dimensionslos | Nullvektor-Test über `‖v‖² ≤ NORM_EPS`; Einheitsvektor-Test über `|‖v‖² − 1| ≤ NORM_EPS`. Niemals für Längen- oder Winkelvergleiche verwenden. | Eingangsprüfung von Normalenvektoren in `Ebene` und `Dachflaeche`; `Vektor.istNull`, `Vektor.istEinheit` |
+| `KOLLINEAR_EPS` | dimensionslos | Kollinearitäts- und Parallelitäts-Tests zwischen Vektoren über das normierte Kreuzprodukt <code>‖û × v̂‖ = &#124;sin∠(û, v̂)&#124;</code>; alle Lot- und Lage-Prädikate, die als Parallelitäts-Test gegen eine ausgezeichnete Welt-Richtung (z. B. `e_z`) formuliert sind. | `senkel.istSenkel`, `bleischnitt.istBleischnitt`, `pfette.istHorizontal`, Falllinien-Kollinearität des Sparrens, drei Punkte kollinear |
+| `NORM_EPS` | mm² bzw. dimensionslos | Nullvektor-Test über `‖v‖² ≤ NORM_EPS`; Einheitsvektor-Test über <code>&#124;‖v‖² − 1&#124; ≤ NORM_EPS</code>. Niemals für Längen- oder Winkelvergleiche verwenden. | Eingangsprüfung von Normalenvektoren in `Ebene` und `Dachflaeche`; `Vektor.istNull`, `Vektor.istEinheit` |
 | `FLAECHE_EPS` | mm² | Polygon-Flächeninhalt-Test gegen null; Dachflächen-Mindestfläche. | `Polygon.istEntartet`, `Dachflaeche.init` (Flächeninhalt > FLAECHE_EPS) |
 
 ### Erläuterung zur Trennung `WINKEL_EPS` vs. `KOLLINEAR_EPS`
@@ -274,11 +274,11 @@ Beide Konstanten haben in `hg_toleranzen.md` denselben empfohlenen
 Default (`1·10⁻⁹`), unterscheiden sich aber in der **Form des
 Tests**, nicht im **Schwellenwert**:
 
-- `WINKEL_EPS` wird angewandt, wenn der Winkel zwischen zwei
++ `WINKEL_EPS` wird angewandt, wenn der Winkel zwischen zwei
   Objekten **explizit als Skalar** berechnet wurde (typischer
   Aufruf: `acos(û · v̂)` oder `atan2(…)`). Der Test ist
   `|α − α_soll| ≤ WINKEL_EPS`.
-- `KOLLINEAR_EPS` wird angewandt, wenn der Test **direkt über
++ `KOLLINEAR_EPS` wird angewandt, wenn der Test **direkt über
   das normierte Kreuzprodukt** geführt wird, ohne Winkel-
   Extraktion. Der Test ist `‖û × v̂‖ ≤ KOLLINEAR_EPS`, was
   numerisch dem Sinus des eingeschlossenen Winkels entspricht.
@@ -326,9 +326,9 @@ seine Spezialisierungen.
 First- und Mittelpfetten gerade nicht auf einer Mauer liegen.
 Daraus folgt die zulässige Konstellation:
 
-- `pfette.abgelehnte_benennungen: [Mauerlatte, …]` — die Wurzel-
++ `pfette.abgelehnte_benennungen: [Mauerlatte, …]` — die Wurzel-
   Lesart „Pfette" lehnt die Mauer-spezifische Benennung ab.
-- `fusspfette.synonyme: [Mauerlatte, …]` — die Spezialisierung
++ `fusspfette.synonyme: [Mauerlatte, …]` — die Spezialisierung
   übernimmt die berufssprachliche Benennung, weil sie genau diese
   Spezialisierung trifft.
 
@@ -363,10 +363,10 @@ holz" als uneindeutiger Drift-Begriff in beiden Einträgen). Die
 Doppel-Listung in `abgelehnte_benennungen:` UND `abgrenzung_zu:`
 ist konventionskonform:
 
-- `abgrenzung_zu:` führt den Begriff als **eigenständige
++ `abgrenzung_zu:` führt den Begriff als **eigenständige
   Geschwister-Rolle** (Querverweis zur App-Navigation, Theorie-
   Anker).
-- `abgelehnte_benennungen:` führt ihn als **abgelehnte
++ `abgelehnte_benennungen:` führt ihn als **abgelehnte
   Bezeichnung im engeren Wurzel-Eintragskontext** (Drift-
   Warnschild für die App-Suche, mit Begründung im Quellenkonflikt-
   Block).
@@ -391,7 +391,7 @@ Die Frontmatter-Felder eines Glossareintrags unterscheiden sich
 in ihrer Verbindlichkeit gegenüber dem Glossar-Bestand:
 
 | Feld | Verbindlichkeit |
-|---|---|
+| --- | --- |
 | `voraussetzungen:` | **nur** existierende Glossareinträge. Diese Einschränkung sichert Zirkel-Freiheit und Build-Konsistenz. Eine Voraussetzung auf einen noch nicht angelegten Begriff ist unzulässig. |
 | `abgrenzung_zu:` | existierende **oder** noch nicht angelegte Begriffe. Forward-Verweise sind zulässig, sofern die Erläuterung den Abgrenzungs-Grund nennt und der Begriff im DACH-Holzbau-Korpus etabliert ist. |
 | `synonyme:` | freie Strings; keine Glossareintrag-Pflicht. |
@@ -431,7 +431,7 @@ Etappenschritt nachgezogen, sobald der Begriff fachlich gebraucht
 wird.
 
 | Begriff | Forward-Verweis in | Trigger (Folgearbeit) |
-|---|---|---|
+| --- | --- | --- |
 | `kante` | `hg_strecke.md` | Polyeder-Topologie / B-Rep-Modell (Ecken, Kanten, Flächen am `polyeder`). |
 | `hoehenlinie` | `hg_falllinie.md`, `hg_bleischnitt.md` | Erstes Tool, das Höhenlinien einer Dachfläche bemaßt (Vermassung, Werkplan). |
 | `lv95` | `hg_weltkoordinatensystem.md` | Erste Georeferenzierung der App-Daten gegen den Schweizer Bezugsrahmen LV95. |
@@ -446,7 +446,7 @@ wird.
 | `standort` | `hg_bauwerk.md` | Erste Georeferenzierung mit Site-Daten (IFC `IfcSite`-Pendant). |
 | `dachkoerper` | `hg_polyeder.md` | Erste Modellierung eines Dach-Hüllvolumens als zusammengesetztes Polyeder (Walmdach-Volumen als CSG-Vereinigung dreieckiges Prisma plus zwei rechteckige Pyramiden, Berufsschul-Korpus). |
 | `masstoleranz_din18202` | `hg_laengenmass.md`, `hg_lineares_groessenmass.md` | Erste Werkplan-Toleranz-Ausgabe nach DIN 18202 (Toleranzen im Hochbau) bzw. SIA 414 (Maßtoleranzen Bauwesen). |
-| `wandoeffnung` | `hg_sturz.md` | Erste Wand-Öffnungs-Entität im Tool (Tür/Fenster). Besonderheit: die Sturz-Definition setzt die Öffnung heute als reine Punktmenge voraus und ist beweisbar invariant gegen die spätere Konkretisierung (`hg_sturz.md`, Wohldefiniertheit „Repräsentanten-Unabhängigkeit"); bei Anlage migriert `wandoeffnung` dort von `abgrenzung_zu:` nach `voraussetzungen:`. Die übrigen Bauteil-Forward-Verweise der Wellen 14/15 (architrav, unterzug, dachstockschwelle, schwellenkranz, balkenlage, stichbalken) sind im Folgewellen-Plan (`docs/auftraege/hg_folgewellen_plan.md`) mit Triggern geführt. |
+| `wandoeffnung` | `hg_sturz.md` | Erste Wand-Öffnungs-Entität im Tool (Tür/Fenster). Besonderheit: die Sturz-Definition setzt die Öffnung heute als reine Punktmenge voraus und ist beweisbar invariant gegen die spätere Konkretisierung (`hg_sturz.md`, Wohldefiniertheit „Repräsentanten-Unabhängigkeit"); bei Anlage migriert `wandoeffnung` dort von `abgrenzung_zu:` nach `voraussetzungen:`. Die übrigen Bauteil-Forward-Verweise der Wellen 14/15 (architrav, unterzug, dachstockschwelle, schwellenkranz, balkenlage, stichbalken) sind im Folgewellen-Plan (`docs/briefs/hg_folgewellen_plan.md`) mit Triggern geführt. |
 
 **(B) Phantom ohne Substanz, ersatzlos gestrichen.** Der Begriff
 hat im DACH-Holzbau-Korpus keine eigenständige Verankerung und ist
@@ -455,7 +455,7 @@ bereits geführt (redundant) oder als reine Anglizismus-/
 Synonym-Variante eines bereits angelegten Begriffs.
 
 | Begriff | Forward-Verweis in (vorher) | Begründung der Streichung |
-|---|---|---|
+| --- | --- | --- |
 | `polygonzug` | `hg_polygon.md` | Synonym zu `streckenzug`; Abgrenzung muss gegen `streckenzug` selbst formuliert sein, nicht gegen sein Synonym. In `hg_polygon.md` durch `streckenzug` ersetzt. |
 | `polylinie` | `hg_polygon.md` | Wie `polygonzug` Synonym von `streckenzug`; in `hg_polygon.md` durch `streckenzug` ersetzt. |
 | `pfad` | `hg_streckenzug.md` | In `hg_streckenzug.md` bereits als `abgelehnte_benennungen:` geführt; im DACH-Holzbau-Korpus nicht als eigenständiger Geometriebegriff etabliert (Anglizismus „path"). Aus `abgrenzung_zu:` gestrichen. |
@@ -479,9 +479,9 @@ Nicht-Anlage im `quellenkonflikt:`- oder Erläuterungsblock kurz
 zu begründen.
 
 | Begriff | Forward-Verweis in | Begründung Nicht-Anlage |
-|---|---|---|
+| --- | --- | --- |
 | `bezugssystem` | `hg_koordinatensystem.md` | Mehrdeutig zwischen Geodäsie-/Physik-/Maschinenbau-Lesart; die App entscheidet sich für `koordinatensystem` als Hauptbenennung. |
-| `bauteilgeometrie` | `hg_bauteilkoerper.md`, `hg_bauteilflaeche.md` | Code-Sealed-Klasse (`Bauteilgeometrie (Stab \| Flaeche \| Volumen)`); die ontologische Aufgliederung erfolgt im Code, nicht im Glossar. |
+| `bauteilgeometrie` | `hg_bauteilkoerper.md`, `hg_bauteilflaeche.md` | Code-Sealed-Klasse (<code>Bauteilgeometrie (Stab &#124; Flaeche &#124; Volumen)</code>); die ontologische Aufgliederung erfolgt im Code, nicht im Glossar. |
 | `volumenkoerper` | `hg_bauteilkoerper.md`, `hg_bauteilflaeche.md` | In `hg_polyeder.md` und `hg_bauteilkoerper.md` bereits als `abgelehnte_benennungen:` geführt (zu allgemein in nackter Form); die qualifizierende Form ist Synonym von `bauteilkoerper`. |
 | `ifc_shape_representation` | `hg_bauteilkoerper.md`, `hg_bauteilflaeche.md` | Externes IFC-Konstrukt; wird beim IFC-Export als Mapping-Ziel referenziert, nicht als App-Begriff geführt. |
 | `auflageflaeche` | `hg_auflager.md` | Geometrische Manifestation des Auflagers (Polygon-Face am Bauteil-Polyeder); im `auflager`-Tupel als Polygon-Komponente bereits getragen, nicht eigenständig geführt. |
@@ -511,12 +511,12 @@ in die Tabelle aufgenommen.
 Hauptglossar-Eintrag trägt das Frontmatter-Feld `subglossar_pendant:`
 mit einem von drei Werten:
 
-- **`notwendig`** — ein Subglossar-Pendant (`lerninhalt/subglossar/
++ **`notwendig`** — ein Subglossar-Pendant (`learning/subglossary/
   sg_<id>.md`) muss existieren. Der Coverage-Linter (TG-4) bricht den
   Build, wenn die Datei fehlt.
-- **`optional`** — ein Subglossar-Pendant darf existieren, der Linter
++ **`optional`** — ein Subglossar-Pendant darf existieren, der Linter
   erzwingt es nicht. **Begründungspflichtig** (siehe unten).
-- **`nein`** — kein Subglossar-Pendant zulässig. Der Linter bricht den
++ **`nein`** — kein Subglossar-Pendant zulässig. Der Linter bricht den
   Build, wenn die Datei existiert. **Begründungspflichtig**.
 
 Das Feld misst, ob die Theorie eines Begriffs für die unteren vier
@@ -546,13 +546,13 @@ nicht mechanisch — sie ist Konventionspflicht.)
 
 Typische Begründungsmuster:
 
-- `nein` für `relation`-Begriffe (z. B. `bausystem`): eine Relation
++ `nein` für `relation`-Begriffe (z. B. `bausystem`): eine Relation
   beschreibt eine Beziehung, keinen greifbaren Gegenstand mit eigener
   didaktischer Hülle.
-- `optional`, wenn die didaktische Substanz bei verwandten, selbst
++ `optional`, wenn die didaktische Substanz bei verwandten, selbst
   `notwendig`-Begriffen liegt (z. B. `einheitsvektor` → bei `vektor`;
   `halbraum` → bei `ebene`/`polyeder`).
-- `optional` für Bemaßungs-/Tolerierungs-Begriffe (`laengenmass`,
++ `optional` für Bemaßungs-/Tolerierungs-Begriffe (`laengenmass`,
   `lineares_groessenmass`), die in der unteren Stufen-Didaktik nicht
   zentral sind und erst beim künftigen Werkplan-/CNC-Tool greifen.
 
@@ -560,9 +560,9 @@ Typische Begründungsmuster:
 
 Die zwei Achsen sind **unabhängig**:
 
-- Ein Begriff kann code-pendant-pflichtig **und** subglossar-pendant-frei
++ Ein Begriff kann code-pendant-pflichtig **und** subglossar-pendant-frei
   sein (z. B. `gerichteter_plattenwerkstoff` mit `optional`).
-- Ein Begriff kann code-pendant-frei **und** subglossar-pendant-pflichtig
++ Ein Begriff kann code-pendant-frei **und** subglossar-pendant-pflichtig
   sein (z. B. `toleranzen` mit `subglossar_pendant: notwendig`).
 
 ### Pflege
@@ -570,26 +570,26 @@ Die zwei Achsen sind **unabhängig**:
 Beim Anlegen oder Ändern eines Hauptglossar-Eintrags wird
 `subglossar_pendant:` im Frontmatter explizit gesetzt — `notwendig` im
 Normalfall, sonst `optional`/`nein` mit Begründung. Der Coverage-Linter
-(TG-4) prüft Konsistenz mit der `lerninhalt/subglossar/`-Ablage.
+(TG-4) prüft Konsistenz mit der `learning/subglossary/`-Ablage.
 
 ## 8. Subglossar-Konvention — Verweis
 
 Die vollständige Subglossar-Konvention (Datei- und Frontmatter-Form,
 Body-Gliederung, Inhalts-Verbote, empfohlene Sektionen, SVG-Skizzen,
 Stufen-Pattern, Asymmetrie Subglossar ↔ Hauptglossar) steht in
-**`lerninhalt/subglossar/SG_KONVENTIONEN.md`**.
+**`learning/subglossary/SG_KONVENTIONEN.md`**.
 
 ### Was HG-seitig gilt
 
-- Das Frontmatter-Feld `subglossar_pendant:` an jedem Hauptglossar-
++ Das Frontmatter-Feld `subglossar_pendant:` an jedem Hauptglossar-
   Eintrag steuert, ob ein Subglossar-Pendant existieren muss; die
   Werte-Semantik (`notwendig`/`optional`/`nein`) steht in §7.
-- Das Subglossar-Pendant trägt den Datei-Namen
-  `lerninhalt/subglossar/sg_<id>.md`, wobei `<id>` die `id:` des
++ Das Subglossar-Pendant trägt den Datei-Namen
+  `learning/subglossary/sg_<id>.md`, wobei `<id>` die `id:` des
   Hauptglossar-Eintrags ist; das Subglossar-Frontmatter referenziert
   den Hauptglossar-Eintrag über `glossar_ref: <id>` und spiegelt den
   `subglossar_pendant:`-Wert.
-- Drift zwischen Hauptglossar und Subglossar wird vom TG-4-Linter
++ Drift zwischen Hauptglossar und Subglossar wird vom TG-4-Linter
   mechanisch sichtbar gemacht.
 
 ### Schicht-Trennung
@@ -607,19 +607,19 @@ Stufen-Pattern) ist `SG_KONVENTIONEN.md` die normative Quelle.
 ## 9. Cluster-Struktur und Datei-Ablage
 
 Seit 2026-05-14 liegen die Einträge nicht mehr flach unter
-`hauptglossar/`, sondern in vier thematischen Cluster-Unterordnern.
+`glossary/`, sondern in vier thematischen Cluster-Unterordnern.
 Entscheidungsgrundlage: Recherche-Bericht
-`docs/recherche/2026-05-14_hg_cluster_struktur.md` (Vorschlag V1,
+`docs/research/2026-05-14_hg_cluster_struktur.md` (Vorschlag V1,
 IFC-naher 4-Schichten-Aufbau) plus NPK-Hybrid-Anker.
 
 ### 9.1 Die vier Cluster
 
 | Pfad | Inhalt | Vorbild |
-|---|---|---|
-| `hauptglossar/00_ressourcen/` | Primitive Geometrie, Mathematik, Bauteil-Geometrie, Toleranzen — alle Begriffe ohne globale UUID, die im Code als reine Werte-Typen erscheinen | IFC Resource Layer |
-| `hauptglossar/10_kern/` | Abstrakte UUID-tragende Wurzeln (Element, Bauteil, Bauwerk) und Identifikations-Begriffe (Uuid, Positionsnummer, Produktkennzeichnung) | IFC Core Layer |
-| `hauptglossar/20_tragwerk/` | Tragwerks-Aggregate, Statik-Begriffe und Verbindungs-Konzepte | IFC Interoperability / StructuralAnalysis |
-| `hauptglossar/30_holzbau/` | Holzbau-Domäne: Bauteilrollen, Werkstoffe, Bearbeitungen, Dach-Anatomie, Dachaufbau-Schichten | IFC Domain Layer |
+| --- | --- | --- |
+| `glossary/00_ressourcen/` | Primitive Geometrie, Mathematik, Bauteil-Geometrie, Toleranzen — alle Begriffe ohne globale UUID, die im Code als reine Werte-Typen erscheinen | IFC Resource Layer |
+| `glossary/10_kern/` | Abstrakte UUID-tragende Wurzeln (Element, Bauteil, Bauwerk) und Identifikations-Begriffe (Uuid, Positionsnummer, Produktkennzeichnung) | IFC Core Layer |
+| `glossary/20_tragwerk/` | Tragwerks-Aggregate, Statik-Begriffe und Verbindungs-Konzepte | IFC Interoperability / StructuralAnalysis |
+| `glossary/30_holzbau/` | Holzbau-Domäne: Bauteilrollen, Werkstoffe, Bearbeitungen, Dach-Anatomie, Dachaufbau-Schichten | IFC Domain Layer |
 
 **Tiefe:** maximal eine Ebene. Wenn `30_holzbau/` auf ~130 Einträge
 wächst, ist eine zweite Ebene erlaubt (`30_holzbau/bauteilrolle/`,
@@ -656,7 +656,7 @@ geometrisch (die NPK ist kosten-zentriert, das Glossar
 begriff-zentriert).
 
 | Cluster | NPK-Pendant (Stand 2024) |
-|---|---|
+| --- | --- |
 | `00_ressourcen/` | kein NPK-Pendant — App-/Mathematik-intern |
 | `10_kern/` | kein NPK-Pendant — IT-/Identifikations-Schicht |
 | `20_tragwerk/` | NPK 335 (Tragwerks-Anteile, früher Teil von 331) |
@@ -675,26 +675,26 @@ Anbindung an Branchenstandard sind die aktuellen Codes (335, nicht
 Aktuell **nicht eingeführt**. Folgearbeits-Trigger für künftige
 Einführung — Konvention für den Einführungs-Zeitpunkt:
 
-- **Wann:** Erste konkrete Branchenstandard-Anbindung (Export
++ **Wann:** Erste konkrete Branchenstandard-Anbindung (Export
   Leistungsverzeichnis, Materialliste mit NPK-Codes, Schnittstelle
   zu einem Kalkulations-Tool).
-- **Wie:** Optionales Frontmatter-Feld `npk_code:` pro Eintrag,
++ **Wie:** Optionales Frontmatter-Feld `npk_code:` pro Eintrag,
   Wert ist ein einzelner NPK-Hauptcode (z. B. `"335"`, `"363"`,
   `"900"`) oder leer/fehlend für Begriffe ohne NPK-Pendant
   (`00_ressourcen/`, `10_kern/`).
-- **Befüllung:** **Nicht** als 108-Einträge-Backfill, sondern
++ **Befüllung:** **Nicht** als 108-Einträge-Backfill, sondern
   organisch eintragsweise bei der jeweils nächsten HG-Welle, die
   einen Eintrag berührt.
 
 ### 9.5 Pflege
 
-- Bei neuem Eintrag: Cluster vor dem Anlegen wählen (eine der
++ Bei neuem Eintrag: Cluster vor dem Anlegen wählen (eine der
   vier Optionen in §9.1) und Datei direkt im Cluster-Ordner anlegen.
-- Bei Umklassifizierung (z. B. `walm` von `20_tragwerk` nach
++ Bei Umklassifizierung (z. B. `walm` von `20_tragwerk` nach
   `30_holzbau` wenn der Bauteilrollen-Charakter überwiegt):
   reines `mv` zwischen Clustern, kein Body-Eingriff. Build-Adapter
   liest rekursiv.
-- Bei einer Sub-Cluster-Einführung (z. B. `30_holzbau/dach/`):
++ Bei einer Sub-Cluster-Einführung (z. B. `30_holzbau/dach/`):
   als eigener Etappenschritt mit Welle-Log in
   `STAND_HAUPTGLOSSAR.md` durchführen.
 
@@ -734,7 +734,7 @@ ehrlichere Voreinstellung ist „aus Sekundärquelle rekonstruiert"
 statt „direkt verifiziert".
 
 | Marker | Bedeutung |
-|---|---|
+| --- | --- |
 | (kein Marker) | via Sekundärquelle (Default — die Sekundärquelle ist in `quellen_sekundär:` zu finden) |
 | `[direkt]` | Volltext direkt eingesehen (überschreibt Default) |
 | `[einsicht: vorschau-pdf]` | nur kostenlose Vorschau-PDF direkt eingesehen (Inhaltsverzeichnis, Auszug) |
@@ -763,11 +763,11 @@ Vorschau-Form eingesehen.
 
 ### 10.2 Pflege-Regel
 
-- **Bei Neuanlage** Marker setzen, wenn die Quelle direkt eingesehen
++ **Bei Neuanlage** Marker setzen, wenn die Quelle direkt eingesehen
   wurde oder in Vorschau-/Snippet-Form vorlag; ohne Marker gilt der
   Default „via Sekundärquelle" und es muss eine `quellen_sekundär:`-
   Liste vorhanden sein, die den Beleg trägt.
-- **Drift entdeckt:** im laufenden R-Schritt fixen (Memory
++ **Drift entdeckt:** im laufenden R-Schritt fixen (Memory
   `feedback_glossar_drift_sofort`) oder als ABW-Eintrag, wenn
   `ABWEICHUNGEN.md` offen ist.
 
@@ -805,7 +805,7 @@ Bestand-Audit (alle Einträge) integraler Bestandteil des R-Schritts.
 Methodik:
 
 1. Pro Eintrag den zugehörigen Recherche-Bericht in
-   `docs/recherche/` rückwärts prüfen: Welche Quelle wurde wie
+   `docs/research/` rückwärts prüfen: Welche Quelle wurde wie
    zitiert? Methodik-Sektion §A.1 zeigt typischerweise per WebFetch
    geladene URLs — daraus ist Volltext-/Vorschau-/Snippet-Status
    ablesbar.
@@ -826,7 +826,7 @@ Die „## Mathematische Definition"-Code-Blöcke jedes Eintrags sind
 MathJax/KaTeX) ausgegeben wird. Damit gelten **andere**
 Stabilitätsregeln als für LaTeX-/MathML-gerenderte Mathematik.
 
-Hintergrund-Recherche: `docs/recherche/2026-05-29_unicode_math_rendering.md`.
+Hintergrund-Recherche: `docs/research/2026-05-29_unicode_math_rendering.md`.
 Primärquelle: **Unicode Technical Report #25 „Unicode Support for
 Mathematics"** Sec. 2.6 — UTR #25 setzt für die Combining-Marks-
 Konvention explizit eine „math display facility" voraus. Bei
@@ -845,7 +845,7 @@ Definition"-Code-Blöcken **verboten**, soweit sie direkt hinter einem
 Buchstaben stehen. Konkret verboten:
 
 | Codepoint | Name | Beispiel verboten | Stabiler Ersatz (Regel 2) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | U+0302 | COMBINING CIRCUMFLEX ACCENT | `n̂`, `v̂`, `x̂` | `n_hat`, `v_hat`, `x_hat` |
 | U+0303 | COMBINING TILDE | `ñ` (math) | `n_tilde` |
 | U+0304 | COMBINING MACRON | `n̄`, `x̄` | `n_bar`, `x_bar` |
@@ -874,7 +874,7 @@ gehört dort zum Wort und ist keine math-symbolische Markierung.
 werden als ASCII-Suffix geschrieben:
 
 | Mathematischer Akzent | Bedeutung | Suffix |
-|---|---|---|
+| --- | --- | --- |
 | Hut `^` über Buchstabe | Einheitsvektor / normierte Größe | `_hat` |
 | Pfeil `→` über Buchstabe | Vektor (ohne Normierung) | `_vec` |
 | Balken `‾` über Buchstabe | Mittelwert / Komplement / Querstrich | `_bar` |
@@ -884,10 +884,10 @@ werden als ASCII-Suffix geschrieben:
 
 Beispiele:
 
-- `n̂` (Normalen-Einheitsvektor) → `n_hat`
-- `v⃗` (Verschiebungsvektor) → `v_vec`
-- `x̄` (Mittelwert) → `x_bar`
-- `ẋ` (Geschwindigkeit) → `x_dot`
++ `n̂` (Normalen-Einheitsvektor) → `n_hat`
++ `v⃗` (Verschiebungsvektor) → `v_vec`
++ `x̄` (Mittelwert) → `x_bar`
++ `ẋ` (Geschwindigkeit) → `x_dot`
 
 Die Suffix-Form ist UTN-#28-Linear-Format-konform (Sargent, MS-Word-
 Math-Linear-Modus). Lesbarkeit bleibt hoch, weil das Suffix das
@@ -897,8 +897,8 @@ typografische Symbol als ASCII-Pendant nennt.
 (U+00B9, U+00B2, U+00B3) sind erlaubt und empfohlen — sie sind in
 praktisch jedem Font stabil. Für Hochzahlen ab `⁴` (U+2074) gilt:
 
-- Kurzer Index in Prosa: `x⁴` ok.
-- Längere Terme im Code-Block: lieber `x^4`, `x^(n+1)`, `x^(-1)` (ASCII-
++ Kurzer Index in Prosa: `x⁴` ok.
++ Längere Terme im Code-Block: lieber `x^4`, `x^(n+1)`, `x^(-1)` (ASCII-
   Caret-Notation, UTN-#28-konform).
 
 Die **Transponierte** wird als `A^T` (ASCII) geschrieben, **nicht**
@@ -914,35 +914,35 @@ Programmier-Fonts oft nicht abgedeckt und fallen auf einen System-
 Default zurück — das bricht die Monospace-Spaltenbreite. Wikipedia-MoS-
 Mathematics warnt explizit. Empfehlung:
 
-- In **Prosa** (außerhalb von Code-Blöcken): `ℝ` ok, da Render-Fallback
++ In **Prosa** (außerhalb von Code-Blöcken): `ℝ` ok, da Render-Fallback
   visuell harmlos.
-- In **Code-Blöcken** der Mathematischen Definition: `R³` statt `ℝ³`,
++ In **Code-Blöcken** der Mathematischen Definition: `R³` statt `ℝ³`,
   `N` statt `ℕ` etc. Wenn die typografische Form aus didaktischen
   Gründen wichtig ist, daneben die ASCII-Form mitgeben.
 
 **Regel 5 — Klammern und Norm-Linien.**
 
-- **Norm-Linie:** `‖x‖` (U+2016 DOUBLE VERTICAL LINE) wird beibehalten;
++ **Norm-Linie:** `‖x‖` (U+2016 DOUBLE VERTICAL LINE) wird beibehalten;
   Coverage ist breit. ASCII-Alternative `||x||` ist akzeptabel, aber
   nicht erforderlich.
-- **Skalarprodukt-Klammern:** `⟨a, b⟩` (U+27E8/U+27E9 MATHEMATICAL
++ **Skalarprodukt-Klammern:** `⟨a, b⟩` (U+27E8/U+27E9 MATHEMATICAL
   LEFT/RIGHT ANGLE BRACKET) wird beibehalten — UTR #25 Sec. 2.5
   empfiehlt sie explizit als die math-korrekte Variante. Nicht zu
   verwechseln mit U+2329/U+232A (Legacy-CJK-Form, breit) oder
   U+3008/U+3009 (CJK).
-- **Skalar-Punkt:** `·` (U+00B7 MIDDLE DOT, Latin-1) als Skalarprodukt-
++ **Skalar-Punkt:** `·` (U+00B7 MIDDLE DOT, Latin-1) als Skalarprodukt-
   Punkt. **Nicht** `⋅` (U+22C5 DOT OPERATOR) — Latin-1-Erbschaft hat
   bessere Coverage.
-- **Runde / eckige Klammern:** ASCII `( )` und `[ ]` ohnehin.
++ **Runde / eckige Klammern:** ASCII `( )` und `[ ]` ohnehin.
 
 **Regel 6 — Erlaubte Bereiche ohne Sonderregel.**
 
-- Griechische Buchstaben `α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω` und
++ Griechische Buchstaben `α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω` und
   Großbuchstaben `Γ Δ Θ Λ Ξ Π Σ Φ Ψ Ω` (U+0370+) — in praktisch jedem
   Font abgedeckt.
-- Mathematische Operatoren `∈ ∉ ⊂ ⊆ ⊃ ⊇ ∪ ∩ ∅ ∀ ∃ ∂ ∇ ∑ ∏ ∫ √ ∞ ≤ ≥ ≠ ≈ ≡ ≅ ≪ ≫` (U+2200+) — gut abgedeckt.
-- Pfeile `→ ← ↦ ↔ ⇒ ⇐ ⇔` (U+2190+) — gut abgedeckt.
-- Bruchstrich `/` (ASCII) oder `÷` (Latin-1, U+00F7) — beide stabil.
++ Mathematische Operatoren `∈ ∉ ⊂ ⊆ ⊃ ⊇ ∪ ∩ ∅ ∀ ∃ ∂ ∇ ∑ ∏ ∫ √ ∞ ≤ ≥ ≠ ≈ ≡ ≅ ≪ ≫` (U+2200+) — gut abgedeckt.
++ Pfeile `→ ← ↦ ↔ ⇒ ⇐ ⇔` (U+2190+) — gut abgedeckt.
++ Bruchstrich `/` (ASCII) oder `÷` (Latin-1, U+00F7) — beide stabil.
 
 ### 11.2 Hintergrund
 
@@ -1003,6 +1003,22 @@ durchgeführt; betroffener Hauptkandidat war `n̂` im Geometrie-
 Cluster (Falllinie und Normalen-Vektoren). Details in der
 zugehörigen `STAND_HAUPTGLOSSAR.md`-Welle.
 
+### 11.5 Darstellung auf der Webseite
+
+Die Quellen behalten die Suffix-Form. Erst beim Bauen der Webseite
+wird aus `n_hat` ein n mit Hut: Der Build-Hook setzt ihn als MathML,
+und der Browser stellt den Hut selbst über den Buchstaben. Das ist
+die „math display facility" aus §11.2, nur für den Hut. Index und
+Hochzahl gehen mit, auch in Klammern: `e_hat_z`, `n_hat_{a,i}`,
+`e_hat_x^B`. In Figuren geht kein MathML. Dort steht der fertige
+Buchstabe, wo Unicode ihn hat (`ê`), sonst bleibt `x_hat`. Ein
+Browser ohne MathML, etwa Chrome vor 2023, zeigt statt der Formel ein
+Bild davon, sonst stünde dort «n^» und sähe aus wie eine Hochzahl.
+
+GitHub, die App, die Downloads als `.md` und `.txt`, diese Datei und
+die Seiten zur Methode zeigen weiter die Suffix-Form. Die Darstellung
+ist am 22.11.2026 in Chrome, Firefox und Safari geprüft.
+
 ## 12. Laienverständlicher Kurz-Satz (`kurz:`)
 
 Jeder Hauptglossar-Eintrag trägt im Frontmatter ein Feld `kurz:` —
@@ -1020,17 +1036,17 @@ Cluster-Übersichtsseite. Das Feld ist build-neutral für den Code
 
 **Stil.**
 
-- **Ein Satz.** Anschaulich, bildhaft, mit einem konkreten Beispiel
++ **Ein Satz.** Anschaulich, bildhaft, mit einem konkreten Beispiel
   oder einer Alltags-Analogie (etwa „wie eine weltweit einmalige
   Seriennummer", „so flach wie eine ruhige Wasseroberfläche").
-- **Kein Fachjargon, keine Formeln, keine Symbole.** Begriffe wie
++ **Kein Fachjargon, keine Formeln, keine Symbole.** Begriffe wie
   „atomare Einheit" oder „Weltkoordinatensystem" gehören nicht hinein.
-- **Nicht zirkulär** — der Begriff darf sich nicht mit sich selbst
++ **Nicht zirkulär** — der Begriff darf sich nicht mit sich selbst
   erklären (nicht „ein Bauteil ist ein Teil eines Baus").
-- **Fachlich konsistent** mit der Prosa-Definition; eine Vereinfachung,
++ **Fachlich konsistent** mit der Prosa-Definition; eine Vereinfachung,
   kein Widerspruch. Der Satz braucht keine eigene Quelle (er
   paraphrasiert die bereits belegte Definition).
-- **Schreibweise mit ß** wie im ganzen Glossar und auf der Webseite (Entscheid vom
++ **Schreibweise mit ß** wie im ganzen Glossar und auf der Webseite (Entscheid vom
   2026-11-14). Bis zum 2026-11-21 stand hier «ss statt ß».
   Die Kurzsätze vom 2026-06-05 schrieben ss, sie sind am 2026-11-22 angeglichen.
 
@@ -1058,7 +1074,7 @@ Mathematisch sind das drei Objekt-Typen **derselben Größenart Länge**,
 verbunden durch die affine Struktur (bereits normiert in
 `hg_vektor.md` / `hg_punkt.md` / `hg_koordinatensystem.md`):
 
-```
+```text
 Punkt − Punkt → Vektor        (Lage − Lage → Verschiebung)
 Punkt + Vektor → Punkt        (Lage + Verschiebung → Lage)
 ‖Vektor‖ → Skalar             (Betrag der Verschiebung → Ausdehnung)
@@ -1079,7 +1095,7 @@ Das Deutsche deckt die feineren englischen Unterscheidungen mit nur
 keine Neuprägungen:
 
 | Grundwort | ohne Zusatz (Normalfall) | Lage-Sinn (immer mit Zusatz) | englische Pendants |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Länge** | Ausdehnung (Bauteil-Länge) | „geographische Länge" (domänenfern, nur Standort) | length · longitude |
 | **Breite** | Ausdehnung (Querschnitts-Breite b) | „geographische Breite" | width, breadth · latitude |
 | **Höhe** | Ausdehnung (Querschnitts-, First-, lichte Höhe) | „Höhe über Meer (m ü. M.)", „Höhe über Grund", „Gelände-/Ortshöhe" | height · altitude, elevation |
@@ -1096,12 +1112,12 @@ eine **Ausdehnung**, keine Lage.
 „Dimension" trägt zwei unverwandte Bedeutungen und wird
 unqualifiziert vermieden:
 
-- **Größendimension** (VIM 1.7 / ISO 80000-1): dim Q = L^a·M^b·T^c·…
++ **Größendimension** (VIM 1.7 / ISO 80000-1): dim Q = L^a·M^b·T^c·…
   Länge, Breite, Höhe, Ortskoordinate und Verschiebung haben **alle
   dieselbe** Größendimension L — VIM 1.7 Note 3 wörtlich: „In
   deriving the dimension of a quantity, no account is taken of its
   scalar, vector, or tensor character."
-- **Raumdimension**: Zahl der unabhängigen Achsen/Basisvektoren
++ **Raumdimension**: Zahl der unabhängigen Achsen/Basisvektoren
   (das n im Tupel von `hg_koordinatensystem.md`).
 
 Zulässig bleibt der unqualifizierte mathematische Gebrauch, wo der
@@ -1118,9 +1134,9 @@ umgangssprachliche Wendung „die drei Dimensionen eines Körpers
 Doppel-Recherche 2026-07-04 mit VIM-Verifikation am BIPM-PDF
 (Wortlaute 1.2 / 1.7 inkl. Note 3 / 1.30 `[direkt]`; das französische
 VIM nennt 1.30 wörtlich « propriété qualitative »):
-`docs/recherche/2026-07-04_raumbegriffe_neun_aequivalente.md` (vier
+`docs/research/2026-07-04_raumbegriffe_neun_aequivalente.md` (vier
 Grundwörter, Kollisions-Befunde, Falsifikation des Bewegungs-Tripels)
-und `docs/recherche/2026-07-04_qualitative_quantitative_groessen.md`
+und `docs/research/2026-07-04_qualitative_quantitative_groessen.md`
 (Größenart ↔ Zahlenwert als qualitativ/quantitativ-Achse; Skalar/
 Punkt/Vektor als Objekt-Typen; Kollisions-Check: HG-Bestand konform).
 Entscheid vom 2026-07-04: Rollen-Benennung übernommen; neue Einträge
@@ -1139,7 +1155,7 @@ Angleichung: `hg_strecke.md`, Stabachsen-Idealisierung —
 ### Trigger für künftige Einträge (Muster §6-(A))
 
 | Begriff | Trigger (Folgearbeit) |
-|---|---|
+| --- | --- |
 | `laenge` (Größenart/Skalar) | Erster Eintrag oder Code, der die Größenart Länge normativ braucht (z. B. Werkplan-Maß-Ausgabe, Einheiten-Modell). |
 | `ortsvektor` / `ortskoordinate` | Erste Positions-API oder Georeferenzierung (schließt an die `lv95`/`wgs84`-Trigger in §6-(A) an). |
 | `dimension` (Klarstellungs-Eintrag) | Erste Eintrags-Formulierung, die „Dimension" außerhalb des eindeutigen Raumdimension-Kontexts braucht. |

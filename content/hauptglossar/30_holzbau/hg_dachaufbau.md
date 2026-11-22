@@ -54,10 +54,10 @@ Sei
 - 𝒮 = (S₁, S₂, …, S_k) mit k ≥ 1 eine endlich indizierte, von **innen
   nach außen** geordnete Folge von Schicht-Bauteilen, wobei jede
   Schicht S_j durch
-  - ein Material m_j (Identifikator; eigener Eintrag `material`
+    - ein Material m_j (Identifikator; eigener Eintrag `material`
     folgt),
-  - eine Dicke d_j ∈ ℝ_{>0} (in mm),
-  - eine Funktionsklasse f_j ∈ { Dampfbremse, Wärmedämmung,
+    - eine Dicke d_j ∈ ℝ_{>0} (in mm),
+    - eine Funktionsklasse f_j ∈ { Dampfbremse, Wärmedämmung,
     Schalung, Unterdach, Konterlattung, Traglattung, Eindeckung,
     Trennlage, sonstige }
   beschrieben ist, und
@@ -66,7 +66,7 @@ Sei
 
 Dann ist der **Dachaufbau** das Tripel
 
-```
+```text
 A:= (𝒟, 𝒮, H)
 ```
 
@@ -90,7 +90,7 @@ und den Konsistenzbedingungen
 
 Die **Gesamtdicke** des Dachaufbaus ist
 
-```
+```text
 d_A:= Σ_{j=1..k} d_j   (in mm).
 ```
 
@@ -173,29 +173,29 @@ ebenfalls etabliert, insbesondere wenn Architekt und Dachdecker
   `konterlattung`, `traglattung`, `eindeckung`,
   ggf. `dachabdichtung`.
 - **Verwendung**:
-  - Bestandteil eines `dach` (partitive Beziehung).
-  - Trägermaterial der Dachhaut (`dachhaut`): die obere Hüllfläche
+    - Bestandteil eines `dach` (partitive Beziehung).
+    - Trägermaterial der Dachhaut (`dachhaut`): die obere Hüllfläche
     der äußersten Schicht S_k bildet die Dachhaut.
 - **Abgrenzung**:
-  - **Dachhaut** (`dachhaut`): geometrische Hüllfläche **über**
+    - **Dachhaut** (`dachhaut`): geometrische Hüllfläche **über**
     dem Dachaufbau. Nicht das Schichtenpaket selbst, sondern die
     fiktive obere Außenfläche. Im Sprachgebrauch oft mit dem
     Dachaufbau verwechselt — siehe Quellenkonflikt im
     Eintrag `dachhaut`.
-  - **Dachfläche** (`dachflaeche`): geometrische Bezugsebene
+    - **Dachfläche** (`dachflaeche`): geometrische Bezugsebene
     **unter** dem Dachaufbau (auf der die innerste Schicht
     aufliegt). Dickenlos, keine Materialeigenschaften.
-  - **Tragwerk** (`tragwerk`, eigener Eintrag folgt): die
+    - **Tragwerk** (`tragwerk`, eigener Eintrag folgt): die
     lastabtragende Holzkonstruktion (Sparren, Pfetten, Binder)
     **unter** dem Dachaufbau. Der Dachaufbau ist nicht selbst
     tragend, sondern wird vom Tragwerk getragen.
-  - **Dach** (`dach`): das Gesamtaggregat aus Tragwerk,
+    - **Dach** (`dach`): das Gesamtaggregat aus Tragwerk,
     Dachflächen und Dachaufbau (mit der Dachhaut als oberer
     Hüllfläche).
-  - **Eindeckung** (`eindeckung`, bereits angelegt): nur die
+    - **Eindeckung** (`eindeckung`, bereits angelegt): nur die
     äußerste Schicht eines geneigten Dachaufbaus, nicht der
     gesamte Aufbau.
-  - **Unterdach, Wärmedämmung, Dampfbremse, Konterlattung,
+    - **Unterdach, Wärmedämmung, Dampfbremse, Konterlattung,
     Traglattung**: einzelne Schichten innerhalb des Dachaufbaus,
     je mit eigenem Glossareintrag (folgen).
 

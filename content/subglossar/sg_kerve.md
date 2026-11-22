@@ -9,7 +9,7 @@ status: entwurf
 
 # Kerve (Subglossar)
 
-Brücke vom normativen Hauptglossar (`hauptglossar/30_holzbau/hg_kerve.md`) zu
+Brücke vom normativen Hauptglossar (`glossary/30_holzbau/hg_kerve.md`) zu
 den stufenweisen Theorie-Inhalten. Hier liegt die didaktische
 Aufbereitung: die Kerve als alltägliche Sparren-Bearbeitung im
 Pfettendach, ihre zwei welt-ausgerichteten Schnittflächen
@@ -66,8 +66,8 @@ sein — die Sohle bleibt welt-horizontal, der Senkel welt-vertikal.
 ## Welt-Bezug der Schnittflächen — und warum
 
 Zimmermannssprachlich ist die Sohle ein **Bleischnitt** (siehe
-`hauptglossar/00_ressourcen/hg_bleischnitt.md`) und der Senkel ein **Senkel**
-(siehe `hauptglossar/00_ressourcen/hg_senkel.md`): beides Begriffe, die einen
+`glossary/00_ressourcen/hg_bleischnitt.md`) und der Senkel ein **Senkel**
+(siehe `glossary/00_ressourcen/hg_senkel.md`): beides Begriffe, die einen
 Schnitt nicht über seine Lage am Bauteil definieren, sondern über
 seine Lage gegenüber der Schwerkraft. Eine **Wasserwaage** zeigt
 die Sohle waagrecht an, ein **Senklot** zeigt den Senkel lotrecht
@@ -344,7 +344,7 @@ Sparrenachse. Die Position auf dem Sparren bestimmt den Subtyp und
 seinen Konstruktions-Kontext.
 
 | Position am Sparren | Pfette | Klassischer Kerv-Name | Konstruktiver Kontext |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Sparrenfuß** (unteres Sparrenende, Vordach-Übergang) | Fußpfette | Klauenkerve, Standardkerve | häufigste Kerve, primärer Lehrstoff im 2. Lehrjahr |
 | **Sparren-Mitte** (zwischen Sparrenfuß und Sparrenkopf) | Mittelpfette | Mittelpfetten-Kerve, ggf. Doppelkerve | bei mehrgeschossigen Dächern und großen Spannweiten |
 | **Sparrenkopf** (oberes Sparrenende am First) | Firstpfette | First-Kerve | bei Pfettendächern mit Firstpfette; im Sparrendach ersetzt durch Überblattung / Firstzange |
@@ -460,7 +460,7 @@ zusammenfassen:
 Die Werkzeug-Trias des Anrisses ist kompakt:
 
 | Werkzeug | Funktion am Kerv-Anriss |
-|---|---|
+| --- | --- |
 | **Schmiege** (Stell- oder Winkelschmiege) | Dachneigungs-Winkel an der Sparren-Unterseite anlegen; Sohle und Senkel unter dem korrekten Winkel zur Sparrenkante anreißen |
 | **Zimmermannswinkel** (mit Neigungsskala / „Alphawinkel") | rechtwinklige Beziehung Sohle ↔ Senkel; in kompakter Form die ganze Anriss-Sequenz mit eingebauter Neigungsskala |
 | **Streichmaß** | Kerventiefe parallel zur Sparren-Unterseite ankörnen |
@@ -566,7 +566,7 @@ Benennung.
 Regional kennt der DACH-Raum mehrere weitere Bezeichnungen:
 
 | Region | Bevorzugte Bezeichnung |
-|---|---|
+| --- | --- |
 | **Schweiz** | Klauenkerve, Kerve; die Sohle wird oft als **Bleischnitt-Fläche** und der Senkel als **Senkelschnitt-Fläche** benannt — die zimmermannssprachlichen Realisierungen der welt-ausgerichteten Schnitte |
 | **Deutschland (allgemein)** | Sparrenkerve, Kerve; daneben auch Sparrenkerbe (in informellem Sprachgebrauch) |
 | **Süddeutschland / Alpenraum** | zusätzlich **Sattel** als regional verbreiteter Begriff |
@@ -631,29 +631,29 @@ Diese Subglossar-Datei stützt sich auf die folgenden Hauptglossar-
 Begriffe; bei Detailfragen ist dort die normative Definition zu
 finden:
 
-- `hauptglossar/30_holzbau/hg_kerve.md` — das normative Hauptglossar zur Kerve,
+- `glossary/30_holzbau/hg_kerve.md` — das normative Hauptglossar zur Kerve,
   mit mathematischer Definition (Flächen-Schnitt, Wohldefiniertheit,
   Welt-Ausrichtungs-Invarianten), BTLx-Mapping und Quellenliste.
-- `hauptglossar/30_holzbau/hg_sparren.md` — das Bauteil, an dessen Unterseite
+- `glossary/30_holzbau/hg_sparren.md` — das Bauteil, an dessen Unterseite
   die Kerve sitzt.
-- `hauptglossar/30_holzbau/hg_pfette.md` — das Bauteil, auf dessen Oberkante
+- `glossary/30_holzbau/hg_pfette.md` — das Bauteil, auf dessen Oberkante
   die Kerve aufliegt.
-- `hauptglossar/30_holzbau/hg_versatz.md` — der konzeptionell abgegrenzte
+- `glossary/30_holzbau/hg_versatz.md` — der konzeptionell abgegrenzte
   Geschwister-Begriff (Druckkräfte längs zum Stab, Sparrendach-
   Kontext).
-- `hauptglossar/00_ressourcen/hg_bleischnitt.md`, `hauptglossar/00_ressourcen/hg_senkel.md` —
+- `glossary/00_ressourcen/hg_bleischnitt.md`, `glossary/00_ressourcen/hg_senkel.md` —
   die welt-ausgerichteten Schnitt-Konzepte, aus denen Sohle und
   Senkel hervorgehen.
-- `hauptglossar/00_ressourcen/hg_lotebene.md` — die Lotebene, in der die Kerve im
+- `glossary/00_ressourcen/hg_lotebene.md` — die Lotebene, in der die Kerve im
   Profil gezeichnet ist.
-- `hauptglossar/00_ressourcen/hg_bauteilachse.md`, `hauptglossar/00_ressourcen/hg_falllinie.md`
+- `glossary/00_ressourcen/hg_bauteilachse.md`, `glossary/00_ressourcen/hg_falllinie.md`
   — die geometrischen Bezugslinien, die Sohle und Senkel im
   Bauteil-Lokalsystem schneiden.
 
 Verwandte Subglossar-Einträge (Folgearbeit oder Pilot-Querverweis):
 
-- `lerninhalt/subglossar/sg_punkt.md` — der Kerveckpunkt als
+- `learning/subglossary/sg_punkt.md` — der Kerveckpunkt als
   einspringende Polygon-Ecke, in Parallele zum Sparrenfußpunkt
   als ausspringender Polygon-Ecke.
-- `lerninhalt/subglossar/sg_strecke.md` — die Sohlenlänge und die
+- `learning/subglossary/sg_strecke.md` — die Sohlenlänge und die
   Kerventiefe als bemaßbare Strecken am Werkplan.

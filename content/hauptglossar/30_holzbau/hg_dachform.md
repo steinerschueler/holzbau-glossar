@@ -147,7 +147,7 @@ Sei
 
 Dann ist die **Dachform** von d die Klassifikations-Funktion
 
-```
+```text
 form: Dach → 𝓕
 form(d):= Φ(m, (α_i)_{i=1..m}, 𝓚(d), klass, (κ_i)_{i=1..m})
 ```
@@ -166,7 +166,7 @@ wobei
   exhaustiv für alle Mischformen; bei Mehrdeutigkeit gilt die
   spezifischere Form vor der allgemeineren):
 
-```
+```text
 Φ = Flachdach          falls  m = 1  und  α_1 ≤ ε_α
 Φ = Pultdach           falls  m = 1  und  α_1 >  ε_α
 Φ = Satteldach         falls  m = 2  und  |𝓚(d)| = 1
@@ -253,15 +253,15 @@ die geometrische Klassifikation.
   `Bogendach(r)` der Krümmungs-Radius der einzigen gekrümmten
   Dachfläche.
 - **Grenzfälle**:
-  - **Walmdach mit Firstlänge → 0**: kollabiert zum Zeltdach.
+    - **Walmdach mit Firstlänge → 0**: kollabiert zum Zeltdach.
     Die Klassifikation folgt der Längen-Klassifikation der
     First-Strecke gegen `Toleranzen.LAENGE_EPS`; bei
     First-Strecken-Länge ≤ `Toleranzen.LAENGE_EPS` wird Zeltdach
     zurückgegeben.
-  - **Krüppelwalm mit verschwindender Krüppelhöhe**: kollabiert
+    - **Krüppelwalm mit verschwindender Krüppelhöhe**: kollabiert
     zum Walmdach. Auch hier entscheidet ein Längen-Vergleich
     gegen `Toleranzen.LAENGE_EPS`.
-  - **Mehrfach-Dach am selben Bauwerk** (z. B. zwei Satteldach-
+    - **Mehrfach-Dach am selben Bauwerk** (z. B. zwei Satteldach-
     Flügel über separat verbundenen Trakten): wird laut `dach`
     als zwei getrennte Dach-Instanzen modelliert und entsprechend
     pro Instanz klassifiziert.
@@ -292,19 +292,19 @@ berufssprachlich etabliert (Mönck/Rug, Natterer, Lignum, BauNetz
 Wissen). Die Tafel ist deskriptiv, nicht normativ; sie zeigt
 Geometrie-Kern und IFC-Mapping pro Form.
 
-| Dachform              | Geometrie-Kern                                                              | IFC 4.3 (`IfcRoofTypeEnum`) |
-|-----------------------|-----------------------------------------------------------------------------|-----------------------------|
-| **Flachdach**         | m = 1, α ≤ ε_α (faktisch < 7°–10°)                                          | `FLAT_ROOF`                 |
-| **Pultdach**          | m = 1, α > ε_α                                                              | `SHED_ROOF`                 |
-| **Satteldach**        | m = 2, zwei gegeneinander geneigte Dachflächen mit horizontalem First       | `GABLE_ROOF`                |
-| **Walmdach**          | m = 4, vier geneigte Dachflächen, ein First, zwei Walmflächen statt Giebel  | `HIP_ROOF`                  |
-| **Krüppelwalmdach**   | wie Walmdach, Walme reichen nicht bis zur Traufe (Giebel-Trapez bleibt)     | `HIPPED_GABLE_ROOF`         |
-| **Zeltdach**          | m ≥ 3, alle Dachflächen treffen in einer Spitze (kein First)                | `PAVILION_ROOF`             |
-| **Mansarddach**       | pro Dachseite zwei Neigungs-Segmente mit horizontalem Knick; s ∈ {2, 4}     | `GAMBREL_ROOF` / `MANSARD_ROOF` (siehe Quellenkonflikt) |
-| **Schmetterlingsdach**| umgekehrtes Satteldach: zwei V-förmig nach innen geneigte Dachflächen       | `BUTTERFLY_ROOF`            |
-| **Sheddach (Sägezahn)**| n ≥ 2 hintereinander gereihte Pultflächen mit lotrechten Zwischenflächen   | **kein eigener IFC-Wert** (siehe Quellenkonflikt) |
-| **Tonnendach**        | gekrümmte Dachfläche, Querschnitt Halbkreis                                 | `BARREL_ROOF`               |
-| **Bogendach**         | gekrümmte Dachfläche, Querschnitt Kreissegment (kleiner als Halbkreis)      | `RAINBOW_ROOF`              |
+| Dachform | Geometrie-Kern | IFC 4.3 (`IfcRoofTypeEnum`) |
+| --- | --- | --- |
+| **Flachdach** | m = 1, α ≤ ε_α (faktisch < 7°–10°) | `FLAT_ROOF` |
+| **Pultdach** | m = 1, α > ε_α | `SHED_ROOF` |
+| **Satteldach** | m = 2, zwei gegeneinander geneigte Dachflächen mit horizontalem First | `GABLE_ROOF` |
+| **Walmdach** | m = 4, vier geneigte Dachflächen, ein First, zwei Walmflächen statt Giebel | `HIP_ROOF` |
+| **Krüppelwalmdach** | wie Walmdach, Walme reichen nicht bis zur Traufe (Giebel-Trapez bleibt) | `HIPPED_GABLE_ROOF` |
+| **Zeltdach** | m ≥ 3, alle Dachflächen treffen in einer Spitze (kein First) | `PAVILION_ROOF` |
+| **Mansarddach** | pro Dachseite zwei Neigungs-Segmente mit horizontalem Knick; s ∈ {2, 4} | `GAMBREL_ROOF` / `MANSARD_ROOF` (siehe Quellenkonflikt) |
+| **Schmetterlingsdach** | umgekehrtes Satteldach: zwei V-förmig nach innen geneigte Dachflächen | `BUTTERFLY_ROOF` |
+| **Sheddach (Sägezahn)** | n ≥ 2 hintereinander gereihte Pultflächen mit lotrechten Zwischenflächen | **kein eigener IFC-Wert** (siehe Quellenkonflikt) |
+| **Tonnendach** | gekrümmte Dachfläche, Querschnitt Halbkreis | `BARREL_ROOF` |
+| **Bogendach** | gekrümmte Dachfläche, Querschnitt Kreissegment (kleiner als Halbkreis) | `RAINBOW_ROOF` |
 
 `PAVILION_ROOF` schließt den Spezialfall **Pyramidendach** ein
 (vier gleiche Flächen über quadratischem Grundriss); im DACH-
@@ -350,15 +350,15 @@ sind im Quellenkonflikt-Block beschrieben.
 - **Träger**: `dach`. Die Dachform ist eine abgeleitete Eigenschaft
   einer `dach`-Instanz und wird nicht freistehend modelliert.
 - **Voraussetzungen**:
-  - **`dach`**: das Aggregat, dessen Dachflächen-Familie 𝒟 die
+    - **`dach`**: das Aggregat, dessen Dachflächen-Familie 𝒟 die
     Klassifikation trägt.
-  - **`dachflaeche`**: die elementare ebene Komponente von 𝒟.
-  - **`dachneigung`**: das Winkel-Merkmal, das in die
+    - **`dachflaeche`**: die elementare ebene Komponente von 𝒟.
+    - **`dachneigung`**: das Winkel-Merkmal, das in die
     Klassifikation eingeht (Flach- vs. Pultdach, Mansard-Knick).
-  - **`first`, `traufe`, `grat`, `kehle`**: die Kantentypen, die
+    - **`first`, `traufe`, `grat`, `kehle`**: die Kantentypen, die
     in der Klassifikation der gemeinsamen Randstrecken
     aufgerufen werden.
-  - **`toleranzen`**: für die Längen- und Winkel-Schwellen der
+    - **`toleranzen`**: für die Längen- und Winkel-Schwellen der
     Grenzfälle (First → 0, α → 0, Krüppel-Höhe → 0).
 - **Werte des Katalogs 𝓕** (eigene Einträge folgen, nicht alle
   notwendig — Mansarddach und Sheddach werden über parametrische
@@ -366,38 +366,38 @@ sind im Quellenkonflikt-Block beschrieben.
   Glossareinträge für jede Dachform sind **nicht** automatisch
   vorgesehen, sondern werden trigger-basiert je nach erstem
   Tool-Bedarf angelegt):
-  - `flachdach`, `pultdach`, `satteldach`, `walmdach`,
+    - `flachdach`, `pultdach`, `satteldach`, `walmdach`,
     `krueppelwalmdach`, `zeltdach`, `mansarddach`,
     `schmetterlingsdach`, `sheddach`, `tonnendach`, `bogendach`,
     `trogdach`.
 - **Abgrenzung**:
-  - **`dach`**: das Aggregat als Ganzes; Dachform ist eines seiner
+    - **`dach`**: das Aggregat als Ganzes; Dachform ist eines seiner
     Merkmale, nicht das Dach selbst.
-  - **`dachstuhl`** (eigener Eintrag folgt): die konstruktive
+    - **`dachstuhl`** (eigener Eintrag folgt): die konstruktive
     Tragwerks-Klassifikation (Sparrendach/Pfettendach/
     Kehlbalkendach/Binderdach). Orthogonale Achse zur Dachform;
     eine Dachform legt den Dachstuhl-Typ nicht eindeutig fest.
-  - **`dachflaeche`**: die elementare Komponente, deren Familie
+    - **`dachflaeche`**: die elementare Komponente, deren Familie
     klassifiziert wird; Dachform ist eine Eigenschaft der
     **Familie**, nicht der einzelnen Dachfläche.
-  - **`dachneigung`**: ein Winkel-Merkmal **einer einzelnen**
+    - **`dachneigung`**: ein Winkel-Merkmal **einer einzelnen**
     Dachfläche; Dachform ist ein Topologie-Merkmal **der ganzen
     Familie**.
-  - **`dachtragwerk`** (eigener Eintrag folgt unter `tragwerk`):
+    - **`dachtragwerk`** (eigener Eintrag folgt unter `tragwerk`):
     das lastabtragende Aggregat unter dem Dach; trägt den Dachstuhl-
     Typ, nicht die Dachform.
-  - **`dachseite`**: eine Dachfläche mit Orientierungs-Annotation
+    - **`dachseite`**: eine Dachfläche mit Orientierungs-Annotation
     (Wetterseite, Sonnenseite); nicht synonym mit Dachform.
-  - **`dachaufbau`**: die materielle Schichtfolge; orthogonal zur
+    - **`dachaufbau`**: die materielle Schichtfolge; orthogonal zur
     Dachform (jede Dachform kann mit unterschiedlichen Aufbauten
     realisiert werden).
-  - **`gaube`** (Forward-Verweis): ein Dachaufbau-Element auf
+    - **`gaube`** (Forward-Verweis): ein Dachaufbau-Element auf
     einer Dachfläche; verändert die Dachform der Hauptdachfläche
     nicht, sondern wird als eigene Subgeometrie geführt.
-  - **`dachoeffnung`** (Forward-Verweis): lokale Aussparung in
+    - **`dachoeffnung`** (Forward-Verweis): lokale Aussparung in
     Dachfläche und Dachaufbau (Schornstein, Dachflächenfenster);
     kein Form-Merkmal.
-  - **`bauwerk`** (Forward-Verweis): die übergeordnete Einheit;
+    - **`bauwerk`** (Forward-Verweis): die übergeordnete Einheit;
     ein Bauwerk kann mehrere Dächer unterschiedlicher Dachform
     tragen.
 
@@ -419,9 +419,9 @@ sind im Quellenkonflikt-Block beschrieben.
 **Primär (externes Pendant):**
 
 - buildingSMART, IFC 4.3, `IfcRoofTypeEnum`,
-  https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcRoofTypeEnum.htm.
+  <https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcRoofTypeEnum.htm>.
 - buildingSMART, IFC4 ADD2, `IfcRoofTypeEnum`,
-  https://standards.buildingsmart.org/IFC/RELEASE/IFC4/ADD2/HTML/schema/ifcsharedbldgelements/lexical/ifcrooftypeenum.htm.
+  <https://standards.buildingsmart.org/IFC/RELEASE/IFC4/ADD2/HTML/schema/ifcsharedbldgelements/lexical/ifcrooftypeenum.htm>.
 
 **Sekundär:**
 
@@ -451,7 +451,7 @@ sind im Quellenkonflikt-Block beschrieben.
 - Holzbau Deutschland, Merkblatt „Begriffe und Klassifizierungen
   für den Holzbau".
 - BauNetz Wissen, „Dachformen",
-  https://www.baunetzwissen.de/geneigtes-dach/fachwissen/dachformen
+  <https://www.baunetzwissen.de/geneigtes-dach/fachwissen/dachformen>
   (abgerufen 2026-05-14).
 
 **Korpus (nicht autoritativ):**

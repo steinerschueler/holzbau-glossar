@@ -46,14 +46,14 @@ Sei
 
 Dann ist die durch (p₀, n) definierte **Ebene** E ⊂ ℝ³ die Menge
 
-```
+```text
 E(p₀, n):= { x ∈ ℝ³ | ⟨n, x − p₀⟩ = 0 }.
 ```
 
 Äquivalent in **Hesse-Normalform**: Sei n_hat:= n / ‖n‖ ∈ S² und
 d:= ⟨n_hat, p₀⟩ ∈ ℝ. Dann gilt
 
-```
+```text
 E(p₀, n) = { x ∈ ℝ³ | ⟨n_hat, x⟩ = d }.
 ```
 
@@ -121,21 +121,21 @@ Anschauliche Lesarten:
 - **Oberbegriff**: zweidimensionaler affiner Unterraum von ℝ³
   (formal). Im Glossar Primitiv.
 - **Teilbegriffe / Rollen**:
-  - **Dachfläche** verwendet eine Ebene als Träger.
-  - **Wandebene**, **Fußebene**, **Schnittebene** sind weitere
+    - **Dachfläche** verwendet eine Ebene als Träger.
+    - **Wandebene**, **Fußebene**, **Schnittebene** sind weitere
     rollenbezogene Verwendungen (eigene Einträge in Folgearbeit).
 - **Abgrenzung**:
-  - **Polygon**: ein endliches, ebenes, geschlossenes Linien-
+    - **Polygon**: ein endliches, ebenes, geschlossenes Linien-
     stückgebilde innerhalb einer Ebene; nicht die Ebene selbst.
-  - **Dachfläche**: ein durch ein Polygon berandeter, beschränkter
+    - **Dachfläche**: ein durch ein Polygon berandeter, beschränkter
     Teil einer Ebene mit zusätzlicher Orientierung; nicht die
     Ebene selbst.
-  - **Halbraum**: einer der beiden offenen oder abgeschlossenen
+    - **Halbraum**: einer der beiden offenen oder abgeschlossenen
     Bereiche, in die ℝ³ durch eine orientierte Ebene zerlegt wird;
     eigener Eintrag.
-  - **Gerade**: ein eindimensionaler affiner Unterraum von ℝ³;
+    - **Gerade**: ein eindimensionaler affiner Unterraum von ℝ³;
     geringere Dimension.
-  - **Schicht** (Holzrahmenbau-Verwendung): ein dreidimensionaler
+    - **Schicht** (Holzrahmenbau-Verwendung): ein dreidimensionaler
     Volumen-Bereich, begrenzt durch zwei näherungsweise parallele
     Ebenen, mit ausgewiesener Dicke (Installationsebene 60–80 mm,
     Hinterlüftungsebene, Dämmebene). Eine Schicht ist nicht die

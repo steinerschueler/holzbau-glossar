@@ -147,7 +147,7 @@ folgenden Bedingungen erfüllt sind:
 
 2. **Lage in der Trägerebene**: Beide Endpunkte der Bauteilachse
    liegen in E im Sinne von
-   ```
+   ```text
    |⟨n_a, p_a − p₀⟩| ≤ ε_L  und  |⟨n_a, p_e − p₀⟩| ≤ ε_L,
    ```
    wobei p₀ ein beliebiger Stützpunkt von E ist (Lage-Bedingung
@@ -155,7 +155,7 @@ folgenden Bedingungen erfüllt sind:
 
 3. **Falllinien-Kollinearität**: Die Bauteilachsenrichtung ist
    kollinear zur Falllinie der Trägerebene,
-   ```
+   ```text
    |⟨d_hat, e_hat_fall(E)⟩| ≥ 1 − ε_W,
    ```
    d. h. der Winkel zwischen d_hat und e_hat_fall ist 0 oder π (modulo
@@ -164,7 +164,7 @@ folgenden Bedingungen erfüllt sind:
 4. **Vorzeichenkonvention (Sparrenrichtung von Traufe zu First)**:
    Die Bauteilachse ist so gerichtet, dass d_hat **entgegen** e_hat_fall
    verläuft, also nach oben:
-   ```
+   ```text
    ⟨d_hat, e_hat_fall(E)⟩ ≤ −1 + ε_W,
    ```
    äquivalent ⟨d_hat, e_z⟩ ≥ 0. p_a ist damit der Sparrenfuß
@@ -176,7 +176,7 @@ Wesentliche abgeleitete Größen:
 - **Sparrenlänge**: L_S:= ‖p_e − p_a‖ (in mm), entlang der
   Bauteilachse zwischen Sparrenfuß und Sparrenfirstpunkt.
 - **Sparrenneigung** (= Dachneigung der zugeordneten Dachfläche):
-  ```
+  ```text
   α_S:= arccos(⟨n_a, e_z⟩) = arccos(⟨d_hat, e_hat_horiz⟩),
   ```
   wobei e_hat_horiz:= −(e_hat_fall − ⟨e_hat_fall, e_z⟩ · e_z) /
@@ -277,7 +277,7 @@ und das tragende Innenstück [p_K^A, p_e].
 #### Symbol-Tabelle
 
 | Symbol | Endpunkte auf A(B) | Bedeutung | Verwendet in |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **`L_S`** | p_a (Sparrenfußpunkt) ↔ p_e (Sparrenfirstpunkt) | **Sparrenlänge im engeren Sinn**: volle Bauteilachsen-Länge des Sparrens; glossarweit normative Lesart von „Sparrenlänge" | `hg_sparren.md` (Definition), `hg_bauteilachse.md` (als Spezialfall von L), Werkplan-Hauptmaß |
 | `s` | Kerveckpunkt p_K (Fußpfettenkerve) ↔ Kerveckpunkt der Firstpfettenkerve, je auf A(B) projiziert | **Axialer Kervenabstand**: Distanz der beiden Kerveckpunkte entlang der Bauteilachse; abgeleitet aus Firstpfetten- und Fußpfettenhöhe und der Dachneigung α via `s = (firstpfetteHoehe − fusspfetteHoehe) / sin(α)` | `hg_firstpfette.md`, BTLx-Export |
 | `ℓ_K-S` | p_K^A (axiale Kervposition Fußpfettenkerve) ↔ p_e (Sparrenfirstpunkt) | **Sparrenlänge ohne Überstand** / **Tragspannweiten-Achsenlänge**: Bauteilachsen-Strecke von der axialen Kervposition der Fußpfettenkerve bis zum Sparrenfirstpunkt; im Pfettendach das tragende Innenstück | `hg_sparrenueberstand.md` Gleichung (6) |
@@ -290,7 +290,7 @@ Bauteilachse A(B) (p_K^A = axiale Projektion des Kerveckpunkts) und
 der Vorzeichenkonvention (Bedingung 4 der mathematischen Definition:
 d_hat entgegen e_hat_fall, p_a unten, p_e oben) folgt die Anordnung
 
-```
+```text
 p_a  −−−−  p_K^A  −−−−  p_e            (auf A(B), d_hat bergauf)
    ◄── ℓ_üb ──►  ◄────── ℓ_K-S ──────►
    ◄──────────── L_S ────────────────►
@@ -298,7 +298,7 @@ p_a  −−−−  p_K^A  −−−−  p_e            (auf A(B), d_hat bergauf)
 
 und damit die Zerlegung
 
-```
+```text
 L_S = ℓ_üb + ℓ_K-S.                                                (*)
 ```
 
@@ -421,54 +421,54 @@ Verortung:
   Bauteil mit der zusätzlichen Rolle „Sparren" und den oben
   formalisierten geometrischen Constraints.
 - **Bestandteile (partitiv)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`, vom Bauteil geerbt)
+    - **Bauteilachse** (`bauteilachse.Gerade`, vom Bauteil geerbt)
     mit Sparrenfuß als Anfangs- und Sparrenfirstpunkt als Endpunkt;
-  - **Querschnitt** (vom Bauteil geerbt; rechteckig im Regelfall);
-  - **Werkstoff** (vom Bauteil geerbt; Vollholz oder BSH);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_Sparren);
-  - **Sparrenfuß-Punkt** und **Sparrenfirstpunkt** als
+    - **Querschnitt** (vom Bauteil geerbt; rechteckig im Regelfall);
+    - **Werkstoff** (vom Bauteil geerbt; Vollholz oder BSH);
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_Sparren);
+    - **Sparrenfuß-Punkt** und **Sparrenfirstpunkt** als
     abgeleitete Endpunkte der Bauteilachse.
 - **Spezialisierungen (eigene Folge-Einträge)**:
-  - **Gratsparren** (`gratsparren`)
-  - **Kehlsparren** (`kehlsparren`)
-  - **Schiftsparren** (`schiftsparren`)
+    - **Gratsparren** (`gratsparren`)
+    - **Kehlsparren** (`kehlsparren`)
+    - **Schiftsparren** (`schiftsparren`)
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Pfette** (`pfette`): Auflager des Sparrens im Pfettendach
+    - **Pfette** (`pfette`): Auflager des Sparrens im Pfettendach
     (Fuß-, Mittel-, Firstpfette).
-  - **Kehlbalken** (`kehlbalken`): Aussteifungs-Querholz zwischen
+    - **Kehlbalken** (`kehlbalken`): Aussteifungs-Querholz zwischen
     Sparrenpaar im Kehlbalkendach.
-  - **Binder** (`binder`, bereits angelegt): mehrteiliges
+    - **Binder** (`binder`, bereits angelegt): mehrteiliges
     Trag-Aggregat (`oberbegriff: bauteilgruppe`); ein Sparren
     kann **Bestandteil höchstens einer Bauteilgruppe** sein
     (`hg_bauteilgruppe.md` Bed. 1 — exklusive Mitgliedschaft).
     Ein Sparrenbinder-Sparren gehört exklusiv zu diesem Binder.
-  - **Latte** (`latte`, bereits angelegt): liegt **auf** dem
+    - **Latte** (`latte`, bereits angelegt): liegt **auf** dem
     Sparren, quer zur Bauteilachse (rechtwinklig zur Sparrenachse,
     parallel zu einer Höhenlinie), als Auflage für die Eindeckung.
-  - **Konterlatte** (`konterlatte`, bereits angelegt):
+    - **Konterlatte** (`konterlatte`, bereits angelegt):
     liegt zwischen Sparren und Latte, parallel zum Sparren entlang
     Falllinie, zur Hinterlüftung des Unterdachs.
-  - **Dachfläche** (`dachflaeche`): zugeordnete geometrische
+    - **Dachfläche** (`dachflaeche`): zugeordnete geometrische
     Fläche; die Sparrenachsen liegen in deren Trägerebene.
 - **Abgrenzung**:
-  - **Pfette** (`pfette`): horizontaler Längsträger; quer zum
+    - **Pfette** (`pfette`): horizontaler Längsträger; quer zum
     Sparren. Ein Sparren ist geneigt entlang der Falllinie, eine
     Pfette ist horizontal entlang einer Höhenlinie der
     Dachfläche.
-  - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken
+    - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken
     zwischen einem Sparrenpaar zur Aussteifung. Kein Sparren
     (anderer Lagebezug, andere Funktion).
-  - **Gratsparren / Kehlsparren**: liegen auf der Schnittkante
+    - **Gratsparren / Kehlsparren**: liegen auf der Schnittkante
     zweier Dachflächen, nicht in einer einzelnen Trägerebene
     entlang ihrer Falllinie. Erfüllen Bed. 3 nicht.
-  - **Binder**: vorgefertigtes, mehrteiliges Trag-Aggregat
+    - **Binder**: vorgefertigtes, mehrteiliges Trag-Aggregat
     (Nagelbinder, BSH-Binder, Fachwerkbinder). Kein Stabbauteil
     im Sinne des Sparrens.
-  - **Latte / Konterlatte**: Sekundärbauteile mit kleinerem
+    - **Latte / Konterlatte**: Sekundärbauteile mit kleinerem
     Querschnitt zur Auflage der Dachhaut bzw. Hinterlüftung; sie
     liegen quer (Latte) bzw. parallel (Konterlatte) zum Sparren,
     sind aber nicht selbst Sparren.
-  - **Dachfläche**: zweidimensionales geometrisches Bauteil; der
+    - **Dachfläche**: zweidimensionales geometrisches Bauteil; der
     Sparren ist ein Stab-Bauteil mit Achse in der Trägerebene
     der Dachfläche.
 

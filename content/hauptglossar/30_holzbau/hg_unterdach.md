@@ -161,9 +161,9 @@ Sei
   Dachflächen-Familie 𝒟 = { D₁, …, D_m }, geordneter Schichtfolge
   𝒮 = (S₁, …, S_k) von innen nach außen, und Dachhaut H,
 - F:= ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich der Dachflächen,
-- ein Index j* ∈ { 1, …, k } so gewählt, dass die Schicht S_{j*}
+- ein Index j\* ∈ { 1, …, k } so gewählt, dass die Schicht S_{j\*}
   die Funktionsklasse `SchichtFunktion.UNTERDACH` trägt,
-- d_{j*} ∈ ℝ_{>0} (in mm) die Dicke von S_{j*},
+- d_{j\*} ∈ ℝ_{>0} (in mm) die Dicke von S_{j\*},
 - α_max ∈ { **normal**, **erhöht**, **außerordentlich** } die
   zulässige obere Beanspruchungs-Schranke nach SIA 232/1,
 - h_max ∈ ℝ_{≥0} ∪ { +∞ } (in mm) die zulässige Stauwasserhöhe
@@ -171,24 +171,24 @@ Sei
 
 Dann ist ein **Unterdach** das Quadrupel
 
-```
+```text
 U:= (𝒟, S_{j*}, α_max, h_max)
 ```
 
 mit den Konsistenzbedingungen
 
-1. **Lage im Dachaufbau**: 1 < j* < k. Das Unterdach liegt
+1. **Lage im Dachaufbau**: 1 < j\* < k. Das Unterdach liegt
    konstruktiv zwischen der innen liegenden Wärmedämmung (ggf.
    mit Schalung) und der außen liegenden Konterlattung mit
    Eindeckung.
 2. **Funktionsklasse**: `S_{j*}.funktion = UNTERDACH`.
-3. **Positive Dicke**: d_{j*} > Toleranzen.LAENGE_EPS.
+3. **Positive Dicke**: d_{j\*} > Toleranzen.LAENGE_EPS.
 4. **Klassen-Monotonie**: h_max ist monoton in α_max in dem
    Sinne, dass für je zwei Unterdach-Tupel U, U′ mit gleichem
    Trägeraufbau, aber α_max(U) ≤ α_max(U′) in der natürlichen
    Ordnung normal < erhöht < außerordentlich gilt:
    h_max(U) ≤ h_max(U′).
-5. **Träger-Konsistenz**: S_{j*} ist über F definiert (gleiche
+5. **Träger-Konsistenz**: S_{j\*} ist über F definiert (gleiche
    Träger-Dachflächen wie A).
 
 Die **Beanspruchungs-Klasse** des Unterdachs ist α_max ∈ { normal,
@@ -202,9 +202,9 @@ von α_max fest. Die normabhängige Bindung (etwa „h_max = 50 mm für
 α_max = erhöht nach Sekundärquellen-Konsens zu SIA 232/1") erfolgt
 in der externen, parametrischen Validierungsfunktion
 
-```
+```text
 klassifiziereNachStauwasser(h_max: Double, norm: UnterdachNorm)
-: Beanspruchungsklasse
+    : Beanspruchungsklasse
 ```
 
 (analog zu `pruefeMindestlueftung(norm)` an `hg_konterlatte.md`,
@@ -235,7 +235,7 @@ materialisiert (siehe `quellenkonflikt:` Abschnitt 5).
 - **Eindeutigkeit der Unterdach-Schicht im Aufbau**: Die
   Definition lässt offen, ob ein Dachaufbau **eine** oder
   **mehrere** Schichten der Funktionsklasse UNTERDACH enthalten
-  darf. Im üblichen Aufbau ist j* eindeutig; bei mehrlagigen
+  darf. Im üblichen Aufbau ist j\* eindeutig; bei mehrlagigen
   Konstruktionen (z. B. Bahn auf Schalung + zusätzliche
   Notdach-Lage) zerfällt U in mehrere Unterdach-Instanzen, je
   Schicht eine.
@@ -245,11 +245,11 @@ materialisiert (siehe `quellenkonflikt:` Abschnitt 5).
   α die Stauwasser-Anforderungen jeder schwächeren Klasse α' ≤ α
   ebenfalls erfüllt.
 - **Konsistenz mit `dachaufbau`**: Das Unterdach ist eine
-  Schicht S_{j*} **im** Dachaufbau; es ist kein eigenständiges
+  Schicht S_{j\*} **im** Dachaufbau; es ist kein eigenständiges
   Aggregat außerhalb des Dachaufbaus und teilt mit ihm den
   Trägerbereich F.
 - **Konsistenz mit `dachhaut`**: Das Unterdach liegt **unter** der
-  Dachhaut (j* < k); die Dachhaut wird aus der äußersten Schicht
+  Dachhaut (j\* < k); die Dachhaut wird aus der äußersten Schicht
   S_k (Eindeckung) gebildet, nicht aus dem Unterdach.
 - **Nicht-Zirkularität**: Die Definition verwendet die Primitive
   Punkt, Strecke, Polygon, die bereits definierten Begriffe
@@ -273,7 +273,7 @@ Schmelzwasser, Kondenswasser aus der Hinterlüftung. Es ist eine
 ### Die drei SIA-Klassen
 
 | Klasse | Schwelle | Anforderung an Bahn / Naht | Typische Anwendung |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Normal** | nur frei abfließendes Wasser (h_max = 0) | Bahn-Nähte überlappt oder windsicher verklebt; Platten gestoßen / gefalzt | Übliche Eindeckung bei genügender Dachneigung, bis ca. 800 m ü. M. |
 | **Erhöht** | Stauwasserdruck < 50 mm | Nähte wasserdicht verklebt oder verschweißt | Wärmegedämmte Dächer mit ausgebautem Dachgeschoss; Standardwahl im modernen Wohnungsbau |
 | **Außerordentlich** | Stauwasser > 50 mm, hoher Druck | wasserdicht, verschweißte/homogen verklebte Bahnen oder Platten | Höhenlage > 800 m, flache Dachneigung (< 14°), Innen-Dachrinnen, große Gauben mit Gegengefälle |
@@ -290,7 +290,7 @@ Das deutsche Normwerk (ZVDH-Fachregel + DIN EN 13859-1) zerlegt
 dieselbe Funktion in **drei eigenständige Bauteile**:
 
 | DE-Bauteil | Definition | Tragschicht |
-|---|---|---|
+| --- | --- | --- |
 | **Unterspannung** | wasserundurchlässige Bahn freitragend zwischen den Sparren | keine |
 | **Unterdeckung** | wasserundurchlässige Bahn auf flächiger Unterlage | Schalung oder druckfeste Dämmung |
 | **Unterdach (DE)** | wasserdichter Werkstoff auf tragfähiger Unterlage | Schalung oder druckfeste Dämmung |
@@ -332,65 +332,65 @@ Sinne von SIA 232/1.
   ist (`data class Schicht` ist bereits in `hg_dachaufbau.md`
   Z. 226 vorbereitet; analog zur Pendant-Situation bei `dachhaut`,
   `dachaufbau`, `dach`).
-- **Bestandteil von**: Ein Unterdach ist eine Schicht S_{j*} eines
+- **Bestandteil von**: Ein Unterdach ist eine Schicht S_{j\*} eines
   `dachaufbau`. Es ist Bestandteil des Aufbaus, nicht selbst
   eigenständiges Aggregat.
 - **Spezialisierungen** (sealed-Hierarchie nach SIA 232/1; die
   konkreten h_max-Schwellen sind nicht hier verankert, sondern
   in `klassifiziereNachStauwasser(h_max, norm)` pro Norm
   belegt):
-  - **Normal beanspruchtes Unterdach** — frei abfließendes
+    - **Normal beanspruchtes Unterdach** — frei abfließendes
     Wasser, kein Stauwasserdruck.
-  - **Erhöht beanspruchtes Unterdach** — begrenzter
+    - **Erhöht beanspruchtes Unterdach** — begrenzter
     Stauwasserdruck unterhalb einer norm-/konventions-
     abhängigen Schwelle.
-  - **Außerordentlich beanspruchtes Unterdach** — wasserdicht
+    - **Außerordentlich beanspruchtes Unterdach** — wasserdicht
     unter erwartetem Stauwasserdruck.
 - **Verwendung**:
-  - Funktions-Schicht im `dachaufbau` (`SchichtFunktion.UNTERDACH`).
-  - Sicherungs-Ebene unter der `eindeckung` (Forward-Verweis).
+    - Funktions-Schicht im `dachaufbau` (`SchichtFunktion.UNTERDACH`).
+    - Sicherungs-Ebene unter der `eindeckung` (Forward-Verweis).
 - **Abgrenzung**:
-  - **`dachaufbau`**: das Aggregat **aller** Schichten oberhalb
+    - **`dachaufbau`**: das Aggregat **aller** Schichten oberhalb
     des Tragwerks; das Unterdach ist **eine** Schicht darin.
-  - **`dachhaut`**: die geometrische Hüllfläche über der
+    - **`dachhaut`**: die geometrische Hüllfläche über der
     Eindeckung; sie liegt **über** dem Unterdach, das Unterdach
     ist nicht Bestandteil der Dachhaut.
-  - **`dachflaeche`**: die geometrische, dickenlose Bezugsebene
+    - **`dachflaeche`**: die geometrische, dickenlose Bezugsebene
     unter dem Dachaufbau; das Unterdach liegt **über** ihr im
     Halbraum der äußeren Normalen.
-  - **`eindeckung`** (Forward-Verweis A): die **äußerste**
+    - **`eindeckung`** (Forward-Verweis A): die **äußerste**
     materielle Schicht (erste wasserführende Ebene). Das
     Unterdach ist die **zweite** wasserführende Ebene **darunter**.
-  - **`dachabdichtung`** (Forward-Verweis A): die wasserdichte
+    - **`dachabdichtung`** (Forward-Verweis A): die wasserdichte
     Schicht eines Flachdaches als **alleinige** wasserführende
     Ebene; in der Funktion einem außerordentlich beanspruchten
     Unterdach ähnlich, aber bauteilrechtlich getrennt (SIA 271
     statt SIA 232/1, keine Eindeckung darüber).
-  - **`unterspannung`** (Forward-Verweis D, DE-Pendant): die
+    - **`unterspannung`** (Forward-Verweis D, DE-Pendant): die
     DE-Realisierungs-Variante „Bahn ohne flächige Unterlage,
     freitragend zwischen Sparren". In der CH-Lesart kein
     eigenständiges Bauteil, sondern eine Bauart innerhalb des
     Unterdachs (typisch für Klasse normal beansprucht).
-  - **`unterdeckung`** (Forward-Verweis D, DE-Pendant): die
+    - **`unterdeckung`** (Forward-Verweis D, DE-Pendant): die
     DE-Realisierungs-Variante „Bahn mit flächiger Unterlage,
     wasserabführend". In der CH-Lesart Bauart innerhalb des
     Unterdachs (typisch für Klassen normal und erhöht).
-  - **`unterdachbahn`** (Forward-Verweis D, Produkt-Pendant):
+    - **`unterdachbahn`** (Forward-Verweis D, Produkt-Pendant):
     das **Bahn-Produkt** nach DIN EN 13859-1, das im
     Unterdach-Bauteil verbaut wird. Bahn ist Material, Unterdach
     ist Bauteil; im CH-Praxisjargon metonymisch verwechselt,
     im Glossar streng getrennt.
-  - **`dachschalung`** (Forward-Verweis A): die flächige
+    - **`dachschalung`** (Forward-Verweis A): die flächige
     Holz- oder Holzwerkstoff-Trägerschicht **unter** der
     Unterdachbahn. Bei erhöht und außerordentlich beanspruchten
     Unterdächern Standard-Untergrund; sie ist nicht selbst
     Unterdach, sondern dessen Tragschicht.
-  - **`konterlattung`** (Forward-Verweis A): die Längshölzer
+    - **`konterlattung`** (Forward-Verweis A): die Längshölzer
     **über** dem Unterdach (parallel zu den Sparren); schaffen
     die Hinterlüftungsebene zwischen Unterdach und Eindeckung.
     Bei außerordentlich beanspruchten Unterdächern mit
     Nagel-/Schraub-Dichtbändern auf der Dichtebene befestigt.
-  - **`traglattung`** (Forward-Verweis A): die Querlatten
+    - **`traglattung`** (Forward-Verweis A): die Querlatten
     **über** der Konterlattung; Auflager der Eindeckung. Keine
     Berührung mit der Unterdach-Ebene.
 

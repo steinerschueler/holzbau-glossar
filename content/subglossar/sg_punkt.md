@@ -9,7 +9,7 @@ status: entwurf
 
 # Punkt (Subglossar)
 
-Brücke vom normativen Hauptglossar (`hauptglossar/00_ressourcen/hg_punkt.md`) zu
+Brücke vom normativen Hauptglossar (`glossary/00_ressourcen/hg_punkt.md`) zu
 den stufenweisen Theorie-Inhalten. Hier liegt die didaktische
 Aufbereitung: berufssprachliche Verankerung über die Rollen-Komposita
 am Werkplan und am Bauwerk, Werkzeug-Bezug, Negativ-Abgrenzung zu
@@ -355,7 +355,7 @@ geometrische Sache — eine Lage im Raum — heißt je nach Funktion
 anders.
 
 | Rollen-Kompositum | Wo der Punkt auftritt | Womit er erzeugt oder fixiert wird |
-|---|---|---|
+| --- | --- | --- |
 | **Sparrenfußpunkt** | unteres Sparrenende am Pfetten- oder Schwellholz-Anschluss; Lastabtragung nach unten | Werkplan-Bemaßung; in der Werkstatt durch Anriss am Sparren |
 | **Firstpunkt** | oberes Sparrenende; Gelenk in der Statik des Sparrendachs | Werkplan; in der Aufrichte durch Zusammenführung der beiden Firstsparren |
 | **Knotenpunkt** | Stelle, an der mehrere Stäbe im Tragwerk zusammenstoßen; kraftschlüssige Verbindung | Werkplan, Statik-Modell; in der Ausführung durch Verbinder oder Versatz |
@@ -377,7 +377,7 @@ Punkt am Holz oder am Bauplatz läuft über eine kleine Werkzeug-Trias
 plus zwei Hilfsmittel für längere Distanzen:
 
 | Werkzeug | Mark-Art | Permanenz |
-|---|---|---|
+| --- | --- | --- |
 | **Bleistift / Zimmermannsstift** | Kreuz oder feine Spitze auf einer Anriss-Linie | gering — wischt ab, wird übertüncht |
 | **Reißnadel** | feine Ritzspur, geeignet für Hartholz, Sperrholz, Metall | mittel — bleibt erkennbar, lässt sich nicht ausradieren |
 | **Körner + Hammer** | konische Vertiefung im Material („Körnung") | hoch — bleibt dauerhaft, dient als Bohr-Vorzentrierung |
@@ -438,13 +438,13 @@ Diese Subglossar-Datei stützt sich auf die folgenden Hauptglossar-
 Begriffe; bei Detailfragen ist dort die normative Definition zu
 finden:
 
-- `hauptglossar/00_ressourcen/hg_punkt.md` — das normative Hauptglossar zum Punkt,
+- `glossary/00_ressourcen/hg_punkt.md` — das normative Hauptglossar zum Punkt,
   mit mathematischer Definition als Element des affinen Raumes ℝ³,
   Wohldefiniertheit, Implementierungshinweis und Quellenliste.
-- `hauptglossar/00_ressourcen/hg_vektor.md` — der konzeptionell abgegrenzte
+- `glossary/00_ressourcen/hg_vektor.md` — der konzeptionell abgegrenzte
   Nachbar-Begriff (gerichtete Verschiebung, keine Lage).
-- `hauptglossar/00_ressourcen/hg_koordinatensystem.md` — das Bezugssystem, in dem
+- `glossary/00_ressourcen/hg_koordinatensystem.md` — das Bezugssystem, in dem
   ein Punkt durch drei Koordinaten dargestellt wird.
-- `hauptglossar/00_ressourcen/hg_toleranzen.md` — die Sammelstelle für
+- `glossary/00_ressourcen/hg_toleranzen.md` — die Sammelstelle für
   Plausibilitäts-Schwellen; Punkt-Gleichheit ist in der Praxis immer
   toleranzbehaftet.

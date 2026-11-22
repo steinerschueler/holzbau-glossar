@@ -9,7 +9,7 @@ status: entwurf
 
 # Ebene (Subglossar)
 
-Brücke vom normativen Hauptglossar (`hauptglossar/00_ressourcen/hg_ebene.md`) zu
+Brücke vom normativen Hauptglossar (`glossary/00_ressourcen/hg_ebene.md`) zu
 den stufenweisen Theorie-Inhalten. Hier liegt die didaktische
 Aufbereitung: die berufssprachliche Verankerung der Ebene über
 eine dichte Familie von Rollen-Komposita, die Pflicht-Skizze des
@@ -124,8 +124,8 @@ Schnittgeraden (Grat und First).
         in der Tiefe gehoben — fuer den Schraegriss vereinfacht.
     Dachebenen-Polygone:
       (1) Hauptdach-links (Trapez): (40,380) (260,380) (370,170) (170,170)
-          NOTE: Polygon enthaelt linke Trauflinie unten + First oben
-          + zwei schraege Seitenkanten (linke Hauptdach-Kante und
+          NOTE: Polygon enthaelt linke Trauflinie unten + First oben +
+          zwei schraege Seitenkanten (linke Hauptdach-Kante und
           vorderer Walmgrat).
       (2) Walmflaeche vorn (Dreieck): (260,380) (460,360) (370,170)
           Drei Kanten: vordere Walm-Trauflinie schraeg in die Tiefe,
@@ -281,7 +281,7 @@ auffällig dicht und funktional klar gegliedert.
 ebener Bauteile:
 
 | Kompositum | Wo sie auftritt | Bauteil-Bezug |
-|---|---|---|
+| --- | --- | --- |
 | **Dachebene** | jede schräge oder horizontale Dachseite eines Daches | Trägerebene der Dachfläche; das Sparrenbündel liegt in dieser Ebene. Im Lehrlings-Vokabular die zugänglichste Ebenen-Rolle. |
 | **Wandebene** | vertikale Trägerebene einer Außen- oder Innenwand; Außenkante des Holzrahmenbaus | Bezugsfläche der Wandbeplankung; durch zwei Wandebenen lassen sich Gebäude-Längsachsen ablesen. |
 | **Bodenebene** / **Deckenebene** | horizontale Trägerebene eines Geschoss-Fußbodens oder einer Decken-Unterkante | Höhenreferenz innerhalb eines Geschosses; ablesbar am Schnurgerüst und am Aufmaß. |
@@ -291,12 +291,12 @@ ebener Bauteile:
 geometrische Referenz unentbehrlich:
 
 | Kompositum | Wo sie auftritt | Bezug |
-|---|---|---|
+| --- | --- | --- |
 | **Bezugsebene** | Höhenreferenz z = 0 für die Höhenmaße eines Bauwerks | An der Bezugsebene werden alle Höhenkoten gemessen. Im Werkplan typischerweise die Oberkante des fertigen Erdgeschoss-Fußbodens („± 0,00"). |
 | **Symmetrieebene** | konstruktive Spiegelebene eines symmetrischen Bauteils | Beim Satteldach die welt-vertikale Ebene durch den First; beide Dachflächen sind zueinander spiegelbildlich. |
 | **Mittelebene** | Symmetrieebene eines mehrschichtigen Plattenwerkstoffs | Bei Brettsperrholz die zur Mittelebene symmetrische Schicht-Anordnung; der Aufbau ist beidseits der Mittelebene spiegelbildlich. |
 | **Horizontalebene** / **waagrechte Ebene** | rechtwinklig zur Welt-Lotachse | Bezugsebene für jede Höhenmessung; die Wasserwaage gibt sie lokal an. |
-| **Lotebene** / **lotrechte Ebene** | welt-vertikale Ebene durch eine Bauteilachse | Im Holzbau die natürliche Bezugs-Vertikalebene für ein geneigtes Stabbauteil; eigene Spezialisierung mit zwei Lage-Bedingungen, siehe `hauptglossar/00_ressourcen/hg_lotebene.md`. |
+| **Lotebene** / **lotrechte Ebene** | welt-vertikale Ebene durch eine Bauteilachse | Im Holzbau die natürliche Bezugs-Vertikalebene für ein geneigtes Stabbauteil; eigene Spezialisierung mit zwei Lage-Bedingungen, siehe `glossary/00_ressourcen/hg_lotebene.md`. |
 | **Auflagerebene** | waagrechte Oberkante einer Pfette als Auflage des Sparrens | Das Wort tritt als Substantiv selten auf, die Sache aber überall, wo ein Stabbauteil auf ein anderes auflastet. |
 
 **Anriss-Ebenen** — Werkstatt- und Übertragungs-Ebenen:
@@ -359,7 +359,7 @@ Schnittgeraden zu finden.
 Die zentrale Werkzeug-Trias am Bau:
 
 | Werkzeug | Welche Ebene wird realisiert |
-|---|---|
+| --- | --- |
 | **Wasserwaage** | waagrechte Ebene lokal auf einem Bauteil (über die horizontale Libelle); lotrechte Ebene über die senkrechte Libelle |
 | **Schlauchwaage** / **Nivelliergerät** / **Rotationslaser** | waagrechte Bezugsebene über größere Distanzen am Bauplatz (Meterriss am Schnurgerüst) |
 | **Senkel** / Senklot | zwei Senkel-Schnüre spannen eine welt-vertikale Ebene auf; der Senkelschnitt am Sparren realisiert eine lotrechte Schnittebene |
@@ -437,28 +437,28 @@ Diese Subglossar-Datei stützt sich auf die folgenden Hauptglossar-
 Begriffe; bei Detailfragen ist dort die normative Definition zu
 finden:
 
-- `hauptglossar/00_ressourcen/hg_ebene.md` — das normative Hauptglossar zur
+- `glossary/00_ressourcen/hg_ebene.md` — das normative Hauptglossar zur
   Ebene, mit mathematischer Definition als zweidimensionaler
   affiner Unterraum von ℝ³, Hesse-Normalform, Wohldefiniertheit,
   Implementierungshinweis und Quellenliste.
-- `hauptglossar/30_holzbau/hg_dachflaeche.md` — die Spezialisierung
+- `glossary/30_holzbau/hg_dachflaeche.md` — die Spezialisierung
   Ebene + Polygon + Außennormale; das im Bauteil tatsächlich
   realisierte Dachflächen-Objekt.
-- `hauptglossar/00_ressourcen/hg_bezugsebene.md` — Ebene mit Bezugsrolle
+- `glossary/00_ressourcen/hg_bezugsebene.md` — Ebene mit Bezugsrolle
   (Höhenreferenz z = 0 in einem Tool).
-- `hauptglossar/00_ressourcen/hg_lotebene.md` — welt-vertikale Ebene durch eine
+- `glossary/00_ressourcen/hg_lotebene.md` — welt-vertikale Ebene durch eine
   Bauteilachse; geodätisch gelesene Spezialisierung.
-- `hauptglossar/00_ressourcen/hg_senkel.md`, `hauptglossar/00_ressourcen/hg_bleischnitt.md` —
+- `glossary/00_ressourcen/hg_senkel.md`, `glossary/00_ressourcen/hg_bleischnitt.md` —
   Lot-Lage-Klassifikationen über Ebenen (welt-horizontal /
   welt-vertikal).
-- `hauptglossar/00_ressourcen/hg_polygon.md` — die berandete, eben liegende
+- `glossary/00_ressourcen/hg_polygon.md` — die berandete, eben liegende
   Geschwister-Figur (Negativ-Abgrenzung).
-- `hauptglossar/00_ressourcen/hg_halbraum.md` — die durch eine Ebene zerteilte
+- `glossary/00_ressourcen/hg_halbraum.md` — die durch eine Ebene zerteilte
   Raumhälfte (eigener Eintrag).
-- `hauptglossar/00_ressourcen/hg_gerade.md` — als Schnitt zweier Ebenen.
-- `hauptglossar/00_ressourcen/hg_punkt.md`, `hauptglossar/00_ressourcen/hg_vektor.md` — die
+- `glossary/00_ressourcen/hg_gerade.md` — als Schnitt zweier Ebenen.
+- `glossary/00_ressourcen/hg_punkt.md`, `glossary/00_ressourcen/hg_vektor.md` — die
   begrifflichen Voraussetzungen der Ebene.
-- `hauptglossar/00_ressourcen/hg_weltkoordinatensystem.md` — das Welt-
+- `glossary/00_ressourcen/hg_weltkoordinatensystem.md` — das Welt-
   Bezugssystem, gegen das Welt-Lage-Eigenschaften (waagrecht,
   lotrecht) einer Ebene formuliert werden.
 

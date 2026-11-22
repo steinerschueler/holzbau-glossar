@@ -9,7 +9,7 @@ status: entwurf
 
 # Polygon (Subglossar)
 
-Brücke vom normativen Hauptglossar (`hauptglossar/00_ressourcen/hg_polygon.md`)
+Brücke vom normativen Hauptglossar (`glossary/00_ressourcen/hg_polygon.md`)
 zu den stufenweisen Theorie-Inhalten. Hier liegt die didaktische
 Aufbereitung: das Polygon als sachlich allgegenwärtige, sprachlich
 fast unsichtbare Form im Holzbau-Korpus; die L-Dach-Grundriss-Skizze
@@ -266,7 +266,7 @@ Das Polygon tritt im Holzbau in drei zentralen Rollen auf, die im
 Berufsalltag jeweils ein eigenes Vokabular tragen:
 
 | Rolle | Berufsbegriff | Wo es lebt | Stufe |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Dachgrundriss-Polygon** | Grundriss, Dachgrundriss, Umriss | Werkplan in der Draufsicht; Eingabe der Dachausmittlung | Lehrling (Brücke), Meister |
 | **Bauteilkontur-Polygon** | Querschnitt, Profil, Bauteilkontur, Stirnseite | Werkplan-Detail am Bauteil; Sparrenprofil mit Kerve, Pfettenquerschnitt, Plattenwerkstoff-Zuschnitt | Zimmermann |
 | **Schnurgerüst-Polygon** | Schnurgerüst, Bauachsen, Achspunkte; in der Vermessung: Polygonzug, Polygonpunkt | Bauplatz, Vermessungs-Phase vor dem Aufbau | Zimmermann (Bauplatz), Meister (Vermessungs-Schnittstelle) |
@@ -330,7 +330,7 @@ Standardform und das konkave als Sonderfall vorgestellt wird.
 Eine kleine Übersicht der im Holzbau auftretenden Polygon-Formen:
 
 | Polygon-Form | Eckenzahl | Holzbau-Anwendung | Eckform |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Rechteck | 4 | Sattel- oder Walmdach über Rechteck-Grundriss; Pfettenquerschnitt | konvex |
 | Trapez | 4 | Pultdach-Grundriss; Walmdach-Trapez über trapezförmigem Grundriss | konvex |
 | L-Form | 6 | Walm-Kehl-Dach über L-Grundriss; ein Grat plus eine Kehle | konkav (eine einspringende Ecke) |
@@ -487,41 +487,41 @@ Diese Subglossar-Datei stützt sich auf die folgenden Hauptglossar-
 Begriffe; bei Detailfragen ist dort die normative Definition zu
 finden:
 
-- `hauptglossar/00_ressourcen/hg_polygon.md` — das normative Hauptglossar zum
+- `glossary/00_ressourcen/hg_polygon.md` — das normative Hauptglossar zum
   Polygon, mit mathematischer Definition als geschlossener
   einfacher ebener Streckenzug mit k ≥ 3 Eckpunkten samt
   berandetem Flächenstück, den zwei zulässigen Lesarten
   (Punktmengen- und Berandungs-Lesart), Wohldefiniertheit,
   Implementierungshinweis (`KonvexesPolygon` zuerst,
   `EinfachesPolygon` als Folgearbeit) und Quellenliste.
-- `hauptglossar/00_ressourcen/hg_punkt.md`, `hauptglossar/00_ressourcen/hg_strecke.md`,
-  `hauptglossar/00_ressourcen/hg_ebene.md` — die drei begrifflichen
+- `glossary/00_ressourcen/hg_punkt.md`, `glossary/00_ressourcen/hg_strecke.md`,
+  `glossary/00_ressourcen/hg_ebene.md` — die drei begrifflichen
   Voraussetzungen des Polygons (Eckpunkte, Kanten, Trägerebene).
-- `hauptglossar/00_ressourcen/hg_streckenzug.md` — der Oberbegriff im
+- `glossary/00_ressourcen/hg_streckenzug.md` — der Oberbegriff im
   Mathematik-Korpus (offen oder geschlossen, nicht notwendig
   einfach); Synonym „Polygonzug" als Negativ-Abgrenzung zum
   Polygon.
-- `hauptglossar/00_ressourcen/hg_polyeder.md` — der dreidimensionale Geschwister-
+- `glossary/00_ressourcen/hg_polyeder.md` — der dreidimensionale Geschwister-
   Begriff; Polyeder werden von Polygonen berandet.
-- `hauptglossar/30_holzbau/hg_dachflaeche.md`, `hauptglossar/00_ressourcen/hg_stirnseite.md`,
-  `hauptglossar/00_ressourcen/hg_laengsseite.md` — Bauteilflächen, deren
+- `glossary/30_holzbau/hg_dachflaeche.md`, `glossary/00_ressourcen/hg_stirnseite.md`,
+  `glossary/00_ressourcen/hg_laengsseite.md` — Bauteilflächen, deren
   Berandung jeweils ein Polygon ist (Rollen-Spezialisierungen).
-- `hauptglossar/00_ressourcen/hg_weltkoordinatensystem.md` — das Welt-
+- `glossary/00_ressourcen/hg_weltkoordinatensystem.md` — das Welt-
   Bezugssystem, gegen das die Trägerebene des Polygons verortet
   wird (Grundrissebene welt-horizontal, Querschnittsebene
   rechtwinklig zur Bauteilachse).
 
 Verwandte Subglossar-Einträge:
 
-- `lerninhalt/subglossar/sg_punkt.md` — Polygon-Eckpunkte als
+- `learning/subglossary/sg_punkt.md` — Polygon-Eckpunkte als
   benannte Punkte mit Rollen; Achspunkte des Schnurgerüsts als
   Polygonpunkte.
-- `lerninhalt/subglossar/sg_strecke.md` — Polygon-Kanten als
+- `learning/subglossary/sg_strecke.md` — Polygon-Kanten als
   Strecken; Bauteilkanten als Polygon-Berandungs-Strecken.
-- `lerninhalt/subglossar/sg_ebene.md` — die Trägerebene, in der das
+- `learning/subglossary/sg_ebene.md` — die Trägerebene, in der das
   Polygon liegt; Grundrissebene und Querschnittsebene als
   Polygon-Träger.
-- `lerninhalt/subglossar/sg_kerve.md` — der **Kerveckpunkt** als
+- `learning/subglossary/sg_kerve.md` — der **Kerveckpunkt** als
   einspringende Polygon-Ecke am Sparrenquerschnitt, in
   geometrischer Parallele zur einspringenden Ecke E4 des
   L-Dach-Grundrisses dieser Skizze.

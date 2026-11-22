@@ -57,13 +57,13 @@ Dann heißt s eine **Dachkante** der Familie 𝒟 genau dann, wenn
 mindestens eine der folgenden Bedingungen erfüllt ist:
 
 1. **Randkante**: Es existiert ein Index i ∈ {1, …, m} mit
-   ```
+   ```text
    s ⊂ ∂F(P_i),
    ```
    d. h. s ist ganz im Rand des Polygons der Dachfläche D_i enthalten.
 
 2. **Schnittkante**: Es existieren Indizes i ≠ j mit
-   ```
+   ```text
    s ⊂ F(P_i) ∩ F(P_j) ⊂ E_i ∩ E_j,
    ```
    d. h. s liegt im gemeinsamen abgeschlossenen Polygonbereich beider
@@ -125,17 +125,17 @@ Dachkanten treten in der App an drei Stellen auf:
   ein Streckenzug der Länge 1.
 - **Teilbegriffe (Spezialisierungen)** — alle in Folgeeinträgen
   präzisiert:
-  - **Traufe** (`traufe`): untere, näherungsweise horizontale
+    - **Traufe** (`traufe`): untere, näherungsweise horizontale
     Randkante.
-  - **First** (`first`): obere Schnittkante zweier nach oben
+    - **First** (`first`): obere Schnittkante zweier nach oben
     zusammenlaufender Dachflächen.
-  - **Ortgang** (`ortgang`): seitliche, geneigte Randkante an einer
+    - **Ortgang** (`ortgang`): seitliche, geneigte Randkante an einer
     Giebelwand.
-  - **Grat** (`grat`): geneigte konvexe Schnittkante zweier
+    - **Grat** (`grat`): geneigte konvexe Schnittkante zweier
     Dachflächen an einem ausspringenden Eck (z. B. Walmdach-Ecke).
-  - **Kehle** (`kehle`): geneigte konkave Schnittkante zweier
+    - **Kehle** (`kehle`): geneigte konkave Schnittkante zweier
     Dachflächen an einem einspringenden Eck.
-  - **Pultkante** (`pultkante`): obere horizontale Randkante einer
+    - **Pultkante** (`pultkante`): obere horizontale Randkante einer
     Pultdachfläche, an der keine zweite Dachfläche anschließt.
 
 Die sechs Spezialisierungen sind als **disjunkte** Klassifikation
@@ -145,6 +145,7 @@ werden können. Erste Trennstufe ist die **Zahl anliegender
 Dachflächen** (zwei ⇒ Schnittkante, genau eine ⇒ reine Randkante); die
 weitere Trennung erfolgt durch die in den einzelnen Einträgen
 formulierten Klassifikations-Bedingungen:
+
 - Schnittkante (First/Grat/Kehle, zwei anliegende Flächen) vs. reine
   Randkante (Traufe/Ortgang/Pultkante, eine anliegende Fläche);
 - innerhalb der Schnittkanten: horizontal (First) vs. geneigt
@@ -157,13 +158,13 @@ formulierten Klassifikations-Bedingungen:
 - **Bestandteile (partitiv)**: Anfangs- und Endpunkt der Strecke bzw.
   Stützpunkte des Streckenzugs.
 - **Abgrenzung**:
-  - **Dachfläche** (`dachflaeche`): zweidimensionales
+    - **Dachfläche** (`dachflaeche`): zweidimensionales
     Flächenstück; eine Dachkante ist ihre eindimensionale
     Begrenzung.
-  - **Polygon** (`polygon`): die geschlossene Kontur ∂F(P_i) als
+    - **Polygon** (`polygon`): die geschlossene Kontur ∂F(P_i) als
     Ganzes; eine einzelne Dachkante ist im Allgemeinen ein echter
     Teilstreckenzug eines solchen Polygonrandes.
-  - **Bauteilkante** (z. B. Sparrenoberkante): physische Kante eines
+    - **Bauteilkante** (z. B. Sparrenoberkante): physische Kante eines
     Holzbauteils, die nicht notwendig im Polygonrand einer
     Dachfläche liegt.
 

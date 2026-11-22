@@ -192,7 +192,7 @@ Sei
 
 Das **Parametertupel** einer Bohrung ist
 
-```
+```text
 p_Bohrung:= (p_S, a_hat, d, α, t)                                    (1)
 ```
 
@@ -203,42 +203,42 @@ mit den oben genannten Bedingungen an die Komponenten.
 Sei r:= d/2 der Bohrungsradius. Der **infinite Achsenzylinder**
 mit Achse durch p_S in Richtung a_hat und Radius r ist die Punktmenge
 
-```
+```text
 Z_∞(p_S, a_hat, r)
-:= { q ∈ ℝ³ |  ‖ (q − p_S) − ⟨q − p_S, a_hat⟩ · a_hat ‖ ≤ r }.        (2)
+   := { q ∈ ℝ³ |  ‖ (q − p_S) − ⟨q − p_S, a_hat⟩ · a_hat ‖ ≤ r }.        (2)
 ```
 
 Der **Halbraum-Anker** an p_S in Achsrichtung ist
 
-```
+```text
 H_+(p_S, a_hat):=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≥ 0 }.                  (3)
 ```
 
 Der **Werkzeugkörper** der Bohrung ist dann
 
-```
+```text
 K_Bohrung(p_Bohrung)
-:=  Z_∞(p_S, a_hat, r)  ∩  H_+(p_S, a_hat)  ∩  Σ(α, t, p_S, a_hat, G_B^lokal)  (4)
+   :=  Z_∞(p_S, a_hat, r)  ∩  H_+(p_S, a_hat)  ∩  Σ(α, t, p_S, a_hat, G_B^lokal)  (4)
 ```
 
 mit dem **Tiefen-Schnittkörper** Σ:
 
 - für α = SACKLOCH:
-  ```
+  ```text
   Σ(SACKLOCH, t, p_S, a_hat, ·)
-:=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≤ t },                          (5a)
+     :=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≤ t },                          (5a)
   ```
   d. h. der Werkzeugkörper ist der endliche Kreiszylinder der
   Höhe t mit kreisförmigen Endflächen rechtwinklig zu a_hat.
 - für α = DURCHGANG:
-  ```
+  ```text
   Σ(DURCHGANG, ⊥, p_S, a_hat, G_B^lokal)
-:=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≤ t_max(p_S, a_hat, G_B^lokal) },   (5b)
+     :=  { q ∈ ℝ³ |  ⟨q − p_S, a_hat⟩ ≤ t_max(p_S, a_hat, G_B^lokal) },   (5b)
   ```
   wobei
-  ```
+  ```text
   t_max(p_S, a_hat, G_B^lokal)
-:=  sup{ λ ∈ ℝ⁺ |  p_S + λ · a_hat ∈ G_B^lokal }                 (6)
+     :=  sup{ λ ∈ ℝ⁺ |  p_S + λ · a_hat ∈ G_B^lokal }                 (6)
   ```
   die maximale Eindringlänge der Achse in das Bauteil ist (das
   Supremum existiert, da G_B^lokal beschränkt ist).
@@ -252,7 +252,7 @@ Die **Wirkung** einer Bohrung F = (uuid, typ = Bohrung,
 p_Bohrung, T_F, bezeichnung?) auf das Bauteil B ist die
 Boole'sche Differenz nach `bearbeitung` Gl. (1):
 
-```
+```text
 G_B'(F):=  G_B^lokal  \  T_F(K_Bohrung(p_Bohrung)).           (7)
 ```
 
@@ -267,7 +267,7 @@ die Bauteil-Lokal-Lage überführt wird.
 Damit ist eine **Bohrung** als Subtyp von `bearbeitung` das
 Tupel
 
-```
+```text
 F:=  (uuid, typ = Bohrung, parameter = p_Bohrung,
        lokale_platzierung = T_F, bezeichnung?)                    (8)
 ```
@@ -293,11 +293,11 @@ Eindeutigkeit der Zuordnung).
   festgelegtem Parametertupel p_Bohrung und Bauteilkörper
   G_B^lokal ist der Werkzeugkörper K_Bohrung nach (4) eindeutig
   bestimmt:
-  - Z_∞ nach (2) ist eindeutig als Niveaumenge der Funktion
+    - Z_∞ nach (2) ist eindeutig als Niveaumenge der Funktion
     q ↦ ‖ (q − p_S) − ⟨q − p_S, a_hat⟩ · a_hat ‖.
-  - H_+ nach (3) ist eindeutig als Halbraum durch p_S mit
+    - H_+ nach (3) ist eindeutig als Halbraum durch p_S mit
     Normale a_hat.
-  - Σ nach (5a) bzw. (5b) ist eindeutig: bei α = SACKLOCH durch
+    - Σ nach (5a) bzw. (5b) ist eindeutig: bei α = SACKLOCH durch
     den Parameter t allein; bei α = DURCHGANG durch das
     Supremum (6), das für jedes beschränkte G_B^lokal und jeden
     festen Achsenstrahl wohlbestimmt ist.
@@ -413,7 +413,7 @@ geführt.
 Processings; die Übersetzung erfolgt fallbezogen:
 
 | App-Bohrung | BTLx-Processing | Trigger |
-|---|---|---|
+| --- | --- | --- |
 | Standardfall (kleiner bis mittlerer Durchmesser, beliebige Tiefe) | `Drilling` | immer, sofern Werkzeugklasse 'Holzbau-Spiralbohrer' |
 | Große Sackbohrung (Werkzeugklasse Fräser) | `Pocket` mit kreisförmigem Profil | Durchmesser > Werkzeugschwelle; im Glossar dann eigener Subtyp `aussparung` (Folgearbeit) |
 
@@ -470,43 +470,43 @@ führen, nicht hier.
   `hg_bearbeitung.md` Gl. (1)).
 - **Subtypen** (Folgearbeit, eigene Glossareinträge — keine
   Implementierung in Phase 2):
-  - **Senkbohrung** (`senkbohrung`, Folgearbeit; Trigger: erste
+    - **Senkbohrung** (`senkbohrung`, Folgearbeit; Trigger: erste
     sichtbare Schraubverbindung mit Senkkopf): Komposition aus
     Zylinderbohrung und kegel- oder stufenförmiger Erweiterung
     am Eingang. Geometrisch keine reine Bohrung, daher eigener
     Subtyp unter `bearbeitung`.
 - **Bestandteile (partitiv) einer Bohrung** (Parametertupel
   p_Bohrung):
-  - **Startpunkt** p_S in Bauteil-Lokal-Koordinaten, Pflicht.
-  - **Achseneinheitsvektor** a_hat in Bauteil-Lokal-Koordinaten,
+    - **Startpunkt** p_S in Bauteil-Lokal-Koordinaten, Pflicht.
+    - **Achseneinheitsvektor** a_hat in Bauteil-Lokal-Koordinaten,
     Pflicht.
-  - **Nenndurchmesser** d ∈ ℝ⁺, Pflicht (mm).
-  - **Tiefenart** α ∈ {DURCHGANG, SACKLOCH}, Pflicht.
-  - **Tiefe** t ∈ ℝ⁺ ∪ {⊥}, Pflicht-konsistent mit α (Wert bei
+    - **Nenndurchmesser** d ∈ ℝ⁺, Pflicht (mm).
+    - **Tiefenart** α ∈ {DURCHGANG, SACKLOCH}, Pflicht.
+    - **Tiefe** t ∈ ℝ⁺ ∪ {⊥}, Pflicht-konsistent mit α (Wert bei
     SACKLOCH, ⊥ bei DURCHGANG).
-  - **UUID, lokale Platzierung, Bezeichnung**: geerbt aus
+    - **UUID, lokale Platzierung, Bezeichnung**: geerbt aus
     `bearbeitung`.
 - **Verwendung**:
-  - Element in der Bearbeitungs-Liste eines Bauteils (partitive
+    - Element in der Bearbeitungs-Liste eines Bauteils (partitive
     Komposition, siehe `hg_bauteil.md` und `hg_bearbeitung.md`).
-  - Mapping-Ziel im BTLx-Export (`Drilling`) und IFC-Export
+    - Mapping-Ziel im BTLx-Export (`Drilling`) und IFC-Export
     (`IfcOpeningElement` mit `SweptSolid`-Body).
 - **Abgrenzung**:
-  - **Bearbeitung** (`bearbeitung`): generischer Oberbegriff;
+    - **Bearbeitung** (`bearbeitung`): generischer Oberbegriff;
     eine Bohrung ist die kreiszylindrische Spezialisierung.
-  - **Verbindungsmittel** (`verbindungsmittel`): überträgt Kräfte
+    - **Verbindungsmittel** (`verbindungsmittel`): überträgt Kräfte
     zwischen Bauteilen; die durch ein Verbindungsmittel
     verursachte zylindrische Subtraktion ist **keine eigene
     Bohrung im Modell**, sondern Folgegeometrie des
     Verbindungsmittels. Die App-Disambiguation 'Funktion bestimmt
     die Klasse, nicht die Geometrie' (siehe Erläuterung) zieht
     die Trennlinie.
-  - **Kerve** (`kerve`): zweiflächiger dreieckiger Einschnitt mit
+    - **Kerve** (`kerve`): zweiflächiger dreieckiger Einschnitt mit
     welt-aligned Schnittflächen; Werkzeugkörper prismatisch, nicht
     zylindrisch. Eine Bohrung hat einen kreiszylindrischen
     Werkzeugkörper; eine Kerve einen prismatischen mit
     Dreiecksquerschnitt.
-  - **Aussparung** (Forward-Verweis, Folgearbeit; Trigger: erste
+    - **Aussparung** (Forward-Verweis, Folgearbeit; Trigger: erste
     Bemessung einer Trägeröffnung nach EC5:2025 'Design of holes
     in beams'): große, im Bauteilmittelbereich gelegene Öffnung
     beliebiger Form (rechteckig, polygonal, kreisförmig). Eine
@@ -517,26 +517,26 @@ führen, nicht hier.
     `Pocket`, nicht als `Drilling`. Die Abgrenzungs-Schwelle
     Bohrung ↔ Aussparung ist nicht normativ festgelegt; sie ist
     werkzeugklassen- und werkzeugmaschinen-abhängig.
-  - **Ausklinkung** (Forward-Verweis, Folgearbeit; Trigger:
+    - **Ausklinkung** (Forward-Verweis, Folgearbeit; Trigger:
     erste Träger-Endauflagerung nach EC5 6.5): quaderförmiger
     Ausschnitt am Bauteilende, dient als Auflagerausnehmung.
     Eine Ausklinkung ist nicht zylindrisch, hat keinen
     Achsen-Begriff und liegt definitorisch am Bauteilende, nicht
     im Mittelbereich; im BTLx mit eigenen Processings (`Lap`
     bzw. typabhängig).
-  - **Schlitz** (`schlitz`, Folgearbeit; Trigger:
+    - **Schlitz** (`schlitz`, Folgearbeit; Trigger:
     Schlitzblech-Verbinder): längliche Subtraktion mit
     rechteckigem oder ovalem Querschnitt zur Aufnahme einer
     Lasche oder eines Schlitzblechs. Nicht kreiszylindrisch;
     BTLx-Pendant: `Slot`.
-  - **Zapfenloch** (`zapfenloch`, Folgearbeit; Trigger:
+    - **Zapfenloch** (`zapfenloch`, Folgearbeit; Trigger:
     Stuhlsäulen-Pfetten-Anschluss): rechteckige Subtraktion zur
     Aufnahme eines Zapfens. Nicht kreiszylindrisch; BTLx-Pendant:
     `Mortise`.
-  - **Senkbohrung** (`senkbohrung`, Folgearbeit): Komposition
+    - **Senkbohrung** (`senkbohrung`, Folgearbeit): Komposition
     aus Zylinderbohrung und Senkung; im strengen Sinne keine
     reine Bohrung mehr (zwei Werkzeugkörper-Stufen).
-  - **Vorbohrung** (`vorbohrung`, Folgearbeit, möglicherweise
+    - **Vorbohrung** (`vorbohrung`, Folgearbeit, möglicherweise
     nur als Funktionsmerkmal am Verbindungsmittel und nicht als
     eigener Bearbeitungs-Subtyp): geometrisch eine Bohrung mit
     spezialisierter funktionaler Bedeutung (Spaltvermeidung,

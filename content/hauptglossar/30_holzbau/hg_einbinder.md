@@ -225,7 +225,7 @@ Bedingungen erfüllt sind:
 
 2. **Horizontalitätsbedingung**: Die Bauteilachsenrichtung ist
    horizontal,
-   ```
+   ```text
    |⟨d_hat, e_z⟩| ≤ ε_K,
    ```
    d. h. d_hat steht rechtwinklig zur Welt-Lotachse. Kosinus-Test: der
@@ -234,7 +234,7 @@ Bedingungen erfüllt sind:
    Parallelitäts-Prädikate.
 
 3. **Parallelität zur Wandflucht**:
-   ```
+   ```text
    ‖d_hat × d_hat_W‖ ≤ ε_K.
    ```
    d_hat ist kollinear zur Längsrichtung der Wand W.
@@ -243,7 +243,7 @@ Bedingungen erfüllt sind:
    S_i, S_j ∈ S(W) mit i ≠ j, sodass die Kopf-Punkte K(S_i) und
    K(S_j) innerhalb LAENGE_EPS auf der Geraden durch
    p_a und p_e liegen,
-   ```
+   ```text
    dist(K(S_i), Gerade(p_a, p_e)) ≤ ε_L  für  i = 1, …, n_inz,
    n_inz ≥ 2.
    ```

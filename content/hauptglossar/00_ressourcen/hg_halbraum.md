@@ -50,14 +50,14 @@ Sei
 Dann sind der durch (p₀, n) definierte **geschlossene Halbraum** H_bar
 und der **offene Halbraum** H° ⊂ ℝ³ die Mengen
 
-```
+```text
 H_bar(p₀, n):= { x ∈ ℝ³ | ⟨n, x − p₀⟩ ≥ 0 },
 H°(p₀, n):= { x ∈ ℝ³ | ⟨n, x − p₀⟩ > 0 }.
 ```
 
 Der **Rand** beider Mengen ist die Ebene
 
-```
+```text
 ∂H = E(p₀, n) = { x ∈ ℝ³ | ⟨n, x − p₀⟩ = 0 },
 ```
 
@@ -65,7 +65,7 @@ und es gilt H_bar = H° ∪ ∂H sowie H° = H_bar \ ∂H.
 
 In **Hesse-Normalform** mit n_hat:= n / ‖n‖ und d:= ⟨n_hat, p₀⟩ wird
 
-```
+```text
 H_bar(p₀, n) = { x ∈ ℝ³ | ⟨n_hat, x⟩ ≥ d },
 H°(p₀, n) = { x ∈ ℝ³ | ⟨n_hat, x⟩ > d }.
 ```
@@ -140,16 +140,16 @@ Vorzeichen umzukehren.
   „Außenhalbraum einer Dachfläche", „Innenhalbraum eines Bauteils"
   sind keine Subtypen, sondern Anwendungen.
 - **Bestandteile (partitiv)**:
-  - **Rand**: die Ebene ∂H = E(p₀, n).
-  - **Inneres**: H° = H_bar \ ∂H.
+    - **Rand**: die Ebene ∂H = E(p₀, n).
+    - **Inneres**: H° = H_bar \ ∂H.
 - **Abgrenzung**:
-  - **Ebene** (`ebene`): zweidimensionaler Rand des Halbraums;
+    - **Ebene** (`ebene`): zweidimensionaler Rand des Halbraums;
     Dimension 2 statt 3. Eine Ebene zerlegt ℝ³ in zwei
     komplementäre Halbräume.
-  - **Halbgerade** (`halbgerade`): einseitig begrenzter Ausschnitt
+    - **Halbgerade** (`halbgerade`): einseitig begrenzter Ausschnitt
     einer Geraden, Dimension 1; vom Halbraum durch Dimension
     unterschieden.
-  - **Polyeder** (eigener Eintrag in Folgearbeit): endliche
+    - **Polyeder** (eigener Eintrag in Folgearbeit): endliche
     Schnittmenge geschlossener Halbräume; ein Halbraum ist also
     der atomare Bestandteil eines Polyeders, jedoch selbst
     unbeschränkt.

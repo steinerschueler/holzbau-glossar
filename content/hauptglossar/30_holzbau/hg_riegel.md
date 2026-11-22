@@ -180,7 +180,7 @@ E_W genau dann, wenn die folgenden Bedingungen erfüllt sind:
 
 2. **Horizontalität der Riegelachse**: Die Bauteilachsenrichtung
    steht rechtwinklig zur Welt-Lotachse,
-   ```
+   ```text
    |⟨d_hat, e_z⟩| ≤ ε_K.
    ```
    Der Test ist ein **Sinus-Test gegen e_z-Parallelität**
@@ -188,13 +188,13 @@ E_W genau dann, wenn die folgenden Bedingungen erfüllt sind:
    die einschlägige Toleranzkonstante.
 
 3. **Lage in der Wandebene**: Beide Endpunkte liegen in E_W,
-   ```
+   ```text
    |⟨p_a − p_W, n_hat_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n_hat_W⟩| ≤ ε_L.
    ```
 
 4. **Rechtwinkligkeit zu den begrenzenden Pfosten**: Die Riegel-
    achse steht rechtwinklig zu beiden Pfostenachsen,
-   ```
+   ```text
    |⟨d_hat, v_hatᵢ⟩| ≤ ε_K  für i = 1, 2.
    ```
    Aus Bedingung 2 (Horizontalität d_hat) und der Lotrechtheit der
@@ -206,7 +206,7 @@ E_W genau dann, wenn die folgenden Bedingungen erfüllt sind:
 5. **Eingespannte Lage zwischen den Pfosten**: Die beiden
    Endpunkte fallen mit den Pfostenachsen zusammen (bis auf
    Toleranz):
-   ```
+   ```text
    dist(p_a, achse(P₁)) ≤ ε_L  ∧  dist(p_e, achse(P₂)) ≤ ε_L,
    ```
    oder die symmetrische Vertauschung p_a ↔ p_e. Hierbei ist
@@ -438,60 +438,60 @@ hier nur als Lesehilfe genannt.
   `wandbauteil` wurde verworfen (App-Drift, kein
   DACH-Korpus-Begriff).
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`);
-  - **Querschnitt** (rechteckig, oft gleich Pfostenquerschnitt
+    - **Bauteilachse** (`bauteilachse.Gerade`);
+    - **Querschnitt** (rechteckig, oft gleich Pfostenquerschnitt
     im modernen Holzrahmenbau);
-  - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_Riegel).
+    - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_Riegel).
 - **Positions-Annotation** (Merkmal am Riegel, kein Subtyp):
-  - **Riegelposition** (`riegelposition`, Folgearbeit): Wert
+    - **Riegelposition** (`riegelposition`, Folgearbeit): Wert
     aus { Brust, Sturz, Stockwerk, Zwischen, Sonstige }.
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Pfosten** / **Ständer** (`staender`): vertikales
+    - **Pfosten** / **Ständer** (`staender`): vertikales
     Stab-Bauteil; Auflager und Endpunkt-Anschluss des Riegels.
-  - **Schwelle** (`schwelle`): unterstes Wand-Längsholz;
+    - **Schwelle** (`schwelle`): unterstes Wand-Längsholz;
     trägt die Pfosten, an denen die Riegel hängen.
-  - **Einbinder** (`einbinder`): oberstes
+    - **Einbinder** (`einbinder`): oberstes
     Wand-Längsholz; bildet den oberen Wand-Abschluss, kann von
     der obersten Riegel-Ebene überlagert sein (Kopfriegel-
     Position).
-  - **Sturz** (`sturz`): Sturzriegel übernimmt die
+    - **Sturz** (`sturz`): Sturzriegel übernimmt die
     Sturzfunktion über einer Wand-Öffnung in Doppelrolle;
     eigener Eintrag `hg_sturz.md` seit Welle 14.
 - **Abgrenzung**:
-  - **Pfette** (`pfette`): horizontaler Längsträger des **Dach**-
+    - **Pfette** (`pfette`): horizontaler Längsträger des **Dach**-
     Tragwerks (parallel zu Traufe, First, Höhenlinie der
     Dachfläche). Der Riegel ist horizontales Wand-Bauteil
     (in einer lotrechten Wandebene), keine Pfette. Die
     Pfette ist primär lasttragend für Sparrenlasten; der
     Riegel ist primär aussteifend ohne vertikalen Lastpfad.
-  - **Latte** (`latte`): kleines Sekundärbauteil quer auf dem
+    - **Latte** (`latte`): kleines Sekundärbauteil quer auf dem
     Sparren als Auflage der Eindeckung. Geometrisch sehr
     kleiner Querschnitt (24/48 bis 40/60 mm), nicht im
     Wandbau verortet.
-  - **Schwelle** (`schwelle`): unterstes **Längs**-Holz der
+    - **Schwelle** (`schwelle`): unterstes **Längs**-Holz der
     Wand, durchlaufend über mehrere Pfosten; nicht zwischen
     Pfosten eingespannt. Der Riegel ist **Quer**-Bauteil zwischen
     je zwei Pfosten.
-  - **Einbinder** (`einbinder`): oberstes Längs-Holz der Wand,
+    - **Einbinder** (`einbinder`): oberstes Längs-Holz der Wand,
     durchlaufend über mehrere Pfosten; trägt die Geschossdecke
     bzw. das Dachtragwerk. Der Riegel hat keine vergleichbare
     primäre Lasttrag-Funktion.
-  - **Pfosten** / **Ständer** (`staender`): vertikales Stab-
+    - **Pfosten** / **Ständer** (`staender`): vertikales Stab-
     Bauteil im Wandbau; trägt Vertikallasten. Der Riegel ist
     horizontal und ist gerade nicht der Pfosten.
-  - **Sturz** (`sturz`): tragendes Bauteil über einer
+    - **Sturz** (`sturz`): tragendes Bauteil über einer
     Wand-Öffnung. Im Holzbau **kann** ein Sturzriegel die
     Sturzfunktion übernehmen (Doppelrolle, siehe Erläuterung
     und `hg_sturz.md`); der Sturz ist werkstoffneutral
     definiert (ISO 16739-1) und als Rolle orthogonal zum
     Riegel, nicht dessen Spezialisierung.
-  - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken
+    - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken
     zwischen einem Sparrenpaar zur Dachaussteifung. Strukturell
     analog zum Wand-Riegel (Querbalken zwischen zwei vertikal
     oder geneigt verlaufenden Stäben), aber im Dachtragwerk
     statt in der Wand verortet.
-  - **Bauteil** (`bauteil`): der Riegel ist eine Spezialisierung
+    - **Bauteil** (`bauteil`): der Riegel ist eine Spezialisierung
     von Bauteil mit zusätzlichen geometrischen Constraints; ein
     Bauteil ohne Bauteilrolle ist kein Riegel.
 

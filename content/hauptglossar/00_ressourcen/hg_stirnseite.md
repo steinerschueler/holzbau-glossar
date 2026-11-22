@@ -121,7 +121,7 @@ Sei
 
 **Stirnseite am Bauteilanfang** (s = 0):
 
-```
+```text
 S_a(B):= (∂F_S^{(a)}, E_S^{(a)}, n_hat_S^{(a)}, p_a)                   (1)
           mit ∂F_S^{(a)} = Bauteilberandung von B in E_S^{(a)}
           am Bauteilanfang p_a.
@@ -129,7 +129,7 @@ S_a(B):= (∂F_S^{(a)}, E_S^{(a)}, n_hat_S^{(a)}, p_a)                   (1)
 
 **Stirnseite am Bauteilende** (s = L):
 
-```
+```text
 S_e(B):= (∂F_S^{(e)}, E_S^{(e)}, n_hat_S^{(e)}, p_e)                   (2)
           mit ∂F_S^{(e)} = Bauteilberandung von B in E_S^{(e)}
           am Bauteilende p_e.
@@ -138,7 +138,7 @@ S_e(B):= (∂F_S^{(e)}, E_S^{(e)}, n_hat_S^{(e)}, p_e)                   (2)
 Im **prismatischen Standardfall** (rechtwinkliger Endschnitt) gilt
 für die Trägerebenen-Normale n_hat_S der Stirnseiten-Ebene
 
-```
+```text
 |⟨n_hat_S^{(a)}, d_hat(0)⟩| ≥ 1 − ε_W,                                      (3)
 |⟨n_hat_S^{(e)}, d_hat(L)⟩| ≥ 1 − ε_W.                                      (3')
 ```
@@ -159,7 +159,7 @@ einen Anschnittwinkel α_AS ∈ (ε_W, π/2 − ε_W) mit der Bauteilachse
 d_hat(L) einschließt (die Normale n_hat_AS schließt den Komplementär-
 winkel π/2 − α_AS ein):
 
-```
+```text
 |⟨n_hat_AS, d_hat(L)⟩| = sin(α_AS) < 1 − ε_W.                              (4)
 ```
 
@@ -179,7 +179,7 @@ siehe `laengsseite`): Sei f_hat ∈ S² die Faserrichtung des Bauteils
 (siehe `faserrichtung`, Modus HART). Dann gilt für eine Stirnseite
 mit Trägerebenen-Normaler n_hat_S
 
-```
+```text
 |⟨n_hat_S, f_hat⟩| > sin(α_grenz),                                         (5)
 ```
 
@@ -338,33 +338,33 @@ geführt.
   Linie geführt, sondern als bedingte Identität im
   Standardfall.
 - **Spezialisierungen** (Folgearbeit):
-  - **Anschnitt-Stirnseite**: Stirnseite mit Anschnittwinkel
+    - **Anschnitt-Stirnseite**: Stirnseite mit Anschnittwinkel
     α_AS ≠ π/2; entsteht durch Bearbeitung `anschnitt` (siehe
     `hg_bearbeitung.md`, Folgearbeit).
-  - **Plattenkante** (`plattenkante`, Folgearbeit): die Stirn-
+    - **Plattenkante** (`plattenkante`, Folgearbeit): die Stirn-
     Entsprechung bei Plattenbauteilen; eigener Begriff, weil die
     Stab-Bauteil-Definition für Platten nicht unmittelbar
     übertragbar ist.
 - **Bestandteile (partitiv)**:
-  - **Trägerebene** E (geerbt von `querschnitt`).
-  - **Polygonberandung** ∂QS am Bauteilende (geerbt von
+    - **Trägerebene** E (geerbt von `querschnitt`).
+    - **Polygonberandung** ∂QS am Bauteilende (geerbt von
     `querschnitt`, konkret `polygon`).
-  - **Außennormalen-Vektor** n_hat_S (per Konvention aus dem Bauteil
+    - **Außennormalen-Vektor** n_hat_S (per Konvention aus dem Bauteil
     heraus zeigend).
-  - **Bauteil-Endpunkt-Position**: p_a (Anfangsstirnseite) bzw. p_e
+    - **Bauteil-Endpunkt-Position**: p_a (Anfangsstirnseite) bzw. p_e
     (Endstirnseite).
 - **Verwendung**:
-  - **Holzschutz** (`dachhaut`, Folgearbeit `hirnholzschutz`):
+    - **Holzschutz** (`dachhaut`, Folgearbeit `hirnholzschutz`):
     Hirnholz-Bewitterungsschutz an exponierten Stirnseiten.
-  - **Verbindungen** (`verbindungsmittel`): Hirnholz-Anschluss als
+    - **Verbindungen** (`verbindungsmittel`): Hirnholz-Anschluss als
     Bemessungs-Sonderfall.
-  - **Werkplan-Beschriftung**: Stirnseiten-Markierung mit
+    - **Werkplan-Beschriftung**: Stirnseiten-Markierung mit
     Schnittwinkel und Bauteil-Referenz.
-  - **3D-Visualisierung**: Stirnseiten erhalten typisch eine
+    - **3D-Visualisierung**: Stirnseiten erhalten typisch eine
     eigene Texturierung (Hirnholz-Maserung), die sich von den
     Längsseiten (Längsmaserung) unterscheidet.
 - **Abgrenzung**:
-  - **Querschnitt** (`querschnitt`): Schnittfigur eines Stab-
+    - **Querschnitt** (`querschnitt`): Schnittfigur eines Stab-
     Bauteils mit einer Ebene **rechtwinklig zur Bauteilachse** an
     einer beliebigen Stelle s ∈ [0, L]. Eine Stirnseite ist genau
     dann ein Querschnitt im Sinne von `hg_querschnitt.md`, wenn ihre
@@ -373,7 +373,7 @@ geführt.
     einer Anschnitt-Stirnseite (α_AS ≠ π/2) ist die Trägerebene
     der Stirnseite nicht rechtwinklig zur Bauteilachse, und die
     Stirnseite ist kein Querschnitt im Sinne von `hg_querschnitt.md`.
-  - **Bauteilfläche** (`bauteilflaeche`, Folgearbeit): die
+    - **Bauteilfläche** (`bauteilflaeche`, Folgearbeit): die
     Stirnseite und die Längsseite sind die beiden disjunkten
     Bauteilflächen-Kategorien an einem Stabbauteil; sie sind
     derzeit als getrennte Glossareinträge direkt unter `polygon`
@@ -383,27 +383,27 @@ geführt.
     Klasse oder Visualisierungs-Operation, die Stirn- und
     Längsseite einheitlich adressieren muss). Siehe auch
     `hg_laengsseite.md`, Folgearbeit-Block.
-  - **Längsseite** (`laengsseite`): die zur Bauteilachse parallele
+    - **Längsseite** (`laengsseite`): die zur Bauteilachse parallele
     Bauteilfläche (Oberseite, Unterseite, Schmalseite). Faser
     liegt in der Längsseiten-Trägerebene; bei der Stirnseite
     tritt die Faser aus der Trägerebene aus. Die beiden Begriffe
     sind disjunkt.
-  - **Polygon** (`polygon`): die Stirnseite hat eine polygonale
+    - **Polygon** (`polygon`): die Stirnseite hat eine polygonale
     Berandung, ist aber selbst nicht das Polygon; sie trägt
     zusätzlich die Bauteil-Bezugsrolle (Endfläche eines Stab-
     Bauteils) und die Außennormalen-Konvention.
-  - **Ebene** (`ebene`): die Trägerebene einer Stirnseite ist eine
+    - **Ebene** (`ebene`): die Trägerebene einer Stirnseite ist eine
     Ebene; die Stirnseite selbst ist eine **beschränkte** Teilmenge
     dieser Ebene mit Bauteilrolle.
-  - **Anschnitt** (`anschnitt`, Folgearbeit als Bearbeitungs-
+    - **Anschnitt** (`anschnitt`, Folgearbeit als Bearbeitungs-
     Subtyp): Bearbeitung, die einen geneigten Schnitt am
     Bauteilende herstellt. Die Stirnseite ist das geometrische
     Resultat dieser Bearbeitung; der Anschnitt ist die Bearbeitung
     selbst.
-  - **Bauteilachse** (`bauteilachse`): die Stirnseiten liegen an
+    - **Bauteilachse** (`bauteilachse`): die Stirnseiten liegen an
     den Endpunkten der Bauteilachse; sie sind aber nicht die
     Achse selbst.
-  - **Faserrichtung** (`faserrichtung`): an der Stirnseite tritt
+    - **Faserrichtung** (`faserrichtung`): an der Stirnseite tritt
     die Faser durch die Fläche aus; an der Längsseite liegt die
     Faser in der Fläche. Die Faserrichtung ist Annotation des
     Bauteils, die Stirnseite eine Bauteilfläche.

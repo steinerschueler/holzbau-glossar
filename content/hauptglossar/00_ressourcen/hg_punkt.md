@@ -47,7 +47,7 @@ Sei
 Dann ist ein **Punkt** p ∈ 𝔸³ eindeutig charakterisiert durch sein
 Koordinatentripel
 
-```
+```text
 p ↔ (x, y, z) ∈ ℝ³  mit  p = O + x·e_x + y·e_y + z·e_z.
 ```
 
@@ -93,10 +93,10 @@ trägt; der präzise Fachname bleibt **Punkt**.
   rollenbezogene Bezeichnungen wie Eckpunkt, Stützpunkt,
   Schnittpunkt, Fußpunkt sind Verwendungen, keine Subtypen.
 - **Abgrenzung**:
-  - **Vektor** (eigener Eintrag): Element des Tangentialraums ℝ³ am
+    - **Vektor** (eigener Eintrag): Element des Tangentialraums ℝ³ am
     affinen Raum, repräsentiert eine gerichtete Verschiebung. Ein
     Vektor hat keine Stelle; ein Punkt hat keine Richtung.
-  - **Koordinatentripel**: ein Punkt ist nicht das Tripel (x, y, z),
+    - **Koordinatentripel**: ein Punkt ist nicht das Tripel (x, y, z),
     sondern wird durch dieses Tripel bezüglich eines festgelegten
     Koordinatensystems repräsentiert.
 

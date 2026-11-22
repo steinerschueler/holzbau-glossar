@@ -81,7 +81,7 @@ Sei
 
 Dann ist die **Bezugsebene** des Tools T die Ebene
 
-```
+```text
 E_bez(T):= { x ∈ ℝ³ | ⟨e_hat_z, x⟩ = z₀(T) },                       (1)
 ```
 
@@ -93,13 +93,13 @@ Wesentliche abgeleitete Größen für ein Bauteil B mit
 Welt-Geometrie G_W(B) ⊂ ℝ³:
 
 - **Höhe gegen Bezugsebene** eines Punktes p ∈ G_W(B):
-  ```
+  ```text
   h_E(p; T):= ⟨e_hat_z, p⟩ − z₀(T) = signierterAbstand(p, E_bez(T)).  (2)
   ```
   Positive Werte liegen oberhalb, negative unterhalb der
   Bezugsebene.
 - **Bauteil-Höhenbereich**:
-  ```
+  ```text
   [h_min(B; T), h_max(B; T)]  mit
   h_min:= min { h_E(p; T) | p ∈ G_W(B) },
   h_max:= max { h_E(p; T) | p ∈ G_W(B) }.
@@ -124,7 +124,7 @@ ist p_K = T_{L_B → W}(p_K^lokal). Die Bezugsebene nutzt allein die
 **Welt-Höhe** von p_K (die lokale Bezugskote), nicht seine axiale
 Lage; damit ist
 
-```
+```text
 z₀(T_Sparren):=  ⟨e_hat_z, p_K⟩,                                    (3)
 ```
 
@@ -185,13 +185,13 @@ Die folgende Tabelle zeigt typische Festlegungen pro Tool. Die
 konkreten Werte sind tool-spezifisch und werden in der jeweiligen
 Tool-Dokumentation, **nicht** in diesem Glossareintrag fixiert:
 
-| Tool                    | Bezugsebene (Beispiel-Festlegung)                              |
-|-------------------------|----------------------------------------------------------------|
-| Sparren-Tool            | Horizontale Ebene durch den Kerveckpunkt p_K der Fußpfettenkerve (Höhe der lokalen Bezugskote; siehe `hg_kerve.md` Gl. (12); `hg_fusspfette.md`; [intern]) |
-| Wandschichtaufbau       | OK Rohboden                                                    |
-| Walmdach-Tool           | OK Wandkrone (= OK Mauerwerk / Wandkrone, traufseitig)         |
-| Stützen-Tool            | OK Fundament / OK Schwelle                                     |
-| Geschossdecke           | OK Rohdecke (Oberkante tragender Querschnitt)                  |
+| Tool | Bezugsebene (Beispiel-Festlegung) |
+| --- | --- |
+| Sparren-Tool | Horizontale Ebene durch den Kerveckpunkt p_K der Fußpfettenkerve (Höhe der lokalen Bezugskote; siehe `hg_kerve.md` Gl. (12); `hg_fusspfette.md`; [intern]) |
+| Wandschichtaufbau | OK Rohboden |
+| Walmdach-Tool | OK Wandkrone (= OK Mauerwerk / Wandkrone, traufseitig) |
+| Stützen-Tool | OK Fundament / OK Schwelle |
+| Geschossdecke | OK Rohdecke (Oberkante tragender Querschnitt) |
 
 Diese Beispiele sind illustrativ. Jedes Tool dokumentiert seine
 Bezugsebene in seinem eigenen Tool-Eintrag (Folgearbeit); der
@@ -249,43 +249,43 @@ eine ganze Ebene fest).
   vorgesehen; konkrete Bezugsebenen sind tool-spezifische
   Festlegungen, nicht eigene Begriffe.
 - **Bestandteile (partitiv)**:
-  - **Trägerebene** (geerbt von `ebene`): die Punktmenge im
+    - **Trägerebene** (geerbt von `ebene`): die Punktmenge im
     Welt-Koordinatensystem.
-  - **Bezugshöhenwert** z₀(T): die einzige zusätzliche Information
+    - **Bezugshöhenwert** z₀(T): die einzige zusätzliche Information
     gegenüber der nackten Ebene; typisch positiv (gegen die
     Welt-Achsen-Wahl) und tool-abhängig.
-  - **Tool-Zugehörigkeit**: jede Bezugsebene gehört zu genau einem
+    - **Tool-Zugehörigkeit**: jede Bezugsebene gehört zu genau einem
     Tool.
 - **Verwendung**:
-  - In jedem **Tool** der App (Sparren-Tool, Wandschichtaufbau,
+    - In jedem **Tool** der App (Sparren-Tool, Wandschichtaufbau,
     Walmdach-Tool, Stützen-Tool, …) als Höhenreferenz für Bauteil-
     Höhenmaße und Visualisierung.
-  - Beim **Werkplan-Export** als Höhenbezug für Bemaßungstexte
+    - Beim **Werkplan-Export** als Höhenbezug für Bemaßungstexte
     („+2.50 ab OK Fußpfette", „−0.05 ab OK Rohboden").
-  - Beim **IFC-Export** als Höhenkomponente des
+    - Beim **IFC-Export** als Höhenkomponente des
     `IfcGeometricRepresentationContext` der Tool-Repräsentation.
 - **Abgrenzung**:
-  - **Ebene** (`ebene`): allgemeines geometrisches Primitiv ohne
+    - **Ebene** (`ebene`): allgemeines geometrisches Primitiv ohne
     Bezugsrolle. Die Bezugsebene ist eine Ebene mit zugewiesener
     Bezugsrolle in einem Tool.
-  - **Welt-Koordinatensystem** (`weltkoordinatensystem`): legt
+    - **Welt-Koordinatensystem** (`weltkoordinatensystem`): legt
     Ursprung und alle drei Achsen fest. Die Bezugsebene legt nur
     die z-Höhe fest und ist daher schwächer.
-  - **Lokales Koordinatensystem**
+    - **Lokales Koordinatensystem**
     (`lokales_koordinatensystem`): ein bauteil-eigenes
     Koordinatensystem (Ursprung + drei Achsen). Die Bezugsebene
     ist tool-eigen, nicht bauteil-eigen, und legt nur eine z-Höhe
     fest.
-  - **Dachfläche** (`dachflaeche`): trägt eine geneigte
+    - **Dachfläche** (`dachflaeche`): trägt eine geneigte
     Trägerebene mit Polygonberandung. Die Bezugsebene ist
     horizontal und unbeschränkt; sie ist keine Dachfläche.
-  - **Traufe** (`traufe`): horizontale Dachkante an der unteren
+    - **Traufe** (`traufe`): horizontale Dachkante an der unteren
     Berandung der Dachfläche; geometrisch eine Strecke, nicht
     eine Ebene. Eine Bezugsebene des Sparren-Tools liegt
     typischerweise auf der Höhe der Traufe (oder darüber, am
     Bleischnitt der Fußpfette), ist aber nicht selbst die
     Traufe.
-  - **Fußpfette** (`fusspfette`): Bauteil. Eine Bezugsebene kann
+    - **Fußpfette** (`fusspfette`): Bauteil. Eine Bezugsebene kann
     auf einer ausgezeichneten Fläche der Fußpfette (OK, UK,
     Bleischnitt) verankert sein; sie ist aber nicht selbst die
     Fußpfette.

@@ -53,7 +53,7 @@ Sei
 
 - D = (E, P, n_a) eine Dachfläche im Sinne von `dachflaeche` mit
   Trägerebene
-  ```
+  ```text
   E = { x ∈ ℝ³ | ⟨n_a, x − p₀⟩ = 0 },
   ```
   Umrisspolygon P = (v₁, …, v_k) und nach außen gerichteter
@@ -66,26 +66,26 @@ Sei
 
 Dann ist die **Dachschräge** zu D die Fläche
 
-```
+```text
 S(D, A):= (E_S, P_S, n_S)
 ```
 
 mit
 
 - **innenseitiger Trägerebene**
-  ```
+  ```text
   E_S:= { x ∈ ℝ³ | ⟨n_a, x − p₀⟩ = 0 } − d_A · n_a
        = { y + (− d_A) · n_a | y ∈ E }
        = { z ∈ ℝ³ | ⟨n_a, z − (p₀ − d_A · n_a)⟩ = 0 },
   ```
   also der um −d_A · n_a verschobenen Ebene E,
 - **innenseitigem Polygon**
-  ```
+  ```text
   P_S:= (v₁ − d_A · n_a, …, v_k − d_A · n_a),
   ```
   also dem starr nach innen verschobenen Umriss von D,
 - **innenseitiger Normale**
-  ```
+  ```text
   n_S:= − n_a ∈ S²,
   ```
   also der raumseitigen, in den Innenraum weisenden Einheits-Normale
@@ -185,32 +185,32 @@ Tauwasserrechnung im Schichtaufbau maßgeblich ist.
 - **Bestandteile (partitiv)**: Polygonpunkte v_i − d_A · n_a;
   Trägerebene E_S; raumseitige Normale n_S = −n_a.
 - **Verwendungskontext**:
-  - **Innenausbau** (Bekleidung mit Gipsplatten nach DIN 18181,
+    - **Innenausbau** (Bekleidung mit Gipsplatten nach DIN 18181,
     Holzschalung, Sichtsparren): die Dachschräge ist die Bezugs-
     fläche für die Bekleidungsmontage.
-  - **Wohnflächenrechnung**: Stehhöhe und anrechenbare Fläche
+    - **Wohnflächenrechnung**: Stehhöhe und anrechenbare Fläche
     werden über die Schnittlinie der Dachschräge mit horizontalen
     Höhenniveaus (z. B. 1,00 m, 2,00 m) bestimmt.
 - **Abgrenzung**:
-  - **Dachfläche** (`dachflaeche`): außenseitige Bezugsfläche; die
+    - **Dachfläche** (`dachflaeche`): außenseitige Bezugsfläche; die
     Dachschräge ist die zugehörige innenseitige Versatzfläche um
     d_A · (−n_a). Beide sind Flächen, parallel, aber verschieden.
-  - **Dachneigung** (`dachneigung`): Winkel α, kein
+    - **Dachneigung** (`dachneigung`): Winkel α, kein
     geometrisches Objekt. Im umgangssprachlichen Gebrauch oft mit
     Dachschräge verwechselt; im Glossar trennscharf.
-  - **Dachseite** (`dachseite`, eigener Eintrag): eine Dachfläche
+    - **Dachseite** (`dachseite`, eigener Eintrag): eine Dachfläche
     unter Orientierungs-Annotation (Wetterseite, Sonnenseite).
     Außenseitig bezogen, nicht innenseitig.
-  - **Dachhaut** (`dachhaut`): geometrische Außen-Hüllfläche über
+    - **Dachhaut** (`dachhaut`): geometrische Außen-Hüllfläche über
     dem Dachaufbau. Die Dachschräge ist das innenseitige
     Gegenstück, nicht synonym.
-  - **Dachaufbau** (`dachaufbau`): die materielle Schichtfolge
+    - **Dachaufbau** (`dachaufbau`): die materielle Schichtfolge
     zwischen Dachfläche und Dachschräge. Die Dachschräge ist die
     untere (raumseitige) Hüllfläche dieser Schichtfolge.
-  - **Decke**: bei α(D) = 0 (Flachdach) wird die innenseitige
+    - **Decke**: bei α(D) = 0 (Flachdach) wird die innenseitige
     Bezugsfläche **Decke** genannt, nicht Dachschräge. Die
     Bedingung 3 in der Definition schließt diesen Fall aus.
-  - **Kniestockwand**: senkrechte Wand zwischen Dachschräge und
+    - **Kniestockwand**: senkrechte Wand zwischen Dachschräge und
     Geschossdecke; eigener Begriff, hier nicht weiter behandelt.
 - **Entartet-Variante**: `Entartet.KeineInnenSichtbar` —
   pragmatisch, falls der Dachgeschossraum durch eine abgehängte

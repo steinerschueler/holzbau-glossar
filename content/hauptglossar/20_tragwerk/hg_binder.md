@@ -140,7 +140,7 @@ Sei
 
 Dann ist ein **Binder** ein Tupel
 
-```
+```text
 Bᵢ:= (uuid, bestandteile, verbindungen, tragebene, auflagerpunkte,
        lage, huelle, bezeichnung?)
 ```
@@ -188,7 +188,7 @@ und den Konsistenzbedingungen
    Hüllen-Inklusion, azyklische Verschachtelung).
 2. **Verbindungs-Inzidenz**: jede Verbindung v ∈ verbindungen
    referenziert ausschließlich Bauteile aus bestandteile,
-   ```
+   ```text
    ∀ v ∈ verbindungen: bauteile(v) ⊆ bestandteile
    ```
    wobei bauteile(v) die Bauteilmenge der Verbindung v gemäß
@@ -218,7 +218,7 @@ und den Konsistenzbedingungen
 
 Die **geometrische Punktmenge** des Binders in W ist
 
-```
+```text
 G_W(Bᵢ):= lage(G_lokal(huelle)) ⊂ ℝ³
 ```
 
@@ -396,67 +396,67 @@ Oberbegriff trifft.
   hinzu: explizite Tragebene, mindestens zwei Auflagerpunkte und
   mindestens eine Verbindung zwischen den Bestandteilen.
 - **Bestandteile (partitiv)**:
-  - **Bauteile** (`bauteil`): Sparren, Bundbalken, Streben, Pfosten,
+    - **Bauteile** (`bauteil`): Sparren, Bundbalken, Streben, Pfosten,
     Lamellen, Pfetten — die exklusiven Holzbauteile des Binders.
-  - **Verbindungen** (`verbindung`): die Knotenaggregate zwischen
+    - **Verbindungen** (`verbindung`): die Knotenaggregate zwischen
     den Bestandteilen (Nagelplatten-Knoten, Versatz, Zapfen,
     Stabdübel-Verbindung, Verleimung).
-  - **Tragebene** (`ebene`): die ausgezeichnete Trag-Ebene des
+    - **Tragebene** (`ebene`): die ausgezeichnete Trag-Ebene des
     Aggregats.
-  - **Lokales Koordinatensystem** (`lokales_koordinatensystem`).
-  - **Hülle** (`polyeder` oder Bounding-Volume).
+    - **Lokales Koordinatensystem** (`lokales_koordinatensystem`).
+    - **Hülle** (`polyeder` oder Bounding-Volume).
 - **Spezialisierungen** (eigene Einträge folgen, trigger-basiert
   gemäß Folgearbeit-Block):
-  - `nagelplattenbinder` — Bauart-Achse, DIN-EN-14250-Anker.
-  - `sparrenbinder` — statisches System.
-  - `pfettenbinder` — statisches System.
-  - `bsh_binder` (Brettschichtholz-Binder, Leimbinder) — Bauart.
-  - `fachwerkbinder` / `vollwandbinder` — Bauart-Achse.
-  - `hauptbinder` — Tragwerks-Hierarchie (offene Designfrage, ob
+    - `nagelplattenbinder` — Bauart-Achse, DIN-EN-14250-Anker.
+    - `sparrenbinder` — statisches System.
+    - `pfettenbinder` — statisches System.
+    - `bsh_binder` (Brettschichtholz-Binder, Leimbinder) — Bauart.
+    - `fachwerkbinder` / `vollwandbinder` — Bauart-Achse.
+    - `hauptbinder` — Tragwerks-Hierarchie (offene Designfrage, ob
     eigener Eintrag).
 - **Verwendung**:
-  - Bestandteil eines **Tragwerks** (`tragwerk`): ein Binder ist
+    - Bestandteil eines **Tragwerks** (`tragwerk`): ein Binder ist
     typischerweise ein Primärtragglied eines Dachtragwerks. Die
     Tragwerks-Bauteilmenge B enthält die einzelnen Holzbauteile,
     der Binder fasst eine Teilmenge davon zur Bauteilgruppe
     zusammen.
-  - Bestandteil eines **Daches** (`dach`) — als Teil des
+    - Bestandteil eines **Daches** (`dach`) — als Teil des
     Dachtragwerks.
 - **Abgrenzung**:
-  - **Bauteilgruppe** (`bauteilgruppe`): Oberbegriff — siehe oben.
-  - **Tragwerk** (`tragwerk`): das umgebende Aggregat aus
+    - **Bauteilgruppe** (`bauteilgruppe`): Oberbegriff — siehe oben.
+    - **Tragwerk** (`tragwerk`): das umgebende Aggregat aus
     lastabtragenden Bauteilen mit Auflagern und Lastfällen; ein
     Binder ist Bestandteil eines Tragwerks, nicht selbst eines.
     Tragwerk hat zudem nicht-exklusive Bauteil-Mitgliedschaft,
     der Binder exklusive Bestandteils-Mitgliedschaft.
-  - **Bauteil** (`bauteil`): einzelner Bestandteil; ein Binder ist
+    - **Bauteil** (`bauteil`): einzelner Bestandteil; ein Binder ist
     eine Komposition mehrerer Bauteile, kein einzelnes Bauteil.
     Insbesondere ist ein einzelner BSH-Träger ohne weitere Stäbe
     **kein** Binder.
-  - **Sparren** (`sparren`): ein einzelnes geneigtes Stab-Bauteil
+    - **Sparren** (`sparren`): ein einzelnes geneigtes Stab-Bauteil
     entlang der Falllinie einer Dachfläche. Ein Sparrenbinder
     enthält zwei Sparren als Bestandteile, ist aber kein Sparren.
-  - **Pfette** (`pfette`): ein einzelnes horizontales Längs-Stab-
+    - **Pfette** (`pfette`): ein einzelnes horizontales Längs-Stab-
     Bauteil parallel zur Dachkante. Ein Pfettenbinder trägt
     Pfetten, ist aber keine Pfette. „Pfettenbinder" und
     „Sparrenbinder" benennen Binder-Sub-Typen über das **getragene**
     bzw. **enthaltene** Bauteil, nicht über die Identität des
     Binders mit jenem Bauteil.
-  - **Verbindung** (`verbindung`): lokales Knoten-Aggregat aus
+    - **Verbindung** (`verbindung`): lokales Knoten-Aggregat aus
     Bauteilen, Verbindungsmitteln, Verbindern und Verstärkungen an
     einem Punkt. Ein Binder enthält **mehrere** Verbindungen
     zwischen seinen Bestandteilen und ist selbst keine Verbindung.
-  - **Dach** (`dach`), **Dachfläche** (`dachflaeche`): ein Binder
+    - **Dach** (`dach`), **Dachfläche** (`dachflaeche`): ein Binder
     ist Bestandteil des Dachtragwerks, das wiederum Bestandteil
     eines Daches ist; er ist selbst kein Dach und keine Dachfläche.
-  - **Bauteilachse** (`bauteilachse`): ein Bestandteil eines
+    - **Bauteilachse** (`bauteilachse`): ein Bestandteil eines
     Binders trägt eine Bauteilachse; der Binder selbst trägt keine
     Bauteilachse, sondern eine Tragebene.
-  - **Binderdach** (`binderdach`, eigener Eintrag folgt): das
+    - **Binderdach** (`binderdach`, eigener Eintrag folgt): das
     Dachtragwerks-System, in dem Binder die Primärtragglieder
     sind. Binder ist das einzelne Aggregat, Binderdach das
     Tragwerks-System.
-  - **Nagelplattenbinder**, **Sparrenbinder**, **Pfettenbinder**,
+    - **Nagelplattenbinder**, **Sparrenbinder**, **Pfettenbinder**,
     **BSH-Binder**, **Fachwerkbinder**, **Vollwandbinder**,
     **Hauptbinder**, **Kehlbalkenbinder**, **Polygonalbinder**,
     **Hetzer-Binder**: alles Sub-Typen entlang der drei oben

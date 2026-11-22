@@ -86,7 +86,7 @@ Sei
 
 Dann ist eine **Lagenstruktur** L das Tupel
 
-```
+```text
 L:= (lagen, abweichenderLagenaufbau)
 ```
 
@@ -97,7 +97,7 @@ mit
 
 **Klassen-Invarianten** (alle prüfbar):
 
-```
+```text
 (I1) Mindestanzahl:
        |lagen| = n ≥ 3.
 
@@ -127,7 +127,7 @@ mit
 
 **Abgeleitete Größe — Gesamtdicke**:
 
-```
+```text
 gesamtdicke(L):= Σ_{i=0}^{n−1} lagen[i].dicke ∈ ℝ⁺
 ```
 
@@ -136,7 +136,7 @@ ist redundant zum Bauteil-Volumen (Folge-Eintrag).
 
 **Lagen-Mittenebenen** (abgeleitet, für Visualisierung):
 
-```
+```text
 z_i:= −gesamtdicke(L)/2 + Σ_{j=0}^{i−1} lagen[j].dicke
                           + lagen[i].dicke / 2
 ```
@@ -189,7 +189,7 @@ von der Plattenmittelebene).
 
 Klassische CLT-Standardlayouts:
 
-```
+```text
 3-lagig:   0° / 90° / 0°
 5-lagig:   0° / 90° / 0° / 90° / 0°
 7-lagig:   0° / 90° / 0° / 90° / 0° / 90° / 0°
@@ -246,24 +246,24 @@ ihren individuellen Faserrichtungen darstellen.
 - **Oberbegriff**: keiner. Lagenstruktur ist ein eigenständiges
   Aggregat.
 - **Bestandteile**:
-  - **Lagen** (`lage`): geordnete Liste mit n ≥ 3.
-  - **Marker** `abweichenderLagenaufbau`: Boolean.
-  - **Abgeleitet**: Gesamtdicke = Σ Lagendicken.
+    - **Lagen** (`lage`): geordnete Liste mit n ≥ 3.
+    - **Marker** `abweichenderLagenaufbau`: Boolean.
+    - **Abgeleitet**: Gesamtdicke = Σ Lagendicken.
 - **Verwendung**:
-  - **Mehrlagenholz** (`mehrlagenholz`): Pflichtfeld; einziges
+    - **Mehrlagenholz** (`mehrlagenholz`): Pflichtfeld; einziges
     Werkstoff-internes Aggregat des Modus STRUKTURIERT.
-  - **Hankinson-Winkel pro Lage** (`hankinson_winkel`): Eingabe
+    - **Hankinson-Winkel pro Lage** (`hankinson_winkel`): Eingabe
     für die lagenweise Auswertung von α.
 - **Abgrenzung**:
-  - **`lage`**: einzelne Lage; Bestandteil der Lagenstruktur.
-  - **`mehrlagenholz`**: der Werkstoff, der die Lagenstruktur als
+    - **`lage`**: einzelne Lage; Bestandteil der Lagenstruktur.
+    - **`mehrlagenholz`**: der Werkstoff, der die Lagenstruktur als
     Pflichtfeld trägt.
-  - **`haupttragrichtung`**: Einheitsvektor; durch Decklage 0
+    - **`haupttragrichtung`**: Einheitsvektor; durch Decklage 0
     festgelegt (Invariante I5). Lagenstruktur und
     Haupttragrichtung sind verbunden, aber begrifflich getrennt.
-  - **`plattendicken_achse`**: Stapelrichtung der Lagen;
+    - **`plattendicken_achse`**: Stapelrichtung der Lagen;
     konsistent mit Lagenstruktur, geprüft in `mehrlagenholz`.
-  - **„Schichtaufbau"** (umgangssprachlich): synonym verwendet,
+    - **„Schichtaufbau"** (umgangssprachlich): synonym verwendet,
     aber unscharf. Lagenstruktur ist die formale Repräsentation.
 
 ## Quellen

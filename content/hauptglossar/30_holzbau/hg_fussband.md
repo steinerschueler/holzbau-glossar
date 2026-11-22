@@ -226,14 +226,14 @@ Bedingungen alle erfüllt sind:
    ‖p_e − p_a‖ > ε_L.
 
 2. **Lage in der Wandebene**: Beide Endpunkte liegen in E_W,
-   ```
+   ```text
    |⟨p_a − p_W, n_hat_W⟩| ≤ ε_L  ∧  |⟨p_e − p_W, n_hat_W⟩| ≤ ε_L.
    ```
 
 3. **Echte Diagonale (weder lotrecht noch horizontal)**: Der
    Winkel α(B):= arccos(|⟨d_hat, e_z⟩|) zwischen Bauteilachse und
    Lotachse erfüllt
-   ```
+   ```text
    ε_W < α(B) < π/2 − ε_W,
    ```
    d. h. d_hat ist weder kollinear zu e_z (kein Pfosten/Ständer)
@@ -245,14 +245,14 @@ Bedingungen alle erfüllt sind:
    Bauteilachse a(H), je bis auf Toleranz ε_L. Ohne Beschränkung
    der Allgemeinheit sei p_P ∈ {p_a, p_e} der Pfosten-Endpunkt
    und p_H der Längsholz-Endpunkt:
-   ```
+   ```text
    dist(p_P, a(P)) ≤ ε_L  ∧  dist(p_H, a(H)) ≤ ε_L.
    ```
 
 5. **Pfosten-Fuß-Anker** (strukturelle Trennlinie zum Kopfband
    und zur Strebe): Der Pfosten-Anker-Endpunkt liegt **am
    Pfosten-Fuß**,
-   ```
+   ```text
    |p_P.z − z_min^P| ≤ ε_L · 3,
    ```
    d. h. der Pfosten-Endpunkt befindet sich am unteren Ende der
@@ -266,7 +266,7 @@ Bedingungen alle erfüllt sind:
 6. **Abwärts-Orientierung der Bauteilachse vom Pfosten zum
    unteren Längsholz**: Der Längsholz-Endpunkt liegt **tiefer**
    als der Pfosten-Endpunkt,
-   ```
+   ```text
    p_H.z + ε_L < p_P.z,
    ```
    d. h. die Diagonale fällt vom Pfosten-Fuß abwärts gegen
@@ -448,12 +448,12 @@ Inzidenz im Wand-Aggregat (Folgearbeit Welle 12).
   Vollholz** (Volumen-Bauteil), das einen Deckenbalken oder
   eine Pfette **konsolenartig** stützt. Konstruktive Trennlinie
   zum Fußband:
-  - Knagge ist **kompakter Block**, **kein Stab-Bauteil** —
+    - Knagge ist **kompakter Block**, **kein Stab-Bauteil** —
     das Fußband ist Stab-Bauteil mit zwei Auflagerpunkten.
-  - Knagge **ragt aus dem Wandgefüge heraus**, sitzt nicht im
+    - Knagge **ragt aus dem Wandgefüge heraus**, sitzt nicht im
     Gefach — das Fußband ist im Gefach (zwischen Pfosten und
     Schwelle).
-  - Knagge hat **kein** Pfosten-Fuß-spezifisches Constraint
+    - Knagge hat **kein** Pfosten-Fuß-spezifisches Constraint
     (sie kann am Pfosten-Kopf, im Pfosten-Mittel oder am
     Pfosten-Fuß sitzen — siehe `hg_knagge.md`).
 - **Fußwinkelholz** (Wikipedia/Fußband, in
@@ -491,7 +491,7 @@ Inzidenz im Wand-Aggregat (Folgearbeit Welle 12).
 ### CH/DE-Asymmetrie und Bauweisen-Verteilung
 
 | Bauweise | Fußband typisch verwendet? |
-|---|---|
+| --- | --- |
 | Fachwerkbau (DE/AT, historisch, Mann-Figuren-Region) | breit, in Mann-Figur-Komposition |
 | Riegelbau (CH, traditionell) | Begriff im Korpus nicht prominent; CH-Praxis verwendet teils „Strebe" als Sammelbegriff |
 | Holzrahmenbau (modern) | Beplankungs-Aussteifung dominant; Fußband selten |
@@ -554,47 +554,47 @@ Simpson) angeschlossen.
   `wand`-Aggregat (siehe `hg_wand.md`); eine Zwischenebene
   `wandbauteil` wird nicht angelegt (App-Drift).
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`), diagonal im
+    - **Bauteilachse** (`bauteilachse.Gerade`), diagonal im
     Sinne von Bedingung 3;
-  - **Querschnitt** (rechteckig, im historischen Fachwerk meist
+    - **Querschnitt** (rechteckig, im historischen Fachwerk meist
     schwächer als der Ständer, typisch 80/120 mm);
-  - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_Fußband, also
+    - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_Fußband, also
     axial entlang der diagonalen Bauteilachse).
 - **Positions-Annotation** (Merkmal am Fußband, kein Subtyp;
   optional, analog `KopfbandPosition` Welle 10):
-  - **Fußbandposition** (`FussbandPosition`-Enum): Wert aus
+    - **Fußbandposition** (`FussbandPosition`-Enum): Wert aus
     { ECK, BUND, ZWISCHEN, UNSPEZIFIZIERT }.
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Ständer** / **Pfosten** (`staender`): lotrechtes
+    - **Ständer** / **Pfosten** (`staender`): lotrechtes
     Anker-Bauteil mit Anker-Endpunkt **am Pfosten-Fuß**
     (Bedingung 5).
-  - **Schwelle** (`schwelle`): häufigstes Längsholz-Anker-
+    - **Schwelle** (`schwelle`): häufigstes Längsholz-Anker-
     Bauteil; das Fußband verbindet Pfosten-Fuß mit Schwellen-
     Oberkante.
-  - **Riegel** (`riegel`): in mehrgeschossigen Konstruktionen
+    - **Riegel** (`riegel`): in mehrgeschossigen Konstruktionen
     kann ein unterer Riegel (zwischen Geschossen) den
     Längsholz-Anker stellen.
 - **Abgrenzung**:
-  - **Kopfband** (`kopfband`, Welle-10-Geschwister):
+    - **Kopfband** (`kopfband`, Welle-10-Geschwister):
     symmetrisches Gegenstück am Pfosten-Kopf. Trennlinie:
     Pfosten-Anker-Lage (Bedingung 5).
-  - **Strebe** (`strebe`, Welle-10-Geschwister): Pfosten-
+    - **Strebe** (`strebe`, Welle-10-Geschwister): Pfosten-
     Anker im Pfosten-Mittel-Bereich (nicht am Fuß).
-  - **Knagge** (`knagge`, Welle-11-Geschwister): dreieckiges
+    - **Knagge** (`knagge`, Welle-11-Geschwister): dreieckiges
     Vollholz als Konsole; Volumen-Bauteil ohne Bauteilachse.
-  - **Mann** (`mann`) und Sub-Lesarten (`halber_mann`,
+    - **Mann** (`mann`) und Sub-Lesarten (`halber_mann`,
     `wilder_mann`, `hessenmann`, `schwaebisches_maennle`,
     Forward-Verweise, Aggregat-Folgearbeit Welle 12):
     Komposition aus mehreren Fußbändern und Kopfbändern;
     das Fußband ist Mitglied, nicht das Aggregat selbst.
-  - **Andreaskreuz** (`andreaskreuz`, Forward-Verweis):
+    - **Andreaskreuz** (`andreaskreuz`, Forward-Verweis):
     Aggregat zweier sich kreuzender Streben.
-  - **Kniestrebe** (`kniestrebe`, Forward-Verweis): Dachstuhl-
+    - **Kniestrebe** (`kniestrebe`, Forward-Verweis): Dachstuhl-
     Bauteil.
-  - **Zugband** (`zugband`, Forward-Verweis): Stahl-
+    - **Zugband** (`zugband`, Forward-Verweis): Stahl-
     Aussteifung; eigene Bauteilrolle.
-  - **Bauteil** (`bauteil`): das Fußband ist eine
+    - **Bauteil** (`bauteil`): das Fußband ist eine
     Spezialisierung von Bauteil mit zusätzlichen Lage-
     Constraints.
 

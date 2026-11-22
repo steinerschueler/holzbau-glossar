@@ -86,21 +86,21 @@ Sei
 
 Dann ist ein **Rechteck-Querschnitt** das Tupel
 
-```
+```text
 RQ:= (form, ebene, flaechenschwerpunkt, breite, hoehe)
      = (RECHTECK, E, z, b, h)
 ```
 
 mit der Punktmenge in lokalen (u, v)-Koordinaten
 
-```
+```text
 Q_lokal(b, h):= { (u, v) ∈ ℝ² | −b/2 ≤ u ≤ b/2  ∧  −h/2 ≤ v ≤ h/2 }
               = [−b/2, b/2] × [−h/2, h/2]
 ```
 
 und der zugehörigen Punktmenge in W
 
-```
+```text
 Q(RQ):= { z + u·u_hat + v·v_hat ∈ ℝ³ | (u, v) ∈ Q_lokal(b, h) }.
 ```
 
@@ -110,7 +110,7 @@ disjunkte Teilmenge der Querschnitts-Menge mit `form = RECHTECK`.
 **Eckpunkte** in lokalen (u, v)-Koordinaten (zyklisch gegen den
 Uhrzeigersinn, beginnend mit dem Eckpunkt im Quadranten (+u, +v)):
 
-```
+```text
 v₁ = (+b/2, +h/2)
 v₂ = (−b/2, +h/2)
 v₃ = (−b/2, −h/2)
@@ -119,14 +119,14 @@ v₄ = (+b/2, −h/2)
 
 In W-Koordinaten:
 
-```
+```text
 v_i^W = z + u_i · u_hat + v_i · v_hat   für i = 1, …, 4.
 ```
 
 **Flächenschwerpunkt**: per Konstruktion im Ursprung des lokalen
 (u, v)-Systems, da
 
-```
+```text
 z_lokal = (1 / (b·h)) · ∫∫_{Q_lokal} (u, v) du dv
         = ((1/b) · ∫_{-b/2}^{+b/2} u du,  (1/h) · ∫_{-h/2}^{+h/2} v dv)
         = (0, 0).
@@ -137,7 +137,7 @@ stimmt mit dem Ursprung des lokalen Querschnittssystems überein.
 
 **Querschnittsfläche**:
 
-```
+```text
 A:= 𝓛²(Q(RQ)) = b · h   (in mm²).
 ```
 
@@ -206,7 +206,7 @@ Rechteck-Querschnitt der **Default-Subtyp** für die D8a-Bauteilklasse.
 Für einen Rechteck-Querschnitt mit Breite b und Höhe h gelten die
 klassischen geschlossenen Formeln:
 
-```
+```text
 A    = b · h                        (Querschnittsflaeche)
 I_y  = b · h³ / 12                  (Flächentraegheitsmoment um y)
 I_z  = h · b³ / 12                  (Flächentraegheitsmoment um z)
@@ -260,35 +260,35 @@ die Einbettungs-Information; letztere lebt im Bauteil.
   Querschnitt" als b = h ist als Werte-Spezialfall zu behandeln,
   nicht als eigene Klasse.)
 - **Pflichtfelder über `querschnitt` hinaus**:
-  - **Breite** b > 0 (in mm; Pflicht): Ausdehnung entlang der lokalen
+    - **Breite** b > 0 (in mm; Pflicht): Ausdehnung entlang der lokalen
     u_hat-Achse (Bauteil-y).
-  - **Höhe** h > 0 (in mm; Pflicht): Ausdehnung entlang der lokalen
+    - **Höhe** h > 0 (in mm; Pflicht): Ausdehnung entlang der lokalen
     v_hat-Achse (Bauteil-z).
 - **Verwendung**:
-  - **Bauteil** (`bauteil`): jedes **Stabbauteil** trägt typisch einen
+    - **Bauteil** (`bauteil`): jedes **Stabbauteil** trägt typisch einen
     Rechteck-Querschnitt als Pflichtfeld (D8a; siehe); im Standardfall Vollholz/KVH/BSH.
-  - **Sparren** (`sparren`): Standardfall, 80×160 oder 100×200 mm.
-  - **Pfette** (`pfette`): Standardfall, 120×160 oder 140×200 mm.
-  - **Stütze** (Folgearbeit): Standardfall, 120×120 oder 140×140 mm.
-  - **Strebe** (Folgearbeit): Standardfall, 80×120 mm.
+    - **Sparren** (`sparren`): Standardfall, 80×160 oder 100×200 mm.
+    - **Pfette** (`pfette`): Standardfall, 120×160 oder 140×200 mm.
+    - **Stütze** (Folgearbeit): Standardfall, 120×120 oder 140×140 mm.
+    - **Strebe** (Folgearbeit): Standardfall, 80×120 mm.
 - **Abgrenzung**:
-  - **Querschnitt** (`querschnitt`): abstrakter Oberbegriff;
+    - **Querschnitt** (`querschnitt`): abstrakter Oberbegriff;
     Rechteck-Querschnitt ist eine konkrete Subklasse, charakterisiert
     durch `form = RECHTECK` und die rechteckige Punktmenge.
-  - **Polygon** (`polygon`): die Berandung eines Rechteck-Querschnitts
+    - **Polygon** (`polygon`): die Berandung eines Rechteck-Querschnitts
     ist ein einfaches, konvexes Polygon mit 4 Eckpunkten; der
     Rechteck-Querschnitt ist aber **keine** Polygon-Instanz, weil er
     zusätzlich die Klassen-Invariante `form = RECHTECK` und die
     Pflichtparameter (b, h) trägt. Polygonale Querschnitte mit
     beliebiger Eckenzahl gehören in die Folgearbeit-Klasse
     `polygonaler_querschnitt`.
-  - **Ebene** (`ebene`): die Querschnittsebene ist eine Ebene; der
+    - **Ebene** (`ebene`): die Querschnittsebene ist eine Ebene; der
     Rechteck-Querschnitt ist eine beschränkte Teilmenge dieser Ebene
     mit fester rechteckiger Form.
-  - **Bauteilachse** (`bauteilachse`): die Querschnittsebene steht
+    - **Bauteilachse** (`bauteilachse`): die Querschnittsebene steht
     per Konstruktion rechtwinklig zur Bauteilachsen-Tangente, und der
     Schwerpunkt des Rechteck-Querschnitts liegt auf der Bauteilachse.
-  - **Bauteil** (`bauteil`): Rechteck-Querschnitt ist Eigenschaft
+    - **Bauteil** (`bauteil`): Rechteck-Querschnitt ist Eigenschaft
     eines Stabbauteils, nicht das Bauteil selbst.
 
 ## Quellen

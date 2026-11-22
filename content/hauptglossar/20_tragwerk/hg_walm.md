@@ -246,7 +246,7 @@ Sei
 
 Dann ist ein **Walm** ein Tupel
 
-```
+```text
 W:= (uuid, gratsparren, schifter, mittelsparren?,
       walmflaeche, hauptdachflaechen,
       lage, huelle, bezeichnung?)
@@ -325,7 +325,7 @@ und den Konsistenzbedingungen
 
 Die **geometrische Punktmenge** des Walms in W ist
 
-```
+```text
 G_W(W):= lage(G_lokal(huelle)) ⊂ ℝ³
 ```
 
@@ -434,7 +434,7 @@ Bestandteile des Walms.
 Drei eng verwandte Begriffe, die im Korpus oft vermischt werden,
 werden im Glossar strikt getrennt:
 
-```
+```text
 Walmdach (Dachform-Sicht auf das Dach)
    └── enthält → Walm (Bauteilgruppe, eigene Identität, dieser Eintrag)
                   └── Bestandteile:
@@ -508,104 +508,104 @@ Gratlinien) und in der konstruktiven Funktion (Spannweiten-
   zugeordnete Walmflaeche als Hüllgeometrie-Bezug und zwei
   zugeordnete Hauptdachflächen als geometrischen Anschluss.
 - **Bestandteile (partitiv)**:
-  - **Gratsparren** (`gratsparren`): genau zwei Stück, an den
+    - **Gratsparren** (`gratsparren`): genau zwei Stück, an den
     beiden Walm-Ecken.
-  - **Schifter** (`schifter`, Folgearbeit): die in der Walmfläche
+    - **Schifter** (`schifter`, Folgearbeit): die in der Walmfläche
     liegenden, mit doppelter Schmiege an den Gratsparren
     ansetzenden Sparren (Anzahl variabel, ≥ 0).
-  - **Mittelsparren** (`sparren`): optional 0 oder 1 Sparren in
+    - **Mittelsparren** (`sparren`): optional 0 oder 1 Sparren in
     der Walmfläche entlang ihrer Falllinie.
 - **Geometrische Bezugsobjekte (nicht Mitglieder)**:
-  - **Walmflaeche** (`walmflaeche`, Folgearbeit): die
+    - **Walmflaeche** (`walmflaeche`, Folgearbeit): die
     geometrische Hüllkomponente, dreieckige oder trapezförmige
     Dachfläche.
-  - **Hauptdachflächen** (`dachflaeche`): zwei benachbarte
+    - **Hauptdachflächen** (`dachflaeche`): zwei benachbarte
     Dachflächen.
-  - **Gratstrecken** (`grat`): zwei konvexe Schnittstrecken
+    - **Gratstrecken** (`grat`): zwei konvexe Schnittstrecken
     zwischen walmflaeche und je einer Hauptdachfläche.
-  - **Walm-Trauf-Eckpunkte und Firstendpunkt**: geometrische
+    - **Walm-Trauf-Eckpunkte und Firstendpunkt**: geometrische
     Referenzpunkte des Walms im umgebenden Dachtragwerk; die
     sie tragenden Bauteile (Fußpfetten, Firstpfette) gehören
     längs zum Haus und sind **nicht** Mitglieder des Walms.
 - **Spezialisierungen** (eigene Einträge folgen, trigger-basiert):
-  - **Krüppelwalm / Schopfwalm / Halbwalm / Kurzwalm**
+    - **Krüppelwalm / Schopfwalm / Halbwalm / Kurzwalm**
     (`krueppelwalm`): Walm, der nur den oberen Teil der Giebel
     abschließt; im Korpus übereinstimmend synonym.
-  - **Vollwalm**: Walm vom First bis zur Traufe; ggf. eigener
+    - **Vollwalm**: Walm vom First bis zur Traufe; ggf. eigener
     Eintrag `vollwalm`, sofern die App ihn vom Default abgrenzt.
-  - **Fußwalm**: Walm, der nur den unteren Teil abschließt;
+    - **Fußwalm**: Walm, der nur den unteren Teil abschließt;
     selten.
-  - **Niedersachsengiebel**: doppel-abgewalmt; regionaltypisch.
+    - **Niedersachsengiebel**: doppel-abgewalmt; regionaltypisch.
 - **Verwendung**:
-  - Bestandteil eines **Daches** (`dach`) — als
+    - Bestandteil eines **Daches** (`dach`) — als
     Bauteilgruppe der Walmdach-Variante.
-  - Trägt die zugeordnete **Walmflaeche** als Hüllgeometrie-
+    - Trägt die zugeordnete **Walmflaeche** als Hüllgeometrie-
     Komponente.
 - **Abgrenzung**:
-  - **Bauteilgruppe** (`bauteilgruppe`): Oberbegriff — siehe oben.
-  - **Binder** (`binder`): strukturparalleles Geschwister-Aggregat
+    - **Bauteilgruppe** (`bauteilgruppe`): Oberbegriff — siehe oben.
+    - **Binder** (`binder`): strukturparalleles Geschwister-Aggregat
     unter `bauteilgruppe`; geometrische Bezugsstruktur und
     konstruktive Funktion verschieden (siehe Erläuterung).
-  - **Dach** (`dach`), **Dachform** (`dachform`): das Dach ist
+    - **Dach** (`dach`), **Dachform** (`dachform`): das Dach ist
     das umgebende Aggregat; die Dachform (Walmdach) ist eine
     **Sicht** auf das Dach-Aggregat über seine Bauteilgruppen.
     Der Walm ist Bestandteil eines Daches, nicht selbst eines.
-  - **Dachflaeche** (`dachflaeche`): die Walmflaeche ist eine
+    - **Dachflaeche** (`dachflaeche`): die Walmflaeche ist eine
     Spezialisierung von `dachflaeche`; sie ist Hüllkomponente
     des Walms, nicht der Walm selbst.
-  - **Dachseite** (`dachseite`): klassifikatorische Sicht auf
+    - **Dachseite** (`dachseite`): klassifikatorische Sicht auf
     Dachflächen; orthogonal zum Walm-Aggregat.
-  - **Dachausmittlung** (`dachausmittlung`, Folgearbeit): das
+    - **Dachausmittlung** (`dachausmittlung`, Folgearbeit): das
     geometrische Konstruktionsverfahren, mit dem die Walmflächen
     und Gratlinien aus Grundriss und Dachneigungen ermittelt
     werden; Tätigkeit, nicht Aggregat.
-  - **Sparren** (`sparren`): der Mittelsparren in der Walmfläche
+    - **Sparren** (`sparren`): der Mittelsparren in der Walmfläche
     ist ein Sparren in dieser Rolle; der Walm enthält Sparren als
     Bestandteile, ist aber selbst kein Sparren.
-  - **Gratsparren** (`gratsparren`): zwei Stück sind konstitutiv
+    - **Gratsparren** (`gratsparren`): zwei Stück sind konstitutiv
     für den Walm; der Walm ist aber selbst kein Gratsparren.
-  - **Kehlsparren** (`kehlsparren`): bei einem Walmdach tritt
+    - **Kehlsparren** (`kehlsparren`): bei einem Walmdach tritt
     typischerweise keine Kehle auf; Walme und Kehlen sind
     geometrisch komplementär (konvexe vs. konkave Schnittkante).
-  - **Schifter** (`schifter`, Forward-Verweis A, Folgearbeit):
+    - **Schifter** (`schifter`, Forward-Verweis A, Folgearbeit):
     konstitutiver Sub-Typ; siehe Bestandteile.
-  - **Walmflaeche** (`walmflaeche`, Forward-Verweis A,
+    - **Walmflaeche** (`walmflaeche`, Forward-Verweis A,
     Folgearbeit): geometrische Hüllkomponente, nicht das Walm-
     Aggregat selbst (Lesart A vs. Lesart B, siehe
     Quellenkonflikt).
-  - **Walmdach** (`walmdach`, Forward-Verweis A, Folgearbeit):
+    - **Walmdach** (`walmdach`, Forward-Verweis A, Folgearbeit):
     Dachform-Sicht, nicht das Walm-Aggregat (Lesart C vs.
     Lesart B).
-  - **Krueppelwalm** (`krueppelwalm`, Forward-Verweis A,
+    - **Krueppelwalm** (`krueppelwalm`, Forward-Verweis A,
     Folgearbeit): synonyme Walm-Variante (Krüppelwalm =
     Schopfwalm = Halbwalm = Kurzwalm), die nur den oberen Teil
     der Giebel abwalmt.
-  - **Grat** (`grat`): geometrische Schnittstrecke; die zwei
+    - **Grat** (`grat`): geometrische Schnittstrecke; die zwei
     Walmlinien sind Gratstrecken zwischen walmflaeche und den
     Hauptdachflächen. Die Walmlinie hat keinen eigenen
     Glossareintrag (siehe Quellenkonflikt §3).
-  - **Kehle** (`kehle`): komplementäres geometrisches Element
+    - **Kehle** (`kehle`): komplementäres geometrisches Element
     (konkave Schnittstrecke); im Walm-Aggregat nicht enthalten.
-  - **First** (`first`): der Firstendpunkt des Walms ist
+    - **First** (`first`): der Firstendpunkt des Walms ist
     geometrischer Referenzpunkt; der First selbst gehört zur
     Hauptdachfläche, nicht zum Walm.
-  - **Traufe** (`traufe`): die Walm-Trauf-Abschnitte sind
+    - **Traufe** (`traufe`): die Walm-Trauf-Abschnitte sind
     Berandungs-Strecken der Walmflaeche; sie gehören zur
     Traufe des umgebenden Daches, nicht exklusiv zum Walm.
-  - **Ortgang** (`ortgang`): an einem reinen Walm tritt kein
+    - **Ortgang** (`ortgang`): an einem reinen Walm tritt kein
     Ortgang auf; beim Krüppelwalm gibt es im verbleibenden
     Restgiebel einen Ortgang-Abschnitt, der aber nicht zum
     Walm-Aggregat gehört.
-  - **Fußpfette** (`fusspfette`), **Firstpfette** (`firstpfette`):
+    - **Fußpfette** (`fusspfette`), **Firstpfette** (`firstpfette`):
     geometrische Auflager- und Anschlussreferenzen des Walms;
     die Pfetten verlaufen längs des Hauses und sind nicht
     Bestandteile des Walms (siehe Quellenkonflikt §2 der
     Nicht-Aufnahmen).
-  - **Verbindung** (`verbindung`): der Walm enthält Verbindungen
+    - **Verbindung** (`verbindung`): der Walm enthält Verbindungen
     zwischen seinen Bestandteilen (Gratsparren–Schifter,
     Gratsparren–Fußpfetten-Stoß) und ist selbst keine
     Verbindung.
-  - **Auswechslung** (`auswechslung`): Schwester-Spezialisierung
+    - **Auswechslung** (`auswechslung`): Schwester-Spezialisierung
     von `bauteilgruppe` mit anderer Funktion (Lasteinleitung um
     Öffnung); kein Walm.
 

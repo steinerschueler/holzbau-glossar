@@ -64,7 +64,7 @@ Sei
 
 **Existenzbedingung.** Die Schnittgerade existiert genau dann, wenn
 
-```
+```text
 ‖ n_hat₁ × n_hat₂ ‖ > ε_K                                             (E)
 ```
 
@@ -72,14 +72,14 @@ Sei
 
 **Richtungsvektor.** Unter Bedingung (E) ist
 
-```
+```text
 v:= n_hat₁ × n_hat₂ ∈ ℝ³ \ {0},
 t_hat:= v / ‖v‖    ∈ S².
 ```
 
 **Stützpunkt.** Unter Bedingung (E) ist
 
-```
+```text
 x₀:= (d₁ · (n_hat₂ × t_hat)  +  d₂ · (t_hat × n_hat₁)) / ‖v‖             (S)
 ```
 
@@ -88,7 +88,7 @@ ein Punkt mit ⟨n_hat₁, x₀⟩ = d₁ und ⟨n_hat₂, x₀⟩ = d₂, also 
 **Schnittgerade.** Die durch (E₁, E₂) erzeugte **Schnittgerade**
 g(E₁, E₂) ⊂ ℝ³ ist die Punktmenge
 
-```
+```text
 g(E₁, E₂):= E₁ ∩ E₂ = { x₀ + t · t_hat ∈ ℝ³ | t ∈ ℝ },
 ```
 
@@ -97,14 +97,14 @@ Richtungsvektor t_hat.
 
 **Anwendung als Funktion.** Damit ist die Operation
 
-```
+```text
 Ebene × Ebene  ⟶  Gerade ∪ {Entartet.ParalleleEbenen,
                             Entartet.IdentischeEbenen}
 ```
 
 mit
 
-```
+```text
 schnittGerade(E₁, E₂):=
   Entartet.IdentischeEbenen,    falls ‖n_hat₁ × n_hat₂‖ ≤ ε_K  und
                                        |⟨n_hat₁, p₂ − p₁⟩| ≤ ε_L
@@ -120,7 +120,7 @@ schnittGerade(E₁, E₂):=
   ⟨n_hat₁, x₀⟩ = d₁ und ⟨n_hat₂, x₀⟩ = d₂; das ist eine direkte Konsequenz
   der Identitäten
 
-  ```
+  ```text
   ⟨n_hat₁, n_hat₂ × t_hat⟩ = ⟨t_hat, n_hat₁ × n_hat₂⟩ = ‖v‖,
   ⟨n_hat₁, t_hat × n_hat₁⟩ = 0,
   ⟨n_hat₂, n_hat₂ × t_hat⟩ = 0,
@@ -142,7 +142,7 @@ schnittGerade(E₁, E₂):=
   x₀ unverändert. Als Gerade im Sinne von `gerade` gilt zudem
   g(p₀, v) = g(p₀, −v), so dass
 
-  ```
+  ```text
   g(E₁, E₂) = g(E₂, E₁)   als Punktmenge.
   ```
 
@@ -212,24 +212,24 @@ geometrisch der Lotfußpunkt vom Ursprung auf die Schnittgerade.
   (Neigung, Konvexität, Höhenmaximum) zu Dachkanten klassifiziert
   werden.
 - **Abgrenzung**:
-  - **Gerade** (`gerade`): allgemein. Jede Schnittgerade ist eine
+    - **Gerade** (`gerade`): allgemein. Jede Schnittgerade ist eine
     Gerade, aber nicht jede Gerade ist eine Schnittgerade einer
     konkret gegebenen Ebenen­paarung. Eine als Schnittgerade
     klassifizierte Gerade trägt die Erzeuger-Information mit sich.
-  - **Strecke** (`strecke`): endlicher Ausschnitt einer Geraden
+    - **Strecke** (`strecke`): endlicher Ausschnitt einer Geraden
     zwischen zwei Endpunkten. Im Holzbau wird die Schnittgerade
     typischerweise auf den gemeinsamen Polygonbereich zweier
     Dachflächen beschnitten; das Ergebnis ist eine Strecke (oder
     ein Streckenzug), nicht die ganze Schnittgerade.
-  - **Schnittpunkt**: Schnitt einer Geraden mit einer Ebene oder
+    - **Schnittpunkt**: Schnitt einer Geraden mit einer Ebene oder
     dreier Ebenen — nulldimensionales Ergebnis, keine Gerade.
     Eigener Folge-Eintrag möglich.
-  - **Verschneidung** (Operation): allgemeiner Begriff für jede
+    - **Verschneidung** (Operation): allgemeiner Begriff für jede
     Schnitt­operation zwischen geometrischen Objekten. Die
     Schnittgerade ist eine **spezielle** Verschneidung (Ebene ∩
     Ebene → Gerade). Andere Verschneidungen (Polygon ∩ Polygon,
     Strecke ∩ Ebene) liefern andere Ergebnis­typen.
-  - **Halbgerade** (`halbgerade`): einseitig begrenzter Ausschnitt
+    - **Halbgerade** (`halbgerade`): einseitig begrenzter Ausschnitt
     einer Geraden. Die Schnittmenge zweier Ebenen ist niemals eine
     Halbgerade, sondern stets unbegrenzt zweiseitig.
 

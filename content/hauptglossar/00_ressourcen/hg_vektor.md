@@ -45,13 +45,13 @@ Sei
 Dann ist ein **Vektor** v ∈ ℝ³ eindeutig charakterisiert durch sein
 Komponententripel
 
-```
+```text
 v = v_x · e_x + v_y · e_y + v_z · e_z   mit   (v_x, v_y, v_z) ∈ ℝ³.
 ```
 
 Die euklidische **Norm** (Länge) ist
 
-```
+```text
 ‖v‖:= √(v_x² + v_y² + v_z²).
 ```
 
@@ -89,18 +89,18 @@ sind die zulässigen Mischoperationen.
 
 - **Oberbegriff**: keiner; Vektor ist mathematisches Primitiv.
 - **Teilbegriffe (Spezialisierungen)**:
-  - **Einheitsvektor**: Vektor mit Norm 1.
-  - **Nullvektor**: eindeutiger Vektor mit Norm 0.
-  - **Faserrichtung**: holzbauspezifische Rolle eines Einheitsvektors,
+    - **Einheitsvektor**: Vektor mit Norm 1.
+    - **Nullvektor**: eindeutiger Vektor mit Norm 0.
+    - **Faserrichtung**: holzbauspezifische Rolle eines Einheitsvektors,
     der die Richtung des Holzwuchses am Bauteil angibt (eigener
     Eintrag in Folgearbeit).
 - **Abgrenzung**:
-  - **Punkt** (eigener Eintrag): hat eine Stelle, aber keine
+    - **Punkt** (eigener Eintrag): hat eine Stelle, aber keine
     Richtung; ein Vektor hat eine Richtung, aber keine Stelle.
-  - **Strecke** (eigener Eintrag): konkrete, ortsgebundene
+    - **Strecke** (eigener Eintrag): konkrete, ortsgebundene
     Verbindung zweier Punkte; ein Vektor ist die ortsfreie
     Differenz dieser Punkte.
-  - **Gerade**: ein eindimensionaler affiner Unterraum, definiert
+    - **Gerade**: ein eindimensionaler affiner Unterraum, definiert
     durch Punkt + Richtungsvektor; nicht identisch mit dem
     Richtungsvektor selbst.
 

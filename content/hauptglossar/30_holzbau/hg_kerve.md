@@ -375,7 +375,7 @@ Sei
 
 - L_B = (O_B, e_hat_x^B, e_hat_y^B, e_hat_z^B) das Bauteil-Lokal-
   Koordinatensystem (`lokales_koordinatensystem`) mit Konvention
-  ```
+  ```text
   e_hat_x^B  =  Bauteilachse (Längsrichtung),
   e_hat_y^B  =  Bauteil-Querrichtung in der Trägerebene-Normale,
   e_hat_z^B  =  Bauteilhöhe nach oben (Sparren-Oberseite),
@@ -394,7 +394,7 @@ Sei weiter Π_⊥(B) ⊂ ℝ³ die **Lotebene** des Bauteils
 (`lotebene`): die welt-vertikale Ebene, die die Bauteilachse
 A_B enthält. In Π_⊥(B) seien
 
-```
+```text
 e_hat_h  ∈  Π_⊥(B)  mit  ⟨e_hat_h, e_hat_z^welt⟩ = 0  und  ⟨e_hat_h, e_hat_x^B⟩ > 0,
 e_hat_v:=  e_hat_z^welt,                                                (0)
 ```
@@ -407,7 +407,7 @@ Lotebene.
 
 Die **Parameter** einer Kerve sind das Tupel
 
-```
+```text
 p_Kerve:= (x_0, t, s)                                         (1)
 ```
 
@@ -442,7 +442,7 @@ horizontal) treffen sich im Kerveckpunkt P und treten beide an der
 Bauteil-Unterseite aus; damit ist die Sohlenlänge geometrisch
 determiniert:
 
-```
+```text
 w  =  t / sin θ                       (Sohlenlänge, abgeleitet)
 ```
 
@@ -457,7 +457,7 @@ Die drei Eckpunkte des Kerv-Dreiecks in der Lotebene Π_⊥(B) —
 Senkelausstieg C, Kerveckpunkt P, Sohlenausstieg A — sind dann
 (in Bauteil-Lokal-Koordinaten)
 
-```
+```text
 C:=  (x_0, 0, 0)                                               (2)
 P:=  C  +  (t / cos θ) · e_hat_v  =  (x_0 + t · tan θ, 0, t)    (3)
 A:=  P  +  (−s) · w · e_hat_h,   mit  w = t / sin θ            (4)
@@ -484,14 +484,14 @@ sich im rechten Winkel in P (Dietrichs-90°-Bedingung).
 Die **Sohlenebene** Σ_S ist die welt-horizontale Ebene durch
 P, also die Niveaufläche
 
-```
+```text
 Σ_S:=  { Q ∈ ℝ³ |  ⟨Q − P, e_hat_v⟩ = 0 }.                          (5)
 ```
 
 Die **Senkelebene** Σ_N ist die welt-vertikale Ebene durch P
 und C, gespannt von e_hat_v und e_hat_y^B (Bauteilquerrichtung), also
 
-```
+```text
 Σ_N:=  { Q ∈ ℝ³ |  ⟨Q − P, e_hat_h⟩ = 0 }.                          (6)
 ```
 
@@ -503,14 +503,14 @@ Bauteilachse hängt jedoch von der Einbau-Neigung θ ab.
 Die **Sohle** ist das Segment auf Σ_S vom Kerveckpunkt P bis
 zum Sohlenausstieg A:
 
-```
+```text
 S:=  { P + λ · (−s · e_hat_h) | 0 ≤ λ ≤ w }.                        (7)
 ```
 
 Der **Senkel** ist das Segment auf Σ_N vom Kerveckpunkt P bis
 zum Senkelausstieg C:
 
-```
+```text
 N:=  { P + λ · (−e_hat_v) | 0 ≤ λ ≤ |PC| }                          (8)
 ```
 
@@ -529,13 +529,13 @@ das den dreieckigen Kerv-Querschnitt in der Lotebene Π_⊥(B)
 über die volle Bauteilbreite b_B (oder einen Teil davon, je
 nach `lokalePlatzierung`) entlang e_hat_y^B extrudiert:
 
-```
+```text
 K_Kerve(p_Kerve):=  Δ_Kerve  ×  [y_min, y_max]                  (9)
 ```
 
 mit dem Kerv-Dreieck
 
-```
+```text
 Δ_Kerve:=  conv{ A, P, C }  ⊂  Π_⊥(B)                          (10)
 ```
 
@@ -548,7 +548,7 @@ Kerve, wenn das Werkzeug y-seitig über b_B hinausragt).
 Die **Wirkung** der Kerve auf das Bauteil ist die Boole'sche
 Differenz nach `bearbeitung`:
 
-```
+```text
 G_B'(F):=  G_B^lokal  \  K_Kerve(p_Kerve).                     (11)
 ```
 
@@ -559,7 +559,7 @@ Sohle und Senkel zusammenstoßen) ist der zentrale geometrische
 Anker der Kerve und wird in nachgelagerten Sparren-Pipeline-
 Begriffen als **p_K** referenziert:
 
-```
+```text
 p_K:=  P  =  (x_0 + t · tan θ, 0, t)  in Bauteil-Lokal-Koord.        (12)
 ```
 
@@ -577,7 +577,7 @@ Fußpfetten-Kerve).
 Damit ist eine **Kerve** (als Subtyp von `bearbeitung`) das
 Tupel
 
-```
+```text
 F:=  (uuid, typ = Kerve, parameter = p_Kerve,
        lokale_platzierung = id_SE(3), bezeichnung?)              (13)
 ```
@@ -876,7 +876,7 @@ in y-Richtung beschrieben.
 
 - design2machine: *BTLx interface description*, Version 2.1,
   16.11.2023, Abschnitt „BirdsMouth" (S. 24–28). Online:
-  www.design2machine.com/btlx.
+  <https://www.design2machine.com/btlx>.
 
 - DIN EN 1995-1-1:2010-12, „Eurocode 5: Bemessung und
   Konstruktion von Holzbauten – Teil 1-1", Abschnitt 5.2,

@@ -72,15 +72,15 @@ Sei
 
 Dann ist die **Haupttragrichtung** des Mehrlagenholzes definiert als
 
-```
+```text
 haupttragrichtung:= h_hat
-:= ℓ₀.faserrichtung
+                   := ℓ₀.faserrichtung
                        (bis auf Vorzeichen),
 ```
 
 mit den Konstruktions-Invarianten
 
-```
+```text
 (H1) Orthogonalität zur Plattendicken-Achse:
        ⟨h_hat, e_hat_d⟩ = 0     (mathematisch),
        | ⟨h_hat, e_hat_d⟩ | ≤ Toleranzen.WINKEL_EPS     (numerisch).
@@ -95,7 +95,7 @@ mit den Konstruktions-Invarianten
 
 **Nebentragrichtung** (siehe eigener Eintrag `nebentragrichtung`):
 
-```
+```text
 n_hat:= e_hat_d × h_hat ∈ S²,
 ```
 
@@ -105,7 +105,7 @@ mit ‖n_hat‖ = 1 wegen ⟨h_hat, e_hat_d⟩ = 0 und ‖h_hat‖ = ‖e_hat_d�
 das Bauteil; in der Praxis erfolgt die Bemessung pro Lage, siehe
 `hankinson_winkel` und `mehrlagenholz`):
 
-```
+```text
 α(F_hat, h_hat):= arccos(| ⟨F_hat, h_hat⟩ |) ∈ [0, π/2]
 ```
 
@@ -203,27 +203,27 @@ lagenweise Hankinson-Auswertung.
   Spezifikum ist die semantische Rolle „Decklage-Richtung mit
   höherer Steifigkeit".
 - **Verwendung**:
-  - **Mehrlagenholz** (`mehrlagenholz`): Pflichtfeld; primäres
+    - **Mehrlagenholz** (`mehrlagenholz`): Pflichtfeld; primäres
     Plattenebene-Richtungsfeld.
-  - **Nebentragrichtung** (`nebentragrichtung`): abgeleitet als
+    - **Nebentragrichtung** (`nebentragrichtung`): abgeleitet als
     e_hat_d × h_hat.
-  - **Lagenstruktur** (`lagenstruktur`): Invariante I5 verknüpft
+    - **Lagenstruktur** (`lagenstruktur`): Invariante I5 verknüpft
     h_hat mit ℓ₀.faserrichtung.
-  - **Hankinson-Winkel** (`hankinson_winkel`): bei Mehrlagenholz
+    - **Hankinson-Winkel** (`hankinson_winkel`): bei Mehrlagenholz
     pro Lage; Haupttragrichtung dient als Bezugsachse für die
     Plattenfestigkeit, nicht für lagenweise Bemessung.
 - **Abgrenzung**:
-  - **`einheitsvektor`** (allgemein): trägt keine semantische
+    - **`einheitsvektor`** (allgemein): trägt keine semantische
     Rolle.
-  - **`plattendicken_achse`**: rechtwinklig zur Plattenebene;
+    - **`plattendicken_achse`**: rechtwinklig zur Plattenebene;
     Haupttragrichtung liegt in der Plattenebene (rechtwinklig zur
     Plattendicken-Achse).
-  - **`plattenlaengsrichtung`**: OSB-spezifisch (Modus SCHWACH);
+    - **`plattenlaengsrichtung`**: OSB-spezifisch (Modus SCHWACH);
     Haupttragrichtung ist Mehrlagenholz-spezifisch (Modus
     STRUKTURIERT). Disjunkt nach Werkstoff-Modus.
-  - **`nebentragrichtung`**: 90° zur Haupttragrichtung in der
+    - **`nebentragrichtung`**: 90° zur Haupttragrichtung in der
     Plattenebene; abgeleitet, redundant.
-  - **`faserrichtung`**: Faserrichtung im engeren Sinn ist die
+    - **`faserrichtung`**: Faserrichtung im engeren Sinn ist die
     L-Richtung der Holzfaser einer einzelnen Holzlamelle. Die
     Haupttragrichtung ist die makroskopische Decklage-
     Faserrichtung; sie stimmt mit ℓ₀.faserrichtung überein, hat

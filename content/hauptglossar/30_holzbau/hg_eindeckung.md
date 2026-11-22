@@ -170,7 +170,7 @@ Dachaufbaus A genau dann, wenn
 
 Die **Eindeckung** des Daches ist dann das Paar
 
-```
+```text
 Eindeckung:= (S_k, σ)
 ```
 
@@ -248,8 +248,8 @@ trigger-basiert):
 - **Schiefereindeckung** (Naturschiefer; Altdeutsche Deckung,
   Rechteckdeckung).
 - **Metalleindeckung**, mit Subtypen:
-  - **Stehfalzeindeckung** (nicht selbsttragend, EN 14783).
-  - **Trapezprofileindeckung** (selbsttragend, EN 14782).
+    - **Stehfalzeindeckung** (nicht selbsttragend, EN 14783).
+    - **Trapezprofileindeckung** (selbsttragend, EN 14782).
 - **Bitumenschindeleindeckung** (geneigt, schuppig; abzugrenzen
   von der Bitumenbahn, die als Flachdach-Abdichtung auftritt).
 - **Holzschindeleindeckung** (Lärche, Eiche; DE/AT/CH-Werte
@@ -281,18 +281,18 @@ Branchen-Orientierungswerte (nicht normativ, aus ZVDH-
 Fachregeln und Sekundärquellen; verbindlich sind die jeweils
 referenzierten Norm- bzw. Fachregel-Werte):
 
-| Material                             | RDN (typ.)  | MDN (Minimum) |
-|---|---|---|
-| Tonziegel (Standard)                 | ≈ 22°       | 10°           |
-| Betondachsteine                      | ≈ 22°       | 10°           |
-| Naturschiefer (Altdeutsche Deckung)  | 25°         | 15°           |
-| Metall nicht selbsttragend (Stehfalz)| produktabh. | 3° (mit Zusatz)|
-| Metall selbsttragend (Trapezprofil)  | produktabh. | 3°–7°         |
-| Bitumenschindeln                     | ≥ 20°       | ≥ 15°         |
-| Holzschindeln (gespalten, DE)        | 30°         | 14°–18° krit. |
-| Reet                                 | 45°         | 40° (Sonderfall)|
-| BIPV / Indach-PV                     | analog Metall, produktabh. | Hersteller-Zulassung |
-| Glas (Wintergarten)                  | ≥ 7°        | ≥ 5°          |
+| Material | RDN (typ.) | MDN (Minimum) |
+| --- | --- | --- |
+| Tonziegel (Standard) | ≈ 22° | 10° |
+| Betondachsteine | ≈ 22° | 10° |
+| Naturschiefer (Altdeutsche Deckung) | 25° | 15° |
+| Metall nicht selbsttragend (Stehfalz) | produktabh. | 3° (mit Zusatz) |
+| Metall selbsttragend (Trapezprofil) | produktabh. | 3°–7° |
+| Bitumenschindeln | ≥ 20° | ≥ 15° |
+| Holzschindeln (gespalten, DE) | 30° | 14°–18° krit. |
+| Reet | 45° | 40° (Sonderfall) |
+| BIPV / Indach-PV | analog Metall, produktabh. | Hersteller-Zulassung |
+| Glas (Wintergarten) | ≥ 7° | ≥ 5° |
 
 In der Schweiz publiziert die Arbeitsgemeinschaft
 Ziegelindustrie Schweiz (AGZ) eine eigene Mindest-
@@ -326,30 +326,30 @@ Unterscheidung wird in der App über die `dachneigung` und den
   Bitumenschindeleindeckung, Holzschindeleindeckung,
   Reeteindeckung, Solareindeckung, Glaseindeckung.
 - **Abgrenzung:**
-  - **`dachhaut`:** die geometrische, fiktive Hüllfläche
+    - **`dachhaut`:** die geometrische, fiktive Hüllfläche
     **über** der Eindeckung. Die Dachhaut ist Geometrie
     (kein materielles Bauteil); die Eindeckung ist Material.
     Die Dachhaut wird aus der äußeren Punktwolke der
     Eindeckung konstruiert (siehe `dachhaut`,
     Höhenfunktion ρ über dem Trägerbereich F).
-  - **`dachaufbau`:** die gesamte geordnete Schichtfolge
+    - **`dachaufbau`:** die gesamte geordnete Schichtfolge
     oberhalb des Tragwerks. Die Eindeckung ist nur die
     äußerste Schicht dieses Aufbaus, nicht der Aufbau selbst.
-  - **`dachflaeche`:** die geometrische, dickenlose
+    - **`dachflaeche`:** die geometrische, dickenlose
     Bezugsebene **unter** dem Aufbau. Die Eindeckung liegt
     über der Dachfläche im Halbraum der äußeren Normalen.
-  - **`dachabdichtung`** (Forward-Verweis, Trigger Kategorie
+    - **`dachabdichtung`** (Forward-Verweis, Trigger Kategorie
     A — Flachdach-Pendant): die wasserdichte, durchgehende
     Membran als äußerste Schicht eines Flachdaches oder
     eines geneigten Daches unterhalb der Mindestdachneigung.
     Normativ in DIN 18336 (DE) bzw. SIA 271 (CH) geregelt
     und vom Geltungsbereich der Eindeckung (DIN 18338,
     SIA 232/1) ausdrücklich getrennt.
-  - **`unterdach`** (Forward-Verweis, Trigger Kategorie A):
+    - **`unterdach`** (Forward-Verweis, Trigger Kategorie A):
     die zweite wasserführende Ebene unterhalb der
     Eindeckung. Unterhalb von Konterlattung und Eindeckung;
     nicht Bestandteil der Eindeckung selbst.
-  - **`latte`**, **`konterlatte`**, **`traglattung`**,
+    - **`latte`**, **`konterlatte`**, **`traglattung`**,
     **`konterlattung`** (Forward-Verweise, Trigger
     Kategorie A): tragende Lattenebene und
     Hinterlüftungs-Lattenebene unterhalb der Eindeckung.

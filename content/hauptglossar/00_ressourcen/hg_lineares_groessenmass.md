@@ -54,13 +54,13 @@ Sei
   gegenüberliegenden Bezugs-Features im Sinne der vier folgenden
   Fälle (DIN EN ISO 14405-1, Abschnitt 4):
 
-  - **Fall A (Durchmesser):** F₁ = F₂ = Z mit Z ∈ {Zylinder, Kugel,
+    - **Fall A (Durchmesser):** F₁ = F₂ = Z mit Z ∈ {Zylinder, Kugel,
     Kreis, Torus}; das Maß ist der Durchmesser d des Form-Elements.
-  - **Fall B (parallele Geraden):** F₁, F₂ ⊂ E zwei parallele
+    - **Fall B (parallele Geraden):** F₁, F₂ ⊂ E zwei parallele
     Geraden in einer gemeinsamen Ebene E (siehe `hg_gerade.md`,
     `hg_ebene.md`); das Maß ist der euklidische Abstand
     d(F₁, F₂):= inf { ‖p − q‖ | p ∈ F₁, q ∈ F₂ }.
-  - **Fall C (parallele Ebenen):** F₁, F₂ ⊂ ℝ³ zwei parallele
+    - **Fall C (parallele Ebenen):** F₁, F₂ ⊂ ℝ³ zwei parallele
     Ebenen (siehe `hg_ebene.md`); das Maß ist
     d(F₁, F₂):= inf { ‖p − q‖ | p ∈ F₁, q ∈ F₂ }.
 
@@ -70,7 +70,7 @@ Sei
 
 Dann ist das **lineare Größenmaß** das Tupel
 
-```
+```text
 G(F, ℓ, T):= (F, ℓ, T).
 ```
 
@@ -83,9 +83,9 @@ Sinne von `hg_laengenmass.md`.
 
 - **Existenz und Eindeutigkeit:** Für jedes Form-Element-Paar in
   einem der drei Fälle ist d(F₁, F₂) bzw. d eindeutig bestimmt:
-  - Fall A: der Durchmesser eines Zylinders/Kugel/Kreis/Torus ist
+    - Fall A: der Durchmesser eines Zylinders/Kugel/Kreis/Torus ist
     durch das Form-Element selbst eindeutig festgelegt.
-  - Fall B/C: der Infimumsabstand zweier paralleler Geraden bzw.
+    - Fall B/C: der Infimumsabstand zweier paralleler Geraden bzw.
     Ebenen ist eindeutig und entspricht der Länge des gemeinsamen
     Lot-Streckenstücks (Strecke rechtwinklig zu beiden Features).
 - **Repräsentanten-Unabhängigkeit:** In Fall B/C ist die
@@ -147,20 +147,20 @@ und Platten-Querschnitts-Maße einschlägig.
   Form-Element-Fälle sind durch die Fallunterscheidung in der
   Mathematischen Definition abgedeckt, nicht durch eigene Einträge).
 - **Abgrenzung:**
-  - **`laengenmass`:** Oberbegriff; allgemeine Bemaßung ohne
+    - **`laengenmass`:** Oberbegriff; allgemeine Bemaßung ohne
     Form-Element-Einschränkung und ohne Toleranzfeld.
-  - **„Größenmaß" (nackt):** im DACH-Korpus mehrdeutig (umfasst
+    - **„Größenmaß" (nackt):** im DACH-Korpus mehrdeutig (umfasst
     teils auch winklige Größen); DIN EN ISO 14405-1 ist auf
     **lineare** Größenmaße eingeschränkt, daher die qualifizierende
     Norm-Benennung „lineares Größenmaß".
-  - **GPS (Geometrische Produktspezifikation):** das normative
+    - **GPS (Geometrische Produktspezifikation):** das normative
     Rahmenwerk, in dem das lineare Größenmaß steht; Korpus-Begriff
     ohne eigenen Hauptglossar-Eintrag (Konvention §6.D —
     holzbau-irrelevant in der breiten Form).
-  - **Toleranzfeld:** der Wertebereich [ℓ_min, ℓ_max] für den
+    - **Toleranzfeld:** der Wertebereich [ℓ_min, ℓ_max] für den
     Maßwert; Bestandteil des linearen Größenmaßes, im Glossar nicht
     eigenständig geführt (Konvention §6.D).
-  - **`masstoleranz_din18202`:** Bauwerks-Maßtoleranz nach
+    - **`masstoleranz_din18202`:** Bauwerks-Maßtoleranz nach
     Ausführungsnorm; nicht identisch mit dem GPS-Toleranzfeld
     (DIN 18202 ist handwerkliche Bautoleranz, ISO 14405-1 ist
     Maschinenbau-GPS).

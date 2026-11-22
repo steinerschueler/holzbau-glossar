@@ -102,7 +102,7 @@ Dann heißt P eine **Firstpfette** genau dann, wenn die folgenden
 Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
 
 1. **Parallelität zum First**: d_hat_P ist kollinear mit d_hat_F,
-   ```
+   ```text
    ‖d_hat_P × d_hat_F‖ ≤ ε_K.
    ```
    Sinus-Test gegen Kollinearität; nach `_KONVENTIONEN.md`
@@ -111,7 +111,7 @@ Bedingungen zusätzlich zu denen von `pfette` erfüllt sind:
 
 2. **Firstnah**: Die mittlere Höhe der Pfettenachse liegt
    innerhalb δ_z des Firstniveaus,
-   ```
+   ```text
    |z_P − z_F| ≤ δ_z.
    ```
 
@@ -234,7 +234,7 @@ Vorzeichenkonvention aus `hg_sparren.md` (d_hat zeigt bergauf, also
 entgegen e_hat_fall) ist der axiale Kervenabstand die Projektion der
 Verbindung auf d_hat:
 
-```
+```text
 s:=  ⟨ p_K^First − p_K^Fuß,  d_hat ⟩                            (s.1)
 ```
 
@@ -262,7 +262,7 @@ z(p_K^First) um die jeweiligen Pfettenhöhen versetzt, und die
 Bauteilachse ist um die Dachneigung α gegen die Horizontale geneigt.
 Dann folgt aus (s.1) die geschlossene Form
 
-```
+```text
 s  =  (z(p_K^First) − z(p_K^Fuß)) / sin(α)                    (s.3)
    =  (firstpfetteHoehe − fusspfetteHoehe) / sin(α).          (s.4)
 ```
@@ -298,28 +298,28 @@ Verbindungen:
 - **Bestandteile (partitiv)**: geerbt von `pfette`
   (Bauteilachse, Querschnitt, Werkstoff, Faserrichtung).
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **First** (`first`): die Dachkante, parallel zu der die
+    - **First** (`first`): die Dachkante, parallel zu der die
     Firstpfette liegt.
-  - **Sparren** (`sparren`): liegt mit dem Sparrenfirstpunkt auf der
+    - **Sparren** (`sparren`): liegt mit dem Sparrenfirstpunkt auf der
     Firstpfette auf (Pfettendach) bzw. wird durch sie unterstützt
     (Mischsystem).
-  - **Stuhlsäule** (`stuhlsaeule`, eigener Eintrag folgt):
+    - **Stuhlsäule** (`stuhlsaeule`, eigener Eintrag folgt):
     Stütze, die die Firstpfette an Zwischenpunkten trägt.
-  - **Giebelwand** / **Stirnwand**: traditionelle Auflager der
+    - **Giebelwand** / **Stirnwand**: traditionelle Auflager der
     Firstpfette an den Dach-Stirnseiten.
 - **Abgrenzung**:
-  - **First** (`first`): die geometrische Schnittkante zweier
+    - **First** (`first`): die geometrische Schnittkante zweier
     Dachflächen am höchsten Punkt; die Firstpfette ist ein
     materialbehaftetes Stabbauteil, das **unter oder am** First
     liegt. First und Firstpfette sind nicht identisch (Geometrie
     vs. Bauteil), liegen aber parallel zueinander.
-  - **Mittelpfette** (`mittelpfette`): liegt zwischen Fuß- und
+    - **Mittelpfette** (`mittelpfette`): liegt zwischen Fuß- und
     Firstpfette, also weiter unten am Dach.
-  - **Fußpfette** (`fusspfette`): liegt am Sparrenfuß, also weit
+    - **Fußpfette** (`fusspfette`): liegt am Sparrenfuß, also weit
     unten am Dach.
-  - **Sparren** (`sparren`): geneigtes Bauteil, das **auf** der
+    - **Sparren** (`sparren`): geneigtes Bauteil, das **auf** der
     Firstpfette aufliegt; nicht selbst Pfette.
-  - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken
+    - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken
     zwischen einem Sparrenpaar; trägt keine Sparren in
     Längsrichtung. Keine Firstpfette.
 

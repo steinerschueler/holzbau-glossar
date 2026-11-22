@@ -10,7 +10,7 @@ status: entwurf
 # Toleranzen (Subglossar)
 
 Brücke vom normativen Hauptglossar
-(`hauptglossar/00_ressourcen/hg_toleranzen.md`) zu den
+(`glossary/00_ressourcen/hg_toleranzen.md`) zu den
 stufenweisen Theorie-Inhalten. Hier liegt die didaktische
 Aufbereitung der **handwerklich-zimmermannsmäßigen Toleranz**:
 das Vier-Wörter-Schema Sollmaß — Istmaß — Grenzabweichung —
@@ -59,7 +59,7 @@ ist die zimmermannssprachliche Stehform der Toleranz im DACH-
 Holzbau:
 
 | Wort | Bedeutung | Beispiel an der Sparrenlänge |
-|---|---|---|
+| --- | --- | --- |
 | **Sollmaß** (DE/AT: *Soll-/Nennmaß*; CH: *Sollmaß*) | Maß aus dem Werkplan, das Bauteil soll genau diesen Wert haben | 4520 mm |
 | **Istmaß** | Tatsächlich gemessenes Maß am gefertigten Bauteil | 4523 mm |
 | **Grenzabweichung** | Zulässiges Mehr / Weniger gegenüber dem Sollmaß, beidseitig oder einseitig | ±5 mm |
@@ -91,7 +91,7 @@ spricht. Anders als bei einer rein geometrischen Bearbeitung
 sichtbar — was variiert, ist das Bedeutungs-Register.
 
 | Schicht | Bedeutung | Sichtbare Begriffe | Stufen-Zugang |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Werkzeug-Genauigkeit** | gerätegebundene Grenze, jenseits derer das Werkzeug nicht mehr trennt | Maßband-Klasse II, Zollstock-Klasse III, Laser ±2 mm, Schmiege „auf den Strich genau" | Lehrling |
 | **Handwerkliche Maßtoleranz** | zulässige Abweichung Soll- ↔ Ist-Maß am gefertigten Bauteil | Sollmaß / Istmaß / Grenzabweichung / Toleranz, Aufmaß-Spielraum, Werkstoff-Toleranz | Zimmermann |
 | **Norm-Toleranzklasse** | klassifizierter Bauteil-Status mit Wirkung auf Tragfähigkeit, Anschluss und Bauteil-Zusammenfügen | Toleranzklasse fein / mittel / grob, Fertigung- vs. Montage-Trennung, Bezugsfeuchte | Meister |
@@ -105,7 +105,7 @@ unterscheidet. Diese Grenze ist die ehrlichste Einführung in die
 Sache:
 
 | Werkzeug | Typische Genauigkeit |
-|---|---|
+| --- | --- |
 | Zollstock, eichbar (EU-Klasse III) | ±1 mm bei 1 m Länge, ±1,4 mm bei 2 m |
 | Rollbandmaß (EU-Klasse II) | ±0,7 mm bei 2 m, ±1,3 mm bei 5 m |
 | Lasermessgerät (handelsüblich) | ±1 bis ±3 mm |
@@ -194,7 +194,7 @@ anderem Maß gemessen werden.
 Richtungen seiner Struktur unterschiedlich stark:
 
 | Richtung | Schwindmaß je 1 % Holzfeuchteänderung | Verhältnis |
-|---|---|---|
+| --- | --- | --- |
 | **Längs zur Faser** | ≈ 0,01 % | praktisch null |
 | **Radial** (zum Markstrahl) | ≈ 0,19 % | mittel |
 | **Tangential** (zum Jahrring) | ≈ 0,36 % | groß |
@@ -293,7 +293,7 @@ Werkzeug der App-Schicht** — sie liegen viele Größenordnungen
 unter jeder handwerklichen Grenzabweichung und haben mit ihr nur
 das Wort gemeinsam. Die normative Behandlung dieser numerischen
 Schwellen gehört strikt ins Hauptglossar
-(`hauptglossar/00_ressourcen/hg_toleranzen.md`); im Subglossar
+(`glossary/00_ressourcen/hg_toleranzen.md`); im Subglossar
 wird sie hier nur abgegrenzt, nicht definiert.
 
 ## DACH-Spezifika (CH / DE / AT)
@@ -303,7 +303,7 @@ Maßtoleranzen, alle mit dem Vier-Wörter-Schema und sehr ähnlichen
 Wertebereichen, **nicht jedoch gegenseitig harmonisiert**.
 
 | Land | Bezeichnung | Norm-Familie | Besonderheit |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Schweiz (CH)** | *Masstoleranz* (mit `ss`), *Masshaltigkeit* | **SIA 414/1** (Begriffe) + **SIA 414/2** „Masstoleranzen im Hochbau" | **Kein** eigenständiges Norm-Pendant zu DIN 18203-3 für die Holzbau-Fertigung; SIA 414 deckt die Holz-spezifische Vorfertigung nicht ausreichend ab. Ergänzend trägt der Leitfaden **Holzbau Schweiz / VGQ „Maßtoleranzen im vorgefertigten Holzsystembau"** die schweizerische Konvention. |
 | **Deutschland (DE)** | *Maßtoleranz* (mit `ß`) | **DIN 18202** „Toleranzen im Hochbau — Bauwerke" (Montage am eingebauten Bauwerk) + **DIN 18203-3** „Bauteile aus Holz und Holzwerkstoffen" (Fertigung am gerade gefertigten Bauteil) | Klare **Trennung Fertigung ↔ Montage** als zwei eigene Normen. Ergänzend für die Materialebene: **DIN EN 14080** (BSH), Bezugsfeuchte 12 %. |
 | **Österreich (AT)** | *Maßtoleranz* | **ÖNORM B 2215** „Werkvertragsnorm für Holzbau-Meisterarbeiten" | Regelt Maßtoleranzen für Zimmermeister-Arbeiten als Vertragsgrundlage, mit eigenen Regeln für Bauholz, Dachlattung und Nut-und-Feder-Bretter; verweist im Übrigen auf die DIN-Familie. |
@@ -330,31 +330,31 @@ Diese Subglossar-Datei stützt sich auf die folgenden Hauptglossar-
 Begriffe; bei Detailfragen ist dort die normative Definition zu
 finden:
 
-- `hauptglossar/00_ressourcen/hg_toleranzen.md` — das normative
+- `glossary/00_ressourcen/hg_toleranzen.md` — das normative
   Hauptglossar zu den numerischen Klassifikationsschwellen
   (Epsilon-Schwellen für geometrische Vergleiche in der App-
   Schicht). Die handwerkliche Bedeutung dieses Subglossar-Eintrags
   ist dort als **Abgrenzung** geführt; eigene Glossarbegriffe für
   die handwerklich-normativen Maßtoleranzen (DIN 18202, DIN
   18203-3, SIA 414, ÖNORM B 2215) sind als Folgearbeit vorgesehen.
-- `hauptglossar/00_ressourcen/hg_laengenmaß.md`,
-  `hauptglossar/00_ressourcen/hg_lineares_größenmaß.md` — die
+- `glossary/00_ressourcen/hg_laengenmaß.md`,
+  `glossary/00_ressourcen/hg_lineares_größenmaß.md` — die
   Größen, auf die sich Sollmaß, Istmaß und Grenzabweichung
   beziehen.
-- `hauptglossar/00_ressourcen/hg_punkt.md`,
-  `hauptglossar/00_ressourcen/hg_strecke.md`,
-  `hauptglossar/00_ressourcen/hg_ebene.md` — die geometrischen
+- `glossary/00_ressourcen/hg_punkt.md`,
+  `glossary/00_ressourcen/hg_strecke.md`,
+  `glossary/00_ressourcen/hg_ebene.md` — die geometrischen
   Primitive, deren App-Vergleiche im Hauptglossar
   `hg_toleranzen.md` numerisch klassifiziert werden.
 
 Verwandte Subglossar-Einträge:
 
-- `lerninhalt/subglossar/sg_punkt.md`,
-  `lerninhalt/subglossar/sg_strecke.md`,
-  `lerninhalt/subglossar/sg_ebene.md` — die Primitive, die im
+- `learning/subglossary/sg_punkt.md`,
+  `learning/subglossary/sg_strecke.md`,
+  `learning/subglossary/sg_ebene.md` — die Primitive, die im
   Werkplan bemaßt werden und damit die handwerkliche Toleranz
   am Werkstück tragen.
-- `lerninhalt/subglossar/sg_kerve.md` — die Kervtiefe-Faustregel-
+- `learning/subglossary/sg_kerve.md` — die Kervtiefe-Faustregel-
   Bandbreite (ein Sechstel bis ein Drittel der Sparrenhöhe) als
   praktisches Beispiel einer Faustregel-Toleranz und die
   Werkzeug-Trias am Anriss (Schmiege, Streichmaß,

@@ -44,26 +44,26 @@ Sei
 
 Dann heißt v **Einheitsvektor** genau dann, wenn
 
-```
+```text
 ‖v‖ = 1     (mathematische Idealform)
 ```
 
 bzw. in der Domänen-Schicht prüfbar
 
-```
+```text
 | ‖v‖² − 1 | ≤ NORM_EPS     (numerische Form).
 ```
 
 Die Menge aller (idealen) Einheitsvektoren ist die **Einheitssphäre**
 
-```
+```text
 S²:= { v ∈ ℝ³ | ‖v‖ = 1 } ⊂ ℝ³.
 ```
 
 **Konstruktion durch Normierung**: Für einen Vektor v ∈ ℝ³ mit
 ‖v‖² > NORM_EPS ist
 
-```
+```text
 v_hat:= v / ‖v‖ ∈ S²
 ```
 
@@ -123,33 +123,33 @@ Eingang.
 - **Oberbegriff**: `vektor`. Ein Einheitsvektor ist ein Vektor mit
   dem Zusatzmerkmal ‖v‖ = 1.
 - **Teilbegriffe (Spezialisierungen / Rollen)**:
-  - **Faserrichtung** (`faserrichtung`): Einheitsvektor in der
+    - **Faserrichtung** (`faserrichtung`): Einheitsvektor in der
     semantischen Rolle „lokale Hauptachse der Holzfaser eines
     Bauteils".
-  - **Normalenvektor** einer Ebene (`ebene.normale`): Einheitsvektor
+    - **Normalenvektor** einer Ebene (`ebene.normale`): Einheitsvektor
     in der Rolle „rechtwinklig zu einer Ebene".
-  - **Normalenvektor** eines Halbraumes (`halbraum.normale`):
+    - **Normalenvektor** eines Halbraumes (`halbraum.normale`):
     Einheitsvektor in der Rolle „auswärts gerichtete Normale auf
     der Begrenzungsebene".
-  - **Achsenrichtung** einer Geraden (`gerade.richtung` in
+    - **Achsenrichtung** einer Geraden (`gerade.richtung` in
     normierter Form): Einheitsvektor in der Rolle „Richtung einer
     Geraden", bis auf das Vorzeichen.
 - **Abgrenzung**:
-  - **`vektor`** (allgemein): kann beliebige Norm haben, insbesondere
+    - **`vektor`** (allgemein): kann beliebige Norm haben, insbesondere
     auch Längeninformation (z. B. ein Verschiebungsvektor in mm).
     Ein Einheitsvektor verzichtet auf Längeninformation und trägt
     ausschließlich Richtung.
-  - **„Richtung"** als eigener Begriff wird in diesem Glossar
+    - **„Richtung"** als eigener Begriff wird in diesem Glossar
     bewusst **nicht** eingeführt: in der App ist die kanonische
     Repräsentation einer Richtung ein Einheitsvektor; der Begriff
     „Richtung" tritt nur im Erläuterungstext auf. Eine ungerichtete
     Richtung (Linie ohne Orientierung) wird durch das antipodale
     Paar {v_hat, −v_hat} ⊂ S² repräsentiert.
-  - **Nullvektor** (siehe `vektor`): ‖v‖ = 0 ist der einzige Vektor,
+    - **Nullvektor** (siehe `vektor`): ‖v‖ = 0 ist der einzige Vektor,
     aus dem **kein** Einheitsvektor durch Normierung gewonnen werden
     kann. Versuche der Normierung des Nullvektors liefern die
     Entartet-Variante `EntartetGeometrie.Nullrichtung`.
-  - **`faserrichtung`**: ein Einheitsvektor in einer holzbau-
+    - **`faserrichtung`**: ein Einheitsvektor in einer holzbau-
     spezifischen semantischen Rolle. Strukturell identisch zu einem
     allgemeinen Einheitsvektor, aber zusätzlich annotiert mit der
     Bedeutung „Materialachse".

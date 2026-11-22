@@ -171,7 +171,7 @@ erfüllt sind:
 2. **Aufstrebende Bauteilachse** (gelockerte Lotrechtheit für die
    liegende Variante): Die Bauteilachse hat eine **positive
    z-Komponente** (Kopf liegt höher als Fuß),
-   ```
+   ```text
    p_a.z + ε_L < p_e.z.
    ```
    Die Lotrechtheit selbst (‖d_hat × e_z‖ ≤ ε_K) ist im **stehenden
@@ -186,12 +186,12 @@ erfüllt sind:
 
 4. **Stuhlpfetten-Anschluss am Kopf**: Der obere Endpunkt p_e liegt
    auf der Stuhlpfetten-Bauteilachse a(P) bis auf Toleranz,
-   ```
+   ```text
    dist(p_e, a(P)) ≤ ε_L,
    ```
    wobei dist(p, a) der Punkt-Geraden-Abstand zur Pfetten-Achse
    ist. Die Stuhlpfette ist horizontal,
-   ```
+   ```text
    |⟨d_hat_P, e_z⟩| ≤ ε_K,
    ```
    d. h. ihre Achse steht rechtwinklig zur Lotachse.
@@ -199,7 +199,7 @@ erfüllt sind:
 5. **Auflagerbalken-Anschluss am Fuß**: Der untere Endpunkt p_a
    liegt auf der Bauteilachse a(T) eines horizontalen
    Auflagerbalkens bis auf Toleranz,
-   ```
+   ```text
    dist(p_a, a(T)) ≤ ε_L.
    ```
    Der Auflagerbalken T ist horizontal (analog zur Pfette) oder
@@ -330,7 +330,7 @@ Die Stuhlsäule ist Teil einer engen Bauteil-Familie (Wikipedia/
 Stehender Stuhl, ETH Holzer/Steiger):
 
 | Bauteil | Funktion |
-|---|---|
+| --- | --- |
 | **Stuhlsäule** | tragendes Druck-Element zur Pfettenauflagerung |
 | **Stuhlpfette** | trägt Sparren oder Kehlbalken am Stuhlsäulen-Kopf |
 | **Stuhlschwelle** | trägt Stuhlsäulen-Füße, verteilt Last auf Deckenbalken |
@@ -400,92 +400,92 @@ truss**".
   `sparren` (Dachfläche), `pfette` (Dach-Längsträger),
   `haengesaeule` (Hängewerk).
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`), aufstrebend
+    - **Bauteilachse** (`bauteilachse.Gerade`), aufstrebend
     (Bedingung 2);
-  - **Querschnitt** (rechteckig, typisch 140–240 mm Kantenmaß);
-  - **Werkstoff** (Vollholz oder BSH, Festigkeitsklasse C24 oder
+    - **Querschnitt** (rechteckig, typisch 140–240 mm Kantenmaß);
+    - **Werkstoff** (Vollholz oder BSH, Festigkeitsklasse C24 oder
     GL24h);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_Stuhlsäule).
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_Stuhlsäule).
 - **Topologische Inzidenz**:
-  - **Stuhlpfette** (`stuhlpfette`, Forward-Verweis): trägt am
+    - **Stuhlpfette** (`stuhlpfette`, Forward-Verweis): trägt am
     Stuhlsäulen-Kopf (Bedingung 4).
-  - **Auflagerbalken** (Stuhlschwelle / Deckenbalken /
+    - **Auflagerbalken** (Stuhlschwelle / Deckenbalken /
     Bundbalken; `stuhlschwelle` Forward-Verweis): trägt den
     Stuhlsäulen-Fuß (Bedingung 5).
-  - **Kopfband** (`kopfband`, Welle 10): Diagonal-Aussteifung
+    - **Kopfband** (`kopfband`, Welle 10): Diagonal-Aussteifung
     zwischen Stuhlsäulen-Kopf und Stuhlpfette.
-  - **Fußband** (`fussband`, Welle 10/11): Diagonal-Aussteifung
+    - **Fußband** (`fussband`, Welle 10/11): Diagonal-Aussteifung
     zwischen Stuhlsäulen-Fuß und Stuhlschwelle.
-  - **Strebe** (`strebe`, Welle 10): bei doppelt stehendem Stuhl
+    - **Strebe** (`strebe`, Welle 10): bei doppelt stehendem Stuhl
     Schrägaussteifung längs der Stuhl-Reihe.
-  - **Spannriegel** (`spannriegel`, Forward-Verweis): beim
+    - **Spannriegel** (`spannriegel`, Forward-Verweis): beim
     liegenden Stuhl Querriegel zwischen den geneigten
     Stuhlsäulen.
 - **Spezialisierungen** (Folgearbeit-Trigger):
-  - `stehende_stuhlsaeule`: lotrechte Variante im stehenden
+    - `stehende_stuhlsaeule`: lotrechte Variante im stehenden
     Stuhl.
-  - `liegende_stuhlsaeule`: schräggestellte Variante im
+    - `liegende_stuhlsaeule`: schräggestellte Variante im
     liegenden Stuhl.
 - **Verwendung**:
-  - Mitglied des **Dachstuhls** (`dachstuhl`, Welle 12) als
+    - Mitglied des **Dachstuhls** (`dachstuhl`, Welle 12) als
     eine seiner zentralen Bauteilrollen im Pfettendach mit
     Stuhl-Konstruktion.
-  - Mitglied einer **Stuhlwand**-Bauteilgruppe
+    - Mitglied einer **Stuhlwand**-Bauteilgruppe
     (`stuhlwand`, Folgearbeit-Trigger).
 - **Abgrenzung**:
-  - **Stütze** (`stuetze`, Welle 13): werkstoffneutrale Tragwerks-
+    - **Stütze** (`stuetze`, Welle 13): werkstoffneutrale Tragwerks-
     Bauteilrolle ohne Stuhlpfetten-Anschluss. Geschwister-Rolle
     der Stuhlsäule, nicht Oberbegriff. Trennlinie:
     Stuhlpfetten-Anschluss (Bedingung 4) und Holz-Exklusivität.
-  - **Säule** (`saeule`, Welle 13): architektonisch-klassischer
+    - **Säule** (`saeule`, Welle 13): architektonisch-klassischer
     Subtyp der Stütze. Keine Stuhlsäule ist eine Säule
     (Bedingung 3 von `hg_saeule.md` — freistehender Charakter —
     ist bei der Stuhlsäule verletzt, sie ist in den Dachstuhl
     eingebunden).
-  - **Hängesäule** (`haengesaeule`, Welle 13): Zug-Element im
+    - **Hängesäule** (`haengesaeule`, Welle 13): Zug-Element im
     Hängewerk; Geschwister-Bauteilrolle mit invertiertem
     Lastpfad. Bedingung 6 trennt: Stuhlsäule trägt Druck,
     Hängesäule Zug.
-  - **Ständer** (`staender`, Welle 9): Wand-Bauteilrolle.
+    - **Ständer** (`staender`, Welle 9): Wand-Bauteilrolle.
     Geschwister-Rolle; Trennlinie über die Wand-Inzidenz (Schwelle/
     Einbinder) gegen die Stuhl-Inzidenz (Stuhlpfette/Stuhlschwelle).
-  - **Pfette** (`pfette`, Welle 8): horizontaler Dach-Längsträger;
+    - **Pfette** (`pfette`, Welle 8): horizontaler Dach-Längsträger;
     liegt auf den Stuhlsäulen-Köpfen, ist nicht selbst Stuhlsäule.
     Die **Stuhlpfette** (`stuhlpfette`, Forward-Verweis) ist die
     Pfetten-Spezialisierung am Stuhlsäulen-Kopf.
-  - **Stuhl** (`stuhl`, Forward-Verweis, Welle-12-Folgearbeit aus
+    - **Stuhl** (`stuhl`, Forward-Verweis, Welle-12-Folgearbeit aus
     `hg_dachstuhl.md`): Stütz-Bauteilgruppe; die Stuhlsäule ist
     Bestandteil eines Stuhls, nicht selbst der Stuhl.
-  - **Stehender Stuhl** / **Liegender Stuhl** (Forward-Verweise):
+    - **Stehender Stuhl** / **Liegender Stuhl** (Forward-Verweise):
     Varianten der Stuhl-Konstruktion, in denen die Stuhlsäule
     lotrecht bzw. schräg verbaut ist.
-  - **Stuhlwand** (`stuhlwand`, Folgearbeit-Trigger):
+    - **Stuhlwand** (`stuhlwand`, Folgearbeit-Trigger):
     Bauteilgruppe aus Stuhlsäule + Stuhlpfette + Stuhlschwelle +
     Kopfband + Fußband.
-  - **Kopfband** (`kopfband`, Welle 10): Diagonal-Aussteifung am
+    - **Kopfband** (`kopfband`, Welle 10): Diagonal-Aussteifung am
     Stuhlsäulen-Kopf. Wechselseitige Inzidenz.
-  - **Fußband** (`fussband`, Welle 10/11): Diagonal-Aussteifung
+    - **Fußband** (`fussband`, Welle 10/11): Diagonal-Aussteifung
     am Stuhlsäulen-Fuß. Wechselseitige Inzidenz.
-  - **Sparren** (`sparren`, Welle 8): geneigtes Dachflächen-
+    - **Sparren** (`sparren`, Welle 8): geneigtes Dachflächen-
     Bauteil; liegt auf der Stuhlpfette auf, nicht direkt auf der
     Stuhlsäule. Trennlinie: schräge Lage in der Dachfläche vs.
     aufstrebende oder lotrechte Lage der Stuhlsäule.
-  - **Spannriegel** (`spannriegel`, Forward-Verweis):
+    - **Spannriegel** (`spannriegel`, Forward-Verweis):
     Querholz im liegenden Stuhl. Bestandteil der Stuhl-
     Konstruktion, nicht selbst Stuhlsäule.
-  - **Kehlbalken** (`kehlbalken`, Welle 8): horizontaler
+    - **Kehlbalken** (`kehlbalken`, Welle 8): horizontaler
     Aussteifungs-Riegel zwischen Sparren; kann auf einer
     Stuhlpfette (und damit indirekt auf der Stuhlsäule)
     aufliegen.
-  - **Strebe** (`strebe`, Welle 10): Diagonal-Aussteifung im
+    - **Strebe** (`strebe`, Welle 10): Diagonal-Aussteifung im
     Längsverband des Stuhls.
-  - **Strebesäule** (`strebesaeule`, Forward-Verweis, TTH-Sub-
+    - **Strebesäule** (`strebesaeule`, Forward-Verweis, TTH-Sub-
     Lemma): Strebe-/Säule-Mischform. Folgearbeit-Trigger zur
     Klärung.
-  - **Dachstuhl** (`dachstuhl`, Welle 12): Aggregat. Die
+    - **Dachstuhl** (`dachstuhl`, Welle 12): Aggregat. Die
     Stuhlsäule ist Mitglied des Dachstuhls in Lesart 2
     (zimmermannsmäßiges Dachtragwerk).
-  - **Bauteil** (`bauteil`): Oberbegriff.
+    - **Bauteil** (`bauteil`): Oberbegriff.
 
 ## Quellen
 

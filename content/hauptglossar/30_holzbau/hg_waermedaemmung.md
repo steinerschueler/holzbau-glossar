@@ -197,9 +197,9 @@ Sei
   Dachflächen-Familie 𝒟 = { D₁, …, D_m }, geordneter Schichtfolge
   𝒮 = (S₁, …, S_k) von innen nach außen, und Dachhaut H,
 - F:= ⋃_{i=1..m} F(P_i) ⊂ ℝ³ der Trägerbereich der Dachflächen,
-- ein Index j* ∈ { 1, …, k } so gewählt, dass die Schicht S_{j*}
+- ein Index j\* ∈ { 1, …, k } so gewählt, dass die Schicht S_{j\*}
   die Funktionsklasse `SchichtFunktion.WAERMEDAEMMUNG` trägt,
-- d_{j*} ∈ ℝ_{>0} (in mm) die Dicke von S_{j*},
+- d_{j\*} ∈ ℝ_{>0} (in mm) die Dicke von S_{j\*},
 - m ∈ ℳ ein **Material** aus der Materialklasse
   ℳ:= { MINERALWOLLE, HOLZFASER, ZELLULOSE, PUR_PIR, EPS, XPS,
   HANF, SCHAFWOLLE, FLACHS, SONSTIGE } gemäß den Produkt-Normen
@@ -214,14 +214,14 @@ Sei
 
 Dann ist eine **Wärmedämmung** das Septupel
 
-```
+```text
 W:= (𝒟, S_{j*}, m, λ, ρ, c_p, σ)
 ```
 
 mit den Konsistenzbedingungen
 
 1. **Funktionsklasse:** `S_{j*}.funktion = WAERMEDAEMMUNG`.
-2. **Positive Dicke:** d_{j*} > Toleranzen.LAENGE_EPS.
+2. **Positive Dicke:** d_{j\*} > Toleranzen.LAENGE_EPS.
 3. **Positive Materialkennwerte:** λ > 0, ρ > 0, c_p > 0.
 4. **Wärmeleitfähigkeits-Wertebereich (Plausibilität, nicht
    normativ erzwungen):** 0,015 ≤ λ ≤ 0,070 W/(m·K) deckt den
@@ -230,17 +230,17 @@ mit den Konsistenzbedingungen
    keinen harten Fehler — Begriffe (z. B. Vakuumdämmung,
    Aerogel) liegen unterhalb, ungewöhnliche Schüttungen
    oberhalb.
-5. **Träger-Konsistenz:** S_{j*} ist über F definiert (gleiche
+5. **Träger-Konsistenz:** S_{j\*} ist über F definiert (gleiche
    Träger-Dachflächen wie A).
-6. **Subtyp-Lage-Konsistenz:** σ ist mit der Lage des Index j*
+6. **Subtyp-Lage-Konsistenz:** σ ist mit der Lage des Index j\*
    in der Schichtfolge 𝒮 verträglich, im Sinne der folgenden
    Schichtfolgen-Bedingung. Sei T ⊂ { 1, …, k } die Indexmenge
    der Tragwerksebene (Sparren-/Schalungs-Schicht). Dann:
-   - σ = ZWISCHENSPARREN ⇒ j* ∈ T (Wärmedämmung liegt in der
+   - σ = ZWISCHENSPARREN ⇒ j\* ∈ T (Wärmedämmung liegt in der
      Tragwerksebene, im Sparrenfeld);
-   - σ = AUFSPARREN ⇒ j* > max T (Wärmedämmung liegt außer-
+   - σ = AUFSPARREN ⇒ j\* > max T (Wärmedämmung liegt außer-
      halb / oberhalb der Tragwerksebene);
-   - σ = UNTERSPARREN ⇒ j* < min T (Wärmedämmung liegt innen
+   - σ = UNTERSPARREN ⇒ j\* < min T (Wärmedämmung liegt innen
      / raumseitig der Tragwerksebene);
    - σ = SONSTIGE: keine Lagebedingung (Flachdach,
      vollflächige Dämmung ohne Sparren-Bezug).
@@ -248,7 +248,7 @@ mit den Konsistenzbedingungen
 Der **Wärmedurchlasswiderstand der Wärmedämmungs-Schicht** ist
 abgeleitet:
 
-```
+```text
 R_W:= d_{j*} / λ   (m²·K/W).
 ```
 
@@ -285,7 +285,7 @@ massnahmenArt)` materialisiert.
   Bedingungen, sondern Plausibilitäts-Warnungen in der
   Validierungsfunktion `validierePlausibilitaet(): List<Hinweis>`.
 - **Konsistenz mit `dachaufbau`:** Die Wärmedämmung ist eine
-  Schicht S_{j*} **im** Dachaufbau; sie ist kein eigenständiges
+  Schicht S_{j\*} **im** Dachaufbau; sie ist kein eigenständiges
   Aggregat außerhalb des Aufbaus und teilt mit ihm den
   Trägerbereich F.
 - **Konsistenz mit `schicht`:** Die Wärmedämmung erbt die Schicht-
@@ -324,7 +324,7 @@ Sparren-Tragebene konstruktiv und bauphysikalisch entscheidend.
 Drei Subtypen sind berufssprachlich durchgängig etabliert:
 
 | Subtyp | Lage relativ zum Sparren | Bauphysikalische Charakteristik | Typische Anwendung |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Zwischensparrendämmung** | im Sparrenfeld, in der Tragwerksebene | inhomogen (Sparrenholz neben Dämmstoff); Wärmebrücke über Sparren; U-Wert-Berechnung nach DIN EN ISO 6946 mit Grenzwertverfahren | klassische Lösung, einfach im Bestand nachzurüsten; begrenzt durch Sparrenhöhe |
 | **Aufsparrendämmung** | oberhalb der Sparren, über der Tragwerksebene | homogene, durchgehende Dämmebene; wärmebrücken-arm; verlangt druckfeste Dämmplatten; meist Holzfaser, PUR/PIR oder EPS | Neubau im Holzbau-Standard; Sparrenansicht von innen möglich |
 | **Untersparrendämmung** | unterhalb der Sparren, raumseitig | reduziert Sparren-Wärmebrücken; verkleinert Wohnraum; meist als **Zusatz** zur Zwischensparrendämmung | Sanierung, Aufwertung bestehender Zwischensparrendämmung |
@@ -350,7 +350,7 @@ hinweis); für die Begriffsdefinition ist sie als enum-wertige
 Tupel-Komponente m ∈ ℳ in der Konsistenzbedingung (3) verankert.
 
 | Material | Produkt-Norm | λ_D typisch (W/(m·K)) | Holzbau-Anwendung |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Mineralwolle (MW) | DIN EN 13162 | 0,032 – 0,040 | Zwischen-, Untersparren; klassisch |
 | Holzfaser (WF) | DIN EN 13171 | 0,038 – 0,050 | alle drei Subtypen; Sommerhitzeschutz |
 | Zellulose (LFCI) | EN 15101-1 | 0,040 – 0,045 | Zwischensparren (Einblas) |
@@ -366,7 +366,7 @@ Deutschland **GEG 2024 + DIN 4108-2**. Die Mindestanforderungen
 (Sekundärquellen-Konsens) trennen sich asymmetrisch:
 
 | Regime | U-Wert Dach (max.) | Geltungsbereich |
-|---|---|---|
+| --- | --- | --- |
 | DIN 4108-2 Mindestwärmeschutz | ≈ 0,74 W/(m²·K) | DE, Mindestschutz gegen Tauwasser/Schimmel |
 | GEG 2024 Steildach | 0,24 W/(m²·K) | DE, Neubau/Erneuerung |
 | MuKEn 2014 Dach Neubau | 0,17 W/(m²·K) | CH, Neubau (kantonal vollzogen) |
@@ -412,15 +412,15 @@ unter der Dachabdichtung. Der konstruktive Subtyp ist hier
 
 - **Oberbegriff:** `schicht` (entsteht parallel zu diesem Eintrag,
   siehe `quellenkonflikt:` Abschnitt 7).
-- **Bestandteil von:** Eine Wärmedämmung ist eine Schicht S_{j*}
+- **Bestandteil von:** Eine Wärmedämmung ist eine Schicht S_{j\*}
   eines `dachaufbau` (`SchichtFunktion.WAERMEDAEMMUNG`).
 - **Spezialisierungen (sealed-Hierarchie nach konstruktiver Lage):**
-  - **Zwischensparrendämmung** — in der Sparren-Tragebene, im
+    - **Zwischensparrendämmung** — in der Sparren-Tragebene, im
     Sparrenfeld.
-  - **Aufsparrendämmung** — oberhalb der Sparren, durchgehende
+    - **Aufsparrendämmung** — oberhalb der Sparren, durchgehende
     Dämmebene.
-  - **Untersparrendämmung** — raumseitig unterhalb der Sparren.
-  - **Sonstige Wärmedämmung** — Flachdach, vollflächig ohne
+    - **Untersparrendämmung** — raumseitig unterhalb der Sparren.
+    - **Sonstige Wärmedämmung** — Flachdach, vollflächig ohne
     Sparren-Bezug, oder konstruktive Sonderfälle.
 
   Die sealed-Hierarchie strukturiert ausschließlich die
@@ -431,37 +431,37 @@ unter der Dachabdichtung. Der konstruktive Subtyp ist hier
   werden über Plausibilitäts-Warnungen geprüft, nicht über
   Subtyp-Constraints.
 - **Verwendung:**
-  - Funktions-Schicht im `dachaufbau`
+    - Funktions-Schicht im `dachaufbau`
     (`SchichtFunktion.WAERMEDAEMMUNG`).
-  - Trägerschicht des U-Werts und des
+    - Trägerschicht des U-Werts und des
     Wärmedurchlasswiderstands R_W = d/λ nach DIN EN ISO 6946.
 - **Abgrenzung:**
-  - **`schicht`** (Oberbegriff, parallel entstehend): Wärme-
+    - **`schicht`** (Oberbegriff, parallel entstehend): Wärme-
     dämmung ist eine Spezialisierung der allgemeinen Schicht
     durch die Funktionsklasse `WAERMEDAEMMUNG` und die
     zusätzlichen Material- und Subtyp-Tupelelemente.
-  - **`sparren`**: Tragwerks-Bauteil; bei Zwischensparrendämmung
+    - **`sparren`**: Tragwerks-Bauteil; bei Zwischensparrendämmung
     bildet der Sparren in derselben Schichtebene wie die
     Wärmedämmung eine **konstruktive Wärmebrücke** (siehe
     `quellenkonflikt:` Abschnitt 2 und Bedingung (6)). Der
     Sparren ist nicht Bestandteil der Wärmedämmung, aber
     geometrisch in derselben Tragwerksebene wie eine
     Zwischensparrendämmung.
-  - **`unterdach`**: liegt **außerhalb** (über) der Wärmedämmung,
+    - **`unterdach`**: liegt **außerhalb** (über) der Wärmedämmung,
     funktional getrennt (zweite wasserführende Ebene vs.
     thermische Trennebene). Material teilweise gleich
     (Holzfaser-Unterdachplatte vs. Holzfaser-Dämmplatte), Funktion
     streng verschieden.
-  - **`dampfbremse`**: liegt **raumseitig** vor der Wärmedämmung;
+    - **`dampfbremse`**: liegt **raumseitig** vor der Wärmedämmung;
     verhindert Eintrag von Feuchte aus dem Innenraum in die
     Dämmebene. Dampfbremse ist kein Wärmedämmstoff (λ irrelevant;
     s_d-Wert ist die definierende Eigenschaft).
-  - **`dachaufbau`** (Aggregat-Träger): die Wärmedämmung ist
+    - **`dachaufbau`** (Aggregat-Träger): die Wärmedämmung ist
     **eine** Schicht im Dachaufbau, nicht der Aufbau selbst.
-  - **`dachhaut`**: die geometrische Hüllfläche über der
+    - **`dachhaut`**: die geometrische Hüllfläche über der
     äußersten Schicht; die Wärmedämmung liegt im Inneren des
     Aufbaus, nicht an der Dachhaut.
-  - **`schalldaemmung`** (Forward-Verweis A, künftiger Eintrag):
+    - **`schalldaemmung`** (Forward-Verweis A, künftiger Eintrag):
     funktional getrennt; Wärmedämmung minimiert Wärmestrom,
     Schalldämmung minimiert Luft- oder Trittschall. Materiell
     teilweise gleicher Stoff (Mineralwolle wirkt thermisch und
@@ -471,7 +471,7 @@ unter der Dachabdichtung. Der konstruktive Subtyp ist hier
     Glossar-Anlage: erste Modellierung einer
     Geschossdecken-Schallschutz-Anforderung nach SIA 181 oder
     DIN 4109.
-  - **`brandschutzschicht`** (Forward-Verweis A, künftiger
+    - **`brandschutzschicht`** (Forward-Verweis A, künftiger
     Eintrag): funktional getrennt (Feuerwiderstand statt
     Wärmestrom-Begrenzung); Materialwahl überlappt teilweise
     (Mineralwolle hat A1-Brandklasse), die Funktion ist

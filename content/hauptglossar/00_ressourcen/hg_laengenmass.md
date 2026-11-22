@@ -51,7 +51,7 @@ Sei
 
 Dann ist das **Längenmaß** über s das Tripel
 
-```
+```text
 L(s, ℓ, u):= (s, ℓ, u)   mit   ℓ = ‖b − a‖   (numerische Konsistenz).
 ```
 
@@ -104,19 +104,19 @@ mit GPS-Festlegungen — ist die Spezialisierung
 - **Oberbegriff:** `strecke` — das Längenmaß ist eine Sicht auf eine
   Strecke mit zugeordnetem Maßwert und Einheit.
 - **Teilbegriffe (Spezialisierung):**
-  - `lineares_groessenmass` — Längenmaß mit Toleranzfeld zwischen
+    - `lineares_groessenmass` — Längenmaß mit Toleranzfeld zwischen
     Form-Element-Features im Sinne der GPS-Systematik
     (DIN EN ISO 14405-1).
 - **Abgrenzung:**
-  - **`strecke`:** das reine geometrische Linienstück ohne Maßwert
+    - **`strecke`:** das reine geometrische Linienstück ohne Maßwert
     und Bemaßungs-Sicht.
-  - **`lineares_groessenmass`:** Spezialisierung mit Toleranzfeld.
-  - **Winkelmaß:** Bemaßung eines Winkels (nicht eines linearen
+    - **`lineares_groessenmass`:** Spezialisierung mit Toleranzfeld.
+    - **Winkelmaß:** Bemaßung eines Winkels (nicht eines linearen
     Abstands); im Glossar nicht eigenständig geführt.
-  - **`masstoleranz_din18202`:** Bauwerks-Maßtoleranz im Sinne der
+    - **`masstoleranz_din18202`:** Bauwerks-Maßtoleranz im Sinne der
     Ausführungsnorm; eine Längenangabe nach DIN 18202 hat eine
     handwerkliche Toleranz und ist nicht im GPS-Sinne tolerierbar.
-  - **Bemaßung:** Tätigkeit der Eintragung von Maßen in die
+    - **Bemaßung:** Tätigkeit der Eintragung von Maßen in die
     Zeichnung; das Längenmaß ist das Resultat dieser Tätigkeit, nicht
     die Tätigkeit selbst. Im Glossar nicht eigenständig geführt
     (reiner Prozessbegriff).

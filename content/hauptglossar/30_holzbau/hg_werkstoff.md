@@ -127,7 +127,7 @@ Sei
 
 Dann ist ein **Werkstoff** das Tupel
 
-```
+```text
 W:= (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse?,
       ⟨subklassen-spezifische Felder⟩)
 ```
@@ -149,7 +149,7 @@ Der Werkstoff ist **abstrakt**: Werkstoff selbst ist nicht
 instanziierbar, sondern bezeichnet die Vereinigung der fünf
 konkreten Subklassen-Mengen
 
-```
+```text
 𝓦:= 𝓐𝓗 ⊎ 𝓜𝓛 ⊎ 𝓖𝓟 ⊎ 𝓘𝓟 ⊎ 𝓦𝓢𝓽
 ```
 
@@ -167,7 +167,7 @@ mit
 
 Die Subklassen sind durch ihren Faserrichtungs-Modus charakterisiert:
 
-```
+```text
 ∀ w ∈ 𝓐𝓗: faserrichtungs_modus(w) = HART
 ∀ w ∈ 𝓜𝓛: faserrichtungs_modus(w) = STRUKTURIERT
 ∀ w ∈ 𝓖𝓟: faserrichtungs_modus(w) = SCHWACH
@@ -209,12 +209,12 @@ trägt genau einen Werkstoff w(E) ∈ 𝓦 als Pflichtfeld.
   der Produktnorm (CE-Kennzeichnung) ableitbar ist und nicht
   konstruktionsseitig variiert.
 - **Konsistenz Modus ↔ Plattendicken-Achse**:
-  - Bei Modus HART (axiales Holz) ist `plattendicken_achse = ⊥`
+    - Bei Modus HART (axiales Holz) ist `plattendicken_achse = ⊥`
     (kein Plattenwerkstoff).
-  - Bei Modi STRUKTURIERT, SCHWACH ist `plattendicken_achse ∈ S²`
+    - Bei Modi STRUKTURIERT, SCHWACH ist `plattendicken_achse ∈ S²`
     Pflicht (Plattenwerkstoffe mit Faserrichtungs-Annotation
     haben eine ausgezeichnete Plattendicken-Achse).
-  - Bei Modus KEINE hängt der Pflichtcharakter von der
+    - Bei Modus KEINE hängt der Pflichtcharakter von der
     Subklasse ab: `isotroper_plattenwerkstoff` führt
     `plattendicken_achse ∈ S²` als Pflicht; `werkstoff_stahl`
     führt `plattendicken_achse = ⊥` (Stahl ist kein
@@ -250,13 +250,13 @@ festigkeit f_h,α,k, Mindestabstände der Verbindungsmittel).
 
 ### Vier Faserrichtungs-Modi
 
-| Modus           | Subklasse                          | Pflichtfeld im Datenmodell                     |
-|-----------------|------------------------------------|------------------------------------------------|
-| HART            | `axiales_holz`                     | 1 Vektor `faserrichtung`                       |
-| STRUKTURIERT    | `mehrlagenholz`                    | Lagenstruktur ≥ 3 Lagen + Haupttragrichtung    |
-| SCHWACH         | `gerichteter_plattenwerkstoff`     | 1 Vektor `plattenlaengsrichtung`               |
-| KEINE           | `isotroper_plattenwerkstoff`       | nur `plattendicken_achse` (Plattenebene-Isotropie) |
-| KEINE           | `werkstoff_stahl`                  | weder `plattendicken_achse` noch Faserrichtung (3D-Isotropie) |
+| Modus | Subklasse | Pflichtfeld im Datenmodell |
+| --- | --- | --- |
+| HART | `axiales_holz` | 1 Vektor `faserrichtung` |
+| STRUKTURIERT | `mehrlagenholz` | Lagenstruktur ≥ 3 Lagen + Haupttragrichtung |
+| SCHWACH | `gerichteter_plattenwerkstoff` | 1 Vektor `plattenlaengsrichtung` |
+| KEINE | `isotroper_plattenwerkstoff` | nur `plattendicken_achse` (Plattenebene-Isotropie) |
+| KEINE | `werkstoff_stahl` | weder `plattendicken_achse` noch Faserrichtung (3D-Isotropie) |
 
 Diese Klassifikation ist die **strukturelle Grundlage** der
 Werkstoff-Hierarchie und konsistent mit:
@@ -298,60 +298,60 @@ Produktkennzeichnungen tragen.
 - **Oberbegriff**: keiner. Werkstoff ist die Wurzel der
   Werkstoff-Hierarchie.
 - **Subklassen** (fünf Geschwister, je ein eigener Eintrag):
-  - **Axiales Holz** (`axiales_holz`): Modus HART. Vollholz, KVH,
+    - **Axiales Holz** (`axiales_holz`): Modus HART. Vollholz, KVH,
     BSH, LVL, Balkenschichtholz.
-  - **Mehrlagenholz** (`mehrlagenholz`): Modus STRUKTURIERT.
+    - **Mehrlagenholz** (`mehrlagenholz`): Modus STRUKTURIERT.
     Brettsperrholz/CLT/BSP/X-LAM, Furniersperrholz, Multiplex.
-  - **Gerichteter Plattenwerkstoff**
+    - **Gerichteter Plattenwerkstoff**
     (`gerichteter_plattenwerkstoff`): Modus SCHWACH. OSB.
-  - **Isotroper Plattenwerkstoff**
+    - **Isotroper Plattenwerkstoff**
     (`isotroper_plattenwerkstoff`): Modus KEINE (in Plattenebene
     quasi-isotrop). Spanplatte P4–P7, MDF, HDF, harte
     Faserplatten.
-  - **Werkstoff Stahl** (`werkstoff_stahl`): Modus KEINE
+    - **Werkstoff Stahl** (`werkstoff_stahl`): Modus KEINE
     (3D-isotrop). Werkstoff von Verbindungsmitteln (Schraube,
     Nagel, Bolzen, Stabdübel), Verbindern (Balkenschuh,
     Knotenblech) und Verstärkungselementen
     (Vollgewindeschrauben).
 - **Bestandteile (partitiv) eines Werkstoffs**:
-  - **Faserrichtungs-Modus** (`faserrichtungs_modus`, eigener
+    - **Faserrichtungs-Modus** (`faserrichtungs_modus`, eigener
     Eintrag folgt; Aufzählungstyp): Pflicht.
-  - **Produktkennzeichnung** (`produktkennzeichnung`): Pflicht.
-  - **Plattendicken-Achse** (`plattendicken_achse`, eigener
+    - **Produktkennzeichnung** (`produktkennzeichnung`): Pflicht.
+    - **Plattendicken-Achse** (`plattendicken_achse`, eigener
     Eintrag folgt): bei Plattenwerkstoffen Pflicht, bei
     axialem Holz nicht definiert.
 - **Verwendung**:
-  - **Element** (`element`): trägt genau einen Werkstoff als
+    - **Element** (`element`): trägt genau einen Werkstoff als
     Pflichtfeld.
-  - **Bauteil** (`bauteil`): erbt das Werkstoff-Pflichtfeld von
+    - **Bauteil** (`bauteil`): erbt das Werkstoff-Pflichtfeld von
     Element; Update-Task #16 stellt das bestehende Bauteil-
     Werkstoff-Feld auf diese Hierarchie um.
-  - **Verbindungsmittel** (`verbindungsmittel`): trägt typisch
+    - **Verbindungsmittel** (`verbindungsmittel`): trägt typisch
     einen Stahl-Werkstoff (Folge-Eintrag `werkstoff_stahl`).
 - **Abgrenzung**:
-  - **Bauteil** (`bauteil`): Werkstoff ist Eigenschaft, Bauteil
+    - **Bauteil** (`bauteil`): Werkstoff ist Eigenschaft, Bauteil
     ist Element. Werkstoff trägt keine Geometrie und keine Lage
     in W; Bauteil trägt beides plus einen Werkstoff.
-  - **Element** (`element`): Element ist die App-Ontologie-
+    - **Element** (`element`): Element ist die App-Ontologie-
     Wurzel der verbauten Einzelobjekte; Werkstoff ist
     Eigenschaft eines Elements, kein Element.
-  - **Produktkennzeichnung** (`produktkennzeichnung`):
+    - **Produktkennzeichnung** (`produktkennzeichnung`):
     identifiziert die Charge eines konkreten Werkstoff-Produkts;
     Werkstoff identifiziert die Klasse. Beide orthogonal.
-  - **Festigkeitsklasse** (`festigkeitsklasse`, Folgearbeit):
+    - **Festigkeitsklasse** (`festigkeitsklasse`, Folgearbeit):
     Werkstoff-Eigenschaft (z. B. C24, GL24h, BSP-Q3); ist
     Bestandteil eines konkreten Werkstoffs, nicht synonym
     zum Werkstoff.
-  - **Faserrichtung** (`faserrichtung`): geometrische
+    - **Faserrichtung** (`faserrichtung`): geometrische
     Annotation eines Bauteils (Einheitsvektor in W); ist nicht
     der Werkstoff, sondern wird **gemäß Werkstoff-Subklasse**
     typisiert (HART: ein Vektor; STRUKTURIERT: lagenweise;
     SCHWACH: Plattenlängsrichtung; KEINE: nicht definiert).
-  - **„Material"** (umgangssprachlich): in der Branche oft
+    - **„Material"** (umgangssprachlich): in der Branche oft
     synonym zu „Werkstoff" verwendet, aber zu unscharf für die
     Ontologie. „Material" wird im Phase-1-Schema dieses Glossars
     nicht als Synonym geführt — vgl. `abgelehnte_benennungen`.
-  - **Werkstoff-Eigenschaften** (E-Modul, Rohdichte, Festigkeit
+    - **Werkstoff-Eigenschaften** (E-Modul, Rohdichte, Festigkeit
     parallel/senkrecht): sind quantitative Attribute eines
     konkreten Werkstoffs, nicht der abstrakten Klasse Werkstoff.
     Werden in der Festigkeitsklassen-Hierarchie geführt.

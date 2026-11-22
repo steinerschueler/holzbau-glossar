@@ -154,7 +154,7 @@ Sei
   (0 = Punkt, 1 = Linie, 2 = Fläche),
 - 𝓜 die Menge der **geometrischen Manifestationen**
 
-  ```
+  ```text
   𝓜:= { (d, g) ∈ 𝓓 × (ℝ³ ∪ 𝓢 ∪ 𝓟)
        | d = 0 ⇒ g ∈ ℝ³
          d = 1 ⇒ g ∈ 𝓢          (Strecke nach `hg_strecke.md`)
@@ -179,7 +179,7 @@ Sei
 
 Dann ist ein **Auflager** das Tupel
 
-```
+```text
 A:= (uuid, manifestation, gestuetztes_bauteil, gestuetzt_durch,
       wertigkeit, lagerungsart, bezeichnung)
 ```
@@ -227,7 +227,7 @@ Manifestation kompatibel sein in dem Sinne, dass mindestens ein
 translatorischer Freiheitsgrad gesperrt ist (sonst wäre das
 Auflager keine Stützung). Formal:
 
-```
+```text
 ∃ i ∈ {Tx, Ty, Tz}: w_i ≠ frei.
 ```
 
@@ -310,7 +310,7 @@ In der App werden drei begriffliche Schichten am selben
 physischen Sparrenfuß-Punkt sauber getrennt:
 
 | Schicht | Glossarbegriff | Lebenszyklus | Beispiel am Sparrenfuß |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Bearbeitung** (geometrische Modifikation am Bauteil) | `kerve` (Spezialfall einer `bearbeitung`) | Bauteil-gekoppelt (partitiv) | zweiflächiger Einschnitt am Sparren mit Sohle und Senkel |
 | **Auflagefläche** (Polygon-Face am Bauteil-Polyeder, der nach Einbau auf der Trägerfläche liegt) | derzeit kein eigener Eintrag; im Auflager-Tupel als Polygon-Manifestation referenziert | Bauteil-gekoppelt (folgt aus Polyeder + Bearbeitung) | die Kerv-Sohle (Bleischnitt-Fläche) als Polygon-Face |
 | **Auflager** (Idealisierung der Stützung) | dieser Eintrag | eigene UUID; Tragwerks-Bestandteil | Punkt- oder Flächenauflager mit Wertigkeit (fest, fest, fest, frei, frei, frei) am Schwerpunkt der Kerv-Sohle |
@@ -330,7 +330,7 @@ Tradition. Im **ebenen** Fall (zwei Translationen Tx, Ty plus
 eine Rotation Rz) ergeben sich drei Standard-Klassen:
 
 | Bezeichnung | Wertigkeit (eben) | Gesperrte FHG | Reaktionen |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Loslager / Gleitlager | 1 | 1 Translation | 1 Kraft |
 | Festlager / Gelenklager | 2 | 2 Translationen | 2 Kräfte |
 | Feste Einspannung | 3 | 2 Translationen + 1 Rotation | 2 Kräfte + 1 Moment |
@@ -350,7 +350,7 @@ CurveConnection / SurfaceConnection` trägt das App-Auflager die
 geometrische Dimension d ∈ {0, 1, 2} der Manifestation:
 
 | Dimension | Beispiele im Holzbau |
-|---|---|
+| --- | --- |
 | 0 — Punkt | Stützenfuß-Knoten, einzelner Sparrenfuß-Schwerpunkt, Pendelstützen-Auflager |
 | 1 — Linie | Linienlager eines Trägers auf einer Mauerkrone, Auflager-Linie eines Plattenrandes |
 | 2 — Fläche | Bodenplatte auf Erdreich, Brettsperrholz-Wand auf Streifenfundament, Sparrenauflage als Bleischnitt-Fläche |
@@ -393,7 +393,7 @@ verlangtem Aufhängungs-Nachweis in der Bemessungs-Schicht.
 ### IFC-Mapping
 
 | Aspekt | IFC 4.3 Pendant |
-|---|---|
+| --- | --- |
 | Auflager als Aggregat | `IfcStructuralConnection` (abstrakt) mit GlobalId |
 | Manifestation 0D | `IfcStructuralPointConnection` |
 | Manifestation 1D | `IfcStructuralCurveConnection` |
@@ -441,13 +441,13 @@ zeigen, das zugleich Mitglied einer `Verbindung` ist).
   ausdrücklich nicht mehr geplant; siehe
   `hg_tragwerk.md`-Quellenkonflikt.
 - **Bestandteile (partitiv)**:
-  - **Geometrische Manifestation** (Dimension d ∈ {0, 1, 2}
+    - **Geometrische Manifestation** (Dimension d ∈ {0, 1, 2}
     plus geometrischer Träger: `punkt`, `strecke` oder
     `polygon`).
-  - **Wertigkeit** (6-Tupel über Freiheitsgraden, je
+    - **Wertigkeit** (6-Tupel über Freiheitsgraden, je
     {fest, frei, federnd(k)}).
-  - **Lagerungsart** (`{direkt, indirekt}`, optional).
-  - **Stützungs-Gegenüber** (Baugrund oder UUID eines
+    - **Lagerungsart** (`{direkt, indirekt}`, optional).
+    - **Stützungs-Gegenüber** (Baugrund oder UUID eines
     weiteren tragenden Bauteils).
 - **Spezialisierungen nach Dimension** (Folgearbeit, falls
   benötigt; im aktuellen Glossar im `manifestation`-Tupel
@@ -456,51 +456,51 @@ zeigen, das zugleich Mitglied einer `Verbindung` ist).
   Bemessungs-Schicht-Konzepte): Loslager, Festlager, feste
   Einspannung; sechs-Komponenten-Subklassen.
 - **Verwendung**:
-  - Bestandteil eines **Tragwerks** (`tragwerk`): in der
+    - Bestandteil eines **Tragwerks** (`tragwerk`): in der
     Tupel-Repräsentation (B, V, A, L) ist A die Menge der
     Auflager. Die Tragwerks-Inzidenz-Bedingung 2 verlangt,
     dass jedes Auflager genau einem Bauteil zugeordnet ist.
 - **Abgrenzung**:
-  - **Kerve** (`kerve`): Bearbeitung am Sparren-Polyeder
+    - **Kerve** (`kerve`): Bearbeitung am Sparren-Polyeder
     (partitiv, Bauteil-gekoppelt). Die Kerv-Sohle kann
     geometrische Manifestation eines Auflagers **sein**, ist
     aber selbst kein Auflager. Bearbeitung und Auflager sind
     unterschiedliche Lebenszyklus-Schichten.
-  - **Bearbeitung** (`bearbeitung`): allgemeiner Oberbegriff
+    - **Bearbeitung** (`bearbeitung`): allgemeiner Oberbegriff
     der Kerve. Bearbeitungen sind subtraktive Modifikationen
     des Bauteil-Polyeders; sie sind nie selbst Auflager.
-  - **Verbindung** (`verbindung`): Aggregat auf der
+    - **Verbindung** (`verbindung`): Aggregat auf der
     Anschluss-Bemessungs-Seite. Auflager und Verbindung
     koexistieren am selben physischen Bauteil-Treffen, sind
     aber unterschiedliche Sichten und unterschiedliche
     Aggregate mit eigener UUID.
-  - **Verbindungsmittel** (`verbindungsmittel`): einzelnes
+    - **Verbindungsmittel** (`verbindungsmittel`): einzelnes
     kraftübertragendes Element (Schraube, Nagel, Anker).
     Verbindungsmittel sind nicht Auflager; sie sind
     Bestandteil einer Verbindung.
-  - **Tragwerk** (`tragwerk`): das übergeordnete Aggregat,
+    - **Tragwerk** (`tragwerk`): das übergeordnete Aggregat,
     dessen A-Komponente die Menge der Auflager ist. Ein
     Auflager ist Bestandteil eines Tragwerks; es ist nicht
     selbst Tragwerk.
-  - **Bauteil** (`bauteil`): ein Auflager ist kein Bauteil,
+    - **Bauteil** (`bauteil`): ein Auflager ist kein Bauteil,
     sondern ein Aggregat, das ein Bauteil mit dem Baugrund
     oder mit einem weiteren tragenden Bauteil verknüpft.
-  - **Auflagefläche** (Korpus-Begriff, kein eigener Eintrag
+    - **Auflagefläche** (Korpus-Begriff, kein eigener Eintrag
     geplant): die geometrische Manifestation eines
     Flächenauflagers; nicht eigenständiges App-Begriff,
     sondern Manifestations-Komponente innerhalb des Auflager-
     Tupels (siehe Quellenkonflikt-Block, „Auflagefläche“).
-  - **Lastfall** (`lastfall`, bereits angelegt): Aggregat aus
+    - **Lastfall** (`lastfall`, bereits angelegt): Aggregat aus
     Bemessungssituation, Leiteinwirkung und Begleiteinwirkungen.
     Auflager ist Lastpfad-Ende, Lastfall ist Lastpfad-Anfang;
     beide sind Bestandteile der Tragwerks-Tupel-Komponenten A
     und L.
-  - **Statisches System** (`statisches_system`, bereits angelegt):
+    - **Statisches System** (`statisches_system`, bereits angelegt):
     die bemessungstechnische Idealisierung des Tragwerks mit
     Punkt-Stab-Modell, Knoten und Auflagerklassen. Auflager
     ist die bauteilbezogene Idealisierung in W; das statische
     System ist eine darüber gelegte Bemessungs-Abstraktion.
-  - **Konstruktionsdetail** (`konstruktionsdetail`, bereits
+    - **Konstruktionsdetail** (`konstruktionsdetail`, bereits
     angelegt): plan-orientiertes Aggregat über Verbindung,
     Auflager und Bearbeitungen am selben Knotenpunkt. Auflager
     ist die statisch-mechanische Sicht, Konstruktionsdetail die

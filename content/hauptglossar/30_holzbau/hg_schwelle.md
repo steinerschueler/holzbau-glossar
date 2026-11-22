@@ -190,7 +190,7 @@ Dann heißt B eine **Schwelle** bezüglich E_⊥ genau dann, wenn die
 folgenden Bedingungen alle erfüllt sind:
 
 1. **Horizontalität der Bauteilachse**:
-   ```
+   ```text
    |d_hat_B · e_hat_z| ≤ ε_K.
    ```
    Sinus-Test gegen e_z-Parallelität (Skalarprodukt-Form, drei
@@ -201,7 +201,7 @@ folgenden Bedingungen alle erfüllt sind:
 
 2. **Auflagernähe**: Die Bauteilachse liegt innerhalb δ_z
    oberhalb der Auflagerebene,
-   ```
+   ```text
    0 ≤ z_B − z_E ≤ δ_z + h_B / 2.
    ```
    In Worten: die Unterkante des Schwellen-Querschnitts liegt
@@ -324,10 +324,10 @@ folgen drei Regelmaße für den Mindestabstand der Schwellen-
 Unterkante zur Oberkante Gelände:
 
 | Maß | Anforderung |
-|---|---|
+| --- | --- |
 | **≥ 30 cm** | Regelmaß ohne weitere Maßnahmen. |
 | **≥ 15 cm** | Abminderung zulässig bei umlaufendem Kiesbett (Korn 16/32 mm, Bett-Breite ≥ 15 cm, Bett-Außenkante ≥ 30 cm zur Schwellen-Außenkante) **oder** wasserableitende Oberfläche mit ≥ 2 % Gefälle. |
-| **≥ 5 cm**  | Abminderung zulässig nur bei zusätzlicher Abdichtung nach DIN 18533. |
+| **≥ 5 cm** | Abminderung zulässig nur bei zusätzlicher Abdichtung nach DIN 18533. |
 
 Die Gebrauchsklasse (GK 2, GK 3.1, GK 3.2 nach EN 335 / DIN
 68800-1) der konkreten Schwellen-Einbausituation hängt von der
@@ -384,10 +384,10 @@ gehören in eigene Begriffsfelder:
   Holzbau-Domäne.
 - **Englisch: `sill plate` / `mudsill` vs. `sole plate` /
   `bottom plate`**. Die US-Praxis trennt schärfer als das Deutsche:
-  - `sill plate` / `mudsill`: unterste Schwelle direkt auf dem
+    - `sill plate` / `mudsill`: unterste Schwelle direkt auf dem
     Fundament (entspricht der hier definierten Schwellen-Lesart,
     Grundschwelle).
-  - `sole plate` / `bottom plate`: unterste Schwelle einer
+    - `sole plate` / `bottom plate`: unterste Schwelle einer
     Wandtafel auf einer Decke (im Mehrgeschoss-Holztafelbau auf
     der Geschossdecke; entspricht der Stockschwelle).
   Im DACH-Vokabular fallen beide unter „Schwelle"; die Unterscheidung
@@ -411,30 +411,30 @@ nicht weiter behandelt.
   Querschnitt, Werkstoff, Faserrichtung); Faserrichtung axial
   entlang der Bauteilachse (Vollholz, BSH, ggf. LVL).
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Pfosten / Ständer** (`pfosten`, Forward-Verweis): stehen
+    - **Pfosten / Ständer** (`pfosten`, Forward-Verweis): stehen
     auf der Schwelle und übertragen ihre Vertikallasten in die
     Schwelle. Die Schwelle ist deren unteres Auflager.
-  - **Einbinder** (`einbinder`): geometrisches und
+    - **Einbinder** (`einbinder`): geometrisches und
     konstruktives Pendant der Schwelle am Wand-Oberen-Niveau.
     Schwelle und Einbinder schließen zusammen die Wand vertikal ab.
-  - **Riegel** (zwischen zwei Pfosten in der Wandfläche, nicht
+    - **Riegel** (zwischen zwei Pfosten in der Wandfläche, nicht
     durchlaufend): durch die Schwelle und ggf. Riegelreihen
     gehalten.
-  - **Fundament / Sockel / Bodenplatte** (`fundament`,
+    - **Fundament / Sockel / Bodenplatte** (`fundament`,
     Forward-Verweis): mineralisches Auflager der Schwelle;
     durch die Sperrlage von der Schwelle getrennt und durch
     Schwellenanker mit ihr kraftschlüssig verbunden.
-  - **Decke** (im Mehrgeschoss): bildet das Auflager für die
+    - **Decke** (im Mehrgeschoss): bildet das Auflager für die
     Stockschwelle des darüberliegenden Geschosses.
 - **Abgrenzung**:
-  - **Einbinder** (`einbinder`): Welle-8-Geschwister;
+    - **Einbinder** (`einbinder`): Welle-8-Geschwister;
     Wand-oben-Pendant. Geometrisch ähnlich (horizontaler
     Längsträger derselben Wandfluchten), aber an der Wand-
     Oberkante statt -Unterkante; trägt das Geschoss/Dach über
     sich, nicht das Wandgerippe selbst. Funktionen-Wechsel
     Schwelle ↔ Einbinder ist nicht möglich am selben Bauteil; die
     Wand-Vertikallage entscheidet eindeutig.
-  - **Fußpfette** (`fusspfette`): Dach-Bauteil unten im
+    - **Fußpfette** (`fusspfette`): Dach-Bauteil unten im
     Dachtragwerk, parallel zur Traufe, trägt die Sparrenfüße.
     Trotz formaler Ähnlichkeit (horizontaler Stab auf einer
     Auflagerung) gehört die Fußpfette zum Dachtragwerk, nicht
@@ -442,7 +442,7 @@ nicht weiter behandelt.
     Fußpfette wirken, aber die Schwelle hat **kein** Pendant am
     Dach: die Dach-Unterkante ist Fußpfette und Sparrenfuß,
     nicht „Schwelle".
-  - **Pfette** (`pfette`): Pfetten gehören grundsätzlich zum
+    - **Pfette** (`pfette`): Pfetten gehören grundsätzlich zum
     Dachtragwerk und liegen parallel zu Dachkanten; Schwellen
     gehören zum Wandtragwerk und liegen parallel zu Wand-
     Achsen. Die regional und historisch belegte „Schwellpfette"
@@ -450,33 +450,33 @@ nicht weiter behandelt.
     Schwellen-artiger Auflagerung, **nicht** eine Schwelle mit
     Pfetten-Funktion; die Bezeichnung steht trotz des
     Bestandteils „Schwelle" für eine Pfette.
-  - **Pfosten** (`pfosten`, Forward-Verweis): lotrechtes Wand-
+    - **Pfosten** (`pfosten`, Forward-Verweis): lotrechtes Wand-
     Bauteil; steht **auf** der Schwelle. Pfosten und Schwelle
     sind komplementär (vertikal vs. horizontal an derselben
     Wand-Unterkante), nicht alternativ.
-  - **Fundament** (`fundament`, Forward-Verweis):
+    - **Fundament** (`fundament`, Forward-Verweis):
     mineralisches Bauteil unterhalb der Schwelle; die Schwelle
     ist das **Holz**-Bauteil unmittelbar über dem Fundament.
     Schwelle und Fundament sind durch die Sperrlage räumlich
     getrennt; die kraftschlüssige Verbindung erfolgt über
     Schwellenanker.
-  - **Bauteil** (`bauteil`): Schwelle ist Bauteilrolle, also
+    - **Bauteil** (`bauteil`): Schwelle ist Bauteilrolle, also
     ein konstruktiv spezialisierter Bauteil-Subtyp; die
     allgemeinen Bauteil-Eigenschaften (Identität, Geometrie,
     Werkstoff, Lage in W) bleiben erhalten.
-  - **Stockschwelle** (`stockschwelle`): im Fachwerk-Vokabular
+    - **Stockschwelle** (`stockschwelle`): im Fachwerk-Vokabular
     das unterste Längsholz einer Obergeschoss-Wand, auf der
     Balkenlage des Untergeschosses; seit Welle 15 eigener
     Geschwister-Eintrag `hg_stockschwelle.md` — **keine**
     geometrische Spezialisierung dieses Eintrags, weil die
     Verkämmung Bedingung 2 und die Vorkragung Bedingung 3
     bricht (Begründung dort, Quellenkonflikt Punkt 1).
-  - **Türschwelle** (`tuerschwelle`, Forward-Verweis):
+    - **Türschwelle** (`tuerschwelle`, Forward-Verweis):
     homonymes Tür-Bauteil, nicht Variante der Wand-Schwelle.
-  - **Bahnschwelle** (`bahnschwelle`, Forward-Verweis,
+    - **Bahnschwelle** (`bahnschwelle`, Forward-Verweis,
     Klasse D — keine eigene HG-Anlage geplant): homonymes
     Eisenbahn-Bauteil, außerhalb der Holzbau-Domäne.
-  - **Sohlbank** am Fenster (`sohlbank_fenster`, Forward-Verweis,
+    - **Sohlbank** am Fenster (`sohlbank_fenster`, Forward-Verweis,
     Klasse D — keine eigene HG-Anlage geplant): unteres
     Querholz/-profil am Fensterstock; im Schweizer
     Strick-/Blockbau historisch zugleich Synonym zur

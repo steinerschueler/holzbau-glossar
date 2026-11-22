@@ -88,7 +88,7 @@ Sei
   `hg_weltkoordinatensystem.md`,
 - O_L ∈ 𝔸³ ein in W festgelegter Ursprung des Lokalsystems,
 - (e_x^L, e_y^L, e_z^L) eine Basis von ℝ³ mit den Eigenschaften
-  ```
+  ```text
   ‖e_x^L‖ = ‖e_y^L‖ = ‖e_z^L‖ = 1,                      (Einheitsvektoren)
   ⟨e_x^L, e_y^L⟩ = ⟨e_y^L, e_z^L⟩ = ⟨e_z^L, e_x^L⟩ = 0, (paarweise orthogonal)
   e_x^L × e_y^L = e_z^L.                                 (Rechtssystem)
@@ -96,14 +96,14 @@ Sei
 
 Dann ist ein **lokales Koordinatensystem** das Tupel
 
-```
+```text
 L:= (O_L, e_x^L, e_y^L, e_z^L, η_L),
 ```
 
 wobei
 
 - η_L: 𝔸³ → ℝ³ die Koordinatenabbildung
-  ```
+  ```text
   η_L(p) = (x_L, y_L, z_L)  ⇔  p = O_L + x_L·e_x^L + y_L·e_y^L + z_L·e_z^L
   ```
   ist; die Komponenten sind in Millimeter zu interpretieren.
@@ -114,12 +114,12 @@ Die Beziehung zwischen L und W wird durch eine **starre Transformation**
 T_{L→W} ∈ SE(3) hergestellt, eindeutig bestimmt durch
 
 - den **Translations-Vektor** t ∈ ℝ³ — die Welt-Koordinaten von O_L:
-  ```
+  ```text
   t:= η(O_L) ∈ ℝ³,    Längeneinheit mm.
   ```
 - die **Rotation** R ∈ SO(3) — die orthogonale Matrix mit Determinante
   +1, deren Spalten die Welt-Koordinaten der lokalen Basisvektoren sind:
-  ```
+  ```text
   R:= (η(e_x^L) | η(e_y^L) | η(e_z^L)) ∈ ℝ^{3×3},    R^T R = I, det R = +1.
   ```
 
@@ -128,13 +128,13 @@ Die Rechtssystem-Bedingung `e_x^L × e_y^L = e_z^L` ist äquivalent zu
 
 **Aktive Wirkung auf einen Punkt** mit lokalen Koordinaten p_L ∈ ℝ³:
 
-```
+```text
 T_{L→W}(p_L):= R · p_L + t                                       (1)
 ```
 
 — ergibt die Welt-Koordinaten desselben affinen Punktes. Die Inverse ist
 
-```
+```text
 T_{W→L}(q):= R^T · (q − t) = R^T · q − R^T · t                   (2)
 ```
 
@@ -144,7 +144,7 @@ T_{W→L}(q):= R^T · (q − t) = R^T · q − R^T · t                   (2)
 translationsinvariant. Folglich wirkt T_{L→W} auf einem Vektor v ∈ ℝ³
 **rein durch die Rotation**:
 
-```
+```text
 T_{L→W}(v):= R · v.                                              (3)
 ```
 
@@ -164,7 +164,7 @@ Lokalsystem L₁ bezogen sein. Sei dazu
 
 Dann ist die zusammengesetzte Transformation T_{L₂→W} eindeutig durch
 
-```
+```text
 T_{L₂→W}(p_{L₂}) = T_{L₁→W}(T_{L₂→L₁}(p_{L₂}))
                  = R₁ · (R₂ · p_{L₂} + t₂) + t₁
                  = (R₁ · R₂) · p_{L₂} + (R₁ · t₂ + t₁)
@@ -172,14 +172,14 @@ T_{L₂→W}(p_{L₂}) = T_{L₁→W}(T_{L₂→L₁}(p_{L₂}))
 
 gegeben, also
 
-```
+```text
 T_{L₂→W} = (R₁ · R₂,  R₁ · t₂ + t₁).                              (4)
 ```
 
 Schreibt man die Komposition als binäre Operation `∘` mit Lese-
 Reihenfolge "rechts wirkt zuerst", so ist
 
-```
+```text
 T_{L₂→W} = T_{L₁→W} ∘ T_{L₂→L₁}.                                  (5)
 ```
 
@@ -187,7 +187,7 @@ Per Induktion lässt sich eine **Kette** L_n → L_{n−1} → … → L_1 → W
 beliebiger endlicher Tiefe wieder auf eine einzige starre
 Transformation in SE(3) reduzieren:
 
-```
+```text
 T_{L_n→W} = T_{L₁→W} ∘ T_{L₂→L₁} ∘ … ∘ T_{L_n→L_{n−1}}.            (6)
 ```
 
@@ -202,7 +202,7 @@ unabhängig von der Klammerung.)
   triviales Beispiel ist L = W mit t = 0, R = I.
 - **Eindeutigkeit der Transformation bei gegebenem L**: Bei festgelegter
   Wahl von O_L und (e_x^L, e_y^L, e_z^L) ist (R, t) durch
-  ```
+  ```text
   t = η(O_L),    R = (η(e_x^L) | η(e_y^L) | η(e_z^L))
   ```
   eindeutig bestimmt — die Spalten einer orthogonalen Matrix sind durch
@@ -268,6 +268,7 @@ Die **Verschachtelung** bringt zwei weitere Strukturmerkmale:
   Bauteil-Referenz-Seite).
 
 ## Brücke zur Bauteil-/Element-Schicht (begrifflich vorbereitet, nicht
+
 implementiert)
 
 Dieser Eintrag bereitet die spätere Bauteil- und Element-Schicht
@@ -309,31 +310,31 @@ Datenstruktur implementiert.
   als Geschwistern eingeführt wird; bis dahin wird die Abgrenzung
   inline geführt.
 - **Verwandte Begriffe**:
-  - **Weltkoordinatensystem** (`hg_weltkoordinatensystem.md`): das
+    - **Weltkoordinatensystem** (`hg_weltkoordinatensystem.md`): das
     eindeutige globale Bezugssystem; jedes lokale System ist über
     eine starre Transformation auf W bezogen.
-  - **Bauteilachse** (`hg_bauteilachse.md`): eine ausgezeichnete Achse
+    - **Bauteilachse** (`hg_bauteilachse.md`): eine ausgezeichnete Achse
     eines Bauteils; sie liefert typischerweise einen der drei
     lokalen Basisvektoren (häufig e_x^L), bestimmt aber das
     Lokalsystem nicht vollständig (zwei weitere Achsen fehlen).
 - **Abgrenzung**:
-  - **Weltkoordinatensystem**: global gültig, eindeutig; lokale
+    - **Weltkoordinatensystem**: global gültig, eindeutig; lokale
     Systeme sind bauteileigen und vielfach.
-  - **Bauteilachse**: einzelne Achse, kein vollständiges
+    - **Bauteilachse**: einzelne Achse, kein vollständiges
     Koordinatensystem. Eine Bauteilachse kann eine Achse eines
     Lokalsystems sein, ist aber kein Synonym dafür.
-  - **Achse** (`hg_achse.md`): allgemeine ausgezeichnete Linie; ohne
+    - **Achse** (`hg_achse.md`): allgemeine ausgezeichnete Linie; ohne
     Ursprungspunkt und ohne zwei weitere orthogonale Richtungen
     kein Koordinatensystem.
-  - **Bauteil** (Folge-Eintrag, in `hg_bauteil.md` bereits angelegt):
+    - **Bauteil** (Folge-Eintrag, in `hg_bauteil.md` bereits angelegt):
     physikalisches Objekt; das Lokalsystem ist eine an das Bauteil
     geheftete **Konvention**, nicht das Bauteil selbst.
-  - **Element** (Folge-Eintrag, in `hg_element.md` bereits angelegt):
+    - **Element** (Folge-Eintrag, in `hg_element.md` bereits angelegt):
     abstrakte Basisklasse für Bauteile, Verbindungsmittel,
     Verbinder, Verstärkungselemente; auch jedes Element trägt im
     Modell ein Lokalsystem, die Festlegung erfolgt in den jeweiligen
     Spezial-Einträgen.
-  - **LV95 / WGS84**: externe Geo-Bezugssysteme; lokale
+    - **LV95 / WGS84**: externe Geo-Bezugssysteme; lokale
     Bauteilkoordinatensysteme werden **nicht** in LV95/WGS84
     geführt, sondern intern in mm bezüglich W.
 

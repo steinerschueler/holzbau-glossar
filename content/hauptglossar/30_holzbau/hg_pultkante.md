@@ -87,14 +87,14 @@ Sei
 
 Die Menge der näherungsweise horizontalen Polygonrandkanten von D ist
 
-```
+```text
 H(D):= { e_i | h(e_i) ≤ ε_W,  i = 1, …, k }.
 ```
 
 Eine Polygonrandkante e_i heißt **Schnittkante mit einer anderen
 Dachfläche der Familie**, wenn ein j ≠ i existiert mit
 
-```
+```text
 e_i ⊂ F(P_j),                                                (∗)
 ```
 
@@ -111,14 +111,14 @@ Familie 𝒟 genau dann, wenn
 2. **Horizontal**: h(p) ≤ ε_W — p verläuft näherungsweise horizontal,
 3. **Höchste Höhe**: z_bar(p) ist Maximum unter allen Elementen
    von H(D), formal
-   ```
+   ```text
    z_bar(p) = max { z_bar(e) | e ∈ H(D) },
    ```
    ausgewertet mit Toleranz ε_L auf der Vertikalen (mehrere Kanten
    gleicher Maximalhöhe sind zulässig und werden gemeinsam als
    Pultkante geführt), **und dieses Maximum liegt echt über dem
    Minimum**,
-   ```
+   ```text
    max { z_bar(e) | e ∈ H(D) } − min { z_bar(e) | e ∈ H(D) } > ε_L;
    ```
    andernfalls (H(D) auf einer einzigen Höhe) existiert keine
@@ -186,6 +186,7 @@ Dachhaut).
 
 Bei einem klassischen Pultdach mit rechteckigem Grundriss hat die
 einzige Dachfläche genau vier Polygonrandkanten:
+
 - eine Traufe (untere horizontale Kante),
 - eine Pultkante (obere horizontale Kante),
 - zwei Ortgänge (seitliche, geneigte Kanten entlang der Falllinie).
@@ -205,22 +206,22 @@ werden.
 - **Bestandteile (partitiv)**: Anfangspunkt und Endpunkt der
   Pultlinien-Strecke bzw. die Stützpunkte des Streckenzugs.
 - **Abgrenzung**:
-  - **Traufe** (`traufe`): untere horizontale Randkante; gleiches
+    - **Traufe** (`traufe`): untere horizontale Randkante; gleiches
     Schema, aber Minimum statt Maximum der mittleren Höhe.
-  - **First** (`first`): obere horizontale Schnittkante zweier
+    - **First** (`first`): obere horizontale Schnittkante zweier
     Dachflächen; Bedingung 4 (keine zweite Dachfläche) schließt
     diese Klassifikation aus.
-  - **Ortgang** (`ortgang`): seitliche, geneigte Randkante entlang
+    - **Ortgang** (`ortgang`): seitliche, geneigte Randkante entlang
     der Falllinie; nicht horizontal.
-  - **Grat** (`grat`) / **Kehle** (`kehle`): geneigte Schnittkanten
+    - **Grat** (`grat`) / **Kehle** (`kehle`): geneigte Schnittkanten
     zweier Dachflächen.
-  - **Wandanschlusskante** (eigener Eintrag folgt bei Bedarf): jene
+    - **Wandanschlusskante** (eigener Eintrag folgt bei Bedarf): jene
     Kante, an der eine Dachfläche an eine aufgehende Wand stößt;
     kann mit der Pultkante geometrisch zusammenfallen, ist aber eine
     von der Wand-Klassifikation ausgehende, davon **unabhängige**
     Eigenschaft. Eine Kante kann zugleich Pultkante und
     Wandanschlusskante sein.
-  - **Attika** / **Attikakante**: aufgehende Mauerkrone an einem
+    - **Attika** / **Attikakante**: aufgehende Mauerkrone an einem
     Flachdachrand; betrifft nicht das Pultdach und ist hier nicht
     definiert.
 

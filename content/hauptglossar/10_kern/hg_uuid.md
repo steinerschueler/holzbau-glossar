@@ -79,7 +79,7 @@ charakterisiert (RFC 9562 § 4.1, § 5.4, § 5.7):
 
 **UUID v4** (random):
 
-```
+```text
 u  =  random_122      (122 Bit zufällig),
 mit Versions-Bits  u[48..51]  =  0100   (Hex 4),
 und Varianten-Bits u[64..65]  =  10     (RFC-Variante).
@@ -87,7 +87,7 @@ und Varianten-Bits u[64..65]  =  10     (RFC-Variante).
 
 **UUID v7** (time-ordered, in der App empfohlen):
 
-```
+```text
 u[0..47]   =  unix_ts_ms   (48-Bit-Unix-Zeitstempel in ms, big-endian),
 u[48..51]  =  0111         (Versions-Bits, Hex 7),
 u[52..63]  =  rand_a       (12 Bit zufällig oder monoton),
@@ -97,7 +97,7 @@ u[66..127] =  rand_b       (62 Bit zufällig).
 
 Die kanonische **String-Repräsentation** ist (RFC 9562 § 4):
 
-```
+```text
 xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx     (32 Hex-Ziffern + 4 Bindestriche),
 M ∈ {1, 4, 6, 7, 8},                      (Versions-Hex)
 N ∈ {8, 9, a, b}.                         (Varianten-Nibble RFC)
@@ -110,7 +110,7 @@ Die **Base64-Kompaktform nach ISO/IEC 9834-8** komprimiert die 16
 Byte ohne Padding in 22 Zeichen `[A-Za-z0-9_$]` (IFC-Form
 `IfcGloballyUniqueId`):
 
-```
+```text
 b22: 𝓤 → Σ²²,    bijektiv,
 mit  Σ = { A..Z, a..z, 0..9, _, $ }.
 ```
@@ -118,7 +118,7 @@ mit  Σ = { A..Z, a..z, 0..9, _, $ }.
 Die **Eindeutigkeitsgarantie** von v4/v7 ist probabilistisch
 (RFC 9562 § 6.1, Geburtstagsproblem):
 
-```
+```text
 P(Kollision bei N Erzeugungen aus 122 Bit Zufall)  ≈  N² / 2¹²³.
 ```
 
@@ -193,20 +193,20 @@ Diese Regel ist die Schutzlinie der referentiellen Integrität:
 
 ## CAD-/BIM-Interoperabilität
 
-| Container        | UUID-Slot                        | Form                              |
-|------------------|----------------------------------|-----------------------------------|
-| App intern       | 16-Byte-Binär in `value class`  | UUID v7 nach RFC 9562             |
-| API / JSON       | kanonisch 8-4-4-4-12 Hex         | RFC 9562 § 4                      |
-| URN / Linked Data| `urn:uuid:<kanonisch>`           | RFC 9562 § 4.10                   |
-| IFC              | `IfcGloballyUniqueId`            | 22-stellig Base64 (ISO/IEC 9834-8)|
-| BTLx             | `Part/@GUID`                     | kanonisch 8-4-4-4-12 oder 22-stellig (Spec lässt beides zu) |
-| BCF              | `Topic/@Guid`, `Comment/@Guid`   | kanonisch                         |
+| Container | UUID-Slot | Form |
+| --- | --- | --- |
+| App intern | 16-Byte-Binär in `value class` | UUID v7 nach RFC 9562 |
+| API / JSON | kanonisch 8-4-4-4-12 Hex | RFC 9562 § 4 |
+| URN / Linked Data | `urn:uuid:<kanonisch>` | RFC 9562 § 4.10 |
+| IFC | `IfcGloballyUniqueId` | 22-stellig Base64 (ISO/IEC 9834-8) |
+| BTLx | `Part/@GUID` | kanonisch 8-4-4-4-12 oder 22-stellig (Spec lässt beides zu) |
+| BCF | `Topic/@Guid`, `Comment/@Guid` | kanonisch |
 
 **Externe GUIDs (CAD-Re-Import)** werden **nicht** in die App-UUID
 übernommen. Stattdessen führt jedes Element optionale
 Mapping-Felder
 
-```
+```text
 ifc_global_id: String?   (22-stellig Base64; aus letztem IFC-Import)
 btlx_guid: String?   (aus letztem BTLx-Import)
 revit_unique_id: String? (CAD-spezifisch; bei Bedarf)
@@ -219,31 +219,31 @@ geführt und dürfen sich bei jedem Re-Import ändern.
 
 - **Oberbegriff**: keiner. UUID ist ein technisches Hilfskonzept.
 - **Verwendung**:
-  - Pflichtfeld jedes **Elements** (`element`).
-  - Pflichtfeld jedes identitätstragenden Aggregats
+    - Pflichtfeld jedes **Elements** (`element`).
+    - Pflichtfeld jedes identitätstragenden Aggregats
     (`verbindung`, `tragwerk`, `dach`, `dachaufbau`,
     `bauteil_aggregat` — Folgearbeit).
-  - Schlüssel aller **Foreign-Key-Beziehungen** in der
+    - Schlüssel aller **Foreign-Key-Beziehungen** in der
     Persistenzschicht.
 - **Abgrenzung**:
-  - **Positionsnummer** (`positionsnummer`): humanlesbarer
+    - **Positionsnummer** (`positionsnummer`): humanlesbarer
     Geschäftsschlüssel, mutable, scoped pro Projekt + Kategorie.
     Trägt **keine** Foreign Keys. Andere Spur, anderer Zweck.
-  - **Produktkennzeichnung** (`produktkennzeichnung`):
+    - **Produktkennzeichnung** (`produktkennzeichnung`):
     normativ kodifizierte Charge-/Produkt-Identifikation
     (DIN 4074, DIN EN 14080 etc.). Identifiziert die Charge,
     nicht das Element. Andere Spur, anderer Zweck. **Verortung
     am Werkstoff, nicht am Element direkt**: Der Zugriff vom
     Element aus läuft strikt
     `element.werkstoff.produktkennzeichnung`.
-  - **Bezeichnung** (freier Anzeigename): hat keinen
+    - **Bezeichnung** (freier Anzeigename): hat keinen
     Identitätsanspruch.
-  - **IFC GlobalId**: `IfcGloballyUniqueId` ist die
+    - **IFC GlobalId**: `IfcGloballyUniqueId` ist die
     IFC-Persistenz-Repräsentation einer UUID, kein eigener
     Identifikator. Die App führt eine **eigene** UUID;
     `ifc_global_id` wird als Mapping-Feld gehalten.
-  - **BTLx GUID**: `Part/@GUID`, analog Mapping-Feld.
-  - **Datenbank-Primärschlüssel**: in der Persistenzschicht
+    - **BTLx GUID**: `Part/@GUID`, analog Mapping-Feld.
+    - **Datenbank-Primärschlüssel**: in der Persistenzschicht
     fällt der Primärschlüssel mit der UUID zusammen, ist aber
     konzeptuell ein anderer Begriff (Datenbankebene vs.
     Domänenebene; Khorikov 2019).

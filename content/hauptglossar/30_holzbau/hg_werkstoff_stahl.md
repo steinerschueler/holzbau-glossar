@@ -120,7 +120,7 @@ Sei
 
 Dann ist ein **Werkstoff Stahl** das Tupel
 
-```
+```text
 WSt:= (faserrichtungs_modus, produktkennzeichnung,
         plattendicken_achse, stahlguete, streckgrenze?, zugfestigkeit?)
 ```
@@ -140,13 +140,13 @@ mit
 
 Die **Stahlgüte** 𝓢𝓖 ist der disjunkte Aufzählungstyp
 
-```
+```text
 𝓢𝓖:= 𝓢𝓖_unlegiert ⊎ 𝓢𝓖_nichtrostend ⊎ 𝓢𝓖_baustahl,
 ```
 
 mit
 
-```
+```text
 𝓢𝓖_unlegiert:= { 4.6, 4.8, 5.6, 5.8, 6.8, 8.8, 9.8, 10.9, 12.9 }
                                               (DIN EN ISO 898-1)
 𝓢𝓖_nichtrostend:= { A1-50, A1-70, A1-80, A2-50, A2-70, A2-80,
@@ -160,7 +160,7 @@ mit
 **Stahlgüten-Tabelle** (Funktion von 𝓢𝓖 → ℝ⁺ × ℝ⁺ → (f_y,k, f_u,k);
 DIN EN ISO 898-1 Tab. 5 und EN ISO 3506-1):
 
-```
+```text
 4.6:  f_y,k = 240,   f_u,k = 400   N/mm²
 5.6:  f_y,k = 300,   f_u,k = 500   N/mm²
 6.8:  f_y,k = 480,   f_u,k = 600   N/mm²
@@ -240,7 +240,7 @@ getragen.
 Bei unlegiertem Stahl (DIN EN ISO 898-1) ist die Stahlgüte
 zweistellig kodiert:
 
-```
+```text
 8.8 → f_u,k = 800 N/mm²,  f_y,k / f_u,k = 0,8 → f_y,k = 640 N/mm²
 10.9 → f_u,k = 1000 N/mm², f_y,k / f_u,k = 0,9 → f_y,k = 900 N/mm²
 ```
@@ -254,11 +254,11 @@ Festigkeitsstufe (f_u,k = 700 / 800 N/mm²).
 
 Stahl als Werkstoff im Holzbau tritt in drei Element-Rollen auf:
 
-| Element-Rolle              | Beispiele                            | Produktnorm |
-|----------------------------|--------------------------------------|-------------|
-| Verbindungsmittel          | Schraube, Nagel, Bolzen, Stabdübel  | EN 14592    |
-| Verbinder                  | Balkenschuh, Winkel, Knotenblech    | EN 14545    |
-| Verstärkungselement        | Vollgewindeschraube                  | EN 14592    |
+| Element-Rolle | Beispiele | Produktnorm |
+| --- | --- | --- |
+| Verbindungsmittel | Schraube, Nagel, Bolzen, Stabdübel | EN 14592 |
+| Verbinder | Balkenschuh, Winkel, Knotenblech | EN 14545 |
+| Verstärkungselement | Vollgewindeschraube | EN 14592 |
 
 Alle drei Elemente sind Geschwister unter `element` (siehe
 `element`); sie tragen
@@ -306,36 +306,36 @@ Rahmen der vier Modi.
   `axiales_holz`, `mehrlagenholz`, `gerichteter_plattenwerkstoff`,
   `isotroper_plattenwerkstoff`.
 - **Pflichtfelder über `werkstoff` hinaus**:
-  - **Stahlgüte** (`stahlguete`): sealed enum, oben definiert.
-  - **Streckgrenze** (`streckgrenze`): N/mm², optional explizit;
+    - **Stahlgüte** (`stahlguete`): sealed enum, oben definiert.
+    - **Streckgrenze** (`streckgrenze`): N/mm², optional explizit;
     aus Stahlgüte ableitbar.
-  - **Zugfestigkeit** (`zugfestigkeit`): N/mm², optional explizit;
+    - **Zugfestigkeit** (`zugfestigkeit`): N/mm², optional explizit;
     aus Stahlgüte ableitbar.
 - **Verwendung**:
-  - **Verbindungsmittel** (`verbindungsmittel`): Pflicht-Werkstoff
+    - **Verbindungsmittel** (`verbindungsmittel`): Pflicht-Werkstoff
     Stahl (Schraube, Nagel, Bolzen, Stabdübel).
-  - **Verbinder** (`verbinder`): Pflicht-Werkstoff Stahl
+    - **Verbinder** (`verbinder`): Pflicht-Werkstoff Stahl
     (Balkenschuh, Winkel, Knotenblech).
-  - **Verstärkungselement** (`verstaerkungselement`): typisch
+    - **Verstärkungselement** (`verstaerkungselement`): typisch
     Werkstoff Stahl (Vollgewindeschraube).
 - **Abgrenzung**:
-  - **`axiales_holz`, `mehrlagenholz`,
+    - **`axiales_holz`, `mehrlagenholz`,
     `gerichteter_plattenwerkstoff`,
     `isotroper_plattenwerkstoff`**: Holzwerkstoffe mit
     Bemessungsanisotropie; disjunkt zu Stahl. Stahl trägt keine
     Faserrichtung, keine Lagenstruktur, keine Plattenrichtung.
-  - **`festigkeitsklasse`** (Holzwerkstoffe): Aufzählungstyp
+    - **`festigkeitsklasse`** (Holzwerkstoffe): Aufzählungstyp
     werkstoff-spezifisch; bei Stahl wird die Rolle durch die
     `stahlguete` übernommen. Beide sind Subtypen von
     Festigkeitsklasse-Aggregaten in der `festigkeitsklasse`-
     Hierarchie.
-  - **`faserrichtung`**, **`lagenstruktur`**,
+    - **`faserrichtung`**, **`lagenstruktur`**,
     **`plattenlaengsrichtung`**, **`haupttragrichtung`**,
     **`plattendicken_achse`**: alle nicht anwendbar für Stahl.
-  - **„Stahl"** (umgangssprachlich): unscharf; im Glossar als
+    - **„Stahl"** (umgangssprachlich): unscharf; im Glossar als
     Oberbegriff der konkreten Stahlgüten zu verstehen, nicht als
     Werkstoff-Instanz.
-  - **Stahlbau-Werkstoff** (DIN EN 1993-1-1, Baustähle S235–S460):
+    - **Stahlbau-Werkstoff** (DIN EN 1993-1-1, Baustähle S235–S460):
     auch als Stahlgüte führbar (Verbinder-Bleche), aber im
     Holzbau-Glossar nur über die Stahlgüten-Aufzählung
     referenziert; Stahlbau-spezifische Bemessung fällt

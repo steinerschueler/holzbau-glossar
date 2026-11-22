@@ -84,7 +84,7 @@ Sei
 
 Dann ist ein **Bausystem** ein Tupel
 
-```
+```text
 S:= (uuid, mitglieder, funktion, bezeichnung?)
 ```
 
@@ -105,7 +105,7 @@ und den Konsistenzbedingungen
 
 1. **Nicht-Exklusive Mitgliedschaft** (zentrale Bausystem-
    Eigenschaft): In einem Modell mit Bausystem-Menge 𝒮ᴹ ist
-   ```
+   ```text
    ∀ S₁, S₂ ∈ 𝒮ᴹ: S₁ ≠ S₂ ⇏ S₁.mitglieder ∩ S₂.mitglieder = ∅
    ```
    Mitgliedschaften können sich beliebig überlappen; ein Bauteil
@@ -142,7 +142,7 @@ Bausystem-Oberbegriffs.
 Die **abgeleitete geometrische Punktmenge** als Vereinigung der
 Mitglieder-Punktmengen ist immer verfügbar:
 
-```
+```text
 G_W(S):= ⋃_{b ∈ mitglieder} G_W(b) ⊂ ℝ³.
 ```
 
@@ -272,64 +272,64 @@ Bauteilgruppen zu verletzen.
   liegen auf einer eigenen Aggregats-Hierarchie neben Element
   (siehe Erläuterung in `hg_bauteilgruppe.md`).
 - **Bestandteile (relational, nicht partitiv)**:
-  - **Bauteile** (`bauteil`) als **Mitglieder** der Gruppierung;
+    - **Bauteile** (`bauteil`) als **Mitglieder** der Gruppierung;
     die Beziehung ist Many-to-Many, nicht Whole/Part.
-  - **Funktion** (Klassifikation aus ℱ): die konstituierende
+    - **Funktion** (Klassifikation aus ℱ): die konstituierende
     funktionale Aufgabe.
 - **Spezialisierungen** (eigene Einträge folgen oder existieren
   bereits, trigger-basiert):
-  - **Tragwerk** (`tragwerk`) — **existiert bereits als
+    - **Tragwerk** (`tragwerk`) — **existiert bereits als
     Glossareintrag**: funktionale Sicht „alle lastabtragenden
     Bauteile". Ontologisch eine Spezialisierung von Bausystem;
     siehe Folgearbeit unten zur Frage einer formalen Anbindung.
-  - **Aussteifungssystem** (`aussteifungssystem`): funktionale
+    - **Aussteifungssystem** (`aussteifungssystem`): funktionale
     Sicht „alle Bauteile, die zur horizontalen Aussteifung
     beitragen".
-  - **Dachfläche als funktionale Sicht** (`dachflaeche` führt
+    - **Dachfläche als funktionale Sicht** (`dachflaeche` führt
     derzeit den geometrischen Begriff; eine zusätzliche Lesart
     als funktionales Bausystem „alle Bauteile dieser Dachseite"
     ist denkbar, aber nicht Gegenstand dieses Eintrags).
-  - **Schichtaufbau-Lage** (`dachaufbau` führt den Schichtaufbau
+    - **Schichtaufbau-Lage** (`dachaufbau` führt den Schichtaufbau
     als Aggregat; einzelne Lagen können als Bausysteme
     aufgefasst werden).
-  - **Eindeckung** (`eindeckung`, Folgearbeit): funktionale Sicht
+    - **Eindeckung** (`eindeckung`, Folgearbeit): funktionale Sicht
     „alle Eindeckungsbauteile (Ziegel, Schindeln, Bahnenware)".
-  - **Hüllkonstruktion** (`huellkonstruktion`, Folgearbeit):
+    - **Hüllkonstruktion** (`huellkonstruktion`, Folgearbeit):
     Außenhülle des Bauwerks als funktionales System.
-  - **Befestigungssystem** (`befestigungssystem`, Folgearbeit):
+    - **Befestigungssystem** (`befestigungssystem`, Folgearbeit):
     funktionale Gruppierung von Verbindungsmitteln und Verbindern
     nach gemeinsamem Befestigungs-Zweck.
 - **Verwendung**:
-  - Bestandteil eines **Bauwerks** als funktionale Klassifikation.
-  - Mehrere Bausysteme können auf denselben Bauteilen koexistieren
+    - Bestandteil eines **Bauwerks** als funktionale Klassifikation.
+    - Mehrere Bausysteme können auf denselben Bauteilen koexistieren
     (siehe Bedingung 1).
 - **Abgrenzung**:
-  - **Bauteilgruppe** (`bauteilgruppe`): partitive, exklusive
+    - **Bauteilgruppe** (`bauteilgruppe`): partitive, exklusive
     Komposition; siehe oben und `hg_bauteilgruppe.md`.
-  - **Bauteil** (`bauteil`): einzelner Bestandteil; ein Bausystem
+    - **Bauteil** (`bauteil`): einzelner Bestandteil; ein Bausystem
     ist eine Beziehung über mehreren Bauteilen, kein Bauteil. Ein
     Bausystem ist insbesondere **nicht** selbst ein Element-Subtyp
     (siehe `element`).
-  - **Tragwerk** (`tragwerk`): konkrete Spezialisierung von
+    - **Tragwerk** (`tragwerk`): konkrete Spezialisierung von
     Bausystem für die Funktion „lastabtragend". Tragwerk hat
     derzeit `oberbegriff: null`, was vor der Einführung des
     Bausystem-Begriffs konsistent war; nach Einführung wäre
     `oberbegriff: bausystem` die strukturell saubere Anbindung
     (siehe Tragwerk-Beobachtung in der Folgearbeit unten).
-  - **Verbindung** (`verbindung`): lokales Knoten-Aggregat aus
+    - **Verbindung** (`verbindung`): lokales Knoten-Aggregat aus
     Bauteilen, Verbindungsmitteln, Verbindern und Verstärkungen
     mit Fokus auf Kraftübertragung an einem Punkt; ist
     ontologisch ein partitives Aggregat (eigener
     `begriffstyp: aggregat`), kein Bausystem.
-  - **Dachfläche** (`dachflaeche`): derzeit als geometrischer
+    - **Dachfläche** (`dachflaeche`): derzeit als geometrischer
     Begriff geführt (begrenzte ebene Fläche mit Neigung). Die
     Lesart als funktionales Bausystem über den Bauteilen einer
     Dachseite ist eine andere Begriffsschicht und nicht
     Gegenstand dieses Eintrags.
-  - **Dachaufbau** (`dachaufbau`): aggregierter Schichtaufbau
+    - **Dachaufbau** (`dachaufbau`): aggregierter Schichtaufbau
     eines Daches; eigene Aggregat-Semantik, nicht primär ein
     funktionales Bausystem.
-  - **Element** (`element`): Bausysteme sind keine
+    - **Element** (`element`): Bausysteme sind keine
     Element-Subtypen.
 
 ## Quellen

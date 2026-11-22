@@ -46,7 +46,7 @@ Sei
 
 Definiere die **Kanten** zyklisch als Strecken
 
-```
+```text
 e_i:= [v_i, v_{i+1}]   für  i = 1, …, k,   v_{k+1}:= v_1.
 ```
 
@@ -74,7 +74,7 @@ Ebene E in genau zwei zusammenhängende Komponenten, von denen
 genau eine beschränkt ist; diese beschränkte Komponente, vereinigt
 mit ihrem Rand, sei
 
-```
+```text
 F(P):= { x ∈ E | x liegt im beschränkten Bereich von E ∖ ∂P } ∪ ∂P.
 ```
 
@@ -213,16 +213,16 @@ verwendende Begriff.
   ebener Streckenzug mit innerem Flächenstück (formal). Im
   Glossar Primitiv.
 - **Teilbegriffe (Spezialisierungen)**:
-  - **Dreieck** (k = 3).
-  - **Viereck**, **Rechteck**, **Trapez** (k = 4 mit Zusatz-
+    - **Dreieck** (k = 3).
+    - **Viereck**, **Rechteck**, **Trapez** (k = 4 mit Zusatz-
     bedingungen).
-  - **Konvexes Polygon**.
-  - Anwendungs-Spezialisierungen: **Umriss einer Dachfläche**,
+    - **Konvexes Polygon**.
+    - Anwendungs-Spezialisierungen: **Umriss einer Dachfläche**,
     **Querschnittspolygon eines Bauteils**.
 - **Bestandteile (partitiv)**:
-  - Eckpunkte v_i, Kanten e_i, Innenfläche F(P) ∖ ∂P, Rand ∂P.
+    - Eckpunkte v_i, Kanten e_i, Innenfläche F(P) ∖ ∂P, Rand ∂P.
 - **Abgrenzung**:
-  - **Streckenzug** (siehe `streckenzug`; Synonyme: Polygonzug,
+    - **Streckenzug** (siehe `streckenzug`; Synonyme: Polygonzug,
     Polylinie): stückweise lineare Kurve, die nicht notwendig
     geschlossen und nicht notwendig einfach ist. Ein Polygon ist
     ein geschlossener, einfacher Streckenzug *mitsamt* dem
@@ -233,20 +233,20 @@ verwendende Begriff.
     geodätische Lesart ist mit der mathematischen Polygon-
     Definition konsistent, das Vokabular am Bauplatz jedoch
     unterschiedlich gewachsen (siehe §Erläuterung).
-  - **Strecke**: einzelne Kante; kein Polygon.
-  - **Dachfläche**: ein Polygon in einer Ebene mit zusätzlicher
+    - **Strecke**: einzelne Kante; kein Polygon.
+    - **Dachfläche**: ein Polygon in einer Ebene mit zusätzlicher
     Orientierung und Rolle als Außenfläche eines Daches; das
     Polygon ist die geometrische Substanz, die Dachfläche eine
     rollenbezogene Spezialisierung.
-  - **Polyeder**: dreidimensionaler Körper, dessen Oberfläche aus
+    - **Polyeder**: dreidimensionaler Körper, dessen Oberfläche aus
     Polygonen zusammengesetzt ist; ein Polygon ist zweidimensional.
-  - **Stirnseite** (`stirnseite`) und **Längsseite** (`laengsseite`):
+    - **Stirnseite** (`stirnseite`) und **Längsseite** (`laengsseite`):
     Bauteilflächen, die geometrisch über die Berandungs-Lesart des
     Polygons modelliert werden (Randpolygon auf einer Trägerebene
     mit Bauteilrolle und Außennormalen-Konvention). Das Polygon
     trägt die geometrische Substanz; die Bauteilfläche fügt die
     Bauteilrolle und die Außennormalen-Konvention hinzu.
-  - **Selbstüberschneidende Vielecke** (z. B. Pentagramm):
+    - **Selbstüberschneidende Vielecke** (z. B. Pentagramm):
     werden in diesem Glossar **nicht** als Polygon zugelassen.
     Die `KonvexesPolygon`-Implementierung schließt sie für die
     im Holzbau auftretenden Eckreihenfolgen über die lokale

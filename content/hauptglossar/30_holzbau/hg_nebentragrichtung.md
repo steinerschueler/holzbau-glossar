@@ -68,7 +68,7 @@ Sei
 
 Dann ist die **Nebentragrichtung** definiert als
 
-```
+```text
 nebentragrichtung:= n_hat:= e_hat_d × h_hat ∈ S².
 ```
 
@@ -77,7 +77,7 @@ Wohldefiniertheit), so dass n_hat ∈ S² gilt.
 
 **Konstruktions-Invarianten**:
 
-```
+```text
 (N1) Orthogonalität zur Plattendicken-Achse:
        ⟨n_hat, e_hat_d⟩ = 0     (mathematisch),
        | ⟨n_hat, e_hat_d⟩ | ≤ Toleranzen.WINKEL_EPS     (numerisch).
@@ -96,7 +96,7 @@ Wohldefiniertheit), so dass n_hat ∈ S² gilt.
 **Plattenkoordinatensystem**: (h_hat, n_hat, e_hat_d) ist ein
 Rechtssystem-Tripel in W:
 
-```
+```text
 e_hat_d × h_hat = n_hat,        h_hat × n_hat = e_hat_d,        n_hat × e_hat_d = h_hat,
 ```
 
@@ -147,10 +147,10 @@ die mathematische Form n_hat = e_hat_d × h_hat präzisiert.
 Die Plattenfestigkeitswerte sind in DIN EN 1995-1-1 / EN 14080 /
 EN 16351 für die beiden Hauptachsen tabelliert:
 
-| Achse                    | Festigkeit         | Richtung                |
-|--------------------------|--------------------|-------------------------|
-| Haupttragrichtung (0°)   | f_m,0,k, E_0,mean  | parallel zu h_hat           |
-| Nebentragrichtung (90°)  | f_m,90,k, E_90,mean| parallel zu n_hat          |
+| Achse | Festigkeit | Richtung |
+| --- | --- | --- |
+| Haupttragrichtung (0°) | f_m,0,k, E_0,mean | parallel zu h_hat |
+| Nebentragrichtung (90°) | f_m,90,k, E_90,mean | parallel zu n_hat |
 
 Bei symmetrischem CLT-Standardlayout (3, 5, 7 Lagen) ist die
 Steifigkeit in 90°-Richtung geringer als in 0°-Richtung, weil
@@ -191,21 +191,21 @@ konsistent mit:
   Spezifikum ist die semantische Rolle „90°-Komplement zur
   Haupttragrichtung".
 - **Verwendung**:
-  - **Mehrlagenholz** (`mehrlagenholz`): Pflichtfeld; sekundäres
+    - **Mehrlagenholz** (`mehrlagenholz`): Pflichtfeld; sekundäres
     Plattenebene-Richtungsfeld.
-  - **Plattenfestigkeiten f_m,90, E_90**: Bezugsachse der
+    - **Plattenfestigkeiten f_m,90, E_90**: Bezugsachse der
     Bemessungswerte.
 - **Abgrenzung**:
-  - **`einheitsvektor`** (allgemein): trägt keine semantische
+    - **`einheitsvektor`** (allgemein): trägt keine semantische
     Rolle.
-  - **`haupttragrichtung`**: 0°-Richtung der Plattenfestigkeiten;
+    - **`haupttragrichtung`**: 0°-Richtung der Plattenfestigkeiten;
     Nebentragrichtung ist das 90°-Komplement.
-  - **`plattendicken_achse`**: rechtwinklig zur Plattenebene;
+    - **`plattendicken_achse`**: rechtwinklig zur Plattenebene;
     Nebentragrichtung liegt **in** der Plattenebene.
-  - **`plattenlaengsrichtung`** (OSB): bei OSB die einzige
+    - **`plattenlaengsrichtung`** (OSB): bei OSB die einzige
     Plattenebene-Vorzugsrichtung; Nebentragrichtung ist nur bei
     Mehrlagenholz definiert. Disjunkt nach Werkstoff-Modus.
-  - **`faserrichtung`**: Faserrichtung im engeren Sinn ist die
+    - **`faserrichtung`**: Faserrichtung im engeren Sinn ist die
     L-Richtung der Holzfaser einer einzelnen Holzlamelle. Die
     Nebentragrichtung ist eine makroskopische Plattenebenen-
     Bemessungsachse, kein Materialachsen-Vektor einer Lage.

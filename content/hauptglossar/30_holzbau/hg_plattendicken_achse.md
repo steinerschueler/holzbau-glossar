@@ -71,14 +71,14 @@ Sei
 Dann ist die **Plattendicken-Achse** des Plattenbauteils B eine
 Annotation
 
-```
+```text
 plattendicken_achse(B):= e_hat ∈ S²,
 ```
 
 mit der Eigenschaft, dass die **Plattenebene** als affine Ebene
 durch den Bauteilbezugspunkt definiert ist als
 
-```
+```text
 Π(B):= { p ∈ ℝ³ | ⟨p − p_0, e_hat⟩ = 0 }
 ```
 
@@ -88,7 +88,7 @@ siehe `ebene`, `halbraum`).
 **Default-Konvention** (prüfbare Konstruktionsregel, analog IFC und
 zur Bauteilachsen-Konvention für stabförmige Bauteile):
 
-```
+```text
 Wenn plattendicken_achse am Werkstoff nicht explizit gesetzt,
 gilt für ein Plattenbauteil B mit Werkstoff-Modus ∈
 {STRUKTURIERT, SCHWACH, KEINE}:
@@ -104,7 +104,7 @@ Validierungsfehler, keine Warnung.
 Eintrag siehe `plattenlaengsrichtung`, `haupttragrichtung`,
 `nebentragrichtung`):
 
-```
+```text
 ⟨plattendicken_achse, plattenlaengsrichtung⟩ ≤ Toleranzen.WINKEL_EPS
 ⟨plattendicken_achse, haupttragrichtung⟩    ≤ Toleranzen.WINKEL_EPS
 ⟨plattendicken_achse, nebentragrichtung⟩    ≤ Toleranzen.WINKEL_EPS
@@ -197,37 +197,37 @@ NSI) wird das Vorzeichen physikalisch festgelegt.
   Plattendicken-Achse ein Einheitsvektor; das Plattenwerkstoff-
   Spezifikum ist die semantische Rolle „rechtwinklig zur Plattenebene".
 - **Verwendung**:
-  - **Werkstoff** (`werkstoff`): bei Modus STRUKTURIERT, SCHWACH,
+    - **Werkstoff** (`werkstoff`): bei Modus STRUKTURIERT, SCHWACH,
     KEINE Pflichtfeld; bei Modus HART nicht definiert.
-  - **Mehrlagenholz** (`mehrlagenholz`): Pflichtfeld; rechtwinklig zu
+    - **Mehrlagenholz** (`mehrlagenholz`): Pflichtfeld; rechtwinklig zu
     Haupttragrichtung und Nebentragrichtung.
-  - **Gerichteter Plattenwerkstoff**
+    - **Gerichteter Plattenwerkstoff**
     (`gerichteter_plattenwerkstoff`): Pflichtfeld; rechtwinklig zur
     Plattenlängsrichtung.
-  - **Isotroper Plattenwerkstoff** (`isotroper_plattenwerkstoff`):
+    - **Isotroper Plattenwerkstoff** (`isotroper_plattenwerkstoff`):
     Pflichtfeld; einziges geometrisches Werkstoff-Merkmal.
-  - **Bauteil** (`bauteil`): Plattendicken-Achse wird per Default
+    - **Bauteil** (`bauteil`): Plattendicken-Achse wird per Default
     aus der lokalen z-Achse abgeleitet.
 - **Abgrenzung**:
-  - **`einheitsvektor`** (allgemein): trägt keine semantische
+    - **`einheitsvektor`** (allgemein): trägt keine semantische
     Rolle. Eine Plattendicken-Achse ist ein Einheitsvektor in der
     Rolle „rechtwinklig zur Plattenebene".
-  - **`faserrichtung`**: Einheitsvektor in der Rolle „Material-
+    - **`faserrichtung`**: Einheitsvektor in der Rolle „Material-
     hauptachse parallel zum Faserverlauf"; bei Plattenwerkstoffen
     nicht direkt anwendbar (siehe `werkstoff`,
     `faserrichtungs_modus`). Plattendicken-Achse und Faserrichtung
     sind orthogonale Begriffe — bei Lagen eines Mehrlagenholzes
     liegt die Faserrichtung jeder Lage in der Plattenebene
     (rechtwinklig zur Plattendicken-Achse).
-  - **`plattenlaengsrichtung`** (für OSB),
+    - **`plattenlaengsrichtung`** (für OSB),
     **`haupttragrichtung`** (für Mehrlagenholz),
     **`nebentragrichtung`**: alle in der Plattenebene, rechtwinklig
     zur Plattendicken-Achse.
-  - **`bauteilachse`**: geometrische Längsachse eines Stabbauteils.
+    - **`bauteilachse`**: geometrische Längsachse eines Stabbauteils.
     Bei Plattenbauteilen nicht direkt anwendbar; die Plattendicken-
     Achse ist hier die geometrisch ausgezeichnete dritte
     Bauteilachse.
-  - **„Z-Achse"** des Welt-Koordinatensystems: vertikal nach oben
+    - **„Z-Achse"** des Welt-Koordinatensystems: vertikal nach oben
     (CLAUDE.md). Die Plattendicken-Achse ist eine **lokale**
     Bauteil-Achse; sie kann beliebig im Raum orientiert sein
     (z. B. waagrechte CLT-Decke: Plattendicken-Achse vertikal;

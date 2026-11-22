@@ -208,9 +208,9 @@ Sei
   horizontal liegt (|⟨n_hat_T, e_z⟩| ≤ ε_K — die Ebene steht
   senkrecht im Sinne von HG_KONVENTIONEN.md §1, d. h. lotrecht).
   E_T ist entweder
-  - im **Wand-Kontext** die Wandebene E_W einer Wand (siehe
+    - im **Wand-Kontext** die Wandebene E_W einer Wand (siehe
     `hg_wand.md`), oder
-  - im **Dachtragwerks-Kontext** eine lotrechte Ebene des
+    - im **Dachtragwerks-Kontext** eine lotrechte Ebene des
     Dachtragwerks: die **Binderebene** (Querebene rechtwinklig
     zur Firstrichtung) oder die **Längsebene** (Ebene parallel
     zur Firstrichtung durch eine Reihe lotrechter Bauteile und
@@ -244,14 +244,14 @@ alle erfüllt sind:
    ‖p_e − p_a‖ > ε_L.
 
 2. **Lage in der Tragwerksebene**: Beide Endpunkte liegen in E_T,
-   ```
+   ```text
    |⟨p_a − p_T, n_hat_T⟩| ≤ ε_L  ∧  |⟨p_e − p_T, n_hat_T⟩| ≤ ε_L.
    ```
 
 3. **Echte Diagonale (weder lotrecht noch horizontal)**: Der
    Winkel α(B):= arccos(|⟨d_hat, e_z⟩|) zwischen Bauteilachse und
    Lotachse erfüllt
-   ```
+   ```text
    ε_W < α(B) < π/2 − ε_W,
    ```
    d. h. d_hat ist weder kollinear zu e_z (kein Ständer, Pfosten,
@@ -261,7 +261,7 @@ alle erfüllt sind:
 4. **Zwei-Anker-Bedingung mit mindestens einem horizontalen
    Anker**: Die Endpunkte p_a und p_e liegen je auf einer
    Anker-Bauteilachse,
-   ```
+   ```text
    dist(p_a, a(A₁)) ≤ ε_L  ∧  dist(p_e, a(A₂)) ≤ ε_L,
    ```
    und **mindestens einer** der beiden Anker A₁, A₂ ist ein
@@ -284,13 +284,13 @@ alle erfüllt sind:
    lotrechten Anker-Endpunkt, `p_H` den horizontalen Anker-Endpunkt
    und sind `z_min^P`, `z_max^P` die z-Extrema der lotrechten
    Bauteilachse, so gilt
-   ```
+   ```text
    p_P.z ≤ z_max^P − ε_L · 3   (Strebe am Fuß / in der Mitte)
    ```
    **oder** der zweite Anker ist ebenfalls horizontal (klassischer
    Schwelle-zu-Einbinder-Fall) **oder** der horizontale Anker liegt
    unterhalb des lotrechten Anker-Endpunkts,
-   ```
+   ```text
    p_H.z < p_P.z − ε_L   (abwärts gerichtete Strebe),
    ```
    womit die Kopfband-Bedingung 6 (Längsholz **über** dem
@@ -443,7 +443,7 @@ deckt nur eine Windrichtung ab.
 ### Bauweisen-Verteilung
 
 | Bauweise | Wand-Aussteifung typisch durch |
-|---|---|
+| --- | --- |
 | Fachwerkbau (DE/AT, historisch und in Sanierung) | Holz-Streben in vielfältiger Geometrie (Mann-Figuren, K-Figuren, Andreaskreuz, Langstrebe) |
 | Riegelbau (CH, traditionell) | Holz-Streben, vereinzelt Beplankung |
 | Holzrahmenbau (modern) | **Beplankung** (OSB, Gipsfaser); Holz-Streben konstruktiv selten |
@@ -622,63 +622,63 @@ Teil dieses Eintrags; die Versatz-Bearbeitung ist eigene
   (R-Schritt 2026-08-14) erfolgt die Mitgliedschaft analog über
   das `dachstuhl`- bzw. `binder`-Aggregat.
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`), diagonal im
+    - **Bauteilachse** (`bauteilachse.Gerade`), diagonal im
     Sinne von Bedingung 3;
-  - **Querschnitt** (rechteckig, im historischen Fachwerk
+    - **Querschnitt** (rechteckig, im historischen Fachwerk
     „ständerstark" — TTH-Wortlaut — also gleicher Querschnitt
     wie die angrenzenden Ständer; im modernen Holzbau selten);
-  - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_Strebe, also
+    - **Werkstoff** (Vollholz oder KVH, Festigkeitsklasse C24);
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_Strebe, also
     axial entlang der diagonalen Bauteilachse).
 - **Positions-Annotation** (Merkmal an der Strebe, kein Subtyp):
-  - **Strebenposition** (`StrebePosition`-Enum): Wert aus
+    - **Strebenposition** (`StrebePosition`-Enum): Wert aus
     { FUSSSTREBE, KOPFSTREBE, FACHSTREBE, LANGSTREBE, ECKSTREBE,
     UNSPEZIFIZIERT }.
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Schwelle** (`schwelle`), **Einbinder** (`einbinder`), **Riegel**
+    - **Schwelle** (`schwelle`), **Einbinder** (`einbinder`), **Riegel**
     (`riegel`): horizontale Anker-Bauteile; je nach Strebenposition
     eines davon Fuß-Anker und/oder Kopf-Anker.
-  - **Ständer** (`staender`), **Pfosten** (`pfosten`, Synonym):
+    - **Ständer** (`staender`), **Pfosten** (`pfosten`, Synonym):
     lotrechte Anker-Bauteile; Fuß- oder Kopf-Anker bei
     Fußstrebe/Kopfstrebe-Position (am Pfosten-Fuß bzw. ‑Mitte,
     **nicht** am Pfosten-Kopf — letzteres ist Kopfband-Lesart).
-  - **Pfette** (`pfette`, mit Sub-Rollen `firstpfette`,
+    - **Pfette** (`pfette`, mit Sub-Rollen `firstpfette`,
     `mittelpfette`, `fusspfette`): horizontales Anker-Bauteil im
     Dachtragwerks-Kontext. Die Pfetten-Achse liegt bei
     Binderebenen-Streben nicht in E_T, sondern durchstößt sie;
     gefordert ist nur der Endpunkt-Anschluss (Bedingung 4).
-  - **Stuhlsäule** (`stuhlsaeule`), **Hängesäule**
+    - **Stuhlsäule** (`stuhlsaeule`), **Hängesäule**
     (`haengesaeule`): lotrechte Anker-Bauteile im
     Dachtragwerks-Kontext (Stuhl- bzw. Hängewerk-Strebe).
 - **Abgrenzung**:
-  - **Kopfband** (`kopfband`, Welle-10-Geschwister): eigene
+    - **Kopfband** (`kopfband`, Welle-10-Geschwister): eigene
     Bauteilrolle mit Pfosten-Kopf-Anker; nicht Sub-Lesart der
     Strebe (siehe Quellenkonflikt-Block).
-  - **Fußband** (`fussband`, Forward-Verweis, Folgearbeit):
+    - **Fußband** (`fussband`, Forward-Verweis, Folgearbeit):
     symmetrisches Gegenstück zum Kopfband am Pfosten-Fuß.
-  - **Knagge** (`knagge`, Forward-Verweis): dreieckiges Vollholz
+    - **Knagge** (`knagge`, Forward-Verweis): dreieckiges Vollholz
     als Konsole; kein Stab-Bauteil.
-  - **Andreaskreuz** (`andreaskreuz`, Forward-Verweis):
+    - **Andreaskreuz** (`andreaskreuz`, Forward-Verweis):
     Komposition zweier sich kreuzender Streben; Aggregat.
-  - **Mann** (`mann`, Forward-Verweis): symmetrisches Bündel
+    - **Mann** (`mann`, Forward-Verweis): symmetrisches Bündel
     aus Strebe-/Kopfband-/Fußband-Instanzen; Aggregat.
-  - **Kniestrebe** (`kniestrebe`, Forward-Verweis): Dachstuhl-
+    - **Kniestrebe** (`kniestrebe`, Forward-Verweis): Dachstuhl-
     Bauteil (stehender/liegender Stuhl); separate Bauteilrolle.
-  - **Stuhlsäule** (`stuhlsaeule`), **Hängesäule**
+    - **Stuhlsäule** (`stuhlsaeule`), **Hängesäule**
     (`haengesaeule`): Dach-Vertikalhölzer, nicht selbst Streben
     (aber lotrechte Anker-Bauteile, siehe oben).
-  - **Schwelle**, **Einbinder**, **Riegel**, **Ständer** (Welle-8/9-
+    - **Schwelle**, **Einbinder**, **Riegel**, **Ständer** (Welle-8/9-
     Geschwister), **Pfette** (`pfette`): horizontale bzw.
     lotrechte Anker-Bauteile, nicht selbst Streben.
-  - **Pfosten** (`pfosten`, Synonym von Ständer; siehe
+    - **Pfosten** (`pfosten`, Synonym von Ständer; siehe
     `hg_staender.md`): lotrechtes Wand-Bauteil, nicht Strebe.
-  - **Spannstrebe** (`spannstrebe`, Forward-Verweis),
+    - **Spannstrebe** (`spannstrebe`, Forward-Verweis),
     **Strebesäule** (`strebesaeule`, Forward-Verweis):
     TTH-Sub-Lesarten der Strebe; Folgearbeit-Trigger.
-  - **Zugband** (`zugband`, Forward-Verweis),
+    - **Zugband** (`zugband`, Forward-Verweis),
     **Windrispenband** (`windrispenband`, Forward-Verweis):
     Stahl-Aussteifungselemente; eigene Bauteilrollen.
-  - **Bauteil** (`bauteil`): die Strebe ist eine Spezialisierung
+    - **Bauteil** (`bauteil`): die Strebe ist eine Spezialisierung
     von Bauteil mit zusätzlichen Lage-Constraints.
 
 ## Quellen

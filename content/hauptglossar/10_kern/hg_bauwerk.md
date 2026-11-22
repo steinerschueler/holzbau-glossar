@@ -139,7 +139,7 @@ Sei
 
 Dann ist ein **Bauwerk** das Tupel
 
-```
+```text
 W_b:= (uuid, tragwerke, weitere_bauteile, standort, bezeichnung?)
 ```
 
@@ -180,7 +180,7 @@ und den Konsistenzbedingungen
    unberührt; sie ist Eigenschaft des Bausystem-Begriffs, nicht der
    Bauwerk-Komposition.
 2. **Gesamt-Bauteilmenge**: Die Bauteilmenge des Bauwerks ist
-   ```
+   ```text
    B(W_b):= (⋃_{T ∈ tragwerke} T.B) ∪ weitere_bauteile
    ```
    und ist endlich.
@@ -208,7 +208,7 @@ Die **geometrische Punktmenge** des Bauwerks im
 Weltkoordinatensystem ist die Vereinigung der bauteilbezogenen
 Punktmengen
 
-```
+```text
 G_W(W_b):= ⋃_{b ∈ B(W_b)} G_W(b) ⊂ ℝ³.
 ```
 
@@ -302,12 +302,12 @@ bloßen Bauteil-Sammlung:
 In der App-Ontologie steht das Bauwerk an der Spitze einer
 Vier-Ebenen-Trennung:
 
-| Ebene       | Glossarbegriff                | IFC-Pendant                                            |
-|-------------|-------------------------------|--------------------------------------------------------|
-| **Bauwerk** | `bauwerk` (dieser Eintrag)    | `IfcFacility` (abstrakt) / `IfcBuilding` (konkret)     |
-| **Tragwerk**| `tragwerk` (lastabtragend)    | lastabtragende `IfcBuiltElement`-Menge / `IfcStructuralAnalysisModel` |
-| **Bausystem**| `bausystem` (funktionale Sicht)| `IfcBuildingSystem`                                  |
-| **Bauteil** | `bauteil`                     | `IfcElement` (mit Subtypen Beam, Column, Member, Plate)|
+| Ebene | Glossarbegriff | IFC-Pendant |
+| --- | --- | --- |
+| **Bauwerk** | `bauwerk` (dieser Eintrag) | `IfcFacility` (abstrakt) / `IfcBuilding` (konkret) |
+| **Tragwerk** | `tragwerk` (lastabtragend) | lastabtragende `IfcBuiltElement`-Menge / `IfcStructuralAnalysisModel` |
+| **Bausystem** | `bausystem` (funktionale Sicht) | `IfcBuildingSystem` |
+| **Bauteil** | `bauteil` | `IfcElement` (mit Subtypen Beam, Column, Member, Plate) |
 
 Diese Hierarchie folgt SIA 260 §2.1 und ISO 6707-1 §3.1 in der Sache
 und IFC 4.3 in der Datenmodell-Repräsentation. Sie ist im
@@ -386,85 +386,85 @@ Subglossar-Pendant entfaltet.
   steht außerhalb der `element`-Hierarchie (Bauwerk ist kein
   Element-Subtyp).
 - **Bestandteile (partitiv-aggregativ)**:
-  - **Tragwerke** (`tragwerk`, Pflicht, mindestens eines): die
+    - **Tragwerke** (`tragwerk`, Pflicht, mindestens eines): die
     lastabtragenden Aggregat-Bestandteile des Bauwerks.
-  - **Weitere Bauteile** (`bauteil`, optional): nicht tragende
+    - **Weitere Bauteile** (`bauteil`, optional): nicht tragende
     Bauteile (Eindeckung, Hüllkonstruktion, Schichtaufbau,
     Bekleidungen, nicht tragende Innenwände).
-  - **Standortbezug** (`standort`, Pflicht; Folgearbeit): der
+    - **Standortbezug** (`standort`, Pflicht; Folgearbeit): der
     Aufstellungsort des Bauwerks; im aktuellen Glossarstand
     sammelbegrifflich geführt, Konkretisierung sobald
     Georeferenzierung modelliert wird.
 - **Spezialisierungen** (eigene Einträge folgen, trigger-basiert):
-  - **Gebäude** (`gebaeude`, Folgearbeit): Bauwerk mit
+    - **Gebäude** (`gebaeude`, Folgearbeit): Bauwerk mit
     Schutzfunktion (ISO 6707-1 „building"); IFC-Pendant
     `IfcBuilding`.
-  - **Ingenieurbauwerk** (`ingenieurbauwerk`, Folgearbeit):
+    - **Ingenieurbauwerk** (`ingenieurbauwerk`, Folgearbeit):
     Bauwerk des Tief-/Verkehrs-/Wasserbaus (ISO 6707-1 „civil
     engineering works"); IFC-Pendant `IfcBridge`, `IfcRoad`,
     `IfcRailway`, `IfcMarineFacility`.
 - **Verwendung**:
-  - Top-Level-Container für alle Modellinhalte eines konkreten
+    - Top-Level-Container für alle Modellinhalte eines konkreten
     Bauvorhabens.
-  - Foreign-Key-Ziel von Bemessungs-Nachweisen, Bauantrag-
+    - Foreign-Key-Ziel von Bemessungs-Nachweisen, Bauantrag-
     Mappings, IFC-Export-Wurzeln.
 - **Abgrenzung**:
-  - **Tragwerk** (`tragwerk`): Teil-Aspekt des Bauwerks
+    - **Tragwerk** (`tragwerk`): Teil-Aspekt des Bauwerks
     (lastabtragend), nicht Synonym, nicht Subtyp. Ein Bauwerk
     enthält **ein bis mehrere** Tragwerke; SIA 260 §2.1.
-  - **Bausystem** (`bausystem`): funktionale Sicht über Bauteilen
+    - **Bausystem** (`bausystem`): funktionale Sicht über Bauteilen
     mit nicht-exklusiver Mitgliedschaft; Bauwerk ist hingegen
     eine **aggregative Komposition** mit disjunkter Trennung von
     Tragwerks-Mitgliedern und weiteren Bauteilen.
-  - **Bauteil** (`bauteil`): einzelner Bestandteil; das Bauwerk
+    - **Bauteil** (`bauteil`): einzelner Bestandteil; das Bauwerk
     aggregiert Bauteile entweder mittelbar über Tragwerke oder
     unmittelbar als weitere Bauteile.
-  - **Element** (`element`): Wurzel der App-Ontologie für
+    - **Element** (`element`): Wurzel der App-Ontologie für
     **verbaute Einzelobjekte** (Bauteil/Verbindungsmittel/
     Verbinder/Verstärkungselement). Bauwerk ist **kein
     Element-Subtyp**, sondern eine Aggregat-Hierarchie eine
     Stufe darüber.
-  - **Verbindung** (`verbindung`): lokales Knoten-Aggregat
+    - **Verbindung** (`verbindung`): lokales Knoten-Aggregat
     (Bauteile + Verbindungsmittel + Verbinder + Verstärkungen);
     Bestandteil eines Tragwerks, nicht des Bauwerks unmittelbar.
-  - **Bauteilgruppe** (`bauteilgruppe`): partitive Aggregat-
+    - **Bauteilgruppe** (`bauteilgruppe`): partitive Aggregat-
     Klasse mit exklusiver Mitgliedschaft und kaskadischer
     Lebenszyklus-Bindung — strukturell anders als das Bauwerk
     (das Bauwerk ist exklusiv für Bauteile, aber ohne
     kaskadische Lifecycle-Kopplung der enthaltenen Aggregate
     `tragwerk`).
-  - **Dach** (`dach`): Bestandteil eines Bauwerks (Aggregat aus
+    - **Dach** (`dach`): Bestandteil eines Bauwerks (Aggregat aus
     Dachtragwerk, Dachflächen, Dachaufbau), nicht selbst
     Bauwerk.
-  - **Dachstuhl** (`dachstuhl`, Folgearbeit): zimmermanns-
+    - **Dachstuhl** (`dachstuhl`, Folgearbeit): zimmermanns-
     sprachliche enge Lesart des Dachtragwerks; eine Stufe unter
     dem Bauwerk.
-  - **Gebäude** (`gebaeude`, Folgearbeit): **Subtyp**, nicht
+    - **Gebäude** (`gebaeude`, Folgearbeit): **Subtyp**, nicht
     Synonym. Ein Wohnhaus ist ein Gebäude, also ein Bauwerk-
     Subtyp.
-  - **Ingenieurbauwerk** (`ingenieurbauwerk`, Folgearbeit):
+    - **Ingenieurbauwerk** (`ingenieurbauwerk`, Folgearbeit):
     **Subtyp**, nicht Synonym; Brücken, Tunnel, Dämme,
     Schleusen.
-  - **Bauliche Anlage** (`bauliche_anlage`, Folgearbeit niedriger
+    - **Bauliche Anlage** (`bauliche_anlage`, Folgearbeit niedriger
     Priorität): baurechtlicher Oberbegriff der MBO §2; **breiter**
     als Bauwerk (umfasst auch Zäune, Werbeanlagen, Pflasterungen)
     und auf andere Begriffsebene (rechtlich, nicht technisch).
-  - **Standort** (`standort`, Folgearbeit): geometrischer
+    - **Standort** (`standort`, Folgearbeit): geometrischer
     Aufstellungsort des Bauwerks; Bestandteil des Bauwerk-Tupels,
     aber eigener Begriff. Konkretisierung sobald Georeferenzierung
     eingeführt wird.
-  - **Grundstück** (`grundstueck`, Folgearbeit): liegenschafts-
+    - **Grundstück** (`grundstueck`, Folgearbeit): liegenschafts-
     rechtliche Einheit; in Schweiz/Deutschland unterschiedlich
     realisiert; nicht Synonym zu Standort, sondern eine
     rechtliche Lesart des Aufstellungsorts.
-  - **Liegenschaft** (`liegenschaft`, Folgearbeit): liegenschafts-
+    - **Liegenschaft** (`liegenschaft`, Folgearbeit): liegenschafts-
     rechtliche Sammelbenennung in CH-Praxis; eigener Eintrag bei
     Bedarf.
-  - **Hochbau** / **Tiefbau** (`hochbau`, `tiefbau`,
+    - **Hochbau** / **Tiefbau** (`hochbau`, `tiefbau`,
     Folgearbeit): Klassifikations-Achsen über Bauwerken, keine
     Begriffe für das Bauwerk selbst. Werden als abgelehnte
     Benennungen geführt.
-  - **Konstruktion** (`konstruktion`): mehrdeutiger Begriff
+    - **Konstruktion** (`konstruktion`): mehrdeutiger Begriff
     (Konstruktionsweise, Konstruktions-Stand, Tragwerks-
     Konstruktion); im Holzbau eher als Synonym von Tragwerk-
     Konstruktion verwendet. Als abgelehnte Benennung geführt.

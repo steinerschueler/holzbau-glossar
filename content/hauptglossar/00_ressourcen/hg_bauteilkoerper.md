@@ -118,7 +118,7 @@ Repräsentation ihr Polyeder im lokalen Bauteil-Koordinatensystem zu:
 
 Dann ist der **Bauteilkörper** des Bauteils B das Tupel
 
-```
+```text
 K(B):= (uuid_B, P_W),
 ```
 
@@ -130,7 +130,7 @@ mit
   Eckpunkten von ord(B.geometrie) durch die SE(3)-Transformation
   B.lage in W überführt sind:
 
-  ```
+  ```text
   P_W:= lage_anwenden(B.lage, ord(B.geometrie)),
   ```
 
@@ -141,7 +141,7 @@ mit
 
 Die Punktmenge des Bauteilkörpers in W ist
 
-```
+```text
 |K(B)|:= |P_W| ⊂ ℝ³.
 ```
 
@@ -304,60 +304,60 @@ Querschnitt-Sweep zu einem Bauteilkörper.
   Trägerbauteil existieren nicht.
 
 - **Bestandteile** (geerbt von `polyeder`):
-  - **Eckpunkte** (in W, in mm),
-  - **Kanten** (Strecken zwischen Eckpunkten),
-  - **Begrenzungsflächen** (planare Polygone mit Außennormalen),
-  - **Inneres** (Volumenmenge).
+    - **Eckpunkte** (in W, in mm),
+    - **Kanten** (Strecken zwischen Eckpunkten),
+    - **Begrenzungsflächen** (planare Polygone mit Außennormalen),
+    - **Inneres** (Volumenmenge).
 
 - **Spezialisierungen / Rollen** (Folgearbeit, nicht in diesem
   Eintrag):
-  - Bauteilkörper eines Stabbauteils (Sweep-Prisma vor
+    - Bauteilkörper eines Stabbauteils (Sweep-Prisma vor
     Bearbeitungen, allgemeines Polyeder nach Bearbeitungen),
-  - Bauteilkörper eines Flächenbauteils (Aufdickungs-Prisma der
+    - Bauteilkörper eines Flächenbauteils (Aufdickungs-Prisma der
     Trägerfläche),
-  - Bauteilkörper eines Volumenbauteils (Polyeder direkt).
+    - Bauteilkörper eines Volumenbauteils (Polyeder direkt).
   Eigene Glossar-Einträge sind nicht vorgesehen, solange die
   drei Fälle nur Konstruktions-Vorschriften unterscheiden, aber
   keine eigene Begriffs-Substanz tragen.
 
 - **Abgrenzung**:
-  - **Bauteil** (`bauteil`): das Trägerobjekt mit eigener
+    - **Bauteil** (`bauteil`): das Trägerobjekt mit eigener
     Identität, Werkstoff, Faserrichtungs-Modi und Bemessungs-
     Eigenschaften; der Bauteilkörper ist eine **Sicht** an ihm,
     nicht das Bauteil selbst. Ein Bauteil hat genau einen
     Bauteilkörper; ein Bauteilkörper hat genau ein Bauteil.
-  - **Polyeder** (`polyeder`): allgemeiner geometrischer
+    - **Polyeder** (`polyeder`): allgemeiner geometrischer
     Oberbegriff ohne Bauteil-Bindung. Jeder Bauteilkörper ist ein
     Polyeder, aber nicht jedes Polyeder ist ein Bauteilkörper
     (es kann Hilfsgeometrien, Schnitt-Polyeder, Verbindungs-
     Polyeder geben, die zu keinem Bauteil gehören).
-  - **Bauteilachse** (`bauteilachse`): die 1D-Hauptachse
+    - **Bauteilachse** (`bauteilachse`): die 1D-Hauptachse
     stabförmiger Bauteile. Sie ist eine Achse, kein Volumen, und
     damit kein Bauteilkörper. Erst durch Sweep des Querschnitts
     entlang der Bauteilachse entsteht ein Bauteilkörper.
-  - **Querschnitt** (`querschnitt`): die 2D-Schnittfigur eines
+    - **Querschnitt** (`querschnitt`): die 2D-Schnittfigur eines
     Stabbauteils in einer Ebene rechtwinklig zur Bauteilachse.
     Ein Querschnitt ist 2D-beschränkt, der Bauteilkörper
     3D-beschränkt; der Querschnitt ist eine Bestandteil-Sicht,
     aus der zusammen mit der Bauteilachse der Bauteilkörper
     konstruiert wird.
-  - **Lage** (`lage`): die SE(3)-Starrkörpertransformation, die
+    - **Lage** (`lage`): die SE(3)-Starrkörpertransformation, die
     das lokale Bauteil-Koordinatensystem nach W überführt. Die
     Lage ist Teil der Konstruktion des Bauteilkörpers (sie wird
     auf das lokale Polyeder angewandt), aber nicht selbst der
     Bauteilkörper.
-  - **Bauteilgeometrie** (Sealed-Wurzel `Bauteilgeometrie` im
+    - **Bauteilgeometrie** (Sealed-Wurzel `Bauteilgeometrie` im
     Code; kein eigener Glossareintrag): die App-interne
     Sammelklasse über alle drei Geometrievarianten
     (`Stab | Flaeche | Volumen`). Sie ist eine Ebene abstrakter
     als der Bauteilkörper und enthält auch die nicht-volumetrischen
     Repräsentationen; der Bauteilkörper ist die abgeleitete
     Volumen-Sicht.
-  - **Volumenkörper** (allgemein-bautechnischer Term, kein eigener
+    - **Volumenkörper** (allgemein-bautechnischer Term, kein eigener
     Glossareintrag): räumlich geschlossener 3D-Körper im Sinne
     von baulexikon.brz.eu, ohne Bauteil-Bindung. Der Bauteilkörper
     ist ein Volumenkörper in der Rolle eines Bauteils.
-  - **`IfcShapeRepresentation`** (IFC-Schema, kein eigener
+    - **`IfcShapeRepresentation`** (IFC-Schema, kein eigener
     Glossareintrag): die IFC-Klammer um mehrere geometrische
     Repräsentations-Items einer Sicht (`Axis`, `Body`, `Box`,
     `Profile`). Der Bauteilkörper korrespondiert zur

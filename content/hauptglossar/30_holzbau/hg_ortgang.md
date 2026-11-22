@@ -68,7 +68,7 @@ z-Komponente; mit der dort fixierten Vorzeichenkonvention gilt
 Bergab-Richtung). Operational liefert die Projektionsform aus
 `hg_falllinie.md` Gleichung (vgl. dortige Symbol-Konvention)
 
-```
+```text
 e_hat_fall:= −(e_z − ⟨e_z, n_a⟩ · n_a) / ‖e_z − ⟨e_z, n_a⟩ · n_a‖.
 ```
 
@@ -84,7 +84,7 @@ vollständige Wohldefiniertheits-Argumentation.
 Eine Polygonrandkante e_i = [v_i, v_{i+1}] heißt **entlang der
 Falllinie verlaufend**, wenn ihr Einheits-Richtungsvektor
 
-```
+```text
 e_hat_i:= (v_{i+1} − v_i) / ‖v_{i+1} − v_i‖
 ```
 
@@ -92,7 +92,7 @@ mit e_hat_fall kollinear ist — als Parallelitäts-Test über das
 normierte Kreuzprodukt geführt (HG_KONVENTIONEN §4: Falllinien-
 Kollinearität → `KOLLINEAR_EPS`, gut konditioniert nahe sin = 0):
 
-```
+```text
 ‖e_hat_i × e_hat_fall‖ ≤ ε_K,    äquivalent  |⟨e_hat_i, e_hat_fall⟩| ≥ 1 − ε_K²/2.
 ```
 
@@ -176,25 +176,25 @@ Gefälle abläuft.
   Eckpunkt der Trauflinie und der obere Endpunkt zugleich Eckpunkt
   der Firstlinie (oder einer Pultkante, oder eines Grats).
 - **Abgrenzung**:
-  - **Traufe** (`traufe`): untere, näherungsweise horizontale
+    - **Traufe** (`traufe`): untere, näherungsweise horizontale
     Polygonrandkante; verläuft rechtwinklig zur Falllinie.
-  - **First** (`first`): obere, näherungsweise horizontale
+    - **First** (`first`): obere, näherungsweise horizontale
     Schnittkante; verläuft rechtwinklig zur Falllinie.
-  - **Grat** (eigener Eintrag folgt): geneigte Schnittkante
+    - **Grat** (eigener Eintrag folgt): geneigte Schnittkante
     zweier Dachflächen an einem ausspringenden Eck (Walmdach-Ecke);
     geometrisch in einer einzelnen Dachfläche **nicht** entlang
     der Falllinie, sondern entlang der Schnittgeraden zweier
     Dachflächen-Ebenen — daher Schnittkante, nicht Randkante.
-  - **Kehle** (eigener Eintrag folgt): geneigte Schnittkante
+    - **Kehle** (eigener Eintrag folgt): geneigte Schnittkante
     zweier Dachflächen an einem einspringenden Eck.
-  - **Pultkante** (eigener Eintrag folgt): obere Polygonrandkante
+    - **Pultkante** (eigener Eintrag folgt): obere Polygonrandkante
     einer Pultdachfläche; horizontal, nicht entlang der Falllinie.
-  - **Ortbrett / Windbrett**: konstruktives Bauteil am Ortgang;
+    - **Ortbrett / Windbrett**: konstruktives Bauteil am Ortgang;
     nicht Bestandteil der geometrischen Kante. Hier nicht definiert.
-  - **Giebel / Giebelseite**: jene Wand des Gebäudes, an die der
+    - **Giebel / Giebelseite**: jene Wand des Gebäudes, an die der
     Ortgang anschließt; ist Eigenschaft der Wand, nicht der Dachfläche.
     Hier nicht definiert.
-  - **Falllinie**: die Richtung des größten Gefälles auf der
+    - **Falllinie**: die Richtung des größten Gefälles auf der
     Dachfläche; ist eine Richtung, keine Kante. Wird im Eintrag als
     Hilfsgröße eingeführt; eigener Glossareintrag folgt bei Bedarf.
 

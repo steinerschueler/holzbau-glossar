@@ -186,7 +186,7 @@ Sei
 
 Die **Parameter** eines Zapfenlochs sind das Tupel
 
-```
+```text
 p_ZL:= (F, u_0, v_0, b, h, t, ψ, variante, κ)                    (1)
 ```
 
@@ -236,7 +236,7 @@ Loch-Öffnung und die Tiefen-Extrusion gegeben.
 Sei R(ψ) ∈ SO(2) die ebene Rotation um ψ; das Loch-Rechteck in
 der Bezugsfläche ist
 
-```
+```text
 □_F:=  { (u, v) ∈ ℝ² |
            |u − u_0|_R(ψ) ≤ b/2  und  |v − v_0|_R(ψ) ≤ h/2 }       (2)
 ```
@@ -246,14 +246,14 @@ der Bezugsfläche ist
 Für die **Standard-Variante** ist der Werkzeugkörper das
 gerade Prisma
 
-```
+```text
 K_ZL^Standard:=  □_F × [0, t]   ⊂   ℝ² × ℝ⁺                     (3)
 ```
 
 im Flächen-Koordinatensystem, wobei die dritte Komponente die
 Tiefe in Richtung e_hat_n^F ist. In Bauteil-Lokal-Koordinaten:
 
-```
+```text
 K_ZL^Standard(B, p_ZL):=  T_F→B(□_F × [0, t]).                (4)
 ```
 
@@ -261,14 +261,14 @@ Für die **Schwalbenschwanz-Variante** (DovetailMortise) ist
 der Werkzeugkörper ein Pyramidenstumpf mit zur Eintrittsfläche
 hin schmäler werdendem Querschnitt:
 
-```
+```text
 K_ZL^Schwalbenschwanz:=  { (u, v, z) ∈ ℝ³ |  0 ≤ z ≤ t,
    (u, v) ∈ □_F^{ψ, b(z), h} }                                    (5)
 ```
 
 mit
 
-```
+```text
 b(z):=  b  −  2 · z · tan(κ),   (Loch verengt sich nach innen
                                    in u-Richtung um den Konus κ),
 ```
@@ -283,7 +283,7 @@ Für die **Haus-Variante** (HouseMortise) ist der Werkzeug-
 körper die Vereinigung des Standard-Werkzeugkörpers mit einer
 zusätzlichen flachen Anlagestufe an der Bezugsfläche:
 
-```
+```text
 K_ZL^Haus:=  K_ZL^Standard  ∪  □_F^{Haus} × [0, t_Haus],         (6)
 ```
 
@@ -297,14 +297,14 @@ Tool, das Haus-Zapfenlöcher erstmals braucht.
 In allen Varianten ist die **Wirkung** des Zapfenlochs auf das
 Bauteil B die Boole'sche Differenz nach `bearbeitung`:
 
-```
+```text
 G_B'(F):=  G_B^lokal  \  K_ZL^{variante}(B, p_ZL).               (7)
 ```
 
 Damit ist ein **Zapfenloch** (als Subtyp von `bearbeitung`)
 das Tupel
 
-```
+```text
 F_ZL:=  (uuid, typ = Zapfenloch, parameter = p_ZL,
           lokale_platzierung = id_SE(3), bezeichnung?)             (8)
 ```
@@ -360,7 +360,7 @@ gewählt wird).
      □_F muss vollständig in der Bezugsfläche F liegen, also
      bei einer rechteckigen F mit Abmessungen (u_max, v_max)
      gilt
-     ```
+     ```text
      |u − u_0|_R(ψ) ≤ b/2  und  |v − v_0|_R(ψ) ≤ h/2
      ⇒  0 ≤ u ≤ u_max  und  0 ≤ v ≤ v_max  für alle
         Eckpunkte des rotierten Rechtecks.
@@ -537,12 +537,12 @@ auf.
 **BTLx 2.1** modelliert das Zapfenloch über mehrere
 Processings, je nach Variante:
 
-| App-Variante         | Primäre BTLx-Entsprechung   | Anmerkung                       |
-|----------------------|------------------------------|----------------------------------|
-| Standard             | `Mortise`                    | rechteckiges Blindloch           |
-| Schwalbenschwanz     | `DovetailMortise`            | mit ConeAngle κ                  |
-| Haus                 | `HouseMortise`               | mit zusätzlicher Anlagestufe     |
-| Japanisch (Folgearbeit) | `JapaneseMortise`         | Mehrflächen-Geometrie            |
+| App-Variante | Primäre BTLx-Entsprechung | Anmerkung |
+| --- | --- | --- |
+| Standard | `Mortise` | rechteckiges Blindloch |
+| Schwalbenschwanz | `DovetailMortise` | mit ConeAngle κ |
+| Haus | `HouseMortise` | mit zusätzlicher Anlagestufe |
+| Japanisch (Folgearbeit) | `JapaneseMortise` | Mehrflächen-Geometrie |
 
 **IFC 4.3** modelliert das Zapfenloch generisch als
 `IfcOpeningElement` mit `IfcRelVoidsElement`-Beziehung zum
@@ -567,22 +567,22 @@ Fertigungs-Schicht.
   Zapfenloch eine konkrete subtraktive Bearbeitung mit dem
   typspezifischen Parametertupel p_ZL.
 - **Bestandteile (partitiv)** (geerbt von `bearbeitung`):
-  - **UUID** (`uuid`): technische Identität, Pflicht.
-  - **Typ**: konstant `Zapfenloch`.
-  - **Parameter** (typspezifisch): F, u_0, v_0, b, h, t, ψ,
+    - **UUID** (`uuid`): technische Identität, Pflicht.
+    - **Typ**: konstant `Zapfenloch`.
+    - **Parameter** (typspezifisch): F, u_0, v_0, b, h, t, ψ,
     variante, κ.
-  - **Lokale Platzierung**: SE(3); im Standardfall die Identität.
-  - **Bezeichnung**: optional.
-  - **Keine Backref auf das Bauteil**: das zugehörige Bauteil
+    - **Lokale Platzierung**: SE(3); im Standardfall die Identität.
+    - **Bezeichnung**: optional.
+    - **Keine Backref auf das Bauteil**: das zugehörige Bauteil
     (typisch eine Pfette, Schwelle, ein Einbinder oder ein
     Hauptträger) ist über die partitive Komposition bestimmt,
     nicht über ein Feld am Zapfenloch-Objekt.
 - **Verwendung**:
-  - Bestandteil eines **Bauteils** (`bauteil`): das Zapfenloch
+    - Bestandteil eines **Bauteils** (`bauteil`): das Zapfenloch
     erscheint als Bearbeitung in der Liste der Bauteil-
     Bearbeitungen; geometrisch sitzt es an einer Bezugsfläche
     F ∈ 𝓕(B) des Bauteilkörpers.
-  - **Aufnahme eines Zapfens** (`zapfen`): das Zapfenloch
+    - **Aufnahme eines Zapfens** (`zapfen`): das Zapfenloch
     bildet die formschlüssige Aufnahme; die Paarung
     Zapfenloch ↔ Zapfen wird **nicht** im Zapfenloch selbst
     geführt, sondern erst auf der Aggregats-Ebene über
@@ -590,51 +590,51 @@ Fertigungs-Schicht.
     `VerbindungsTyp.ZimmermannsmaessigerAnschluss`.
 - **Spezialisierungen** (Folgearbeit, eigene Glossareinträge
   bei Bedarf):
-  - **Schwalbenschwanz-Zapfenloch**: hier als Variante des
+    - **Schwalbenschwanz-Zapfenloch**: hier als Variante des
     Standard-Zapfenlochs mit Konuswinkel κ geführt; bei
     eigenständigem Glossareintrag-Bedarf wäre der Eintrag
     `schwalbenschwanz_zapfenloch` (Folgearbeit).
-  - **Haus-Zapfenloch / Brustzapfen-Loch**: hier als Variante
+    - **Haus-Zapfenloch / Brustzapfen-Loch**: hier als Variante
     mit zusätzlicher flacher Anlagestufe geführt.
-  - **Japanisches Zapfenloch** (`japanisches_zapfenloch`,
+    - **Japanisches Zapfenloch** (`japanisches_zapfenloch`,
     Folgearbeit): Mehrflächen-Geometrie, deckt das
     Standard-Modell dieses Eintrags nicht ab.
 - **Abgrenzung**:
-  - **Zapfen** (`zapfen`): das **hervorstehende** Element am
+    - **Zapfen** (`zapfen`): das **hervorstehende** Element am
     **Anschlussbauteil**, das in das Zapfenloch eingeführt
     wird. Zapfen und Zapfenloch sind Welle-4-Geschwister
     derselben Verbindungsart; das Paar wird auf der
     Aggregats-Ebene über `verbindung` zusammengeführt. Der
     Zapfen ist eine Bearbeitung am anderen Bauteil.
-  - **Kerve** (`kerve`): zweiflächiger dreieckiger Einschnitt
+    - **Kerve** (`kerve`): zweiflächiger dreieckiger Einschnitt
     an einem Stab-Bauteil; **kein** prismatischer Hohlraum
     mit rechteckiger Öffnung. Die Kerve trägt
     Auflagerkräfte über zwei zueinander rechtwinklige
     Flächen, das Zapfenloch über die vier Lochwände eines
     Quaders. Geometrisch klar getrennt.
-  - **Bohrung** (`bohrung`, Forward-Verweis A): zylindrische
+    - **Bohrung** (`bohrung`, Forward-Verweis A): zylindrische
     Subtraktion. Geometrisch klar getrennt vom rechteckigen
     Zapfenloch.
-  - **Versatz** (`versatz`, Forward-Verweis A): flache,
+    - **Versatz** (`versatz`, Forward-Verweis A): flache,
     schräge Druckfläche quer zur Faser ohne hervorstehenden
     Stift und ohne rechteckigen Hohlraum. Geometrisch klar
     getrennt.
-  - **Schlitz** (`schlitz`, Forward-Verweis A): längliche
+    - **Schlitz** (`schlitz`, Forward-Verweis A): längliche
     Subtraktion mit geringer Breite und großer Tiefe zur
     Aufnahme eines Schlitzblechs. Im DACH-Korpus
     überwiegend für Schlitzblech-Aufnahmen reserviert; die
     durchgehende Variante des Zapfenlochs ist
     berufssprachlich teilweise ebenfalls als „Schlitz"
     geführt — siehe Erläuterung.
-  - **Blatt** (`blatt`, Forward-Verweis A): flächige
+    - **Blatt** (`blatt`, Forward-Verweis A): flächige
     Längs-Überlappung mit halber Holzdicke; weder
     rechteckige Aussparung noch hervorstehender Stift.
-  - **Kamm** (`kamm`, Forward-Verweis A): einseitige
+    - **Kamm** (`kamm`, Forward-Verweis A): einseitige
     Materialwegnahme am übergreifenden Holz; keine
     geschlossene Aussparung im Bauteilinneren.
-  - **Anschnitt** (`anschnitt`, Forward-Verweis A): planare
+    - **Anschnitt** (`anschnitt`, Forward-Verweis A): planare
     Schräge am Bauteilende; keine Aussparung.
-  - **Aussparung** (Forward-Verweis A, Folgearbeit nach
+    - **Aussparung** (Forward-Verweis A, Folgearbeit nach
     `hg_bohrung.md`-Konvention): allgemeiner Bearbeitungs-Subtyp
     für **große nicht-kreisförmige Sackausnehmungen** (BTLx
     `Pocket` mit nicht-kreisförmigem Profil). Das Zapfenloch ist
@@ -643,18 +643,18 @@ Fertigungs-Schicht.
     einer Trägeröffnung nach EC5:2025 „Design of holes in beams"
     oder erstes Tool mit großer Sackausnehmung außerhalb des
     Zapfenloch-Spektrums.
-  - **Bearbeitung** (`bearbeitung`): der Oberbegriff. Das
+    - **Bearbeitung** (`bearbeitung`): der Oberbegriff. Das
     Zapfenloch ist eine konkrete Bearbeitung, kein
     Bearbeitungs-Aggregat.
-  - **Bauteil** (`bauteil`): das Trägerobjekt, in dem das
+    - **Bauteil** (`bauteil`): das Trägerobjekt, in dem das
     Zapfenloch sitzt. Das Zapfenloch ist kein Bauteil,
     sondern ein Merkmal eines Bauteils.
-  - **Verbindung** (`verbindung`): das Tragwerks-Aggregat,
+    - **Verbindung** (`verbindung`): das Tragwerks-Aggregat,
     das ein Zapfenloch an einem Bauteil mit einem Zapfen
     an einem anderen Bauteil paart. Das Zapfenloch ist
     keine Verbindung, sondern eine geometrische
     Voraussetzung dafür.
-  - **Verbindungsmittel** (`verbindungsmittel`): metallische
+    - **Verbindungsmittel** (`verbindungsmittel`): metallische
     oder hölzerne kraftübertragende Elemente (Schraube,
     Nagel, Holznagel). Das Zapfenloch ist **kein**
     Verbindungsmittel, sondern eine Bauteilbearbeitung. Ein

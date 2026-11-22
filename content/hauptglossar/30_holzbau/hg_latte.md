@@ -114,7 +114,7 @@ folgenden Bedingungen erfüllt sind:
 
 2. **Parallelität zur Trägerebene**: Die Bauteilachsenrichtung d_hat
    liegt parallel zur Trägerebene E,
-   ```
+   ```text
    |⟨n_a, d_hat⟩| ≤ ε_K.
    ```
    Die Achse selbst liegt typischerweise nicht in E, sondern in einer
@@ -125,7 +125,7 @@ folgenden Bedingungen erfüllt sind:
 
 3. **Horizontalität**: Die Bauteilachsenrichtung steht rechtwinklig
    zur Welt-Lotachse,
-   ```
+   ```text
    |⟨d_hat, e_z⟩| ≤ ε_K.
    ```
    Die Form des Tests ist ein **Sinus-Test gegen e_z-Parallelität**
@@ -134,7 +134,7 @@ folgenden Bedingungen erfüllt sind:
 
 4. **Rechtwinkligkeit zur Sparrenachse**: Es existiert mindestens
    ein Sparren S der zugeordneten Dachfläche D mit
-   ```
+   ```text
    |⟨d_hat, d_hat_S⟩| ≤ ε_K.
    ```
    Die Lattenachse steht damit rechtwinklig zur Sparrenachse;
@@ -234,7 +234,7 @@ gehen auf DIN 4070-1 (1958) zurück und werden in DIN EN 14081-1
 und DIN 4074-1 fortgeführt:
 
 | Querschnitt (h × b) | typische Verwendung | Sortierklasse |
-|---|---|---|
+| --- | --- | --- |
 | **24 × 48 mm** | Sparrenabstand ≤ ca. 70 cm, leichte Eindeckung | S13 |
 | **30 × 50 mm** | Standard bei Ziegel-Eindeckung, Sparrenabstand bis ca. 80 cm | S10 |
 | **40 × 60 mm** | Sparrenabstand > 80 cm, schwere Eindeckung, hohe Schneelast | S10 oder S13 |
@@ -255,7 +255,7 @@ Der Achsabstand benachbarter Latten ist **eindeckungsabhängig**
 und damit Eigenschaft des Dachaufbaus, nicht des Tragwerks:
 
 | Eindeckung | Lattenabstand (Achsmaß) |
-|---|---|
+| --- | --- |
 | Tondachziegel (Falzziegel) | 32–36 cm |
 | Betondachstein | 31–34 cm |
 | Biberschwanz-Doppeldeckung | 16–18 cm |
@@ -324,36 +324,36 @@ außerhalb der Holzbau-Modellierung dieses Glossars.
   Bauteil mit der zusätzlichen Rolle „Latte" und den oben
   formalisierten geometrischen Constraints.
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`);
-  - **Querschnitt** (rechteckig, liegend verlegt;
+    - **Bauteilachse** (`bauteilachse.Gerade`);
+    - **Querschnitt** (rechteckig, liegend verlegt;
     Standardquerschnitte 24/48, 30/50, 40/60 mm);
-  - **Werkstoff** (Vollholz, Festigkeitsklasse C24 bzw. C30
+    - **Werkstoff** (Vollholz, Festigkeitsklasse C24 bzw. C30
     entsprechend Sortierklasse S10/S13);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_Latte).
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_Latte).
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Sparren** (`sparren`): Auflager der Latte; die Latte liegt
+    - **Sparren** (`sparren`): Auflager der Latte; die Latte liegt
     **auf** dem Sparren (ggf. über eine zwischengelegte
     Konterlatte), rechtwinklig zur Sparrenachse.
-  - **Konterlatte** (Forward-Verweis, eigener Eintrag folgt):
+    - **Konterlatte** (Forward-Verweis, eigener Eintrag folgt):
     liegt parallel zum Sparren zwischen Sparrenoberseite und
     Latte; trägt die Latte, sofern eine Hinterlüftungsebene
     vorgesehen ist.
-  - **Dachfläche** (`dachflaeche`): zugeordnete geometrische
+    - **Dachfläche** (`dachflaeche`): zugeordnete geometrische
     Bezugsebene; die Lattenachsen liegen in einer zu deren
     Trägerebene parallel-versetzten Ebene E'.
-  - **Dachaufbau** (`dachaufbau`): die Latte ist Bestandteil
+    - **Dachaufbau** (`dachaufbau`): die Latte ist Bestandteil
     der Funktionsklasse `TRAGLATTUNG` des Dachaufbaus.
-  - **Eindeckung** (Forward-Verweis, eigener Eintrag folgt):
+    - **Eindeckung** (Forward-Verweis, eigener Eintrag folgt):
     liegt **auf** der Latte und überträgt ihre Lasten als
     Flächenlast in die Latte; das konkrete Eindeckungsmaterial
     (Ziegel, Schiefer, Blechprofil) bestimmt den Lattenabstand.
 - **Abgrenzung**:
-  - **Sparren** (`sparren`): geneigtes Stab-Bauteil entlang der
+    - **Sparren** (`sparren`): geneigtes Stab-Bauteil entlang der
     Falllinie. Die Latte ist horizontal entlang einer
     Höhenlinie. Sparren und Latte sind rechtwinklig zueinander
     angeordnet (in der parallel-versetzten Ebene zur Trägerebene
     der Dachfläche).
-  - **Pfette** (`pfette`): horizontaler Hauptträger des
+    - **Pfette** (`pfette`): horizontaler Hauptträger des
     Dachtragwerks; trägt Sparren (nicht die Eindeckung).
     Geometrisch parallel zur Latte (horizontal, rechtwinklig
     zum Sparren), aber **Primärbauteil** mit deutlich größerem
@@ -361,40 +361,40 @@ außerhalb der Holzbau-Modellierung dieses Glossars.
     (1–5 m statt 16–40 cm). Die Latte liegt im Dachaufbau
     **über** der Sparrenoberseite, die Pfette **unter** dem
     Sparren als sein Auflager.
-  - **Konterlatte** (`konterlatte`, eigener Eintrag folgt):
+    - **Konterlatte** (`konterlatte`, eigener Eintrag folgt):
     parallel zum Sparren statt rechtwinklig; andere Funktion
     (Hinterlüftung statt Eindeckungs-Auflage). Eigene Bauteilrolle.
-  - **Schalung** / **Brett** (Forward-Verweise, eigene Einträge
+    - **Schalung** / **Brett** (Forward-Verweise, eigene Einträge
     folgen): flächige Holzschalung (Bretter mit Querschnitt
     typisch h ≤ 40 mm, b ≥ 80 mm nach DIN 4070-1) als
     vollflächige Unterkonstruktion; die Latte hat nach DIN 4070-1
     eine Breite < 80 mm und ist damit geometrisch kein Brett.
     Funktional ist die Schalung eine flächige Auflage, die Latte
     eine punktuell-lineare Auflage.
-  - **Eindeckung** (Forward-Verweis, eigener Eintrag folgt):
+    - **Eindeckung** (Forward-Verweis, eigener Eintrag folgt):
     die äußerste materielle Schicht des Dachaufbaus (Ziegel,
     Schindel, Blech), die **auf** der Latte aufliegt. Die Latte
     ist Auflager der Eindeckung, nicht selbst Eindeckung.
-  - **Ziegel** (Forward-Verweis, eigener Eintrag folgt):
+    - **Ziegel** (Forward-Verweis, eigener Eintrag folgt):
     Einzelelement der Eindeckung; die Latte trägt eine Reihe
     von Ziegeln und definiert über ihren Achsabstand die
     Decklänge.
-  - **Dachaufbau** (`dachaufbau`): die Latte ist Bestandteil
+    - **Dachaufbau** (`dachaufbau`): die Latte ist Bestandteil
     einer Schicht (Funktionsklasse `TRAGLATTUNG`), nicht der
     gesamte Schichtaufbau. Der Dachaufbau ist das Schicht-
     Aggregat, die Latte ist das Einzelbauteil innerhalb der
     Lattungsschicht.
-  - **Dachfläche** (`dachflaeche`): zweidimensionales
+    - **Dachfläche** (`dachflaeche`): zweidimensionales
     geometrisches Bauteil (Bezugsebene); die Latte ist ein
     Stab-Bauteil parallel-versetzt zu deren Trägerebene.
-  - **Dachhaut** (`dachhaut`): geometrische Hüllfläche über
+    - **Dachhaut** (`dachhaut`): geometrische Hüllfläche über
     der Eindeckung. Die Latte liegt **unter** der Eindeckung
     und damit deutlich unterhalb der Dachhaut.
-  - **Höhenlinie** (Forward-Verweis): mathematisches Korpus-
+    - **Höhenlinie** (Forward-Verweis): mathematisches Korpus-
     Konzept (horizontale Schnittlinie einer geneigten Ebene mit
     einer Horizontalebene); die Lattenachse fällt mit einer
     Höhenlinie der parallel-versetzten Ebene E' zusammen.
-  - **Bauteil** (`bauteil`): die Latte ist eine Spezialisierung
+    - **Bauteil** (`bauteil`): die Latte ist eine Spezialisierung
     von Bauteil mit zusätzlichen geometrischen Constraints; ein
     Bauteil ohne Bauteilrolle ist keine Latte.
 

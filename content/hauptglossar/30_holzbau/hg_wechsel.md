@@ -204,12 +204,12 @@ Sei
 - S_a(Q), S_e(Q) die Stirnseiten von Q mit den Bezugspunkten p_a, p_e
   und den Außennormalen n_hat_a(Q), n_hat_e(Q) (siehe `stirnseite`),
 - Λ = (S_Λ, a_hat_Λ, E_Λ) eine **Stablage**, d. h. ein Tripel aus
-  - einer endlichen Menge S_Λ von mindestens zwei Stabbauteilen mit
+    - einer endlichen Menge S_Λ von mindestens zwei Stabbauteilen mit
     gerader Bauteilachse, wobei Q ∉ S_Λ,
-  - einer gemeinsamen Stabrichtung a_hat_Λ ∈ S² mit
+    - einer gemeinsamen Stabrichtung a_hat_Λ ∈ S² mit
     ‖d_hat(B) × a_hat_Λ‖ ≤ ε_K für alle B ∈ S_Λ, wobei d_hat(B) die
     Achsrichtung von B ist,
-  - einer nicht lotrechten Ebene E_Λ (siehe `ebene`) mit nach oben
+    - einer nicht lotrechten Ebene E_Λ (siehe `ebene`) mit nach oben
     orientierter Einheitsnormale n_hat_Λ, ⟨n_hat_Λ, e_z⟩ > ε_K, die die
     Stabrichtung enthält, |⟨a_hat_Λ, n_hat_Λ⟩| ≤ ε_K,
 
@@ -219,7 +219,7 @@ Sei
   Längsseite F von X (siehe `laengsseite`) mit Außennormale n_hat_F,
   für die gilt
 
-  ```
+  ```text
   ‖n_hat_F × n_hat_Λ‖ ≤ ε_K   und   ⟨n_hat_F, n_hat_Λ⟩ > 0;
   ```
 
@@ -229,7 +229,7 @@ Sei
   **Anschlussprädikat** (Stirnseite von X an Längsseite von Y,
   „T-Anschluss")
 
-  ```
+  ```text
   T(X, k, Y):⇔  es gibt eine Längsseite F von Y mit Trägerebene E_F
                   und Außennormale n_hat_F, sodass
       (i)   ‖n_hat_F × n_hat_k(X)‖ ≤ ε_K  und  ⟨n_hat_F, n_hat_k(X)⟩ < 0,
@@ -245,7 +245,7 @@ Sei
   `deckenbalken`); ein Auflager A **liegt am Ende a** (bzw. **am Ende
   e**), wenn für jeden Punkt x seiner Manifestation
 
-  ```
+  ```text
   t(x):= ⟨x − p_a, q_hat⟩ < L_Q / 2      (bzw. t(x) > L_Q / 2).
   ```
 
@@ -255,7 +255,7 @@ Dann heißt Q ein **Wechsel in der Stablage Λ** genau dann, wenn gilt:
 
 2. **Rechtwinklig zur Stabrichtung:**
 
-   ```
+   ```text
    |⟨q_hat, a_hat_Λ⟩| ≤ ε_K.
    ```
 
@@ -279,7 +279,7 @@ Dann heißt Q ein **Wechsel in der Stablage Λ** genau dann, wenn gilt:
 
 **Weiche Bedingung** (nicht definierend, Prüfhinweis):
 
-5. **Trägt Stichbalken:** Es gibt ein B ∈ S_Λ, das nicht
+1. **Trägt Stichbalken:** Es gibt ein B ∈ S_Λ, das nicht
    Stützungs-Gegenüber eines Auflagers von Q ist, und ein Ende k von B
    mit T(B, k, Q). Fehlt ein solches B, bleibt Q ein Wechsel
    (Erläuterung, „Wechsel ohne Öffnung").
@@ -300,7 +300,7 @@ Standardfall nach `stirnseite`), B_a und B_e haben rechteckige
 Querschnitte mit den Breiten b_a, b_e in Richtung q_hat, und die
 Toleranzen seien null. Dann gilt
 
-```
+```text
 L_Q = e_ae − (b_a + b_e) / 2,    e_ae:= ⟨c_e − c_a, q_hat⟩,
 ```
 
@@ -403,27 +403,27 @@ und Dach").
   eigene Vorprüfung stehen, weil sie ohne Auflager-Daten auskommt und
   bei angeschnittenen Stirnseiten nicht aus (i) folgt.
 - **Grenzfälle (Adäquatheit).**
-  - *Neigung 0°:* Decke, Satz 2 (i).
-  - *Lotrechte Ebene:* durch ⟨n_hat_Λ, e_z⟩ > ε_K ausgeschlossen. Eine
+    - *Neigung 0°:* Decke, Satz 2 (i).
+    - *Lotrechte Ebene:* durch ⟨n_hat_Λ, e_z⟩ > ε_K ausgeschlossen. Eine
     Schar lotrechter Stäbe in einer Wand hat keine Wechsel; das
     Querholz zwischen zwei Pfosten ist ein Riegel (`riegel`).
-  - *Holz parallel zu den Stäben:* Bedingung 2 verletzt; es ist ein
+    - *Holz parallel zu den Stäben:* Bedingung 2 verletzt; es ist ein
     verkürzter Stab der Lage (Stichbalken, Füllholz), kein Wechsel.
-  - *Beide Enden am selben Stab:* durch B_a ≠ B_e ausgeschlossen und
+    - *Beide Enden am selben Stab:* durch B_a ≠ B_e ausgeschlossen und
     bei geraden Stäben geometrisch unmöglich.
-  - *Wechsel an einem Wechsel:* Ein zweites Holz, das rechtwinklig zu
+    - *Wechsel an einem Wechsel:* Ein zweites Holz, das rechtwinklig zu
     den Stäben liegt, ist zum ersten Wechsel parallel. Die Längsseiten
     des ersten Wechsels haben Normalen rechtwinklig zu seiner Achse,
     ein T-Anschluss nach (i) an ihn ist darum unmöglich. Ein „Wechsel
     zweiter Ordnung" in diesem Sinn kommt nicht vor.
-  - *Randbalken quer zur Spannrichtung (Auflagerbalken, Kolb S. 121)
+    - *Randbalken quer zur Spannrichtung (Auflagerbalken, Kolb S. 121)
     auf der Wand:* Liegt das Holz auf ganzer Länge auf der Wand, hat
     es ein Linienauflager, dessen Manifestation in beide
     Achsenhälften reicht; Bedingung 4 ist verletzt.
-  - *Dachstäbe nicht in der Falllinie (Grat- und Kehlsparren):*
+    - *Dachstäbe nicht in der Falllinie (Grat- und Kehlsparren):*
     Satz 2 (ii) gilt nicht, die Achse eines Wechsels ist dort im
     Allgemeinen nicht waagrecht; offen (Satz 2).
-  - *Wechsel ohne Stichbalken:* bleibt Wechsel, nur Bedingung 5
+    - *Wechsel ohne Stichbalken:* bleibt Wechsel, nur Bedingung 5
     (weich) schlägt an.
 - **Disjunktheit zu Riegel und Kehlbalken.** Die Stäbe einer Stablage
   liegen in einer nicht lotrechten Ebene und können darum nicht
@@ -521,7 +521,7 @@ Die Anschlussart gehört zur Verbindung, nicht zur Rolle.
 ### Benennung und Nachbarbegriffe
 
 | Wort | Bedeutung | in diesem Glossar |
-|---|---|---|
+| --- | --- | --- |
 | Wechsel, Wechselholz | das Querholz | dieser Eintrag |
 | Wechselbalken | in der Schweiz das Querholz (Kolb, Ambühl.Hüppi, Archäologie Baselland, Lernkarten; auch Volmer); bei mb-news (DE) der durchlaufende Nachbarbalken | Synonym (CH) dieses Eintrags; die deutsche Lesart ist ein Deckenbalken in Lage AM_WECHSEL |
 | Nachbarbalken | durchlaufender Deckenbalken, an dem der Wechsel hängt | Deckenbalken mit Positionsangabe AM_WECHSEL (`deckenbalken`), ohne eigenen Schweizer Namen |
@@ -580,55 +580,55 @@ vor. Dort ist nie dieses Bauteil gemeint:
   dem der Nachbarstäbe), Werkstoff, Faserrichtung (Default parallel zu
   q_hat).
 - **Verwendung:**
-  - **Balkenlage** (`balkenlage`): Der Wechsel ist neben den
+    - **Balkenlage** (`balkenlage`): Der Wechsel ist neben den
     Deckenbalken Glied der Balkenlage. Sie legt seine Stablage fest
     (Zuordnungsprüfung Z2); die Ebene E_Λ ist ihre Bezugsebene E_L,
     zugleich die Oberkantenebene ihrer Deckenbalken.
-  - **Deckenbalken** (`deckenbalken`): die Stäbe der Stablage in der
+    - **Deckenbalken** (`deckenbalken`): die Stäbe der Stablage in der
     Decke. Der Nachbarbalken, an dem der Wechsel hängt, ist ein
     Deckenbalken mit Positionsangabe AM_WECHSEL; der verkürzte Balken,
     der am Wechsel endet, ist ein Stichbalken.
-  - **Sparren** (`sparren`): die Stäbe der Stablage im Dach. Für die
+    - **Sparren** (`sparren`): die Stäbe der Stablage im Dach. Für die
     Nachbarsparren und die Stichsparren gibt es bisher keine
     Positionsangabe.
-  - **Auflager** (`auflager`): An den Nachbarstäben ist der Wechsel
+    - **Auflager** (`auflager`): An den Nachbarstäben ist der Wechsel
     indirekt gelagert.
-  - **Verbindung** (`verbindung`): Brustzapfen, Balkenschuh und
+    - **Verbindung** (`verbindung`): Brustzapfen, Balkenschuh und
     Flachklammer sind Verbindungen am Wechsel, keine Merkmale der
     Rolle.
-  - **Auswechslung** (`auswechslung`, Folgearbeit): Bauteilgruppe, zu
+    - **Auswechslung** (`auswechslung`, Folgearbeit): Bauteilgruppe, zu
     der der Wechsel gehört.
 - **Abgrenzung:**
-  - **Auswechslung** (`auswechslung`): die ganze Konstruktion um die
+    - **Auswechslung** (`auswechslung`): die ganze Konstruktion um die
     Öffnung, nicht das einzelne Holz; abgelehnt als Benennung.
-  - **Stichbalken** (`stichbalken`): parallel zu den Stäben der Lage,
+    - **Stichbalken** (`stichbalken`): parallel zu den Stäben der Lage,
     endet am Wechsel; der Wechsel liegt rechtwinklig dazu.
-  - **Deckenbalken** (`deckenbalken`): Stab in Lagenrichtung mit
+    - **Deckenbalken** (`deckenbalken`): Stab in Lagenrichtung mit
     Auflagern an Wand, Unterzug oder Wechsel; der Wechsel liegt
     rechtwinklig zu ihm. Ein Wechsel der Decke erfüllt auch die
     Bedingungen 1 bis 3 von `deckenbalken`; getrennt werden beide in
     der Balkenlage (Zuordnungsprüfung in `balkenlage`).
-  - **Balkenlage** (`balkenlage`): die Bauteilgruppe, nicht ihr Glied.
-  - **Sparren** (`sparren`): Stab entlang der Falllinie; der Wechsel
+    - **Balkenlage** (`balkenlage`): die Bauteilgruppe, nicht ihr Glied.
+    - **Sparren** (`sparren`): Stab entlang der Falllinie; der Wechsel
     zwischen Sparren liegt entlang der Höhenlinie (Satz 2 (ii)). An
     Grat- und Kehlsparren gilt das nicht (offen).
-  - **Riegel** (`riegel`): Querholz zwischen zwei lotrechten Pfosten
+    - **Riegel** (`riegel`): Querholz zwischen zwei lotrechten Pfosten
     in einer lotrechten Wandebene; kann kein Wechsel sein
     (Disjunktheit).
-  - **Kehlbalken** (`kehlbalken`): Querholz zwischen zwei Sparren
+    - **Kehlbalken** (`kehlbalken`): Querholz zwischen zwei Sparren
     eines Sparrenpaars, in der lotrechten Ebene des Paars; nicht
     rechtwinklig zu den Sparren.
-  - **Sturz** (`sturz`): überbrückt eine Wandöffnung; abgelehnt als
+    - **Sturz** (`sturz`): überbrückt eine Wandöffnung; abgelehnt als
     Benennung (Drift über „header", Quellenkonflikt Punkt 4).
-  - **Unterzug** (`unterzug`): liegt unterhalb der Balkenlage und
+    - **Unterzug** (`unterzug`): liegt unterhalb der Balkenlage und
     stützt sie über ihre Breite; der Wechsel liegt in ihrer Ebene und
     wird von ihr gestützt.
-  - **Randbalken** (`randbalken`, Folgearbeit): umlaufender Rand der
+    - **Randbalken** (`randbalken`, Folgearbeit): umlaufender Rand der
     Deckenscheibe (Kolb S. 121). Quer zur Spannrichtung
     (Auflagerbalken) liegt er auf der Wand, und die Deckenbalken enden
     an ihm; der Wechsel ist dagegen nur an den Enden gelagert. Längs
     der Spannrichtung (Randgurt) ist er ein Deckenbalken in Lage RAND.
-  - **Homonym „Wechsel"** in anderen Einträgen: siehe Erläuterung.
+    - **Homonym „Wechsel"** in anderen Einträgen: siehe Erläuterung.
 
 ## Quellen
 

@@ -303,7 +303,7 @@ quellenkonflikt: |
   als alleinige Träger der Benennung „Sturz".
 
   **(11) Cluster-Verortung `30_holzbau/` — offener Anweiser-Review-Punkt.**
-  Der Eintrag liegt in `hauptglossar/30_holzbau/`, zusammen mit
+  Der Eintrag liegt in `glossary/30_holzbau/`, zusammen mit
   `schwelle`, `einbinder`, `riegel`, `staender` und `wand` — begründet
   durch die **Wand-Familien-Kohäsion**: alle Nachbarbegriffe der
   Öffnungs-Modellierung liegen dort, und die Cluster-Regel
@@ -371,7 +371,7 @@ Sei
 
 **Bezugsgrößen in der Wandebene.** Setze
 
-```
+```text
 u_hat:= (e_z × n_hat_W) / ‖e_z × n_hat_W‖          (horizontale Richtung in E_W)
 pi_W(p):= p − ⟨p − p_W, n_hat_W⟩ · n_hat_W         (Orthogonalprojektion auf E_W)
 s(p):= ⟨pi_W(p) − p_W, u_hat⟩                   (Längskoordinate in E_W, mm)
@@ -380,7 +380,7 @@ h(p):= ⟨pi_W(p) − p_W, e_z⟩                     (Höhenkoordinate in E_W, 
 
 und für die Öffnung O sowie für ein Auflager A ∈ 𝒜(B)
 
-```
+```text
 s_min:= inf { s(p): p ∈ O }        s_max:= sup { s(p): p ∈ O }
 h_O:= sup { h(p): p ∈ O }        (Öffnungs-Scheitel)
 I(A):= { s(q): q ∈ M(A) } ⊂ R     (Längs-Projektionsintervall des Auflagers)
@@ -390,13 +390,13 @@ Dann heißt B ein **Sturz** über der Öffnung O in der Wandebene E_W
 genau dann, wenn die folgenden sechs Bedingungen erfüllt sind:
 
 1. **Stabgeometrie**: B besitzt eine gerade Bauteilachse mit
-   ```
+   ```text
    ‖p_e − p_a‖ > ε_L.
    ```
 
 2. **Horizontalität der Sturzachse**: Die Bauteilachsenrichtung steht
    rechtwinklig zur Welt-Lotachse,
-   ```
+   ```text
    |⟨d_hat, e_z⟩| ≤ ε_K.
    ```
    Sinus-Test gegen e_z-Parallelität; nach `HG_KONVENTIONEN.md` §4 ist
@@ -404,7 +404,7 @@ genau dann, wenn die folgenden sechs Bedingungen erfüllt sind:
 
 3. **Parallelität zur Wandebene**: Die Bauteilachse verläuft parallel
    zu E_W,
-   ```
+   ```text
    |⟨d_hat, n_hat_W⟩| ≤ ε_K.
    ```
    Aus 2 und 3 folgt d_hat = ±u_hat bis auf Toleranz. Anders als bei
@@ -415,7 +415,7 @@ genau dann, wenn die folgenden sechs Bedingungen erfüllt sind:
 4. **Überspannung der Öffnung**: Die projizierte Achse überdeckt das
    Öffnungs-Intervall vollständig und liegt nicht unterhalb des
    Öffnungs-Scheitels,
-   ```
+   ```text
    min(s(p_a), s(p_e)) ≤ s_min + ε_L,
    max(s(p_a), s(p_e)) ≥ s_max − ε_L,
    h(p_a) ≥ h_O − ε_L    ∧    h(p_e) ≥ h_O − ε_L.
@@ -423,14 +423,14 @@ genau dann, wenn die folgenden sechs Bedingungen erfüllt sind:
 
 5. **Beidseitige Auflagerung außerhalb der Öffnung**: Es existieren
    zwei verschiedene Auflager A₁, A₂ ∈ 𝒜(B) mit
-   ```
+   ```text
    sup I(A₁) ≤ s_min + ε_L      (Auflager links der Öffnung)
    inf I(A₂) ≥ s_max − ε_L      (Auflager rechts der Öffnung)
    ```
 
 6. **Kein Zwischenauflager über der Öffnungsweite**: Für alle
    A ∈ 𝒜(B) gilt
-   ```
+   ```text
    I(A) ∩ (s_min + ε_L, s_max − ε_L) = ∅.
    ```
    Das ist die formale Fassung der **Überbrückung**: innerhalb der
@@ -552,29 +552,29 @@ Wesentliche abgeleitete Größen:
   formuliert ist.
 
 - **Grenzfälle.**
-  - **Entartete Öffnung** (w_O ≤ ε_L): kein Sturz — es liegt keine
+    - **Entartete Öffnung** (w_O ≤ ε_L): kein Sturz — es liegt keine
     Öffnung vor, die zu überbrücken wäre.
-  - **Öffnung reicht bis unter den oberen Wandabschluss**
+    - **Öffnung reicht bis unter den oberen Wandabschluss**
     (h_O = Unterkante des Einbinders): der Einbinder erfüllt alle sechs
     Bedingungen und ist damit **zugleich Einbinder und Sturz**
     (Doppelrolle, Quellenkonflikt-Punkt 3). Es entsteht kein
     separates Sturz-Bauteil.
-  - **Fachwerk-Sturzriegel**: erfüllt zusätzlich die Bedingungen 1–5
+    - **Fachwerk-Sturzriegel**: erfüllt zusätzlich die Bedingungen 1–5
     von `hg_riegel.md`; Doppelrolle Riegel + Sturz.
-  - **Zusätzliches Auflager mitten in der Öffnung** (Fenster mit
+    - **Zusätzliches Auflager mitten in der Öffnung** (Fenster mit
     tragendem Mittelpfosten): Bedingung 6 ist verletzt. Die richtige
     Modellierung ist dann **zwei Öffnungen** links und rechts des
     Mittelpfostens; über jeder einzelnen ist B wieder ein Sturz.
-  - **Lotrechte Wandebene ist Pflicht**: eine geneigte Bezugsebene
+    - **Lotrechte Wandebene ist Pflicht**: eine geneigte Bezugsebene
     (Kniestock-Schräge, Giebelwand-Abschluss unter der Dachschräge)
     verletzt die Eingangsbedingung an n_hat_W. Ein „schräger Sturz"
     unter einer Dachschräge ist von diesem Eintrag **nicht** gedeckt
     (Folgearbeit-Trigger).
-  - **Nicht horizontale Sturzachse**: Bedingung 2 schließt geneigte
+    - **Nicht horizontale Sturzachse**: Bedingung 2 schließt geneigte
     Stürze aus. Der bogenförmige Sturz (Bogensturz, Entlastungsbogen)
     ist ebenfalls ausgeschlossen, weil er keine gerade Bauteilachse
     besitzt.
-  - **Auflager exakt am Öffnungsrand** (ℓ_i → 0, Auflagerlänge null):
+    - **Auflager exakt am Öffnungsrand** (ℓ_i → 0, Auflagerlänge null):
     Bedingungen 5 und 6 bleiben erfüllt; die Konfiguration ist
     geometrisch zulässig, statisch aber sinnlos (Querdruck-Nachweis
     nach DIN EN 1995-1-1 Abschnitt 6.1.5 nicht führbar). Die
@@ -660,7 +660,7 @@ bezeichnet, ist im Korpus nicht belegt; „Sturzständer" und
 
 ### Querschnitt, Werkstoff, Spannweiten
 
-*(Tier Niedrig bis Mittel-Niedrig, siehe Quellenkonflikt-Punkt 12.)*
+(*Tier Niedrig bis Mittel-Niedrig, siehe Quellenkonflikt-Punkt 12.*)
 
 Im einfachen Holzrahmenbau ist Vollholz oder KVH der Regelfall.
 Anders als beim Riegel gilt die Faustregel „Sturz-Querschnitt =
@@ -720,75 +720,75 @@ Fachwerk-Pendant sind Sturzstrebe und Kopfwinkelholz.
   `fussband`.
 - **Doppelrolle** (Besonderheit dieses Eintrags, siehe
   Quellenkonflikt-Punkt 3):
-  - **Riegel + Sturz** — der Fachwerk-Sturzriegel; das Bauteil
+    - **Riegel + Sturz** — der Fachwerk-Sturzriegel; das Bauteil
     erfüllt zugleich die Riegel-Bedingungen (`hg_riegel.md` 1–5) und
     die Sturz-Bedingungen 1–6.
-  - **Einbinder + Sturz** — die Öffnung reicht bis unter den oberen
+    - **Einbinder + Sturz** — die Öffnung reicht bis unter den oberen
     Wandabschluss; der Einbinder übernimmt die Überbrückung, ohne seine
     Einbinder-Rolle zu verlieren.
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`);
-  - **Querschnitt** (rechteckig; anders als beim Riegel **nicht**
+    - **Bauteilachse** (`bauteilachse.Gerade`);
+    - **Querschnitt** (rechteckig; anders als beim Riegel **nicht**
     per Default gleich dem Ständerquerschnitt);
-  - **Werkstoff** (Vollholz, KVH oder Furnierschichtholz);
-  - **Faserrichtung** (Annotation, Default parallel d_hat).
+    - **Werkstoff** (Vollholz, KVH oder Furnierschichtholz);
+    - **Faserrichtung** (Annotation, Default parallel d_hat).
 - **Verwendung / Beziehung zu anderen Begriffen**:
-  - **Auflager** (`auflager`): die beiden Auflager A₁, A₂ aus
+    - **Auflager** (`auflager`): die beiden Auflager A₁, A₂ aus
     Bedingung 5 sind Auflager im Sinne von `hg_auflager.md`; die
     Auflagerlängen ℓ₁, ℓ₂ sind das operationale Pendant der
     Auflagerlänge ℓ_A des Querdruck-Nachweises.
-  - **Ständer** (`staender`): trägt in der Positions-Annotation
+    - **Ständer** (`staender`): trägt in der Positions-Annotation
     `LEIBUNG` die Sturz-Auflager; in der Position `STEMPEL` steht er
     als Kurzständer über oder unter der Öffnung.
-  - **Wand** (`wand`): der Sturz ist Mitglied des Wand-Aggregats.
+    - **Wand** (`wand`): der Sturz ist Mitglied des Wand-Aggregats.
     Eine Erweiterung der Wand-Konsistenzbedingungen um die Öffnung
     ist Folgearbeit.
-  - **Wandöffnung** (`wandoeffnung`, Forward-Verweis nach
+    - **Wandöffnung** (`wandoeffnung`, Forward-Verweis nach
     `HG_KONVENTIONEN.md` §6 Kategorie A): die Menge O der
     mathematischen Definition. Trigger: erste Wand-Öffnungs-Entität
     im Tool.
 - **Abgrenzung**:
-  - **Riegel** (`riegel`): horizontales Wand-Querholz zwischen zwei
+    - **Riegel** (`riegel`): horizontales Wand-Querholz zwischen zwei
     Ständern; primär aussteifend und unterteilend. Ein Riegel ohne
     Öffnungsbezug ist kein Sturz; ein Sturz muss nicht zwischen zwei
     Ständerachsen eingespannt sein (Bedingung 3 dieses Eintrags
     fordert keine Endpunktlage in der Wandebene und kein
     Ständer-Anschluss der Endpunkte). Über einer Öffnung fallen
     beide Rollen zusammen — Doppelrolle, kein Widerspruch.
-  - **Einbinder** (`einbinder`): oberstes durchlaufendes Wand-Längsholz über
+    - **Einbinder** (`einbinder`): oberstes durchlaufendes Wand-Längsholz über
     mehrere Ständer. Der Einbinder ist über die Wand-Lage definiert, der
     Sturz über die Öffnungs-Überbrückung; liegt die Öffnung
     unmittelbar unter dem Einbinder, trägt dasselbe Bauteil beide Rollen.
-  - **Schwelle** (`schwelle`): unterstes durchlaufendes
+    - **Schwelle** (`schwelle`): unterstes durchlaufendes
     Wand-Längsholz. Kein Öffnungsbezug; das Pendant **unterhalb**
     einer Fensteröffnung ist der Brüstungsriegel, nicht die
     Schwelle.
-  - **Ständer** (`staender`): lotrechtes Wand-Bauteil; der Sturz ist
+    - **Ständer** (`staender`): lotrechtes Wand-Bauteil; der Sturz ist
     horizontal und ist gerade das, was den Ständer in der Öffnung
     entbehrlich macht.
-  - **Wand** (`wand`): Aggregat; der Sturz ist Mitglied, nicht
+    - **Wand** (`wand`): Aggregat; der Sturz ist Mitglied, nicht
     Spezialisierung.
-  - **Wandöffnung** (`wandoeffnung`, Forward-Verweis): der Sturz ist
+    - **Wandöffnung** (`wandoeffnung`, Forward-Verweis): der Sturz ist
     ein Bauteil, die Öffnung ein Bereich der Wandebene ohne
     Bauteile. Beide sind nicht dasselbe — auch nicht die obere
     Laibungsfläche der Öffnung.
-  - **Unterzug** (`unterzug`, Forward-Verweis): Träger **unter einer
+    - **Unterzug** (`unterzug`, Forward-Verweis): Träger **unter einer
     Decke** zur Spannweiten-Verkürzung. Geometrisch verwandt
     (horizontaler Biegeträger auf zwei Auflagern), funktional
     getrennt: der Unterzug überbrückt keine Wandöffnung.
     Folgearbeit-Trigger: erste Decken-Modellierung.
-  - **Architrav** (`architrav`, Forward-Verweis): der klassisch-antike
+    - **Architrav** (`architrav`, Forward-Verweis): der klassisch-antike
     Sturz über Säulen, Teil des Gebälks. Bauhistorischer Begriff;
     Folgearbeit-Trigger: Cluster `40_architektur/`.
-  - **Pfette** (`pfette`): horizontaler Längsträger des
+    - **Pfette** (`pfette`): horizontaler Längsträger des
     **Dach**-Tragwerks. Kein Wandöffnungs-Bezug.
-  - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken zwischen
+    - **Kehlbalken** (`kehlbalken`): horizontaler Querbalken zwischen
     einem Sparrenpaar. Strukturell ein Dach-Querbalken, keine
     Öffnungs-Überbrückung.
-  - **Auflager** (`auflager`): der Sturz **hat** Auflager, er **ist**
+    - **Auflager** (`auflager`): der Sturz **hat** Auflager, er **ist**
     keines. Das Auflager ist die Idealisierung der Stützungsstelle,
     der Sturz das gestützte Bauteil.
-  - **Bauteil** (`bauteil`): ein Bauteil ohne Bauteilrolle ist kein
+    - **Bauteil** (`bauteil`): ein Bauteil ohne Bauteilrolle ist kein
     Sturz.
 
 ## Quellen
@@ -872,6 +872,6 @@ Fachwerk-Pendant sind Sturzstrebe und Kopfwinkelholz.
 **Repo-intern:**
 
 - Recherche-Bericht [intern].
-- `hauptglossar/30_holzbau/hg_riegel.md`, `hg_einbinder.md`,
+- `glossary/30_holzbau/hg_riegel.md`, `hg_einbinder.md`,
   `hg_staender.md`, `hg_schwelle.md`, `hg_wand.md`;
-  `hauptglossar/20_tragwerk/hg_auflager.md`, `hg_stuetze.md`.
+  `glossary/20_tragwerk/hg_auflager.md`, `hg_stuetze.md`.

@@ -216,7 +216,7 @@ erfüllt sind:
    auf der Gratlinie der Gratstrecke g_{ij} im Sinne der
    Punkt-Gerade-Inzidenz; konkret existieren Skalare
    s_a, s_e ∈ ℝ mit
-   ```
+   ```text
    p_a = a_{ij} + s_a · (b_{ij} − a_{ij}),
    p_e = a_{ij} + s_e · (b_{ij} − a_{ij}),
    ```
@@ -227,7 +227,7 @@ erfüllt sind:
 3. **Gratlinien-Kollinearität** (Ersatz für die
    Falllinien-Kollinearität aus `hg_sparren.md` Bed. 3): Die
    Bauteilachsenrichtung ist kollinear zur Gratlinien-Tangente,
-   ```
+   ```text
    ‖d_hat_G × t_hat‖ ≤ ε_K,
    ```
    d. h. der Winkel zwischen d_hat_G und t_hat ist 0 oder π (modulo der
@@ -237,7 +237,7 @@ erfüllt sind:
 4. **Vorzeichenkonvention** (Gratsparrenrichtung von Walm-Ecke zu
    Firstend-Punkt): Die Bauteilachse ist so gerichtet, dass d_hat_G
    in dieselbe Halbkugel wie t_hat weist, also bergauf:
-   ```
+   ```text
    ⟨d_hat_G, t_hat⟩ ≥ +1 − ε_W,
    ```
    äquivalent ⟨d_hat_G, e_z⟩ > 0. p_a ist damit der **Gratsparrenfuß**
@@ -259,7 +259,7 @@ Wesentliche abgeleitete Größen:
 - **Gratsparrenneigung** (= Gratneigung der zugeordneten
   Gratstrecke, siehe `hg_grat.md`, abgeleitete Operation
   `gratneigung()`):
-  ```
+  ```text
   α_G:= arcsin(|⟨t_hat, e_z⟩|) = arcsin(⟨d_hat_G, e_z⟩).
   ```
   Wertebereich α_G ∈ (0, π/2) bei nicht-entarteten Walmdach-Graten.
@@ -274,7 +274,7 @@ Dachneigung α und einem Plan-Winkel β_plan zwischen der
 Grundrissprojektion der Gratlinie und der Trauflinie einer der beiden
 Dachflächen gilt
 
-```
+```text
 tan(α_G) = tan(α) · sin(β_plan).                                  (★)
 ```
 
@@ -286,7 +286,7 @@ und der Trauflinie von D_i; da die Falllinie e_hat_fall(E_i) im
 Grundriss **rechtwinklig** zur Traufe steht, ist die Komponente der
 Gratrichtung in Falllinien-Richtung gerade der Sinus dieses Winkels:
 
-```
+```text
 sin(β_plan) = |⟨e_hat_t, π_xy(e_hat_fall(E_i)) / ‖π_xy(e_hat_fall(E_i))‖⟩|.
 ```
 
@@ -299,7 +299,7 @@ tan(α) = |⟨e_hat_fall(E_i), e_z⟩| / ‖π_xy(e_hat_fall(E_i))‖). Die
 Gratsparrenneigung ist der Höhenzuwachs je horizontale Einheit
 **entlang der Gratlinie**, also
 
-```
+```text
 tan(α_G) = ⟨t_hat, e_z⟩ / ‖(t_hat_x, t_hat_y)‖ = sin(β_plan) · tan(α). ∎
 ```
 
@@ -308,7 +308,7 @@ horizontalen, rechtwinklig zueinander stehenden Traufen) ist die
 Grundrissprojektion der Gratlinie die Winkelhalbierende der beiden
 Traufkanten und damit β_plan = 45° (sin 45° = 1/√2), woraus folgt
 
-```
+```text
 tan(α_G) = tan(α) / √2.                                          (★★)
 ```
 
@@ -448,7 +448,7 @@ Im symmetrischen Fall (gleichgeneigte anliegende Dachflächen,
 rechtwinklige Walm-Ecke) gilt nach der oben hergeleiteten
 Reduktions-Formel
 
-```
+```text
 tan(α_G) = tan(α) / √2.
 ```
 

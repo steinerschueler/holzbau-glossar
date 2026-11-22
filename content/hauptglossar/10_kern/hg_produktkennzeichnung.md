@@ -118,7 +118,7 @@ Sei
 
 Eine **Produktkennzeichnung** ist ein Tupel
 
-```
+```text
 R:= (h, t, o)
 ```
 
@@ -134,7 +134,7 @@ Beispiele konkreter 𝒯ₕ:
 
 **Vollholz nach DIN 4074-1:2012** (Sortierstempel):
 
-```
+```text
 𝒯_Vollholz_DIN4074:=  {
    sortierklasse  ∈ { S 7, S 10, S 13, MS 7, MS 10, MS 13 },
    holzart        ∈ Kurzzeichen-Liste (z. B. C24, C30 sind
@@ -146,7 +146,7 @@ Beispiele konkreter 𝒯ₕ:
 
 **Vollholz CE nach DIN EN 14081-1:2019**:
 
-```
+```text
 𝒯_Vollholz_EN14081:=  𝒯_Vollholz_DIN4074  ∪  {
    festigkeitsklasse  ∈ { C14, C16, C18, C20, C22, C24, C27,
                           C30, C35, C40, C45, C50, … },
@@ -157,7 +157,7 @@ Beispiele konkreter 𝒯ₕ:
 
 **BSH nach DIN EN 14080:2013, Anhang ZA** (CE-Kennzeichnung):
 
-```
+```text
 𝒯_BSH_EN14080:=  {
    hersteller_id          ∈ String,
    festigkeitsklasse      ∈ { GL20h, GL22h, GL24h, GL26h, GL28h,
@@ -183,7 +183,7 @@ eigenem Feldsatz.
 Produktkennzeichnungen, 𝓔 die Menge aller Elemente. Dann ist die
 Charge-Element-Relation
 
-```
+```text
 charge_in: 𝓔 → 𝓡 ∪ {⊥}     (Element → Charge oder „nicht gesetzt"),
 elemente_aus_charge: 𝓡 → 𝒫(𝓔)  (Charge → Element-Menge).
 ```
@@ -212,9 +212,9 @@ Sonderfall (Stoßung aus zwei Bezugsquellen) wird `charge_in(E)`
   Positions-Feld, und es gibt keine Funktion, die R und Position
   gemeinsam ableitet.
 - **Mehrfachzuordnung**:
-  - Im Regelfall: |elemente_aus_charge(R)| ≥ 1, eine Charge auf
+    - Im Regelfall: |elemente_aus_charge(R)| ≥ 1, eine Charge auf
     mehrere Elemente.
-  - Im Fügefall: |element_aus_chargen(E)| ≥ 1, ein Element aus
+    - Im Fügefall: |element_aus_chargen(E)| ≥ 1, ein Element aus
     mehreren Chargen. Wird durch eigene Relation modelliert; in
     diesem Glossar nur erwähnt, eigener Eintrag `fuegestoss`
     (Folgearbeit) regelt das Detail.
@@ -289,12 +289,12 @@ Produktkennzeichnung geführt.
   (Sortierklasse, Hersteller-ID, Festigkeitsklasse, Klebstoff,
   Produktionswoche, WPK-Zertifikat …).
 - **Abgrenzung**:
-  - **UUID** (`uuid`): technischer Surrogatschlüssel, vergibt die
+    - **UUID** (`uuid`): technischer Surrogatschlüssel, vergibt die
     App. Andere Spur, anderer Zweck.
-  - **Positionsnummer** (`positionsnummer`): humanlesbarer
+    - **Positionsnummer** (`positionsnummer`): humanlesbarer
     Geschäftsschlüssel der Einbauposition. Konvention, nicht
     Norm. Identifiziert die **Position**, nicht die Charge.
-  - **Werkstoff** (`werkstoff`): die abstrakte Materialklasse
+    - **Werkstoff** (`werkstoff`): die abstrakte Materialklasse
     („BSH GL24h"). Werkstoff ist Eigenschaft des Elements;
     Produktkennzeichnung ist **Pflichtfeld des Werkstoffs**
     (`werkstoff.produktkennzeichnung`). Die Produktkennzeichnung
@@ -302,11 +302,11 @@ Produktkennzeichnung geführt.
     Produktionsdatum. Die Feldzuordnung läuft strikt
     `element.werkstoff.produktkennzeichnung` — niemals direkt
     `element.produktkennzeichnung`.
-  - **Festigkeitsklasse** (eigener Eintrag folgt): ein **Feld**
+    - **Festigkeitsklasse** (eigener Eintrag folgt): ein **Feld**
     der Produktkennzeichnung (z. B. `GL24h`, `C24`), nicht ein
     eigenständiger Identifikator.
-  - **Bezeichnung** (freier Anzeigename): kein Identitätsanspruch.
-  - **Abbundzeichen** (historisch, römische Ziffern mit
+    - **Bezeichnung** (freier Anzeigename): kein Identitätsanspruch.
+    - **Abbundzeichen** (historisch, römische Ziffern mit
     Beizeichen): nicht genormt, im modernen Holzbau praktisch
     durch CAD-IDs ersetzt. Eigener historischer Eintrag
     (Folgearbeit) möglich; **nicht** als Produktkennzeichnung

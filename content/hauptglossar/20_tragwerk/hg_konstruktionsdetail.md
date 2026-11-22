@@ -183,7 +183,7 @@ quellenkonflikt: |
   „Traufdetail", „Ortgangdetail", „Eckdetail", „Sockeldetail")
   folgt die berufssprachliche Benennung der impliziten Grammatik
 
-  ```
+  ```text
   [Bauteilrolle]<Anschluss-Topologie>-Detail
   ```
 
@@ -258,7 +258,7 @@ Sei
 
 Dann ist ein **Konstruktionsdetail** das Tupel
 
-```
+```text
 K:= (uuid, ausschnitt, knotenpunkt, beteiligte_bauteile,
       beteiligte_verbindungen, beteiligte_auflager,
       beteiligte_bearbeitungen, traegertragwerk, bezeichnung)
@@ -411,7 +411,7 @@ Verbindungen, Auflager oder Bearbeitungen.
 
 ### Drei-Sichten-Bild am gemeinsamen Knotenpunkt
 
-```
+```text
             am selben Knotenpunkt
                     |
         ┌───────────┼───────────┐
@@ -433,7 +433,7 @@ Bemessungs- und Plan-Schichten benutzt werden und unterschiedliche
 Informationen tragen.
 
 | Sicht | Trägt | Wer nutzt sie |
-|---|---|---|
+| --- | --- | --- |
 | Verbindung | Bauteile, Verbindungsmittel, Verbinder, Verstärkungen, Nachweisverfahren | Bemessungs-Schicht, IFC-Export als `IfcRelConnectsElements` |
 | Auflager | Manifestation, Wertigkeit, Lagerungsart, gestützt-durch | Tragwerks-Schicht, IFC-Export als `IfcStructuralConnection` |
 | Konstruktionsdetail | Ausschnittsregion, beteiligte Bauteile/Verbindungen/Auflager/Bearbeitungen | Werkplan-Schicht, IFC-Export als `IfcGroup` |
@@ -443,14 +443,14 @@ Informationen tragen.
 Im DACH-Holzbau-Korpus folgen die Bezeichnungen von Konstruktions-
 details einer impliziten Grammatik
 
-```
+```text
 [Bauteilrolle]<Anschluss-Topologie>-Detail
 ```
 
 mit den im Korpus etablierten Werten:
 
 | Bezeichnung | Topologie | Beteiligte Bauteilrollen (typisch) |
-|---|---|---|
+| --- | --- | --- |
 | Sparrenfußdetail | Fuß-Anschluss | Sparren + Fußpfette/Mauerlatte |
 | Mittelpfettendetail | Mittel-Auflager | Sparren + Mittelpfette |
 | Firstdetail | First-Anschluss | Sparren + Sparren bzw. Sparren + Firstpfette |
@@ -516,7 +516,7 @@ Auflager werden über die UUID-Verweise im Detail mit-erschlossen.
 ### IFC-Mapping
 
 | Aspekt | IFC 4.3 Pendant |
-|---|---|
+| --- | --- |
 | Konstruktionsdetail als Aggregat | `IfcGroup` mit eigener `GlobalId`, Subtyp von `IfcObjectDefinition` |
 | Mitgliedschaft (Bauteile/Verbindungen/Auflager) | `IfcRelAggregates` oder `IfcRelAssignsToGroup` (nicht-exklusiv) |
 | Optionale Element-Komposit-Variante | `IfcElementAssembly` (Subtyp von `IfcElement`); nur teilweise passend (Element-Charakter zu streng, exklusive Mitgliedschaft) |
@@ -554,64 +554,64 @@ Werkplan-Sicht bleibt orthogonal.
   Verbindung (Bemessung), Auflager (Tragwerk), Konstruktionsdetail
   (Werkplan) und Bauteilgruppe (Komposition) sind zu groß.
 - **Bestandteile (referenziell, nicht partitiv)**:
-  - **Ausschnittsregion** (Hüllquader / Polyeder in W).
-  - **Beteiligte Bauteile** (UUID-Menge auf `bauteil`).
-  - **Beteiligte Verbindungen** (UUID-Menge auf `verbindung`).
-  - **Beteiligte Auflager** (UUID-Menge auf `auflager`).
-  - **Beteiligte Bearbeitungen** (UUID-Menge auf `bearbeitung`).
-  - **Träger-Tragwerk** (UUID auf `tragwerk`).
+    - **Ausschnittsregion** (Hüllquader / Polyeder in W).
+    - **Beteiligte Bauteile** (UUID-Menge auf `bauteil`).
+    - **Beteiligte Verbindungen** (UUID-Menge auf `verbindung`).
+    - **Beteiligte Auflager** (UUID-Menge auf `auflager`).
+    - **Beteiligte Bearbeitungen** (UUID-Menge auf `bearbeitung`).
+    - **Träger-Tragwerk** (UUID auf `tragwerk`).
 - **Spezialisierungen** (Folgearbeit, trigger-basiert):
-  - `sparrenfuss_detail` — Sparren-Fußpfetten-Anschluss.
-  - `mittelpfetten_detail` — Sparren-Mittelpfetten-Anschluss.
-  - `firstdetail` — Sparren-Sparren- bzw. Sparren-Firstpfetten-
+    - `sparrenfuss_detail` — Sparren-Fußpfetten-Anschluss.
+    - `mittelpfetten_detail` — Sparren-Mittelpfetten-Anschluss.
+    - `firstdetail` — Sparren-Sparren- bzw. Sparren-Firstpfetten-
     Anschluss am First.
-  - `pfettenstoss_detail` — Längs-Stoß zweier Pfettenabschnitte.
-  - `traufdetail` — Trauf-Anschluss mit Sparrenfuß, Fußpfette,
+    - `pfettenstoss_detail` — Längs-Stoß zweier Pfettenabschnitte.
+    - `traufdetail` — Trauf-Anschluss mit Sparrenfuß, Fußpfette,
     Aufschiebling, Traufgesims.
-  - `ortgangdetail` — Dachrand quer zur Traufe.
+    - `ortgangdetail` — Dachrand quer zur Traufe.
 - **Verwendung**:
-  - Sicht auf ein **Tragwerk** (`tragwerk`): das Träger-Tragwerk
+    - Sicht auf ein **Tragwerk** (`tragwerk`): das Träger-Tragwerk
     wird über `traegertragwerk` referenziert; das Konstruktions-
     detail bildet keinen eigenen Tragwerks-Eintrag.
-  - Adressier-Einheit im **Werkplan** (Folgearbeit): die UUID des
+    - Adressier-Einheit im **Werkplan** (Folgearbeit): die UUID des
     Konstruktionsdetails ist die persistente Adresse für
     Detail-Verweise in Übersichtsplänen.
 - **Abgrenzung**:
-  - **Verbindung** (`verbindung`): Bemessungs-Sicht am
+    - **Verbindung** (`verbindung`): Bemessungs-Sicht am
     Knotenpunkt. Verbindung und Konstruktionsdetail koexistieren
     am selben Knotenpunkt; das Detail referenziert die Verbindung
     in `beteiligte_verbindungen`. Beide sind unterschiedliche
     Aggregate mit eigener UUID.
-  - **Auflager** (`auflager`): Tragwerks-Sicht am Knotenpunkt.
+    - **Auflager** (`auflager`): Tragwerks-Sicht am Knotenpunkt.
     Auflager und Konstruktionsdetail koexistieren am selben
     Knotenpunkt; das Detail referenziert das Auflager in
     `beteiligte_auflager`, falls am Knoten ein Auflager liegt.
     Ein Konstruktionsdetail **kann** ohne Auflager-Bezug
     auftreten (Pfettenstoßdetail im freien Feld).
-  - **Bauteilgruppe** (`bauteilgruppe`): partitive Komposition mit
+    - **Bauteilgruppe** (`bauteilgruppe`): partitive Komposition mit
     **exklusiver** Mitgliedschaft und kaskadischem Lebenszyklus.
     Das Konstruktionsdetail ist **nicht-exklusiv** und nicht
     Lebenszyklus-bindend; ein Bauteil kann gleichzeitig Mitglied
     einer Bauteilgruppe (z. B. Auswechslung) und beteiligtes
     Bauteil in mehreren Konstruktionsdetails sein.
-  - **Kerve** (`kerve`): partitive Bearbeitung am Sparren-Polyeder
+    - **Kerve** (`kerve`): partitive Bearbeitung am Sparren-Polyeder
     (Bauteil-gekoppelt). Die Kerve **ist** typisch beteiligte
     Bearbeitung eines Sparrenfußdetails, aber das Konstruktions-
     detail **ist nicht die Kerve**: das Detail trägt zusätzlich
     Bauteile, Verbindung, Auflager und Ausschnittsregion.
-  - **Bearbeitung** (`bearbeitung`): allgemeiner Oberbegriff der
+    - **Bearbeitung** (`bearbeitung`): allgemeiner Oberbegriff der
     Kerve. Bearbeitungen sind partitiv, Konstruktionsdetail ist
     Aggregat-Sicht; das Detail referenziert seine beteiligten
     Bearbeitungen, ist aber selbst keine Bearbeitung.
-  - **Tragwerk** (`tragwerk`): übergeordnete bauteilbezogene
+    - **Tragwerk** (`tragwerk`): übergeordnete bauteilbezogene
     Realität. Das Konstruktionsdetail bildet eine **lokale Sicht**
     auf das Tragwerk; es ist Bestandteil **keiner** der
     Tragwerks-Tupel-Komponenten (B, V, A, L). Das Tragwerk wird
     über `traegertragwerk` referenziert.
-  - **Bauteil** (`bauteil`): ein Konstruktionsdetail ist kein
+    - **Bauteil** (`bauteil`): ein Konstruktionsdetail ist kein
     Bauteil, sondern Aggregat-Sicht über Bauteilen, Verbindungen,
     Auflagern und Bearbeitungen.
-  - **Bauwerk** (`bauwerk`): ein Konstruktionsdetail gehört
+    - **Bauwerk** (`bauwerk`): ein Konstruktionsdetail gehört
     transitiv zum Bauwerk, das das `traegertragwerk` enthält. Die
     Beziehung ist nicht direkt modelliert.
 

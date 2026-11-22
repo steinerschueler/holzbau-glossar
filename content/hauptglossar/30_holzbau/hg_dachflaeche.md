@@ -71,7 +71,7 @@ Sei
 
 Dann heißt das Tripel
 
-```
+```text
 D:= (E, P, n_a)
 ```
 
@@ -125,35 +125,35 @@ Dachfläche bei einspringendem oder ausspringendem Eck).
 - **Oberbegriff**: Ebene mit polygonaler Berandung (geometrisches
   Primitiv `ebene` zusammen mit `polygon`).
 - **Teilbegriffe (Spezialisierungen)**:
-  - Hauptdachfläche
-  - Walmfläche
-  - Pultdachfläche
-  - Schleppdachfläche
-  - Krüppelwalmfläche
+    - Hauptdachfläche
+    - Walmfläche
+    - Pultdachfläche
+    - Schleppdachfläche
+    - Krüppelwalmfläche
 - **Bestandteile (partitiv)**:
-  - Begrenzungskanten: Traufe, First, Ortgang, Grat, Kehle,
+    - Begrenzungskanten: Traufe, First, Ortgang, Grat, Kehle,
     Pultkante.
 - **Abgrenzung**:
-  - **Dach** (eigener Eintrag): das gesamte Bauteil-Aggregat aus
+    - **Dach** (eigener Eintrag): das gesamte Bauteil-Aggregat aus
     Tragwerk, Dachflächen und Dachhaut. Eine Dachfläche ist ein
     geometrischer Bestandteil eines Daches, nicht das Dach selbst.
-  - **Dachhaut** (eigener Eintrag): die materielle, schichtweise
+    - **Dachhaut** (eigener Eintrag): die materielle, schichtweise
     aufgebaute Außendeckung (Ziegel, Folie, Blech). Die Dachhaut
     liegt auf der Dachfläche auf, ist aber nicht mit ihr identisch.
     Die Dachfläche ist Geometrie, die Dachhaut ist Material.
-  - **Dachschräge** (umgangssprachlich): meint im Innenausbau die
+    - **Dachschräge** (umgangssprachlich): meint im Innenausbau die
     von unten sichtbare Untersicht der geneigten Dachkonstruktion.
     Geometrisch ist sie eine zur Dachfläche parallele, um die
     Sparrenhöhe nach innen versetzte Ebene. Wird in diesem Glossar
     als eigenständiger Begriff `dachschraege_innen` geführt und ist
     nicht synonym zur Dachfläche.
-  - **Dachseite** (eigener Eintrag): keine bloße sprachliche Variante,
+    - **Dachseite** (eigener Eintrag): keine bloße sprachliche Variante,
     sondern eine Spezialisierung der Dachfläche mit zusätzlicher
     Orientierungs-Annotation (Wetterseite, Sonnenseite, Himmelsrichtung)
     und damit bemessungsrelevant für Wind- und Solarlasten. Eine
     Dachseite ist eine Dachfläche mit zusätzlicher
     Orientierungs-Annotation (vgl. `hg_dachseite.md`).
-  - **Dachneigungswinkel α**: ein Merkmal der Dachfläche, kein
+    - **Dachneigungswinkel α**: ein Merkmal der Dachfläche, kein
     eigenständiges Bauteil.
 
 ## Quellen

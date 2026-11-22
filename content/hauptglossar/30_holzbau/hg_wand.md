@@ -271,7 +271,7 @@ Sei
 
 Dann ist eine **Wand** ein Tupel
 
-```
+```text
 W:= (uuid, schwellen, einbinder, staender, riegel, streben,
       kopfbaender, fussbaender, knaggen, wandebene,
       lage, huelle, funktion?, bezeichnung?)
@@ -324,7 +324,7 @@ und den Konsistenzbedingungen
 1. **Bauteilgruppen-Konformität**: das Tupel
    (uuid, bestandteile, lage, huelle, funktion?, bezeichnung?)
    mit
-   ```
+   ```text
    bestandteile:= schwellen ∪ einbinder ∪ staender ∪ riegel ∪
                    streben ∪ kopfbaender ∪ fussbaender ∪ knaggen
    ```
@@ -335,7 +335,7 @@ und den Konsistenzbedingungen
 
 2. **Wandebene lotrecht**: Der Normalenvektor n_hat_W der Wandebene
    ist horizontal,
-   ```
+   ```text
    |⟨n_hat_W, e_z⟩| ≤ ε_K.
    ```
 
@@ -378,13 +378,13 @@ und den Konsistenzbedingungen
 9. **Hüllen-Inklusion**: Die geometrische Punktmenge aller
    Bestandteile liegt im Toleranzband um die Wandebene und in
    der Hülle huelle:
-   ```
+   ```text
    ⋃_{b ∈ bestandteile} G_W(b) ⊆ G_W(W).
    ```
 
 Die **geometrische Punktmenge** der Wand in W ist
 
-```
+```text
 G_W(W):= lage(G_lokal(huelle)) ⊂ ℝ³
 ```
 
@@ -571,7 +571,7 @@ ist Modell-zeitlich.
 ### CH/DE-Asymmetrie
 
 | Bauweise | Wand-Aussteifung typisch | Wand-Aggregat |
-|---|---|---|
+| --- | --- | --- |
 | Fachwerkbau (DE/AT, historisch) | Strebe + Kopf-/Fußband + Mann/Andreaskreuz | breit gefüllt |
 | Riegelbau (CH, traditionell) | Strebe + Kopf-/Fußband (Mann/Andreaskreuz seltener) | breit gefüllt |
 | Holzrahmenbau (modern) | Beplankung (Schicht-Aggregat) | nur Schwelle/Ständer/Einbinder |
@@ -594,99 +594,99 @@ CH-Berufskorpus zugeschnitten.
   Wandebene, Schwelle-Ständer-Einbinder-Grundstruktur, optionale
   Aussteifungs-Bauteile.
 - **Bestandteile (partitiv)**:
-  - **Schwelle** (`schwelle`, ≥ 1 Stück): unteres horizontales
+    - **Schwelle** (`schwelle`, ≥ 1 Stück): unteres horizontales
     Längsholz; Auflagerung des Wandgefüges auf der Decke oder
     dem Fundament.
-  - **Einbinder** (`einbinder`, ≥ 1 Stück): oberes horizontales
+    - **Einbinder** (`einbinder`, ≥ 1 Stück): oberes horizontales
     Längsholz; trägt Geschossdecke, Sparren oder oberen
     Lastpfad.
-  - **Ständer** (`staender`, ≥ 2 Stück): lotrechte
+    - **Ständer** (`staender`, ≥ 2 Stück): lotrechte
     Stab-Bauteile zwischen Schwelle und Einbinder. Eck-,
     Bund-, Zwischenständer (siehe `StaenderPosition`-
     Annotation).
-  - **Riegel** (`riegel`, ≥ 0): horizontale
+    - **Riegel** (`riegel`, ≥ 0): horizontale
     Zwischenhölzer.
-  - **Strebe** (`strebe`, ≥ 0): diagonale Aussteifung mit
+    - **Strebe** (`strebe`, ≥ 0): diagonale Aussteifung mit
     Pfosten-Mittel- oder Doppel-Horizontal-Anker.
-  - **Kopfband** (`kopfband`, ≥ 0): diagonale Aussteifung
+    - **Kopfband** (`kopfband`, ≥ 0): diagonale Aussteifung
     am Pfosten-Kopf.
-  - **Fußband** (`fussband`, ≥ 0): diagonale Aussteifung
+    - **Fußband** (`fussband`, ≥ 0): diagonale Aussteifung
     am Pfosten-Fuß.
-  - **Knagge** (`knagge`, ≥ 0): dreieckiges Vollholz als
+    - **Knagge** (`knagge`, ≥ 0): dreieckiges Vollholz als
     Konsole am Wandgefüge.
 - **Geometrische Bezugsobjekte (nicht Mitglieder)**:
-  - **Wandebene** (`ebene`): die lotrechte Bezugsebene; alle
+    - **Wandebene** (`ebene`): die lotrechte Bezugsebene; alle
     Bauteilachsen liegen in ihr.
-  - **Wand-Eckpunkte**: geometrische Referenzpunkte am
+    - **Wand-Eckpunkte**: geometrische Referenzpunkte am
     Schnitt von Schwelle, Einbinder und Eckständern.
 - **Funktionale Sicht (über `funktion?`-Feld)**:
-  - **AUSSTEIFEND** (Wandscheibe): tragwerks-aussteifende
+    - **AUSSTEIFEND** (Wandscheibe): tragwerks-aussteifende
     Wand, DIN EN 1995-1-1 §9.2.
-  - **LASTTRAGEND_NICHT_AUSSTEIFEND**: trägt vertikale Lasten,
+    - **LASTTRAGEND_NICHT_AUSSTEIFEND**: trägt vertikale Lasten,
     aber nicht horizontale Aussteifung.
-  - **NICHT_TRAGEND**: rein raumabschließend.
+    - **NICHT_TRAGEND**: rein raumabschließend.
 - **Spezialisierungen** (eigene Einträge folgen, trigger-basiert):
-  - **Vorgefertigtes Wandelement** (`vorgefertigtes_wandelement`,
+    - **Vorgefertigtes Wandelement** (`vorgefertigtes_wandelement`,
     Folgearbeit, in `hg_bauteilgruppe.md` Z. 268–286 bereits
     als Spezialisierung gelistet): Holztafelbau-Wand als
     werkseitig vorgefertigte Liefereinheit.
-  - **Raumwand** (`raumwand`, Cluster `40_architektur/`,
+    - **Raumwand** (`raumwand`, Cluster `40_architektur/`,
     Folgearbeit): architektonische Wand-Lesart.
 - **Verwendung**:
-  - Bestandteil eines **Tragwerks** (`tragwerk`) — als
+    - Bestandteil eines **Tragwerks** (`tragwerk`) — als
     Bauteilgruppe des Wandsystems.
-  - Bestandteil eines **Bauwerks** (`bauwerk`) —
+    - Bestandteil eines **Bauwerks** (`bauwerk`) —
     raumabschließende und tragende Funktion.
-  - Auflager-Träger für **Decken**, **Dachflächen**,
+    - Auflager-Träger für **Decken**, **Dachflächen**,
     **Sparren** über den oberen Einbinder.
 - **Abgrenzung**:
-  - **Bauteilgruppe** (`bauteilgruppe`): Oberbegriff.
-  - **Tragwerk** (`tragwerk`): das übergeordnete Aggregat,
+    - **Bauteilgruppe** (`bauteilgruppe`): Oberbegriff.
+    - **Tragwerk** (`tragwerk`): das übergeordnete Aggregat,
     in dem die Wand als Bauteilgruppe geführt wird.
-  - **Dach** (`dach`), **Dachstuhl** (`dachstuhl`): andere
+    - **Dach** (`dach`), **Dachstuhl** (`dachstuhl`): andere
     Aggregat-Familie (geneigte Bauteilgruppe auf dem oberen
     Einbinder der Wand).
-  - **Decke** (Folgearbeit): horizontale Bauteilgruppe,
+    - **Decke** (Folgearbeit): horizontale Bauteilgruppe,
     geschwisterlich zur Wand.
-  - **Binder** (`binder`): strukturparalleles Geschwister-
+    - **Binder** (`binder`): strukturparalleles Geschwister-
     Aggregat (Tragebene, Spannweiten-Überbrückung).
-  - **Walm** (`walm`): geschwisterliches Aggregat im
+    - **Walm** (`walm`): geschwisterliches Aggregat im
     Dachstuhl.
-  - **Andreaskreuz** (`andreaskreuz`): geschwisterliches
+    - **Andreaskreuz** (`andreaskreuz`): geschwisterliches
     Aggregat innerhalb derselben Wandebene — Bündelung
     zweier sich kreuzender Streben in einem Gefach. Die
     Wand-Bauteilgruppe kann Streben einzeln enthalten; das
     Andreaskreuz-Aggregat führt sie als bündelnde Schwester-
     Komposition (siehe Erläuterung).
-  - **Mann** (`mann`) und Sub-Varianten: geschwisterliche
+    - **Mann** (`mann`) und Sub-Varianten: geschwisterliche
     Aggregate innerhalb derselben Wandebene — Bündelung der
     Aussteifungs-Bauteile am Pfosten.
-  - **Schwelle**, **Einbinder**, **Ständer**, **Riegel**,
+    - **Schwelle**, **Einbinder**, **Ständer**, **Riegel**,
     **Strebe**, **Kopfband**, **Fußband**, **Knagge**:
     Bauteilrollen der Wand; sind Bestandteile, nicht die
     Wand selbst.
-  - **Wandtafel**, **Vorgefertigtes Wandelement**: Synonyme
+    - **Wandtafel**, **Vorgefertigtes Wandelement**: Synonyme
     bzw. Spezialisierungen (Vorfertigungs-Charakteristik).
-  - **Schicht**, **Beplankung**, **Wärmedämmung**,
+    - **Schicht**, **Beplankung**, **Wärmedämmung**,
     **Eindeckung**: orthogonale Schicht-Aggregat-Familie
     (Folgearbeit); nicht Bestandteile der Wand-
     Bauteilgruppe.
-  - **Konstruktionsdetail** (`konstruktionsdetail`):
+    - **Konstruktionsdetail** (`konstruktionsdetail`):
     Detail-Begriff für Anschlüsse innerhalb der Wand;
     eigene Begriffsfamilie.
-  - **Bausystem** (`bausystem`): orthogonaler funktionaler
+    - **Bausystem** (`bausystem`): orthogonaler funktionaler
     Aggregations-Mechanismus; die Wand kann Mitglied eines
     aussteifenden Bausystems sein, ist aber nicht selbst
     ein Bausystem.
-  - **Fachwerk**, **Riegelbau**, **Holzrahmenbau**,
+    - **Fachwerk**, **Riegelbau**, **Holzrahmenbau**,
     **Holzskelettbau**, **Holztafelbau**: Bauweisen-
     Klassifikationen; eine Wand wird in einer dieser
     Bauweisen errichtet, ist aber nicht selbst eine
     Bauweise (Folgearbeit).
-  - **Raumwand**, **Brandwand**, **Trennwand**:
+    - **Raumwand**, **Brandwand**, **Trennwand**:
     Architektur- bzw. brandschutztechnische Wand-Lesarten
     (Folgearbeit, außerhalb der Tragwerks-Lesart B).
-  - **Verbindung** (`verbindung`): die Wand enthält
+    - **Verbindung** (`verbindung`): die Wand enthält
     Verbindungen zwischen ihren Bestandteilen
     (Schwelle-Ständer-Zapfen, Einbinder-Ständer-Zapfen,
     Strebe-Pfosten-Zapfen); sie ist selbst keine

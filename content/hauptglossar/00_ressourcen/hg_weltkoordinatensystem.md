@@ -85,7 +85,7 @@ Sei
 - 𝔸³ der dreidimensionale reelle affine Raum,
 - O ∈ 𝔸³ ein projektweit fest gewählter Ursprung,
 - (e_x, e_y, e_z) eine Basis von ℝ³ mit den Eigenschaften
-  ```
+  ```text
   ‖e_x‖ = ‖e_y‖ = ‖e_z‖ = 1,                      (Einheitsvektoren)
   ⟨e_x, e_y⟩ = ⟨e_y, e_z⟩ = ⟨e_z, e_x⟩ = 0,      (paarweise orthogonal)
   e_x × e_y = e_z.                                 (Rechtssystem)
@@ -93,20 +93,20 @@ Sei
 
 Dann ist das **Weltkoordinatensystem** das Tupel
 
-```
+```text
 W:= (O, e_x, e_y, e_z, η, ω),
 ```
 
 wobei
 
 - η: 𝔸³ → ℝ³ die Koordinatenabbildung
-  ```
+  ```text
   η(p) = (x, y, z)  ⇔  p = O + x·e_x + y·e_y + z·e_z,
   ```
   ist; die Komponenten x, y, z sind in Millimeter zu interpretieren,
 
 - ω: ℝ³ × ℝ³ → ℝ die Winkelmessung um e_z im mathematischen Sinn,
-  ```
+  ```text
   ω(u, v):= atan2(⟨e_z, u_hat × v_hat⟩, ⟨u_hat, v_hat⟩)  ∈ (−π, π],
   ```
   mit u_hat = u/‖u‖, v_hat = v/‖v‖, definiert für u, v ∉ Null der
@@ -115,7 +115,7 @@ wobei
 
 Die geographische Einbettung wird durch die zusätzliche Festlegung
 
-```
+```text
 e_x ≙ Ost,    e_y ≙ Nord,    e_z ≙ Zenit (Vertikale nach oben)
 ```
 
@@ -131,7 +131,7 @@ auf 10 m Bauwerksspanne).
 Aus W ist eine zweite Winkelkonvention ableitbar, die ausschließlich
 für Eingabe und Anzeige verwendet wird:
 
-```
+```text
 ψ: (Vektor \ vertikal) → [0, 2π),
 ψ(v):= atan2(⟨v, e_x⟩, ⟨v, e_y⟩)  mod 2π          (Azimut)
 ```
@@ -140,7 +140,7 @@ mit ψ = 0 bei Nord, ψ = π/2 bei Ost, ψ = π bei Süd, ψ = 3π/2 bei
 West (Kompass-Konvention, im Uhrzeigersinn). Der Zusammenhang zum
 mathematischen Winkel φ um e_z ist
 
-```
+```text
 ψ = (π/2 − φ) mod 2π,    φ = (π/2 − ψ) mod 2π.
 ```
 
@@ -201,7 +201,7 @@ Die Höhe wird als getrennte 1D-Komponente in den Höhenrahmen LN02
 
 **Zuordnung W ↔ LV95**:
 
-```
+```text
 e_x  ≙  E-Richtung    (Ost),
 e_y  ≙  N-Richtung    (Nord),
 e_z  ≙  Höhe          (Vertikal),
@@ -281,31 +281,31 @@ Schichtentrennung.
   und ein gemeinsames Vokabular benötigen; bis dahin wird die
   Abgrenzung inline geführt.
 - **Verwandte Begriffe**:
-  - **Lokales Koordinatensystem**: bauteileigenes oder
+    - **Lokales Koordinatensystem**: bauteileigenes oder
     konstruktionsteilbezogenes kartesisches System, das durch eine
     starre Transformation auf W abgebildet wird; eigener Eintrag
     `hg_lokales_koordinatensystem.md` in Folgearbeit.
-  - **Bauteilachse**: Längsachse eines Bauteils (z. B.
+    - **Bauteilachse**: Längsachse eines Bauteils (z. B.
     Sparrenachse), häufige Wahl der x- oder z-Achse eines lokalen
     Systems.
 - **Abgrenzung**:
-  - **Lokales Koordinatensystem** (Folge-Eintrag): nur lokal an
+    - **Lokales Koordinatensystem** (Folge-Eintrag): nur lokal an
     einem Bauteil oder Konstruktionsteil gültig, durch starre
     Transformation auf W bezogen. W ist global, lokal Systeme sind
     es nicht.
-  - **Bauteilachse** (Folge-Eintrag): eine ausgezeichnete Achse
+    - **Bauteilachse** (Folge-Eintrag): eine ausgezeichnete Achse
     eines Bauteils, nicht ein vollständiges Koordinatensystem. Eine
     Bauteilachse kann eine Achse eines lokalen Systems sein, ist
     aber kein Synonym dafür.
-  - **LV95 (CH1903+)** (Folge-Eintrag `lv95.md`): amtliches
+    - **LV95 (CH1903+)** (Folge-Eintrag `lv95.md`): amtliches
     Schweizer Landeskoordinatensystem in Metern, projiziert.
     LV95 wird in der Domänen-Schicht **nicht** als Welt-System
     verwendet, sondern nur als externer Bezug am Importrand.
-  - **WGS84** (Folge-Eintrag `wgs84.md`): geographisches
+    - **WGS84** (Folge-Eintrag `wgs84.md`): geographisches
     ellipsoidisches Bezugssystem; nicht kartesisch und nicht
     projiziert. Wird in der App nur über GPS/GNSS-Importschnitt-
     stellen berührt und nicht intern verwendet.
-  - **Maßtoleranz, Numerik-Toleranz**: andere Begriffsdomäne,
+    - **Maßtoleranz, Numerik-Toleranz**: andere Begriffsdomäne,
     keine Konkurrenz zu W.
 
 ## Quellen

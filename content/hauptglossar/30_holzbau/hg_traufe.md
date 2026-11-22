@@ -76,23 +76,23 @@ Sei
 - e_z = (0, 0, 1)ᵀ die vertikale Achse,
 - ε_W:= Toleranzen.WINKEL_EPS die Winkeltoleranz,
 - für eine Strecke s = [a, b] der **Höhenmittelwert**
-  ```
+  ```text
   z_bar(s):= ½ · (a_z + b_z)
   ```
   und der **Horizontalitätsmaß**
-  ```
+  ```text
   h(s):= |⟨e_hat(s), e_z⟩|       mit  e_hat(s):= (b − a) / ‖b − a‖.
   ```
 
 Eine Polygonrandkante e_i heißt **näherungsweise horizontal**, wenn
 
-```
+```text
 h(e_i) ≤ ε_W.
 ```
 
 Die Menge der näherungsweise horizontalen Randkanten von D sei
 
-```
+```text
 H(D):= { e_i | h(e_i) ≤ ε_W,  i = 1, …, k }.
 ```
 
@@ -103,7 +103,7 @@ wenn
    kante von D, und
 2. t hat unter allen Elementen von H(D) die niedrigste mittlere Höhe,
    d. h.
-   ```
+   ```text
    z_bar(t) = min { z_bar(e) | e ∈ H(D) },
    ```
    ausgewertet mit Toleranz Toleranzen.LAENGE_EPS auf der Vertikalen
@@ -175,25 +175,25 @@ Polygonrandkante der ausgekragten Dachfläche.
   Trauflinien-Strecke bzw. die Stützpunkte des Streckenzugs bei
   geknickter Trauflinie.
 - **Abgrenzung**:
-  - **First** (`first`): Schnittkante zweier nach oben
+    - **First** (`first`): Schnittkante zweier nach oben
     zusammenlaufender Dachflächen; ebenfalls näherungsweise
     horizontal, aber Schnittkante (zwei Flächen, konvex) statt
     Randkante einer einzelnen Fläche — und liegt oben statt unten.
-  - **Ortgang** (`ortgang`): seitliche, geneigte Randkante; nicht
+    - **Ortgang** (`ortgang`): seitliche, geneigte Randkante; nicht
     näherungsweise horizontal, schließt Bedingung 1 aus.
-  - **Pultkante** (eigener Eintrag folgt): obere Randkante einer
+    - **Pultkante** (eigener Eintrag folgt): obere Randkante einer
     Pultdachfläche ohne anschließende zweite Dachfläche; horizontal,
     aber höchste statt niedrigste Kante.
-  - **Traufseite**: Gebäudeseite, deren Wand parallel zur Trauflinie
+    - **Traufseite**: Gebäudeseite, deren Wand parallel zur Trauflinie
     verläuft; ist eine Eigenschaft der Wand, nicht der Dachfläche.
     Hier nicht definiert.
-  - **Traufbereich**: konstruktiver Detailbereich an der Traufe mit
+    - **Traufbereich**: konstruktiver Detailbereich an der Traufe mit
     Traufbohle, Rinneneinhang, Stirnbrett; ist ein
     Bauteil-Aggregat, nicht eine Kante. Hier nicht definiert.
-  - **Dachrinne**: am Traufbereich befestigtes Bauteil zur
+    - **Dachrinne**: am Traufbereich befestigtes Bauteil zur
     Wasserableitung; nicht Bestandteil der Dachfläche, sondern ein
     Anbauteil.
-  - **Dachüberstand**: das ausgekragte Stück der Dachfläche jenseits
+    - **Dachüberstand**: das ausgekragte Stück der Dachfläche jenseits
     der Außenwand; verschiebt die Trauflinie, ist aber selbst keine
     Kante.
 

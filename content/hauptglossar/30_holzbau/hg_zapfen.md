@@ -257,7 +257,7 @@ Sei
   Bauteilende,
 - L_B = (O_B, e_hat_x^B, e_hat_y^B, e_hat_z^B) das Bauteil-Lokal-
   Koordinatensystem (`lokales_koordinatensystem`) mit Konvention
-  ```
+  ```text
   e_hat_x^B  =  Bauteilachse (Längsrichtung, vom Bauteilanfang zum
             Bauteilende zeigend),
   e_hat_y^B  =  Bauteil-Querrichtung (Bauteilbreite),
@@ -273,7 +273,7 @@ Sei
 
 Die **Parameter** eines Zapfens sind das Tupel
 
-```
+```text
 p_Zapfen:= (ℓ_Z, w_Z, h_Z, y_Z, z_Z, κ)                          (1)
 ```
 
@@ -298,7 +298,7 @@ mit
 Die **Zapfen-Hervorragung** Z(p_Zapfen) ⊂ ℝ³ ist im Bauteil-
 Lokal-System der abgeschlossene Polyeder
 
-```
+```text
 Z(p_Zapfen):= { (x, y, z) ∈ ℝ³:
     ℓ_B − ℓ_Z  ≤  x  ≤  ℓ_B,
     |y − y_Z|  ≤  w_Z/2  +  (ℓ_B − x) · tan κ,                    (2)
@@ -321,7 +321,7 @@ die das Material entfernen, das den Zapfen-Querschnitt
 umgibt — analog zur Konstruktion einer Bohrung mit
 Durchgangs-Effekt. Konkret:
 
-```
+```text
 W_y^-:= { (x, y, z) ∈ ℝ³:
             ℓ_B − ℓ_Z ≤ x ≤ ℓ_B,
             0 ≤ y ≤ y_Z − w_Z/2 − (ℓ_B − x) · tan κ,
@@ -363,7 +363,7 @@ Bauteildicke) entfallen W_z^- und W_z^+ entsprechend.
 
 Äquivalent gilt:
 
-```
+```text
 K_Zapfen(p_Zapfen) = { (x, y, z) ∈ G_B^lokal:
     ℓ_B − ℓ_Z ≤ x ≤ ℓ_B } \ Z(p_Zapfen),                          (3')
 ```
@@ -377,7 +377,7 @@ die für die Implementierung verbindliche Konstruktion.
 
 Ein **Zapfen** ist dann die Bearbeitung
 
-```
+```text
 F_Zapfen:= (uuid, τ = Zapfen, p_Zapfen, T_F = identitaet,
              bezeichnung)                                          (4)
 ```
@@ -391,7 +391,7 @@ direkt im Bauteil-Lokal-System ausgedrückt sind.
 Die **Wirkung** auf das Bauteil ist nach `hg_bearbeitung.md`
 Gleichung (1):
 
-```
+```text
 G_B'(F_Zapfen):=  G_B^lokal  \  K_Zapfen(p_Zapfen)
                  =  G_B^lokal ∩ (ℝ³ \ K_Zapfen(p_Zapfen))         (5)
 
@@ -453,21 +453,21 @@ Anschauung.
   wird; der Domänen-Typ
   `KonvexerPolyeder` muss die Vereinigung nicht selbst tragen.
 - **Topologie von K_Zapfen**:
-  - **Standardfall** (0 < w_Z < b_B und 0 < h_Z < h_B,
+    - **Standardfall** (0 < w_Z < b_B und 0 < h_Z < h_B,
     achsmittig oder asymmetrisch): K_Zapfen ist
     **zusammenhängend, aber nicht-konvex** — vier Wangen
     rahmen die Zapfen-Hervorragung; zwei Wangen-Paare grenzen
     jeweils an gemeinsamen Eckkanten an.
-  - **Sonderfall w_Z = b_B** (Schlitz und Zapfen am
+    - **Sonderfall w_Z = b_B** (Schlitz und Zapfen am
     hervorstehenden Bauteil): W_y^± entfallen; K_Zapfen ist
     die **Vereinigung zweier disjunkter konvexer Quader**
     (obere und untere Wange) und damit **nicht
     zusammenhängend**.
-  - **Sonderfall h_Z = h_B** (Zapfen über die volle
+    - **Sonderfall h_Z = h_B** (Zapfen über die volle
     Bauteildicke): W_z^± entfallen; K_Zapfen ist die
     Vereinigung zweier disjunkter konvexer Prismen
     (seitliche Wangen).
-  - **Trivialfall w_Z = b_B und h_Z = h_B**: K_Zapfen wird
+    - **Trivialfall w_Z = b_B und h_Z = h_B**: K_Zapfen wird
     leer, der Zapfen füllt den gesamten Bauteilend-Bereich.
     Dieser Fall ist durch die harten Invarianten
     w_Z ≤ b_B − 2ε_L bzw. h_Z ≤ h_B − 2ε_L ausgeschlossen.
@@ -593,16 +593,16 @@ Differenz heißt **Zapfenluft**. Konsequenzen:
 Die DACH-Berufssprache kennt mehrere geometrische und
 funktionale Varianten:
 
-| Variante                | Geometrie                                                                                   | App-Modellierung |
-|-------------------------|---------------------------------------------------------------------------------------------|------------------|
-| **Einfacher Zapfen**    | ein achsmittiger Kantzapfen, κ = 0; Standardfall.                                          | eine `Zapfen`-Instanz |
-| **Doppelzapfen**        | zwei parallele Zapfen nebeneinander; bei großer Bauteildicke zur Vergrößerung der Schubfläche. | zwei `Zapfen`-Instanzen mit unterschiedlichen y_Z |
-| **Schlitz und Zapfen** (*Gabelzapfen*) | Zapfen am hervorstehenden Bauteil + nach einer Seite offenes Zapfenloch am Gegenholz; Standard im Eck-/Kreuzanschluss.   | `Zapfen` + nach offener Seite parametrisiertes `zapfenloch` am Gegenholz |
+| Variante | Geometrie | App-Modellierung |
+| --- | --- | --- |
+| **Einfacher Zapfen** | ein achsmittiger Kantzapfen, κ = 0; Standardfall. | eine `Zapfen`-Instanz |
+| **Doppelzapfen** | zwei parallele Zapfen nebeneinander; bei großer Bauteildicke zur Vergrößerung der Schubfläche. | zwei `Zapfen`-Instanzen mit unterschiedlichen y_Z |
+| **Schlitz und Zapfen** (*Gabelzapfen*) | Zapfen am hervorstehenden Bauteil + nach einer Seite offenes Zapfenloch am Gegenholz; Standard im Eck-/Kreuzanschluss. | `Zapfen` + nach offener Seite parametrisiertes `zapfenloch` am Gegenholz |
 | **Schwalbenschwanz-Zapfen** | konische Geometrie κ > 0 (typ. Steigung 1:7 bei Nadelholz, 1:8 bei Laubholz); zugfest in einer Richtung; klassisch Nebenträger ↔ Hauptträger. | `Zapfen` mit κ > 0; Folgearbeit: ggf. eigener Subtyp |
-| **Brustzapfen**         | Zapfen mit zusätzlicher **Schulter** (flächiger Anschlag rechtwinklig zur Bauteilachse); druckfest, waagerecht/senkrecht unverschieblich; klassisch Balken-Wechsel. | `Zapfen` + zusätzliche `anschnitt`-Bearbeitung an der Schulterfläche |
-| **Verkämmter Zapfen**   | Zapfenverbindung kombiniert mit Querverzahnung (Kamm) der Schulterflächen; alpine Schweizer Stuhlkonstruktionen Stuhlsäule ↔ Pfette. | `Zapfen` + `kamm`-Bearbeitung an den Schulterflächen |
-| **Abgesetzter Zapfen**  | zweistufiger Zapfen-Schaft mit reduziertem Querschnitt; nimmt zwei Bauteile übereinander auf. | Folgearbeit: Parameter-Erweiterung oder eigener Subtyp |
-| **Jagdzapfen**          | schräg eingedrehter Zapfen zum nachträglichen Einbau einer Strebe.                          | Folgearbeit |
+| **Brustzapfen** | Zapfen mit zusätzlicher **Schulter** (flächiger Anschlag rechtwinklig zur Bauteilachse); druckfest, waagerecht/senkrecht unverschieblich; klassisch Balken-Wechsel. | `Zapfen` + zusätzliche `anschnitt`-Bearbeitung an der Schulterfläche |
+| **Verkämmter Zapfen** | Zapfenverbindung kombiniert mit Querverzahnung (Kamm) der Schulterflächen; alpine Schweizer Stuhlkonstruktionen Stuhlsäule ↔ Pfette. | `Zapfen` + `kamm`-Bearbeitung an den Schulterflächen |
+| **Abgesetzter Zapfen** | zweistufiger Zapfen-Schaft mit reduziertem Querschnitt; nimmt zwei Bauteile übereinander auf. | Folgearbeit: Parameter-Erweiterung oder eigener Subtyp |
+| **Jagdzapfen** | schräg eingedrehter Zapfen zum nachträglichen Einbau einer Strebe. | Folgearbeit |
 
 Die App-Klasse `Zapfen` modelliert den einfachen Kantzapfen
 und den Schwalbenschwanz-Zapfen direkt über die Parameter (1);
@@ -616,12 +616,12 @@ reichen nicht für eine eigenständige Definition.
 
 ### BTLx- und IFC-Übersetzung
 
-| App-Konfiguration            | BTLx-Processing | IFC-Konstrukt |
-|------------------------------|-----------------|---------------|
-| `Zapfen` mit κ = 0           | `Tenon`         | Bauteilkörper-Body am Bauteilende (Form, nicht Subtraktion) |
-| `Zapfen` mit κ > 0           | `DovetailTenon` | Bauteilkörper-Body am Bauteilende mit konischer Querschnittsverengung |
-| `Zapfen` + `anschnitt`       | `Tenon` + Schulter-Processing | Bauteilkörper-Body mit zurückspringender Schulter |
-| `Zapfen` + `kamm`            | `Tenon` + `House` | komplexer Bauteilkörper-Body |
+| App-Konfiguration | BTLx-Processing | IFC-Konstrukt |
+| --- | --- | --- |
+| `Zapfen` mit κ = 0 | `Tenon` | Bauteilkörper-Body am Bauteilende (Form, nicht Subtraktion) |
+| `Zapfen` mit κ > 0 | `DovetailTenon` | Bauteilkörper-Body am Bauteilende mit konischer Querschnittsverengung |
+| `Zapfen` + `anschnitt` | `Tenon` + Schulter-Processing | Bauteilkörper-Body mit zurückspringender Schulter |
+| `Zapfen` + `kamm` | `Tenon` + `House` | komplexer Bauteilkörper-Body |
 
 **IFC-Asymmetrie zum Zapfenloch**: Während das Zapfenloch
 in IFC unmittelbar als `IfcOpeningElement` mit
@@ -678,71 +678,71 @@ nicht im Glossar geführt.
   verschiedenen Bauteilen und werden durch ein
   `verbindung`-Aggregat klammernd zusammengehalten.
 - **Verwendung**:
-  - Bestandteil eines **Bauteils** (`bauteil`): der Zapfen
+    - Bestandteil eines **Bauteils** (`bauteil`): der Zapfen
     erscheint in der Bearbeitungs-Liste seines hervorstehenden
     Bauteils.
-  - Aggregiert über ein **Verbindungs-Aggregat**
+    - Aggregiert über ein **Verbindungs-Aggregat**
     (`verbindung`) zusammen mit dem zugehörigen `zapfenloch`
     am Gegenholz; die Verbindungs-Instanz trägt
     `typ = ZimmermannsmaessigerAnschluss`.
-  - Optional gesichert durch **Verbindungsmittel**
+    - Optional gesichert durch **Verbindungsmittel**
     (`verbindungsmittel`): Holznagel, Keil; eigene Element-
     Instanzen, nicht Teil des Zapfens.
 - **Abgrenzung**:
-  - **Zapfenloch** (`zapfenloch`, Schwester-Eintrag): die
+    - **Zapfenloch** (`zapfenloch`, Schwester-Eintrag): die
     aufnehmende Aussparung am Gegenholz. Topologisch und
     ontologisch das Pendant zum Zapfen; gleicher Oberbegriff
     `bearbeitung`, aber an verschiedenem Bauteil.
-  - **Kerve** (`kerve`): zweiflächiger Einschnitt aus der
+    - **Kerve** (`kerve`): zweiflächiger Einschnitt aus der
     Unterseite eines Sparrens zur Auflagerung auf einer
     Pfette. Kerve liegt **mittig in der Bauteillänge** und
     schwächt das Bauteil von der Unterseite her; Zapfen liegt
     **am Bauteilende** und schwächt durch seitliche Wangen.
     Keine Funktions- und keine Geometrie-Überschneidung.
-  - **Versatz** (`versatz`, Forward-Verweis): flache, schräge
+    - **Versatz** (`versatz`, Forward-Verweis): flache, schräge
     Druckfläche quer zur Faser am Bauteilende; trägt Druck
     schräg über eine große Druckfläche, **ohne**
     hervorstehenden Stift. Versatz und Zapfen sind beide
     am Bauteilende, aber topologisch verschieden:
     Versatz = Druckfläche, Zapfen = Stift.
-  - **Blatt** (`blatt`, Forward-Verweis A,
+    - **Blatt** (`blatt`, Forward-Verweis A,
     `HG_KONVENTIONEN.md` §6 Tabelle): flächige Längs-
     Überlappung (halbe Holzdicke abgetragen) zweier Bauteile
     in derselben Lage. Im Gegensatz zum Zapfen, der ein
     Stift in einem Loch ist, ist das Blatt eine Flächen-
     Überlappung.
-  - **Kamm** (`kamm`, Forward-Verweis A): einseitige
+    - **Kamm** (`kamm`, Forward-Verweis A): einseitige
     Materialwegnahme zur verzahnten Querverbindung am
     Kreuzungspunkt. Kann mit `Zapfen` kombiniert werden
     (verkämmter Zapfen), ist aber eigenständig als
     Bearbeitungs-Subtyp geführt.
-  - **Bohrung** (`bohrung`, Forward-Verweis): zylindrische
+    - **Bohrung** (`bohrung`, Forward-Verweis): zylindrische
     Subtraktion mit rundem Querschnitt. Zapfen-Querschnitt
     ist rechteckig (oder schwalbenschwanzförmig); ein
     Rundzapfen ist im DACH-Holzbau-Korpus selten und wird
     in dieser App nicht als Sonderfall des Zapfens, sondern
     ggf. als eigene Bearbeitung modelliert.
-  - **Schlitz** (`schlitz`, Forward-Verweis): längliche
+    - **Schlitz** (`schlitz`, Forward-Verweis): längliche
     Subtraktion mit geringer Breite und großer Tiefe zur
     Aufnahme eines Schlitzblechs oder einer Lasche. Im
     DACH-Korpus terminologisch doppeldeutig (auch
     „Schlitz und Zapfen"); dort meint „Schlitz" die nach
     einer Seite offene Zapfenloch-Variante, **nicht** den
     Schlitz für Schlitzbleche.
-  - **Anschnitt** (`anschnitt`, Forward-Verweis): planare
+    - **Anschnitt** (`anschnitt`, Forward-Verweis): planare
     Stirn- oder Schrägfläche am Bauteilende. Kann mit
     `Zapfen` kombiniert werden (Brustzapfen) und liefert die
     Schulterfläche, ist aber eigene Bearbeitung.
-  - **Bearbeitung** (`bearbeitung`): Oberbegriff; trägt die
+    - **Bearbeitung** (`bearbeitung`): Oberbegriff; trägt die
     generischen Eigenschaften (UUID, lokale Platzierung,
     Subtraktivität, Lebenszyklus-Kopplung).
-  - **Verbindung** (`verbindung`): Aggregat aus Bauteilen +
+    - **Verbindung** (`verbindung`): Aggregat aus Bauteilen +
     Verbindungsmitteln + Bearbeitungen an einem
     Knotenpunkt. Zapfen ist **keine Verbindung**, sondern
     eine Bearbeitung; die übergreifende „Zapfenverbindung"
     ist das `verbindung`-Aggregat mit
     `typ = ZimmermannsmaessigerAnschluss`.
-  - **Verbindungsmittel** (`verbindungsmittel`): Element,
+    - **Verbindungsmittel** (`verbindungsmittel`): Element,
     das Kräfte zwischen ≥ 2 Bauteilen überträgt (Schraube,
     Bolzen, Holznagel, Klammer). Zapfen ist **kein
     Verbindungsmittel**, sondern die formgebende Bearbeitung

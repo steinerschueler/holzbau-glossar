@@ -204,9 +204,9 @@ Sei
   horizontal liegt (|⟨n_hat_T, e_z⟩| ≤ ε_K — die Ebene steht
   senkrecht im Sinne von HG_KONVENTIONEN.md §1, d. h. lotrecht).
   E_T ist entweder
-  - im **Wand-Kontext** die Wandebene E_W einer Wand (siehe
+    - im **Wand-Kontext** die Wandebene E_W einer Wand (siehe
     `hg_wand.md`), oder
-  - im **Dachtragwerks-Kontext** die **Längsebene** des stehenden
+    - im **Dachtragwerks-Kontext** die **Längsebene** des stehenden
     Stuhls: die Ebene parallel zur Firstrichtung durch die Reihe
     der lotrechten Bauteile und die von ihnen getragene Pfette.
     Die Längsebene ist hier lokal über ihre Lage zur Firstrichtung
@@ -243,14 +243,14 @@ Bedingungen alle erfüllt sind:
    ‖p_e − p_a‖ > ε_L.
 
 2. **Lage in der Tragwerksebene**: Beide Endpunkte liegen in E_T,
-   ```
+   ```text
    |⟨p_a − p_T, n_hat_T⟩| ≤ ε_L  ∧  |⟨p_e − p_T, n_hat_T⟩| ≤ ε_L.
    ```
 
 3. **Echte Diagonale (weder lotrecht noch horizontal)**: Der
    Winkel α(B):= arccos(|⟨d_hat, e_z⟩|) zwischen Bauteilachse und
    Lotachse erfüllt
-   ```
+   ```text
    ε_W < α(B) < π/2 − ε_W,
    ```
    d. h. d_hat ist weder kollinear zu e_z (kein Ständer, Pfosten
@@ -263,13 +263,13 @@ Bedingungen alle erfüllt sind:
    bis auf Toleranz ε_L. Ohne Beschränkung der Allgemeinheit
    sei p_P ∈ {p_a, p_e} der Pfosten-Endpunkt und p_H der
    Längsholz-Endpunkt:
-   ```
+   ```text
    dist(p_P, a(P)) ≤ ε_L  ∧  dist(p_H, a(H)) ≤ ε_L.
    ```
 
 5. **Pfosten-Kopf-Anker** (strukturelle Trennlinie zur Strebe):
    Der Pfosten-Anker-Endpunkt liegt **am Pfosten-Kopf**,
-   ```
+   ```text
    |p_P.z − z_max^P| ≤ ε_L · 3,
    ```
    d. h. der Pfosten-Endpunkt befindet sich am oberen Ende der
@@ -283,7 +283,7 @@ Bedingungen alle erfüllt sind:
 6. **Aufwärts-Orientierung der Bauteilachse vom Pfosten zum
    Längsholz**: Der Längsholz-Endpunkt liegt höher als der
    Pfosten-Endpunkt,
-   ```
+   ```text
    p_H.z + ε_L > p_P.z,
    ```
    d. h. die Diagonale steigt vom Pfosten-Kopf aufwärts gegen
@@ -589,7 +589,7 @@ Inzidenz im Wand- bzw. Dachtragwerks-Aggregat (Folgearbeit).
 ### CH/DE-Asymmetrie und Bauweisen-Verteilung
 
 | Bauweise | Kopfband typisch verwendet? |
-|---|---|
+| --- | --- |
 | Pfettendach mit stehendem Stuhl (Berufsschul-Kanon DE) | **Regelbauteil** der Längsaussteifung; ohne Kopfbänder gilt die Konstruktion als labil (Bläsi/Ferdinand S. 170 f.) |
 | Fachwerkbau (DE/AT, historisch und in Sanierung) | breit, in vielen Geometrien (Bug, Kopfbüge, Mann-Figuren) |
 | Riegelbau (CH, traditionell) | Kopfband-Wort wenig im Korpus belegt; CH-Praxis verwendet teils „Strebe" als Sammelbegriff |

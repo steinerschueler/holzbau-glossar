@@ -75,7 +75,7 @@ Sei
 
 Dann ist ein **gerichteter Plattenwerkstoff** das Tupel
 
-```
+```text
 GP:= (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse,
        plattenlaengsrichtung)
 ```
@@ -98,7 +98,7 @@ eine disjunkte Teilmenge der Werkstoff-Menge mit
 **Default-Konvention für die Plattenlängsrichtung** (prüfbare
 Konstruktionsregel):
 
-```
+```text
 Wenn plattenlaengsrichtung am Werkstoff nicht explizit gesetzt,
 gilt für ein Bauteil B mit werkstoff = GP:
   plattenlaengsrichtung(GP):= bauteil_lokale_x_achse(B)
@@ -212,41 +212,41 @@ Bemessungsrelevanz im UI kommunizieren.
 
 - **Oberbegriff**: `werkstoff`.
 - **Subklassen** (eigene Einträge folgen):
-  - **OSB** (`osb`): DIN EN 300, einzige Sub-Subklasse zum Stand
+    - **OSB** (`osb`): DIN EN 300, einzige Sub-Subklasse zum Stand
     der Technik 2026.
-  - Sub-Sub-Subklassen nach Nutzungsklasse (Folgearbeit):
-    - `osb_1`: nicht-tragend, Trockenbereich
+    - Sub-Sub-Subklassen nach Nutzungsklasse (Folgearbeit):
+        - `osb_1`: nicht-tragend, Trockenbereich
       (DIN EN 300, OSB/1).
-    - `osb_2`: tragend, Trockenbereich (NKL 1).
-    - `osb_3`: tragend, Feuchtbereich (NKL 2).
-    - `osb_4`: hochbelastet, Feuchtbereich (NKL 2).
-  - Alternative Modellierung: einheitlich `osb` mit Typ-Attribut
+        - `osb_2`: tragend, Trockenbereich (NKL 1).
+        - `osb_3`: tragend, Feuchtbereich (NKL 2).
+        - `osb_4`: hochbelastet, Feuchtbereich (NKL 2).
+    - Alternative Modellierung: einheitlich `osb` mit Typ-Attribut
     `OsbTyp ∈ {OSB_1, OSB_2, OSB_3, OSB_4}`.
 - **Pflichtfelder über `werkstoff` hinaus**:
-  - **Plattenlängsrichtung** (`plattenlaengsrichtung`, eigener
+    - **Plattenlängsrichtung** (`plattenlaengsrichtung`, eigener
     Folge-Eintrag): Strand-Längsrichtung der Decklagen.
-  - **Plattendicken-Achse** (`plattendicken_achse`, eigener Folge-
+    - **Plattendicken-Achse** (`plattendicken_achse`, eigener Folge-
     Eintrag): rechtwinklig zur Plattenebene.
 - **Verwendung**:
-  - **Bauteil** (`bauteil`): trägt einen Werkstoff der Subklasse
+    - **Bauteil** (`bauteil`): trägt einen Werkstoff der Subklasse
     `gerichteter_plattenwerkstoff`, wenn Flächenbauteil aus OSB.
-  - **Plattenwerkstoff** (`plattenwerkstoff`, Folgearbeit):
+    - **Plattenwerkstoff** (`plattenwerkstoff`, Folgearbeit):
     Spezialisierung von Flächenbauteil mit Werkstoff aus den
     drei Plattenwerkstoff-Klassen.
 - **Abgrenzung**:
-  - **`axiales_holz`**: eine ausgeprägte Faserrichtung entlang
+    - **`axiales_holz`**: eine ausgeprägte Faserrichtung entlang
     einer Bauteilachse (Stab-/Stützenwerkstoff). Gerichteter
     Plattenwerkstoff ist Plattenwerkstoff mit schwacher
     Plattenebenen-Richtung.
-  - **`mehrlagenholz`**: mehrere ausgeprägte Faserrichtungen
+    - **`mehrlagenholz`**: mehrere ausgeprägte Faserrichtungen
     pro Lage mit pro-Lage-Bemessung (BSP, Sperrholz, Multiplex).
     OSB hat trotz Lagenstruktur **keine** pro-Lage-Bemessung;
     EC5 verwendet eine effektive Plattenrichtung.
-  - **`isotroper_plattenwerkstoff`**: keine Vorzugsrichtung in
+    - **`isotroper_plattenwerkstoff`**: keine Vorzugsrichtung in
     Plattenebene (Spanplatte, MDF, HDF). Gerichteter
     Plattenwerkstoff hat eine schwache, aber bemessungsrelevante
     Vorzugsrichtung.
-  - **`faserrichtung`** (im Sinne des Klasse-A-Glossarbegriffs):
+    - **`faserrichtung`** (im Sinne des Klasse-A-Glossarbegriffs):
     Einheitsvektor-Annotation an einem Bauteil mit Werkstoff
     `axiales_holz`. Bei OSB wird stattdessen die
     `plattenlaengsrichtung` geführt; sie ist semantisch

@@ -219,7 +219,7 @@ dann, wenn die folgenden Bedingungen erfüllt sind:
 
 2. **Horizontalitätsbedingung**: Die Bauteilachsenrichtung ist
    horizontal,
-   ```
+   ```text
    |⟨d_hat, e_z⟩| ≤ ε_K,
    ```
    d. h. die Bauteilachse steht rechtwinklig zur Welt-Lotachse.
@@ -232,7 +232,7 @@ dann, wenn die folgenden Bedingungen erfüllt sind:
 
 3. **Lage in der Sparrenpaar-Ebene**: Beide Endpunkte der
    Bauteilachse liegen in E_paar bis ε_L,
-   ```
+   ```text
    |⟨n_paar, p_a − q₀⟩| ≤ ε_L  und  |⟨n_paar, p_e − q₀⟩| ≤ ε_L,
    ```
    wobei q₀ ein beliebiger Stützpunkt von E_paar ist (z. B.
@@ -243,7 +243,7 @@ dann, wenn die folgenden Bedingungen erfüllt sind:
    auf den Bauteilachsen der beiden Sparren des Paars. Formal:
    es gibt eine Bijektion σ: {a, e} → {1, 2} und reelle
    Parameter t_a, t_e ∈ [0, 1] derart, dass
-   ```
+   ```text
    ‖p_a − (p^{(σ(a))}_fuß + t_a · (p^{(σ(a))}_first − p^{(σ(a))}_fuß))‖ ≤ ε_L
    ‖p_e − (p^{(σ(e))}_fuß + t_e · (p^{(σ(e))}_first − p^{(σ(e))}_fuß))‖ ≤ ε_L.
    ```
@@ -254,7 +254,7 @@ dann, wenn die folgenden Bedingungen erfüllt sind:
 5. **Topologische Trennung zum Bundbalken (oberhalb Sparrenfuß)**:
    Die Endpunkt-Höhenkoordinaten liegen oberhalb der Sparrenfuß-
    Höhenkoordinaten,
-   ```
+   ```text
    p_a.z > p^{(σ(a))}_fuß.z + ε_L
    p_e.z > p^{(σ(e))}_fuß.z + ε_L.
    ```
@@ -265,7 +265,7 @@ dann, wenn die folgenden Bedingungen erfüllt sind:
 6. **Topologische Trennung zum Hahnenbalken (unterhalb
    Sparrenfirst)**: Die Endpunkt-Höhenkoordinaten liegen
    unterhalb der Sparrenfirstpunkt-Höhenkoordinaten,
-   ```
+   ```text
    p_a.z < p^{(σ(a))}_first.z − ε_L
    p_e.z < p^{(σ(e))}_first.z − ε_L.
    ```
@@ -481,61 +481,61 @@ gehört höchstens zu einem Kehlbalkenbinder.
   `einheitsvektor`, `ebene`, `sparren` (zwingend für die Lage-
   Constraint), `weltkoordinatensystem`, `toleranzen`.
 - **Bestandteile (partitiv, vom Bauteil geerbt)**:
-  - **Bauteilachse** (`bauteilachse.Gerade`) mit Anschlusspunkten
+    - **Bauteilachse** (`bauteilachse.Gerade`) mit Anschlusspunkten
     an den Bauteilachsen der beiden Sparren des Paars;
-  - **Querschnitt** (rechteckig im Regelfall);
-  - **Werkstoff** (Vollholz oder BSH);
-  - **Faserrichtung** (Annotation, Default ‖ d_hat_Kehlbalken).
+    - **Querschnitt** (rechteckig im Regelfall);
+    - **Werkstoff** (Vollholz oder BSH);
+    - **Faserrichtung** (Annotation, Default ‖ d_hat_Kehlbalken).
 - **Verwendung / Beziehung zu anderen Bauteilen**:
-  - **Sparren** (`sparren`): jeweils ein Paar bildet die
+    - **Sparren** (`sparren`): jeweils ein Paar bildet die
     Grundlage der Kehlbalken-Definition; der Kehlbalken sitzt
     zwischen den Bauteilachsen der beiden Sparren des Paars.
-  - **Bundbalken** (Forward A): paralleles Bauteil am
+    - **Bundbalken** (Forward A): paralleles Bauteil am
     Sparrenfuß, mit gegensätzlicher statischer Rolle (Zugband
     statt wechselbeanspruchter Riegel).
-  - **Hahnenbalken** (Forward A): paralleles Bauteil oberhalb
+    - **Hahnenbalken** (Forward A): paralleles Bauteil oberhalb
     des Kehlbalkens, kurz unter dem First.
-  - **Sparrenbinder** und **Kehlbalkenbinder** (`hg_binder.md`,
+    - **Sparrenbinder** und **Kehlbalkenbinder** (`hg_binder.md`,
     Folgearbeit): Bauteilgruppen-Aggregate, in denen Sparren,
     Bundbalken und ggf. Kehlbalken als Bauteile mit exklusiver
     Mitgliedschaft zusammengefasst sind.
-  - **Kehlbalkendach** (Folgearbeit): Tragwerks-Bauart, die das
+    - **Kehlbalkendach** (Folgearbeit): Tragwerks-Bauart, die das
     Sparrendach um den Kehlbalken zu einem statisch
     unbestimmten System ergänzt.
 - **Abgrenzung**:
-  - **Sparren** (`sparren`): geneigt entlang der Falllinie einer
+    - **Sparren** (`sparren`): geneigt entlang der Falllinie einer
     Dachfläche; Kehlbalken horizontal rechtwinklig dazu.
     Verletzt Bedingung 2 (Horizontalität).
-  - **Pfette** (`pfette`): ebenfalls horizontal, aber **parallel
+    - **Pfette** (`pfette`): ebenfalls horizontal, aber **parallel
     zu einer Dachkante** (Traufe, First, Höhenlinie); Kehlbalken
     ist **rechtwinklig zur Trauflinie** und liegt in der
     Sparrenpaar-Ebene (Verletzt der Pfetten-Bedingung 3,
     Parallelität zu einer Dachkante).
-  - **Bundbalken** (Forward A): horizontal in der Sparrenpaar-
+    - **Bundbalken** (Forward A): horizontal in der Sparrenpaar-
     Ebene am Sparrenfuß; Anschlusspunkte am Sparrenlängsparameter
     t = 0. Verletzt Bedingung 5 (strikte Lage oberhalb des
     Sparrenfußes).
-  - **Hahnenbalken** (Forward A): horizontal in der Sparrenpaar-
+    - **Hahnenbalken** (Forward A): horizontal in der Sparrenpaar-
     Ebene kurz unterhalb des Sparrenfirstpunkts; kurzer
     Druckriegel mit Faustregel-Länge < ca. 3,5 m. Sehr nahe am
     Sparrenfirst (t → 1). Die Trennung Kehlbalken/Hahnenbalken
     ist im Korpus konventional und im Glossar als
     eigenständiges Geschwister-Bauteil geführt.
-  - **Binder** (`binder`): mehrteiliges Trag-Aggregat
+    - **Binder** (`binder`): mehrteiliges Trag-Aggregat
     (Bauteilgruppe). Kein Stab-Bauteil im Sinne des Kehlbalkens.
-  - **Zange / Kehlzange** (Forward A): zweiteilige Anschluss-
+    - **Zange / Kehlzange** (Forward A): zweiteilige Anschluss-
     Bauart; eine Kehlzange übernimmt die Rolle Kehlbalken in
     zweiteiliger Realisierung, ist aber kein einteiliger
     Kehlbalken.
-  - **Dachfläche** (`dachflaeche`): zweidimensionales
+    - **Dachfläche** (`dachflaeche`): zweidimensionales
     geometrisches Bauteil; der Kehlbalken liegt nicht in einer
     Dachflächen-Trägerebene, sondern in der dazu rechtwinkligen
     Sparrenpaar-Ebene.
-  - **Kehle** (Dachkehle, Forward A): konkave Schnittlinie zweier
+    - **Kehle** (Dachkehle, Forward A): konkave Schnittlinie zweier
     einspringend zusammenstoßender Dachflächen — **nichts mit dem
     Kehlbalken zu tun** (Etymologie-Klärung; siehe
     Quellenkonflikt-Block).
-  - **Tragwerk** (`tragwerk`): Aggregat aus Bauteilen,
+    - **Tragwerk** (`tragwerk`): Aggregat aus Bauteilen,
     Verbindungen und Auflagern; der Kehlbalken ist Element des
     Tragwerks, nicht selbst Tragwerk.
 

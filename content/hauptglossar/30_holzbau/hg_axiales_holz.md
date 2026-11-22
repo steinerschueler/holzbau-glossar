@@ -89,7 +89,7 @@ Sei
 
 Dann ist ein **axiales Holz** das Tupel
 
-```
+```text
 AH:= (faserrichtungs_modus, produktkennzeichnung, plattendicken_achse,
        faserrichtung, festigkeitsklasse)
 ```
@@ -114,7 +114,7 @@ disjunkte Teilmenge der Werkstoff-Menge mit
 **Default-Konvention für die Faserrichtung** (prüfbare
 Konstruktionsregel, analog IFC / BTLx / cadwork):
 
-```
+```text
 Wenn faserrichtung am Werkstoff nicht explizit gesetzt,
 gilt für ein Bauteil B mit werkstoff = AH:
   faserrichtung(AH):= bauteil_lokale_x_achse(B).
@@ -164,7 +164,7 @@ Der Sammelbegriff `axiales_holz` deckt die vier industriell
 maßgeblichen, eindirektional faserorientierten Holzwerkstoffe ab:
 
 | Subklasse | Norm | typische Festigkeitsklasse |
-|-----------|------|----------------------------|
+| ----------- | ------ | ---------------------------- |
 | Vollholz / Bauholz | DIN EN 14081-1, DIN 4074-1, DIN EN 338 | C24 (S10) |
 | Konstruktionsvollholz / KVH | DIN EN 15497, DIN EN 14081-1 | C24 |
 | Brettschichtholz / BSH | DIN EN 14080 | GL24h, GL28c, GL32h |
@@ -197,7 +197,7 @@ durch explizites Setzen der `faserrichtung` modelliert werden.
 Für axiales Holz ist die Hankinson-Formel zur Bestimmung der
 Festigkeit unter beliebigem Faserwinkel α direkt anwendbar:
 
-```
+```text
 f_α = (f_0 · f_90) / (f_0 · sin²α + f_90 · cos²α)
 ```
 
@@ -232,48 +232,48 @@ aufweisen.
 
 - **Oberbegriff**: `werkstoff`.
 - **Subklassen** (eigene Einträge folgen):
-  - **Vollholz** (`vollholz`): einlagig, ungezinkt; DIN EN 14081-1,
+    - **Vollholz** (`vollholz`): einlagig, ungezinkt; DIN EN 14081-1,
     DIN 4074-1.
-  - **Konstruktionsvollholz / KVH** (`kvh`): keilgezinkt,
+    - **Konstruktionsvollholz / KVH** (`kvh`): keilgezinkt,
     technisch getrocknet; DIN EN 15497.
-  - **Brettschichtholz / BSH** (`bsh`): mindestens zwei faserparallel
+    - **Brettschichtholz / BSH** (`bsh`): mindestens zwei faserparallel
     verklebte Bretter/Brettlamellen mit Lamellendicke ≤ 45 mm;
     DIN EN 14080 (Colling §2.3.3, S. 29). (Trotz „Schicht-Holz" gehört
     BSH zu axiales_holz, nicht zu mehrlagenholz, weil alle Lamellen
     dieselbe Faserrichtung haben.)
-  - **Balkenschichtholz / BSc** (`bsc` / `balkenschichtholz`):
+    - **Balkenschichtholz / BSc** (`bsc` / `balkenschichtholz`):
     zwei bis maximal fünf parallel verklebte Bohlen-Lamellen mit
     45 mm < t ≤ 85 mm; DIN EN 14080 (Colling §2.3.4, S. 35; dort
     unter der Abkürzung „BASH" geführt, Bauformen Duo-/Triobalken).
-  - **Furnierschichtholz / LVL** (`lvl`): parallel verklebte
+    - **Furnierschichtholz / LVL** (`lvl`): parallel verklebte
     Furniere; DIN EN 14374.
 - **Pflichtfelder über `werkstoff` hinaus**:
-  - **Faserrichtung** (`faserrichtung`): Einheitsvektor in W;
+    - **Faserrichtung** (`faserrichtung`): Einheitsvektor in W;
     Pflicht. Default-Regel siehe oben.
-  - **Festigkeitsklasse** (`festigkeitsklasse`, eigener Folge-
+    - **Festigkeitsklasse** (`festigkeitsklasse`, eigener Folge-
     Eintrag): typisch C24 (Vollholz/KVH), GL24h / GL28c (BSH),
     LVL-Klasse nach ETA.
 - **Verwendung**:
-  - **Bauteil** (`bauteil`): trägt einen Werkstoff der Subklasse
+    - **Bauteil** (`bauteil`): trägt einen Werkstoff der Subklasse
     `axiales_holz`, wenn Stabbauteil aus Vollholz/KVH/BSH/BSc/LVL.
-  - **Sparren**, **Pfette**, **Stütze**, **Strebe**, **Riegel**:
+    - **Sparren**, **Pfette**, **Stütze**, **Strebe**, **Riegel**:
     Standardfall in der Holzbaupraxis.
 - **Abgrenzung**:
-  - **`mehrlagenholz`**: Lagenstruktur ≥ 3 Lagen mit kreuzweise
+    - **`mehrlagenholz`**: Lagenstruktur ≥ 3 Lagen mit kreuzweise
     wechselnden Faserrichtungen (CLT/BSP, Sperrholz, Multiplex).
     Axiales Holz hat **eine** Faserrichtung, Mehrlagenholz **mehrere**
     pro Lage. BSH ist trotz Lamellenstruktur axiales Holz, weil
     alle Lamellen parallel sind.
-  - **`gerichteter_plattenwerkstoff`**: Plattenwerkstoff mit
+    - **`gerichteter_plattenwerkstoff`**: Plattenwerkstoff mit
     schwacher Vorzugsrichtung in der Plattenebene (OSB).
     Axiales Holz ist Stab-/Stützenwerkstoff, kein Plattenwerkstoff.
-  - **`isotroper_plattenwerkstoff`**: Plattenwerkstoff ohne
+    - **`isotroper_plattenwerkstoff`**: Plattenwerkstoff ohne
     Faserrichtung in der Plattenebene (Spanplatte, MDF, HDF).
     Axiales Holz hat eine Faserrichtung, Isotrope keine.
-  - **`faserrichtung`**: Einheitsvektor-Annotation an einem Bauteil;
+    - **`faserrichtung`**: Einheitsvektor-Annotation an einem Bauteil;
     ist Eigenschaft eines Bauteils mit Werkstoff
     `axiales_holz`, nicht der Werkstoff-Klasse selbst.
-  - **`bauteilachse`**: geometrische Längsachse eines Stabbauteils;
+    - **`bauteilachse`**: geometrische Längsachse eines Stabbauteils;
     fällt typisch mit der Faserrichtung zusammen, ist aber
     geometrisch und nicht werkstoff-spezifisch definiert.
 

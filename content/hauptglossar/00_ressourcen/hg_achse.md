@@ -51,20 +51,20 @@ Sei
 
 - g ⊂ ℝ³ eine Gerade im Sinne von `gerade`,
 - 𝓡 eine endliche Menge zulässiger **Achsenrollen**, mindestens
-  ```
+  ```text
   𝓡 ⊇ { Symmetrie, Drehung, Bezug, Koordinate, Bauteilhauptachse }.
   ```
 
 Dann ist eine **Achse** A ein Tupel
 
-```
+```text
 A:= (g, ρ)   mit ρ ∈ 𝓡,
 ```
 
 bestehend aus der **Trägergeraden** g und der **Rolle** ρ. Die durch
 A bezeichnete Punktmenge in ℝ³ ist die der Trägergeraden:
 
-```
+```text
 |A|:= g.
 ```
 
@@ -163,35 +163,35 @@ sie wäre eine Spezialisierung „Bauwerksachse" oder
 - **Oberbegriff**: `gerade`. Strukturell ist eine Achse eine
   Gerade; die Rolle ρ ist eine Annotation an dieser Geraden.
 - **Spezialisierungen (eigene Einträge folgen)**:
-  - **Symmetrieachse** (`symmetrieachse`): Achse einer Spiegelung.
-  - **Drehachse** (`drehachse`): Achse einer Drehung; gerichtet.
-  - **Bezugsachse** (`bezugsachse`): Referenzachse für Abstände
+    - **Symmetrieachse** (`symmetrieachse`): Achse einer Spiegelung.
+    - **Drehachse** (`drehachse`): Achse einer Drehung; gerichtet.
+    - **Bezugsachse** (`bezugsachse`): Referenzachse für Abstände
     und Winkel.
-  - **Koordinatenachse** (`koordinatenachse`): kanonische Achse
+    - **Koordinatenachse** (`koordinatenachse`): kanonische Achse
     eines Koordinatensystems; durch den Ursprung mit
     Richtungs-Einheitsvektor.
-  - **Bauteilachse** (`bauteilachse`): geometrische Hauptachse
+    - **Bauteilachse** (`bauteilachse`): geometrische Hauptachse
     eines Bauteils; Spezialisierung mit Bezug auf einen
     Bauteilkörper.
 - **Bestandteile (partitiv)**: keine eigenen; die partitiven
   Bestandteile der Trägergeraden gelten (siehe `gerade`).
 - **Abgrenzung**:
-  - **Gerade** (`gerade`): die geometrische Substanz ohne Rolle.
+    - **Gerade** (`gerade`): die geometrische Substanz ohne Rolle.
     Jede Achse ist eine Gerade plus Rolle; jede Gerade kann durch
     Annotation einer Rolle zur Achse gemacht werden. Die zwei
     Begriffe sind nicht synonym, aber die Punktmenge ist dieselbe.
-  - **Strecke** (`strecke`): begrenzt; eine Achse ist
+    - **Strecke** (`strecke`): begrenzt; eine Achse ist
     konzeptionell unbegrenzt. Die Trägergerade einer
     Bauteilachsen-Strecke ist eine Achse im Sinne dieses Eintrags;
     die Strecke selbst nicht.
-  - **Halbgerade** (`halbgerade`): einseitig begrenzt; nicht
+    - **Halbgerade** (`halbgerade`): einseitig begrenzt; nicht
     Achse. Eine gerichtete Achse hat zwar eine Richtung, ist aber
     beidseitig unbegrenzt.
-  - **Vektor** (`vektor`): ortsfreie Verschiebung; eine Achse hat
+    - **Vektor** (`vektor`): ortsfreie Verschiebung; eine Achse hat
     Ortsbindung (geht durch konkrete Punkte des Raums). Der
     Richtungsvektor einer Achse ist ein Vektor, die Achse selbst
     nicht.
-  - **Faserrichtung** (`faserrichtung`): Einheitsvektor in einer
+    - **Faserrichtung** (`faserrichtung`): Einheitsvektor in einer
     Materialrolle; ortsfrei. Eine Faserrichtung ist keine Achse
     in diesem Sinne. Eine Bauteilachse ist eine Achse; die
     Faserrichtung beschreibt die Materialhauptrichtung relativ

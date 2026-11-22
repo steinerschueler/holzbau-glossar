@@ -68,7 +68,7 @@ operative Geneigtheits-Test nutzt nach §4 die Kreuzprodukt-Norm
 
 Setze den **horizontalen Anteil von e_z relativ zu E**
 
-```
+```text
 v:= e_z − ⟨e_z, n_hat⟩ · n_hat   ∈ E_0,
 ```
 
@@ -77,7 +77,7 @@ Ursprung verschobene Ebene) ist. v ist die orthogonale Projektion
 von e_z auf E_0; v zeigt nach **oben** entlang der steilsten Richtung
 in E_0. Es gilt
 
-```
+```text
 ‖v‖² = 1 − ⟨e_z, n_hat⟩² > 0   (für α > 0),
 ```
 
@@ -85,7 +85,7 @@ also v ≠ 0.
 
 Die **Falllinie** der Ebene E ist der Einheitsvektor
 
-```
+```text
 e_hat_fall(E):= −v / ‖v‖
            = −(e_z − ⟨e_z, n_hat⟩ · n_hat) / ‖e_z − ⟨e_z, n_hat⟩ · n_hat‖   ∈ S² ∩ E_0.
 ```
@@ -97,13 +97,13 @@ zeigt **nach unten**); das fixiert die antipodale Mehrdeutigkeit.
 der Lagrange-Identität (a × b) × c = (a · c) b − (b · c) a folgt für
 einen Einheitsnormalenvektor n_hat
 
-```
+```text
 (n_hat × e_z) × n_hat = (n_hat · n_hat) · e_z − (e_z · n_hat) · n_hat = e_z − ⟨e_z, n_hat⟩ · n_hat = v,
 ```
 
 und damit
 
-```
+```text
 e_hat_fall(E) = −((n_hat × e_z) × n_hat) / ‖(n_hat × e_z) × n_hat‖.
 ```
 
@@ -115,7 +115,7 @@ Kreuzprodukte erfordert.
 Einschränkung der Koordinatenfunktion (x, y, z) ↦ z auf E. z ist
 linear auf E mit Gradient ∇_E z = v / ‖v‖ ∈ E_0. Damit ist
 
-```
+```text
 e_hat_fall(E) = −∇_E z / ‖∇_E z‖,
 ```
 
@@ -228,34 +228,34 @@ aber bisher nicht als eigenständige Glossareinträge geführt.
   z-Komponente; orthogonal zu e_hat_fall in E_0. Eigenständiger
   Glossareintrag folgt bei Bedarf.
 - **Verwendungskontext**:
-  - `dachneigung`: tan(α) ist der Quotient aus vertikaler und
+    - `dachneigung`: tan(α) ist der Quotient aus vertikaler und
     horizontaler Komponente der Falllinie.
-  - `ortgang`: eine Polygonrandkante einer Dachfläche ist Ortgang
+    - `ortgang`: eine Polygonrandkante einer Dachfläche ist Ortgang
     genau dann, wenn ihr Einheits-Richtungsvektor mit der
     Falllinie der Dachfläche kollinear ist.
-  - **Wasserführungs-Modellierung** (zukünftig): integraler Verlauf
+    - **Wasserführungs-Modellierung** (zukünftig): integraler Verlauf
     eines Tropfens auf der Dachoberfläche folgt stückweise der
     Falllinie der jeweils berührten Dachfläche.
 - **Abgrenzung**:
-  - **Höhenlinie** (`hoehenlinie`, eigener Eintrag folgt bei
+    - **Höhenlinie** (`hoehenlinie`, eigener Eintrag folgt bei
     Bedarf): die zur Falllinie orthogonale Richtung in der Ebene;
     horizontal verlaufende Niveaulinie der z-Funktion auf E. Eine
     Höhenlinie ist eine **Linie** (Strecke oder Gerade), keine
     bloße Richtung; die Höhenlinienrichtung ist der zugehörige
     Einheitsvektor.
-  - **Dachneigung** (`dachneigung`): der Steigungswinkel α der
+    - **Dachneigung** (`dachneigung`): der Steigungswinkel α der
     Falllinie gegenüber der Horizontalen. α ist ein Skalar
     (Winkel), die Falllinie ein Vektor (Richtung). Beide
     Begriffe sind eng verknüpft: die Falllinie trägt die volle
     Richtungsinformation, die Dachneigung extrahiert daraus den
     Steigungswinkel.
-  - **Faserrichtung** (`faserrichtung`): Einheitsvektor entlang der
+    - **Faserrichtung** (`faserrichtung`): Einheitsvektor entlang der
     Holzfaser eines Bauteils; trägt Materialachsen-Bedeutung, kein
     geometrischer Bezug zu einer Ebene.
-  - **Hangrichtung / Aspekt** (Geomatik): Azimut der horizontalen
+    - **Hangrichtung / Aspekt** (Geomatik): Azimut der horizontalen
     Projektion der Falllinie. Nicht synonym, sondern abgeleitete
     skalare Größe.
-  - **Dachgefälle**: in einigen Quellen für die Falllinie verwendet,
+    - **Dachgefälle**: in einigen Quellen für die Falllinie verwendet,
     in der Schweiz aber stärker mit der Flachdach-Abdichtungspraxis
     konnotiert (Gefälleeinlagen). Hier abgelehnt zugunsten von
     „Falllinie" für die Richtung und „Dachneigung" für den Winkel.

@@ -93,7 +93,7 @@ Sei
   bis eine eigene Werkstoffklasse `werkstoff_aluminium` eingeführt
   wird (Folgearbeit),
 - 𝓥𝓜_τ die Menge der Verbindungsmittel-Typen
-  ```
+  ```text
   𝓥𝓜_τ:= { Nagel, Schraube, Bolzen, Stabduebel,
             Klammer, Holzduebel, NagelPlatte,
             DuebelBesondererBauart, Klebung }
@@ -106,7 +106,7 @@ Sei
 
 Dann ist ein **Verbindungsmittel** das Tupel
 
-```
+```text
 VM:= (uuid, geometrie, lokale_platzierung, werkstoff,
        typ, nenndurchmesser, nennlaenge, achse,
        verbindet, multiplizitaet,
@@ -289,50 +289,50 @@ Stückliste n × der Eintrag erzeugt; die UUID ist genau eine.
 
 ### Bemessungs-Trennlinie zur Bauteil-Bemessung
 
-| Schicht                | Norm                  | Bezugsobjekt          |
-|------------------------|-----------------------|-----------------------|
-| Querschnittsbemessung  | EC5 Kap. 6, SIA 265 §4 | Bauteil               |
-| Anschlussbemessung     | EC5 Kap. 8, SIA 265 Kap. 6 | Verbindungsmittel + Verbindung |
+| Schicht | Norm | Bezugsobjekt |
+| --- | --- | --- |
+| Querschnittsbemessung | EC5 Kap. 6, SIA 265 §4 | Bauteil |
+| Anschlussbemessung | EC5 Kap. 8, SIA 265 Kap. 6 | Verbindungsmittel + Verbindung |
 | Verstärkungs-Bemessung | EC5:2022 (Entwurf), ETA | Verstärkungselement |
-| Klebung                | EC5 Kap. 10           | Klebung als Verbindungsmittel-Subtyp |
+| Klebung | EC5 Kap. 10 | Klebung als Verbindungsmittel-Subtyp |
 
 ## Beziehungen
 
 - **Oberbegriff**: `element` (Element der App-Ontologie).
 - **Spezialisierungen** (eigene Einträge folgen):
-  - **Nagel** (`nagel`): EC5 Kap. 8.3.
-  - **Klammer** (`klammer`): EC5 Kap. 8.4.
-  - **Bolzen** (`bolzen`): EC5 Kap. 8.5.
-  - **Stabdübel** (`stabduebel`): EC5 Kap. 8.6.
-  - **Schraube** (`schraube`): EC5 Kap. 8.7; insbesondere
+    - **Nagel** (`nagel`): EC5 Kap. 8.3.
+    - **Klammer** (`klammer`): EC5 Kap. 8.4.
+    - **Bolzen** (`bolzen`): EC5 Kap. 8.5.
+    - **Stabdübel** (`stabduebel`): EC5 Kap. 8.6.
+    - **Schraube** (`schraube`): EC5 Kap. 8.7; insbesondere
     Holzschraube mit Vollgewinde (`vollgewindeschraube`).
-  - **Holzdübel** (`holzduebel`): zimmermannsmäßiges
+    - **Holzdübel** (`holzduebel`): zimmermannsmäßiges
     Verbindungsmittel aus Hartholz.
-  - **Nagelplatte** (`nagelplatte`): EC5 Kap. 8.10.
-  - **Dübel besonderer Bauart** (`duebel_besonderer_bauart`):
+    - **Nagelplatte** (`nagelplatte`): EC5 Kap. 8.10.
+    - **Dübel besonderer Bauart** (`duebel_besonderer_bauart`):
     DIN EN 14545.
-  - **Klebung** (`klebung`): EC5 Kap. 10.
+    - **Klebung** (`klebung`): EC5 Kap. 10.
 - **Bestandteile (partitiv)** (geerbt von `element`):
   uuid, geometrie, lokale_platzierung, werkstoff;
   zusätzlich typ, nenndurchmesser, nennlaenge, achse, verbindet,
   multiplizitaet.
 - **Verwendung**:
-  - Bestandteil einer **Verbindung** (`verbindung`, eigener Eintrag
+    - Bestandteil einer **Verbindung** (`verbindung`, eigener Eintrag
     folgt): die Verbindung führt eine Liste von Verbindungsmittel-
     UUIDs.
-  - Bestandteil eines **Tragwerks** (`tragwerk`): erweitert die
+    - Bestandteil eines **Tragwerks** (`tragwerk`): erweitert die
     Element-Menge des Tragwerks, gehört zur Verbindungs-Menge V
     in der Tupel-Repräsentation (B, V, A, L).
 - **Abgrenzung**:
-  - **Bauteil** (`bauteil`): tragend und/oder raumbildend;
+    - **Bauteil** (`bauteil`): tragend und/oder raumbildend;
     Querschnittsbemessung nach EC5 Kap. 6. Verbindungsmittel sind
     **kein** Bauteil und werden in **eigenen Stücklisten** geführt.
-  - **Verbinder** (`verbinder`): vermittelndes Bauteil zwischen
+    - **Verbinder** (`verbinder`): vermittelndes Bauteil zwischen
     Stäben (Knotenblech, Balkenschuh), das **selbst** durch
     Verbindungsmittel befestigt wird. Verbinder ist EC5-Konzept
     der „indirekten Verbindung" (8.2.3); Verbindungsmittel ist
     das einzelne Stück.
-  - **Verstärkungselement** (`verstaerkungselement`): selbe
+    - **Verstärkungselement** (`verstaerkungselement`): selbe
     physische Objektklasse wie ein Verbindungsmittel (typisch
     Vollgewindeschraube), aber in **Verstärkungsfunktion** mit
     eigener axialer Bemessung nach EC5:2022 / ETA. **Funktion
@@ -340,11 +340,11 @@ Stückliste n × der Eintrag erzeugt; die UUID ist genau eine.
     Schraubentyp einmal als Anschluss-Schraube und einmal als
     Querzugverstärkung einbaut, instanziiert zwei verschiedene
     Element-Subklassen.
-  - **Verbindung** (`verbindung`): Aggregat-Klasse über
+    - **Verbindung** (`verbindung`): Aggregat-Klasse über
     Bauteilen + Verbindungsmitteln (+ Verbindern + Verstärkungen)
     an einem Knotenpunkt. Verbindungsmittel ist das einzelne
     Tragstück, Verbindung das Aggregat darüber.
-  - **Element** (`element`): abstrakter Oberbegriff;
+    - **Element** (`element`): abstrakter Oberbegriff;
     Verbindungsmittel ist eine konkrete Subklasse.
 
 ## Quellen

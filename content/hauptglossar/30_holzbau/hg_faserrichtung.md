@@ -59,7 +59,7 @@ Sei
 
 Dann ist die **Faserrichtung** des Bauteils B eine Annotation
 
-```
+```text
 faserrichtung(B):= f_hat ∈ S²,
 ```
 
@@ -73,7 +73,7 @@ Index 90; siehe SIA 265 und EN 1995-1-1).
 der angreifenden Kraft, Richtung einer Bauteilachse): der Winkel
 α(f_hat, r_hat) ∈ [0, π/2] zwischen Faserrichtung und r_hat ist
 
-```
+```text
 α(f_hat, r_hat):= arccos(| ⟨f_hat, r_hat⟩ |),
 ```
 
@@ -86,7 +86,7 @@ Einheitsvektor wählt willkürlich eines der beiden Vorzeichen.
 Bauteils B (siehe `bauteilachse`, in Folgearbeit), so ist die
 Faserneigung
 
-```
+```text
 tan(α(f_hat, a_hat)) = sin(α(f_hat, a_hat)) / cos(α(f_hat, a_hat))
 ```
 
@@ -216,56 +216,56 @@ Faserrichtung längs des Stabes). Sie kann aber **abweichen**:
   ein Einheitsvektor; das Holzbau-Spezifikum ist die semantische
   Rolle „Materialhauptachse parallel zum Faserverlauf".
 - **Verwendungskontext (nachgelagert, noch nicht definiert)**:
-  - **Bauteil** (`bauteil`, in Folgearbeit): Träger der Annotation
+    - **Bauteil** (`bauteil`, in Folgearbeit): Träger der Annotation
     Faserrichtung. Jedes Vollholz- oder Brettschichtholz-Bauteil
     erhält genau eine Faserrichtung; Plattenwerkstoffe mit
     gekreuzten Lagen bleiben außerhalb des Geltungsbereichs.
-  - **Sparren**, **Pfette**, **Ständer** (`sparren`, `pfette`,
+    - **Sparren**, **Pfette**, **Ständer** (`sparren`, `pfette`,
     `staender`, in Folgearbeit): Spezialisierungen von Bauteil mit
     typischer Übereinstimmung Faserrichtung ≈ Bauteillängsachse.
 - **Abgrenzung**:
-  - **`einheitsvektor`** (allgemein): trägt keine semantische Rolle.
+    - **`einheitsvektor`** (allgemein): trägt keine semantische Rolle.
     Eine Faserrichtung ist ein Einheitsvektor in der spezifischen
     Rolle „Materialhauptachse"; ein Normalenvektor einer Ebene oder
     eine Geraden-Richtung sind Einheitsvektoren in anderen Rollen.
     Auf der Ebene der Geometrie sind alle drei strukturell gleich.
-  - **`bauteilachse`** (geometrische Längsachse, in Folgearbeit):
+    - **`bauteilachse`** (geometrische Längsachse, in Folgearbeit):
     die geometrische Hauptachse des Bauteils, definiert über
     Bauteilgeometrie (z. B. Schwerlinie des Querschnittsschwerpunkt-
     verlaufs, Kantenrichtung des umhüllenden Quaders).
     Faserrichtung und Bauteilachse **können** übereinstimmen, müssen
     es aber nicht (siehe Erläuterung). Der Winkel zwischen ihnen ist
     die **Faserneigung** nach DIN 4074-1.
-  - **`faserneigung`** (in Folgearbeit, falls erforderlich): skalare
+    - **`faserneigung`** (in Folgearbeit, falls erforderlich): skalare
     Größe (Tangens oder Winkel) zwischen Faserrichtung und
     Bauteillängsachse. Begriffstyp `merkmal` als
     Sortier-/Festigkeitsattribut, abgeleitet aus `faserrichtung` und
     `bauteilachse`.
-  - **„Maserung"**, **„Wuchsrichtung"**: umgangssprachliche bzw.
+    - **„Maserung"**, **„Wuchsrichtung"**: umgangssprachliche bzw.
     optische Begriffe; nicht synonym zur geometrischen
     Faserrichtung. „Maserung" bezeichnet das sichtbare Muster der
     Jahrringe, nicht die mechanisch relevante Längsfaserachse.
-  - **`haupttragrichtung`** (für Mehrlagenholz, BSP/CLT, Sperrholz):
+    - **`haupttragrichtung`** (für Mehrlagenholz, BSP/CLT, Sperrholz):
     Vektor in der Plattenebene mit höherer Decklagen-Steifigkeit;
     tritt an die Stelle der Faserrichtung auf Bauteilebene, da bei
     gekreuzten Lagen keine einheitliche globale Faserrichtung
     existiert.
-  - **`plattenlaengsrichtung`** (für gerichtete Plattenwerkstoffe,
+    - **`plattenlaengsrichtung`** (für gerichtete Plattenwerkstoffe,
     OSB): schwach ausgeprägte Vorzugsrichtung der Decklagen-Strands;
     auf Bauteilebene Pflichtfeld bei OSB.
-  - **`plattendicken_achse`** (für alle Plattenwerkstoffe):
+    - **`plattendicken_achse`** (für alle Plattenwerkstoffe):
     Einheitsvektor rechtwinklig zur Plattenebene; orthogonal sowohl zu
     `haupttragrichtung` als auch zu `plattenlaengsrichtung`.
-  - **`lagenstruktur`** (für Mehrlagenholz): Liste von Einzellagen
+    - **`lagenstruktur`** (für Mehrlagenholz): Liste von Einzellagen
     mit jeweils eigener Faserrichtung pro Lage. Die globale
     Faserrichtung des Bauteils existiert dort nicht — Faserrichtung
     ist auf Lagenebene zerlegt.
-  - **`faserrichtungs_modus`**: Diskriminante, die je Werkstoff-
+    - **`faserrichtungs_modus`**: Diskriminante, die je Werkstoff-
     Subklasse festlegt, welcher dieser Begriffe am Bauteil
     pflichtig ist (HART → Faserrichtung; STRUKTURIERT →
     Lagenstruktur + Haupttragrichtung; SCHWACH →
     Plattenlängsrichtung; KEINE → nur Plattendickenachse).
-  - **`hankinson_winkel`** (`hankinson_winkel`): aus Faserrichtung
+    - **`hankinson_winkel`** (`hankinson_winkel`): aus Faserrichtung
     und Kraftrichtung abgeleiteter Winkel α ∈ [0, π/2], Eingang in
     die Hankinson-Formel für richtungsabhängige Festigkeit.
 
