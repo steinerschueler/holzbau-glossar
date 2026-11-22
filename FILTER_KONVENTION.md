@@ -43,7 +43,7 @@ Diese Transformationen führt `hg_public_filter.py` ohne Zutun durch:
    `; siehe Implementierungshinweis.`, `… und Implementierungshinweis)` —
    werden entfernt.
 5. **Interne Recherche-Bericht-Zitate neutralisieren.** Selbstzitate auf
-   `docs/recherche/<…>.md` (mit oder ohne Backticks) sind öffentlich tote
+   `docs/research/<…>.md` (bis 2026-11 `docs/recherche/`, mit oder ohne Backticks) sind öffentlich tote
    Links. Der Pfad wird durch das Zitat-Token `[intern]` ersetzt — die
    Satz-Grammatik bleibt erhalten, der Hinweis „es gibt einen internen
    Bericht" bleibt, der tote Pfad verschwindet.
@@ -137,6 +137,6 @@ ist permanent. Releases zieht nur Eric/der Anweiser, nie automatisch.
 ## Pflege
 
 - Filter-Logik: `hg_public_filter.py` (HBG).
-- Marker-Konvention spiegeln: ZMA-`hauptglossar/HG_KONVENTIONEN.md` trägt
+- Marker-Konvention spiegeln: ZMA-`glossary/HG_KONVENTIONEN.md` trägt
   einen Kurzverweis auf diese Datei, damit beim Verfassen neuer HG-Einträge
   direkt korrekt markiert wird.

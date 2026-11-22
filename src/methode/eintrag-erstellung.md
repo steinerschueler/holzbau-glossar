@@ -8,10 +8,10 @@ description: Welle-Workflow von Recherche-Auftrag bis Subglossar-Pendant.
 Begriffserstellung verläuft in einer festen Welle-Logik. Jede Welle
 bündelt fachlich verwandte Begriffe und durchläuft denselben Pfad:
 
-1. **Recherche-Auftrag** — kurzer Brief unter `docs/auftraege/`:
+1. **Recherche-Auftrag** — kurzer Brief unter `docs/briefs/`:
    Fragestellung, Kontext, Abgrenzung, gewünschtes Output-Format.
 2. **Recherche-Bericht** — strukturierte Antwort unter
-   `docs/recherche/<datum>_<kurztitel>.md`, gemäß dem
+   `docs/research/<datum>_<kurztitel>.md`, gemäß dem
    [Recherche-Standard](recherche.md). Der Bericht ist
    nachvollziehbarer Beleg und bleibt erhalten, auch wenn er später
    überholt wird.
@@ -24,12 +24,12 @@ bündelt fachlich verwandte Begriffe und durchläuft denselben Pfad:
    Drift. Erkannte Drifts werden in derselben Welle behoben, nicht
    aufgeschoben.
 5. **Subglossar-Pendant** — wenn `subglossar_pendant: notwendig`, wird
-   die didaktische Hülle in `lerninhalt/subglossar/sg_<id>.md` parallel
+   die didaktische Hülle in `learning/subglossary/sg_<id>.md` parallel
    geschrieben.
 
 Welle-Logs und Kohärenz-Befunde werden im Quellrepo unter
-`hauptglossar/STAND_HAUPTGLOSSAR.md` und
-`lerninhalt/subglossar/SUBGLOSSAR_STAND.md` archiviert.
+`glossary/STAND_HAUPTGLOSSAR.md` und
+`learning/subglossary/SUBGLOSSAR_STAND.md` archiviert.
 
 ## Welle als Einheit
 

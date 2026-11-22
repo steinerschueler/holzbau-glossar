@@ -94,10 +94,10 @@ geführt:
 
 | Konvention | Im Hauptprojekt | Auf dieser Site einsehbar? |
 |---|---|---|
-| **Hauptglossar-Konventionen** | `hauptglossar/HG_KONVENTIONEN.md` | ✓ [HG-Konventionen (Volltext)](hg-konventionen.md) |
+| **Hauptglossar-Konventionen** | `glossary/HG_KONVENTIONEN.md` | ✓ [HG-Konventionen (Volltext)](hg-konventionen.md) |
 | **Subglossar-Konventionen** — didaktische Hülle, SVG-Skizzen-Pattern, Stufen-Pattern, App-Verantwortungs-Trennung | `theorie/subglossar/SG_KONVENTIONEN.md` | nicht publiziert |
-| **Recherche-Standard** — Tier-System, Methodik-Sektion, Falsifizier-Bereitschaft, Berichts-Persistenz | `docs/recherche/README.md` | als [Recherche-Standard](recherche.md) zusammengefasst |
-| **Welle-Logs Hauptglossar** | `hauptglossar/STAND_HAUPTGLOSSAR.md` | nicht publiziert |
+| **Recherche-Standard** — Tier-System, Methodik-Sektion, Falsifizier-Bereitschaft, Berichts-Persistenz | `docs/research/README.md` | als [Recherche-Standard](recherche.md) zusammengefasst |
+| **Welle-Logs Hauptglossar** | `glossary/STAND_HAUPTGLOSSAR.md` | nicht publiziert |
 | **Welle-Logs Subglossar** | `theorie/subglossar/SUBGLOSSAR_STAND.md` | nicht publiziert |
 
 Bei Konflikt zwischen dieser Seite und einer Konventions-Datei gilt

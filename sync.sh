@@ -8,8 +8,8 @@ set -euo pipefail
 SOURCE="${1:-${ENS_HOLZBAU:-../../intern/ens_holzbau}}"
 TARGET="content"
 
-if [[ ! -d "$SOURCE/hauptglossar" || ! -d "$SOURCE/lerninhalt/subglossar" ]]; then
-    echo "Fehler: $SOURCE enthält weder hauptglossar/ noch lerninhalt/subglossar/." >&2
+if [[ ! -d "$SOURCE/glossary" || ! -d "$SOURCE/learning/subglossary" ]]; then
+    echo "Fehler: $SOURCE enthält nicht glossary/ und learning/subglossary/." >&2
     echo "Aufruf:  ./sync.sh [pfad-zu-ens_holzbau]" >&2
     echo "Default: ../../intern/ens_holzbau (oder Umgebungsvariable ENS_HOLZBAU)" >&2
     exit 1
@@ -26,13 +26,13 @@ rsync -a --delete \
     --include='hg_*.md' \
     --include='HG_KONVENTIONEN.md' \
     --exclude='*' \
-    "$SOURCE/hauptglossar/" "$TARGET/hauptglossar/"
+    "$SOURCE/glossary/" "$TARGET/hauptglossar/"
 
 # Subglossar: flach, nur sg_*.md.
 rsync -a --delete \
     --include='sg_*.md' \
     --exclude='*' \
-    "$SOURCE/lerninhalt/subglossar/" "$TARGET/subglossar/"
+    "$SOURCE/learning/subglossary/" "$TARGET/subglossar/"
 
 # Öffentlich-Filter: App-Implementierung (Kotlin/Implementierungshinweis),
 # interne Projekt-TODOs (Folgearbeit) und Autoren-Prozess-Bezüge aus den

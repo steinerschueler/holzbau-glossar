@@ -20,8 +20,8 @@ Site läuft dann unter <http://localhost:8000>.
 
 - **Static-Site-Generator:** MkDocs Material.
 - **Inhalts-Quelle:** Markdown-Dateien aus dem privaten lokalen
-  `ens_holzbau`-Projekt (`hauptglossar/<cluster>/hg_*.md` und
-  `theorie/subglossar/sg_*.md`). Quelle bleibt strikt lokal — nur die
+  `ens_holzbau`-Projekt (`glossary/<cluster>/hg_*.md` und
+  `learning/subglossary/sg_*.md`). Quelle bleibt strikt lokal — nur die
   publikationsfähigen Markdown-Einträge wandern via `sync.sh` in
   `content/` und werden mit diesem Repo gepusht.
 - **Sync-Workflow** (manuell, vor jedem inhaltlichen Update):

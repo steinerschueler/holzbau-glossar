@@ -6,7 +6,7 @@ description: Quellen-Tier-System, Methodik-Sektion, Einsehungs-Status.
 # Recherche-Standard
 
 Jede Recherche zu einem Begriff folgt einem schriftlich
-festgehaltenen Standard (`docs/recherche/README.md` im Quellrepo).
+festgehaltenen Standard (`docs/research/README.md` im Quellrepo).
 Die wichtigsten Regeln in Kurzform:
 
 ## 1. Quellen-Tier-System

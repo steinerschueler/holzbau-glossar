@@ -122,11 +122,11 @@ def _strip_impl_pointers(text: str) -> str:
     return text
 
 
-# Interne Recherche-Bericht-Selbstzitate (`docs/recherche/<…>.md`, mit oder
+# Interne Recherche-Bericht-Selbstzitate (`docs/research/<…>.md`, bis 2026-11 `docs/recherche/`, mit oder
 # ohne Backticks) sind für die Öffentlichkeit tote Links. Neutralisieren statt
 # entfernen: der Pfad wird durch ein Zitat-Token `[intern]` ersetzt, die
 # Satz-Grammatik bleibt unangetastet (FILTER_KONVENTION.md Teil A).
-_RECHERCHE = re.compile(r"`?docs/recherche/[\w./_-]+\.md`?")
+_RECHERCHE = re.compile(r"`?docs/(?:recherche|research)/[\w./_-]+\.md`?")
 
 
 def _neutralisiere_recherche(text: str) -> str:

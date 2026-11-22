@@ -1089,8 +1089,8 @@ def _merge_entry(hg_text: str, sg_text: str | None, hg_id: str) -> str:
 # Die Quell-Markdowns verlinken Geschwister-Einträge so:
 #   1. Selbe Cluster (HG):       [..](hg_punkt.md)
 #   2. Andere Cluster (HG):      [..](../00_ressourcen/hg_punkt.md)
-#   3. Aus SG-Kontext zu HG:     [..](hauptglossar/00_ressourcen/hg_punkt.md)
-#                                oder (../../hauptglossar/...)
+#   3. Aus SG-Kontext zu HG:     [..](glossary/00_ressourcen/hg_punkt.md)
+#                                oder (../../glossary/...), bis 2026-11 hauptglossar/
 #
 # Im gerenderten Site liegt jeder Eintrag unter
 # ``/{cluster_url}/{id}/``. Wir schreiben deshalb auf Markdown-Pfade
@@ -1223,7 +1223,7 @@ def _build_cluster_index(label: str, entries: list[tuple[str, str, str]]) -> str
 _LINK_SAME_CLUSTER = re.compile(r"\]\(hg_(\w+)\.md\)")
 _LINK_OTHER_CLUSTER = re.compile(r"\]\(\.\./(\d\d_\w+)/hg_(\w+)\.md\)")
 _LINK_SG_TO_HG = re.compile(
-    r"\]\((?:\.\./)*hauptglossar/(\d\d_\w+)/hg_(\w+)\.md\)"
+    r"\]\((?:\.\./)*(?:hauptglossar|glossary)/(\d\d_\w+)/hg_(\w+)\.md\)"
 )
 
 
