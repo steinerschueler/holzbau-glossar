@@ -87,6 +87,7 @@ extra_css:
 extra_javascript:
   - javascripts/collapsible-sections.js
   - javascripts/pin-nav.js
+  - javascripts/hut-ersatzbild.js
 
 markdown_extensions:
   - abbr

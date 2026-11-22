@@ -43,4 +43,7 @@ Konvention statt Unicode-Combining-Akzenten. Statt `n̂`, `v⃗`, `x̄`
 wird `n_hat`, `v_vec`, `x_bar` geschrieben. Hintergrund: Render-
 Stabilität in jeder Schriftart und in jedem Plain-Text-Konsumenten
 (Mail, ePub, Konsole). Details siehe Sektion 11 in der
-[HG-Konventionen-Volltext-Datei](hg-konventionen.md).
+[HG-Konventionen-Volltext-Datei](hg-konventionen.md). Auf den Seiten
+der Einträge setzt die Webseite den Hut über den Buchstaben: Aus
+`n_hat` wird <math class="hut" title="n_hat"><mover accent="true"><mi mathvariant="normal">n</mi><mo>^</mo></mover></math>,
+ein n mit Hut, keine Hochzahl (Sektion 11.5).

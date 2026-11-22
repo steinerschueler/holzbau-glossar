@@ -365,6 +365,27 @@ html .md-typeset details.glossar-section h6 { font-size: 1.0rem !important; }
 }
 
 /* ──────────────────────────────────────────────────────────────────────
+ * Buchstabe mit Hut.
+ *
+ * Der Build-Hook setzt ``n_hat`` aus den Quellen als MathML (n mit Hut).
+ * Der Hut steht in der Schrift der Seite, im Formelblock in JetBrains
+ * Mono, nicht in einer Formelschrift des Geräts: So sieht er überall
+ * gleich aus, auch auf Geräten ohne Formelschrift.
+ * ────────────────────────────────────────────────────────────────────── */
+
+math.hut,
+math.hut * {
+  font-family: inherit;
+}
+
+/* Einzelne Buchstaben schreibt der Build-Hook mit mathvariant="normal",
+ * damit der Browser sie nicht in mathematische Kursivzeichen umsetzt, die
+ * vielen Schriften fehlen. Kursiv werden sie hier, aus der Schrift der Seite. */
+math.hut mi[mathvariant="normal"] {
+  font-style: italic;
+}
+
+/* ──────────────────────────────────────────────────────────────────────
  * Cluster-Hervorhebung im Hamburger-Menu (Primary-Sidebar).
  *
  * Die vier Cluster (Ressourcen, Kern, Tragwerk, Holzbau) werden vom

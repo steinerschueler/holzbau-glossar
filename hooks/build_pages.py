@@ -504,8 +504,138 @@ def _normalize_list_code_fences(md: str) -> str:
 # kein ``hg_*.md`` und die Tokens dort sind ohnehin in Spans zerlegt.
 _REF_CODE = re.compile(r"<code>hg_([a-z0-9_]+)\.md</code>")
 
+# Buchstabe mit Hut. Die Quellen schreiben ``n_hat`` (HG_KONVENTIONEN §11):
+# Ein Hut als Unicode-Zeichen U+0302 rutscht in Firefox auf das nächste
+# Zeichen. Auf der Webseite setzt der Browser den Hut als MathML selbst über
+# den Buchstaben, geprüft in Chrome, Firefox und Safari. Index und Hochzahl
+# stehen ohne oder mit Klammern: ``e_hat_z``, ``n_hat_{a,i}``, ``e_hat_x^B``.
+# Ein Index steht auch als tiefgestelltes Zeichen gleich hinter dem Hut:
+# ``n_hat₁``, ``v_hatᵢ``.
+_HUT_ZUSATZ = r"(?:\{[^{}<>&]+\}|[^\W_]+)"
+_HUT_TIEFGESTELLT = "[₀-₉ₐ-ₜᵢ-ᵪⱼ]+"
+_HUT = re.compile(
+    rf"(?<!\w)([^\W\d_])_hat(?:_({_HUT_ZUSATZ})|({_HUT_TIEFGESTELLT}))?"
+    rf"(?:\^({_HUT_ZUSATZ}))?(?!\w)"
+)
+_HUT_ZEICHEN = re.compile(r"[^\W\d_]|\d+|\S")
+_HTML_TEIL = re.compile(r"(<[^>]+>)")
+_HTML_TAG_NAME = re.compile(r"</?([A-Za-z][\w-]*)")
+# Darin bleibt der Text, wie er ist: Code für den Browser, ein schon
+# gesetzter Hut, die Quelle eines Mermaid-Diagramms.
+_HUT_NICHT_IN = {"script", "style", "math", "textarea"}
+
+
+def _hut_mathml_zeichen(zeichen: str) -> str:
+    if zeichen.isdigit():
+        return f"<mn>{zeichen}</mn>"
+    if zeichen[0].isalpha():
+        # Ein einzelner Buchstabe wäre sonst ein mathematisches Kursivzeichen
+        # (n wird U+1D45B). Das fehlt vielen Schriften, für ν zeigt Firefox
+        # dann ein leeres Kästchen. «normal» hält den Buchstaben, kursiv setzt
+        # ihn das Stylesheet in der Schrift der Seite.
+        if len(zeichen) == 1:
+            return f'<mi mathvariant="normal">{zeichen}</mi>'
+        return f"<mi>{zeichen}</mi>"
+    return f"<mo>{zeichen}</mo>"
+
+
+def _hut_mathml_zusatz(zusatz: str) -> str:
+    """Index oder Hochzahl als MathML. Ohne Klammern ein Zeichen oder ein
+    Wort (``z``, ``fall``), in Klammern eine Folge wie ``a,i`` oder ``A_i``."""
+    if not zusatz.startswith("{"):
+        return _hut_mathml_zeichen(zusatz)
+    teile: list[str] = []
+    zeichen = _HUT_ZEICHEN.findall(zusatz[1:-1])
+    i = 0
+    while i < len(zeichen):
+        if zeichen[i] == "_" and teile and i + 1 < len(zeichen):
+            teile[-1] = f"<msub>{teile[-1]}{_hut_mathml_zeichen(zeichen[i + 1])}</msub>"
+            i += 2
+            continue
+        teile.append(_hut_mathml_zeichen(zeichen[i]))
+        i += 1
+    return teile[0] if len(teile) == 1 else f"<mrow>{''.join(teile)}</mrow>"
+
+
+def _hut_mathml(match: "re.Match[str]") -> str:
+    """``n_hat`` als n mit Hut in MathML, mit Index und Hochzahl."""
+    buchstabe, index, tiefgestellt, hochzahl = match.groups()
+    if tiefgestellt:
+        index = unicodedata.normalize("NFKC", tiefgestellt)
+    kern = f'<mover accent="true">{_hut_mathml_zeichen(buchstabe)}<mo>^</mo></mover>'
+    if index and hochzahl:
+        kern = (
+            f"<msubsup>{kern}{_hut_mathml_zusatz(index)}"
+            f"{_hut_mathml_zusatz(hochzahl)}</msubsup>"
+        )
+    elif index:
+        kern = f"<msub>{kern}{_hut_mathml_zusatz(index)}</msub>"
+    elif hochzahl:
+        kern = f"<msup>{kern}{_hut_mathml_zusatz(hochzahl)}</msup>"
+    return f'<math class="hut" title="{match.group(0)}">{kern}</math>'
+
+
+def _hut_fertiger_buchstabe(match: "re.Match[str]") -> str:
+    """In SVG geht kein MathML: ``e_hat_h`` wird ``ê_h``, wo Unicode den
+    Buchstaben mit Hut als ein Zeichen hat. Sonst bleibt ``x_hat``."""
+    buchstabe = match.group(1)
+    fertig = unicodedata.normalize("NFC", buchstabe + "̂")
+    if len(fertig) != 1:
+        return match.group(0)
+    return fertig + match.group(0)[len(buchstabe) + len("_hat"):]
+
+
+def _setze_hut(html: str) -> str:
+    """Ersetzt ``x_hat`` im Text, nie in Tags und Attributen. In SVG steht
+    der fertige Buchstabe, in Skripten und Mermaid-Quellen bleibt der Text."""
+    if "_hat" not in html:
+        return html
+    teile = _HTML_TEIL.split(html)
+    svg_tiefe = 0
+    gesperrt_bis: str | None = None
+    for i, teil in enumerate(teile):
+        if i % 2:
+            name = _HTML_TAG_NAME.match(teil)
+            if not name:
+                continue
+            tag = name.group(1).lower()
+            schliesst = teil.startswith("</")
+            if gesperrt_bis:
+                if schliesst and tag == gesperrt_bis:
+                    gesperrt_bis = None
+            elif schliesst:
+                svg_tiefe -= tag == "svg"
+            elif teil.endswith("/>"):
+                pass
+            elif tag in _HUT_NICHT_IN or (tag == "pre" and "mermaid" in teil):
+                gesperrt_bis = tag
+            elif tag == "svg":
+                svg_tiefe += 1
+            continue
+        if gesperrt_bis or "_hat" not in teil:
+            continue
+        ersatz = _hut_fertiger_buchstabe if svg_tiefe > 0 else _hut_mathml
+        teile[i] = _HUT.sub(ersatz, teil)
+    return "".join(teile)
+
+
+def _setze_hut_im_inhaltsverzeichnis(eintraege) -> None:
+    """Das Inhaltsverzeichnis am Rand übernimmt den Titel als HTML."""
+    for eintrag in eintraege:
+        eintrag.title = _setze_hut(eintrag.title)
+        _setze_hut_im_inhaltsverzeichnis(eintrag.children)
+
 
 def on_page_content(html, page, config, files):
+    """Setzt Hüte über Buchstaben und verlinkt Querverweise. Die Seiten
+    unter ``methode/`` erklären die Schreibweise ``n_hat`` und behalten sie."""
+    if not (page.file and page.file.src_uri.startswith("methode/")):
+        html = _setze_hut(html)
+        _setze_hut_im_inhaltsverzeichnis(page.toc)
+    return _verlinke_querverweise(html, page, config)
+
+
+def _verlinke_querverweise(html, page, config):
     """Verwandle ``hg_<id>.md``-Code-Spans in Querverweis-Links auf den
     jeweiligen Eintrag (``/{cluster}/{id}/``), ohne die Schrift zu ändern.
     Selbst-Verweise und unbekannte ids bleiben unverlinkt."""
