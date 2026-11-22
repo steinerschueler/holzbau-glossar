@@ -48,7 +48,9 @@ def _strip_intern_marker(text: str) -> str:
 # Satzzeichen-Artefakte nach Entfernungen glätten (Leerraum vor Punktuation,
 # Mehrfach-Leerzeilen, Leerzeichen am Zeilenende). Bewusst minimal — keine
 # globale Mehrfach-Space-Kollabierung (würde Tabellen/Einrückung treffen).
-_TIDY_SPACE_PUNCT = re.compile(r" +([.,;:)])")
+# Leerraum vor Punktuation nur nach Text: Einzug am Zeilenanfang bleibt, sonst
+# rückt `   :=  …` in einem Codeblock im Listenpunkt an den Rand und bricht ihn.
+_TIDY_SPACE_PUNCT = re.compile(r"(?<=\S) +([.,;:)])")
 _TIDY_OPEN_PAREN = re.compile(r"\( +")
 _TIDY_TRAILING = re.compile(r"[ \t]+\n")
 _TIDY_BLANKLINES = re.compile(r"\n{3,}")
