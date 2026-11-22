@@ -53,6 +53,16 @@ CLUSTER_KURZ: dict[str, str] = {
     "30_holzbau": "H",
 }
 
+# Frühere Eintrags-ID → heutige ID. Unter der alten Adresse
+# ``/{cluster}/{alt}/`` liegt nach dem Build eine kleine Seite, die auf
+# ``/{cluster}/{neu}/`` weiterleitet. GitHub Pages kennt keine
+# Server-Weiterleitung, darum ``meta refresh`` und ein kanonischer Link.
+# Den Cluster liefert der heutige Eintrag.
+ID_WEITERLEITUNGEN: dict[str, str] = {
+    # 2026-11-21: Benennung «Einbinder» nach Schweizer Gebrauch, die ID folgt.
+    "raehm": "einbinder",
+}
+
 
 def on_config(config):
     """Inject build_date into config.extra so the head template can use
@@ -223,6 +233,9 @@ def on_post_build(config):
                 encoding="utf-8",
             )
 
+    # Frühere Adressen leiten auf den heutigen Eintrag weiter.
+    _write_weiterleitungen(content, site_dir, site_url)
+
     # JSON-API v1 — index, eintraege/<id>, graph, schema.
     _write_api_v1(content, site_dir, site_url)
 
@@ -231,6 +244,50 @@ def on_post_build(config):
 
 
 # Marker-Replacement (z. B. {{BUILD_DATE}}) im Markdown vor Render-Phase.
+def _write_weiterleitungen(content: Path, site_dir: Path, site_url: str) -> None:
+    """Write a redirect page for every former ID in ``ID_WEITERLEITUNGEN``.
+
+    Die Seite liegt unter ``/{cluster}/{alt}/index.html`` und leitet ohne
+    Skript per ``meta refresh`` auf ``/{cluster}/{neu}/`` weiter. Fehlt der
+    heutige Eintrag, entsteht keine Weiterleitung. Eine echte Seite unter der
+    alten Adresse wird nie überschrieben."""
+    from html import escape
+
+    for alt_id, neu_id in ID_WEITERLEITUNGEN.items():
+        cluster_url = next(
+            (
+                CLUSTER_URL[cluster_dir]
+                for cluster_dir in CLUSTERS
+                if (content / "hauptglossar" / cluster_dir / f"hg_{neu_id}.md").is_file()
+            ),
+            None,
+        )
+        if cluster_url is None:
+            continue
+        alt_dir = site_dir / cluster_url / alt_id
+        if (alt_dir / "index.html").exists():
+            continue
+        ziel = escape(f"/{cluster_url}/{neu_id}/")
+        ziel_voll = escape(f"{site_url}/{cluster_url}/{neu_id}/")
+        alt_dir.mkdir(parents=True, exist_ok=True)
+        (alt_dir / "index.html").write_text(
+            "<!DOCTYPE html>\n"
+            '<html lang="de">\n'
+            "<head>\n"
+            '<meta charset="utf-8">\n'
+            '<meta name="robots" content="noindex">\n'
+            f'<meta http-equiv="refresh" content="0; url={ziel}">\n'
+            f'<link rel="canonical" href="{ziel_voll}">\n'
+            "<title>Eintrag umbenannt</title>\n"
+            "</head>\n"
+            "<body>\n"
+            f'<p>Dieser Eintrag steht jetzt unter <a href="{ziel}">{ziel_voll}</a>.</p>\n'
+            "</body>\n"
+            "</html>\n",
+            encoding="utf-8",
+        )
+
+
 def on_page_markdown(markdown, page, config, files):
     """Ersetze statische Marker im Markdown bevor MkDocs es rendert.
 
